@@ -1,0 +1,109 @@
+<?php
+namespace ChromeDevtoolsProtocol\Model\Tracing;
+
+/**
+ * Request for Tracing.start command.
+ *
+ * @generated This file has been auto-generated, do not edit.
+ *
+ * @author Jakub Kulhan <jakub.kulhan@gmail.com>
+ */
+final class StartRequest implements \JsonSerializable
+{
+	/**
+	 * Category/tag filter
+	 *
+	 * @var string|null
+	 */
+	public $categories;
+
+	/**
+	 * Tracing options
+	 *
+	 * @var string|null
+	 */
+	public $options;
+
+	/**
+	 * If set, the agent will issue bufferUsage events at this interval, specified in milliseconds
+	 *
+	 * @var int|float|null
+	 */
+	public $bufferUsageReportingInterval;
+
+	/**
+	 * Whether to report trace events as series of dataCollected events or to save trace to a stream (defaults to <code>ReportEvents</code>).
+	 *
+	 * @var string|null
+	 */
+	public $transferMode;
+
+	/** @var TraceConfig|null */
+	public $traceConfig;
+
+
+	public static function fromJson($data)
+	{
+		$instance = new static();
+		if (isset($data->categories)) {
+			$instance->categories = (string)$data->categories;
+		}
+		if (isset($data->options)) {
+			$instance->options = (string)$data->options;
+		}
+		if (isset($data->bufferUsageReportingInterval)) {
+			$instance->bufferUsageReportingInterval = $data->bufferUsageReportingInterval;
+		}
+		if (isset($data->transferMode)) {
+			$instance->transferMode = (string)$data->transferMode;
+		}
+		if (isset($data->traceConfig)) {
+			$instance->traceConfig = TraceConfig::fromJson($data->traceConfig);
+		}
+		return $instance;
+	}
+
+
+	public function jsonSerialize()
+	{
+		$data = new \stdClass();
+		if ($this->categories !== null) {
+			$data->categories = $this->categories;
+		}
+		if ($this->options !== null) {
+			$data->options = $this->options;
+		}
+		if ($this->bufferUsageReportingInterval !== null) {
+			$data->bufferUsageReportingInterval = $this->bufferUsageReportingInterval;
+		}
+		if ($this->transferMode !== null) {
+			$data->transferMode = $this->transferMode;
+		}
+		if ($this->traceConfig !== null) {
+			$data->traceConfig = $this->traceConfig->jsonSerialize();
+		}
+		return $data;
+	}
+
+
+	/**
+	 * Create new instance using builder.
+	 *
+	 * @return StartRequestBuilder
+	 */
+	public static function builder(): StartRequestBuilder
+	{
+		return new StartRequestBuilder();
+	}
+
+
+	/**
+	 * Create new empty instance.
+	 *
+	 * @return self
+	 */
+	public static function make(): self
+	{
+		return static::builder()->build();
+	}
+}
