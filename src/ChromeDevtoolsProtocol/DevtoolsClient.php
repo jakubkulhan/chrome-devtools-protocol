@@ -45,7 +45,7 @@ class DevtoolsClient implements DevtoolsClientInterface, InternalClientInterface
 		}
 	}
 
-	public function close()
+	public function close(): void
 	{
 		$wsClient = $this->wsClient;
 		$this->wsClient = null;
@@ -65,7 +65,7 @@ class DevtoolsClient implements DevtoolsClientInterface, InternalClientInterface
 		$payload->params = $parameters;
 
 		if ($ctx->getDeadline() !== null) {
-			$timeout = floatval($ctx->getDeadline()->format("U.u")) - microtime(true);
+			$timeout = $ctx->deadlineFromNow();
 			if ($timeout < 1) {
 				throw new DeadlineException("Context deadline reached.");
 			}
@@ -75,7 +75,7 @@ class DevtoolsClient implements DevtoolsClientInterface, InternalClientInterface
 
 		for (; ;) {
 			if ($ctx->getDeadline() !== null) {
-				$timeout = floatval($ctx->getDeadline()->format("U.u")) - microtime(true);
+				$timeout = $ctx->deadlineFromNow();
 				if ($timeout < 1) {
 					throw new DeadlineException("Context deadline reached.");
 				}
@@ -98,7 +98,7 @@ class DevtoolsClient implements DevtoolsClientInterface, InternalClientInterface
 	{
 		for (; ;) {
 			if ($ctx->getDeadline() !== null) {
-				$timeout = floatval($ctx->getDeadline()->format("U.u")) - microtime(true);
+				$timeout = $ctx->deadlineFromNow();
 				if ($timeout < 1) {
 					throw new DeadlineException("Context deadline reached.");
 				}

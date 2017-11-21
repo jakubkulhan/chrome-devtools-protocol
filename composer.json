@@ -19,7 +19,9 @@
   ],
   "minimum-stability": "stable",
   "require": {
+    "guzzlehttp/guzzle": "^6.0",
     "php": "~7.1",
+    "symfony/process": ">=2.3",
     "textalk/websocket": "^1.2"
   },
   "require-dev": {

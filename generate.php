@@ -145,6 +145,8 @@ class Generator
 		}
 
 		$clientInterface = $this->addInterface(__NAMESPACE__ . "\\DevtoolsClientInterface");
+		$clientInterface->addExtend(CloseableResourceInterface::class);
+		$clientInterface->getNamespace()->addUse(CloseableResourceInterface::class);
 
 		$clientInterface
 			->addComment("Interface for Chrome devtools protocol client.")

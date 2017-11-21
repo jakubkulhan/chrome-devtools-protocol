@@ -31,13 +31,6 @@ final class StackTrace implements \JsonSerializable
 	 */
 	public $parent;
 
-	/**
-	 * Creation frame of the Promise which produced the next synchronous trace when resolved, if available.
-	 *
-	 * @var CallFrame|null
-	 */
-	public $promiseCreationFrame;
-
 
 	public static function fromJson($data)
 	{
@@ -53,9 +46,6 @@ final class StackTrace implements \JsonSerializable
 		}
 		if (isset($data->parent)) {
 			$instance->parent = StackTrace::fromJson($data->parent);
-		}
-		if (isset($data->promiseCreationFrame)) {
-			$instance->promiseCreationFrame = CallFrame::fromJson($data->promiseCreationFrame);
 		}
 		return $instance;
 	}
@@ -75,9 +65,6 @@ final class StackTrace implements \JsonSerializable
 		}
 		if ($this->parent !== null) {
 			$data->parent = $this->parent->jsonSerialize();
-		}
-		if ($this->promiseCreationFrame !== null) {
-			$data->promiseCreationFrame = $this->promiseCreationFrame->jsonSerialize();
 		}
 		return $data;
 	}

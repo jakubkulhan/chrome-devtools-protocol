@@ -44,4 +44,22 @@ class Context implements ContextInterface
 		return $this->deadline;
 	}
 
+	public function isAfterDeadline(): bool
+	{
+		if ($this->deadline === null) {
+			return false;
+		}
+
+		return microtime(true) >= floatval($this->deadline->format("U.u"));
+	}
+
+	public function deadlineFromNow(): ?float
+	{
+		if ($this->deadline === null) {
+			return null;
+		}
+
+		return floatval($this->deadline->format("U.u")) - microtime(true);
+	}
+
 }

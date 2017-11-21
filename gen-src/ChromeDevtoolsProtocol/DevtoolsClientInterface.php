@@ -48,7 +48,7 @@ use ChromeDevtoolsProtocol\Domain\TracingDomainInterface;
  *
  * @author Jakub Kulhan <jakub.kulhan@gmail.com>
  */
-interface DevtoolsClientInterface
+interface DevtoolsClientInterface extends CloseableResourceInterface
 {
 	/**
 	 * Inspector domain.

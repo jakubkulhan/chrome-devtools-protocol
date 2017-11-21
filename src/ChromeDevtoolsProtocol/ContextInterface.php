@@ -7,4 +7,8 @@ namespace ChromeDevtoolsProtocol;
 interface ContextInterface
 {
 	public function getDeadline(): ?\DateTimeImmutable;
+
+	public function isAfterDeadline(): bool;
+
+	public function deadlineFromNow(): ?float;
 }

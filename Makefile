@@ -24,10 +24,13 @@ docker-image:
 		docker push jakubkulhan/chrome:latest
 	docker rmi jakubkulhan/chrome:build
 
-test: lint phpstan
+test: lint phpstan phpunit
 
 lint:
 	./vendor/bin/parallel-lint gen-src src test
+
+phpunit:
+	./vendor/bin/phpunit
 
 phpstan:
 	./vendor/bin/phpstan analyse --level=6 gen-src src test
