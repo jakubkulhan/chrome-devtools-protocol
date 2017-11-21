@@ -24,8 +24,17 @@ class Launcher
 	/** @var int */
 	private $port;
 
-	/** @var Filesystem */
-	private $fs;
+	/** @var string|null */
+	private $workDir;
+
+	/** @var array|null */
+	private $env;
+
+	/** @var mixed */
+	private $input;
+
+	/** @var array|null */
+	private $options;
 
 	/**
 	 * @param int $port If port <= 0, random port number is generated.
@@ -37,7 +46,56 @@ class Launcher
 		}
 
 		$this->port = $port;
-		$this->fs = new Filesystem();
+	}
+
+	/**
+	 * @param int $port
+	 * @return self
+	 */
+	public function setPort(int $port)
+	{
+		$this->port = $port;
+		return $this;
+	}
+
+	/**
+	 * @param string|null $workDir
+	 * @return self
+	 */
+	public function setWorkDir(?string $workDir)
+	{
+		$this->workDir = $workDir;
+		return $this;
+	}
+
+	/**
+	 * @param array|null $env
+	 * @return self
+	 */
+	public function setEnv(?array $env)
+	{
+		$this->env = $env;
+		return $this;
+	}
+
+	/**
+	 * @param mixed $input
+	 * @return self
+	 */
+	public function setInput($input)
+	{
+		$this->input = $input;
+		return $this;
+	}
+
+	/**
+	 * @param array|null $options
+	 * @return self
+	 */
+	public function setOptions(?array $options)
+	{
+		$this->options = $options;
+		return $this;
 	}
 
 	public function launch(ContextInterface $ctx, ...$args): ProcessInstance
@@ -100,15 +158,23 @@ class Launcher
 			}
 		}
 
+		$fs = new Filesystem();
 		$temporaryUserDataDir = null;
 		if (!$foundUserDataDir) {
 			$temporaryUserDataDir = sys_get_temp_dir() . DIRECTORY_SEPARATOR . "chrome-profile-" . $this->port;
-			$this->fs->mkdir($temporaryUserDataDir);
+			$fs->mkdir($temporaryUserDataDir);
 			$args[] = "--user-data-dir=" . $temporaryUserDataDir;
 		}
 
 		try {
-			$process = new Process(array_merge([$executable], $args));
+			$process = new Process(
+				array_merge([$executable], $args),
+				$this->workDir,
+				$this->env,
+				$this->input,
+				null,
+				$this->options
+			);
 			$process->start();
 
 			$instance = new ProcessInstance($process, $temporaryUserDataDir, $this->port);
@@ -129,7 +195,7 @@ class Launcher
 
 		} catch (\Exception $e) {
 			if ($temporaryUserDataDir !== null) {
-				$this->fs->remove($temporaryUserDataDir);
+				$fs->remove($temporaryUserDataDir);
 			}
 
 			throw $e;
