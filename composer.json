@@ -2,6 +2,14 @@
   "name": "jakubkulhan/chrome-devtools-protocol",
   "type": "library",
   "description": "Chrome Devtools Protocol client for PHP",
+  "keywords": [
+    "chrome",
+    "chrome-devtools",
+    "chrome-devtools-protocol",
+    "headless-chrome",
+    "web",
+    "automation"
+  ],
   "license": "MIT",
   "authors": [
     {
