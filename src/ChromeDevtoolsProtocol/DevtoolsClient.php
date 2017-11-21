@@ -2,10 +2,11 @@
 namespace ChromeDevtoolsProtocol;
 
 use ChromeDevtoolsProtocol\Exception\ClientClosedException;
-use ChromeDevtoolsProtocol\Exception\DeadlineException;
 use ChromeDevtoolsProtocol\Exception\LogicException;
 use ChromeDevtoolsProtocol\Exception\RuntimeException;
-use WebSocket\Client;
+use ChromeDevtoolsProtocol\WebSocket\WebSocketClient;
+use Wrench\Client;
+use Wrench\Payload\Payload;
 
 /**
  * @author Jakub Kulhan <jakub.kulhan@gmail.com>
@@ -26,12 +27,10 @@ class DevtoolsClient implements DevtoolsClientInterface, InternalClientInterface
 
 	public function __construct(string $wsUrl)
 	{
-		$this->wsClient = new Client($wsUrl);
-
-		// force connect
-		$rm = new \ReflectionMethod(get_class($this->wsClient), "connect");
-		$rm->setAccessible(true);
-		$rm->invoke($this->wsClient);
+		$this->wsClient = new WebSocketClient($wsUrl, "http://" . parse_url($wsUrl, PHP_URL_HOST));
+		if (!$this->wsClient->connect()) {
+			throw new RuntimeException(sprintf("Could not connect to [%s].", $wsUrl));
+		}
 	}
 
 	public function __destruct()
@@ -49,7 +48,7 @@ class DevtoolsClient implements DevtoolsClientInterface, InternalClientInterface
 	{
 		$wsClient = $this->wsClient;
 		$this->wsClient = null;
-		$wsClient->close();
+		$wsClient->disconnect();
 	}
 
 	/**
@@ -64,29 +63,21 @@ class DevtoolsClient implements DevtoolsClientInterface, InternalClientInterface
 		$payload->method = $method;
 		$payload->params = $parameters;
 
-		if ($ctx->getDeadline() !== null) {
-			$timeout = $ctx->deadlineFromNow();
-			if ($timeout < 1) {
-				throw new DeadlineException("Context deadline reached.");
-			}
-			$this->getWsClient()->setTimeout(intval($timeout));
-		}
-		$this->getWsClient()->send(json_encode($payload));
+		$this->getWsClient()->setDeadline($ctx->getDeadline());
+		$this->getWsClient()->sendData(json_encode($payload));
 
 		for (; ;) {
-			if ($ctx->getDeadline() !== null) {
-				$timeout = $ctx->deadlineFromNow();
-				if ($timeout < 1) {
-					throw new DeadlineException("Context deadline reached.");
-				}
-				$this->getWsClient()->setTimeout(intval($timeout));
-			}
-			$message = json_decode($this->getWsClient()->receive());
+			$this->getWsClient()->setDeadline($ctx->getDeadline());
+			$payloads = $this->getWsClient()->receive();
+			foreach ($payloads as $payload) {
+				/** @var Payload $payload */
+				$message = json_decode($payload->getPayload());
 
-			if (isset($message->id) && $message->id === $messageId) {
-				return $message->result ?? new \stdClass();
-			} else {
-				$this->handleMessage($message);
+				if (isset($message->id) && $message->id === $messageId) {
+					return $message->result ?? new \stdClass();
+				} else {
+					$this->handleMessage($message);
+				}
 			}
 		}
 	}
@@ -97,19 +88,16 @@ class DevtoolsClient implements DevtoolsClientInterface, InternalClientInterface
 	public function awaitEvent(ContextInterface $ctx, string $method)
 	{
 		for (; ;) {
-			if ($ctx->getDeadline() !== null) {
-				$timeout = $ctx->deadlineFromNow();
-				if ($timeout < 1) {
-					throw new DeadlineException("Context deadline reached.");
-				}
-				$this->getWsClient()->setTimeout(intval($timeout));
-			}
-			$message = json_decode($this->getWsClient()->receive());
+			$this->getWsClient()->setDeadline($ctx->getDeadline());
+			foreach ($this->getWsClient()->receive() as $payload) {
+				/** @var Payload $payload */
+				$message = json_decode($payload->getPayload());
 
-			if (isset($message->method) && $message->method === $method) {
-				return $message->params;
-			} else {
-				$this->handleMessage($message);
+				if (isset($message->method) && $message->method === $method) {
+					return $message->params;
+				} else {
+					$this->handleMessage($message);
+				}
 			}
 		}
 	}

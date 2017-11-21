@@ -22,7 +22,7 @@
     "guzzlehttp/guzzle": "^6.0",
     "php": "~7.1",
     "symfony/process": ">=2.3",
-    "textalk/websocket": "^1.2"
+    "wrench/wrench": "^2.0"
   },
   "require-dev": {
     "jakub-onderka/php-parallel-lint": "~0.9",

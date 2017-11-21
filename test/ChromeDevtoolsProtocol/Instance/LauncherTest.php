@@ -27,7 +27,7 @@ class LauncherTest extends TestCase
 			$devtools = $tab->devtools();
 			try {
 				$devtools->page()->enable($ctx);
-				$devtools->page()->navigate($ctx, NavigateRequest::builder()->setUrl("https://www.google.com/")->build());
+				$devtools->page()->navigate($ctx, NavigateRequest::builder()->setUrl("https://google.com/")->build());
 				$devtools->page()->awaitLoadEventFired($ctx);
 
 				$this->assertTrue(true, "Ok, google works");
