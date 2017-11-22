@@ -44,7 +44,9 @@ class HeadlessExperimentalDomain implements HeadlessExperimentalDomainInterface
 
 	public function addNeedsBeginFramesChangedListener(callable $listener): SubscriptionInterface
 	{
-		return $this->internalClient->addListener('HeadlessExperimental.needsBeginFramesChanged', $listener);
+		return $this->internalClient->addListener('HeadlessExperimental.needsBeginFramesChanged', function ($event) use ($listener) {
+			return $listener(NeedsBeginFramesChangedEvent::fromJson($event));
+		});
 	}
 
 
@@ -56,7 +58,9 @@ class HeadlessExperimentalDomain implements HeadlessExperimentalDomainInterface
 
 	public function addMainFrameReadyForScreenshotsListener(callable $listener): SubscriptionInterface
 	{
-		return $this->internalClient->addListener('HeadlessExperimental.mainFrameReadyForScreenshots', $listener);
+		return $this->internalClient->addListener('HeadlessExperimental.mainFrameReadyForScreenshots', function ($event) use ($listener) {
+			return $listener(MainFrameReadyForScreenshotsEvent::fromJson($event));
+		});
 	}
 
 

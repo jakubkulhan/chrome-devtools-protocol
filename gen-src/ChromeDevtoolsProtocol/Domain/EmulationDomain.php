@@ -138,7 +138,9 @@ class EmulationDomain implements EmulationDomainInterface
 
 	public function addVirtualTimeBudgetExpiredListener(callable $listener): SubscriptionInterface
 	{
-		return $this->internalClient->addListener('Emulation.virtualTimeBudgetExpired', $listener);
+		return $this->internalClient->addListener('Emulation.virtualTimeBudgetExpired', function ($event) use ($listener) {
+			return $listener(VirtualTimeBudgetExpiredEvent::fromJson($event));
+		});
 	}
 
 
@@ -150,7 +152,9 @@ class EmulationDomain implements EmulationDomainInterface
 
 	public function addVirtualTimeAdvancedListener(callable $listener): SubscriptionInterface
 	{
-		return $this->internalClient->addListener('Emulation.virtualTimeAdvanced', $listener);
+		return $this->internalClient->addListener('Emulation.virtualTimeAdvanced', function ($event) use ($listener) {
+			return $listener(VirtualTimeAdvancedEvent::fromJson($event));
+		});
 	}
 
 
@@ -162,7 +166,9 @@ class EmulationDomain implements EmulationDomainInterface
 
 	public function addVirtualTimePausedListener(callable $listener): SubscriptionInterface
 	{
-		return $this->internalClient->addListener('Emulation.virtualTimePaused', $listener);
+		return $this->internalClient->addListener('Emulation.virtualTimePaused', function ($event) use ($listener) {
+			return $listener(VirtualTimePausedEvent::fromJson($event));
+		});
 	}
 
 

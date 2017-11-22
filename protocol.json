@@ -1,7 +1,7 @@
 {
     "version": {
         "major": "1",
-        "minor": "2"
+        "minor": "3"
     },
     "domains": [
         {
@@ -409,44 +409,37 @@
                         {
                             "name": "offsetTop",
                             "type": "number",
-                            "experimental": true,
                             "description": "Top offset in DIP."
                         },
                         {
                             "name": "pageScaleFactor",
                             "type": "number",
-                            "experimental": true,
                             "description": "Page scale factor."
                         },
                         {
                             "name": "deviceWidth",
                             "type": "number",
-                            "experimental": true,
                             "description": "Device screen width in DIP."
                         },
                         {
                             "name": "deviceHeight",
                             "type": "number",
-                            "experimental": true,
                             "description": "Device screen height in DIP."
                         },
                         {
                             "name": "scrollOffsetX",
                             "type": "number",
-                            "experimental": true,
                             "description": "Position of horizontal scroll in CSS pixels."
                         },
                         {
                             "name": "scrollOffsetY",
                             "type": "number",
-                            "experimental": true,
                             "description": "Position of vertical scroll in CSS pixels."
                         },
                         {
                             "name": "timestamp",
                             "$ref": "Network.TimeSinceEpoch",
                             "optional": true,
-                            "experimental": true,
                             "description": "Frame swap timestamp."
                         }
                     ],
@@ -744,8 +737,7 @@
                             "name": "loaderId",
                             "$ref": "Network.LoaderId",
                             "optional": true,
-                            "description": "Loader identifier.",
-                            "experimental": true
+                            "description": "Loader identifier."
                         },
                         {
                             "name": "errorText",
@@ -936,8 +928,7 @@
                             "type": "string",
                             "description": "HTML content to set."
                         }
-                    ],
-                    "experimental": true
+                    ]
                 },
                 {
                     "name": "setDeviceMetricsOverride",
@@ -2147,7 +2138,8 @@
                             "name": "scale",
                             "type": "number",
                             "optional": true,
-                            "description": "Scale to apply to resulting view image."
+                            "description": "Scale to apply to resulting view image.",
+                            "experimental": true
                         },
                         {
                             "name": "screenWidth",
@@ -3705,7 +3697,8 @@
                             "type": "boolean",
                             "description": "True if browser cache can be cleared."
                         }
-                    ]
+                    ],
+                    "deprecated": true
                 },
                 {
                     "name": "clearBrowserCache",
@@ -3720,7 +3713,8 @@
                             "type": "boolean",
                             "description": "True if browser cookies can be cleared."
                         }
-                    ]
+                    ],
+                    "deprecated": true
                 },
                 {
                     "name": "clearBrowserCookies",
@@ -3882,7 +3876,8 @@
                             "type": "boolean",
                             "description": "True if emulation of network conditions is supported."
                         }
-                    ]
+                    ],
+                    "deprecated": true
                 },
                 {
                     "name": "emulateNetworkConditions",
@@ -4534,14 +4529,12 @@
                 {
                     "id": "DatabaseId",
                     "type": "string",
-                    "description": "Unique identifier of Database object.",
-                    "experimental": true
+                    "description": "Unique identifier of Database object."
                 },
                 {
                     "id": "Database",
                     "type": "object",
                     "description": "Database object.",
-                    "experimental": true,
                     "properties": [
                         {
                             "name": "id",
@@ -5253,7 +5246,6 @@
                     "id": "StorageId",
                     "type": "object",
                     "description": "DOM Storage identifier.",
-                    "experimental": true,
                     "properties": [
                         {
                             "name": "securityOrigin",
@@ -5271,7 +5263,6 @@
                     "id": "Item",
                     "type": "array",
                     "description": "DOM Storage item.",
-                    "experimental": true,
                     "items": {
                         "type": "string"
                     }
@@ -8816,7 +8807,8 @@
                             "type": "boolean",
                             "description": "Whether to pause new targets when attaching to them. Use <code>Runtime.runIfWaitingForDebugger</code> to run paused targets."
                         }
-                    ]
+                    ],
+                    "experimental": true
                 },
                 {
                     "name": "setAttachToFrames",
@@ -8881,7 +8873,8 @@
                             "name": "targetInfo",
                             "$ref": "TargetInfo"
                         }
-                    ]
+                    ],
+                    "experimental": true
                 },
                 {
                     "name": "activateTarget",
@@ -9080,7 +9073,8 @@
                             "name": "waitingForDebugger",
                             "type": "boolean"
                         }
-                    ]
+                    ],
+                    "experimental": true
                 },
                 {
                     "name": "detachedFromTarget",
@@ -9098,7 +9092,8 @@
                             "deprecated": true,
                             "description": "Deprecated."
                         }
-                    ]
+                    ],
+                    "experimental": true
                 },
                 {
                     "name": "receivedMessageFromTarget",
@@ -10682,7 +10677,6 @@
                 {
                     "id": "Animation",
                     "type": "object",
-                    "experimental": true,
                     "properties": [
                         {
                             "name": "id",
@@ -10697,7 +10691,6 @@
                         {
                             "name": "pausedState",
                             "type": "boolean",
-                            "experimental": true,
                             "description": "<code>Animation</code>'s internal paused state."
                         },
                         {
@@ -10748,7 +10741,6 @@
                 {
                     "id": "AnimationEffect",
                     "type": "object",
-                    "experimental": true,
                     "properties": [
                         {
                             "name": "delay",

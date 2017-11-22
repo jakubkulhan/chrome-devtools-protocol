@@ -67,7 +67,9 @@ class StorageDomain implements StorageDomainInterface
 
 	public function addCacheStorageListUpdatedListener(callable $listener): SubscriptionInterface
 	{
-		return $this->internalClient->addListener('Storage.cacheStorageListUpdated', $listener);
+		return $this->internalClient->addListener('Storage.cacheStorageListUpdated', function ($event) use ($listener) {
+			return $listener(CacheStorageListUpdatedEvent::fromJson($event));
+		});
 	}
 
 
@@ -79,7 +81,9 @@ class StorageDomain implements StorageDomainInterface
 
 	public function addCacheStorageContentUpdatedListener(callable $listener): SubscriptionInterface
 	{
-		return $this->internalClient->addListener('Storage.cacheStorageContentUpdated', $listener);
+		return $this->internalClient->addListener('Storage.cacheStorageContentUpdated', function ($event) use ($listener) {
+			return $listener(CacheStorageContentUpdatedEvent::fromJson($event));
+		});
 	}
 
 
@@ -91,7 +95,9 @@ class StorageDomain implements StorageDomainInterface
 
 	public function addIndexedDBListUpdatedListener(callable $listener): SubscriptionInterface
 	{
-		return $this->internalClient->addListener('Storage.indexedDBListUpdated', $listener);
+		return $this->internalClient->addListener('Storage.indexedDBListUpdated', function ($event) use ($listener) {
+			return $listener(IndexedDBListUpdatedEvent::fromJson($event));
+		});
 	}
 
 
@@ -103,7 +109,9 @@ class StorageDomain implements StorageDomainInterface
 
 	public function addIndexedDBContentUpdatedListener(callable $listener): SubscriptionInterface
 	{
-		return $this->internalClient->addListener('Storage.indexedDBContentUpdated', $listener);
+		return $this->internalClient->addListener('Storage.indexedDBContentUpdated', function ($event) use ($listener) {
+			return $listener(IndexedDBContentUpdatedEvent::fromJson($event));
+		});
 	}
 
 

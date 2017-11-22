@@ -116,7 +116,9 @@ class HeapProfilerDomain implements HeapProfilerDomainInterface
 
 	public function addAddHeapSnapshotChunkListener(callable $listener): SubscriptionInterface
 	{
-		return $this->internalClient->addListener('HeapProfiler.addHeapSnapshotChunk', $listener);
+		return $this->internalClient->addListener('HeapProfiler.addHeapSnapshotChunk', function ($event) use ($listener) {
+			return $listener(AddHeapSnapshotChunkEvent::fromJson($event));
+		});
 	}
 
 
@@ -128,7 +130,9 @@ class HeapProfilerDomain implements HeapProfilerDomainInterface
 
 	public function addResetProfilesListener(callable $listener): SubscriptionInterface
 	{
-		return $this->internalClient->addListener('HeapProfiler.resetProfiles', $listener);
+		return $this->internalClient->addListener('HeapProfiler.resetProfiles', function ($event) use ($listener) {
+			return $listener(ResetProfilesEvent::fromJson($event));
+		});
 	}
 
 
@@ -140,7 +144,9 @@ class HeapProfilerDomain implements HeapProfilerDomainInterface
 
 	public function addReportHeapSnapshotProgressListener(callable $listener): SubscriptionInterface
 	{
-		return $this->internalClient->addListener('HeapProfiler.reportHeapSnapshotProgress', $listener);
+		return $this->internalClient->addListener('HeapProfiler.reportHeapSnapshotProgress', function ($event) use ($listener) {
+			return $listener(ReportHeapSnapshotProgressEvent::fromJson($event));
+		});
 	}
 
 
@@ -152,7 +158,9 @@ class HeapProfilerDomain implements HeapProfilerDomainInterface
 
 	public function addLastSeenObjectIdListener(callable $listener): SubscriptionInterface
 	{
-		return $this->internalClient->addListener('HeapProfiler.lastSeenObjectId', $listener);
+		return $this->internalClient->addListener('HeapProfiler.lastSeenObjectId', function ($event) use ($listener) {
+			return $listener(LastSeenObjectIdEvent::fromJson($event));
+		});
 	}
 
 
@@ -164,7 +172,9 @@ class HeapProfilerDomain implements HeapProfilerDomainInterface
 
 	public function addHeapStatsUpdateListener(callable $listener): SubscriptionInterface
 	{
-		return $this->internalClient->addListener('HeapProfiler.heapStatsUpdate', $listener);
+		return $this->internalClient->addListener('HeapProfiler.heapStatsUpdate', function ($event) use ($listener) {
+			return $listener(HeapStatsUpdateEvent::fromJson($event));
+		});
 	}
 
 

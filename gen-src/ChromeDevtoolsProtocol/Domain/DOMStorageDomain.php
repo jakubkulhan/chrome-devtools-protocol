@@ -67,7 +67,9 @@ class DOMStorageDomain implements DOMStorageDomainInterface
 
 	public function addDomStorageItemsClearedListener(callable $listener): SubscriptionInterface
 	{
-		return $this->internalClient->addListener('DOMStorage.domStorageItemsCleared', $listener);
+		return $this->internalClient->addListener('DOMStorage.domStorageItemsCleared', function ($event) use ($listener) {
+			return $listener(DomStorageItemsClearedEvent::fromJson($event));
+		});
 	}
 
 
@@ -79,7 +81,9 @@ class DOMStorageDomain implements DOMStorageDomainInterface
 
 	public function addDomStorageItemRemovedListener(callable $listener): SubscriptionInterface
 	{
-		return $this->internalClient->addListener('DOMStorage.domStorageItemRemoved', $listener);
+		return $this->internalClient->addListener('DOMStorage.domStorageItemRemoved', function ($event) use ($listener) {
+			return $listener(DomStorageItemRemovedEvent::fromJson($event));
+		});
 	}
 
 
@@ -91,7 +95,9 @@ class DOMStorageDomain implements DOMStorageDomainInterface
 
 	public function addDomStorageItemAddedListener(callable $listener): SubscriptionInterface
 	{
-		return $this->internalClient->addListener('DOMStorage.domStorageItemAdded', $listener);
+		return $this->internalClient->addListener('DOMStorage.domStorageItemAdded', function ($event) use ($listener) {
+			return $listener(DomStorageItemAddedEvent::fromJson($event));
+		});
 	}
 
 
@@ -103,7 +109,9 @@ class DOMStorageDomain implements DOMStorageDomainInterface
 
 	public function addDomStorageItemUpdatedListener(callable $listener): SubscriptionInterface
 	{
-		return $this->internalClient->addListener('DOMStorage.domStorageItemUpdated', $listener);
+		return $this->internalClient->addListener('DOMStorage.domStorageItemUpdated', function ($event) use ($listener) {
+			return $listener(DomStorageItemUpdatedEvent::fromJson($event));
+		});
 	}
 
 

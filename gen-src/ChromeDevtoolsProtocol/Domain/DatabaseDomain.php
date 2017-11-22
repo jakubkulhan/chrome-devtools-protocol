@@ -52,7 +52,9 @@ class DatabaseDomain implements DatabaseDomainInterface
 
 	public function addAddDatabaseListener(callable $listener): SubscriptionInterface
 	{
-		return $this->internalClient->addListener('Database.addDatabase', $listener);
+		return $this->internalClient->addListener('Database.addDatabase', function ($event) use ($listener) {
+			return $listener(AddDatabaseEvent::fromJson($event));
+		});
 	}
 
 

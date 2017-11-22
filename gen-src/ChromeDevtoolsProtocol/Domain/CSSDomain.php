@@ -212,7 +212,9 @@ class CSSDomain implements CSSDomainInterface
 
 	public function addMediaQueryResultChangedListener(callable $listener): SubscriptionInterface
 	{
-		return $this->internalClient->addListener('CSS.mediaQueryResultChanged', $listener);
+		return $this->internalClient->addListener('CSS.mediaQueryResultChanged', function ($event) use ($listener) {
+			return $listener(MediaQueryResultChangedEvent::fromJson($event));
+		});
 	}
 
 
@@ -224,7 +226,9 @@ class CSSDomain implements CSSDomainInterface
 
 	public function addFontsUpdatedListener(callable $listener): SubscriptionInterface
 	{
-		return $this->internalClient->addListener('CSS.fontsUpdated', $listener);
+		return $this->internalClient->addListener('CSS.fontsUpdated', function ($event) use ($listener) {
+			return $listener(FontsUpdatedEvent::fromJson($event));
+		});
 	}
 
 
@@ -236,7 +240,9 @@ class CSSDomain implements CSSDomainInterface
 
 	public function addStyleSheetChangedListener(callable $listener): SubscriptionInterface
 	{
-		return $this->internalClient->addListener('CSS.styleSheetChanged', $listener);
+		return $this->internalClient->addListener('CSS.styleSheetChanged', function ($event) use ($listener) {
+			return $listener(StyleSheetChangedEvent::fromJson($event));
+		});
 	}
 
 
@@ -248,7 +254,9 @@ class CSSDomain implements CSSDomainInterface
 
 	public function addStyleSheetAddedListener(callable $listener): SubscriptionInterface
 	{
-		return $this->internalClient->addListener('CSS.styleSheetAdded', $listener);
+		return $this->internalClient->addListener('CSS.styleSheetAdded', function ($event) use ($listener) {
+			return $listener(StyleSheetAddedEvent::fromJson($event));
+		});
 	}
 
 
@@ -260,7 +268,9 @@ class CSSDomain implements CSSDomainInterface
 
 	public function addStyleSheetRemovedListener(callable $listener): SubscriptionInterface
 	{
-		return $this->internalClient->addListener('CSS.styleSheetRemoved', $listener);
+		return $this->internalClient->addListener('CSS.styleSheetRemoved', function ($event) use ($listener) {
+			return $listener(StyleSheetRemovedEvent::fromJson($event));
+		});
 	}
 
 

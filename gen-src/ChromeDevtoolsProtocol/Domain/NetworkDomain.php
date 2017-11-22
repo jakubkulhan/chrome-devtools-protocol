@@ -237,7 +237,9 @@ class NetworkDomain implements NetworkDomainInterface
 
 	public function addResourceChangedPriorityListener(callable $listener): SubscriptionInterface
 	{
-		return $this->internalClient->addListener('Network.resourceChangedPriority', $listener);
+		return $this->internalClient->addListener('Network.resourceChangedPriority', function ($event) use ($listener) {
+			return $listener(ResourceChangedPriorityEvent::fromJson($event));
+		});
 	}
 
 
@@ -249,7 +251,9 @@ class NetworkDomain implements NetworkDomainInterface
 
 	public function addRequestWillBeSentListener(callable $listener): SubscriptionInterface
 	{
-		return $this->internalClient->addListener('Network.requestWillBeSent', $listener);
+		return $this->internalClient->addListener('Network.requestWillBeSent', function ($event) use ($listener) {
+			return $listener(RequestWillBeSentEvent::fromJson($event));
+		});
 	}
 
 
@@ -261,7 +265,9 @@ class NetworkDomain implements NetworkDomainInterface
 
 	public function addRequestServedFromCacheListener(callable $listener): SubscriptionInterface
 	{
-		return $this->internalClient->addListener('Network.requestServedFromCache', $listener);
+		return $this->internalClient->addListener('Network.requestServedFromCache', function ($event) use ($listener) {
+			return $listener(RequestServedFromCacheEvent::fromJson($event));
+		});
 	}
 
 
@@ -273,7 +279,9 @@ class NetworkDomain implements NetworkDomainInterface
 
 	public function addResponseReceivedListener(callable $listener): SubscriptionInterface
 	{
-		return $this->internalClient->addListener('Network.responseReceived', $listener);
+		return $this->internalClient->addListener('Network.responseReceived', function ($event) use ($listener) {
+			return $listener(ResponseReceivedEvent::fromJson($event));
+		});
 	}
 
 
@@ -285,7 +293,9 @@ class NetworkDomain implements NetworkDomainInterface
 
 	public function addDataReceivedListener(callable $listener): SubscriptionInterface
 	{
-		return $this->internalClient->addListener('Network.dataReceived', $listener);
+		return $this->internalClient->addListener('Network.dataReceived', function ($event) use ($listener) {
+			return $listener(DataReceivedEvent::fromJson($event));
+		});
 	}
 
 
@@ -297,7 +307,9 @@ class NetworkDomain implements NetworkDomainInterface
 
 	public function addLoadingFinishedListener(callable $listener): SubscriptionInterface
 	{
-		return $this->internalClient->addListener('Network.loadingFinished', $listener);
+		return $this->internalClient->addListener('Network.loadingFinished', function ($event) use ($listener) {
+			return $listener(LoadingFinishedEvent::fromJson($event));
+		});
 	}
 
 
@@ -309,7 +321,9 @@ class NetworkDomain implements NetworkDomainInterface
 
 	public function addLoadingFailedListener(callable $listener): SubscriptionInterface
 	{
-		return $this->internalClient->addListener('Network.loadingFailed', $listener);
+		return $this->internalClient->addListener('Network.loadingFailed', function ($event) use ($listener) {
+			return $listener(LoadingFailedEvent::fromJson($event));
+		});
 	}
 
 
@@ -321,7 +335,9 @@ class NetworkDomain implements NetworkDomainInterface
 
 	public function addWebSocketWillSendHandshakeRequestListener(callable $listener): SubscriptionInterface
 	{
-		return $this->internalClient->addListener('Network.webSocketWillSendHandshakeRequest', $listener);
+		return $this->internalClient->addListener('Network.webSocketWillSendHandshakeRequest', function ($event) use ($listener) {
+			return $listener(WebSocketWillSendHandshakeRequestEvent::fromJson($event));
+		});
 	}
 
 
@@ -333,7 +349,9 @@ class NetworkDomain implements NetworkDomainInterface
 
 	public function addWebSocketHandshakeResponseReceivedListener(callable $listener): SubscriptionInterface
 	{
-		return $this->internalClient->addListener('Network.webSocketHandshakeResponseReceived', $listener);
+		return $this->internalClient->addListener('Network.webSocketHandshakeResponseReceived', function ($event) use ($listener) {
+			return $listener(WebSocketHandshakeResponseReceivedEvent::fromJson($event));
+		});
 	}
 
 
@@ -345,7 +363,9 @@ class NetworkDomain implements NetworkDomainInterface
 
 	public function addWebSocketCreatedListener(callable $listener): SubscriptionInterface
 	{
-		return $this->internalClient->addListener('Network.webSocketCreated', $listener);
+		return $this->internalClient->addListener('Network.webSocketCreated', function ($event) use ($listener) {
+			return $listener(WebSocketCreatedEvent::fromJson($event));
+		});
 	}
 
 
@@ -357,7 +377,9 @@ class NetworkDomain implements NetworkDomainInterface
 
 	public function addWebSocketClosedListener(callable $listener): SubscriptionInterface
 	{
-		return $this->internalClient->addListener('Network.webSocketClosed', $listener);
+		return $this->internalClient->addListener('Network.webSocketClosed', function ($event) use ($listener) {
+			return $listener(WebSocketClosedEvent::fromJson($event));
+		});
 	}
 
 
@@ -369,7 +391,9 @@ class NetworkDomain implements NetworkDomainInterface
 
 	public function addWebSocketFrameReceivedListener(callable $listener): SubscriptionInterface
 	{
-		return $this->internalClient->addListener('Network.webSocketFrameReceived', $listener);
+		return $this->internalClient->addListener('Network.webSocketFrameReceived', function ($event) use ($listener) {
+			return $listener(WebSocketFrameReceivedEvent::fromJson($event));
+		});
 	}
 
 
@@ -381,7 +405,9 @@ class NetworkDomain implements NetworkDomainInterface
 
 	public function addWebSocketFrameErrorListener(callable $listener): SubscriptionInterface
 	{
-		return $this->internalClient->addListener('Network.webSocketFrameError', $listener);
+		return $this->internalClient->addListener('Network.webSocketFrameError', function ($event) use ($listener) {
+			return $listener(WebSocketFrameErrorEvent::fromJson($event));
+		});
 	}
 
 
@@ -393,7 +419,9 @@ class NetworkDomain implements NetworkDomainInterface
 
 	public function addWebSocketFrameSentListener(callable $listener): SubscriptionInterface
 	{
-		return $this->internalClient->addListener('Network.webSocketFrameSent', $listener);
+		return $this->internalClient->addListener('Network.webSocketFrameSent', function ($event) use ($listener) {
+			return $listener(WebSocketFrameSentEvent::fromJson($event));
+		});
 	}
 
 
@@ -405,7 +433,9 @@ class NetworkDomain implements NetworkDomainInterface
 
 	public function addEventSourceMessageReceivedListener(callable $listener): SubscriptionInterface
 	{
-		return $this->internalClient->addListener('Network.eventSourceMessageReceived', $listener);
+		return $this->internalClient->addListener('Network.eventSourceMessageReceived', function ($event) use ($listener) {
+			return $listener(EventSourceMessageReceivedEvent::fromJson($event));
+		});
 	}
 
 
@@ -417,7 +447,9 @@ class NetworkDomain implements NetworkDomainInterface
 
 	public function addRequestInterceptedListener(callable $listener): SubscriptionInterface
 	{
-		return $this->internalClient->addListener('Network.requestIntercepted', $listener);
+		return $this->internalClient->addListener('Network.requestIntercepted', function ($event) use ($listener) {
+			return $listener(RequestInterceptedEvent::fromJson($event));
+		});
 	}
 
 

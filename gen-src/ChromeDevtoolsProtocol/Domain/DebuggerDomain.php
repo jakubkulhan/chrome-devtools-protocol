@@ -229,7 +229,9 @@ class DebuggerDomain implements DebuggerDomainInterface
 
 	public function addScriptParsedListener(callable $listener): SubscriptionInterface
 	{
-		return $this->internalClient->addListener('Debugger.scriptParsed', $listener);
+		return $this->internalClient->addListener('Debugger.scriptParsed', function ($event) use ($listener) {
+			return $listener(ScriptParsedEvent::fromJson($event));
+		});
 	}
 
 
@@ -241,7 +243,9 @@ class DebuggerDomain implements DebuggerDomainInterface
 
 	public function addScriptFailedToParseListener(callable $listener): SubscriptionInterface
 	{
-		return $this->internalClient->addListener('Debugger.scriptFailedToParse', $listener);
+		return $this->internalClient->addListener('Debugger.scriptFailedToParse', function ($event) use ($listener) {
+			return $listener(ScriptFailedToParseEvent::fromJson($event));
+		});
 	}
 
 
@@ -253,7 +257,9 @@ class DebuggerDomain implements DebuggerDomainInterface
 
 	public function addBreakpointResolvedListener(callable $listener): SubscriptionInterface
 	{
-		return $this->internalClient->addListener('Debugger.breakpointResolved', $listener);
+		return $this->internalClient->addListener('Debugger.breakpointResolved', function ($event) use ($listener) {
+			return $listener(BreakpointResolvedEvent::fromJson($event));
+		});
 	}
 
 
@@ -265,7 +271,9 @@ class DebuggerDomain implements DebuggerDomainInterface
 
 	public function addPausedListener(callable $listener): SubscriptionInterface
 	{
-		return $this->internalClient->addListener('Debugger.paused', $listener);
+		return $this->internalClient->addListener('Debugger.paused', function ($event) use ($listener) {
+			return $listener(PausedEvent::fromJson($event));
+		});
 	}
 
 
@@ -277,7 +285,9 @@ class DebuggerDomain implements DebuggerDomainInterface
 
 	public function addResumedListener(callable $listener): SubscriptionInterface
 	{
-		return $this->internalClient->addListener('Debugger.resumed', $listener);
+		return $this->internalClient->addListener('Debugger.resumed', function ($event) use ($listener) {
+			return $listener(ResumedEvent::fromJson($event));
+		});
 	}
 
 

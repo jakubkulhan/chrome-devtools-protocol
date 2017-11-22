@@ -49,7 +49,9 @@ class SecurityDomain implements SecurityDomainInterface
 
 	public function addSecurityStateChangedListener(callable $listener): SubscriptionInterface
 	{
-		return $this->internalClient->addListener('Security.securityStateChanged', $listener);
+		return $this->internalClient->addListener('Security.securityStateChanged', function ($event) use ($listener) {
+			return $listener(SecurityStateChangedEvent::fromJson($event));
+		});
 	}
 
 
@@ -61,7 +63,9 @@ class SecurityDomain implements SecurityDomainInterface
 
 	public function addCertificateErrorListener(callable $listener): SubscriptionInterface
 	{
-		return $this->internalClient->addListener('Security.certificateError', $listener);
+		return $this->internalClient->addListener('Security.certificateError', function ($event) use ($listener) {
+			return $listener(CertificateErrorEvent::fromJson($event));
+		});
 	}
 
 

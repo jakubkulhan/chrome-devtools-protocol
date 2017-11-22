@@ -34,7 +34,9 @@ class TetheringDomain implements TetheringDomainInterface
 
 	public function addAcceptedListener(callable $listener): SubscriptionInterface
 	{
-		return $this->internalClient->addListener('Tethering.accepted', $listener);
+		return $this->internalClient->addListener('Tethering.accepted', function ($event) use ($listener) {
+			return $listener(AcceptedEvent::fromJson($event));
+		});
 	}
 
 

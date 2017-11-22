@@ -61,7 +61,9 @@ class TracingDomain implements TracingDomainInterface
 
 	public function addDataCollectedListener(callable $listener): SubscriptionInterface
 	{
-		return $this->internalClient->addListener('Tracing.dataCollected', $listener);
+		return $this->internalClient->addListener('Tracing.dataCollected', function ($event) use ($listener) {
+			return $listener(DataCollectedEvent::fromJson($event));
+		});
 	}
 
 
@@ -73,7 +75,9 @@ class TracingDomain implements TracingDomainInterface
 
 	public function addTracingCompleteListener(callable $listener): SubscriptionInterface
 	{
-		return $this->internalClient->addListener('Tracing.tracingComplete', $listener);
+		return $this->internalClient->addListener('Tracing.tracingComplete', function ($event) use ($listener) {
+			return $listener(TracingCompleteEvent::fromJson($event));
+		});
 	}
 
 
@@ -85,7 +89,9 @@ class TracingDomain implements TracingDomainInterface
 
 	public function addBufferUsageListener(callable $listener): SubscriptionInterface
 	{
-		return $this->internalClient->addListener('Tracing.bufferUsage', $listener);
+		return $this->internalClient->addListener('Tracing.bufferUsage', function ($event) use ($listener) {
+			return $listener(BufferUsageEvent::fromJson($event));
+		});
 	}
 
 

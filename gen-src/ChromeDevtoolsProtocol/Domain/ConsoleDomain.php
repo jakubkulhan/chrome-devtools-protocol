@@ -41,7 +41,9 @@ class ConsoleDomain implements ConsoleDomainInterface
 
 	public function addMessageAddedListener(callable $listener): SubscriptionInterface
 	{
-		return $this->internalClient->addListener('Console.messageAdded', $listener);
+		return $this->internalClient->addListener('Console.messageAdded', function ($event) use ($listener) {
+			return $listener(MessageAddedEvent::fromJson($event));
+		});
 	}
 
 

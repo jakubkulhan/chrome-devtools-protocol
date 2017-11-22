@@ -113,7 +113,9 @@ class ProfilerDomain implements ProfilerDomainInterface
 
 	public function addConsoleProfileStartedListener(callable $listener): SubscriptionInterface
 	{
-		return $this->internalClient->addListener('Profiler.consoleProfileStarted', $listener);
+		return $this->internalClient->addListener('Profiler.consoleProfileStarted', function ($event) use ($listener) {
+			return $listener(ConsoleProfileStartedEvent::fromJson($event));
+		});
 	}
 
 
@@ -125,7 +127,9 @@ class ProfilerDomain implements ProfilerDomainInterface
 
 	public function addConsoleProfileFinishedListener(callable $listener): SubscriptionInterface
 	{
-		return $this->internalClient->addListener('Profiler.consoleProfileFinished', $listener);
+		return $this->internalClient->addListener('Profiler.consoleProfileFinished', function ($event) use ($listener) {
+			return $listener(ConsoleProfileFinishedEvent::fromJson($event));
+		});
 	}
 
 

@@ -325,13 +325,16 @@ class Generator
 				$implementationAddListenerMethod->setVisibility("public");
 				$implementationAddListenerMethod->setReturnType(SubscriptionInterface::class);
 				$domainImplementation->getNamespace()->addUse(SubscriptionInterface::class);
+				$domainImplementation->getNamespace()->addUse($eventClassName, null, $implementationEventClassAlias);
 				$implementationAddListenerMethod->addParameter("listener")
 					->setTypeHint("callable");
 				$implementationAddListenerMethod->addBody(
 					"return \$this->internalClient->addListener(" .
 					var_export(sprintf("%s.%s", $domainSpec->domain, $eventSpec->name), true) .
-					", \$listener);"
+					", function (\$event) use (\$listener) {"
 				);
+				$implementationAddListenerMethod->addBody("\treturn \$listener($implementationEventClassAlias::fromJson(\$event));");
+				$implementationAddListenerMethod->addBody("});");
 
 				$interfaceAwaitMethod = $domainInterface->addMethod("await" . Util::upperFirst($eventSpec->name));
 				$interfaceAwaitMethod->setVisibility("public");

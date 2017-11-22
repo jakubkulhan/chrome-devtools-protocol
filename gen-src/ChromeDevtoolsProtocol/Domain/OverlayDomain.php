@@ -136,7 +136,9 @@ class OverlayDomain implements OverlayDomainInterface
 
 	public function addNodeHighlightRequestedListener(callable $listener): SubscriptionInterface
 	{
-		return $this->internalClient->addListener('Overlay.nodeHighlightRequested', $listener);
+		return $this->internalClient->addListener('Overlay.nodeHighlightRequested', function ($event) use ($listener) {
+			return $listener(NodeHighlightRequestedEvent::fromJson($event));
+		});
 	}
 
 
@@ -148,7 +150,9 @@ class OverlayDomain implements OverlayDomainInterface
 
 	public function addInspectNodeRequestedListener(callable $listener): SubscriptionInterface
 	{
-		return $this->internalClient->addListener('Overlay.inspectNodeRequested', $listener);
+		return $this->internalClient->addListener('Overlay.inspectNodeRequested', function ($event) use ($listener) {
+			return $listener(InspectNodeRequestedEvent::fromJson($event));
+		});
 	}
 
 
@@ -160,7 +164,9 @@ class OverlayDomain implements OverlayDomainInterface
 
 	public function addScreenshotRequestedListener(callable $listener): SubscriptionInterface
 	{
-		return $this->internalClient->addListener('Overlay.screenshotRequested', $listener);
+		return $this->internalClient->addListener('Overlay.screenshotRequested', function ($event) use ($listener) {
+			return $listener(ScreenshotRequestedEvent::fromJson($event));
+		});
 	}
 
 

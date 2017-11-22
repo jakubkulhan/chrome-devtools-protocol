@@ -55,7 +55,9 @@ class LogDomain implements LogDomainInterface
 
 	public function addEntryAddedListener(callable $listener): SubscriptionInterface
 	{
-		return $this->internalClient->addListener('Log.entryAdded', $listener);
+		return $this->internalClient->addListener('Log.entryAdded', function ($event) use ($listener) {
+			return $listener(EntryAddedEvent::fromJson($event));
+		});
 	}
 
 

@@ -55,7 +55,9 @@ class ApplicationCacheDomain implements ApplicationCacheDomainInterface
 
 	public function addApplicationCacheStatusUpdatedListener(callable $listener): SubscriptionInterface
 	{
-		return $this->internalClient->addListener('ApplicationCache.applicationCacheStatusUpdated', $listener);
+		return $this->internalClient->addListener('ApplicationCache.applicationCacheStatusUpdated', function ($event) use ($listener) {
+			return $listener(ApplicationCacheStatusUpdatedEvent::fromJson($event));
+		});
 	}
 
 
@@ -67,7 +69,9 @@ class ApplicationCacheDomain implements ApplicationCacheDomainInterface
 
 	public function addNetworkStateUpdatedListener(callable $listener): SubscriptionInterface
 	{
-		return $this->internalClient->addListener('ApplicationCache.networkStateUpdated', $listener);
+		return $this->internalClient->addListener('ApplicationCache.networkStateUpdated', function ($event) use ($listener) {
+			return $listener(NetworkStateUpdatedEvent::fromJson($event));
+		});
 	}
 
 

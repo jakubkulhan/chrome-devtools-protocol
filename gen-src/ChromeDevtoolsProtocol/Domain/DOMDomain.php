@@ -346,7 +346,9 @@ class DOMDomain implements DOMDomainInterface
 
 	public function addDocumentUpdatedListener(callable $listener): SubscriptionInterface
 	{
-		return $this->internalClient->addListener('DOM.documentUpdated', $listener);
+		return $this->internalClient->addListener('DOM.documentUpdated', function ($event) use ($listener) {
+			return $listener(DocumentUpdatedEvent::fromJson($event));
+		});
 	}
 
 
@@ -358,7 +360,9 @@ class DOMDomain implements DOMDomainInterface
 
 	public function addSetChildNodesListener(callable $listener): SubscriptionInterface
 	{
-		return $this->internalClient->addListener('DOM.setChildNodes', $listener);
+		return $this->internalClient->addListener('DOM.setChildNodes', function ($event) use ($listener) {
+			return $listener(SetChildNodesEvent::fromJson($event));
+		});
 	}
 
 
@@ -370,7 +374,9 @@ class DOMDomain implements DOMDomainInterface
 
 	public function addAttributeModifiedListener(callable $listener): SubscriptionInterface
 	{
-		return $this->internalClient->addListener('DOM.attributeModified', $listener);
+		return $this->internalClient->addListener('DOM.attributeModified', function ($event) use ($listener) {
+			return $listener(AttributeModifiedEvent::fromJson($event));
+		});
 	}
 
 
@@ -382,7 +388,9 @@ class DOMDomain implements DOMDomainInterface
 
 	public function addAttributeRemovedListener(callable $listener): SubscriptionInterface
 	{
-		return $this->internalClient->addListener('DOM.attributeRemoved', $listener);
+		return $this->internalClient->addListener('DOM.attributeRemoved', function ($event) use ($listener) {
+			return $listener(AttributeRemovedEvent::fromJson($event));
+		});
 	}
 
 
@@ -394,7 +402,9 @@ class DOMDomain implements DOMDomainInterface
 
 	public function addInlineStyleInvalidatedListener(callable $listener): SubscriptionInterface
 	{
-		return $this->internalClient->addListener('DOM.inlineStyleInvalidated', $listener);
+		return $this->internalClient->addListener('DOM.inlineStyleInvalidated', function ($event) use ($listener) {
+			return $listener(InlineStyleInvalidatedEvent::fromJson($event));
+		});
 	}
 
 
@@ -406,7 +416,9 @@ class DOMDomain implements DOMDomainInterface
 
 	public function addCharacterDataModifiedListener(callable $listener): SubscriptionInterface
 	{
-		return $this->internalClient->addListener('DOM.characterDataModified', $listener);
+		return $this->internalClient->addListener('DOM.characterDataModified', function ($event) use ($listener) {
+			return $listener(CharacterDataModifiedEvent::fromJson($event));
+		});
 	}
 
 
@@ -418,7 +430,9 @@ class DOMDomain implements DOMDomainInterface
 
 	public function addChildNodeCountUpdatedListener(callable $listener): SubscriptionInterface
 	{
-		return $this->internalClient->addListener('DOM.childNodeCountUpdated', $listener);
+		return $this->internalClient->addListener('DOM.childNodeCountUpdated', function ($event) use ($listener) {
+			return $listener(ChildNodeCountUpdatedEvent::fromJson($event));
+		});
 	}
 
 
@@ -430,7 +444,9 @@ class DOMDomain implements DOMDomainInterface
 
 	public function addChildNodeInsertedListener(callable $listener): SubscriptionInterface
 	{
-		return $this->internalClient->addListener('DOM.childNodeInserted', $listener);
+		return $this->internalClient->addListener('DOM.childNodeInserted', function ($event) use ($listener) {
+			return $listener(ChildNodeInsertedEvent::fromJson($event));
+		});
 	}
 
 
@@ -442,7 +458,9 @@ class DOMDomain implements DOMDomainInterface
 
 	public function addChildNodeRemovedListener(callable $listener): SubscriptionInterface
 	{
-		return $this->internalClient->addListener('DOM.childNodeRemoved', $listener);
+		return $this->internalClient->addListener('DOM.childNodeRemoved', function ($event) use ($listener) {
+			return $listener(ChildNodeRemovedEvent::fromJson($event));
+		});
 	}
 
 
@@ -454,7 +472,9 @@ class DOMDomain implements DOMDomainInterface
 
 	public function addShadowRootPushedListener(callable $listener): SubscriptionInterface
 	{
-		return $this->internalClient->addListener('DOM.shadowRootPushed', $listener);
+		return $this->internalClient->addListener('DOM.shadowRootPushed', function ($event) use ($listener) {
+			return $listener(ShadowRootPushedEvent::fromJson($event));
+		});
 	}
 
 
@@ -466,7 +486,9 @@ class DOMDomain implements DOMDomainInterface
 
 	public function addShadowRootPoppedListener(callable $listener): SubscriptionInterface
 	{
-		return $this->internalClient->addListener('DOM.shadowRootPopped', $listener);
+		return $this->internalClient->addListener('DOM.shadowRootPopped', function ($event) use ($listener) {
+			return $listener(ShadowRootPoppedEvent::fromJson($event));
+		});
 	}
 
 
@@ -478,7 +500,9 @@ class DOMDomain implements DOMDomainInterface
 
 	public function addPseudoElementAddedListener(callable $listener): SubscriptionInterface
 	{
-		return $this->internalClient->addListener('DOM.pseudoElementAdded', $listener);
+		return $this->internalClient->addListener('DOM.pseudoElementAdded', function ($event) use ($listener) {
+			return $listener(PseudoElementAddedEvent::fromJson($event));
+		});
 	}
 
 
@@ -490,7 +514,9 @@ class DOMDomain implements DOMDomainInterface
 
 	public function addPseudoElementRemovedListener(callable $listener): SubscriptionInterface
 	{
-		return $this->internalClient->addListener('DOM.pseudoElementRemoved', $listener);
+		return $this->internalClient->addListener('DOM.pseudoElementRemoved', function ($event) use ($listener) {
+			return $listener(PseudoElementRemovedEvent::fromJson($event));
+		});
 	}
 
 
@@ -502,7 +528,9 @@ class DOMDomain implements DOMDomainInterface
 
 	public function addDistributedNodesUpdatedListener(callable $listener): SubscriptionInterface
 	{
-		return $this->internalClient->addListener('DOM.distributedNodesUpdated', $listener);
+		return $this->internalClient->addListener('DOM.distributedNodesUpdated', function ($event) use ($listener) {
+			return $listener(DistributedNodesUpdatedEvent::fromJson($event));
+		});
 	}
 
 

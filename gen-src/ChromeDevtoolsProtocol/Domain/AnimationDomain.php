@@ -98,7 +98,9 @@ class AnimationDomain implements AnimationDomainInterface
 
 	public function addAnimationCreatedListener(callable $listener): SubscriptionInterface
 	{
-		return $this->internalClient->addListener('Animation.animationCreated', $listener);
+		return $this->internalClient->addListener('Animation.animationCreated', function ($event) use ($listener) {
+			return $listener(AnimationCreatedEvent::fromJson($event));
+		});
 	}
 
 
@@ -110,7 +112,9 @@ class AnimationDomain implements AnimationDomainInterface
 
 	public function addAnimationStartedListener(callable $listener): SubscriptionInterface
 	{
-		return $this->internalClient->addListener('Animation.animationStarted', $listener);
+		return $this->internalClient->addListener('Animation.animationStarted', function ($event) use ($listener) {
+			return $listener(AnimationStartedEvent::fromJson($event));
+		});
 	}
 
 
@@ -122,7 +126,9 @@ class AnimationDomain implements AnimationDomainInterface
 
 	public function addAnimationCanceledListener(callable $listener): SubscriptionInterface
 	{
-		return $this->internalClient->addListener('Animation.animationCanceled', $listener);
+		return $this->internalClient->addListener('Animation.animationCanceled', function ($event) use ($listener) {
+			return $listener(AnimationCanceledEvent::fromJson($event));
+		});
 	}
 
 

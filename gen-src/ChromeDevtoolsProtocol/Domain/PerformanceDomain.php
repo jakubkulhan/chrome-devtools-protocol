@@ -43,7 +43,9 @@ class PerformanceDomain implements PerformanceDomainInterface
 
 	public function addMetricsListener(callable $listener): SubscriptionInterface
 	{
-		return $this->internalClient->addListener('Performance.metrics', $listener);
+		return $this->internalClient->addListener('Performance.metrics', function ($event) use ($listener) {
+			return $listener(MetricsEvent::fromJson($event));
+		});
 	}
 
 

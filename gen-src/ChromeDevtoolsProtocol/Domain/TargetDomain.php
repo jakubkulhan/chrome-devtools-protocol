@@ -137,7 +137,9 @@ class TargetDomain implements TargetDomainInterface
 
 	public function addTargetCreatedListener(callable $listener): SubscriptionInterface
 	{
-		return $this->internalClient->addListener('Target.targetCreated', $listener);
+		return $this->internalClient->addListener('Target.targetCreated', function ($event) use ($listener) {
+			return $listener(TargetCreatedEvent::fromJson($event));
+		});
 	}
 
 
@@ -149,7 +151,9 @@ class TargetDomain implements TargetDomainInterface
 
 	public function addTargetInfoChangedListener(callable $listener): SubscriptionInterface
 	{
-		return $this->internalClient->addListener('Target.targetInfoChanged', $listener);
+		return $this->internalClient->addListener('Target.targetInfoChanged', function ($event) use ($listener) {
+			return $listener(TargetInfoChangedEvent::fromJson($event));
+		});
 	}
 
 
@@ -161,7 +165,9 @@ class TargetDomain implements TargetDomainInterface
 
 	public function addTargetDestroyedListener(callable $listener): SubscriptionInterface
 	{
-		return $this->internalClient->addListener('Target.targetDestroyed', $listener);
+		return $this->internalClient->addListener('Target.targetDestroyed', function ($event) use ($listener) {
+			return $listener(TargetDestroyedEvent::fromJson($event));
+		});
 	}
 
 
@@ -173,7 +179,9 @@ class TargetDomain implements TargetDomainInterface
 
 	public function addAttachedToTargetListener(callable $listener): SubscriptionInterface
 	{
-		return $this->internalClient->addListener('Target.attachedToTarget', $listener);
+		return $this->internalClient->addListener('Target.attachedToTarget', function ($event) use ($listener) {
+			return $listener(AttachedToTargetEvent::fromJson($event));
+		});
 	}
 
 
@@ -185,7 +193,9 @@ class TargetDomain implements TargetDomainInterface
 
 	public function addDetachedFromTargetListener(callable $listener): SubscriptionInterface
 	{
-		return $this->internalClient->addListener('Target.detachedFromTarget', $listener);
+		return $this->internalClient->addListener('Target.detachedFromTarget', function ($event) use ($listener) {
+			return $listener(DetachedFromTargetEvent::fromJson($event));
+		});
 	}
 
 
@@ -197,7 +207,9 @@ class TargetDomain implements TargetDomainInterface
 
 	public function addReceivedMessageFromTargetListener(callable $listener): SubscriptionInterface
 	{
-		return $this->internalClient->addListener('Target.receivedMessageFromTarget', $listener);
+		return $this->internalClient->addListener('Target.receivedMessageFromTarget', function ($event) use ($listener) {
+			return $listener(ReceivedMessageFromTargetEvent::fromJson($event));
+		});
 	}
 
 

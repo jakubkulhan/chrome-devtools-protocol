@@ -35,7 +35,9 @@ class InspectorDomain implements InspectorDomainInterface
 
 	public function addDetachedListener(callable $listener): SubscriptionInterface
 	{
-		return $this->internalClient->addListener('Inspector.detached', $listener);
+		return $this->internalClient->addListener('Inspector.detached', function ($event) use ($listener) {
+			return $listener(DetachedEvent::fromJson($event));
+		});
 	}
 
 
@@ -47,7 +49,9 @@ class InspectorDomain implements InspectorDomainInterface
 
 	public function addTargetCrashedListener(callable $listener): SubscriptionInterface
 	{
-		return $this->internalClient->addListener('Inspector.targetCrashed', $listener);
+		return $this->internalClient->addListener('Inspector.targetCrashed', function ($event) use ($listener) {
+			return $listener(TargetCrashedEvent::fromJson($event));
+		});
 	}
 
 

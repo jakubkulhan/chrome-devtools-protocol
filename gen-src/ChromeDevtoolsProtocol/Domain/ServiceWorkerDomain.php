@@ -106,7 +106,9 @@ class ServiceWorkerDomain implements ServiceWorkerDomainInterface
 
 	public function addWorkerRegistrationUpdatedListener(callable $listener): SubscriptionInterface
 	{
-		return $this->internalClient->addListener('ServiceWorker.workerRegistrationUpdated', $listener);
+		return $this->internalClient->addListener('ServiceWorker.workerRegistrationUpdated', function ($event) use ($listener) {
+			return $listener(WorkerRegistrationUpdatedEvent::fromJson($event));
+		});
 	}
 
 
@@ -118,7 +120,9 @@ class ServiceWorkerDomain implements ServiceWorkerDomainInterface
 
 	public function addWorkerVersionUpdatedListener(callable $listener): SubscriptionInterface
 	{
-		return $this->internalClient->addListener('ServiceWorker.workerVersionUpdated', $listener);
+		return $this->internalClient->addListener('ServiceWorker.workerVersionUpdated', function ($event) use ($listener) {
+			return $listener(WorkerVersionUpdatedEvent::fromJson($event));
+		});
 	}
 
 
@@ -130,7 +134,9 @@ class ServiceWorkerDomain implements ServiceWorkerDomainInterface
 
 	public function addWorkerErrorReportedListener(callable $listener): SubscriptionInterface
 	{
-		return $this->internalClient->addListener('ServiceWorker.workerErrorReported', $listener);
+		return $this->internalClient->addListener('ServiceWorker.workerErrorReported', function ($event) use ($listener) {
+			return $listener(WorkerErrorReportedEvent::fromJson($event));
+		});
 	}
 
 

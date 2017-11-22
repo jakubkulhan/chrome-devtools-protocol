@@ -96,7 +96,9 @@ class LayerTreeDomain implements LayerTreeDomainInterface
 
 	public function addLayerTreeDidChangeListener(callable $listener): SubscriptionInterface
 	{
-		return $this->internalClient->addListener('LayerTree.layerTreeDidChange', $listener);
+		return $this->internalClient->addListener('LayerTree.layerTreeDidChange', function ($event) use ($listener) {
+			return $listener(LayerTreeDidChangeEvent::fromJson($event));
+		});
 	}
 
 
@@ -108,7 +110,9 @@ class LayerTreeDomain implements LayerTreeDomainInterface
 
 	public function addLayerPaintedListener(callable $listener): SubscriptionInterface
 	{
-		return $this->internalClient->addListener('LayerTree.layerPainted', $listener);
+		return $this->internalClient->addListener('LayerTree.layerPainted', function ($event) use ($listener) {
+			return $listener(LayerPaintedEvent::fromJson($event));
+		});
 	}
 
 

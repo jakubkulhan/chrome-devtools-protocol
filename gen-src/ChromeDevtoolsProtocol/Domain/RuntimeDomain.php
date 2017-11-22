@@ -147,7 +147,9 @@ class RuntimeDomain implements RuntimeDomainInterface
 
 	public function addExecutionContextCreatedListener(callable $listener): SubscriptionInterface
 	{
-		return $this->internalClient->addListener('Runtime.executionContextCreated', $listener);
+		return $this->internalClient->addListener('Runtime.executionContextCreated', function ($event) use ($listener) {
+			return $listener(ExecutionContextCreatedEvent::fromJson($event));
+		});
 	}
 
 
@@ -159,7 +161,9 @@ class RuntimeDomain implements RuntimeDomainInterface
 
 	public function addExecutionContextDestroyedListener(callable $listener): SubscriptionInterface
 	{
-		return $this->internalClient->addListener('Runtime.executionContextDestroyed', $listener);
+		return $this->internalClient->addListener('Runtime.executionContextDestroyed', function ($event) use ($listener) {
+			return $listener(ExecutionContextDestroyedEvent::fromJson($event));
+		});
 	}
 
 
@@ -171,7 +175,9 @@ class RuntimeDomain implements RuntimeDomainInterface
 
 	public function addExecutionContextsClearedListener(callable $listener): SubscriptionInterface
 	{
-		return $this->internalClient->addListener('Runtime.executionContextsCleared', $listener);
+		return $this->internalClient->addListener('Runtime.executionContextsCleared', function ($event) use ($listener) {
+			return $listener(ExecutionContextsClearedEvent::fromJson($event));
+		});
 	}
 
 
@@ -183,7 +189,9 @@ class RuntimeDomain implements RuntimeDomainInterface
 
 	public function addExceptionThrownListener(callable $listener): SubscriptionInterface
 	{
-		return $this->internalClient->addListener('Runtime.exceptionThrown', $listener);
+		return $this->internalClient->addListener('Runtime.exceptionThrown', function ($event) use ($listener) {
+			return $listener(ExceptionThrownEvent::fromJson($event));
+		});
 	}
 
 
@@ -195,7 +203,9 @@ class RuntimeDomain implements RuntimeDomainInterface
 
 	public function addExceptionRevokedListener(callable $listener): SubscriptionInterface
 	{
-		return $this->internalClient->addListener('Runtime.exceptionRevoked', $listener);
+		return $this->internalClient->addListener('Runtime.exceptionRevoked', function ($event) use ($listener) {
+			return $listener(ExceptionRevokedEvent::fromJson($event));
+		});
 	}
 
 
@@ -207,7 +217,9 @@ class RuntimeDomain implements RuntimeDomainInterface
 
 	public function addConsoleAPICalledListener(callable $listener): SubscriptionInterface
 	{
-		return $this->internalClient->addListener('Runtime.consoleAPICalled', $listener);
+		return $this->internalClient->addListener('Runtime.consoleAPICalled', function ($event) use ($listener) {
+			return $listener(ConsoleAPICalledEvent::fromJson($event));
+		});
 	}
 
 
@@ -219,7 +231,9 @@ class RuntimeDomain implements RuntimeDomainInterface
 
 	public function addInspectRequestedListener(callable $listener): SubscriptionInterface
 	{
-		return $this->internalClient->addListener('Runtime.inspectRequested', $listener);
+		return $this->internalClient->addListener('Runtime.inspectRequested', function ($event) use ($listener) {
+			return $listener(InspectRequestedEvent::fromJson($event));
+		});
 	}
 
 

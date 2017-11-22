@@ -345,7 +345,9 @@ class PageDomain implements PageDomainInterface
 
 	public function addDomContentEventFiredListener(callable $listener): SubscriptionInterface
 	{
-		return $this->internalClient->addListener('Page.domContentEventFired', $listener);
+		return $this->internalClient->addListener('Page.domContentEventFired', function ($event) use ($listener) {
+			return $listener(DomContentEventFiredEvent::fromJson($event));
+		});
 	}
 
 
@@ -357,7 +359,9 @@ class PageDomain implements PageDomainInterface
 
 	public function addLoadEventFiredListener(callable $listener): SubscriptionInterface
 	{
-		return $this->internalClient->addListener('Page.loadEventFired', $listener);
+		return $this->internalClient->addListener('Page.loadEventFired', function ($event) use ($listener) {
+			return $listener(LoadEventFiredEvent::fromJson($event));
+		});
 	}
 
 
@@ -369,7 +373,9 @@ class PageDomain implements PageDomainInterface
 
 	public function addLifecycleEventListener(callable $listener): SubscriptionInterface
 	{
-		return $this->internalClient->addListener('Page.lifecycleEvent', $listener);
+		return $this->internalClient->addListener('Page.lifecycleEvent', function ($event) use ($listener) {
+			return $listener(LifecycleEventEvent::fromJson($event));
+		});
 	}
 
 
@@ -381,7 +387,9 @@ class PageDomain implements PageDomainInterface
 
 	public function addFrameAttachedListener(callable $listener): SubscriptionInterface
 	{
-		return $this->internalClient->addListener('Page.frameAttached', $listener);
+		return $this->internalClient->addListener('Page.frameAttached', function ($event) use ($listener) {
+			return $listener(FrameAttachedEvent::fromJson($event));
+		});
 	}
 
 
@@ -393,7 +401,9 @@ class PageDomain implements PageDomainInterface
 
 	public function addFrameNavigatedListener(callable $listener): SubscriptionInterface
 	{
-		return $this->internalClient->addListener('Page.frameNavigated', $listener);
+		return $this->internalClient->addListener('Page.frameNavigated', function ($event) use ($listener) {
+			return $listener(FrameNavigatedEvent::fromJson($event));
+		});
 	}
 
 
@@ -405,7 +415,9 @@ class PageDomain implements PageDomainInterface
 
 	public function addFrameDetachedListener(callable $listener): SubscriptionInterface
 	{
-		return $this->internalClient->addListener('Page.frameDetached', $listener);
+		return $this->internalClient->addListener('Page.frameDetached', function ($event) use ($listener) {
+			return $listener(FrameDetachedEvent::fromJson($event));
+		});
 	}
 
 
@@ -417,7 +429,9 @@ class PageDomain implements PageDomainInterface
 
 	public function addFrameStartedLoadingListener(callable $listener): SubscriptionInterface
 	{
-		return $this->internalClient->addListener('Page.frameStartedLoading', $listener);
+		return $this->internalClient->addListener('Page.frameStartedLoading', function ($event) use ($listener) {
+			return $listener(FrameStartedLoadingEvent::fromJson($event));
+		});
 	}
 
 
@@ -429,7 +443,9 @@ class PageDomain implements PageDomainInterface
 
 	public function addFrameStoppedLoadingListener(callable $listener): SubscriptionInterface
 	{
-		return $this->internalClient->addListener('Page.frameStoppedLoading', $listener);
+		return $this->internalClient->addListener('Page.frameStoppedLoading', function ($event) use ($listener) {
+			return $listener(FrameStoppedLoadingEvent::fromJson($event));
+		});
 	}
 
 
@@ -441,7 +457,9 @@ class PageDomain implements PageDomainInterface
 
 	public function addFrameScheduledNavigationListener(callable $listener): SubscriptionInterface
 	{
-		return $this->internalClient->addListener('Page.frameScheduledNavigation', $listener);
+		return $this->internalClient->addListener('Page.frameScheduledNavigation', function ($event) use ($listener) {
+			return $listener(FrameScheduledNavigationEvent::fromJson($event));
+		});
 	}
 
 
@@ -453,7 +471,9 @@ class PageDomain implements PageDomainInterface
 
 	public function addFrameClearedScheduledNavigationListener(callable $listener): SubscriptionInterface
 	{
-		return $this->internalClient->addListener('Page.frameClearedScheduledNavigation', $listener);
+		return $this->internalClient->addListener('Page.frameClearedScheduledNavigation', function ($event) use ($listener) {
+			return $listener(FrameClearedScheduledNavigationEvent::fromJson($event));
+		});
 	}
 
 
@@ -465,7 +485,9 @@ class PageDomain implements PageDomainInterface
 
 	public function addFrameResizedListener(callable $listener): SubscriptionInterface
 	{
-		return $this->internalClient->addListener('Page.frameResized', $listener);
+		return $this->internalClient->addListener('Page.frameResized', function ($event) use ($listener) {
+			return $listener(FrameResizedEvent::fromJson($event));
+		});
 	}
 
 
@@ -477,7 +499,9 @@ class PageDomain implements PageDomainInterface
 
 	public function addJavascriptDialogOpeningListener(callable $listener): SubscriptionInterface
 	{
-		return $this->internalClient->addListener('Page.javascriptDialogOpening', $listener);
+		return $this->internalClient->addListener('Page.javascriptDialogOpening', function ($event) use ($listener) {
+			return $listener(JavascriptDialogOpeningEvent::fromJson($event));
+		});
 	}
 
 
@@ -489,7 +513,9 @@ class PageDomain implements PageDomainInterface
 
 	public function addJavascriptDialogClosedListener(callable $listener): SubscriptionInterface
 	{
-		return $this->internalClient->addListener('Page.javascriptDialogClosed', $listener);
+		return $this->internalClient->addListener('Page.javascriptDialogClosed', function ($event) use ($listener) {
+			return $listener(JavascriptDialogClosedEvent::fromJson($event));
+		});
 	}
 
 
@@ -501,7 +527,9 @@ class PageDomain implements PageDomainInterface
 
 	public function addScreencastFrameListener(callable $listener): SubscriptionInterface
 	{
-		return $this->internalClient->addListener('Page.screencastFrame', $listener);
+		return $this->internalClient->addListener('Page.screencastFrame', function ($event) use ($listener) {
+			return $listener(ScreencastFrameEvent::fromJson($event));
+		});
 	}
 
 
@@ -513,7 +541,9 @@ class PageDomain implements PageDomainInterface
 
 	public function addScreencastVisibilityChangedListener(callable $listener): SubscriptionInterface
 	{
-		return $this->internalClient->addListener('Page.screencastVisibilityChanged', $listener);
+		return $this->internalClient->addListener('Page.screencastVisibilityChanged', function ($event) use ($listener) {
+			return $listener(ScreencastVisibilityChangedEvent::fromJson($event));
+		});
 	}
 
 
@@ -525,7 +555,9 @@ class PageDomain implements PageDomainInterface
 
 	public function addInterstitialShownListener(callable $listener): SubscriptionInterface
 	{
-		return $this->internalClient->addListener('Page.interstitialShown', $listener);
+		return $this->internalClient->addListener('Page.interstitialShown', function ($event) use ($listener) {
+			return $listener(InterstitialShownEvent::fromJson($event));
+		});
 	}
 
 
@@ -537,7 +569,9 @@ class PageDomain implements PageDomainInterface
 
 	public function addInterstitialHiddenListener(callable $listener): SubscriptionInterface
 	{
-		return $this->internalClient->addListener('Page.interstitialHidden', $listener);
+		return $this->internalClient->addListener('Page.interstitialHidden', function ($event) use ($listener) {
+			return $listener(InterstitialHiddenEvent::fromJson($event));
+		});
 	}
 
 
@@ -549,7 +583,9 @@ class PageDomain implements PageDomainInterface
 
 	public function addWindowOpenListener(callable $listener): SubscriptionInterface
 	{
-		return $this->internalClient->addListener('Page.windowOpen', $listener);
+		return $this->internalClient->addListener('Page.windowOpen', function ($event) use ($listener) {
+			return $listener(WindowOpenEvent::fromJson($event));
+		});
 	}
 
 
