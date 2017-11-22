@@ -1,6 +1,8 @@
 # Chrome Devtools Protocol PHP client
 
-PHP client for [Chrome Devtools Protocol](https://chromedevtools.github.io/devtools-protocol/).
+[![CircleCI](https://circleci.com/gh/jakubkulhan/chrome-devtools-protocol.svg?style=svg)](https://circleci.com/gh/jakubkulhan/chrome-devtools-protocol)
+
+> PHP client for [Chrome Devtools Protocol](https://chromedevtools.github.io/devtools-protocol/).
 
 ## Basic usage
 
