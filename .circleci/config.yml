@@ -40,4 +40,13 @@ workflows:
   test:
     jobs:
     - test
-    - docker_image
+  nightly_docker_image:
+    triggers:
+    - schedule:
+        cron: "0 3 * * *"
+        filters:
+          branches:
+            only:
+            - master
+    jobs:
+    - docker_imager
