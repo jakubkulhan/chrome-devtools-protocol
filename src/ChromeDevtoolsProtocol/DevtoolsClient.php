@@ -25,6 +25,9 @@ class DevtoolsClient implements DevtoolsClientInterface, InternalClientInterface
 	/** @var int */
 	private $messageId = 0;
 
+	/** @var object[] */
+	private $commandResults = [];
+
 	public function __construct(string $wsUrl)
 	{
 		$this->wsClient = new WebSocketClient($wsUrl, "http://" . parse_url($wsUrl, PHP_URL_HOST));
@@ -68,16 +71,16 @@ class DevtoolsClient implements DevtoolsClientInterface, InternalClientInterface
 
 		for (; ;) {
 			$this->getWsClient()->setDeadline($ctx->getDeadline());
-			$payloads = $this->getWsClient()->receive();
-			foreach ($payloads as $payload) {
+			foreach ($this->getWsClient()->receive() as $payload) {
 				/** @var Payload $payload */
 				$message = json_decode($payload->getPayload());
+				$this->handleMessage($message);
+			}
 
-				if (isset($message->id) && $message->id === $messageId) {
-					return $message->result ?? new \stdClass();
-				} else {
-					$this->handleMessage($message);
-				}
+			if (isset($this->commandResults[$messageId])) {
+				$result = $this->commandResults[$messageId];
+				unset($this->commandResults[$messageId]);
+				return $result;
 			}
 		}
 	}
@@ -88,21 +91,27 @@ class DevtoolsClient implements DevtoolsClientInterface, InternalClientInterface
 	public function awaitEvent(ContextInterface $ctx, string $method)
 	{
 		for (; ;) {
+			$eventMessage = null;
+
 			$this->getWsClient()->setDeadline($ctx->getDeadline());
 			foreach ($this->getWsClient()->receive() as $payload) {
 				/** @var Payload $payload */
 				$message = json_decode($payload->getPayload());
 
-				if (isset($message->method) && $message->method === $method) {
-					return $message->params;
-				} else {
-					$this->handleMessage($message);
+				$nextEventMessage = $this->handleMessage($message, $method);
+
+				if ($eventMessage === null && $nextEventMessage !== null) {
+					$eventMessage = $nextEventMessage;
 				}
+			}
+
+			if ($eventMessage !== null) {
+				return $eventMessage->params;
 			}
 		}
 	}
 
-	private function handleMessage($message)
+	private function handleMessage($message, ?string $returnIfEventMethod = null)
 	{
 		if (isset($message->method)) {
 			if (isset($this->listeners[$message->method])) {
@@ -111,12 +120,21 @@ class DevtoolsClient implements DevtoolsClientInterface, InternalClientInterface
 				}
 			}
 
+			if ($returnIfEventMethod !== null && $message->method === $returnIfEventMethod) {
+				return $message;
+			}
+
+		} else if (isset($message->id)) {
+			$this->commandResults[$message->id] = $message->result ?? new \stdClass();
+
 		} else {
 			throw new RuntimeException(sprintf(
 				"Unhandled message: %s",
 				json_encode($message, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE)
 			));
 		}
+
+		return null;
 	}
 
 	private function getWsClient()
