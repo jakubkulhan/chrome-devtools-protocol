@@ -1,0 +1,33 @@
+version: 2
+jobs:
+  test:
+    docker:
+    - image: circleci/php:7.1-node-browsers
+    steps:
+    - checkout
+    - restore_cache:
+        keys:
+        - composer_{{ .Branch }}
+    - restore_cache:
+        keys:
+        - vendor_{{ checksum "~/project/composer.json" }}
+    - run:
+        command: |
+          composer install --prefer-dist --no-progress --no-scripts --no-plugins --classmap-authoritative
+    - save_cache:
+        key: vendor_{{ checksum "~/project/composer.json" }}
+        paths:
+        - ~/project/vendor
+    - save_cache:
+        key: composer_{{ .Branch }}
+        paths:
+        - ~/.composer/cache
+    - run:
+        command: |
+          make test
+
+workflows:
+  version: 2
+  test:
+    jobs:
+    - test

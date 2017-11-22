@@ -33,4 +33,4 @@ phpunit:
 	./vendor/bin/phpunit
 
 phpstan:
-	./vendor/bin/phpstan analyse --level=6 gen-src src test
+	./vendor/bin/phpstan analyse --level=6 --memory-limit=1g gen-src src test
