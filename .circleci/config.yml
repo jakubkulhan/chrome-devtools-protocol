@@ -26,6 +26,7 @@ jobs:
         command: |
           make test
   check_protocol:
+    docker:
     - image: circleci/php:7.1-node-browsers
     steps:
     - checkout
