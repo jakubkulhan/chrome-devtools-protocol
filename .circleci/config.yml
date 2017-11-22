@@ -25,6 +25,13 @@ jobs:
     - run:
         command: |
           make test
+  check_protocol:
+    - image: circleci/php:7.1-node-browsers
+    steps:
+    - checkout
+    - run:
+        command: |
+          md5sum -c protocol.json.md5
   docker_image:
     docker:
     - image: circleci/php:7.1-node-browsers
@@ -40,7 +47,8 @@ workflows:
   test:
     jobs:
     - test
-  nightly_docker_image:
+    - check_protocol
+  nightly:
     triggers:
     - schedule:
         cron: "0 3 * * *"
@@ -49,4 +57,5 @@ workflows:
             only:
             - master
     jobs:
+    - check_protocol
     - docker_imager
