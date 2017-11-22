@@ -1,8 +1,8 @@
 # Chrome Devtools Protocol PHP client
 
 [![Build](https://circleci.com/gh/jakubkulhan/chrome-devtools-protocol.svg?style=svg)](https://circleci.com/gh/jakubkulhan/chrome-devtools-protocol)
-[![Latest Stable Version](https://poser.pugx.org/jakubkulhan/chrome-devtools-protocol/v/stable?style=flat)](https://packagist.org/packages/jakubkulhan/chrome-devtools-protocol)
-[![License](https://poser.pugx.org/jakubkulhan/chrome-devtools-protocol/license?style=flat)](https://packagist.org/packages/jakubkulhan/chrome-devtools-protocol)
+[![Latest Stable Version](https://poser.pugx.org/jakubkulhan/chrome-devtools-protocol/v/stable?format=flat)](https://packagist.org/packages/jakubkulhan/chrome-devtools-protocol)
+[![License](https://poser.pugx.org/jakubkulhan/chrome-devtools-protocol/license?format=flat)](https://packagist.org/packages/jakubkulhan/chrome-devtools-protocol)
 
 > PHP client for [Chrome Devtools Protocol](https://chromedevtools.github.io/devtools-protocol/).
 
