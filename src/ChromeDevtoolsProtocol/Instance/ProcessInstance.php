@@ -5,6 +5,7 @@ use ChromeDevtoolsProtocol\CloseableResourceInterface;
 use ChromeDevtoolsProtocol\ContextInterface;
 use ChromeDevtoolsProtocol\Exception\LogicException;
 use ChromeDevtoolsProtocol\Model\Instance\Version;
+use ChromeDevtoolsProtocol\Session;
 use Symfony\Component\Filesystem\Filesystem;
 use Symfony\Component\Process\Process;
 
@@ -68,6 +69,11 @@ class ProcessInstance implements InstanceInterface, CloseableResourceInterface
 	public function version(ContextInterface $ctx): Version
 	{
 		return $this->wrappedInstance->version($ctx);
+	}
+
+	public function createSession(ContextInterface $ctx, string $url = "about:blank"): Session
+	{
+		return $this->wrappedInstance->createSession($ctx, $url);
 	}
 
 }

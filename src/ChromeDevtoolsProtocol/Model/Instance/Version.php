@@ -9,33 +9,33 @@ namespace ChromeDevtoolsProtocol\Model\Instance;
 class Version
 {
 
-	/** @var string */
+	/** @var string|null */
 	public $browser;
 
-	/** @var string */
+	/** @var string|null */
 	public $protocolVersion;
 
-	/** @var string */
+	/** @var string|null */
 	public $userAgent;
 
-	/** @var string */
+	/** @var string|null */
 	public $v8Version;
 
-	/** @var string */
+	/** @var string|null */
 	public $webkitVersion;
 
-	/** @var string */
+	/** @var string|null */
 	public $webSocketDebuggerUrl;
 
 	public static function fromJson($data): self
 	{
 		$instance = new static();
-		$instance->browser = $data->{"Browser"};
-		$instance->protocolVersion = $data->{"Protocol-Version"};
-		$instance->userAgent = $data->{"User-Agent"};
-		$instance->v8Version = $data->{"V8-Version"};
-		$instance->webkitVersion = $data->{"WebKit-Version"};
-		$instance->webSocketDebuggerUrl = $data->{"webSocketDebuggerUrl"};
+		$instance->browser = $data->{"Browser"} ?? null;
+		$instance->protocolVersion = $data->{"Protocol-Version"} ?? null;
+		$instance->userAgent = $data->{"User-Agent"} ?? null;
+		$instance->v8Version = $data->{"V8-Version"} ?? null;
+		$instance->webkitVersion = $data->{"WebKit-Version"} ?? null;
+		$instance->webSocketDebuggerUrl = $data->{"webSocketDebuggerUrl"} ?? null;
 		return $instance;
 	}
 

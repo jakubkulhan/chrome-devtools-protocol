@@ -3,6 +3,7 @@ namespace ChromeDevtoolsProtocol;
 
 use ChromeDevtoolsProtocol\Instance\Launcher;
 use ChromeDevtoolsProtocol\Model\Network\EnableRequest;
+use ChromeDevtoolsProtocol\Model\Network\GetCookiesRequest;
 use ChromeDevtoolsProtocol\Model\Page\NavigateRequest;
 use ChromeDevtoolsProtocol\Model\Security\CertificateErrorActionEnum;
 use ChromeDevtoolsProtocol\Model\Security\CertificateErrorEvent;

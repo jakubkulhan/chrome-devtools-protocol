@@ -2,7 +2,14 @@
 namespace ChromeDevtoolsProtocol\Instance;
 
 use ChromeDevtoolsProtocol\ContextInterface;
+use ChromeDevtoolsProtocol\DevtoolsClient;
+use ChromeDevtoolsProtocol\Exception\RuntimeException;
 use ChromeDevtoolsProtocol\Model\Instance\Version;
+use ChromeDevtoolsProtocol\Model\Target\AttachToTargetRequest;
+use ChromeDevtoolsProtocol\Model\Target\CloseTargetRequest;
+use ChromeDevtoolsProtocol\Model\Target\CreateTargetRequest;
+use ChromeDevtoolsProtocol\Model\Target\DisposeBrowserContextRequest;
+use ChromeDevtoolsProtocol\Session;
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
 
@@ -64,6 +71,71 @@ class Instance implements InstanceInterface, InternalInstanceInterface
 			"timeout" => $ctx->getDeadline() !== null ? $ctx->deadlineFromNow() : 0,
 		]);
 		return Version::fromJson(json_decode($response->getBody()->getContents()));
+	}
+
+	public function createSession(ContextInterface $ctx, string $url = "about:blank"): Session
+	{
+		$version = $this->version($ctx);
+
+		if (stripos($version->browser, "headless") === false) {
+			throw new RuntimeException(sprintf(
+				"Only headless Chrome supports creating isolated contexts, current Chrome is [%s].",
+				$version->browser
+			));
+		}
+
+		if ($version->webSocketDebuggerUrl === null) {
+			throw new RuntimeException("No browser debugger URL. Try upgrading to newer version of Chrome.");
+		}
+
+		$browser = new DevtoolsClient($version->webSocketDebuggerUrl);
+		try {
+			$browserContextId = $browser->target()->createBrowserContext($ctx)->browserContextId;
+			try {
+				$targetId = $browser->target()->createTarget(
+					$ctx,
+					CreateTargetRequest::builder()
+						->setBrowserContextId($browserContextId)
+						->setUrl("about:blank")
+						->build()
+				)->targetId;
+				try {
+					$sessionId = $browser->target()->attachToTarget(
+						$ctx,
+						AttachToTargetRequest::builder()
+							->setTargetId($targetId)
+							->build()
+					)->sessionId;
+
+					return new Session($browser, $browserContextId, $targetId, $sessionId);
+
+				} catch (\Exception $e) {
+					$browser->target()->closeTarget(
+						$ctx,
+						CloseTargetRequest::builder()
+							->setTargetId($targetId)
+							->build()
+					);
+
+					throw $e;
+				}
+
+			} catch (\Exception $e) {
+				$browser->target()->disposeBrowserContext(
+					$ctx,
+					DisposeBrowserContextRequest::builder()
+						->setBrowserContextId($browserContextId)
+						->build()
+				);
+
+				throw $e;
+			}
+
+		} catch (\Exception $e) {
+			$browser->close();
+
+			throw $e;
+		}
 	}
 
 	public function activateTabById(ContextInterface $ctx, string $id): void

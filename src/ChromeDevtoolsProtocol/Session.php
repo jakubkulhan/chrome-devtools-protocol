@@ -1,26 +1,35 @@
 <?php
 namespace ChromeDevtoolsProtocol;
 
-use ChromeDevtoolsProtocol\Exception\ClientClosedException;
-use ChromeDevtoolsProtocol\Exception\LogicException;
 use ChromeDevtoolsProtocol\Exception\RuntimeException;
-use ChromeDevtoolsProtocol\WebSocket\WebSocketClient;
-use Wrench\Client;
-use Wrench\Payload\Payload;
+use ChromeDevtoolsProtocol\Model\Target\CloseTargetRequest;
+use ChromeDevtoolsProtocol\Model\Target\DisposeBrowserContextRequest;
+use ChromeDevtoolsProtocol\Model\Target\SendMessageToTargetRequest;
 
 /**
+ * Session is an isolated context in headless browser (i.e. cookies are not shared), like incognito window.
+ *
  * @author Jakub Kulhan <jakub.kulhan@gmail.com>
  */
-class DevtoolsClient implements DevtoolsClientInterface, InternalClientInterface
+class Session implements DevtoolsClientInterface, InternalClientInterface
 {
 
 	use DevtoolsClientTrait;
 
+	/** @var DevtoolsClientInterface */
+	private $browser;
+
+	/** @var string */
+	private $browserContextId;
+
+	/** @var string */
+	private $targetId;
+
+	/** @var string */
+	private $sessionId;
+
 	/** @var callable[][] */
 	private $listeners = [];
-
-	/** @var Client|null */
-	private $wsClient;
 
 	/** @var int */
 	private $messageId = 0;
@@ -28,38 +37,33 @@ class DevtoolsClient implements DevtoolsClientInterface, InternalClientInterface
 	/** @var object[] */
 	private $commandResults = [];
 
-	/** @var object[][] */
-	private $eventBuffers = [];
-
-	public function __construct(string $wsUrl)
+	public function __construct(DevtoolsClientInterface $browser, string $browserContextId, string $targetId, string $sessionId)
 	{
-		$this->wsClient = new WebSocketClient($wsUrl, "http://" . parse_url($wsUrl, PHP_URL_HOST));
-		if (!$this->wsClient->connect()) {
-			throw new RuntimeException(sprintf("Could not connect to [%s].", $wsUrl));
-		}
+		$this->browser = $browser;
+		$this->targetId = $targetId;
+		$this->sessionId = $sessionId;
+		$this->browserContextId = $browserContextId;
 	}
 
-	public function __destruct()
-	{
-		if ($this->wsClient !== null) {
-			throw new LogicException(sprintf(
-				"You must call [%s::%s] method to release underlying WebSocket connection.",
-				__CLASS__,
-				"close"
-			));
-		}
-	}
 
 	public function close(): void
 	{
-		$wsClient = $this->wsClient;
-		$this->wsClient = null;
-		$wsClient->disconnect();
+		$ctx = Context::withTimeout(Context::background(), 10);
+		$this->browser->target()->closeTarget(
+			$ctx,
+			CloseTargetRequest::builder()
+				->setTargetId($this->targetId)
+				->build()
+		);
+		$this->browser->target()->disposeBrowserContext(
+			$ctx,
+			DisposeBrowserContextRequest::builder()
+				->setBrowserContextId($this->browserContextId)
+				->build()
+		);
+		$this->browser->close();
 	}
 
-	/**
-	 * @internal
-	 */
 	public function executeCommand(ContextInterface $ctx, string $method, $parameters)
 	{
 		$messageId = ++$this->messageId;
@@ -69,15 +73,20 @@ class DevtoolsClient implements DevtoolsClientInterface, InternalClientInterface
 		$payload->method = $method;
 		$payload->params = $parameters;
 
-		$this->getWsClient()->setDeadline($ctx->getDeadline());
-		$this->getWsClient()->sendData(json_encode($payload));
+		$this->browser->target()->sendMessageToTarget(
+			$ctx,
+			SendMessageToTargetRequest::builder()
+				->setTargetId($this->targetId)
+				->setSessionId($this->sessionId)
+				->setMessage(json_encode($payload))
+				->build()
+		);
 
 		for (; ;) {
-			$this->getWsClient()->setDeadline($ctx->getDeadline());
-			foreach ($this->getWsClient()->receive() as $payload) {
-				/** @var Payload $payload */
-				$message = json_decode($payload->getPayload());
-				$this->handleMessage($message);
+			$receivedMessage = $this->browser->target()->awaitReceivedMessageFromTarget($ctx);
+
+			if ($receivedMessage->targetId === $this->targetId && $receivedMessage->sessionId === $this->sessionId) {
+				$this->handleMessage(json_decode($receivedMessage->message));
 			}
 
 			if (isset($this->commandResults[$messageId])) {
@@ -88,28 +97,18 @@ class DevtoolsClient implements DevtoolsClientInterface, InternalClientInterface
 		}
 	}
 
-	/**
-	 * @internal
-	 */
 	public function awaitEvent(ContextInterface $ctx, string $method)
 	{
-		if (!empty($this->eventBuffers[$method])) {
-			return array_shift($this->eventBuffers[$method])->params;
-		}
-
-		$this->eventBuffers = [];
-
 		for (; ;) {
 			$eventMessage = null;
 
-			$this->getWsClient()->setDeadline($ctx->getDeadline());
-			foreach ($this->getWsClient()->receive() as $payload) {
-				/** @var Payload $payload */
-				$message = json_decode($payload->getPayload());
+			$receivedMessage = $this->browser->target()->awaitReceivedMessageFromTarget($ctx);
 
-				$nextEventMessage = $this->handleMessage($message, $eventMessage === null ? $method : null);
+			if ($receivedMessage->targetId === $this->targetId && $receivedMessage->sessionId === $this->sessionId) {
 
-				if ($nextEventMessage !== null) {
+				$nextEventMessage = $this->handleMessage(json_decode($receivedMessage->message), $method);
+
+				if ($eventMessage === null && $nextEventMessage !== null) {
 					$eventMessage = $nextEventMessage;
 				}
 			}
@@ -131,11 +130,6 @@ class DevtoolsClient implements DevtoolsClientInterface, InternalClientInterface
 
 			if ($returnIfEventMethod !== null && $message->method === $returnIfEventMethod) {
 				return $message;
-			} else {
-				if (!isset($this->eventBuffers[$message->method])) {
-					$this->eventBuffers[$message->method] = [];
-				}
-				array_push($this->eventBuffers[$message->method], $message);
 			}
 
 		} else if (isset($message->id)) {
@@ -151,20 +145,9 @@ class DevtoolsClient implements DevtoolsClientInterface, InternalClientInterface
 		return null;
 	}
 
-	private function getWsClient()
-	{
-		if ($this->wsClient === null) {
-			throw new ClientClosedException("Client has been closed.");
-		}
-
-		return $this->wsClient;
-	}
-
-	/**
-	 * @internal
-	 */
 	public function addListener(string $method, callable $listener): SubscriptionInterface
 	{
+
 		if (!isset($this->listeners[$method])) {
 			$this->listeners[$method] = [];
 		}
