@@ -25,6 +25,31 @@ jobs:
     - run:
         command: |
           make test
+  test_lowest:
+    docker:
+    - image: circleci/php:7.1-node-browsers
+    steps:
+    - checkout
+    - restore_cache:
+        keys:
+        - composer_lowest_{{ .Branch }}
+    - restore_cache:
+        keys:
+        - vendor_lowest_{{ checksum "~/project/composer.json" }}
+    - run:
+        command: |
+          composer install --prefer-lowest --prefer-dist --no-progress --no-scripts --no-plugins --classmap-authoritative
+    - save_cache:
+        key: vendor_lowest_{{ checksum "~/project/composer.json" }}
+        paths:
+        - ~/project/vendor
+    - save_cache:
+        key: composer_lowest_{{ .Branch }}
+        paths:
+        - ~/.composer/cache
+    - run:
+        command: |
+          make test
   check_protocol:
     docker:
     - image: circleci/php:7.1-node-browsers
@@ -48,6 +73,7 @@ workflows:
   test:
     jobs:
     - test
+    - test_lowest
     - check_protocol
   nightly:
     triggers:
