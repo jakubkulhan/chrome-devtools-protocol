@@ -13,7 +13,7 @@ jobs:
         - v2_composer_vendor_{{ checksum "~/project/composer.json" }}
     - run:
         command: |
-          composer update --prefer-dist --no-progress --no-scripts --no-plugins --classmap-authoritative
+          composer update --prefer-dist --no-progress --classmap-authoritative
     - save_cache:
         key: v2_composer_vendor_{{ checksum "~/project/composer.json" }}
         paths:
@@ -41,7 +41,7 @@ jobs:
         - v2_composer_vendor_lowest_{{ checksum "~/project/composer.json" }}
     - run:
         command: |
-          composer update --prefer-dist --no-progress --no-scripts --no-plugins --classmap-authoritative --prefer-lowest
+          composer update --prefer-dist --no-progress --classmap-authoritative --prefer-lowest
     - save_cache:
         key: v2_composer_vendor_lowest_{{ checksum "~/project/composer.json" }}
         paths:
