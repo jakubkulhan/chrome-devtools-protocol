@@ -7,19 +7,19 @@ jobs:
     - checkout
     - restore_cache:
         keys:
-        - composer_{{ .Branch }}
+        - v2_composer_{{ .Branch }}
     - restore_cache:
         keys:
-        - vendor_{{ checksum "~/project/composer.json" }}
+        - v2_composer_vendor_{{ checksum "~/project/composer.json" }}
     - run:
         command: |
           composer update --prefer-dist --no-progress --no-scripts --no-plugins --classmap-authoritative
     - save_cache:
-        key: vendor_{{ checksum "~/project/composer.json" }}
+        key: v2_composer_vendor_{{ checksum "~/project/composer.json" }}
         paths:
         - ~/project/vendor
     - save_cache:
-        key: composer_{{ .Branch }}
+        key: v2_composer_{{ .Branch }}
         paths:
         - ~/.composer/cache
     - run:
@@ -32,19 +32,19 @@ jobs:
     - checkout
     - restore_cache:
         keys:
-        - composer_lowest_{{ .Branch }}
+        - v2_composer_lowest_{{ .Branch }}
     - restore_cache:
         keys:
-        - vendor_lowest_{{ checksum "~/project/composer.json" }}
+        - v2_composer_vendor_lowest_{{ checksum "~/project/composer.json" }}
     - run:
         command: |
           composer update --prefer-dist --no-progress --no-scripts --no-plugins --classmap-authoritative --prefer-lowest
     - save_cache:
-        key: vendor_lowest_{{ checksum "~/project/composer.json" }}
+        key: v2_composer_vendor_lowest_{{ checksum "~/project/composer.json" }}
         paths:
         - ~/project/vendor
     - save_cache:
-        key: composer_lowest_{{ .Branch }}
+        key: v2_composer_lowest_{{ .Branch }}
         paths:
         - ~/.composer/cache
     - run:
