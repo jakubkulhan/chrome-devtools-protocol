@@ -24,7 +24,10 @@ jobs:
         - ~/.composer/cache
     - run:
         command: |
-          make test
+          mkdir -p /tmp/phpunit
+          PHPUNIT_FLAGS="--log-junit /tmp/phpunit/junit.xml" make -e test
+    - store_test_results:
+        path: /tmp/phpunit
   test_lowest:
     docker:
     - image: circleci/php:7.1-node-browsers
@@ -49,7 +52,10 @@ jobs:
         - ~/.composer/cache
     - run:
         command: |
-          make test
+          mkdir -p /tmp/phpunit
+          PHPUNIT_FLAGS="--log-junit /tmp/phpunit/junit.xml" make -e test
+    - store_test_results:
+        path: /tmp/phpunit
   check_protocol:
     docker:
     - image: circleci/php:7.1-node-browsers

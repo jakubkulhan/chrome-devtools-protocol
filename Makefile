@@ -1,3 +1,5 @@
+PHPUNIT_FLAGS=
+
 all: clean download-protocol generate
 
 generate:
@@ -33,7 +35,7 @@ lint:
 	./vendor/bin/parallel-lint gen-src src test
 
 phpunit:
-	./vendor/bin/phpunit
+	./vendor/bin/phpunit $(PHPUNIT_FLAGS)
 
 phpstan:
 	./vendor/bin/phpstan analyse --level=6 --memory-limit=1g gen-src src test
