@@ -32,7 +32,7 @@ jobs:
     - checkout
     - run:
         command: |
-          md5sum -c protocol.json.md5
+          make download-protocol check-protocol
   docker_image:
     docker:
     - image: circleci/php:7.1-node-browsers
@@ -59,4 +59,4 @@ workflows:
             - master
     jobs:
     - check_protocol
-    - docker_imager
+    - docker_image
