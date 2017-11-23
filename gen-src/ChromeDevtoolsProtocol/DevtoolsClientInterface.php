@@ -291,7 +291,7 @@ interface DevtoolsClientInterface extends CloseableResourceInterface
 
 
 	/**
-	 * Provides information about the protocol schema.
+	 * This domain is deprecated.
 	 */
 	public function schema(): SchemaDomainInterface;
 

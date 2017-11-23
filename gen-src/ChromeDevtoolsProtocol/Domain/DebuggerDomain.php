@@ -5,13 +5,16 @@ use ChromeDevtoolsProtocol\ContextInterface;
 use ChromeDevtoolsProtocol\InternalClientInterface;
 use ChromeDevtoolsProtocol\Model\Debugger\BreakpointResolvedEvent;
 use ChromeDevtoolsProtocol\Model\Debugger\ContinueToLocationRequest;
+use ChromeDevtoolsProtocol\Model\Debugger\EnableResponse;
 use ChromeDevtoolsProtocol\Model\Debugger\EvaluateOnCallFrameRequest;
 use ChromeDevtoolsProtocol\Model\Debugger\EvaluateOnCallFrameResponse;
 use ChromeDevtoolsProtocol\Model\Debugger\GetPossibleBreakpointsRequest;
 use ChromeDevtoolsProtocol\Model\Debugger\GetPossibleBreakpointsResponse;
 use ChromeDevtoolsProtocol\Model\Debugger\GetScriptSourceRequest;
 use ChromeDevtoolsProtocol\Model\Debugger\GetScriptSourceResponse;
-use ChromeDevtoolsProtocol\Model\Debugger\PauseOnAsyncTaskRequest;
+use ChromeDevtoolsProtocol\Model\Debugger\GetStackTraceRequest;
+use ChromeDevtoolsProtocol\Model\Debugger\GetStackTraceResponse;
+use ChromeDevtoolsProtocol\Model\Debugger\PauseOnAsyncCallRequest;
 use ChromeDevtoolsProtocol\Model\Debugger\PausedEvent;
 use ChromeDevtoolsProtocol\Model\Debugger\RemoveBreakpointRequest;
 use ChromeDevtoolsProtocol\Model\Debugger\RestartFrameRequest;
@@ -50,10 +53,11 @@ class DebuggerDomain implements DebuggerDomainInterface
 	}
 
 
-	public function enable(ContextInterface $ctx): void
+	public function enable(ContextInterface $ctx): EnableResponse
 	{
 		$request = new \stdClass();
-		$this->internalClient->executeCommand($ctx, 'Debugger.enable', $request);
+		$response = $this->internalClient->executeCommand($ctx, 'Debugger.enable', $request);
+		return EnableResponse::fromJson($response);
 	}
 
 
@@ -109,9 +113,9 @@ class DebuggerDomain implements DebuggerDomainInterface
 	}
 
 
-	public function pauseOnAsyncTask(ContextInterface $ctx, PauseOnAsyncTaskRequest $request): void
+	public function pauseOnAsyncCall(ContextInterface $ctx, PauseOnAsyncCallRequest $request): void
 	{
-		$this->internalClient->executeCommand($ctx, 'Debugger.pauseOnAsyncTask', $request);
+		$this->internalClient->executeCommand($ctx, 'Debugger.pauseOnAsyncCall', $request);
 	}
 
 
@@ -153,6 +157,13 @@ class DebuggerDomain implements DebuggerDomainInterface
 	{
 		$request = new \stdClass();
 		$this->internalClient->executeCommand($ctx, 'Debugger.resume', $request);
+	}
+
+
+	public function getStackTrace(ContextInterface $ctx, GetStackTraceRequest $request): GetStackTraceResponse
+	{
+		$response = $this->internalClient->executeCommand($ctx, 'Debugger.getStackTrace', $request);
+		return GetStackTraceResponse::fromJson($response);
 	}
 
 

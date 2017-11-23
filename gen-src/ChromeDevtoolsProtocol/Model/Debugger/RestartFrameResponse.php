@@ -2,6 +2,7 @@
 namespace ChromeDevtoolsProtocol\Model\Debugger;
 
 use ChromeDevtoolsProtocol\Model\Runtime\StackTrace;
+use ChromeDevtoolsProtocol\Model\Runtime\StackTraceId;
 
 /**
  * Response to Debugger.restartFrame command.
@@ -26,6 +27,13 @@ final class RestartFrameResponse implements \JsonSerializable
 	 */
 	public $asyncStackTrace;
 
+	/**
+	 * Async stack trace, if any.
+	 *
+	 * @var StackTraceId|null
+	 */
+	public $asyncStackTraceId;
+
 
 	public static function fromJson($data)
 	{
@@ -38,6 +46,9 @@ final class RestartFrameResponse implements \JsonSerializable
 		}
 		if (isset($data->asyncStackTrace)) {
 			$instance->asyncStackTrace = StackTrace::fromJson($data->asyncStackTrace);
+		}
+		if (isset($data->asyncStackTraceId)) {
+			$instance->asyncStackTraceId = StackTraceId::fromJson($data->asyncStackTraceId);
 		}
 		return $instance;
 	}
@@ -54,6 +65,9 @@ final class RestartFrameResponse implements \JsonSerializable
 		}
 		if ($this->asyncStackTrace !== null) {
 			$data->asyncStackTrace = $this->asyncStackTrace->jsonSerialize();
+		}
+		if ($this->asyncStackTraceId !== null) {
+			$data->asyncStackTraceId = $this->asyncStackTraceId->jsonSerialize();
 		}
 		return $data;
 	}

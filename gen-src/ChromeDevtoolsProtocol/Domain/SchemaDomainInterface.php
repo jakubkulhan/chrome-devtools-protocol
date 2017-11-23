@@ -5,7 +5,7 @@ use ChromeDevtoolsProtocol\ContextInterface;
 use ChromeDevtoolsProtocol\Model\Schema\GetDomainsResponse;
 
 /**
- * Provides information about the protocol schema.
+ * This domain is deprecated.
  *
  * @generated This file has been auto-generated, do not edit.
  *

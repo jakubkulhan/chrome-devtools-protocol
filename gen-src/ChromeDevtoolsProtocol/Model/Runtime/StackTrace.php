@@ -31,6 +31,13 @@ final class StackTrace implements \JsonSerializable
 	 */
 	public $parent;
 
+	/**
+	 * Asynchronous JavaScript stack trace that preceded this stack, if available.
+	 *
+	 * @var StackTraceId|null
+	 */
+	public $parentId;
+
 
 	public static function fromJson($data)
 	{
@@ -46,6 +53,9 @@ final class StackTrace implements \JsonSerializable
 		}
 		if (isset($data->parent)) {
 			$instance->parent = StackTrace::fromJson($data->parent);
+		}
+		if (isset($data->parentId)) {
+			$instance->parentId = StackTraceId::fromJson($data->parentId);
 		}
 		return $instance;
 	}
@@ -65,6 +75,9 @@ final class StackTrace implements \JsonSerializable
 		}
 		if ($this->parent !== null) {
 			$data->parent = $this->parent->jsonSerialize();
+		}
+		if ($this->parentId !== null) {
+			$data->parentId = $this->parentId->jsonSerialize();
 		}
 		return $data;
 	}

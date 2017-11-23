@@ -4,13 +4,16 @@ namespace ChromeDevtoolsProtocol\Domain;
 use ChromeDevtoolsProtocol\ContextInterface;
 use ChromeDevtoolsProtocol\Model\Debugger\BreakpointResolvedEvent;
 use ChromeDevtoolsProtocol\Model\Debugger\ContinueToLocationRequest;
+use ChromeDevtoolsProtocol\Model\Debugger\EnableResponse;
 use ChromeDevtoolsProtocol\Model\Debugger\EvaluateOnCallFrameRequest;
 use ChromeDevtoolsProtocol\Model\Debugger\EvaluateOnCallFrameResponse;
 use ChromeDevtoolsProtocol\Model\Debugger\GetPossibleBreakpointsRequest;
 use ChromeDevtoolsProtocol\Model\Debugger\GetPossibleBreakpointsResponse;
 use ChromeDevtoolsProtocol\Model\Debugger\GetScriptSourceRequest;
 use ChromeDevtoolsProtocol\Model\Debugger\GetScriptSourceResponse;
-use ChromeDevtoolsProtocol\Model\Debugger\PauseOnAsyncTaskRequest;
+use ChromeDevtoolsProtocol\Model\Debugger\GetStackTraceRequest;
+use ChromeDevtoolsProtocol\Model\Debugger\GetStackTraceResponse;
+use ChromeDevtoolsProtocol\Model\Debugger\PauseOnAsyncCallRequest;
 use ChromeDevtoolsProtocol\Model\Debugger\PausedEvent;
 use ChromeDevtoolsProtocol\Model\Debugger\RemoveBreakpointRequest;
 use ChromeDevtoolsProtocol\Model\Debugger\RestartFrameRequest;
@@ -51,9 +54,9 @@ interface DebuggerDomainInterface
 	 *
 	 * @param ContextInterface $ctx
 	 *
-	 * @return void
+	 * @return EnableResponse
 	 */
-	public function enable(ContextInterface $ctx): void;
+	public function enable(ContextInterface $ctx): EnableResponse;
 
 
 	/**
@@ -144,14 +147,14 @@ interface DebuggerDomainInterface
 
 
 	/**
-	 * Call Debugger.pauseOnAsyncTask command.
+	 * Call Debugger.pauseOnAsyncCall command.
 	 *
 	 * @param ContextInterface $ctx
-	 * @param PauseOnAsyncTaskRequest $request
+	 * @param PauseOnAsyncCallRequest $request
 	 *
 	 * @return void
 	 */
-	public function pauseOnAsyncTask(ContextInterface $ctx, PauseOnAsyncTaskRequest $request): void;
+	public function pauseOnAsyncCall(ContextInterface $ctx, PauseOnAsyncCallRequest $request): void;
 
 
 	/**
@@ -213,6 +216,17 @@ interface DebuggerDomainInterface
 	 * @return void
 	 */
 	public function resume(ContextInterface $ctx): void;
+
+
+	/**
+	 * Returns stack trace with given <code>stackTraceId</code>.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param GetStackTraceRequest $request
+	 *
+	 * @return GetStackTraceResponse
+	 */
+	public function getStackTrace(ContextInterface $ctx, GetStackTraceRequest $request): GetStackTraceResponse;
 
 
 	/**

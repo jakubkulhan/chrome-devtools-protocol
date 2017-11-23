@@ -3,6 +3,7 @@ namespace ChromeDevtoolsProtocol\Model\Debugger;
 
 use ChromeDevtoolsProtocol\Model\Runtime\ExceptionDetails;
 use ChromeDevtoolsProtocol\Model\Runtime\StackTrace;
+use ChromeDevtoolsProtocol\Model\Runtime\StackTraceId;
 
 /**
  * Response to Debugger.setScriptSource command.
@@ -35,6 +36,13 @@ final class SetScriptSourceResponse implements \JsonSerializable
 	public $asyncStackTrace;
 
 	/**
+	 * Async stack trace, if any.
+	 *
+	 * @var StackTraceId|null
+	 */
+	public $asyncStackTraceId;
+
+	/**
 	 * Exception details if any.
 	 *
 	 * @var ExceptionDetails|null
@@ -57,6 +65,9 @@ final class SetScriptSourceResponse implements \JsonSerializable
 		if (isset($data->asyncStackTrace)) {
 			$instance->asyncStackTrace = StackTrace::fromJson($data->asyncStackTrace);
 		}
+		if (isset($data->asyncStackTraceId)) {
+			$instance->asyncStackTraceId = StackTraceId::fromJson($data->asyncStackTraceId);
+		}
 		if (isset($data->exceptionDetails)) {
 			$instance->exceptionDetails = ExceptionDetails::fromJson($data->exceptionDetails);
 		}
@@ -78,6 +89,9 @@ final class SetScriptSourceResponse implements \JsonSerializable
 		}
 		if ($this->asyncStackTrace !== null) {
 			$data->asyncStackTrace = $this->asyncStackTrace->jsonSerialize();
+		}
+		if ($this->asyncStackTraceId !== null) {
+			$data->asyncStackTraceId = $this->asyncStackTraceId->jsonSerialize();
 		}
 		if ($this->exceptionDetails !== null) {
 			$data->exceptionDetails = $this->exceptionDetails->jsonSerialize();

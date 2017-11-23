@@ -2,6 +2,7 @@
 namespace ChromeDevtoolsProtocol\Model\Debugger;
 
 use ChromeDevtoolsProtocol\Model\Runtime\StackTrace;
+use ChromeDevtoolsProtocol\Model\Runtime\StackTraceId;
 
 /**
  * Fired when the virtual machine stopped on breakpoint or exception or any other stop criteria.
@@ -48,11 +49,18 @@ final class PausedEvent implements \JsonSerializable
 	public $asyncStackTrace;
 
 	/**
-	 * Scheduled async task id.
+	 * Async stack trace, if any.
 	 *
-	 * @var string
+	 * @var StackTraceId|null
 	 */
-	public $scheduledAsyncTaskId;
+	public $asyncStackTraceId;
+
+	/**
+	 * Just scheduled async call will have this stack trace as parent stack during async execution. This field is available only after <code>Debugger.stepInto</code> call with <code>breakOnAsynCall</code> flag.
+	 *
+	 * @var StackTraceId|null
+	 */
+	public $asyncCallStackTraceId;
 
 
 	public static function fromJson($data)
@@ -79,8 +87,11 @@ final class PausedEvent implements \JsonSerializable
 		if (isset($data->asyncStackTrace)) {
 			$instance->asyncStackTrace = StackTrace::fromJson($data->asyncStackTrace);
 		}
-		if (isset($data->scheduledAsyncTaskId)) {
-			$instance->scheduledAsyncTaskId = (string)$data->scheduledAsyncTaskId;
+		if (isset($data->asyncStackTraceId)) {
+			$instance->asyncStackTraceId = StackTraceId::fromJson($data->asyncStackTraceId);
+		}
+		if (isset($data->asyncCallStackTraceId)) {
+			$instance->asyncCallStackTraceId = StackTraceId::fromJson($data->asyncCallStackTraceId);
 		}
 		return $instance;
 	}
@@ -110,8 +121,11 @@ final class PausedEvent implements \JsonSerializable
 		if ($this->asyncStackTrace !== null) {
 			$data->asyncStackTrace = $this->asyncStackTrace->jsonSerialize();
 		}
-		if ($this->scheduledAsyncTaskId !== null) {
-			$data->scheduledAsyncTaskId = $this->scheduledAsyncTaskId;
+		if ($this->asyncStackTraceId !== null) {
+			$data->asyncStackTraceId = $this->asyncStackTraceId->jsonSerialize();
+		}
+		if ($this->asyncCallStackTraceId !== null) {
+			$data->asyncCallStackTraceId = $this->asyncCallStackTraceId->jsonSerialize();
 		}
 		return $data;
 	}
