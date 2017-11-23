@@ -1,6 +1,7 @@
 <?php
 namespace ChromeDevtoolsProtocol;
 
+use ChromeDevtoolsProtocol\Exception\ErrorException;
 use ChromeDevtoolsProtocol\Instance\Launcher;
 use ChromeDevtoolsProtocol\Model\Network\GetCookiesRequest;
 use ChromeDevtoolsProtocol\Model\Page\NavigateRequest;
@@ -69,6 +70,27 @@ class SessionTest extends TestCase
 				$session->close();
 			}
 
+		} finally {
+			$instance->close();
+		}
+	}
+
+	public function testErrorHandling()
+	{
+		$this->expectException(ErrorException::class);
+
+		$ctx = Context::withTimeout(Context::background(), 10);
+		$launcher = new Launcher();
+		$instance = $launcher->launch($ctx);
+		try {
+			$session = $instance->createSession($ctx);
+			try {
+
+				$session->executeCommand($ctx, "SomeCommand.thatDoesNotExist", new \stdClass());
+
+			} finally {
+				$session->close();
+			}
 		} finally {
 			$instance->close();
 		}

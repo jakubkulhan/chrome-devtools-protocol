@@ -2,6 +2,8 @@
 namespace ChromeDevtoolsProtocol;
 
 /**
+ * Basic context implementation.
+ *
  * @author Jakub Kulhan <jakub.kulhan@gmail.com>
  */
 class Context implements ContextInterface

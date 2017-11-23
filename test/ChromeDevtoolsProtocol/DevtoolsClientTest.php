@@ -1,9 +1,9 @@
 <?php
 namespace ChromeDevtoolsProtocol;
 
+use ChromeDevtoolsProtocol\Exception\ErrorException;
 use ChromeDevtoolsProtocol\Instance\Launcher;
 use ChromeDevtoolsProtocol\Model\Network\EnableRequest;
-use ChromeDevtoolsProtocol\Model\Network\GetCookiesRequest;
 use ChromeDevtoolsProtocol\Model\Page\NavigateRequest;
 use ChromeDevtoolsProtocol\Model\Security\CertificateErrorActionEnum;
 use ChromeDevtoolsProtocol\Model\Security\CertificateErrorEvent;
@@ -51,6 +51,30 @@ class DevtoolsClientTest extends TestCase
 				$client->close();
 			}
 
+		} finally {
+			$instance->close();
+		}
+	}
+
+	public function testErrorHandling()
+	{
+		$this->expectException(ErrorException::class);
+
+		$ctx = Context::withTimeout(Context::background(), 10);
+		$launcher = new Launcher();
+		$instance = $launcher->launch($ctx);
+		try {
+			$tab = $instance->tabs($ctx)[0];
+
+			/** @var DevtoolsClientInterface|InternalClientInterface $client */
+			$client = $tab->devtools();
+			try {
+
+				$client->executeCommand($ctx, "SomeCommand.thatDoesNotExist", new \stdClass());
+
+			} finally {
+				$client->close();
+			}
 		} finally {
 			$instance->close();
 		}

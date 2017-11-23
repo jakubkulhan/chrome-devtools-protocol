@@ -10,6 +10,8 @@ use Symfony\Component\Process\ExecutableFinder;
 use Symfony\Component\Process\Process;
 
 /**
+ * Launcher starts new Chrome process.
+ *
  * @author Jakub Kulhan <jakub.kulhan@gmail.com>
  */
 class Launcher
@@ -49,6 +51,8 @@ class Launcher
 	}
 
 	/**
+	 * Set remote debugging port.
+	 *
 	 * @param int $port
 	 * @return self
 	 */
@@ -59,6 +63,8 @@ class Launcher
 	}
 
 	/**
+	 * Working directory where process will be launched.
+	 *
 	 * @param string|null $workDir
 	 * @return self
 	 */
@@ -69,7 +75,9 @@ class Launcher
 	}
 
 	/**
-	 * @param array|null $env
+	 * Environment variables of launched process.
+	 *
+	 * @param array|null $env If `null`, Chrome process will inherit current process environment variables.
 	 * @return self
 	 */
 	public function setEnv(?array $env)
@@ -79,6 +87,8 @@ class Launcher
 	}
 
 	/**
+	 * Input will be passed to `stdin` of launched process.
+	 *
 	 * @param mixed $input
 	 * @return self
 	 */
@@ -89,6 +99,8 @@ class Launcher
 	}
 
 	/**
+	 * Other options for `proc_open()`.
+	 *
 	 * @param array|null $options
 	 * @return self
 	 */
@@ -98,6 +110,13 @@ class Launcher
 		return $this;
 	}
 
+	/**
+	 * Start new Chrome process.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param array ...$args
+	 * @return ProcessInstance
+	 */
 	public function launch(ContextInterface $ctx, ...$args): ProcessInstance
 	{
 		if (PHP_OS === "Linux") {

@@ -2,6 +2,8 @@
 namespace ChromeDevtoolsProtocol;
 
 /**
+ * Context for operations.
+ *
  * @author Jakub Kulhan <jakub.kulhan@gmail.com>
  */
 interface ContextInterface

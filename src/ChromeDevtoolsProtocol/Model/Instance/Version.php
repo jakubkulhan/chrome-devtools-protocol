@@ -2,7 +2,7 @@
 namespace ChromeDevtoolsProtocol\Model\Instance;
 
 /**
- * Response to
+ * Response to /json/version request.
  *
  * @author Jakub Kulhan <jakub.kulhan@gmail.com>
  */

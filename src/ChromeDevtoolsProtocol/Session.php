@@ -1,6 +1,7 @@
 <?php
 namespace ChromeDevtoolsProtocol;
 
+use ChromeDevtoolsProtocol\Exception\ErrorException;
 use ChromeDevtoolsProtocol\Exception\RuntimeException;
 use ChromeDevtoolsProtocol\Model\Target\CloseTargetRequest;
 use ChromeDevtoolsProtocol\Model\Target\DisposeBrowserContextRequest;
@@ -64,6 +65,9 @@ class Session implements DevtoolsClientInterface, InternalClientInterface
 		$this->browser->close();
 	}
 
+	/**
+	 * @internal
+	 */
 	public function executeCommand(ContextInterface $ctx, string $method, $parameters)
 	{
 		$messageId = ++$this->messageId;
@@ -97,6 +101,9 @@ class Session implements DevtoolsClientInterface, InternalClientInterface
 		}
 	}
 
+	/**
+	 * @internal
+	 */
 	public function awaitEvent(ContextInterface $ctx, string $method)
 	{
 		for (; ;) {
@@ -119,9 +126,15 @@ class Session implements DevtoolsClientInterface, InternalClientInterface
 		}
 	}
 
+	/**
+	 * @internal
+	 */
 	private function handleMessage($message, ?string $returnIfEventMethod = null)
 	{
-		if (isset($message->method)) {
+		if (isset($message->error)) {
+			throw new ErrorException($message->error->message, $message->error->code);
+
+		} else if (isset($message->method)) {
 			if (isset($this->listeners[$message->method])) {
 				foreach ($this->listeners[$message->method] as $callback) {
 					$callback($message->params);

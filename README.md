@@ -43,6 +43,30 @@ try {
 }
 ```
 
+## Headless Chrome isolated contexts
+
+Headless Chrome supports feature called *browser contexts* - they're like incognito windows - cookies, local storage etc. are not shared. After *browser context* is destroyed, user data created in given context, are destroyed.
+
+Unlike incognito windows, there can be multiple isolate *browser contexts* at the same time.
+
+```php
+$ctx = Context::withTimeout(Context::background(), 10);
+$launcher = new Launcher();
+$instance = $launcher->launch($ctx);
+try {
+	$session = $instance->createSession($ctx);
+	try {
+
+		// $session implements DevtoolsClientInterface, same as returned from Tab::devtools()
+
+	} finally {
+		$session->close();
+	}
+} finally {
+	$instance->close();
+}
+```
+
 ## License
 
 Licensed under MIT license. See `LICENSE` file.

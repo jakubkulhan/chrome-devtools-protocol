@@ -2,6 +2,7 @@
 namespace ChromeDevtoolsProtocol;
 
 use ChromeDevtoolsProtocol\Exception\ClientClosedException;
+use ChromeDevtoolsProtocol\Exception\ErrorException;
 use ChromeDevtoolsProtocol\Exception\LogicException;
 use ChromeDevtoolsProtocol\Exception\RuntimeException;
 use ChromeDevtoolsProtocol\WebSocket\WebSocketClient;
@@ -9,6 +10,8 @@ use Wrench\Client;
 use Wrench\Payload\Payload;
 
 /**
+ * Connects to given WebSocket URL using Chrome DevTools Protocol.
+ *
  * @author Jakub Kulhan <jakub.kulhan@gmail.com>
  */
 class DevtoolsClient implements DevtoolsClientInterface, InternalClientInterface
@@ -122,7 +125,10 @@ class DevtoolsClient implements DevtoolsClientInterface, InternalClientInterface
 
 	private function handleMessage($message, ?string $returnIfEventMethod = null)
 	{
-		if (isset($message->method)) {
+		if (isset($message->error)) {
+			throw new ErrorException($message->error->message, $message->error->code);
+
+		} else if (isset($message->method)) {
 			if (isset($this->listeners[$message->method])) {
 				foreach ($this->listeners[$message->method] as $callback) {
 					$callback($message->params);

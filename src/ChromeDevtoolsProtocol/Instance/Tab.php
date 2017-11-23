@@ -6,6 +6,8 @@ use ChromeDevtoolsProtocol\DevtoolsClient;
 use ChromeDevtoolsProtocol\DevtoolsClientInterface;
 
 /**
+ * Opened tab in Chrome.
+ *
  * @author Jakub Kulhan <jakub.kulhan@gmail.com>
  */
 class Tab
@@ -51,16 +53,31 @@ class Tab
 		$this->internalInstance = $internalInstance;
 	}
 
+	/**
+	 * Connect to devtools debugger.
+	 *
+	 * @return DevtoolsClientInterface
+	 */
 	public function devtools(): DevtoolsClientInterface
 	{
 		return new DevtoolsClient($this->webSocketDebuggerUrl);
 	}
 
+	/**
+	 * Activate this tab.
+	 *
+	 * @param ContextInterface $ctx
+	 */
 	public function activate(ContextInterface $ctx): void
 	{
 		$this->internalInstance->activateTabById($ctx, $this->id);
 	}
 
+	/**
+	 * Close this tab.
+	 *
+	 * @param ContextInterface $ctx
+	 */
 	public function close(ContextInterface $ctx): void
 	{
 		$this->internalInstance->closeTabById($ctx, $this->id);

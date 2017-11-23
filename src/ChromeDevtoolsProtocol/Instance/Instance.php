@@ -14,6 +14,8 @@ use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
 
 /**
+ * Instance of running Chrome.
+ *
  * @author Jakub Kulhan <jakub.kulhan@gmail.com>
  */
 class Instance implements InstanceInterface, InternalInstanceInterface
@@ -138,6 +140,9 @@ class Instance implements InstanceInterface, InternalInstanceInterface
 		}
 	}
 
+	/**
+	 * @internal
+	 */
 	public function activateTabById(ContextInterface $ctx, string $id): void
 	{
 		$this->httpClient->request("POST", "http://{$this->host}:{$this->port}/json/activate/{$id}", [
@@ -145,6 +150,9 @@ class Instance implements InstanceInterface, InternalInstanceInterface
 		]);
 	}
 
+	/**
+	 * @internal
+	 */
 	public function closeTabById(ContextInterface $ctx, string $id): void
 	{
 		$this->httpClient->request("POST", "http://{$this->host}:{$this->port}/json/close/{$id}", [
