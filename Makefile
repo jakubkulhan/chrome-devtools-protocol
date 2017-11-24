@@ -21,13 +21,7 @@ clean:
 	grep -lir '@generated' gen-src | xargs rm
 
 docker-image:
-	docker build --pull -t jakubkulhan/chrome:build .
-	version=$$(docker run -it --rm --name chrome jakubkulhan/chrome:build --version | cut -d' ' -f3) && \
-		docker tag jakubkulhan/chrome:build jakubkulhan/chrome:$$version && \
-		docker push jakubkulhan/chrome:$$version
-	docker tag jakubkulhan/chrome:build jakubkulhan/chrome:latest && \
-		docker push jakubkulhan/chrome:latest
-	docker rmi jakubkulhan/chrome:build
+	./.circleci/build-docker-image.sh
 
 test: lint phpstan phpunit
 
