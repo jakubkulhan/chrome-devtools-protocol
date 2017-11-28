@@ -12,6 +12,9 @@ download-protocol:
 	curl -s "https://chromium.googlesource.com/v8/v8/+/master/src/inspector/js_protocol.json?format=TEXT" | php -r 'echo base64_decode(file_get_contents("php://stdin"));' > "protocol_js.json"; \
 	md5sum protocol_js.json; \
 	php -r '$$p1 = json_decode(file_get_contents("protocol_browser.json")); $$p2 = json_decode(file_get_contents("protocol_js.json")); $$p1->domains = array_merge($$p1->domains, $$p2->domains); echo json_encode($$p1, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES), "\n";' > protocol.json; \
+	md5sum protocol.json
+
+fix-protocol:
 	md5sum protocol.json > protocol.json.md5
 
 check-protocol:
