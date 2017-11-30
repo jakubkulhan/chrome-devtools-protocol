@@ -2,7 +2,7 @@
 namespace ChromeDevtoolsProtocol\Model\DOM;
 
 /**
- * Fired when <code>Element</code>'s attribute is removed.
+ * Fired when `Element`'s attribute is removed.
  *
  * @generated This file has been auto-generated, do not edit.
  *

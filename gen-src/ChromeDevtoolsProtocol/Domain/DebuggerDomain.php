@@ -53,11 +53,9 @@ class DebuggerDomain implements DebuggerDomainInterface
 	}
 
 
-	public function enable(ContextInterface $ctx): EnableResponse
+	public function continueToLocation(ContextInterface $ctx, ContinueToLocationRequest $request): void
 	{
-		$request = new \stdClass();
-		$response = $this->internalClient->executeCommand($ctx, 'Debugger.enable', $request);
-		return EnableResponse::fromJson($response);
+		$this->internalClient->executeCommand($ctx, 'Debugger.continueToLocation', $request);
 	}
 
 
@@ -68,35 +66,18 @@ class DebuggerDomain implements DebuggerDomainInterface
 	}
 
 
-	public function setBreakpointsActive(ContextInterface $ctx, SetBreakpointsActiveRequest $request): void
+	public function enable(ContextInterface $ctx): EnableResponse
 	{
-		$this->internalClient->executeCommand($ctx, 'Debugger.setBreakpointsActive', $request);
+		$request = new \stdClass();
+		$response = $this->internalClient->executeCommand($ctx, 'Debugger.enable', $request);
+		return EnableResponse::fromJson($response);
 	}
 
 
-	public function setSkipAllPauses(ContextInterface $ctx, SetSkipAllPausesRequest $request): void
+	public function evaluateOnCallFrame(ContextInterface $ctx, EvaluateOnCallFrameRequest $request): EvaluateOnCallFrameResponse
 	{
-		$this->internalClient->executeCommand($ctx, 'Debugger.setSkipAllPauses', $request);
-	}
-
-
-	public function setBreakpointByUrl(ContextInterface $ctx, SetBreakpointByUrlRequest $request): SetBreakpointByUrlResponse
-	{
-		$response = $this->internalClient->executeCommand($ctx, 'Debugger.setBreakpointByUrl', $request);
-		return SetBreakpointByUrlResponse::fromJson($response);
-	}
-
-
-	public function setBreakpoint(ContextInterface $ctx, SetBreakpointRequest $request): SetBreakpointResponse
-	{
-		$response = $this->internalClient->executeCommand($ctx, 'Debugger.setBreakpoint', $request);
-		return SetBreakpointResponse::fromJson($response);
-	}
-
-
-	public function removeBreakpoint(ContextInterface $ctx, RemoveBreakpointRequest $request): void
-	{
-		$this->internalClient->executeCommand($ctx, 'Debugger.removeBreakpoint', $request);
+		$response = $this->internalClient->executeCommand($ctx, 'Debugger.evaluateOnCallFrame', $request);
+		return EvaluateOnCallFrameResponse::fromJson($response);
 	}
 
 
@@ -107,9 +88,24 @@ class DebuggerDomain implements DebuggerDomainInterface
 	}
 
 
-	public function continueToLocation(ContextInterface $ctx, ContinueToLocationRequest $request): void
+	public function getScriptSource(ContextInterface $ctx, GetScriptSourceRequest $request): GetScriptSourceResponse
 	{
-		$this->internalClient->executeCommand($ctx, 'Debugger.continueToLocation', $request);
+		$response = $this->internalClient->executeCommand($ctx, 'Debugger.getScriptSource', $request);
+		return GetScriptSourceResponse::fromJson($response);
+	}
+
+
+	public function getStackTrace(ContextInterface $ctx, GetStackTraceRequest $request): GetStackTraceResponse
+	{
+		$response = $this->internalClient->executeCommand($ctx, 'Debugger.getStackTrace', $request);
+		return GetStackTraceResponse::fromJson($response);
+	}
+
+
+	public function pause(ContextInterface $ctx): void
+	{
+		$request = new \stdClass();
+		$this->internalClient->executeCommand($ctx, 'Debugger.pause', $request);
 	}
 
 
@@ -119,10 +115,106 @@ class DebuggerDomain implements DebuggerDomainInterface
 	}
 
 
-	public function stepOver(ContextInterface $ctx): void
+	public function removeBreakpoint(ContextInterface $ctx, RemoveBreakpointRequest $request): void
+	{
+		$this->internalClient->executeCommand($ctx, 'Debugger.removeBreakpoint', $request);
+	}
+
+
+	public function restartFrame(ContextInterface $ctx, RestartFrameRequest $request): RestartFrameResponse
+	{
+		$response = $this->internalClient->executeCommand($ctx, 'Debugger.restartFrame', $request);
+		return RestartFrameResponse::fromJson($response);
+	}
+
+
+	public function resume(ContextInterface $ctx): void
 	{
 		$request = new \stdClass();
-		$this->internalClient->executeCommand($ctx, 'Debugger.stepOver', $request);
+		$this->internalClient->executeCommand($ctx, 'Debugger.resume', $request);
+	}
+
+
+	public function scheduleStepIntoAsync(ContextInterface $ctx): void
+	{
+		$request = new \stdClass();
+		$this->internalClient->executeCommand($ctx, 'Debugger.scheduleStepIntoAsync', $request);
+	}
+
+
+	public function searchInContent(ContextInterface $ctx, SearchInContentRequest $request): SearchInContentResponse
+	{
+		$response = $this->internalClient->executeCommand($ctx, 'Debugger.searchInContent', $request);
+		return SearchInContentResponse::fromJson($response);
+	}
+
+
+	public function setAsyncCallStackDepth(ContextInterface $ctx, SetAsyncCallStackDepthRequest $request): void
+	{
+		$this->internalClient->executeCommand($ctx, 'Debugger.setAsyncCallStackDepth', $request);
+	}
+
+
+	public function setBlackboxedRanges(ContextInterface $ctx, SetBlackboxedRangesRequest $request): void
+	{
+		$this->internalClient->executeCommand($ctx, 'Debugger.setBlackboxedRanges', $request);
+	}
+
+
+	public function setBlackboxPatterns(ContextInterface $ctx, SetBlackboxPatternsRequest $request): void
+	{
+		$this->internalClient->executeCommand($ctx, 'Debugger.setBlackboxPatterns', $request);
+	}
+
+
+	public function setBreakpoint(ContextInterface $ctx, SetBreakpointRequest $request): SetBreakpointResponse
+	{
+		$response = $this->internalClient->executeCommand($ctx, 'Debugger.setBreakpoint', $request);
+		return SetBreakpointResponse::fromJson($response);
+	}
+
+
+	public function setBreakpointByUrl(ContextInterface $ctx, SetBreakpointByUrlRequest $request): SetBreakpointByUrlResponse
+	{
+		$response = $this->internalClient->executeCommand($ctx, 'Debugger.setBreakpointByUrl', $request);
+		return SetBreakpointByUrlResponse::fromJson($response);
+	}
+
+
+	public function setBreakpointsActive(ContextInterface $ctx, SetBreakpointsActiveRequest $request): void
+	{
+		$this->internalClient->executeCommand($ctx, 'Debugger.setBreakpointsActive', $request);
+	}
+
+
+	public function setPauseOnExceptions(ContextInterface $ctx, SetPauseOnExceptionsRequest $request): void
+	{
+		$this->internalClient->executeCommand($ctx, 'Debugger.setPauseOnExceptions', $request);
+	}
+
+
+	public function setReturnValue(ContextInterface $ctx, SetReturnValueRequest $request): void
+	{
+		$this->internalClient->executeCommand($ctx, 'Debugger.setReturnValue', $request);
+	}
+
+
+	public function setScriptSource(ContextInterface $ctx, SetScriptSourceRequest $request): SetScriptSourceResponse
+	{
+		$response = $this->internalClient->executeCommand($ctx, 'Debugger.setScriptSource', $request);
+		return SetScriptSourceResponse::fromJson($response);
+	}
+
+
+	public function setSkipAllPauses(ContextInterface $ctx, SetSkipAllPausesRequest $request): void
+	{
+		$this->internalClient->executeCommand($ctx, 'Debugger.setSkipAllPauses', $request);
+	}
+
+
+	public function setVariableValue(ContextInterface $ctx, SetVariableValueRequest $request): void
+	{
+		$this->internalClient->executeCommand($ctx, 'Debugger.setVariableValue', $request);
 	}
 
 
@@ -139,130 +231,10 @@ class DebuggerDomain implements DebuggerDomainInterface
 	}
 
 
-	public function pause(ContextInterface $ctx): void
+	public function stepOver(ContextInterface $ctx): void
 	{
 		$request = new \stdClass();
-		$this->internalClient->executeCommand($ctx, 'Debugger.pause', $request);
-	}
-
-
-	public function scheduleStepIntoAsync(ContextInterface $ctx): void
-	{
-		$request = new \stdClass();
-		$this->internalClient->executeCommand($ctx, 'Debugger.scheduleStepIntoAsync', $request);
-	}
-
-
-	public function resume(ContextInterface $ctx): void
-	{
-		$request = new \stdClass();
-		$this->internalClient->executeCommand($ctx, 'Debugger.resume', $request);
-	}
-
-
-	public function getStackTrace(ContextInterface $ctx, GetStackTraceRequest $request): GetStackTraceResponse
-	{
-		$response = $this->internalClient->executeCommand($ctx, 'Debugger.getStackTrace', $request);
-		return GetStackTraceResponse::fromJson($response);
-	}
-
-
-	public function searchInContent(ContextInterface $ctx, SearchInContentRequest $request): SearchInContentResponse
-	{
-		$response = $this->internalClient->executeCommand($ctx, 'Debugger.searchInContent', $request);
-		return SearchInContentResponse::fromJson($response);
-	}
-
-
-	public function setScriptSource(ContextInterface $ctx, SetScriptSourceRequest $request): SetScriptSourceResponse
-	{
-		$response = $this->internalClient->executeCommand($ctx, 'Debugger.setScriptSource', $request);
-		return SetScriptSourceResponse::fromJson($response);
-	}
-
-
-	public function restartFrame(ContextInterface $ctx, RestartFrameRequest $request): RestartFrameResponse
-	{
-		$response = $this->internalClient->executeCommand($ctx, 'Debugger.restartFrame', $request);
-		return RestartFrameResponse::fromJson($response);
-	}
-
-
-	public function getScriptSource(ContextInterface $ctx, GetScriptSourceRequest $request): GetScriptSourceResponse
-	{
-		$response = $this->internalClient->executeCommand($ctx, 'Debugger.getScriptSource', $request);
-		return GetScriptSourceResponse::fromJson($response);
-	}
-
-
-	public function setPauseOnExceptions(ContextInterface $ctx, SetPauseOnExceptionsRequest $request): void
-	{
-		$this->internalClient->executeCommand($ctx, 'Debugger.setPauseOnExceptions', $request);
-	}
-
-
-	public function evaluateOnCallFrame(ContextInterface $ctx, EvaluateOnCallFrameRequest $request): EvaluateOnCallFrameResponse
-	{
-		$response = $this->internalClient->executeCommand($ctx, 'Debugger.evaluateOnCallFrame', $request);
-		return EvaluateOnCallFrameResponse::fromJson($response);
-	}
-
-
-	public function setVariableValue(ContextInterface $ctx, SetVariableValueRequest $request): void
-	{
-		$this->internalClient->executeCommand($ctx, 'Debugger.setVariableValue', $request);
-	}
-
-
-	public function setReturnValue(ContextInterface $ctx, SetReturnValueRequest $request): void
-	{
-		$this->internalClient->executeCommand($ctx, 'Debugger.setReturnValue', $request);
-	}
-
-
-	public function setAsyncCallStackDepth(ContextInterface $ctx, SetAsyncCallStackDepthRequest $request): void
-	{
-		$this->internalClient->executeCommand($ctx, 'Debugger.setAsyncCallStackDepth', $request);
-	}
-
-
-	public function setBlackboxPatterns(ContextInterface $ctx, SetBlackboxPatternsRequest $request): void
-	{
-		$this->internalClient->executeCommand($ctx, 'Debugger.setBlackboxPatterns', $request);
-	}
-
-
-	public function setBlackboxedRanges(ContextInterface $ctx, SetBlackboxedRangesRequest $request): void
-	{
-		$this->internalClient->executeCommand($ctx, 'Debugger.setBlackboxedRanges', $request);
-	}
-
-
-	public function addScriptParsedListener(callable $listener): SubscriptionInterface
-	{
-		return $this->internalClient->addListener('Debugger.scriptParsed', function ($event) use ($listener) {
-			return $listener(ScriptParsedEvent::fromJson($event));
-		});
-	}
-
-
-	public function awaitScriptParsed(ContextInterface $ctx): ScriptParsedEvent
-	{
-		return ScriptParsedEvent::fromJson($this->internalClient->awaitEvent($ctx, 'Debugger.scriptParsed'));
-	}
-
-
-	public function addScriptFailedToParseListener(callable $listener): SubscriptionInterface
-	{
-		return $this->internalClient->addListener('Debugger.scriptFailedToParse', function ($event) use ($listener) {
-			return $listener(ScriptFailedToParseEvent::fromJson($event));
-		});
-	}
-
-
-	public function awaitScriptFailedToParse(ContextInterface $ctx): ScriptFailedToParseEvent
-	{
-		return ScriptFailedToParseEvent::fromJson($this->internalClient->awaitEvent($ctx, 'Debugger.scriptFailedToParse'));
+		$this->internalClient->executeCommand($ctx, 'Debugger.stepOver', $request);
 	}
 
 
@@ -305,5 +277,33 @@ class DebuggerDomain implements DebuggerDomainInterface
 	public function awaitResumed(ContextInterface $ctx): ResumedEvent
 	{
 		return ResumedEvent::fromJson($this->internalClient->awaitEvent($ctx, 'Debugger.resumed'));
+	}
+
+
+	public function addScriptFailedToParseListener(callable $listener): SubscriptionInterface
+	{
+		return $this->internalClient->addListener('Debugger.scriptFailedToParse', function ($event) use ($listener) {
+			return $listener(ScriptFailedToParseEvent::fromJson($event));
+		});
+	}
+
+
+	public function awaitScriptFailedToParse(ContextInterface $ctx): ScriptFailedToParseEvent
+	{
+		return ScriptFailedToParseEvent::fromJson($this->internalClient->awaitEvent($ctx, 'Debugger.scriptFailedToParse'));
+	}
+
+
+	public function addScriptParsedListener(callable $listener): SubscriptionInterface
+	{
+		return $this->internalClient->addListener('Debugger.scriptParsed', function ($event) use ($listener) {
+			return $listener(ScriptParsedEvent::fromJson($event));
+		});
+	}
+
+
+	public function awaitScriptParsed(ContextInterface $ctx): ScriptParsedEvent
+	{
+		return ScriptParsedEvent::fromJson($this->internalClient->awaitEvent($ctx, 'Debugger.scriptParsed'));
 	}
 }

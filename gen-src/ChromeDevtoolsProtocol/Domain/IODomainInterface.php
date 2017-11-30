@@ -18,17 +18,6 @@ use ChromeDevtoolsProtocol\Model\IO\ResolveBlobResponse;
 interface IODomainInterface
 {
 	/**
-	 * Read a chunk of the stream
-	 *
-	 * @param ContextInterface $ctx
-	 * @param ReadRequest $request
-	 *
-	 * @return ReadResponse
-	 */
-	public function read(ContextInterface $ctx, ReadRequest $request): ReadResponse;
-
-
-	/**
 	 * Close the stream, discard any temporary backing storage.
 	 *
 	 * @param ContextInterface $ctx
@@ -37,6 +26,17 @@ interface IODomainInterface
 	 * @return void
 	 */
 	public function close(ContextInterface $ctx, CloseRequest $request): void;
+
+
+	/**
+	 * Read a chunk of the stream
+	 *
+	 * @param ContextInterface $ctx
+	 * @param ReadRequest $request
+	 *
+	 * @return ReadResponse
+	 */
+	public function read(ContextInterface $ctx, ReadRequest $request): ReadResponse;
 
 
 	/**

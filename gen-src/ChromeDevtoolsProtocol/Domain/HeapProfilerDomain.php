@@ -33,10 +33,16 @@ class HeapProfilerDomain implements HeapProfilerDomainInterface
 	}
 
 
-	public function enable(ContextInterface $ctx): void
+	public function addInspectedHeapObject(ContextInterface $ctx, AddInspectedHeapObjectRequest $request): void
+	{
+		$this->internalClient->executeCommand($ctx, 'HeapProfiler.addInspectedHeapObject', $request);
+	}
+
+
+	public function collectGarbage(ContextInterface $ctx): void
 	{
 		$request = new \stdClass();
-		$this->internalClient->executeCommand($ctx, 'HeapProfiler.enable', $request);
+		$this->internalClient->executeCommand($ctx, 'HeapProfiler.collectGarbage', $request);
 	}
 
 
@@ -47,9 +53,52 @@ class HeapProfilerDomain implements HeapProfilerDomainInterface
 	}
 
 
+	public function enable(ContextInterface $ctx): void
+	{
+		$request = new \stdClass();
+		$this->internalClient->executeCommand($ctx, 'HeapProfiler.enable', $request);
+	}
+
+
+	public function getHeapObjectId(ContextInterface $ctx, GetHeapObjectIdRequest $request): GetHeapObjectIdResponse
+	{
+		$response = $this->internalClient->executeCommand($ctx, 'HeapProfiler.getHeapObjectId', $request);
+		return GetHeapObjectIdResponse::fromJson($response);
+	}
+
+
+	public function getObjectByHeapObjectId(ContextInterface $ctx, GetObjectByHeapObjectIdRequest $request): GetObjectByHeapObjectIdResponse
+	{
+		$response = $this->internalClient->executeCommand($ctx, 'HeapProfiler.getObjectByHeapObjectId', $request);
+		return GetObjectByHeapObjectIdResponse::fromJson($response);
+	}
+
+
+	public function getSamplingProfile(ContextInterface $ctx): GetSamplingProfileResponse
+	{
+		$request = new \stdClass();
+		$response = $this->internalClient->executeCommand($ctx, 'HeapProfiler.getSamplingProfile', $request);
+		return GetSamplingProfileResponse::fromJson($response);
+	}
+
+
+	public function startSampling(ContextInterface $ctx, StartSamplingRequest $request): void
+	{
+		$this->internalClient->executeCommand($ctx, 'HeapProfiler.startSampling', $request);
+	}
+
+
 	public function startTrackingHeapObjects(ContextInterface $ctx, StartTrackingHeapObjectsRequest $request): void
 	{
 		$this->internalClient->executeCommand($ctx, 'HeapProfiler.startTrackingHeapObjects', $request);
+	}
+
+
+	public function stopSampling(ContextInterface $ctx): StopSamplingResponse
+	{
+		$request = new \stdClass();
+		$response = $this->internalClient->executeCommand($ctx, 'HeapProfiler.stopSampling', $request);
+		return StopSamplingResponse::fromJson($response);
 	}
 
 
@@ -62,55 +111,6 @@ class HeapProfilerDomain implements HeapProfilerDomainInterface
 	public function takeHeapSnapshot(ContextInterface $ctx, TakeHeapSnapshotRequest $request): void
 	{
 		$this->internalClient->executeCommand($ctx, 'HeapProfiler.takeHeapSnapshot', $request);
-	}
-
-
-	public function collectGarbage(ContextInterface $ctx): void
-	{
-		$request = new \stdClass();
-		$this->internalClient->executeCommand($ctx, 'HeapProfiler.collectGarbage', $request);
-	}
-
-
-	public function getObjectByHeapObjectId(ContextInterface $ctx, GetObjectByHeapObjectIdRequest $request): GetObjectByHeapObjectIdResponse
-	{
-		$response = $this->internalClient->executeCommand($ctx, 'HeapProfiler.getObjectByHeapObjectId', $request);
-		return GetObjectByHeapObjectIdResponse::fromJson($response);
-	}
-
-
-	public function addInspectedHeapObject(ContextInterface $ctx, AddInspectedHeapObjectRequest $request): void
-	{
-		$this->internalClient->executeCommand($ctx, 'HeapProfiler.addInspectedHeapObject', $request);
-	}
-
-
-	public function getHeapObjectId(ContextInterface $ctx, GetHeapObjectIdRequest $request): GetHeapObjectIdResponse
-	{
-		$response = $this->internalClient->executeCommand($ctx, 'HeapProfiler.getHeapObjectId', $request);
-		return GetHeapObjectIdResponse::fromJson($response);
-	}
-
-
-	public function startSampling(ContextInterface $ctx, StartSamplingRequest $request): void
-	{
-		$this->internalClient->executeCommand($ctx, 'HeapProfiler.startSampling', $request);
-	}
-
-
-	public function stopSampling(ContextInterface $ctx): StopSamplingResponse
-	{
-		$request = new \stdClass();
-		$response = $this->internalClient->executeCommand($ctx, 'HeapProfiler.stopSampling', $request);
-		return StopSamplingResponse::fromJson($response);
-	}
-
-
-	public function getSamplingProfile(ContextInterface $ctx): GetSamplingProfileResponse
-	{
-		$request = new \stdClass();
-		$response = $this->internalClient->executeCommand($ctx, 'HeapProfiler.getSamplingProfile', $request);
-		return GetSamplingProfileResponse::fromJson($response);
 	}
 
 
@@ -128,31 +128,17 @@ class HeapProfilerDomain implements HeapProfilerDomainInterface
 	}
 
 
-	public function addResetProfilesListener(callable $listener): SubscriptionInterface
+	public function addHeapStatsUpdateListener(callable $listener): SubscriptionInterface
 	{
-		return $this->internalClient->addListener('HeapProfiler.resetProfiles', function ($event) use ($listener) {
-			return $listener(ResetProfilesEvent::fromJson($event));
+		return $this->internalClient->addListener('HeapProfiler.heapStatsUpdate', function ($event) use ($listener) {
+			return $listener(HeapStatsUpdateEvent::fromJson($event));
 		});
 	}
 
 
-	public function awaitResetProfiles(ContextInterface $ctx): ResetProfilesEvent
+	public function awaitHeapStatsUpdate(ContextInterface $ctx): HeapStatsUpdateEvent
 	{
-		return ResetProfilesEvent::fromJson($this->internalClient->awaitEvent($ctx, 'HeapProfiler.resetProfiles'));
-	}
-
-
-	public function addReportHeapSnapshotProgressListener(callable $listener): SubscriptionInterface
-	{
-		return $this->internalClient->addListener('HeapProfiler.reportHeapSnapshotProgress', function ($event) use ($listener) {
-			return $listener(ReportHeapSnapshotProgressEvent::fromJson($event));
-		});
-	}
-
-
-	public function awaitReportHeapSnapshotProgress(ContextInterface $ctx): ReportHeapSnapshotProgressEvent
-	{
-		return ReportHeapSnapshotProgressEvent::fromJson($this->internalClient->awaitEvent($ctx, 'HeapProfiler.reportHeapSnapshotProgress'));
+		return HeapStatsUpdateEvent::fromJson($this->internalClient->awaitEvent($ctx, 'HeapProfiler.heapStatsUpdate'));
 	}
 
 
@@ -170,16 +156,30 @@ class HeapProfilerDomain implements HeapProfilerDomainInterface
 	}
 
 
-	public function addHeapStatsUpdateListener(callable $listener): SubscriptionInterface
+	public function addReportHeapSnapshotProgressListener(callable $listener): SubscriptionInterface
 	{
-		return $this->internalClient->addListener('HeapProfiler.heapStatsUpdate', function ($event) use ($listener) {
-			return $listener(HeapStatsUpdateEvent::fromJson($event));
+		return $this->internalClient->addListener('HeapProfiler.reportHeapSnapshotProgress', function ($event) use ($listener) {
+			return $listener(ReportHeapSnapshotProgressEvent::fromJson($event));
 		});
 	}
 
 
-	public function awaitHeapStatsUpdate(ContextInterface $ctx): HeapStatsUpdateEvent
+	public function awaitReportHeapSnapshotProgress(ContextInterface $ctx): ReportHeapSnapshotProgressEvent
 	{
-		return HeapStatsUpdateEvent::fromJson($this->internalClient->awaitEvent($ctx, 'HeapProfiler.heapStatsUpdate'));
+		return ReportHeapSnapshotProgressEvent::fromJson($this->internalClient->awaitEvent($ctx, 'HeapProfiler.reportHeapSnapshotProgress'));
+	}
+
+
+	public function addResetProfilesListener(callable $listener): SubscriptionInterface
+	{
+		return $this->internalClient->addListener('HeapProfiler.resetProfiles', function ($event) use ($listener) {
+			return $listener(ResetProfilesEvent::fromJson($event));
+		});
+	}
+
+
+	public function awaitResetProfiles(ContextInterface $ctx): ResetProfilesEvent
+	{
+		return ResetProfilesEvent::fromJson($this->internalClient->awaitEvent($ctx, 'HeapProfiler.resetProfiles'));
 	}
 }

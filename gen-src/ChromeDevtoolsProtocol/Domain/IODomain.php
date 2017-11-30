@@ -21,16 +21,16 @@ class IODomain implements IODomainInterface
 	}
 
 
+	public function close(ContextInterface $ctx, CloseRequest $request): void
+	{
+		$this->internalClient->executeCommand($ctx, 'IO.close', $request);
+	}
+
+
 	public function read(ContextInterface $ctx, ReadRequest $request): ReadResponse
 	{
 		$response = $this->internalClient->executeCommand($ctx, 'IO.read', $request);
 		return ReadResponse::fromJson($response);
-	}
-
-
-	public function close(ContextInterface $ctx, CloseRequest $request): void
-	{
-		$this->internalClient->executeCommand($ctx, 'IO.close', $request);
 	}
 
 

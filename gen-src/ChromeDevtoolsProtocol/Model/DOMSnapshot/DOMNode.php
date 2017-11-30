@@ -11,21 +11,21 @@ namespace ChromeDevtoolsProtocol\Model\DOMSnapshot;
 final class DOMNode implements \JsonSerializable
 {
 	/**
-	 * <code>Node</code>'s nodeType.
+	 * `Node`'s nodeType.
 	 *
 	 * @var int
 	 */
 	public $nodeType;
 
 	/**
-	 * <code>Node</code>'s nodeName.
+	 * `Node`'s nodeName.
 	 *
 	 * @var string
 	 */
 	public $nodeName;
 
 	/**
-	 * <code>Node</code>'s nodeValue.
+	 * `Node`'s nodeValue.
 	 *
 	 * @var string
 	 */
@@ -60,49 +60,49 @@ final class DOMNode implements \JsonSerializable
 	public $optionSelected;
 
 	/**
-	 * <code>Node</code>'s id, corresponds to DOM.Node.backendNodeId.
+	 * `Node`'s id, corresponds to DOM.Node.backendNodeId.
 	 *
 	 * @var int
 	 */
 	public $backendNodeId;
 
 	/**
-	 * The indexes of the node's child nodes in the <code>domNodes</code> array returned by <code>getSnapshot</code>, if any.
+	 * The indexes of the node's child nodes in the `domNodes` array returned by `getSnapshot`, if any.
 	 *
 	 * @var int[]|null
 	 */
 	public $childNodeIndexes;
 
 	/**
-	 * Attributes of an <code>Element</code> node.
+	 * Attributes of an `Element` node.
 	 *
 	 * @var NameValue[]|null
 	 */
 	public $attributes;
 
 	/**
-	 * Indexes of pseudo elements associated with this node in the <code>domNodes</code> array returned by <code>getSnapshot</code>, if any.
+	 * Indexes of pseudo elements associated with this node in the `domNodes` array returned by `getSnapshot`, if any.
 	 *
 	 * @var int[]|null
 	 */
 	public $pseudoElementIndexes;
 
 	/**
-	 * The index of the node's related layout tree node in the <code>layoutTreeNodes</code> array returned by <code>getSnapshot</code>, if any.
+	 * The index of the node's related layout tree node in the `layoutTreeNodes` array returned by `getSnapshot`, if any.
 	 *
 	 * @var int|null
 	 */
 	public $layoutNodeIndex;
 
 	/**
-	 * Document URL that <code>Document</code> or <code>FrameOwner</code> node points to.
+	 * Document URL that `Document` or `FrameOwner` node points to.
 	 *
 	 * @var string|null
 	 */
 	public $documentURL;
 
 	/**
-	 * Base URL that <code>Document</code> or <code>FrameOwner</code> node uses for URL completion.
+	 * Base URL that `Document` or `FrameOwner` node uses for URL completion.
 	 *
 	 * @var string|null
 	 */
@@ -123,14 +123,14 @@ final class DOMNode implements \JsonSerializable
 	public $documentEncoding;
 
 	/**
-	 * <code>DocumentType</code> node's publicId.
+	 * `DocumentType` node's publicId.
 	 *
 	 * @var string|null
 	 */
 	public $publicId;
 
 	/**
-	 * <code>DocumentType</code> node's systemId.
+	 * `DocumentType` node's systemId.
 	 *
 	 * @var string|null
 	 */
@@ -144,21 +144,21 @@ final class DOMNode implements \JsonSerializable
 	public $frameId;
 
 	/**
-	 * The index of a frame owner element's content document in the <code>domNodes</code> array returned by <code>getSnapshot</code>, if any.
+	 * The index of a frame owner element's content document in the `domNodes` array returned by `getSnapshot`, if any.
 	 *
 	 * @var int|null
 	 */
 	public $contentDocumentIndex;
 
 	/**
-	 * Index of the imported document's node of a link element in the <code>domNodes</code> array returned by <code>getSnapshot</code>, if any.
+	 * Index of the imported document's node of a link element in the `domNodes` array returned by `getSnapshot`, if any.
 	 *
 	 * @var int|null
 	 */
 	public $importedDocumentIndex;
 
 	/**
-	 * Index of the content node of a template element in the <code>domNodes</code> array returned by <code>getSnapshot</code>.
+	 * Index of the content node of a template element in the `domNodes` array returned by `getSnapshot`.
 	 *
 	 * @var int|null
 	 */

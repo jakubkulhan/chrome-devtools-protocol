@@ -2,7 +2,7 @@
 namespace ChromeDevtoolsProtocol\Model\DOM;
 
 /**
- * Mirrors <code>DOMNodeInserted</code> event.
+ * Mirrors `DOMNodeInserted` event.
  *
  * @generated This file has been auto-generated, do not edit.
  *

@@ -2,7 +2,7 @@
 namespace ChromeDevtoolsProtocol\Model\DOM;
 
 /**
- * Fired when <code>Container</code>'s child node count has changed.
+ * Fired when `Container`'s child node count has changed.
  *
  * @generated This file has been auto-generated, do not edit.
  *

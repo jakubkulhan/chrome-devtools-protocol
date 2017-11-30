@@ -11,70 +11,70 @@ namespace ChromeDevtoolsProtocol\Model\Animation;
 final class AnimationEffect implements \JsonSerializable
 {
 	/**
-	 * <code>AnimationEffect</code>'s delay.
+	 * `AnimationEffect`'s delay.
 	 *
 	 * @var int|float
 	 */
 	public $delay;
 
 	/**
-	 * <code>AnimationEffect</code>'s end delay.
+	 * `AnimationEffect`'s end delay.
 	 *
 	 * @var int|float
 	 */
 	public $endDelay;
 
 	/**
-	 * <code>AnimationEffect</code>'s iteration start.
+	 * `AnimationEffect`'s iteration start.
 	 *
 	 * @var int|float
 	 */
 	public $iterationStart;
 
 	/**
-	 * <code>AnimationEffect</code>'s iterations.
+	 * `AnimationEffect`'s iterations.
 	 *
 	 * @var int|float
 	 */
 	public $iterations;
 
 	/**
-	 * <code>AnimationEffect</code>'s iteration duration.
+	 * `AnimationEffect`'s iteration duration.
 	 *
 	 * @var int|float
 	 */
 	public $duration;
 
 	/**
-	 * <code>AnimationEffect</code>'s playback direction.
+	 * `AnimationEffect`'s playback direction.
 	 *
 	 * @var string
 	 */
 	public $direction;
 
 	/**
-	 * <code>AnimationEffect</code>'s fill mode.
+	 * `AnimationEffect`'s fill mode.
 	 *
 	 * @var string
 	 */
 	public $fill;
 
 	/**
-	 * <code>AnimationEffect</code>'s target node.
+	 * `AnimationEffect`'s target node.
 	 *
 	 * @var int
 	 */
 	public $backendNodeId;
 
 	/**
-	 * <code>AnimationEffect</code>'s keyframes.
+	 * `AnimationEffect`'s keyframes.
 	 *
 	 * @var KeyframesRule|null
 	 */
 	public $keyframesRule;
 
 	/**
-	 * <code>AnimationEffect</code>'s timing function.
+	 * `AnimationEffect`'s timing function.
 	 *
 	 * @var string
 	 */

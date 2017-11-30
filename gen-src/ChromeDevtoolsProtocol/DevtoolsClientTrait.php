@@ -86,263 +86,13 @@ trait DevtoolsClientTrait
 	private $domains = [];
 
 
-	public function inspector(): InspectorDomainInterface
+	public function accessibility(): AccessibilityDomainInterface
 	{
-		if (!isset($this->domains['Inspector'])) {
+		if (!isset($this->domains['Accessibility'])) {
 			/** @var InternalClientInterface $this */
-			$this->domains['Inspector'] = new InspectorDomain($this);
+			$this->domains['Accessibility'] = new AccessibilityDomain($this);
 		}
-		return $this->domains['Inspector'];
-	}
-
-
-	public function memory(): MemoryDomainInterface
-	{
-		if (!isset($this->domains['Memory'])) {
-			/** @var InternalClientInterface $this */
-			$this->domains['Memory'] = new MemoryDomain($this);
-		}
-		return $this->domains['Memory'];
-	}
-
-
-	public function performance(): PerformanceDomainInterface
-	{
-		if (!isset($this->domains['Performance'])) {
-			/** @var InternalClientInterface $this */
-			$this->domains['Performance'] = new PerformanceDomain($this);
-		}
-		return $this->domains['Performance'];
-	}
-
-
-	public function page(): PageDomainInterface
-	{
-		if (!isset($this->domains['Page'])) {
-			/** @var InternalClientInterface $this */
-			$this->domains['Page'] = new PageDomain($this);
-		}
-		return $this->domains['Page'];
-	}
-
-
-	public function overlay(): OverlayDomainInterface
-	{
-		if (!isset($this->domains['Overlay'])) {
-			/** @var InternalClientInterface $this */
-			$this->domains['Overlay'] = new OverlayDomain($this);
-		}
-		return $this->domains['Overlay'];
-	}
-
-
-	public function emulation(): EmulationDomainInterface
-	{
-		if (!isset($this->domains['Emulation'])) {
-			/** @var InternalClientInterface $this */
-			$this->domains['Emulation'] = new EmulationDomain($this);
-		}
-		return $this->domains['Emulation'];
-	}
-
-
-	public function security(): SecurityDomainInterface
-	{
-		if (!isset($this->domains['Security'])) {
-			/** @var InternalClientInterface $this */
-			$this->domains['Security'] = new SecurityDomain($this);
-		}
-		return $this->domains['Security'];
-	}
-
-
-	public function audits(): AuditsDomainInterface
-	{
-		if (!isset($this->domains['Audits'])) {
-			/** @var InternalClientInterface $this */
-			$this->domains['Audits'] = new AuditsDomain($this);
-		}
-		return $this->domains['Audits'];
-	}
-
-
-	public function network(): NetworkDomainInterface
-	{
-		if (!isset($this->domains['Network'])) {
-			/** @var InternalClientInterface $this */
-			$this->domains['Network'] = new NetworkDomain($this);
-		}
-		return $this->domains['Network'];
-	}
-
-
-	public function database(): DatabaseDomainInterface
-	{
-		if (!isset($this->domains['Database'])) {
-			/** @var InternalClientInterface $this */
-			$this->domains['Database'] = new DatabaseDomain($this);
-		}
-		return $this->domains['Database'];
-	}
-
-
-	public function indexedDB(): IndexedDBDomainInterface
-	{
-		if (!isset($this->domains['IndexedDB'])) {
-			/** @var InternalClientInterface $this */
-			$this->domains['IndexedDB'] = new IndexedDBDomain($this);
-		}
-		return $this->domains['IndexedDB'];
-	}
-
-
-	public function cacheStorage(): CacheStorageDomainInterface
-	{
-		if (!isset($this->domains['CacheStorage'])) {
-			/** @var InternalClientInterface $this */
-			$this->domains['CacheStorage'] = new CacheStorageDomain($this);
-		}
-		return $this->domains['CacheStorage'];
-	}
-
-
-	public function domStorage(): DOMStorageDomainInterface
-	{
-		if (!isset($this->domains['DOMStorage'])) {
-			/** @var InternalClientInterface $this */
-			$this->domains['DOMStorage'] = new DOMStorageDomain($this);
-		}
-		return $this->domains['DOMStorage'];
-	}
-
-
-	public function applicationCache(): ApplicationCacheDomainInterface
-	{
-		if (!isset($this->domains['ApplicationCache'])) {
-			/** @var InternalClientInterface $this */
-			$this->domains['ApplicationCache'] = new ApplicationCacheDomain($this);
-		}
-		return $this->domains['ApplicationCache'];
-	}
-
-
-	public function dom(): DOMDomainInterface
-	{
-		if (!isset($this->domains['DOM'])) {
-			/** @var InternalClientInterface $this */
-			$this->domains['DOM'] = new DOMDomain($this);
-		}
-		return $this->domains['DOM'];
-	}
-
-
-	public function css(): CSSDomainInterface
-	{
-		if (!isset($this->domains['CSS'])) {
-			/** @var InternalClientInterface $this */
-			$this->domains['CSS'] = new CSSDomain($this);
-		}
-		return $this->domains['CSS'];
-	}
-
-
-	public function domSnapshot(): DOMSnapshotDomainInterface
-	{
-		if (!isset($this->domains['DOMSnapshot'])) {
-			/** @var InternalClientInterface $this */
-			$this->domains['DOMSnapshot'] = new DOMSnapshotDomain($this);
-		}
-		return $this->domains['DOMSnapshot'];
-	}
-
-
-	public function io(): IODomainInterface
-	{
-		if (!isset($this->domains['IO'])) {
-			/** @var InternalClientInterface $this */
-			$this->domains['IO'] = new IODomain($this);
-		}
-		return $this->domains['IO'];
-	}
-
-
-	public function domDebugger(): DOMDebuggerDomainInterface
-	{
-		if (!isset($this->domains['DOMDebugger'])) {
-			/** @var InternalClientInterface $this */
-			$this->domains['DOMDebugger'] = new DOMDebuggerDomain($this);
-		}
-		return $this->domains['DOMDebugger'];
-	}
-
-
-	public function target(): TargetDomainInterface
-	{
-		if (!isset($this->domains['Target'])) {
-			/** @var InternalClientInterface $this */
-			$this->domains['Target'] = new TargetDomain($this);
-		}
-		return $this->domains['Target'];
-	}
-
-
-	public function headlessExperimental(): HeadlessExperimentalDomainInterface
-	{
-		if (!isset($this->domains['HeadlessExperimental'])) {
-			/** @var InternalClientInterface $this */
-			$this->domains['HeadlessExperimental'] = new HeadlessExperimentalDomain($this);
-		}
-		return $this->domains['HeadlessExperimental'];
-	}
-
-
-	public function serviceWorker(): ServiceWorkerDomainInterface
-	{
-		if (!isset($this->domains['ServiceWorker'])) {
-			/** @var InternalClientInterface $this */
-			$this->domains['ServiceWorker'] = new ServiceWorkerDomain($this);
-		}
-		return $this->domains['ServiceWorker'];
-	}
-
-
-	public function input(): InputDomainInterface
-	{
-		if (!isset($this->domains['Input'])) {
-			/** @var InternalClientInterface $this */
-			$this->domains['Input'] = new InputDomain($this);
-		}
-		return $this->domains['Input'];
-	}
-
-
-	public function layerTree(): LayerTreeDomainInterface
-	{
-		if (!isset($this->domains['LayerTree'])) {
-			/** @var InternalClientInterface $this */
-			$this->domains['LayerTree'] = new LayerTreeDomain($this);
-		}
-		return $this->domains['LayerTree'];
-	}
-
-
-	public function deviceOrientation(): DeviceOrientationDomainInterface
-	{
-		if (!isset($this->domains['DeviceOrientation'])) {
-			/** @var InternalClientInterface $this */
-			$this->domains['DeviceOrientation'] = new DeviceOrientationDomain($this);
-		}
-		return $this->domains['DeviceOrientation'];
-	}
-
-
-	public function tracing(): TracingDomainInterface
-	{
-		if (!isset($this->domains['Tracing'])) {
-			/** @var InternalClientInterface $this */
-			$this->domains['Tracing'] = new TracingDomain($this);
-		}
-		return $this->domains['Tracing'];
+		return $this->domains['Accessibility'];
 	}
 
 
@@ -356,53 +106,23 @@ trait DevtoolsClientTrait
 	}
 
 
-	public function accessibility(): AccessibilityDomainInterface
+	public function applicationCache(): ApplicationCacheDomainInterface
 	{
-		if (!isset($this->domains['Accessibility'])) {
+		if (!isset($this->domains['ApplicationCache'])) {
 			/** @var InternalClientInterface $this */
-			$this->domains['Accessibility'] = new AccessibilityDomain($this);
+			$this->domains['ApplicationCache'] = new ApplicationCacheDomain($this);
 		}
-		return $this->domains['Accessibility'];
+		return $this->domains['ApplicationCache'];
 	}
 
 
-	public function storage(): StorageDomainInterface
+	public function audits(): AuditsDomainInterface
 	{
-		if (!isset($this->domains['Storage'])) {
+		if (!isset($this->domains['Audits'])) {
 			/** @var InternalClientInterface $this */
-			$this->domains['Storage'] = new StorageDomain($this);
+			$this->domains['Audits'] = new AuditsDomain($this);
 		}
-		return $this->domains['Storage'];
-	}
-
-
-	public function log(): LogDomainInterface
-	{
-		if (!isset($this->domains['Log'])) {
-			/** @var InternalClientInterface $this */
-			$this->domains['Log'] = new LogDomain($this);
-		}
-		return $this->domains['Log'];
-	}
-
-
-	public function systemInfo(): SystemInfoDomainInterface
-	{
-		if (!isset($this->domains['SystemInfo'])) {
-			/** @var InternalClientInterface $this */
-			$this->domains['SystemInfo'] = new SystemInfoDomain($this);
-		}
-		return $this->domains['SystemInfo'];
-	}
-
-
-	public function tethering(): TetheringDomainInterface
-	{
-		if (!isset($this->domains['Tethering'])) {
-			/** @var InternalClientInterface $this */
-			$this->domains['Tethering'] = new TetheringDomain($this);
-		}
-		return $this->domains['Tethering'];
+		return $this->domains['Audits'];
 	}
 
 
@@ -416,33 +136,13 @@ trait DevtoolsClientTrait
 	}
 
 
-	public function schema(): SchemaDomainInterface
+	public function cacheStorage(): CacheStorageDomainInterface
 	{
-		if (!isset($this->domains['Schema'])) {
+		if (!isset($this->domains['CacheStorage'])) {
 			/** @var InternalClientInterface $this */
-			$this->domains['Schema'] = new SchemaDomain($this);
+			$this->domains['CacheStorage'] = new CacheStorageDomain($this);
 		}
-		return $this->domains['Schema'];
-	}
-
-
-	public function runtime(): RuntimeDomainInterface
-	{
-		if (!isset($this->domains['Runtime'])) {
-			/** @var InternalClientInterface $this */
-			$this->domains['Runtime'] = new RuntimeDomain($this);
-		}
-		return $this->domains['Runtime'];
-	}
-
-
-	public function debugger(): DebuggerDomainInterface
-	{
-		if (!isset($this->domains['Debugger'])) {
-			/** @var InternalClientInterface $this */
-			$this->domains['Debugger'] = new DebuggerDomain($this);
-		}
-		return $this->domains['Debugger'];
+		return $this->domains['CacheStorage'];
 	}
 
 
@@ -456,13 +156,103 @@ trait DevtoolsClientTrait
 	}
 
 
-	public function profiler(): ProfilerDomainInterface
+	public function css(): CSSDomainInterface
 	{
-		if (!isset($this->domains['Profiler'])) {
+		if (!isset($this->domains['CSS'])) {
 			/** @var InternalClientInterface $this */
-			$this->domains['Profiler'] = new ProfilerDomain($this);
+			$this->domains['CSS'] = new CSSDomain($this);
 		}
-		return $this->domains['Profiler'];
+		return $this->domains['CSS'];
+	}
+
+
+	public function database(): DatabaseDomainInterface
+	{
+		if (!isset($this->domains['Database'])) {
+			/** @var InternalClientInterface $this */
+			$this->domains['Database'] = new DatabaseDomain($this);
+		}
+		return $this->domains['Database'];
+	}
+
+
+	public function debugger(): DebuggerDomainInterface
+	{
+		if (!isset($this->domains['Debugger'])) {
+			/** @var InternalClientInterface $this */
+			$this->domains['Debugger'] = new DebuggerDomain($this);
+		}
+		return $this->domains['Debugger'];
+	}
+
+
+	public function deviceOrientation(): DeviceOrientationDomainInterface
+	{
+		if (!isset($this->domains['DeviceOrientation'])) {
+			/** @var InternalClientInterface $this */
+			$this->domains['DeviceOrientation'] = new DeviceOrientationDomain($this);
+		}
+		return $this->domains['DeviceOrientation'];
+	}
+
+
+	public function dom(): DOMDomainInterface
+	{
+		if (!isset($this->domains['DOM'])) {
+			/** @var InternalClientInterface $this */
+			$this->domains['DOM'] = new DOMDomain($this);
+		}
+		return $this->domains['DOM'];
+	}
+
+
+	public function domDebugger(): DOMDebuggerDomainInterface
+	{
+		if (!isset($this->domains['DOMDebugger'])) {
+			/** @var InternalClientInterface $this */
+			$this->domains['DOMDebugger'] = new DOMDebuggerDomain($this);
+		}
+		return $this->domains['DOMDebugger'];
+	}
+
+
+	public function domSnapshot(): DOMSnapshotDomainInterface
+	{
+		if (!isset($this->domains['DOMSnapshot'])) {
+			/** @var InternalClientInterface $this */
+			$this->domains['DOMSnapshot'] = new DOMSnapshotDomain($this);
+		}
+		return $this->domains['DOMSnapshot'];
+	}
+
+
+	public function domStorage(): DOMStorageDomainInterface
+	{
+		if (!isset($this->domains['DOMStorage'])) {
+			/** @var InternalClientInterface $this */
+			$this->domains['DOMStorage'] = new DOMStorageDomain($this);
+		}
+		return $this->domains['DOMStorage'];
+	}
+
+
+	public function emulation(): EmulationDomainInterface
+	{
+		if (!isset($this->domains['Emulation'])) {
+			/** @var InternalClientInterface $this */
+			$this->domains['Emulation'] = new EmulationDomain($this);
+		}
+		return $this->domains['Emulation'];
+	}
+
+
+	public function headlessExperimental(): HeadlessExperimentalDomainInterface
+	{
+		if (!isset($this->domains['HeadlessExperimental'])) {
+			/** @var InternalClientInterface $this */
+			$this->domains['HeadlessExperimental'] = new HeadlessExperimentalDomain($this);
+		}
+		return $this->domains['HeadlessExperimental'];
 	}
 
 
@@ -473,5 +263,215 @@ trait DevtoolsClientTrait
 			$this->domains['HeapProfiler'] = new HeapProfilerDomain($this);
 		}
 		return $this->domains['HeapProfiler'];
+	}
+
+
+	public function indexedDB(): IndexedDBDomainInterface
+	{
+		if (!isset($this->domains['IndexedDB'])) {
+			/** @var InternalClientInterface $this */
+			$this->domains['IndexedDB'] = new IndexedDBDomain($this);
+		}
+		return $this->domains['IndexedDB'];
+	}
+
+
+	public function input(): InputDomainInterface
+	{
+		if (!isset($this->domains['Input'])) {
+			/** @var InternalClientInterface $this */
+			$this->domains['Input'] = new InputDomain($this);
+		}
+		return $this->domains['Input'];
+	}
+
+
+	public function inspector(): InspectorDomainInterface
+	{
+		if (!isset($this->domains['Inspector'])) {
+			/** @var InternalClientInterface $this */
+			$this->domains['Inspector'] = new InspectorDomain($this);
+		}
+		return $this->domains['Inspector'];
+	}
+
+
+	public function io(): IODomainInterface
+	{
+		if (!isset($this->domains['IO'])) {
+			/** @var InternalClientInterface $this */
+			$this->domains['IO'] = new IODomain($this);
+		}
+		return $this->domains['IO'];
+	}
+
+
+	public function layerTree(): LayerTreeDomainInterface
+	{
+		if (!isset($this->domains['LayerTree'])) {
+			/** @var InternalClientInterface $this */
+			$this->domains['LayerTree'] = new LayerTreeDomain($this);
+		}
+		return $this->domains['LayerTree'];
+	}
+
+
+	public function log(): LogDomainInterface
+	{
+		if (!isset($this->domains['Log'])) {
+			/** @var InternalClientInterface $this */
+			$this->domains['Log'] = new LogDomain($this);
+		}
+		return $this->domains['Log'];
+	}
+
+
+	public function memory(): MemoryDomainInterface
+	{
+		if (!isset($this->domains['Memory'])) {
+			/** @var InternalClientInterface $this */
+			$this->domains['Memory'] = new MemoryDomain($this);
+		}
+		return $this->domains['Memory'];
+	}
+
+
+	public function network(): NetworkDomainInterface
+	{
+		if (!isset($this->domains['Network'])) {
+			/** @var InternalClientInterface $this */
+			$this->domains['Network'] = new NetworkDomain($this);
+		}
+		return $this->domains['Network'];
+	}
+
+
+	public function overlay(): OverlayDomainInterface
+	{
+		if (!isset($this->domains['Overlay'])) {
+			/** @var InternalClientInterface $this */
+			$this->domains['Overlay'] = new OverlayDomain($this);
+		}
+		return $this->domains['Overlay'];
+	}
+
+
+	public function page(): PageDomainInterface
+	{
+		if (!isset($this->domains['Page'])) {
+			/** @var InternalClientInterface $this */
+			$this->domains['Page'] = new PageDomain($this);
+		}
+		return $this->domains['Page'];
+	}
+
+
+	public function performance(): PerformanceDomainInterface
+	{
+		if (!isset($this->domains['Performance'])) {
+			/** @var InternalClientInterface $this */
+			$this->domains['Performance'] = new PerformanceDomain($this);
+		}
+		return $this->domains['Performance'];
+	}
+
+
+	public function profiler(): ProfilerDomainInterface
+	{
+		if (!isset($this->domains['Profiler'])) {
+			/** @var InternalClientInterface $this */
+			$this->domains['Profiler'] = new ProfilerDomain($this);
+		}
+		return $this->domains['Profiler'];
+	}
+
+
+	public function runtime(): RuntimeDomainInterface
+	{
+		if (!isset($this->domains['Runtime'])) {
+			/** @var InternalClientInterface $this */
+			$this->domains['Runtime'] = new RuntimeDomain($this);
+		}
+		return $this->domains['Runtime'];
+	}
+
+
+	public function schema(): SchemaDomainInterface
+	{
+		if (!isset($this->domains['Schema'])) {
+			/** @var InternalClientInterface $this */
+			$this->domains['Schema'] = new SchemaDomain($this);
+		}
+		return $this->domains['Schema'];
+	}
+
+
+	public function security(): SecurityDomainInterface
+	{
+		if (!isset($this->domains['Security'])) {
+			/** @var InternalClientInterface $this */
+			$this->domains['Security'] = new SecurityDomain($this);
+		}
+		return $this->domains['Security'];
+	}
+
+
+	public function serviceWorker(): ServiceWorkerDomainInterface
+	{
+		if (!isset($this->domains['ServiceWorker'])) {
+			/** @var InternalClientInterface $this */
+			$this->domains['ServiceWorker'] = new ServiceWorkerDomain($this);
+		}
+		return $this->domains['ServiceWorker'];
+	}
+
+
+	public function storage(): StorageDomainInterface
+	{
+		if (!isset($this->domains['Storage'])) {
+			/** @var InternalClientInterface $this */
+			$this->domains['Storage'] = new StorageDomain($this);
+		}
+		return $this->domains['Storage'];
+	}
+
+
+	public function systemInfo(): SystemInfoDomainInterface
+	{
+		if (!isset($this->domains['SystemInfo'])) {
+			/** @var InternalClientInterface $this */
+			$this->domains['SystemInfo'] = new SystemInfoDomain($this);
+		}
+		return $this->domains['SystemInfo'];
+	}
+
+
+	public function target(): TargetDomainInterface
+	{
+		if (!isset($this->domains['Target'])) {
+			/** @var InternalClientInterface $this */
+			$this->domains['Target'] = new TargetDomain($this);
+		}
+		return $this->domains['Target'];
+	}
+
+
+	public function tethering(): TetheringDomainInterface
+	{
+		if (!isset($this->domains['Tethering'])) {
+			/** @var InternalClientInterface $this */
+			$this->domains['Tethering'] = new TetheringDomain($this);
+		}
+		return $this->domains['Tethering'];
+	}
+
+
+	public function tracing(): TracingDomainInterface
+	{
+		if (!isset($this->domains['Tracing'])) {
+			/** @var InternalClientInterface $this */
+			$this->domains['Tracing'] = new TracingDomain($this);
+		}
+		return $this->domains['Tracing'];
 	}
 }

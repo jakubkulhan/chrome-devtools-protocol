@@ -2,7 +2,7 @@
 namespace ChromeDevtoolsProtocol\Model\DOM;
 
 /**
- * Fired when <code>Document</code> has been totally updated. Node ids are no longer valid.
+ * Fired when `Document` has been totally updated. Node ids are no longer valid.
  *
  * @generated This file has been auto-generated, do not edit.
  *

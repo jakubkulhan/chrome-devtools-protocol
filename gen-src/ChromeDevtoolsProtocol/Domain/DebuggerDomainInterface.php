@@ -50,13 +50,14 @@ use ChromeDevtoolsProtocol\SubscriptionInterface;
 interface DebuggerDomainInterface
 {
 	/**
-	 * Enables debugger for the given page. Clients should not assume that the debugging has been enabled until the result for this command is received.
+	 * Continues execution until specific location is reached.
 	 *
 	 * @param ContextInterface $ctx
+	 * @param ContinueToLocationRequest $request
 	 *
-	 * @return EnableResponse
+	 * @return void
 	 */
-	public function enable(ContextInterface $ctx): EnableResponse;
+	public function continueToLocation(ContextInterface $ctx, ContinueToLocationRequest $request): void;
 
 
 	/**
@@ -70,58 +71,24 @@ interface DebuggerDomainInterface
 
 
 	/**
-	 * Activates / deactivates all breakpoints on the page.
+	 * Enables debugger for the given page. Clients should not assume that the debugging has been enabled until the result for this command is received.
 	 *
 	 * @param ContextInterface $ctx
-	 * @param SetBreakpointsActiveRequest $request
 	 *
-	 * @return void
+	 * @return EnableResponse
 	 */
-	public function setBreakpointsActive(ContextInterface $ctx, SetBreakpointsActiveRequest $request): void;
+	public function enable(ContextInterface $ctx): EnableResponse;
 
 
 	/**
-	 * Makes page not interrupt on any pauses (breakpoint, exception, dom exception etc).
+	 * Evaluates expression on a given call frame.
 	 *
 	 * @param ContextInterface $ctx
-	 * @param SetSkipAllPausesRequest $request
+	 * @param EvaluateOnCallFrameRequest $request
 	 *
-	 * @return void
+	 * @return EvaluateOnCallFrameResponse
 	 */
-	public function setSkipAllPauses(ContextInterface $ctx, SetSkipAllPausesRequest $request): void;
-
-
-	/**
-	 * Sets JavaScript breakpoint at given location specified either by URL or URL regex. Once this command is issued, all existing parsed scripts will have breakpoints resolved and returned in <code>locations</code> property. Further matching script parsing will result in subsequent <code>breakpointResolved</code> events issued. This logical breakpoint will survive page reloads.
-	 *
-	 * @param ContextInterface $ctx
-	 * @param SetBreakpointByUrlRequest $request
-	 *
-	 * @return SetBreakpointByUrlResponse
-	 */
-	public function setBreakpointByUrl(ContextInterface $ctx, SetBreakpointByUrlRequest $request): SetBreakpointByUrlResponse;
-
-
-	/**
-	 * Sets JavaScript breakpoint at a given location.
-	 *
-	 * @param ContextInterface $ctx
-	 * @param SetBreakpointRequest $request
-	 *
-	 * @return SetBreakpointResponse
-	 */
-	public function setBreakpoint(ContextInterface $ctx, SetBreakpointRequest $request): SetBreakpointResponse;
-
-
-	/**
-	 * Removes JavaScript breakpoint.
-	 *
-	 * @param ContextInterface $ctx
-	 * @param RemoveBreakpointRequest $request
-	 *
-	 * @return void
-	 */
-	public function removeBreakpoint(ContextInterface $ctx, RemoveBreakpointRequest $request): void;
+	public function evaluateOnCallFrame(ContextInterface $ctx, EvaluateOnCallFrameRequest $request): EvaluateOnCallFrameResponse;
 
 
 	/**
@@ -136,14 +103,35 @@ interface DebuggerDomainInterface
 
 
 	/**
-	 * Continues execution until specific location is reached.
+	 * Returns source for the script with given id.
 	 *
 	 * @param ContextInterface $ctx
-	 * @param ContinueToLocationRequest $request
+	 * @param GetScriptSourceRequest $request
+	 *
+	 * @return GetScriptSourceResponse
+	 */
+	public function getScriptSource(ContextInterface $ctx, GetScriptSourceRequest $request): GetScriptSourceResponse;
+
+
+	/**
+	 * Returns stack trace with given <code>stackTraceId</code>.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param GetStackTraceRequest $request
+	 *
+	 * @return GetStackTraceResponse
+	 */
+	public function getStackTrace(ContextInterface $ctx, GetStackTraceRequest $request): GetStackTraceResponse;
+
+
+	/**
+	 * Stops on the next JavaScript statement.
+	 *
+	 * @param ContextInterface $ctx
 	 *
 	 * @return void
 	 */
-	public function continueToLocation(ContextInterface $ctx, ContinueToLocationRequest $request): void;
+	public function pause(ContextInterface $ctx): void;
 
 
 	/**
@@ -158,13 +146,177 @@ interface DebuggerDomainInterface
 
 
 	/**
-	 * Steps over the statement.
+	 * Removes JavaScript breakpoint.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param RemoveBreakpointRequest $request
+	 *
+	 * @return void
+	 */
+	public function removeBreakpoint(ContextInterface $ctx, RemoveBreakpointRequest $request): void;
+
+
+	/**
+	 * Restarts particular call frame from the beginning.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param RestartFrameRequest $request
+	 *
+	 * @return RestartFrameResponse
+	 */
+	public function restartFrame(ContextInterface $ctx, RestartFrameRequest $request): RestartFrameResponse;
+
+
+	/**
+	 * Resumes JavaScript execution.
 	 *
 	 * @param ContextInterface $ctx
 	 *
 	 * @return void
 	 */
-	public function stepOver(ContextInterface $ctx): void;
+	public function resume(ContextInterface $ctx): void;
+
+
+	/**
+	 * This method is deprecated - use Debugger.stepInto with breakOnAsyncCall and Debugger.pauseOnAsyncTask instead. Steps into next scheduled async task if any is scheduled before next pause. Returns success when async task is actually scheduled, returns error if no task were scheduled or another scheduleStepIntoAsync was called.
+	 *
+	 * @param ContextInterface $ctx
+	 *
+	 * @return void
+	 */
+	public function scheduleStepIntoAsync(ContextInterface $ctx): void;
+
+
+	/**
+	 * Searches for given string in script content.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param SearchInContentRequest $request
+	 *
+	 * @return SearchInContentResponse
+	 */
+	public function searchInContent(ContextInterface $ctx, SearchInContentRequest $request): SearchInContentResponse;
+
+
+	/**
+	 * Enables or disables async call stacks tracking.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param SetAsyncCallStackDepthRequest $request
+	 *
+	 * @return void
+	 */
+	public function setAsyncCallStackDepth(ContextInterface $ctx, SetAsyncCallStackDepthRequest $request): void;
+
+
+	/**
+	 * Makes backend skip steps in the script in blackboxed ranges. VM will try leave blacklisted scripts by performing 'step in' several times, finally resorting to 'step out' if unsuccessful. Positions array contains positions where blackbox state is changed. First interval isn't blackboxed. Array should be sorted.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param SetBlackboxedRangesRequest $request
+	 *
+	 * @return void
+	 */
+	public function setBlackboxedRanges(ContextInterface $ctx, SetBlackboxedRangesRequest $request): void;
+
+
+	/**
+	 * Replace previous blackbox patterns with passed ones. Forces backend to skip stepping/pausing in scripts with url matching one of the patterns. VM will try to leave blackboxed script by performing 'step in' several times, finally resorting to 'step out' if unsuccessful.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param SetBlackboxPatternsRequest $request
+	 *
+	 * @return void
+	 */
+	public function setBlackboxPatterns(ContextInterface $ctx, SetBlackboxPatternsRequest $request): void;
+
+
+	/**
+	 * Sets JavaScript breakpoint at a given location.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param SetBreakpointRequest $request
+	 *
+	 * @return SetBreakpointResponse
+	 */
+	public function setBreakpoint(ContextInterface $ctx, SetBreakpointRequest $request): SetBreakpointResponse;
+
+
+	/**
+	 * Sets JavaScript breakpoint at given location specified either by URL or URL regex. Once this command is issued, all existing parsed scripts will have breakpoints resolved and returned in <code>locations</code> property. Further matching script parsing will result in subsequent <code>breakpointResolved</code> events issued. This logical breakpoint will survive page reloads.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param SetBreakpointByUrlRequest $request
+	 *
+	 * @return SetBreakpointByUrlResponse
+	 */
+	public function setBreakpointByUrl(ContextInterface $ctx, SetBreakpointByUrlRequest $request): SetBreakpointByUrlResponse;
+
+
+	/**
+	 * Activates / deactivates all breakpoints on the page.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param SetBreakpointsActiveRequest $request
+	 *
+	 * @return void
+	 */
+	public function setBreakpointsActive(ContextInterface $ctx, SetBreakpointsActiveRequest $request): void;
+
+
+	/**
+	 * Defines pause on exceptions state. Can be set to stop on all exceptions, uncaught exceptions or no exceptions. Initial pause on exceptions state is <code>none</code>.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param SetPauseOnExceptionsRequest $request
+	 *
+	 * @return void
+	 */
+	public function setPauseOnExceptions(ContextInterface $ctx, SetPauseOnExceptionsRequest $request): void;
+
+
+	/**
+	 * Changes return value in top frame. Available only at return break position.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param SetReturnValueRequest $request
+	 *
+	 * @return void
+	 */
+	public function setReturnValue(ContextInterface $ctx, SetReturnValueRequest $request): void;
+
+
+	/**
+	 * Edits JavaScript source live.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param SetScriptSourceRequest $request
+	 *
+	 * @return SetScriptSourceResponse
+	 */
+	public function setScriptSource(ContextInterface $ctx, SetScriptSourceRequest $request): SetScriptSourceResponse;
+
+
+	/**
+	 * Makes page not interrupt on any pauses (breakpoint, exception, dom exception etc).
+	 *
+	 * @param ContextInterface $ctx
+	 * @param SetSkipAllPausesRequest $request
+	 *
+	 * @return void
+	 */
+	public function setSkipAllPauses(ContextInterface $ctx, SetSkipAllPausesRequest $request): void;
+
+
+	/**
+	 * Changes value of variable in a callframe. Object-based scopes are not supported and must be mutated manually.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param SetVariableValueRequest $request
+	 *
+	 * @return void
+	 */
+	public function setVariableValue(ContextInterface $ctx, SetVariableValueRequest $request): void;
 
 
 	/**
@@ -189,213 +341,13 @@ interface DebuggerDomainInterface
 
 
 	/**
-	 * Stops on the next JavaScript statement.
+	 * Steps over the statement.
 	 *
 	 * @param ContextInterface $ctx
 	 *
 	 * @return void
 	 */
-	public function pause(ContextInterface $ctx): void;
-
-
-	/**
-	 * This method is deprecated - use Debugger.stepInto with breakOnAsyncCall and Debugger.pauseOnAsyncTask instead. Steps into next scheduled async task if any is scheduled before next pause. Returns success when async task is actually scheduled, returns error if no task were scheduled or another scheduleStepIntoAsync was called.
-	 *
-	 * @param ContextInterface $ctx
-	 *
-	 * @return void
-	 */
-	public function scheduleStepIntoAsync(ContextInterface $ctx): void;
-
-
-	/**
-	 * Resumes JavaScript execution.
-	 *
-	 * @param ContextInterface $ctx
-	 *
-	 * @return void
-	 */
-	public function resume(ContextInterface $ctx): void;
-
-
-	/**
-	 * Returns stack trace with given <code>stackTraceId</code>.
-	 *
-	 * @param ContextInterface $ctx
-	 * @param GetStackTraceRequest $request
-	 *
-	 * @return GetStackTraceResponse
-	 */
-	public function getStackTrace(ContextInterface $ctx, GetStackTraceRequest $request): GetStackTraceResponse;
-
-
-	/**
-	 * Searches for given string in script content.
-	 *
-	 * @param ContextInterface $ctx
-	 * @param SearchInContentRequest $request
-	 *
-	 * @return SearchInContentResponse
-	 */
-	public function searchInContent(ContextInterface $ctx, SearchInContentRequest $request): SearchInContentResponse;
-
-
-	/**
-	 * Edits JavaScript source live.
-	 *
-	 * @param ContextInterface $ctx
-	 * @param SetScriptSourceRequest $request
-	 *
-	 * @return SetScriptSourceResponse
-	 */
-	public function setScriptSource(ContextInterface $ctx, SetScriptSourceRequest $request): SetScriptSourceResponse;
-
-
-	/**
-	 * Restarts particular call frame from the beginning.
-	 *
-	 * @param ContextInterface $ctx
-	 * @param RestartFrameRequest $request
-	 *
-	 * @return RestartFrameResponse
-	 */
-	public function restartFrame(ContextInterface $ctx, RestartFrameRequest $request): RestartFrameResponse;
-
-
-	/**
-	 * Returns source for the script with given id.
-	 *
-	 * @param ContextInterface $ctx
-	 * @param GetScriptSourceRequest $request
-	 *
-	 * @return GetScriptSourceResponse
-	 */
-	public function getScriptSource(ContextInterface $ctx, GetScriptSourceRequest $request): GetScriptSourceResponse;
-
-
-	/**
-	 * Defines pause on exceptions state. Can be set to stop on all exceptions, uncaught exceptions or no exceptions. Initial pause on exceptions state is <code>none</code>.
-	 *
-	 * @param ContextInterface $ctx
-	 * @param SetPauseOnExceptionsRequest $request
-	 *
-	 * @return void
-	 */
-	public function setPauseOnExceptions(ContextInterface $ctx, SetPauseOnExceptionsRequest $request): void;
-
-
-	/**
-	 * Evaluates expression on a given call frame.
-	 *
-	 * @param ContextInterface $ctx
-	 * @param EvaluateOnCallFrameRequest $request
-	 *
-	 * @return EvaluateOnCallFrameResponse
-	 */
-	public function evaluateOnCallFrame(ContextInterface $ctx, EvaluateOnCallFrameRequest $request): EvaluateOnCallFrameResponse;
-
-
-	/**
-	 * Changes value of variable in a callframe. Object-based scopes are not supported and must be mutated manually.
-	 *
-	 * @param ContextInterface $ctx
-	 * @param SetVariableValueRequest $request
-	 *
-	 * @return void
-	 */
-	public function setVariableValue(ContextInterface $ctx, SetVariableValueRequest $request): void;
-
-
-	/**
-	 * Changes return value in top frame. Available only at return break position.
-	 *
-	 * @param ContextInterface $ctx
-	 * @param SetReturnValueRequest $request
-	 *
-	 * @return void
-	 */
-	public function setReturnValue(ContextInterface $ctx, SetReturnValueRequest $request): void;
-
-
-	/**
-	 * Enables or disables async call stacks tracking.
-	 *
-	 * @param ContextInterface $ctx
-	 * @param SetAsyncCallStackDepthRequest $request
-	 *
-	 * @return void
-	 */
-	public function setAsyncCallStackDepth(ContextInterface $ctx, SetAsyncCallStackDepthRequest $request): void;
-
-
-	/**
-	 * Replace previous blackbox patterns with passed ones. Forces backend to skip stepping/pausing in scripts with url matching one of the patterns. VM will try to leave blackboxed script by performing 'step in' several times, finally resorting to 'step out' if unsuccessful.
-	 *
-	 * @param ContextInterface $ctx
-	 * @param SetBlackboxPatternsRequest $request
-	 *
-	 * @return void
-	 */
-	public function setBlackboxPatterns(ContextInterface $ctx, SetBlackboxPatternsRequest $request): void;
-
-
-	/**
-	 * Makes backend skip steps in the script in blackboxed ranges. VM will try leave blacklisted scripts by performing 'step in' several times, finally resorting to 'step out' if unsuccessful. Positions array contains positions where blackbox state is changed. First interval isn't blackboxed. Array should be sorted.
-	 *
-	 * @param ContextInterface $ctx
-	 * @param SetBlackboxedRangesRequest $request
-	 *
-	 * @return void
-	 */
-	public function setBlackboxedRanges(ContextInterface $ctx, SetBlackboxedRangesRequest $request): void;
-
-
-	/**
-	 * Fired when virtual machine parses script. This event is also fired for all known and uncollected scripts upon enabling debugger.
-	 *
-	 * Listener will be called whenever event Debugger.scriptParsed is fired.
-	 *
-	 * @param callable $listener
-	 *
-	 * @return SubscriptionInterface
-	 */
-	public function addScriptParsedListener(callable $listener): SubscriptionInterface;
-
-
-	/**
-	 * Fired when virtual machine parses script. This event is also fired for all known and uncollected scripts upon enabling debugger.
-	 *
-	 * Method will block until first Debugger.scriptParsed event is fired.
-	 *
-	 * @param ContextInterface $ctx
-	 *
-	 * @return ScriptParsedEvent
-	 */
-	public function awaitScriptParsed(ContextInterface $ctx): ScriptParsedEvent;
-
-
-	/**
-	 * Fired when virtual machine fails to parse the script.
-	 *
-	 * Listener will be called whenever event Debugger.scriptFailedToParse is fired.
-	 *
-	 * @param callable $listener
-	 *
-	 * @return SubscriptionInterface
-	 */
-	public function addScriptFailedToParseListener(callable $listener): SubscriptionInterface;
-
-
-	/**
-	 * Fired when virtual machine fails to parse the script.
-	 *
-	 * Method will block until first Debugger.scriptFailedToParse event is fired.
-	 *
-	 * @param ContextInterface $ctx
-	 *
-	 * @return ScriptFailedToParseEvent
-	 */
-	public function awaitScriptFailedToParse(ContextInterface $ctx): ScriptFailedToParseEvent;
+	public function stepOver(ContextInterface $ctx): void;
 
 
 	/**
@@ -468,4 +420,52 @@ interface DebuggerDomainInterface
 	 * @return ResumedEvent
 	 */
 	public function awaitResumed(ContextInterface $ctx): ResumedEvent;
+
+
+	/**
+	 * Fired when virtual machine fails to parse the script.
+	 *
+	 * Listener will be called whenever event Debugger.scriptFailedToParse is fired.
+	 *
+	 * @param callable $listener
+	 *
+	 * @return SubscriptionInterface
+	 */
+	public function addScriptFailedToParseListener(callable $listener): SubscriptionInterface;
+
+
+	/**
+	 * Fired when virtual machine fails to parse the script.
+	 *
+	 * Method will block until first Debugger.scriptFailedToParse event is fired.
+	 *
+	 * @param ContextInterface $ctx
+	 *
+	 * @return ScriptFailedToParseEvent
+	 */
+	public function awaitScriptFailedToParse(ContextInterface $ctx): ScriptFailedToParseEvent;
+
+
+	/**
+	 * Fired when virtual machine parses script. This event is also fired for all known and uncollected scripts upon enabling debugger.
+	 *
+	 * Listener will be called whenever event Debugger.scriptParsed is fired.
+	 *
+	 * @param callable $listener
+	 *
+	 * @return SubscriptionInterface
+	 */
+	public function addScriptParsedListener(callable $listener): SubscriptionInterface;
+
+
+	/**
+	 * Fired when virtual machine parses script. This event is also fired for all known and uncollected scripts upon enabling debugger.
+	 *
+	 * Method will block until first Debugger.scriptParsed event is fired.
+	 *
+	 * @param ContextInterface $ctx
+	 *
+	 * @return ScriptParsedEvent
+	 */
+	public function awaitScriptParsed(ContextInterface $ctx): ScriptParsedEvent;
 }

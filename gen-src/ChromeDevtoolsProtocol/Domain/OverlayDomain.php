@@ -34,13 +34,6 @@ class OverlayDomain implements OverlayDomainInterface
 	}
 
 
-	public function enable(ContextInterface $ctx): void
-	{
-		$request = new \stdClass();
-		$this->internalClient->executeCommand($ctx, 'Overlay.enable', $request);
-	}
-
-
 	public function disable(ContextInterface $ctx): void
 	{
 		$request = new \stdClass();
@@ -48,9 +41,60 @@ class OverlayDomain implements OverlayDomainInterface
 	}
 
 
-	public function setShowPaintRects(ContextInterface $ctx, SetShowPaintRectsRequest $request): void
+	public function enable(ContextInterface $ctx): void
 	{
-		$this->internalClient->executeCommand($ctx, 'Overlay.setShowPaintRects', $request);
+		$request = new \stdClass();
+		$this->internalClient->executeCommand($ctx, 'Overlay.enable', $request);
+	}
+
+
+	public function getHighlightObjectForTest(ContextInterface $ctx, GetHighlightObjectForTestRequest $request): GetHighlightObjectForTestResponse
+	{
+		$response = $this->internalClient->executeCommand($ctx, 'Overlay.getHighlightObjectForTest', $request);
+		return GetHighlightObjectForTestResponse::fromJson($response);
+	}
+
+
+	public function hideHighlight(ContextInterface $ctx): void
+	{
+		$request = new \stdClass();
+		$this->internalClient->executeCommand($ctx, 'Overlay.hideHighlight', $request);
+	}
+
+
+	public function highlightFrame(ContextInterface $ctx, HighlightFrameRequest $request): void
+	{
+		$this->internalClient->executeCommand($ctx, 'Overlay.highlightFrame', $request);
+	}
+
+
+	public function highlightNode(ContextInterface $ctx, HighlightNodeRequest $request): void
+	{
+		$this->internalClient->executeCommand($ctx, 'Overlay.highlightNode', $request);
+	}
+
+
+	public function highlightQuad(ContextInterface $ctx, HighlightQuadRequest $request): void
+	{
+		$this->internalClient->executeCommand($ctx, 'Overlay.highlightQuad', $request);
+	}
+
+
+	public function highlightRect(ContextInterface $ctx, HighlightRectRequest $request): void
+	{
+		$this->internalClient->executeCommand($ctx, 'Overlay.highlightRect', $request);
+	}
+
+
+	public function setInspectMode(ContextInterface $ctx, SetInspectModeRequest $request): void
+	{
+		$this->internalClient->executeCommand($ctx, 'Overlay.setInspectMode', $request);
+	}
+
+
+	public function setPausedInDebuggerMessage(ContextInterface $ctx, SetPausedInDebuggerMessageRequest $request): void
+	{
+		$this->internalClient->executeCommand($ctx, 'Overlay.setPausedInDebuggerMessage', $request);
 	}
 
 
@@ -66,6 +110,12 @@ class OverlayDomain implements OverlayDomainInterface
 	}
 
 
+	public function setShowPaintRects(ContextInterface $ctx, SetShowPaintRectsRequest $request): void
+	{
+		$this->internalClient->executeCommand($ctx, 'Overlay.setShowPaintRects', $request);
+	}
+
+
 	public function setShowScrollBottleneckRects(ContextInterface $ctx, SetShowScrollBottleneckRectsRequest $request): void
 	{
 		$this->internalClient->executeCommand($ctx, 'Overlay.setShowScrollBottleneckRects', $request);
@@ -78,73 +128,9 @@ class OverlayDomain implements OverlayDomainInterface
 	}
 
 
-	public function setPausedInDebuggerMessage(ContextInterface $ctx, SetPausedInDebuggerMessageRequest $request): void
-	{
-		$this->internalClient->executeCommand($ctx, 'Overlay.setPausedInDebuggerMessage', $request);
-	}
-
-
 	public function setSuspended(ContextInterface $ctx, SetSuspendedRequest $request): void
 	{
 		$this->internalClient->executeCommand($ctx, 'Overlay.setSuspended', $request);
-	}
-
-
-	public function setInspectMode(ContextInterface $ctx, SetInspectModeRequest $request): void
-	{
-		$this->internalClient->executeCommand($ctx, 'Overlay.setInspectMode', $request);
-	}
-
-
-	public function highlightRect(ContextInterface $ctx, HighlightRectRequest $request): void
-	{
-		$this->internalClient->executeCommand($ctx, 'Overlay.highlightRect', $request);
-	}
-
-
-	public function highlightQuad(ContextInterface $ctx, HighlightQuadRequest $request): void
-	{
-		$this->internalClient->executeCommand($ctx, 'Overlay.highlightQuad', $request);
-	}
-
-
-	public function highlightNode(ContextInterface $ctx, HighlightNodeRequest $request): void
-	{
-		$this->internalClient->executeCommand($ctx, 'Overlay.highlightNode', $request);
-	}
-
-
-	public function highlightFrame(ContextInterface $ctx, HighlightFrameRequest $request): void
-	{
-		$this->internalClient->executeCommand($ctx, 'Overlay.highlightFrame', $request);
-	}
-
-
-	public function hideHighlight(ContextInterface $ctx): void
-	{
-		$request = new \stdClass();
-		$this->internalClient->executeCommand($ctx, 'Overlay.hideHighlight', $request);
-	}
-
-
-	public function getHighlightObjectForTest(ContextInterface $ctx, GetHighlightObjectForTestRequest $request): GetHighlightObjectForTestResponse
-	{
-		$response = $this->internalClient->executeCommand($ctx, 'Overlay.getHighlightObjectForTest', $request);
-		return GetHighlightObjectForTestResponse::fromJson($response);
-	}
-
-
-	public function addNodeHighlightRequestedListener(callable $listener): SubscriptionInterface
-	{
-		return $this->internalClient->addListener('Overlay.nodeHighlightRequested', function ($event) use ($listener) {
-			return $listener(NodeHighlightRequestedEvent::fromJson($event));
-		});
-	}
-
-
-	public function awaitNodeHighlightRequested(ContextInterface $ctx): NodeHighlightRequestedEvent
-	{
-		return NodeHighlightRequestedEvent::fromJson($this->internalClient->awaitEvent($ctx, 'Overlay.nodeHighlightRequested'));
 	}
 
 
@@ -159,6 +145,20 @@ class OverlayDomain implements OverlayDomainInterface
 	public function awaitInspectNodeRequested(ContextInterface $ctx): InspectNodeRequestedEvent
 	{
 		return InspectNodeRequestedEvent::fromJson($this->internalClient->awaitEvent($ctx, 'Overlay.inspectNodeRequested'));
+	}
+
+
+	public function addNodeHighlightRequestedListener(callable $listener): SubscriptionInterface
+	{
+		return $this->internalClient->addListener('Overlay.nodeHighlightRequested', function ($event) use ($listener) {
+			return $listener(NodeHighlightRequestedEvent::fromJson($event));
+		});
+	}
+
+
+	public function awaitNodeHighlightRequested(ContextInterface $ctx): NodeHighlightRequestedEvent
+	{
+		return NodeHighlightRequestedEvent::fromJson($this->internalClient->awaitEvent($ctx, 'Overlay.nodeHighlightRequested'));
 	}
 
 

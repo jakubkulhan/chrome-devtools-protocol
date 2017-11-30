@@ -31,13 +31,14 @@ use ChromeDevtoolsProtocol\SubscriptionInterface;
 interface LayerTreeDomainInterface
 {
 	/**
-	 * Enables compositing tree inspection.
+	 * Provides the reasons why the given layer was composited.
 	 *
 	 * @param ContextInterface $ctx
+	 * @param CompositingReasonsRequest $request
 	 *
-	 * @return void
+	 * @return CompositingReasonsResponse
 	 */
-	public function enable(ContextInterface $ctx): void;
+	public function compositingReasons(ContextInterface $ctx, CompositingReasonsRequest $request): CompositingReasonsResponse;
 
 
 	/**
@@ -51,25 +52,13 @@ interface LayerTreeDomainInterface
 
 
 	/**
-	 * Provides the reasons why the given layer was composited.
+	 * Enables compositing tree inspection.
 	 *
 	 * @param ContextInterface $ctx
-	 * @param CompositingReasonsRequest $request
 	 *
-	 * @return CompositingReasonsResponse
+	 * @return void
 	 */
-	public function compositingReasons(ContextInterface $ctx, CompositingReasonsRequest $request): CompositingReasonsResponse;
-
-
-	/**
-	 * Returns the layer snapshot identifier.
-	 *
-	 * @param ContextInterface $ctx
-	 * @param MakeSnapshotRequest $request
-	 *
-	 * @return MakeSnapshotResponse
-	 */
-	public function makeSnapshot(ContextInterface $ctx, MakeSnapshotRequest $request): MakeSnapshotResponse;
+	public function enable(ContextInterface $ctx): void;
 
 
 	/**
@@ -84,14 +73,14 @@ interface LayerTreeDomainInterface
 
 
 	/**
-	 * Releases layer snapshot captured by the back-end.
+	 * Returns the layer snapshot identifier.
 	 *
 	 * @param ContextInterface $ctx
-	 * @param ReleaseSnapshotRequest $request
+	 * @param MakeSnapshotRequest $request
 	 *
-	 * @return void
+	 * @return MakeSnapshotResponse
 	 */
-	public function releaseSnapshot(ContextInterface $ctx, ReleaseSnapshotRequest $request): void;
+	public function makeSnapshot(ContextInterface $ctx, MakeSnapshotRequest $request): MakeSnapshotResponse;
 
 
 	/**
@@ -103,6 +92,17 @@ interface LayerTreeDomainInterface
 	 * @return ProfileSnapshotResponse
 	 */
 	public function profileSnapshot(ContextInterface $ctx, ProfileSnapshotRequest $request): ProfileSnapshotResponse;
+
+
+	/**
+	 * Releases layer snapshot captured by the back-end.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param ReleaseSnapshotRequest $request
+	 *
+	 * @return void
+	 */
+	public function releaseSnapshot(ContextInterface $ctx, ReleaseSnapshotRequest $request): void;
 
 
 	/**
@@ -128,30 +128,6 @@ interface LayerTreeDomainInterface
 
 
 	/**
-	 * Subscribe to LayerTree.layerTreeDidChange event.
-	 *
-	 * Listener will be called whenever event LayerTree.layerTreeDidChange is fired.
-	 *
-	 * @param callable $listener
-	 *
-	 * @return SubscriptionInterface
-	 */
-	public function addLayerTreeDidChangeListener(callable $listener): SubscriptionInterface;
-
-
-	/**
-	 * Wait for LayerTree.layerTreeDidChange event.
-	 *
-	 * Method will block until first LayerTree.layerTreeDidChange event is fired.
-	 *
-	 * @param ContextInterface $ctx
-	 *
-	 * @return LayerTreeDidChangeEvent
-	 */
-	public function awaitLayerTreeDidChange(ContextInterface $ctx): LayerTreeDidChangeEvent;
-
-
-	/**
 	 * Subscribe to LayerTree.layerPainted event.
 	 *
 	 * Listener will be called whenever event LayerTree.layerPainted is fired.
@@ -173,4 +149,28 @@ interface LayerTreeDomainInterface
 	 * @return LayerPaintedEvent
 	 */
 	public function awaitLayerPainted(ContextInterface $ctx): LayerPaintedEvent;
+
+
+	/**
+	 * Subscribe to LayerTree.layerTreeDidChange event.
+	 *
+	 * Listener will be called whenever event LayerTree.layerTreeDidChange is fired.
+	 *
+	 * @param callable $listener
+	 *
+	 * @return SubscriptionInterface
+	 */
+	public function addLayerTreeDidChangeListener(callable $listener): SubscriptionInterface;
+
+
+	/**
+	 * Wait for LayerTree.layerTreeDidChange event.
+	 *
+	 * Method will block until first LayerTree.layerTreeDidChange event is fired.
+	 *
+	 * @param ContextInterface $ctx
+	 *
+	 * @return LayerTreeDidChangeEvent
+	 */
+	public function awaitLayerTreeDidChange(ContextInterface $ctx): LayerTreeDidChangeEvent;
 }

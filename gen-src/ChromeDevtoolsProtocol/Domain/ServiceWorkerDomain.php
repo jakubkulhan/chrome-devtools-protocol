@@ -29,10 +29,9 @@ class ServiceWorkerDomain implements ServiceWorkerDomainInterface
 	}
 
 
-	public function enable(ContextInterface $ctx): void
+	public function deliverPushMessage(ContextInterface $ctx, DeliverPushMessageRequest $request): void
 	{
-		$request = new \stdClass();
-		$this->internalClient->executeCommand($ctx, 'ServiceWorker.enable', $request);
+		$this->internalClient->executeCommand($ctx, 'ServiceWorker.deliverPushMessage', $request);
 	}
 
 
@@ -43,40 +42,16 @@ class ServiceWorkerDomain implements ServiceWorkerDomainInterface
 	}
 
 
-	public function unregister(ContextInterface $ctx, UnregisterRequest $request): void
+	public function dispatchSyncEvent(ContextInterface $ctx, DispatchSyncEventRequest $request): void
 	{
-		$this->internalClient->executeCommand($ctx, 'ServiceWorker.unregister', $request);
+		$this->internalClient->executeCommand($ctx, 'ServiceWorker.dispatchSyncEvent', $request);
 	}
 
 
-	public function updateRegistration(ContextInterface $ctx, UpdateRegistrationRequest $request): void
-	{
-		$this->internalClient->executeCommand($ctx, 'ServiceWorker.updateRegistration', $request);
-	}
-
-
-	public function startWorker(ContextInterface $ctx, StartWorkerRequest $request): void
-	{
-		$this->internalClient->executeCommand($ctx, 'ServiceWorker.startWorker', $request);
-	}
-
-
-	public function skipWaiting(ContextInterface $ctx, SkipWaitingRequest $request): void
-	{
-		$this->internalClient->executeCommand($ctx, 'ServiceWorker.skipWaiting', $request);
-	}
-
-
-	public function stopWorker(ContextInterface $ctx, StopWorkerRequest $request): void
-	{
-		$this->internalClient->executeCommand($ctx, 'ServiceWorker.stopWorker', $request);
-	}
-
-
-	public function stopAllWorkers(ContextInterface $ctx): void
+	public function enable(ContextInterface $ctx): void
 	{
 		$request = new \stdClass();
-		$this->internalClient->executeCommand($ctx, 'ServiceWorker.stopAllWorkers', $request);
+		$this->internalClient->executeCommand($ctx, 'ServiceWorker.enable', $request);
 	}
 
 
@@ -92,15 +67,54 @@ class ServiceWorkerDomain implements ServiceWorkerDomainInterface
 	}
 
 
-	public function deliverPushMessage(ContextInterface $ctx, DeliverPushMessageRequest $request): void
+	public function skipWaiting(ContextInterface $ctx, SkipWaitingRequest $request): void
 	{
-		$this->internalClient->executeCommand($ctx, 'ServiceWorker.deliverPushMessage', $request);
+		$this->internalClient->executeCommand($ctx, 'ServiceWorker.skipWaiting', $request);
 	}
 
 
-	public function dispatchSyncEvent(ContextInterface $ctx, DispatchSyncEventRequest $request): void
+	public function startWorker(ContextInterface $ctx, StartWorkerRequest $request): void
 	{
-		$this->internalClient->executeCommand($ctx, 'ServiceWorker.dispatchSyncEvent', $request);
+		$this->internalClient->executeCommand($ctx, 'ServiceWorker.startWorker', $request);
+	}
+
+
+	public function stopAllWorkers(ContextInterface $ctx): void
+	{
+		$request = new \stdClass();
+		$this->internalClient->executeCommand($ctx, 'ServiceWorker.stopAllWorkers', $request);
+	}
+
+
+	public function stopWorker(ContextInterface $ctx, StopWorkerRequest $request): void
+	{
+		$this->internalClient->executeCommand($ctx, 'ServiceWorker.stopWorker', $request);
+	}
+
+
+	public function unregister(ContextInterface $ctx, UnregisterRequest $request): void
+	{
+		$this->internalClient->executeCommand($ctx, 'ServiceWorker.unregister', $request);
+	}
+
+
+	public function updateRegistration(ContextInterface $ctx, UpdateRegistrationRequest $request): void
+	{
+		$this->internalClient->executeCommand($ctx, 'ServiceWorker.updateRegistration', $request);
+	}
+
+
+	public function addWorkerErrorReportedListener(callable $listener): SubscriptionInterface
+	{
+		return $this->internalClient->addListener('ServiceWorker.workerErrorReported', function ($event) use ($listener) {
+			return $listener(WorkerErrorReportedEvent::fromJson($event));
+		});
+	}
+
+
+	public function awaitWorkerErrorReported(ContextInterface $ctx): WorkerErrorReportedEvent
+	{
+		return WorkerErrorReportedEvent::fromJson($this->internalClient->awaitEvent($ctx, 'ServiceWorker.workerErrorReported'));
 	}
 
 
@@ -129,19 +143,5 @@ class ServiceWorkerDomain implements ServiceWorkerDomainInterface
 	public function awaitWorkerVersionUpdated(ContextInterface $ctx): WorkerVersionUpdatedEvent
 	{
 		return WorkerVersionUpdatedEvent::fromJson($this->internalClient->awaitEvent($ctx, 'ServiceWorker.workerVersionUpdated'));
-	}
-
-
-	public function addWorkerErrorReportedListener(callable $listener): SubscriptionInterface
-	{
-		return $this->internalClient->addListener('ServiceWorker.workerErrorReported', function ($event) use ($listener) {
-			return $listener(WorkerErrorReportedEvent::fromJson($event));
-		});
-	}
-
-
-	public function awaitWorkerErrorReported(ContextInterface $ctx): WorkerErrorReportedEvent
-	{
-		return WorkerErrorReportedEvent::fromJson($this->internalClient->awaitEvent($ctx, 'ServiceWorker.workerErrorReported'));
 	}
 }

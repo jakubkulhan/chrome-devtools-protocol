@@ -16,6 +16,16 @@ use ChromeDevtoolsProtocol\Model\DeviceOrientation\SetDeviceOrientationOverrideR
 interface DeviceOrientationDomainInterface
 {
 	/**
+	 * Clears the overridden Device Orientation.
+	 *
+	 * @param ContextInterface $ctx
+	 *
+	 * @return void
+	 */
+	public function clearDeviceOrientationOverride(ContextInterface $ctx): void;
+
+
+	/**
 	 * Overrides the Device Orientation.
 	 *
 	 * @param ContextInterface $ctx
@@ -24,14 +34,4 @@ interface DeviceOrientationDomainInterface
 	 * @return void
 	 */
 	public function setDeviceOrientationOverride(ContextInterface $ctx, SetDeviceOrientationOverrideRequest $request): void;
-
-
-	/**
-	 * Clears the overridden Device Orientation.
-	 *
-	 * @param ContextInterface $ctx
-	 *
-	 * @return void
-	 */
-	public function clearDeviceOrientationOverride(ContextInterface $ctx): void;
 }

@@ -17,15 +17,15 @@ class DeviceOrientationDomain implements DeviceOrientationDomainInterface
 	}
 
 
-	public function setDeviceOrientationOverride(ContextInterface $ctx, SetDeviceOrientationOverrideRequest $request): void
-	{
-		$this->internalClient->executeCommand($ctx, 'DeviceOrientation.setDeviceOrientationOverride', $request);
-	}
-
-
 	public function clearDeviceOrientationOverride(ContextInterface $ctx): void
 	{
 		$request = new \stdClass();
 		$this->internalClient->executeCommand($ctx, 'DeviceOrientation.clearDeviceOrientationOverride', $request);
+	}
+
+
+	public function setDeviceOrientationOverride(ContextInterface $ctx, SetDeviceOrientationOverrideRequest $request): void
+	{
+		$this->internalClient->executeCommand($ctx, 'DeviceOrientation.setDeviceOrientationOverride', $request);
 	}
 }

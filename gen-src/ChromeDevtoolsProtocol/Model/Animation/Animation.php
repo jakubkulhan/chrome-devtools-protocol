@@ -11,70 +11,70 @@ namespace ChromeDevtoolsProtocol\Model\Animation;
 final class Animation implements \JsonSerializable
 {
 	/**
-	 * <code>Animation</code>'s id.
+	 * `Animation`'s id.
 	 *
 	 * @var string
 	 */
 	public $id;
 
 	/**
-	 * <code>Animation</code>'s name.
+	 * `Animation`'s name.
 	 *
 	 * @var string
 	 */
 	public $name;
 
 	/**
-	 * <code>Animation</code>'s internal paused state.
+	 * `Animation`'s internal paused state.
 	 *
 	 * @var bool
 	 */
 	public $pausedState;
 
 	/**
-	 * <code>Animation</code>'s play state.
+	 * `Animation`'s play state.
 	 *
 	 * @var string
 	 */
 	public $playState;
 
 	/**
-	 * <code>Animation</code>'s playback rate.
+	 * `Animation`'s playback rate.
 	 *
 	 * @var int|float
 	 */
 	public $playbackRate;
 
 	/**
-	 * <code>Animation</code>'s start time.
+	 * `Animation`'s start time.
 	 *
 	 * @var int|float
 	 */
 	public $startTime;
 
 	/**
-	 * <code>Animation</code>'s current time.
+	 * `Animation`'s current time.
 	 *
 	 * @var int|float
 	 */
 	public $currentTime;
 
 	/**
-	 * Animation type of <code>Animation</code>.
+	 * Animation type of `Animation`.
 	 *
 	 * @var string
 	 */
 	public $type;
 
 	/**
-	 * <code>Animation</code>'s source animation node.
+	 * `Animation`'s source animation node.
 	 *
 	 * @var AnimationEffect|null
 	 */
 	public $source;
 
 	/**
-	 * A unique ID for <code>Animation</code> representing the sources that triggered this CSS animation/transition.
+	 * A unique ID for `Animation` representing the sources that triggered this CSS animation/transition.
 	 *
 	 * @var string|null
 	 */

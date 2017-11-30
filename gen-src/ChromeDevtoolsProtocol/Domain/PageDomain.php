@@ -74,30 +74,10 @@ class PageDomain implements PageDomainInterface
 	}
 
 
-	public function enable(ContextInterface $ctx): void
-	{
-		$request = new \stdClass();
-		$this->internalClient->executeCommand($ctx, 'Page.enable', $request);
-	}
-
-
-	public function disable(ContextInterface $ctx): void
-	{
-		$request = new \stdClass();
-		$this->internalClient->executeCommand($ctx, 'Page.disable', $request);
-	}
-
-
 	public function addScriptToEvaluateOnLoad(ContextInterface $ctx, AddScriptToEvaluateOnLoadRequest $request): AddScriptToEvaluateOnLoadResponse
 	{
 		$response = $this->internalClient->executeCommand($ctx, 'Page.addScriptToEvaluateOnLoad', $request);
 		return AddScriptToEvaluateOnLoadResponse::fromJson($response);
-	}
-
-
-	public function removeScriptToEvaluateOnLoad(ContextInterface $ctx, RemoveScriptToEvaluateOnLoadRequest $request): void
-	{
-		$this->internalClient->executeCommand($ctx, 'Page.removeScriptToEvaluateOnLoad', $request);
 	}
 
 
@@ -108,156 +88,10 @@ class PageDomain implements PageDomainInterface
 	}
 
 
-	public function removeScriptToEvaluateOnNewDocument(ContextInterface $ctx, RemoveScriptToEvaluateOnNewDocumentRequest $request): void
-	{
-		$this->internalClient->executeCommand($ctx, 'Page.removeScriptToEvaluateOnNewDocument', $request);
-	}
-
-
-	public function setAutoAttachToCreatedPages(ContextInterface $ctx, SetAutoAttachToCreatedPagesRequest $request): void
-	{
-		$this->internalClient->executeCommand($ctx, 'Page.setAutoAttachToCreatedPages', $request);
-	}
-
-
-	public function setLifecycleEventsEnabled(ContextInterface $ctx, SetLifecycleEventsEnabledRequest $request): void
-	{
-		$this->internalClient->executeCommand($ctx, 'Page.setLifecycleEventsEnabled', $request);
-	}
-
-
-	public function reload(ContextInterface $ctx, ReloadRequest $request): void
-	{
-		$this->internalClient->executeCommand($ctx, 'Page.reload', $request);
-	}
-
-
-	public function setAdBlockingEnabled(ContextInterface $ctx, SetAdBlockingEnabledRequest $request): void
-	{
-		$this->internalClient->executeCommand($ctx, 'Page.setAdBlockingEnabled', $request);
-	}
-
-
-	public function navigate(ContextInterface $ctx, NavigateRequest $request): NavigateResponse
-	{
-		$response = $this->internalClient->executeCommand($ctx, 'Page.navigate', $request);
-		return NavigateResponse::fromJson($response);
-	}
-
-
-	public function stopLoading(ContextInterface $ctx): void
+	public function bringToFront(ContextInterface $ctx): void
 	{
 		$request = new \stdClass();
-		$this->internalClient->executeCommand($ctx, 'Page.stopLoading', $request);
-	}
-
-
-	public function getNavigationHistory(ContextInterface $ctx): GetNavigationHistoryResponse
-	{
-		$request = new \stdClass();
-		$response = $this->internalClient->executeCommand($ctx, 'Page.getNavigationHistory', $request);
-		return GetNavigationHistoryResponse::fromJson($response);
-	}
-
-
-	public function navigateToHistoryEntry(ContextInterface $ctx, NavigateToHistoryEntryRequest $request): void
-	{
-		$this->internalClient->executeCommand($ctx, 'Page.navigateToHistoryEntry', $request);
-	}
-
-
-	public function getCookies(ContextInterface $ctx): GetCookiesResponse
-	{
-		$request = new \stdClass();
-		$response = $this->internalClient->executeCommand($ctx, 'Page.getCookies', $request);
-		return GetCookiesResponse::fromJson($response);
-	}
-
-
-	public function deleteCookie(ContextInterface $ctx, DeleteCookieRequest $request): void
-	{
-		$this->internalClient->executeCommand($ctx, 'Page.deleteCookie', $request);
-	}
-
-
-	public function getResourceTree(ContextInterface $ctx): GetResourceTreeResponse
-	{
-		$request = new \stdClass();
-		$response = $this->internalClient->executeCommand($ctx, 'Page.getResourceTree', $request);
-		return GetResourceTreeResponse::fromJson($response);
-	}
-
-
-	public function getFrameTree(ContextInterface $ctx): GetFrameTreeResponse
-	{
-		$request = new \stdClass();
-		$response = $this->internalClient->executeCommand($ctx, 'Page.getFrameTree', $request);
-		return GetFrameTreeResponse::fromJson($response);
-	}
-
-
-	public function getResourceContent(ContextInterface $ctx, GetResourceContentRequest $request): GetResourceContentResponse
-	{
-		$response = $this->internalClient->executeCommand($ctx, 'Page.getResourceContent', $request);
-		return GetResourceContentResponse::fromJson($response);
-	}
-
-
-	public function searchInResource(ContextInterface $ctx, SearchInResourceRequest $request): SearchInResourceResponse
-	{
-		$response = $this->internalClient->executeCommand($ctx, 'Page.searchInResource', $request);
-		return SearchInResourceResponse::fromJson($response);
-	}
-
-
-	public function setDocumentContent(ContextInterface $ctx, SetDocumentContentRequest $request): void
-	{
-		$this->internalClient->executeCommand($ctx, 'Page.setDocumentContent', $request);
-	}
-
-
-	public function setDeviceMetricsOverride(ContextInterface $ctx, SetDeviceMetricsOverrideRequest $request): void
-	{
-		$this->internalClient->executeCommand($ctx, 'Page.setDeviceMetricsOverride', $request);
-	}
-
-
-	public function clearDeviceMetricsOverride(ContextInterface $ctx): void
-	{
-		$request = new \stdClass();
-		$this->internalClient->executeCommand($ctx, 'Page.clearDeviceMetricsOverride', $request);
-	}
-
-
-	public function setGeolocationOverride(ContextInterface $ctx, SetGeolocationOverrideRequest $request): void
-	{
-		$this->internalClient->executeCommand($ctx, 'Page.setGeolocationOverride', $request);
-	}
-
-
-	public function clearGeolocationOverride(ContextInterface $ctx): void
-	{
-		$request = new \stdClass();
-		$this->internalClient->executeCommand($ctx, 'Page.clearGeolocationOverride', $request);
-	}
-
-
-	public function setDeviceOrientationOverride(ContextInterface $ctx, SetDeviceOrientationOverrideRequest $request): void
-	{
-		$this->internalClient->executeCommand($ctx, 'Page.setDeviceOrientationOverride', $request);
-	}
-
-
-	public function clearDeviceOrientationOverride(ContextInterface $ctx): void
-	{
-		$request = new \stdClass();
-		$this->internalClient->executeCommand($ctx, 'Page.clearDeviceOrientationOverride', $request);
-	}
-
-
-	public function setTouchEmulationEnabled(ContextInterface $ctx, SetTouchEmulationEnabledRequest $request): void
-	{
-		$this->internalClient->executeCommand($ctx, 'Page.setTouchEmulationEnabled', $request);
+		$this->internalClient->executeCommand($ctx, 'Page.bringToFront', $request);
 	}
 
 
@@ -268,35 +102,51 @@ class PageDomain implements PageDomainInterface
 	}
 
 
-	public function printToPDF(ContextInterface $ctx, PrintToPDFRequest $request): PrintToPDFResponse
-	{
-		$response = $this->internalClient->executeCommand($ctx, 'Page.printToPDF', $request);
-		return PrintToPDFResponse::fromJson($response);
-	}
-
-
-	public function startScreencast(ContextInterface $ctx, StartScreencastRequest $request): void
-	{
-		$this->internalClient->executeCommand($ctx, 'Page.startScreencast', $request);
-	}
-
-
-	public function stopScreencast(ContextInterface $ctx): void
+	public function clearDeviceMetricsOverride(ContextInterface $ctx): void
 	{
 		$request = new \stdClass();
-		$this->internalClient->executeCommand($ctx, 'Page.stopScreencast', $request);
+		$this->internalClient->executeCommand($ctx, 'Page.clearDeviceMetricsOverride', $request);
 	}
 
 
-	public function screencastFrameAck(ContextInterface $ctx, ScreencastFrameAckRequest $request): void
+	public function clearDeviceOrientationOverride(ContextInterface $ctx): void
 	{
-		$this->internalClient->executeCommand($ctx, 'Page.screencastFrameAck', $request);
+		$request = new \stdClass();
+		$this->internalClient->executeCommand($ctx, 'Page.clearDeviceOrientationOverride', $request);
 	}
 
 
-	public function handleJavaScriptDialog(ContextInterface $ctx, HandleJavaScriptDialogRequest $request): void
+	public function clearGeolocationOverride(ContextInterface $ctx): void
 	{
-		$this->internalClient->executeCommand($ctx, 'Page.handleJavaScriptDialog', $request);
+		$request = new \stdClass();
+		$this->internalClient->executeCommand($ctx, 'Page.clearGeolocationOverride', $request);
+	}
+
+
+	public function createIsolatedWorld(ContextInterface $ctx, CreateIsolatedWorldRequest $request): CreateIsolatedWorldResponse
+	{
+		$response = $this->internalClient->executeCommand($ctx, 'Page.createIsolatedWorld', $request);
+		return CreateIsolatedWorldResponse::fromJson($response);
+	}
+
+
+	public function deleteCookie(ContextInterface $ctx, DeleteCookieRequest $request): void
+	{
+		$this->internalClient->executeCommand($ctx, 'Page.deleteCookie', $request);
+	}
+
+
+	public function disable(ContextInterface $ctx): void
+	{
+		$request = new \stdClass();
+		$this->internalClient->executeCommand($ctx, 'Page.disable', $request);
+	}
+
+
+	public function enable(ContextInterface $ctx): void
+	{
+		$request = new \stdClass();
+		$this->internalClient->executeCommand($ctx, 'Page.enable', $request);
 	}
 
 
@@ -308,10 +158,19 @@ class PageDomain implements PageDomainInterface
 	}
 
 
-	public function requestAppBanner(ContextInterface $ctx): void
+	public function getCookies(ContextInterface $ctx): GetCookiesResponse
 	{
 		$request = new \stdClass();
-		$this->internalClient->executeCommand($ctx, 'Page.requestAppBanner', $request);
+		$response = $this->internalClient->executeCommand($ctx, 'Page.getCookies', $request);
+		return GetCookiesResponse::fromJson($response);
+	}
+
+
+	public function getFrameTree(ContextInterface $ctx): GetFrameTreeResponse
+	{
+		$request = new \stdClass();
+		$response = $this->internalClient->executeCommand($ctx, 'Page.getFrameTree', $request);
+		return GetFrameTreeResponse::fromJson($response);
 	}
 
 
@@ -323,23 +182,164 @@ class PageDomain implements PageDomainInterface
 	}
 
 
-	public function createIsolatedWorld(ContextInterface $ctx, CreateIsolatedWorldRequest $request): CreateIsolatedWorldResponse
+	public function getNavigationHistory(ContextInterface $ctx): GetNavigationHistoryResponse
 	{
-		$response = $this->internalClient->executeCommand($ctx, 'Page.createIsolatedWorld', $request);
-		return CreateIsolatedWorldResponse::fromJson($response);
+		$request = new \stdClass();
+		$response = $this->internalClient->executeCommand($ctx, 'Page.getNavigationHistory', $request);
+		return GetNavigationHistoryResponse::fromJson($response);
 	}
 
 
-	public function bringToFront(ContextInterface $ctx): void
+	public function getResourceContent(ContextInterface $ctx, GetResourceContentRequest $request): GetResourceContentResponse
+	{
+		$response = $this->internalClient->executeCommand($ctx, 'Page.getResourceContent', $request);
+		return GetResourceContentResponse::fromJson($response);
+	}
+
+
+	public function getResourceTree(ContextInterface $ctx): GetResourceTreeResponse
 	{
 		$request = new \stdClass();
-		$this->internalClient->executeCommand($ctx, 'Page.bringToFront', $request);
+		$response = $this->internalClient->executeCommand($ctx, 'Page.getResourceTree', $request);
+		return GetResourceTreeResponse::fromJson($response);
+	}
+
+
+	public function handleJavaScriptDialog(ContextInterface $ctx, HandleJavaScriptDialogRequest $request): void
+	{
+		$this->internalClient->executeCommand($ctx, 'Page.handleJavaScriptDialog', $request);
+	}
+
+
+	public function navigate(ContextInterface $ctx, NavigateRequest $request): NavigateResponse
+	{
+		$response = $this->internalClient->executeCommand($ctx, 'Page.navigate', $request);
+		return NavigateResponse::fromJson($response);
+	}
+
+
+	public function navigateToHistoryEntry(ContextInterface $ctx, NavigateToHistoryEntryRequest $request): void
+	{
+		$this->internalClient->executeCommand($ctx, 'Page.navigateToHistoryEntry', $request);
+	}
+
+
+	public function printToPDF(ContextInterface $ctx, PrintToPDFRequest $request): PrintToPDFResponse
+	{
+		$response = $this->internalClient->executeCommand($ctx, 'Page.printToPDF', $request);
+		return PrintToPDFResponse::fromJson($response);
+	}
+
+
+	public function reload(ContextInterface $ctx, ReloadRequest $request): void
+	{
+		$this->internalClient->executeCommand($ctx, 'Page.reload', $request);
+	}
+
+
+	public function removeScriptToEvaluateOnLoad(ContextInterface $ctx, RemoveScriptToEvaluateOnLoadRequest $request): void
+	{
+		$this->internalClient->executeCommand($ctx, 'Page.removeScriptToEvaluateOnLoad', $request);
+	}
+
+
+	public function removeScriptToEvaluateOnNewDocument(ContextInterface $ctx, RemoveScriptToEvaluateOnNewDocumentRequest $request): void
+	{
+		$this->internalClient->executeCommand($ctx, 'Page.removeScriptToEvaluateOnNewDocument', $request);
+	}
+
+
+	public function requestAppBanner(ContextInterface $ctx): void
+	{
+		$request = new \stdClass();
+		$this->internalClient->executeCommand($ctx, 'Page.requestAppBanner', $request);
+	}
+
+
+	public function screencastFrameAck(ContextInterface $ctx, ScreencastFrameAckRequest $request): void
+	{
+		$this->internalClient->executeCommand($ctx, 'Page.screencastFrameAck', $request);
+	}
+
+
+	public function searchInResource(ContextInterface $ctx, SearchInResourceRequest $request): SearchInResourceResponse
+	{
+		$response = $this->internalClient->executeCommand($ctx, 'Page.searchInResource', $request);
+		return SearchInResourceResponse::fromJson($response);
+	}
+
+
+	public function setAdBlockingEnabled(ContextInterface $ctx, SetAdBlockingEnabledRequest $request): void
+	{
+		$this->internalClient->executeCommand($ctx, 'Page.setAdBlockingEnabled', $request);
+	}
+
+
+	public function setAutoAttachToCreatedPages(ContextInterface $ctx, SetAutoAttachToCreatedPagesRequest $request): void
+	{
+		$this->internalClient->executeCommand($ctx, 'Page.setAutoAttachToCreatedPages', $request);
+	}
+
+
+	public function setDeviceMetricsOverride(ContextInterface $ctx, SetDeviceMetricsOverrideRequest $request): void
+	{
+		$this->internalClient->executeCommand($ctx, 'Page.setDeviceMetricsOverride', $request);
+	}
+
+
+	public function setDeviceOrientationOverride(ContextInterface $ctx, SetDeviceOrientationOverrideRequest $request): void
+	{
+		$this->internalClient->executeCommand($ctx, 'Page.setDeviceOrientationOverride', $request);
+	}
+
+
+	public function setDocumentContent(ContextInterface $ctx, SetDocumentContentRequest $request): void
+	{
+		$this->internalClient->executeCommand($ctx, 'Page.setDocumentContent', $request);
 	}
 
 
 	public function setDownloadBehavior(ContextInterface $ctx, SetDownloadBehaviorRequest $request): void
 	{
 		$this->internalClient->executeCommand($ctx, 'Page.setDownloadBehavior', $request);
+	}
+
+
+	public function setGeolocationOverride(ContextInterface $ctx, SetGeolocationOverrideRequest $request): void
+	{
+		$this->internalClient->executeCommand($ctx, 'Page.setGeolocationOverride', $request);
+	}
+
+
+	public function setLifecycleEventsEnabled(ContextInterface $ctx, SetLifecycleEventsEnabledRequest $request): void
+	{
+		$this->internalClient->executeCommand($ctx, 'Page.setLifecycleEventsEnabled', $request);
+	}
+
+
+	public function setTouchEmulationEnabled(ContextInterface $ctx, SetTouchEmulationEnabledRequest $request): void
+	{
+		$this->internalClient->executeCommand($ctx, 'Page.setTouchEmulationEnabled', $request);
+	}
+
+
+	public function startScreencast(ContextInterface $ctx, StartScreencastRequest $request): void
+	{
+		$this->internalClient->executeCommand($ctx, 'Page.startScreencast', $request);
+	}
+
+
+	public function stopLoading(ContextInterface $ctx): void
+	{
+		$request = new \stdClass();
+		$this->internalClient->executeCommand($ctx, 'Page.stopLoading', $request);
+	}
+
+
+	public function stopScreencast(ContextInterface $ctx): void
+	{
+		$request = new \stdClass();
+		$this->internalClient->executeCommand($ctx, 'Page.stopScreencast', $request);
 	}
 
 
@@ -357,34 +357,6 @@ class PageDomain implements PageDomainInterface
 	}
 
 
-	public function addLoadEventFiredListener(callable $listener): SubscriptionInterface
-	{
-		return $this->internalClient->addListener('Page.loadEventFired', function ($event) use ($listener) {
-			return $listener(LoadEventFiredEvent::fromJson($event));
-		});
-	}
-
-
-	public function awaitLoadEventFired(ContextInterface $ctx): LoadEventFiredEvent
-	{
-		return LoadEventFiredEvent::fromJson($this->internalClient->awaitEvent($ctx, 'Page.loadEventFired'));
-	}
-
-
-	public function addLifecycleEventListener(callable $listener): SubscriptionInterface
-	{
-		return $this->internalClient->addListener('Page.lifecycleEvent', function ($event) use ($listener) {
-			return $listener(LifecycleEventEvent::fromJson($event));
-		});
-	}
-
-
-	public function awaitLifecycleEvent(ContextInterface $ctx): LifecycleEventEvent
-	{
-		return LifecycleEventEvent::fromJson($this->internalClient->awaitEvent($ctx, 'Page.lifecycleEvent'));
-	}
-
-
 	public function addFrameAttachedListener(callable $listener): SubscriptionInterface
 	{
 		return $this->internalClient->addListener('Page.frameAttached', function ($event) use ($listener) {
@@ -396,6 +368,34 @@ class PageDomain implements PageDomainInterface
 	public function awaitFrameAttached(ContextInterface $ctx): FrameAttachedEvent
 	{
 		return FrameAttachedEvent::fromJson($this->internalClient->awaitEvent($ctx, 'Page.frameAttached'));
+	}
+
+
+	public function addFrameClearedScheduledNavigationListener(callable $listener): SubscriptionInterface
+	{
+		return $this->internalClient->addListener('Page.frameClearedScheduledNavigation', function ($event) use ($listener) {
+			return $listener(FrameClearedScheduledNavigationEvent::fromJson($event));
+		});
+	}
+
+
+	public function awaitFrameClearedScheduledNavigation(ContextInterface $ctx): FrameClearedScheduledNavigationEvent
+	{
+		return FrameClearedScheduledNavigationEvent::fromJson($this->internalClient->awaitEvent($ctx, 'Page.frameClearedScheduledNavigation'));
+	}
+
+
+	public function addFrameDetachedListener(callable $listener): SubscriptionInterface
+	{
+		return $this->internalClient->addListener('Page.frameDetached', function ($event) use ($listener) {
+			return $listener(FrameDetachedEvent::fromJson($event));
+		});
+	}
+
+
+	public function awaitFrameDetached(ContextInterface $ctx): FrameDetachedEvent
+	{
+		return FrameDetachedEvent::fromJson($this->internalClient->awaitEvent($ctx, 'Page.frameDetached'));
 	}
 
 
@@ -413,17 +413,31 @@ class PageDomain implements PageDomainInterface
 	}
 
 
-	public function addFrameDetachedListener(callable $listener): SubscriptionInterface
+	public function addFrameResizedListener(callable $listener): SubscriptionInterface
 	{
-		return $this->internalClient->addListener('Page.frameDetached', function ($event) use ($listener) {
-			return $listener(FrameDetachedEvent::fromJson($event));
+		return $this->internalClient->addListener('Page.frameResized', function ($event) use ($listener) {
+			return $listener(FrameResizedEvent::fromJson($event));
 		});
 	}
 
 
-	public function awaitFrameDetached(ContextInterface $ctx): FrameDetachedEvent
+	public function awaitFrameResized(ContextInterface $ctx): FrameResizedEvent
 	{
-		return FrameDetachedEvent::fromJson($this->internalClient->awaitEvent($ctx, 'Page.frameDetached'));
+		return FrameResizedEvent::fromJson($this->internalClient->awaitEvent($ctx, 'Page.frameResized'));
+	}
+
+
+	public function addFrameScheduledNavigationListener(callable $listener): SubscriptionInterface
+	{
+		return $this->internalClient->addListener('Page.frameScheduledNavigation', function ($event) use ($listener) {
+			return $listener(FrameScheduledNavigationEvent::fromJson($event));
+		});
+	}
+
+
+	public function awaitFrameScheduledNavigation(ContextInterface $ctx): FrameScheduledNavigationEvent
+	{
+		return FrameScheduledNavigationEvent::fromJson($this->internalClient->awaitEvent($ctx, 'Page.frameScheduledNavigation'));
 	}
 
 
@@ -455,45 +469,45 @@ class PageDomain implements PageDomainInterface
 	}
 
 
-	public function addFrameScheduledNavigationListener(callable $listener): SubscriptionInterface
+	public function addInterstitialHiddenListener(callable $listener): SubscriptionInterface
 	{
-		return $this->internalClient->addListener('Page.frameScheduledNavigation', function ($event) use ($listener) {
-			return $listener(FrameScheduledNavigationEvent::fromJson($event));
+		return $this->internalClient->addListener('Page.interstitialHidden', function ($event) use ($listener) {
+			return $listener(InterstitialHiddenEvent::fromJson($event));
 		});
 	}
 
 
-	public function awaitFrameScheduledNavigation(ContextInterface $ctx): FrameScheduledNavigationEvent
+	public function awaitInterstitialHidden(ContextInterface $ctx): InterstitialHiddenEvent
 	{
-		return FrameScheduledNavigationEvent::fromJson($this->internalClient->awaitEvent($ctx, 'Page.frameScheduledNavigation'));
+		return InterstitialHiddenEvent::fromJson($this->internalClient->awaitEvent($ctx, 'Page.interstitialHidden'));
 	}
 
 
-	public function addFrameClearedScheduledNavigationListener(callable $listener): SubscriptionInterface
+	public function addInterstitialShownListener(callable $listener): SubscriptionInterface
 	{
-		return $this->internalClient->addListener('Page.frameClearedScheduledNavigation', function ($event) use ($listener) {
-			return $listener(FrameClearedScheduledNavigationEvent::fromJson($event));
+		return $this->internalClient->addListener('Page.interstitialShown', function ($event) use ($listener) {
+			return $listener(InterstitialShownEvent::fromJson($event));
 		});
 	}
 
 
-	public function awaitFrameClearedScheduledNavigation(ContextInterface $ctx): FrameClearedScheduledNavigationEvent
+	public function awaitInterstitialShown(ContextInterface $ctx): InterstitialShownEvent
 	{
-		return FrameClearedScheduledNavigationEvent::fromJson($this->internalClient->awaitEvent($ctx, 'Page.frameClearedScheduledNavigation'));
+		return InterstitialShownEvent::fromJson($this->internalClient->awaitEvent($ctx, 'Page.interstitialShown'));
 	}
 
 
-	public function addFrameResizedListener(callable $listener): SubscriptionInterface
+	public function addJavascriptDialogClosedListener(callable $listener): SubscriptionInterface
 	{
-		return $this->internalClient->addListener('Page.frameResized', function ($event) use ($listener) {
-			return $listener(FrameResizedEvent::fromJson($event));
+		return $this->internalClient->addListener('Page.javascriptDialogClosed', function ($event) use ($listener) {
+			return $listener(JavascriptDialogClosedEvent::fromJson($event));
 		});
 	}
 
 
-	public function awaitFrameResized(ContextInterface $ctx): FrameResizedEvent
+	public function awaitJavascriptDialogClosed(ContextInterface $ctx): JavascriptDialogClosedEvent
 	{
-		return FrameResizedEvent::fromJson($this->internalClient->awaitEvent($ctx, 'Page.frameResized'));
+		return JavascriptDialogClosedEvent::fromJson($this->internalClient->awaitEvent($ctx, 'Page.javascriptDialogClosed'));
 	}
 
 
@@ -511,17 +525,31 @@ class PageDomain implements PageDomainInterface
 	}
 
 
-	public function addJavascriptDialogClosedListener(callable $listener): SubscriptionInterface
+	public function addLifecycleEventListener(callable $listener): SubscriptionInterface
 	{
-		return $this->internalClient->addListener('Page.javascriptDialogClosed', function ($event) use ($listener) {
-			return $listener(JavascriptDialogClosedEvent::fromJson($event));
+		return $this->internalClient->addListener('Page.lifecycleEvent', function ($event) use ($listener) {
+			return $listener(LifecycleEventEvent::fromJson($event));
 		});
 	}
 
 
-	public function awaitJavascriptDialogClosed(ContextInterface $ctx): JavascriptDialogClosedEvent
+	public function awaitLifecycleEvent(ContextInterface $ctx): LifecycleEventEvent
 	{
-		return JavascriptDialogClosedEvent::fromJson($this->internalClient->awaitEvent($ctx, 'Page.javascriptDialogClosed'));
+		return LifecycleEventEvent::fromJson($this->internalClient->awaitEvent($ctx, 'Page.lifecycleEvent'));
+	}
+
+
+	public function addLoadEventFiredListener(callable $listener): SubscriptionInterface
+	{
+		return $this->internalClient->addListener('Page.loadEventFired', function ($event) use ($listener) {
+			return $listener(LoadEventFiredEvent::fromJson($event));
+		});
+	}
+
+
+	public function awaitLoadEventFired(ContextInterface $ctx): LoadEventFiredEvent
+	{
+		return LoadEventFiredEvent::fromJson($this->internalClient->awaitEvent($ctx, 'Page.loadEventFired'));
 	}
 
 
@@ -550,34 +578,6 @@ class PageDomain implements PageDomainInterface
 	public function awaitScreencastVisibilityChanged(ContextInterface $ctx): ScreencastVisibilityChangedEvent
 	{
 		return ScreencastVisibilityChangedEvent::fromJson($this->internalClient->awaitEvent($ctx, 'Page.screencastVisibilityChanged'));
-	}
-
-
-	public function addInterstitialShownListener(callable $listener): SubscriptionInterface
-	{
-		return $this->internalClient->addListener('Page.interstitialShown', function ($event) use ($listener) {
-			return $listener(InterstitialShownEvent::fromJson($event));
-		});
-	}
-
-
-	public function awaitInterstitialShown(ContextInterface $ctx): InterstitialShownEvent
-	{
-		return InterstitialShownEvent::fromJson($this->internalClient->awaitEvent($ctx, 'Page.interstitialShown'));
-	}
-
-
-	public function addInterstitialHiddenListener(callable $listener): SubscriptionInterface
-	{
-		return $this->internalClient->addListener('Page.interstitialHidden', function ($event) use ($listener) {
-			return $listener(InterstitialHiddenEvent::fromJson($event));
-		});
-	}
-
-
-	public function awaitInterstitialHidden(ContextInterface $ctx): InterstitialHiddenEvent
-	{
-		return InterstitialHiddenEvent::fromJson($this->internalClient->awaitEvent($ctx, 'Page.interstitialHidden'));
 	}
 
 

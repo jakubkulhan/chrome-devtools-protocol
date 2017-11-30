@@ -43,13 +43,6 @@ class RuntimeDomain implements RuntimeDomainInterface
 	}
 
 
-	public function evaluate(ContextInterface $ctx, EvaluateRequest $request): EvaluateResponse
-	{
-		$response = $this->internalClient->executeCommand($ctx, 'Runtime.evaluate', $request);
-		return EvaluateResponse::fromJson($response);
-	}
-
-
 	public function awaitPromise(ContextInterface $ctx, AwaitPromiseRequest $request): AwaitPromiseResponse
 	{
 		$response = $this->internalClient->executeCommand($ctx, 'Runtime.awaitPromise', $request);
@@ -64,10 +57,59 @@ class RuntimeDomain implements RuntimeDomainInterface
 	}
 
 
+	public function compileScript(ContextInterface $ctx, CompileScriptRequest $request): CompileScriptResponse
+	{
+		$response = $this->internalClient->executeCommand($ctx, 'Runtime.compileScript', $request);
+		return CompileScriptResponse::fromJson($response);
+	}
+
+
+	public function disable(ContextInterface $ctx): void
+	{
+		$request = new \stdClass();
+		$this->internalClient->executeCommand($ctx, 'Runtime.disable', $request);
+	}
+
+
+	public function discardConsoleEntries(ContextInterface $ctx): void
+	{
+		$request = new \stdClass();
+		$this->internalClient->executeCommand($ctx, 'Runtime.discardConsoleEntries', $request);
+	}
+
+
+	public function enable(ContextInterface $ctx): void
+	{
+		$request = new \stdClass();
+		$this->internalClient->executeCommand($ctx, 'Runtime.enable', $request);
+	}
+
+
+	public function evaluate(ContextInterface $ctx, EvaluateRequest $request): EvaluateResponse
+	{
+		$response = $this->internalClient->executeCommand($ctx, 'Runtime.evaluate', $request);
+		return EvaluateResponse::fromJson($response);
+	}
+
+
 	public function getProperties(ContextInterface $ctx, GetPropertiesRequest $request): GetPropertiesResponse
 	{
 		$response = $this->internalClient->executeCommand($ctx, 'Runtime.getProperties', $request);
 		return GetPropertiesResponse::fromJson($response);
+	}
+
+
+	public function globalLexicalScopeNames(ContextInterface $ctx, GlobalLexicalScopeNamesRequest $request): GlobalLexicalScopeNamesResponse
+	{
+		$response = $this->internalClient->executeCommand($ctx, 'Runtime.globalLexicalScopeNames', $request);
+		return GlobalLexicalScopeNamesResponse::fromJson($response);
+	}
+
+
+	public function queryObjects(ContextInterface $ctx, QueryObjectsRequest $request): QueryObjectsResponse
+	{
+		$response = $this->internalClient->executeCommand($ctx, 'Runtime.queryObjects', $request);
+		return QueryObjectsResponse::fromJson($response);
 	}
 
 
@@ -90,24 +132,10 @@ class RuntimeDomain implements RuntimeDomainInterface
 	}
 
 
-	public function enable(ContextInterface $ctx): void
+	public function runScript(ContextInterface $ctx, RunScriptRequest $request): RunScriptResponse
 	{
-		$request = new \stdClass();
-		$this->internalClient->executeCommand($ctx, 'Runtime.enable', $request);
-	}
-
-
-	public function disable(ContextInterface $ctx): void
-	{
-		$request = new \stdClass();
-		$this->internalClient->executeCommand($ctx, 'Runtime.disable', $request);
-	}
-
-
-	public function discardConsoleEntries(ContextInterface $ctx): void
-	{
-		$request = new \stdClass();
-		$this->internalClient->executeCommand($ctx, 'Runtime.discardConsoleEntries', $request);
+		$response = $this->internalClient->executeCommand($ctx, 'Runtime.runScript', $request);
+		return RunScriptResponse::fromJson($response);
 	}
 
 
@@ -117,31 +145,45 @@ class RuntimeDomain implements RuntimeDomainInterface
 	}
 
 
-	public function compileScript(ContextInterface $ctx, CompileScriptRequest $request): CompileScriptResponse
+	public function addConsoleAPICalledListener(callable $listener): SubscriptionInterface
 	{
-		$response = $this->internalClient->executeCommand($ctx, 'Runtime.compileScript', $request);
-		return CompileScriptResponse::fromJson($response);
+		return $this->internalClient->addListener('Runtime.consoleAPICalled', function ($event) use ($listener) {
+			return $listener(ConsoleAPICalledEvent::fromJson($event));
+		});
 	}
 
 
-	public function runScript(ContextInterface $ctx, RunScriptRequest $request): RunScriptResponse
+	public function awaitConsoleAPICalled(ContextInterface $ctx): ConsoleAPICalledEvent
 	{
-		$response = $this->internalClient->executeCommand($ctx, 'Runtime.runScript', $request);
-		return RunScriptResponse::fromJson($response);
+		return ConsoleAPICalledEvent::fromJson($this->internalClient->awaitEvent($ctx, 'Runtime.consoleAPICalled'));
 	}
 
 
-	public function queryObjects(ContextInterface $ctx, QueryObjectsRequest $request): QueryObjectsResponse
+	public function addExceptionRevokedListener(callable $listener): SubscriptionInterface
 	{
-		$response = $this->internalClient->executeCommand($ctx, 'Runtime.queryObjects', $request);
-		return QueryObjectsResponse::fromJson($response);
+		return $this->internalClient->addListener('Runtime.exceptionRevoked', function ($event) use ($listener) {
+			return $listener(ExceptionRevokedEvent::fromJson($event));
+		});
 	}
 
 
-	public function globalLexicalScopeNames(ContextInterface $ctx, GlobalLexicalScopeNamesRequest $request): GlobalLexicalScopeNamesResponse
+	public function awaitExceptionRevoked(ContextInterface $ctx): ExceptionRevokedEvent
 	{
-		$response = $this->internalClient->executeCommand($ctx, 'Runtime.globalLexicalScopeNames', $request);
-		return GlobalLexicalScopeNamesResponse::fromJson($response);
+		return ExceptionRevokedEvent::fromJson($this->internalClient->awaitEvent($ctx, 'Runtime.exceptionRevoked'));
+	}
+
+
+	public function addExceptionThrownListener(callable $listener): SubscriptionInterface
+	{
+		return $this->internalClient->addListener('Runtime.exceptionThrown', function ($event) use ($listener) {
+			return $listener(ExceptionThrownEvent::fromJson($event));
+		});
+	}
+
+
+	public function awaitExceptionThrown(ContextInterface $ctx): ExceptionThrownEvent
+	{
+		return ExceptionThrownEvent::fromJson($this->internalClient->awaitEvent($ctx, 'Runtime.exceptionThrown'));
 	}
 
 
@@ -184,48 +226,6 @@ class RuntimeDomain implements RuntimeDomainInterface
 	public function awaitExecutionContextsCleared(ContextInterface $ctx): ExecutionContextsClearedEvent
 	{
 		return ExecutionContextsClearedEvent::fromJson($this->internalClient->awaitEvent($ctx, 'Runtime.executionContextsCleared'));
-	}
-
-
-	public function addExceptionThrownListener(callable $listener): SubscriptionInterface
-	{
-		return $this->internalClient->addListener('Runtime.exceptionThrown', function ($event) use ($listener) {
-			return $listener(ExceptionThrownEvent::fromJson($event));
-		});
-	}
-
-
-	public function awaitExceptionThrown(ContextInterface $ctx): ExceptionThrownEvent
-	{
-		return ExceptionThrownEvent::fromJson($this->internalClient->awaitEvent($ctx, 'Runtime.exceptionThrown'));
-	}
-
-
-	public function addExceptionRevokedListener(callable $listener): SubscriptionInterface
-	{
-		return $this->internalClient->addListener('Runtime.exceptionRevoked', function ($event) use ($listener) {
-			return $listener(ExceptionRevokedEvent::fromJson($event));
-		});
-	}
-
-
-	public function awaitExceptionRevoked(ContextInterface $ctx): ExceptionRevokedEvent
-	{
-		return ExceptionRevokedEvent::fromJson($this->internalClient->awaitEvent($ctx, 'Runtime.exceptionRevoked'));
-	}
-
-
-	public function addConsoleAPICalledListener(callable $listener): SubscriptionInterface
-	{
-		return $this->internalClient->addListener('Runtime.consoleAPICalled', function ($event) use ($listener) {
-			return $listener(ConsoleAPICalledEvent::fromJson($event));
-		});
-	}
-
-
-	public function awaitConsoleAPICalled(ContextInterface $ctx): ConsoleAPICalledEvent
-	{
-		return ConsoleAPICalledEvent::fromJson($this->internalClient->awaitEvent($ctx, 'Runtime.consoleAPICalled'));
 	}
 
 

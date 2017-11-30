@@ -26,9 +26,10 @@ class DOMDebuggerDomain implements DOMDebuggerDomainInterface
 	}
 
 
-	public function setDOMBreakpoint(ContextInterface $ctx, SetDOMBreakpointRequest $request): void
+	public function getEventListeners(ContextInterface $ctx, GetEventListenersRequest $request): GetEventListenersResponse
 	{
-		$this->internalClient->executeCommand($ctx, 'DOMDebugger.setDOMBreakpoint', $request);
+		$response = $this->internalClient->executeCommand($ctx, 'DOMDebugger.getEventListeners', $request);
+		return GetEventListenersResponse::fromJson($response);
 	}
 
 
@@ -38,21 +39,9 @@ class DOMDebuggerDomain implements DOMDebuggerDomainInterface
 	}
 
 
-	public function setEventListenerBreakpoint(ContextInterface $ctx, SetEventListenerBreakpointRequest $request): void
-	{
-		$this->internalClient->executeCommand($ctx, 'DOMDebugger.setEventListenerBreakpoint', $request);
-	}
-
-
 	public function removeEventListenerBreakpoint(ContextInterface $ctx, RemoveEventListenerBreakpointRequest $request): void
 	{
 		$this->internalClient->executeCommand($ctx, 'DOMDebugger.removeEventListenerBreakpoint', $request);
-	}
-
-
-	public function setInstrumentationBreakpoint(ContextInterface $ctx, SetInstrumentationBreakpointRequest $request): void
-	{
-		$this->internalClient->executeCommand($ctx, 'DOMDebugger.setInstrumentationBreakpoint', $request);
 	}
 
 
@@ -62,21 +51,32 @@ class DOMDebuggerDomain implements DOMDebuggerDomainInterface
 	}
 
 
-	public function setXHRBreakpoint(ContextInterface $ctx, SetXHRBreakpointRequest $request): void
-	{
-		$this->internalClient->executeCommand($ctx, 'DOMDebugger.setXHRBreakpoint', $request);
-	}
-
-
 	public function removeXHRBreakpoint(ContextInterface $ctx, RemoveXHRBreakpointRequest $request): void
 	{
 		$this->internalClient->executeCommand($ctx, 'DOMDebugger.removeXHRBreakpoint', $request);
 	}
 
 
-	public function getEventListeners(ContextInterface $ctx, GetEventListenersRequest $request): GetEventListenersResponse
+	public function setDOMBreakpoint(ContextInterface $ctx, SetDOMBreakpointRequest $request): void
 	{
-		$response = $this->internalClient->executeCommand($ctx, 'DOMDebugger.getEventListeners', $request);
-		return GetEventListenersResponse::fromJson($response);
+		$this->internalClient->executeCommand($ctx, 'DOMDebugger.setDOMBreakpoint', $request);
+	}
+
+
+	public function setEventListenerBreakpoint(ContextInterface $ctx, SetEventListenerBreakpointRequest $request): void
+	{
+		$this->internalClient->executeCommand($ctx, 'DOMDebugger.setEventListenerBreakpoint', $request);
+	}
+
+
+	public function setInstrumentationBreakpoint(ContextInterface $ctx, SetInstrumentationBreakpointRequest $request): void
+	{
+		$this->internalClient->executeCommand($ctx, 'DOMDebugger.setInstrumentationBreakpoint', $request);
+	}
+
+
+	public function setXHRBreakpoint(ContextInterface $ctx, SetXHRBreakpointRequest $request): void
+	{
+		$this->internalClient->executeCommand($ctx, 'DOMDebugger.setXHRBreakpoint', $request);
 	}
 }

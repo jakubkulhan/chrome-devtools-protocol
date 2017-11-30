@@ -39,72 +39,6 @@ use ChromeDevtoolsProtocol\SubscriptionInterface;
 interface TargetDomainInterface
 {
 	/**
-	 * Controls whether to discover available targets and notify via <code>targetCreated/targetInfoChanged/targetDestroyed</code> events.
-	 *
-	 * @param ContextInterface $ctx
-	 * @param SetDiscoverTargetsRequest $request
-	 *
-	 * @return void
-	 */
-	public function setDiscoverTargets(ContextInterface $ctx, SetDiscoverTargetsRequest $request): void;
-
-
-	/**
-	 * Controls whether to automatically attach to new targets which are considered to be related to this one. When turned on, attaches to all existing related targets as well. When turned off, automatically detaches from all currently attached targets.
-	 *
-	 * @param ContextInterface $ctx
-	 * @param SetAutoAttachRequest $request
-	 *
-	 * @return void
-	 */
-	public function setAutoAttach(ContextInterface $ctx, SetAutoAttachRequest $request): void;
-
-
-	/**
-	 * Call Target.setAttachToFrames command.
-	 *
-	 * @param ContextInterface $ctx
-	 * @param SetAttachToFramesRequest $request
-	 *
-	 * @return void
-	 */
-	public function setAttachToFrames(ContextInterface $ctx, SetAttachToFramesRequest $request): void;
-
-
-	/**
-	 * Enables target discovery for the specified locations, when <code>setDiscoverTargets</code> was set to <code>true</code>.
-	 *
-	 * @param ContextInterface $ctx
-	 * @param SetRemoteLocationsRequest $request
-	 *
-	 * @return void
-	 */
-	public function setRemoteLocations(ContextInterface $ctx, SetRemoteLocationsRequest $request): void;
-
-
-	/**
-	 * Sends protocol message over session with given id.
-	 *
-	 * @param ContextInterface $ctx
-	 * @param SendMessageToTargetRequest $request
-	 *
-	 * @return void
-	 */
-	public function sendMessageToTarget(ContextInterface $ctx, SendMessageToTargetRequest $request): void;
-
-
-	/**
-	 * Returns information about a target.
-	 *
-	 * @param ContextInterface $ctx
-	 * @param GetTargetInfoRequest $request
-	 *
-	 * @return GetTargetInfoResponse
-	 */
-	public function getTargetInfo(ContextInterface $ctx, GetTargetInfoRequest $request): GetTargetInfoResponse;
-
-
-	/**
 	 * Activates (focuses) the target.
 	 *
 	 * @param ContextInterface $ctx
@@ -113,17 +47,6 @@ interface TargetDomainInterface
 	 * @return void
 	 */
 	public function activateTarget(ContextInterface $ctx, ActivateTargetRequest $request): void;
-
-
-	/**
-	 * Closes the target. If the target is a page that gets closed too.
-	 *
-	 * @param ContextInterface $ctx
-	 * @param CloseTargetRequest $request
-	 *
-	 * @return CloseTargetResponse
-	 */
-	public function closeTarget(ContextInterface $ctx, CloseTargetRequest $request): CloseTargetResponse;
 
 
 	/**
@@ -138,14 +61,14 @@ interface TargetDomainInterface
 
 
 	/**
-	 * Detaches session with given id.
+	 * Closes the target. If the target is a page that gets closed too.
 	 *
 	 * @param ContextInterface $ctx
-	 * @param DetachFromTargetRequest $request
+	 * @param CloseTargetRequest $request
 	 *
-	 * @return void
+	 * @return CloseTargetResponse
 	 */
-	public function detachFromTarget(ContextInterface $ctx, DetachFromTargetRequest $request): void;
+	public function closeTarget(ContextInterface $ctx, CloseTargetRequest $request): CloseTargetResponse;
 
 
 	/**
@@ -156,17 +79,6 @@ interface TargetDomainInterface
 	 * @return CreateBrowserContextResponse
 	 */
 	public function createBrowserContext(ContextInterface $ctx): CreateBrowserContextResponse;
-
-
-	/**
-	 * Deletes a BrowserContext, will fail of any open page uses it.
-	 *
-	 * @param ContextInterface $ctx
-	 * @param DisposeBrowserContextRequest $request
-	 *
-	 * @return DisposeBrowserContextResponse
-	 */
-	public function disposeBrowserContext(ContextInterface $ctx, DisposeBrowserContextRequest $request): DisposeBrowserContextResponse;
 
 
 	/**
@@ -181,6 +93,39 @@ interface TargetDomainInterface
 
 
 	/**
+	 * Detaches session with given id.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param DetachFromTargetRequest $request
+	 *
+	 * @return void
+	 */
+	public function detachFromTarget(ContextInterface $ctx, DetachFromTargetRequest $request): void;
+
+
+	/**
+	 * Deletes a BrowserContext, will fail of any open page uses it.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param DisposeBrowserContextRequest $request
+	 *
+	 * @return DisposeBrowserContextResponse
+	 */
+	public function disposeBrowserContext(ContextInterface $ctx, DisposeBrowserContextRequest $request): DisposeBrowserContextResponse;
+
+
+	/**
+	 * Returns information about a target.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param GetTargetInfoRequest $request
+	 *
+	 * @return GetTargetInfoResponse
+	 */
+	public function getTargetInfo(ContextInterface $ctx, GetTargetInfoRequest $request): GetTargetInfoResponse;
+
+
+	/**
 	 * Retrieves a list of available targets.
 	 *
 	 * @param ContextInterface $ctx
@@ -188,6 +133,133 @@ interface TargetDomainInterface
 	 * @return GetTargetsResponse
 	 */
 	public function getTargets(ContextInterface $ctx): GetTargetsResponse;
+
+
+	/**
+	 * Sends protocol message over session with given id.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param SendMessageToTargetRequest $request
+	 *
+	 * @return void
+	 */
+	public function sendMessageToTarget(ContextInterface $ctx, SendMessageToTargetRequest $request): void;
+
+
+	/**
+	 * Call Target.setAttachToFrames command.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param SetAttachToFramesRequest $request
+	 *
+	 * @return void
+	 */
+	public function setAttachToFrames(ContextInterface $ctx, SetAttachToFramesRequest $request): void;
+
+
+	/**
+	 * Controls whether to automatically attach to new targets which are considered to be related to this one. When turned on, attaches to all existing related targets as well. When turned off, automatically detaches from all currently attached targets.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param SetAutoAttachRequest $request
+	 *
+	 * @return void
+	 */
+	public function setAutoAttach(ContextInterface $ctx, SetAutoAttachRequest $request): void;
+
+
+	/**
+	 * Controls whether to discover available targets and notify via `targetCreated/targetInfoChanged/targetDestroyed` events.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param SetDiscoverTargetsRequest $request
+	 *
+	 * @return void
+	 */
+	public function setDiscoverTargets(ContextInterface $ctx, SetDiscoverTargetsRequest $request): void;
+
+
+	/**
+	 * Enables target discovery for the specified locations, when `setDiscoverTargets` was set to `true`.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param SetRemoteLocationsRequest $request
+	 *
+	 * @return void
+	 */
+	public function setRemoteLocations(ContextInterface $ctx, SetRemoteLocationsRequest $request): void;
+
+
+	/**
+	 * Issued when attached to target because of auto-attach or `attachToTarget` command.
+	 *
+	 * Listener will be called whenever event Target.attachedToTarget is fired.
+	 *
+	 * @param callable $listener
+	 *
+	 * @return SubscriptionInterface
+	 */
+	public function addAttachedToTargetListener(callable $listener): SubscriptionInterface;
+
+
+	/**
+	 * Issued when attached to target because of auto-attach or `attachToTarget` command.
+	 *
+	 * Method will block until first Target.attachedToTarget event is fired.
+	 *
+	 * @param ContextInterface $ctx
+	 *
+	 * @return AttachedToTargetEvent
+	 */
+	public function awaitAttachedToTarget(ContextInterface $ctx): AttachedToTargetEvent;
+
+
+	/**
+	 * Issued when detached from target for any reason (including `detachFromTarget` command). Can be issued multiple times per target if multiple sessions have been attached to it.
+	 *
+	 * Listener will be called whenever event Target.detachedFromTarget is fired.
+	 *
+	 * @param callable $listener
+	 *
+	 * @return SubscriptionInterface
+	 */
+	public function addDetachedFromTargetListener(callable $listener): SubscriptionInterface;
+
+
+	/**
+	 * Issued when detached from target for any reason (including `detachFromTarget` command). Can be issued multiple times per target if multiple sessions have been attached to it.
+	 *
+	 * Method will block until first Target.detachedFromTarget event is fired.
+	 *
+	 * @param ContextInterface $ctx
+	 *
+	 * @return DetachedFromTargetEvent
+	 */
+	public function awaitDetachedFromTarget(ContextInterface $ctx): DetachedFromTargetEvent;
+
+
+	/**
+	 * Notifies about a new protocol message received from the session (as reported in `attachedToTarget` event).
+	 *
+	 * Listener will be called whenever event Target.receivedMessageFromTarget is fired.
+	 *
+	 * @param callable $listener
+	 *
+	 * @return SubscriptionInterface
+	 */
+	public function addReceivedMessageFromTargetListener(callable $listener): SubscriptionInterface;
+
+
+	/**
+	 * Notifies about a new protocol message received from the session (as reported in `attachedToTarget` event).
+	 *
+	 * Method will block until first Target.receivedMessageFromTarget event is fired.
+	 *
+	 * @param ContextInterface $ctx
+	 *
+	 * @return ReceivedMessageFromTargetEvent
+	 */
+	public function awaitReceivedMessageFromTarget(ContextInterface $ctx): ReceivedMessageFromTargetEvent;
 
 
 	/**
@@ -215,30 +287,6 @@ interface TargetDomainInterface
 
 
 	/**
-	 * Issued when some information about a target has changed. This only happens between <code>targetCreated</code> and <code>targetDestroyed</code>.
-	 *
-	 * Listener will be called whenever event Target.targetInfoChanged is fired.
-	 *
-	 * @param callable $listener
-	 *
-	 * @return SubscriptionInterface
-	 */
-	public function addTargetInfoChangedListener(callable $listener): SubscriptionInterface;
-
-
-	/**
-	 * Issued when some information about a target has changed. This only happens between <code>targetCreated</code> and <code>targetDestroyed</code>.
-	 *
-	 * Method will block until first Target.targetInfoChanged event is fired.
-	 *
-	 * @param ContextInterface $ctx
-	 *
-	 * @return TargetInfoChangedEvent
-	 */
-	public function awaitTargetInfoChanged(ContextInterface $ctx): TargetInfoChangedEvent;
-
-
-	/**
 	 * Issued when a target is destroyed.
 	 *
 	 * Listener will be called whenever event Target.targetDestroyed is fired.
@@ -263,73 +311,25 @@ interface TargetDomainInterface
 
 
 	/**
-	 * Issued when attached to target because of auto-attach or <code>attachToTarget</code> command.
+	 * Issued when some information about a target has changed. This only happens between `targetCreated` and `targetDestroyed`.
 	 *
-	 * Listener will be called whenever event Target.attachedToTarget is fired.
-	 *
-	 * @param callable $listener
-	 *
-	 * @return SubscriptionInterface
-	 */
-	public function addAttachedToTargetListener(callable $listener): SubscriptionInterface;
-
-
-	/**
-	 * Issued when attached to target because of auto-attach or <code>attachToTarget</code> command.
-	 *
-	 * Method will block until first Target.attachedToTarget event is fired.
-	 *
-	 * @param ContextInterface $ctx
-	 *
-	 * @return AttachedToTargetEvent
-	 */
-	public function awaitAttachedToTarget(ContextInterface $ctx): AttachedToTargetEvent;
-
-
-	/**
-	 * Issued when detached from target for any reason (including <code>detachFromTarget</code> command). Can be issued multiple times per target if multiple sessions have been attached to it.
-	 *
-	 * Listener will be called whenever event Target.detachedFromTarget is fired.
+	 * Listener will be called whenever event Target.targetInfoChanged is fired.
 	 *
 	 * @param callable $listener
 	 *
 	 * @return SubscriptionInterface
 	 */
-	public function addDetachedFromTargetListener(callable $listener): SubscriptionInterface;
+	public function addTargetInfoChangedListener(callable $listener): SubscriptionInterface;
 
 
 	/**
-	 * Issued when detached from target for any reason (including <code>detachFromTarget</code> command). Can be issued multiple times per target if multiple sessions have been attached to it.
+	 * Issued when some information about a target has changed. This only happens between `targetCreated` and `targetDestroyed`.
 	 *
-	 * Method will block until first Target.detachedFromTarget event is fired.
+	 * Method will block until first Target.targetInfoChanged event is fired.
 	 *
 	 * @param ContextInterface $ctx
 	 *
-	 * @return DetachedFromTargetEvent
+	 * @return TargetInfoChangedEvent
 	 */
-	public function awaitDetachedFromTarget(ContextInterface $ctx): DetachedFromTargetEvent;
-
-
-	/**
-	 * Notifies about a new protocol message received from the session (as reported in <code>attachedToTarget</code> event).
-	 *
-	 * Listener will be called whenever event Target.receivedMessageFromTarget is fired.
-	 *
-	 * @param callable $listener
-	 *
-	 * @return SubscriptionInterface
-	 */
-	public function addReceivedMessageFromTargetListener(callable $listener): SubscriptionInterface;
-
-
-	/**
-	 * Notifies about a new protocol message received from the session (as reported in <code>attachedToTarget</code> event).
-	 *
-	 * Method will block until first Target.receivedMessageFromTarget event is fired.
-	 *
-	 * @param ContextInterface $ctx
-	 *
-	 * @return ReceivedMessageFromTargetEvent
-	 */
-	public function awaitReceivedMessageFromTarget(ContextInterface $ctx): ReceivedMessageFromTargetEvent;
+	public function awaitTargetInfoChanged(ContextInterface $ctx): TargetInfoChangedEvent;
 }

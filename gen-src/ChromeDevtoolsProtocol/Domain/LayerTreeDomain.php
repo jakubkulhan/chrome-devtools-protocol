@@ -32,10 +32,10 @@ class LayerTreeDomain implements LayerTreeDomainInterface
 	}
 
 
-	public function enable(ContextInterface $ctx): void
+	public function compositingReasons(ContextInterface $ctx, CompositingReasonsRequest $request): CompositingReasonsResponse
 	{
-		$request = new \stdClass();
-		$this->internalClient->executeCommand($ctx, 'LayerTree.enable', $request);
+		$response = $this->internalClient->executeCommand($ctx, 'LayerTree.compositingReasons', $request);
+		return CompositingReasonsResponse::fromJson($response);
 	}
 
 
@@ -46,17 +46,10 @@ class LayerTreeDomain implements LayerTreeDomainInterface
 	}
 
 
-	public function compositingReasons(ContextInterface $ctx, CompositingReasonsRequest $request): CompositingReasonsResponse
+	public function enable(ContextInterface $ctx): void
 	{
-		$response = $this->internalClient->executeCommand($ctx, 'LayerTree.compositingReasons', $request);
-		return CompositingReasonsResponse::fromJson($response);
-	}
-
-
-	public function makeSnapshot(ContextInterface $ctx, MakeSnapshotRequest $request): MakeSnapshotResponse
-	{
-		$response = $this->internalClient->executeCommand($ctx, 'LayerTree.makeSnapshot', $request);
-		return MakeSnapshotResponse::fromJson($response);
+		$request = new \stdClass();
+		$this->internalClient->executeCommand($ctx, 'LayerTree.enable', $request);
 	}
 
 
@@ -67,9 +60,10 @@ class LayerTreeDomain implements LayerTreeDomainInterface
 	}
 
 
-	public function releaseSnapshot(ContextInterface $ctx, ReleaseSnapshotRequest $request): void
+	public function makeSnapshot(ContextInterface $ctx, MakeSnapshotRequest $request): MakeSnapshotResponse
 	{
-		$this->internalClient->executeCommand($ctx, 'LayerTree.releaseSnapshot', $request);
+		$response = $this->internalClient->executeCommand($ctx, 'LayerTree.makeSnapshot', $request);
+		return MakeSnapshotResponse::fromJson($response);
 	}
 
 
@@ -77,6 +71,12 @@ class LayerTreeDomain implements LayerTreeDomainInterface
 	{
 		$response = $this->internalClient->executeCommand($ctx, 'LayerTree.profileSnapshot', $request);
 		return ProfileSnapshotResponse::fromJson($response);
+	}
+
+
+	public function releaseSnapshot(ContextInterface $ctx, ReleaseSnapshotRequest $request): void
+	{
+		$this->internalClient->executeCommand($ctx, 'LayerTree.releaseSnapshot', $request);
 	}
 
 
@@ -94,20 +94,6 @@ class LayerTreeDomain implements LayerTreeDomainInterface
 	}
 
 
-	public function addLayerTreeDidChangeListener(callable $listener): SubscriptionInterface
-	{
-		return $this->internalClient->addListener('LayerTree.layerTreeDidChange', function ($event) use ($listener) {
-			return $listener(LayerTreeDidChangeEvent::fromJson($event));
-		});
-	}
-
-
-	public function awaitLayerTreeDidChange(ContextInterface $ctx): LayerTreeDidChangeEvent
-	{
-		return LayerTreeDidChangeEvent::fromJson($this->internalClient->awaitEvent($ctx, 'LayerTree.layerTreeDidChange'));
-	}
-
-
 	public function addLayerPaintedListener(callable $listener): SubscriptionInterface
 	{
 		return $this->internalClient->addListener('LayerTree.layerPainted', function ($event) use ($listener) {
@@ -119,5 +105,19 @@ class LayerTreeDomain implements LayerTreeDomainInterface
 	public function awaitLayerPainted(ContextInterface $ctx): LayerPaintedEvent
 	{
 		return LayerPaintedEvent::fromJson($this->internalClient->awaitEvent($ctx, 'LayerTree.layerPainted'));
+	}
+
+
+	public function addLayerTreeDidChangeListener(callable $listener): SubscriptionInterface
+	{
+		return $this->internalClient->addListener('LayerTree.layerTreeDidChange', function ($event) use ($listener) {
+			return $listener(LayerTreeDidChangeEvent::fromJson($event));
+		});
+	}
+
+
+	public function awaitLayerTreeDidChange(ContextInterface $ctx): LayerTreeDidChangeEvent
+	{
+		return LayerTreeDidChangeEvent::fromJson($this->internalClient->awaitEvent($ctx, 'LayerTree.layerTreeDidChange'));
 	}
 }

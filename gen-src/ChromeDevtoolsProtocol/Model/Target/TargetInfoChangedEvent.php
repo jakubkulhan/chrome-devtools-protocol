@@ -2,7 +2,7 @@
 namespace ChromeDevtoolsProtocol\Model\Target;
 
 /**
- * Issued when some information about a target has changed. This only happens between <code>targetCreated</code> and <code>targetDestroyed</code>.
+ * Issued when some information about a target has changed. This only happens between `targetCreated` and `targetDestroyed`.
  *
  * @generated This file has been auto-generated, do not edit.
  *

@@ -40,17 +40,6 @@ use ChromeDevtoolsProtocol\SubscriptionInterface;
 interface RuntimeDomainInterface
 {
 	/**
-	 * Evaluates expression on global object.
-	 *
-	 * @param ContextInterface $ctx
-	 * @param EvaluateRequest $request
-	 *
-	 * @return EvaluateResponse
-	 */
-	public function evaluate(ContextInterface $ctx, EvaluateRequest $request): EvaluateResponse;
-
-
-	/**
 	 * Add handler to promise with given promise object id.
 	 *
 	 * @param ContextInterface $ctx
@@ -73,6 +62,58 @@ interface RuntimeDomainInterface
 
 
 	/**
+	 * Compiles expression.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param CompileScriptRequest $request
+	 *
+	 * @return CompileScriptResponse
+	 */
+	public function compileScript(ContextInterface $ctx, CompileScriptRequest $request): CompileScriptResponse;
+
+
+	/**
+	 * Disables reporting of execution contexts creation.
+	 *
+	 * @param ContextInterface $ctx
+	 *
+	 * @return void
+	 */
+	public function disable(ContextInterface $ctx): void;
+
+
+	/**
+	 * Discards collected exceptions and console API calls.
+	 *
+	 * @param ContextInterface $ctx
+	 *
+	 * @return void
+	 */
+	public function discardConsoleEntries(ContextInterface $ctx): void;
+
+
+	/**
+	 * Enables reporting of execution contexts creation by means of <code>executionContextCreated</code> event. When the reporting gets enabled the event will be sent immediately for each existing execution context.
+	 *
+	 * @param ContextInterface $ctx
+	 *
+	 * @return void
+	 */
+	public function enable(ContextInterface $ctx): void;
+
+
+	/**
+	 * Evaluates expression on global object.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param EvaluateRequest $request
+	 *
+	 * @return EvaluateResponse
+	 */
+	public function evaluate(ContextInterface $ctx, EvaluateRequest $request): EvaluateResponse;
+
+
+	/**
 	 * Returns properties of a given object. Object group of the result is inherited from the target object.
 	 *
 	 * @param ContextInterface $ctx
@@ -81,6 +122,28 @@ interface RuntimeDomainInterface
 	 * @return GetPropertiesResponse
 	 */
 	public function getProperties(ContextInterface $ctx, GetPropertiesRequest $request): GetPropertiesResponse;
+
+
+	/**
+	 * Returns all let, const and class variables from global scope.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param GlobalLexicalScopeNamesRequest $request
+	 *
+	 * @return GlobalLexicalScopeNamesResponse
+	 */
+	public function globalLexicalScopeNames(ContextInterface $ctx, GlobalLexicalScopeNamesRequest $request): GlobalLexicalScopeNamesResponse;
+
+
+	/**
+	 * Call Runtime.queryObjects command.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param QueryObjectsRequest $request
+	 *
+	 * @return QueryObjectsResponse
+	 */
+	public function queryObjects(ContextInterface $ctx, QueryObjectsRequest $request): QueryObjectsResponse;
 
 
 	/**
@@ -116,33 +179,14 @@ interface RuntimeDomainInterface
 
 
 	/**
-	 * Enables reporting of execution contexts creation by means of <code>executionContextCreated</code> event. When the reporting gets enabled the event will be sent immediately for each existing execution context.
+	 * Runs script with given id in a given context.
 	 *
 	 * @param ContextInterface $ctx
+	 * @param RunScriptRequest $request
 	 *
-	 * @return void
+	 * @return RunScriptResponse
 	 */
-	public function enable(ContextInterface $ctx): void;
-
-
-	/**
-	 * Disables reporting of execution contexts creation.
-	 *
-	 * @param ContextInterface $ctx
-	 *
-	 * @return void
-	 */
-	public function disable(ContextInterface $ctx): void;
-
-
-	/**
-	 * Discards collected exceptions and console API calls.
-	 *
-	 * @param ContextInterface $ctx
-	 *
-	 * @return void
-	 */
-	public function discardConsoleEntries(ContextInterface $ctx): void;
+	public function runScript(ContextInterface $ctx, RunScriptRequest $request): RunScriptResponse;
 
 
 	/**
@@ -157,47 +201,75 @@ interface RuntimeDomainInterface
 
 
 	/**
-	 * Compiles expression.
+	 * Issued when console API was called.
 	 *
-	 * @param ContextInterface $ctx
-	 * @param CompileScriptRequest $request
+	 * Listener will be called whenever event Runtime.consoleAPICalled is fired.
 	 *
-	 * @return CompileScriptResponse
+	 * @param callable $listener
+	 *
+	 * @return SubscriptionInterface
 	 */
-	public function compileScript(ContextInterface $ctx, CompileScriptRequest $request): CompileScriptResponse;
+	public function addConsoleAPICalledListener(callable $listener): SubscriptionInterface;
 
 
 	/**
-	 * Runs script with given id in a given context.
+	 * Issued when console API was called.
+	 *
+	 * Method will block until first Runtime.consoleAPICalled event is fired.
 	 *
 	 * @param ContextInterface $ctx
-	 * @param RunScriptRequest $request
 	 *
-	 * @return RunScriptResponse
+	 * @return ConsoleAPICalledEvent
 	 */
-	public function runScript(ContextInterface $ctx, RunScriptRequest $request): RunScriptResponse;
+	public function awaitConsoleAPICalled(ContextInterface $ctx): ConsoleAPICalledEvent;
 
 
 	/**
-	 * Call Runtime.queryObjects command.
+	 * Issued when unhandled exception was revoked.
 	 *
-	 * @param ContextInterface $ctx
-	 * @param QueryObjectsRequest $request
+	 * Listener will be called whenever event Runtime.exceptionRevoked is fired.
 	 *
-	 * @return QueryObjectsResponse
+	 * @param callable $listener
+	 *
+	 * @return SubscriptionInterface
 	 */
-	public function queryObjects(ContextInterface $ctx, QueryObjectsRequest $request): QueryObjectsResponse;
+	public function addExceptionRevokedListener(callable $listener): SubscriptionInterface;
 
 
 	/**
-	 * Returns all let, const and class variables from global scope.
+	 * Issued when unhandled exception was revoked.
+	 *
+	 * Method will block until first Runtime.exceptionRevoked event is fired.
 	 *
 	 * @param ContextInterface $ctx
-	 * @param GlobalLexicalScopeNamesRequest $request
 	 *
-	 * @return GlobalLexicalScopeNamesResponse
+	 * @return ExceptionRevokedEvent
 	 */
-	public function globalLexicalScopeNames(ContextInterface $ctx, GlobalLexicalScopeNamesRequest $request): GlobalLexicalScopeNamesResponse;
+	public function awaitExceptionRevoked(ContextInterface $ctx): ExceptionRevokedEvent;
+
+
+	/**
+	 * Issued when exception was thrown and unhandled.
+	 *
+	 * Listener will be called whenever event Runtime.exceptionThrown is fired.
+	 *
+	 * @param callable $listener
+	 *
+	 * @return SubscriptionInterface
+	 */
+	public function addExceptionThrownListener(callable $listener): SubscriptionInterface;
+
+
+	/**
+	 * Issued when exception was thrown and unhandled.
+	 *
+	 * Method will block until first Runtime.exceptionThrown event is fired.
+	 *
+	 * @param ContextInterface $ctx
+	 *
+	 * @return ExceptionThrownEvent
+	 */
+	public function awaitExceptionThrown(ContextInterface $ctx): ExceptionThrownEvent;
 
 
 	/**
@@ -270,78 +342,6 @@ interface RuntimeDomainInterface
 	 * @return ExecutionContextsClearedEvent
 	 */
 	public function awaitExecutionContextsCleared(ContextInterface $ctx): ExecutionContextsClearedEvent;
-
-
-	/**
-	 * Issued when exception was thrown and unhandled.
-	 *
-	 * Listener will be called whenever event Runtime.exceptionThrown is fired.
-	 *
-	 * @param callable $listener
-	 *
-	 * @return SubscriptionInterface
-	 */
-	public function addExceptionThrownListener(callable $listener): SubscriptionInterface;
-
-
-	/**
-	 * Issued when exception was thrown and unhandled.
-	 *
-	 * Method will block until first Runtime.exceptionThrown event is fired.
-	 *
-	 * @param ContextInterface $ctx
-	 *
-	 * @return ExceptionThrownEvent
-	 */
-	public function awaitExceptionThrown(ContextInterface $ctx): ExceptionThrownEvent;
-
-
-	/**
-	 * Issued when unhandled exception was revoked.
-	 *
-	 * Listener will be called whenever event Runtime.exceptionRevoked is fired.
-	 *
-	 * @param callable $listener
-	 *
-	 * @return SubscriptionInterface
-	 */
-	public function addExceptionRevokedListener(callable $listener): SubscriptionInterface;
-
-
-	/**
-	 * Issued when unhandled exception was revoked.
-	 *
-	 * Method will block until first Runtime.exceptionRevoked event is fired.
-	 *
-	 * @param ContextInterface $ctx
-	 *
-	 * @return ExceptionRevokedEvent
-	 */
-	public function awaitExceptionRevoked(ContextInterface $ctx): ExceptionRevokedEvent;
-
-
-	/**
-	 * Issued when console API was called.
-	 *
-	 * Listener will be called whenever event Runtime.consoleAPICalled is fired.
-	 *
-	 * @param callable $listener
-	 *
-	 * @return SubscriptionInterface
-	 */
-	public function addConsoleAPICalledListener(callable $listener): SubscriptionInterface;
-
-
-	/**
-	 * Issued when console API was called.
-	 *
-	 * Method will block until first Runtime.consoleAPICalled event is fired.
-	 *
-	 * @param ContextInterface $ctx
-	 *
-	 * @return ConsoleAPICalledEvent
-	 */
-	public function awaitConsoleAPICalled(ContextInterface $ctx): ConsoleAPICalledEvent;
 
 
 	/**

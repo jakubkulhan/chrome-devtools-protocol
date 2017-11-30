@@ -25,13 +25,14 @@ use ChromeDevtoolsProtocol\SubscriptionInterface;
 interface DOMStorageDomainInterface
 {
 	/**
-	 * Enables storage tracking, storage events will now be delivered to the client.
+	 * Call DOMStorage.clear command.
 	 *
 	 * @param ContextInterface $ctx
+	 * @param ClearRequest $request
 	 *
 	 * @return void
 	 */
-	public function enable(ContextInterface $ctx): void;
+	public function clear(ContextInterface $ctx, ClearRequest $request): void;
 
 
 	/**
@@ -45,14 +46,13 @@ interface DOMStorageDomainInterface
 
 
 	/**
-	 * Call DOMStorage.clear command.
+	 * Enables storage tracking, storage events will now be delivered to the client.
 	 *
 	 * @param ContextInterface $ctx
-	 * @param ClearRequest $request
 	 *
 	 * @return void
 	 */
-	public function clear(ContextInterface $ctx, ClearRequest $request): void;
+	public function enable(ContextInterface $ctx): void;
 
 
 	/**
@@ -67,17 +67,6 @@ interface DOMStorageDomainInterface
 
 
 	/**
-	 * Call DOMStorage.setDOMStorageItem command.
-	 *
-	 * @param ContextInterface $ctx
-	 * @param SetDOMStorageItemRequest $request
-	 *
-	 * @return void
-	 */
-	public function setDOMStorageItem(ContextInterface $ctx, SetDOMStorageItemRequest $request): void;
-
-
-	/**
 	 * Call DOMStorage.removeDOMStorageItem command.
 	 *
 	 * @param ContextInterface $ctx
@@ -89,27 +78,38 @@ interface DOMStorageDomainInterface
 
 
 	/**
-	 * Subscribe to DOMStorage.domStorageItemsCleared event.
+	 * Call DOMStorage.setDOMStorageItem command.
 	 *
-	 * Listener will be called whenever event DOMStorage.domStorageItemsCleared is fired.
+	 * @param ContextInterface $ctx
+	 * @param SetDOMStorageItemRequest $request
+	 *
+	 * @return void
+	 */
+	public function setDOMStorageItem(ContextInterface $ctx, SetDOMStorageItemRequest $request): void;
+
+
+	/**
+	 * Subscribe to DOMStorage.domStorageItemAdded event.
+	 *
+	 * Listener will be called whenever event DOMStorage.domStorageItemAdded is fired.
 	 *
 	 * @param callable $listener
 	 *
 	 * @return SubscriptionInterface
 	 */
-	public function addDomStorageItemsClearedListener(callable $listener): SubscriptionInterface;
+	public function addDomStorageItemAddedListener(callable $listener): SubscriptionInterface;
 
 
 	/**
-	 * Wait for DOMStorage.domStorageItemsCleared event.
+	 * Wait for DOMStorage.domStorageItemAdded event.
 	 *
-	 * Method will block until first DOMStorage.domStorageItemsCleared event is fired.
+	 * Method will block until first DOMStorage.domStorageItemAdded event is fired.
 	 *
 	 * @param ContextInterface $ctx
 	 *
-	 * @return DomStorageItemsClearedEvent
+	 * @return DomStorageItemAddedEvent
 	 */
-	public function awaitDomStorageItemsCleared(ContextInterface $ctx): DomStorageItemsClearedEvent;
+	public function awaitDomStorageItemAdded(ContextInterface $ctx): DomStorageItemAddedEvent;
 
 
 	/**
@@ -137,27 +137,27 @@ interface DOMStorageDomainInterface
 
 
 	/**
-	 * Subscribe to DOMStorage.domStorageItemAdded event.
+	 * Subscribe to DOMStorage.domStorageItemsCleared event.
 	 *
-	 * Listener will be called whenever event DOMStorage.domStorageItemAdded is fired.
+	 * Listener will be called whenever event DOMStorage.domStorageItemsCleared is fired.
 	 *
 	 * @param callable $listener
 	 *
 	 * @return SubscriptionInterface
 	 */
-	public function addDomStorageItemAddedListener(callable $listener): SubscriptionInterface;
+	public function addDomStorageItemsClearedListener(callable $listener): SubscriptionInterface;
 
 
 	/**
-	 * Wait for DOMStorage.domStorageItemAdded event.
+	 * Wait for DOMStorage.domStorageItemsCleared event.
 	 *
-	 * Method will block until first DOMStorage.domStorageItemAdded event is fired.
+	 * Method will block until first DOMStorage.domStorageItemsCleared event is fired.
 	 *
 	 * @param ContextInterface $ctx
 	 *
-	 * @return DomStorageItemAddedEvent
+	 * @return DomStorageItemsClearedEvent
 	 */
-	public function awaitDomStorageItemAdded(ContextInterface $ctx): DomStorageItemAddedEvent;
+	public function awaitDomStorageItemsCleared(ContextInterface $ctx): DomStorageItemsClearedEvent;
 
 
 	/**

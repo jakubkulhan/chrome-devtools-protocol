@@ -19,17 +19,17 @@ class InspectorDomain implements InspectorDomainInterface
 	}
 
 
-	public function enable(ContextInterface $ctx): void
-	{
-		$request = new \stdClass();
-		$this->internalClient->executeCommand($ctx, 'Inspector.enable', $request);
-	}
-
-
 	public function disable(ContextInterface $ctx): void
 	{
 		$request = new \stdClass();
 		$this->internalClient->executeCommand($ctx, 'Inspector.disable', $request);
+	}
+
+
+	public function enable(ContextInterface $ctx): void
+	{
+		$request = new \stdClass();
+		$this->internalClient->executeCommand($ctx, 'Inspector.enable', $request);
 	}
 
 

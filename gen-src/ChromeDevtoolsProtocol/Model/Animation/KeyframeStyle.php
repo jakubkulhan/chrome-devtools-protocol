@@ -18,7 +18,7 @@ final class KeyframeStyle implements \JsonSerializable
 	public $offset;
 
 	/**
-	 * <code>AnimationEffect</code>'s timing function.
+	 * `AnimationEffect`'s timing function.
 	 *
 	 * @var string
 	 */

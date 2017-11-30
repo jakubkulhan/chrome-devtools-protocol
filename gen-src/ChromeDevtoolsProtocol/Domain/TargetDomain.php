@@ -42,53 +42,9 @@ class TargetDomain implements TargetDomainInterface
 	}
 
 
-	public function setDiscoverTargets(ContextInterface $ctx, SetDiscoverTargetsRequest $request): void
-	{
-		$this->internalClient->executeCommand($ctx, 'Target.setDiscoverTargets', $request);
-	}
-
-
-	public function setAutoAttach(ContextInterface $ctx, SetAutoAttachRequest $request): void
-	{
-		$this->internalClient->executeCommand($ctx, 'Target.setAutoAttach', $request);
-	}
-
-
-	public function setAttachToFrames(ContextInterface $ctx, SetAttachToFramesRequest $request): void
-	{
-		$this->internalClient->executeCommand($ctx, 'Target.setAttachToFrames', $request);
-	}
-
-
-	public function setRemoteLocations(ContextInterface $ctx, SetRemoteLocationsRequest $request): void
-	{
-		$this->internalClient->executeCommand($ctx, 'Target.setRemoteLocations', $request);
-	}
-
-
-	public function sendMessageToTarget(ContextInterface $ctx, SendMessageToTargetRequest $request): void
-	{
-		$this->internalClient->executeCommand($ctx, 'Target.sendMessageToTarget', $request);
-	}
-
-
-	public function getTargetInfo(ContextInterface $ctx, GetTargetInfoRequest $request): GetTargetInfoResponse
-	{
-		$response = $this->internalClient->executeCommand($ctx, 'Target.getTargetInfo', $request);
-		return GetTargetInfoResponse::fromJson($response);
-	}
-
-
 	public function activateTarget(ContextInterface $ctx, ActivateTargetRequest $request): void
 	{
 		$this->internalClient->executeCommand($ctx, 'Target.activateTarget', $request);
-	}
-
-
-	public function closeTarget(ContextInterface $ctx, CloseTargetRequest $request): CloseTargetResponse
-	{
-		$response = $this->internalClient->executeCommand($ctx, 'Target.closeTarget', $request);
-		return CloseTargetResponse::fromJson($response);
 	}
 
 
@@ -99,9 +55,10 @@ class TargetDomain implements TargetDomainInterface
 	}
 
 
-	public function detachFromTarget(ContextInterface $ctx, DetachFromTargetRequest $request): void
+	public function closeTarget(ContextInterface $ctx, CloseTargetRequest $request): CloseTargetResponse
 	{
-		$this->internalClient->executeCommand($ctx, 'Target.detachFromTarget', $request);
+		$response = $this->internalClient->executeCommand($ctx, 'Target.closeTarget', $request);
+		return CloseTargetResponse::fromJson($response);
 	}
 
 
@@ -113,6 +70,19 @@ class TargetDomain implements TargetDomainInterface
 	}
 
 
+	public function createTarget(ContextInterface $ctx, CreateTargetRequest $request): CreateTargetResponse
+	{
+		$response = $this->internalClient->executeCommand($ctx, 'Target.createTarget', $request);
+		return CreateTargetResponse::fromJson($response);
+	}
+
+
+	public function detachFromTarget(ContextInterface $ctx, DetachFromTargetRequest $request): void
+	{
+		$this->internalClient->executeCommand($ctx, 'Target.detachFromTarget', $request);
+	}
+
+
 	public function disposeBrowserContext(ContextInterface $ctx, DisposeBrowserContextRequest $request): DisposeBrowserContextResponse
 	{
 		$response = $this->internalClient->executeCommand($ctx, 'Target.disposeBrowserContext', $request);
@@ -120,10 +90,10 @@ class TargetDomain implements TargetDomainInterface
 	}
 
 
-	public function createTarget(ContextInterface $ctx, CreateTargetRequest $request): CreateTargetResponse
+	public function getTargetInfo(ContextInterface $ctx, GetTargetInfoRequest $request): GetTargetInfoResponse
 	{
-		$response = $this->internalClient->executeCommand($ctx, 'Target.createTarget', $request);
-		return CreateTargetResponse::fromJson($response);
+		$response = $this->internalClient->executeCommand($ctx, 'Target.getTargetInfo', $request);
+		return GetTargetInfoResponse::fromJson($response);
 	}
 
 
@@ -135,45 +105,33 @@ class TargetDomain implements TargetDomainInterface
 	}
 
 
-	public function addTargetCreatedListener(callable $listener): SubscriptionInterface
+	public function sendMessageToTarget(ContextInterface $ctx, SendMessageToTargetRequest $request): void
 	{
-		return $this->internalClient->addListener('Target.targetCreated', function ($event) use ($listener) {
-			return $listener(TargetCreatedEvent::fromJson($event));
-		});
+		$this->internalClient->executeCommand($ctx, 'Target.sendMessageToTarget', $request);
 	}
 
 
-	public function awaitTargetCreated(ContextInterface $ctx): TargetCreatedEvent
+	public function setAttachToFrames(ContextInterface $ctx, SetAttachToFramesRequest $request): void
 	{
-		return TargetCreatedEvent::fromJson($this->internalClient->awaitEvent($ctx, 'Target.targetCreated'));
+		$this->internalClient->executeCommand($ctx, 'Target.setAttachToFrames', $request);
 	}
 
 
-	public function addTargetInfoChangedListener(callable $listener): SubscriptionInterface
+	public function setAutoAttach(ContextInterface $ctx, SetAutoAttachRequest $request): void
 	{
-		return $this->internalClient->addListener('Target.targetInfoChanged', function ($event) use ($listener) {
-			return $listener(TargetInfoChangedEvent::fromJson($event));
-		});
+		$this->internalClient->executeCommand($ctx, 'Target.setAutoAttach', $request);
 	}
 
 
-	public function awaitTargetInfoChanged(ContextInterface $ctx): TargetInfoChangedEvent
+	public function setDiscoverTargets(ContextInterface $ctx, SetDiscoverTargetsRequest $request): void
 	{
-		return TargetInfoChangedEvent::fromJson($this->internalClient->awaitEvent($ctx, 'Target.targetInfoChanged'));
+		$this->internalClient->executeCommand($ctx, 'Target.setDiscoverTargets', $request);
 	}
 
 
-	public function addTargetDestroyedListener(callable $listener): SubscriptionInterface
+	public function setRemoteLocations(ContextInterface $ctx, SetRemoteLocationsRequest $request): void
 	{
-		return $this->internalClient->addListener('Target.targetDestroyed', function ($event) use ($listener) {
-			return $listener(TargetDestroyedEvent::fromJson($event));
-		});
-	}
-
-
-	public function awaitTargetDestroyed(ContextInterface $ctx): TargetDestroyedEvent
-	{
-		return TargetDestroyedEvent::fromJson($this->internalClient->awaitEvent($ctx, 'Target.targetDestroyed'));
+		$this->internalClient->executeCommand($ctx, 'Target.setRemoteLocations', $request);
 	}
 
 
@@ -216,5 +174,47 @@ class TargetDomain implements TargetDomainInterface
 	public function awaitReceivedMessageFromTarget(ContextInterface $ctx): ReceivedMessageFromTargetEvent
 	{
 		return ReceivedMessageFromTargetEvent::fromJson($this->internalClient->awaitEvent($ctx, 'Target.receivedMessageFromTarget'));
+	}
+
+
+	public function addTargetCreatedListener(callable $listener): SubscriptionInterface
+	{
+		return $this->internalClient->addListener('Target.targetCreated', function ($event) use ($listener) {
+			return $listener(TargetCreatedEvent::fromJson($event));
+		});
+	}
+
+
+	public function awaitTargetCreated(ContextInterface $ctx): TargetCreatedEvent
+	{
+		return TargetCreatedEvent::fromJson($this->internalClient->awaitEvent($ctx, 'Target.targetCreated'));
+	}
+
+
+	public function addTargetDestroyedListener(callable $listener): SubscriptionInterface
+	{
+		return $this->internalClient->addListener('Target.targetDestroyed', function ($event) use ($listener) {
+			return $listener(TargetDestroyedEvent::fromJson($event));
+		});
+	}
+
+
+	public function awaitTargetDestroyed(ContextInterface $ctx): TargetDestroyedEvent
+	{
+		return TargetDestroyedEvent::fromJson($this->internalClient->awaitEvent($ctx, 'Target.targetDestroyed'));
+	}
+
+
+	public function addTargetInfoChangedListener(callable $listener): SubscriptionInterface
+	{
+		return $this->internalClient->addListener('Target.targetInfoChanged', function ($event) use ($listener) {
+			return $listener(TargetInfoChangedEvent::fromJson($event));
+		});
+	}
+
+
+	public function awaitTargetInfoChanged(ContextInterface $ctx): TargetInfoChangedEvent
+	{
+		return TargetInfoChangedEvent::fromJson($this->internalClient->awaitEvent($ctx, 'Target.targetInfoChanged'));
 	}
 }

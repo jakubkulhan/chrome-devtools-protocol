@@ -2,7 +2,7 @@
 namespace ChromeDevtoolsProtocol\Model\Target;
 
 /**
- * Issued when detached from target for any reason (including <code>detachFromTarget</code> command). Can be issued multiple times per target if multiple sessions have been attached to it.
+ * Issued when detached from target for any reason (including `detachFromTarget` command). Can be issued multiple times per target if multiple sessions have been attached to it.
  *
  * @generated This file has been auto-generated, do not edit.
  *

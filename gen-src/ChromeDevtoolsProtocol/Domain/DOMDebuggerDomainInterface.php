@@ -23,18 +23,18 @@ use ChromeDevtoolsProtocol\Model\DOMDebugger\SetXHRBreakpointRequest;
 interface DOMDebuggerDomainInterface
 {
 	/**
-	 * Sets breakpoint on particular operation with DOM.
+	 * Returns event listeners of the given object.
 	 *
 	 * @param ContextInterface $ctx
-	 * @param SetDOMBreakpointRequest $request
+	 * @param GetEventListenersRequest $request
 	 *
-	 * @return void
+	 * @return GetEventListenersResponse
 	 */
-	public function setDOMBreakpoint(ContextInterface $ctx, SetDOMBreakpointRequest $request): void;
+	public function getEventListeners(ContextInterface $ctx, GetEventListenersRequest $request): GetEventListenersResponse;
 
 
 	/**
-	 * Removes DOM breakpoint that was set using <code>setDOMBreakpoint</code>.
+	 * Removes DOM breakpoint that was set using `setDOMBreakpoint`.
 	 *
 	 * @param ContextInterface $ctx
 	 * @param RemoveDOMBreakpointRequest $request
@@ -42,17 +42,6 @@ interface DOMDebuggerDomainInterface
 	 * @return void
 	 */
 	public function removeDOMBreakpoint(ContextInterface $ctx, RemoveDOMBreakpointRequest $request): void;
-
-
-	/**
-	 * Sets breakpoint on particular DOM event.
-	 *
-	 * @param ContextInterface $ctx
-	 * @param SetEventListenerBreakpointRequest $request
-	 *
-	 * @return void
-	 */
-	public function setEventListenerBreakpoint(ContextInterface $ctx, SetEventListenerBreakpointRequest $request): void;
 
 
 	/**
@@ -67,17 +56,6 @@ interface DOMDebuggerDomainInterface
 
 
 	/**
-	 * Sets breakpoint on particular native event.
-	 *
-	 * @param ContextInterface $ctx
-	 * @param SetInstrumentationBreakpointRequest $request
-	 *
-	 * @return void
-	 */
-	public function setInstrumentationBreakpoint(ContextInterface $ctx, SetInstrumentationBreakpointRequest $request): void;
-
-
-	/**
 	 * Removes breakpoint on particular native event.
 	 *
 	 * @param ContextInterface $ctx
@@ -86,17 +64,6 @@ interface DOMDebuggerDomainInterface
 	 * @return void
 	 */
 	public function removeInstrumentationBreakpoint(ContextInterface $ctx, RemoveInstrumentationBreakpointRequest $request): void;
-
-
-	/**
-	 * Sets breakpoint on XMLHttpRequest.
-	 *
-	 * @param ContextInterface $ctx
-	 * @param SetXHRBreakpointRequest $request
-	 *
-	 * @return void
-	 */
-	public function setXHRBreakpoint(ContextInterface $ctx, SetXHRBreakpointRequest $request): void;
 
 
 	/**
@@ -111,12 +78,45 @@ interface DOMDebuggerDomainInterface
 
 
 	/**
-	 * Returns event listeners of the given object.
+	 * Sets breakpoint on particular operation with DOM.
 	 *
 	 * @param ContextInterface $ctx
-	 * @param GetEventListenersRequest $request
+	 * @param SetDOMBreakpointRequest $request
 	 *
-	 * @return GetEventListenersResponse
+	 * @return void
 	 */
-	public function getEventListeners(ContextInterface $ctx, GetEventListenersRequest $request): GetEventListenersResponse;
+	public function setDOMBreakpoint(ContextInterface $ctx, SetDOMBreakpointRequest $request): void;
+
+
+	/**
+	 * Sets breakpoint on particular DOM event.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param SetEventListenerBreakpointRequest $request
+	 *
+	 * @return void
+	 */
+	public function setEventListenerBreakpoint(ContextInterface $ctx, SetEventListenerBreakpointRequest $request): void;
+
+
+	/**
+	 * Sets breakpoint on particular native event.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param SetInstrumentationBreakpointRequest $request
+	 *
+	 * @return void
+	 */
+	public function setInstrumentationBreakpoint(ContextInterface $ctx, SetInstrumentationBreakpointRequest $request): void;
+
+
+	/**
+	 * Sets breakpoint on XMLHttpRequest.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param SetXHRBreakpointRequest $request
+	 *
+	 * @return void
+	 */
+	public function setXHRBreakpoint(ContextInterface $ctx, SetXHRBreakpointRequest $request): void;
 }

@@ -25,7 +25,7 @@ final class MoveToRequest implements \JsonSerializable
 	public $targetNodeId;
 
 	/**
-	 * Drop node before this one (if absent, the moved node becomes the last child of <code>targetNodeId</code>).
+	 * Drop node before this one (if absent, the moved node becomes the last child of `targetNodeId`).
 	 *
 	 * @var int
 	 */

@@ -23,28 +23,6 @@ use ChromeDevtoolsProtocol\Model\CacheStorage\RequestEntriesResponse;
 interface CacheStorageDomainInterface
 {
 	/**
-	 * Requests cache names.
-	 *
-	 * @param ContextInterface $ctx
-	 * @param RequestCacheNamesRequest $request
-	 *
-	 * @return RequestCacheNamesResponse
-	 */
-	public function requestCacheNames(ContextInterface $ctx, RequestCacheNamesRequest $request): RequestCacheNamesResponse;
-
-
-	/**
-	 * Requests data from cache.
-	 *
-	 * @param ContextInterface $ctx
-	 * @param RequestEntriesRequest $request
-	 *
-	 * @return RequestEntriesResponse
-	 */
-	public function requestEntries(ContextInterface $ctx, RequestEntriesRequest $request): RequestEntriesResponse;
-
-
-	/**
 	 * Deletes a cache.
 	 *
 	 * @param ContextInterface $ctx
@@ -75,4 +53,26 @@ interface CacheStorageDomainInterface
 	 * @return RequestCachedResponseResponse
 	 */
 	public function requestCachedResponse(ContextInterface $ctx, RequestCachedResponseRequest $request): RequestCachedResponseResponse;
+
+
+	/**
+	 * Requests cache names.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param RequestCacheNamesRequest $request
+	 *
+	 * @return RequestCacheNamesResponse
+	 */
+	public function requestCacheNames(ContextInterface $ctx, RequestCacheNamesRequest $request): RequestCacheNamesResponse;
+
+
+	/**
+	 * Requests data from cache.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param RequestEntriesRequest $request
+	 *
+	 * @return RequestEntriesResponse
+	 */
+	public function requestEntries(ContextInterface $ctx, RequestEntriesRequest $request): RequestEntriesResponse;
 }

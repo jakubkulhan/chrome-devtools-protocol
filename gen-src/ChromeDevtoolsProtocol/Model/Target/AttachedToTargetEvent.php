@@ -2,7 +2,7 @@
 namespace ChromeDevtoolsProtocol\Model\Target;
 
 /**
- * Issued when attached to target because of auto-attach or <code>attachToTarget</code> command.
+ * Issued when attached to target because of auto-attach or `attachToTarget` command.
  *
  * @generated This file has been auto-generated, do not edit.
  *

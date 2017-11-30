@@ -24,10 +24,15 @@ class IndexedDBDomain implements IndexedDBDomainInterface
 	}
 
 
-	public function enable(ContextInterface $ctx): void
+	public function clearObjectStore(ContextInterface $ctx, ClearObjectStoreRequest $request): void
 	{
-		$request = new \stdClass();
-		$this->internalClient->executeCommand($ctx, 'IndexedDB.enable', $request);
+		$this->internalClient->executeCommand($ctx, 'IndexedDB.clearObjectStore', $request);
+	}
+
+
+	public function deleteDatabase(ContextInterface $ctx, DeleteDatabaseRequest $request): void
+	{
+		$this->internalClient->executeCommand($ctx, 'IndexedDB.deleteDatabase', $request);
 	}
 
 
@@ -38,17 +43,10 @@ class IndexedDBDomain implements IndexedDBDomainInterface
 	}
 
 
-	public function requestDatabaseNames(ContextInterface $ctx, RequestDatabaseNamesRequest $request): RequestDatabaseNamesResponse
+	public function enable(ContextInterface $ctx): void
 	{
-		$response = $this->internalClient->executeCommand($ctx, 'IndexedDB.requestDatabaseNames', $request);
-		return RequestDatabaseNamesResponse::fromJson($response);
-	}
-
-
-	public function requestDatabase(ContextInterface $ctx, RequestDatabaseRequest $request): RequestDatabaseResponse
-	{
-		$response = $this->internalClient->executeCommand($ctx, 'IndexedDB.requestDatabase', $request);
-		return RequestDatabaseResponse::fromJson($response);
+		$request = new \stdClass();
+		$this->internalClient->executeCommand($ctx, 'IndexedDB.enable', $request);
 	}
 
 
@@ -59,14 +57,16 @@ class IndexedDBDomain implements IndexedDBDomainInterface
 	}
 
 
-	public function clearObjectStore(ContextInterface $ctx, ClearObjectStoreRequest $request): void
+	public function requestDatabase(ContextInterface $ctx, RequestDatabaseRequest $request): RequestDatabaseResponse
 	{
-		$this->internalClient->executeCommand($ctx, 'IndexedDB.clearObjectStore', $request);
+		$response = $this->internalClient->executeCommand($ctx, 'IndexedDB.requestDatabase', $request);
+		return RequestDatabaseResponse::fromJson($response);
 	}
 
 
-	public function deleteDatabase(ContextInterface $ctx, DeleteDatabaseRequest $request): void
+	public function requestDatabaseNames(ContextInterface $ctx, RequestDatabaseNamesRequest $request): RequestDatabaseNamesResponse
 	{
-		$this->internalClient->executeCommand($ctx, 'IndexedDB.deleteDatabase', $request);
+		$response = $this->internalClient->executeCommand($ctx, 'IndexedDB.requestDatabaseNames', $request);
+		return RequestDatabaseNamesResponse::fromJson($response);
 	}
 }

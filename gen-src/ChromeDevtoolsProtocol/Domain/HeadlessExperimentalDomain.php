@@ -21,10 +21,10 @@ class HeadlessExperimentalDomain implements HeadlessExperimentalDomainInterface
 	}
 
 
-	public function enable(ContextInterface $ctx): void
+	public function beginFrame(ContextInterface $ctx, BeginFrameRequest $request): BeginFrameResponse
 	{
-		$request = new \stdClass();
-		$this->internalClient->executeCommand($ctx, 'HeadlessExperimental.enable', $request);
+		$response = $this->internalClient->executeCommand($ctx, 'HeadlessExperimental.beginFrame', $request);
+		return BeginFrameResponse::fromJson($response);
 	}
 
 
@@ -35,24 +35,10 @@ class HeadlessExperimentalDomain implements HeadlessExperimentalDomainInterface
 	}
 
 
-	public function beginFrame(ContextInterface $ctx, BeginFrameRequest $request): BeginFrameResponse
+	public function enable(ContextInterface $ctx): void
 	{
-		$response = $this->internalClient->executeCommand($ctx, 'HeadlessExperimental.beginFrame', $request);
-		return BeginFrameResponse::fromJson($response);
-	}
-
-
-	public function addNeedsBeginFramesChangedListener(callable $listener): SubscriptionInterface
-	{
-		return $this->internalClient->addListener('HeadlessExperimental.needsBeginFramesChanged', function ($event) use ($listener) {
-			return $listener(NeedsBeginFramesChangedEvent::fromJson($event));
-		});
-	}
-
-
-	public function awaitNeedsBeginFramesChanged(ContextInterface $ctx): NeedsBeginFramesChangedEvent
-	{
-		return NeedsBeginFramesChangedEvent::fromJson($this->internalClient->awaitEvent($ctx, 'HeadlessExperimental.needsBeginFramesChanged'));
+		$request = new \stdClass();
+		$this->internalClient->executeCommand($ctx, 'HeadlessExperimental.enable', $request);
 	}
 
 
@@ -67,5 +53,19 @@ class HeadlessExperimentalDomain implements HeadlessExperimentalDomainInterface
 	public function awaitMainFrameReadyForScreenshots(ContextInterface $ctx): MainFrameReadyForScreenshotsEvent
 	{
 		return MainFrameReadyForScreenshotsEvent::fromJson($this->internalClient->awaitEvent($ctx, 'HeadlessExperimental.mainFrameReadyForScreenshots'));
+	}
+
+
+	public function addNeedsBeginFramesChangedListener(callable $listener): SubscriptionInterface
+	{
+		return $this->internalClient->addListener('HeadlessExperimental.needsBeginFramesChanged', function ($event) use ($listener) {
+			return $listener(NeedsBeginFramesChangedEvent::fromJson($event));
+		});
+	}
+
+
+	public function awaitNeedsBeginFramesChanged(ContextInterface $ctx): NeedsBeginFramesChangedEvent
+	{
+		return NeedsBeginFramesChangedEvent::fromJson($this->internalClient->awaitEvent($ctx, 'HeadlessExperimental.needsBeginFramesChanged'));
 	}
 }

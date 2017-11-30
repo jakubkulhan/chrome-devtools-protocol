@@ -21,16 +21,6 @@ use ChromeDevtoolsProtocol\SubscriptionInterface;
 interface DatabaseDomainInterface
 {
 	/**
-	 * Enables database tracking, database events will now be delivered to the client.
-	 *
-	 * @param ContextInterface $ctx
-	 *
-	 * @return void
-	 */
-	public function enable(ContextInterface $ctx): void;
-
-
-	/**
 	 * Disables database tracking, prevents database events from being sent to the client.
 	 *
 	 * @param ContextInterface $ctx
@@ -41,14 +31,13 @@ interface DatabaseDomainInterface
 
 
 	/**
-	 * Call Database.getDatabaseTableNames command.
+	 * Enables database tracking, database events will now be delivered to the client.
 	 *
 	 * @param ContextInterface $ctx
-	 * @param GetDatabaseTableNamesRequest $request
 	 *
-	 * @return GetDatabaseTableNamesResponse
+	 * @return void
 	 */
-	public function getDatabaseTableNames(ContextInterface $ctx, GetDatabaseTableNamesRequest $request): GetDatabaseTableNamesResponse;
+	public function enable(ContextInterface $ctx): void;
 
 
 	/**
@@ -60,6 +49,17 @@ interface DatabaseDomainInterface
 	 * @return ExecuteSQLResponse
 	 */
 	public function executeSQL(ContextInterface $ctx, ExecuteSQLRequest $request): ExecuteSQLResponse;
+
+
+	/**
+	 * Call Database.getDatabaseTableNames command.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param GetDatabaseTableNamesRequest $request
+	 *
+	 * @return GetDatabaseTableNamesResponse
+	 */
+	public function getDatabaseTableNames(ContextInterface $ctx, GetDatabaseTableNamesRequest $request): GetDatabaseTableNamesResponse;
 
 
 	/**

@@ -34,9 +34,11 @@ class EmulationDomain implements EmulationDomainInterface
 	}
 
 
-	public function setDeviceMetricsOverride(ContextInterface $ctx, SetDeviceMetricsOverrideRequest $request): void
+	public function canEmulate(ContextInterface $ctx): CanEmulateResponse
 	{
-		$this->internalClient->executeCommand($ctx, 'Emulation.setDeviceMetricsOverride', $request);
+		$request = new \stdClass();
+		$response = $this->internalClient->executeCommand($ctx, 'Emulation.canEmulate', $request);
+		return CanEmulateResponse::fromJson($response);
 	}
 
 
@@ -47,37 +49,6 @@ class EmulationDomain implements EmulationDomainInterface
 	}
 
 
-	public function resetPageScaleFactor(ContextInterface $ctx): void
-	{
-		$request = new \stdClass();
-		$this->internalClient->executeCommand($ctx, 'Emulation.resetPageScaleFactor', $request);
-	}
-
-
-	public function setPageScaleFactor(ContextInterface $ctx, SetPageScaleFactorRequest $request): void
-	{
-		$this->internalClient->executeCommand($ctx, 'Emulation.setPageScaleFactor', $request);
-	}
-
-
-	public function setVisibleSize(ContextInterface $ctx, SetVisibleSizeRequest $request): void
-	{
-		$this->internalClient->executeCommand($ctx, 'Emulation.setVisibleSize', $request);
-	}
-
-
-	public function setScriptExecutionDisabled(ContextInterface $ctx, SetScriptExecutionDisabledRequest $request): void
-	{
-		$this->internalClient->executeCommand($ctx, 'Emulation.setScriptExecutionDisabled', $request);
-	}
-
-
-	public function setGeolocationOverride(ContextInterface $ctx, SetGeolocationOverrideRequest $request): void
-	{
-		$this->internalClient->executeCommand($ctx, 'Emulation.setGeolocationOverride', $request);
-	}
-
-
 	public function clearGeolocationOverride(ContextInterface $ctx): void
 	{
 		$request = new \stdClass();
@@ -85,9 +56,28 @@ class EmulationDomain implements EmulationDomainInterface
 	}
 
 
-	public function setTouchEmulationEnabled(ContextInterface $ctx, SetTouchEmulationEnabledRequest $request): void
+	public function resetPageScaleFactor(ContextInterface $ctx): void
 	{
-		$this->internalClient->executeCommand($ctx, 'Emulation.setTouchEmulationEnabled', $request);
+		$request = new \stdClass();
+		$this->internalClient->executeCommand($ctx, 'Emulation.resetPageScaleFactor', $request);
+	}
+
+
+	public function setCPUThrottlingRate(ContextInterface $ctx, SetCPUThrottlingRateRequest $request): void
+	{
+		$this->internalClient->executeCommand($ctx, 'Emulation.setCPUThrottlingRate', $request);
+	}
+
+
+	public function setDefaultBackgroundColorOverride(ContextInterface $ctx, SetDefaultBackgroundColorOverrideRequest $request): void
+	{
+		$this->internalClient->executeCommand($ctx, 'Emulation.setDefaultBackgroundColorOverride', $request);
+	}
+
+
+	public function setDeviceMetricsOverride(ContextInterface $ctx, SetDeviceMetricsOverrideRequest $request): void
+	{
+		$this->internalClient->executeCommand($ctx, 'Emulation.setDeviceMetricsOverride', $request);
 	}
 
 
@@ -103,17 +93,33 @@ class EmulationDomain implements EmulationDomainInterface
 	}
 
 
-	public function setCPUThrottlingRate(ContextInterface $ctx, SetCPUThrottlingRateRequest $request): void
+	public function setGeolocationOverride(ContextInterface $ctx, SetGeolocationOverrideRequest $request): void
 	{
-		$this->internalClient->executeCommand($ctx, 'Emulation.setCPUThrottlingRate', $request);
+		$this->internalClient->executeCommand($ctx, 'Emulation.setGeolocationOverride', $request);
 	}
 
 
-	public function canEmulate(ContextInterface $ctx): CanEmulateResponse
+	public function setNavigatorOverrides(ContextInterface $ctx, SetNavigatorOverridesRequest $request): void
 	{
-		$request = new \stdClass();
-		$response = $this->internalClient->executeCommand($ctx, 'Emulation.canEmulate', $request);
-		return CanEmulateResponse::fromJson($response);
+		$this->internalClient->executeCommand($ctx, 'Emulation.setNavigatorOverrides', $request);
+	}
+
+
+	public function setPageScaleFactor(ContextInterface $ctx, SetPageScaleFactorRequest $request): void
+	{
+		$this->internalClient->executeCommand($ctx, 'Emulation.setPageScaleFactor', $request);
+	}
+
+
+	public function setScriptExecutionDisabled(ContextInterface $ctx, SetScriptExecutionDisabledRequest $request): void
+	{
+		$this->internalClient->executeCommand($ctx, 'Emulation.setScriptExecutionDisabled', $request);
+	}
+
+
+	public function setTouchEmulationEnabled(ContextInterface $ctx, SetTouchEmulationEnabledRequest $request): void
+	{
+		$this->internalClient->executeCommand($ctx, 'Emulation.setTouchEmulationEnabled', $request);
 	}
 
 
@@ -124,29 +130,9 @@ class EmulationDomain implements EmulationDomainInterface
 	}
 
 
-	public function setNavigatorOverrides(ContextInterface $ctx, SetNavigatorOverridesRequest $request): void
+	public function setVisibleSize(ContextInterface $ctx, SetVisibleSizeRequest $request): void
 	{
-		$this->internalClient->executeCommand($ctx, 'Emulation.setNavigatorOverrides', $request);
-	}
-
-
-	public function setDefaultBackgroundColorOverride(ContextInterface $ctx, SetDefaultBackgroundColorOverrideRequest $request): void
-	{
-		$this->internalClient->executeCommand($ctx, 'Emulation.setDefaultBackgroundColorOverride', $request);
-	}
-
-
-	public function addVirtualTimeBudgetExpiredListener(callable $listener): SubscriptionInterface
-	{
-		return $this->internalClient->addListener('Emulation.virtualTimeBudgetExpired', function ($event) use ($listener) {
-			return $listener(VirtualTimeBudgetExpiredEvent::fromJson($event));
-		});
-	}
-
-
-	public function awaitVirtualTimeBudgetExpired(ContextInterface $ctx): VirtualTimeBudgetExpiredEvent
-	{
-		return VirtualTimeBudgetExpiredEvent::fromJson($this->internalClient->awaitEvent($ctx, 'Emulation.virtualTimeBudgetExpired'));
+		$this->internalClient->executeCommand($ctx, 'Emulation.setVisibleSize', $request);
 	}
 
 
@@ -161,6 +147,20 @@ class EmulationDomain implements EmulationDomainInterface
 	public function awaitVirtualTimeAdvanced(ContextInterface $ctx): VirtualTimeAdvancedEvent
 	{
 		return VirtualTimeAdvancedEvent::fromJson($this->internalClient->awaitEvent($ctx, 'Emulation.virtualTimeAdvanced'));
+	}
+
+
+	public function addVirtualTimeBudgetExpiredListener(callable $listener): SubscriptionInterface
+	{
+		return $this->internalClient->addListener('Emulation.virtualTimeBudgetExpired', function ($event) use ($listener) {
+			return $listener(VirtualTimeBudgetExpiredEvent::fromJson($event));
+		});
+	}
+
+
+	public function awaitVirtualTimeBudgetExpired(ContextInterface $ctx): VirtualTimeBudgetExpiredEvent
+	{
+		return VirtualTimeBudgetExpiredEvent::fromJson($this->internalClient->awaitEvent($ctx, 'Emulation.virtualTimeBudgetExpired'));
 	}
 
 

@@ -23,59 +23,6 @@ use ChromeDevtoolsProtocol\Model\IndexedDB\RequestDatabaseResponse;
 interface IndexedDBDomainInterface
 {
 	/**
-	 * Enables events from backend.
-	 *
-	 * @param ContextInterface $ctx
-	 *
-	 * @return void
-	 */
-	public function enable(ContextInterface $ctx): void;
-
-
-	/**
-	 * Disables events from backend.
-	 *
-	 * @param ContextInterface $ctx
-	 *
-	 * @return void
-	 */
-	public function disable(ContextInterface $ctx): void;
-
-
-	/**
-	 * Requests database names for given security origin.
-	 *
-	 * @param ContextInterface $ctx
-	 * @param RequestDatabaseNamesRequest $request
-	 *
-	 * @return RequestDatabaseNamesResponse
-	 */
-	public function requestDatabaseNames(ContextInterface $ctx, RequestDatabaseNamesRequest $request): RequestDatabaseNamesResponse;
-
-
-	/**
-	 * Requests database with given name in given frame.
-	 *
-	 * @param ContextInterface $ctx
-	 * @param RequestDatabaseRequest $request
-	 *
-	 * @return RequestDatabaseResponse
-	 */
-	public function requestDatabase(ContextInterface $ctx, RequestDatabaseRequest $request): RequestDatabaseResponse;
-
-
-	/**
-	 * Requests data from object store or index.
-	 *
-	 * @param ContextInterface $ctx
-	 * @param RequestDataRequest $request
-	 *
-	 * @return RequestDataResponse
-	 */
-	public function requestData(ContextInterface $ctx, RequestDataRequest $request): RequestDataResponse;
-
-
-	/**
 	 * Clears all entries from an object store.
 	 *
 	 * @param ContextInterface $ctx
@@ -95,4 +42,57 @@ interface IndexedDBDomainInterface
 	 * @return void
 	 */
 	public function deleteDatabase(ContextInterface $ctx, DeleteDatabaseRequest $request): void;
+
+
+	/**
+	 * Disables events from backend.
+	 *
+	 * @param ContextInterface $ctx
+	 *
+	 * @return void
+	 */
+	public function disable(ContextInterface $ctx): void;
+
+
+	/**
+	 * Enables events from backend.
+	 *
+	 * @param ContextInterface $ctx
+	 *
+	 * @return void
+	 */
+	public function enable(ContextInterface $ctx): void;
+
+
+	/**
+	 * Requests data from object store or index.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param RequestDataRequest $request
+	 *
+	 * @return RequestDataResponse
+	 */
+	public function requestData(ContextInterface $ctx, RequestDataRequest $request): RequestDataResponse;
+
+
+	/**
+	 * Requests database with given name in given frame.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param RequestDatabaseRequest $request
+	 *
+	 * @return RequestDatabaseResponse
+	 */
+	public function requestDatabase(ContextInterface $ctx, RequestDatabaseRequest $request): RequestDatabaseResponse;
+
+
+	/**
+	 * Requests database names for given security origin.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param RequestDatabaseNamesRequest $request
+	 *
+	 * @return RequestDatabaseNamesResponse
+	 */
+	public function requestDatabaseNames(ContextInterface $ctx, RequestDatabaseNamesRequest $request): RequestDatabaseNamesResponse;
 }

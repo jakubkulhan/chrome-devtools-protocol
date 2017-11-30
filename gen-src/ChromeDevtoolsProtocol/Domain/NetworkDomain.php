@@ -62,69 +62,11 @@ class NetworkDomain implements NetworkDomainInterface
 	}
 
 
-	public function enable(ContextInterface $ctx, EnableRequest $request): void
-	{
-		$this->internalClient->executeCommand($ctx, 'Network.enable', $request);
-	}
-
-
-	public function disable(ContextInterface $ctx): void
-	{
-		$request = new \stdClass();
-		$this->internalClient->executeCommand($ctx, 'Network.disable', $request);
-	}
-
-
-	public function setUserAgentOverride(ContextInterface $ctx, SetUserAgentOverrideRequest $request): void
-	{
-		$this->internalClient->executeCommand($ctx, 'Network.setUserAgentOverride', $request);
-	}
-
-
-	public function searchInResponseBody(ContextInterface $ctx, SearchInResponseBodyRequest $request): SearchInResponseBodyResponse
-	{
-		$response = $this->internalClient->executeCommand($ctx, 'Network.searchInResponseBody', $request);
-		return SearchInResponseBodyResponse::fromJson($response);
-	}
-
-
-	public function setExtraHTTPHeaders(ContextInterface $ctx, SetExtraHTTPHeadersRequest $request): void
-	{
-		$this->internalClient->executeCommand($ctx, 'Network.setExtraHTTPHeaders', $request);
-	}
-
-
-	public function getResponseBody(ContextInterface $ctx, GetResponseBodyRequest $request): GetResponseBodyResponse
-	{
-		$response = $this->internalClient->executeCommand($ctx, 'Network.getResponseBody', $request);
-		return GetResponseBodyResponse::fromJson($response);
-	}
-
-
-	public function setBlockedURLs(ContextInterface $ctx, SetBlockedURLsRequest $request): void
-	{
-		$this->internalClient->executeCommand($ctx, 'Network.setBlockedURLs', $request);
-	}
-
-
-	public function replayXHR(ContextInterface $ctx, ReplayXHRRequest $request): void
-	{
-		$this->internalClient->executeCommand($ctx, 'Network.replayXHR', $request);
-	}
-
-
 	public function canClearBrowserCache(ContextInterface $ctx): CanClearBrowserCacheResponse
 	{
 		$request = new \stdClass();
 		$response = $this->internalClient->executeCommand($ctx, 'Network.canClearBrowserCache', $request);
 		return CanClearBrowserCacheResponse::fromJson($response);
-	}
-
-
-	public function clearBrowserCache(ContextInterface $ctx): void
-	{
-		$request = new \stdClass();
-		$this->internalClient->executeCommand($ctx, 'Network.clearBrowserCache', $request);
 	}
 
 
@@ -136,6 +78,21 @@ class NetworkDomain implements NetworkDomainInterface
 	}
 
 
+	public function canEmulateNetworkConditions(ContextInterface $ctx): CanEmulateNetworkConditionsResponse
+	{
+		$request = new \stdClass();
+		$response = $this->internalClient->executeCommand($ctx, 'Network.canEmulateNetworkConditions', $request);
+		return CanEmulateNetworkConditionsResponse::fromJson($response);
+	}
+
+
+	public function clearBrowserCache(ContextInterface $ctx): void
+	{
+		$request = new \stdClass();
+		$this->internalClient->executeCommand($ctx, 'Network.clearBrowserCache', $request);
+	}
+
+
 	public function clearBrowserCookies(ContextInterface $ctx): void
 	{
 		$request = new \stdClass();
@@ -143,10 +100,34 @@ class NetworkDomain implements NetworkDomainInterface
 	}
 
 
-	public function getCookies(ContextInterface $ctx, GetCookiesRequest $request): GetCookiesResponse
+	public function continueInterceptedRequest(ContextInterface $ctx, ContinueInterceptedRequestRequest $request): void
 	{
-		$response = $this->internalClient->executeCommand($ctx, 'Network.getCookies', $request);
-		return GetCookiesResponse::fromJson($response);
+		$this->internalClient->executeCommand($ctx, 'Network.continueInterceptedRequest', $request);
+	}
+
+
+	public function deleteCookies(ContextInterface $ctx, DeleteCookiesRequest $request): void
+	{
+		$this->internalClient->executeCommand($ctx, 'Network.deleteCookies', $request);
+	}
+
+
+	public function disable(ContextInterface $ctx): void
+	{
+		$request = new \stdClass();
+		$this->internalClient->executeCommand($ctx, 'Network.disable', $request);
+	}
+
+
+	public function emulateNetworkConditions(ContextInterface $ctx, EmulateNetworkConditionsRequest $request): void
+	{
+		$this->internalClient->executeCommand($ctx, 'Network.emulateNetworkConditions', $request);
+	}
+
+
+	public function enable(ContextInterface $ctx, EnableRequest $request): void
+	{
+		$this->internalClient->executeCommand($ctx, 'Network.enable', $request);
 	}
 
 
@@ -158,9 +139,62 @@ class NetworkDomain implements NetworkDomainInterface
 	}
 
 
-	public function deleteCookies(ContextInterface $ctx, DeleteCookiesRequest $request): void
+	public function getCertificate(ContextInterface $ctx, GetCertificateRequest $request): GetCertificateResponse
 	{
-		$this->internalClient->executeCommand($ctx, 'Network.deleteCookies', $request);
+		$response = $this->internalClient->executeCommand($ctx, 'Network.getCertificate', $request);
+		return GetCertificateResponse::fromJson($response);
+	}
+
+
+	public function getCookies(ContextInterface $ctx, GetCookiesRequest $request): GetCookiesResponse
+	{
+		$response = $this->internalClient->executeCommand($ctx, 'Network.getCookies', $request);
+		return GetCookiesResponse::fromJson($response);
+	}
+
+
+	public function getResponseBody(ContextInterface $ctx, GetResponseBodyRequest $request): GetResponseBodyResponse
+	{
+		$response = $this->internalClient->executeCommand($ctx, 'Network.getResponseBody', $request);
+		return GetResponseBodyResponse::fromJson($response);
+	}
+
+
+	public function getResponseBodyForInterception(ContextInterface $ctx, GetResponseBodyForInterceptionRequest $request): GetResponseBodyForInterceptionResponse
+	{
+		$response = $this->internalClient->executeCommand($ctx, 'Network.getResponseBodyForInterception', $request);
+		return GetResponseBodyForInterceptionResponse::fromJson($response);
+	}
+
+
+	public function replayXHR(ContextInterface $ctx, ReplayXHRRequest $request): void
+	{
+		$this->internalClient->executeCommand($ctx, 'Network.replayXHR', $request);
+	}
+
+
+	public function searchInResponseBody(ContextInterface $ctx, SearchInResponseBodyRequest $request): SearchInResponseBodyResponse
+	{
+		$response = $this->internalClient->executeCommand($ctx, 'Network.searchInResponseBody', $request);
+		return SearchInResponseBodyResponse::fromJson($response);
+	}
+
+
+	public function setBlockedURLs(ContextInterface $ctx, SetBlockedURLsRequest $request): void
+	{
+		$this->internalClient->executeCommand($ctx, 'Network.setBlockedURLs', $request);
+	}
+
+
+	public function setBypassServiceWorker(ContextInterface $ctx, SetBypassServiceWorkerRequest $request): void
+	{
+		$this->internalClient->executeCommand($ctx, 'Network.setBypassServiceWorker', $request);
+	}
+
+
+	public function setCacheDisabled(ContextInterface $ctx, SetCacheDisabledRequest $request): void
+	{
+		$this->internalClient->executeCommand($ctx, 'Network.setCacheDisabled', $request);
 	}
 
 
@@ -177,42 +211,15 @@ class NetworkDomain implements NetworkDomainInterface
 	}
 
 
-	public function canEmulateNetworkConditions(ContextInterface $ctx): CanEmulateNetworkConditionsResponse
-	{
-		$request = new \stdClass();
-		$response = $this->internalClient->executeCommand($ctx, 'Network.canEmulateNetworkConditions', $request);
-		return CanEmulateNetworkConditionsResponse::fromJson($response);
-	}
-
-
-	public function emulateNetworkConditions(ContextInterface $ctx, EmulateNetworkConditionsRequest $request): void
-	{
-		$this->internalClient->executeCommand($ctx, 'Network.emulateNetworkConditions', $request);
-	}
-
-
-	public function setCacheDisabled(ContextInterface $ctx, SetCacheDisabledRequest $request): void
-	{
-		$this->internalClient->executeCommand($ctx, 'Network.setCacheDisabled', $request);
-	}
-
-
-	public function setBypassServiceWorker(ContextInterface $ctx, SetBypassServiceWorkerRequest $request): void
-	{
-		$this->internalClient->executeCommand($ctx, 'Network.setBypassServiceWorker', $request);
-	}
-
-
 	public function setDataSizeLimitsForTest(ContextInterface $ctx, SetDataSizeLimitsForTestRequest $request): void
 	{
 		$this->internalClient->executeCommand($ctx, 'Network.setDataSizeLimitsForTest', $request);
 	}
 
 
-	public function getCertificate(ContextInterface $ctx, GetCertificateRequest $request): GetCertificateResponse
+	public function setExtraHTTPHeaders(ContextInterface $ctx, SetExtraHTTPHeadersRequest $request): void
 	{
-		$response = $this->internalClient->executeCommand($ctx, 'Network.getCertificate', $request);
-		return GetCertificateResponse::fromJson($response);
+		$this->internalClient->executeCommand($ctx, 'Network.setExtraHTTPHeaders', $request);
 	}
 
 
@@ -222,72 +229,9 @@ class NetworkDomain implements NetworkDomainInterface
 	}
 
 
-	public function continueInterceptedRequest(ContextInterface $ctx, ContinueInterceptedRequestRequest $request): void
+	public function setUserAgentOverride(ContextInterface $ctx, SetUserAgentOverrideRequest $request): void
 	{
-		$this->internalClient->executeCommand($ctx, 'Network.continueInterceptedRequest', $request);
-	}
-
-
-	public function getResponseBodyForInterception(ContextInterface $ctx, GetResponseBodyForInterceptionRequest $request): GetResponseBodyForInterceptionResponse
-	{
-		$response = $this->internalClient->executeCommand($ctx, 'Network.getResponseBodyForInterception', $request);
-		return GetResponseBodyForInterceptionResponse::fromJson($response);
-	}
-
-
-	public function addResourceChangedPriorityListener(callable $listener): SubscriptionInterface
-	{
-		return $this->internalClient->addListener('Network.resourceChangedPriority', function ($event) use ($listener) {
-			return $listener(ResourceChangedPriorityEvent::fromJson($event));
-		});
-	}
-
-
-	public function awaitResourceChangedPriority(ContextInterface $ctx): ResourceChangedPriorityEvent
-	{
-		return ResourceChangedPriorityEvent::fromJson($this->internalClient->awaitEvent($ctx, 'Network.resourceChangedPriority'));
-	}
-
-
-	public function addRequestWillBeSentListener(callable $listener): SubscriptionInterface
-	{
-		return $this->internalClient->addListener('Network.requestWillBeSent', function ($event) use ($listener) {
-			return $listener(RequestWillBeSentEvent::fromJson($event));
-		});
-	}
-
-
-	public function awaitRequestWillBeSent(ContextInterface $ctx): RequestWillBeSentEvent
-	{
-		return RequestWillBeSentEvent::fromJson($this->internalClient->awaitEvent($ctx, 'Network.requestWillBeSent'));
-	}
-
-
-	public function addRequestServedFromCacheListener(callable $listener): SubscriptionInterface
-	{
-		return $this->internalClient->addListener('Network.requestServedFromCache', function ($event) use ($listener) {
-			return $listener(RequestServedFromCacheEvent::fromJson($event));
-		});
-	}
-
-
-	public function awaitRequestServedFromCache(ContextInterface $ctx): RequestServedFromCacheEvent
-	{
-		return RequestServedFromCacheEvent::fromJson($this->internalClient->awaitEvent($ctx, 'Network.requestServedFromCache'));
-	}
-
-
-	public function addResponseReceivedListener(callable $listener): SubscriptionInterface
-	{
-		return $this->internalClient->addListener('Network.responseReceived', function ($event) use ($listener) {
-			return $listener(ResponseReceivedEvent::fromJson($event));
-		});
-	}
-
-
-	public function awaitResponseReceived(ContextInterface $ctx): ResponseReceivedEvent
-	{
-		return ResponseReceivedEvent::fromJson($this->internalClient->awaitEvent($ctx, 'Network.responseReceived'));
+		$this->internalClient->executeCommand($ctx, 'Network.setUserAgentOverride', $request);
 	}
 
 
@@ -305,17 +249,17 @@ class NetworkDomain implements NetworkDomainInterface
 	}
 
 
-	public function addLoadingFinishedListener(callable $listener): SubscriptionInterface
+	public function addEventSourceMessageReceivedListener(callable $listener): SubscriptionInterface
 	{
-		return $this->internalClient->addListener('Network.loadingFinished', function ($event) use ($listener) {
-			return $listener(LoadingFinishedEvent::fromJson($event));
+		return $this->internalClient->addListener('Network.eventSourceMessageReceived', function ($event) use ($listener) {
+			return $listener(EventSourceMessageReceivedEvent::fromJson($event));
 		});
 	}
 
 
-	public function awaitLoadingFinished(ContextInterface $ctx): LoadingFinishedEvent
+	public function awaitEventSourceMessageReceived(ContextInterface $ctx): EventSourceMessageReceivedEvent
 	{
-		return LoadingFinishedEvent::fromJson($this->internalClient->awaitEvent($ctx, 'Network.loadingFinished'));
+		return EventSourceMessageReceivedEvent::fromJson($this->internalClient->awaitEvent($ctx, 'Network.eventSourceMessageReceived'));
 	}
 
 
@@ -333,45 +277,87 @@ class NetworkDomain implements NetworkDomainInterface
 	}
 
 
-	public function addWebSocketWillSendHandshakeRequestListener(callable $listener): SubscriptionInterface
+	public function addLoadingFinishedListener(callable $listener): SubscriptionInterface
 	{
-		return $this->internalClient->addListener('Network.webSocketWillSendHandshakeRequest', function ($event) use ($listener) {
-			return $listener(WebSocketWillSendHandshakeRequestEvent::fromJson($event));
+		return $this->internalClient->addListener('Network.loadingFinished', function ($event) use ($listener) {
+			return $listener(LoadingFinishedEvent::fromJson($event));
 		});
 	}
 
 
-	public function awaitWebSocketWillSendHandshakeRequest(ContextInterface $ctx): WebSocketWillSendHandshakeRequestEvent
+	public function awaitLoadingFinished(ContextInterface $ctx): LoadingFinishedEvent
 	{
-		return WebSocketWillSendHandshakeRequestEvent::fromJson($this->internalClient->awaitEvent($ctx, 'Network.webSocketWillSendHandshakeRequest'));
+		return LoadingFinishedEvent::fromJson($this->internalClient->awaitEvent($ctx, 'Network.loadingFinished'));
 	}
 
 
-	public function addWebSocketHandshakeResponseReceivedListener(callable $listener): SubscriptionInterface
+	public function addRequestInterceptedListener(callable $listener): SubscriptionInterface
 	{
-		return $this->internalClient->addListener('Network.webSocketHandshakeResponseReceived', function ($event) use ($listener) {
-			return $listener(WebSocketHandshakeResponseReceivedEvent::fromJson($event));
+		return $this->internalClient->addListener('Network.requestIntercepted', function ($event) use ($listener) {
+			return $listener(RequestInterceptedEvent::fromJson($event));
 		});
 	}
 
 
-	public function awaitWebSocketHandshakeResponseReceived(ContextInterface $ctx): WebSocketHandshakeResponseReceivedEvent
+	public function awaitRequestIntercepted(ContextInterface $ctx): RequestInterceptedEvent
 	{
-		return WebSocketHandshakeResponseReceivedEvent::fromJson($this->internalClient->awaitEvent($ctx, 'Network.webSocketHandshakeResponseReceived'));
+		return RequestInterceptedEvent::fromJson($this->internalClient->awaitEvent($ctx, 'Network.requestIntercepted'));
 	}
 
 
-	public function addWebSocketCreatedListener(callable $listener): SubscriptionInterface
+	public function addRequestServedFromCacheListener(callable $listener): SubscriptionInterface
 	{
-		return $this->internalClient->addListener('Network.webSocketCreated', function ($event) use ($listener) {
-			return $listener(WebSocketCreatedEvent::fromJson($event));
+		return $this->internalClient->addListener('Network.requestServedFromCache', function ($event) use ($listener) {
+			return $listener(RequestServedFromCacheEvent::fromJson($event));
 		});
 	}
 
 
-	public function awaitWebSocketCreated(ContextInterface $ctx): WebSocketCreatedEvent
+	public function awaitRequestServedFromCache(ContextInterface $ctx): RequestServedFromCacheEvent
 	{
-		return WebSocketCreatedEvent::fromJson($this->internalClient->awaitEvent($ctx, 'Network.webSocketCreated'));
+		return RequestServedFromCacheEvent::fromJson($this->internalClient->awaitEvent($ctx, 'Network.requestServedFromCache'));
+	}
+
+
+	public function addRequestWillBeSentListener(callable $listener): SubscriptionInterface
+	{
+		return $this->internalClient->addListener('Network.requestWillBeSent', function ($event) use ($listener) {
+			return $listener(RequestWillBeSentEvent::fromJson($event));
+		});
+	}
+
+
+	public function awaitRequestWillBeSent(ContextInterface $ctx): RequestWillBeSentEvent
+	{
+		return RequestWillBeSentEvent::fromJson($this->internalClient->awaitEvent($ctx, 'Network.requestWillBeSent'));
+	}
+
+
+	public function addResourceChangedPriorityListener(callable $listener): SubscriptionInterface
+	{
+		return $this->internalClient->addListener('Network.resourceChangedPriority', function ($event) use ($listener) {
+			return $listener(ResourceChangedPriorityEvent::fromJson($event));
+		});
+	}
+
+
+	public function awaitResourceChangedPriority(ContextInterface $ctx): ResourceChangedPriorityEvent
+	{
+		return ResourceChangedPriorityEvent::fromJson($this->internalClient->awaitEvent($ctx, 'Network.resourceChangedPriority'));
+	}
+
+
+	public function addResponseReceivedListener(callable $listener): SubscriptionInterface
+	{
+		return $this->internalClient->addListener('Network.responseReceived', function ($event) use ($listener) {
+			return $listener(ResponseReceivedEvent::fromJson($event));
+		});
+	}
+
+
+	public function awaitResponseReceived(ContextInterface $ctx): ResponseReceivedEvent
+	{
+		return ResponseReceivedEvent::fromJson($this->internalClient->awaitEvent($ctx, 'Network.responseReceived'));
 	}
 
 
@@ -389,17 +375,17 @@ class NetworkDomain implements NetworkDomainInterface
 	}
 
 
-	public function addWebSocketFrameReceivedListener(callable $listener): SubscriptionInterface
+	public function addWebSocketCreatedListener(callable $listener): SubscriptionInterface
 	{
-		return $this->internalClient->addListener('Network.webSocketFrameReceived', function ($event) use ($listener) {
-			return $listener(WebSocketFrameReceivedEvent::fromJson($event));
+		return $this->internalClient->addListener('Network.webSocketCreated', function ($event) use ($listener) {
+			return $listener(WebSocketCreatedEvent::fromJson($event));
 		});
 	}
 
 
-	public function awaitWebSocketFrameReceived(ContextInterface $ctx): WebSocketFrameReceivedEvent
+	public function awaitWebSocketCreated(ContextInterface $ctx): WebSocketCreatedEvent
 	{
-		return WebSocketFrameReceivedEvent::fromJson($this->internalClient->awaitEvent($ctx, 'Network.webSocketFrameReceived'));
+		return WebSocketCreatedEvent::fromJson($this->internalClient->awaitEvent($ctx, 'Network.webSocketCreated'));
 	}
 
 
@@ -417,6 +403,20 @@ class NetworkDomain implements NetworkDomainInterface
 	}
 
 
+	public function addWebSocketFrameReceivedListener(callable $listener): SubscriptionInterface
+	{
+		return $this->internalClient->addListener('Network.webSocketFrameReceived', function ($event) use ($listener) {
+			return $listener(WebSocketFrameReceivedEvent::fromJson($event));
+		});
+	}
+
+
+	public function awaitWebSocketFrameReceived(ContextInterface $ctx): WebSocketFrameReceivedEvent
+	{
+		return WebSocketFrameReceivedEvent::fromJson($this->internalClient->awaitEvent($ctx, 'Network.webSocketFrameReceived'));
+	}
+
+
 	public function addWebSocketFrameSentListener(callable $listener): SubscriptionInterface
 	{
 		return $this->internalClient->addListener('Network.webSocketFrameSent', function ($event) use ($listener) {
@@ -431,30 +431,30 @@ class NetworkDomain implements NetworkDomainInterface
 	}
 
 
-	public function addEventSourceMessageReceivedListener(callable $listener): SubscriptionInterface
+	public function addWebSocketHandshakeResponseReceivedListener(callable $listener): SubscriptionInterface
 	{
-		return $this->internalClient->addListener('Network.eventSourceMessageReceived', function ($event) use ($listener) {
-			return $listener(EventSourceMessageReceivedEvent::fromJson($event));
+		return $this->internalClient->addListener('Network.webSocketHandshakeResponseReceived', function ($event) use ($listener) {
+			return $listener(WebSocketHandshakeResponseReceivedEvent::fromJson($event));
 		});
 	}
 
 
-	public function awaitEventSourceMessageReceived(ContextInterface $ctx): EventSourceMessageReceivedEvent
+	public function awaitWebSocketHandshakeResponseReceived(ContextInterface $ctx): WebSocketHandshakeResponseReceivedEvent
 	{
-		return EventSourceMessageReceivedEvent::fromJson($this->internalClient->awaitEvent($ctx, 'Network.eventSourceMessageReceived'));
+		return WebSocketHandshakeResponseReceivedEvent::fromJson($this->internalClient->awaitEvent($ctx, 'Network.webSocketHandshakeResponseReceived'));
 	}
 
 
-	public function addRequestInterceptedListener(callable $listener): SubscriptionInterface
+	public function addWebSocketWillSendHandshakeRequestListener(callable $listener): SubscriptionInterface
 	{
-		return $this->internalClient->addListener('Network.requestIntercepted', function ($event) use ($listener) {
-			return $listener(RequestInterceptedEvent::fromJson($event));
+		return $this->internalClient->addListener('Network.webSocketWillSendHandshakeRequest', function ($event) use ($listener) {
+			return $listener(WebSocketWillSendHandshakeRequestEvent::fromJson($event));
 		});
 	}
 
 
-	public function awaitRequestIntercepted(ContextInterface $ctx): RequestInterceptedEvent
+	public function awaitWebSocketWillSendHandshakeRequest(ContextInterface $ctx): WebSocketWillSendHandshakeRequestEvent
 	{
-		return RequestInterceptedEvent::fromJson($this->internalClient->awaitEvent($ctx, 'Network.requestIntercepted'));
+		return WebSocketWillSendHandshakeRequestEvent::fromJson($this->internalClient->awaitEvent($ctx, 'Network.webSocketWillSendHandshakeRequest'));
 	}
 }

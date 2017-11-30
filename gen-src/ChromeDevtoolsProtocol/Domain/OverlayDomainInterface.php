@@ -33,16 +33,6 @@ use ChromeDevtoolsProtocol\SubscriptionInterface;
 interface OverlayDomainInterface
 {
 	/**
-	 * Enables domain notifications.
-	 *
-	 * @param ContextInterface $ctx
-	 *
-	 * @return void
-	 */
-	public function enable(ContextInterface $ctx): void;
-
-
-	/**
 	 * Disables domain notifications.
 	 *
 	 * @param ContextInterface $ctx
@@ -53,14 +43,100 @@ interface OverlayDomainInterface
 
 
 	/**
-	 * Requests that backend shows paint rectangles
+	 * Enables domain notifications.
 	 *
 	 * @param ContextInterface $ctx
-	 * @param SetShowPaintRectsRequest $request
 	 *
 	 * @return void
 	 */
-	public function setShowPaintRects(ContextInterface $ctx, SetShowPaintRectsRequest $request): void;
+	public function enable(ContextInterface $ctx): void;
+
+
+	/**
+	 * For testing.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param GetHighlightObjectForTestRequest $request
+	 *
+	 * @return GetHighlightObjectForTestResponse
+	 */
+	public function getHighlightObjectForTest(ContextInterface $ctx, GetHighlightObjectForTestRequest $request): GetHighlightObjectForTestResponse;
+
+
+	/**
+	 * Hides any highlight.
+	 *
+	 * @param ContextInterface $ctx
+	 *
+	 * @return void
+	 */
+	public function hideHighlight(ContextInterface $ctx): void;
+
+
+	/**
+	 * Highlights owner element of the frame with given id.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param HighlightFrameRequest $request
+	 *
+	 * @return void
+	 */
+	public function highlightFrame(ContextInterface $ctx, HighlightFrameRequest $request): void;
+
+
+	/**
+	 * Highlights DOM node with given id or with the given JavaScript object wrapper. Either nodeId or objectId must be specified.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param HighlightNodeRequest $request
+	 *
+	 * @return void
+	 */
+	public function highlightNode(ContextInterface $ctx, HighlightNodeRequest $request): void;
+
+
+	/**
+	 * Highlights given quad. Coordinates are absolute with respect to the main frame viewport.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param HighlightQuadRequest $request
+	 *
+	 * @return void
+	 */
+	public function highlightQuad(ContextInterface $ctx, HighlightQuadRequest $request): void;
+
+
+	/**
+	 * Highlights given rectangle. Coordinates are absolute with respect to the main frame viewport.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param HighlightRectRequest $request
+	 *
+	 * @return void
+	 */
+	public function highlightRect(ContextInterface $ctx, HighlightRectRequest $request): void;
+
+
+	/**
+	 * Enters the 'inspect' mode. In this mode, elements that user is hovering over are highlighted. Backend then generates 'inspectNodeRequested' event upon element selection.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param SetInspectModeRequest $request
+	 *
+	 * @return void
+	 */
+	public function setInspectMode(ContextInterface $ctx, SetInspectModeRequest $request): void;
+
+
+	/**
+	 * Call Overlay.setPausedInDebuggerMessage command.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param SetPausedInDebuggerMessageRequest $request
+	 *
+	 * @return void
+	 */
+	public function setPausedInDebuggerMessage(ContextInterface $ctx, SetPausedInDebuggerMessageRequest $request): void;
 
 
 	/**
@@ -86,6 +162,17 @@ interface OverlayDomainInterface
 
 
 	/**
+	 * Requests that backend shows paint rectangles
+	 *
+	 * @param ContextInterface $ctx
+	 * @param SetShowPaintRectsRequest $request
+	 *
+	 * @return void
+	 */
+	public function setShowPaintRects(ContextInterface $ctx, SetShowPaintRectsRequest $request): void;
+
+
+	/**
 	 * Requests that backend shows scroll bottleneck rects
 	 *
 	 * @param ContextInterface $ctx
@@ -108,17 +195,6 @@ interface OverlayDomainInterface
 
 
 	/**
-	 * Call Overlay.setPausedInDebuggerMessage command.
-	 *
-	 * @param ContextInterface $ctx
-	 * @param SetPausedInDebuggerMessageRequest $request
-	 *
-	 * @return void
-	 */
-	public function setPausedInDebuggerMessage(ContextInterface $ctx, SetPausedInDebuggerMessageRequest $request): void;
-
-
-	/**
 	 * Call Overlay.setSuspended command.
 	 *
 	 * @param ContextInterface $ctx
@@ -130,107 +206,7 @@ interface OverlayDomainInterface
 
 
 	/**
-	 * Enters the 'inspect' mode. In this mode, elements that user is hovering over are highlighted. Backend then generates 'inspectNodeRequested' event upon element selection.
-	 *
-	 * @param ContextInterface $ctx
-	 * @param SetInspectModeRequest $request
-	 *
-	 * @return void
-	 */
-	public function setInspectMode(ContextInterface $ctx, SetInspectModeRequest $request): void;
-
-
-	/**
-	 * Highlights given rectangle. Coordinates are absolute with respect to the main frame viewport.
-	 *
-	 * @param ContextInterface $ctx
-	 * @param HighlightRectRequest $request
-	 *
-	 * @return void
-	 */
-	public function highlightRect(ContextInterface $ctx, HighlightRectRequest $request): void;
-
-
-	/**
-	 * Highlights given quad. Coordinates are absolute with respect to the main frame viewport.
-	 *
-	 * @param ContextInterface $ctx
-	 * @param HighlightQuadRequest $request
-	 *
-	 * @return void
-	 */
-	public function highlightQuad(ContextInterface $ctx, HighlightQuadRequest $request): void;
-
-
-	/**
-	 * Highlights DOM node with given id or with the given JavaScript object wrapper. Either nodeId or objectId must be specified.
-	 *
-	 * @param ContextInterface $ctx
-	 * @param HighlightNodeRequest $request
-	 *
-	 * @return void
-	 */
-	public function highlightNode(ContextInterface $ctx, HighlightNodeRequest $request): void;
-
-
-	/**
-	 * Highlights owner element of the frame with given id.
-	 *
-	 * @param ContextInterface $ctx
-	 * @param HighlightFrameRequest $request
-	 *
-	 * @return void
-	 */
-	public function highlightFrame(ContextInterface $ctx, HighlightFrameRequest $request): void;
-
-
-	/**
-	 * Hides any highlight.
-	 *
-	 * @param ContextInterface $ctx
-	 *
-	 * @return void
-	 */
-	public function hideHighlight(ContextInterface $ctx): void;
-
-
-	/**
-	 * For testing.
-	 *
-	 * @param ContextInterface $ctx
-	 * @param GetHighlightObjectForTestRequest $request
-	 *
-	 * @return GetHighlightObjectForTestResponse
-	 */
-	public function getHighlightObjectForTest(ContextInterface $ctx, GetHighlightObjectForTestRequest $request): GetHighlightObjectForTestResponse;
-
-
-	/**
-	 * Fired when the node should be highlighted. This happens after call to <code>setInspectMode</code>.
-	 *
-	 * Listener will be called whenever event Overlay.nodeHighlightRequested is fired.
-	 *
-	 * @param callable $listener
-	 *
-	 * @return SubscriptionInterface
-	 */
-	public function addNodeHighlightRequestedListener(callable $listener): SubscriptionInterface;
-
-
-	/**
-	 * Fired when the node should be highlighted. This happens after call to <code>setInspectMode</code>.
-	 *
-	 * Method will block until first Overlay.nodeHighlightRequested event is fired.
-	 *
-	 * @param ContextInterface $ctx
-	 *
-	 * @return NodeHighlightRequestedEvent
-	 */
-	public function awaitNodeHighlightRequested(ContextInterface $ctx): NodeHighlightRequestedEvent;
-
-
-	/**
-	 * Fired when the node should be inspected. This happens after call to <code>setInspectMode</code> or when user manually inspects an element.
+	 * Fired when the node should be inspected. This happens after call to `setInspectMode` or when user manually inspects an element.
 	 *
 	 * Listener will be called whenever event Overlay.inspectNodeRequested is fired.
 	 *
@@ -242,7 +218,7 @@ interface OverlayDomainInterface
 
 
 	/**
-	 * Fired when the node should be inspected. This happens after call to <code>setInspectMode</code> or when user manually inspects an element.
+	 * Fired when the node should be inspected. This happens after call to `setInspectMode` or when user manually inspects an element.
 	 *
 	 * Method will block until first Overlay.inspectNodeRequested event is fired.
 	 *
@@ -251,6 +227,30 @@ interface OverlayDomainInterface
 	 * @return InspectNodeRequestedEvent
 	 */
 	public function awaitInspectNodeRequested(ContextInterface $ctx): InspectNodeRequestedEvent;
+
+
+	/**
+	 * Fired when the node should be highlighted. This happens after call to `setInspectMode`.
+	 *
+	 * Listener will be called whenever event Overlay.nodeHighlightRequested is fired.
+	 *
+	 * @param callable $listener
+	 *
+	 * @return SubscriptionInterface
+	 */
+	public function addNodeHighlightRequestedListener(callable $listener): SubscriptionInterface;
+
+
+	/**
+	 * Fired when the node should be highlighted. This happens after call to `setInspectMode`.
+	 *
+	 * Method will block until first Overlay.nodeHighlightRequested event is fired.
+	 *
+	 * @param ContextInterface $ctx
+	 *
+	 * @return NodeHighlightRequestedEvent
+	 */
+	public function awaitNodeHighlightRequested(ContextInterface $ctx): NodeHighlightRequestedEvent;
 
 
 	/**

@@ -31,14 +31,13 @@ use ChromeDevtoolsProtocol\SubscriptionInterface;
 interface EmulationDomainInterface
 {
 	/**
-	 * Overrides the values of device screen dimensions (window.screen.width, window.screen.height, window.innerWidth, window.innerHeight, and "device-width"/"device-height"-related CSS media query results).
+	 * Tells whether emulation is supported.
 	 *
 	 * @param ContextInterface $ctx
-	 * @param SetDeviceMetricsOverrideRequest $request
 	 *
-	 * @return void
+	 * @return CanEmulateResponse
 	 */
-	public function setDeviceMetricsOverride(ContextInterface $ctx, SetDeviceMetricsOverrideRequest $request): void;
+	public function canEmulate(ContextInterface $ctx): CanEmulateResponse;
 
 
 	/**
@@ -52,60 +51,6 @@ interface EmulationDomainInterface
 
 
 	/**
-	 * Requests that page scale factor is reset to initial values.
-	 *
-	 * @param ContextInterface $ctx
-	 *
-	 * @return void
-	 */
-	public function resetPageScaleFactor(ContextInterface $ctx): void;
-
-
-	/**
-	 * Sets a specified page scale factor.
-	 *
-	 * @param ContextInterface $ctx
-	 * @param SetPageScaleFactorRequest $request
-	 *
-	 * @return void
-	 */
-	public function setPageScaleFactor(ContextInterface $ctx, SetPageScaleFactorRequest $request): void;
-
-
-	/**
-	 * Resizes the frame/viewport of the page. Note that this does not affect the frame's container (e.g. browser window). Can be used to produce screenshots of the specified size. Not supported on Android.
-	 *
-	 * @param ContextInterface $ctx
-	 * @param SetVisibleSizeRequest $request
-	 *
-	 * @return void
-	 */
-	public function setVisibleSize(ContextInterface $ctx, SetVisibleSizeRequest $request): void;
-
-
-	/**
-	 * Switches script execution in the page.
-	 *
-	 * @param ContextInterface $ctx
-	 * @param SetScriptExecutionDisabledRequest $request
-	 *
-	 * @return void
-	 */
-	public function setScriptExecutionDisabled(ContextInterface $ctx, SetScriptExecutionDisabledRequest $request): void;
-
-
-	/**
-	 * Overrides the Geolocation Position or Error. Omitting any of the parameters emulates position unavailable.
-	 *
-	 * @param ContextInterface $ctx
-	 * @param SetGeolocationOverrideRequest $request
-	 *
-	 * @return void
-	 */
-	public function setGeolocationOverride(ContextInterface $ctx, SetGeolocationOverrideRequest $request): void;
-
-
-	/**
 	 * Clears the overriden Geolocation Position and Error.
 	 *
 	 * @param ContextInterface $ctx
@@ -116,14 +61,46 @@ interface EmulationDomainInterface
 
 
 	/**
-	 * Enables touch on platforms which do not support them.
+	 * Requests that page scale factor is reset to initial values.
 	 *
 	 * @param ContextInterface $ctx
-	 * @param SetTouchEmulationEnabledRequest $request
 	 *
 	 * @return void
 	 */
-	public function setTouchEmulationEnabled(ContextInterface $ctx, SetTouchEmulationEnabledRequest $request): void;
+	public function resetPageScaleFactor(ContextInterface $ctx): void;
+
+
+	/**
+	 * Enables CPU throttling to emulate slow CPUs.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param SetCPUThrottlingRateRequest $request
+	 *
+	 * @return void
+	 */
+	public function setCPUThrottlingRate(ContextInterface $ctx, SetCPUThrottlingRateRequest $request): void;
+
+
+	/**
+	 * Sets or clears an override of the default background color of the frame. This override is used if the content does not specify one.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param SetDefaultBackgroundColorOverrideRequest $request
+	 *
+	 * @return void
+	 */
+	public function setDefaultBackgroundColorOverride(ContextInterface $ctx, SetDefaultBackgroundColorOverrideRequest $request): void;
+
+
+	/**
+	 * Overrides the values of device screen dimensions (window.screen.width, window.screen.height, window.innerWidth, window.innerHeight, and "device-width"/"device-height"-related CSS media query results).
+	 *
+	 * @param ContextInterface $ctx
+	 * @param SetDeviceMetricsOverrideRequest $request
+	 *
+	 * @return void
+	 */
+	public function setDeviceMetricsOverride(ContextInterface $ctx, SetDeviceMetricsOverrideRequest $request): void;
 
 
 	/**
@@ -149,35 +126,14 @@ interface EmulationDomainInterface
 
 
 	/**
-	 * Enables CPU throttling to emulate slow CPUs.
+	 * Overrides the Geolocation Position or Error. Omitting any of the parameters emulates position unavailable.
 	 *
 	 * @param ContextInterface $ctx
-	 * @param SetCPUThrottlingRateRequest $request
+	 * @param SetGeolocationOverrideRequest $request
 	 *
 	 * @return void
 	 */
-	public function setCPUThrottlingRate(ContextInterface $ctx, SetCPUThrottlingRateRequest $request): void;
-
-
-	/**
-	 * Tells whether emulation is supported.
-	 *
-	 * @param ContextInterface $ctx
-	 *
-	 * @return CanEmulateResponse
-	 */
-	public function canEmulate(ContextInterface $ctx): CanEmulateResponse;
-
-
-	/**
-	 * Turns on virtual time for all frames (replacing real-time with a synthetic time source) and sets the current virtual time policy.  Note this supersedes any previous time budget.
-	 *
-	 * @param ContextInterface $ctx
-	 * @param SetVirtualTimePolicyRequest $request
-	 *
-	 * @return SetVirtualTimePolicyResponse
-	 */
-	public function setVirtualTimePolicy(ContextInterface $ctx, SetVirtualTimePolicyRequest $request): SetVirtualTimePolicyResponse;
+	public function setGeolocationOverride(ContextInterface $ctx, SetGeolocationOverrideRequest $request): void;
 
 
 	/**
@@ -192,38 +148,58 @@ interface EmulationDomainInterface
 
 
 	/**
-	 * Sets or clears an override of the default background color of the frame. This override is used if the content does not specify one.
+	 * Sets a specified page scale factor.
 	 *
 	 * @param ContextInterface $ctx
-	 * @param SetDefaultBackgroundColorOverrideRequest $request
+	 * @param SetPageScaleFactorRequest $request
 	 *
 	 * @return void
 	 */
-	public function setDefaultBackgroundColorOverride(ContextInterface $ctx, SetDefaultBackgroundColorOverrideRequest $request): void;
+	public function setPageScaleFactor(ContextInterface $ctx, SetPageScaleFactorRequest $request): void;
 
 
 	/**
-	 * Notification sent after the virtual time budget for the current VirtualTimePolicy has run out.
-	 *
-	 * Listener will be called whenever event Emulation.virtualTimeBudgetExpired is fired.
-	 *
-	 * @param callable $listener
-	 *
-	 * @return SubscriptionInterface
-	 */
-	public function addVirtualTimeBudgetExpiredListener(callable $listener): SubscriptionInterface;
-
-
-	/**
-	 * Notification sent after the virtual time budget for the current VirtualTimePolicy has run out.
-	 *
-	 * Method will block until first Emulation.virtualTimeBudgetExpired event is fired.
+	 * Switches script execution in the page.
 	 *
 	 * @param ContextInterface $ctx
+	 * @param SetScriptExecutionDisabledRequest $request
 	 *
-	 * @return VirtualTimeBudgetExpiredEvent
+	 * @return void
 	 */
-	public function awaitVirtualTimeBudgetExpired(ContextInterface $ctx): VirtualTimeBudgetExpiredEvent;
+	public function setScriptExecutionDisabled(ContextInterface $ctx, SetScriptExecutionDisabledRequest $request): void;
+
+
+	/**
+	 * Enables touch on platforms which do not support them.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param SetTouchEmulationEnabledRequest $request
+	 *
+	 * @return void
+	 */
+	public function setTouchEmulationEnabled(ContextInterface $ctx, SetTouchEmulationEnabledRequest $request): void;
+
+
+	/**
+	 * Turns on virtual time for all frames (replacing real-time with a synthetic time source) and sets the current virtual time policy.  Note this supersedes any previous time budget.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param SetVirtualTimePolicyRequest $request
+	 *
+	 * @return SetVirtualTimePolicyResponse
+	 */
+	public function setVirtualTimePolicy(ContextInterface $ctx, SetVirtualTimePolicyRequest $request): SetVirtualTimePolicyResponse;
+
+
+	/**
+	 * Resizes the frame/viewport of the page. Note that this does not affect the frame's container (e.g. browser window). Can be used to produce screenshots of the specified size. Not supported on Android.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param SetVisibleSizeRequest $request
+	 *
+	 * @return void
+	 */
+	public function setVisibleSize(ContextInterface $ctx, SetVisibleSizeRequest $request): void;
 
 
 	/**
@@ -248,6 +224,30 @@ interface EmulationDomainInterface
 	 * @return VirtualTimeAdvancedEvent
 	 */
 	public function awaitVirtualTimeAdvanced(ContextInterface $ctx): VirtualTimeAdvancedEvent;
+
+
+	/**
+	 * Notification sent after the virtual time budget for the current VirtualTimePolicy has run out.
+	 *
+	 * Listener will be called whenever event Emulation.virtualTimeBudgetExpired is fired.
+	 *
+	 * @param callable $listener
+	 *
+	 * @return SubscriptionInterface
+	 */
+	public function addVirtualTimeBudgetExpiredListener(callable $listener): SubscriptionInterface;
+
+
+	/**
+	 * Notification sent after the virtual time budget for the current VirtualTimePolicy has run out.
+	 *
+	 * Method will block until first Emulation.virtualTimeBudgetExpired event is fired.
+	 *
+	 * @param ContextInterface $ctx
+	 *
+	 * @return VirtualTimeBudgetExpiredEvent
+	 */
+	public function awaitVirtualTimeBudgetExpired(ContextInterface $ctx): VirtualTimeBudgetExpiredEvent;
 
 
 	/**

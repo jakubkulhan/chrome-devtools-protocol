@@ -29,17 +29,6 @@ interface BrowserDomainInterface
 
 
 	/**
-	 * Get the browser window that contains the devtools target.
-	 *
-	 * @param ContextInterface $ctx
-	 * @param GetWindowForTargetRequest $request
-	 *
-	 * @return GetWindowForTargetResponse
-	 */
-	public function getWindowForTarget(ContextInterface $ctx, GetWindowForTargetRequest $request): GetWindowForTargetResponse;
-
-
-	/**
 	 * Returns version information.
 	 *
 	 * @param ContextInterface $ctx
@@ -47,17 +36,6 @@ interface BrowserDomainInterface
 	 * @return GetVersionResponse
 	 */
 	public function getVersion(ContextInterface $ctx): GetVersionResponse;
-
-
-	/**
-	 * Set position and/or size of the browser window.
-	 *
-	 * @param ContextInterface $ctx
-	 * @param SetWindowBoundsRequest $request
-	 *
-	 * @return void
-	 */
-	public function setWindowBounds(ContextInterface $ctx, SetWindowBoundsRequest $request): void;
 
 
 	/**
@@ -69,4 +47,26 @@ interface BrowserDomainInterface
 	 * @return GetWindowBoundsResponse
 	 */
 	public function getWindowBounds(ContextInterface $ctx, GetWindowBoundsRequest $request): GetWindowBoundsResponse;
+
+
+	/**
+	 * Get the browser window that contains the devtools target.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param GetWindowForTargetRequest $request
+	 *
+	 * @return GetWindowForTargetResponse
+	 */
+	public function getWindowForTarget(ContextInterface $ctx, GetWindowForTargetRequest $request): GetWindowForTargetResponse;
+
+
+	/**
+	 * Set position and/or size of the browser window.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param SetWindowBoundsRequest $request
+	 *
+	 * @return void
+	 */
+	public function setWindowBounds(ContextInterface $ctx, SetWindowBoundsRequest $request): void;
 }

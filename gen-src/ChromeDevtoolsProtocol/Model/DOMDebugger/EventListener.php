@@ -13,28 +13,28 @@ use ChromeDevtoolsProtocol\Model\Runtime\RemoteObject;
 final class EventListener implements \JsonSerializable
 {
 	/**
-	 * <code>EventListener</code>'s type.
+	 * `EventListener`'s type.
 	 *
 	 * @var string
 	 */
 	public $type;
 
 	/**
-	 * <code>EventListener</code>'s useCapture.
+	 * `EventListener`'s useCapture.
 	 *
 	 * @var bool
 	 */
 	public $useCapture;
 
 	/**
-	 * <code>EventListener</code>'s passive flag.
+	 * `EventListener`'s passive flag.
 	 *
 	 * @var bool
 	 */
 	public $passive;
 
 	/**
-	 * <code>EventListener</code>'s once flag.
+	 * `EventListener`'s once flag.
 	 *
 	 * @var bool
 	 */

@@ -28,13 +28,14 @@ use ChromeDevtoolsProtocol\SubscriptionInterface;
 interface ServiceWorkerDomainInterface
 {
 	/**
-	 * Call ServiceWorker.enable command.
+	 * Call ServiceWorker.deliverPushMessage command.
 	 *
 	 * @param ContextInterface $ctx
+	 * @param DeliverPushMessageRequest $request
 	 *
 	 * @return void
 	 */
-	public function enable(ContextInterface $ctx): void;
+	public function deliverPushMessage(ContextInterface $ctx, DeliverPushMessageRequest $request): void;
 
 
 	/**
@@ -48,68 +49,24 @@ interface ServiceWorkerDomainInterface
 
 
 	/**
-	 * Call ServiceWorker.unregister command.
+	 * Call ServiceWorker.dispatchSyncEvent command.
 	 *
 	 * @param ContextInterface $ctx
-	 * @param UnregisterRequest $request
+	 * @param DispatchSyncEventRequest $request
 	 *
 	 * @return void
 	 */
-	public function unregister(ContextInterface $ctx, UnregisterRequest $request): void;
+	public function dispatchSyncEvent(ContextInterface $ctx, DispatchSyncEventRequest $request): void;
 
 
 	/**
-	 * Call ServiceWorker.updateRegistration command.
-	 *
-	 * @param ContextInterface $ctx
-	 * @param UpdateRegistrationRequest $request
-	 *
-	 * @return void
-	 */
-	public function updateRegistration(ContextInterface $ctx, UpdateRegistrationRequest $request): void;
-
-
-	/**
-	 * Call ServiceWorker.startWorker command.
-	 *
-	 * @param ContextInterface $ctx
-	 * @param StartWorkerRequest $request
-	 *
-	 * @return void
-	 */
-	public function startWorker(ContextInterface $ctx, StartWorkerRequest $request): void;
-
-
-	/**
-	 * Call ServiceWorker.skipWaiting command.
-	 *
-	 * @param ContextInterface $ctx
-	 * @param SkipWaitingRequest $request
-	 *
-	 * @return void
-	 */
-	public function skipWaiting(ContextInterface $ctx, SkipWaitingRequest $request): void;
-
-
-	/**
-	 * Call ServiceWorker.stopWorker command.
-	 *
-	 * @param ContextInterface $ctx
-	 * @param StopWorkerRequest $request
-	 *
-	 * @return void
-	 */
-	public function stopWorker(ContextInterface $ctx, StopWorkerRequest $request): void;
-
-
-	/**
-	 * Call ServiceWorker.stopAllWorkers command.
+	 * Call ServiceWorker.enable command.
 	 *
 	 * @param ContextInterface $ctx
 	 *
 	 * @return void
 	 */
-	public function stopAllWorkers(ContextInterface $ctx): void;
+	public function enable(ContextInterface $ctx): void;
 
 
 	/**
@@ -135,25 +92,92 @@ interface ServiceWorkerDomainInterface
 
 
 	/**
-	 * Call ServiceWorker.deliverPushMessage command.
+	 * Call ServiceWorker.skipWaiting command.
 	 *
 	 * @param ContextInterface $ctx
-	 * @param DeliverPushMessageRequest $request
+	 * @param SkipWaitingRequest $request
 	 *
 	 * @return void
 	 */
-	public function deliverPushMessage(ContextInterface $ctx, DeliverPushMessageRequest $request): void;
+	public function skipWaiting(ContextInterface $ctx, SkipWaitingRequest $request): void;
 
 
 	/**
-	 * Call ServiceWorker.dispatchSyncEvent command.
+	 * Call ServiceWorker.startWorker command.
 	 *
 	 * @param ContextInterface $ctx
-	 * @param DispatchSyncEventRequest $request
+	 * @param StartWorkerRequest $request
 	 *
 	 * @return void
 	 */
-	public function dispatchSyncEvent(ContextInterface $ctx, DispatchSyncEventRequest $request): void;
+	public function startWorker(ContextInterface $ctx, StartWorkerRequest $request): void;
+
+
+	/**
+	 * Call ServiceWorker.stopAllWorkers command.
+	 *
+	 * @param ContextInterface $ctx
+	 *
+	 * @return void
+	 */
+	public function stopAllWorkers(ContextInterface $ctx): void;
+
+
+	/**
+	 * Call ServiceWorker.stopWorker command.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param StopWorkerRequest $request
+	 *
+	 * @return void
+	 */
+	public function stopWorker(ContextInterface $ctx, StopWorkerRequest $request): void;
+
+
+	/**
+	 * Call ServiceWorker.unregister command.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param UnregisterRequest $request
+	 *
+	 * @return void
+	 */
+	public function unregister(ContextInterface $ctx, UnregisterRequest $request): void;
+
+
+	/**
+	 * Call ServiceWorker.updateRegistration command.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param UpdateRegistrationRequest $request
+	 *
+	 * @return void
+	 */
+	public function updateRegistration(ContextInterface $ctx, UpdateRegistrationRequest $request): void;
+
+
+	/**
+	 * Subscribe to ServiceWorker.workerErrorReported event.
+	 *
+	 * Listener will be called whenever event ServiceWorker.workerErrorReported is fired.
+	 *
+	 * @param callable $listener
+	 *
+	 * @return SubscriptionInterface
+	 */
+	public function addWorkerErrorReportedListener(callable $listener): SubscriptionInterface;
+
+
+	/**
+	 * Wait for ServiceWorker.workerErrorReported event.
+	 *
+	 * Method will block until first ServiceWorker.workerErrorReported event is fired.
+	 *
+	 * @param ContextInterface $ctx
+	 *
+	 * @return WorkerErrorReportedEvent
+	 */
+	public function awaitWorkerErrorReported(ContextInterface $ctx): WorkerErrorReportedEvent;
 
 
 	/**
@@ -202,28 +226,4 @@ interface ServiceWorkerDomainInterface
 	 * @return WorkerVersionUpdatedEvent
 	 */
 	public function awaitWorkerVersionUpdated(ContextInterface $ctx): WorkerVersionUpdatedEvent;
-
-
-	/**
-	 * Subscribe to ServiceWorker.workerErrorReported event.
-	 *
-	 * Listener will be called whenever event ServiceWorker.workerErrorReported is fired.
-	 *
-	 * @param callable $listener
-	 *
-	 * @return SubscriptionInterface
-	 */
-	public function addWorkerErrorReportedListener(callable $listener): SubscriptionInterface;
-
-
-	/**
-	 * Wait for ServiceWorker.workerErrorReported event.
-	 *
-	 * Method will block until first ServiceWorker.workerErrorReported event is fired.
-	 *
-	 * @param ContextInterface $ctx
-	 *
-	 * @return WorkerErrorReportedEvent
-	 */
-	public function awaitWorkerErrorReported(ContextInterface $ctx): WorkerErrorReportedEvent;
 }

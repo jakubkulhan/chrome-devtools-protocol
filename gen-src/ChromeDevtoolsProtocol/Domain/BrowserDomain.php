@@ -29,13 +29,6 @@ class BrowserDomain implements BrowserDomainInterface
 	}
 
 
-	public function getWindowForTarget(ContextInterface $ctx, GetWindowForTargetRequest $request): GetWindowForTargetResponse
-	{
-		$response = $this->internalClient->executeCommand($ctx, 'Browser.getWindowForTarget', $request);
-		return GetWindowForTargetResponse::fromJson($response);
-	}
-
-
 	public function getVersion(ContextInterface $ctx): GetVersionResponse
 	{
 		$request = new \stdClass();
@@ -44,15 +37,22 @@ class BrowserDomain implements BrowserDomainInterface
 	}
 
 
-	public function setWindowBounds(ContextInterface $ctx, SetWindowBoundsRequest $request): void
-	{
-		$this->internalClient->executeCommand($ctx, 'Browser.setWindowBounds', $request);
-	}
-
-
 	public function getWindowBounds(ContextInterface $ctx, GetWindowBoundsRequest $request): GetWindowBoundsResponse
 	{
 		$response = $this->internalClient->executeCommand($ctx, 'Browser.getWindowBounds', $request);
 		return GetWindowBoundsResponse::fromJson($response);
+	}
+
+
+	public function getWindowForTarget(ContextInterface $ctx, GetWindowForTargetRequest $request): GetWindowForTargetResponse
+	{
+		$response = $this->internalClient->executeCommand($ctx, 'Browser.getWindowForTarget', $request);
+		return GetWindowForTargetResponse::fromJson($response);
+	}
+
+
+	public function setWindowBounds(ContextInterface $ctx, SetWindowBoundsRequest $request): void
+	{
+		$this->internalClient->executeCommand($ctx, 'Browser.setWindowBounds', $request);
 	}
 }

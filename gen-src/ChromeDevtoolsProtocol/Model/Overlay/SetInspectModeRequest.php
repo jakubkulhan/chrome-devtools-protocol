@@ -18,7 +18,7 @@ final class SetInspectModeRequest implements \JsonSerializable
 	public $mode;
 
 	/**
-	 * A descriptor for the highlight appearance of hovered-over nodes. May be omitted if <code>enabled == false</code>.
+	 * A descriptor for the highlight appearance of hovered-over nodes. May be omitted if `enabled == false`.
 	 *
 	 * @var HighlightConfig|null
 	 */

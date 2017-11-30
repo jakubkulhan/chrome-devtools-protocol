@@ -25,6 +25,13 @@ class ProfilerDomain implements ProfilerDomainInterface
 	}
 
 
+	public function disable(ContextInterface $ctx): void
+	{
+		$request = new \stdClass();
+		$this->internalClient->executeCommand($ctx, 'Profiler.disable', $request);
+	}
+
+
 	public function enable(ContextInterface $ctx): void
 	{
 		$request = new \stdClass();
@@ -32,10 +39,11 @@ class ProfilerDomain implements ProfilerDomainInterface
 	}
 
 
-	public function disable(ContextInterface $ctx): void
+	public function getBestEffortCoverage(ContextInterface $ctx): GetBestEffortCoverageResponse
 	{
 		$request = new \stdClass();
-		$this->internalClient->executeCommand($ctx, 'Profiler.disable', $request);
+		$response = $this->internalClient->executeCommand($ctx, 'Profiler.getBestEffortCoverage', $request);
+		return GetBestEffortCoverageResponse::fromJson($response);
 	}
 
 
@@ -52,6 +60,19 @@ class ProfilerDomain implements ProfilerDomainInterface
 	}
 
 
+	public function startPreciseCoverage(ContextInterface $ctx, StartPreciseCoverageRequest $request): void
+	{
+		$this->internalClient->executeCommand($ctx, 'Profiler.startPreciseCoverage', $request);
+	}
+
+
+	public function startTypeProfile(ContextInterface $ctx): void
+	{
+		$request = new \stdClass();
+		$this->internalClient->executeCommand($ctx, 'Profiler.startTypeProfile', $request);
+	}
+
+
 	public function stop(ContextInterface $ctx): StopResponse
 	{
 		$request = new \stdClass();
@@ -60,16 +81,17 @@ class ProfilerDomain implements ProfilerDomainInterface
 	}
 
 
-	public function startPreciseCoverage(ContextInterface $ctx, StartPreciseCoverageRequest $request): void
-	{
-		$this->internalClient->executeCommand($ctx, 'Profiler.startPreciseCoverage', $request);
-	}
-
-
 	public function stopPreciseCoverage(ContextInterface $ctx): void
 	{
 		$request = new \stdClass();
 		$this->internalClient->executeCommand($ctx, 'Profiler.stopPreciseCoverage', $request);
+	}
+
+
+	public function stopTypeProfile(ContextInterface $ctx): void
+	{
+		$request = new \stdClass();
+		$this->internalClient->executeCommand($ctx, 'Profiler.stopTypeProfile', $request);
 	}
 
 
@@ -81,47 +103,11 @@ class ProfilerDomain implements ProfilerDomainInterface
 	}
 
 
-	public function getBestEffortCoverage(ContextInterface $ctx): GetBestEffortCoverageResponse
-	{
-		$request = new \stdClass();
-		$response = $this->internalClient->executeCommand($ctx, 'Profiler.getBestEffortCoverage', $request);
-		return GetBestEffortCoverageResponse::fromJson($response);
-	}
-
-
-	public function startTypeProfile(ContextInterface $ctx): void
-	{
-		$request = new \stdClass();
-		$this->internalClient->executeCommand($ctx, 'Profiler.startTypeProfile', $request);
-	}
-
-
-	public function stopTypeProfile(ContextInterface $ctx): void
-	{
-		$request = new \stdClass();
-		$this->internalClient->executeCommand($ctx, 'Profiler.stopTypeProfile', $request);
-	}
-
-
 	public function takeTypeProfile(ContextInterface $ctx): TakeTypeProfileResponse
 	{
 		$request = new \stdClass();
 		$response = $this->internalClient->executeCommand($ctx, 'Profiler.takeTypeProfile', $request);
 		return TakeTypeProfileResponse::fromJson($response);
-	}
-
-
-	public function addConsoleProfileStartedListener(callable $listener): SubscriptionInterface
-	{
-		return $this->internalClient->addListener('Profiler.consoleProfileStarted', function ($event) use ($listener) {
-			return $listener(ConsoleProfileStartedEvent::fromJson($event));
-		});
-	}
-
-
-	public function awaitConsoleProfileStarted(ContextInterface $ctx): ConsoleProfileStartedEvent
-	{
-		return ConsoleProfileStartedEvent::fromJson($this->internalClient->awaitEvent($ctx, 'Profiler.consoleProfileStarted'));
 	}
 
 
@@ -136,5 +122,19 @@ class ProfilerDomain implements ProfilerDomainInterface
 	public function awaitConsoleProfileFinished(ContextInterface $ctx): ConsoleProfileFinishedEvent
 	{
 		return ConsoleProfileFinishedEvent::fromJson($this->internalClient->awaitEvent($ctx, 'Profiler.consoleProfileFinished'));
+	}
+
+
+	public function addConsoleProfileStartedListener(callable $listener): SubscriptionInterface
+	{
+		return $this->internalClient->addListener('Profiler.consoleProfileStarted', function ($event) use ($listener) {
+			return $listener(ConsoleProfileStartedEvent::fromJson($event));
+		});
+	}
+
+
+	public function awaitConsoleProfileStarted(ContextInterface $ctx): ConsoleProfileStartedEvent
+	{
+		return ConsoleProfileStartedEvent::fromJson($this->internalClient->awaitEvent($ctx, 'Profiler.consoleProfileStarted'));
 	}
 }

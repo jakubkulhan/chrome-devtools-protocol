@@ -18,16 +18,6 @@ use ChromeDevtoolsProtocol\SubscriptionInterface;
 interface SecurityDomainInterface
 {
 	/**
-	 * Enables tracking security state changes.
-	 *
-	 * @param ContextInterface $ctx
-	 *
-	 * @return void
-	 */
-	public function enable(ContextInterface $ctx): void;
-
-
-	/**
 	 * Disables tracking security state changes.
 	 *
 	 * @param ContextInterface $ctx
@@ -35,6 +25,16 @@ interface SecurityDomainInterface
 	 * @return void
 	 */
 	public function disable(ContextInterface $ctx): void;
+
+
+	/**
+	 * Enables tracking security state changes.
+	 *
+	 * @param ContextInterface $ctx
+	 *
+	 * @return void
+	 */
+	public function enable(ContextInterface $ctx): void;
 
 
 	/**
@@ -60,30 +60,6 @@ interface SecurityDomainInterface
 
 
 	/**
-	 * The security state of the page changed.
-	 *
-	 * Listener will be called whenever event Security.securityStateChanged is fired.
-	 *
-	 * @param callable $listener
-	 *
-	 * @return SubscriptionInterface
-	 */
-	public function addSecurityStateChangedListener(callable $listener): SubscriptionInterface;
-
-
-	/**
-	 * The security state of the page changed.
-	 *
-	 * Method will block until first Security.securityStateChanged event is fired.
-	 *
-	 * @param ContextInterface $ctx
-	 *
-	 * @return SecurityStateChangedEvent
-	 */
-	public function awaitSecurityStateChanged(ContextInterface $ctx): SecurityStateChangedEvent;
-
-
-	/**
 	 * There is a certificate error. If overriding certificate errors is enabled, then it should be handled with the handleCertificateError command. Note: this event does not fire if the certificate error has been allowed internally.
 	 *
 	 * Listener will be called whenever event Security.certificateError is fired.
@@ -105,4 +81,28 @@ interface SecurityDomainInterface
 	 * @return CertificateErrorEvent
 	 */
 	public function awaitCertificateError(ContextInterface $ctx): CertificateErrorEvent;
+
+
+	/**
+	 * The security state of the page changed.
+	 *
+	 * Listener will be called whenever event Security.securityStateChanged is fired.
+	 *
+	 * @param callable $listener
+	 *
+	 * @return SubscriptionInterface
+	 */
+	public function addSecurityStateChangedListener(callable $listener): SubscriptionInterface;
+
+
+	/**
+	 * The security state of the page changed.
+	 *
+	 * Method will block until first Security.securityStateChanged event is fired.
+	 *
+	 * @param ContextInterface $ctx
+	 *
+	 * @return SecurityStateChangedEvent
+	 */
+	public function awaitSecurityStateChanged(ContextInterface $ctx): SecurityStateChangedEvent;
 }

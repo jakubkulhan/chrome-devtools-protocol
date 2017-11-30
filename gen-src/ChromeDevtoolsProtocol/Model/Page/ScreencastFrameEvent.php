@@ -2,7 +2,7 @@
 namespace ChromeDevtoolsProtocol\Model\Page;
 
 /**
- * Compressed image data requested by the <code>startScreencast</code>.
+ * Compressed image data requested by the `startScreencast`.
  *
  * @generated This file has been auto-generated, do not edit.
  *

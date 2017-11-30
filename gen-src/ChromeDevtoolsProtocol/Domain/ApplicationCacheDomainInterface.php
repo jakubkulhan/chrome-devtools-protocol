@@ -23,16 +23,6 @@ use ChromeDevtoolsProtocol\SubscriptionInterface;
 interface ApplicationCacheDomainInterface
 {
 	/**
-	 * Returns array of frame identifiers with manifest urls for each frame containing a document associated with some application cache.
-	 *
-	 * @param ContextInterface $ctx
-	 *
-	 * @return GetFramesWithManifestsResponse
-	 */
-	public function getFramesWithManifests(ContextInterface $ctx): GetFramesWithManifestsResponse;
-
-
-	/**
 	 * Enables application cache domain notifications.
 	 *
 	 * @param ContextInterface $ctx
@@ -40,17 +30,6 @@ interface ApplicationCacheDomainInterface
 	 * @return void
 	 */
 	public function enable(ContextInterface $ctx): void;
-
-
-	/**
-	 * Returns manifest URL for document in the given frame.
-	 *
-	 * @param ContextInterface $ctx
-	 * @param GetManifestForFrameRequest $request
-	 *
-	 * @return GetManifestForFrameResponse
-	 */
-	public function getManifestForFrame(ContextInterface $ctx, GetManifestForFrameRequest $request): GetManifestForFrameResponse;
 
 
 	/**
@@ -62,6 +41,27 @@ interface ApplicationCacheDomainInterface
 	 * @return GetApplicationCacheForFrameResponse
 	 */
 	public function getApplicationCacheForFrame(ContextInterface $ctx, GetApplicationCacheForFrameRequest $request): GetApplicationCacheForFrameResponse;
+
+
+	/**
+	 * Returns array of frame identifiers with manifest urls for each frame containing a document associated with some application cache.
+	 *
+	 * @param ContextInterface $ctx
+	 *
+	 * @return GetFramesWithManifestsResponse
+	 */
+	public function getFramesWithManifests(ContextInterface $ctx): GetFramesWithManifestsResponse;
+
+
+	/**
+	 * Returns manifest URL for document in the given frame.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param GetManifestForFrameRequest $request
+	 *
+	 * @return GetManifestForFrameResponse
+	 */
+	public function getManifestForFrame(ContextInterface $ctx, GetManifestForFrameRequest $request): GetManifestForFrameResponse;
 
 
 	/**

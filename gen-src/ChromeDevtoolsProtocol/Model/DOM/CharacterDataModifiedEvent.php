@@ -2,7 +2,7 @@
 namespace ChromeDevtoolsProtocol\Model\DOM;
 
 /**
- * Mirrors <code>DOMCharacterDataModified</code> event.
+ * Mirrors `DOMCharacterDataModified` event.
  *
  * @generated This file has been auto-generated, do not edit.
  *

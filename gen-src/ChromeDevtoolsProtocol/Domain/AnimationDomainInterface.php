@@ -29,16 +29,6 @@ use ChromeDevtoolsProtocol\SubscriptionInterface;
 interface AnimationDomainInterface
 {
 	/**
-	 * Enables animation domain notifications.
-	 *
-	 * @param ContextInterface $ctx
-	 *
-	 * @return void
-	 */
-	public function enable(ContextInterface $ctx): void;
-
-
-	/**
 	 * Disables animation domain notifications.
 	 *
 	 * @param ContextInterface $ctx
@@ -49,24 +39,13 @@ interface AnimationDomainInterface
 
 
 	/**
-	 * Gets the playback rate of the document timeline.
+	 * Enables animation domain notifications.
 	 *
 	 * @param ContextInterface $ctx
-	 *
-	 * @return GetPlaybackRateResponse
-	 */
-	public function getPlaybackRate(ContextInterface $ctx): GetPlaybackRateResponse;
-
-
-	/**
-	 * Sets the playback rate of the document timeline.
-	 *
-	 * @param ContextInterface $ctx
-	 * @param SetPlaybackRateRequest $request
 	 *
 	 * @return void
 	 */
-	public function setPlaybackRate(ContextInterface $ctx, SetPlaybackRateRequest $request): void;
+	public function enable(ContextInterface $ctx): void;
 
 
 	/**
@@ -81,36 +60,13 @@ interface AnimationDomainInterface
 
 
 	/**
-	 * Sets the paused state of a set of animations.
+	 * Gets the playback rate of the document timeline.
 	 *
 	 * @param ContextInterface $ctx
-	 * @param SetPausedRequest $request
 	 *
-	 * @return void
+	 * @return GetPlaybackRateResponse
 	 */
-	public function setPaused(ContextInterface $ctx, SetPausedRequest $request): void;
-
-
-	/**
-	 * Sets the timing of an animation node.
-	 *
-	 * @param ContextInterface $ctx
-	 * @param SetTimingRequest $request
-	 *
-	 * @return void
-	 */
-	public function setTiming(ContextInterface $ctx, SetTimingRequest $request): void;
-
-
-	/**
-	 * Seek a set of animations to a particular time within each animation.
-	 *
-	 * @param ContextInterface $ctx
-	 * @param SeekAnimationsRequest $request
-	 *
-	 * @return void
-	 */
-	public function seekAnimations(ContextInterface $ctx, SeekAnimationsRequest $request): void;
+	public function getPlaybackRate(ContextInterface $ctx): GetPlaybackRateResponse;
 
 
 	/**
@@ -133,6 +89,74 @@ interface AnimationDomainInterface
 	 * @return ResolveAnimationResponse
 	 */
 	public function resolveAnimation(ContextInterface $ctx, ResolveAnimationRequest $request): ResolveAnimationResponse;
+
+
+	/**
+	 * Seek a set of animations to a particular time within each animation.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param SeekAnimationsRequest $request
+	 *
+	 * @return void
+	 */
+	public function seekAnimations(ContextInterface $ctx, SeekAnimationsRequest $request): void;
+
+
+	/**
+	 * Sets the paused state of a set of animations.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param SetPausedRequest $request
+	 *
+	 * @return void
+	 */
+	public function setPaused(ContextInterface $ctx, SetPausedRequest $request): void;
+
+
+	/**
+	 * Sets the playback rate of the document timeline.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param SetPlaybackRateRequest $request
+	 *
+	 * @return void
+	 */
+	public function setPlaybackRate(ContextInterface $ctx, SetPlaybackRateRequest $request): void;
+
+
+	/**
+	 * Sets the timing of an animation node.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param SetTimingRequest $request
+	 *
+	 * @return void
+	 */
+	public function setTiming(ContextInterface $ctx, SetTimingRequest $request): void;
+
+
+	/**
+	 * Event for when an animation has been cancelled.
+	 *
+	 * Listener will be called whenever event Animation.animationCanceled is fired.
+	 *
+	 * @param callable $listener
+	 *
+	 * @return SubscriptionInterface
+	 */
+	public function addAnimationCanceledListener(callable $listener): SubscriptionInterface;
+
+
+	/**
+	 * Event for when an animation has been cancelled.
+	 *
+	 * Method will block until first Animation.animationCanceled event is fired.
+	 *
+	 * @param ContextInterface $ctx
+	 *
+	 * @return AnimationCanceledEvent
+	 */
+	public function awaitAnimationCanceled(ContextInterface $ctx): AnimationCanceledEvent;
 
 
 	/**
@@ -181,28 +205,4 @@ interface AnimationDomainInterface
 	 * @return AnimationStartedEvent
 	 */
 	public function awaitAnimationStarted(ContextInterface $ctx): AnimationStartedEvent;
-
-
-	/**
-	 * Event for when an animation has been cancelled.
-	 *
-	 * Listener will be called whenever event Animation.animationCanceled is fired.
-	 *
-	 * @param callable $listener
-	 *
-	 * @return SubscriptionInterface
-	 */
-	public function addAnimationCanceledListener(callable $listener): SubscriptionInterface;
-
-
-	/**
-	 * Event for when an animation has been cancelled.
-	 *
-	 * Method will block until first Animation.animationCanceled event is fired.
-	 *
-	 * @param ContextInterface $ctx
-	 *
-	 * @return AnimationCanceledEvent
-	 */
-	public function awaitAnimationCanceled(ContextInterface $ctx): AnimationCanceledEvent;
 }

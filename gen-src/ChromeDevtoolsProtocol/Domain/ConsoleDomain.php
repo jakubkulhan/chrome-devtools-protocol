@@ -18,10 +18,10 @@ class ConsoleDomain implements ConsoleDomainInterface
 	}
 
 
-	public function enable(ContextInterface $ctx): void
+	public function clearMessages(ContextInterface $ctx): void
 	{
 		$request = new \stdClass();
-		$this->internalClient->executeCommand($ctx, 'Console.enable', $request);
+		$this->internalClient->executeCommand($ctx, 'Console.clearMessages', $request);
 	}
 
 
@@ -32,10 +32,10 @@ class ConsoleDomain implements ConsoleDomainInterface
 	}
 
 
-	public function clearMessages(ContextInterface $ctx): void
+	public function enable(ContextInterface $ctx): void
 	{
 		$request = new \stdClass();
-		$this->internalClient->executeCommand($ctx, 'Console.clearMessages', $request);
+		$this->internalClient->executeCommand($ctx, 'Console.enable', $request);
 	}
 
 

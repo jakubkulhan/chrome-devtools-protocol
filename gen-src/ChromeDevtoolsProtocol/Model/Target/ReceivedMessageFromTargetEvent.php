@@ -2,7 +2,7 @@
 namespace ChromeDevtoolsProtocol\Model\Target;
 
 /**
- * Notifies about a new protocol message received from the session (as reported in <code>attachedToTarget</code> event).
+ * Notifies about a new protocol message received from the session (as reported in `attachedToTarget` event).
  *
  * @generated This file has been auto-generated, do not edit.
  *

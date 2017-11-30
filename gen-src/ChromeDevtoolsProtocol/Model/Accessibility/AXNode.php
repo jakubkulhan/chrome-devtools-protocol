@@ -32,28 +32,28 @@ final class AXNode implements \JsonSerializable
 	public $ignoredReasons;
 
 	/**
-	 * This <code>Node</code>'s role, whether explicit or implicit.
+	 * This `Node`'s role, whether explicit or implicit.
 	 *
 	 * @var AXValue|null
 	 */
 	public $role;
 
 	/**
-	 * The accessible name for this <code>Node</code>.
+	 * The accessible name for this `Node`.
 	 *
 	 * @var AXValue|null
 	 */
 	public $name;
 
 	/**
-	 * The accessible description for this <code>Node</code>.
+	 * The accessible description for this `Node`.
 	 *
 	 * @var AXValue|null
 	 */
 	public $description;
 
 	/**
-	 * The value for this <code>Node</code>.
+	 * The value for this `Node`.
 	 *
 	 * @var AXValue|null
 	 */

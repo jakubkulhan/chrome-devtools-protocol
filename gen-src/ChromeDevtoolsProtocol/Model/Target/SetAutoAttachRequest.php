@@ -18,7 +18,7 @@ final class SetAutoAttachRequest implements \JsonSerializable
 	public $autoAttach;
 
 	/**
-	 * Whether to pause new targets when attaching to them. Use <code>Runtime.runIfWaitingForDebugger</code> to run paused targets.
+	 * Whether to pause new targets when attaching to them. Use `Runtime.runIfWaitingForDebugger` to run paused targets.
 	 *
 	 * @var bool
 	 */

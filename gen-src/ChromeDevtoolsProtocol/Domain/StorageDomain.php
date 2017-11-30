@@ -47,35 +47,21 @@ class StorageDomain implements StorageDomainInterface
 	}
 
 
-	public function untrackCacheStorageForOrigin(ContextInterface $ctx, UntrackCacheStorageForOriginRequest $request): void
-	{
-		$this->internalClient->executeCommand($ctx, 'Storage.untrackCacheStorageForOrigin', $request);
-	}
-
-
 	public function trackIndexedDBForOrigin(ContextInterface $ctx, TrackIndexedDBForOriginRequest $request): void
 	{
 		$this->internalClient->executeCommand($ctx, 'Storage.trackIndexedDBForOrigin', $request);
 	}
 
 
+	public function untrackCacheStorageForOrigin(ContextInterface $ctx, UntrackCacheStorageForOriginRequest $request): void
+	{
+		$this->internalClient->executeCommand($ctx, 'Storage.untrackCacheStorageForOrigin', $request);
+	}
+
+
 	public function untrackIndexedDBForOrigin(ContextInterface $ctx, UntrackIndexedDBForOriginRequest $request): void
 	{
 		$this->internalClient->executeCommand($ctx, 'Storage.untrackIndexedDBForOrigin', $request);
-	}
-
-
-	public function addCacheStorageListUpdatedListener(callable $listener): SubscriptionInterface
-	{
-		return $this->internalClient->addListener('Storage.cacheStorageListUpdated', function ($event) use ($listener) {
-			return $listener(CacheStorageListUpdatedEvent::fromJson($event));
-		});
-	}
-
-
-	public function awaitCacheStorageListUpdated(ContextInterface $ctx): CacheStorageListUpdatedEvent
-	{
-		return CacheStorageListUpdatedEvent::fromJson($this->internalClient->awaitEvent($ctx, 'Storage.cacheStorageListUpdated'));
 	}
 
 
@@ -93,17 +79,17 @@ class StorageDomain implements StorageDomainInterface
 	}
 
 
-	public function addIndexedDBListUpdatedListener(callable $listener): SubscriptionInterface
+	public function addCacheStorageListUpdatedListener(callable $listener): SubscriptionInterface
 	{
-		return $this->internalClient->addListener('Storage.indexedDBListUpdated', function ($event) use ($listener) {
-			return $listener(IndexedDBListUpdatedEvent::fromJson($event));
+		return $this->internalClient->addListener('Storage.cacheStorageListUpdated', function ($event) use ($listener) {
+			return $listener(CacheStorageListUpdatedEvent::fromJson($event));
 		});
 	}
 
 
-	public function awaitIndexedDBListUpdated(ContextInterface $ctx): IndexedDBListUpdatedEvent
+	public function awaitCacheStorageListUpdated(ContextInterface $ctx): CacheStorageListUpdatedEvent
 	{
-		return IndexedDBListUpdatedEvent::fromJson($this->internalClient->awaitEvent($ctx, 'Storage.indexedDBListUpdated'));
+		return CacheStorageListUpdatedEvent::fromJson($this->internalClient->awaitEvent($ctx, 'Storage.cacheStorageListUpdated'));
 	}
 
 
@@ -118,5 +104,19 @@ class StorageDomain implements StorageDomainInterface
 	public function awaitIndexedDBContentUpdated(ContextInterface $ctx): IndexedDBContentUpdatedEvent
 	{
 		return IndexedDBContentUpdatedEvent::fromJson($this->internalClient->awaitEvent($ctx, 'Storage.indexedDBContentUpdated'));
+	}
+
+
+	public function addIndexedDBListUpdatedListener(callable $listener): SubscriptionInterface
+	{
+		return $this->internalClient->addListener('Storage.indexedDBListUpdated', function ($event) use ($listener) {
+			return $listener(IndexedDBListUpdatedEvent::fromJson($event));
+		});
+	}
+
+
+	public function awaitIndexedDBListUpdated(ContextInterface $ctx): IndexedDBListUpdatedEvent
+	{
+		return IndexedDBListUpdatedEvent::fromJson($this->internalClient->awaitEvent($ctx, 'Storage.indexedDBListUpdated'));
 	}
 }

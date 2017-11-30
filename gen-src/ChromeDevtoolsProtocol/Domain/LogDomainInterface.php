@@ -16,13 +16,13 @@ use ChromeDevtoolsProtocol\SubscriptionInterface;
 interface LogDomainInterface
 {
 	/**
-	 * Enables log domain, sends the entries collected so far to the client by means of the <code>entryAdded</code> notification.
+	 * Clears the log.
 	 *
 	 * @param ContextInterface $ctx
 	 *
 	 * @return void
 	 */
-	public function enable(ContextInterface $ctx): void;
+	public function clear(ContextInterface $ctx): void;
 
 
 	/**
@@ -36,13 +36,13 @@ interface LogDomainInterface
 
 
 	/**
-	 * Clears the log.
+	 * Enables log domain, sends the entries collected so far to the client by means of the `entryAdded` notification.
 	 *
 	 * @param ContextInterface $ctx
 	 *
 	 * @return void
 	 */
-	public function clear(ContextInterface $ctx): void;
+	public function enable(ContextInterface $ctx): void;
 
 
 	/**

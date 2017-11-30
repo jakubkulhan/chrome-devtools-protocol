@@ -20,13 +20,14 @@ use ChromeDevtoolsProtocol\SubscriptionInterface;
 interface HeadlessExperimentalDomainInterface
 {
 	/**
-	 * Enables headless events for the target.
+	 * Sends a BeginFrame to the target and returns when the frame was completed. Optionally captures a screenshot from the resulting frame. Requires that the target was created with enabled BeginFrameControl.
 	 *
 	 * @param ContextInterface $ctx
+	 * @param BeginFrameRequest $request
 	 *
-	 * @return void
+	 * @return BeginFrameResponse
 	 */
-	public function enable(ContextInterface $ctx): void;
+	public function beginFrame(ContextInterface $ctx, BeginFrameRequest $request): BeginFrameResponse;
 
 
 	/**
@@ -40,38 +41,13 @@ interface HeadlessExperimentalDomainInterface
 
 
 	/**
-	 * Sends a BeginFrame to the target and returns when the frame was completed. Optionally captures a screenshot from the resulting frame. Requires that the target was created with enabled BeginFrameControl.
-	 *
-	 * @param ContextInterface $ctx
-	 * @param BeginFrameRequest $request
-	 *
-	 * @return BeginFrameResponse
-	 */
-	public function beginFrame(ContextInterface $ctx, BeginFrameRequest $request): BeginFrameResponse;
-
-
-	/**
-	 * Issued when the target starts or stops needing BeginFrames.
-	 *
-	 * Listener will be called whenever event HeadlessExperimental.needsBeginFramesChanged is fired.
-	 *
-	 * @param callable $listener
-	 *
-	 * @return SubscriptionInterface
-	 */
-	public function addNeedsBeginFramesChangedListener(callable $listener): SubscriptionInterface;
-
-
-	/**
-	 * Issued when the target starts or stops needing BeginFrames.
-	 *
-	 * Method will block until first HeadlessExperimental.needsBeginFramesChanged event is fired.
+	 * Enables headless events for the target.
 	 *
 	 * @param ContextInterface $ctx
 	 *
-	 * @return NeedsBeginFramesChangedEvent
+	 * @return void
 	 */
-	public function awaitNeedsBeginFramesChanged(ContextInterface $ctx): NeedsBeginFramesChangedEvent;
+	public function enable(ContextInterface $ctx): void;
 
 
 	/**
@@ -96,4 +72,28 @@ interface HeadlessExperimentalDomainInterface
 	 * @return MainFrameReadyForScreenshotsEvent
 	 */
 	public function awaitMainFrameReadyForScreenshots(ContextInterface $ctx): MainFrameReadyForScreenshotsEvent;
+
+
+	/**
+	 * Issued when the target starts or stops needing BeginFrames.
+	 *
+	 * Listener will be called whenever event HeadlessExperimental.needsBeginFramesChanged is fired.
+	 *
+	 * @param callable $listener
+	 *
+	 * @return SubscriptionInterface
+	 */
+	public function addNeedsBeginFramesChangedListener(callable $listener): SubscriptionInterface;
+
+
+	/**
+	 * Issued when the target starts or stops needing BeginFrames.
+	 *
+	 * Method will block until first HeadlessExperimental.needsBeginFramesChanged event is fired.
+	 *
+	 * @param ContextInterface $ctx
+	 *
+	 * @return NeedsBeginFramesChangedEvent
+	 */
+	public function awaitNeedsBeginFramesChanged(ContextInterface $ctx): NeedsBeginFramesChangedEvent;
 }

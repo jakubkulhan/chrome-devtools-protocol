@@ -25,7 +25,7 @@ final class ShorthandEntry implements \JsonSerializable
 	public $value;
 
 	/**
-	 * Whether the property has "!important" annotation (implies <code>false</code> if absent).
+	 * Whether the property has "!important" annotation (implies `false` if absent).
 	 *
 	 * @var bool|null
 	 */

@@ -11,7 +11,7 @@ namespace ChromeDevtoolsProtocol\Model\DOM;
 final class Node implements \JsonSerializable
 {
 	/**
-	 * Node identifier that is passed into the rest of the DOM messages as the <code>nodeId</code>. Backend will only push node with given <code>id</code> once. It is aware of all requested nodes and will only fire DOM events for nodes known to the client.
+	 * Node identifier that is passed into the rest of the DOM messages as the `nodeId`. Backend will only push node with given `id` once. It is aware of all requested nodes and will only fire DOM events for nodes known to the client.
 	 *
 	 * @var int
 	 */
@@ -32,35 +32,35 @@ final class Node implements \JsonSerializable
 	public $backendNodeId;
 
 	/**
-	 * <code>Node</code>'s nodeType.
+	 * `Node`'s nodeType.
 	 *
 	 * @var int
 	 */
 	public $nodeType;
 
 	/**
-	 * <code>Node</code>'s nodeName.
+	 * `Node`'s nodeName.
 	 *
 	 * @var string
 	 */
 	public $nodeName;
 
 	/**
-	 * <code>Node</code>'s localName.
+	 * `Node`'s localName.
 	 *
 	 * @var string
 	 */
 	public $localName;
 
 	/**
-	 * <code>Node</code>'s nodeValue.
+	 * `Node`'s nodeValue.
 	 *
 	 * @var string
 	 */
 	public $nodeValue;
 
 	/**
-	 * Child count for <code>Container</code> nodes.
+	 * Child count for `Container` nodes.
 	 *
 	 * @var int|null
 	 */
@@ -74,63 +74,63 @@ final class Node implements \JsonSerializable
 	public $children;
 
 	/**
-	 * Attributes of the <code>Element</code> node in the form of flat array <code>[name1, value1, name2, value2]</code>.
+	 * Attributes of the `Element` node in the form of flat array `[name1, value1, name2, value2]`.
 	 *
 	 * @var string[]|null
 	 */
 	public $attributes;
 
 	/**
-	 * Document URL that <code>Document</code> or <code>FrameOwner</code> node points to.
+	 * Document URL that `Document` or `FrameOwner` node points to.
 	 *
 	 * @var string|null
 	 */
 	public $documentURL;
 
 	/**
-	 * Base URL that <code>Document</code> or <code>FrameOwner</code> node uses for URL completion.
+	 * Base URL that `Document` or `FrameOwner` node uses for URL completion.
 	 *
 	 * @var string|null
 	 */
 	public $baseURL;
 
 	/**
-	 * <code>DocumentType</code>'s publicId.
+	 * `DocumentType`'s publicId.
 	 *
 	 * @var string|null
 	 */
 	public $publicId;
 
 	/**
-	 * <code>DocumentType</code>'s systemId.
+	 * `DocumentType`'s systemId.
 	 *
 	 * @var string|null
 	 */
 	public $systemId;
 
 	/**
-	 * <code>DocumentType</code>'s internalSubset.
+	 * `DocumentType`'s internalSubset.
 	 *
 	 * @var string|null
 	 */
 	public $internalSubset;
 
 	/**
-	 * <code>Document</code>'s XML version in case of XML documents.
+	 * `Document`'s XML version in case of XML documents.
 	 *
 	 * @var string|null
 	 */
 	public $xmlVersion;
 
 	/**
-	 * <code>Attr</code>'s name.
+	 * `Attr`'s name.
 	 *
 	 * @var string|null
 	 */
 	public $name;
 
 	/**
-	 * <code>Attr</code>'s value.
+	 * `Attr`'s value.
 	 *
 	 * @var string|null
 	 */

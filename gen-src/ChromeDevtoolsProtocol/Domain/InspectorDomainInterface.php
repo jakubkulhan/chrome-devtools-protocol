@@ -18,16 +18,6 @@ use ChromeDevtoolsProtocol\SubscriptionInterface;
 interface InspectorDomainInterface
 {
 	/**
-	 * Enables inspector domain notifications.
-	 *
-	 * @param ContextInterface $ctx
-	 *
-	 * @return void
-	 */
-	public function enable(ContextInterface $ctx): void;
-
-
-	/**
 	 * Disables inspector domain notifications.
 	 *
 	 * @param ContextInterface $ctx
@@ -35,6 +25,16 @@ interface InspectorDomainInterface
 	 * @return void
 	 */
 	public function disable(ContextInterface $ctx): void;
+
+
+	/**
+	 * Enables inspector domain notifications.
+	 *
+	 * @param ContextInterface $ctx
+	 *
+	 * @return void
+	 */
+	public function enable(ContextInterface $ctx): void;
 
 
 	/**

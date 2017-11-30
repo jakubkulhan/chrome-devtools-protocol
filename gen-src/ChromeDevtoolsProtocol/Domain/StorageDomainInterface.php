@@ -60,17 +60,6 @@ interface StorageDomainInterface
 
 
 	/**
-	 * Unregisters origin from receiving notifications for cache storage.
-	 *
-	 * @param ContextInterface $ctx
-	 * @param UntrackCacheStorageForOriginRequest $request
-	 *
-	 * @return void
-	 */
-	public function untrackCacheStorageForOrigin(ContextInterface $ctx, UntrackCacheStorageForOriginRequest $request): void;
-
-
-	/**
 	 * Registers origin to be notified when an update occurs to its IndexedDB.
 	 *
 	 * @param ContextInterface $ctx
@@ -82,6 +71,17 @@ interface StorageDomainInterface
 
 
 	/**
+	 * Unregisters origin from receiving notifications for cache storage.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param UntrackCacheStorageForOriginRequest $request
+	 *
+	 * @return void
+	 */
+	public function untrackCacheStorageForOrigin(ContextInterface $ctx, UntrackCacheStorageForOriginRequest $request): void;
+
+
+	/**
 	 * Unregisters origin from receiving notifications for IndexedDB.
 	 *
 	 * @param ContextInterface $ctx
@@ -90,30 +90,6 @@ interface StorageDomainInterface
 	 * @return void
 	 */
 	public function untrackIndexedDBForOrigin(ContextInterface $ctx, UntrackIndexedDBForOriginRequest $request): void;
-
-
-	/**
-	 * A cache has been added/deleted.
-	 *
-	 * Listener will be called whenever event Storage.cacheStorageListUpdated is fired.
-	 *
-	 * @param callable $listener
-	 *
-	 * @return SubscriptionInterface
-	 */
-	public function addCacheStorageListUpdatedListener(callable $listener): SubscriptionInterface;
-
-
-	/**
-	 * A cache has been added/deleted.
-	 *
-	 * Method will block until first Storage.cacheStorageListUpdated event is fired.
-	 *
-	 * @param ContextInterface $ctx
-	 *
-	 * @return CacheStorageListUpdatedEvent
-	 */
-	public function awaitCacheStorageListUpdated(ContextInterface $ctx): CacheStorageListUpdatedEvent;
 
 
 	/**
@@ -141,27 +117,27 @@ interface StorageDomainInterface
 
 
 	/**
-	 * The origin's IndexedDB database list has been modified.
+	 * A cache has been added/deleted.
 	 *
-	 * Listener will be called whenever event Storage.indexedDBListUpdated is fired.
+	 * Listener will be called whenever event Storage.cacheStorageListUpdated is fired.
 	 *
 	 * @param callable $listener
 	 *
 	 * @return SubscriptionInterface
 	 */
-	public function addIndexedDBListUpdatedListener(callable $listener): SubscriptionInterface;
+	public function addCacheStorageListUpdatedListener(callable $listener): SubscriptionInterface;
 
 
 	/**
-	 * The origin's IndexedDB database list has been modified.
+	 * A cache has been added/deleted.
 	 *
-	 * Method will block until first Storage.indexedDBListUpdated event is fired.
+	 * Method will block until first Storage.cacheStorageListUpdated event is fired.
 	 *
 	 * @param ContextInterface $ctx
 	 *
-	 * @return IndexedDBListUpdatedEvent
+	 * @return CacheStorageListUpdatedEvent
 	 */
-	public function awaitIndexedDBListUpdated(ContextInterface $ctx): IndexedDBListUpdatedEvent;
+	public function awaitCacheStorageListUpdated(ContextInterface $ctx): CacheStorageListUpdatedEvent;
 
 
 	/**
@@ -186,4 +162,28 @@ interface StorageDomainInterface
 	 * @return IndexedDBContentUpdatedEvent
 	 */
 	public function awaitIndexedDBContentUpdated(ContextInterface $ctx): IndexedDBContentUpdatedEvent;
+
+
+	/**
+	 * The origin's IndexedDB database list has been modified.
+	 *
+	 * Listener will be called whenever event Storage.indexedDBListUpdated is fired.
+	 *
+	 * @param callable $listener
+	 *
+	 * @return SubscriptionInterface
+	 */
+	public function addIndexedDBListUpdatedListener(callable $listener): SubscriptionInterface;
+
+
+	/**
+	 * The origin's IndexedDB database list has been modified.
+	 *
+	 * Method will block until first Storage.indexedDBListUpdated event is fired.
+	 *
+	 * @param ContextInterface $ctx
+	 *
+	 * @return IndexedDBListUpdatedEvent
+	 */
+	public function awaitIndexedDBListUpdated(ContextInterface $ctx): IndexedDBListUpdatedEvent;
 }

@@ -23,17 +23,6 @@ use ChromeDevtoolsProtocol\SubscriptionInterface;
 interface TracingDomainInterface
 {
 	/**
-	 * Start trace events collection.
-	 *
-	 * @param ContextInterface $ctx
-	 * @param StartRequest $request
-	 *
-	 * @return void
-	 */
-	public function start(ContextInterface $ctx, StartRequest $request): void;
-
-
-	/**
 	 * Stop trace events collection.
 	 *
 	 * @param ContextInterface $ctx
@@ -54,6 +43,17 @@ interface TracingDomainInterface
 
 
 	/**
+	 * Record a clock sync marker in the trace.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param RecordClockSyncMarkerRequest $request
+	 *
+	 * @return void
+	 */
+	public function recordClockSyncMarker(ContextInterface $ctx, RecordClockSyncMarkerRequest $request): void;
+
+
+	/**
 	 * Request a global memory dump.
 	 *
 	 * @param ContextInterface $ctx
@@ -64,14 +64,38 @@ interface TracingDomainInterface
 
 
 	/**
-	 * Record a clock sync marker in the trace.
+	 * Start trace events collection.
 	 *
 	 * @param ContextInterface $ctx
-	 * @param RecordClockSyncMarkerRequest $request
+	 * @param StartRequest $request
 	 *
 	 * @return void
 	 */
-	public function recordClockSyncMarker(ContextInterface $ctx, RecordClockSyncMarkerRequest $request): void;
+	public function start(ContextInterface $ctx, StartRequest $request): void;
+
+
+	/**
+	 * Subscribe to Tracing.bufferUsage event.
+	 *
+	 * Listener will be called whenever event Tracing.bufferUsage is fired.
+	 *
+	 * @param callable $listener
+	 *
+	 * @return SubscriptionInterface
+	 */
+	public function addBufferUsageListener(callable $listener): SubscriptionInterface;
+
+
+	/**
+	 * Wait for Tracing.bufferUsage event.
+	 *
+	 * Method will block until first Tracing.bufferUsage event is fired.
+	 *
+	 * @param ContextInterface $ctx
+	 *
+	 * @return BufferUsageEvent
+	 */
+	public function awaitBufferUsage(ContextInterface $ctx): BufferUsageEvent;
 
 
 	/**
@@ -120,28 +144,4 @@ interface TracingDomainInterface
 	 * @return TracingCompleteEvent
 	 */
 	public function awaitTracingComplete(ContextInterface $ctx): TracingCompleteEvent;
-
-
-	/**
-	 * Subscribe to Tracing.bufferUsage event.
-	 *
-	 * Listener will be called whenever event Tracing.bufferUsage is fired.
-	 *
-	 * @param callable $listener
-	 *
-	 * @return SubscriptionInterface
-	 */
-	public function addBufferUsageListener(callable $listener): SubscriptionInterface;
-
-
-	/**
-	 * Wait for Tracing.bufferUsage event.
-	 *
-	 * Method will block until first Tracing.bufferUsage event is fired.
-	 *
-	 * @param ContextInterface $ctx
-	 *
-	 * @return BufferUsageEvent
-	 */
-	public function awaitBufferUsage(ContextInterface $ctx): BufferUsageEvent;
 }

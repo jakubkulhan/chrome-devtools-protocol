@@ -22,13 +22,6 @@ class DatabaseDomain implements DatabaseDomainInterface
 	}
 
 
-	public function enable(ContextInterface $ctx): void
-	{
-		$request = new \stdClass();
-		$this->internalClient->executeCommand($ctx, 'Database.enable', $request);
-	}
-
-
 	public function disable(ContextInterface $ctx): void
 	{
 		$request = new \stdClass();
@@ -36,10 +29,10 @@ class DatabaseDomain implements DatabaseDomainInterface
 	}
 
 
-	public function getDatabaseTableNames(ContextInterface $ctx, GetDatabaseTableNamesRequest $request): GetDatabaseTableNamesResponse
+	public function enable(ContextInterface $ctx): void
 	{
-		$response = $this->internalClient->executeCommand($ctx, 'Database.getDatabaseTableNames', $request);
-		return GetDatabaseTableNamesResponse::fromJson($response);
+		$request = new \stdClass();
+		$this->internalClient->executeCommand($ctx, 'Database.enable', $request);
 	}
 
 
@@ -47,6 +40,13 @@ class DatabaseDomain implements DatabaseDomainInterface
 	{
 		$response = $this->internalClient->executeCommand($ctx, 'Database.executeSQL', $request);
 		return ExecuteSQLResponse::fromJson($response);
+	}
+
+
+	public function getDatabaseTableNames(ContextInterface $ctx, GetDatabaseTableNamesRequest $request): GetDatabaseTableNamesResponse
+	{
+		$response = $this->internalClient->executeCommand($ctx, 'Database.getDatabaseTableNames', $request);
+		return GetDatabaseTableNamesResponse::fromJson($response);
 	}
 
 

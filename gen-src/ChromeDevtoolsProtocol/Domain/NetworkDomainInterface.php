@@ -59,14 +59,75 @@ use ChromeDevtoolsProtocol\SubscriptionInterface;
 interface NetworkDomainInterface
 {
 	/**
-	 * Enables network tracking, network events will now be delivered to the client.
+	 * Tells whether clearing browser cache is supported.
 	 *
 	 * @param ContextInterface $ctx
-	 * @param EnableRequest $request
+	 *
+	 * @return CanClearBrowserCacheResponse
+	 */
+	public function canClearBrowserCache(ContextInterface $ctx): CanClearBrowserCacheResponse;
+
+
+	/**
+	 * Tells whether clearing browser cookies is supported.
+	 *
+	 * @param ContextInterface $ctx
+	 *
+	 * @return CanClearBrowserCookiesResponse
+	 */
+	public function canClearBrowserCookies(ContextInterface $ctx): CanClearBrowserCookiesResponse;
+
+
+	/**
+	 * Tells whether emulation of network conditions is supported.
+	 *
+	 * @param ContextInterface $ctx
+	 *
+	 * @return CanEmulateNetworkConditionsResponse
+	 */
+	public function canEmulateNetworkConditions(ContextInterface $ctx): CanEmulateNetworkConditionsResponse;
+
+
+	/**
+	 * Clears browser cache.
+	 *
+	 * @param ContextInterface $ctx
 	 *
 	 * @return void
 	 */
-	public function enable(ContextInterface $ctx, EnableRequest $request): void;
+	public function clearBrowserCache(ContextInterface $ctx): void;
+
+
+	/**
+	 * Clears browser cookies.
+	 *
+	 * @param ContextInterface $ctx
+	 *
+	 * @return void
+	 */
+	public function clearBrowserCookies(ContextInterface $ctx): void;
+
+
+	/**
+	 * Response to Network.requestIntercepted which either modifies the request to continue with any modifications, or blocks it, or completes it with the provided response bytes. If a network fetch occurs as a result which encounters a redirect an additional Network.requestIntercepted event will be sent with the same InterceptionId.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param ContinueInterceptedRequestRequest $request
+	 *
+	 * @return void
+	 */
+	public function continueInterceptedRequest(ContextInterface $ctx, ContinueInterceptedRequestRequest $request): void;
+
+
+	/**
+	 * Deletes browser cookies with matching name and url or domain/path pair.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param DeleteCookiesRequest $request
+	 *
+	 * @return void
+	 */
+	public function deleteCookies(ContextInterface $ctx, DeleteCookiesRequest $request): void;
 
 
 	/**
@@ -80,36 +141,57 @@ interface NetworkDomainInterface
 
 
 	/**
-	 * Allows overriding user agent with the given string.
+	 * Activates emulation of network conditions.
 	 *
 	 * @param ContextInterface $ctx
-	 * @param SetUserAgentOverrideRequest $request
+	 * @param EmulateNetworkConditionsRequest $request
 	 *
 	 * @return void
 	 */
-	public function setUserAgentOverride(ContextInterface $ctx, SetUserAgentOverrideRequest $request): void;
+	public function emulateNetworkConditions(ContextInterface $ctx, EmulateNetworkConditionsRequest $request): void;
 
 
 	/**
-	 * Searches for given string in response content.
+	 * Enables network tracking, network events will now be delivered to the client.
 	 *
 	 * @param ContextInterface $ctx
-	 * @param SearchInResponseBodyRequest $request
-	 *
-	 * @return SearchInResponseBodyResponse
-	 */
-	public function searchInResponseBody(ContextInterface $ctx, SearchInResponseBodyRequest $request): SearchInResponseBodyResponse;
-
-
-	/**
-	 * Specifies whether to always send extra HTTP headers with the requests from this page.
-	 *
-	 * @param ContextInterface $ctx
-	 * @param SetExtraHTTPHeadersRequest $request
+	 * @param EnableRequest $request
 	 *
 	 * @return void
 	 */
-	public function setExtraHTTPHeaders(ContextInterface $ctx, SetExtraHTTPHeadersRequest $request): void;
+	public function enable(ContextInterface $ctx, EnableRequest $request): void;
+
+
+	/**
+	 * Returns all browser cookies. Depending on the backend support, will return detailed cookie information in the `cookies` field.
+	 *
+	 * @param ContextInterface $ctx
+	 *
+	 * @return GetAllCookiesResponse
+	 */
+	public function getAllCookies(ContextInterface $ctx): GetAllCookiesResponse;
+
+
+	/**
+	 * Returns the DER-encoded certificate.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param GetCertificateRequest $request
+	 *
+	 * @return GetCertificateResponse
+	 */
+	public function getCertificate(ContextInterface $ctx, GetCertificateRequest $request): GetCertificateResponse;
+
+
+	/**
+	 * Returns all browser cookies for the current URL. Depending on the backend support, will return detailed cookie information in the `cookies` field.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param GetCookiesRequest $request
+	 *
+	 * @return GetCookiesResponse
+	 */
+	public function getCookies(ContextInterface $ctx, GetCookiesRequest $request): GetCookiesResponse;
 
 
 	/**
@@ -124,14 +206,14 @@ interface NetworkDomainInterface
 
 
 	/**
-	 * Blocks URLs from loading.
+	 * Returns content served for the given currently intercepted request.
 	 *
 	 * @param ContextInterface $ctx
-	 * @param SetBlockedURLsRequest $request
+	 * @param GetResponseBodyForInterceptionRequest $request
 	 *
-	 * @return void
+	 * @return GetResponseBodyForInterceptionResponse
 	 */
-	public function setBlockedURLs(ContextInterface $ctx, SetBlockedURLsRequest $request): void;
+	public function getResponseBodyForInterception(ContextInterface $ctx, GetResponseBodyForInterceptionRequest $request): GetResponseBodyForInterceptionResponse;
 
 
 	/**
@@ -146,75 +228,47 @@ interface NetworkDomainInterface
 
 
 	/**
-	 * Tells whether clearing browser cache is supported.
+	 * Searches for given string in response content.
 	 *
 	 * @param ContextInterface $ctx
+	 * @param SearchInResponseBodyRequest $request
 	 *
-	 * @return CanClearBrowserCacheResponse
+	 * @return SearchInResponseBodyResponse
 	 */
-	public function canClearBrowserCache(ContextInterface $ctx): CanClearBrowserCacheResponse;
+	public function searchInResponseBody(ContextInterface $ctx, SearchInResponseBodyRequest $request): SearchInResponseBodyResponse;
 
 
 	/**
-	 * Clears browser cache.
+	 * Blocks URLs from loading.
 	 *
 	 * @param ContextInterface $ctx
+	 * @param SetBlockedURLsRequest $request
 	 *
 	 * @return void
 	 */
-	public function clearBrowserCache(ContextInterface $ctx): void;
+	public function setBlockedURLs(ContextInterface $ctx, SetBlockedURLsRequest $request): void;
 
 
 	/**
-	 * Tells whether clearing browser cookies is supported.
+	 * Toggles ignoring of service worker for each request.
 	 *
 	 * @param ContextInterface $ctx
-	 *
-	 * @return CanClearBrowserCookiesResponse
-	 */
-	public function canClearBrowserCookies(ContextInterface $ctx): CanClearBrowserCookiesResponse;
-
-
-	/**
-	 * Clears browser cookies.
-	 *
-	 * @param ContextInterface $ctx
+	 * @param SetBypassServiceWorkerRequest $request
 	 *
 	 * @return void
 	 */
-	public function clearBrowserCookies(ContextInterface $ctx): void;
+	public function setBypassServiceWorker(ContextInterface $ctx, SetBypassServiceWorkerRequest $request): void;
 
 
 	/**
-	 * Returns all browser cookies for the current URL. Depending on the backend support, will return detailed cookie information in the <code>cookies</code> field.
+	 * Toggles ignoring cache for each request. If `true`, cache will not be used.
 	 *
 	 * @param ContextInterface $ctx
-	 * @param GetCookiesRequest $request
-	 *
-	 * @return GetCookiesResponse
-	 */
-	public function getCookies(ContextInterface $ctx, GetCookiesRequest $request): GetCookiesResponse;
-
-
-	/**
-	 * Returns all browser cookies. Depending on the backend support, will return detailed cookie information in the <code>cookies</code> field.
-	 *
-	 * @param ContextInterface $ctx
-	 *
-	 * @return GetAllCookiesResponse
-	 */
-	public function getAllCookies(ContextInterface $ctx): GetAllCookiesResponse;
-
-
-	/**
-	 * Deletes browser cookies with matching name and url or domain/path pair.
-	 *
-	 * @param ContextInterface $ctx
-	 * @param DeleteCookiesRequest $request
+	 * @param SetCacheDisabledRequest $request
 	 *
 	 * @return void
 	 */
-	public function deleteCookies(ContextInterface $ctx, DeleteCookiesRequest $request): void;
+	public function setCacheDisabled(ContextInterface $ctx, SetCacheDisabledRequest $request): void;
 
 
 	/**
@@ -240,49 +294,6 @@ interface NetworkDomainInterface
 
 
 	/**
-	 * Tells whether emulation of network conditions is supported.
-	 *
-	 * @param ContextInterface $ctx
-	 *
-	 * @return CanEmulateNetworkConditionsResponse
-	 */
-	public function canEmulateNetworkConditions(ContextInterface $ctx): CanEmulateNetworkConditionsResponse;
-
-
-	/**
-	 * Activates emulation of network conditions.
-	 *
-	 * @param ContextInterface $ctx
-	 * @param EmulateNetworkConditionsRequest $request
-	 *
-	 * @return void
-	 */
-	public function emulateNetworkConditions(ContextInterface $ctx, EmulateNetworkConditionsRequest $request): void;
-
-
-	/**
-	 * Toggles ignoring cache for each request. If <code>true</code>, cache will not be used.
-	 *
-	 * @param ContextInterface $ctx
-	 * @param SetCacheDisabledRequest $request
-	 *
-	 * @return void
-	 */
-	public function setCacheDisabled(ContextInterface $ctx, SetCacheDisabledRequest $request): void;
-
-
-	/**
-	 * Toggles ignoring of service worker for each request.
-	 *
-	 * @param ContextInterface $ctx
-	 * @param SetBypassServiceWorkerRequest $request
-	 *
-	 * @return void
-	 */
-	public function setBypassServiceWorker(ContextInterface $ctx, SetBypassServiceWorkerRequest $request): void;
-
-
-	/**
 	 * For testing.
 	 *
 	 * @param ContextInterface $ctx
@@ -294,14 +305,14 @@ interface NetworkDomainInterface
 
 
 	/**
-	 * Returns the DER-encoded certificate.
+	 * Specifies whether to always send extra HTTP headers with the requests from this page.
 	 *
 	 * @param ContextInterface $ctx
-	 * @param GetCertificateRequest $request
+	 * @param SetExtraHTTPHeadersRequest $request
 	 *
-	 * @return GetCertificateResponse
+	 * @return void
 	 */
-	public function getCertificate(ContextInterface $ctx, GetCertificateRequest $request): GetCertificateResponse;
+	public function setExtraHTTPHeaders(ContextInterface $ctx, SetExtraHTTPHeadersRequest $request): void;
 
 
 	/**
@@ -316,121 +327,14 @@ interface NetworkDomainInterface
 
 
 	/**
-	 * Response to Network.requestIntercepted which either modifies the request to continue with any modifications, or blocks it, or completes it with the provided response bytes. If a network fetch occurs as a result which encounters a redirect an additional Network.requestIntercepted event will be sent with the same InterceptionId.
+	 * Allows overriding user agent with the given string.
 	 *
 	 * @param ContextInterface $ctx
-	 * @param ContinueInterceptedRequestRequest $request
+	 * @param SetUserAgentOverrideRequest $request
 	 *
 	 * @return void
 	 */
-	public function continueInterceptedRequest(ContextInterface $ctx, ContinueInterceptedRequestRequest $request): void;
-
-
-	/**
-	 * Returns content served for the given currently intercepted request.
-	 *
-	 * @param ContextInterface $ctx
-	 * @param GetResponseBodyForInterceptionRequest $request
-	 *
-	 * @return GetResponseBodyForInterceptionResponse
-	 */
-	public function getResponseBodyForInterception(ContextInterface $ctx, GetResponseBodyForInterceptionRequest $request): GetResponseBodyForInterceptionResponse;
-
-
-	/**
-	 * Fired when resource loading priority is changed
-	 *
-	 * Listener will be called whenever event Network.resourceChangedPriority is fired.
-	 *
-	 * @param callable $listener
-	 *
-	 * @return SubscriptionInterface
-	 */
-	public function addResourceChangedPriorityListener(callable $listener): SubscriptionInterface;
-
-
-	/**
-	 * Fired when resource loading priority is changed
-	 *
-	 * Method will block until first Network.resourceChangedPriority event is fired.
-	 *
-	 * @param ContextInterface $ctx
-	 *
-	 * @return ResourceChangedPriorityEvent
-	 */
-	public function awaitResourceChangedPriority(ContextInterface $ctx): ResourceChangedPriorityEvent;
-
-
-	/**
-	 * Fired when page is about to send HTTP request.
-	 *
-	 * Listener will be called whenever event Network.requestWillBeSent is fired.
-	 *
-	 * @param callable $listener
-	 *
-	 * @return SubscriptionInterface
-	 */
-	public function addRequestWillBeSentListener(callable $listener): SubscriptionInterface;
-
-
-	/**
-	 * Fired when page is about to send HTTP request.
-	 *
-	 * Method will block until first Network.requestWillBeSent event is fired.
-	 *
-	 * @param ContextInterface $ctx
-	 *
-	 * @return RequestWillBeSentEvent
-	 */
-	public function awaitRequestWillBeSent(ContextInterface $ctx): RequestWillBeSentEvent;
-
-
-	/**
-	 * Fired if request ended up loading from cache.
-	 *
-	 * Listener will be called whenever event Network.requestServedFromCache is fired.
-	 *
-	 * @param callable $listener
-	 *
-	 * @return SubscriptionInterface
-	 */
-	public function addRequestServedFromCacheListener(callable $listener): SubscriptionInterface;
-
-
-	/**
-	 * Fired if request ended up loading from cache.
-	 *
-	 * Method will block until first Network.requestServedFromCache event is fired.
-	 *
-	 * @param ContextInterface $ctx
-	 *
-	 * @return RequestServedFromCacheEvent
-	 */
-	public function awaitRequestServedFromCache(ContextInterface $ctx): RequestServedFromCacheEvent;
-
-
-	/**
-	 * Fired when HTTP response is available.
-	 *
-	 * Listener will be called whenever event Network.responseReceived is fired.
-	 *
-	 * @param callable $listener
-	 *
-	 * @return SubscriptionInterface
-	 */
-	public function addResponseReceivedListener(callable $listener): SubscriptionInterface;
-
-
-	/**
-	 * Fired when HTTP response is available.
-	 *
-	 * Method will block until first Network.responseReceived event is fired.
-	 *
-	 * @param ContextInterface $ctx
-	 *
-	 * @return ResponseReceivedEvent
-	 */
-	public function awaitResponseReceived(ContextInterface $ctx): ResponseReceivedEvent;
+	public function setUserAgentOverride(ContextInterface $ctx, SetUserAgentOverrideRequest $request): void;
 
 
 	/**
@@ -458,27 +362,27 @@ interface NetworkDomainInterface
 
 
 	/**
-	 * Fired when HTTP request has finished loading.
+	 * Fired when EventSource message is received.
 	 *
-	 * Listener will be called whenever event Network.loadingFinished is fired.
+	 * Listener will be called whenever event Network.eventSourceMessageReceived is fired.
 	 *
 	 * @param callable $listener
 	 *
 	 * @return SubscriptionInterface
 	 */
-	public function addLoadingFinishedListener(callable $listener): SubscriptionInterface;
+	public function addEventSourceMessageReceivedListener(callable $listener): SubscriptionInterface;
 
 
 	/**
-	 * Fired when HTTP request has finished loading.
+	 * Fired when EventSource message is received.
 	 *
-	 * Method will block until first Network.loadingFinished event is fired.
+	 * Method will block until first Network.eventSourceMessageReceived event is fired.
 	 *
 	 * @param ContextInterface $ctx
 	 *
-	 * @return LoadingFinishedEvent
+	 * @return EventSourceMessageReceivedEvent
 	 */
-	public function awaitLoadingFinished(ContextInterface $ctx): LoadingFinishedEvent;
+	public function awaitEventSourceMessageReceived(ContextInterface $ctx): EventSourceMessageReceivedEvent;
 
 
 	/**
@@ -506,75 +410,147 @@ interface NetworkDomainInterface
 
 
 	/**
-	 * Fired when WebSocket is about to initiate handshake.
+	 * Fired when HTTP request has finished loading.
 	 *
-	 * Listener will be called whenever event Network.webSocketWillSendHandshakeRequest is fired.
-	 *
-	 * @param callable $listener
-	 *
-	 * @return SubscriptionInterface
-	 */
-	public function addWebSocketWillSendHandshakeRequestListener(callable $listener): SubscriptionInterface;
-
-
-	/**
-	 * Fired when WebSocket is about to initiate handshake.
-	 *
-	 * Method will block until first Network.webSocketWillSendHandshakeRequest event is fired.
-	 *
-	 * @param ContextInterface $ctx
-	 *
-	 * @return WebSocketWillSendHandshakeRequestEvent
-	 */
-	public function awaitWebSocketWillSendHandshakeRequest(ContextInterface $ctx): WebSocketWillSendHandshakeRequestEvent;
-
-
-	/**
-	 * Fired when WebSocket handshake response becomes available.
-	 *
-	 * Listener will be called whenever event Network.webSocketHandshakeResponseReceived is fired.
+	 * Listener will be called whenever event Network.loadingFinished is fired.
 	 *
 	 * @param callable $listener
 	 *
 	 * @return SubscriptionInterface
 	 */
-	public function addWebSocketHandshakeResponseReceivedListener(callable $listener): SubscriptionInterface;
+	public function addLoadingFinishedListener(callable $listener): SubscriptionInterface;
 
 
 	/**
-	 * Fired when WebSocket handshake response becomes available.
+	 * Fired when HTTP request has finished loading.
 	 *
-	 * Method will block until first Network.webSocketHandshakeResponseReceived event is fired.
+	 * Method will block until first Network.loadingFinished event is fired.
 	 *
 	 * @param ContextInterface $ctx
 	 *
-	 * @return WebSocketHandshakeResponseReceivedEvent
+	 * @return LoadingFinishedEvent
 	 */
-	public function awaitWebSocketHandshakeResponseReceived(ContextInterface $ctx): WebSocketHandshakeResponseReceivedEvent;
+	public function awaitLoadingFinished(ContextInterface $ctx): LoadingFinishedEvent;
 
 
 	/**
-	 * Fired upon WebSocket creation.
+	 * Details of an intercepted HTTP request, which must be either allowed, blocked, modified or mocked.
 	 *
-	 * Listener will be called whenever event Network.webSocketCreated is fired.
+	 * Listener will be called whenever event Network.requestIntercepted is fired.
 	 *
 	 * @param callable $listener
 	 *
 	 * @return SubscriptionInterface
 	 */
-	public function addWebSocketCreatedListener(callable $listener): SubscriptionInterface;
+	public function addRequestInterceptedListener(callable $listener): SubscriptionInterface;
 
 
 	/**
-	 * Fired upon WebSocket creation.
+	 * Details of an intercepted HTTP request, which must be either allowed, blocked, modified or mocked.
 	 *
-	 * Method will block until first Network.webSocketCreated event is fired.
+	 * Method will block until first Network.requestIntercepted event is fired.
 	 *
 	 * @param ContextInterface $ctx
 	 *
-	 * @return WebSocketCreatedEvent
+	 * @return RequestInterceptedEvent
 	 */
-	public function awaitWebSocketCreated(ContextInterface $ctx): WebSocketCreatedEvent;
+	public function awaitRequestIntercepted(ContextInterface $ctx): RequestInterceptedEvent;
+
+
+	/**
+	 * Fired if request ended up loading from cache.
+	 *
+	 * Listener will be called whenever event Network.requestServedFromCache is fired.
+	 *
+	 * @param callable $listener
+	 *
+	 * @return SubscriptionInterface
+	 */
+	public function addRequestServedFromCacheListener(callable $listener): SubscriptionInterface;
+
+
+	/**
+	 * Fired if request ended up loading from cache.
+	 *
+	 * Method will block until first Network.requestServedFromCache event is fired.
+	 *
+	 * @param ContextInterface $ctx
+	 *
+	 * @return RequestServedFromCacheEvent
+	 */
+	public function awaitRequestServedFromCache(ContextInterface $ctx): RequestServedFromCacheEvent;
+
+
+	/**
+	 * Fired when page is about to send HTTP request.
+	 *
+	 * Listener will be called whenever event Network.requestWillBeSent is fired.
+	 *
+	 * @param callable $listener
+	 *
+	 * @return SubscriptionInterface
+	 */
+	public function addRequestWillBeSentListener(callable $listener): SubscriptionInterface;
+
+
+	/**
+	 * Fired when page is about to send HTTP request.
+	 *
+	 * Method will block until first Network.requestWillBeSent event is fired.
+	 *
+	 * @param ContextInterface $ctx
+	 *
+	 * @return RequestWillBeSentEvent
+	 */
+	public function awaitRequestWillBeSent(ContextInterface $ctx): RequestWillBeSentEvent;
+
+
+	/**
+	 * Fired when resource loading priority is changed
+	 *
+	 * Listener will be called whenever event Network.resourceChangedPriority is fired.
+	 *
+	 * @param callable $listener
+	 *
+	 * @return SubscriptionInterface
+	 */
+	public function addResourceChangedPriorityListener(callable $listener): SubscriptionInterface;
+
+
+	/**
+	 * Fired when resource loading priority is changed
+	 *
+	 * Method will block until first Network.resourceChangedPriority event is fired.
+	 *
+	 * @param ContextInterface $ctx
+	 *
+	 * @return ResourceChangedPriorityEvent
+	 */
+	public function awaitResourceChangedPriority(ContextInterface $ctx): ResourceChangedPriorityEvent;
+
+
+	/**
+	 * Fired when HTTP response is available.
+	 *
+	 * Listener will be called whenever event Network.responseReceived is fired.
+	 *
+	 * @param callable $listener
+	 *
+	 * @return SubscriptionInterface
+	 */
+	public function addResponseReceivedListener(callable $listener): SubscriptionInterface;
+
+
+	/**
+	 * Fired when HTTP response is available.
+	 *
+	 * Method will block until first Network.responseReceived event is fired.
+	 *
+	 * @param ContextInterface $ctx
+	 *
+	 * @return ResponseReceivedEvent
+	 */
+	public function awaitResponseReceived(ContextInterface $ctx): ResponseReceivedEvent;
 
 
 	/**
@@ -602,27 +578,27 @@ interface NetworkDomainInterface
 
 
 	/**
-	 * Fired when WebSocket frame is received.
+	 * Fired upon WebSocket creation.
 	 *
-	 * Listener will be called whenever event Network.webSocketFrameReceived is fired.
+	 * Listener will be called whenever event Network.webSocketCreated is fired.
 	 *
 	 * @param callable $listener
 	 *
 	 * @return SubscriptionInterface
 	 */
-	public function addWebSocketFrameReceivedListener(callable $listener): SubscriptionInterface;
+	public function addWebSocketCreatedListener(callable $listener): SubscriptionInterface;
 
 
 	/**
-	 * Fired when WebSocket frame is received.
+	 * Fired upon WebSocket creation.
 	 *
-	 * Method will block until first Network.webSocketFrameReceived event is fired.
+	 * Method will block until first Network.webSocketCreated event is fired.
 	 *
 	 * @param ContextInterface $ctx
 	 *
-	 * @return WebSocketFrameReceivedEvent
+	 * @return WebSocketCreatedEvent
 	 */
-	public function awaitWebSocketFrameReceived(ContextInterface $ctx): WebSocketFrameReceivedEvent;
+	public function awaitWebSocketCreated(ContextInterface $ctx): WebSocketCreatedEvent;
 
 
 	/**
@@ -650,6 +626,30 @@ interface NetworkDomainInterface
 
 
 	/**
+	 * Fired when WebSocket frame is received.
+	 *
+	 * Listener will be called whenever event Network.webSocketFrameReceived is fired.
+	 *
+	 * @param callable $listener
+	 *
+	 * @return SubscriptionInterface
+	 */
+	public function addWebSocketFrameReceivedListener(callable $listener): SubscriptionInterface;
+
+
+	/**
+	 * Fired when WebSocket frame is received.
+	 *
+	 * Method will block until first Network.webSocketFrameReceived event is fired.
+	 *
+	 * @param ContextInterface $ctx
+	 *
+	 * @return WebSocketFrameReceivedEvent
+	 */
+	public function awaitWebSocketFrameReceived(ContextInterface $ctx): WebSocketFrameReceivedEvent;
+
+
+	/**
 	 * Fired when WebSocket frame is sent.
 	 *
 	 * Listener will be called whenever event Network.webSocketFrameSent is fired.
@@ -674,49 +674,49 @@ interface NetworkDomainInterface
 
 
 	/**
-	 * Fired when EventSource message is received.
+	 * Fired when WebSocket handshake response becomes available.
 	 *
-	 * Listener will be called whenever event Network.eventSourceMessageReceived is fired.
-	 *
-	 * @param callable $listener
-	 *
-	 * @return SubscriptionInterface
-	 */
-	public function addEventSourceMessageReceivedListener(callable $listener): SubscriptionInterface;
-
-
-	/**
-	 * Fired when EventSource message is received.
-	 *
-	 * Method will block until first Network.eventSourceMessageReceived event is fired.
-	 *
-	 * @param ContextInterface $ctx
-	 *
-	 * @return EventSourceMessageReceivedEvent
-	 */
-	public function awaitEventSourceMessageReceived(ContextInterface $ctx): EventSourceMessageReceivedEvent;
-
-
-	/**
-	 * Details of an intercepted HTTP request, which must be either allowed, blocked, modified or mocked.
-	 *
-	 * Listener will be called whenever event Network.requestIntercepted is fired.
+	 * Listener will be called whenever event Network.webSocketHandshakeResponseReceived is fired.
 	 *
 	 * @param callable $listener
 	 *
 	 * @return SubscriptionInterface
 	 */
-	public function addRequestInterceptedListener(callable $listener): SubscriptionInterface;
+	public function addWebSocketHandshakeResponseReceivedListener(callable $listener): SubscriptionInterface;
 
 
 	/**
-	 * Details of an intercepted HTTP request, which must be either allowed, blocked, modified or mocked.
+	 * Fired when WebSocket handshake response becomes available.
 	 *
-	 * Method will block until first Network.requestIntercepted event is fired.
+	 * Method will block until first Network.webSocketHandshakeResponseReceived event is fired.
 	 *
 	 * @param ContextInterface $ctx
 	 *
-	 * @return RequestInterceptedEvent
+	 * @return WebSocketHandshakeResponseReceivedEvent
 	 */
-	public function awaitRequestIntercepted(ContextInterface $ctx): RequestInterceptedEvent;
+	public function awaitWebSocketHandshakeResponseReceived(ContextInterface $ctx): WebSocketHandshakeResponseReceivedEvent;
+
+
+	/**
+	 * Fired when WebSocket is about to initiate handshake.
+	 *
+	 * Listener will be called whenever event Network.webSocketWillSendHandshakeRequest is fired.
+	 *
+	 * @param callable $listener
+	 *
+	 * @return SubscriptionInterface
+	 */
+	public function addWebSocketWillSendHandshakeRequestListener(callable $listener): SubscriptionInterface;
+
+
+	/**
+	 * Fired when WebSocket is about to initiate handshake.
+	 *
+	 * Method will block until first Network.webSocketWillSendHandshakeRequest event is fired.
+	 *
+	 * @param ContextInterface $ctx
+	 *
+	 * @return WebSocketWillSendHandshakeRequestEvent
+	 */
+	public function awaitWebSocketWillSendHandshakeRequest(ContextInterface $ctx): WebSocketWillSendHandshakeRequestEvent;
 }

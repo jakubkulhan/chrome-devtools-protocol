@@ -30,13 +30,6 @@ class AnimationDomain implements AnimationDomainInterface
 	}
 
 
-	public function enable(ContextInterface $ctx): void
-	{
-		$request = new \stdClass();
-		$this->internalClient->executeCommand($ctx, 'Animation.enable', $request);
-	}
-
-
 	public function disable(ContextInterface $ctx): void
 	{
 		$request = new \stdClass();
@@ -44,17 +37,10 @@ class AnimationDomain implements AnimationDomainInterface
 	}
 
 
-	public function getPlaybackRate(ContextInterface $ctx): GetPlaybackRateResponse
+	public function enable(ContextInterface $ctx): void
 	{
 		$request = new \stdClass();
-		$response = $this->internalClient->executeCommand($ctx, 'Animation.getPlaybackRate', $request);
-		return GetPlaybackRateResponse::fromJson($response);
-	}
-
-
-	public function setPlaybackRate(ContextInterface $ctx, SetPlaybackRateRequest $request): void
-	{
-		$this->internalClient->executeCommand($ctx, 'Animation.setPlaybackRate', $request);
+		$this->internalClient->executeCommand($ctx, 'Animation.enable', $request);
 	}
 
 
@@ -65,21 +51,11 @@ class AnimationDomain implements AnimationDomainInterface
 	}
 
 
-	public function setPaused(ContextInterface $ctx, SetPausedRequest $request): void
+	public function getPlaybackRate(ContextInterface $ctx): GetPlaybackRateResponse
 	{
-		$this->internalClient->executeCommand($ctx, 'Animation.setPaused', $request);
-	}
-
-
-	public function setTiming(ContextInterface $ctx, SetTimingRequest $request): void
-	{
-		$this->internalClient->executeCommand($ctx, 'Animation.setTiming', $request);
-	}
-
-
-	public function seekAnimations(ContextInterface $ctx, SeekAnimationsRequest $request): void
-	{
-		$this->internalClient->executeCommand($ctx, 'Animation.seekAnimations', $request);
+		$request = new \stdClass();
+		$response = $this->internalClient->executeCommand($ctx, 'Animation.getPlaybackRate', $request);
+		return GetPlaybackRateResponse::fromJson($response);
 	}
 
 
@@ -93,6 +69,44 @@ class AnimationDomain implements AnimationDomainInterface
 	{
 		$response = $this->internalClient->executeCommand($ctx, 'Animation.resolveAnimation', $request);
 		return ResolveAnimationResponse::fromJson($response);
+	}
+
+
+	public function seekAnimations(ContextInterface $ctx, SeekAnimationsRequest $request): void
+	{
+		$this->internalClient->executeCommand($ctx, 'Animation.seekAnimations', $request);
+	}
+
+
+	public function setPaused(ContextInterface $ctx, SetPausedRequest $request): void
+	{
+		$this->internalClient->executeCommand($ctx, 'Animation.setPaused', $request);
+	}
+
+
+	public function setPlaybackRate(ContextInterface $ctx, SetPlaybackRateRequest $request): void
+	{
+		$this->internalClient->executeCommand($ctx, 'Animation.setPlaybackRate', $request);
+	}
+
+
+	public function setTiming(ContextInterface $ctx, SetTimingRequest $request): void
+	{
+		$this->internalClient->executeCommand($ctx, 'Animation.setTiming', $request);
+	}
+
+
+	public function addAnimationCanceledListener(callable $listener): SubscriptionInterface
+	{
+		return $this->internalClient->addListener('Animation.animationCanceled', function ($event) use ($listener) {
+			return $listener(AnimationCanceledEvent::fromJson($event));
+		});
+	}
+
+
+	public function awaitAnimationCanceled(ContextInterface $ctx): AnimationCanceledEvent
+	{
+		return AnimationCanceledEvent::fromJson($this->internalClient->awaitEvent($ctx, 'Animation.animationCanceled'));
 	}
 
 
@@ -121,19 +135,5 @@ class AnimationDomain implements AnimationDomainInterface
 	public function awaitAnimationStarted(ContextInterface $ctx): AnimationStartedEvent
 	{
 		return AnimationStartedEvent::fromJson($this->internalClient->awaitEvent($ctx, 'Animation.animationStarted'));
-	}
-
-
-	public function addAnimationCanceledListener(callable $listener): SubscriptionInterface
-	{
-		return $this->internalClient->addListener('Animation.animationCanceled', function ($event) use ($listener) {
-			return $listener(AnimationCanceledEvent::fromJson($event));
-		});
-	}
-
-
-	public function awaitAnimationCanceled(ContextInterface $ctx): AnimationCanceledEvent
-	{
-		return AnimationCanceledEvent::fromJson($this->internalClient->awaitEvent($ctx, 'Animation.animationCanceled'));
 	}
 }

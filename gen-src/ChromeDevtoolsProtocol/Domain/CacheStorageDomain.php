@@ -24,20 +24,6 @@ class CacheStorageDomain implements CacheStorageDomainInterface
 	}
 
 
-	public function requestCacheNames(ContextInterface $ctx, RequestCacheNamesRequest $request): RequestCacheNamesResponse
-	{
-		$response = $this->internalClient->executeCommand($ctx, 'CacheStorage.requestCacheNames', $request);
-		return RequestCacheNamesResponse::fromJson($response);
-	}
-
-
-	public function requestEntries(ContextInterface $ctx, RequestEntriesRequest $request): RequestEntriesResponse
-	{
-		$response = $this->internalClient->executeCommand($ctx, 'CacheStorage.requestEntries', $request);
-		return RequestEntriesResponse::fromJson($response);
-	}
-
-
 	public function deleteCache(ContextInterface $ctx, DeleteCacheRequest $request): void
 	{
 		$this->internalClient->executeCommand($ctx, 'CacheStorage.deleteCache', $request);
@@ -54,5 +40,19 @@ class CacheStorageDomain implements CacheStorageDomainInterface
 	{
 		$response = $this->internalClient->executeCommand($ctx, 'CacheStorage.requestCachedResponse', $request);
 		return RequestCachedResponseResponse::fromJson($response);
+	}
+
+
+	public function requestCacheNames(ContextInterface $ctx, RequestCacheNamesRequest $request): RequestCacheNamesResponse
+	{
+		$response = $this->internalClient->executeCommand($ctx, 'CacheStorage.requestCacheNames', $request);
+		return RequestCacheNamesResponse::fromJson($response);
+	}
+
+
+	public function requestEntries(ContextInterface $ctx, RequestEntriesRequest $request): RequestEntriesResponse
+	{
+		$response = $this->internalClient->executeCommand($ctx, 'CacheStorage.requestEntries', $request);
+		return RequestEntriesResponse::fromJson($response);
 	}
 }

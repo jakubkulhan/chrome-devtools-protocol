@@ -15,13 +15,13 @@ use ChromeDevtoolsProtocol\SubscriptionInterface;
 interface ConsoleDomainInterface
 {
 	/**
-	 * Enables console domain, sends the messages collected so far to the client by means of the <code>messageAdded</code> notification.
+	 * Does nothing.
 	 *
 	 * @param ContextInterface $ctx
 	 *
 	 * @return void
 	 */
-	public function enable(ContextInterface $ctx): void;
+	public function clearMessages(ContextInterface $ctx): void;
 
 
 	/**
@@ -35,13 +35,13 @@ interface ConsoleDomainInterface
 
 
 	/**
-	 * Does nothing.
+	 * Enables console domain, sends the messages collected so far to the client by means of the <code>messageAdded</code> notification.
 	 *
 	 * @param ContextInterface $ctx
 	 *
 	 * @return void
 	 */
-	public function clearMessages(ContextInterface $ctx): void;
+	public function enable(ContextInterface $ctx): void;
 
 
 	/**

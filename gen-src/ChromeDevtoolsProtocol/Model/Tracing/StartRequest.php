@@ -32,7 +32,7 @@ final class StartRequest implements \JsonSerializable
 	public $bufferUsageReportingInterval;
 
 	/**
-	 * Whether to report trace events as series of dataCollected events or to save trace to a stream (defaults to <code>ReportEvents</code>).
+	 * Whether to report trace events as series of dataCollected events or to save trace to a stream (defaults to `ReportEvents`).
 	 *
 	 * @var string|null
 	 */

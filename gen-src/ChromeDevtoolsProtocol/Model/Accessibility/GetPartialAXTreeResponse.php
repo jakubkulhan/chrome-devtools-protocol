@@ -11,7 +11,7 @@ namespace ChromeDevtoolsProtocol\Model\Accessibility;
 final class GetPartialAXTreeResponse implements \JsonSerializable
 {
 	/**
-	 * The <code>Accessibility.AXNode</code> for this DOM node, if it exists, plus its ancestors, siblings and children, if requested.
+	 * The `Accessibility.AXNode` for this DOM node, if it exists, plus its ancestors, siblings and children, if requested.
 	 *
 	 * @var AXNode[]
 	 */

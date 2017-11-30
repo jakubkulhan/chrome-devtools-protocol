@@ -2,7 +2,7 @@
 namespace ChromeDevtoolsProtocol\Model\DOM;
 
 /**
- * Mirrors <code>DOMNodeRemoved</code> event.
+ * Mirrors `DOMNodeRemoved` event.
  *
  * @generated This file has been auto-generated, do not edit.
  *

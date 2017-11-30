@@ -2,7 +2,7 @@
 namespace ChromeDevtoolsProtocol\Model\Page;
 
 /**
- * Fired when the page with currently enabled screencast was shown or hidden </code>.
+ * Fired when the page with currently enabled screencast was shown or hidden `.
  *
  * @generated This file has been auto-generated, do not edit.
  *

@@ -70,7 +70,7 @@ use ChromeDevtoolsProtocol\Model\DOM\ShadowRootPushedEvent;
 use ChromeDevtoolsProtocol\SubscriptionInterface;
 
 /**
- * This domain exposes DOM read/write operations. Each DOM Node is represented with its mirror object that has an <code>id</code>. This <code>id</code> can be used to get additional information on the Node, resolve it into the JavaScript object wrapper, etc. It is important that client receives DOM events only for the nodes that are known to the client. Backend keeps track of the nodes that were sent to the client and never sends the same node twice. It is client's responsibility to collect information about the nodes that were sent to the client.<p>Note that <code>iframe</code> owner elements will return corresponding document elements as their child nodes.</p>
+ * This domain exposes DOM read/write operations. Each DOM Node is represented with its mirror object that has an `id`. This `id` can be used to get additional information on the Node, resolve it into the JavaScript object wrapper, etc. It is important that client receives DOM events only for the nodes that are known to the client. Backend keeps track of the nodes that were sent to the client and never sends the same node twice. It is client's responsibility to collect information about the nodes that were sent to the client.<p>Note that `iframe` owner elements will return corresponding document elements as their child nodes.</p>
  *
  * @generated This file has been auto-generated, do not edit.
  *
@@ -78,6 +78,60 @@ use ChromeDevtoolsProtocol\SubscriptionInterface;
  */
 interface DOMDomainInterface
 {
+	/**
+	 * Collects class names for the node with given id and all of it's child nodes.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param CollectClassNamesFromSubtreeRequest $request
+	 *
+	 * @return CollectClassNamesFromSubtreeResponse
+	 */
+	public function collectClassNamesFromSubtree(ContextInterface $ctx, CollectClassNamesFromSubtreeRequest $request): CollectClassNamesFromSubtreeResponse;
+
+
+	/**
+	 * Creates a deep copy of the specified node and places it into the target container before the given anchor.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param CopyToRequest $request
+	 *
+	 * @return CopyToResponse
+	 */
+	public function copyTo(ContextInterface $ctx, CopyToRequest $request): CopyToResponse;
+
+
+	/**
+	 * Describes node given its id, does not require domain to be enabled. Does not start tracking any objects, can be used for automation.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param DescribeNodeRequest $request
+	 *
+	 * @return DescribeNodeResponse
+	 */
+	public function describeNode(ContextInterface $ctx, DescribeNodeRequest $request): DescribeNodeResponse;
+
+
+	/**
+	 * Disables DOM agent for the given page.
+	 *
+	 * @param ContextInterface $ctx
+	 *
+	 * @return void
+	 */
+	public function disable(ContextInterface $ctx): void;
+
+
+	/**
+	 * Discards search results from the session with the given id. `getSearchResults` should no longer be called for that search.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param DiscardSearchResultsRequest $request
+	 *
+	 * @return void
+	 */
+	public function discardSearchResults(ContextInterface $ctx, DiscardSearchResultsRequest $request): void;
+
+
 	/**
 	 * Enables DOM agent for the given page.
 	 *
@@ -89,13 +143,36 @@ interface DOMDomainInterface
 
 
 	/**
-	 * Disables DOM agent for the given page.
+	 * Focuses the given element.
 	 *
 	 * @param ContextInterface $ctx
+	 * @param FocusRequest $request
 	 *
 	 * @return void
 	 */
-	public function disable(ContextInterface $ctx): void;
+	public function focus(ContextInterface $ctx, FocusRequest $request): void;
+
+
+	/**
+	 * Returns attributes for the specified node.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param GetAttributesRequest $request
+	 *
+	 * @return GetAttributesResponse
+	 */
+	public function getAttributes(ContextInterface $ctx, GetAttributesRequest $request): GetAttributesResponse;
+
+
+	/**
+	 * Returns boxes for the given node.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param GetBoxModelRequest $request
+	 *
+	 * @return GetBoxModelResponse
+	 */
+	public function getBoxModel(ContextInterface $ctx, GetBoxModelRequest $request): GetBoxModelResponse;
 
 
 	/**
@@ -121,113 +198,14 @@ interface DOMDomainInterface
 
 
 	/**
-	 * Collects class names for the node with given id and all of it's child nodes.
+	 * Returns node id at given location.
 	 *
 	 * @param ContextInterface $ctx
-	 * @param CollectClassNamesFromSubtreeRequest $request
+	 * @param GetNodeForLocationRequest $request
 	 *
-	 * @return CollectClassNamesFromSubtreeResponse
+	 * @return GetNodeForLocationResponse
 	 */
-	public function collectClassNamesFromSubtree(ContextInterface $ctx, CollectClassNamesFromSubtreeRequest $request): CollectClassNamesFromSubtreeResponse;
-
-
-	/**
-	 * Requests that children of the node with given id are returned to the caller in form of <code>setChildNodes</code> events where not only immediate children are retrieved, but all children down to the specified depth.
-	 *
-	 * @param ContextInterface $ctx
-	 * @param RequestChildNodesRequest $request
-	 *
-	 * @return void
-	 */
-	public function requestChildNodes(ContextInterface $ctx, RequestChildNodesRequest $request): void;
-
-
-	/**
-	 * Executes <code>querySelector</code> on a given node.
-	 *
-	 * @param ContextInterface $ctx
-	 * @param QuerySelectorRequest $request
-	 *
-	 * @return QuerySelectorResponse
-	 */
-	public function querySelector(ContextInterface $ctx, QuerySelectorRequest $request): QuerySelectorResponse;
-
-
-	/**
-	 * Executes <code>querySelectorAll</code> on a given node.
-	 *
-	 * @param ContextInterface $ctx
-	 * @param QuerySelectorAllRequest $request
-	 *
-	 * @return QuerySelectorAllResponse
-	 */
-	public function querySelectorAll(ContextInterface $ctx, QuerySelectorAllRequest $request): QuerySelectorAllResponse;
-
-
-	/**
-	 * Sets node name for a node with given id.
-	 *
-	 * @param ContextInterface $ctx
-	 * @param SetNodeNameRequest $request
-	 *
-	 * @return SetNodeNameResponse
-	 */
-	public function setNodeName(ContextInterface $ctx, SetNodeNameRequest $request): SetNodeNameResponse;
-
-
-	/**
-	 * Sets node value for a node with given id.
-	 *
-	 * @param ContextInterface $ctx
-	 * @param SetNodeValueRequest $request
-	 *
-	 * @return void
-	 */
-	public function setNodeValue(ContextInterface $ctx, SetNodeValueRequest $request): void;
-
-
-	/**
-	 * Removes node with given id.
-	 *
-	 * @param ContextInterface $ctx
-	 * @param RemoveNodeRequest $request
-	 *
-	 * @return void
-	 */
-	public function removeNode(ContextInterface $ctx, RemoveNodeRequest $request): void;
-
-
-	/**
-	 * Sets attribute for an element with given id.
-	 *
-	 * @param ContextInterface $ctx
-	 * @param SetAttributeValueRequest $request
-	 *
-	 * @return void
-	 */
-	public function setAttributeValue(ContextInterface $ctx, SetAttributeValueRequest $request): void;
-
-
-	/**
-	 * Sets attributes on element with given id. This method is useful when user edits some existing attribute value and types in several attribute name/value pairs.
-	 *
-	 * @param ContextInterface $ctx
-	 * @param SetAttributesAsTextRequest $request
-	 *
-	 * @return void
-	 */
-	public function setAttributesAsText(ContextInterface $ctx, SetAttributesAsTextRequest $request): void;
-
-
-	/**
-	 * Removes attribute with given name from an element with given id.
-	 *
-	 * @param ContextInterface $ctx
-	 * @param RemoveAttributeRequest $request
-	 *
-	 * @return void
-	 */
-	public function removeAttribute(ContextInterface $ctx, RemoveAttributeRequest $request): void;
+	public function getNodeForLocation(ContextInterface $ctx, GetNodeForLocationRequest $request): GetNodeForLocationResponse;
 
 
 	/**
@@ -242,29 +220,18 @@ interface DOMDomainInterface
 
 
 	/**
-	 * Sets node HTML markup, returns new node id.
+	 * Returns the id of the nearest ancestor that is a relayout boundary.
 	 *
 	 * @param ContextInterface $ctx
-	 * @param SetOuterHTMLRequest $request
+	 * @param GetRelayoutBoundaryRequest $request
 	 *
-	 * @return void
+	 * @return GetRelayoutBoundaryResponse
 	 */
-	public function setOuterHTML(ContextInterface $ctx, SetOuterHTMLRequest $request): void;
+	public function getRelayoutBoundary(ContextInterface $ctx, GetRelayoutBoundaryRequest $request): GetRelayoutBoundaryResponse;
 
 
 	/**
-	 * Searches for a given string in the DOM tree. Use <code>getSearchResults</code> to access search results or <code>cancelSearch</code> to end this search session.
-	 *
-	 * @param ContextInterface $ctx
-	 * @param PerformSearchRequest $request
-	 *
-	 * @return PerformSearchResponse
-	 */
-	public function performSearch(ContextInterface $ctx, PerformSearchRequest $request): PerformSearchResponse;
-
-
-	/**
-	 * Returns search results from given <code>fromIndex</code> to given <code>toIndex</code> from the search with the given identifier.
+	 * Returns search results from given `fromIndex` to given `toIndex` from the search with the given identifier.
 	 *
 	 * @param ContextInterface $ctx
 	 * @param GetSearchResultsRequest $request
@@ -275,35 +242,13 @@ interface DOMDomainInterface
 
 
 	/**
-	 * Discards search results from the session with the given id. <code>getSearchResults</code> should no longer be called for that search.
-	 *
-	 * @param ContextInterface $ctx
-	 * @param DiscardSearchResultsRequest $request
-	 *
-	 * @return void
-	 */
-	public function discardSearchResults(ContextInterface $ctx, DiscardSearchResultsRequest $request): void;
-
-
-	/**
-	 * Requests that the node is sent to the caller given the JavaScript node object reference. All nodes that form the path from the node to the root are also sent to the client as a series of <code>setChildNodes</code> notifications.
-	 *
-	 * @param ContextInterface $ctx
-	 * @param RequestNodeRequest $request
-	 *
-	 * @return RequestNodeResponse
-	 */
-	public function requestNode(ContextInterface $ctx, RequestNodeRequest $request): RequestNodeResponse;
-
-
-	/**
-	 * Highlights given rectangle.
+	 * Hides any highlight.
 	 *
 	 * @param ContextInterface $ctx
 	 *
 	 * @return void
 	 */
-	public function highlightRect(ContextInterface $ctx): void;
+	public function hideHighlight(ContextInterface $ctx): void;
 
 
 	/**
@@ -317,13 +262,45 @@ interface DOMDomainInterface
 
 
 	/**
-	 * Hides any highlight.
+	 * Highlights given rectangle.
 	 *
 	 * @param ContextInterface $ctx
 	 *
 	 * @return void
 	 */
-	public function hideHighlight(ContextInterface $ctx): void;
+	public function highlightRect(ContextInterface $ctx): void;
+
+
+	/**
+	 * Marks last undoable state.
+	 *
+	 * @param ContextInterface $ctx
+	 *
+	 * @return void
+	 */
+	public function markUndoableState(ContextInterface $ctx): void;
+
+
+	/**
+	 * Moves node into the new container, places it before the given anchor.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param MoveToRequest $request
+	 *
+	 * @return MoveToResponse
+	 */
+	public function moveTo(ContextInterface $ctx, MoveToRequest $request): MoveToResponse;
+
+
+	/**
+	 * Searches for a given string in the DOM tree. Use `getSearchResults` to access search results or `cancelSearch` to end this search session.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param PerformSearchRequest $request
+	 *
+	 * @return PerformSearchResponse
+	 */
+	public function performSearch(ContextInterface $ctx, PerformSearchRequest $request): PerformSearchResponse;
 
 
 	/**
@@ -349,14 +326,79 @@ interface DOMDomainInterface
 
 
 	/**
-	 * Enables console to refer to the node with given id via $x (see Command Line API for more details $x functions).
+	 * Executes `querySelector` on a given node.
 	 *
 	 * @param ContextInterface $ctx
-	 * @param SetInspectedNodeRequest $request
+	 * @param QuerySelectorRequest $request
+	 *
+	 * @return QuerySelectorResponse
+	 */
+	public function querySelector(ContextInterface $ctx, QuerySelectorRequest $request): QuerySelectorResponse;
+
+
+	/**
+	 * Executes `querySelectorAll` on a given node.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param QuerySelectorAllRequest $request
+	 *
+	 * @return QuerySelectorAllResponse
+	 */
+	public function querySelectorAll(ContextInterface $ctx, QuerySelectorAllRequest $request): QuerySelectorAllResponse;
+
+
+	/**
+	 * Re-does the last undone action.
+	 *
+	 * @param ContextInterface $ctx
 	 *
 	 * @return void
 	 */
-	public function setInspectedNode(ContextInterface $ctx, SetInspectedNodeRequest $request): void;
+	public function redo(ContextInterface $ctx): void;
+
+
+	/**
+	 * Removes attribute with given name from an element with given id.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param RemoveAttributeRequest $request
+	 *
+	 * @return void
+	 */
+	public function removeAttribute(ContextInterface $ctx, RemoveAttributeRequest $request): void;
+
+
+	/**
+	 * Removes node with given id.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param RemoveNodeRequest $request
+	 *
+	 * @return void
+	 */
+	public function removeNode(ContextInterface $ctx, RemoveNodeRequest $request): void;
+
+
+	/**
+	 * Requests that children of the node with given id are returned to the caller in form of `setChildNodes` events where not only immediate children are retrieved, but all children down to the specified depth.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param RequestChildNodesRequest $request
+	 *
+	 * @return void
+	 */
+	public function requestChildNodes(ContextInterface $ctx, RequestChildNodesRequest $request): void;
+
+
+	/**
+	 * Requests that the node is sent to the caller given the JavaScript node object reference. All nodes that form the path from the node to the root are also sent to the client as a series of `setChildNodes` notifications.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param RequestNodeRequest $request
+	 *
+	 * @return RequestNodeResponse
+	 */
+	public function requestNode(ContextInterface $ctx, RequestNodeRequest $request): RequestNodeResponse;
 
 
 	/**
@@ -371,77 +413,25 @@ interface DOMDomainInterface
 
 
 	/**
-	 * Returns attributes for the specified node.
+	 * Sets attributes on element with given id. This method is useful when user edits some existing attribute value and types in several attribute name/value pairs.
 	 *
 	 * @param ContextInterface $ctx
-	 * @param GetAttributesRequest $request
-	 *
-	 * @return GetAttributesResponse
-	 */
-	public function getAttributes(ContextInterface $ctx, GetAttributesRequest $request): GetAttributesResponse;
-
-
-	/**
-	 * Creates a deep copy of the specified node and places it into the target container before the given anchor.
-	 *
-	 * @param ContextInterface $ctx
-	 * @param CopyToRequest $request
-	 *
-	 * @return CopyToResponse
-	 */
-	public function copyTo(ContextInterface $ctx, CopyToRequest $request): CopyToResponse;
-
-
-	/**
-	 * Moves node into the new container, places it before the given anchor.
-	 *
-	 * @param ContextInterface $ctx
-	 * @param MoveToRequest $request
-	 *
-	 * @return MoveToResponse
-	 */
-	public function moveTo(ContextInterface $ctx, MoveToRequest $request): MoveToResponse;
-
-
-	/**
-	 * Undoes the last performed action.
-	 *
-	 * @param ContextInterface $ctx
+	 * @param SetAttributesAsTextRequest $request
 	 *
 	 * @return void
 	 */
-	public function undo(ContextInterface $ctx): void;
+	public function setAttributesAsText(ContextInterface $ctx, SetAttributesAsTextRequest $request): void;
 
 
 	/**
-	 * Re-does the last undone action.
+	 * Sets attribute for an element with given id.
 	 *
 	 * @param ContextInterface $ctx
+	 * @param SetAttributeValueRequest $request
 	 *
 	 * @return void
 	 */
-	public function redo(ContextInterface $ctx): void;
-
-
-	/**
-	 * Marks last undoable state.
-	 *
-	 * @param ContextInterface $ctx
-	 *
-	 * @return void
-	 */
-	public function markUndoableState(ContextInterface $ctx): void;
-
-
-	/**
-	 * Focuses the given element.
-	 *
-	 * @param ContextInterface $ctx
-	 * @param FocusRequest $request
-	 *
-	 * @return void
-	 */
-	public function focus(ContextInterface $ctx, FocusRequest $request): void;
+	public function setAttributeValue(ContextInterface $ctx, SetAttributeValueRequest $request): void;
 
 
 	/**
@@ -456,99 +446,61 @@ interface DOMDomainInterface
 
 
 	/**
-	 * Returns boxes for the given node.
+	 * Enables console to refer to the node with given id via $x (see Command Line API for more details $x functions).
 	 *
 	 * @param ContextInterface $ctx
-	 * @param GetBoxModelRequest $request
+	 * @param SetInspectedNodeRequest $request
 	 *
-	 * @return GetBoxModelResponse
+	 * @return void
 	 */
-	public function getBoxModel(ContextInterface $ctx, GetBoxModelRequest $request): GetBoxModelResponse;
+	public function setInspectedNode(ContextInterface $ctx, SetInspectedNodeRequest $request): void;
 
 
 	/**
-	 * Returns node id at given location.
+	 * Sets node name for a node with given id.
 	 *
 	 * @param ContextInterface $ctx
-	 * @param GetNodeForLocationRequest $request
+	 * @param SetNodeNameRequest $request
 	 *
-	 * @return GetNodeForLocationResponse
+	 * @return SetNodeNameResponse
 	 */
-	public function getNodeForLocation(ContextInterface $ctx, GetNodeForLocationRequest $request): GetNodeForLocationResponse;
+	public function setNodeName(ContextInterface $ctx, SetNodeNameRequest $request): SetNodeNameResponse;
 
 
 	/**
-	 * Returns the id of the nearest ancestor that is a relayout boundary.
+	 * Sets node value for a node with given id.
 	 *
 	 * @param ContextInterface $ctx
-	 * @param GetRelayoutBoundaryRequest $request
+	 * @param SetNodeValueRequest $request
 	 *
-	 * @return GetRelayoutBoundaryResponse
+	 * @return void
 	 */
-	public function getRelayoutBoundary(ContextInterface $ctx, GetRelayoutBoundaryRequest $request): GetRelayoutBoundaryResponse;
+	public function setNodeValue(ContextInterface $ctx, SetNodeValueRequest $request): void;
 
 
 	/**
-	 * Describes node given its id, does not require domain to be enabled. Does not start tracking any objects, can be used for automation.
+	 * Sets node HTML markup, returns new node id.
 	 *
 	 * @param ContextInterface $ctx
-	 * @param DescribeNodeRequest $request
+	 * @param SetOuterHTMLRequest $request
 	 *
-	 * @return DescribeNodeResponse
+	 * @return void
 	 */
-	public function describeNode(ContextInterface $ctx, DescribeNodeRequest $request): DescribeNodeResponse;
+	public function setOuterHTML(ContextInterface $ctx, SetOuterHTMLRequest $request): void;
 
 
 	/**
-	 * Fired when <code>Document</code> has been totally updated. Node ids are no longer valid.
-	 *
-	 * Listener will be called whenever event DOM.documentUpdated is fired.
-	 *
-	 * @param callable $listener
-	 *
-	 * @return SubscriptionInterface
-	 */
-	public function addDocumentUpdatedListener(callable $listener): SubscriptionInterface;
-
-
-	/**
-	 * Fired when <code>Document</code> has been totally updated. Node ids are no longer valid.
-	 *
-	 * Method will block until first DOM.documentUpdated event is fired.
+	 * Undoes the last performed action.
 	 *
 	 * @param ContextInterface $ctx
 	 *
-	 * @return DocumentUpdatedEvent
+	 * @return void
 	 */
-	public function awaitDocumentUpdated(ContextInterface $ctx): DocumentUpdatedEvent;
+	public function undo(ContextInterface $ctx): void;
 
 
 	/**
-	 * Fired when backend wants to provide client with the missing DOM structure. This happens upon most of the calls requesting node ids.
-	 *
-	 * Listener will be called whenever event DOM.setChildNodes is fired.
-	 *
-	 * @param callable $listener
-	 *
-	 * @return SubscriptionInterface
-	 */
-	public function addSetChildNodesListener(callable $listener): SubscriptionInterface;
-
-
-	/**
-	 * Fired when backend wants to provide client with the missing DOM structure. This happens upon most of the calls requesting node ids.
-	 *
-	 * Method will block until first DOM.setChildNodes event is fired.
-	 *
-	 * @param ContextInterface $ctx
-	 *
-	 * @return SetChildNodesEvent
-	 */
-	public function awaitSetChildNodes(ContextInterface $ctx): SetChildNodesEvent;
-
-
-	/**
-	 * Fired when <code>Element</code>'s attribute is modified.
+	 * Fired when `Element`'s attribute is modified.
 	 *
 	 * Listener will be called whenever event DOM.attributeModified is fired.
 	 *
@@ -560,7 +512,7 @@ interface DOMDomainInterface
 
 
 	/**
-	 * Fired when <code>Element</code>'s attribute is modified.
+	 * Fired when `Element`'s attribute is modified.
 	 *
 	 * Method will block until first DOM.attributeModified event is fired.
 	 *
@@ -572,7 +524,7 @@ interface DOMDomainInterface
 
 
 	/**
-	 * Fired when <code>Element</code>'s attribute is removed.
+	 * Fired when `Element`'s attribute is removed.
 	 *
 	 * Listener will be called whenever event DOM.attributeRemoved is fired.
 	 *
@@ -584,7 +536,7 @@ interface DOMDomainInterface
 
 
 	/**
-	 * Fired when <code>Element</code>'s attribute is removed.
+	 * Fired when `Element`'s attribute is removed.
 	 *
 	 * Method will block until first DOM.attributeRemoved event is fired.
 	 *
@@ -596,31 +548,7 @@ interface DOMDomainInterface
 
 
 	/**
-	 * Fired when <code>Element</code>'s inline style is modified via a CSS property modification.
-	 *
-	 * Listener will be called whenever event DOM.inlineStyleInvalidated is fired.
-	 *
-	 * @param callable $listener
-	 *
-	 * @return SubscriptionInterface
-	 */
-	public function addInlineStyleInvalidatedListener(callable $listener): SubscriptionInterface;
-
-
-	/**
-	 * Fired when <code>Element</code>'s inline style is modified via a CSS property modification.
-	 *
-	 * Method will block until first DOM.inlineStyleInvalidated event is fired.
-	 *
-	 * @param ContextInterface $ctx
-	 *
-	 * @return InlineStyleInvalidatedEvent
-	 */
-	public function awaitInlineStyleInvalidated(ContextInterface $ctx): InlineStyleInvalidatedEvent;
-
-
-	/**
-	 * Mirrors <code>DOMCharacterDataModified</code> event.
+	 * Mirrors `DOMCharacterDataModified` event.
 	 *
 	 * Listener will be called whenever event DOM.characterDataModified is fired.
 	 *
@@ -632,7 +560,7 @@ interface DOMDomainInterface
 
 
 	/**
-	 * Mirrors <code>DOMCharacterDataModified</code> event.
+	 * Mirrors `DOMCharacterDataModified` event.
 	 *
 	 * Method will block until first DOM.characterDataModified event is fired.
 	 *
@@ -644,7 +572,7 @@ interface DOMDomainInterface
 
 
 	/**
-	 * Fired when <code>Container</code>'s child node count has changed.
+	 * Fired when `Container`'s child node count has changed.
 	 *
 	 * Listener will be called whenever event DOM.childNodeCountUpdated is fired.
 	 *
@@ -656,7 +584,7 @@ interface DOMDomainInterface
 
 
 	/**
-	 * Fired when <code>Container</code>'s child node count has changed.
+	 * Fired when `Container`'s child node count has changed.
 	 *
 	 * Method will block until first DOM.childNodeCountUpdated event is fired.
 	 *
@@ -668,7 +596,7 @@ interface DOMDomainInterface
 
 
 	/**
-	 * Mirrors <code>DOMNodeInserted</code> event.
+	 * Mirrors `DOMNodeInserted` event.
 	 *
 	 * Listener will be called whenever event DOM.childNodeInserted is fired.
 	 *
@@ -680,7 +608,7 @@ interface DOMDomainInterface
 
 
 	/**
-	 * Mirrors <code>DOMNodeInserted</code> event.
+	 * Mirrors `DOMNodeInserted` event.
 	 *
 	 * Method will block until first DOM.childNodeInserted event is fired.
 	 *
@@ -692,7 +620,7 @@ interface DOMDomainInterface
 
 
 	/**
-	 * Mirrors <code>DOMNodeRemoved</code> event.
+	 * Mirrors `DOMNodeRemoved` event.
 	 *
 	 * Listener will be called whenever event DOM.childNodeRemoved is fired.
 	 *
@@ -704,7 +632,7 @@ interface DOMDomainInterface
 
 
 	/**
-	 * Mirrors <code>DOMNodeRemoved</code> event.
+	 * Mirrors `DOMNodeRemoved` event.
 	 *
 	 * Method will block until first DOM.childNodeRemoved event is fired.
 	 *
@@ -716,51 +644,75 @@ interface DOMDomainInterface
 
 
 	/**
-	 * Called when shadow root is pushed into the element.
+	 * Called when distrubution is changed.
 	 *
-	 * Listener will be called whenever event DOM.shadowRootPushed is fired.
-	 *
-	 * @param callable $listener
-	 *
-	 * @return SubscriptionInterface
-	 */
-	public function addShadowRootPushedListener(callable $listener): SubscriptionInterface;
-
-
-	/**
-	 * Called when shadow root is pushed into the element.
-	 *
-	 * Method will block until first DOM.shadowRootPushed event is fired.
-	 *
-	 * @param ContextInterface $ctx
-	 *
-	 * @return ShadowRootPushedEvent
-	 */
-	public function awaitShadowRootPushed(ContextInterface $ctx): ShadowRootPushedEvent;
-
-
-	/**
-	 * Called when shadow root is popped from the element.
-	 *
-	 * Listener will be called whenever event DOM.shadowRootPopped is fired.
+	 * Listener will be called whenever event DOM.distributedNodesUpdated is fired.
 	 *
 	 * @param callable $listener
 	 *
 	 * @return SubscriptionInterface
 	 */
-	public function addShadowRootPoppedListener(callable $listener): SubscriptionInterface;
+	public function addDistributedNodesUpdatedListener(callable $listener): SubscriptionInterface;
 
 
 	/**
-	 * Called when shadow root is popped from the element.
+	 * Called when distrubution is changed.
 	 *
-	 * Method will block until first DOM.shadowRootPopped event is fired.
+	 * Method will block until first DOM.distributedNodesUpdated event is fired.
 	 *
 	 * @param ContextInterface $ctx
 	 *
-	 * @return ShadowRootPoppedEvent
+	 * @return DistributedNodesUpdatedEvent
 	 */
-	public function awaitShadowRootPopped(ContextInterface $ctx): ShadowRootPoppedEvent;
+	public function awaitDistributedNodesUpdated(ContextInterface $ctx): DistributedNodesUpdatedEvent;
+
+
+	/**
+	 * Fired when `Document` has been totally updated. Node ids are no longer valid.
+	 *
+	 * Listener will be called whenever event DOM.documentUpdated is fired.
+	 *
+	 * @param callable $listener
+	 *
+	 * @return SubscriptionInterface
+	 */
+	public function addDocumentUpdatedListener(callable $listener): SubscriptionInterface;
+
+
+	/**
+	 * Fired when `Document` has been totally updated. Node ids are no longer valid.
+	 *
+	 * Method will block until first DOM.documentUpdated event is fired.
+	 *
+	 * @param ContextInterface $ctx
+	 *
+	 * @return DocumentUpdatedEvent
+	 */
+	public function awaitDocumentUpdated(ContextInterface $ctx): DocumentUpdatedEvent;
+
+
+	/**
+	 * Fired when `Element`'s inline style is modified via a CSS property modification.
+	 *
+	 * Listener will be called whenever event DOM.inlineStyleInvalidated is fired.
+	 *
+	 * @param callable $listener
+	 *
+	 * @return SubscriptionInterface
+	 */
+	public function addInlineStyleInvalidatedListener(callable $listener): SubscriptionInterface;
+
+
+	/**
+	 * Fired when `Element`'s inline style is modified via a CSS property modification.
+	 *
+	 * Method will block until first DOM.inlineStyleInvalidated event is fired.
+	 *
+	 * @param ContextInterface $ctx
+	 *
+	 * @return InlineStyleInvalidatedEvent
+	 */
+	public function awaitInlineStyleInvalidated(ContextInterface $ctx): InlineStyleInvalidatedEvent;
 
 
 	/**
@@ -812,25 +764,73 @@ interface DOMDomainInterface
 
 
 	/**
-	 * Called when distrubution is changed.
+	 * Fired when backend wants to provide client with the missing DOM structure. This happens upon most of the calls requesting node ids.
 	 *
-	 * Listener will be called whenever event DOM.distributedNodesUpdated is fired.
+	 * Listener will be called whenever event DOM.setChildNodes is fired.
 	 *
 	 * @param callable $listener
 	 *
 	 * @return SubscriptionInterface
 	 */
-	public function addDistributedNodesUpdatedListener(callable $listener): SubscriptionInterface;
+	public function addSetChildNodesListener(callable $listener): SubscriptionInterface;
 
 
 	/**
-	 * Called when distrubution is changed.
+	 * Fired when backend wants to provide client with the missing DOM structure. This happens upon most of the calls requesting node ids.
 	 *
-	 * Method will block until first DOM.distributedNodesUpdated event is fired.
+	 * Method will block until first DOM.setChildNodes event is fired.
 	 *
 	 * @param ContextInterface $ctx
 	 *
-	 * @return DistributedNodesUpdatedEvent
+	 * @return SetChildNodesEvent
 	 */
-	public function awaitDistributedNodesUpdated(ContextInterface $ctx): DistributedNodesUpdatedEvent;
+	public function awaitSetChildNodes(ContextInterface $ctx): SetChildNodesEvent;
+
+
+	/**
+	 * Called when shadow root is popped from the element.
+	 *
+	 * Listener will be called whenever event DOM.shadowRootPopped is fired.
+	 *
+	 * @param callable $listener
+	 *
+	 * @return SubscriptionInterface
+	 */
+	public function addShadowRootPoppedListener(callable $listener): SubscriptionInterface;
+
+
+	/**
+	 * Called when shadow root is popped from the element.
+	 *
+	 * Method will block until first DOM.shadowRootPopped event is fired.
+	 *
+	 * @param ContextInterface $ctx
+	 *
+	 * @return ShadowRootPoppedEvent
+	 */
+	public function awaitShadowRootPopped(ContextInterface $ctx): ShadowRootPoppedEvent;
+
+
+	/**
+	 * Called when shadow root is pushed into the element.
+	 *
+	 * Listener will be called whenever event DOM.shadowRootPushed is fired.
+	 *
+	 * @param callable $listener
+	 *
+	 * @return SubscriptionInterface
+	 */
+	public function addShadowRootPushedListener(callable $listener): SubscriptionInterface;
+
+
+	/**
+	 * Called when shadow root is pushed into the element.
+	 *
+	 * Method will block until first DOM.shadowRootPushed event is fired.
+	 *
+	 * @param ContextInterface $ctx
+	 *
+	 * @return ShadowRootPushedEvent
+	 */
+	public function awaitShadowRootPushed(ContextInterface $ctx): ShadowRootPushedEvent;
 }

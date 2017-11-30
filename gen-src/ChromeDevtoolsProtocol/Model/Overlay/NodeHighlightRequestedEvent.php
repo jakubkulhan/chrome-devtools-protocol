@@ -2,7 +2,7 @@
 namespace ChromeDevtoolsProtocol\Model\Overlay;
 
 /**
- * Fired when the node should be highlighted. This happens after call to <code>setInspectMode</code>.
+ * Fired when the node should be highlighted. This happens after call to `setInspectMode`.
  *
  * @generated This file has been auto-generated, do not edit.
  *

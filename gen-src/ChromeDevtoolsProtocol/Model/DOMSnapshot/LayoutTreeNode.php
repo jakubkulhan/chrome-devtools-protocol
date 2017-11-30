@@ -13,7 +13,7 @@ use ChromeDevtoolsProtocol\Model\DOM\Rect;
 final class LayoutTreeNode implements \JsonSerializable
 {
 	/**
-	 * The index of the related DOM node in the <code>domNodes</code> array returned by <code>getSnapshot</code>.
+	 * The index of the related DOM node in the `domNodes` array returned by `getSnapshot`.
 	 *
 	 * @var int
 	 */
@@ -41,7 +41,7 @@ final class LayoutTreeNode implements \JsonSerializable
 	public $inlineTextNodes;
 
 	/**
-	 * Index into the <code>computedStyles</code> array returned by <code>getSnapshot</code>.
+	 * Index into the `computedStyles` array returned by `getSnapshot`.
 	 *
 	 * @var int|null
 	 */

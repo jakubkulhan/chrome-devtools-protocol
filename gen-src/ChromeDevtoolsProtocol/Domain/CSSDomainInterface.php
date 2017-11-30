@@ -43,7 +43,7 @@ use ChromeDevtoolsProtocol\Model\CSS\TakeCoverageDeltaResponse;
 use ChromeDevtoolsProtocol\SubscriptionInterface;
 
 /**
- * This domain exposes CSS read/write operations. All CSS objects (stylesheets, rules, and styles) have an associated <code>id</code> used in subsequent operations on the related object. Each object type has a specific <code>id</code> structure, and those are not interchangeable between objects of different kinds. CSS objects can be loaded using the <code>get*ForNode()</code> calls (which accept a DOM node id). A client can also keep track of stylesheets via the <code>styleSheetAdded</code>/<code>styleSheetRemoved</code> events and subsequently load the required stylesheet contents using the <code>getStyleSheet[Text]()</code> methods.
+ * This domain exposes CSS read/write operations. All CSS objects (stylesheets, rules, and styles) have an associated `id` used in subsequent operations on the related object. Each object type has a specific `id` structure, and those are not interchangeable between objects of different kinds. CSS objects can be loaded using the `get*ForNode()` calls (which accept a DOM node id). A client can also keep track of stylesheets via the `styleSheetAdded`/`styleSheetRemoved` events and subsequently load the required stylesheet contents using the `getStyleSheet[Text]()` methods.
  *
  * @experimental
  *
@@ -54,13 +54,36 @@ use ChromeDevtoolsProtocol\SubscriptionInterface;
 interface CSSDomainInterface
 {
 	/**
-	 * Enables the CSS agent for the given page. Clients should not assume that the CSS agent has been enabled until the result of this command is received.
+	 * Inserts a new rule with the given `ruleText` in a stylesheet with given `styleSheetId`, at the position specified by `location`.
 	 *
 	 * @param ContextInterface $ctx
+	 * @param AddRuleRequest $request
 	 *
-	 * @return void
+	 * @return AddRuleResponse
 	 */
-	public function enable(ContextInterface $ctx): void;
+	public function addRule(ContextInterface $ctx, AddRuleRequest $request): AddRuleResponse;
+
+
+	/**
+	 * Returns all class names from specified stylesheet.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param CollectClassNamesRequest $request
+	 *
+	 * @return CollectClassNamesResponse
+	 */
+	public function collectClassNames(ContextInterface $ctx, CollectClassNamesRequest $request): CollectClassNamesResponse;
+
+
+	/**
+	 * Creates a new special "via-inspector" stylesheet in the frame with given `frameId`.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param CreateStyleSheetRequest $request
+	 *
+	 * @return CreateStyleSheetResponse
+	 */
+	public function createStyleSheet(ContextInterface $ctx, CreateStyleSheetRequest $request): CreateStyleSheetResponse;
 
 
 	/**
@@ -74,18 +97,50 @@ interface CSSDomainInterface
 
 
 	/**
-	 * Returns requested styles for a DOM node identified by <code>nodeId</code>.
+	 * Enables the CSS agent for the given page. Clients should not assume that the CSS agent has been enabled until the result of this command is received.
 	 *
 	 * @param ContextInterface $ctx
-	 * @param GetMatchedStylesForNodeRequest $request
 	 *
-	 * @return GetMatchedStylesForNodeResponse
+	 * @return void
 	 */
-	public function getMatchedStylesForNode(ContextInterface $ctx, GetMatchedStylesForNodeRequest $request): GetMatchedStylesForNodeResponse;
+	public function enable(ContextInterface $ctx): void;
 
 
 	/**
-	 * Returns the styles defined inline (explicitly in the "style" attribute and implicitly, using DOM attributes) for a DOM node identified by <code>nodeId</code>.
+	 * Ensures that the given node will have specified pseudo-classes whenever its style is computed by the browser.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param ForcePseudoStateRequest $request
+	 *
+	 * @return void
+	 */
+	public function forcePseudoState(ContextInterface $ctx, ForcePseudoStateRequest $request): void;
+
+
+	/**
+	 * Call CSS.getBackgroundColors command.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param GetBackgroundColorsRequest $request
+	 *
+	 * @return GetBackgroundColorsResponse
+	 */
+	public function getBackgroundColors(ContextInterface $ctx, GetBackgroundColorsRequest $request): GetBackgroundColorsResponse;
+
+
+	/**
+	 * Returns the computed style for a DOM node identified by `nodeId`.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param GetComputedStyleForNodeRequest $request
+	 *
+	 * @return GetComputedStyleForNodeResponse
+	 */
+	public function getComputedStyleForNode(ContextInterface $ctx, GetComputedStyleForNodeRequest $request): GetComputedStyleForNodeResponse;
+
+
+	/**
+	 * Returns the styles defined inline (explicitly in the "style" attribute and implicitly, using DOM attributes) for a DOM node identified by `nodeId`.
 	 *
 	 * @param ContextInterface $ctx
 	 * @param GetInlineStylesForNodeRequest $request
@@ -96,14 +151,24 @@ interface CSSDomainInterface
 
 
 	/**
-	 * Returns the computed style for a DOM node identified by <code>nodeId</code>.
+	 * Returns requested styles for a DOM node identified by `nodeId`.
 	 *
 	 * @param ContextInterface $ctx
-	 * @param GetComputedStyleForNodeRequest $request
+	 * @param GetMatchedStylesForNodeRequest $request
 	 *
-	 * @return GetComputedStyleForNodeResponse
+	 * @return GetMatchedStylesForNodeResponse
 	 */
-	public function getComputedStyleForNode(ContextInterface $ctx, GetComputedStyleForNodeRequest $request): GetComputedStyleForNodeResponse;
+	public function getMatchedStylesForNode(ContextInterface $ctx, GetMatchedStylesForNodeRequest $request): GetMatchedStylesForNodeResponse;
+
+
+	/**
+	 * Returns all media queries parsed by the rendering engine.
+	 *
+	 * @param ContextInterface $ctx
+	 *
+	 * @return GetMediaQueriesResponse
+	 */
+	public function getMediaQueries(ContextInterface $ctx): GetMediaQueriesResponse;
 
 
 	/**
@@ -129,36 +194,14 @@ interface CSSDomainInterface
 
 
 	/**
-	 * Returns all class names from specified stylesheet.
+	 * Find a rule with the given active property for the given node and set the new value for this property
 	 *
 	 * @param ContextInterface $ctx
-	 * @param CollectClassNamesRequest $request
+	 * @param SetEffectivePropertyValueForNodeRequest $request
 	 *
-	 * @return CollectClassNamesResponse
+	 * @return void
 	 */
-	public function collectClassNames(ContextInterface $ctx, CollectClassNamesRequest $request): CollectClassNamesResponse;
-
-
-	/**
-	 * Sets the new stylesheet text.
-	 *
-	 * @param ContextInterface $ctx
-	 * @param SetStyleSheetTextRequest $request
-	 *
-	 * @return SetStyleSheetTextResponse
-	 */
-	public function setStyleSheetText(ContextInterface $ctx, SetStyleSheetTextRequest $request): SetStyleSheetTextResponse;
-
-
-	/**
-	 * Modifies the rule selector.
-	 *
-	 * @param ContextInterface $ctx
-	 * @param SetRuleSelectorRequest $request
-	 *
-	 * @return SetRuleSelectorResponse
-	 */
-	public function setRuleSelector(ContextInterface $ctx, SetRuleSelectorRequest $request): SetRuleSelectorResponse;
+	public function setEffectivePropertyValueForNode(ContextInterface $ctx, SetEffectivePropertyValueForNodeRequest $request): void;
 
 
 	/**
@@ -173,17 +216,6 @@ interface CSSDomainInterface
 
 
 	/**
-	 * Applies specified style edits one after another in the given order.
-	 *
-	 * @param ContextInterface $ctx
-	 * @param SetStyleTextsRequest $request
-	 *
-	 * @return SetStyleTextsResponse
-	 */
-	public function setStyleTexts(ContextInterface $ctx, SetStyleTextsRequest $request): SetStyleTextsResponse;
-
-
-	/**
 	 * Modifies the rule selector.
 	 *
 	 * @param ContextInterface $ctx
@@ -195,68 +227,36 @@ interface CSSDomainInterface
 
 
 	/**
-	 * Creates a new special "via-inspector" stylesheet in the frame with given <code>frameId</code>.
+	 * Modifies the rule selector.
 	 *
 	 * @param ContextInterface $ctx
-	 * @param CreateStyleSheetRequest $request
+	 * @param SetRuleSelectorRequest $request
 	 *
-	 * @return CreateStyleSheetResponse
+	 * @return SetRuleSelectorResponse
 	 */
-	public function createStyleSheet(ContextInterface $ctx, CreateStyleSheetRequest $request): CreateStyleSheetResponse;
+	public function setRuleSelector(ContextInterface $ctx, SetRuleSelectorRequest $request): SetRuleSelectorResponse;
 
 
 	/**
-	 * Inserts a new rule with the given <code>ruleText</code> in a stylesheet with given <code>styleSheetId</code>, at the position specified by <code>location</code>.
+	 * Sets the new stylesheet text.
 	 *
 	 * @param ContextInterface $ctx
-	 * @param AddRuleRequest $request
+	 * @param SetStyleSheetTextRequest $request
 	 *
-	 * @return AddRuleResponse
+	 * @return SetStyleSheetTextResponse
 	 */
-	public function addRule(ContextInterface $ctx, AddRuleRequest $request): AddRuleResponse;
+	public function setStyleSheetText(ContextInterface $ctx, SetStyleSheetTextRequest $request): SetStyleSheetTextResponse;
 
 
 	/**
-	 * Ensures that the given node will have specified pseudo-classes whenever its style is computed by the browser.
+	 * Applies specified style edits one after another in the given order.
 	 *
 	 * @param ContextInterface $ctx
-	 * @param ForcePseudoStateRequest $request
+	 * @param SetStyleTextsRequest $request
 	 *
-	 * @return void
+	 * @return SetStyleTextsResponse
 	 */
-	public function forcePseudoState(ContextInterface $ctx, ForcePseudoStateRequest $request): void;
-
-
-	/**
-	 * Returns all media queries parsed by the rendering engine.
-	 *
-	 * @param ContextInterface $ctx
-	 *
-	 * @return GetMediaQueriesResponse
-	 */
-	public function getMediaQueries(ContextInterface $ctx): GetMediaQueriesResponse;
-
-
-	/**
-	 * Find a rule with the given active property for the given node and set the new value for this property
-	 *
-	 * @param ContextInterface $ctx
-	 * @param SetEffectivePropertyValueForNodeRequest $request
-	 *
-	 * @return void
-	 */
-	public function setEffectivePropertyValueForNode(ContextInterface $ctx, SetEffectivePropertyValueForNodeRequest $request): void;
-
-
-	/**
-	 * Call CSS.getBackgroundColors command.
-	 *
-	 * @param ContextInterface $ctx
-	 * @param GetBackgroundColorsRequest $request
-	 *
-	 * @return GetBackgroundColorsResponse
-	 */
-	public function getBackgroundColors(ContextInterface $ctx, GetBackgroundColorsRequest $request): GetBackgroundColorsResponse;
+	public function setStyleTexts(ContextInterface $ctx, SetStyleTextsRequest $request): SetStyleTextsResponse;
 
 
 	/**
@@ -270,16 +270,6 @@ interface CSSDomainInterface
 
 
 	/**
-	 * Obtain list of rules that became used since last call to this method (or since start of coverage instrumentation)
-	 *
-	 * @param ContextInterface $ctx
-	 *
-	 * @return TakeCoverageDeltaResponse
-	 */
-	public function takeCoverageDelta(ContextInterface $ctx): TakeCoverageDeltaResponse;
-
-
-	/**
 	 * The list of rules with an indication of whether these were used
 	 *
 	 * @param ContextInterface $ctx
@@ -290,27 +280,13 @@ interface CSSDomainInterface
 
 
 	/**
-	 * Fires whenever a MediaQuery result changes (for example, after a browser window has been resized.) The current implementation considers only viewport-dependent media features.
-	 *
-	 * Listener will be called whenever event CSS.mediaQueryResultChanged is fired.
-	 *
-	 * @param callable $listener
-	 *
-	 * @return SubscriptionInterface
-	 */
-	public function addMediaQueryResultChangedListener(callable $listener): SubscriptionInterface;
-
-
-	/**
-	 * Fires whenever a MediaQuery result changes (for example, after a browser window has been resized.) The current implementation considers only viewport-dependent media features.
-	 *
-	 * Method will block until first CSS.mediaQueryResultChanged event is fired.
+	 * Obtain list of rules that became used since last call to this method (or since start of coverage instrumentation)
 	 *
 	 * @param ContextInterface $ctx
 	 *
-	 * @return MediaQueryResultChangedEvent
+	 * @return TakeCoverageDeltaResponse
 	 */
-	public function awaitMediaQueryResultChanged(ContextInterface $ctx): MediaQueryResultChangedEvent;
+	public function takeCoverageDelta(ContextInterface $ctx): TakeCoverageDeltaResponse;
 
 
 	/**
@@ -338,27 +314,27 @@ interface CSSDomainInterface
 
 
 	/**
-	 * Fired whenever a stylesheet is changed as a result of the client operation.
+	 * Fires whenever a MediaQuery result changes (for example, after a browser window has been resized.) The current implementation considers only viewport-dependent media features.
 	 *
-	 * Listener will be called whenever event CSS.styleSheetChanged is fired.
+	 * Listener will be called whenever event CSS.mediaQueryResultChanged is fired.
 	 *
 	 * @param callable $listener
 	 *
 	 * @return SubscriptionInterface
 	 */
-	public function addStyleSheetChangedListener(callable $listener): SubscriptionInterface;
+	public function addMediaQueryResultChangedListener(callable $listener): SubscriptionInterface;
 
 
 	/**
-	 * Fired whenever a stylesheet is changed as a result of the client operation.
+	 * Fires whenever a MediaQuery result changes (for example, after a browser window has been resized.) The current implementation considers only viewport-dependent media features.
 	 *
-	 * Method will block until first CSS.styleSheetChanged event is fired.
+	 * Method will block until first CSS.mediaQueryResultChanged event is fired.
 	 *
 	 * @param ContextInterface $ctx
 	 *
-	 * @return StyleSheetChangedEvent
+	 * @return MediaQueryResultChangedEvent
 	 */
-	public function awaitStyleSheetChanged(ContextInterface $ctx): StyleSheetChangedEvent;
+	public function awaitMediaQueryResultChanged(ContextInterface $ctx): MediaQueryResultChangedEvent;
 
 
 	/**
@@ -383,6 +359,30 @@ interface CSSDomainInterface
 	 * @return StyleSheetAddedEvent
 	 */
 	public function awaitStyleSheetAdded(ContextInterface $ctx): StyleSheetAddedEvent;
+
+
+	/**
+	 * Fired whenever a stylesheet is changed as a result of the client operation.
+	 *
+	 * Listener will be called whenever event CSS.styleSheetChanged is fired.
+	 *
+	 * @param callable $listener
+	 *
+	 * @return SubscriptionInterface
+	 */
+	public function addStyleSheetChangedListener(callable $listener): SubscriptionInterface;
+
+
+	/**
+	 * Fired whenever a stylesheet is changed as a result of the client operation.
+	 *
+	 * Method will block until first CSS.styleSheetChanged event is fired.
+	 *
+	 * @param ContextInterface $ctx
+	 *
+	 * @return StyleSheetChangedEvent
+	 */
+	public function awaitStyleSheetChanged(ContextInterface $ctx): StyleSheetChangedEvent;
 
 
 	/**

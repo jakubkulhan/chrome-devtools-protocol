@@ -18,7 +18,7 @@ final class SetEventListenerBreakpointRequest implements \JsonSerializable
 	public $eventName;
 
 	/**
-	 * EventTarget interface name to stop on. If equal to <code>"*"</code> or not provided, will stop on any EventTarget.
+	 * EventTarget interface name to stop on. If equal to `"*"` or not provided, will stop on any EventTarget.
 	 *
 	 * @var string|null
 	 */

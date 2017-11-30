@@ -55,10 +55,24 @@ class CSSDomain implements CSSDomainInterface
 	}
 
 
-	public function enable(ContextInterface $ctx): void
+	public function addRule(ContextInterface $ctx, AddRuleRequest $request): AddRuleResponse
 	{
-		$request = new \stdClass();
-		$this->internalClient->executeCommand($ctx, 'CSS.enable', $request);
+		$response = $this->internalClient->executeCommand($ctx, 'CSS.addRule', $request);
+		return AddRuleResponse::fromJson($response);
+	}
+
+
+	public function collectClassNames(ContextInterface $ctx, CollectClassNamesRequest $request): CollectClassNamesResponse
+	{
+		$response = $this->internalClient->executeCommand($ctx, 'CSS.collectClassNames', $request);
+		return CollectClassNamesResponse::fromJson($response);
+	}
+
+
+	public function createStyleSheet(ContextInterface $ctx, CreateStyleSheetRequest $request): CreateStyleSheetResponse
+	{
+		$response = $this->internalClient->executeCommand($ctx, 'CSS.createStyleSheet', $request);
+		return CreateStyleSheetResponse::fromJson($response);
 	}
 
 
@@ -69,10 +83,30 @@ class CSSDomain implements CSSDomainInterface
 	}
 
 
-	public function getMatchedStylesForNode(ContextInterface $ctx, GetMatchedStylesForNodeRequest $request): GetMatchedStylesForNodeResponse
+	public function enable(ContextInterface $ctx): void
 	{
-		$response = $this->internalClient->executeCommand($ctx, 'CSS.getMatchedStylesForNode', $request);
-		return GetMatchedStylesForNodeResponse::fromJson($response);
+		$request = new \stdClass();
+		$this->internalClient->executeCommand($ctx, 'CSS.enable', $request);
+	}
+
+
+	public function forcePseudoState(ContextInterface $ctx, ForcePseudoStateRequest $request): void
+	{
+		$this->internalClient->executeCommand($ctx, 'CSS.forcePseudoState', $request);
+	}
+
+
+	public function getBackgroundColors(ContextInterface $ctx, GetBackgroundColorsRequest $request): GetBackgroundColorsResponse
+	{
+		$response = $this->internalClient->executeCommand($ctx, 'CSS.getBackgroundColors', $request);
+		return GetBackgroundColorsResponse::fromJson($response);
+	}
+
+
+	public function getComputedStyleForNode(ContextInterface $ctx, GetComputedStyleForNodeRequest $request): GetComputedStyleForNodeResponse
+	{
+		$response = $this->internalClient->executeCommand($ctx, 'CSS.getComputedStyleForNode', $request);
+		return GetComputedStyleForNodeResponse::fromJson($response);
 	}
 
 
@@ -83,10 +117,18 @@ class CSSDomain implements CSSDomainInterface
 	}
 
 
-	public function getComputedStyleForNode(ContextInterface $ctx, GetComputedStyleForNodeRequest $request): GetComputedStyleForNodeResponse
+	public function getMatchedStylesForNode(ContextInterface $ctx, GetMatchedStylesForNodeRequest $request): GetMatchedStylesForNodeResponse
 	{
-		$response = $this->internalClient->executeCommand($ctx, 'CSS.getComputedStyleForNode', $request);
-		return GetComputedStyleForNodeResponse::fromJson($response);
+		$response = $this->internalClient->executeCommand($ctx, 'CSS.getMatchedStylesForNode', $request);
+		return GetMatchedStylesForNodeResponse::fromJson($response);
+	}
+
+
+	public function getMediaQueries(ContextInterface $ctx): GetMediaQueriesResponse
+	{
+		$request = new \stdClass();
+		$response = $this->internalClient->executeCommand($ctx, 'CSS.getMediaQueries', $request);
+		return GetMediaQueriesResponse::fromJson($response);
 	}
 
 
@@ -104,24 +146,9 @@ class CSSDomain implements CSSDomainInterface
 	}
 
 
-	public function collectClassNames(ContextInterface $ctx, CollectClassNamesRequest $request): CollectClassNamesResponse
+	public function setEffectivePropertyValueForNode(ContextInterface $ctx, SetEffectivePropertyValueForNodeRequest $request): void
 	{
-		$response = $this->internalClient->executeCommand($ctx, 'CSS.collectClassNames', $request);
-		return CollectClassNamesResponse::fromJson($response);
-	}
-
-
-	public function setStyleSheetText(ContextInterface $ctx, SetStyleSheetTextRequest $request): SetStyleSheetTextResponse
-	{
-		$response = $this->internalClient->executeCommand($ctx, 'CSS.setStyleSheetText', $request);
-		return SetStyleSheetTextResponse::fromJson($response);
-	}
-
-
-	public function setRuleSelector(ContextInterface $ctx, SetRuleSelectorRequest $request): SetRuleSelectorResponse
-	{
-		$response = $this->internalClient->executeCommand($ctx, 'CSS.setRuleSelector', $request);
-		return SetRuleSelectorResponse::fromJson($response);
+		$this->internalClient->executeCommand($ctx, 'CSS.setEffectivePropertyValueForNode', $request);
 	}
 
 
@@ -132,13 +159,6 @@ class CSSDomain implements CSSDomainInterface
 	}
 
 
-	public function setStyleTexts(ContextInterface $ctx, SetStyleTextsRequest $request): SetStyleTextsResponse
-	{
-		$response = $this->internalClient->executeCommand($ctx, 'CSS.setStyleTexts', $request);
-		return SetStyleTextsResponse::fromJson($response);
-	}
-
-
 	public function setMediaText(ContextInterface $ctx, SetMediaTextRequest $request): SetMediaTextResponse
 	{
 		$response = $this->internalClient->executeCommand($ctx, 'CSS.setMediaText', $request);
@@ -146,44 +166,24 @@ class CSSDomain implements CSSDomainInterface
 	}
 
 
-	public function createStyleSheet(ContextInterface $ctx, CreateStyleSheetRequest $request): CreateStyleSheetResponse
+	public function setRuleSelector(ContextInterface $ctx, SetRuleSelectorRequest $request): SetRuleSelectorResponse
 	{
-		$response = $this->internalClient->executeCommand($ctx, 'CSS.createStyleSheet', $request);
-		return CreateStyleSheetResponse::fromJson($response);
+		$response = $this->internalClient->executeCommand($ctx, 'CSS.setRuleSelector', $request);
+		return SetRuleSelectorResponse::fromJson($response);
 	}
 
 
-	public function addRule(ContextInterface $ctx, AddRuleRequest $request): AddRuleResponse
+	public function setStyleSheetText(ContextInterface $ctx, SetStyleSheetTextRequest $request): SetStyleSheetTextResponse
 	{
-		$response = $this->internalClient->executeCommand($ctx, 'CSS.addRule', $request);
-		return AddRuleResponse::fromJson($response);
+		$response = $this->internalClient->executeCommand($ctx, 'CSS.setStyleSheetText', $request);
+		return SetStyleSheetTextResponse::fromJson($response);
 	}
 
 
-	public function forcePseudoState(ContextInterface $ctx, ForcePseudoStateRequest $request): void
+	public function setStyleTexts(ContextInterface $ctx, SetStyleTextsRequest $request): SetStyleTextsResponse
 	{
-		$this->internalClient->executeCommand($ctx, 'CSS.forcePseudoState', $request);
-	}
-
-
-	public function getMediaQueries(ContextInterface $ctx): GetMediaQueriesResponse
-	{
-		$request = new \stdClass();
-		$response = $this->internalClient->executeCommand($ctx, 'CSS.getMediaQueries', $request);
-		return GetMediaQueriesResponse::fromJson($response);
-	}
-
-
-	public function setEffectivePropertyValueForNode(ContextInterface $ctx, SetEffectivePropertyValueForNodeRequest $request): void
-	{
-		$this->internalClient->executeCommand($ctx, 'CSS.setEffectivePropertyValueForNode', $request);
-	}
-
-
-	public function getBackgroundColors(ContextInterface $ctx, GetBackgroundColorsRequest $request): GetBackgroundColorsResponse
-	{
-		$response = $this->internalClient->executeCommand($ctx, 'CSS.getBackgroundColors', $request);
-		return GetBackgroundColorsResponse::fromJson($response);
+		$response = $this->internalClient->executeCommand($ctx, 'CSS.setStyleTexts', $request);
+		return SetStyleTextsResponse::fromJson($response);
 	}
 
 
@@ -191,14 +191,6 @@ class CSSDomain implements CSSDomainInterface
 	{
 		$request = new \stdClass();
 		$this->internalClient->executeCommand($ctx, 'CSS.startRuleUsageTracking', $request);
-	}
-
-
-	public function takeCoverageDelta(ContextInterface $ctx): TakeCoverageDeltaResponse
-	{
-		$request = new \stdClass();
-		$response = $this->internalClient->executeCommand($ctx, 'CSS.takeCoverageDelta', $request);
-		return TakeCoverageDeltaResponse::fromJson($response);
 	}
 
 
@@ -210,17 +202,11 @@ class CSSDomain implements CSSDomainInterface
 	}
 
 
-	public function addMediaQueryResultChangedListener(callable $listener): SubscriptionInterface
+	public function takeCoverageDelta(ContextInterface $ctx): TakeCoverageDeltaResponse
 	{
-		return $this->internalClient->addListener('CSS.mediaQueryResultChanged', function ($event) use ($listener) {
-			return $listener(MediaQueryResultChangedEvent::fromJson($event));
-		});
-	}
-
-
-	public function awaitMediaQueryResultChanged(ContextInterface $ctx): MediaQueryResultChangedEvent
-	{
-		return MediaQueryResultChangedEvent::fromJson($this->internalClient->awaitEvent($ctx, 'CSS.mediaQueryResultChanged'));
+		$request = new \stdClass();
+		$response = $this->internalClient->executeCommand($ctx, 'CSS.takeCoverageDelta', $request);
+		return TakeCoverageDeltaResponse::fromJson($response);
 	}
 
 
@@ -238,17 +224,17 @@ class CSSDomain implements CSSDomainInterface
 	}
 
 
-	public function addStyleSheetChangedListener(callable $listener): SubscriptionInterface
+	public function addMediaQueryResultChangedListener(callable $listener): SubscriptionInterface
 	{
-		return $this->internalClient->addListener('CSS.styleSheetChanged', function ($event) use ($listener) {
-			return $listener(StyleSheetChangedEvent::fromJson($event));
+		return $this->internalClient->addListener('CSS.mediaQueryResultChanged', function ($event) use ($listener) {
+			return $listener(MediaQueryResultChangedEvent::fromJson($event));
 		});
 	}
 
 
-	public function awaitStyleSheetChanged(ContextInterface $ctx): StyleSheetChangedEvent
+	public function awaitMediaQueryResultChanged(ContextInterface $ctx): MediaQueryResultChangedEvent
 	{
-		return StyleSheetChangedEvent::fromJson($this->internalClient->awaitEvent($ctx, 'CSS.styleSheetChanged'));
+		return MediaQueryResultChangedEvent::fromJson($this->internalClient->awaitEvent($ctx, 'CSS.mediaQueryResultChanged'));
 	}
 
 
@@ -263,6 +249,20 @@ class CSSDomain implements CSSDomainInterface
 	public function awaitStyleSheetAdded(ContextInterface $ctx): StyleSheetAddedEvent
 	{
 		return StyleSheetAddedEvent::fromJson($this->internalClient->awaitEvent($ctx, 'CSS.styleSheetAdded'));
+	}
+
+
+	public function addStyleSheetChangedListener(callable $listener): SubscriptionInterface
+	{
+		return $this->internalClient->addListener('CSS.styleSheetChanged', function ($event) use ($listener) {
+			return $listener(StyleSheetChangedEvent::fromJson($event));
+		});
+	}
+
+
+	public function awaitStyleSheetChanged(ContextInterface $ctx): StyleSheetChangedEvent
+	{
+		return StyleSheetChangedEvent::fromJson($this->internalClient->awaitEvent($ctx, 'CSS.styleSheetChanged'));
 	}
 
 

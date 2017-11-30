@@ -25,14 +25,14 @@ final class CSSProperty implements \JsonSerializable
 	public $value;
 
 	/**
-	 * Whether the property has "!important" annotation (implies <code>false</code> if absent).
+	 * Whether the property has "!important" annotation (implies `false` if absent).
 	 *
 	 * @var bool|null
 	 */
 	public $important;
 
 	/**
-	 * Whether the property is implicit (implies <code>false</code> if absent).
+	 * Whether the property is implicit (implies `false` if absent).
 	 *
 	 * @var bool|null
 	 */
@@ -46,7 +46,7 @@ final class CSSProperty implements \JsonSerializable
 	public $text;
 
 	/**
-	 * Whether the property is understood by the browser (implies <code>true</code> if absent).
+	 * Whether the property is understood by the browser (implies `true` if absent).
 	 *
 	 * @var bool|null
 	 */

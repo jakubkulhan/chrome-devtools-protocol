@@ -32,13 +32,24 @@ use ChromeDevtoolsProtocol\SubscriptionInterface;
 interface HeapProfilerDomainInterface
 {
 	/**
-	 * Call HeapProfiler.enable command.
+	 * Enables console to refer to the node with given id via $x (see Command Line API for more details $x functions).
+	 *
+	 * @param ContextInterface $ctx
+	 * @param AddInspectedHeapObjectRequest $request
+	 *
+	 * @return void
+	 */
+	public function addInspectedHeapObject(ContextInterface $ctx, AddInspectedHeapObjectRequest $request): void;
+
+
+	/**
+	 * Call HeapProfiler.collectGarbage command.
 	 *
 	 * @param ContextInterface $ctx
 	 *
 	 * @return void
 	 */
-	public function enable(ContextInterface $ctx): void;
+	public function collectGarbage(ContextInterface $ctx): void;
 
 
 	/**
@@ -52,6 +63,59 @@ interface HeapProfilerDomainInterface
 
 
 	/**
+	 * Call HeapProfiler.enable command.
+	 *
+	 * @param ContextInterface $ctx
+	 *
+	 * @return void
+	 */
+	public function enable(ContextInterface $ctx): void;
+
+
+	/**
+	 * Call HeapProfiler.getHeapObjectId command.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param GetHeapObjectIdRequest $request
+	 *
+	 * @return GetHeapObjectIdResponse
+	 */
+	public function getHeapObjectId(ContextInterface $ctx, GetHeapObjectIdRequest $request): GetHeapObjectIdResponse;
+
+
+	/**
+	 * Call HeapProfiler.getObjectByHeapObjectId command.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param GetObjectByHeapObjectIdRequest $request
+	 *
+	 * @return GetObjectByHeapObjectIdResponse
+	 */
+	public function getObjectByHeapObjectId(ContextInterface $ctx, GetObjectByHeapObjectIdRequest $request): GetObjectByHeapObjectIdResponse;
+
+
+	/**
+	 * Call HeapProfiler.getSamplingProfile command.
+	 *
+	 * @param ContextInterface $ctx
+	 *
+	 * @return GetSamplingProfileResponse
+	 */
+	public function getSamplingProfile(ContextInterface $ctx): GetSamplingProfileResponse;
+
+
+	/**
+	 * Call HeapProfiler.startSampling command.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param StartSamplingRequest $request
+	 *
+	 * @return void
+	 */
+	public function startSampling(ContextInterface $ctx, StartSamplingRequest $request): void;
+
+
+	/**
 	 * Call HeapProfiler.startTrackingHeapObjects command.
 	 *
 	 * @param ContextInterface $ctx
@@ -60,6 +124,16 @@ interface HeapProfilerDomainInterface
 	 * @return void
 	 */
 	public function startTrackingHeapObjects(ContextInterface $ctx, StartTrackingHeapObjectsRequest $request): void;
+
+
+	/**
+	 * Call HeapProfiler.stopSampling command.
+	 *
+	 * @param ContextInterface $ctx
+	 *
+	 * @return StopSamplingResponse
+	 */
+	public function stopSampling(ContextInterface $ctx): StopSamplingResponse;
 
 
 	/**
@@ -82,80 +156,6 @@ interface HeapProfilerDomainInterface
 	 * @return void
 	 */
 	public function takeHeapSnapshot(ContextInterface $ctx, TakeHeapSnapshotRequest $request): void;
-
-
-	/**
-	 * Call HeapProfiler.collectGarbage command.
-	 *
-	 * @param ContextInterface $ctx
-	 *
-	 * @return void
-	 */
-	public function collectGarbage(ContextInterface $ctx): void;
-
-
-	/**
-	 * Call HeapProfiler.getObjectByHeapObjectId command.
-	 *
-	 * @param ContextInterface $ctx
-	 * @param GetObjectByHeapObjectIdRequest $request
-	 *
-	 * @return GetObjectByHeapObjectIdResponse
-	 */
-	public function getObjectByHeapObjectId(ContextInterface $ctx, GetObjectByHeapObjectIdRequest $request): GetObjectByHeapObjectIdResponse;
-
-
-	/**
-	 * Enables console to refer to the node with given id via $x (see Command Line API for more details $x functions).
-	 *
-	 * @param ContextInterface $ctx
-	 * @param AddInspectedHeapObjectRequest $request
-	 *
-	 * @return void
-	 */
-	public function addInspectedHeapObject(ContextInterface $ctx, AddInspectedHeapObjectRequest $request): void;
-
-
-	/**
-	 * Call HeapProfiler.getHeapObjectId command.
-	 *
-	 * @param ContextInterface $ctx
-	 * @param GetHeapObjectIdRequest $request
-	 *
-	 * @return GetHeapObjectIdResponse
-	 */
-	public function getHeapObjectId(ContextInterface $ctx, GetHeapObjectIdRequest $request): GetHeapObjectIdResponse;
-
-
-	/**
-	 * Call HeapProfiler.startSampling command.
-	 *
-	 * @param ContextInterface $ctx
-	 * @param StartSamplingRequest $request
-	 *
-	 * @return void
-	 */
-	public function startSampling(ContextInterface $ctx, StartSamplingRequest $request): void;
-
-
-	/**
-	 * Call HeapProfiler.stopSampling command.
-	 *
-	 * @param ContextInterface $ctx
-	 *
-	 * @return StopSamplingResponse
-	 */
-	public function stopSampling(ContextInterface $ctx): StopSamplingResponse;
-
-
-	/**
-	 * Call HeapProfiler.getSamplingProfile command.
-	 *
-	 * @param ContextInterface $ctx
-	 *
-	 * @return GetSamplingProfileResponse
-	 */
-	public function getSamplingProfile(ContextInterface $ctx): GetSamplingProfileResponse;
 
 
 	/**
@@ -183,51 +183,27 @@ interface HeapProfilerDomainInterface
 
 
 	/**
-	 * Subscribe to HeapProfiler.resetProfiles event.
+	 * If heap objects tracking has been started then backend may send update for one or more fragments
 	 *
-	 * Listener will be called whenever event HeapProfiler.resetProfiles is fired.
-	 *
-	 * @param callable $listener
-	 *
-	 * @return SubscriptionInterface
-	 */
-	public function addResetProfilesListener(callable $listener): SubscriptionInterface;
-
-
-	/**
-	 * Wait for HeapProfiler.resetProfiles event.
-	 *
-	 * Method will block until first HeapProfiler.resetProfiles event is fired.
-	 *
-	 * @param ContextInterface $ctx
-	 *
-	 * @return ResetProfilesEvent
-	 */
-	public function awaitResetProfiles(ContextInterface $ctx): ResetProfilesEvent;
-
-
-	/**
-	 * Subscribe to HeapProfiler.reportHeapSnapshotProgress event.
-	 *
-	 * Listener will be called whenever event HeapProfiler.reportHeapSnapshotProgress is fired.
+	 * Listener will be called whenever event HeapProfiler.heapStatsUpdate is fired.
 	 *
 	 * @param callable $listener
 	 *
 	 * @return SubscriptionInterface
 	 */
-	public function addReportHeapSnapshotProgressListener(callable $listener): SubscriptionInterface;
+	public function addHeapStatsUpdateListener(callable $listener): SubscriptionInterface;
 
 
 	/**
-	 * Wait for HeapProfiler.reportHeapSnapshotProgress event.
+	 * If heap objects tracking has been started then backend may send update for one or more fragments
 	 *
-	 * Method will block until first HeapProfiler.reportHeapSnapshotProgress event is fired.
+	 * Method will block until first HeapProfiler.heapStatsUpdate event is fired.
 	 *
 	 * @param ContextInterface $ctx
 	 *
-	 * @return ReportHeapSnapshotProgressEvent
+	 * @return HeapStatsUpdateEvent
 	 */
-	public function awaitReportHeapSnapshotProgress(ContextInterface $ctx): ReportHeapSnapshotProgressEvent;
+	public function awaitHeapStatsUpdate(ContextInterface $ctx): HeapStatsUpdateEvent;
 
 
 	/**
@@ -255,25 +231,49 @@ interface HeapProfilerDomainInterface
 
 
 	/**
-	 * If heap objects tracking has been started then backend may send update for one or more fragments
+	 * Subscribe to HeapProfiler.reportHeapSnapshotProgress event.
 	 *
-	 * Listener will be called whenever event HeapProfiler.heapStatsUpdate is fired.
+	 * Listener will be called whenever event HeapProfiler.reportHeapSnapshotProgress is fired.
 	 *
 	 * @param callable $listener
 	 *
 	 * @return SubscriptionInterface
 	 */
-	public function addHeapStatsUpdateListener(callable $listener): SubscriptionInterface;
+	public function addReportHeapSnapshotProgressListener(callable $listener): SubscriptionInterface;
 
 
 	/**
-	 * If heap objects tracking has been started then backend may send update for one or more fragments
+	 * Wait for HeapProfiler.reportHeapSnapshotProgress event.
 	 *
-	 * Method will block until first HeapProfiler.heapStatsUpdate event is fired.
+	 * Method will block until first HeapProfiler.reportHeapSnapshotProgress event is fired.
 	 *
 	 * @param ContextInterface $ctx
 	 *
-	 * @return HeapStatsUpdateEvent
+	 * @return ReportHeapSnapshotProgressEvent
 	 */
-	public function awaitHeapStatsUpdate(ContextInterface $ctx): HeapStatsUpdateEvent;
+	public function awaitReportHeapSnapshotProgress(ContextInterface $ctx): ReportHeapSnapshotProgressEvent;
+
+
+	/**
+	 * Subscribe to HeapProfiler.resetProfiles event.
+	 *
+	 * Listener will be called whenever event HeapProfiler.resetProfiles is fired.
+	 *
+	 * @param callable $listener
+	 *
+	 * @return SubscriptionInterface
+	 */
+	public function addResetProfilesListener(callable $listener): SubscriptionInterface;
+
+
+	/**
+	 * Wait for HeapProfiler.resetProfiles event.
+	 *
+	 * Method will block until first HeapProfiler.resetProfiles event is fired.
+	 *
+	 * @param ContextInterface $ctx
+	 *
+	 * @return ResetProfilesEvent
+	 */
+	public function awaitResetProfiles(ContextInterface $ctx): ResetProfilesEvent;
 }

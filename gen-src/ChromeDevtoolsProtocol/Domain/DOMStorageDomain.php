@@ -26,10 +26,9 @@ class DOMStorageDomain implements DOMStorageDomainInterface
 	}
 
 
-	public function enable(ContextInterface $ctx): void
+	public function clear(ContextInterface $ctx, ClearRequest $request): void
 	{
-		$request = new \stdClass();
-		$this->internalClient->executeCommand($ctx, 'DOMStorage.enable', $request);
+		$this->internalClient->executeCommand($ctx, 'DOMStorage.clear', $request);
 	}
 
 
@@ -40,9 +39,10 @@ class DOMStorageDomain implements DOMStorageDomainInterface
 	}
 
 
-	public function clear(ContextInterface $ctx, ClearRequest $request): void
+	public function enable(ContextInterface $ctx): void
 	{
-		$this->internalClient->executeCommand($ctx, 'DOMStorage.clear', $request);
+		$request = new \stdClass();
+		$this->internalClient->executeCommand($ctx, 'DOMStorage.enable', $request);
 	}
 
 
@@ -53,29 +53,29 @@ class DOMStorageDomain implements DOMStorageDomainInterface
 	}
 
 
-	public function setDOMStorageItem(ContextInterface $ctx, SetDOMStorageItemRequest $request): void
-	{
-		$this->internalClient->executeCommand($ctx, 'DOMStorage.setDOMStorageItem', $request);
-	}
-
-
 	public function removeDOMStorageItem(ContextInterface $ctx, RemoveDOMStorageItemRequest $request): void
 	{
 		$this->internalClient->executeCommand($ctx, 'DOMStorage.removeDOMStorageItem', $request);
 	}
 
 
-	public function addDomStorageItemsClearedListener(callable $listener): SubscriptionInterface
+	public function setDOMStorageItem(ContextInterface $ctx, SetDOMStorageItemRequest $request): void
 	{
-		return $this->internalClient->addListener('DOMStorage.domStorageItemsCleared', function ($event) use ($listener) {
-			return $listener(DomStorageItemsClearedEvent::fromJson($event));
+		$this->internalClient->executeCommand($ctx, 'DOMStorage.setDOMStorageItem', $request);
+	}
+
+
+	public function addDomStorageItemAddedListener(callable $listener): SubscriptionInterface
+	{
+		return $this->internalClient->addListener('DOMStorage.domStorageItemAdded', function ($event) use ($listener) {
+			return $listener(DomStorageItemAddedEvent::fromJson($event));
 		});
 	}
 
 
-	public function awaitDomStorageItemsCleared(ContextInterface $ctx): DomStorageItemsClearedEvent
+	public function awaitDomStorageItemAdded(ContextInterface $ctx): DomStorageItemAddedEvent
 	{
-		return DomStorageItemsClearedEvent::fromJson($this->internalClient->awaitEvent($ctx, 'DOMStorage.domStorageItemsCleared'));
+		return DomStorageItemAddedEvent::fromJson($this->internalClient->awaitEvent($ctx, 'DOMStorage.domStorageItemAdded'));
 	}
 
 
@@ -93,17 +93,17 @@ class DOMStorageDomain implements DOMStorageDomainInterface
 	}
 
 
-	public function addDomStorageItemAddedListener(callable $listener): SubscriptionInterface
+	public function addDomStorageItemsClearedListener(callable $listener): SubscriptionInterface
 	{
-		return $this->internalClient->addListener('DOMStorage.domStorageItemAdded', function ($event) use ($listener) {
-			return $listener(DomStorageItemAddedEvent::fromJson($event));
+		return $this->internalClient->addListener('DOMStorage.domStorageItemsCleared', function ($event) use ($listener) {
+			return $listener(DomStorageItemsClearedEvent::fromJson($event));
 		});
 	}
 
 
-	public function awaitDomStorageItemAdded(ContextInterface $ctx): DomStorageItemAddedEvent
+	public function awaitDomStorageItemsCleared(ContextInterface $ctx): DomStorageItemsClearedEvent
 	{
-		return DomStorageItemAddedEvent::fromJson($this->internalClient->awaitEvent($ctx, 'DOMStorage.domStorageItemAdded'));
+		return DomStorageItemsClearedEvent::fromJson($this->internalClient->awaitEvent($ctx, 'DOMStorage.domStorageItemsCleared'));
 	}
 
 

@@ -11,14 +11,14 @@ namespace ChromeDevtoolsProtocol\Model\DOM;
 final class BackendNode implements \JsonSerializable
 {
 	/**
-	 * <code>Node</code>'s nodeType.
+	 * `Node`'s nodeType.
 	 *
 	 * @var int
 	 */
 	public $nodeType;
 
 	/**
-	 * <code>Node</code>'s nodeName.
+	 * `Node`'s nodeName.
 	 *
 	 * @var string
 	 */

@@ -24,6 +24,20 @@ class ApplicationCacheDomain implements ApplicationCacheDomainInterface
 	}
 
 
+	public function enable(ContextInterface $ctx): void
+	{
+		$request = new \stdClass();
+		$this->internalClient->executeCommand($ctx, 'ApplicationCache.enable', $request);
+	}
+
+
+	public function getApplicationCacheForFrame(ContextInterface $ctx, GetApplicationCacheForFrameRequest $request): GetApplicationCacheForFrameResponse
+	{
+		$response = $this->internalClient->executeCommand($ctx, 'ApplicationCache.getApplicationCacheForFrame', $request);
+		return GetApplicationCacheForFrameResponse::fromJson($response);
+	}
+
+
 	public function getFramesWithManifests(ContextInterface $ctx): GetFramesWithManifestsResponse
 	{
 		$request = new \stdClass();
@@ -32,24 +46,10 @@ class ApplicationCacheDomain implements ApplicationCacheDomainInterface
 	}
 
 
-	public function enable(ContextInterface $ctx): void
-	{
-		$request = new \stdClass();
-		$this->internalClient->executeCommand($ctx, 'ApplicationCache.enable', $request);
-	}
-
-
 	public function getManifestForFrame(ContextInterface $ctx, GetManifestForFrameRequest $request): GetManifestForFrameResponse
 	{
 		$response = $this->internalClient->executeCommand($ctx, 'ApplicationCache.getManifestForFrame', $request);
 		return GetManifestForFrameResponse::fromJson($response);
-	}
-
-
-	public function getApplicationCacheForFrame(ContextInterface $ctx, GetApplicationCacheForFrameRequest $request): GetApplicationCacheForFrameResponse
-	{
-		$response = $this->internalClient->executeCommand($ctx, 'ApplicationCache.getApplicationCacheForFrame', $request);
-		return GetApplicationCacheForFrameResponse::fromJson($response);
 	}
 
 

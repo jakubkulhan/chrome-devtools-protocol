@@ -21,17 +21,6 @@ use ChromeDevtoolsProtocol\Model\Input\SynthesizeTapGestureRequest;
 interface InputDomainInterface
 {
 	/**
-	 * Ignores input events (useful while auditing page).
-	 *
-	 * @param ContextInterface $ctx
-	 * @param SetIgnoreInputEventsRequest $request
-	 *
-	 * @return void
-	 */
-	public function setIgnoreInputEvents(ContextInterface $ctx, SetIgnoreInputEventsRequest $request): void;
-
-
-	/**
 	 * Dispatches a key event to the page.
 	 *
 	 * @param ContextInterface $ctx
@@ -73,6 +62,17 @@ interface InputDomainInterface
 	 * @return void
 	 */
 	public function emulateTouchFromMouseEvent(ContextInterface $ctx, EmulateTouchFromMouseEventRequest $request): void;
+
+
+	/**
+	 * Ignores input events (useful while auditing page).
+	 *
+	 * @param ContextInterface $ctx
+	 * @param SetIgnoreInputEventsRequest $request
+	 *
+	 * @return void
+	 */
+	public function setIgnoreInputEvents(ContextInterface $ctx, SetIgnoreInputEventsRequest $request): void;
 
 
 	/**

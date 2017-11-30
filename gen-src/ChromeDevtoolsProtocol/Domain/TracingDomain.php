@@ -24,12 +24,6 @@ class TracingDomain implements TracingDomainInterface
 	}
 
 
-	public function start(ContextInterface $ctx, StartRequest $request): void
-	{
-		$this->internalClient->executeCommand($ctx, 'Tracing.start', $request);
-	}
-
-
 	public function end(ContextInterface $ctx): void
 	{
 		$request = new \stdClass();
@@ -45,6 +39,12 @@ class TracingDomain implements TracingDomainInterface
 	}
 
 
+	public function recordClockSyncMarker(ContextInterface $ctx, RecordClockSyncMarkerRequest $request): void
+	{
+		$this->internalClient->executeCommand($ctx, 'Tracing.recordClockSyncMarker', $request);
+	}
+
+
 	public function requestMemoryDump(ContextInterface $ctx): RequestMemoryDumpResponse
 	{
 		$request = new \stdClass();
@@ -53,9 +53,23 @@ class TracingDomain implements TracingDomainInterface
 	}
 
 
-	public function recordClockSyncMarker(ContextInterface $ctx, RecordClockSyncMarkerRequest $request): void
+	public function start(ContextInterface $ctx, StartRequest $request): void
 	{
-		$this->internalClient->executeCommand($ctx, 'Tracing.recordClockSyncMarker', $request);
+		$this->internalClient->executeCommand($ctx, 'Tracing.start', $request);
+	}
+
+
+	public function addBufferUsageListener(callable $listener): SubscriptionInterface
+	{
+		return $this->internalClient->addListener('Tracing.bufferUsage', function ($event) use ($listener) {
+			return $listener(BufferUsageEvent::fromJson($event));
+		});
+	}
+
+
+	public function awaitBufferUsage(ContextInterface $ctx): BufferUsageEvent
+	{
+		return BufferUsageEvent::fromJson($this->internalClient->awaitEvent($ctx, 'Tracing.bufferUsage'));
 	}
 
 
@@ -84,19 +98,5 @@ class TracingDomain implements TracingDomainInterface
 	public function awaitTracingComplete(ContextInterface $ctx): TracingCompleteEvent
 	{
 		return TracingCompleteEvent::fromJson($this->internalClient->awaitEvent($ctx, 'Tracing.tracingComplete'));
-	}
-
-
-	public function addBufferUsageListener(callable $listener): SubscriptionInterface
-	{
-		return $this->internalClient->addListener('Tracing.bufferUsage', function ($event) use ($listener) {
-			return $listener(BufferUsageEvent::fromJson($event));
-		});
-	}
-
-
-	public function awaitBufferUsage(ContextInterface $ctx): BufferUsageEvent
-	{
-		return BufferUsageEvent::fromJson($this->internalClient->awaitEvent($ctx, 'Tracing.bufferUsage'));
 	}
 }

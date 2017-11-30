@@ -16,16 +16,6 @@ use ChromeDevtoolsProtocol\SubscriptionInterface;
 interface PerformanceDomainInterface
 {
 	/**
-	 * Enable collecting and reporting metrics.
-	 *
-	 * @param ContextInterface $ctx
-	 *
-	 * @return void
-	 */
-	public function enable(ContextInterface $ctx): void;
-
-
-	/**
 	 * Disable collecting and reporting metrics.
 	 *
 	 * @param ContextInterface $ctx
@@ -33,6 +23,16 @@ interface PerformanceDomainInterface
 	 * @return void
 	 */
 	public function disable(ContextInterface $ctx): void;
+
+
+	/**
+	 * Enable collecting and reporting metrics.
+	 *
+	 * @param ContextInterface $ctx
+	 *
+	 * @return void
+	 */
+	public function enable(ContextInterface $ctx): void;
 
 
 	/**

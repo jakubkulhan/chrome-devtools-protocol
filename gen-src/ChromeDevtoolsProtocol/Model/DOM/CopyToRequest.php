@@ -25,7 +25,7 @@ final class CopyToRequest implements \JsonSerializable
 	public $targetNodeId;
 
 	/**
-	 * Drop the copy before this node (if absent, the copy becomes the last child of <code>targetNodeId</code>).
+	 * Drop the copy before this node (if absent, the copy becomes the last child of `targetNodeId`).
 	 *
 	 * @var int
 	 */

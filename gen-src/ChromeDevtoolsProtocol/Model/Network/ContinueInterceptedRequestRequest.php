@@ -14,7 +14,7 @@ final class ContinueInterceptedRequestRequest implements \JsonSerializable
 	public $interceptionId;
 
 	/**
-	 * If set this causes the request to fail with the given reason. Passing <code>Aborted</code> for requests marked with <code>isNavigationRequest</code> also cancels the navigation. Must not be set in response to an authChallenge.
+	 * If set this causes the request to fail with the given reason. Passing `Aborted` for requests marked with `isNavigationRequest` also cancels the navigation. Must not be set in response to an authChallenge.
 	 *
 	 * @var string
 	 */

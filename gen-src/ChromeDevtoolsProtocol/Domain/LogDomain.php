@@ -19,10 +19,10 @@ class LogDomain implements LogDomainInterface
 	}
 
 
-	public function enable(ContextInterface $ctx): void
+	public function clear(ContextInterface $ctx): void
 	{
 		$request = new \stdClass();
-		$this->internalClient->executeCommand($ctx, 'Log.enable', $request);
+		$this->internalClient->executeCommand($ctx, 'Log.clear', $request);
 	}
 
 
@@ -33,10 +33,10 @@ class LogDomain implements LogDomainInterface
 	}
 
 
-	public function clear(ContextInterface $ctx): void
+	public function enable(ContextInterface $ctx): void
 	{
 		$request = new \stdClass();
-		$this->internalClient->executeCommand($ctx, 'Log.clear', $request);
+		$this->internalClient->executeCommand($ctx, 'Log.enable', $request);
 	}
 
 

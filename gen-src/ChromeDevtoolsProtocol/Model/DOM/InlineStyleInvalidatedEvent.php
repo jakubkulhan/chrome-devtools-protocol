@@ -2,7 +2,7 @@
 namespace ChromeDevtoolsProtocol\Model\DOM;
 
 /**
- * Fired when <code>Element</code>'s inline style is modified via a CSS property modification.
+ * Fired when `Element`'s inline style is modified via a CSS property modification.
  *
  * @generated This file has been auto-generated, do not edit.
  *

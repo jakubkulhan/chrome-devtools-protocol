@@ -82,10 +82,24 @@ class DOMDomain implements DOMDomainInterface
 	}
 
 
-	public function enable(ContextInterface $ctx): void
+	public function collectClassNamesFromSubtree(ContextInterface $ctx, CollectClassNamesFromSubtreeRequest $request): CollectClassNamesFromSubtreeResponse
 	{
-		$request = new \stdClass();
-		$this->internalClient->executeCommand($ctx, 'DOM.enable', $request);
+		$response = $this->internalClient->executeCommand($ctx, 'DOM.collectClassNamesFromSubtree', $request);
+		return CollectClassNamesFromSubtreeResponse::fromJson($response);
+	}
+
+
+	public function copyTo(ContextInterface $ctx, CopyToRequest $request): CopyToResponse
+	{
+		$response = $this->internalClient->executeCommand($ctx, 'DOM.copyTo', $request);
+		return CopyToResponse::fromJson($response);
+	}
+
+
+	public function describeNode(ContextInterface $ctx, DescribeNodeRequest $request): DescribeNodeResponse
+	{
+		$response = $this->internalClient->executeCommand($ctx, 'DOM.describeNode', $request);
+		return DescribeNodeResponse::fromJson($response);
 	}
 
 
@@ -93,6 +107,39 @@ class DOMDomain implements DOMDomainInterface
 	{
 		$request = new \stdClass();
 		$this->internalClient->executeCommand($ctx, 'DOM.disable', $request);
+	}
+
+
+	public function discardSearchResults(ContextInterface $ctx, DiscardSearchResultsRequest $request): void
+	{
+		$this->internalClient->executeCommand($ctx, 'DOM.discardSearchResults', $request);
+	}
+
+
+	public function enable(ContextInterface $ctx): void
+	{
+		$request = new \stdClass();
+		$this->internalClient->executeCommand($ctx, 'DOM.enable', $request);
+	}
+
+
+	public function focus(ContextInterface $ctx, FocusRequest $request): void
+	{
+		$this->internalClient->executeCommand($ctx, 'DOM.focus', $request);
+	}
+
+
+	public function getAttributes(ContextInterface $ctx, GetAttributesRequest $request): GetAttributesResponse
+	{
+		$response = $this->internalClient->executeCommand($ctx, 'DOM.getAttributes', $request);
+		return GetAttributesResponse::fromJson($response);
+	}
+
+
+	public function getBoxModel(ContextInterface $ctx, GetBoxModelRequest $request): GetBoxModelResponse
+	{
+		$response = $this->internalClient->executeCommand($ctx, 'DOM.getBoxModel', $request);
+		return GetBoxModelResponse::fromJson($response);
 	}
 
 
@@ -110,67 +157,10 @@ class DOMDomain implements DOMDomainInterface
 	}
 
 
-	public function collectClassNamesFromSubtree(ContextInterface $ctx, CollectClassNamesFromSubtreeRequest $request): CollectClassNamesFromSubtreeResponse
+	public function getNodeForLocation(ContextInterface $ctx, GetNodeForLocationRequest $request): GetNodeForLocationResponse
 	{
-		$response = $this->internalClient->executeCommand($ctx, 'DOM.collectClassNamesFromSubtree', $request);
-		return CollectClassNamesFromSubtreeResponse::fromJson($response);
-	}
-
-
-	public function requestChildNodes(ContextInterface $ctx, RequestChildNodesRequest $request): void
-	{
-		$this->internalClient->executeCommand($ctx, 'DOM.requestChildNodes', $request);
-	}
-
-
-	public function querySelector(ContextInterface $ctx, QuerySelectorRequest $request): QuerySelectorResponse
-	{
-		$response = $this->internalClient->executeCommand($ctx, 'DOM.querySelector', $request);
-		return QuerySelectorResponse::fromJson($response);
-	}
-
-
-	public function querySelectorAll(ContextInterface $ctx, QuerySelectorAllRequest $request): QuerySelectorAllResponse
-	{
-		$response = $this->internalClient->executeCommand($ctx, 'DOM.querySelectorAll', $request);
-		return QuerySelectorAllResponse::fromJson($response);
-	}
-
-
-	public function setNodeName(ContextInterface $ctx, SetNodeNameRequest $request): SetNodeNameResponse
-	{
-		$response = $this->internalClient->executeCommand($ctx, 'DOM.setNodeName', $request);
-		return SetNodeNameResponse::fromJson($response);
-	}
-
-
-	public function setNodeValue(ContextInterface $ctx, SetNodeValueRequest $request): void
-	{
-		$this->internalClient->executeCommand($ctx, 'DOM.setNodeValue', $request);
-	}
-
-
-	public function removeNode(ContextInterface $ctx, RemoveNodeRequest $request): void
-	{
-		$this->internalClient->executeCommand($ctx, 'DOM.removeNode', $request);
-	}
-
-
-	public function setAttributeValue(ContextInterface $ctx, SetAttributeValueRequest $request): void
-	{
-		$this->internalClient->executeCommand($ctx, 'DOM.setAttributeValue', $request);
-	}
-
-
-	public function setAttributesAsText(ContextInterface $ctx, SetAttributesAsTextRequest $request): void
-	{
-		$this->internalClient->executeCommand($ctx, 'DOM.setAttributesAsText', $request);
-	}
-
-
-	public function removeAttribute(ContextInterface $ctx, RemoveAttributeRequest $request): void
-	{
-		$this->internalClient->executeCommand($ctx, 'DOM.removeAttribute', $request);
+		$response = $this->internalClient->executeCommand($ctx, 'DOM.getNodeForLocation', $request);
+		return GetNodeForLocationResponse::fromJson($response);
 	}
 
 
@@ -181,16 +171,10 @@ class DOMDomain implements DOMDomainInterface
 	}
 
 
-	public function setOuterHTML(ContextInterface $ctx, SetOuterHTMLRequest $request): void
+	public function getRelayoutBoundary(ContextInterface $ctx, GetRelayoutBoundaryRequest $request): GetRelayoutBoundaryResponse
 	{
-		$this->internalClient->executeCommand($ctx, 'DOM.setOuterHTML', $request);
-	}
-
-
-	public function performSearch(ContextInterface $ctx, PerformSearchRequest $request): PerformSearchResponse
-	{
-		$response = $this->internalClient->executeCommand($ctx, 'DOM.performSearch', $request);
-		return PerformSearchResponse::fromJson($response);
+		$response = $this->internalClient->executeCommand($ctx, 'DOM.getRelayoutBoundary', $request);
+		return GetRelayoutBoundaryResponse::fromJson($response);
 	}
 
 
@@ -201,23 +185,10 @@ class DOMDomain implements DOMDomainInterface
 	}
 
 
-	public function discardSearchResults(ContextInterface $ctx, DiscardSearchResultsRequest $request): void
-	{
-		$this->internalClient->executeCommand($ctx, 'DOM.discardSearchResults', $request);
-	}
-
-
-	public function requestNode(ContextInterface $ctx, RequestNodeRequest $request): RequestNodeResponse
-	{
-		$response = $this->internalClient->executeCommand($ctx, 'DOM.requestNode', $request);
-		return RequestNodeResponse::fromJson($response);
-	}
-
-
-	public function highlightRect(ContextInterface $ctx): void
+	public function hideHighlight(ContextInterface $ctx): void
 	{
 		$request = new \stdClass();
-		$this->internalClient->executeCommand($ctx, 'DOM.highlightRect', $request);
+		$this->internalClient->executeCommand($ctx, 'DOM.hideHighlight', $request);
 	}
 
 
@@ -228,10 +199,31 @@ class DOMDomain implements DOMDomainInterface
 	}
 
 
-	public function hideHighlight(ContextInterface $ctx): void
+	public function highlightRect(ContextInterface $ctx): void
 	{
 		$request = new \stdClass();
-		$this->internalClient->executeCommand($ctx, 'DOM.hideHighlight', $request);
+		$this->internalClient->executeCommand($ctx, 'DOM.highlightRect', $request);
+	}
+
+
+	public function markUndoableState(ContextInterface $ctx): void
+	{
+		$request = new \stdClass();
+		$this->internalClient->executeCommand($ctx, 'DOM.markUndoableState', $request);
+	}
+
+
+	public function moveTo(ContextInterface $ctx, MoveToRequest $request): MoveToResponse
+	{
+		$response = $this->internalClient->executeCommand($ctx, 'DOM.moveTo', $request);
+		return MoveToResponse::fromJson($response);
+	}
+
+
+	public function performSearch(ContextInterface $ctx, PerformSearchRequest $request): PerformSearchResponse
+	{
+		$response = $this->internalClient->executeCommand($ctx, 'DOM.performSearch', $request);
+		return PerformSearchResponse::fromJson($response);
 	}
 
 
@@ -249,44 +241,17 @@ class DOMDomain implements DOMDomainInterface
 	}
 
 
-	public function setInspectedNode(ContextInterface $ctx, SetInspectedNodeRequest $request): void
+	public function querySelector(ContextInterface $ctx, QuerySelectorRequest $request): QuerySelectorResponse
 	{
-		$this->internalClient->executeCommand($ctx, 'DOM.setInspectedNode', $request);
+		$response = $this->internalClient->executeCommand($ctx, 'DOM.querySelector', $request);
+		return QuerySelectorResponse::fromJson($response);
 	}
 
 
-	public function resolveNode(ContextInterface $ctx, ResolveNodeRequest $request): ResolveNodeResponse
+	public function querySelectorAll(ContextInterface $ctx, QuerySelectorAllRequest $request): QuerySelectorAllResponse
 	{
-		$response = $this->internalClient->executeCommand($ctx, 'DOM.resolveNode', $request);
-		return ResolveNodeResponse::fromJson($response);
-	}
-
-
-	public function getAttributes(ContextInterface $ctx, GetAttributesRequest $request): GetAttributesResponse
-	{
-		$response = $this->internalClient->executeCommand($ctx, 'DOM.getAttributes', $request);
-		return GetAttributesResponse::fromJson($response);
-	}
-
-
-	public function copyTo(ContextInterface $ctx, CopyToRequest $request): CopyToResponse
-	{
-		$response = $this->internalClient->executeCommand($ctx, 'DOM.copyTo', $request);
-		return CopyToResponse::fromJson($response);
-	}
-
-
-	public function moveTo(ContextInterface $ctx, MoveToRequest $request): MoveToResponse
-	{
-		$response = $this->internalClient->executeCommand($ctx, 'DOM.moveTo', $request);
-		return MoveToResponse::fromJson($response);
-	}
-
-
-	public function undo(ContextInterface $ctx): void
-	{
-		$request = new \stdClass();
-		$this->internalClient->executeCommand($ctx, 'DOM.undo', $request);
+		$response = $this->internalClient->executeCommand($ctx, 'DOM.querySelectorAll', $request);
+		return QuerySelectorAllResponse::fromJson($response);
 	}
 
 
@@ -297,16 +262,47 @@ class DOMDomain implements DOMDomainInterface
 	}
 
 
-	public function markUndoableState(ContextInterface $ctx): void
+	public function removeAttribute(ContextInterface $ctx, RemoveAttributeRequest $request): void
 	{
-		$request = new \stdClass();
-		$this->internalClient->executeCommand($ctx, 'DOM.markUndoableState', $request);
+		$this->internalClient->executeCommand($ctx, 'DOM.removeAttribute', $request);
 	}
 
 
-	public function focus(ContextInterface $ctx, FocusRequest $request): void
+	public function removeNode(ContextInterface $ctx, RemoveNodeRequest $request): void
 	{
-		$this->internalClient->executeCommand($ctx, 'DOM.focus', $request);
+		$this->internalClient->executeCommand($ctx, 'DOM.removeNode', $request);
+	}
+
+
+	public function requestChildNodes(ContextInterface $ctx, RequestChildNodesRequest $request): void
+	{
+		$this->internalClient->executeCommand($ctx, 'DOM.requestChildNodes', $request);
+	}
+
+
+	public function requestNode(ContextInterface $ctx, RequestNodeRequest $request): RequestNodeResponse
+	{
+		$response = $this->internalClient->executeCommand($ctx, 'DOM.requestNode', $request);
+		return RequestNodeResponse::fromJson($response);
+	}
+
+
+	public function resolveNode(ContextInterface $ctx, ResolveNodeRequest $request): ResolveNodeResponse
+	{
+		$response = $this->internalClient->executeCommand($ctx, 'DOM.resolveNode', $request);
+		return ResolveNodeResponse::fromJson($response);
+	}
+
+
+	public function setAttributesAsText(ContextInterface $ctx, SetAttributesAsTextRequest $request): void
+	{
+		$this->internalClient->executeCommand($ctx, 'DOM.setAttributesAsText', $request);
+	}
+
+
+	public function setAttributeValue(ContextInterface $ctx, SetAttributeValueRequest $request): void
+	{
+		$this->internalClient->executeCommand($ctx, 'DOM.setAttributeValue', $request);
 	}
 
 
@@ -316,59 +312,35 @@ class DOMDomain implements DOMDomainInterface
 	}
 
 
-	public function getBoxModel(ContextInterface $ctx, GetBoxModelRequest $request): GetBoxModelResponse
+	public function setInspectedNode(ContextInterface $ctx, SetInspectedNodeRequest $request): void
 	{
-		$response = $this->internalClient->executeCommand($ctx, 'DOM.getBoxModel', $request);
-		return GetBoxModelResponse::fromJson($response);
+		$this->internalClient->executeCommand($ctx, 'DOM.setInspectedNode', $request);
 	}
 
 
-	public function getNodeForLocation(ContextInterface $ctx, GetNodeForLocationRequest $request): GetNodeForLocationResponse
+	public function setNodeName(ContextInterface $ctx, SetNodeNameRequest $request): SetNodeNameResponse
 	{
-		$response = $this->internalClient->executeCommand($ctx, 'DOM.getNodeForLocation', $request);
-		return GetNodeForLocationResponse::fromJson($response);
+		$response = $this->internalClient->executeCommand($ctx, 'DOM.setNodeName', $request);
+		return SetNodeNameResponse::fromJson($response);
 	}
 
 
-	public function getRelayoutBoundary(ContextInterface $ctx, GetRelayoutBoundaryRequest $request): GetRelayoutBoundaryResponse
+	public function setNodeValue(ContextInterface $ctx, SetNodeValueRequest $request): void
 	{
-		$response = $this->internalClient->executeCommand($ctx, 'DOM.getRelayoutBoundary', $request);
-		return GetRelayoutBoundaryResponse::fromJson($response);
+		$this->internalClient->executeCommand($ctx, 'DOM.setNodeValue', $request);
 	}
 
 
-	public function describeNode(ContextInterface $ctx, DescribeNodeRequest $request): DescribeNodeResponse
+	public function setOuterHTML(ContextInterface $ctx, SetOuterHTMLRequest $request): void
 	{
-		$response = $this->internalClient->executeCommand($ctx, 'DOM.describeNode', $request);
-		return DescribeNodeResponse::fromJson($response);
+		$this->internalClient->executeCommand($ctx, 'DOM.setOuterHTML', $request);
 	}
 
 
-	public function addDocumentUpdatedListener(callable $listener): SubscriptionInterface
+	public function undo(ContextInterface $ctx): void
 	{
-		return $this->internalClient->addListener('DOM.documentUpdated', function ($event) use ($listener) {
-			return $listener(DocumentUpdatedEvent::fromJson($event));
-		});
-	}
-
-
-	public function awaitDocumentUpdated(ContextInterface $ctx): DocumentUpdatedEvent
-	{
-		return DocumentUpdatedEvent::fromJson($this->internalClient->awaitEvent($ctx, 'DOM.documentUpdated'));
-	}
-
-
-	public function addSetChildNodesListener(callable $listener): SubscriptionInterface
-	{
-		return $this->internalClient->addListener('DOM.setChildNodes', function ($event) use ($listener) {
-			return $listener(SetChildNodesEvent::fromJson($event));
-		});
-	}
-
-
-	public function awaitSetChildNodes(ContextInterface $ctx): SetChildNodesEvent
-	{
-		return SetChildNodesEvent::fromJson($this->internalClient->awaitEvent($ctx, 'DOM.setChildNodes'));
+		$request = new \stdClass();
+		$this->internalClient->executeCommand($ctx, 'DOM.undo', $request);
 	}
 
 
@@ -397,20 +369,6 @@ class DOMDomain implements DOMDomainInterface
 	public function awaitAttributeRemoved(ContextInterface $ctx): AttributeRemovedEvent
 	{
 		return AttributeRemovedEvent::fromJson($this->internalClient->awaitEvent($ctx, 'DOM.attributeRemoved'));
-	}
-
-
-	public function addInlineStyleInvalidatedListener(callable $listener): SubscriptionInterface
-	{
-		return $this->internalClient->addListener('DOM.inlineStyleInvalidated', function ($event) use ($listener) {
-			return $listener(InlineStyleInvalidatedEvent::fromJson($event));
-		});
-	}
-
-
-	public function awaitInlineStyleInvalidated(ContextInterface $ctx): InlineStyleInvalidatedEvent
-	{
-		return InlineStyleInvalidatedEvent::fromJson($this->internalClient->awaitEvent($ctx, 'DOM.inlineStyleInvalidated'));
 	}
 
 
@@ -470,31 +428,45 @@ class DOMDomain implements DOMDomainInterface
 	}
 
 
-	public function addShadowRootPushedListener(callable $listener): SubscriptionInterface
+	public function addDistributedNodesUpdatedListener(callable $listener): SubscriptionInterface
 	{
-		return $this->internalClient->addListener('DOM.shadowRootPushed', function ($event) use ($listener) {
-			return $listener(ShadowRootPushedEvent::fromJson($event));
+		return $this->internalClient->addListener('DOM.distributedNodesUpdated', function ($event) use ($listener) {
+			return $listener(DistributedNodesUpdatedEvent::fromJson($event));
 		});
 	}
 
 
-	public function awaitShadowRootPushed(ContextInterface $ctx): ShadowRootPushedEvent
+	public function awaitDistributedNodesUpdated(ContextInterface $ctx): DistributedNodesUpdatedEvent
 	{
-		return ShadowRootPushedEvent::fromJson($this->internalClient->awaitEvent($ctx, 'DOM.shadowRootPushed'));
+		return DistributedNodesUpdatedEvent::fromJson($this->internalClient->awaitEvent($ctx, 'DOM.distributedNodesUpdated'));
 	}
 
 
-	public function addShadowRootPoppedListener(callable $listener): SubscriptionInterface
+	public function addDocumentUpdatedListener(callable $listener): SubscriptionInterface
 	{
-		return $this->internalClient->addListener('DOM.shadowRootPopped', function ($event) use ($listener) {
-			return $listener(ShadowRootPoppedEvent::fromJson($event));
+		return $this->internalClient->addListener('DOM.documentUpdated', function ($event) use ($listener) {
+			return $listener(DocumentUpdatedEvent::fromJson($event));
 		});
 	}
 
 
-	public function awaitShadowRootPopped(ContextInterface $ctx): ShadowRootPoppedEvent
+	public function awaitDocumentUpdated(ContextInterface $ctx): DocumentUpdatedEvent
 	{
-		return ShadowRootPoppedEvent::fromJson($this->internalClient->awaitEvent($ctx, 'DOM.shadowRootPopped'));
+		return DocumentUpdatedEvent::fromJson($this->internalClient->awaitEvent($ctx, 'DOM.documentUpdated'));
+	}
+
+
+	public function addInlineStyleInvalidatedListener(callable $listener): SubscriptionInterface
+	{
+		return $this->internalClient->addListener('DOM.inlineStyleInvalidated', function ($event) use ($listener) {
+			return $listener(InlineStyleInvalidatedEvent::fromJson($event));
+		});
+	}
+
+
+	public function awaitInlineStyleInvalidated(ContextInterface $ctx): InlineStyleInvalidatedEvent
+	{
+		return InlineStyleInvalidatedEvent::fromJson($this->internalClient->awaitEvent($ctx, 'DOM.inlineStyleInvalidated'));
 	}
 
 
@@ -526,16 +498,44 @@ class DOMDomain implements DOMDomainInterface
 	}
 
 
-	public function addDistributedNodesUpdatedListener(callable $listener): SubscriptionInterface
+	public function addSetChildNodesListener(callable $listener): SubscriptionInterface
 	{
-		return $this->internalClient->addListener('DOM.distributedNodesUpdated', function ($event) use ($listener) {
-			return $listener(DistributedNodesUpdatedEvent::fromJson($event));
+		return $this->internalClient->addListener('DOM.setChildNodes', function ($event) use ($listener) {
+			return $listener(SetChildNodesEvent::fromJson($event));
 		});
 	}
 
 
-	public function awaitDistributedNodesUpdated(ContextInterface $ctx): DistributedNodesUpdatedEvent
+	public function awaitSetChildNodes(ContextInterface $ctx): SetChildNodesEvent
 	{
-		return DistributedNodesUpdatedEvent::fromJson($this->internalClient->awaitEvent($ctx, 'DOM.distributedNodesUpdated'));
+		return SetChildNodesEvent::fromJson($this->internalClient->awaitEvent($ctx, 'DOM.setChildNodes'));
+	}
+
+
+	public function addShadowRootPoppedListener(callable $listener): SubscriptionInterface
+	{
+		return $this->internalClient->addListener('DOM.shadowRootPopped', function ($event) use ($listener) {
+			return $listener(ShadowRootPoppedEvent::fromJson($event));
+		});
+	}
+
+
+	public function awaitShadowRootPopped(ContextInterface $ctx): ShadowRootPoppedEvent
+	{
+		return ShadowRootPoppedEvent::fromJson($this->internalClient->awaitEvent($ctx, 'DOM.shadowRootPopped'));
+	}
+
+
+	public function addShadowRootPushedListener(callable $listener): SubscriptionInterface
+	{
+		return $this->internalClient->addListener('DOM.shadowRootPushed', function ($event) use ($listener) {
+			return $listener(ShadowRootPushedEvent::fromJson($event));
+		});
+	}
+
+
+	public function awaitShadowRootPushed(ContextInterface $ctx): ShadowRootPushedEvent
+	{
+		return ShadowRootPushedEvent::fromJson($this->internalClient->awaitEvent($ctx, 'DOM.shadowRootPushed'));
 	}
 }

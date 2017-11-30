@@ -19,17 +19,17 @@ class PerformanceDomain implements PerformanceDomainInterface
 	}
 
 
-	public function enable(ContextInterface $ctx): void
-	{
-		$request = new \stdClass();
-		$this->internalClient->executeCommand($ctx, 'Performance.enable', $request);
-	}
-
-
 	public function disable(ContextInterface $ctx): void
 	{
 		$request = new \stdClass();
 		$this->internalClient->executeCommand($ctx, 'Performance.disable', $request);
+	}
+
+
+	public function enable(ContextInterface $ctx): void
+	{
+		$request = new \stdClass();
+		$this->internalClient->executeCommand($ctx, 'Performance.enable', $request);
 	}
 
 

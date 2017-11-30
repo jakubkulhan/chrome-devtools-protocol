@@ -24,12 +24,6 @@ class InputDomain implements InputDomainInterface
 	}
 
 
-	public function setIgnoreInputEvents(ContextInterface $ctx, SetIgnoreInputEventsRequest $request): void
-	{
-		$this->internalClient->executeCommand($ctx, 'Input.setIgnoreInputEvents', $request);
-	}
-
-
 	public function dispatchKeyEvent(ContextInterface $ctx, DispatchKeyEventRequest $request): void
 	{
 		$this->internalClient->executeCommand($ctx, 'Input.dispatchKeyEvent', $request);
@@ -51,6 +45,12 @@ class InputDomain implements InputDomainInterface
 	public function emulateTouchFromMouseEvent(ContextInterface $ctx, EmulateTouchFromMouseEventRequest $request): void
 	{
 		$this->internalClient->executeCommand($ctx, 'Input.emulateTouchFromMouseEvent', $request);
+	}
+
+
+	public function setIgnoreInputEvents(ContextInterface $ctx, SetIgnoreInputEventsRequest $request): void
+	{
+		$this->internalClient->executeCommand($ctx, 'Input.setIgnoreInputEvents', $request);
 	}
 
 
