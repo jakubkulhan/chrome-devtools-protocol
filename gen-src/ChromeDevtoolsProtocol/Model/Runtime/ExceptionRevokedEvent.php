@@ -18,7 +18,7 @@ final class ExceptionRevokedEvent implements \JsonSerializable
 	public $reason;
 
 	/**
-	 * The id of revoked exception, as reported in <code>exceptionThrown</code>.
+	 * The id of revoked exception, as reported in `exceptionThrown`.
 	 *
 	 * @var int
 	 */

@@ -32,14 +32,14 @@ final class PropertyDescriptor implements \JsonSerializable
 	public $writable;
 
 	/**
-	 * A function which serves as a getter for the property, or <code>undefined</code> if there is no getter (accessor descriptors only).
+	 * A function which serves as a getter for the property, or `undefined` if there is no getter (accessor descriptors only).
 	 *
 	 * @var RemoteObject|null
 	 */
 	public $get;
 
 	/**
-	 * A function which serves as a setter for the property, or <code>undefined</code> if there is no setter (accessor descriptors only).
+	 * A function which serves as a setter for the property, or `undefined` if there is no setter (accessor descriptors only).
 	 *
 	 * @var RemoteObject|null
 	 */
@@ -74,7 +74,7 @@ final class PropertyDescriptor implements \JsonSerializable
 	public $isOwn;
 
 	/**
-	 * Property symbol object, if the property is of the <code>symbol</code> type.
+	 * Property symbol object, if the property is of the `symbol` type.
 	 *
 	 * @var RemoteObject|null
 	 */

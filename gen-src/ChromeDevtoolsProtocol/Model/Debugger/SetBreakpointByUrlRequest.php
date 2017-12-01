@@ -25,7 +25,7 @@ final class SetBreakpointByUrlRequest implements \JsonSerializable
 	public $url;
 
 	/**
-	 * Regex pattern for the URLs of the resources to set breakpoints on. Either <code>url</code> or <code>urlRegex</code> must be specified.
+	 * Regex pattern for the URLs of the resources to set breakpoints on. Either `url` or `urlRegex` must be specified.
 	 *
 	 * @var string|null
 	 */

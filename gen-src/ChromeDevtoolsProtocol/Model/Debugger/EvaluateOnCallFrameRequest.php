@@ -25,7 +25,7 @@ final class EvaluateOnCallFrameRequest implements \JsonSerializable
 	public $expression;
 
 	/**
-	 * String object group name to put result into (allows rapid releasing resulting object handles using <code>releaseObjectGroup</code>).
+	 * String object group name to put result into (allows rapid releasing resulting object handles using `releaseObjectGroup`).
 	 *
 	 * @var string|null
 	 */
@@ -39,7 +39,7 @@ final class EvaluateOnCallFrameRequest implements \JsonSerializable
 	public $includeCommandLineAPI;
 
 	/**
-	 * In silent mode exceptions thrown during evaluation are not reported and do not pause execution. Overrides <code>setPauseOnException</code> state.
+	 * In silent mode exceptions thrown during evaluation are not reported and do not pause execution. Overrides `setPauseOnException` state.
 	 *
 	 * @var bool|null
 	 */

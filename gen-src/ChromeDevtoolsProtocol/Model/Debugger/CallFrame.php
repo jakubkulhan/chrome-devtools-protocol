@@ -55,7 +55,7 @@ final class CallFrame implements \JsonSerializable
 	public $scopeChain;
 
 	/**
-	 * <code>this</code> object for this call frame.
+	 * `this` object for this call frame.
 	 *
 	 * @var RemoteObject
 	 */

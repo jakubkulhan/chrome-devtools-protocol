@@ -114,7 +114,7 @@ interface DebuggerDomainInterface
 
 
 	/**
-	 * Returns stack trace with given <code>stackTraceId</code>.
+	 * Returns stack trace with given `stackTraceId`.
 	 *
 	 * @param ContextInterface $ctx
 	 * @param GetStackTraceRequest $request
@@ -243,7 +243,7 @@ interface DebuggerDomainInterface
 
 
 	/**
-	 * Sets JavaScript breakpoint at given location specified either by URL or URL regex. Once this command is issued, all existing parsed scripts will have breakpoints resolved and returned in <code>locations</code> property. Further matching script parsing will result in subsequent <code>breakpointResolved</code> events issued. This logical breakpoint will survive page reloads.
+	 * Sets JavaScript breakpoint at given location specified either by URL or URL regex. Once this command is issued, all existing parsed scripts will have breakpoints resolved and returned in `locations` property. Further matching script parsing will result in subsequent `breakpointResolved` events issued. This logical breakpoint will survive page reloads.
 	 *
 	 * @param ContextInterface $ctx
 	 * @param SetBreakpointByUrlRequest $request
@@ -265,7 +265,7 @@ interface DebuggerDomainInterface
 
 
 	/**
-	 * Defines pause on exceptions state. Can be set to stop on all exceptions, uncaught exceptions or no exceptions. Initial pause on exceptions state is <code>none</code>.
+	 * Defines pause on exceptions state. Can be set to stop on all exceptions, uncaught exceptions or no exceptions. Initial pause on exceptions state is `none`.
 	 *
 	 * @param ContextInterface $ctx
 	 * @param SetPauseOnExceptionsRequest $request

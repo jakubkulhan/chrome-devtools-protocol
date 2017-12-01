@@ -39,7 +39,7 @@ final class PropertyPreview implements \JsonSerializable
 	public $valuePreview;
 
 	/**
-	 * Object subtype hint. Specified for <code>object</code> type values only.
+	 * Object subtype hint. Specified for `object` type values only.
 	 *
 	 * @var string|null
 	 */

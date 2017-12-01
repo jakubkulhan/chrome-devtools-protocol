@@ -32,7 +32,7 @@ final class EvaluateRequest implements \JsonSerializable
 	public $includeCommandLineAPI;
 
 	/**
-	 * In silent mode exceptions thrown during evaluation are not reported and do not pause execution. Overrides <code>setPauseOnException</code> state.
+	 * In silent mode exceptions thrown during evaluation are not reported and do not pause execution. Overrides `setPauseOnException` state.
 	 *
 	 * @var bool|null
 	 */
@@ -67,7 +67,7 @@ final class EvaluateRequest implements \JsonSerializable
 	public $userGesture;
 
 	/**
-	 * Whether execution should <code>await</code> for resulting value and return once awaited promise is resolved.
+	 * Whether execution should `await` for resulting value and return once awaited promise is resolved.
 	 *
 	 * @var bool|null
 	 */

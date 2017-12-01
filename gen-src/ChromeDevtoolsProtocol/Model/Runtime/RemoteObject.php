@@ -18,14 +18,14 @@ final class RemoteObject implements \JsonSerializable
 	public $type;
 
 	/**
-	 * Object subtype hint. Specified for <code>object</code> type values only.
+	 * Object subtype hint. Specified for `object` type values only.
 	 *
 	 * @var string|null
 	 */
 	public $subtype;
 
 	/**
-	 * Object class (constructor) name. Specified for <code>object</code> type values only.
+	 * Object class (constructor) name. Specified for `object` type values only.
 	 *
 	 * @var string|null
 	 */
@@ -39,7 +39,7 @@ final class RemoteObject implements \JsonSerializable
 	public $value;
 
 	/**
-	 * Primitive value which can not be JSON-stringified does not have <code>value</code>, but gets this property.
+	 * Primitive value which can not be JSON-stringified does not have `value`, but gets this property.
 	 *
 	 * @var string
 	 */
@@ -60,7 +60,7 @@ final class RemoteObject implements \JsonSerializable
 	public $objectId;
 
 	/**
-	 * Preview containing abbreviated property values. Specified for <code>object</code> type values only.
+	 * Preview containing abbreviated property values. Specified for `object` type values only.
 	 *
 	 * @var ObjectPreview|null
 	 */

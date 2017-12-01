@@ -11,7 +11,7 @@ namespace ChromeDevtoolsProtocol\Model\Debugger;
 final class BreakLocation implements \JsonSerializable
 {
 	/**
-	 * Script identifier as reported in the <code>Debugger.scriptParsed</code>.
+	 * Script identifier as reported in the `Debugger.scriptParsed`.
 	 *
 	 * @var string
 	 */

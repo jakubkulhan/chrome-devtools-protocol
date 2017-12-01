@@ -18,7 +18,7 @@ final class ObjectPreview implements \JsonSerializable
 	public $type;
 
 	/**
-	 * Object subtype hint. Specified for <code>object</code> type values only.
+	 * Object subtype hint. Specified for `object` type values only.
 	 *
 	 * @var string|null
 	 */
@@ -46,7 +46,7 @@ final class ObjectPreview implements \JsonSerializable
 	public $properties;
 
 	/**
-	 * List of the entries. Specified for <code>map</code> and <code>set</code> subtype values only.
+	 * List of the entries. Specified for `map` and `set` subtype values only.
 	 *
 	 * @var EntryPreview[]|null
 	 */
