@@ -66,7 +66,7 @@ class DevtoolsClientTest extends TestCase
 		try {
 			$tab = $instance->tabs($ctx)[0];
 
-			/** @var DevtoolsClientInterface|InternalClientInterface $client */
+			/** @var DevtoolsClientInterface & InternalClientInterface $client */
 			$client = $tab->devtools();
 			try {
 

@@ -35,9 +35,6 @@ class Launcher
 	/** @var mixed */
 	private $input;
 
-	/** @var array|null */
-	private $options;
-
 	/**
 	 * @param int $port If port <= 0, random port number is generated.
 	 */
@@ -95,18 +92,6 @@ class Launcher
 	public function setInput($input)
 	{
 		$this->input = $input;
-		return $this;
-	}
-
-	/**
-	 * Other options for `proc_open()`.
-	 *
-	 * @param array|null $options
-	 * @return self
-	 */
-	public function setOptions(?array $options)
-	{
-		$this->options = $options;
 		return $this;
 	}
 
@@ -191,8 +176,7 @@ class Launcher
 				$this->workDir,
 				$this->env,
 				$this->input,
-				null,
-				$this->options
+				null
 			);
 			$process->start();
 

@@ -92,7 +92,9 @@ trait DevtoolsClientTrait
 			/** @var InternalClientInterface $this */
 			$this->domains['Accessibility'] = new AccessibilityDomain($this);
 		}
-		return $this->domains['Accessibility'];
+		/** @var AccessibilityDomainInterface $domain */
+		$domain = $this->domains['Accessibility'];
+		return $domain;
 	}
 
 
@@ -102,7 +104,9 @@ trait DevtoolsClientTrait
 			/** @var InternalClientInterface $this */
 			$this->domains['Animation'] = new AnimationDomain($this);
 		}
-		return $this->domains['Animation'];
+		/** @var AnimationDomainInterface $domain */
+		$domain = $this->domains['Animation'];
+		return $domain;
 	}
 
 
@@ -112,7 +116,9 @@ trait DevtoolsClientTrait
 			/** @var InternalClientInterface $this */
 			$this->domains['ApplicationCache'] = new ApplicationCacheDomain($this);
 		}
-		return $this->domains['ApplicationCache'];
+		/** @var ApplicationCacheDomainInterface $domain */
+		$domain = $this->domains['ApplicationCache'];
+		return $domain;
 	}
 
 
@@ -122,7 +128,9 @@ trait DevtoolsClientTrait
 			/** @var InternalClientInterface $this */
 			$this->domains['Audits'] = new AuditsDomain($this);
 		}
-		return $this->domains['Audits'];
+		/** @var AuditsDomainInterface $domain */
+		$domain = $this->domains['Audits'];
+		return $domain;
 	}
 
 
@@ -132,7 +140,9 @@ trait DevtoolsClientTrait
 			/** @var InternalClientInterface $this */
 			$this->domains['Browser'] = new BrowserDomain($this);
 		}
-		return $this->domains['Browser'];
+		/** @var BrowserDomainInterface $domain */
+		$domain = $this->domains['Browser'];
+		return $domain;
 	}
 
 
@@ -142,7 +152,9 @@ trait DevtoolsClientTrait
 			/** @var InternalClientInterface $this */
 			$this->domains['CacheStorage'] = new CacheStorageDomain($this);
 		}
-		return $this->domains['CacheStorage'];
+		/** @var CacheStorageDomainInterface $domain */
+		$domain = $this->domains['CacheStorage'];
+		return $domain;
 	}
 
 
@@ -152,7 +164,9 @@ trait DevtoolsClientTrait
 			/** @var InternalClientInterface $this */
 			$this->domains['Console'] = new ConsoleDomain($this);
 		}
-		return $this->domains['Console'];
+		/** @var ConsoleDomainInterface $domain */
+		$domain = $this->domains['Console'];
+		return $domain;
 	}
 
 
@@ -162,7 +176,9 @@ trait DevtoolsClientTrait
 			/** @var InternalClientInterface $this */
 			$this->domains['CSS'] = new CSSDomain($this);
 		}
-		return $this->domains['CSS'];
+		/** @var CSSDomainInterface $domain */
+		$domain = $this->domains['CSS'];
+		return $domain;
 	}
 
 
@@ -172,7 +188,9 @@ trait DevtoolsClientTrait
 			/** @var InternalClientInterface $this */
 			$this->domains['Database'] = new DatabaseDomain($this);
 		}
-		return $this->domains['Database'];
+		/** @var DatabaseDomainInterface $domain */
+		$domain = $this->domains['Database'];
+		return $domain;
 	}
 
 
@@ -182,7 +200,9 @@ trait DevtoolsClientTrait
 			/** @var InternalClientInterface $this */
 			$this->domains['Debugger'] = new DebuggerDomain($this);
 		}
-		return $this->domains['Debugger'];
+		/** @var DebuggerDomainInterface $domain */
+		$domain = $this->domains['Debugger'];
+		return $domain;
 	}
 
 
@@ -192,7 +212,9 @@ trait DevtoolsClientTrait
 			/** @var InternalClientInterface $this */
 			$this->domains['DeviceOrientation'] = new DeviceOrientationDomain($this);
 		}
-		return $this->domains['DeviceOrientation'];
+		/** @var DeviceOrientationDomainInterface $domain */
+		$domain = $this->domains['DeviceOrientation'];
+		return $domain;
 	}
 
 
@@ -202,7 +224,9 @@ trait DevtoolsClientTrait
 			/** @var InternalClientInterface $this */
 			$this->domains['DOM'] = new DOMDomain($this);
 		}
-		return $this->domains['DOM'];
+		/** @var DOMDomainInterface $domain */
+		$domain = $this->domains['DOM'];
+		return $domain;
 	}
 
 
@@ -212,7 +236,9 @@ trait DevtoolsClientTrait
 			/** @var InternalClientInterface $this */
 			$this->domains['DOMDebugger'] = new DOMDebuggerDomain($this);
 		}
-		return $this->domains['DOMDebugger'];
+		/** @var DOMDebuggerDomainInterface $domain */
+		$domain = $this->domains['DOMDebugger'];
+		return $domain;
 	}
 
 
@@ -222,7 +248,9 @@ trait DevtoolsClientTrait
 			/** @var InternalClientInterface $this */
 			$this->domains['DOMSnapshot'] = new DOMSnapshotDomain($this);
 		}
-		return $this->domains['DOMSnapshot'];
+		/** @var DOMSnapshotDomainInterface $domain */
+		$domain = $this->domains['DOMSnapshot'];
+		return $domain;
 	}
 
 
@@ -232,7 +260,9 @@ trait DevtoolsClientTrait
 			/** @var InternalClientInterface $this */
 			$this->domains['DOMStorage'] = new DOMStorageDomain($this);
 		}
-		return $this->domains['DOMStorage'];
+		/** @var DOMStorageDomainInterface $domain */
+		$domain = $this->domains['DOMStorage'];
+		return $domain;
 	}
 
 
@@ -242,7 +272,9 @@ trait DevtoolsClientTrait
 			/** @var InternalClientInterface $this */
 			$this->domains['Emulation'] = new EmulationDomain($this);
 		}
-		return $this->domains['Emulation'];
+		/** @var EmulationDomainInterface $domain */
+		$domain = $this->domains['Emulation'];
+		return $domain;
 	}
 
 
@@ -252,7 +284,9 @@ trait DevtoolsClientTrait
 			/** @var InternalClientInterface $this */
 			$this->domains['HeadlessExperimental'] = new HeadlessExperimentalDomain($this);
 		}
-		return $this->domains['HeadlessExperimental'];
+		/** @var HeadlessExperimentalDomainInterface $domain */
+		$domain = $this->domains['HeadlessExperimental'];
+		return $domain;
 	}
 
 
@@ -262,7 +296,9 @@ trait DevtoolsClientTrait
 			/** @var InternalClientInterface $this */
 			$this->domains['HeapProfiler'] = new HeapProfilerDomain($this);
 		}
-		return $this->domains['HeapProfiler'];
+		/** @var HeapProfilerDomainInterface $domain */
+		$domain = $this->domains['HeapProfiler'];
+		return $domain;
 	}
 
 
@@ -272,7 +308,9 @@ trait DevtoolsClientTrait
 			/** @var InternalClientInterface $this */
 			$this->domains['IndexedDB'] = new IndexedDBDomain($this);
 		}
-		return $this->domains['IndexedDB'];
+		/** @var IndexedDBDomainInterface $domain */
+		$domain = $this->domains['IndexedDB'];
+		return $domain;
 	}
 
 
@@ -282,7 +320,9 @@ trait DevtoolsClientTrait
 			/** @var InternalClientInterface $this */
 			$this->domains['Input'] = new InputDomain($this);
 		}
-		return $this->domains['Input'];
+		/** @var InputDomainInterface $domain */
+		$domain = $this->domains['Input'];
+		return $domain;
 	}
 
 
@@ -292,7 +332,9 @@ trait DevtoolsClientTrait
 			/** @var InternalClientInterface $this */
 			$this->domains['Inspector'] = new InspectorDomain($this);
 		}
-		return $this->domains['Inspector'];
+		/** @var InspectorDomainInterface $domain */
+		$domain = $this->domains['Inspector'];
+		return $domain;
 	}
 
 
@@ -302,7 +344,9 @@ trait DevtoolsClientTrait
 			/** @var InternalClientInterface $this */
 			$this->domains['IO'] = new IODomain($this);
 		}
-		return $this->domains['IO'];
+		/** @var IODomainInterface $domain */
+		$domain = $this->domains['IO'];
+		return $domain;
 	}
 
 
@@ -312,7 +356,9 @@ trait DevtoolsClientTrait
 			/** @var InternalClientInterface $this */
 			$this->domains['LayerTree'] = new LayerTreeDomain($this);
 		}
-		return $this->domains['LayerTree'];
+		/** @var LayerTreeDomainInterface $domain */
+		$domain = $this->domains['LayerTree'];
+		return $domain;
 	}
 
 
@@ -322,7 +368,9 @@ trait DevtoolsClientTrait
 			/** @var InternalClientInterface $this */
 			$this->domains['Log'] = new LogDomain($this);
 		}
-		return $this->domains['Log'];
+		/** @var LogDomainInterface $domain */
+		$domain = $this->domains['Log'];
+		return $domain;
 	}
 
 
@@ -332,7 +380,9 @@ trait DevtoolsClientTrait
 			/** @var InternalClientInterface $this */
 			$this->domains['Memory'] = new MemoryDomain($this);
 		}
-		return $this->domains['Memory'];
+		/** @var MemoryDomainInterface $domain */
+		$domain = $this->domains['Memory'];
+		return $domain;
 	}
 
 
@@ -342,7 +392,9 @@ trait DevtoolsClientTrait
 			/** @var InternalClientInterface $this */
 			$this->domains['Network'] = new NetworkDomain($this);
 		}
-		return $this->domains['Network'];
+		/** @var NetworkDomainInterface $domain */
+		$domain = $this->domains['Network'];
+		return $domain;
 	}
 
 
@@ -352,7 +404,9 @@ trait DevtoolsClientTrait
 			/** @var InternalClientInterface $this */
 			$this->domains['Overlay'] = new OverlayDomain($this);
 		}
-		return $this->domains['Overlay'];
+		/** @var OverlayDomainInterface $domain */
+		$domain = $this->domains['Overlay'];
+		return $domain;
 	}
 
 
@@ -362,7 +416,9 @@ trait DevtoolsClientTrait
 			/** @var InternalClientInterface $this */
 			$this->domains['Page'] = new PageDomain($this);
 		}
-		return $this->domains['Page'];
+		/** @var PageDomainInterface $domain */
+		$domain = $this->domains['Page'];
+		return $domain;
 	}
 
 
@@ -372,7 +428,9 @@ trait DevtoolsClientTrait
 			/** @var InternalClientInterface $this */
 			$this->domains['Performance'] = new PerformanceDomain($this);
 		}
-		return $this->domains['Performance'];
+		/** @var PerformanceDomainInterface $domain */
+		$domain = $this->domains['Performance'];
+		return $domain;
 	}
 
 
@@ -382,7 +440,9 @@ trait DevtoolsClientTrait
 			/** @var InternalClientInterface $this */
 			$this->domains['Profiler'] = new ProfilerDomain($this);
 		}
-		return $this->domains['Profiler'];
+		/** @var ProfilerDomainInterface $domain */
+		$domain = $this->domains['Profiler'];
+		return $domain;
 	}
 
 
@@ -392,7 +452,9 @@ trait DevtoolsClientTrait
 			/** @var InternalClientInterface $this */
 			$this->domains['Runtime'] = new RuntimeDomain($this);
 		}
-		return $this->domains['Runtime'];
+		/** @var RuntimeDomainInterface $domain */
+		$domain = $this->domains['Runtime'];
+		return $domain;
 	}
 
 
@@ -402,7 +464,9 @@ trait DevtoolsClientTrait
 			/** @var InternalClientInterface $this */
 			$this->domains['Schema'] = new SchemaDomain($this);
 		}
-		return $this->domains['Schema'];
+		/** @var SchemaDomainInterface $domain */
+		$domain = $this->domains['Schema'];
+		return $domain;
 	}
 
 
@@ -412,7 +476,9 @@ trait DevtoolsClientTrait
 			/** @var InternalClientInterface $this */
 			$this->domains['Security'] = new SecurityDomain($this);
 		}
-		return $this->domains['Security'];
+		/** @var SecurityDomainInterface $domain */
+		$domain = $this->domains['Security'];
+		return $domain;
 	}
 
 
@@ -422,7 +488,9 @@ trait DevtoolsClientTrait
 			/** @var InternalClientInterface $this */
 			$this->domains['ServiceWorker'] = new ServiceWorkerDomain($this);
 		}
-		return $this->domains['ServiceWorker'];
+		/** @var ServiceWorkerDomainInterface $domain */
+		$domain = $this->domains['ServiceWorker'];
+		return $domain;
 	}
 
 
@@ -432,7 +500,9 @@ trait DevtoolsClientTrait
 			/** @var InternalClientInterface $this */
 			$this->domains['Storage'] = new StorageDomain($this);
 		}
-		return $this->domains['Storage'];
+		/** @var StorageDomainInterface $domain */
+		$domain = $this->domains['Storage'];
+		return $domain;
 	}
 
 
@@ -442,7 +512,9 @@ trait DevtoolsClientTrait
 			/** @var InternalClientInterface $this */
 			$this->domains['SystemInfo'] = new SystemInfoDomain($this);
 		}
-		return $this->domains['SystemInfo'];
+		/** @var SystemInfoDomainInterface $domain */
+		$domain = $this->domains['SystemInfo'];
+		return $domain;
 	}
 
 
@@ -452,7 +524,9 @@ trait DevtoolsClientTrait
 			/** @var InternalClientInterface $this */
 			$this->domains['Target'] = new TargetDomain($this);
 		}
-		return $this->domains['Target'];
+		/** @var TargetDomainInterface $domain */
+		$domain = $this->domains['Target'];
+		return $domain;
 	}
 
 
@@ -462,7 +536,9 @@ trait DevtoolsClientTrait
 			/** @var InternalClientInterface $this */
 			$this->domains['Tethering'] = new TetheringDomain($this);
 		}
-		return $this->domains['Tethering'];
+		/** @var TetheringDomainInterface $domain */
+		$domain = $this->domains['Tethering'];
+		return $domain;
 	}
 
 
@@ -472,6 +548,8 @@ trait DevtoolsClientTrait
 			/** @var InternalClientInterface $this */
 			$this->domains['Tracing'] = new TracingDomain($this);
 		}
-		return $this->domains['Tracing'];
+		/** @var TracingDomainInterface $domain */
+		$domain = $this->domains['Tracing'];
+		return $domain;
 	}
 }

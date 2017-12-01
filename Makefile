@@ -35,4 +35,4 @@ phpunit:
 	./vendor/bin/phpunit $(PHPUNIT_FLAGS)
 
 phpstan:
-	./vendor/bin/phpstan analyse --level=6 --memory-limit=1g gen-src src test
+	./vendor/bin/phpstan analyse --level=6 --configuration=phpstan.neon --memory-limit=1g gen-src src test

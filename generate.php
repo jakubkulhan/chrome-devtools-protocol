@@ -199,7 +199,7 @@ class Generator
 				->setTypeHint(InternalClientInterface::class);
 			$domainConstructor->addBody("\$this->internalClient = \$internalClient;");
 
-			$clientTrait->getNamespace()->addUse($domainInterfaceName);
+			$clientTrait->getNamespace()->addUse($domainInterfaceName, null, $domainInterfaceAlias);
 			$clientTraitMethod = $clientTrait->addMethod($clientInterfaceMethod->getName());
 			$clientTraitMethod->setVisibility("public");
 			$clientTraitMethod->setReturnType($domainInterfaceName);
@@ -210,7 +210,9 @@ class Generator
 				->addBody("\t/** @var {$thisAlias} \$this */")
 				->addBody("\t\$this->domains[" . var_export($domainSpec->domain, true) . "] = new {$domainImplementationAlias}(\$this);")
 				->addBody("}")
-				->addBody("return \$this->domains[" . var_export($domainSpec->domain, true) . "];");
+				->addBody("/** @var {$domainInterfaceAlias} \$domain */")
+				->addBody("\$domain = \$this->domains[" . var_export($domainSpec->domain, true) . "];")
+				->addBody("return \$domain;");
 
 			$domainInterface->addComment("")
 				->addComment(static::GENERATED_COMMENT)

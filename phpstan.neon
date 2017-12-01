@@ -1,0 +1,8 @@
+parameters:
+  ignoreErrors:
+  - '/Strict comparison using === between string and null will always evaluate to false./'
+  excludes_analyse:
+  # Probably some messed-up imports in PHPStan 0.9, reports errors such as:
+  # Method ChromeDevtoolsProtocol\Session::accessibility() should return ChromeDevtoolsProtocol\Domain\AccessibilityDomainInterface but returns object.
+  - src/ChromeDevtoolsProtocol/DevtoolsClient.php
+  - src/ChromeDevtoolsProtocol/Session.php
