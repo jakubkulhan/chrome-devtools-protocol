@@ -24,22 +24,22 @@ $protocolJs = json_decode(base64_decode($response->getBody()->getContents()));
 
 $protocol->domains = array_merge($protocol->domains, $protocolJs->domains);
 
-usort($protocol->domains, function (object $a, object $b) {
+usort($protocol->domains, function ($a, $b) {
 	return strcasecmp($a->domain, $b->domain);
 });
 foreach ($protocol->domains as $domainSpec) {
 	$domainSpec->commands = $domainSpec->commands ?? [];
-	usort($domainSpec->commands, function (object $a, object $b) {
+	usort($domainSpec->commands, function ($a, $b) {
 		return strcasecmp($a->name, $b->name);
 	});
 
 	$domainSpec->events = $domainSpec->events ?? [];
-	usort($domainSpec->events, function (object $a, object $b) {
+	usort($domainSpec->events, function ($a, $b) {
 		return strcasecmp($a->name, $b->name);
 	});
 }
 
-function unifyDescriptions(object $object)
+function unifyDescriptions($object)
 {
 	$returnObject = new \stdClass();
 
