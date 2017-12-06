@@ -17,12 +17,22 @@ final class TracingCompleteEvent implements \JsonSerializable
 	 */
 	public $stream;
 
+	/**
+	 * Compression format of returned stream.
+	 *
+	 * @var string
+	 */
+	public $streamCompression;
+
 
 	public static function fromJson($data)
 	{
 		$instance = new static();
 		if (isset($data->stream)) {
 			$instance->stream = (string)$data->stream;
+		}
+		if (isset($data->streamCompression)) {
+			$instance->streamCompression = (string)$data->streamCompression;
 		}
 		return $instance;
 	}
@@ -33,6 +43,9 @@ final class TracingCompleteEvent implements \JsonSerializable
 		$data = new \stdClass();
 		if ($this->stream !== null) {
 			$data->stream = $this->stream;
+		}
+		if ($this->streamCompression !== null) {
+			$data->streamCompression = $this->streamCompression;
 		}
 		return $data;
 	}

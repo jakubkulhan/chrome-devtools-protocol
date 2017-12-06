@@ -160,10 +160,6 @@ class Generator
 			->setVisibility("private")
 			->addComment("@var object[]");
 
-		usort($protocol->domains, function (\stdClass $a, \stdClass $b) {
-			return strcasecmp($a->domain, $b->domain);
-		});
-
 		foreach ($protocol->domains as $domainSpec) {
 			$domainInterfaceName = __NAMESPACE__ . "\\Domain\\" . $domainSpec->domain . "DomainInterface";
 			$domainInterface = $this->addInterface($domainInterfaceName);
@@ -218,11 +214,6 @@ class Generator
 				->addComment(static::GENERATED_COMMENT)
 				->addComment("")
 				->addComment(static::AUTHOR_COMMENT);
-
-			$domainSpec->commands = $domainSpec->commands ?? [];
-			usort($domainSpec->commands, function (\stdClass $a, \stdClass $b) {
-				return strcasecmp($a->name, $b->name);
-			});
 
 			foreach ($domainSpec->commands as $commandSpec) {
 				$interfaceCommandMethod = $domainInterface->addMethod($commandSpec->name);
@@ -301,11 +292,6 @@ class Generator
 				}
 
 			}
-
-			$domainSpec->events = $domainSpec->events ?? [];
-			usort($domainSpec->events, function (\stdClass $a, \stdClass $b) {
-				return strcasecmp($a->name, $b->name);
-			});
 
 			foreach ($domainSpec->events as $eventSpec) {
 				$domainInterface->getNamespace()->addUse(SubscriptionInterface::class, null, $subscriptionAlias);

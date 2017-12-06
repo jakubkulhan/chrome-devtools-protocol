@@ -181,7 +181,7 @@ interface EmulationDomainInterface
 
 
 	/**
-	 * Turns on virtual time for all frames (replacing real-time with a synthetic time source) and sets the current virtual time policy.  Note this supersedes any previous time budget.
+	 * Turns on virtual time for all frames (replacing real-time with a synthetic time source) and sets the current virtual time policy. Note this supersedes any previous time budget.
 	 *
 	 * @param ContextInterface $ctx
 	 * @param SetVirtualTimePolicyRequest $request

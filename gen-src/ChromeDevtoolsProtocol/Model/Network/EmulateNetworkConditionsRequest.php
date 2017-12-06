@@ -32,7 +32,7 @@ final class EmulateNetworkConditionsRequest implements \JsonSerializable
 	public $downloadThroughput;
 
 	/**
-	 * Maximal aggregated upload throughput (bytes/sec).  -1 disables upload throttling.
+	 * Maximal aggregated upload throughput (bytes/sec). -1 disables upload throttling.
 	 *
 	 * @var int|float
 	 */

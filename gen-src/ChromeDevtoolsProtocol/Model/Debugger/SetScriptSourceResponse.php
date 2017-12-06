@@ -22,7 +22,7 @@ final class SetScriptSourceResponse implements \JsonSerializable
 	public $callFrames;
 
 	/**
-	 * Whether current call stack  was modified after applying the changes.
+	 * Whether current call stack was modified after applying the changes.
 	 *
 	 * @var bool|null
 	 */
