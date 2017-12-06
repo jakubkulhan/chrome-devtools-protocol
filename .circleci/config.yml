@@ -61,6 +61,12 @@ jobs:
     - image: circleci/php:7.1-node-browsers
     steps:
     - checkout
+    - restore_cache:
+        keys:
+        - v2_composer_{{ .Branch }}
+    - run:
+        command: |
+          composer update --prefer-dist --no-progress --classmap-authoritative
     - run:
         command: |
           make download-protocol check-protocol
