@@ -4,6 +4,7 @@ namespace ChromeDevtoolsProtocol\Domain;
 use ChromeDevtoolsProtocol\ContextInterface;
 use ChromeDevtoolsProtocol\Model\IndexedDB\ClearObjectStoreRequest;
 use ChromeDevtoolsProtocol\Model\IndexedDB\DeleteDatabaseRequest;
+use ChromeDevtoolsProtocol\Model\IndexedDB\DeleteObjectStoreEntriesRequest;
 use ChromeDevtoolsProtocol\Model\IndexedDB\RequestDataRequest;
 use ChromeDevtoolsProtocol\Model\IndexedDB\RequestDataResponse;
 use ChromeDevtoolsProtocol\Model\IndexedDB\RequestDatabaseNamesRequest;
@@ -42,6 +43,17 @@ interface IndexedDBDomainInterface
 	 * @return void
 	 */
 	public function deleteDatabase(ContextInterface $ctx, DeleteDatabaseRequest $request): void;
+
+
+	/**
+	 * Delete a range of entries from an object store
+	 *
+	 * @param ContextInterface $ctx
+	 * @param DeleteObjectStoreEntriesRequest $request
+	 *
+	 * @return void
+	 */
+	public function deleteObjectStoreEntries(ContextInterface $ctx, DeleteObjectStoreEntriesRequest $request): void;
 
 
 	/**

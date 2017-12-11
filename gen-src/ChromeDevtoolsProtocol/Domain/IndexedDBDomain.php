@@ -5,6 +5,7 @@ use ChromeDevtoolsProtocol\ContextInterface;
 use ChromeDevtoolsProtocol\InternalClientInterface;
 use ChromeDevtoolsProtocol\Model\IndexedDB\ClearObjectStoreRequest;
 use ChromeDevtoolsProtocol\Model\IndexedDB\DeleteDatabaseRequest;
+use ChromeDevtoolsProtocol\Model\IndexedDB\DeleteObjectStoreEntriesRequest;
 use ChromeDevtoolsProtocol\Model\IndexedDB\RequestDataRequest;
 use ChromeDevtoolsProtocol\Model\IndexedDB\RequestDataResponse;
 use ChromeDevtoolsProtocol\Model\IndexedDB\RequestDatabaseNamesRequest;
@@ -33,6 +34,12 @@ class IndexedDBDomain implements IndexedDBDomainInterface
 	public function deleteDatabase(ContextInterface $ctx, DeleteDatabaseRequest $request): void
 	{
 		$this->internalClient->executeCommand($ctx, 'IndexedDB.deleteDatabase', $request);
+	}
+
+
+	public function deleteObjectStoreEntries(ContextInterface $ctx, DeleteObjectStoreEntriesRequest $request): void
+	{
+		$this->internalClient->executeCommand($ctx, 'IndexedDB.deleteObjectStoreEntries', $request);
 	}
 
 
