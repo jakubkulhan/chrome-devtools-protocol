@@ -37,6 +37,7 @@ class Launcher
 
 	/**
 	 * @param int $port If port <= 0, random port number is generated.
+	 * @throws \Exception
 	 */
 	public function __construct($port = 0)
 	{
@@ -101,6 +102,7 @@ class Launcher
 	 * @param ContextInterface $ctx
 	 * @param array ...$args
 	 * @return ProcessInstance
+	 * @throws \Exception
 	 */
 	public function launch(ContextInterface $ctx, ...$args): ProcessInstance
 	{
@@ -138,7 +140,14 @@ class Launcher
 		return $this->launchWithExecutable($ctx, $executable, ...$args);
 	}
 
-	private function launchWithExecutable(ContextInterface $ctx, $executable, ...$args): ProcessInstance
+	/**
+	 * @param ContextInterface $ctx
+	 * @param string $executable
+	 * @param array ...$args
+	 * @return ProcessInstance
+	 * @throws \Exception
+	 */
+	private function launchWithExecutable(ContextInterface $ctx, string $executable, ...$args): ProcessInstance
 	{
 		$args = array_unique(array_merge(static::$defaultArgs, $args));
 
