@@ -38,6 +38,9 @@ class Session implements DevtoolsClientInterface, InternalClientInterface
 	/** @var object[] */
 	private $commandResults = [];
 
+	/** @var object[][] */
+	private $eventBuffers = [];
+
 	public function __construct(DevtoolsClientInterface $browser, string $browserContextId, string $targetId, string $sessionId)
 	{
 		$this->browser = $browser;
@@ -106,6 +109,10 @@ class Session implements DevtoolsClientInterface, InternalClientInterface
 	 */
 	public function awaitEvent(ContextInterface $ctx, string $method)
 	{
+		if (!empty($this->eventBuffers[$method])) {
+			return array_shift($this->eventBuffers[$method])->params;
+		}
+
 		for (; ;) {
 			$eventMessage = null;
 
@@ -143,6 +150,11 @@ class Session implements DevtoolsClientInterface, InternalClientInterface
 
 			if ($returnIfEventMethod !== null && $message->method === $returnIfEventMethod) {
 				return $message;
+			} else {
+				if (!isset($this->eventBuffers[$message->method])) {
+					$this->eventBuffers[$message->method] = [];
+				}
+				array_push($this->eventBuffers[$message->method], $message);
 			}
 
 		} else if (isset($message->id)) {
