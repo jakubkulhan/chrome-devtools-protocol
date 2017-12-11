@@ -19,7 +19,7 @@
   ],
   "minimum-stability": "stable",
   "require": {
-    "guzzlehttp/guzzle": "^6.0",
+    "guzzlehttp/guzzle": "^6.3",
     "php": "~7.1",
     "symfony/process": ">=3.3",
     "wrench/wrench": "^2.0"
