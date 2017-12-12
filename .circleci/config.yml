@@ -104,6 +104,33 @@ jobs:
         command: |
           make download-protocol check-protocol
 
+  autoupdate_protocol:
+    docker:
+    - image: circleci/php:7.2-node-browsers
+    steps:
+    - checkout
+    - add_ssh_keys
+    - restore_cache:
+        keys:
+        - v2_composer_{{ .Branch }}
+    - run:
+        command: |
+          composer update --prefer-dist --no-progress --classmap-authoritative
+    - run:
+        command: |
+          set -ex
+          git config --global user.name "Jakub Kulhan"
+          git config --global user.email "jakub.kulhan+circleci@gmail.com"
+          git checkout $CIRCLE_BRANCH
+          make download-protocol fix-protocol generate
+          git add protocol.json protocol.json.md5 gen-src
+          if git diff --cached --exit-code; then
+            echo "Nothing to commit."
+          else
+            git commit -m "autoupdated protocol.json & generated files"
+            git push origin $CIRCLE_BRANCH
+          fi
+
   docker_image:
     docker:
     - image: circleci/php:7.2-node-browsers
@@ -135,5 +162,5 @@ workflows:
             only:
             - master
     jobs:
-    - check_protocol
+    - autoupdate_protocol
     - docker_image
