@@ -32,6 +32,10 @@ final class PrintToPDFRequestBuilder
 
 	private $ignoreInvalidPageRanges;
 
+	private $headerTemplate;
+
+	private $footerTemplate;
+
 
 	/**
 	 * Validate non-optional parameters and return new instance.
@@ -51,6 +55,8 @@ final class PrintToPDFRequestBuilder
 		$instance->marginRight = $this->marginRight;
 		$instance->pageRanges = $this->pageRanges;
 		$instance->ignoreInvalidPageRanges = $this->ignoreInvalidPageRanges;
+		$instance->headerTemplate = $this->headerTemplate;
+		$instance->footerTemplate = $this->footerTemplate;
 		return $instance;
 	}
 
@@ -195,6 +201,30 @@ final class PrintToPDFRequestBuilder
 	public function setIgnoreInvalidPageRanges($ignoreInvalidPageRanges): self
 	{
 		$this->ignoreInvalidPageRanges = $ignoreInvalidPageRanges;
+		return $this;
+	}
+
+
+	/**
+	 * @param string|null $headerTemplate
+	 *
+	 * @return self
+	 */
+	public function setHeaderTemplate($headerTemplate): self
+	{
+		$this->headerTemplate = $headerTemplate;
+		return $this;
+	}
+
+
+	/**
+	 * @param string|null $footerTemplate
+	 *
+	 * @return self
+	 */
+	public function setFooterTemplate($footerTemplate): self
+	{
+		$this->footerTemplate = $footerTemplate;
 		return $this;
 	}
 }

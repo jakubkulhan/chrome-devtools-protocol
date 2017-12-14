@@ -94,6 +94,20 @@ final class PrintToPDFRequest implements \JsonSerializable
 	 */
 	public $ignoreInvalidPageRanges;
 
+	/**
+	 * HTML template for the print header. Should be valid HTML markup with following classes used to inject printing values into them: - date - formatted print date - title - document title - url - document location - pageNumber - current page number - totalPages - total pages in the document For example, <span class=title></span> would generate span containing the title.
+	 *
+	 * @var string|null
+	 */
+	public $headerTemplate;
+
+	/**
+	 * HTML template for the print footer. Should use the same format as the `headerTemplate`.
+	 *
+	 * @var string|null
+	 */
+	public $footerTemplate;
+
 
 	public static function fromJson($data)
 	{
@@ -133,6 +147,12 @@ final class PrintToPDFRequest implements \JsonSerializable
 		}
 		if (isset($data->ignoreInvalidPageRanges)) {
 			$instance->ignoreInvalidPageRanges = (bool)$data->ignoreInvalidPageRanges;
+		}
+		if (isset($data->headerTemplate)) {
+			$instance->headerTemplate = (string)$data->headerTemplate;
+		}
+		if (isset($data->footerTemplate)) {
+			$instance->footerTemplate = (string)$data->footerTemplate;
 		}
 		return $instance;
 	}
@@ -176,6 +196,12 @@ final class PrintToPDFRequest implements \JsonSerializable
 		}
 		if ($this->ignoreInvalidPageRanges !== null) {
 			$data->ignoreInvalidPageRanges = $this->ignoreInvalidPageRanges;
+		}
+		if ($this->headerTemplate !== null) {
+			$data->headerTemplate = $this->headerTemplate;
+		}
+		if ($this->footerTemplate !== null) {
+			$data->footerTemplate = $this->footerTemplate;
 		}
 		return $data;
 	}
