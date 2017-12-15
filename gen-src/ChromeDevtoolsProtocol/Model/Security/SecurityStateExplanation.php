@@ -18,6 +18,13 @@ final class SecurityStateExplanation implements \JsonSerializable
 	public $securityState;
 
 	/**
+	 * Title describing the type of factor.
+	 *
+	 * @var string
+	 */
+	public $title;
+
+	/**
 	 * Short phrase describing the type of factor.
 	 *
 	 * @var string
@@ -52,6 +59,9 @@ final class SecurityStateExplanation implements \JsonSerializable
 		if (isset($data->securityState)) {
 			$instance->securityState = (string)$data->securityState;
 		}
+		if (isset($data->title)) {
+			$instance->title = (string)$data->title;
+		}
 		if (isset($data->summary)) {
 			$instance->summary = (string)$data->summary;
 		}
@@ -76,6 +86,9 @@ final class SecurityStateExplanation implements \JsonSerializable
 		$data = new \stdClass();
 		if ($this->securityState !== null) {
 			$data->securityState = $this->securityState;
+		}
+		if ($this->title !== null) {
+			$data->title = $this->title;
 		}
 		if ($this->summary !== null) {
 			$data->summary = $this->summary;

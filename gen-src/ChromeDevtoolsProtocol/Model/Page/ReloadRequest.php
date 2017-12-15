@@ -18,7 +18,7 @@ final class ReloadRequest implements \JsonSerializable
 	public $ignoreCache;
 
 	/**
-	 * If set, the script will be injected into all frames of the inspected page after reload.
+	 * If set, the script will be injected into all frames of the inspected page after reload. Argument will be ignored if reloading dataURL origin.
 	 *
 	 * @var string|null
 	 */
