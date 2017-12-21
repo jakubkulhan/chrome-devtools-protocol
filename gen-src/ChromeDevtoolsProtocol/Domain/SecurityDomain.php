@@ -6,6 +6,7 @@ use ChromeDevtoolsProtocol\InternalClientInterface;
 use ChromeDevtoolsProtocol\Model\Security\CertificateErrorEvent;
 use ChromeDevtoolsProtocol\Model\Security\HandleCertificateErrorRequest;
 use ChromeDevtoolsProtocol\Model\Security\SecurityStateChangedEvent;
+use ChromeDevtoolsProtocol\Model\Security\SetIgnoreCertificateErrorsRequest;
 use ChromeDevtoolsProtocol\Model\Security\SetOverrideCertificateErrorsRequest;
 use ChromeDevtoolsProtocol\SubscriptionInterface;
 
@@ -38,6 +39,12 @@ class SecurityDomain implements SecurityDomainInterface
 	public function handleCertificateError(ContextInterface $ctx, HandleCertificateErrorRequest $request): void
 	{
 		$this->internalClient->executeCommand($ctx, 'Security.handleCertificateError', $request);
+	}
+
+
+	public function setIgnoreCertificateErrors(ContextInterface $ctx, SetIgnoreCertificateErrorsRequest $request): void
+	{
+		$this->internalClient->executeCommand($ctx, 'Security.setIgnoreCertificateErrors', $request);
 	}
 
 
