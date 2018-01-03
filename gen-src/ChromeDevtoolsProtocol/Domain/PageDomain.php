@@ -50,7 +50,6 @@ use ChromeDevtoolsProtocol\Model\Page\ScreencastVisibilityChangedEvent;
 use ChromeDevtoolsProtocol\Model\Page\SearchInResourceRequest;
 use ChromeDevtoolsProtocol\Model\Page\SearchInResourceResponse;
 use ChromeDevtoolsProtocol\Model\Page\SetAdBlockingEnabledRequest;
-use ChromeDevtoolsProtocol\Model\Page\SetAutoAttachToCreatedPagesRequest;
 use ChromeDevtoolsProtocol\Model\Page\SetDeviceMetricsOverrideRequest;
 use ChromeDevtoolsProtocol\Model\Page\SetDeviceOrientationOverrideRequest;
 use ChromeDevtoolsProtocol\Model\Page\SetDocumentContentRequest;
@@ -272,12 +271,6 @@ class PageDomain implements PageDomainInterface
 	public function setAdBlockingEnabled(ContextInterface $ctx, SetAdBlockingEnabledRequest $request): void
 	{
 		$this->internalClient->executeCommand($ctx, 'Page.setAdBlockingEnabled', $request);
-	}
-
-
-	public function setAutoAttachToCreatedPages(ContextInterface $ctx, SetAutoAttachToCreatedPagesRequest $request): void
-	{
-		$this->internalClient->executeCommand($ctx, 'Page.setAutoAttachToCreatedPages', $request);
 	}
 
 

@@ -49,7 +49,6 @@ use ChromeDevtoolsProtocol\Model\Page\ScreencastVisibilityChangedEvent;
 use ChromeDevtoolsProtocol\Model\Page\SearchInResourceRequest;
 use ChromeDevtoolsProtocol\Model\Page\SearchInResourceResponse;
 use ChromeDevtoolsProtocol\Model\Page\SetAdBlockingEnabledRequest;
-use ChromeDevtoolsProtocol\Model\Page\SetAutoAttachToCreatedPagesRequest;
 use ChromeDevtoolsProtocol\Model\Page\SetDeviceMetricsOverrideRequest;
 use ChromeDevtoolsProtocol\Model\Page\SetDeviceOrientationOverrideRequest;
 use ChromeDevtoolsProtocol\Model\Page\SetDocumentContentRequest;
@@ -374,17 +373,6 @@ interface PageDomainInterface
 	 * @return void
 	 */
 	public function setAdBlockingEnabled(ContextInterface $ctx, SetAdBlockingEnabledRequest $request): void;
-
-
-	/**
-	 * Controls whether browser will open a new inspector window for connected pages.
-	 *
-	 * @param ContextInterface $ctx
-	 * @param SetAutoAttachToCreatedPagesRequest $request
-	 *
-	 * @return void
-	 */
-	public function setAutoAttachToCreatedPages(ContextInterface $ctx, SetAutoAttachToCreatedPagesRequest $request): void;
 
 
 	/**
