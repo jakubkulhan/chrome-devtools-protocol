@@ -31,6 +31,13 @@ final class LoadingFinishedEvent implements \JsonSerializable
 	 */
 	public $encodedDataLength;
 
+	/**
+	 * Set when response was blocked due to being cross-site document response.
+	 *
+	 * @var bool|null
+	 */
+	public $blockedCrossSiteDocument;
+
 
 	public static function fromJson($data)
 	{
@@ -43,6 +50,9 @@ final class LoadingFinishedEvent implements \JsonSerializable
 		}
 		if (isset($data->encodedDataLength)) {
 			$instance->encodedDataLength = $data->encodedDataLength;
+		}
+		if (isset($data->blockedCrossSiteDocument)) {
+			$instance->blockedCrossSiteDocument = (bool)$data->blockedCrossSiteDocument;
 		}
 		return $instance;
 	}
@@ -59,6 +69,9 @@ final class LoadingFinishedEvent implements \JsonSerializable
 		}
 		if ($this->encodedDataLength !== null) {
 			$data->encodedDataLength = $this->encodedDataLength;
+		}
+		if ($this->blockedCrossSiteDocument !== null) {
+			$data->blockedCrossSiteDocument = $this->blockedCrossSiteDocument;
 		}
 		return $data;
 	}
