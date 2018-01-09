@@ -12,6 +12,8 @@ final class GetSnapshotRequestBuilder
 {
 	private $computedStyleWhitelist;
 
+	private $includeEventListeners;
+
 
 	/**
 	 * Validate non-optional parameters and return new instance.
@@ -23,6 +25,7 @@ final class GetSnapshotRequestBuilder
 			throw new BuilderException('Property [computedStyleWhitelist] is required.');
 		}
 		$instance->computedStyleWhitelist = $this->computedStyleWhitelist;
+		$instance->includeEventListeners = $this->includeEventListeners;
 		return $instance;
 	}
 
@@ -35,6 +38,18 @@ final class GetSnapshotRequestBuilder
 	public function setComputedStyleWhitelist($computedStyleWhitelist): self
 	{
 		$this->computedStyleWhitelist = $computedStyleWhitelist;
+		return $this;
+	}
+
+
+	/**
+	 * @param bool|null $includeEventListeners
+	 *
+	 * @return self
+	 */
+	public function setIncludeEventListeners($includeEventListeners): self
+	{
+		$this->includeEventListeners = $includeEventListeners;
 		return $this;
 	}
 }

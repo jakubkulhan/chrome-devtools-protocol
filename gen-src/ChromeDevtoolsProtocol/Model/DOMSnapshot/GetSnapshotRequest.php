@@ -17,6 +17,13 @@ final class GetSnapshotRequest implements \JsonSerializable
 	 */
 	public $computedStyleWhitelist;
 
+	/**
+	 * Whether or not to retrieve details of DOM listeners (default false).
+	 *
+	 * @var bool|null
+	 */
+	public $includeEventListeners;
+
 
 	public static function fromJson($data)
 	{
@@ -26,6 +33,9 @@ final class GetSnapshotRequest implements \JsonSerializable
 			foreach ($data->computedStyleWhitelist as $item) {
 				$instance->computedStyleWhitelist[] = (string)$item;
 			}
+		}
+		if (isset($data->includeEventListeners)) {
+			$instance->includeEventListeners = (bool)$data->includeEventListeners;
 		}
 		return $instance;
 	}
@@ -39,6 +49,9 @@ final class GetSnapshotRequest implements \JsonSerializable
 			foreach ($this->computedStyleWhitelist as $item) {
 				$data->computedStyleWhitelist[] = $item;
 			}
+		}
+		if ($this->includeEventListeners !== null) {
+			$data->includeEventListeners = $this->includeEventListeners;
 		}
 		return $data;
 	}

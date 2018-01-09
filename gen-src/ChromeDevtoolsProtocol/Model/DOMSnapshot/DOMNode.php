@@ -1,6 +1,8 @@
 <?php
 namespace ChromeDevtoolsProtocol\Model\DOMSnapshot;
 
+use ChromeDevtoolsProtocol\Model\DOMDebugger\EventListener;
+
 /**
  * A Node in the DOM tree.
  *
@@ -178,6 +180,13 @@ final class DOMNode implements \JsonSerializable
 	 */
 	public $isClickable;
 
+	/**
+	 * Details of the node's event listeners, if any.
+	 *
+	 * @var EventListener[]|null
+	 */
+	public $eventListeners;
+
 
 	public static function fromJson($data)
 	{
@@ -262,6 +271,12 @@ final class DOMNode implements \JsonSerializable
 		}
 		if (isset($data->isClickable)) {
 			$instance->isClickable = (bool)$data->isClickable;
+		}
+		if (isset($data->eventListeners)) {
+			$instance->eventListeners = [];
+			foreach ($data->eventListeners as $item) {
+				$instance->eventListeners[] = EventListener::fromJson($item);
+			}
 		}
 		return $instance;
 	}
@@ -350,6 +365,12 @@ final class DOMNode implements \JsonSerializable
 		}
 		if ($this->isClickable !== null) {
 			$data->isClickable = $this->isClickable;
+		}
+		if ($this->eventListeners !== null) {
+			$data->eventListeners = [];
+			foreach ($this->eventListeners as $item) {
+				$data->eventListeners[] = $item->jsonSerialize();
+			}
 		}
 		return $data;
 	}
