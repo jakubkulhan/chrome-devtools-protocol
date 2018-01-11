@@ -2,6 +2,10 @@
 namespace ChromeDevtoolsProtocol\Domain;
 
 use ChromeDevtoolsProtocol\ContextInterface;
+use ChromeDevtoolsProtocol\Model\Browser\GetHistogramRequest;
+use ChromeDevtoolsProtocol\Model\Browser\GetHistogramResponse;
+use ChromeDevtoolsProtocol\Model\Browser\GetHistogramsRequest;
+use ChromeDevtoolsProtocol\Model\Browser\GetHistogramsResponse;
 use ChromeDevtoolsProtocol\Model\Browser\GetVersionResponse;
 use ChromeDevtoolsProtocol\Model\Browser\GetWindowBoundsRequest;
 use ChromeDevtoolsProtocol\Model\Browser\GetWindowBoundsResponse;
@@ -26,6 +30,28 @@ interface BrowserDomainInterface
 	 * @return void
 	 */
 	public function close(ContextInterface $ctx): void;
+
+
+	/**
+	 * Get a Chrome histogram by name.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param GetHistogramRequest $request
+	 *
+	 * @return GetHistogramResponse
+	 */
+	public function getHistogram(ContextInterface $ctx, GetHistogramRequest $request): GetHistogramResponse;
+
+
+	/**
+	 * Get Chrome histograms.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param GetHistogramsRequest $request
+	 *
+	 * @return GetHistogramsResponse
+	 */
+	public function getHistograms(ContextInterface $ctx, GetHistogramsRequest $request): GetHistogramsResponse;
 
 
 	/**

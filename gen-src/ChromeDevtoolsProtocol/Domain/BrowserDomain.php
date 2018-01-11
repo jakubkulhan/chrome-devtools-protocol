@@ -3,6 +3,10 @@ namespace ChromeDevtoolsProtocol\Domain;
 
 use ChromeDevtoolsProtocol\ContextInterface;
 use ChromeDevtoolsProtocol\InternalClientInterface;
+use ChromeDevtoolsProtocol\Model\Browser\GetHistogramRequest;
+use ChromeDevtoolsProtocol\Model\Browser\GetHistogramResponse;
+use ChromeDevtoolsProtocol\Model\Browser\GetHistogramsRequest;
+use ChromeDevtoolsProtocol\Model\Browser\GetHistogramsResponse;
 use ChromeDevtoolsProtocol\Model\Browser\GetVersionResponse;
 use ChromeDevtoolsProtocol\Model\Browser\GetWindowBoundsRequest;
 use ChromeDevtoolsProtocol\Model\Browser\GetWindowBoundsResponse;
@@ -26,6 +30,20 @@ class BrowserDomain implements BrowserDomainInterface
 	{
 		$request = new \stdClass();
 		$this->internalClient->executeCommand($ctx, 'Browser.close', $request);
+	}
+
+
+	public function getHistogram(ContextInterface $ctx, GetHistogramRequest $request): GetHistogramResponse
+	{
+		$response = $this->internalClient->executeCommand($ctx, 'Browser.getHistogram', $request);
+		return GetHistogramResponse::fromJson($response);
+	}
+
+
+	public function getHistograms(ContextInterface $ctx, GetHistogramsRequest $request): GetHistogramsResponse
+	{
+		$response = $this->internalClient->executeCommand($ctx, 'Browser.getHistograms', $request);
+		return GetHistogramsResponse::fromJson($response);
 	}
 
 

@@ -27,6 +27,13 @@ final class SetVirtualTimePolicyRequest implements \JsonSerializable
 	 */
 	public $maxVirtualTimeTaskStarvationCount;
 
+	/**
+	 * If set the virtual time policy change should be deferred until any frame starts navigating. Note any previous deferred policy change is superseded.
+	 *
+	 * @var bool|null
+	 */
+	public $waitForNavigation;
+
 
 	public static function fromJson($data)
 	{
@@ -39,6 +46,9 @@ final class SetVirtualTimePolicyRequest implements \JsonSerializable
 		}
 		if (isset($data->maxVirtualTimeTaskStarvationCount)) {
 			$instance->maxVirtualTimeTaskStarvationCount = (int)$data->maxVirtualTimeTaskStarvationCount;
+		}
+		if (isset($data->waitForNavigation)) {
+			$instance->waitForNavigation = (bool)$data->waitForNavigation;
 		}
 		return $instance;
 	}
@@ -55,6 +65,9 @@ final class SetVirtualTimePolicyRequest implements \JsonSerializable
 		}
 		if ($this->maxVirtualTimeTaskStarvationCount !== null) {
 			$data->maxVirtualTimeTaskStarvationCount = $this->maxVirtualTimeTaskStarvationCount;
+		}
+		if ($this->waitForNavigation !== null) {
+			$data->waitForNavigation = $this->waitForNavigation;
 		}
 		return $data;
 	}

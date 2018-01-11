@@ -122,6 +122,13 @@ class PageDomain implements PageDomainInterface
 	}
 
 
+	public function crash(ContextInterface $ctx): void
+	{
+		$request = new \stdClass();
+		$this->internalClient->executeCommand($ctx, 'Page.crash', $request);
+	}
+
+
 	public function createIsolatedWorld(ContextInterface $ctx, CreateIsolatedWorldRequest $request): CreateIsolatedWorldResponse
 	{
 		$response = $this->internalClient->executeCommand($ctx, 'Page.createIsolatedWorld', $request);

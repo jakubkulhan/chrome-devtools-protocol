@@ -143,6 +143,16 @@ interface PageDomainInterface
 
 
 	/**
+	 * Crashes renderer on the IO thread, generates minidumps.
+	 *
+	 * @param ContextInterface $ctx
+	 *
+	 * @return void
+	 */
+	public function crash(ContextInterface $ctx): void;
+
+
+	/**
 	 * Creates an isolated world for the given frame.
 	 *
 	 * @param ContextInterface $ctx
