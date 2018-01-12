@@ -12,6 +12,8 @@ final class EnableRequestBuilder
 
 	private $maxResourceBufferSize;
 
+	private $maxPostDataSize;
+
 
 	/**
 	 * Validate non-optional parameters and return new instance.
@@ -21,6 +23,7 @@ final class EnableRequestBuilder
 		$instance = new EnableRequest();
 		$instance->maxTotalBufferSize = $this->maxTotalBufferSize;
 		$instance->maxResourceBufferSize = $this->maxResourceBufferSize;
+		$instance->maxPostDataSize = $this->maxPostDataSize;
 		return $instance;
 	}
 
@@ -45,6 +48,18 @@ final class EnableRequestBuilder
 	public function setMaxResourceBufferSize($maxResourceBufferSize): self
 	{
 		$this->maxResourceBufferSize = $maxResourceBufferSize;
+		return $this;
+	}
+
+
+	/**
+	 * @param int|null $maxPostDataSize
+	 *
+	 * @return self
+	 */
+	public function setMaxPostDataSize($maxPostDataSize): self
+	{
+		$this->maxPostDataSize = $maxPostDataSize;
 		return $this;
 	}
 }

@@ -17,6 +17,8 @@ use ChromeDevtoolsProtocol\Model\Network\GetCertificateRequest;
 use ChromeDevtoolsProtocol\Model\Network\GetCertificateResponse;
 use ChromeDevtoolsProtocol\Model\Network\GetCookiesRequest;
 use ChromeDevtoolsProtocol\Model\Network\GetCookiesResponse;
+use ChromeDevtoolsProtocol\Model\Network\GetRequestPostDataRequest;
+use ChromeDevtoolsProtocol\Model\Network\GetRequestPostDataResponse;
 use ChromeDevtoolsProtocol\Model\Network\GetResponseBodyForInterceptionRequest;
 use ChromeDevtoolsProtocol\Model\Network\GetResponseBodyForInterceptionResponse;
 use ChromeDevtoolsProtocol\Model\Network\GetResponseBodyRequest;
@@ -150,6 +152,13 @@ class NetworkDomain implements NetworkDomainInterface
 	{
 		$response = $this->internalClient->executeCommand($ctx, 'Network.getCookies', $request);
 		return GetCookiesResponse::fromJson($response);
+	}
+
+
+	public function getRequestPostData(ContextInterface $ctx, GetRequestPostDataRequest $request): GetRequestPostDataResponse
+	{
+		$response = $this->internalClient->executeCommand($ctx, 'Network.getRequestPostData', $request);
+		return GetRequestPostDataResponse::fromJson($response);
 	}
 
 

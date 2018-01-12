@@ -39,6 +39,13 @@ final class Request implements \JsonSerializable
 	public $postData;
 
 	/**
+	 * True when the request has POST data. Note that postData might still be omitted when this flag is true when the data is too long.
+	 *
+	 * @var bool|null
+	 */
+	public $hasPostData;
+
+	/**
 	 * The mixed content type of the request.
 	 *
 	 * @var string
@@ -82,6 +89,9 @@ final class Request implements \JsonSerializable
 		if (isset($data->postData)) {
 			$instance->postData = (string)$data->postData;
 		}
+		if (isset($data->hasPostData)) {
+			$instance->hasPostData = (bool)$data->hasPostData;
+		}
 		if (isset($data->mixedContentType)) {
 			$instance->mixedContentType = (string)$data->mixedContentType;
 		}
@@ -112,6 +122,9 @@ final class Request implements \JsonSerializable
 		}
 		if ($this->postData !== null) {
 			$data->postData = $this->postData;
+		}
+		if ($this->hasPostData !== null) {
+			$data->hasPostData = $this->hasPostData;
 		}
 		if ($this->mixedContentType !== null) {
 			$data->mixedContentType = $this->mixedContentType;

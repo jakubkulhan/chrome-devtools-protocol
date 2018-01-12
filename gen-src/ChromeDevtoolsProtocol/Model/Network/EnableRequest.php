@@ -24,6 +24,13 @@ final class EnableRequest implements \JsonSerializable
 	 */
 	public $maxResourceBufferSize;
 
+	/**
+	 * Longest post body size (in bytes) that would be included in requestWillBeSent notification
+	 *
+	 * @var int|null
+	 */
+	public $maxPostDataSize;
+
 
 	public static function fromJson($data)
 	{
@@ -33,6 +40,9 @@ final class EnableRequest implements \JsonSerializable
 		}
 		if (isset($data->maxResourceBufferSize)) {
 			$instance->maxResourceBufferSize = (int)$data->maxResourceBufferSize;
+		}
+		if (isset($data->maxPostDataSize)) {
+			$instance->maxPostDataSize = (int)$data->maxPostDataSize;
 		}
 		return $instance;
 	}
@@ -46,6 +56,9 @@ final class EnableRequest implements \JsonSerializable
 		}
 		if ($this->maxResourceBufferSize !== null) {
 			$data->maxResourceBufferSize = $this->maxResourceBufferSize;
+		}
+		if ($this->maxPostDataSize !== null) {
+			$data->maxPostDataSize = $this->maxPostDataSize;
 		}
 		return $data;
 	}
