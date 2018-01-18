@@ -14,6 +14,8 @@ final class BeginFrameRequestBuilder
 
 	private $interval;
 
+	private $noDisplayUpdates;
+
 	private $screenshot;
 
 
@@ -26,6 +28,7 @@ final class BeginFrameRequestBuilder
 		$instance->frameTime = $this->frameTime;
 		$instance->deadline = $this->deadline;
 		$instance->interval = $this->interval;
+		$instance->noDisplayUpdates = $this->noDisplayUpdates;
 		$instance->screenshot = $this->screenshot;
 		return $instance;
 	}
@@ -63,6 +66,18 @@ final class BeginFrameRequestBuilder
 	public function setInterval($interval): self
 	{
 		$this->interval = $interval;
+		return $this;
+	}
+
+
+	/**
+	 * @param bool|null $noDisplayUpdates
+	 *
+	 * @return self
+	 */
+	public function setNoDisplayUpdates($noDisplayUpdates): self
+	{
+		$this->noDisplayUpdates = $noDisplayUpdates;
 		return $this;
 	}
 

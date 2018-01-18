@@ -32,6 +32,13 @@ final class BeginFrameRequest implements \JsonSerializable
 	public $interval;
 
 	/**
+	 * Whether updates should not be committed and drawn onto the display. False by default. If true, only side effects of the BeginFrame will be run, such as layout and animations, but any visual updates may not be visible on the display or in screenshots.
+	 *
+	 * @var bool|null
+	 */
+	public $noDisplayUpdates;
+
+	/**
 	 * If set, a screenshot of the frame will be captured and returned in the response. Otherwise, no screenshot will be captured.
 	 *
 	 * @var ScreenshotParams|null
@@ -51,6 +58,9 @@ final class BeginFrameRequest implements \JsonSerializable
 		if (isset($data->interval)) {
 			$instance->interval = $data->interval;
 		}
+		if (isset($data->noDisplayUpdates)) {
+			$instance->noDisplayUpdates = (bool)$data->noDisplayUpdates;
+		}
 		if (isset($data->screenshot)) {
 			$instance->screenshot = ScreenshotParams::fromJson($data->screenshot);
 		}
@@ -69,6 +79,9 @@ final class BeginFrameRequest implements \JsonSerializable
 		}
 		if ($this->interval !== null) {
 			$data->interval = $this->interval;
+		}
+		if ($this->noDisplayUpdates !== null) {
+			$data->noDisplayUpdates = $this->noDisplayUpdates;
 		}
 		if ($this->screenshot !== null) {
 			$data->screenshot = $this->screenshot->jsonSerialize();
