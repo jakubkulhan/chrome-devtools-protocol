@@ -187,6 +187,13 @@ final class DOMNode implements \JsonSerializable
 	 */
 	public $eventListeners;
 
+	/**
+	 * The selected url for nodes with a srcset attribute.
+	 *
+	 * @var string|null
+	 */
+	public $currentSourceURL;
+
 
 	public static function fromJson($data)
 	{
@@ -277,6 +284,9 @@ final class DOMNode implements \JsonSerializable
 			foreach ($data->eventListeners as $item) {
 				$instance->eventListeners[] = EventListener::fromJson($item);
 			}
+		}
+		if (isset($data->currentSourceURL)) {
+			$instance->currentSourceURL = (string)$data->currentSourceURL;
 		}
 		return $instance;
 	}
@@ -371,6 +381,9 @@ final class DOMNode implements \JsonSerializable
 			foreach ($this->eventListeners as $item) {
 				$data->eventListeners[] = $item->jsonSerialize();
 			}
+		}
+		if ($this->currentSourceURL !== null) {
+			$data->currentSourceURL = $this->currentSourceURL;
 		}
 		return $data;
 	}
