@@ -26,6 +26,8 @@ use ChromeDevtoolsProtocol\Model\DOM\GetDocumentRequest;
 use ChromeDevtoolsProtocol\Model\DOM\GetDocumentResponse;
 use ChromeDevtoolsProtocol\Model\DOM\GetFlattenedDocumentRequest;
 use ChromeDevtoolsProtocol\Model\DOM\GetFlattenedDocumentResponse;
+use ChromeDevtoolsProtocol\Model\DOM\GetFrameOwnerRequest;
+use ChromeDevtoolsProtocol\Model\DOM\GetFrameOwnerResponse;
 use ChromeDevtoolsProtocol\Model\DOM\GetNodeForLocationRequest;
 use ChromeDevtoolsProtocol\Model\DOM\GetNodeForLocationResponse;
 use ChromeDevtoolsProtocol\Model\DOM\GetOuterHTMLRequest;
@@ -195,6 +197,17 @@ interface DOMDomainInterface
 	 * @return GetFlattenedDocumentResponse
 	 */
 	public function getFlattenedDocument(ContextInterface $ctx, GetFlattenedDocumentRequest $request): GetFlattenedDocumentResponse;
+
+
+	/**
+	 * Returns iframe node that owns iframe with the given domain.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param GetFrameOwnerRequest $request
+	 *
+	 * @return GetFrameOwnerResponse
+	 */
+	public function getFrameOwner(ContextInterface $ctx, GetFrameOwnerRequest $request): GetFrameOwnerResponse;
 
 
 	/**

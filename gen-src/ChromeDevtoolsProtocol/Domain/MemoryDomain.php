@@ -4,8 +4,10 @@ namespace ChromeDevtoolsProtocol\Domain;
 use ChromeDevtoolsProtocol\ContextInterface;
 use ChromeDevtoolsProtocol\InternalClientInterface;
 use ChromeDevtoolsProtocol\Model\Memory\GetDOMCountersResponse;
+use ChromeDevtoolsProtocol\Model\Memory\GetSamplingProfileResponse;
 use ChromeDevtoolsProtocol\Model\Memory\SetPressureNotificationsSuppressedRequest;
 use ChromeDevtoolsProtocol\Model\Memory\SimulatePressureNotificationRequest;
+use ChromeDevtoolsProtocol\Model\Memory\StartSamplingRequest;
 
 class MemoryDomain implements MemoryDomainInterface
 {
@@ -27,6 +29,14 @@ class MemoryDomain implements MemoryDomainInterface
 	}
 
 
+	public function getSamplingProfile(ContextInterface $ctx): GetSamplingProfileResponse
+	{
+		$request = new \stdClass();
+		$response = $this->internalClient->executeCommand($ctx, 'Memory.getSamplingProfile', $request);
+		return GetSamplingProfileResponse::fromJson($response);
+	}
+
+
 	public function prepareForLeakDetection(ContextInterface $ctx): void
 	{
 		$request = new \stdClass();
@@ -43,5 +53,18 @@ class MemoryDomain implements MemoryDomainInterface
 	public function simulatePressureNotification(ContextInterface $ctx, SimulatePressureNotificationRequest $request): void
 	{
 		$this->internalClient->executeCommand($ctx, 'Memory.simulatePressureNotification', $request);
+	}
+
+
+	public function startSampling(ContextInterface $ctx, StartSamplingRequest $request): void
+	{
+		$this->internalClient->executeCommand($ctx, 'Memory.startSampling', $request);
+	}
+
+
+	public function stopSampling(ContextInterface $ctx): void
+	{
+		$request = new \stdClass();
+		$this->internalClient->executeCommand($ctx, 'Memory.stopSampling', $request);
 	}
 }

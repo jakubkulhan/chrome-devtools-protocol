@@ -3,8 +3,10 @@ namespace ChromeDevtoolsProtocol\Domain;
 
 use ChromeDevtoolsProtocol\ContextInterface;
 use ChromeDevtoolsProtocol\Model\Memory\GetDOMCountersResponse;
+use ChromeDevtoolsProtocol\Model\Memory\GetSamplingProfileResponse;
 use ChromeDevtoolsProtocol\Model\Memory\SetPressureNotificationsSuppressedRequest;
 use ChromeDevtoolsProtocol\Model\Memory\SimulatePressureNotificationRequest;
+use ChromeDevtoolsProtocol\Model\Memory\StartSamplingRequest;
 
 /**
  * Memory domain.
@@ -25,6 +27,16 @@ interface MemoryDomainInterface
 	 * @return GetDOMCountersResponse
 	 */
 	public function getDOMCounters(ContextInterface $ctx): GetDOMCountersResponse;
+
+
+	/**
+	 * Retrieve collected native memory profile.
+	 *
+	 * @param ContextInterface $ctx
+	 *
+	 * @return GetSamplingProfileResponse
+	 */
+	public function getSamplingProfile(ContextInterface $ctx): GetSamplingProfileResponse;
 
 
 	/**
@@ -57,4 +69,25 @@ interface MemoryDomainInterface
 	 * @return void
 	 */
 	public function simulatePressureNotification(ContextInterface $ctx, SimulatePressureNotificationRequest $request): void;
+
+
+	/**
+	 * Start collecting native memory profile.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param StartSamplingRequest $request
+	 *
+	 * @return void
+	 */
+	public function startSampling(ContextInterface $ctx, StartSamplingRequest $request): void;
+
+
+	/**
+	 * Stop collecting native memory profile.
+	 *
+	 * @param ContextInterface $ctx
+	 *
+	 * @return void
+	 */
+	public function stopSampling(ContextInterface $ctx): void;
 }

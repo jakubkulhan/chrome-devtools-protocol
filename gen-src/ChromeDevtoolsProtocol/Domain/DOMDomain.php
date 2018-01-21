@@ -27,6 +27,8 @@ use ChromeDevtoolsProtocol\Model\DOM\GetDocumentRequest;
 use ChromeDevtoolsProtocol\Model\DOM\GetDocumentResponse;
 use ChromeDevtoolsProtocol\Model\DOM\GetFlattenedDocumentRequest;
 use ChromeDevtoolsProtocol\Model\DOM\GetFlattenedDocumentResponse;
+use ChromeDevtoolsProtocol\Model\DOM\GetFrameOwnerRequest;
+use ChromeDevtoolsProtocol\Model\DOM\GetFrameOwnerResponse;
 use ChromeDevtoolsProtocol\Model\DOM\GetNodeForLocationRequest;
 use ChromeDevtoolsProtocol\Model\DOM\GetNodeForLocationResponse;
 use ChromeDevtoolsProtocol\Model\DOM\GetOuterHTMLRequest;
@@ -154,6 +156,13 @@ class DOMDomain implements DOMDomainInterface
 	{
 		$response = $this->internalClient->executeCommand($ctx, 'DOM.getFlattenedDocument', $request);
 		return GetFlattenedDocumentResponse::fromJson($response);
+	}
+
+
+	public function getFrameOwner(ContextInterface $ctx, GetFrameOwnerRequest $request): GetFrameOwnerResponse
+	{
+		$response = $this->internalClient->executeCommand($ctx, 'DOM.getFrameOwner', $request);
+		return GetFrameOwnerResponse::fromJson($response);
 	}
 
 
