@@ -7350,11 +7350,6 @@
                             "type": "integer"
                         },
                         {
-                            "name": "timestamp",
-                            "description": "Time at which the event occurred.",
-                            "$ref": "TimeSinceEpoch"
-                        },
-                        {
                             "name": "button",
                             "description": "Mouse button.",
                             "type": "string",
@@ -7364,6 +7359,12 @@
                                 "middle",
                                 "right"
                             ]
+                        },
+                        {
+                            "name": "timestamp",
+                            "description": "Time at which the event occurred (default: current time).",
+                            "optional": true,
+                            "$ref": "TimeSinceEpoch"
                         },
                         {
                             "name": "deltaX",

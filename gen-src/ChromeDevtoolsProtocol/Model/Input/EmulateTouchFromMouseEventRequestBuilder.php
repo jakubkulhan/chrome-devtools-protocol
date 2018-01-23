@@ -16,9 +16,9 @@ final class EmulateTouchFromMouseEventRequestBuilder
 
 	private $y;
 
-	private $timestamp;
-
 	private $button;
+
+	private $timestamp;
 
 	private $deltaX;
 
@@ -47,14 +47,11 @@ final class EmulateTouchFromMouseEventRequestBuilder
 			throw new BuilderException('Property [y] is required.');
 		}
 		$instance->y = $this->y;
-		if ($this->timestamp === null) {
-			throw new BuilderException('Property [timestamp] is required.');
-		}
-		$instance->timestamp = $this->timestamp;
 		if ($this->button === null) {
 			throw new BuilderException('Property [button] is required.');
 		}
 		$instance->button = $this->button;
+		$instance->timestamp = $this->timestamp;
 		$instance->deltaX = $this->deltaX;
 		$instance->deltaY = $this->deltaY;
 		$instance->modifiers = $this->modifiers;
@@ -100,18 +97,6 @@ final class EmulateTouchFromMouseEventRequestBuilder
 
 
 	/**
-	 * @param int|float $timestamp
-	 *
-	 * @return self
-	 */
-	public function setTimestamp($timestamp): self
-	{
-		$this->timestamp = $timestamp;
-		return $this;
-	}
-
-
-	/**
 	 * @param string $button
 	 *
 	 * @return self
@@ -119,6 +104,18 @@ final class EmulateTouchFromMouseEventRequestBuilder
 	public function setButton($button): self
 	{
 		$this->button = $button;
+		return $this;
+	}
+
+
+	/**
+	 * @param int|float $timestamp
+	 *
+	 * @return self
+	 */
+	public function setTimestamp($timestamp): self
+	{
+		$this->timestamp = $timestamp;
 		return $this;
 	}
 

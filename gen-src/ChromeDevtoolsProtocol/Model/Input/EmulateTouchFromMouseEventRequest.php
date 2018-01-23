@@ -32,18 +32,18 @@ final class EmulateTouchFromMouseEventRequest implements \JsonSerializable
 	public $y;
 
 	/**
-	 * Time at which the event occurred.
-	 *
-	 * @var int|float
-	 */
-	public $timestamp;
-
-	/**
 	 * Mouse button.
 	 *
 	 * @var string
 	 */
 	public $button;
+
+	/**
+	 * Time at which the event occurred (default: current time).
+	 *
+	 * @var int|float
+	 */
+	public $timestamp;
 
 	/**
 	 * X delta in DIP for mouse wheel event (default: 0).
@@ -86,11 +86,11 @@ final class EmulateTouchFromMouseEventRequest implements \JsonSerializable
 		if (isset($data->y)) {
 			$instance->y = (int)$data->y;
 		}
-		if (isset($data->timestamp)) {
-			$instance->timestamp = $data->timestamp;
-		}
 		if (isset($data->button)) {
 			$instance->button = (string)$data->button;
+		}
+		if (isset($data->timestamp)) {
+			$instance->timestamp = $data->timestamp;
 		}
 		if (isset($data->deltaX)) {
 			$instance->deltaX = $data->deltaX;
@@ -120,11 +120,11 @@ final class EmulateTouchFromMouseEventRequest implements \JsonSerializable
 		if ($this->y !== null) {
 			$data->y = $this->y;
 		}
-		if ($this->timestamp !== null) {
-			$data->timestamp = $this->timestamp;
-		}
 		if ($this->button !== null) {
 			$data->button = $this->button;
+		}
+		if ($this->timestamp !== null) {
+			$data->timestamp = $this->timestamp;
 		}
 		if ($this->deltaX !== null) {
 			$data->deltaX = $this->deltaX;
