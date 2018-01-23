@@ -2,6 +2,10 @@ PHPUNIT_FLAGS=
 
 all: clean download-protocol generate
 
+regenerate:
+	rm -rf gen-src/*
+	make generate
+
 generate:
 	php generate.php
 

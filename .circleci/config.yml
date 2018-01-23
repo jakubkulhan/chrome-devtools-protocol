@@ -122,7 +122,7 @@ jobs:
           git config --global user.name "Jakub Kulhan"
           git config --global user.email "jakub.kulhan+circleci@gmail.com"
           git checkout $CIRCLE_BRANCH
-          make download-protocol fix-protocol generate
+          make download-protocol fix-protocol regenerate
           git add protocol.json protocol.json.md5 gen-src
           if git diff --cached --exit-code; then
             echo "Nothing to commit."
