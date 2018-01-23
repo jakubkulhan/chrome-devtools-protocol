@@ -10,16 +10,30 @@ namespace ChromeDevtoolsProtocol\Model\Tracing;
  */
 final class MemoryDumpConfig implements \JsonSerializable
 {
-	public static function fromJson($data)
+	/** Raw data. */
+	private $rawData;
+
+
+	public function __construct($rawData)
 	{
-		$instance = new static();
-		return $instance;
+		$this->rawData = $rawData;
+	}
+
+
+	public static function fromJson($rawData)
+	{
+		return new static($rawData);
 	}
 
 
 	public function jsonSerialize()
 	{
-		$data = new \stdClass();
-		return $data;
+		return $this->rawData;
+	}
+
+
+	public function getRawData()
+	{
+		return $this->rawData;
 	}
 }

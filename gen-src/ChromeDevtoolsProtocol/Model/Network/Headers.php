@@ -1,6 +1,9 @@
 <?php
 namespace ChromeDevtoolsProtocol\Model\Network;
 
+use ArrayIterator;
+use ChromeDevtoolsProtocol\Util\HeadersUtil;
+
 /**
  * Request / response headers as keys / values of JSON object.
  *
@@ -8,18 +11,68 @@ namespace ChromeDevtoolsProtocol\Model\Network;
  *
  * @author Jakub Kulhan <jakub.kulhan@gmail.com>
  */
-final class Headers implements \JsonSerializable
+final class Headers implements \JsonSerializable, \IteratorAggregate
 {
-	public static function fromJson($data)
+	/** Raw data. */
+	private $rawData;
+
+	/** Normalized headers data. */
+	private $headers;
+
+
+	public function __construct($rawData)
 	{
-		$instance = new static();
-		return $instance;
+		$this->rawData = $rawData;
+		$this->headers = [];
+		foreach ($this->rawData as $key => $value) {
+			$this->headers[HeadersUtil::normalize($key)] = $value;
+		}
+	}
+
+
+	public static function fromJson($rawData)
+	{
+		return new static($rawData);
 	}
 
 
 	public function jsonSerialize()
 	{
-		$data = new \stdClass();
-		return $data;
+		return $this->rawData;
+	}
+
+
+	public function getRawData()
+	{
+		return $this->rawData;
+	}
+
+
+	public function get(string $key, $default = null)
+	{
+		$key = HeadersUtil::normalize($key);
+		if (!array_key_exists($key, $this->headers)) {
+			return $default;
+		}
+		return $this->headers[$key];
+	}
+
+
+	public function has(string $key): bool
+	{
+		$key = HeadersUtil::normalize($key);
+		return array_key_exists($key, $this->headers);
+	}
+
+
+	public function all(): array
+	{
+		return $this->headers;
+	}
+
+
+	public function getIterator()
+	{
+		return new ArrayIterator($this->headers);
 	}
 }

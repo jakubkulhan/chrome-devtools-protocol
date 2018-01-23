@@ -2,6 +2,7 @@
 namespace ChromeDevtoolsProtocol;
 
 use ChromeDevtoolsProtocol\Exception\BuilderException;
+use ChromeDevtoolsProtocol\Util\HeadersUtil;
 use Nette\PhpGenerator\ClassType;
 use Nette\PhpGenerator\Helpers;
 use Nette\PhpGenerator\Method;
@@ -133,7 +134,11 @@ class Generator
 						));
 					}
 				} else if ($typeSpec->type === "object") {
-					$this->processObjectType($domainSpec->domain, $typeSpec);
+					if (isset($typeSpec->properties)) {
+						$this->processObjectType($domainSpec->domain, $typeSpec);
+					} else {
+						$this->processDynamicObjectType($domainSpec->domain, $typeSpec);
+					}
 				} else {
 					throw new \LogicException(sprintf(
 						"Unhandled type [%s] for named type [%s].",
@@ -393,6 +398,84 @@ class Generator
 		}
 
 		return $enumClass;
+	}
+
+	private function processDynamicObjectType(string $domain, $typeSpec)
+	{
+		$objectClassName = __NAMESPACE__ . "\\Model\\" . $domain . "\\" . $typeSpec->id;
+		$objectClass = $this->addClass($objectClassName);
+		$objectClass->setFinal(true);
+		$objectClass->addImplement(\JsonSerializable::class);
+
+		if (isset($typeSpec->description)) {
+			$objectClass->addComment($typeSpec->description);
+		} else {
+			$objectClass->addComment("Named type {$domain}.{$typeSpec->id}.");
+		}
+
+		$objectClass->addComment("")
+			->addComment(static::GENERATED_COMMENT)
+			->addComment("")
+			->addComment(static::AUTHOR_COMMENT);
+
+		$objectClass->addProperty("rawData")
+			->setVisibility("private")
+			->addComment("Raw data.");
+
+		$constructor = $objectClass->addMethod("__construct");
+		$constructor->addParameter("rawData");
+		$constructor->addBody("\$this->rawData = \$rawData;");
+
+		$fromJson = $objectClass->addMethod("fromJson");
+		$fromJson->setStatic(true);
+		$fromJson->addParameter("rawData");
+		$fromJson->addBody("return new static(\$rawData);");
+
+		$jsonSerialize = $objectClass->addMethod("jsonSerialize");
+		$jsonSerialize->addBody("return \$this->rawData;");
+
+		$objectClass->addMethod("getRawData")
+			->addBody("return \$this->rawData;");
+
+		if ($domain === "Network" && $typeSpec->id === "Headers") {
+			$objectClass->addProperty("headers")
+				->setVisibility("private")
+				->addComment("Normalized headers data.");
+
+			$objectClass->getNamespace()->addUse(HeadersUtil::class, null, $headersUtilAlias);
+
+			$constructor
+				->addBody("\$this->headers = [];")
+				->addBody("foreach (\$this->rawData as \$key => \$value) {")
+				->addBody("\t\$this->headers[{$headersUtilAlias}::normalize(\$key)] = \$value;")
+				->addBody("}");
+
+			$get = $objectClass->addMethod("get");
+			$get->addParameter("key")->setTypeHint("string");
+			$get->addParameter("default")->setDefaultValue(null);
+			$get
+				->addBody("\$key = {$headersUtilAlias}::normalize(\$key);")
+				->addBody("if (!array_key_exists(\$key, \$this->headers)) {")
+				->addBody("\treturn \$default;")
+				->addBody("}")
+				->addBody("return \$this->headers[\$key];");
+
+			$has = $objectClass->addMethod("has");
+			$has->addParameter("key")->setTypeHint("string");
+			$has->setReturnType("bool");
+			$has
+				->addBody("\$key = {$headersUtilAlias}::normalize(\$key);")
+				->addBody("return array_key_exists(\$key, \$this->headers);");
+
+			$all = $objectClass->addMethod("all");
+			$all->setReturnType("array");
+			$all->addBody("return \$this->headers;");
+
+			$objectClass->addImplement(\IteratorAggregate::class);
+			$getIterator = $objectClass->addMethod("getIterator");
+			$objectClass->getNamespace()->addUse(\ArrayIterator::class, null, $arrayIteratorAlias);
+			$getIterator->addBody("return new {$arrayIteratorAlias}(\$this->headers);");
+		}
 	}
 
 	private function processObjectType(string $domain, $typeSpec, bool $withBuilder = false)
