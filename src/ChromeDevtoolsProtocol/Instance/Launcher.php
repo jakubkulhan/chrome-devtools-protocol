@@ -147,7 +147,7 @@ class Launcher
 	 * @return ProcessInstance
 	 * @throws \Exception
 	 */
-	private function launchWithExecutable(ContextInterface $ctx, string $executable, ...$args): ProcessInstance
+	protected function launchWithExecutable(ContextInterface $ctx, string $executable, ...$args): ProcessInstance
 	{
 		$args = array_unique(array_merge(static::$defaultArgs, $args));
 
