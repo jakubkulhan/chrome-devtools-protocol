@@ -2,6 +2,7 @@
 namespace ChromeDevtoolsProtocol\Domain;
 
 use ChromeDevtoolsProtocol\ContextInterface;
+use ChromeDevtoolsProtocol\Model\Memory\GetAllTimeSamplingProfileResponse;
 use ChromeDevtoolsProtocol\Model\Memory\GetDOMCountersResponse;
 use ChromeDevtoolsProtocol\Model\Memory\GetSamplingProfileResponse;
 use ChromeDevtoolsProtocol\Model\Memory\SetPressureNotificationsSuppressedRequest;
@@ -20,6 +21,16 @@ use ChromeDevtoolsProtocol\Model\Memory\StartSamplingRequest;
 interface MemoryDomainInterface
 {
 	/**
+	 * Retrieve native memory allocations profile collected since process startup.
+	 *
+	 * @param ContextInterface $ctx
+	 *
+	 * @return GetAllTimeSamplingProfileResponse
+	 */
+	public function getAllTimeSamplingProfile(ContextInterface $ctx): GetAllTimeSamplingProfileResponse;
+
+
+	/**
 	 * Call Memory.getDOMCounters command.
 	 *
 	 * @param ContextInterface $ctx
@@ -30,7 +41,7 @@ interface MemoryDomainInterface
 
 
 	/**
-	 * Retrieve collected native memory profile.
+	 * Retrieve native memory allocations profile collected since last `startSampling` call.
 	 *
 	 * @param ContextInterface $ctx
 	 *

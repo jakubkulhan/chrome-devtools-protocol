@@ -3,6 +3,7 @@ namespace ChromeDevtoolsProtocol\Domain;
 
 use ChromeDevtoolsProtocol\ContextInterface;
 use ChromeDevtoolsProtocol\InternalClientInterface;
+use ChromeDevtoolsProtocol\Model\Memory\GetAllTimeSamplingProfileResponse;
 use ChromeDevtoolsProtocol\Model\Memory\GetDOMCountersResponse;
 use ChromeDevtoolsProtocol\Model\Memory\GetSamplingProfileResponse;
 use ChromeDevtoolsProtocol\Model\Memory\SetPressureNotificationsSuppressedRequest;
@@ -18,6 +19,14 @@ class MemoryDomain implements MemoryDomainInterface
 	public function __construct(InternalClientInterface $internalClient)
 	{
 		$this->internalClient = $internalClient;
+	}
+
+
+	public function getAllTimeSamplingProfile(ContextInterface $ctx): GetAllTimeSamplingProfileResponse
+	{
+		$request = new \stdClass();
+		$response = $this->internalClient->executeCommand($ctx, 'Memory.getAllTimeSamplingProfile', $request);
+		return GetAllTimeSamplingProfileResponse::fromJson($response);
 	}
 
 
