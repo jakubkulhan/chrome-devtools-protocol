@@ -31,6 +31,13 @@ final class NavigateRequest implements \JsonSerializable
 	 */
 	public $transitionType;
 
+	/**
+	 * Frame id to navigate, if not specified navigates the top frame.
+	 *
+	 * @var string
+	 */
+	public $frameId;
+
 
 	public static function fromJson($data)
 	{
@@ -43,6 +50,9 @@ final class NavigateRequest implements \JsonSerializable
 		}
 		if (isset($data->transitionType)) {
 			$instance->transitionType = (string)$data->transitionType;
+		}
+		if (isset($data->frameId)) {
+			$instance->frameId = (string)$data->frameId;
 		}
 		return $instance;
 	}
@@ -59,6 +69,9 @@ final class NavigateRequest implements \JsonSerializable
 		}
 		if ($this->transitionType !== null) {
 			$data->transitionType = $this->transitionType;
+		}
+		if ($this->frameId !== null) {
+			$data->frameId = $this->frameId;
 		}
 		return $data;
 	}

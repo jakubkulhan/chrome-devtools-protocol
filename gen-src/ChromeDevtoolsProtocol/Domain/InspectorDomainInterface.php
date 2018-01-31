@@ -4,6 +4,7 @@ namespace ChromeDevtoolsProtocol\Domain;
 use ChromeDevtoolsProtocol\ContextInterface;
 use ChromeDevtoolsProtocol\Model\Inspector\DetachedEvent;
 use ChromeDevtoolsProtocol\Model\Inspector\TargetCrashedEvent;
+use ChromeDevtoolsProtocol\Model\Inspector\TargetReloadedAfterCrashEvent;
 use ChromeDevtoolsProtocol\SubscriptionInterface;
 
 /**
@@ -83,4 +84,28 @@ interface InspectorDomainInterface
 	 * @return TargetCrashedEvent
 	 */
 	public function awaitTargetCrashed(ContextInterface $ctx): TargetCrashedEvent;
+
+
+	/**
+	 * Fired when debugging target has reloaded after crash
+	 *
+	 * Listener will be called whenever event Inspector.targetReloadedAfterCrash is fired.
+	 *
+	 * @param callable $listener
+	 *
+	 * @return SubscriptionInterface
+	 */
+	public function addTargetReloadedAfterCrashListener(callable $listener): SubscriptionInterface;
+
+
+	/**
+	 * Fired when debugging target has reloaded after crash
+	 *
+	 * Method will block until first Inspector.targetReloadedAfterCrash event is fired.
+	 *
+	 * @param ContextInterface $ctx
+	 *
+	 * @return TargetReloadedAfterCrashEvent
+	 */
+	public function awaitTargetReloadedAfterCrash(ContextInterface $ctx): TargetReloadedAfterCrashEvent;
 }

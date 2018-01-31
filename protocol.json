@@ -2551,7 +2551,7 @@
                 },
                 {
                     "name": "stopRuleUsageTracking",
-                    "description": "The list of rules with an indication of whether these were used",
+                    "description": "Stop tracking rule usage and return the list of rules that were used since last call to `takeCoverageDelta` (or since start of coverage instrumentation)",
                     "returns": [
                         {
                             "name": "ruleUsage",
@@ -7580,6 +7580,10 @@
                 {
                     "name": "targetCrashed",
                     "description": "Fired when debugging target has crashed"
+                },
+                {
+                    "name": "targetReloadedAfterCrash",
+                    "description": "Fired when debugging target has reloaded after crash"
                 }
             ]
         },
@@ -8299,6 +8303,16 @@
             ],
             "commands": [
                 {
+                    "name": "getAllTimeSamplingProfile",
+                    "description": "Retrieve native memory allocations profile collected since process startup.",
+                    "returns": [
+                        {
+                            "name": "profile",
+                            "$ref": "SamplingProfile"
+                        }
+                    ]
+                },
+                {
                     "name": "getDOMCounters",
                     "returns": [
                         {
@@ -8317,7 +8331,7 @@
                 },
                 {
                     "name": "getSamplingProfile",
-                    "description": "Retrieve collected native memory profile.",
+                    "description": "Retrieve native memory allocations profile collected since last `startSampling` call.",
                     "returns": [
                         {
                             "name": "profile",
@@ -11363,6 +11377,12 @@
                             "description": "Intended transition type.",
                             "optional": true,
                             "$ref": "TransitionType"
+                        },
+                        {
+                            "name": "frameId",
+                            "description": "Frame id to navigate, if not specified navigates the top frame.",
+                            "optional": true,
+                            "$ref": "FrameId"
                         }
                     ],
                     "returns": [

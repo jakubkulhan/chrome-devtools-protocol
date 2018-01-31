@@ -16,6 +16,8 @@ final class NavigateRequestBuilder
 
 	private $transitionType;
 
+	private $frameId;
+
 
 	/**
 	 * Validate non-optional parameters and return new instance.
@@ -29,6 +31,7 @@ final class NavigateRequestBuilder
 		$instance->url = $this->url;
 		$instance->referrer = $this->referrer;
 		$instance->transitionType = $this->transitionType;
+		$instance->frameId = $this->frameId;
 		return $instance;
 	}
 
@@ -65,6 +68,18 @@ final class NavigateRequestBuilder
 	public function setTransitionType($transitionType): self
 	{
 		$this->transitionType = $transitionType;
+		return $this;
+	}
+
+
+	/**
+	 * @param string $frameId
+	 *
+	 * @return self
+	 */
+	public function setFrameId($frameId): self
+	{
+		$this->frameId = $frameId;
 		return $this;
 	}
 }
