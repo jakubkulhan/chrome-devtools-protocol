@@ -21,7 +21,6 @@ use ChromeDevtoolsProtocol\Model\Target\GetTargetInfoResponse;
 use ChromeDevtoolsProtocol\Model\Target\GetTargetsResponse;
 use ChromeDevtoolsProtocol\Model\Target\ReceivedMessageFromTargetEvent;
 use ChromeDevtoolsProtocol\Model\Target\SendMessageToTargetRequest;
-use ChromeDevtoolsProtocol\Model\Target\SetAttachToFramesRequest;
 use ChromeDevtoolsProtocol\Model\Target\SetAutoAttachRequest;
 use ChromeDevtoolsProtocol\Model\Target\SetDiscoverTargetsRequest;
 use ChromeDevtoolsProtocol\Model\Target\SetRemoteLocationsRequest;
@@ -108,12 +107,6 @@ class TargetDomain implements TargetDomainInterface
 	public function sendMessageToTarget(ContextInterface $ctx, SendMessageToTargetRequest $request): void
 	{
 		$this->internalClient->executeCommand($ctx, 'Target.sendMessageToTarget', $request);
-	}
-
-
-	public function setAttachToFrames(ContextInterface $ctx, SetAttachToFramesRequest $request): void
-	{
-		$this->internalClient->executeCommand($ctx, 'Target.setAttachToFrames', $request);
 	}
 
 

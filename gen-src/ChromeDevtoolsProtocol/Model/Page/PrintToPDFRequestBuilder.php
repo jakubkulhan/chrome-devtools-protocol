@@ -36,6 +36,8 @@ final class PrintToPDFRequestBuilder
 
 	private $footerTemplate;
 
+	private $preferCSSPageSize;
+
 
 	/**
 	 * Validate non-optional parameters and return new instance.
@@ -57,6 +59,7 @@ final class PrintToPDFRequestBuilder
 		$instance->ignoreInvalidPageRanges = $this->ignoreInvalidPageRanges;
 		$instance->headerTemplate = $this->headerTemplate;
 		$instance->footerTemplate = $this->footerTemplate;
+		$instance->preferCSSPageSize = $this->preferCSSPageSize;
 		return $instance;
 	}
 
@@ -225,6 +228,18 @@ final class PrintToPDFRequestBuilder
 	public function setFooterTemplate($footerTemplate): self
 	{
 		$this->footerTemplate = $footerTemplate;
+		return $this;
+	}
+
+
+	/**
+	 * @param bool|null $preferCSSPageSize
+	 *
+	 * @return self
+	 */
+	public function setPreferCSSPageSize($preferCSSPageSize): self
+	{
+		$this->preferCSSPageSize = $preferCSSPageSize;
 		return $this;
 	}
 }

@@ -108,6 +108,13 @@ final class PrintToPDFRequest implements \JsonSerializable
 	 */
 	public $footerTemplate;
 
+	/**
+	 * Whether or not to prefer page size as defined by css. Defaults to false, in which case the content will be scaled to fit the paper size.
+	 *
+	 * @var bool|null
+	 */
+	public $preferCSSPageSize;
+
 
 	public static function fromJson($data)
 	{
@@ -153,6 +160,9 @@ final class PrintToPDFRequest implements \JsonSerializable
 		}
 		if (isset($data->footerTemplate)) {
 			$instance->footerTemplate = (string)$data->footerTemplate;
+		}
+		if (isset($data->preferCSSPageSize)) {
+			$instance->preferCSSPageSize = (bool)$data->preferCSSPageSize;
 		}
 		return $instance;
 	}
@@ -202,6 +212,9 @@ final class PrintToPDFRequest implements \JsonSerializable
 		}
 		if ($this->footerTemplate !== null) {
 			$data->footerTemplate = $this->footerTemplate;
+		}
+		if ($this->preferCSSPageSize !== null) {
+			$data->preferCSSPageSize = $this->preferCSSPageSize;
 		}
 		return $data;
 	}

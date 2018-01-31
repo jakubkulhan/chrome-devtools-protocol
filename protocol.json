@@ -11503,6 +11503,12 @@
                             "description": "HTML template for the print footer. Should use the same format as the `headerTemplate`.",
                             "optional": true,
                             "type": "string"
+                        },
+                        {
+                            "name": "preferCSSPageSize",
+                            "description": "Whether or not to prefer page size as defined by css. Defaults to false, in which case the content will be scaled to fit the paper size.",
+                            "optional": true,
+                            "type": "boolean"
                         }
                     ],
                     "returns": [
@@ -14881,17 +14887,6 @@
                             "deprecated": true,
                             "optional": true,
                             "$ref": "TargetID"
-                        }
-                    ]
-                },
-                {
-                    "name": "setAttachToFrames",
-                    "experimental": true,
-                    "parameters": [
-                        {
-                            "name": "value",
-                            "description": "Whether to attach to frames.",
-                            "type": "boolean"
                         }
                     ]
                 },

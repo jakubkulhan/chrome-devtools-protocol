@@ -20,7 +20,6 @@ use ChromeDevtoolsProtocol\Model\Target\GetTargetInfoResponse;
 use ChromeDevtoolsProtocol\Model\Target\GetTargetsResponse;
 use ChromeDevtoolsProtocol\Model\Target\ReceivedMessageFromTargetEvent;
 use ChromeDevtoolsProtocol\Model\Target\SendMessageToTargetRequest;
-use ChromeDevtoolsProtocol\Model\Target\SetAttachToFramesRequest;
 use ChromeDevtoolsProtocol\Model\Target\SetAutoAttachRequest;
 use ChromeDevtoolsProtocol\Model\Target\SetDiscoverTargetsRequest;
 use ChromeDevtoolsProtocol\Model\Target\SetRemoteLocationsRequest;
@@ -144,17 +143,6 @@ interface TargetDomainInterface
 	 * @return void
 	 */
 	public function sendMessageToTarget(ContextInterface $ctx, SendMessageToTargetRequest $request): void;
-
-
-	/**
-	 * Call Target.setAttachToFrames command.
-	 *
-	 * @param ContextInterface $ctx
-	 * @param SetAttachToFramesRequest $request
-	 *
-	 * @return void
-	 */
-	public function setAttachToFrames(ContextInterface $ctx, SetAttachToFramesRequest $request): void;
 
 
 	/**
