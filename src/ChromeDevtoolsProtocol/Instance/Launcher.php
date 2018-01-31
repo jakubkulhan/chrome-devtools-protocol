@@ -180,7 +180,6 @@ class Launcher
         }
 
         try {
-            print_r(array_merge([$executable], $args));
             $process = new Process(
                 array_merge([$executable], $args),
                 $this->workDir,
@@ -189,9 +188,6 @@ class Launcher
                 null
             );
             $process->start();
-sleep(1);
-var_dump($process->getOutput());
-var_dump($process->getErrorOutput());
 
             $instance = new ProcessInstance($process, $temporaryUserDataDir, $this->port);
 
