@@ -9,59 +9,59 @@ namespace ChromeDevtoolsProtocol;
 class Context implements ContextInterface
 {
 
-	/** @var ContextInterface|null */
-	private $parent;
+    /** @var ContextInterface|null */
+    private $parent;
 
-	/** @var \DateTimeImmutable|null */
-	private $deadline;
+    /** @var \DateTimeImmutable|null */
+    private $deadline;
 
-	public static function background()
-	{
-		return new Context();
-	}
+    public static function background()
+    {
+        return new Context();
+    }
 
-	public static function withDeadline(ContextInterface $parent, \DateTimeImmutable $deadline): ContextInterface
-	{
-		if ($parent->getDeadline() !== null &&
-			floatval($parent->getDeadline()->format("U.u")) < floatval($deadline->format("U.u"))
-		) {
-			return $parent;
-		}
+    public static function withDeadline(ContextInterface $parent, \DateTimeImmutable $deadline): ContextInterface
+    {
+        if ($parent->getDeadline() !== null &&
+            floatval($parent->getDeadline()->format("U.u")) < floatval($deadline->format("U.u"))
+        ) {
+            return $parent;
+        }
 
-		$ctx = new Context();
-		$ctx->parent = $parent;
-		$ctx->deadline = $deadline;
+        $ctx = new Context();
+        $ctx->parent = $parent;
+        $ctx->deadline = $deadline;
 
-		return $ctx;
-	}
+        return $ctx;
+    }
 
-	public static function withTimeout(ContextInterface $parent, int $seconds, int $microseconds = 0): ContextInterface
-	{
-		$deadlineTimestamp = microtime(true) + $seconds + ($microseconds / 1000000);
-		return static::withDeadline($parent, \DateTimeImmutable::createFromFormat("U.u", $deadlineTimestamp));
-	}
+    public static function withTimeout(ContextInterface $parent, int $seconds, int $microseconds = 0): ContextInterface
+    {
+        $deadlineTimestamp = number_format(microtime(true) + $seconds + ($microseconds / 1000000), 6, '.', '');
+        return static::withDeadline($parent, \DateTimeImmutable::createFromFormat("U.u", $deadlineTimestamp));
+    }
 
-	public function getDeadline(): ?\DateTimeImmutable
-	{
-		return $this->deadline;
-	}
+    public function getDeadline(): ?\DateTimeImmutable
+    {
+        return $this->deadline;
+    }
 
-	public function isAfterDeadline(): bool
-	{
-		if ($this->deadline === null) {
-			return false;
-		}
+    public function isAfterDeadline(): bool
+    {
+        if ($this->deadline === null) {
+            return false;
+        }
 
-		return microtime(true) >= floatval($this->deadline->format("U.u"));
-	}
+        return microtime(true) >= floatval($this->deadline->format("U.u"));
+    }
 
-	public function deadlineFromNow(): ?float
-	{
-		if ($this->deadline === null) {
-			return null;
-		}
+    public function deadlineFromNow(): ?float
+    {
+        if ($this->deadline === null) {
+            return null;
+        }
 
-		return floatval($this->deadline->format("U.u")) - microtime(true);
-	}
+        return floatval($this->deadline->format("U.u")) - microtime(true);
+    }
 
 }
