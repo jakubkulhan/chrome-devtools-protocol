@@ -37,8 +37,7 @@ class Context implements ContextInterface
 
     public static function withTimeout(ContextInterface $parent, int $seconds, int $microseconds = 0): ContextInterface
     {
-        $deadlineTimestamp = microtime(true) + $seconds + ($microseconds / 1000000);
-        var_dump($deadlineTimestamp);
+        $deadlineTimestamp = number_format(microtime(true) + $seconds + ($microseconds / 1000000), 6, '.', '');
         return static::withDeadline($parent, \DateTimeImmutable::createFromFormat("U.u", $deadlineTimestamp));
     }
 
