@@ -3,6 +3,7 @@ namespace ChromeDevtoolsProtocol\Domain;
 
 use ChromeDevtoolsProtocol\ContextInterface;
 use ChromeDevtoolsProtocol\Model\Memory\GetAllTimeSamplingProfileResponse;
+use ChromeDevtoolsProtocol\Model\Memory\GetBrowserSamplingProfileResponse;
 use ChromeDevtoolsProtocol\Model\Memory\GetDOMCountersResponse;
 use ChromeDevtoolsProtocol\Model\Memory\GetSamplingProfileResponse;
 use ChromeDevtoolsProtocol\Model\Memory\SetPressureNotificationsSuppressedRequest;
@@ -21,13 +22,23 @@ use ChromeDevtoolsProtocol\Model\Memory\StartSamplingRequest;
 interface MemoryDomainInterface
 {
 	/**
-	 * Retrieve native memory allocations profile collected since process startup.
+	 * Retrieve native memory allocations profile collected since renderer process startup.
 	 *
 	 * @param ContextInterface $ctx
 	 *
 	 * @return GetAllTimeSamplingProfileResponse
 	 */
 	public function getAllTimeSamplingProfile(ContextInterface $ctx): GetAllTimeSamplingProfileResponse;
+
+
+	/**
+	 * Retrieve native memory allocations profile collected since browser process startup.
+	 *
+	 * @param ContextInterface $ctx
+	 *
+	 * @return GetBrowserSamplingProfileResponse
+	 */
+	public function getBrowserSamplingProfile(ContextInterface $ctx): GetBrowserSamplingProfileResponse;
 
 
 	/**
