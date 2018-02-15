@@ -20,14 +20,14 @@ final class InlineTextBox implements \JsonSerializable
 	public $boundingBox;
 
 	/**
-	 * The starting index in characters, for this post layout textbox substring.
+	 * The starting index in characters, for this post layout textbox substring. Characters that would be represented as a surrogate pair in UTF-16 have length 2.
 	 *
 	 * @var int
 	 */
 	public $startCharacterIndex;
 
 	/**
-	 * The number of characters in this post layout textbox substring.
+	 * The number of characters in this post layout textbox substring. Characters that would be represented as a surrogate pair in UTF-16 have length 2.
 	 *
 	 * @var int
 	 */
