@@ -174,6 +174,13 @@ final class DOMNode implements \JsonSerializable
 	public $pseudoType;
 
 	/**
+	 * Shadow root type.
+	 *
+	 * @var string
+	 */
+	public $shadowRootType;
+
+	/**
 	 * Whether this DOM node responds to mouse clicks. This includes nodes that have had click event listeners attached via JavaScript as well as anchor tags that naturally navigate when clicked.
 	 *
 	 * @var bool|null
@@ -276,6 +283,9 @@ final class DOMNode implements \JsonSerializable
 		if (isset($data->pseudoType)) {
 			$instance->pseudoType = (string)$data->pseudoType;
 		}
+		if (isset($data->shadowRootType)) {
+			$instance->shadowRootType = (string)$data->shadowRootType;
+		}
 		if (isset($data->isClickable)) {
 			$instance->isClickable = (bool)$data->isClickable;
 		}
@@ -372,6 +382,9 @@ final class DOMNode implements \JsonSerializable
 		}
 		if ($this->pseudoType !== null) {
 			$data->pseudoType = $this->pseudoType;
+		}
+		if ($this->shadowRootType !== null) {
+			$data->shadowRootType = $this->shadowRootType;
 		}
 		if ($this->isClickable !== null) {
 			$data->isClickable = $this->isClickable;
