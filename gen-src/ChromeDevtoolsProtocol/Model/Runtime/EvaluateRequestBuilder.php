@@ -28,6 +28,8 @@ final class EvaluateRequestBuilder
 
 	private $awaitPromise;
 
+	private $throwOnSideEffect;
+
 
 	/**
 	 * Validate non-optional parameters and return new instance.
@@ -47,6 +49,7 @@ final class EvaluateRequestBuilder
 		$instance->generatePreview = $this->generatePreview;
 		$instance->userGesture = $this->userGesture;
 		$instance->awaitPromise = $this->awaitPromise;
+		$instance->throwOnSideEffect = $this->throwOnSideEffect;
 		return $instance;
 	}
 
@@ -155,6 +158,18 @@ final class EvaluateRequestBuilder
 	public function setAwaitPromise($awaitPromise): self
 	{
 		$this->awaitPromise = $awaitPromise;
+		return $this;
+	}
+
+
+	/**
+	 * @param bool|null $throwOnSideEffect
+	 *
+	 * @return self
+	 */
+	public function setThrowOnSideEffect($throwOnSideEffect): self
+	{
+		$this->throwOnSideEffect = $throwOnSideEffect;
 		return $this;
 	}
 }

@@ -73,6 +73,13 @@ final class EvaluateRequest implements \JsonSerializable
 	 */
 	public $awaitPromise;
 
+	/**
+	 * Whether to throw an exception if side effect cannot be ruled out during evaluation.
+	 *
+	 * @var bool|null
+	 */
+	public $throwOnSideEffect;
+
 
 	public static function fromJson($data)
 	{
@@ -103,6 +110,9 @@ final class EvaluateRequest implements \JsonSerializable
 		}
 		if (isset($data->awaitPromise)) {
 			$instance->awaitPromise = (bool)$data->awaitPromise;
+		}
+		if (isset($data->throwOnSideEffect)) {
+			$instance->throwOnSideEffect = (bool)$data->throwOnSideEffect;
 		}
 		return $instance;
 	}
@@ -137,6 +147,9 @@ final class EvaluateRequest implements \JsonSerializable
 		}
 		if ($this->awaitPromise !== null) {
 			$data->awaitPromise = $this->awaitPromise;
+		}
+		if ($this->throwOnSideEffect !== null) {
+			$data->throwOnSideEffect = $this->throwOnSideEffect;
 		}
 		return $data;
 	}

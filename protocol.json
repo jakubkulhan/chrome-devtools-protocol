@@ -13456,6 +13456,13 @@
                             "description": "Whether execution should `await` for resulting value and return once awaited promise is resolved.",
                             "optional": true,
                             "type": "boolean"
+                        },
+                        {
+                            "name": "throwOnSideEffect",
+                            "description": "Whether to throw an exception if side effect cannot be ruled out during evaluation.",
+                            "experimental": true,
+                            "optional": true,
+                            "type": "boolean"
                         }
                     ],
                     "returns": [
