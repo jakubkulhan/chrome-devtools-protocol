@@ -18,11 +18,11 @@ final class SamplingProfileNode implements \JsonSerializable
 	public $size;
 
 	/**
-	 * Number of sampled allocations of that size.
+	 * Total bytes attributed to this sample.
 	 *
 	 * @var int|float
 	 */
-	public $count;
+	public $total;
 
 	/**
 	 * Execution stack at the point of allocation.
@@ -38,8 +38,8 @@ final class SamplingProfileNode implements \JsonSerializable
 		if (isset($data->size)) {
 			$instance->size = $data->size;
 		}
-		if (isset($data->count)) {
-			$instance->count = $data->count;
+		if (isset($data->total)) {
+			$instance->total = $data->total;
 		}
 		if (isset($data->stack)) {
 			$instance->stack = [];
@@ -57,8 +57,8 @@ final class SamplingProfileNode implements \JsonSerializable
 		if ($this->size !== null) {
 			$data->size = $this->size;
 		}
-		if ($this->count !== null) {
-			$data->count = $this->count;
+		if ($this->total !== null) {
+			$data->total = $this->total;
 		}
 		if ($this->stack !== null) {
 			$data->stack = [];

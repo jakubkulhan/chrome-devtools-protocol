@@ -290,7 +290,7 @@ interface CSSDomainInterface
 
 
 	/**
-	 * Fires whenever a web font gets loaded.
+	 * Fires whenever a web font is updated. A non-empty font parameter indicates a successfully loaded web font
 	 *
 	 * Listener will be called whenever event CSS.fontsUpdated is fired.
 	 *
@@ -302,7 +302,7 @@ interface CSSDomainInterface
 
 
 	/**
-	 * Fires whenever a web font gets loaded.
+	 * Fires whenever a web font is updated. A non-empty font parameter indicates a successfully loaded web font
 	 *
 	 * Method will block until first CSS.fontsUpdated event is fired.
 	 *

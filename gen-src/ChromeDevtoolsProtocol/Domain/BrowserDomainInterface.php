@@ -2,6 +2,7 @@
 namespace ChromeDevtoolsProtocol\Domain;
 
 use ChromeDevtoolsProtocol\ContextInterface;
+use ChromeDevtoolsProtocol\Model\Browser\GetCommandLineResponse;
 use ChromeDevtoolsProtocol\Model\Browser\GetHistogramRequest;
 use ChromeDevtoolsProtocol\Model\Browser\GetHistogramResponse;
 use ChromeDevtoolsProtocol\Model\Browser\GetHistogramsRequest;
@@ -30,6 +31,16 @@ interface BrowserDomainInterface
 	 * @return void
 	 */
 	public function close(ContextInterface $ctx): void;
+
+
+	/**
+	 * Returns the command line switches for the browser process if, and only if --enable-automation is on the commandline.
+	 *
+	 * @param ContextInterface $ctx
+	 *
+	 * @return GetCommandLineResponse
+	 */
+	public function getCommandLine(ContextInterface $ctx): GetCommandLineResponse;
 
 
 	/**

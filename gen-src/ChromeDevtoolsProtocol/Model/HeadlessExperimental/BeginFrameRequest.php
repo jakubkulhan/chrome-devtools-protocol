@@ -39,7 +39,7 @@ final class BeginFrameRequest implements \JsonSerializable
 	public $noDisplayUpdates;
 
 	/**
-	 * If set, a screenshot of the frame will be captured and returned in the response. Otherwise, no screenshot will be captured.
+	 * If set, a screenshot of the frame will be captured and returned in the response. Otherwise, no screenshot will be captured. Note that capturing a screenshot can fail, for example, during renderer initialization. In such a case, no screenshot data will be returned.
 	 *
 	 * @var ScreenshotParams|null
 	 */

@@ -4,7 +4,6 @@ namespace ChromeDevtoolsProtocol\Domain;
 use ChromeDevtoolsProtocol\ContextInterface;
 use ChromeDevtoolsProtocol\Model\HeadlessExperimental\BeginFrameRequest;
 use ChromeDevtoolsProtocol\Model\HeadlessExperimental\BeginFrameResponse;
-use ChromeDevtoolsProtocol\Model\HeadlessExperimental\MainFrameReadyForScreenshotsEvent;
 use ChromeDevtoolsProtocol\Model\HeadlessExperimental\NeedsBeginFramesChangedEvent;
 use ChromeDevtoolsProtocol\SubscriptionInterface;
 
@@ -20,7 +19,7 @@ use ChromeDevtoolsProtocol\SubscriptionInterface;
 interface HeadlessExperimentalDomainInterface
 {
 	/**
-	 * Sends a BeginFrame to the target and returns when the frame was completed. Optionally captures a screenshot from the resulting frame. Requires that the target was created with enabled BeginFrameControl.
+	 * Sends a BeginFrame to the target and returns when the frame was completed. Optionally captures a screenshot from the resulting frame. Requires that the target was created with enabled BeginFrameControl. Designed for use with --run-all-compositor-stages-before-draw, see also https://goo.gl/3zHXhB for more background.
 	 *
 	 * @param ContextInterface $ctx
 	 * @param BeginFrameRequest $request
@@ -48,30 +47,6 @@ interface HeadlessExperimentalDomainInterface
 	 * @return void
 	 */
 	public function enable(ContextInterface $ctx): void;
-
-
-	/**
-	 * Issued when the main frame has first submitted a frame to the browser. May only be fired while a BeginFrame is in flight. Before this event, screenshotting requests may fail.
-	 *
-	 * Listener will be called whenever event HeadlessExperimental.mainFrameReadyForScreenshots is fired.
-	 *
-	 * @param callable $listener
-	 *
-	 * @return SubscriptionInterface
-	 */
-	public function addMainFrameReadyForScreenshotsListener(callable $listener): SubscriptionInterface;
-
-
-	/**
-	 * Issued when the main frame has first submitted a frame to the browser. May only be fired while a BeginFrame is in flight. Before this event, screenshotting requests may fail.
-	 *
-	 * Method will block until first HeadlessExperimental.mainFrameReadyForScreenshots event is fired.
-	 *
-	 * @param ContextInterface $ctx
-	 *
-	 * @return MainFrameReadyForScreenshotsEvent
-	 */
-	public function awaitMainFrameReadyForScreenshots(ContextInterface $ctx): MainFrameReadyForScreenshotsEvent;
 
 
 	/**
