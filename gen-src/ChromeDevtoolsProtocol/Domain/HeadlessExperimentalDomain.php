@@ -5,6 +5,7 @@ use ChromeDevtoolsProtocol\ContextInterface;
 use ChromeDevtoolsProtocol\InternalClientInterface;
 use ChromeDevtoolsProtocol\Model\HeadlessExperimental\BeginFrameRequest;
 use ChromeDevtoolsProtocol\Model\HeadlessExperimental\BeginFrameResponse;
+use ChromeDevtoolsProtocol\Model\HeadlessExperimental\EnterDeterministicModeRequest;
 use ChromeDevtoolsProtocol\Model\HeadlessExperimental\NeedsBeginFramesChangedEvent;
 use ChromeDevtoolsProtocol\SubscriptionInterface;
 
@@ -38,6 +39,12 @@ class HeadlessExperimentalDomain implements HeadlessExperimentalDomainInterface
 	{
 		$request = new \stdClass();
 		$this->internalClient->executeCommand($ctx, 'HeadlessExperimental.enable', $request);
+	}
+
+
+	public function enterDeterministicMode(ContextInterface $ctx, EnterDeterministicModeRequest $request): void
+	{
+		$this->internalClient->executeCommand($ctx, 'HeadlessExperimental.enterDeterministicMode', $request);
 	}
 
 

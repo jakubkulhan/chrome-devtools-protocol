@@ -4,6 +4,7 @@ namespace ChromeDevtoolsProtocol\Domain;
 use ChromeDevtoolsProtocol\ContextInterface;
 use ChromeDevtoolsProtocol\Model\HeadlessExperimental\BeginFrameRequest;
 use ChromeDevtoolsProtocol\Model\HeadlessExperimental\BeginFrameResponse;
+use ChromeDevtoolsProtocol\Model\HeadlessExperimental\EnterDeterministicModeRequest;
 use ChromeDevtoolsProtocol\Model\HeadlessExperimental\NeedsBeginFramesChangedEvent;
 use ChromeDevtoolsProtocol\SubscriptionInterface;
 
@@ -47,6 +48,17 @@ interface HeadlessExperimentalDomainInterface
 	 * @return void
 	 */
 	public function enable(ContextInterface $ctx): void;
+
+
+	/**
+	 * Puts the browser into deterministic mode. Only effective for subsequently created web contents. Only supported in headless mode. Once set there's no way of leaving deterministic mode.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param EnterDeterministicModeRequest $request
+	 *
+	 * @return void
+	 */
+	public function enterDeterministicMode(ContextInterface $ctx, EnterDeterministicModeRequest $request): void;
 
 
 	/**
