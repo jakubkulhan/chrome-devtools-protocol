@@ -23,6 +23,9 @@ class Launcher
 		"--headless",
 	];
 
+	/** @var string */
+	private $executable;
+
 	/** @var int */
 	private $port;
 
@@ -46,6 +49,18 @@ class Launcher
 		}
 
 		$this->port = $port;
+	}
+
+	/**
+	 * Set remote debugging port.
+	 *
+	 * @param string $executable
+	 * @return self
+	 */
+	public function setExecutable(string $executable)
+	{
+		$this->executable = $executable;
+		return $this;
 	}
 
 	/**
@@ -106,7 +121,10 @@ class Launcher
 	 */
 	public function launch(ContextInterface $ctx, ...$args): ProcessInstance
 	{
-		if (PHP_OS === "Linux") {
+		if ($this->executable) {
+			$executable = $this->executable;
+
+		} else if (PHP_OS === "Linux") {
 			$finder = new ExecutableFinder();
 			$executable = $finder->find(static::DEFAULT_LINUX_EXECUTABLE);
 			if ($executable === null) {
