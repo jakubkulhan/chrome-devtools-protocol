@@ -2,7 +2,7 @@
 namespace ChromeDevtoolsProtocol\Domain;
 
 use ChromeDevtoolsProtocol\ContextInterface;
-use ChromeDevtoolsProtocol\Model\Browser\GetCommandLineResponse;
+use ChromeDevtoolsProtocol\Model\Browser\GetBrowserCommandLineResponse;
 use ChromeDevtoolsProtocol\Model\Browser\GetHistogramRequest;
 use ChromeDevtoolsProtocol\Model\Browser\GetHistogramResponse;
 use ChromeDevtoolsProtocol\Model\Browser\GetHistogramsRequest;
@@ -38,9 +38,9 @@ interface BrowserDomainInterface
 	 *
 	 * @param ContextInterface $ctx
 	 *
-	 * @return GetCommandLineResponse
+	 * @return GetBrowserCommandLineResponse
 	 */
-	public function getCommandLine(ContextInterface $ctx): GetCommandLineResponse;
+	public function getBrowserCommandLine(ContextInterface $ctx): GetBrowserCommandLineResponse;
 
 
 	/**

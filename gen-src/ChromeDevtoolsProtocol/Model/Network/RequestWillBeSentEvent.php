@@ -80,6 +80,13 @@ final class RequestWillBeSentEvent implements \JsonSerializable
 	 */
 	public $frameId;
 
+	/**
+	 * Whether the request is initiated by a user gesture. Defaults to false.
+	 *
+	 * @var bool|null
+	 */
+	public $hasUserGesture;
+
 
 	public static function fromJson($data)
 	{
@@ -113,6 +120,9 @@ final class RequestWillBeSentEvent implements \JsonSerializable
 		}
 		if (isset($data->frameId)) {
 			$instance->frameId = (string)$data->frameId;
+		}
+		if (isset($data->hasUserGesture)) {
+			$instance->hasUserGesture = (bool)$data->hasUserGesture;
 		}
 		return $instance;
 	}
@@ -150,6 +160,9 @@ final class RequestWillBeSentEvent implements \JsonSerializable
 		}
 		if ($this->frameId !== null) {
 			$data->frameId = $this->frameId;
+		}
+		if ($this->hasUserGesture !== null) {
+			$data->hasUserGesture = $this->hasUserGesture;
 		}
 		return $data;
 	}

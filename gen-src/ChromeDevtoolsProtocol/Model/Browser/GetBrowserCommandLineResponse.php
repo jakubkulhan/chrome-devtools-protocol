@@ -2,13 +2,13 @@
 namespace ChromeDevtoolsProtocol\Model\Browser;
 
 /**
- * Response to Browser.getCommandLine command.
+ * Response to Browser.getBrowserCommandLine command.
  *
  * @generated This file has been auto-generated, do not edit.
  *
  * @author Jakub Kulhan <jakub.kulhan@gmail.com>
  */
-final class GetCommandLineResponse implements \JsonSerializable
+final class GetBrowserCommandLineResponse implements \JsonSerializable
 {
 	/**
 	 * Commandline parameters
