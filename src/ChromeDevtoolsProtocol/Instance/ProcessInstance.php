@@ -30,7 +30,7 @@ class ProcessInstance implements InstanceInterface, CloseableResourceInterface
 	{
 		$this->process = $process;
 		$this->temporaryUserDataDir = $temporaryUserDataDir;
-		$this->wrappedInstance = new Instance("127.0.0.1", $port);
+		$this->wrappedInstance = new Instance("localhost", $port);
 	}
 
 	public function __destruct()
