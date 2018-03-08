@@ -18,6 +18,7 @@ class Launcher
 {
 
 	const DEFAULT_LINUX_EXECUTABLE = "google-chrome";
+	const DEFAULT_WINDOWS_EXECUTABLE = "chrome";
 
 	public static $defaultArgs = [
 		"--headless",
@@ -129,6 +130,13 @@ class Launcher
 			$executable = $finder->find(static::DEFAULT_LINUX_EXECUTABLE);
 			if ($executable === null) {
 				throw new RuntimeException(sprintf("Executable [%s] not found.", static::DEFAULT_LINUX_EXECUTABLE));
+			}
+
+		} else if (strncasecmp(PHP_OS, "Win", 3) === 0) {
+			$finder = new ExecutableFinder();
+			$executable = $finder->find(static::DEFAULT_WINDOWS_EXECUTABLE);
+			if ($executable === null) {
+				throw new RuntimeException(sprintf("Executable [%s] not found.", static::DEFAULT_WINDOWS_EXECUTABLE));
 			}
 
 		} else if (PHP_OS === "Darwin") {
