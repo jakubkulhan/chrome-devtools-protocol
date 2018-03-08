@@ -118,7 +118,7 @@ class Launcher
 			$finder = new ExecutableFinder();
 			$executable = $finder->find(static::DEFAULT_WINDOWS_EXECUTABLE);
 			if ($executable === null) {
-    			throw new RuntimeException(sprintf("Executable [%s] not found.", static::DEFAULT_WINDOWS_EXECUTABLE));
+				throw new RuntimeException(sprintf("Executable [%s] not found.", static::DEFAULT_WINDOWS_EXECUTABLE));
 			}
 
 		} else if (PHP_OS === "Darwin") {
