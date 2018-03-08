@@ -52,7 +52,7 @@ class Launcher
 	}
 
 	/**
-	 * Set remote debugging port.
+	 * Set full path to executable.
 	 *
 	 * @param string $executable
 	 * @return self
