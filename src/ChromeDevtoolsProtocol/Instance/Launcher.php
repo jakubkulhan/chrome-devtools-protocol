@@ -114,7 +114,7 @@ class Launcher
 				throw new RuntimeException(sprintf("Executable [%s] not found.", static::DEFAULT_LINUX_EXECUTABLE));
 			}
 
-		} else if (stristr(PHP_OS, 'WIN')) {
+		} else if (strncasecmp(PHP_OS, "Win", 3) === 0) {
 			$finder = new ExecutableFinder();
 			$executable = $finder->find(static::DEFAULT_WINDOWS_EXECUTABLE);
 			if ($executable === null) {
