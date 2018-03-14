@@ -47,6 +47,13 @@ final class LayoutTreeNode implements \JsonSerializable
 	 */
 	public $styleIndex;
 
+	/**
+	 * Global paint order index, which is determined by the stacking order of the nodes. Nodes that are painted together will have the same index. Only provided if includePaintOrder in getSnapshot was true.
+	 *
+	 * @var int|null
+	 */
+	public $paintOrder;
+
 
 	public static function fromJson($data)
 	{
@@ -68,6 +75,9 @@ final class LayoutTreeNode implements \JsonSerializable
 		}
 		if (isset($data->styleIndex)) {
 			$instance->styleIndex = (int)$data->styleIndex;
+		}
+		if (isset($data->paintOrder)) {
+			$instance->paintOrder = (int)$data->paintOrder;
 		}
 		return $instance;
 	}
@@ -93,6 +103,9 @@ final class LayoutTreeNode implements \JsonSerializable
 		}
 		if ($this->styleIndex !== null) {
 			$data->styleIndex = $this->styleIndex;
+		}
+		if ($this->paintOrder !== null) {
+			$data->paintOrder = $this->paintOrder;
 		}
 		return $data;
 	}

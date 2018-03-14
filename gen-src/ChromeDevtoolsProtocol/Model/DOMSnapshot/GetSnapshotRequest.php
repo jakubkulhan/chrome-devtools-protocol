@@ -24,6 +24,13 @@ final class GetSnapshotRequest implements \JsonSerializable
 	 */
 	public $includeEventListeners;
 
+	/**
+	 * Whether to determine and include the paint order index of LayoutTreeNodes (default false).
+	 *
+	 * @var bool|null
+	 */
+	public $includePaintOrder;
+
 
 	public static function fromJson($data)
 	{
@@ -36,6 +43,9 @@ final class GetSnapshotRequest implements \JsonSerializable
 		}
 		if (isset($data->includeEventListeners)) {
 			$instance->includeEventListeners = (bool)$data->includeEventListeners;
+		}
+		if (isset($data->includePaintOrder)) {
+			$instance->includePaintOrder = (bool)$data->includePaintOrder;
 		}
 		return $instance;
 	}
@@ -52,6 +62,9 @@ final class GetSnapshotRequest implements \JsonSerializable
 		}
 		if ($this->includeEventListeners !== null) {
 			$data->includeEventListeners = $this->includeEventListeners;
+		}
+		if ($this->includePaintOrder !== null) {
+			$data->includePaintOrder = $this->includePaintOrder;
 		}
 		return $data;
 	}

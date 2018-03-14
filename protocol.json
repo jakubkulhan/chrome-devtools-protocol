@@ -5776,6 +5776,12 @@
                             "description": "Index into the `computedStyles` array returned by `getSnapshot`.",
                             "optional": true,
                             "type": "integer"
+                        },
+                        {
+                            "name": "paintOrder",
+                            "description": "Global paint order index, which is determined by the stacking order of the nodes. Nodes that are painted together will have the same index. Only provided if includePaintOrder in getSnapshot was true.",
+                            "optional": true,
+                            "type": "integer"
                         }
                     ]
                 },
@@ -5828,6 +5834,12 @@
                         {
                             "name": "includeEventListeners",
                             "description": "Whether or not to retrieve details of DOM listeners (default false).",
+                            "optional": true,
+                            "type": "boolean"
+                        },
+                        {
+                            "name": "includePaintOrder",
+                            "description": "Whether to determine and include the paint order index of LayoutTreeNodes (default false).",
                             "optional": true,
                             "type": "boolean"
                         }
@@ -13750,6 +13762,11 @@
                             "type": "boolean"
                         }
                     ]
+                },
+                {
+                    "name": "terminateExecution",
+                    "description": "Terminate current or next JavaScript execution. Will cancel the termination when the outer-most script execution ends.",
+                    "experimental": true
                 }
             ],
             "events": [

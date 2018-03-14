@@ -14,6 +14,8 @@ final class GetSnapshotRequestBuilder
 
 	private $includeEventListeners;
 
+	private $includePaintOrder;
+
 
 	/**
 	 * Validate non-optional parameters and return new instance.
@@ -26,6 +28,7 @@ final class GetSnapshotRequestBuilder
 		}
 		$instance->computedStyleWhitelist = $this->computedStyleWhitelist;
 		$instance->includeEventListeners = $this->includeEventListeners;
+		$instance->includePaintOrder = $this->includePaintOrder;
 		return $instance;
 	}
 
@@ -50,6 +53,18 @@ final class GetSnapshotRequestBuilder
 	public function setIncludeEventListeners($includeEventListeners): self
 	{
 		$this->includeEventListeners = $includeEventListeners;
+		return $this;
+	}
+
+
+	/**
+	 * @param bool|null $includePaintOrder
+	 *
+	 * @return self
+	 */
+	public function setIncludePaintOrder($includePaintOrder): self
+	{
+		$this->includePaintOrder = $includePaintOrder;
 		return $this;
 	}
 }
