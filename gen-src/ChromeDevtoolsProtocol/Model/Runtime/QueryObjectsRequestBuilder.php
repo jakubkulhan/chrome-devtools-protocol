@@ -12,6 +12,8 @@ final class QueryObjectsRequestBuilder
 {
 	private $prototypeObjectId;
 
+	private $objectGroup;
+
 
 	/**
 	 * Validate non-optional parameters and return new instance.
@@ -23,6 +25,7 @@ final class QueryObjectsRequestBuilder
 			throw new BuilderException('Property [prototypeObjectId] is required.');
 		}
 		$instance->prototypeObjectId = $this->prototypeObjectId;
+		$instance->objectGroup = $this->objectGroup;
 		return $instance;
 	}
 
@@ -35,6 +38,18 @@ final class QueryObjectsRequestBuilder
 	public function setPrototypeObjectId($prototypeObjectId): self
 	{
 		$this->prototypeObjectId = $prototypeObjectId;
+		return $this;
+	}
+
+
+	/**
+	 * @param string|null $objectGroup
+	 *
+	 * @return self
+	 */
+	public function setObjectGroup($objectGroup): self
+	{
+		$this->objectGroup = $objectGroup;
 		return $this;
 	}
 }

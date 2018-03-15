@@ -17,12 +17,22 @@ final class QueryObjectsRequest implements \JsonSerializable
 	 */
 	public $prototypeObjectId;
 
+	/**
+	 * Symbolic group name that can be used to release the results.
+	 *
+	 * @var string|null
+	 */
+	public $objectGroup;
+
 
 	public static function fromJson($data)
 	{
 		$instance = new static();
 		if (isset($data->prototypeObjectId)) {
 			$instance->prototypeObjectId = (string)$data->prototypeObjectId;
+		}
+		if (isset($data->objectGroup)) {
+			$instance->objectGroup = (string)$data->objectGroup;
 		}
 		return $instance;
 	}
@@ -33,6 +43,9 @@ final class QueryObjectsRequest implements \JsonSerializable
 		$data = new \stdClass();
 		if ($this->prototypeObjectId !== null) {
 			$data->prototypeObjectId = $this->prototypeObjectId;
+		}
+		if ($this->objectGroup !== null) {
+			$data->objectGroup = $this->objectGroup;
 		}
 		return $data;
 	}
