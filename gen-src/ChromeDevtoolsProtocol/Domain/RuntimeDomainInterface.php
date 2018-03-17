@@ -201,6 +201,16 @@ interface RuntimeDomainInterface
 
 
 	/**
+	 * Terminate current or next JavaScript execution. Will cancel the termination when the outer-most script execution ends.
+	 *
+	 * @param ContextInterface $ctx
+	 *
+	 * @return void
+	 */
+	public function terminateExecution(ContextInterface $ctx): void;
+
+
+	/**
 	 * Issued when console API was called.
 	 *
 	 * Listener will be called whenever event Runtime.consoleAPICalled is fired.

@@ -145,6 +145,13 @@ class RuntimeDomain implements RuntimeDomainInterface
 	}
 
 
+	public function terminateExecution(ContextInterface $ctx): void
+	{
+		$request = new \stdClass();
+		$this->internalClient->executeCommand($ctx, 'Runtime.terminateExecution', $request);
+	}
+
+
 	public function addConsoleAPICalledListener(callable $listener): SubscriptionInterface
 	{
 		return $this->internalClient->addListener('Runtime.consoleAPICalled', function ($event) use ($listener) {
