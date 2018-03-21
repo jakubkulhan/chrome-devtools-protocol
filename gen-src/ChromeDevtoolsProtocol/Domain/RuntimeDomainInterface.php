@@ -16,6 +16,8 @@ use ChromeDevtoolsProtocol\Model\Runtime\ExceptionThrownEvent;
 use ChromeDevtoolsProtocol\Model\Runtime\ExecutionContextCreatedEvent;
 use ChromeDevtoolsProtocol\Model\Runtime\ExecutionContextDestroyedEvent;
 use ChromeDevtoolsProtocol\Model\Runtime\ExecutionContextsClearedEvent;
+use ChromeDevtoolsProtocol\Model\Runtime\GetHeapUsageResponse;
+use ChromeDevtoolsProtocol\Model\Runtime\GetIsolateIdResponse;
 use ChromeDevtoolsProtocol\Model\Runtime\GetPropertiesRequest;
 use ChromeDevtoolsProtocol\Model\Runtime\GetPropertiesResponse;
 use ChromeDevtoolsProtocol\Model\Runtime\GlobalLexicalScopeNamesRequest;
@@ -111,6 +113,26 @@ interface RuntimeDomainInterface
 	 * @return EvaluateResponse
 	 */
 	public function evaluate(ContextInterface $ctx, EvaluateRequest $request): EvaluateResponse;
+
+
+	/**
+	 * Returns the JavaScript heap usage. It is the total usage of the corresponding isolate not scoped to a particular Runtime.
+	 *
+	 * @param ContextInterface $ctx
+	 *
+	 * @return GetHeapUsageResponse
+	 */
+	public function getHeapUsage(ContextInterface $ctx): GetHeapUsageResponse;
+
+
+	/**
+	 * Returns the isolate id.
+	 *
+	 * @param ContextInterface $ctx
+	 *
+	 * @return GetIsolateIdResponse
+	 */
+	public function getIsolateId(ContextInterface $ctx): GetIsolateIdResponse;
 
 
 	/**

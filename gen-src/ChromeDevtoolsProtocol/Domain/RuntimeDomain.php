@@ -17,6 +17,8 @@ use ChromeDevtoolsProtocol\Model\Runtime\ExceptionThrownEvent;
 use ChromeDevtoolsProtocol\Model\Runtime\ExecutionContextCreatedEvent;
 use ChromeDevtoolsProtocol\Model\Runtime\ExecutionContextDestroyedEvent;
 use ChromeDevtoolsProtocol\Model\Runtime\ExecutionContextsClearedEvent;
+use ChromeDevtoolsProtocol\Model\Runtime\GetHeapUsageResponse;
+use ChromeDevtoolsProtocol\Model\Runtime\GetIsolateIdResponse;
 use ChromeDevtoolsProtocol\Model\Runtime\GetPropertiesRequest;
 use ChromeDevtoolsProtocol\Model\Runtime\GetPropertiesResponse;
 use ChromeDevtoolsProtocol\Model\Runtime\GlobalLexicalScopeNamesRequest;
@@ -89,6 +91,22 @@ class RuntimeDomain implements RuntimeDomainInterface
 	{
 		$response = $this->internalClient->executeCommand($ctx, 'Runtime.evaluate', $request);
 		return EvaluateResponse::fromJson($response);
+	}
+
+
+	public function getHeapUsage(ContextInterface $ctx): GetHeapUsageResponse
+	{
+		$request = new \stdClass();
+		$response = $this->internalClient->executeCommand($ctx, 'Runtime.getHeapUsage', $request);
+		return GetHeapUsageResponse::fromJson($response);
+	}
+
+
+	public function getIsolateId(ContextInterface $ctx): GetIsolateIdResponse
+	{
+		$request = new \stdClass();
+		$response = $this->internalClient->executeCommand($ctx, 'Runtime.getIsolateId', $request);
+		return GetIsolateIdResponse::fromJson($response);
 	}
 
 
