@@ -61,7 +61,7 @@ interface SecurityDomainInterface
 
 
 	/**
-	 * Enable/disable overriding certificate errors. If enabled, all certificate error events need to be handled by the DevTools client and should be answered with handleCertificateError commands.
+	 * Enable/disable overriding certificate errors. If enabled, all certificate error events need to be handled by the DevTools client and should be answered with `handleCertificateError` commands.
 	 *
 	 * @param ContextInterface $ctx
 	 * @param SetOverrideCertificateErrorsRequest $request
@@ -72,7 +72,7 @@ interface SecurityDomainInterface
 
 
 	/**
-	 * There is a certificate error. If overriding certificate errors is enabled, then it should be handled with the handleCertificateError command. Note: this event does not fire if the certificate error has been allowed internally. Only one client per target should override certificate errors at the same time.
+	 * There is a certificate error. If overriding certificate errors is enabled, then it should be handled with the `handleCertificateError` command. Note: this event does not fire if the certificate error has been allowed internally. Only one client per target should override certificate errors at the same time.
 	 *
 	 * Listener will be called whenever event Security.certificateError is fired.
 	 *
@@ -84,7 +84,7 @@ interface SecurityDomainInterface
 
 
 	/**
-	 * There is a certificate error. If overriding certificate errors is enabled, then it should be handled with the handleCertificateError command. Note: this event does not fire if the certificate error has been allowed internally. Only one client per target should override certificate errors at the same time.
+	 * There is a certificate error. If overriding certificate errors is enabled, then it should be handled with the `handleCertificateError` command. Note: this event does not fire if the certificate error has been allowed internally. Only one client per target should override certificate errors at the same time.
 	 *
 	 * Method will block until first Security.certificateError event is fired.
 	 *
