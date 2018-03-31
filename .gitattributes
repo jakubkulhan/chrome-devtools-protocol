@@ -1,11 +1,12 @@
 /.circleci export-ignore
-/test export-ignore
-
 /.gitattributes export-ignore
 /.gitignore export-ignore
 /Dockerfile export-ignore
+/download.php export-ignore
 /generate.php export-ignore
 /Makefile export-ignore
+/phpstan.neon export-ignore
 /phpunit.xml export-ignore
 /protocol.json export-ignore
 /protocol.json.md5 export-ignore
+/test export-ignore
