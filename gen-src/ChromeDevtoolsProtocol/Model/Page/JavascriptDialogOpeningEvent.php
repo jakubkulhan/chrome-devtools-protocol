@@ -32,6 +32,13 @@ final class JavascriptDialogOpeningEvent implements \JsonSerializable
 	public $type;
 
 	/**
+	 * True iff browser is capable showing or acting on the given dialog. When browser has no dialog handler for given target, calling alert while Page domain is engaged will stall the page execution. Execution can be resumed via calling Page.handleJavaScriptDialog.
+	 *
+	 * @var bool
+	 */
+	public $hasBrowserHandler;
+
+	/**
 	 * Default dialog prompt.
 	 *
 	 * @var string|null
@@ -51,6 +58,9 @@ final class JavascriptDialogOpeningEvent implements \JsonSerializable
 		if (isset($data->type)) {
 			$instance->type = (string)$data->type;
 		}
+		if (isset($data->hasBrowserHandler)) {
+			$instance->hasBrowserHandler = (bool)$data->hasBrowserHandler;
+		}
 		if (isset($data->defaultPrompt)) {
 			$instance->defaultPrompt = (string)$data->defaultPrompt;
 		}
@@ -69,6 +79,9 @@ final class JavascriptDialogOpeningEvent implements \JsonSerializable
 		}
 		if ($this->type !== null) {
 			$data->type = $this->type;
+		}
+		if ($this->hasBrowserHandler !== null) {
+			$data->hasBrowserHandler = $this->hasBrowserHandler;
 		}
 		if ($this->defaultPrompt !== null) {
 			$data->defaultPrompt = $this->defaultPrompt;
