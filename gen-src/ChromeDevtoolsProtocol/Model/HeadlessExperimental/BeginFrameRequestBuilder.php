@@ -10,7 +10,11 @@ final class BeginFrameRequestBuilder
 {
 	private $frameTime;
 
+	private $frameTimeTicks;
+
 	private $deadline;
+
+	private $deadlineTicks;
 
 	private $interval;
 
@@ -26,7 +30,9 @@ final class BeginFrameRequestBuilder
 	{
 		$instance = new BeginFrameRequest();
 		$instance->frameTime = $this->frameTime;
+		$instance->frameTimeTicks = $this->frameTimeTicks;
 		$instance->deadline = $this->deadline;
+		$instance->deadlineTicks = $this->deadlineTicks;
 		$instance->interval = $this->interval;
 		$instance->noDisplayUpdates = $this->noDisplayUpdates;
 		$instance->screenshot = $this->screenshot;
@@ -47,6 +53,18 @@ final class BeginFrameRequestBuilder
 
 
 	/**
+	 * @param int|float|null $frameTimeTicks
+	 *
+	 * @return self
+	 */
+	public function setFrameTimeTicks($frameTimeTicks): self
+	{
+		$this->frameTimeTicks = $frameTimeTicks;
+		return $this;
+	}
+
+
+	/**
 	 * @param int|float $deadline
 	 *
 	 * @return self
@@ -54,6 +72,18 @@ final class BeginFrameRequestBuilder
 	public function setDeadline($deadline): self
 	{
 		$this->deadline = $deadline;
+		return $this;
+	}
+
+
+	/**
+	 * @param int|float|null $deadlineTicks
+	 *
+	 * @return self
+	 */
+	public function setDeadlineTicks($deadlineTicks): self
+	{
+		$this->deadlineTicks = $deadlineTicks;
 		return $this;
 	}
 
