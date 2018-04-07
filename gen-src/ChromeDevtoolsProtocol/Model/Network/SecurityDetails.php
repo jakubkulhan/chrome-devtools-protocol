@@ -94,6 +94,13 @@ final class SecurityDetails implements \JsonSerializable
 	 */
 	public $signedCertificateTimestampList;
 
+	/**
+	 * Whether the request complied with Certificate Transparency policy
+	 *
+	 * @var string
+	 */
+	public $certificateTransparencyCompliance;
+
 
 	public static function fromJson($data)
 	{
@@ -139,6 +146,9 @@ final class SecurityDetails implements \JsonSerializable
 			foreach ($data->signedCertificateTimestampList as $item) {
 				$instance->signedCertificateTimestampList[] = SignedCertificateTimestamp::fromJson($item);
 			}
+		}
+		if (isset($data->certificateTransparencyCompliance)) {
+			$instance->certificateTransparencyCompliance = (string)$data->certificateTransparencyCompliance;
 		}
 		return $instance;
 	}
@@ -188,6 +198,9 @@ final class SecurityDetails implements \JsonSerializable
 			foreach ($this->signedCertificateTimestampList as $item) {
 				$data->signedCertificateTimestampList[] = $item->jsonSerialize();
 			}
+		}
+		if ($this->certificateTransparencyCompliance !== null) {
+			$data->certificateTransparencyCompliance = $this->certificateTransparencyCompliance;
 		}
 		return $data;
 	}

@@ -38,6 +38,7 @@ use ChromeDevtoolsProtocol\Model\Page\LoadEventFiredEvent;
 use ChromeDevtoolsProtocol\Model\Page\NavigateRequest;
 use ChromeDevtoolsProtocol\Model\Page\NavigateResponse;
 use ChromeDevtoolsProtocol\Model\Page\NavigateToHistoryEntryRequest;
+use ChromeDevtoolsProtocol\Model\Page\NavigatedWithinDocumentEvent;
 use ChromeDevtoolsProtocol\Model\Page\PrintToPDFRequest;
 use ChromeDevtoolsProtocol\Model\Page\PrintToPDFResponse;
 use ChromeDevtoolsProtocol\Model\Page\ReloadRequest;
@@ -863,6 +864,30 @@ interface PageDomainInterface
 	 * @return LoadEventFiredEvent
 	 */
 	public function awaitLoadEventFired(ContextInterface $ctx): LoadEventFiredEvent;
+
+
+	/**
+	 * Fired when same-document navigation happens, e.g. due to history API usage or anchor navigation.
+	 *
+	 * Listener will be called whenever event Page.navigatedWithinDocument is fired.
+	 *
+	 * @param callable $listener
+	 *
+	 * @return SubscriptionInterface
+	 */
+	public function addNavigatedWithinDocumentListener(callable $listener): SubscriptionInterface;
+
+
+	/**
+	 * Fired when same-document navigation happens, e.g. due to history API usage or anchor navigation.
+	 *
+	 * Method will block until first Page.navigatedWithinDocument event is fired.
+	 *
+	 * @param ContextInterface $ctx
+	 *
+	 * @return NavigatedWithinDocumentEvent
+	 */
+	public function awaitNavigatedWithinDocument(ContextInterface $ctx): NavigatedWithinDocumentEvent;
 
 
 	/**

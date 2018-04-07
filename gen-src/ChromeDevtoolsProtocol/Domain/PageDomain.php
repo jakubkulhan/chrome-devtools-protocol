@@ -39,6 +39,7 @@ use ChromeDevtoolsProtocol\Model\Page\LoadEventFiredEvent;
 use ChromeDevtoolsProtocol\Model\Page\NavigateRequest;
 use ChromeDevtoolsProtocol\Model\Page\NavigateResponse;
 use ChromeDevtoolsProtocol\Model\Page\NavigateToHistoryEntryRequest;
+use ChromeDevtoolsProtocol\Model\Page\NavigatedWithinDocumentEvent;
 use ChromeDevtoolsProtocol\Model\Page\PrintToPDFRequest;
 use ChromeDevtoolsProtocol\Model\Page\PrintToPDFResponse;
 use ChromeDevtoolsProtocol\Model\Page\ReloadRequest;
@@ -557,6 +558,20 @@ class PageDomain implements PageDomainInterface
 	public function awaitLoadEventFired(ContextInterface $ctx): LoadEventFiredEvent
 	{
 		return LoadEventFiredEvent::fromJson($this->internalClient->awaitEvent($ctx, 'Page.loadEventFired'));
+	}
+
+
+	public function addNavigatedWithinDocumentListener(callable $listener): SubscriptionInterface
+	{
+		return $this->internalClient->addListener('Page.navigatedWithinDocument', function ($event) use ($listener) {
+			return $listener(NavigatedWithinDocumentEvent::fromJson($event));
+		});
+	}
+
+
+	public function awaitNavigatedWithinDocument(ContextInterface $ctx): NavigatedWithinDocumentEvent
+	{
+		return NavigatedWithinDocumentEvent::fromJson($this->internalClient->awaitEvent($ctx, 'Page.navigatedWithinDocument'));
 	}
 
 
