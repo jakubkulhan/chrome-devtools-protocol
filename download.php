@@ -10,17 +10,17 @@ $client = new Client();
 
 $response = $client->request(
 	"GET",
-	"https://chromium.googlesource.com/chromium/src/+/master/third_party/WebKit/Source/core/inspector/browser_protocol.json?format=TEXT"
+	"https://raw.githubusercontent.com/ChromeDevTools/devtools-protocol/master/json/browser_protocol.json"
 );
 
-$protocol = json_decode(base64_decode($response->getBody()->getContents()));
+$protocol = json_decode($response->getBody()->getContents());
 
 $response = $client->request(
 	"GET",
-	"https://chromium.googlesource.com/v8/v8/+/master/src/inspector/js_protocol.json?format=TEXT"
+	"https://raw.githubusercontent.com/ChromeDevTools/devtools-protocol/master/json/js_protocol.json"
 );
 
-$protocolJs = json_decode(base64_decode($response->getBody()->getContents()));
+$protocolJs = json_decode($response->getBody()->getContents());
 
 $protocol->domains = array_merge($protocol->domains, $protocolJs->domains);
 
