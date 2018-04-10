@@ -1,8 +1,6 @@
 <?php
 namespace ChromeDevtoolsProtocol\Model\Accessibility;
 
-use ChromeDevtoolsProtocol\Exception\BuilderException;
-
 /**
  * @generated This file has been auto-generated, do not edit.
  *
@@ -11,6 +9,10 @@ use ChromeDevtoolsProtocol\Exception\BuilderException;
 final class GetPartialAXTreeRequestBuilder
 {
 	private $nodeId;
+
+	private $backendNodeId;
+
+	private $objectId;
 
 	private $fetchRelatives;
 
@@ -21,10 +23,9 @@ final class GetPartialAXTreeRequestBuilder
 	public function build(): GetPartialAXTreeRequest
 	{
 		$instance = new GetPartialAXTreeRequest();
-		if ($this->nodeId === null) {
-			throw new BuilderException('Property [nodeId] is required.');
-		}
 		$instance->nodeId = $this->nodeId;
+		$instance->backendNodeId = $this->backendNodeId;
+		$instance->objectId = $this->objectId;
 		$instance->fetchRelatives = $this->fetchRelatives;
 		return $instance;
 	}
@@ -38,6 +39,30 @@ final class GetPartialAXTreeRequestBuilder
 	public function setNodeId($nodeId): self
 	{
 		$this->nodeId = $nodeId;
+		return $this;
+	}
+
+
+	/**
+	 * @param int $backendNodeId
+	 *
+	 * @return self
+	 */
+	public function setBackendNodeId($backendNodeId): self
+	{
+		$this->backendNodeId = $backendNodeId;
+		return $this;
+	}
+
+
+	/**
+	 * @param string $objectId
+	 *
+	 * @return self
+	 */
+	public function setObjectId($objectId): self
+	{
+		$this->objectId = $objectId;
 		return $this;
 	}
 
