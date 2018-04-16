@@ -2466,7 +2466,7 @@
                 },
                 {
                     "name": "getStyleSheetText",
-                    "description": "Returns the current textual content and the URL for a stylesheet.",
+                    "description": "Returns the current textual content for a stylesheet.",
                     "parameters": [
                         {
                             "name": "styleSheetId",
@@ -13305,6 +13305,11 @@
                     "type": "number"
                 },
                 {
+                    "id": "TimeDelta",
+                    "description": "Number of milliseconds.",
+                    "type": "number"
+                },
+                {
                     "id": "CallFrame",
                     "description": "Stack entry for runtime errors and assertions.",
                     "type": "object",
@@ -13630,6 +13635,13 @@
                             "experimental": true,
                             "optional": true,
                             "type": "boolean"
+                        },
+                        {
+                            "name": "timeout",
+                            "description": "Terminate execution after timing out (number of milliseconds).",
+                            "experimental": true,
+                            "optional": true,
+                            "$ref": "TimeDelta"
                         }
                     ],
                     "returns": [

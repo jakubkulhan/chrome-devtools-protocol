@@ -80,6 +80,13 @@ final class EvaluateRequest implements \JsonSerializable
 	 */
 	public $throwOnSideEffect;
 
+	/**
+	 * Terminate execution after timing out (number of milliseconds).
+	 *
+	 * @var int|float
+	 */
+	public $timeout;
+
 
 	public static function fromJson($data)
 	{
@@ -113,6 +120,9 @@ final class EvaluateRequest implements \JsonSerializable
 		}
 		if (isset($data->throwOnSideEffect)) {
 			$instance->throwOnSideEffect = (bool)$data->throwOnSideEffect;
+		}
+		if (isset($data->timeout)) {
+			$instance->timeout = $data->timeout;
 		}
 		return $instance;
 	}
@@ -150,6 +160,9 @@ final class EvaluateRequest implements \JsonSerializable
 		}
 		if ($this->throwOnSideEffect !== null) {
 			$data->throwOnSideEffect = $this->throwOnSideEffect;
+		}
+		if ($this->timeout !== null) {
+			$data->timeout = $this->timeout;
 		}
 		return $data;
 	}

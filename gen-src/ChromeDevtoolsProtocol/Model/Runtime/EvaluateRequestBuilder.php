@@ -30,6 +30,8 @@ final class EvaluateRequestBuilder
 
 	private $throwOnSideEffect;
 
+	private $timeout;
+
 
 	/**
 	 * Validate non-optional parameters and return new instance.
@@ -50,6 +52,7 @@ final class EvaluateRequestBuilder
 		$instance->userGesture = $this->userGesture;
 		$instance->awaitPromise = $this->awaitPromise;
 		$instance->throwOnSideEffect = $this->throwOnSideEffect;
+		$instance->timeout = $this->timeout;
 		return $instance;
 	}
 
@@ -170,6 +173,18 @@ final class EvaluateRequestBuilder
 	public function setThrowOnSideEffect($throwOnSideEffect): self
 	{
 		$this->throwOnSideEffect = $throwOnSideEffect;
+		return $this;
+	}
+
+
+	/**
+	 * @param int|float $timeout
+	 *
+	 * @return self
+	 */
+	public function setTimeout($timeout): self
+	{
+		$this->timeout = $timeout;
 		return $this;
 	}
 }

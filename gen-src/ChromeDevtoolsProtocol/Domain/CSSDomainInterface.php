@@ -183,7 +183,7 @@ interface CSSDomainInterface
 
 
 	/**
-	 * Returns the current textual content and the URL for a stylesheet.
+	 * Returns the current textual content for a stylesheet.
 	 *
 	 * @param ContextInterface $ctx
 	 * @param GetStyleSheetTextRequest $request
