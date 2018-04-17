@@ -16,6 +16,8 @@ final class GetSnapshotRequestBuilder
 
 	private $includePaintOrder;
 
+	private $includeUserAgentShadowTree;
+
 
 	/**
 	 * Validate non-optional parameters and return new instance.
@@ -29,6 +31,7 @@ final class GetSnapshotRequestBuilder
 		$instance->computedStyleWhitelist = $this->computedStyleWhitelist;
 		$instance->includeEventListeners = $this->includeEventListeners;
 		$instance->includePaintOrder = $this->includePaintOrder;
+		$instance->includeUserAgentShadowTree = $this->includeUserAgentShadowTree;
 		return $instance;
 	}
 
@@ -65,6 +68,18 @@ final class GetSnapshotRequestBuilder
 	public function setIncludePaintOrder($includePaintOrder): self
 	{
 		$this->includePaintOrder = $includePaintOrder;
+		return $this;
+	}
+
+
+	/**
+	 * @param bool|null $includeUserAgentShadowTree
+	 *
+	 * @return self
+	 */
+	public function setIncludeUserAgentShadowTree($includeUserAgentShadowTree): self
+	{
+		$this->includeUserAgentShadowTree = $includeUserAgentShadowTree;
 		return $this;
 	}
 }

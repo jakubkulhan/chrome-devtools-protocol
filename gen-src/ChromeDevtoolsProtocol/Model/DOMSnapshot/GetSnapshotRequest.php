@@ -31,6 +31,13 @@ final class GetSnapshotRequest implements \JsonSerializable
 	 */
 	public $includePaintOrder;
 
+	/**
+	 * Whether to include UA shadow tree in the snapshot (default false).
+	 *
+	 * @var bool|null
+	 */
+	public $includeUserAgentShadowTree;
+
 
 	public static function fromJson($data)
 	{
@@ -46,6 +53,9 @@ final class GetSnapshotRequest implements \JsonSerializable
 		}
 		if (isset($data->includePaintOrder)) {
 			$instance->includePaintOrder = (bool)$data->includePaintOrder;
+		}
+		if (isset($data->includeUserAgentShadowTree)) {
+			$instance->includeUserAgentShadowTree = (bool)$data->includeUserAgentShadowTree;
 		}
 		return $instance;
 	}
@@ -65,6 +75,9 @@ final class GetSnapshotRequest implements \JsonSerializable
 		}
 		if ($this->includePaintOrder !== null) {
 			$data->includePaintOrder = $this->includePaintOrder;
+		}
+		if ($this->includeUserAgentShadowTree !== null) {
+			$data->includeUserAgentShadowTree = $this->includeUserAgentShadowTree;
 		}
 		return $data;
 	}
