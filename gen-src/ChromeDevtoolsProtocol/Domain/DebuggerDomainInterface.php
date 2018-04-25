@@ -28,6 +28,8 @@ use ChromeDevtoolsProtocol\Model\Debugger\SetBlackboxPatternsRequest;
 use ChromeDevtoolsProtocol\Model\Debugger\SetBlackboxedRangesRequest;
 use ChromeDevtoolsProtocol\Model\Debugger\SetBreakpointByUrlRequest;
 use ChromeDevtoolsProtocol\Model\Debugger\SetBreakpointByUrlResponse;
+use ChromeDevtoolsProtocol\Model\Debugger\SetBreakpointOnFunctionCallRequest;
+use ChromeDevtoolsProtocol\Model\Debugger\SetBreakpointOnFunctionCallResponse;
 use ChromeDevtoolsProtocol\Model\Debugger\SetBreakpointRequest;
 use ChromeDevtoolsProtocol\Model\Debugger\SetBreakpointResponse;
 use ChromeDevtoolsProtocol\Model\Debugger\SetBreakpointsActiveRequest;
@@ -251,6 +253,17 @@ interface DebuggerDomainInterface
 	 * @return SetBreakpointByUrlResponse
 	 */
 	public function setBreakpointByUrl(ContextInterface $ctx, SetBreakpointByUrlRequest $request): SetBreakpointByUrlResponse;
+
+
+	/**
+	 * Sets JavaScript breakpoint before each call to the given function. If another function was created from the same source as a given one, calling it will also trigger the breakpoint.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param SetBreakpointOnFunctionCallRequest $request
+	 *
+	 * @return SetBreakpointOnFunctionCallResponse
+	 */
+	public function setBreakpointOnFunctionCall(ContextInterface $ctx, SetBreakpointOnFunctionCallRequest $request): SetBreakpointOnFunctionCallResponse;
 
 
 	/**

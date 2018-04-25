@@ -29,6 +29,8 @@ use ChromeDevtoolsProtocol\Model\Debugger\SetBlackboxPatternsRequest;
 use ChromeDevtoolsProtocol\Model\Debugger\SetBlackboxedRangesRequest;
 use ChromeDevtoolsProtocol\Model\Debugger\SetBreakpointByUrlRequest;
 use ChromeDevtoolsProtocol\Model\Debugger\SetBreakpointByUrlResponse;
+use ChromeDevtoolsProtocol\Model\Debugger\SetBreakpointOnFunctionCallRequest;
+use ChromeDevtoolsProtocol\Model\Debugger\SetBreakpointOnFunctionCallResponse;
 use ChromeDevtoolsProtocol\Model\Debugger\SetBreakpointRequest;
 use ChromeDevtoolsProtocol\Model\Debugger\SetBreakpointResponse;
 use ChromeDevtoolsProtocol\Model\Debugger\SetBreakpointsActiveRequest;
@@ -178,6 +180,13 @@ class DebuggerDomain implements DebuggerDomainInterface
 	{
 		$response = $this->internalClient->executeCommand($ctx, 'Debugger.setBreakpointByUrl', $request);
 		return SetBreakpointByUrlResponse::fromJson($response);
+	}
+
+
+	public function setBreakpointOnFunctionCall(ContextInterface $ctx, SetBreakpointOnFunctionCallRequest $request): SetBreakpointOnFunctionCallResponse
+	{
+		$response = $this->internalClient->executeCommand($ctx, 'Debugger.setBreakpointOnFunctionCall', $request);
+		return SetBreakpointOnFunctionCallResponse::fromJson($response);
 	}
 
 
