@@ -42,6 +42,13 @@ final class RequestInterceptedEvent implements \JsonSerializable
 	public $isNavigationRequest;
 
 	/**
+	 * Set if the request is a navigation that will result in a download. Only present after response is received from the server (i.e. HeadersReceived stage).
+	 *
+	 * @var bool|null
+	 */
+	public $isDownload;
+
+	/**
 	 * Redirect location, only sent if a redirect was intercepted.
 	 *
 	 * @var string|null
@@ -95,6 +102,9 @@ final class RequestInterceptedEvent implements \JsonSerializable
 		if (isset($data->isNavigationRequest)) {
 			$instance->isNavigationRequest = (bool)$data->isNavigationRequest;
 		}
+		if (isset($data->isDownload)) {
+			$instance->isDownload = (bool)$data->isDownload;
+		}
 		if (isset($data->redirectUrl)) {
 			$instance->redirectUrl = (string)$data->redirectUrl;
 		}
@@ -131,6 +141,9 @@ final class RequestInterceptedEvent implements \JsonSerializable
 		}
 		if ($this->isNavigationRequest !== null) {
 			$data->isNavigationRequest = $this->isNavigationRequest;
+		}
+		if ($this->isDownload !== null) {
+			$data->isDownload = $this->isDownload;
 		}
 		if ($this->redirectUrl !== null) {
 			$data->redirectUrl = $this->redirectUrl;

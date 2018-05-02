@@ -59,6 +59,7 @@ use ChromeDevtoolsProtocol\Model\Page\SetDownloadBehaviorRequest;
 use ChromeDevtoolsProtocol\Model\Page\SetGeolocationOverrideRequest;
 use ChromeDevtoolsProtocol\Model\Page\SetLifecycleEventsEnabledRequest;
 use ChromeDevtoolsProtocol\Model\Page\SetTouchEmulationEnabledRequest;
+use ChromeDevtoolsProtocol\Model\Page\SetWebLifecycleStateRequest;
 use ChromeDevtoolsProtocol\Model\Page\StartScreencastRequest;
 use ChromeDevtoolsProtocol\Model\Page\WindowOpenEvent;
 use ChromeDevtoolsProtocol\SubscriptionInterface;
@@ -121,6 +122,13 @@ class PageDomain implements PageDomainInterface
 	{
 		$request = new \stdClass();
 		$this->internalClient->executeCommand($ctx, 'Page.clearGeolocationOverride', $request);
+	}
+
+
+	public function close(ContextInterface $ctx): void
+	{
+		$request = new \stdClass();
+		$this->internalClient->executeCommand($ctx, 'Page.close', $request);
 	}
 
 
@@ -328,6 +336,12 @@ class PageDomain implements PageDomainInterface
 	public function setTouchEmulationEnabled(ContextInterface $ctx, SetTouchEmulationEnabledRequest $request): void
 	{
 		$this->internalClient->executeCommand($ctx, 'Page.setTouchEmulationEnabled', $request);
+	}
+
+
+	public function setWebLifecycleState(ContextInterface $ctx, SetWebLifecycleStateRequest $request): void
+	{
+		$this->internalClient->executeCommand($ctx, 'Page.setWebLifecycleState', $request);
 	}
 
 

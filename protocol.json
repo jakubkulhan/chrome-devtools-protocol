@@ -3122,6 +3122,13 @@
                             "description": "Whether to throw an exception if side effect cannot be ruled out during evaluation.",
                             "optional": true,
                             "type": "boolean"
+                        },
+                        {
+                            "name": "timeout",
+                            "description": "Terminate execution after timing out (number of milliseconds).",
+                            "experimental": true,
+                            "optional": true,
+                            "$ref": "Runtime.TimeDelta"
                         }
                     ],
                     "returns": [
@@ -7772,7 +7779,7 @@
                         },
                         {
                             "name": "offset",
-                            "description": "Seek to the specified offset before reading (if not specificed, proceed with offset following the last read).",
+                            "description": "Seek to the specified offset before reading (if not specificed, proceed with offset following the last read). Some types of streams may only support sequential reads.",
                             "optional": true,
                             "type": "integer"
                         },
@@ -9955,6 +9962,23 @@
                             "type": "string"
                         }
                     ]
+                },
+                {
+                    "name": "takeResponseBodyForInterceptionAsStream",
+                    "description": "Returns a handle to the stream representing the response body. Note that after this command, the intercepted request can't be continued as is -- you either need to cancel it or to provide the response body. The stream only supports sequential read, IO.read will fail if the position is specified.",
+                    "experimental": true,
+                    "parameters": [
+                        {
+                            "name": "interceptionId",
+                            "$ref": "InterceptionId"
+                        }
+                    ],
+                    "returns": [
+                        {
+                            "name": "stream",
+                            "$ref": "IO.StreamHandle"
+                        }
+                    ]
                 }
             ],
             "events": [
@@ -10107,6 +10131,12 @@
                         {
                             "name": "isNavigationRequest",
                             "description": "Whether this is a navigation request, which can abort the navigation completely.",
+                            "type": "boolean"
+                        },
+                        {
+                            "name": "isDownload",
+                            "description": "Set if the request is a navigation that will result in a download. Only present after response is received from the server (i.e. HeadersReceived stage).",
+                            "optional": true,
                             "type": "boolean"
                         },
                         {
@@ -11330,6 +11360,11 @@
                     "redirect": "Emulation"
                 },
                 {
+                    "name": "close",
+                    "description": "Tries to close page, running its beforeunload hooks, if any.",
+                    "experimental": true
+                },
+                {
                     "name": "crash",
                     "description": "Crashes renderer on the IO thread, generates minidumps.",
                     "experimental": true
@@ -12024,6 +12059,22 @@
                             "enum": [
                                 "mobile",
                                 "desktop"
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "name": "setWebLifecycleState",
+                    "description": "Tries to update the web lifecycle state of the page. It will transition the page to the given state according to: https://github.com/WICG/web-lifecycle/",
+                    "experimental": true,
+                    "parameters": [
+                        {
+                            "name": "state",
+                            "description": "Target lifecycle state",
+                            "type": "string",
+                            "enum": [
+                                "frozen",
+                                "active"
                             ]
                         }
                     ]
@@ -14955,6 +15006,12 @@
                             "description": "Opener target Id",
                             "optional": true,
                             "$ref": "TargetID"
+                        },
+                        {
+                            "name": "browserContextId",
+                            "experimental": true,
+                            "optional": true,
+                            "$ref": "BrowserContextID"
                         }
                     ]
                 },

@@ -58,6 +58,7 @@ use ChromeDevtoolsProtocol\Model\Page\SetDownloadBehaviorRequest;
 use ChromeDevtoolsProtocol\Model\Page\SetGeolocationOverrideRequest;
 use ChromeDevtoolsProtocol\Model\Page\SetLifecycleEventsEnabledRequest;
 use ChromeDevtoolsProtocol\Model\Page\SetTouchEmulationEnabledRequest;
+use ChromeDevtoolsProtocol\Model\Page\SetWebLifecycleStateRequest;
 use ChromeDevtoolsProtocol\Model\Page\StartScreencastRequest;
 use ChromeDevtoolsProtocol\Model\Page\WindowOpenEvent;
 use ChromeDevtoolsProtocol\SubscriptionInterface;
@@ -142,6 +143,16 @@ interface PageDomainInterface
 	 * @return void
 	 */
 	public function clearGeolocationOverride(ContextInterface $ctx): void;
+
+
+	/**
+	 * Tries to close page, running its beforeunload hooks, if any.
+	 *
+	 * @param ContextInterface $ctx
+	 *
+	 * @return void
+	 */
+	public function close(ContextInterface $ctx): void;
 
 
 	/**
@@ -473,6 +484,17 @@ interface PageDomainInterface
 	 * @return void
 	 */
 	public function setTouchEmulationEnabled(ContextInterface $ctx, SetTouchEmulationEnabledRequest $request): void;
+
+
+	/**
+	 * Tries to update the web lifecycle state of the page. It will transition the page to the given state according to: https://github.com/WICG/web-lifecycle/
+	 *
+	 * @param ContextInterface $ctx
+	 * @param SetWebLifecycleStateRequest $request
+	 *
+	 * @return void
+	 */
+	public function setWebLifecycleState(ContextInterface $ctx, SetWebLifecycleStateRequest $request): void;
 
 
 	/**

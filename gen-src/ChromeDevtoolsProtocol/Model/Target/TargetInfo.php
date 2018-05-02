@@ -36,6 +36,9 @@ final class TargetInfo implements \JsonSerializable
 	 */
 	public $openerId;
 
+	/** @var string */
+	public $browserContextId;
+
 
 	public static function fromJson($data)
 	{
@@ -57,6 +60,9 @@ final class TargetInfo implements \JsonSerializable
 		}
 		if (isset($data->openerId)) {
 			$instance->openerId = (string)$data->openerId;
+		}
+		if (isset($data->browserContextId)) {
+			$instance->browserContextId = (string)$data->browserContextId;
 		}
 		return $instance;
 	}
@@ -82,6 +88,9 @@ final class TargetInfo implements \JsonSerializable
 		}
 		if ($this->openerId !== null) {
 			$data->openerId = $this->openerId;
+		}
+		if ($this->browserContextId !== null) {
+			$data->browserContextId = $this->browserContextId;
 		}
 		return $data;
 	}

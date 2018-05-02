@@ -26,6 +26,8 @@ final class EvaluateOnCallFrameRequestBuilder
 
 	private $throwOnSideEffect;
 
+	private $timeout;
+
 
 	/**
 	 * Validate non-optional parameters and return new instance.
@@ -47,6 +49,7 @@ final class EvaluateOnCallFrameRequestBuilder
 		$instance->returnByValue = $this->returnByValue;
 		$instance->generatePreview = $this->generatePreview;
 		$instance->throwOnSideEffect = $this->throwOnSideEffect;
+		$instance->timeout = $this->timeout;
 		return $instance;
 	}
 
@@ -143,6 +146,18 @@ final class EvaluateOnCallFrameRequestBuilder
 	public function setThrowOnSideEffect($throwOnSideEffect): self
 	{
 		$this->throwOnSideEffect = $throwOnSideEffect;
+		return $this;
+	}
+
+
+	/**
+	 * @param int|float $timeout
+	 *
+	 * @return self
+	 */
+	public function setTimeout($timeout): self
+	{
+		$this->timeout = $timeout;
 		return $this;
 	}
 }
