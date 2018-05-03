@@ -34,6 +34,13 @@ final class SetVirtualTimePolicyRequest implements \JsonSerializable
 	 */
 	public $waitForNavigation;
 
+	/**
+	 * If set, base::Time::Now will be overriden to initially return this value.
+	 *
+	 * @var int|float
+	 */
+	public $initialVirtualTime;
+
 
 	public static function fromJson($data)
 	{
@@ -49,6 +56,9 @@ final class SetVirtualTimePolicyRequest implements \JsonSerializable
 		}
 		if (isset($data->waitForNavigation)) {
 			$instance->waitForNavigation = (bool)$data->waitForNavigation;
+		}
+		if (isset($data->initialVirtualTime)) {
+			$instance->initialVirtualTime = $data->initialVirtualTime;
 		}
 		return $instance;
 	}
@@ -68,6 +78,9 @@ final class SetVirtualTimePolicyRequest implements \JsonSerializable
 		}
 		if ($this->waitForNavigation !== null) {
 			$data->waitForNavigation = $this->waitForNavigation;
+		}
+		if ($this->initialVirtualTime !== null) {
+			$data->initialVirtualTime = $this->initialVirtualTime;
 		}
 		return $data;
 	}

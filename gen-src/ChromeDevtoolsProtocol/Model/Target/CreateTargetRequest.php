@@ -32,7 +32,7 @@ final class CreateTargetRequest implements \JsonSerializable
 	public $height;
 
 	/**
-	 * The browser context to create the page in (headless chrome only).
+	 * The browser context to create the page in.
 	 *
 	 * @var string
 	 */

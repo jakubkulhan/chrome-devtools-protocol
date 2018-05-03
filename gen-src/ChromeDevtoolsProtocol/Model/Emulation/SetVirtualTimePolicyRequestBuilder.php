@@ -18,6 +18,8 @@ final class SetVirtualTimePolicyRequestBuilder
 
 	private $waitForNavigation;
 
+	private $initialVirtualTime;
+
 
 	/**
 	 * Validate non-optional parameters and return new instance.
@@ -32,6 +34,7 @@ final class SetVirtualTimePolicyRequestBuilder
 		$instance->budget = $this->budget;
 		$instance->maxVirtualTimeTaskStarvationCount = $this->maxVirtualTimeTaskStarvationCount;
 		$instance->waitForNavigation = $this->waitForNavigation;
+		$instance->initialVirtualTime = $this->initialVirtualTime;
 		return $instance;
 	}
 
@@ -80,6 +83,18 @@ final class SetVirtualTimePolicyRequestBuilder
 	public function setWaitForNavigation($waitForNavigation): self
 	{
 		$this->waitForNavigation = $waitForNavigation;
+		return $this;
+	}
+
+
+	/**
+	 * @param int|float $initialVirtualTime
+	 *
+	 * @return self
+	 */
+	public function setInitialVirtualTime($initialVirtualTime): self
+	{
+		$this->initialVirtualTime = $initialVirtualTime;
 		return $this;
 	}
 }
