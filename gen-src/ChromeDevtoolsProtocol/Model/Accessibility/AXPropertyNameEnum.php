@@ -22,7 +22,7 @@ final class AXPropertyNameEnum
 	const RELEVANT = 'relevant';
 	const ROOT = 'root';
 	const AUTOCOMPLETE = 'autocomplete';
-	const HASPOPUP = 'haspopup';
+	const HAS_POPUP = 'hasPopup';
 	const LEVEL = 'level';
 	const MULTISELECTABLE = 'multiselectable';
 	const ORIENTATION = 'orientation';
