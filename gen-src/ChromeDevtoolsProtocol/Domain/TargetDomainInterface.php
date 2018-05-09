@@ -14,7 +14,7 @@ use ChromeDevtoolsProtocol\Model\Target\CreateTargetResponse;
 use ChromeDevtoolsProtocol\Model\Target\DetachFromTargetRequest;
 use ChromeDevtoolsProtocol\Model\Target\DetachedFromTargetEvent;
 use ChromeDevtoolsProtocol\Model\Target\DisposeBrowserContextRequest;
-use ChromeDevtoolsProtocol\Model\Target\DisposeBrowserContextResponse;
+use ChromeDevtoolsProtocol\Model\Target\GetBrowserContextsResponse;
 use ChromeDevtoolsProtocol\Model\Target\GetTargetInfoRequest;
 use ChromeDevtoolsProtocol\Model\Target\GetTargetInfoResponse;
 use ChromeDevtoolsProtocol\Model\Target\GetTargetsResponse;
@@ -103,14 +103,24 @@ interface TargetDomainInterface
 
 
 	/**
-	 * Deletes a BrowserContext, will fail of any open page uses it.
+	 * Deletes a BrowserContext. All the belonging pages will be closed without calling their beforeunload hooks.
 	 *
 	 * @param ContextInterface $ctx
 	 * @param DisposeBrowserContextRequest $request
 	 *
-	 * @return DisposeBrowserContextResponse
+	 * @return void
 	 */
-	public function disposeBrowserContext(ContextInterface $ctx, DisposeBrowserContextRequest $request): DisposeBrowserContextResponse;
+	public function disposeBrowserContext(ContextInterface $ctx, DisposeBrowserContextRequest $request): void;
+
+
+	/**
+	 * Returns all browser contexts created with `Target.createBrowserContext` method.
+	 *
+	 * @param ContextInterface $ctx
+	 *
+	 * @return GetBrowserContextsResponse
+	 */
+	public function getBrowserContexts(ContextInterface $ctx): GetBrowserContextsResponse;
 
 
 	/**

@@ -15,7 +15,7 @@ use ChromeDevtoolsProtocol\Model\Target\CreateTargetResponse;
 use ChromeDevtoolsProtocol\Model\Target\DetachFromTargetRequest;
 use ChromeDevtoolsProtocol\Model\Target\DetachedFromTargetEvent;
 use ChromeDevtoolsProtocol\Model\Target\DisposeBrowserContextRequest;
-use ChromeDevtoolsProtocol\Model\Target\DisposeBrowserContextResponse;
+use ChromeDevtoolsProtocol\Model\Target\GetBrowserContextsResponse;
 use ChromeDevtoolsProtocol\Model\Target\GetTargetInfoRequest;
 use ChromeDevtoolsProtocol\Model\Target\GetTargetInfoResponse;
 use ChromeDevtoolsProtocol\Model\Target\GetTargetsResponse;
@@ -82,10 +82,17 @@ class TargetDomain implements TargetDomainInterface
 	}
 
 
-	public function disposeBrowserContext(ContextInterface $ctx, DisposeBrowserContextRequest $request): DisposeBrowserContextResponse
+	public function disposeBrowserContext(ContextInterface $ctx, DisposeBrowserContextRequest $request): void
 	{
-		$response = $this->internalClient->executeCommand($ctx, 'Target.disposeBrowserContext', $request);
-		return DisposeBrowserContextResponse::fromJson($response);
+		$this->internalClient->executeCommand($ctx, 'Target.disposeBrowserContext', $request);
+	}
+
+
+	public function getBrowserContexts(ContextInterface $ctx): GetBrowserContextsResponse
+	{
+		$request = new \stdClass();
+		$response = $this->internalClient->executeCommand($ctx, 'Target.getBrowserContexts', $request);
+		return GetBrowserContextsResponse::fromJson($response);
 	}
 
 
