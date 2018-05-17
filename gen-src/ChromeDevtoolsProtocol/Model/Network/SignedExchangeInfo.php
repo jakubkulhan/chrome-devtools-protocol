@@ -17,12 +17,45 @@ final class SignedExchangeInfo implements \JsonSerializable
 	 */
 	public $outerResponse;
 
+	/**
+	 * Information about the signed exchange header.
+	 *
+	 * @var SignedExchangeHeader|null
+	 */
+	public $header;
+
+	/**
+	 * Security details for the signed exchange header.
+	 *
+	 * @var SecurityDetails|null
+	 */
+	public $securityDetails;
+
+	/**
+	 * Errors occurred while handling the signed exchagne.
+	 *
+	 * @var string[]|null
+	 */
+	public $errors;
+
 
 	public static function fromJson($data)
 	{
 		$instance = new static();
 		if (isset($data->outerResponse)) {
 			$instance->outerResponse = Response::fromJson($data->outerResponse);
+		}
+		if (isset($data->header)) {
+			$instance->header = SignedExchangeHeader::fromJson($data->header);
+		}
+		if (isset($data->securityDetails)) {
+			$instance->securityDetails = SecurityDetails::fromJson($data->securityDetails);
+		}
+		if (isset($data->errors)) {
+			$instance->errors = [];
+			foreach ($data->errors as $item) {
+				$instance->errors[] = (string)$item;
+			}
 		}
 		return $instance;
 	}
@@ -33,6 +66,18 @@ final class SignedExchangeInfo implements \JsonSerializable
 		$data = new \stdClass();
 		if ($this->outerResponse !== null) {
 			$data->outerResponse = $this->outerResponse->jsonSerialize();
+		}
+		if ($this->header !== null) {
+			$data->header = $this->header->jsonSerialize();
+		}
+		if ($this->securityDetails !== null) {
+			$data->securityDetails = $this->securityDetails->jsonSerialize();
+		}
+		if ($this->errors !== null) {
+			$data->errors = [];
+			foreach ($this->errors as $item) {
+				$data->errors[] = $item;
+			}
 		}
 		return $data;
 	}

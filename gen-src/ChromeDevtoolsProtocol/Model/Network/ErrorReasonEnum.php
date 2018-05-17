@@ -22,5 +22,7 @@ final class ErrorReasonEnum
 	const NAME_NOT_RESOLVED = 'NameNotResolved';
 	const INTERNET_DISCONNECTED = 'InternetDisconnected';
 	const ADDRESS_UNREACHABLE = 'AddressUnreachable';
+	const BLOCKED_BY_CLIENT = 'BlockedByClient';
+	const BLOCKED_BY_RESPONSE = 'BlockedByResponse';
 
 }
