@@ -11,32 +11,11 @@ namespace ChromeDevtoolsProtocol\Model\HeadlessExperimental;
 final class BeginFrameRequest implements \JsonSerializable
 {
 	/**
-	 * Timestamp of this BeginFrame (milliseconds since epoch). If not set, the current time will be used unless frameTicks is specified.
-	 *
-	 * @var int|float
-	 */
-	public $frameTime;
-
-	/**
-	 * Timestamp of this BeginFrame in Renderer TimeTicks (milliseconds of uptime). If not set, the current time will be used unless frameTime is specified.
+	 * Timestamp of this BeginFrame in Renderer TimeTicks (milliseconds of uptime). If not set, the current time will be used.
 	 *
 	 * @var int|float|null
 	 */
 	public $frameTimeTicks;
-
-	/**
-	 * Deadline of this BeginFrame (milliseconds since epoch). If not set, the deadline will be calculated from the frameTime and interval unless deadlineTicks is specified.
-	 *
-	 * @var int|float
-	 */
-	public $deadline;
-
-	/**
-	 * Deadline of this BeginFrame in Renderer TimeTicks (milliseconds of uptime). If not set, the deadline will be calculated from the frameTime and interval unless deadline is specified.
-	 *
-	 * @var int|float|null
-	 */
-	public $deadlineTicks;
 
 	/**
 	 * The interval between BeginFrames that is reported to the compositor, in milliseconds. Defaults to a 60 frames/second interval, i.e. about 16.666 milliseconds.
@@ -63,17 +42,8 @@ final class BeginFrameRequest implements \JsonSerializable
 	public static function fromJson($data)
 	{
 		$instance = new static();
-		if (isset($data->frameTime)) {
-			$instance->frameTime = $data->frameTime;
-		}
 		if (isset($data->frameTimeTicks)) {
 			$instance->frameTimeTicks = $data->frameTimeTicks;
-		}
-		if (isset($data->deadline)) {
-			$instance->deadline = $data->deadline;
-		}
-		if (isset($data->deadlineTicks)) {
-			$instance->deadlineTicks = $data->deadlineTicks;
 		}
 		if (isset($data->interval)) {
 			$instance->interval = $data->interval;
@@ -91,17 +61,8 @@ final class BeginFrameRequest implements \JsonSerializable
 	public function jsonSerialize()
 	{
 		$data = new \stdClass();
-		if ($this->frameTime !== null) {
-			$data->frameTime = $this->frameTime;
-		}
 		if ($this->frameTimeTicks !== null) {
 			$data->frameTimeTicks = $this->frameTimeTicks;
-		}
-		if ($this->deadline !== null) {
-			$data->deadline = $this->deadline;
-		}
-		if ($this->deadlineTicks !== null) {
-			$data->deadlineTicks = $this->deadlineTicks;
 		}
 		if ($this->interval !== null) {
 			$data->interval = $this->interval;

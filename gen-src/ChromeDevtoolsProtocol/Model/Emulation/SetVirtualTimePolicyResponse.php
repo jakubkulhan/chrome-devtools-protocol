@@ -11,13 +11,6 @@ namespace ChromeDevtoolsProtocol\Model\Emulation;
 final class SetVirtualTimePolicyResponse implements \JsonSerializable
 {
 	/**
-	 * Absolute timestamp at which virtual time was first enabled (milliseconds since epoch).
-	 *
-	 * @var int|float
-	 */
-	public $virtualTimeBase;
-
-	/**
 	 * Absolute timestamp at which virtual time was first enabled (up time in milliseconds).
 	 *
 	 * @var int|float
@@ -28,9 +21,6 @@ final class SetVirtualTimePolicyResponse implements \JsonSerializable
 	public static function fromJson($data)
 	{
 		$instance = new static();
-		if (isset($data->virtualTimeBase)) {
-			$instance->virtualTimeBase = $data->virtualTimeBase;
-		}
 		if (isset($data->virtualTimeTicksBase)) {
 			$instance->virtualTimeTicksBase = $data->virtualTimeTicksBase;
 		}
@@ -41,9 +31,6 @@ final class SetVirtualTimePolicyResponse implements \JsonSerializable
 	public function jsonSerialize()
 	{
 		$data = new \stdClass();
-		if ($this->virtualTimeBase !== null) {
-			$data->virtualTimeBase = $this->virtualTimeBase;
-		}
 		if ($this->virtualTimeTicksBase !== null) {
 			$data->virtualTimeTicksBase = $this->virtualTimeTicksBase;
 		}
