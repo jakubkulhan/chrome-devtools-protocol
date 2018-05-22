@@ -27,7 +27,7 @@ final class Initiator implements \JsonSerializable
 	public $stack;
 
 	/**
-	 * Initiator URL, set for Parser type or for Script type (when script is importing module).
+	 * Initiator URL, set for Parser type or for Script type (when script is importing module) or for SignedExchange type.
 	 *
 	 * @var string|null
 	 */

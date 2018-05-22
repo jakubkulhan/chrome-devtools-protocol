@@ -201,6 +201,13 @@ final class DOMNode implements \JsonSerializable
 	 */
 	public $currentSourceURL;
 
+	/**
+	 * The url of the script (if any) that generates this node.
+	 *
+	 * @var string|null
+	 */
+	public $originURL;
+
 
 	public static function fromJson($data)
 	{
@@ -297,6 +304,9 @@ final class DOMNode implements \JsonSerializable
 		}
 		if (isset($data->currentSourceURL)) {
 			$instance->currentSourceURL = (string)$data->currentSourceURL;
+		}
+		if (isset($data->originURL)) {
+			$instance->originURL = (string)$data->originURL;
 		}
 		return $instance;
 	}
@@ -397,6 +407,9 @@ final class DOMNode implements \JsonSerializable
 		}
 		if ($this->currentSourceURL !== null) {
 			$data->currentSourceURL = $this->currentSourceURL;
+		}
+		if ($this->originURL !== null) {
+			$data->originURL = $this->originURL;
 		}
 		return $data;
 	}

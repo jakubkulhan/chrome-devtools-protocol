@@ -18,6 +18,20 @@ class DOMSnapshotDomain implements DOMSnapshotDomainInterface
 	}
 
 
+	public function disable(ContextInterface $ctx): void
+	{
+		$request = new \stdClass();
+		$this->internalClient->executeCommand($ctx, 'DOMSnapshot.disable', $request);
+	}
+
+
+	public function enable(ContextInterface $ctx): void
+	{
+		$request = new \stdClass();
+		$this->internalClient->executeCommand($ctx, 'DOMSnapshot.enable', $request);
+	}
+
+
 	public function getSnapshot(ContextInterface $ctx, GetSnapshotRequest $request): GetSnapshotResponse
 	{
 		$response = $this->internalClient->executeCommand($ctx, 'DOMSnapshot.getSnapshot', $request);
