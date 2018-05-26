@@ -14,6 +14,7 @@ use ChromeDevtoolsProtocol\Model\Emulation\SetNavigatorOverridesRequest;
 use ChromeDevtoolsProtocol\Model\Emulation\SetPageScaleFactorRequest;
 use ChromeDevtoolsProtocol\Model\Emulation\SetScriptExecutionDisabledRequest;
 use ChromeDevtoolsProtocol\Model\Emulation\SetTouchEmulationEnabledRequest;
+use ChromeDevtoolsProtocol\Model\Emulation\SetUserAgentOverrideRequest;
 use ChromeDevtoolsProtocol\Model\Emulation\SetVirtualTimePolicyRequest;
 use ChromeDevtoolsProtocol\Model\Emulation\SetVirtualTimePolicyResponse;
 use ChromeDevtoolsProtocol\Model\Emulation\SetVisibleSizeRequest;
@@ -120,6 +121,12 @@ class EmulationDomain implements EmulationDomainInterface
 	public function setTouchEmulationEnabled(ContextInterface $ctx, SetTouchEmulationEnabledRequest $request): void
 	{
 		$this->internalClient->executeCommand($ctx, 'Emulation.setTouchEmulationEnabled', $request);
+	}
+
+
+	public function setUserAgentOverride(ContextInterface $ctx, SetUserAgentOverrideRequest $request): void
+	{
+		$this->internalClient->executeCommand($ctx, 'Emulation.setUserAgentOverride', $request);
 	}
 
 

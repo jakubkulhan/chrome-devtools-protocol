@@ -6334,6 +6334,7 @@
                     "name": "setNavigatorOverrides",
                     "description": "Overrides value returned by the javascript navigator object.",
                     "experimental": true,
+                    "deprecated": true,
                     "parameters": [
                         {
                             "name": "platform",
@@ -6379,6 +6380,29 @@
                             "description": "Maximum touch points supported. Defaults to one.",
                             "optional": true,
                             "type": "integer"
+                        }
+                    ]
+                },
+                {
+                    "name": "setUserAgentOverride",
+                    "description": "Allows overriding user agent with the given string.",
+                    "parameters": [
+                        {
+                            "name": "userAgent",
+                            "description": "User agent to use.",
+                            "type": "string"
+                        },
+                        {
+                            "name": "acceptLanguage",
+                            "description": "Browser langugage to emulate.",
+                            "optional": true,
+                            "type": "string"
+                        },
+                        {
+                            "name": "platform",
+                            "description": "The platform navigator.platform should return.",
+                            "optional": true,
+                            "type": "string"
                         }
                     ]
                 },
@@ -9427,6 +9451,11 @@
                             "type": "string"
                         },
                         {
+                            "name": "signature",
+                            "description": "The hex string of signed exchange signature.",
+                            "type": "string"
+                        },
+                        {
                             "name": "integrity",
                             "description": "Signed exchange signature integrity.",
                             "type": "string"
@@ -9434,6 +9463,13 @@
                         {
                             "name": "certUrl",
                             "description": "Signed exchange signature cert Url.",
+                            "optional": true,
+                            "type": "string"
+                        },
+                        {
+                            "name": "certSha256",
+                            "description": "The hex string of signed exchange signature cert sha256.",
+                            "optional": true,
                             "type": "string"
                         },
                         {
@@ -9450,6 +9486,15 @@
                             "name": "expires",
                             "description": "Signed exchange signature expires.",
                             "type": "integer"
+                        },
+                        {
+                            "name": "certificates",
+                            "description": "The encoded certificates.",
+                            "optional": true,
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            }
                         }
                     ]
                 },
@@ -10052,10 +10097,23 @@
                 {
                     "name": "setUserAgentOverride",
                     "description": "Allows overriding user agent with the given string.",
+                    "redirect": "Emulation",
                     "parameters": [
                         {
                             "name": "userAgent",
                             "description": "User agent to use.",
+                            "type": "string"
+                        },
+                        {
+                            "name": "acceptLanguage",
+                            "description": "Browser langugage to emulate.",
+                            "optional": true,
+                            "type": "string"
+                        },
+                        {
+                            "name": "platform",
+                            "description": "The platform navigator.platform should return.",
+                            "optional": true,
                             "type": "string"
                         }
                     ]

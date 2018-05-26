@@ -18,6 +18,13 @@ final class SignedExchangeSignature implements \JsonSerializable
 	public $label;
 
 	/**
+	 * The hex string of signed exchange signature.
+	 *
+	 * @var string
+	 */
+	public $signature;
+
+	/**
 	 * Signed exchange signature integrity.
 	 *
 	 * @var string
@@ -27,9 +34,16 @@ final class SignedExchangeSignature implements \JsonSerializable
 	/**
 	 * Signed exchange signature cert Url.
 	 *
-	 * @var string
+	 * @var string|null
 	 */
 	public $certUrl;
+
+	/**
+	 * The hex string of signed exchange signature cert sha256.
+	 *
+	 * @var string|null
+	 */
+	public $certSha256;
 
 	/**
 	 * Signed exchange signature validity Url.
@@ -52,6 +66,13 @@ final class SignedExchangeSignature implements \JsonSerializable
 	 */
 	public $expires;
 
+	/**
+	 * The encoded certificates.
+	 *
+	 * @var string[]|null
+	 */
+	public $certificates;
+
 
 	public static function fromJson($data)
 	{
@@ -59,11 +80,17 @@ final class SignedExchangeSignature implements \JsonSerializable
 		if (isset($data->label)) {
 			$instance->label = (string)$data->label;
 		}
+		if (isset($data->signature)) {
+			$instance->signature = (string)$data->signature;
+		}
 		if (isset($data->integrity)) {
 			$instance->integrity = (string)$data->integrity;
 		}
 		if (isset($data->certUrl)) {
 			$instance->certUrl = (string)$data->certUrl;
+		}
+		if (isset($data->certSha256)) {
+			$instance->certSha256 = (string)$data->certSha256;
 		}
 		if (isset($data->validityUrl)) {
 			$instance->validityUrl = (string)$data->validityUrl;
@@ -73,6 +100,12 @@ final class SignedExchangeSignature implements \JsonSerializable
 		}
 		if (isset($data->expires)) {
 			$instance->expires = (int)$data->expires;
+		}
+		if (isset($data->certificates)) {
+			$instance->certificates = [];
+			foreach ($data->certificates as $item) {
+				$instance->certificates[] = (string)$item;
+			}
 		}
 		return $instance;
 	}
@@ -84,11 +117,17 @@ final class SignedExchangeSignature implements \JsonSerializable
 		if ($this->label !== null) {
 			$data->label = $this->label;
 		}
+		if ($this->signature !== null) {
+			$data->signature = $this->signature;
+		}
 		if ($this->integrity !== null) {
 			$data->integrity = $this->integrity;
 		}
 		if ($this->certUrl !== null) {
 			$data->certUrl = $this->certUrl;
+		}
+		if ($this->certSha256 !== null) {
+			$data->certSha256 = $this->certSha256;
 		}
 		if ($this->validityUrl !== null) {
 			$data->validityUrl = $this->validityUrl;
@@ -98,6 +137,12 @@ final class SignedExchangeSignature implements \JsonSerializable
 		}
 		if ($this->expires !== null) {
 			$data->expires = $this->expires;
+		}
+		if ($this->certificates !== null) {
+			$data->certificates = [];
+			foreach ($this->certificates as $item) {
+				$data->certificates[] = $item;
+			}
 		}
 		return $data;
 	}

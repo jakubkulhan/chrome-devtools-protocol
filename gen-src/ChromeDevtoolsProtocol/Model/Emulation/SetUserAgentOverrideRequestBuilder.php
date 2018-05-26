@@ -1,5 +1,5 @@
 <?php
-namespace ChromeDevtoolsProtocol\Model\Network;
+namespace ChromeDevtoolsProtocol\Model\Emulation;
 
 use ChromeDevtoolsProtocol\Exception\BuilderException;
 

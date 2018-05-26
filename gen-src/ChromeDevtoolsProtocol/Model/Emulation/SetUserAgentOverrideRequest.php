@@ -1,8 +1,8 @@
 <?php
-namespace ChromeDevtoolsProtocol\Model\Network;
+namespace ChromeDevtoolsProtocol\Model\Emulation;
 
 /**
- * Request for Network.setUserAgentOverride command.
+ * Request for Emulation.setUserAgentOverride command.
  *
  * @generated This file has been auto-generated, do not edit.
  *

@@ -13,6 +13,7 @@ use ChromeDevtoolsProtocol\Model\Emulation\SetNavigatorOverridesRequest;
 use ChromeDevtoolsProtocol\Model\Emulation\SetPageScaleFactorRequest;
 use ChromeDevtoolsProtocol\Model\Emulation\SetScriptExecutionDisabledRequest;
 use ChromeDevtoolsProtocol\Model\Emulation\SetTouchEmulationEnabledRequest;
+use ChromeDevtoolsProtocol\Model\Emulation\SetUserAgentOverrideRequest;
 use ChromeDevtoolsProtocol\Model\Emulation\SetVirtualTimePolicyRequest;
 use ChromeDevtoolsProtocol\Model\Emulation\SetVirtualTimePolicyResponse;
 use ChromeDevtoolsProtocol\Model\Emulation\SetVisibleSizeRequest;
@@ -178,6 +179,17 @@ interface EmulationDomainInterface
 	 * @return void
 	 */
 	public function setTouchEmulationEnabled(ContextInterface $ctx, SetTouchEmulationEnabledRequest $request): void;
+
+
+	/**
+	 * Allows overriding user agent with the given string.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param SetUserAgentOverrideRequest $request
+	 *
+	 * @return void
+	 */
+	public function setUserAgentOverride(ContextInterface $ctx, SetUserAgentOverrideRequest $request): void;
 
 
 	/**
