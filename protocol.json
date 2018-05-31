@@ -6367,6 +6367,17 @@
                     ]
                 },
                 {
+                    "name": "setScrollbarsHidden",
+                    "experimental": true,
+                    "parameters": [
+                        {
+                            "name": "hidden",
+                            "description": "Whether scrollbars should be always hidden.",
+                            "type": "boolean"
+                        }
+                    ]
+                },
+                {
                     "name": "setTouchEmulationEnabled",
                     "description": "Enables touch on platforms which do not support them.",
                     "parameters": [

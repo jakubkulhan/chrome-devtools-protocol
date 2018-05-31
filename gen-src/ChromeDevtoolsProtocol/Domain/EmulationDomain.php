@@ -13,6 +13,7 @@ use ChromeDevtoolsProtocol\Model\Emulation\SetGeolocationOverrideRequest;
 use ChromeDevtoolsProtocol\Model\Emulation\SetNavigatorOverridesRequest;
 use ChromeDevtoolsProtocol\Model\Emulation\SetPageScaleFactorRequest;
 use ChromeDevtoolsProtocol\Model\Emulation\SetScriptExecutionDisabledRequest;
+use ChromeDevtoolsProtocol\Model\Emulation\SetScrollbarsHiddenRequest;
 use ChromeDevtoolsProtocol\Model\Emulation\SetTouchEmulationEnabledRequest;
 use ChromeDevtoolsProtocol\Model\Emulation\SetUserAgentOverrideRequest;
 use ChromeDevtoolsProtocol\Model\Emulation\SetVirtualTimePolicyRequest;
@@ -115,6 +116,12 @@ class EmulationDomain implements EmulationDomainInterface
 	public function setScriptExecutionDisabled(ContextInterface $ctx, SetScriptExecutionDisabledRequest $request): void
 	{
 		$this->internalClient->executeCommand($ctx, 'Emulation.setScriptExecutionDisabled', $request);
+	}
+
+
+	public function setScrollbarsHidden(ContextInterface $ctx, SetScrollbarsHiddenRequest $request): void
+	{
+		$this->internalClient->executeCommand($ctx, 'Emulation.setScrollbarsHidden', $request);
 	}
 
 
