@@ -34,7 +34,7 @@ final class SignedExchangeInfo implements \JsonSerializable
 	/**
 	 * Errors occurred while handling the signed exchagne.
 	 *
-	 * @var string[]|null
+	 * @var SignedExchangeError[]|null
 	 */
 	public $errors;
 
@@ -54,7 +54,7 @@ final class SignedExchangeInfo implements \JsonSerializable
 		if (isset($data->errors)) {
 			$instance->errors = [];
 			foreach ($data->errors as $item) {
-				$instance->errors[] = (string)$item;
+				$instance->errors[] = SignedExchangeError::fromJson($item);
 			}
 		}
 		return $instance;
@@ -76,7 +76,7 @@ final class SignedExchangeInfo implements \JsonSerializable
 		if ($this->errors !== null) {
 			$data->errors = [];
 			foreach ($this->errors as $item) {
-				$data->errors[] = $item;
+				$data->errors[] = $item->jsonSerialize();
 			}
 		}
 		return $data;
