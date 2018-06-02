@@ -29,6 +29,7 @@ use ChromeDevtoolsProtocol\Model\Runtime\ReleaseObjectGroupRequest;
 use ChromeDevtoolsProtocol\Model\Runtime\ReleaseObjectRequest;
 use ChromeDevtoolsProtocol\Model\Runtime\RunScriptRequest;
 use ChromeDevtoolsProtocol\Model\Runtime\RunScriptResponse;
+use ChromeDevtoolsProtocol\Model\Runtime\SetAsyncCallStackDepthRequest;
 use ChromeDevtoolsProtocol\Model\Runtime\SetCustomObjectFormatterEnabledRequest;
 use ChromeDevtoolsProtocol\SubscriptionInterface;
 
@@ -209,6 +210,17 @@ interface RuntimeDomainInterface
 	 * @return RunScriptResponse
 	 */
 	public function runScript(ContextInterface $ctx, RunScriptRequest $request): RunScriptResponse;
+
+
+	/**
+	 * Enables or disables async call stacks tracking.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param SetAsyncCallStackDepthRequest $request
+	 *
+	 * @return void
+	 */
+	public function setAsyncCallStackDepth(ContextInterface $ctx, SetAsyncCallStackDepthRequest $request): void;
 
 
 	/**

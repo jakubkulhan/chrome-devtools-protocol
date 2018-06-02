@@ -14185,6 +14185,18 @@
                     ]
                 },
                 {
+                    "name": "setAsyncCallStackDepth",
+                    "description": "Enables or disables async call stacks tracking.",
+                    "redirect": "Debugger",
+                    "parameters": [
+                        {
+                            "name": "maxDepth",
+                            "description": "Maximum depth of async call stacks. Setting to `0` will effectively disable collecting async call stacks (default).",
+                            "type": "integer"
+                        }
+                    ]
+                },
+                {
                     "name": "setCustomObjectFormatterEnabled",
                     "experimental": true,
                     "parameters": [
@@ -15555,6 +15567,26 @@
                             "deprecated": true,
                             "optional": true,
                             "$ref": "TargetID"
+                        }
+                    ]
+                },
+                {
+                    "name": "targetCrashed",
+                    "description": "Issued when a target has crashed.",
+                    "parameters": [
+                        {
+                            "name": "targetId",
+                            "$ref": "TargetID"
+                        },
+                        {
+                            "name": "status",
+                            "description": "Termination status type.",
+                            "type": "string"
+                        },
+                        {
+                            "name": "errorCode",
+                            "description": "Termination error code.",
+                            "type": "integer"
                         }
                     ]
                 },

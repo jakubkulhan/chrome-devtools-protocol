@@ -30,6 +30,7 @@ use ChromeDevtoolsProtocol\Model\Runtime\ReleaseObjectGroupRequest;
 use ChromeDevtoolsProtocol\Model\Runtime\ReleaseObjectRequest;
 use ChromeDevtoolsProtocol\Model\Runtime\RunScriptRequest;
 use ChromeDevtoolsProtocol\Model\Runtime\RunScriptResponse;
+use ChromeDevtoolsProtocol\Model\Runtime\SetAsyncCallStackDepthRequest;
 use ChromeDevtoolsProtocol\Model\Runtime\SetCustomObjectFormatterEnabledRequest;
 use ChromeDevtoolsProtocol\SubscriptionInterface;
 
@@ -154,6 +155,12 @@ class RuntimeDomain implements RuntimeDomainInterface
 	{
 		$response = $this->internalClient->executeCommand($ctx, 'Runtime.runScript', $request);
 		return RunScriptResponse::fromJson($response);
+	}
+
+
+	public function setAsyncCallStackDepth(ContextInterface $ctx, SetAsyncCallStackDepthRequest $request): void
+	{
+		$this->internalClient->executeCommand($ctx, 'Runtime.setAsyncCallStackDepth', $request);
 	}
 
 

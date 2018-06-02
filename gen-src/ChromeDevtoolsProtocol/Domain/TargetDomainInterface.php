@@ -23,6 +23,7 @@ use ChromeDevtoolsProtocol\Model\Target\SendMessageToTargetRequest;
 use ChromeDevtoolsProtocol\Model\Target\SetAutoAttachRequest;
 use ChromeDevtoolsProtocol\Model\Target\SetDiscoverTargetsRequest;
 use ChromeDevtoolsProtocol\Model\Target\SetRemoteLocationsRequest;
+use ChromeDevtoolsProtocol\Model\Target\TargetCrashedEvent;
 use ChromeDevtoolsProtocol\Model\Target\TargetCreatedEvent;
 use ChromeDevtoolsProtocol\Model\Target\TargetDestroyedEvent;
 use ChromeDevtoolsProtocol\Model\Target\TargetInfoChangedEvent;
@@ -258,6 +259,30 @@ interface TargetDomainInterface
 	 * @return ReceivedMessageFromTargetEvent
 	 */
 	public function awaitReceivedMessageFromTarget(ContextInterface $ctx): ReceivedMessageFromTargetEvent;
+
+
+	/**
+	 * Issued when a target has crashed.
+	 *
+	 * Listener will be called whenever event Target.targetCrashed is fired.
+	 *
+	 * @param callable $listener
+	 *
+	 * @return SubscriptionInterface
+	 */
+	public function addTargetCrashedListener(callable $listener): SubscriptionInterface;
+
+
+	/**
+	 * Issued when a target has crashed.
+	 *
+	 * Method will block until first Target.targetCrashed event is fired.
+	 *
+	 * @param ContextInterface $ctx
+	 *
+	 * @return TargetCrashedEvent
+	 */
+	public function awaitTargetCrashed(ContextInterface $ctx): TargetCrashedEvent;
 
 
 	/**

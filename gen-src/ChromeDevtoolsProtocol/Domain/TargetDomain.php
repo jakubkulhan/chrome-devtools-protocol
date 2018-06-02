@@ -24,6 +24,7 @@ use ChromeDevtoolsProtocol\Model\Target\SendMessageToTargetRequest;
 use ChromeDevtoolsProtocol\Model\Target\SetAutoAttachRequest;
 use ChromeDevtoolsProtocol\Model\Target\SetDiscoverTargetsRequest;
 use ChromeDevtoolsProtocol\Model\Target\SetRemoteLocationsRequest;
+use ChromeDevtoolsProtocol\Model\Target\TargetCrashedEvent;
 use ChromeDevtoolsProtocol\Model\Target\TargetCreatedEvent;
 use ChromeDevtoolsProtocol\Model\Target\TargetDestroyedEvent;
 use ChromeDevtoolsProtocol\Model\Target\TargetInfoChangedEvent;
@@ -174,6 +175,20 @@ class TargetDomain implements TargetDomainInterface
 	public function awaitReceivedMessageFromTarget(ContextInterface $ctx): ReceivedMessageFromTargetEvent
 	{
 		return ReceivedMessageFromTargetEvent::fromJson($this->internalClient->awaitEvent($ctx, 'Target.receivedMessageFromTarget'));
+	}
+
+
+	public function addTargetCrashedListener(callable $listener): SubscriptionInterface
+	{
+		return $this->internalClient->addListener('Target.targetCrashed', function ($event) use ($listener) {
+			return $listener(TargetCrashedEvent::fromJson($event));
+		});
+	}
+
+
+	public function awaitTargetCrashed(ContextInterface $ctx): TargetCrashedEvent
+	{
+		return TargetCrashedEvent::fromJson($this->internalClient->awaitEvent($ctx, 'Target.targetCrashed'));
 	}
 
 
