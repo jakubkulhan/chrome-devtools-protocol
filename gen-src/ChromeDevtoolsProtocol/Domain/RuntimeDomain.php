@@ -3,8 +3,10 @@ namespace ChromeDevtoolsProtocol\Domain;
 
 use ChromeDevtoolsProtocol\ContextInterface;
 use ChromeDevtoolsProtocol\InternalClientInterface;
+use ChromeDevtoolsProtocol\Model\Runtime\AddBindingRequest;
 use ChromeDevtoolsProtocol\Model\Runtime\AwaitPromiseRequest;
 use ChromeDevtoolsProtocol\Model\Runtime\AwaitPromiseResponse;
+use ChromeDevtoolsProtocol\Model\Runtime\BindingCalledEvent;
 use ChromeDevtoolsProtocol\Model\Runtime\CallFunctionOnRequest;
 use ChromeDevtoolsProtocol\Model\Runtime\CallFunctionOnResponse;
 use ChromeDevtoolsProtocol\Model\Runtime\CompileScriptRequest;
@@ -28,6 +30,7 @@ use ChromeDevtoolsProtocol\Model\Runtime\QueryObjectsRequest;
 use ChromeDevtoolsProtocol\Model\Runtime\QueryObjectsResponse;
 use ChromeDevtoolsProtocol\Model\Runtime\ReleaseObjectGroupRequest;
 use ChromeDevtoolsProtocol\Model\Runtime\ReleaseObjectRequest;
+use ChromeDevtoolsProtocol\Model\Runtime\RemoveBindingRequest;
 use ChromeDevtoolsProtocol\Model\Runtime\RunScriptRequest;
 use ChromeDevtoolsProtocol\Model\Runtime\RunScriptResponse;
 use ChromeDevtoolsProtocol\Model\Runtime\SetAsyncCallStackDepthRequest;
@@ -43,6 +46,12 @@ class RuntimeDomain implements RuntimeDomainInterface
 	public function __construct(InternalClientInterface $internalClient)
 	{
 		$this->internalClient = $internalClient;
+	}
+
+
+	public function addBinding(ContextInterface $ctx, AddBindingRequest $request): void
+	{
+		$this->internalClient->executeCommand($ctx, 'Runtime.addBinding', $request);
 	}
 
 
@@ -144,6 +153,12 @@ class RuntimeDomain implements RuntimeDomainInterface
 	}
 
 
+	public function removeBinding(ContextInterface $ctx, RemoveBindingRequest $request): void
+	{
+		$this->internalClient->executeCommand($ctx, 'Runtime.removeBinding', $request);
+	}
+
+
 	public function runIfWaitingForDebugger(ContextInterface $ctx): void
 	{
 		$request = new \stdClass();
@@ -174,6 +189,20 @@ class RuntimeDomain implements RuntimeDomainInterface
 	{
 		$request = new \stdClass();
 		$this->internalClient->executeCommand($ctx, 'Runtime.terminateExecution', $request);
+	}
+
+
+	public function addBindingCalledListener(callable $listener): SubscriptionInterface
+	{
+		return $this->internalClient->addListener('Runtime.bindingCalled', function ($event) use ($listener) {
+			return $listener(BindingCalledEvent::fromJson($event));
+		});
+	}
+
+
+	public function awaitBindingCalled(ContextInterface $ctx): BindingCalledEvent
+	{
+		return BindingCalledEvent::fromJson($this->internalClient->awaitEvent($ctx, 'Runtime.bindingCalled'));
 	}
 
 
