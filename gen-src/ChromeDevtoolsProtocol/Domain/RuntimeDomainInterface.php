@@ -34,6 +34,7 @@ use ChromeDevtoolsProtocol\Model\Runtime\RunScriptRequest;
 use ChromeDevtoolsProtocol\Model\Runtime\RunScriptResponse;
 use ChromeDevtoolsProtocol\Model\Runtime\SetAsyncCallStackDepthRequest;
 use ChromeDevtoolsProtocol\Model\Runtime\SetCustomObjectFormatterEnabledRequest;
+use ChromeDevtoolsProtocol\Model\Runtime\SetMaxCallStackSizeToCaptureRequest;
 use ChromeDevtoolsProtocol\SubscriptionInterface;
 
 /**
@@ -257,6 +258,17 @@ interface RuntimeDomainInterface
 	 * @return void
 	 */
 	public function setCustomObjectFormatterEnabled(ContextInterface $ctx, SetCustomObjectFormatterEnabledRequest $request): void;
+
+
+	/**
+	 * Call Runtime.setMaxCallStackSizeToCapture command.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param SetMaxCallStackSizeToCaptureRequest $request
+	 *
+	 * @return void
+	 */
+	public function setMaxCallStackSizeToCapture(ContextInterface $ctx, SetMaxCallStackSizeToCaptureRequest $request): void;
 
 
 	/**
