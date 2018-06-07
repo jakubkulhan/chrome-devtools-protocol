@@ -13,12 +13,18 @@ final class AddBindingRequest implements \JsonSerializable
 	/** @var string */
 	public $name;
 
+	/** @var int */
+	public $executionContextId;
+
 
 	public static function fromJson($data)
 	{
 		$instance = new static();
 		if (isset($data->name)) {
 			$instance->name = (string)$data->name;
+		}
+		if (isset($data->executionContextId)) {
+			$instance->executionContextId = (int)$data->executionContextId;
 		}
 		return $instance;
 	}
@@ -29,6 +35,9 @@ final class AddBindingRequest implements \JsonSerializable
 		$data = new \stdClass();
 		if ($this->name !== null) {
 			$data->name = $this->name;
+		}
+		if ($this->executionContextId !== null) {
+			$data->executionContextId = $this->executionContextId;
 		}
 		return $data;
 	}

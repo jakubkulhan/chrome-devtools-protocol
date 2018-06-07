@@ -56,6 +56,7 @@ use ChromeDevtoolsProtocol\Model\Page\SetDeviceMetricsOverrideRequest;
 use ChromeDevtoolsProtocol\Model\Page\SetDeviceOrientationOverrideRequest;
 use ChromeDevtoolsProtocol\Model\Page\SetDocumentContentRequest;
 use ChromeDevtoolsProtocol\Model\Page\SetDownloadBehaviorRequest;
+use ChromeDevtoolsProtocol\Model\Page\SetFontFamiliesRequest;
 use ChromeDevtoolsProtocol\Model\Page\SetGeolocationOverrideRequest;
 use ChromeDevtoolsProtocol\Model\Page\SetLifecycleEventsEnabledRequest;
 use ChromeDevtoolsProtocol\Model\Page\SetTouchEmulationEnabledRequest;
@@ -318,6 +319,12 @@ class PageDomain implements PageDomainInterface
 	public function setDownloadBehavior(ContextInterface $ctx, SetDownloadBehaviorRequest $request): void
 	{
 		$this->internalClient->executeCommand($ctx, 'Page.setDownloadBehavior', $request);
+	}
+
+
+	public function setFontFamilies(ContextInterface $ctx, SetFontFamiliesRequest $request): void
+	{
+		$this->internalClient->executeCommand($ctx, 'Page.setFontFamilies', $request);
 	}
 
 

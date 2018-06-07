@@ -12,6 +12,8 @@ final class AddBindingRequestBuilder
 {
 	private $name;
 
+	private $executionContextId;
+
 
 	/**
 	 * Validate non-optional parameters and return new instance.
@@ -23,6 +25,7 @@ final class AddBindingRequestBuilder
 			throw new BuilderException('Property [name] is required.');
 		}
 		$instance->name = $this->name;
+		$instance->executionContextId = $this->executionContextId;
 		return $instance;
 	}
 
@@ -35,6 +38,18 @@ final class AddBindingRequestBuilder
 	public function setName($name): self
 	{
 		$this->name = $name;
+		return $this;
+	}
+
+
+	/**
+	 * @param int $executionContextId
+	 *
+	 * @return self
+	 */
+	public function setExecutionContextId($executionContextId): self
+	{
+		$this->executionContextId = $executionContextId;
 		return $this;
 	}
 }
