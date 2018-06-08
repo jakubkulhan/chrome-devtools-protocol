@@ -11,7 +11,7 @@ namespace ChromeDevtoolsProtocol\Model\Page;
 final class SetFontFamiliesRequest implements \JsonSerializable
 {
 	/**
-	 * Specifies font families to set. If a font family is not set, it won't be changed.
+	 * Specifies font families to set. If a font family is not specified, it won't be changed.
 	 *
 	 * @var FontFamilies
 	 */

@@ -56,6 +56,7 @@ use ChromeDevtoolsProtocol\Model\Page\SetDeviceOrientationOverrideRequest;
 use ChromeDevtoolsProtocol\Model\Page\SetDocumentContentRequest;
 use ChromeDevtoolsProtocol\Model\Page\SetDownloadBehaviorRequest;
 use ChromeDevtoolsProtocol\Model\Page\SetFontFamiliesRequest;
+use ChromeDevtoolsProtocol\Model\Page\SetFontSizesRequest;
 use ChromeDevtoolsProtocol\Model\Page\SetGeolocationOverrideRequest;
 use ChromeDevtoolsProtocol\Model\Page\SetLifecycleEventsEnabledRequest;
 use ChromeDevtoolsProtocol\Model\Page\SetTouchEmulationEnabledRequest;
@@ -455,7 +456,7 @@ interface PageDomainInterface
 
 
 	/**
-	 * Set commonly used font families.
+	 * Set generic font families.
 	 *
 	 * @param ContextInterface $ctx
 	 * @param SetFontFamiliesRequest $request
@@ -463,6 +464,17 @@ interface PageDomainInterface
 	 * @return void
 	 */
 	public function setFontFamilies(ContextInterface $ctx, SetFontFamiliesRequest $request): void;
+
+
+	/**
+	 * Set default font sizes.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param SetFontSizesRequest $request
+	 *
+	 * @return void
+	 */
+	public function setFontSizes(ContextInterface $ctx, SetFontSizesRequest $request): void;
 
 
 	/**
