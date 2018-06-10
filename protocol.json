@@ -8784,7 +8784,13 @@
                     "properties": [
                         {
                             "name": "url",
-                            "description": "Request URL.",
+                            "description": "Request URL (without fragment).",
+                            "type": "string"
+                        },
+                        {
+                            "name": "urlFragment",
+                            "description": "Fragment of the requested URL starting with hash, if present.",
+                            "optional": true,
                             "type": "string"
                         },
                         {
@@ -11093,6 +11099,8 @@
                         "WebSocket",
                         "Manifest",
                         "SignedExchange",
+                        "Ping",
+                        "CSPViolationReport",
                         "Other"
                     ]
                 },

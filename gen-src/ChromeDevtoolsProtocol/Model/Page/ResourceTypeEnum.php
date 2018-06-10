@@ -23,6 +23,8 @@ final class ResourceTypeEnum
 	const WEB_SOCKET = 'WebSocket';
 	const MANIFEST = 'Manifest';
 	const SIGNED_EXCHANGE = 'SignedExchange';
+	const PING = 'Ping';
+	const CSP_VIOLATION_REPORT = 'CSPViolationReport';
 	const OTHER = 'Other';
 
 }

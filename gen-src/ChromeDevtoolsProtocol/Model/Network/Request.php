@@ -11,11 +11,18 @@ namespace ChromeDevtoolsProtocol\Model\Network;
 final class Request implements \JsonSerializable
 {
 	/**
-	 * Request URL.
+	 * Request URL (without fragment).
 	 *
 	 * @var string
 	 */
 	public $url;
+
+	/**
+	 * Fragment of the requested URL starting with hash, if present.
+	 *
+	 * @var string|null
+	 */
+	public $urlFragment;
 
 	/**
 	 * HTTP request method.
@@ -80,6 +87,9 @@ final class Request implements \JsonSerializable
 		if (isset($data->url)) {
 			$instance->url = (string)$data->url;
 		}
+		if (isset($data->urlFragment)) {
+			$instance->urlFragment = (string)$data->urlFragment;
+		}
 		if (isset($data->method)) {
 			$instance->method = (string)$data->method;
 		}
@@ -113,6 +123,9 @@ final class Request implements \JsonSerializable
 		$data = new \stdClass();
 		if ($this->url !== null) {
 			$data->url = $this->url;
+		}
+		if ($this->urlFragment !== null) {
+			$data->urlFragment = $this->urlFragment;
 		}
 		if ($this->method !== null) {
 			$data->method = $this->method;
