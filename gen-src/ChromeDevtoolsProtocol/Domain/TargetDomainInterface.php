@@ -14,6 +14,7 @@ use ChromeDevtoolsProtocol\Model\Target\CreateTargetResponse;
 use ChromeDevtoolsProtocol\Model\Target\DetachFromTargetRequest;
 use ChromeDevtoolsProtocol\Model\Target\DetachedFromTargetEvent;
 use ChromeDevtoolsProtocol\Model\Target\DisposeBrowserContextRequest;
+use ChromeDevtoolsProtocol\Model\Target\ExposeDevToolsProtocolRequest;
 use ChromeDevtoolsProtocol\Model\Target\GetBrowserContextsResponse;
 use ChromeDevtoolsProtocol\Model\Target\GetTargetInfoRequest;
 use ChromeDevtoolsProtocol\Model\Target\GetTargetInfoResponse;
@@ -112,6 +113,17 @@ interface TargetDomainInterface
 	 * @return void
 	 */
 	public function disposeBrowserContext(ContextInterface $ctx, DisposeBrowserContextRequest $request): void;
+
+
+	/**
+	 * Inject object to the target's main frame that provides a communication channel with browser target. Injected object will be available as `window[bindingName]`. The object has the follwing API: - `binding.send(json)` - a method to send messages over the remote debugging protocol - `binding.onmessage = json => handleMessage(json)` - a callback that will be called for the protocol notifications and command responses.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param ExposeDevToolsProtocolRequest $request
+	 *
+	 * @return void
+	 */
+	public function exposeDevToolsProtocol(ContextInterface $ctx, ExposeDevToolsProtocolRequest $request): void;
 
 
 	/**
