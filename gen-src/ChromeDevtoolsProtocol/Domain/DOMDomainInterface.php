@@ -22,6 +22,8 @@ use ChromeDevtoolsProtocol\Model\DOM\GetAttributesRequest;
 use ChromeDevtoolsProtocol\Model\DOM\GetAttributesResponse;
 use ChromeDevtoolsProtocol\Model\DOM\GetBoxModelRequest;
 use ChromeDevtoolsProtocol\Model\DOM\GetBoxModelResponse;
+use ChromeDevtoolsProtocol\Model\DOM\GetContentQuadsRequest;
+use ChromeDevtoolsProtocol\Model\DOM\GetContentQuadsResponse;
 use ChromeDevtoolsProtocol\Model\DOM\GetDocumentRequest;
 use ChromeDevtoolsProtocol\Model\DOM\GetDocumentResponse;
 use ChromeDevtoolsProtocol\Model\DOM\GetFlattenedDocumentRequest;
@@ -175,6 +177,17 @@ interface DOMDomainInterface
 	 * @return GetBoxModelResponse
 	 */
 	public function getBoxModel(ContextInterface $ctx, GetBoxModelRequest $request): GetBoxModelResponse;
+
+
+	/**
+	 * Returns quads that describe node position on the page. This method might return multiple quads for inline nodes.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param GetContentQuadsRequest $request
+	 *
+	 * @return GetContentQuadsResponse
+	 */
+	public function getContentQuads(ContextInterface $ctx, GetContentQuadsRequest $request): GetContentQuadsResponse;
 
 
 	/**
