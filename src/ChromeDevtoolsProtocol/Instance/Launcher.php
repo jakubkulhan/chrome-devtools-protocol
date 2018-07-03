@@ -177,15 +177,26 @@ class Launcher
 	{
 		$args = array_unique(array_merge(static::$defaultArgs, $args));
 
-		$foundPort = false;
+		$foundPort = null;
 		foreach ($args as $arg) {
 			if (strncmp($arg, "--remote-debugging-port=", 24 /* strlen("--remote-debugging-port=") */) === 0) {
-				$foundPort = true;
-				break;
+				$foundPort = (int)substr($arg, 24 /* strlen("--remote-debugging-port=") */);
+				if ($foundPort !== $this->port) {
+					throw new LogicException(sprintf(
+						"You are trying to launch Chrome instance with argument '--remote-debugging-port=%d', however, " .
+						"%s is created to start instance with port %d. Either do not set '--remote-debugging-port' " .
+						"in \$args for launch() method, or create %s instance that would use given port number " .
+						"(by constructor or setPort() method).",
+						$foundPort,
+						get_class($this),
+						$this->port,
+						get_class($this)
+					));
+				}
 			}
 		}
 
-		if (!$foundPort) {
+		if ($foundPort === null) {
 			$args[] = "--remote-debugging-port=" . $this->port;
 		}
 

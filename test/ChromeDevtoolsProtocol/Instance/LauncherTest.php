@@ -2,6 +2,7 @@
 namespace ChromeDevtoolsProtocol\Instance;
 
 use ChromeDevtoolsProtocol\Context;
+use ChromeDevtoolsProtocol\Exception\LogicException;
 use ChromeDevtoolsProtocol\Model\Page\NavigateRequest;
 use PHPUnit\Framework\TestCase;
 
@@ -39,6 +40,15 @@ class LauncherTest extends TestCase
 		} finally {
 			$instance->close();
 		}
+	}
+
+	public function testLaunchRemoteDebuggingPort()
+	{
+		$this->expectException(LogicException::class);
+
+		$ctx = Context::withTimeout(Context::background(), 30);
+		$launcher = new Launcher(2229);
+		$launcher->launch($ctx, "--remote-debugging-port=9222");
 	}
 
 }
