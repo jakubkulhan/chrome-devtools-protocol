@@ -6,3 +6,4 @@ parameters:
   # Method ChromeDevtoolsProtocol\Session::accessibility() should return ChromeDevtoolsProtocol\Domain\AccessibilityDomainInterface but returns object.
   - src/ChromeDevtoolsProtocol/DevtoolsClient.php
   - src/ChromeDevtoolsProtocol/Session.php
+  - src/ChromeDevtoolsProtocol/WebSocket/WebSocketClientSocket.php
