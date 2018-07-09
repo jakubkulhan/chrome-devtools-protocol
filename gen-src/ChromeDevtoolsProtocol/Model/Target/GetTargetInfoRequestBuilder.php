@@ -1,8 +1,6 @@
 <?php
 namespace ChromeDevtoolsProtocol\Model\Target;
 
-use ChromeDevtoolsProtocol\Exception\BuilderException;
-
 /**
  * @generated This file has been auto-generated, do not edit.
  *
@@ -19,9 +17,6 @@ final class GetTargetInfoRequestBuilder
 	public function build(): GetTargetInfoRequest
 	{
 		$instance = new GetTargetInfoRequest();
-		if ($this->targetId === null) {
-			throw new BuilderException('Property [targetId] is required.');
-		}
 		$instance->targetId = $this->targetId;
 		return $instance;
 	}

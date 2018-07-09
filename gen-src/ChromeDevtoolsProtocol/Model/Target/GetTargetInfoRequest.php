@@ -43,4 +43,15 @@ final class GetTargetInfoRequest implements \JsonSerializable
 	{
 		return new GetTargetInfoRequestBuilder();
 	}
+
+
+	/**
+	 * Create new empty instance.
+	 *
+	 * @return self
+	 */
+	public static function make(): self
+	{
+		return static::builder()->build();
+	}
 }

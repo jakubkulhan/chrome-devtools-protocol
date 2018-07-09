@@ -3,6 +3,8 @@ namespace ChromeDevtoolsProtocol\Domain;
 
 use ChromeDevtoolsProtocol\ContextInterface;
 use ChromeDevtoolsProtocol\InternalClientInterface;
+use ChromeDevtoolsProtocol\Model\DOMSnapshot\CaptureSnapshotRequest;
+use ChromeDevtoolsProtocol\Model\DOMSnapshot\CaptureSnapshotResponse;
 use ChromeDevtoolsProtocol\Model\DOMSnapshot\GetSnapshotRequest;
 use ChromeDevtoolsProtocol\Model\DOMSnapshot\GetSnapshotResponse;
 
@@ -15,6 +17,13 @@ class DOMSnapshotDomain implements DOMSnapshotDomainInterface
 	public function __construct(InternalClientInterface $internalClient)
 	{
 		$this->internalClient = $internalClient;
+	}
+
+
+	public function captureSnapshot(ContextInterface $ctx, CaptureSnapshotRequest $request): CaptureSnapshotResponse
+	{
+		$response = $this->internalClient->executeCommand($ctx, 'DOMSnapshot.captureSnapshot', $request);
+		return CaptureSnapshotResponse::fromJson($response);
 	}
 
 

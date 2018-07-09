@@ -13,12 +13,22 @@ final class AttachToTargetRequest implements \JsonSerializable
 	/** @var string */
 	public $targetId;
 
+	/**
+	 * Enables "flat" access to the session via specifying sessionId attribute in the commands.
+	 *
+	 * @var bool|null
+	 */
+	public $flatten;
+
 
 	public static function fromJson($data)
 	{
 		$instance = new static();
 		if (isset($data->targetId)) {
 			$instance->targetId = (string)$data->targetId;
+		}
+		if (isset($data->flatten)) {
+			$instance->flatten = (bool)$data->flatten;
 		}
 		return $instance;
 	}
@@ -29,6 +39,9 @@ final class AttachToTargetRequest implements \JsonSerializable
 		$data = new \stdClass();
 		if ($this->targetId !== null) {
 			$data->targetId = $this->targetId;
+		}
+		if ($this->flatten !== null) {
+			$data->flatten = $this->flatten;
 		}
 		return $data;
 	}

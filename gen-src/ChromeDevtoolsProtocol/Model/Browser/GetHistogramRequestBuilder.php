@@ -12,6 +12,8 @@ final class GetHistogramRequestBuilder
 {
 	private $name;
 
+	private $delta;
+
 
 	/**
 	 * Validate non-optional parameters and return new instance.
@@ -23,6 +25,7 @@ final class GetHistogramRequestBuilder
 			throw new BuilderException('Property [name] is required.');
 		}
 		$instance->name = $this->name;
+		$instance->delta = $this->delta;
 		return $instance;
 	}
 
@@ -35,6 +38,18 @@ final class GetHistogramRequestBuilder
 	public function setName($name): self
 	{
 		$this->name = $name;
+		return $this;
+	}
+
+
+	/**
+	 * @param bool|null $delta
+	 *
+	 * @return self
+	 */
+	public function setDelta($delta): self
+	{
+		$this->delta = $delta;
 		return $this;
 	}
 }

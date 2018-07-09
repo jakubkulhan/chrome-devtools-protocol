@@ -126,7 +126,7 @@ class Generator
 				} else if ($typeSpec->type === "number") {
 					// skip
 				} else if ($typeSpec->type === "array") {
-					if (!in_array($typeSpec->items->type, ["string", "number"], true)) {
+					if (isset($typeSpec->items->type) && !in_array($typeSpec->items->type, ["string", "number"], true)) {
 						throw new \LogicException(sprintf(
 							"Unhandled item type [%s] for named array type [%s].",
 							$typeSpec->items->type,
@@ -728,7 +728,12 @@ class Generator
 							->addBody("\tforeach (\$this->{$propertySpec->name} as \$item) {")
 							->addBody("\t\t\$nested = [];");
 
-						switch ($propertySpec->items->items->type ?? null) {
+						$nestedItems = $propertySpec->items->items;
+						if (isset($nestedItems->{'$ref'})) {
+							$nestedItems = $this->refNamedType($domain, $nestedItems->{'$ref'});
+						}
+
+						switch ($nestedItems->type ?? null) {
 							case "any":
 							case "number":
 							case "object":

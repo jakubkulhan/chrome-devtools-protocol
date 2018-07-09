@@ -17,12 +17,22 @@ final class GetHistogramsRequest implements \JsonSerializable
 	 */
 	public $query;
 
+	/**
+	 * If true, retrieve delta since last call.
+	 *
+	 * @var bool|null
+	 */
+	public $delta;
+
 
 	public static function fromJson($data)
 	{
 		$instance = new static();
 		if (isset($data->query)) {
 			$instance->query = (string)$data->query;
+		}
+		if (isset($data->delta)) {
+			$instance->delta = (bool)$data->delta;
 		}
 		return $instance;
 	}
@@ -33,6 +43,9 @@ final class GetHistogramsRequest implements \JsonSerializable
 		$data = new \stdClass();
 		if ($this->query !== null) {
 			$data->query = $this->query;
+		}
+		if ($this->delta !== null) {
+			$data->delta = $this->delta;
 		}
 		return $data;
 	}

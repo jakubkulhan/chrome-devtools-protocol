@@ -2,6 +2,8 @@
 namespace ChromeDevtoolsProtocol\Domain;
 
 use ChromeDevtoolsProtocol\ContextInterface;
+use ChromeDevtoolsProtocol\Model\DOMSnapshot\CaptureSnapshotRequest;
+use ChromeDevtoolsProtocol\Model\DOMSnapshot\CaptureSnapshotResponse;
 use ChromeDevtoolsProtocol\Model\DOMSnapshot\GetSnapshotRequest;
 use ChromeDevtoolsProtocol\Model\DOMSnapshot\GetSnapshotResponse;
 
@@ -16,6 +18,17 @@ use ChromeDevtoolsProtocol\Model\DOMSnapshot\GetSnapshotResponse;
  */
 interface DOMSnapshotDomainInterface
 {
+	/**
+	 * Returns a document snapshot, including the full DOM tree of the root node (including iframes, template contents, and imported documents) in a flattened array, as well as layout and white-listed computed style information for the nodes. Shadow DOM in the returned DOM tree is flattened.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param CaptureSnapshotRequest $request
+	 *
+	 * @return CaptureSnapshotResponse
+	 */
+	public function captureSnapshot(ContextInterface $ctx, CaptureSnapshotRequest $request): CaptureSnapshotResponse;
+
+
 	/**
 	 * Disables DOM snapshot agent for the given page.
 	 *

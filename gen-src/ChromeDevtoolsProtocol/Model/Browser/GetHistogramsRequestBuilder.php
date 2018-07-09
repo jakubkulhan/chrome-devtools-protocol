@@ -10,6 +10,8 @@ final class GetHistogramsRequestBuilder
 {
 	private $query;
 
+	private $delta;
+
 
 	/**
 	 * Validate non-optional parameters and return new instance.
@@ -18,6 +20,7 @@ final class GetHistogramsRequestBuilder
 	{
 		$instance = new GetHistogramsRequest();
 		$instance->query = $this->query;
+		$instance->delta = $this->delta;
 		return $instance;
 	}
 
@@ -30,6 +33,18 @@ final class GetHistogramsRequestBuilder
 	public function setQuery($query): self
 	{
 		$this->query = $query;
+		return $this;
+	}
+
+
+	/**
+	 * @param bool|null $delta
+	 *
+	 * @return self
+	 */
+	public function setDelta($delta): self
+	{
+		$this->delta = $delta;
 		return $this;
 	}
 }

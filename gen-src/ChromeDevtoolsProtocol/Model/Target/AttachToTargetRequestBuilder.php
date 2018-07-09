@@ -12,6 +12,8 @@ final class AttachToTargetRequestBuilder
 {
 	private $targetId;
 
+	private $flatten;
+
 
 	/**
 	 * Validate non-optional parameters and return new instance.
@@ -23,6 +25,7 @@ final class AttachToTargetRequestBuilder
 			throw new BuilderException('Property [targetId] is required.');
 		}
 		$instance->targetId = $this->targetId;
+		$instance->flatten = $this->flatten;
 		return $instance;
 	}
 
@@ -35,6 +38,18 @@ final class AttachToTargetRequestBuilder
 	public function setTargetId($targetId): self
 	{
 		$this->targetId = $targetId;
+		return $this;
+	}
+
+
+	/**
+	 * @param bool|null $flatten
+	 *
+	 * @return self
+	 */
+	public function setFlatten($flatten): self
+	{
+		$this->flatten = $flatten;
 		return $this;
 	}
 }
