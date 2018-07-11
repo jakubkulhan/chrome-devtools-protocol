@@ -38,13 +38,6 @@ final class LayoutTreeSnapshot implements \JsonSerializable
 	 */
 	public $text;
 
-	/**
-	 * The post-layout inline text nodes
-	 *
-	 * @var TextBoxSnapshot
-	 */
-	public $textBoxes;
-
 
 	public static function fromJson($data)
 	{
@@ -89,9 +82,6 @@ final class LayoutTreeSnapshot implements \JsonSerializable
 				$instance->text[] = (int)$item;
 			}
 		}
-		}
-		if (isset($data->textBoxes)) {
-			$instance->textBoxes = TextBoxSnapshot::fromJson($data->textBoxes);
 		}
 		return $instance;
 	}
@@ -140,9 +130,6 @@ final class LayoutTreeSnapshot implements \JsonSerializable
 				$data->text[] = $item;
 			}
 		}
-		}
-		if ($this->textBoxes !== null) {
-			$data->textBoxes = $this->textBoxes->jsonSerialize();
 		}
 		return $data;
 	}

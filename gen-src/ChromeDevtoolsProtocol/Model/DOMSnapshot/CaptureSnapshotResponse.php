@@ -13,16 +13,9 @@ final class CaptureSnapshotResponse implements \JsonSerializable
 	/**
 	 * The nodes in the DOM tree. The DOMNode at index 0 corresponds to the root document.
 	 *
-	 * @var DOMTreeSnapshot
+	 * @var DocumentSnapshot[]
 	 */
-	public $nodes;
-
-	/**
-	 * The nodes in the layout tree.
-	 *
-	 * @var LayoutTreeSnapshot
-	 */
-	public $layout;
+	public $documents;
 
 	/**
 	 * Shared string table that all string properties refer to with indexes.
@@ -35,11 +28,11 @@ final class CaptureSnapshotResponse implements \JsonSerializable
 	public static function fromJson($data)
 	{
 		$instance = new static();
-		if (isset($data->nodes)) {
-			$instance->nodes = DOMTreeSnapshot::fromJson($data->nodes);
-		}
-		if (isset($data->layout)) {
-			$instance->layout = LayoutTreeSnapshot::fromJson($data->layout);
+		if (isset($data->documents)) {
+			$instance->documents = [];
+			foreach ($data->documents as $item) {
+				$instance->documents[] = DocumentSnapshot::fromJson($item);
+			}
 		}
 		if (isset($data->strings)) {
 			$instance->strings = [];
@@ -54,11 +47,11 @@ final class CaptureSnapshotResponse implements \JsonSerializable
 	public function jsonSerialize()
 	{
 		$data = new \stdClass();
-		if ($this->nodes !== null) {
-			$data->nodes = $this->nodes->jsonSerialize();
-		}
-		if ($this->layout !== null) {
-			$data->layout = $this->layout->jsonSerialize();
+		if ($this->documents !== null) {
+			$data->documents = [];
+			foreach ($this->documents as $item) {
+				$data->documents[] = $item->jsonSerialize();
+			}
 		}
 		if ($this->strings !== null) {
 			$data->strings = [];

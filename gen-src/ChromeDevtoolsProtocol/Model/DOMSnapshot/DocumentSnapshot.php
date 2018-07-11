@@ -8,7 +8,7 @@ namespace ChromeDevtoolsProtocol\Model\DOMSnapshot;
  *
  * @author Jakub Kulhan <jakub.kulhan@gmail.com>
  */
-final class DOMTreeSnapshot implements \JsonSerializable
+final class DocumentSnapshot implements \JsonSerializable
 {
 	/**
 	 * Parent node index.
@@ -51,13 +51,6 @@ final class DOMTreeSnapshot implements \JsonSerializable
 	 * @var int[][]|null
 	 */
 	public $attributes;
-
-	/**
-	 * The index of the node's related layout tree node in the `layoutTreeNodes` array returned by `captureSnapshot`, if any.
-	 *
-	 * @var int[]|null
-	 */
-	public $layoutNodeIndex;
 
 	/**
 	 * Only set for textarea elements, contains the text value.
@@ -137,25 +130,11 @@ final class DOMTreeSnapshot implements \JsonSerializable
 	public $frameId;
 
 	/**
-	 * The index of a frame owner element's content document in the `domNodes` array returned by `captureSnapshot`, if any.
+	 * The index of the document in the list of the snapshot documents.
 	 *
 	 * @var RareIntegerData|null
 	 */
 	public $contentDocumentIndex;
-
-	/**
-	 * Index of the imported document's node of a link element in the `domNodes` array returned by `captureSnapshot`, if any.
-	 *
-	 * @var RareIntegerData|null
-	 */
-	public $importedDocumentIndex;
-
-	/**
-	 * Index of the content node of a template element in the `domNodes` array returned by `captureSnapshot`.
-	 *
-	 * @var RareIntegerData|null
-	 */
-	public $templateContentIndex;
 
 	/**
 	 * Type of a pseudo element node.
@@ -184,6 +163,20 @@ final class DOMTreeSnapshot implements \JsonSerializable
 	 * @var RareStringData|null
 	 */
 	public $originURL;
+
+	/**
+	 * The nodes in the layout tree.
+	 *
+	 * @var LayoutTreeSnapshot
+	 */
+	public $layoutSnapshot;
+
+	/**
+	 * The post-layout inline text nodes.
+	 *
+	 * @var TextBoxSnapshot
+	 */
+	public $textBoxSnapshot;
 
 
 	public static function fromJson($data)
@@ -241,12 +234,6 @@ final class DOMTreeSnapshot implements \JsonSerializable
 			}
 		}
 		}
-		if (isset($data->layoutNodeIndex)) {
-			$instance->layoutNodeIndex = [];
-			foreach ($data->layoutNodeIndex as $item) {
-				$instance->layoutNodeIndex[] = (int)$item;
-			}
-		}
 		if (isset($data->textValue)) {
 			$instance->textValue = RareStringData::fromJson($data->textValue);
 		}
@@ -283,12 +270,6 @@ final class DOMTreeSnapshot implements \JsonSerializable
 		if (isset($data->contentDocumentIndex)) {
 			$instance->contentDocumentIndex = RareIntegerData::fromJson($data->contentDocumentIndex);
 		}
-		if (isset($data->importedDocumentIndex)) {
-			$instance->importedDocumentIndex = RareIntegerData::fromJson($data->importedDocumentIndex);
-		}
-		if (isset($data->templateContentIndex)) {
-			$instance->templateContentIndex = RareIntegerData::fromJson($data->templateContentIndex);
-		}
 		if (isset($data->pseudoType)) {
 			$instance->pseudoType = RareStringData::fromJson($data->pseudoType);
 		}
@@ -300,6 +281,12 @@ final class DOMTreeSnapshot implements \JsonSerializable
 		}
 		if (isset($data->originURL)) {
 			$instance->originURL = RareStringData::fromJson($data->originURL);
+		}
+		if (isset($data->layoutSnapshot)) {
+			$instance->layoutSnapshot = LayoutTreeSnapshot::fromJson($data->layoutSnapshot);
+		}
+		if (isset($data->textBoxSnapshot)) {
+			$instance->textBoxSnapshot = TextBoxSnapshot::fromJson($data->textBoxSnapshot);
 		}
 		return $instance;
 	}
@@ -360,12 +347,6 @@ final class DOMTreeSnapshot implements \JsonSerializable
 			}
 		}
 		}
-		if ($this->layoutNodeIndex !== null) {
-			$data->layoutNodeIndex = [];
-			foreach ($this->layoutNodeIndex as $item) {
-				$data->layoutNodeIndex[] = $item;
-			}
-		}
 		if ($this->textValue !== null) {
 			$data->textValue = $this->textValue->jsonSerialize();
 		}
@@ -402,12 +383,6 @@ final class DOMTreeSnapshot implements \JsonSerializable
 		if ($this->contentDocumentIndex !== null) {
 			$data->contentDocumentIndex = $this->contentDocumentIndex->jsonSerialize();
 		}
-		if ($this->importedDocumentIndex !== null) {
-			$data->importedDocumentIndex = $this->importedDocumentIndex->jsonSerialize();
-		}
-		if ($this->templateContentIndex !== null) {
-			$data->templateContentIndex = $this->templateContentIndex->jsonSerialize();
-		}
 		if ($this->pseudoType !== null) {
 			$data->pseudoType = $this->pseudoType->jsonSerialize();
 		}
@@ -419,6 +394,12 @@ final class DOMTreeSnapshot implements \JsonSerializable
 		}
 		if ($this->originURL !== null) {
 			$data->originURL = $this->originURL->jsonSerialize();
+		}
+		if ($this->layoutSnapshot !== null) {
+			$data->layoutSnapshot = $this->layoutSnapshot->jsonSerialize();
+		}
+		if ($this->textBoxSnapshot !== null) {
+			$data->textBoxSnapshot = $this->textBoxSnapshot->jsonSerialize();
 		}
 		return $data;
 	}

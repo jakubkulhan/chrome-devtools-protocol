@@ -153,20 +153,6 @@ final class DOMNode implements \JsonSerializable
 	public $contentDocumentIndex;
 
 	/**
-	 * Index of the imported document's node of a link element in the `domNodes` array returned by `getSnapshot`, if any.
-	 *
-	 * @var int|null
-	 */
-	public $importedDocumentIndex;
-
-	/**
-	 * Index of the content node of a template element in the `domNodes` array returned by `getSnapshot`.
-	 *
-	 * @var int|null
-	 */
-	public $templateContentIndex;
-
-	/**
 	 * Type of a pseudo element node.
 	 *
 	 * @var string
@@ -281,12 +267,6 @@ final class DOMNode implements \JsonSerializable
 		if (isset($data->contentDocumentIndex)) {
 			$instance->contentDocumentIndex = (int)$data->contentDocumentIndex;
 		}
-		if (isset($data->importedDocumentIndex)) {
-			$instance->importedDocumentIndex = (int)$data->importedDocumentIndex;
-		}
-		if (isset($data->templateContentIndex)) {
-			$instance->templateContentIndex = (int)$data->templateContentIndex;
-		}
 		if (isset($data->pseudoType)) {
 			$instance->pseudoType = (string)$data->pseudoType;
 		}
@@ -383,12 +363,6 @@ final class DOMNode implements \JsonSerializable
 		}
 		if ($this->contentDocumentIndex !== null) {
 			$data->contentDocumentIndex = $this->contentDocumentIndex;
-		}
-		if ($this->importedDocumentIndex !== null) {
-			$data->importedDocumentIndex = $this->importedDocumentIndex;
-		}
-		if ($this->templateContentIndex !== null) {
-			$data->templateContentIndex = $this->templateContentIndex;
 		}
 		if ($this->pseudoType !== null) {
 			$data->pseudoType = $this->pseudoType;
