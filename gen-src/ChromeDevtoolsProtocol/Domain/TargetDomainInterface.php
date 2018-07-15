@@ -3,6 +3,7 @@ namespace ChromeDevtoolsProtocol\Domain;
 
 use ChromeDevtoolsProtocol\ContextInterface;
 use ChromeDevtoolsProtocol\Model\Target\ActivateTargetRequest;
+use ChromeDevtoolsProtocol\Model\Target\AttachToBrowserTargetResponse;
 use ChromeDevtoolsProtocol\Model\Target\AttachToTargetRequest;
 use ChromeDevtoolsProtocol\Model\Target\AttachToTargetResponse;
 use ChromeDevtoolsProtocol\Model\Target\AttachedToTargetEvent;
@@ -48,6 +49,16 @@ interface TargetDomainInterface
 	 * @return void
 	 */
 	public function activateTarget(ContextInterface $ctx, ActivateTargetRequest $request): void;
+
+
+	/**
+	 * Attaches to the browser target, only uses flat sessionId mode.
+	 *
+	 * @param ContextInterface $ctx
+	 *
+	 * @return AttachToBrowserTargetResponse
+	 */
+	public function attachToBrowserTarget(ContextInterface $ctx): AttachToBrowserTargetResponse;
 
 
 	/**

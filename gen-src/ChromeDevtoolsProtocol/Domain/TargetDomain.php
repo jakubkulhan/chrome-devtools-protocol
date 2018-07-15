@@ -4,6 +4,7 @@ namespace ChromeDevtoolsProtocol\Domain;
 use ChromeDevtoolsProtocol\ContextInterface;
 use ChromeDevtoolsProtocol\InternalClientInterface;
 use ChromeDevtoolsProtocol\Model\Target\ActivateTargetRequest;
+use ChromeDevtoolsProtocol\Model\Target\AttachToBrowserTargetResponse;
 use ChromeDevtoolsProtocol\Model\Target\AttachToTargetRequest;
 use ChromeDevtoolsProtocol\Model\Target\AttachToTargetResponse;
 use ChromeDevtoolsProtocol\Model\Target\AttachedToTargetEvent;
@@ -46,6 +47,14 @@ class TargetDomain implements TargetDomainInterface
 	public function activateTarget(ContextInterface $ctx, ActivateTargetRequest $request): void
 	{
 		$this->internalClient->executeCommand($ctx, 'Target.activateTarget', $request);
+	}
+
+
+	public function attachToBrowserTarget(ContextInterface $ctx): AttachToBrowserTargetResponse
+	{
+		$request = new \stdClass();
+		$response = $this->internalClient->executeCommand($ctx, 'Target.attachToBrowserTarget', $request);
+		return AttachToBrowserTargetResponse::fromJson($response);
 	}
 
 
