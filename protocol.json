@@ -11963,6 +11963,22 @@
             ],
             "commands": [
                 {
+                    "name": "addCompilationCache",
+                    "description": "Seeds compilation cache for given url. Compilation cache does not survive cross-process navigation.",
+                    "experimental": true,
+                    "parameters": [
+                        {
+                            "name": "url",
+                            "type": "string"
+                        },
+                        {
+                            "name": "data",
+                            "description": "Base64-encoded data",
+                            "type": "string"
+                        }
+                    ]
+                },
+                {
                     "name": "addScriptToEvaluateOnLoad",
                     "description": "Deprecated, please use addScriptToEvaluateOnNewDocument instead.",
                     "experimental": true,
@@ -12043,6 +12059,11 @@
                             "type": "string"
                         }
                     ]
+                },
+                {
+                    "name": "clearCompilationCache",
+                    "description": "Clears seeded compilation cache.",
+                    "experimental": true
                 },
                 {
                     "name": "clearDeviceMetricsOverride",
@@ -12769,6 +12790,17 @@
                     ]
                 },
                 {
+                    "name": "setProduceCompilationCache",
+                    "description": "Forces compilation cache to be generated for every subresource script.",
+                    "experimental": true,
+                    "parameters": [
+                        {
+                            "name": "enabled",
+                            "type": "boolean"
+                        }
+                    ]
+                },
+                {
                     "name": "setTouchEmulationEnabled",
                     "description": "Toggles mouse event-based touch event emulation.",
                     "experimental": true,
@@ -12860,6 +12892,22 @@
                 }
             ],
             "events": [
+                {
+                    "name": "compilationCacheProduced",
+                    "description": "Issued for every compilation cache generated. Is only available if Page.setGenerateCompilationCache is enabled.",
+                    "experimental": true,
+                    "parameters": [
+                        {
+                            "name": "url",
+                            "type": "string"
+                        },
+                        {
+                            "name": "data",
+                            "description": "Base64-encoded data",
+                            "type": "string"
+                        }
+                    ]
+                },
                 {
                     "name": "domContentEventFired",
                     "parameters": [

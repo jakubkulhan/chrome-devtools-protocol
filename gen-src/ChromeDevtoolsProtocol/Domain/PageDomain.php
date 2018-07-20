@@ -3,12 +3,14 @@ namespace ChromeDevtoolsProtocol\Domain;
 
 use ChromeDevtoolsProtocol\ContextInterface;
 use ChromeDevtoolsProtocol\InternalClientInterface;
+use ChromeDevtoolsProtocol\Model\Page\AddCompilationCacheRequest;
 use ChromeDevtoolsProtocol\Model\Page\AddScriptToEvaluateOnLoadRequest;
 use ChromeDevtoolsProtocol\Model\Page\AddScriptToEvaluateOnLoadResponse;
 use ChromeDevtoolsProtocol\Model\Page\AddScriptToEvaluateOnNewDocumentRequest;
 use ChromeDevtoolsProtocol\Model\Page\AddScriptToEvaluateOnNewDocumentResponse;
 use ChromeDevtoolsProtocol\Model\Page\CaptureScreenshotRequest;
 use ChromeDevtoolsProtocol\Model\Page\CaptureScreenshotResponse;
+use ChromeDevtoolsProtocol\Model\Page\CompilationCacheProducedEvent;
 use ChromeDevtoolsProtocol\Model\Page\CreateIsolatedWorldRequest;
 use ChromeDevtoolsProtocol\Model\Page\CreateIsolatedWorldResponse;
 use ChromeDevtoolsProtocol\Model\Page\DeleteCookieRequest;
@@ -60,6 +62,7 @@ use ChromeDevtoolsProtocol\Model\Page\SetFontFamiliesRequest;
 use ChromeDevtoolsProtocol\Model\Page\SetFontSizesRequest;
 use ChromeDevtoolsProtocol\Model\Page\SetGeolocationOverrideRequest;
 use ChromeDevtoolsProtocol\Model\Page\SetLifecycleEventsEnabledRequest;
+use ChromeDevtoolsProtocol\Model\Page\SetProduceCompilationCacheRequest;
 use ChromeDevtoolsProtocol\Model\Page\SetTouchEmulationEnabledRequest;
 use ChromeDevtoolsProtocol\Model\Page\SetWebLifecycleStateRequest;
 use ChromeDevtoolsProtocol\Model\Page\StartScreencastRequest;
@@ -75,6 +78,12 @@ class PageDomain implements PageDomainInterface
 	public function __construct(InternalClientInterface $internalClient)
 	{
 		$this->internalClient = $internalClient;
+	}
+
+
+	public function addCompilationCache(ContextInterface $ctx, AddCompilationCacheRequest $request): void
+	{
+		$this->internalClient->executeCommand($ctx, 'Page.addCompilationCache', $request);
 	}
 
 
@@ -103,6 +112,13 @@ class PageDomain implements PageDomainInterface
 	{
 		$response = $this->internalClient->executeCommand($ctx, 'Page.captureScreenshot', $request);
 		return CaptureScreenshotResponse::fromJson($response);
+	}
+
+
+	public function clearCompilationCache(ContextInterface $ctx): void
+	{
+		$request = new \stdClass();
+		$this->internalClient->executeCommand($ctx, 'Page.clearCompilationCache', $request);
 	}
 
 
@@ -347,6 +363,12 @@ class PageDomain implements PageDomainInterface
 	}
 
 
+	public function setProduceCompilationCache(ContextInterface $ctx, SetProduceCompilationCacheRequest $request): void
+	{
+		$this->internalClient->executeCommand($ctx, 'Page.setProduceCompilationCache', $request);
+	}
+
+
 	public function setTouchEmulationEnabled(ContextInterface $ctx, SetTouchEmulationEnabledRequest $request): void
 	{
 		$this->internalClient->executeCommand($ctx, 'Page.setTouchEmulationEnabled', $request);
@@ -376,6 +398,20 @@ class PageDomain implements PageDomainInterface
 	{
 		$request = new \stdClass();
 		$this->internalClient->executeCommand($ctx, 'Page.stopScreencast', $request);
+	}
+
+
+	public function addCompilationCacheProducedListener(callable $listener): SubscriptionInterface
+	{
+		return $this->internalClient->addListener('Page.compilationCacheProduced', function ($event) use ($listener) {
+			return $listener(CompilationCacheProducedEvent::fromJson($event));
+		});
+	}
+
+
+	public function awaitCompilationCacheProduced(ContextInterface $ctx): CompilationCacheProducedEvent
+	{
+		return CompilationCacheProducedEvent::fromJson($this->internalClient->awaitEvent($ctx, 'Page.compilationCacheProduced'));
 	}
 
 
