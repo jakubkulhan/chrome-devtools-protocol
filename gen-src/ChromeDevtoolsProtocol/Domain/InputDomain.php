@@ -7,6 +7,7 @@ use ChromeDevtoolsProtocol\Model\Input\DispatchKeyEventRequest;
 use ChromeDevtoolsProtocol\Model\Input\DispatchMouseEventRequest;
 use ChromeDevtoolsProtocol\Model\Input\DispatchTouchEventRequest;
 use ChromeDevtoolsProtocol\Model\Input\EmulateTouchFromMouseEventRequest;
+use ChromeDevtoolsProtocol\Model\Input\InsertTextRequest;
 use ChromeDevtoolsProtocol\Model\Input\SetIgnoreInputEventsRequest;
 use ChromeDevtoolsProtocol\Model\Input\SynthesizePinchGestureRequest;
 use ChromeDevtoolsProtocol\Model\Input\SynthesizeScrollGestureRequest;
@@ -45,6 +46,12 @@ class InputDomain implements InputDomainInterface
 	public function emulateTouchFromMouseEvent(ContextInterface $ctx, EmulateTouchFromMouseEventRequest $request): void
 	{
 		$this->internalClient->executeCommand($ctx, 'Input.emulateTouchFromMouseEvent', $request);
+	}
+
+
+	public function insertText(ContextInterface $ctx, InsertTextRequest $request): void
+	{
+		$this->internalClient->executeCommand($ctx, 'Input.insertText', $request);
 	}
 
 

@@ -6,6 +6,7 @@ use ChromeDevtoolsProtocol\Model\Input\DispatchKeyEventRequest;
 use ChromeDevtoolsProtocol\Model\Input\DispatchMouseEventRequest;
 use ChromeDevtoolsProtocol\Model\Input\DispatchTouchEventRequest;
 use ChromeDevtoolsProtocol\Model\Input\EmulateTouchFromMouseEventRequest;
+use ChromeDevtoolsProtocol\Model\Input\InsertTextRequest;
 use ChromeDevtoolsProtocol\Model\Input\SetIgnoreInputEventsRequest;
 use ChromeDevtoolsProtocol\Model\Input\SynthesizePinchGestureRequest;
 use ChromeDevtoolsProtocol\Model\Input\SynthesizeScrollGestureRequest;
@@ -62,6 +63,17 @@ interface InputDomainInterface
 	 * @return void
 	 */
 	public function emulateTouchFromMouseEvent(ContextInterface $ctx, EmulateTouchFromMouseEventRequest $request): void;
+
+
+	/**
+	 * This method emulates inserting text that doesn't come from a key press, for example an emoji keyboard or an IME.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param InsertTextRequest $request
+	 *
+	 * @return void
+	 */
+	public function insertText(ContextInterface $ctx, InsertTextRequest $request): void;
 
 
 	/**
