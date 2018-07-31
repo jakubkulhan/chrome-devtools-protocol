@@ -24,6 +24,13 @@ final class SetAutoAttachRequest implements \JsonSerializable
 	 */
 	public $waitForDebuggerOnStart;
 
+	/**
+	 * Enables "flat" access to the session via specifying sessionId attribute in the commands.
+	 *
+	 * @var bool|null
+	 */
+	public $flatten;
+
 
 	public static function fromJson($data)
 	{
@@ -33,6 +40,9 @@ final class SetAutoAttachRequest implements \JsonSerializable
 		}
 		if (isset($data->waitForDebuggerOnStart)) {
 			$instance->waitForDebuggerOnStart = (bool)$data->waitForDebuggerOnStart;
+		}
+		if (isset($data->flatten)) {
+			$instance->flatten = (bool)$data->flatten;
 		}
 		return $instance;
 	}
@@ -46,6 +56,9 @@ final class SetAutoAttachRequest implements \JsonSerializable
 		}
 		if ($this->waitForDebuggerOnStart !== null) {
 			$data->waitForDebuggerOnStart = $this->waitForDebuggerOnStart;
+		}
+		if ($this->flatten !== null) {
+			$data->flatten = $this->flatten;
 		}
 		return $data;
 	}

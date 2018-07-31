@@ -14,6 +14,8 @@ final class SetAutoAttachRequestBuilder
 
 	private $waitForDebuggerOnStart;
 
+	private $flatten;
+
 
 	/**
 	 * Validate non-optional parameters and return new instance.
@@ -29,6 +31,7 @@ final class SetAutoAttachRequestBuilder
 			throw new BuilderException('Property [waitForDebuggerOnStart] is required.');
 		}
 		$instance->waitForDebuggerOnStart = $this->waitForDebuggerOnStart;
+		$instance->flatten = $this->flatten;
 		return $instance;
 	}
 
@@ -53,6 +56,18 @@ final class SetAutoAttachRequestBuilder
 	public function setWaitForDebuggerOnStart($waitForDebuggerOnStart): self
 	{
 		$this->waitForDebuggerOnStart = $waitForDebuggerOnStart;
+		return $this;
+	}
+
+
+	/**
+	 * @param bool|null $flatten
+	 *
+	 * @return self
+	 */
+	public function setFlatten($flatten): self
+	{
+		$this->flatten = $flatten;
 		return $this;
 	}
 }
