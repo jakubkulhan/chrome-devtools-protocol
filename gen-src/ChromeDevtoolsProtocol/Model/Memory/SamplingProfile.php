@@ -13,6 +13,9 @@ final class SamplingProfile implements \JsonSerializable
 	/** @var SamplingProfileNode[] */
 	public $samples;
 
+	/** @var Module[] */
+	public $modules;
+
 
 	public static function fromJson($data)
 	{
@@ -21,6 +24,12 @@ final class SamplingProfile implements \JsonSerializable
 			$instance->samples = [];
 			foreach ($data->samples as $item) {
 				$instance->samples[] = SamplingProfileNode::fromJson($item);
+			}
+		}
+		if (isset($data->modules)) {
+			$instance->modules = [];
+			foreach ($data->modules as $item) {
+				$instance->modules[] = Module::fromJson($item);
 			}
 		}
 		return $instance;
@@ -34,6 +43,12 @@ final class SamplingProfile implements \JsonSerializable
 			$data->samples = [];
 			foreach ($this->samples as $item) {
 				$data->samples[] = $item->jsonSerialize();
+			}
+		}
+		if ($this->modules !== null) {
+			$data->modules = [];
+			foreach ($this->modules as $item) {
+				$data->modules[] = $item->jsonSerialize();
 			}
 		}
 		return $data;
