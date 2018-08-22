@@ -38,6 +38,13 @@ final class LayoutTreeSnapshot implements \JsonSerializable
 	 */
 	public $text;
 
+	/**
+	 * Stacking context information.
+	 *
+	 * @var RareBooleanData
+	 */
+	public $stackingContexts;
+
 
 	public static function fromJson($data)
 	{
@@ -82,6 +89,9 @@ final class LayoutTreeSnapshot implements \JsonSerializable
 				$instance->text[] = (int)$item;
 			}
 		}
+		}
+		if (isset($data->stackingContexts)) {
+			$instance->stackingContexts = RareBooleanData::fromJson($data->stackingContexts);
 		}
 		return $instance;
 	}
@@ -130,6 +140,9 @@ final class LayoutTreeSnapshot implements \JsonSerializable
 				$data->text[] = $item;
 			}
 		}
+		}
+		if ($this->stackingContexts !== null) {
+			$data->stackingContexts = $this->stackingContexts->jsonSerialize();
 		}
 		return $data;
 	}

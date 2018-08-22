@@ -5868,6 +5868,12 @@
                             "description": "Global paint order index, which is determined by the stacking order of the nodes. Nodes that are painted together will have the same index. Only provided if includePaintOrder in getSnapshot was true.",
                             "optional": true,
                             "type": "integer"
+                        },
+                        {
+                            "name": "isStackingContext",
+                            "description": "Set to true to indicate the element begins a new stacking context.",
+                            "optional": true,
+                            "type": "boolean"
                         }
                     ]
                 },
@@ -6185,6 +6191,11 @@
                             "items": {
                                 "$ref": "StringIndex"
                             }
+                        },
+                        {
+                            "name": "stackingContexts",
+                            "description": "Stacking context information.",
+                            "$ref": "RareBooleanData"
                         }
                     ]
                 },

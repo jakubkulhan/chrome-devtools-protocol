@@ -54,6 +54,13 @@ final class LayoutTreeNode implements \JsonSerializable
 	 */
 	public $paintOrder;
 
+	/**
+	 * Set to true to indicate the element begins a new stacking context.
+	 *
+	 * @var bool|null
+	 */
+	public $isStackingContext;
+
 
 	public static function fromJson($data)
 	{
@@ -78,6 +85,9 @@ final class LayoutTreeNode implements \JsonSerializable
 		}
 		if (isset($data->paintOrder)) {
 			$instance->paintOrder = (int)$data->paintOrder;
+		}
+		if (isset($data->isStackingContext)) {
+			$instance->isStackingContext = (bool)$data->isStackingContext;
 		}
 		return $instance;
 	}
@@ -106,6 +116,9 @@ final class LayoutTreeNode implements \JsonSerializable
 		}
 		if ($this->paintOrder !== null) {
 			$data->paintOrder = $this->paintOrder;
+		}
+		if ($this->isStackingContext !== null) {
+			$data->isStackingContext = $this->isStackingContext;
 		}
 		return $data;
 	}
