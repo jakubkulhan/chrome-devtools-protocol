@@ -12,6 +12,8 @@ use ChromeDevtoolsProtocol\Model\Browser\GetWindowBoundsRequest;
 use ChromeDevtoolsProtocol\Model\Browser\GetWindowBoundsResponse;
 use ChromeDevtoolsProtocol\Model\Browser\GetWindowForTargetRequest;
 use ChromeDevtoolsProtocol\Model\Browser\GetWindowForTargetResponse;
+use ChromeDevtoolsProtocol\Model\Browser\GrantPermissionsRequest;
+use ChromeDevtoolsProtocol\Model\Browser\ResetPermissionsRequest;
 use ChromeDevtoolsProtocol\Model\Browser\SetWindowBoundsRequest;
 
 /**
@@ -95,6 +97,28 @@ interface BrowserDomainInterface
 	 * @return GetWindowForTargetResponse
 	 */
 	public function getWindowForTarget(ContextInterface $ctx, GetWindowForTargetRequest $request): GetWindowForTargetResponse;
+
+
+	/**
+	 * Grant specific permissions to the given origin and reject all others.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param GrantPermissionsRequest $request
+	 *
+	 * @return void
+	 */
+	public function grantPermissions(ContextInterface $ctx, GrantPermissionsRequest $request): void;
+
+
+	/**
+	 * Reset all permission management for all origins.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param ResetPermissionsRequest $request
+	 *
+	 * @return void
+	 */
+	public function resetPermissions(ContextInterface $ctx, ResetPermissionsRequest $request): void;
 
 
 	/**

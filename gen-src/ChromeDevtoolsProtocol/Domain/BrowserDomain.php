@@ -13,6 +13,8 @@ use ChromeDevtoolsProtocol\Model\Browser\GetWindowBoundsRequest;
 use ChromeDevtoolsProtocol\Model\Browser\GetWindowBoundsResponse;
 use ChromeDevtoolsProtocol\Model\Browser\GetWindowForTargetRequest;
 use ChromeDevtoolsProtocol\Model\Browser\GetWindowForTargetResponse;
+use ChromeDevtoolsProtocol\Model\Browser\GrantPermissionsRequest;
+use ChromeDevtoolsProtocol\Model\Browser\ResetPermissionsRequest;
 use ChromeDevtoolsProtocol\Model\Browser\SetWindowBoundsRequest;
 
 class BrowserDomain implements BrowserDomainInterface
@@ -75,6 +77,18 @@ class BrowserDomain implements BrowserDomainInterface
 	{
 		$response = $this->internalClient->executeCommand($ctx, 'Browser.getWindowForTarget', $request);
 		return GetWindowForTargetResponse::fromJson($response);
+	}
+
+
+	public function grantPermissions(ContextInterface $ctx, GrantPermissionsRequest $request): void
+	{
+		$this->internalClient->executeCommand($ctx, 'Browser.grantPermissions', $request);
+	}
+
+
+	public function resetPermissions(ContextInterface $ctx, ResetPermissionsRequest $request): void
+	{
+		$this->internalClient->executeCommand($ctx, 'Browser.resetPermissions', $request);
 	}
 
 
