@@ -23,6 +23,7 @@ use ChromeDevtoolsProtocol\Model\Page\FrameResizedEvent;
 use ChromeDevtoolsProtocol\Model\Page\FrameScheduledNavigationEvent;
 use ChromeDevtoolsProtocol\Model\Page\FrameStartedLoadingEvent;
 use ChromeDevtoolsProtocol\Model\Page\FrameStoppedLoadingEvent;
+use ChromeDevtoolsProtocol\Model\Page\GenerateTestReportRequest;
 use ChromeDevtoolsProtocol\Model\Page\GetAppManifestResponse;
 use ChromeDevtoolsProtocol\Model\Page\GetCookiesResponse;
 use ChromeDevtoolsProtocol\Model\Page\GetFrameTreeResponse;
@@ -181,6 +182,12 @@ class PageDomain implements PageDomainInterface
 	{
 		$request = new \stdClass();
 		$this->internalClient->executeCommand($ctx, 'Page.enable', $request);
+	}
+
+
+	public function generateTestReport(ContextInterface $ctx, GenerateTestReportRequest $request): void
+	{
+		$this->internalClient->executeCommand($ctx, 'Page.generateTestReport', $request);
 	}
 
 
