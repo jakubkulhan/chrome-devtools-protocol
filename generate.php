@@ -126,7 +126,7 @@ class Generator
 				} else if ($typeSpec->type === "number") {
 					// skip
 				} else if ($typeSpec->type === "array") {
-					if (isset($typeSpec->items->type) && !in_array($typeSpec->items->type, ["string", "number"], true)) {
+					if (isset($typeSpec->items->type) && !in_array($typeSpec->items->type, ["string", "number", '$ref'], true)) {
 						throw new \LogicException(sprintf(
 							"Unhandled item type [%s] for named array type [%s].",
 							$typeSpec->items->type,
@@ -628,6 +628,8 @@ class Generator
 					(($propertySpec->optional ?? false) ? "|null" : "");
 			case "object":
 				return "object" . (($propertySpec->optional ?? false) ? "|null" : "");
+			case '$ref':
+				// fallthrough
 			case null:
 				if (isset($propertySpec->{'$ref'})) {
 					$namedTypeSpec = $this->refNamedType($domain, $propertySpec->{'$ref'});
@@ -640,7 +642,7 @@ class Generator
 						return $namedClassAlias . (($propertySpec->optional ?? false) ? "|null" : "");
 					}
 				}
-			// fallthrough
+				// fallthrough
 			default:
 				throw new \LogicException(sprintf(
 					"Unhandled property spec type [%s] for [%s\\%s::\$%s].",
@@ -781,6 +783,8 @@ class Generator
 
 						break;
 
+					case '$ref':
+						// fallthrough
 					case null:
 						if (isset($propertySpec->items->{'$ref'})) {
 							$namedTypeSpec = $this->refNamedType($domain, $propertySpec->items->{'$ref'});
@@ -810,7 +814,7 @@ class Generator
 								break;
 							}
 						}
-					// fallthrough
+						// fallthrough
 					default:
 						throw new \LogicException(sprintf(
 							"Unhandled item property spec type [%s] for [%s\\%s::\$%s].",
@@ -826,6 +830,8 @@ class Generator
 
 				break;
 
+			case '$ref':
+				// fallthrough
 			case null:
 				if (isset($propertySpec->{'$ref'})) {
 					$namedTypeSpec = $this->refNamedType($domain, $propertySpec->{'$ref'});
@@ -853,7 +859,7 @@ class Generator
 						break;
 					}
 				}
-			// fallthrough
+				// fallthrough
 			default:
 				throw new \LogicException(sprintf(
 					"Unhandled property spec type [%s] for [%s\\%s::\$%s].",
