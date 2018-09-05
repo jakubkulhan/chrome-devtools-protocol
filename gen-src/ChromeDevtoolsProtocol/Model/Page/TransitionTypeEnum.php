@@ -12,6 +12,7 @@ final class TransitionTypeEnum
 {
 	const LINK = 'link';
 	const TYPED = 'typed';
+	const ADDRESS_BAR = 'address_bar';
 	const AUTO_BOOKMARK = 'auto_bookmark';
 	const AUTO_SUBFRAME = 'auto_subframe';
 	const MANUAL_SUBFRAME = 'manual_subframe';

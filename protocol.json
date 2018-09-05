@@ -1088,6 +1088,11 @@
                     "description": "Close browser gracefully."
                 },
                 {
+                    "name": "crash",
+                    "description": "Crashes browser on the main thread.",
+                    "experimental": true
+                },
+                {
                     "name": "getBrowserCommandLine",
                     "description": "Returns the command line switches for the browser process if, and only if --enable-automation is on the commandline.",
                     "experimental": true,
@@ -11779,6 +11784,7 @@
                     "enum": [
                         "link",
                         "typed",
+                        "address_bar",
                         "auto_bookmark",
                         "auto_subframe",
                         "manual_subframe",

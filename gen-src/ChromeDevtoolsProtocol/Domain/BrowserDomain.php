@@ -36,6 +36,13 @@ class BrowserDomain implements BrowserDomainInterface
 	}
 
 
+	public function crash(ContextInterface $ctx): void
+	{
+		$request = new \stdClass();
+		$this->internalClient->executeCommand($ctx, 'Browser.crash', $request);
+	}
+
+
 	public function getBrowserCommandLine(ContextInterface $ctx): GetBrowserCommandLineResponse
 	{
 		$request = new \stdClass();

@@ -36,6 +36,16 @@ interface BrowserDomainInterface
 
 
 	/**
+	 * Crashes browser on the main thread.
+	 *
+	 * @param ContextInterface $ctx
+	 *
+	 * @return void
+	 */
+	public function crash(ContextInterface $ctx): void;
+
+
+	/**
 	 * Returns the command line switches for the browser process if, and only if --enable-automation is on the commandline.
 	 *
 	 * @param ContextInterface $ctx
