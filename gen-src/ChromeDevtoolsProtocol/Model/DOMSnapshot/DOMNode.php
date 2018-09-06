@@ -194,6 +194,16 @@ final class DOMNode implements \JsonSerializable
 	 */
 	public $originURL;
 
+	/**
+	 * Scroll offsets, set when this node is a Document.
+	 *
+	 * @var int|float|null
+	 */
+	public $scrollOffsetX;
+
+	/** @var int|float|null */
+	public $scrollOffsetY;
+
 
 	public static function fromJson($data)
 	{
@@ -287,6 +297,12 @@ final class DOMNode implements \JsonSerializable
 		}
 		if (isset($data->originURL)) {
 			$instance->originURL = (string)$data->originURL;
+		}
+		if (isset($data->scrollOffsetX)) {
+			$instance->scrollOffsetX = $data->scrollOffsetX;
+		}
+		if (isset($data->scrollOffsetY)) {
+			$instance->scrollOffsetY = $data->scrollOffsetY;
 		}
 		return $instance;
 	}
@@ -384,6 +400,12 @@ final class DOMNode implements \JsonSerializable
 		}
 		if ($this->originURL !== null) {
 			$data->originURL = $this->originURL;
+		}
+		if ($this->scrollOffsetX !== null) {
+			$data->scrollOffsetX = $this->scrollOffsetX;
+		}
+		if ($this->scrollOffsetY !== null) {
+			$data->scrollOffsetY = $this->scrollOffsetY;
 		}
 		return $data;
 	}

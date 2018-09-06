@@ -80,6 +80,16 @@ final class DocumentSnapshot implements \JsonSerializable
 	 */
 	public $textBoxes;
 
+	/**
+	 * Scroll offsets.
+	 *
+	 * @var int|float|null
+	 */
+	public $scrollOffsetX;
+
+	/** @var int|float|null */
+	public $scrollOffsetY;
+
 
 	public static function fromJson($data)
 	{
@@ -113,6 +123,12 @@ final class DocumentSnapshot implements \JsonSerializable
 		}
 		if (isset($data->textBoxes)) {
 			$instance->textBoxes = TextBoxSnapshot::fromJson($data->textBoxes);
+		}
+		if (isset($data->scrollOffsetX)) {
+			$instance->scrollOffsetX = $data->scrollOffsetX;
+		}
+		if (isset($data->scrollOffsetY)) {
+			$instance->scrollOffsetY = $data->scrollOffsetY;
 		}
 		return $instance;
 	}
@@ -150,6 +166,12 @@ final class DocumentSnapshot implements \JsonSerializable
 		}
 		if ($this->textBoxes !== null) {
 			$data->textBoxes = $this->textBoxes->jsonSerialize();
+		}
+		if ($this->scrollOffsetX !== null) {
+			$data->scrollOffsetX = $this->scrollOffsetX;
+		}
+		if ($this->scrollOffsetY !== null) {
+			$data->scrollOffsetY = $this->scrollOffsetY;
 		}
 		return $data;
 	}

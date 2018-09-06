@@ -13,7 +13,7 @@ use ChromeDevtoolsProtocol\Model\DOM\Rect;
 final class InlineTextBox implements \JsonSerializable
 {
 	/**
-	 * The absolute position bounding box.
+	 * The bounding box in document coordinates. Note that scroll offset of the document is ignored.
 	 *
 	 * @var Rect
 	 */

@@ -20,7 +20,7 @@ final class LayoutTreeNode implements \JsonSerializable
 	public $domNodeIndex;
 
 	/**
-	 * The absolute position bounding box.
+	 * The bounding box in document coordinates. Note that scroll offset of the document is ignored.
 	 *
 	 * @var Rect
 	 */
