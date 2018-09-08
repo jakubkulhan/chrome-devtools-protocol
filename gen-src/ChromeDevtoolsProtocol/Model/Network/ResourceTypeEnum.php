@@ -1,5 +1,5 @@
 <?php
-namespace ChromeDevtoolsProtocol\Model\Page;
+namespace ChromeDevtoolsProtocol\Model\Network;
 
 /**
  * Resource type as it was perceived by the rendering engine.

@@ -5462,7 +5462,8 @@
             "description": "DOM debugging allows setting breakpoints on particular DOM operations and events. JavaScript execution will stop on these operations as if there was a regular breakpoint set.",
             "dependencies": [
                 "DOM",
-                "Debugger"
+                "Debugger",
+                "Runtime"
             ],
             "types": [
                 {
@@ -9134,6 +9135,29 @@
             ],
             "types": [
                 {
+                    "id": "ResourceType",
+                    "description": "Resource type as it was perceived by the rendering engine.",
+                    "type": "string",
+                    "enum": [
+                        "Document",
+                        "Stylesheet",
+                        "Image",
+                        "Media",
+                        "Font",
+                        "Script",
+                        "TextTrack",
+                        "XHR",
+                        "Fetch",
+                        "EventSource",
+                        "WebSocket",
+                        "Manifest",
+                        "SignedExchange",
+                        "Ping",
+                        "CSPViolationReport",
+                        "Other"
+                    ]
+                },
+                {
                     "id": "LoaderId",
                     "description": "Unique loader identifier.",
                     "type": "string"
@@ -9735,7 +9759,7 @@
                         {
                             "name": "type",
                             "description": "Type of this resource.",
-                            "$ref": "Page.ResourceType"
+                            "$ref": "ResourceType"
                         },
                         {
                             "name": "response",
@@ -9993,7 +10017,7 @@
                             "name": "resourceType",
                             "description": "If set, only requests for matching resource types will be intercepted.",
                             "optional": true,
-                            "$ref": "Page.ResourceType"
+                            "$ref": "ResourceType"
                         },
                         {
                             "name": "interceptionStage",
@@ -10814,7 +10838,7 @@
                         {
                             "name": "type",
                             "description": "Resource type.",
-                            "$ref": "Page.ResourceType"
+                            "$ref": "ResourceType"
                         },
                         {
                             "name": "errorText",
@@ -10884,7 +10908,7 @@
                         {
                             "name": "resourceType",
                             "description": "How the requested resource will be used.",
-                            "$ref": "Page.ResourceType"
+                            "$ref": "ResourceType"
                         },
                         {
                             "name": "isNavigationRequest",
@@ -10989,7 +11013,7 @@
                             "name": "type",
                             "description": "Type of this resource.",
                             "optional": true,
-                            "$ref": "Page.ResourceType"
+                            "$ref": "ResourceType"
                         },
                         {
                             "name": "frameId",
@@ -11049,7 +11073,7 @@
                         {
                             "name": "type",
                             "description": "Resource type.",
-                            "$ref": "Page.ResourceType"
+                            "$ref": "ResourceType"
                         },
                         {
                             "name": "response",
@@ -11614,32 +11638,10 @@
             "dependencies": [
                 "Debugger",
                 "DOM",
-                "Network"
+                "Network",
+                "Runtime"
             ],
             "types": [
-                {
-                    "id": "ResourceType",
-                    "description": "Resource type as it was perceived by the rendering engine.",
-                    "type": "string",
-                    "enum": [
-                        "Document",
-                        "Stylesheet",
-                        "Image",
-                        "Media",
-                        "Font",
-                        "Script",
-                        "TextTrack",
-                        "XHR",
-                        "Fetch",
-                        "EventSource",
-                        "WebSocket",
-                        "Manifest",
-                        "SignedExchange",
-                        "Ping",
-                        "CSPViolationReport",
-                        "Other"
-                    ]
-                },
                 {
                     "id": "FrameId",
                     "description": "Unique frame identifier.",
@@ -11710,7 +11712,7 @@
                         {
                             "name": "type",
                             "description": "Type of this resource.",
-                            "$ref": "ResourceType"
+                            "$ref": "Network.ResourceType"
                         },
                         {
                             "name": "mimeType",
