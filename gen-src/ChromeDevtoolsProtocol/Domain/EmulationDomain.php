@@ -10,6 +10,7 @@ use ChromeDevtoolsProtocol\Model\Emulation\SetDeviceMetricsOverrideRequest;
 use ChromeDevtoolsProtocol\Model\Emulation\SetDocumentCookieDisabledRequest;
 use ChromeDevtoolsProtocol\Model\Emulation\SetEmitTouchEventsForMouseRequest;
 use ChromeDevtoolsProtocol\Model\Emulation\SetEmulatedMediaRequest;
+use ChromeDevtoolsProtocol\Model\Emulation\SetFocusEmulationEnabledRequest;
 use ChromeDevtoolsProtocol\Model\Emulation\SetGeolocationOverrideRequest;
 use ChromeDevtoolsProtocol\Model\Emulation\SetNavigatorOverridesRequest;
 use ChromeDevtoolsProtocol\Model\Emulation\SetPageScaleFactorRequest;
@@ -99,6 +100,12 @@ class EmulationDomain implements EmulationDomainInterface
 	public function setEmulatedMedia(ContextInterface $ctx, SetEmulatedMediaRequest $request): void
 	{
 		$this->internalClient->executeCommand($ctx, 'Emulation.setEmulatedMedia', $request);
+	}
+
+
+	public function setFocusEmulationEnabled(ContextInterface $ctx, SetFocusEmulationEnabledRequest $request): void
+	{
+		$this->internalClient->executeCommand($ctx, 'Emulation.setFocusEmulationEnabled', $request);
 	}
 
 

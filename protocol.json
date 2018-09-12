@@ -6808,6 +6808,18 @@
                     ]
                 },
                 {
+                    "name": "setFocusEmulationEnabled",
+                    "description": "Enables or disables simulating a focused and active page.",
+                    "experimental": true,
+                    "parameters": [
+                        {
+                            "name": "enabled",
+                            "description": "Whether to enable to disable focus emulation.",
+                            "type": "boolean"
+                        }
+                    ]
+                },
+                {
                     "name": "setGeolocationOverride",
                     "description": "Overrides the Geolocation Position or Error. Omitting any of the parameters emulates position unavailable.",
                     "parameters": [
