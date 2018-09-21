@@ -322,6 +322,20 @@
             ],
             "commands": [
                 {
+                    "name": "getFullAXTree",
+                    "description": "Fetches the entire accessibility tree",
+                    "experimental": true,
+                    "returns": [
+                        {
+                            "name": "nodes",
+                            "type": "array",
+                            "items": {
+                                "$ref": "AXNode"
+                            }
+                        }
+                    ]
+                },
+                {
                     "name": "getPartialAXTree",
                     "description": "Fetches the accessibility node and partial accessibility tree for this DOM node, if it exists.",
                     "experimental": true,

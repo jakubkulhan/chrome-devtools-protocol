@@ -2,6 +2,7 @@
 namespace ChromeDevtoolsProtocol\Domain;
 
 use ChromeDevtoolsProtocol\ContextInterface;
+use ChromeDevtoolsProtocol\Model\Accessibility\GetFullAXTreeResponse;
 use ChromeDevtoolsProtocol\Model\Accessibility\GetPartialAXTreeRequest;
 use ChromeDevtoolsProtocol\Model\Accessibility\GetPartialAXTreeResponse;
 
@@ -16,6 +17,16 @@ use ChromeDevtoolsProtocol\Model\Accessibility\GetPartialAXTreeResponse;
  */
 interface AccessibilityDomainInterface
 {
+	/**
+	 * Fetches the entire accessibility tree
+	 *
+	 * @param ContextInterface $ctx
+	 *
+	 * @return GetFullAXTreeResponse
+	 */
+	public function getFullAXTree(ContextInterface $ctx): GetFullAXTreeResponse;
+
+
 	/**
 	 * Fetches the accessibility node and partial accessibility tree for this DOM node, if it exists.
 	 *
