@@ -13,12 +13,22 @@ final class AddScriptToEvaluateOnNewDocumentRequest implements \JsonSerializable
 	/** @var string */
 	public $source;
 
+	/**
+	 * If specified, creates an isolated world with the given name and evaluates given script in it. This world name will be used as the ExecutionContextDescription::name when the corresponding event is emitted.
+	 *
+	 * @var string|null
+	 */
+	public $worldName;
+
 
 	public static function fromJson($data)
 	{
 		$instance = new static();
 		if (isset($data->source)) {
 			$instance->source = (string)$data->source;
+		}
+		if (isset($data->worldName)) {
+			$instance->worldName = (string)$data->worldName;
 		}
 		return $instance;
 	}
@@ -29,6 +39,9 @@ final class AddScriptToEvaluateOnNewDocumentRequest implements \JsonSerializable
 		$data = new \stdClass();
 		if ($this->source !== null) {
 			$data->source = $this->source;
+		}
+		if ($this->worldName !== null) {
+			$data->worldName = $this->worldName;
 		}
 		return $data;
 	}

@@ -12,6 +12,8 @@ final class AddScriptToEvaluateOnNewDocumentRequestBuilder
 {
 	private $source;
 
+	private $worldName;
+
 
 	/**
 	 * Validate non-optional parameters and return new instance.
@@ -23,6 +25,7 @@ final class AddScriptToEvaluateOnNewDocumentRequestBuilder
 			throw new BuilderException('Property [source] is required.');
 		}
 		$instance->source = $this->source;
+		$instance->worldName = $this->worldName;
 		return $instance;
 	}
 
@@ -35,6 +38,18 @@ final class AddScriptToEvaluateOnNewDocumentRequestBuilder
 	public function setSource($source): self
 	{
 		$this->source = $source;
+		return $this;
+	}
+
+
+	/**
+	 * @param string|null $worldName
+	 *
+	 * @return self
+	 */
+	public function setWorldName($worldName): self
+	{
+		$this->worldName = $worldName;
 		return $this;
 	}
 }
