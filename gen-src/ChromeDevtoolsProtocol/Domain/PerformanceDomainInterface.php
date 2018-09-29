@@ -4,6 +4,7 @@ namespace ChromeDevtoolsProtocol\Domain;
 use ChromeDevtoolsProtocol\ContextInterface;
 use ChromeDevtoolsProtocol\Model\Performance\GetMetricsResponse;
 use ChromeDevtoolsProtocol\Model\Performance\MetricsEvent;
+use ChromeDevtoolsProtocol\Model\Performance\SetTimeDomainRequest;
 use ChromeDevtoolsProtocol\SubscriptionInterface;
 
 /**
@@ -43,6 +44,17 @@ interface PerformanceDomainInterface
 	 * @return GetMetricsResponse
 	 */
 	public function getMetrics(ContextInterface $ctx): GetMetricsResponse;
+
+
+	/**
+	 * Sets time domain to use for collecting and reporting duration metrics. Note that this must be called before enabling metrics collection. Calling this method while metrics collection is enabled returns an error.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param SetTimeDomainRequest $request
+	 *
+	 * @return void
+	 */
+	public function setTimeDomain(ContextInterface $ctx, SetTimeDomainRequest $request): void;
 
 
 	/**

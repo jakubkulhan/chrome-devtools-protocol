@@ -5,6 +5,7 @@ use ChromeDevtoolsProtocol\ContextInterface;
 use ChromeDevtoolsProtocol\InternalClientInterface;
 use ChromeDevtoolsProtocol\Model\Performance\GetMetricsResponse;
 use ChromeDevtoolsProtocol\Model\Performance\MetricsEvent;
+use ChromeDevtoolsProtocol\Model\Performance\SetTimeDomainRequest;
 use ChromeDevtoolsProtocol\SubscriptionInterface;
 
 class PerformanceDomain implements PerformanceDomainInterface
@@ -38,6 +39,12 @@ class PerformanceDomain implements PerformanceDomainInterface
 		$request = new \stdClass();
 		$response = $this->internalClient->executeCommand($ctx, 'Performance.getMetrics', $request);
 		return GetMetricsResponse::fromJson($response);
+	}
+
+
+	public function setTimeDomain(ContextInterface $ctx, SetTimeDomainRequest $request): void
+	{
+		$this->internalClient->executeCommand($ctx, 'Performance.setTimeDomain', $request);
 	}
 
 
