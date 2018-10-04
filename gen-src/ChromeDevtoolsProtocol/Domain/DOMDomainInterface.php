@@ -224,7 +224,7 @@ interface DOMDomainInterface
 
 
 	/**
-	 * Returns node id at given location.
+	 * Returns node id at given location. Depending on whether DOM domain is enabled, nodeId is either returned or not.
 	 *
 	 * @param ContextInterface $ctx
 	 * @param GetNodeForLocationRequest $request
