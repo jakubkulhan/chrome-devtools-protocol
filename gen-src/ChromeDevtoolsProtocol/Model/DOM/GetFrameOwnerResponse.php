@@ -10,13 +10,27 @@ namespace ChromeDevtoolsProtocol\Model\DOM;
  */
 final class GetFrameOwnerResponse implements \JsonSerializable
 {
-	/** @var int */
+	/**
+	 * Resulting node.
+	 *
+	 * @var int
+	 */
+	public $backendNodeId;
+
+	/**
+	 * Id of the node at given coordinates, only when enabled.
+	 *
+	 * @var int
+	 */
 	public $nodeId;
 
 
 	public static function fromJson($data)
 	{
 		$instance = new static();
+		if (isset($data->backendNodeId)) {
+			$instance->backendNodeId = (int)$data->backendNodeId;
+		}
 		if (isset($data->nodeId)) {
 			$instance->nodeId = (int)$data->nodeId;
 		}
@@ -27,6 +41,9 @@ final class GetFrameOwnerResponse implements \JsonSerializable
 	public function jsonSerialize()
 	{
 		$data = new \stdClass();
+		if ($this->backendNodeId !== null) {
+			$data->backendNodeId = $this->backendNodeId;
+		}
 		if ($this->nodeId !== null) {
 			$data->nodeId = $this->nodeId;
 		}
