@@ -13,6 +13,7 @@ final class PermissionTypeEnum
 	const ACCESSIBILITY_EVENTS = 'accessibilityEvents';
 	const AUDIO_CAPTURE = 'audioCapture';
 	const BACKGROUND_SYNC = 'backgroundSync';
+	const BACKGROUND_FETCH = 'backgroundFetch';
 	const CLIPBOARD_READ = 'clipboardRead';
 	const CLIPBOARD_WRITE = 'clipboardWrite';
 	const DURABLE_STORAGE = 'durableStorage';
