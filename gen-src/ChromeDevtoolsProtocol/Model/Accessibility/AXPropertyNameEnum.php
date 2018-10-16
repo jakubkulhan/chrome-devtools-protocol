@@ -12,10 +12,14 @@ final class AXPropertyNameEnum
 {
 	const BUSY = 'busy';
 	const DISABLED = 'disabled';
+	const EDITABLE = 'editable';
+	const FOCUSABLE = 'focusable';
+	const FOCUSED = 'focused';
 	const HIDDEN = 'hidden';
 	const HIDDEN_ROOT = 'hiddenRoot';
 	const INVALID = 'invalid';
 	const KEYSHORTCUTS = 'keyshortcuts';
+	const SETTABLE = 'settable';
 	const ROLEDESCRIPTION = 'roledescription';
 	const LIVE = 'live';
 	const ATOMIC = 'atomic';
