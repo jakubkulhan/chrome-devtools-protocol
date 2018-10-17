@@ -19,6 +19,20 @@ class AccessibilityDomain implements AccessibilityDomainInterface
 	}
 
 
+	public function disable(ContextInterface $ctx): void
+	{
+		$request = new \stdClass();
+		$this->internalClient->executeCommand($ctx, 'Accessibility.disable', $request);
+	}
+
+
+	public function enable(ContextInterface $ctx): void
+	{
+		$request = new \stdClass();
+		$this->internalClient->executeCommand($ctx, 'Accessibility.enable', $request);
+	}
+
+
 	public function getFullAXTree(ContextInterface $ctx): GetFullAXTreeResponse
 	{
 		$request = new \stdClass();

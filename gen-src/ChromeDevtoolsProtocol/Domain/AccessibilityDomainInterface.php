@@ -18,6 +18,26 @@ use ChromeDevtoolsProtocol\Model\Accessibility\GetPartialAXTreeResponse;
 interface AccessibilityDomainInterface
 {
 	/**
+	 * Disables the accessibility domain.
+	 *
+	 * @param ContextInterface $ctx
+	 *
+	 * @return void
+	 */
+	public function disable(ContextInterface $ctx): void;
+
+
+	/**
+	 * Enables the accessibility domain which causes `AXNodeId`s to remain consistent between method calls. This turns on accessibility for the page, which can impact performance until accessibility is disabled.
+	 *
+	 * @param ContextInterface $ctx
+	 *
+	 * @return void
+	 */
+	public function enable(ContextInterface $ctx): void;
+
+
+	/**
 	 * Fetches the entire accessibility tree
 	 *
 	 * @param ContextInterface $ctx
