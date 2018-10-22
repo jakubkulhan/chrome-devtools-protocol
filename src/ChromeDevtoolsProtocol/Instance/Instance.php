@@ -3,6 +3,7 @@ namespace ChromeDevtoolsProtocol\Instance;
 
 use ChromeDevtoolsProtocol\ContextInterface;
 use ChromeDevtoolsProtocol\DevtoolsClient;
+use ChromeDevtoolsProtocol\Exception\InvalidArgumentException;
 use ChromeDevtoolsProtocol\Exception\RuntimeException;
 use ChromeDevtoolsProtocol\Model\Instance\Version;
 use ChromeDevtoolsProtocol\Model\Target\AttachToTargetRequest;
@@ -32,11 +33,23 @@ class Instance implements InstanceInterface, InternalInstanceInterface
 
 	public function __construct(string $host, int $port, ?ClientInterface $httpClient = null)
 	{
+		// resolve host to IP, if not already, otherwise Chrome won't respond, see https://chromium-review.googlesource.com/c/chromium/src/+/952522
+		if (filter_var($host, FILTER_VALIDATE_IP, FILTER_FLAG_IPV4 | FILTER_FLAG_IPV6) === false) {
+			if (($ip = gethostbyname($host)) === $host) {
+				throw new InvalidArgumentException(sprintf(
+					"Could not resolve host [%s] to IP.",
+					$host
+				));
+			}
+
+			$host = $ip;
+		}
+
 		$this->host = $host;
 		$this->port = $port;
 		$this->httpClient = $httpClient ?? new Client([
 				"headers" => [
-					"ChromeDevtoolsProtocol PHP/" . PHP_VERSION,
+					"User-Agent" => "ChromeDevtoolsProtocol PHP/" . PHP_VERSION,
 				],
 			]);
 	}
