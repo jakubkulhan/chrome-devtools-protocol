@@ -10,20 +10,19 @@ namespace ChromeDevtoolsProtocol\Model\Runtime;
  */
 final class CustomPreview implements \JsonSerializable
 {
-	/** @var string */
+	/**
+	 * The JSON-stringified result of formatter.header(object, config) call. It contains json ML array that represents RemoteObject.
+	 *
+	 * @var string
+	 */
 	public $header;
 
-	/** @var bool */
-	public $hasBody;
-
-	/** @var string */
-	public $formatterObjectId;
-
-	/** @var string */
-	public $bindRemoteObjectFunctionId;
-
-	/** @var string */
-	public $configObjectId;
+	/**
+	 * If formatter returns true as a result of formatter.hasBody call then bodyGetterId will contain RemoteObjectId for the function that returns result of formatter.body(object, config) call. The result value is json ML array.
+	 *
+	 * @var string
+	 */
+	public $bodyGetterId;
 
 
 	public static function fromJson($data)
@@ -32,17 +31,8 @@ final class CustomPreview implements \JsonSerializable
 		if (isset($data->header)) {
 			$instance->header = (string)$data->header;
 		}
-		if (isset($data->hasBody)) {
-			$instance->hasBody = (bool)$data->hasBody;
-		}
-		if (isset($data->formatterObjectId)) {
-			$instance->formatterObjectId = (string)$data->formatterObjectId;
-		}
-		if (isset($data->bindRemoteObjectFunctionId)) {
-			$instance->bindRemoteObjectFunctionId = (string)$data->bindRemoteObjectFunctionId;
-		}
-		if (isset($data->configObjectId)) {
-			$instance->configObjectId = (string)$data->configObjectId;
+		if (isset($data->bodyGetterId)) {
+			$instance->bodyGetterId = (string)$data->bodyGetterId;
 		}
 		return $instance;
 	}
@@ -54,17 +44,8 @@ final class CustomPreview implements \JsonSerializable
 		if ($this->header !== null) {
 			$data->header = $this->header;
 		}
-		if ($this->hasBody !== null) {
-			$data->hasBody = $this->hasBody;
-		}
-		if ($this->formatterObjectId !== null) {
-			$data->formatterObjectId = $this->formatterObjectId;
-		}
-		if ($this->bindRemoteObjectFunctionId !== null) {
-			$data->bindRemoteObjectFunctionId = $this->bindRemoteObjectFunctionId;
-		}
-		if ($this->configObjectId !== null) {
-			$data->configObjectId = $this->configObjectId;
+		if ($this->bodyGetterId !== null) {
+			$data->bodyGetterId = $this->bodyGetterId;
 		}
 		return $data;
 	}
