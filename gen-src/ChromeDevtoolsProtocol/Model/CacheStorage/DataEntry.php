@@ -53,6 +53,13 @@ final class DataEntry implements \JsonSerializable
 	public $responseStatusText;
 
 	/**
+	 * HTTP response type
+	 *
+	 * @var string
+	 */
+	public $responseType;
+
+	/**
 	 * Response headers
 	 *
 	 * @var Header[]
@@ -83,6 +90,9 @@ final class DataEntry implements \JsonSerializable
 		}
 		if (isset($data->responseStatusText)) {
 			$instance->responseStatusText = (string)$data->responseStatusText;
+		}
+		if (isset($data->responseType)) {
+			$instance->responseType = (string)$data->responseType;
 		}
 		if (isset($data->responseHeaders)) {
 			$instance->responseHeaders = [];
@@ -117,6 +127,9 @@ final class DataEntry implements \JsonSerializable
 		}
 		if ($this->responseStatusText !== null) {
 			$data->responseStatusText = $this->responseStatusText;
+		}
+		if ($this->responseType !== null) {
+			$data->responseType = $this->responseType;
 		}
 		if ($this->responseHeaders !== null) {
 			$data->responseHeaders = [];
