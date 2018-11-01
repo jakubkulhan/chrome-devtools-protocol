@@ -17,6 +17,7 @@ use ChromeDevtoolsProtocol\Domain\DatabaseDomainInterface;
 use ChromeDevtoolsProtocol\Domain\DebuggerDomainInterface;
 use ChromeDevtoolsProtocol\Domain\DeviceOrientationDomainInterface;
 use ChromeDevtoolsProtocol\Domain\EmulationDomainInterface;
+use ChromeDevtoolsProtocol\Domain\FetchDomainInterface;
 use ChromeDevtoolsProtocol\Domain\HeadlessExperimentalDomainInterface;
 use ChromeDevtoolsProtocol\Domain\HeapProfilerDomainInterface;
 use ChromeDevtoolsProtocol\Domain\IODomainInterface;
@@ -165,6 +166,14 @@ interface DevtoolsClientInterface extends CloseableResourceInterface
 	 * This domain emulates different environments for the page.
 	 */
 	public function emulation(): EmulationDomainInterface;
+
+
+	/**
+	 * A domain for letting clients substitute browser's network layer with client code.
+	 *
+	 * @experimental
+	 */
+	public function fetch(): FetchDomainInterface;
 
 
 	/**

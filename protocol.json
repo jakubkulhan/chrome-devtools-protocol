@@ -7082,6 +7082,388 @@
             ]
         },
         {
+            "domain": "Fetch",
+            "description": "A domain for letting clients substitute browser's network layer with client code.",
+            "experimental": true,
+            "dependencies": [
+                "Network",
+                "IO",
+                "Page"
+            ],
+            "types": [
+                {
+                    "id": "RequestId",
+                    "description": "Unique request identifier.",
+                    "type": "string"
+                },
+                {
+                    "id": "RequestStage",
+                    "description": "Stages of the request to handle. Request will intercept before the request is sent. Response will intercept after the response is received (but before response body is received.",
+                    "experimental": true,
+                    "type": "string",
+                    "enum": [
+                        "Request",
+                        "Response"
+                    ]
+                },
+                {
+                    "id": "RequestPattern",
+                    "experimental": true,
+                    "type": "object",
+                    "properties": [
+                        {
+                            "name": "urlPattern",
+                            "description": "Wildcards ('*' -> zero or more, '?' -> exactly one) are allowed. Escape character is backslash. Omitting is equivalent to \"*\".",
+                            "optional": true,
+                            "type": "string"
+                        },
+                        {
+                            "name": "resourceType",
+                            "description": "If set, only requests for matching resource types will be intercepted.",
+                            "optional": true,
+                            "$ref": "Network.ResourceType"
+                        },
+                        {
+                            "name": "requestStage",
+                            "description": "Stage at wich to begin intercepting requests. Default is Request.",
+                            "optional": true,
+                            "$ref": "RequestStage"
+                        }
+                    ]
+                },
+                {
+                    "id": "HeaderEntry",
+                    "description": "Response HTTP header entry",
+                    "type": "object",
+                    "properties": [
+                        {
+                            "name": "name",
+                            "type": "string"
+                        },
+                        {
+                            "name": "value",
+                            "type": "string"
+                        }
+                    ]
+                },
+                {
+                    "id": "AuthChallenge",
+                    "description": "Authorization challenge for HTTP status code 401 or 407.",
+                    "experimental": true,
+                    "type": "object",
+                    "properties": [
+                        {
+                            "name": "source",
+                            "description": "Source of the authentication challenge.",
+                            "optional": true,
+                            "type": "string",
+                            "enum": [
+                                "Server",
+                                "Proxy"
+                            ]
+                        },
+                        {
+                            "name": "origin",
+                            "description": "Origin of the challenger.",
+                            "type": "string"
+                        },
+                        {
+                            "name": "scheme",
+                            "description": "The authentication scheme used, such as basic or digest",
+                            "type": "string"
+                        },
+                        {
+                            "name": "realm",
+                            "description": "The realm of the challenge. May be empty.",
+                            "type": "string"
+                        }
+                    ]
+                },
+                {
+                    "id": "AuthChallengeResponse",
+                    "description": "Response to an AuthChallenge.",
+                    "experimental": true,
+                    "type": "object",
+                    "properties": [
+                        {
+                            "name": "response",
+                            "description": "The decision on what to do in response to the authorization challenge. Default means deferring to the default behavior of the net stack, which will likely either the Cancel authentication or display a popup dialog box.",
+                            "type": "string",
+                            "enum": [
+                                "Default",
+                                "CancelAuth",
+                                "ProvideCredentials"
+                            ]
+                        },
+                        {
+                            "name": "username",
+                            "description": "The username to provide, possibly empty. Should only be set if response is ProvideCredentials.",
+                            "optional": true,
+                            "type": "string"
+                        },
+                        {
+                            "name": "password",
+                            "description": "The password to provide, possibly empty. Should only be set if response is ProvideCredentials.",
+                            "optional": true,
+                            "type": "string"
+                        }
+                    ]
+                }
+            ],
+            "commands": [
+                {
+                    "name": "continueRequest",
+                    "description": "Continues the request, optionally modifying some of its parameters.",
+                    "parameters": [
+                        {
+                            "name": "requestId",
+                            "description": "An id the client received in requestPaused event.",
+                            "$ref": "RequestId"
+                        },
+                        {
+                            "name": "url",
+                            "description": "If set, the request url will be modified in a way that's not observable by page.",
+                            "optional": true,
+                            "type": "string"
+                        },
+                        {
+                            "name": "method",
+                            "description": "If set, the request method is overridden.",
+                            "optional": true,
+                            "type": "string"
+                        },
+                        {
+                            "name": "postData",
+                            "description": "If set, overrides the post data in the request.",
+                            "optional": true,
+                            "type": "string"
+                        },
+                        {
+                            "name": "headers",
+                            "description": "If set, overrides the request headrts.",
+                            "optional": true,
+                            "type": "array",
+                            "items": {
+                                "$ref": "HeaderEntry"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "continueWithAuth",
+                    "description": "Continues a request supplying authChallengeResponse following authRequired event.",
+                    "parameters": [
+                        {
+                            "name": "requestId",
+                            "description": "An id the client received in authRequired event.",
+                            "$ref": "RequestId"
+                        },
+                        {
+                            "name": "authChallengeResponse",
+                            "description": "Response to with an authChallenge.",
+                            "$ref": "AuthChallengeResponse"
+                        }
+                    ]
+                },
+                {
+                    "name": "disable",
+                    "description": "Disables the fetch domain."
+                },
+                {
+                    "name": "enable",
+                    "description": "Enables issuing of requestPaused events. A request will be paused until client calls one of failRequest, fulfillRequest or continueRequest/continueWithAuth.",
+                    "parameters": [
+                        {
+                            "name": "patterns",
+                            "description": "If specified, only requests matching any of these patterns will produce fetchRequested event and will be paused until clients response. If not set, all requests will be affected.",
+                            "optional": true,
+                            "type": "array",
+                            "items": {
+                                "$ref": "RequestPattern"
+                            }
+                        },
+                        {
+                            "name": "handleAuthRequests",
+                            "description": "If true, authRequired events will be issued and requests will be paused expecting a call to continueWithAuth.",
+                            "optional": true,
+                            "type": "boolean"
+                        }
+                    ]
+                },
+                {
+                    "name": "failRequest",
+                    "description": "Causes the request to fail with specified reason.",
+                    "parameters": [
+                        {
+                            "name": "requestId",
+                            "description": "An id the client received in requestPaused event.",
+                            "$ref": "RequestId"
+                        },
+                        {
+                            "name": "errorReason",
+                            "description": "Causes the request to fail with the given reason.",
+                            "$ref": "Network.ErrorReason"
+                        }
+                    ]
+                },
+                {
+                    "name": "fulfillRequest",
+                    "description": "Provides response to the request.",
+                    "parameters": [
+                        {
+                            "name": "requestId",
+                            "description": "An id the client received in requestPaused event.",
+                            "$ref": "RequestId"
+                        },
+                        {
+                            "name": "responseCode",
+                            "description": "An HTTP response code.",
+                            "type": "integer"
+                        },
+                        {
+                            "name": "responseHeaders",
+                            "description": "Response headers.",
+                            "type": "array",
+                            "items": {
+                                "$ref": "HeaderEntry"
+                            }
+                        },
+                        {
+                            "name": "body",
+                            "description": "A response body.",
+                            "optional": true,
+                            "type": "string"
+                        },
+                        {
+                            "name": "responsePhrase",
+                            "description": "A textual representation of responseCode. If absent, a standard phrase mathcing responseCode is used.",
+                            "optional": true,
+                            "type": "string"
+                        }
+                    ]
+                },
+                {
+                    "name": "getResponseBody",
+                    "description": "Causes the body of the response to be received from the server and returned as a single string. May only be issued for a request that is paused in the Response stage and is mutually exclusive with takeResponseBodyForInterceptionAsStream. Calling other methods that affect the request or disabling fetch domain before body is received results in an undefined behavior.",
+                    "parameters": [
+                        {
+                            "name": "requestId",
+                            "description": "Identifier for the intercepted request to get body for.",
+                            "$ref": "RequestId"
+                        }
+                    ],
+                    "returns": [
+                        {
+                            "name": "body",
+                            "description": "Response body.",
+                            "type": "string"
+                        },
+                        {
+                            "name": "base64Encoded",
+                            "description": "True, if content was sent as base64.",
+                            "type": "boolean"
+                        }
+                    ]
+                },
+                {
+                    "name": "takeResponseBodyAsStream",
+                    "description": "Returns a handle to the stream representing the response body. The request must be paused in the HeadersReceived stage. Note that after this command the request can't be continued as is -- client either needs to cancel it or to provide the response body. The stream only supports sequential read, IO.read will fail if the position is specified. This method is mutually exclusive with getResponseBody. Calling other methods that affect the request or disabling fetch domain before body is received results in an undefined behavior.",
+                    "parameters": [
+                        {
+                            "name": "requestId",
+                            "$ref": "RequestId"
+                        }
+                    ],
+                    "returns": [
+                        {
+                            "name": "stream",
+                            "$ref": "IO.StreamHandle"
+                        }
+                    ]
+                }
+            ],
+            "events": [
+                {
+                    "name": "authRequired",
+                    "description": "Issued when the domain is enabled with handleAuthRequests set to true. The request is paused until client responds with continueWithAuth.",
+                    "parameters": [
+                        {
+                            "name": "requestId",
+                            "description": "Each request the page makes will have a unique id.",
+                            "$ref": "RequestId"
+                        },
+                        {
+                            "name": "request",
+                            "description": "The details of the request.",
+                            "$ref": "Network.Request"
+                        },
+                        {
+                            "name": "frameId",
+                            "description": "The id of the frame that initiated the request.",
+                            "$ref": "Page.FrameId"
+                        },
+                        {
+                            "name": "resourceType",
+                            "description": "How the requested resource will be used.",
+                            "$ref": "Network.ResourceType"
+                        },
+                        {
+                            "name": "authChallenge",
+                            "description": "Details of the Authorization Challenge encountered. If this is set, client should respond with continueRequest that contains AuthChallengeResponse.",
+                            "$ref": "AuthChallenge"
+                        }
+                    ]
+                },
+                {
+                    "name": "requestPaused",
+                    "description": "Issued when the domain is enabled and the request URL matches the specified filter. The request is paused until the client responds with one of continueRequest, failRequest or fulfillRequest. The stage of the request can be determined by presence of responseErrorReason and responseStatusCode -- the request is at the response stage if either of these fields is present and in the request stage otherwise.",
+                    "parameters": [
+                        {
+                            "name": "requestId",
+                            "description": "Each request the page makes will have a unique id.",
+                            "$ref": "RequestId"
+                        },
+                        {
+                            "name": "request",
+                            "description": "The details of the request.",
+                            "$ref": "Network.Request"
+                        },
+                        {
+                            "name": "frameId",
+                            "description": "The id of the frame that initiated the request.",
+                            "$ref": "Page.FrameId"
+                        },
+                        {
+                            "name": "resourceType",
+                            "description": "How the requested resource will be used.",
+                            "$ref": "Network.ResourceType"
+                        },
+                        {
+                            "name": "responseErrorReason",
+                            "description": "Response error if intercepted at response stage.",
+                            "optional": true,
+                            "$ref": "Network.ErrorReason"
+                        },
+                        {
+                            "name": "responseStatusCode",
+                            "description": "Response code if intercepted at response stage.",
+                            "optional": true,
+                            "type": "integer"
+                        },
+                        {
+                            "name": "responseHeaders",
+                            "description": "Response headers if intercepted at the response stage.",
+                            "optional": true,
+                            "type": "array",
+                            "items": {
+                                "$ref": "HeaderEntry"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
             "domain": "HeadlessExperimental",
             "description": "This domain provides experimental commands only supported in headless mode.",
             "experimental": true,

@@ -33,6 +33,8 @@ use ChromeDevtoolsProtocol\Domain\DeviceOrientationDomain;
 use ChromeDevtoolsProtocol\Domain\DeviceOrientationDomainInterface;
 use ChromeDevtoolsProtocol\Domain\EmulationDomain;
 use ChromeDevtoolsProtocol\Domain\EmulationDomainInterface;
+use ChromeDevtoolsProtocol\Domain\FetchDomain;
+use ChromeDevtoolsProtocol\Domain\FetchDomainInterface;
 use ChromeDevtoolsProtocol\Domain\HeadlessExperimentalDomain;
 use ChromeDevtoolsProtocol\Domain\HeadlessExperimentalDomainInterface;
 use ChromeDevtoolsProtocol\Domain\HeapProfilerDomain;
@@ -276,6 +278,18 @@ trait DevtoolsClientTrait
 		}
 		/** @var EmulationDomainInterface $domain */
 		$domain = $this->domains['Emulation'];
+		return $domain;
+	}
+
+
+	public function fetch(): FetchDomainInterface
+	{
+		if (!isset($this->domains['Fetch'])) {
+			/** @var InternalClientInterface $this */
+			$this->domains['Fetch'] = new FetchDomain($this);
+		}
+		/** @var FetchDomainInterface $domain */
+		$domain = $this->domains['Fetch'];
 		return $domain;
 	}
 
