@@ -14409,7 +14409,9 @@
                                 "error",
                                 "proxy",
                                 "promise",
-                                "typedarray"
+                                "typedarray",
+                                "arraybuffer",
+                                "dataview"
                             ]
                         },
                         {
@@ -16446,15 +16448,6 @@
                     ]
                 },
                 {
-                    "id": "ProcessType",
-                    "description": "Specifies process type.",
-                    "type": "string",
-                    "enum": [
-                        "browser",
-                        "renderer"
-                    ]
-                },
-                {
                     "id": "ProcessInfo",
                     "description": "Represents process info.",
                     "type": "object",
@@ -16462,7 +16455,7 @@
                         {
                             "name": "type",
                             "description": "Specifies process type.",
-                            "$ref": "ProcessType"
+                            "type": "string"
                         },
                         {
                             "name": "id",
