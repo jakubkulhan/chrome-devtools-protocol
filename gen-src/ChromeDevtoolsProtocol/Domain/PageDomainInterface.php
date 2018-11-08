@@ -9,6 +9,8 @@ use ChromeDevtoolsProtocol\Model\Page\AddScriptToEvaluateOnNewDocumentRequest;
 use ChromeDevtoolsProtocol\Model\Page\AddScriptToEvaluateOnNewDocumentResponse;
 use ChromeDevtoolsProtocol\Model\Page\CaptureScreenshotRequest;
 use ChromeDevtoolsProtocol\Model\Page\CaptureScreenshotResponse;
+use ChromeDevtoolsProtocol\Model\Page\CaptureSnapshotRequest;
+use ChromeDevtoolsProtocol\Model\Page\CaptureSnapshotResponse;
 use ChromeDevtoolsProtocol\Model\Page\CompilationCacheProducedEvent;
 use ChromeDevtoolsProtocol\Model\Page\CreateIsolatedWorldRequest;
 use ChromeDevtoolsProtocol\Model\Page\CreateIsolatedWorldResponse;
@@ -130,6 +132,17 @@ interface PageDomainInterface
 	 * @return CaptureScreenshotResponse
 	 */
 	public function captureScreenshot(ContextInterface $ctx, CaptureScreenshotRequest $request): CaptureScreenshotResponse;
+
+
+	/**
+	 * Returns a snapshot of the page as a string. For MHTML format, the serialization includes iframes, shadow DOM, external resources, and element-inline styles.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param CaptureSnapshotRequest $request
+	 *
+	 * @return CaptureSnapshotResponse
+	 */
+	public function captureSnapshot(ContextInterface $ctx, CaptureSnapshotRequest $request): CaptureSnapshotResponse;
 
 
 	/**

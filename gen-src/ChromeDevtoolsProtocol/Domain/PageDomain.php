@@ -10,6 +10,8 @@ use ChromeDevtoolsProtocol\Model\Page\AddScriptToEvaluateOnNewDocumentRequest;
 use ChromeDevtoolsProtocol\Model\Page\AddScriptToEvaluateOnNewDocumentResponse;
 use ChromeDevtoolsProtocol\Model\Page\CaptureScreenshotRequest;
 use ChromeDevtoolsProtocol\Model\Page\CaptureScreenshotResponse;
+use ChromeDevtoolsProtocol\Model\Page\CaptureSnapshotRequest;
+use ChromeDevtoolsProtocol\Model\Page\CaptureSnapshotResponse;
 use ChromeDevtoolsProtocol\Model\Page\CompilationCacheProducedEvent;
 use ChromeDevtoolsProtocol\Model\Page\CreateIsolatedWorldRequest;
 use ChromeDevtoolsProtocol\Model\Page\CreateIsolatedWorldResponse;
@@ -113,6 +115,13 @@ class PageDomain implements PageDomainInterface
 	{
 		$response = $this->internalClient->executeCommand($ctx, 'Page.captureScreenshot', $request);
 		return CaptureScreenshotResponse::fromJson($response);
+	}
+
+
+	public function captureSnapshot(ContextInterface $ctx, CaptureSnapshotRequest $request): CaptureSnapshotResponse
+	{
+		$response = $this->internalClient->executeCommand($ctx, 'Page.captureSnapshot', $request);
+		return CaptureSnapshotResponse::fromJson($response);
 	}
 
 

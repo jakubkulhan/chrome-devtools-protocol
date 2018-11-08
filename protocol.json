@@ -12700,6 +12700,29 @@
                     ]
                 },
                 {
+                    "name": "captureSnapshot",
+                    "description": "Returns a snapshot of the page as a string. For MHTML format, the serialization includes iframes, shadow DOM, external resources, and element-inline styles.",
+                    "experimental": true,
+                    "parameters": [
+                        {
+                            "name": "format",
+                            "description": "Format (defaults to mhtml).",
+                            "optional": true,
+                            "type": "string",
+                            "enum": [
+                                "mhtml"
+                            ]
+                        }
+                    ],
+                    "returns": [
+                        {
+                            "name": "data",
+                            "description": "Serialized page data.",
+                            "type": "string"
+                        }
+                    ]
+                },
+                {
                     "name": "clearCompilationCache",
                     "description": "Clears seeded compilation cache.",
                     "experimental": true
