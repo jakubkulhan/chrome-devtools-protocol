@@ -15,6 +15,7 @@ use ChromeDevtoolsProtocol\Model\Overlay\SetInspectModeRequest;
 use ChromeDevtoolsProtocol\Model\Overlay\SetPausedInDebuggerMessageRequest;
 use ChromeDevtoolsProtocol\Model\Overlay\SetShowDebugBordersRequest;
 use ChromeDevtoolsProtocol\Model\Overlay\SetShowFPSCounterRequest;
+use ChromeDevtoolsProtocol\Model\Overlay\SetShowHitTestBordersRequest;
 use ChromeDevtoolsProtocol\Model\Overlay\SetShowPaintRectsRequest;
 use ChromeDevtoolsProtocol\Model\Overlay\SetShowScrollBottleneckRectsRequest;
 use ChromeDevtoolsProtocol\Model\Overlay\SetShowViewportSizeOnResizeRequest;
@@ -159,6 +160,17 @@ interface OverlayDomainInterface
 	 * @return void
 	 */
 	public function setShowFPSCounter(ContextInterface $ctx, SetShowFPSCounterRequest $request): void;
+
+
+	/**
+	 * Requests that backend shows hit-test borders on layers
+	 *
+	 * @param ContextInterface $ctx
+	 * @param SetShowHitTestBordersRequest $request
+	 *
+	 * @return void
+	 */
+	public function setShowHitTestBorders(ContextInterface $ctx, SetShowHitTestBordersRequest $request): void;
 
 
 	/**

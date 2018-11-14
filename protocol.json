@@ -1245,7 +1245,8 @@
                     "parameters": [
                         {
                             "name": "targetId",
-                            "description": "Devtools agent host id.",
+                            "description": "Devtools agent host id. If called as a part of the session, associated targetId is used.",
+                            "optional": true,
                             "$ref": "Target.TargetID"
                         }
                     ],
@@ -12035,6 +12036,17 @@
                         {
                             "name": "show",
                             "description": "True for showing the FPS counter",
+                            "type": "boolean"
+                        }
+                    ]
+                },
+                {
+                    "name": "setShowHitTestBorders",
+                    "description": "Requests that backend shows hit-test borders on layers",
+                    "parameters": [
+                        {
+                            "name": "show",
+                            "description": "True for showing hit-test borders",
                             "type": "boolean"
                         }
                     ]

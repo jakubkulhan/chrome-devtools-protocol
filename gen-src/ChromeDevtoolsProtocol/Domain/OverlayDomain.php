@@ -16,6 +16,7 @@ use ChromeDevtoolsProtocol\Model\Overlay\SetInspectModeRequest;
 use ChromeDevtoolsProtocol\Model\Overlay\SetPausedInDebuggerMessageRequest;
 use ChromeDevtoolsProtocol\Model\Overlay\SetShowDebugBordersRequest;
 use ChromeDevtoolsProtocol\Model\Overlay\SetShowFPSCounterRequest;
+use ChromeDevtoolsProtocol\Model\Overlay\SetShowHitTestBordersRequest;
 use ChromeDevtoolsProtocol\Model\Overlay\SetShowPaintRectsRequest;
 use ChromeDevtoolsProtocol\Model\Overlay\SetShowScrollBottleneckRectsRequest;
 use ChromeDevtoolsProtocol\Model\Overlay\SetShowViewportSizeOnResizeRequest;
@@ -107,6 +108,12 @@ class OverlayDomain implements OverlayDomainInterface
 	public function setShowFPSCounter(ContextInterface $ctx, SetShowFPSCounterRequest $request): void
 	{
 		$this->internalClient->executeCommand($ctx, 'Overlay.setShowFPSCounter', $request);
+	}
+
+
+	public function setShowHitTestBorders(ContextInterface $ctx, SetShowHitTestBordersRequest $request): void
+	{
+		$this->internalClient->executeCommand($ctx, 'Overlay.setShowHitTestBorders', $request);
 	}
 
 

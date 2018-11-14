@@ -11,7 +11,7 @@ namespace ChromeDevtoolsProtocol\Model\Browser;
 final class GetWindowForTargetRequest implements \JsonSerializable
 {
 	/**
-	 * Devtools agent host id.
+	 * Devtools agent host id. If called as a part of the session, associated targetId is used.
 	 *
 	 * @var string
 	 */
@@ -46,5 +46,16 @@ final class GetWindowForTargetRequest implements \JsonSerializable
 	public static function builder(): GetWindowForTargetRequestBuilder
 	{
 		return new GetWindowForTargetRequestBuilder();
+	}
+
+
+	/**
+	 * Create new empty instance.
+	 *
+	 * @return self
+	 */
+	public static function make(): self
+	{
+		return static::builder()->build();
 	}
 }
