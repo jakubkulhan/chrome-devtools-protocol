@@ -1301,6 +1301,24 @@
                     ]
                 },
                 {
+                    "name": "setDockTile",
+                    "description": "Set dock tile details, platform-specific.",
+                    "experimental": true,
+                    "parameters": [
+                        {
+                            "name": "badgeLabel",
+                            "optional": true,
+                            "type": "string"
+                        },
+                        {
+                            "name": "image",
+                            "description": "Png encoded image.",
+                            "optional": true,
+                            "type": "string"
+                        }
+                    ]
+                },
+                {
                     "name": "setWindowBounds",
                     "description": "Set position and/or size of the browser window.",
                     "experimental": true,

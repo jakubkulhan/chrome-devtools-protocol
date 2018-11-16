@@ -15,6 +15,7 @@ use ChromeDevtoolsProtocol\Model\Browser\GetWindowForTargetRequest;
 use ChromeDevtoolsProtocol\Model\Browser\GetWindowForTargetResponse;
 use ChromeDevtoolsProtocol\Model\Browser\GrantPermissionsRequest;
 use ChromeDevtoolsProtocol\Model\Browser\ResetPermissionsRequest;
+use ChromeDevtoolsProtocol\Model\Browser\SetDockTileRequest;
 use ChromeDevtoolsProtocol\Model\Browser\SetWindowBoundsRequest;
 
 class BrowserDomain implements BrowserDomainInterface
@@ -96,6 +97,12 @@ class BrowserDomain implements BrowserDomainInterface
 	public function resetPermissions(ContextInterface $ctx, ResetPermissionsRequest $request): void
 	{
 		$this->internalClient->executeCommand($ctx, 'Browser.resetPermissions', $request);
+	}
+
+
+	public function setDockTile(ContextInterface $ctx, SetDockTileRequest $request): void
+	{
+		$this->internalClient->executeCommand($ctx, 'Browser.setDockTile', $request);
 	}
 
 
