@@ -653,7 +653,7 @@ interface NetworkDomainInterface
 
 
 	/**
-	 * Fired when WebSocket frame error occurs.
+	 * Fired when WebSocket message error occurs.
 	 *
 	 * Listener will be called whenever event Network.webSocketFrameError is fired.
 	 *
@@ -665,7 +665,7 @@ interface NetworkDomainInterface
 
 
 	/**
-	 * Fired when WebSocket frame error occurs.
+	 * Fired when WebSocket message error occurs.
 	 *
 	 * Method will block until first Network.webSocketFrameError event is fired.
 	 *
@@ -677,7 +677,7 @@ interface NetworkDomainInterface
 
 
 	/**
-	 * Fired when WebSocket frame is received.
+	 * Fired when WebSocket message is received.
 	 *
 	 * Listener will be called whenever event Network.webSocketFrameReceived is fired.
 	 *
@@ -689,7 +689,7 @@ interface NetworkDomainInterface
 
 
 	/**
-	 * Fired when WebSocket frame is received.
+	 * Fired when WebSocket message is received.
 	 *
 	 * Method will block until first Network.webSocketFrameReceived event is fired.
 	 *
@@ -701,7 +701,7 @@ interface NetworkDomainInterface
 
 
 	/**
-	 * Fired when WebSocket frame is sent.
+	 * Fired when WebSocket message is sent.
 	 *
 	 * Listener will be called whenever event Network.webSocketFrameSent is fired.
 	 *
@@ -713,7 +713,7 @@ interface NetworkDomainInterface
 
 
 	/**
-	 * Fired when WebSocket frame is sent.
+	 * Fired when WebSocket message is sent.
 	 *
 	 * Method will block until first Network.webSocketFrameSent event is fired.
 	 *

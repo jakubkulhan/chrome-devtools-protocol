@@ -2,7 +2,7 @@
 namespace ChromeDevtoolsProtocol\Model\Network;
 
 /**
- * Fired when WebSocket frame error occurs.
+ * Fired when WebSocket message error occurs.
  *
  * @generated This file has been auto-generated, do not edit.
  *
@@ -25,7 +25,7 @@ final class WebSocketFrameErrorEvent implements \JsonSerializable
 	public $timestamp;
 
 	/**
-	 * WebSocket frame error message.
+	 * WebSocket error message.
 	 *
 	 * @var string
 	 */

@@ -2,7 +2,7 @@
 namespace ChromeDevtoolsProtocol\Model\Network;
 
 /**
- * Fired when WebSocket frame is sent.
+ * Fired when WebSocket message is sent.
  *
  * @generated This file has been auto-generated, do not edit.
  *

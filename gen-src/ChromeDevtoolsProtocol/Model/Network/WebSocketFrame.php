@@ -2,7 +2,7 @@
 namespace ChromeDevtoolsProtocol\Model\Network;
 
 /**
- * WebSocket frame data.
+ * WebSocket message data. This represents an entire WebSocket message, not just a fragmented frame as the name suggests.
  *
  * @generated This file has been auto-generated, do not edit.
  *
@@ -11,21 +11,21 @@ namespace ChromeDevtoolsProtocol\Model\Network;
 final class WebSocketFrame implements \JsonSerializable
 {
 	/**
-	 * WebSocket frame opcode.
+	 * WebSocket message opcode.
 	 *
 	 * @var int|float
 	 */
 	public $opcode;
 
 	/**
-	 * WebSocke frame mask.
+	 * WebSocket message mask.
 	 *
 	 * @var bool
 	 */
 	public $mask;
 
 	/**
-	 * WebSocke frame payload data.
+	 * WebSocket message payload data.
 	 *
 	 * @var string
 	 */
