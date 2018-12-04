@@ -11,7 +11,7 @@ namespace ChromeDevtoolsProtocol\Model\CacheStorage;
 final class RequestCachedResponseRequest implements \JsonSerializable
 {
 	/**
-	 * Id of cache that contains the enty.
+	 * Id of cache that contains the entry.
 	 *
 	 * @var string
 	 */

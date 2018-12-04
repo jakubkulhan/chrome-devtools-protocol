@@ -180,16 +180,6 @@ interface DebuggerDomainInterface
 
 
 	/**
-	 * This method is deprecated - use Debugger.stepInto with breakOnAsyncCall and Debugger.pauseOnAsyncTask instead. Steps into next scheduled async task if any is scheduled before next pause. Returns success when async task is actually scheduled, returns error if no task were scheduled or another scheduleStepIntoAsync was called.
-	 *
-	 * @param ContextInterface $ctx
-	 *
-	 * @return void
-	 */
-	public function scheduleStepIntoAsync(ContextInterface $ctx): void;
-
-
-	/**
 	 * Searches for given string in script content.
 	 *
 	 * @param ContextInterface $ctx

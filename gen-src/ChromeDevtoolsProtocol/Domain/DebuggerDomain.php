@@ -137,13 +137,6 @@ class DebuggerDomain implements DebuggerDomainInterface
 	}
 
 
-	public function scheduleStepIntoAsync(ContextInterface $ctx): void
-	{
-		$request = new \stdClass();
-		$this->internalClient->executeCommand($ctx, 'Debugger.scheduleStepIntoAsync', $request);
-	}
-
-
 	public function searchInContent(ContextInterface $ctx, SearchInContentRequest $request): SearchInContentResponse
 	{
 		$response = $this->internalClient->executeCommand($ctx, 'Debugger.searchInContent', $request);

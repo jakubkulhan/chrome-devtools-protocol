@@ -16,6 +16,8 @@ final class RequestEntriesRequestBuilder
 
 	private $pageSize;
 
+	private $pathFilter;
+
 
 	/**
 	 * Validate non-optional parameters and return new instance.
@@ -35,6 +37,7 @@ final class RequestEntriesRequestBuilder
 			throw new BuilderException('Property [pageSize] is required.');
 		}
 		$instance->pageSize = $this->pageSize;
+		$instance->pathFilter = $this->pathFilter;
 		return $instance;
 	}
 
@@ -71,6 +74,18 @@ final class RequestEntriesRequestBuilder
 	public function setPageSize($pageSize): self
 	{
 		$this->pageSize = $pageSize;
+		return $this;
+	}
+
+
+	/**
+	 * @param string|null $pathFilter
+	 *
+	 * @return self
+	 */
+	public function setPathFilter($pathFilter): self
+	{
+		$this->pathFilter = $pathFilter;
 		return $this;
 	}
 }

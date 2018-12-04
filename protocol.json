@@ -1496,7 +1496,7 @@
                     "parameters": [
                         {
                             "name": "cacheId",
-                            "description": "Id of cache that contains the enty.",
+                            "description": "Id of cache that contains the entry.",
                             "$ref": "CacheId"
                         },
                         {
@@ -1552,6 +1552,12 @@
                             "name": "pageSize",
                             "description": "Number of records to fetch.",
                             "type": "integer"
+                        },
+                        {
+                            "name": "pathFilter",
+                            "description": "If present, only return the entries containing this substring in the path",
+                            "optional": true,
+                            "type": "string"
                         }
                     ],
                     "returns": [
@@ -3415,11 +3421,6 @@
                 {
                     "name": "resume",
                     "description": "Resumes JavaScript execution."
-                },
-                {
-                    "name": "scheduleStepIntoAsync",
-                    "description": "This method is deprecated - use Debugger.stepInto with breakOnAsyncCall and Debugger.pauseOnAsyncTask instead. Steps into next scheduled async task if any is scheduled before next pause. Returns success when async task is actually scheduled, returns error if no task were scheduled or another scheduleStepIntoAsync was called.",
-                    "experimental": true
                 },
                 {
                     "name": "searchInContent",
