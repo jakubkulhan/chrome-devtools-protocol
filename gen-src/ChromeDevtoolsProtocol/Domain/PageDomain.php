@@ -417,6 +417,13 @@ class PageDomain implements PageDomainInterface
 	}
 
 
+	public function waitForDebugger(ContextInterface $ctx): void
+	{
+		$request = new \stdClass();
+		$this->internalClient->executeCommand($ctx, 'Page.waitForDebugger', $request);
+	}
+
+
 	public function addCompilationCacheProducedListener(callable $listener): SubscriptionInterface
 	{
 		return $this->internalClient->addListener('Page.compilationCacheProduced', function ($event) use ($listener) {

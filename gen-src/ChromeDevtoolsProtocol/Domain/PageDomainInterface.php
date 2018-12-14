@@ -613,6 +613,16 @@ interface PageDomainInterface
 
 
 	/**
+	 * Pauses page execution. Can be resumed using generic Runtime.runIfWaitingForDebugger.
+	 *
+	 * @param ContextInterface $ctx
+	 *
+	 * @return void
+	 */
+	public function waitForDebugger(ContextInterface $ctx): void;
+
+
+	/**
 	 * Issued for every compilation cache generated. Is only available if Page.setGenerateCompilationCache is enabled.
 	 *
 	 * Listener will be called whenever event Page.compilationCacheProduced is fired.

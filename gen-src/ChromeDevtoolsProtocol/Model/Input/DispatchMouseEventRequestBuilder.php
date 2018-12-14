@@ -22,6 +22,8 @@ final class DispatchMouseEventRequestBuilder
 
 	private $button;
 
+	private $buttons;
+
 	private $clickCount;
 
 	private $deltaX;
@@ -50,6 +52,7 @@ final class DispatchMouseEventRequestBuilder
 		$instance->modifiers = $this->modifiers;
 		$instance->timestamp = $this->timestamp;
 		$instance->button = $this->button;
+		$instance->buttons = $this->buttons;
 		$instance->clickCount = $this->clickCount;
 		$instance->deltaX = $this->deltaX;
 		$instance->deltaY = $this->deltaY;
@@ -125,6 +128,18 @@ final class DispatchMouseEventRequestBuilder
 	public function setButton($button): self
 	{
 		$this->button = $button;
+		return $this;
+	}
+
+
+	/**
+	 * @param int|null $buttons
+	 *
+	 * @return self
+	 */
+	public function setButtons($buttons): self
+	{
+		$this->buttons = $buttons;
 		return $this;
 	}
 
