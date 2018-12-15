@@ -25,7 +25,7 @@ final class WebSocketFrame implements \JsonSerializable
 	public $mask;
 
 	/**
-	 * WebSocket message payload data.
+	 * WebSocket message payload data. If the opcode is 1, this is a text message and payloadData is a UTF-8 string. If the opcode isn't 1, then payloadData is a base64 encoded string representing binary data.
 	 *
 	 * @var string
 	 */
