@@ -27,6 +27,8 @@ use ChromeDevtoolsProtocol\Model\DOM\GetContentQuadsRequest;
 use ChromeDevtoolsProtocol\Model\DOM\GetContentQuadsResponse;
 use ChromeDevtoolsProtocol\Model\DOM\GetDocumentRequest;
 use ChromeDevtoolsProtocol\Model\DOM\GetDocumentResponse;
+use ChromeDevtoolsProtocol\Model\DOM\GetFileInfoRequest;
+use ChromeDevtoolsProtocol\Model\DOM\GetFileInfoResponse;
 use ChromeDevtoolsProtocol\Model\DOM\GetFlattenedDocumentRequest;
 use ChromeDevtoolsProtocol\Model\DOM\GetFlattenedDocumentResponse;
 use ChromeDevtoolsProtocol\Model\DOM\GetFrameOwnerRequest;
@@ -158,6 +160,13 @@ class DOMDomain implements DOMDomainInterface
 	{
 		$response = $this->internalClient->executeCommand($ctx, 'DOM.getDocument', $request);
 		return GetDocumentResponse::fromJson($response);
+	}
+
+
+	public function getFileInfo(ContextInterface $ctx, GetFileInfoRequest $request): GetFileInfoResponse
+	{
+		$response = $this->internalClient->executeCommand($ctx, 'DOM.getFileInfo', $request);
+		return GetFileInfoResponse::fromJson($response);
 	}
 
 

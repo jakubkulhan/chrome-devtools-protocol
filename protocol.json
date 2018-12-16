@@ -4707,6 +4707,24 @@
                     ]
                 },
                 {
+                    "name": "getFileInfo",
+                    "description": "Returns file information for the given File wrapper.",
+                    "experimental": true,
+                    "parameters": [
+                        {
+                            "name": "objectId",
+                            "description": "JavaScript object id of the node wrapper.",
+                            "$ref": "Runtime.RemoteObjectId"
+                        }
+                    ],
+                    "returns": [
+                        {
+                            "name": "path",
+                            "type": "string"
+                        }
+                    ]
+                },
+                {
                     "name": "getFlattenedDocument",
                     "description": "Returns the root DOM node (and optionally the subtree) to the caller.",
                     "parameters": [
@@ -13225,6 +13243,10 @@
                 {
                     "name": "requestAppBanner",
                     "experimental": true
+                },
+                {
+                    "name": "resetNavigationHistory",
+                    "description": "Resets navigation history for the current page."
                 },
                 {
                     "name": "screencastFrameAck",

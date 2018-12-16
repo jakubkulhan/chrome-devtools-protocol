@@ -306,6 +306,13 @@ class PageDomain implements PageDomainInterface
 	}
 
 
+	public function resetNavigationHistory(ContextInterface $ctx): void
+	{
+		$request = new \stdClass();
+		$this->internalClient->executeCommand($ctx, 'Page.resetNavigationHistory', $request);
+	}
+
+
 	public function screencastFrameAck(ContextInterface $ctx, ScreencastFrameAckRequest $request): void
 	{
 		$this->internalClient->executeCommand($ctx, 'Page.screencastFrameAck', $request);

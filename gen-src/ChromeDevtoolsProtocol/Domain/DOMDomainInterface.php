@@ -26,6 +26,8 @@ use ChromeDevtoolsProtocol\Model\DOM\GetContentQuadsRequest;
 use ChromeDevtoolsProtocol\Model\DOM\GetContentQuadsResponse;
 use ChromeDevtoolsProtocol\Model\DOM\GetDocumentRequest;
 use ChromeDevtoolsProtocol\Model\DOM\GetDocumentResponse;
+use ChromeDevtoolsProtocol\Model\DOM\GetFileInfoRequest;
+use ChromeDevtoolsProtocol\Model\DOM\GetFileInfoResponse;
 use ChromeDevtoolsProtocol\Model\DOM\GetFlattenedDocumentRequest;
 use ChromeDevtoolsProtocol\Model\DOM\GetFlattenedDocumentResponse;
 use ChromeDevtoolsProtocol\Model\DOM\GetFrameOwnerRequest;
@@ -199,6 +201,17 @@ interface DOMDomainInterface
 	 * @return GetDocumentResponse
 	 */
 	public function getDocument(ContextInterface $ctx, GetDocumentRequest $request): GetDocumentResponse;
+
+
+	/**
+	 * Returns file information for the given File wrapper.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param GetFileInfoRequest $request
+	 *
+	 * @return GetFileInfoResponse
+	 */
+	public function getFileInfo(ContextInterface $ctx, GetFileInfoRequest $request): GetFileInfoResponse;
 
 
 	/**

@@ -417,6 +417,16 @@ interface PageDomainInterface
 
 
 	/**
+	 * Resets navigation history for the current page.
+	 *
+	 * @param ContextInterface $ctx
+	 *
+	 * @return void
+	 */
+	public function resetNavigationHistory(ContextInterface $ctx): void;
+
+
+	/**
 	 * Acknowledges that a screencast frame has been received by the frontend.
 	 *
 	 * @param ContextInterface $ctx
