@@ -30,6 +30,8 @@ final class DispatchMouseEventRequestBuilder
 
 	private $deltaY;
 
+	private $pointerType;
+
 
 	/**
 	 * Validate non-optional parameters and return new instance.
@@ -56,6 +58,7 @@ final class DispatchMouseEventRequestBuilder
 		$instance->clickCount = $this->clickCount;
 		$instance->deltaX = $this->deltaX;
 		$instance->deltaY = $this->deltaY;
+		$instance->pointerType = $this->pointerType;
 		return $instance;
 	}
 
@@ -176,6 +179,18 @@ final class DispatchMouseEventRequestBuilder
 	public function setDeltaY($deltaY): self
 	{
 		$this->deltaY = $deltaY;
+		return $this;
+	}
+
+
+	/**
+	 * @param string|null $pointerType
+	 *
+	 * @return self
+	 */
+	public function setPointerType($pointerType): self
+	{
+		$this->pointerType = $pointerType;
 		return $this;
 	}
 }

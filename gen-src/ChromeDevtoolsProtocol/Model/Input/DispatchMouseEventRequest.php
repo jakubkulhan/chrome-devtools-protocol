@@ -80,6 +80,13 @@ final class DispatchMouseEventRequest implements \JsonSerializable
 	 */
 	public $deltaY;
 
+	/**
+	 * Pointer type (default: "mouse").
+	 *
+	 * @var string|null
+	 */
+	public $pointerType;
+
 
 	public static function fromJson($data)
 	{
@@ -113,6 +120,9 @@ final class DispatchMouseEventRequest implements \JsonSerializable
 		}
 		if (isset($data->deltaY)) {
 			$instance->deltaY = $data->deltaY;
+		}
+		if (isset($data->pointerType)) {
+			$instance->pointerType = (string)$data->pointerType;
 		}
 		return $instance;
 	}
@@ -150,6 +160,9 @@ final class DispatchMouseEventRequest implements \JsonSerializable
 		}
 		if ($this->deltaY !== null) {
 			$data->deltaY = $this->deltaY;
+		}
+		if ($this->pointerType !== null) {
+			$data->pointerType = $this->pointerType;
 		}
 		return $data;
 	}
