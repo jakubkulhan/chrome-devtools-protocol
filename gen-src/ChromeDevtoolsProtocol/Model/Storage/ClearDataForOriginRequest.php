@@ -18,7 +18,7 @@ final class ClearDataForOriginRequest implements \JsonSerializable
 	public $origin;
 
 	/**
-	 * Comma separated origin names.
+	 * Comma separated list of StorageType to clear.
 	 *
 	 * @var string
 	 */
