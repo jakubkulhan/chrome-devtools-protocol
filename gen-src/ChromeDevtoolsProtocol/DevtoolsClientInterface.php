@@ -8,6 +8,7 @@ use ChromeDevtoolsProtocol\Domain\AuditsDomainInterface;
 use ChromeDevtoolsProtocol\Domain\BrowserDomainInterface;
 use ChromeDevtoolsProtocol\Domain\CSSDomainInterface;
 use ChromeDevtoolsProtocol\Domain\CacheStorageDomainInterface;
+use ChromeDevtoolsProtocol\Domain\CastDomainInterface;
 use ChromeDevtoolsProtocol\Domain\ConsoleDomainInterface;
 use ChromeDevtoolsProtocol\Domain\DOMDebuggerDomainInterface;
 use ChromeDevtoolsProtocol\Domain\DOMDomainInterface;
@@ -96,6 +97,14 @@ interface DevtoolsClientInterface extends CloseableResourceInterface
 	 * @experimental
 	 */
 	public function cacheStorage(): CacheStorageDomainInterface;
+
+
+	/**
+	 * A domain for interacting with Cast, Presentation API, and Remote Playback API functionalities.
+	 *
+	 * @experimental
+	 */
+	public function cast(): CastDomainInterface;
 
 
 	/**

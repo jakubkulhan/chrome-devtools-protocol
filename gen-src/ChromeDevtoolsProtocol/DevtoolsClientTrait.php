@@ -15,6 +15,8 @@ use ChromeDevtoolsProtocol\Domain\CSSDomain;
 use ChromeDevtoolsProtocol\Domain\CSSDomainInterface;
 use ChromeDevtoolsProtocol\Domain\CacheStorageDomain;
 use ChromeDevtoolsProtocol\Domain\CacheStorageDomainInterface;
+use ChromeDevtoolsProtocol\Domain\CastDomain;
+use ChromeDevtoolsProtocol\Domain\CastDomainInterface;
 use ChromeDevtoolsProtocol\Domain\ConsoleDomain;
 use ChromeDevtoolsProtocol\Domain\ConsoleDomainInterface;
 use ChromeDevtoolsProtocol\Domain\DOMDebuggerDomain;
@@ -158,6 +160,18 @@ trait DevtoolsClientTrait
 		}
 		/** @var CacheStorageDomainInterface $domain */
 		$domain = $this->domains['CacheStorage'];
+		return $domain;
+	}
+
+
+	public function cast(): CastDomainInterface
+	{
+		if (!isset($this->domains['Cast'])) {
+			/** @var InternalClientInterface $this */
+			$this->domains['Cast'] = new CastDomain($this);
+		}
+		/** @var CastDomainInterface $domain */
+		$domain = $this->domains['Cast'];
 		return $domain;
 	}
 

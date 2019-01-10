@@ -299,13 +299,6 @@ class PageDomain implements PageDomainInterface
 	}
 
 
-	public function requestAppBanner(ContextInterface $ctx): void
-	{
-		$request = new \stdClass();
-		$this->internalClient->executeCommand($ctx, 'Page.requestAppBanner', $request);
-	}
-
-
 	public function resetNavigationHistory(ContextInterface $ctx): void
 	{
 		$request = new \stdClass();

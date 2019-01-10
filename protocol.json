@@ -1580,6 +1580,83 @@
             "events": []
         },
         {
+            "domain": "Cast",
+            "description": "A domain for interacting with Cast, Presentation API, and Remote Playback API functionalities.",
+            "experimental": true,
+            "commands": [
+                {
+                    "name": "disable",
+                    "description": "Stops observing for sinks and issues."
+                },
+                {
+                    "name": "enable",
+                    "description": "Starts observing for sinks that can be used for tab mirroring, and if set, sinks compatible with |presentationUrl| as well. When sinks are found, a |sinksUpdated| event is fired. Also starts observing for issue messages. When an issue is added or removed, an |issueUpdated| event is fired.",
+                    "parameters": [
+                        {
+                            "name": "presentationUrl",
+                            "optional": true,
+                            "type": "string"
+                        }
+                    ]
+                },
+                {
+                    "name": "setSinkToUse",
+                    "description": "Sets a sink to be used when the web page requests the browser to choose a sink via Presentation API, Remote Playback API, or Cast SDK.",
+                    "parameters": [
+                        {
+                            "name": "sinkName",
+                            "type": "string"
+                        }
+                    ]
+                },
+                {
+                    "name": "startTabMirroring",
+                    "description": "Starts mirroring the tab to the sink.",
+                    "parameters": [
+                        {
+                            "name": "sinkName",
+                            "type": "string"
+                        }
+                    ]
+                },
+                {
+                    "name": "stopCasting",
+                    "description": "Stops the active Cast session on the sink.",
+                    "parameters": [
+                        {
+                            "name": "sinkName",
+                            "type": "string"
+                        }
+                    ]
+                }
+            ],
+            "events": [
+                {
+                    "name": "issueUpdated",
+                    "description": "This is fired whenever the outstanding issue/error message changes. |issueMessage| is empty if there is no issue.",
+                    "parameters": [
+                        {
+                            "name": "issueMessage",
+                            "type": "string"
+                        }
+                    ]
+                },
+                {
+                    "name": "sinksUpdated",
+                    "description": "This is fired whenever the list of available sinks changes. A sink is a device or a software surface that you can cast to.",
+                    "parameters": [
+                        {
+                            "name": "sinkNames",
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
             "domain": "Console",
             "description": "This domain is deprecated - use Runtime or Log instead.",
             "deprecated": true,
@@ -11819,6 +11896,12 @@
                             "type": "boolean"
                         },
                         {
+                            "name": "showStyles",
+                            "description": "Whether the node styles in the tooltip (default: false).",
+                            "optional": true,
+                            "type": "boolean"
+                        },
+                        {
                             "name": "showRulers",
                             "description": "Whether the rulers should be shown (default: false).",
                             "optional": true,
@@ -11827,11 +11910,6 @@
                         {
                             "name": "showExtensionLines",
                             "description": "Whether the extension lines from node to the rulers should be shown (default: false).",
-                            "optional": true,
-                            "type": "boolean"
-                        },
-                        {
-                            "name": "displayAsMaterial",
                             "optional": true,
                             "type": "boolean"
                         },
@@ -13249,10 +13327,6 @@
                             "$ref": "ScriptIdentifier"
                         }
                     ]
-                },
-                {
-                    "name": "requestAppBanner",
-                    "experimental": true
                 },
                 {
                     "name": "resetNavigationHistory",

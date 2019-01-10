@@ -407,16 +407,6 @@ interface PageDomainInterface
 
 
 	/**
-	 * Call Page.requestAppBanner command.
-	 *
-	 * @param ContextInterface $ctx
-	 *
-	 * @return void
-	 */
-	public function requestAppBanner(ContextInterface $ctx): void;
-
-
-	/**
 	 * Resets navigation history for the current page.
 	 *
 	 * @param ContextInterface $ctx

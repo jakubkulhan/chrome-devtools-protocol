@@ -20,6 +20,13 @@ final class HighlightConfig implements \JsonSerializable
 	public $showInfo;
 
 	/**
+	 * Whether the node styles in the tooltip (default: false).
+	 *
+	 * @var bool|null
+	 */
+	public $showStyles;
+
+	/**
 	 * Whether the rulers should be shown (default: false).
 	 *
 	 * @var bool|null
@@ -32,9 +39,6 @@ final class HighlightConfig implements \JsonSerializable
 	 * @var bool|null
 	 */
 	public $showExtensionLines;
-
-	/** @var bool|null */
-	public $displayAsMaterial;
 
 	/**
 	 * The content box highlight fill color (default: transparent).
@@ -106,14 +110,14 @@ final class HighlightConfig implements \JsonSerializable
 		if (isset($data->showInfo)) {
 			$instance->showInfo = (bool)$data->showInfo;
 		}
+		if (isset($data->showStyles)) {
+			$instance->showStyles = (bool)$data->showStyles;
+		}
 		if (isset($data->showRulers)) {
 			$instance->showRulers = (bool)$data->showRulers;
 		}
 		if (isset($data->showExtensionLines)) {
 			$instance->showExtensionLines = (bool)$data->showExtensionLines;
-		}
-		if (isset($data->displayAsMaterial)) {
-			$instance->displayAsMaterial = (bool)$data->displayAsMaterial;
 		}
 		if (isset($data->contentColor)) {
 			$instance->contentColor = RGBA::fromJson($data->contentColor);
@@ -152,14 +156,14 @@ final class HighlightConfig implements \JsonSerializable
 		if ($this->showInfo !== null) {
 			$data->showInfo = $this->showInfo;
 		}
+		if ($this->showStyles !== null) {
+			$data->showStyles = $this->showStyles;
+		}
 		if ($this->showRulers !== null) {
 			$data->showRulers = $this->showRulers;
 		}
 		if ($this->showExtensionLines !== null) {
 			$data->showExtensionLines = $this->showExtensionLines;
-		}
-		if ($this->displayAsMaterial !== null) {
-			$data->displayAsMaterial = $this->displayAsMaterial;
 		}
 		if ($this->contentColor !== null) {
 			$data->contentColor = $this->contentColor->jsonSerialize();
