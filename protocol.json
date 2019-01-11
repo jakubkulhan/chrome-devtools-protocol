@@ -7965,8 +7965,8 @@
                         },
                         {
                             "name": "version",
-                            "description": "Database version.",
-                            "type": "integer"
+                            "description": "Database version (type is not 'integer', as the standard requires the version number to be 'unsigned long long')",
+                            "type": "number"
                         },
                         {
                             "name": "objectStores",
