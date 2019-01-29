@@ -9,11 +9,13 @@ use ChromeDevtoolsProtocol\Model\Overlay\HighlightFrameRequest;
 use ChromeDevtoolsProtocol\Model\Overlay\HighlightNodeRequest;
 use ChromeDevtoolsProtocol\Model\Overlay\HighlightQuadRequest;
 use ChromeDevtoolsProtocol\Model\Overlay\HighlightRectRequest;
+use ChromeDevtoolsProtocol\Model\Overlay\InspectModeCanceledEvent;
 use ChromeDevtoolsProtocol\Model\Overlay\InspectNodeRequestedEvent;
 use ChromeDevtoolsProtocol\Model\Overlay\NodeHighlightRequestedEvent;
 use ChromeDevtoolsProtocol\Model\Overlay\ScreenshotRequestedEvent;
 use ChromeDevtoolsProtocol\Model\Overlay\SetInspectModeRequest;
 use ChromeDevtoolsProtocol\Model\Overlay\SetPausedInDebuggerMessageRequest;
+use ChromeDevtoolsProtocol\Model\Overlay\SetShowAdHighlightsRequest;
 use ChromeDevtoolsProtocol\Model\Overlay\SetShowDebugBordersRequest;
 use ChromeDevtoolsProtocol\Model\Overlay\SetShowFPSCounterRequest;
 use ChromeDevtoolsProtocol\Model\Overlay\SetShowHitTestBordersRequest;
@@ -99,6 +101,12 @@ class OverlayDomain implements OverlayDomainInterface
 	}
 
 
+	public function setShowAdHighlights(ContextInterface $ctx, SetShowAdHighlightsRequest $request): void
+	{
+		$this->internalClient->executeCommand($ctx, 'Overlay.setShowAdHighlights', $request);
+	}
+
+
 	public function setShowDebugBorders(ContextInterface $ctx, SetShowDebugBordersRequest $request): void
 	{
 		$this->internalClient->executeCommand($ctx, 'Overlay.setShowDebugBorders', $request);
@@ -138,6 +146,20 @@ class OverlayDomain implements OverlayDomainInterface
 	public function setSuspended(ContextInterface $ctx, SetSuspendedRequest $request): void
 	{
 		$this->internalClient->executeCommand($ctx, 'Overlay.setSuspended', $request);
+	}
+
+
+	public function addInspectModeCanceledListener(callable $listener): SubscriptionInterface
+	{
+		return $this->internalClient->addListener('Overlay.inspectModeCanceled', function ($event) use ($listener) {
+			return $listener(InspectModeCanceledEvent::fromJson($event));
+		});
+	}
+
+
+	public function awaitInspectModeCanceled(ContextInterface $ctx): InspectModeCanceledEvent
+	{
+		return InspectModeCanceledEvent::fromJson($this->internalClient->awaitEvent($ctx, 'Overlay.inspectModeCanceled'));
 	}
 
 

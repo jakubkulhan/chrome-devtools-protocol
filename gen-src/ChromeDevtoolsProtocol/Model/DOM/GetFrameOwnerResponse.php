@@ -18,7 +18,7 @@ final class GetFrameOwnerResponse implements \JsonSerializable
 	public $backendNodeId;
 
 	/**
-	 * Id of the node at given coordinates, only when enabled.
+	 * Id of the node at given coordinates, only when enabled and requested document.
 	 *
 	 * @var int
 	 */

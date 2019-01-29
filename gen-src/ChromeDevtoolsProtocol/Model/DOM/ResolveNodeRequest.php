@@ -31,6 +31,13 @@ final class ResolveNodeRequest implements \JsonSerializable
 	 */
 	public $objectGroup;
 
+	/**
+	 * Execution context in which to resolve the node.
+	 *
+	 * @var int
+	 */
+	public $executionContextId;
+
 
 	public static function fromJson($data)
 	{
@@ -43,6 +50,9 @@ final class ResolveNodeRequest implements \JsonSerializable
 		}
 		if (isset($data->objectGroup)) {
 			$instance->objectGroup = (string)$data->objectGroup;
+		}
+		if (isset($data->executionContextId)) {
+			$instance->executionContextId = (int)$data->executionContextId;
 		}
 		return $instance;
 	}
@@ -59,6 +69,9 @@ final class ResolveNodeRequest implements \JsonSerializable
 		}
 		if ($this->objectGroup !== null) {
 			$data->objectGroup = $this->objectGroup;
+		}
+		if ($this->executionContextId !== null) {
+			$data->executionContextId = $this->executionContextId;
 		}
 		return $data;
 	}

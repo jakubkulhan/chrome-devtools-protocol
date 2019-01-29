@@ -18,13 +18,6 @@ final class SignedExchangeHeader implements \JsonSerializable
 	public $requestUrl;
 
 	/**
-	 * Signed exchange request method.
-	 *
-	 * @var string
-	 */
-	public $requestMethod;
-
-	/**
 	 * Signed exchange response code.
 	 *
 	 * @var int
@@ -52,9 +45,6 @@ final class SignedExchangeHeader implements \JsonSerializable
 		if (isset($data->requestUrl)) {
 			$instance->requestUrl = (string)$data->requestUrl;
 		}
-		if (isset($data->requestMethod)) {
-			$instance->requestMethod = (string)$data->requestMethod;
-		}
 		if (isset($data->responseCode)) {
 			$instance->responseCode = (int)$data->responseCode;
 		}
@@ -76,9 +66,6 @@ final class SignedExchangeHeader implements \JsonSerializable
 		$data = new \stdClass();
 		if ($this->requestUrl !== null) {
 			$data->requestUrl = $this->requestUrl;
-		}
-		if ($this->requestMethod !== null) {
-			$data->requestMethod = $this->requestMethod;
 		}
 		if ($this->responseCode !== null) {
 			$data->responseCode = $this->responseCode;

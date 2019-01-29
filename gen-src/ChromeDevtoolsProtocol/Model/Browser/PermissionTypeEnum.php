@@ -26,5 +26,6 @@ final class PermissionTypeEnum
 	const PROTECTED_MEDIA_IDENTIFIER = 'protectedMediaIdentifier';
 	const SENSORS = 'sensors';
 	const VIDEO_CAPTURE = 'videoCapture';
+	const IDLE_DETECTION = 'idleDetection';
 
 }

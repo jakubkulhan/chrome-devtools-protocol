@@ -22,6 +22,16 @@ use ChromeDevtoolsProtocol\Model\Memory\StartSamplingRequest;
 interface MemoryDomainInterface
 {
 	/**
+	 * Simulate OomIntervention by purging V8 memory.
+	 *
+	 * @param ContextInterface $ctx
+	 *
+	 * @return void
+	 */
+	public function forciblyPurgeJavaScriptMemory(ContextInterface $ctx): void;
+
+
+	/**
 	 * Retrieve native memory allocations profile collected since renderer process startup.
 	 *
 	 * @param ContextInterface $ctx

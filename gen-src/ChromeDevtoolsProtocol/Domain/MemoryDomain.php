@@ -23,6 +23,13 @@ class MemoryDomain implements MemoryDomainInterface
 	}
 
 
+	public function forciblyPurgeJavaScriptMemory(ContextInterface $ctx): void
+	{
+		$request = new \stdClass();
+		$this->internalClient->executeCommand($ctx, 'Memory.forciblyPurgeJavaScriptMemory', $request);
+	}
+
+
 	public function getAllTimeSamplingProfile(ContextInterface $ctx): GetAllTimeSamplingProfileResponse
 	{
 		$request = new \stdClass();

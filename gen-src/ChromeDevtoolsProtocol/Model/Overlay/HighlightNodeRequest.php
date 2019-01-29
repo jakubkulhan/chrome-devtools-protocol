@@ -38,6 +38,13 @@ final class HighlightNodeRequest implements \JsonSerializable
 	 */
 	public $objectId;
 
+	/**
+	 * Selectors to highlight relevant nodes.
+	 *
+	 * @var string|null
+	 */
+	public $selector;
+
 
 	public static function fromJson($data)
 	{
@@ -53,6 +60,9 @@ final class HighlightNodeRequest implements \JsonSerializable
 		}
 		if (isset($data->objectId)) {
 			$instance->objectId = (string)$data->objectId;
+		}
+		if (isset($data->selector)) {
+			$instance->selector = (string)$data->selector;
 		}
 		return $instance;
 	}
@@ -72,6 +82,9 @@ final class HighlightNodeRequest implements \JsonSerializable
 		}
 		if ($this->objectId !== null) {
 			$data->objectId = $this->objectId;
+		}
+		if ($this->selector !== null) {
+			$data->selector = $this->selector;
 		}
 		return $data;
 	}

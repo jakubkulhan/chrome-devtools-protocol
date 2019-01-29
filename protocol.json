@@ -1051,7 +1051,8 @@
                         "paymentHandler",
                         "protectedMediaIdentifier",
                         "sensors",
-                        "videoCapture"
+                        "videoCapture",
+                        "idleDetection"
                     ]
                 },
                 {
@@ -4841,7 +4842,7 @@
                         },
                         {
                             "name": "nodeId",
-                            "description": "Id of the node at given coordinates, only when enabled.",
+                            "description": "Id of the node at given coordinates, only when enabled and requested document.",
                             "optional": true,
                             "$ref": "NodeId"
                         }
@@ -4877,7 +4878,7 @@
                         },
                         {
                             "name": "nodeId",
-                            "description": "Id of the node at given coordinates, only when enabled.",
+                            "description": "Id of the node at given coordinates, only when enabled and requested document.",
                             "optional": true,
                             "$ref": "NodeId"
                         }
@@ -5231,6 +5232,12 @@
                             "description": "Symbolic group name that can be used to release multiple objects.",
                             "optional": true,
                             "type": "string"
+                        },
+                        {
+                            "name": "executionContextId",
+                            "description": "Execution context in which to resolve the node.",
+                            "optional": true,
+                            "$ref": "Runtime.ExecutionContextId"
                         }
                     ],
                     "returns": [
@@ -9642,6 +9649,10 @@
             ],
             "commands": [
                 {
+                    "name": "forciblyPurgeJavaScriptMemory",
+                    "description": "Simulate OomIntervention by purging V8 memory."
+                },
+                {
                     "name": "getAllTimeSamplingProfile",
                     "description": "Retrieve native memory allocations profile collected since renderer process startup.",
                     "returns": [
@@ -10708,11 +10719,6 @@
                         {
                             "name": "requestUrl",
                             "description": "Signed exchange request URL.",
-                            "type": "string"
-                        },
-                        {
-                            "name": "requestMethod",
-                            "description": "Signed exchange request method.",
                             "type": "string"
                         },
                         {
@@ -11950,12 +11956,6 @@
                             "$ref": "DOM.RGBA"
                         },
                         {
-                            "name": "selectorList",
-                            "description": "Selectors to highlight relevant nodes.",
-                            "optional": true,
-                            "type": "string"
-                        },
-                        {
                             "name": "cssGridColor",
                             "description": "The grid layout color (default: transparent).",
                             "optional": true,
@@ -11969,6 +11969,7 @@
                     "enum": [
                         "searchForNode",
                         "searchForUAShadowDOM",
+                        "captureAreaScreenshot",
                         "none"
                     ]
                 }
@@ -12053,6 +12054,12 @@
                             "description": "JavaScript object id of the node to be highlighted.",
                             "optional": true,
                             "$ref": "Runtime.RemoteObjectId"
+                        },
+                        {
+                            "name": "selector",
+                            "description": "Selectors to highlight relevant nodes.",
+                            "optional": true,
+                            "type": "string"
                         }
                     ]
                 },
@@ -12146,6 +12153,17 @@
                     ]
                 },
                 {
+                    "name": "setShowAdHighlights",
+                    "description": "Highlights owner element of all frames detected to be ads.",
+                    "parameters": [
+                        {
+                            "name": "show",
+                            "description": "True for showing ad highlights",
+                            "type": "boolean"
+                        }
+                    ]
+                },
+                {
                     "name": "setShowDebugBorders",
                     "description": "Requests that backend shows debug borders on layers",
                     "parameters": [
@@ -12223,6 +12241,10 @@
                 }
             ],
             "events": [
+                {
+                    "name": "inspectModeCanceled",
+                    "description": "Fired when user cancels the inspect mode."
+                },
                 {
                     "name": "inspectNodeRequested",
                     "description": "Fired when the node should be inspected. This happens after call to `setInspectMode` or when user manually inspects an element.",

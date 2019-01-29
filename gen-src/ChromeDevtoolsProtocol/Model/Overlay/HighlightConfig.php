@@ -90,13 +90,6 @@ final class HighlightConfig implements \JsonSerializable
 	public $shapeMarginColor;
 
 	/**
-	 * Selectors to highlight relevant nodes.
-	 *
-	 * @var string|null
-	 */
-	public $selectorList;
-
-	/**
 	 * The grid layout color (default: transparent).
 	 *
 	 * @var RGBA|null
@@ -140,9 +133,6 @@ final class HighlightConfig implements \JsonSerializable
 		if (isset($data->shapeMarginColor)) {
 			$instance->shapeMarginColor = RGBA::fromJson($data->shapeMarginColor);
 		}
-		if (isset($data->selectorList)) {
-			$instance->selectorList = (string)$data->selectorList;
-		}
 		if (isset($data->cssGridColor)) {
 			$instance->cssGridColor = RGBA::fromJson($data->cssGridColor);
 		}
@@ -185,9 +175,6 @@ final class HighlightConfig implements \JsonSerializable
 		}
 		if ($this->shapeMarginColor !== null) {
 			$data->shapeMarginColor = $this->shapeMarginColor->jsonSerialize();
-		}
-		if ($this->selectorList !== null) {
-			$data->selectorList = $this->selectorList;
 		}
 		if ($this->cssGridColor !== null) {
 			$data->cssGridColor = $this->cssGridColor->jsonSerialize();
