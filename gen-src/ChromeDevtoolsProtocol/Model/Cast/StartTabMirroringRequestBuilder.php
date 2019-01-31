@@ -1,4 +1,5 @@
 <?php
+
 namespace ChromeDevtoolsProtocol\Model\Cast;
 
 use ChromeDevtoolsProtocol\Exception\BuilderException;

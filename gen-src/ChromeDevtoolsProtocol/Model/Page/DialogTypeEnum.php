@@ -1,4 +1,5 @@
 <?php
+
 namespace ChromeDevtoolsProtocol\Model\Page;
 
 /**
@@ -14,5 +15,4 @@ final class DialogTypeEnum
 	const CONFIRM = 'confirm';
 	const PROMPT = 'prompt';
 	const BEFOREUNLOAD = 'beforeunload';
-
 }

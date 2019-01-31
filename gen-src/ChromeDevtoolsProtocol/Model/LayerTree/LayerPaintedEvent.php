@@ -1,4 +1,5 @@
 <?php
+
 namespace ChromeDevtoolsProtocol\Model\LayerTree;
 
 use ChromeDevtoolsProtocol\Model\DOM\Rect;

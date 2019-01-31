@@ -1,4 +1,5 @@
 <?php
+
 namespace ChromeDevtoolsProtocol\Model\HeapProfiler;
 
 use ChromeDevtoolsProtocol\Exception\BuilderException;

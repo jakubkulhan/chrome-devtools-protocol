@@ -1,4 +1,5 @@
 <?php
+
 namespace ChromeDevtoolsProtocol\Domain;
 
 use ChromeDevtoolsProtocol\ContextInterface;

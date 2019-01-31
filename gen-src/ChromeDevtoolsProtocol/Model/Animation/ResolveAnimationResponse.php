@@ -1,4 +1,5 @@
 <?php
+
 namespace ChromeDevtoolsProtocol\Model\Animation;
 
 use ChromeDevtoolsProtocol\Model\Runtime\RemoteObject;

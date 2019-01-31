@@ -1,4 +1,5 @@
 <?php
+
 namespace ChromeDevtoolsProtocol\Model\ServiceWorker;
 
 use ChromeDevtoolsProtocol\Exception\BuilderException;

@@ -1,4 +1,5 @@
 <?php
+
 namespace ChromeDevtoolsProtocol\Model\ServiceWorker;
 
 /**
@@ -14,5 +15,4 @@ final class ServiceWorkerVersionRunningStatusEnum
 	const STARTING = 'starting';
 	const RUNNING = 'running';
 	const STOPPING = 'stopping';
-
 }

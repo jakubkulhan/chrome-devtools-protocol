@@ -1,4 +1,5 @@
 <?php
+
 namespace ChromeDevtoolsProtocol\Model\Debugger;
 
 use ChromeDevtoolsProtocol\Model\Runtime\CallArgument;

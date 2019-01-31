@@ -1,4 +1,5 @@
 <?php
+
 namespace ChromeDevtoolsProtocol\Model\Tethering;
 
 use ChromeDevtoolsProtocol\Exception\BuilderException;

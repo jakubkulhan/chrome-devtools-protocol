@@ -1,4 +1,5 @@
 <?php
+
 namespace ChromeDevtoolsProtocol\Model\Accessibility;
 
 /**
@@ -16,5 +17,4 @@ final class AXValueSourceTypeEnum
 	const CONTENTS = 'contents';
 	const PLACEHOLDER = 'placeholder';
 	const RELATED_ELEMENT = 'relatedElement';
-
 }

@@ -1,4 +1,5 @@
 <?php
+
 namespace ChromeDevtoolsProtocol\Model\Network;
 
 /**
@@ -15,5 +16,4 @@ final class ResourcePriorityEnum
 	const MEDIUM = 'Medium';
 	const HIGH = 'High';
 	const VERY_HIGH = 'VeryHigh';
-
 }

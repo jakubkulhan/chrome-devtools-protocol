@@ -1,4 +1,5 @@
 <?php
+
 namespace ChromeDevtoolsProtocol\Model\Tracing;
 
 use ChromeDevtoolsProtocol\Exception\BuilderException;

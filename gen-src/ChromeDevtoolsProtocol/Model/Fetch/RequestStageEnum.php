@@ -1,4 +1,5 @@
 <?php
+
 namespace ChromeDevtoolsProtocol\Model\Fetch;
 
 /**
@@ -12,5 +13,4 @@ final class RequestStageEnum
 {
 	const REQUEST = 'Request';
 	const RESPONSE = 'Response';
-
 }

@@ -1,4 +1,5 @@
 <?php
+
 namespace ChromeDevtoolsProtocol\Model\CacheStorage;
 
 /**
@@ -16,5 +17,4 @@ final class CachedResponseTypeEnum
 	const ERROR = 'error';
 	const OPAQUE_RESPONSE = 'opaqueResponse';
 	const OPAQUE_REDIRECT = 'opaqueRedirect';
-
 }

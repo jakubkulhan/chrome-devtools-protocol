@@ -1,4 +1,5 @@
 <?php
+
 namespace ChromeDevtoolsProtocol\Model\Security;
 
 /**
@@ -15,5 +16,4 @@ final class SecurityStateEnum
 	const INSECURE = 'insecure';
 	const SECURE = 'secure';
 	const INFO = 'info';
-
 }

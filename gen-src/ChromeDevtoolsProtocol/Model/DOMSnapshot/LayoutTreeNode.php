@@ -1,4 +1,5 @@
 <?php
+
 namespace ChromeDevtoolsProtocol\Model\DOMSnapshot;
 
 use ChromeDevtoolsProtocol\Model\DOM\Rect;

@@ -1,4 +1,5 @@
 <?php
+
 namespace ChromeDevtoolsProtocol\Model\IndexedDB;
 
 use ChromeDevtoolsProtocol\Model\Runtime\RemoteObject;

@@ -1,4 +1,5 @@
 <?php
+
 namespace ChromeDevtoolsProtocol\Model\Page;
 
 /**
@@ -23,5 +24,4 @@ final class TransitionTypeEnum
 	const KEYWORD = 'keyword';
 	const KEYWORD_GENERATED = 'keyword_generated';
 	const OTHER = 'other';
-
 }

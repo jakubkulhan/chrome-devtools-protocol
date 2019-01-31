@@ -1,4 +1,5 @@
 <?php
+
 namespace ChromeDevtoolsProtocol\Model\Emulation;
 
 use ChromeDevtoolsProtocol\Model\DOM\RGBA;

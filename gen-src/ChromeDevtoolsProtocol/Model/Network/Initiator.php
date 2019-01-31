@@ -1,4 +1,5 @@
 <?php
+
 namespace ChromeDevtoolsProtocol\Model\Network;
 
 use ChromeDevtoolsProtocol\Model\Runtime\StackTrace;

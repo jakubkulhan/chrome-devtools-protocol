@@ -1,4 +1,5 @@
 <?php
+
 namespace ChromeDevtoolsProtocol\Model\DOMDebugger;
 
 use ChromeDevtoolsProtocol\Model\Runtime\RemoteObject;

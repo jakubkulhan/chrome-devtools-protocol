@@ -1,4 +1,5 @@
 <?php
+
 namespace ChromeDevtoolsProtocol\Model\Accessibility;
 
 /**
@@ -18,5 +19,4 @@ final class AXValueNativeSourceTypeEnum
 	const TABLECAPTION = 'tablecaption';
 	const TITLE = 'title';
 	const OTHER = 'other';
-
 }

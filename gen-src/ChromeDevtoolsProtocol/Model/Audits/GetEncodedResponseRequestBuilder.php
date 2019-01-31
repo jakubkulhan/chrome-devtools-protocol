@@ -1,4 +1,5 @@
 <?php
+
 namespace ChromeDevtoolsProtocol\Model\Audits;
 
 use ChromeDevtoolsProtocol\Exception\BuilderException;

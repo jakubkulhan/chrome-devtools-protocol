@@ -1,4 +1,5 @@
 <?php
+
 namespace ChromeDevtoolsProtocol\Model\DOMDebugger;
 
 /**
@@ -13,5 +14,4 @@ final class DOMBreakpointTypeEnum
 	const SUBTREE_MODIFIED = 'subtree-modified';
 	const ATTRIBUTE_MODIFIED = 'attribute-modified';
 	const NODE_REMOVED = 'node-removed';
-
 }

@@ -1,4 +1,5 @@
 <?php
+
 namespace ChromeDevtoolsProtocol\Model\Input;
 
 /**
@@ -13,5 +14,4 @@ final class GestureSourceTypeEnum
 	const DEFAULT = 'default';
 	const TOUCH = 'touch';
 	const MOUSE = 'mouse';
-
 }

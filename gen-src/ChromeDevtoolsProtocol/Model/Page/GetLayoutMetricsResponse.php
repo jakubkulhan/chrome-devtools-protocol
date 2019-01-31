@@ -1,4 +1,5 @@
 <?php
+
 namespace ChromeDevtoolsProtocol\Model\Page;
 
 use ChromeDevtoolsProtocol\Model\DOM\Rect;

@@ -1,4 +1,5 @@
 <?php
+
 namespace ChromeDevtoolsProtocol\Model\CSS;
 
 /**
@@ -14,5 +15,4 @@ final class StyleSheetOriginEnum
 	const USER_AGENT = 'user-agent';
 	const INSPECTOR = 'inspector';
 	const REGULAR = 'regular';
-
 }

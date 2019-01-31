@@ -1,4 +1,5 @@
 <?php
+
 namespace ChromeDevtoolsProtocol\Model\Testing;
 
 use ChromeDevtoolsProtocol\Exception\BuilderException;

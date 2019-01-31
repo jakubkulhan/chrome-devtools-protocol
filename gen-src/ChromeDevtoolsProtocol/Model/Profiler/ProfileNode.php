@@ -1,4 +1,5 @@
 <?php
+
 namespace ChromeDevtoolsProtocol\Model\Profiler;
 
 use ChromeDevtoolsProtocol\Model\Runtime\CallFrame;

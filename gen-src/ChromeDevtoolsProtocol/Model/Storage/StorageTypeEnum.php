@@ -1,4 +1,5 @@
 <?php
+
 namespace ChromeDevtoolsProtocol\Model\Storage;
 
 /**
@@ -21,5 +22,4 @@ final class StorageTypeEnum
 	const CACHE_STORAGE = 'cache_storage';
 	const ALL = 'all';
 	const OTHER = 'other';
-
 }

@@ -1,4 +1,5 @@
 <?php
+
 namespace ChromeDevtoolsProtocol\Model\Network;
 
 /**
@@ -19,5 +20,4 @@ final class ConnectionTypeEnum
 	const WIFI = 'wifi';
 	const WIMAX = 'wimax';
 	const OTHER = 'other';
-
 }

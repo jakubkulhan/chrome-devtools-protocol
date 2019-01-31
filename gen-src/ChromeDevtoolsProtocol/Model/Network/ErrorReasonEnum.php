@@ -1,4 +1,5 @@
 <?php
+
 namespace ChromeDevtoolsProtocol\Model\Network;
 
 /**
@@ -24,5 +25,4 @@ final class ErrorReasonEnum
 	const ADDRESS_UNREACHABLE = 'AddressUnreachable';
 	const BLOCKED_BY_CLIENT = 'BlockedByClient';
 	const BLOCKED_BY_RESPONSE = 'BlockedByResponse';
-
 }

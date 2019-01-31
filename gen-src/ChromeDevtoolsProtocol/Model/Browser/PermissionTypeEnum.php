@@ -1,4 +1,5 @@
 <?php
+
 namespace ChromeDevtoolsProtocol\Model\Browser;
 
 /**
@@ -27,5 +28,4 @@ final class PermissionTypeEnum
 	const SENSORS = 'sensors';
 	const VIDEO_CAPTURE = 'videoCapture';
 	const IDLE_DETECTION = 'idleDetection';
-
 }

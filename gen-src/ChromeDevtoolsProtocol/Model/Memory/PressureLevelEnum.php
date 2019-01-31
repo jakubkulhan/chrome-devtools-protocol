@@ -1,4 +1,5 @@
 <?php
+
 namespace ChromeDevtoolsProtocol\Model\Memory;
 
 /**
@@ -12,5 +13,4 @@ final class PressureLevelEnum
 {
 	const MODERATE = 'moderate';
 	const CRITICAL = 'critical';
-
 }

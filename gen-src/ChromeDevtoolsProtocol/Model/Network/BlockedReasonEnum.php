@@ -1,4 +1,5 @@
 <?php
+
 namespace ChromeDevtoolsProtocol\Model\Network;
 
 /**
@@ -18,5 +19,4 @@ final class BlockedReasonEnum
 	const SUBRESOURCE_FILTER = 'subresource-filter';
 	const CONTENT_TYPE = 'content-type';
 	const COLLAPSED_BY_CLIENT = 'collapsed-by-client';
-
 }

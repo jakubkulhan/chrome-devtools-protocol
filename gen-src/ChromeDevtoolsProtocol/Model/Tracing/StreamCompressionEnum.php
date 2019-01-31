@@ -1,4 +1,5 @@
 <?php
+
 namespace ChromeDevtoolsProtocol\Model\Tracing;
 
 /**
@@ -12,5 +13,4 @@ final class StreamCompressionEnum
 {
 	const NONE = 'none';
 	const GZIP = 'gzip';
-
 }

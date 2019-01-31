@@ -1,4 +1,5 @@
 <?php
+
 namespace ChromeDevtoolsProtocol\Model\CacheStorage;
 
 use ChromeDevtoolsProtocol\Exception\BuilderException;

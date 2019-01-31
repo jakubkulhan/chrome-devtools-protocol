@@ -1,4 +1,5 @@
 <?php
+
 namespace ChromeDevtoolsProtocol\Model\DOM;
 
 /**
@@ -25,5 +26,4 @@ final class PseudoTypeEnum
 	const SCROLLBAR_CORNER = 'scrollbar-corner';
 	const RESIZER = 'resizer';
 	const INPUT_LIST_BUTTON = 'input-list-button';
-
 }

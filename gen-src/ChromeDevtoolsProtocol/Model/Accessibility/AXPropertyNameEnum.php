@@ -1,4 +1,5 @@
 <?php
+
 namespace ChromeDevtoolsProtocol\Model\Accessibility;
 
 /**
@@ -49,5 +50,4 @@ final class AXPropertyNameEnum
 	const FLOWTO = 'flowto';
 	const LABELLEDBY = 'labelledby';
 	const OWNS = 'owns';
-
 }

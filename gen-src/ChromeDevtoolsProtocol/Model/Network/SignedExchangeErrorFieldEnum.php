@@ -1,4 +1,5 @@
 <?php
+
 namespace ChromeDevtoolsProtocol\Model\Network;
 
 /**
@@ -16,5 +17,4 @@ final class SignedExchangeErrorFieldEnum
 	const SIGNATURE_CERT_SHA256 = 'signatureCertSha256';
 	const SIGNATURE_VALIDITY_URL = 'signatureValidityUrl';
 	const SIGNATURE_TIMESTAMPS = 'signatureTimestamps';
-
 }

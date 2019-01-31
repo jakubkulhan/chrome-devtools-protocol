@@ -1,4 +1,5 @@
 <?php
+
 namespace ChromeDevtoolsProtocol\Model\Fetch;
 
 use ChromeDevtoolsProtocol\Exception\BuilderException;

@@ -1,4 +1,5 @@
 <?php
+
 namespace ChromeDevtoolsProtocol\Model\Input;
 
 use ChromeDevtoolsProtocol\Exception\BuilderException;

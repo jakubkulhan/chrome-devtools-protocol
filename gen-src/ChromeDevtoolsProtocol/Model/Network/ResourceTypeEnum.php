@@ -1,4 +1,5 @@
 <?php
+
 namespace ChromeDevtoolsProtocol\Model\Network;
 
 /**
@@ -26,5 +27,4 @@ final class ResourceTypeEnum
 	const PING = 'Ping';
 	const CSP_VIOLATION_REPORT = 'CSPViolationReport';
 	const OTHER = 'Other';
-
 }

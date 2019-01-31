@@ -1,4 +1,5 @@
 <?php
+
 namespace ChromeDevtoolsProtocol\Model\Security;
 
 /**
@@ -12,5 +13,4 @@ final class CertificateErrorActionEnum
 {
 	const CONTINUE = 'continue';
 	const CANCEL = 'cancel';
-
 }

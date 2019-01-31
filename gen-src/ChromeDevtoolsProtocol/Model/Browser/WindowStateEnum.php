@@ -1,4 +1,5 @@
 <?php
+
 namespace ChromeDevtoolsProtocol\Model\Browser;
 
 /**
@@ -14,5 +15,4 @@ final class WindowStateEnum
 	const MINIMIZED = 'minimized';
 	const MAXIMIZED = 'maximized';
 	const FULLSCREEN = 'fullscreen';
-
 }

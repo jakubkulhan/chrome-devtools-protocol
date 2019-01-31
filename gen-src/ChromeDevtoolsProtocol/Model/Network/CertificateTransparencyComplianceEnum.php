@@ -1,4 +1,5 @@
 <?php
+
 namespace ChromeDevtoolsProtocol\Model\Network;
 
 /**
@@ -13,5 +14,4 @@ final class CertificateTransparencyComplianceEnum
 	const UNKNOWN = 'unknown';
 	const NOT_COMPLIANT = 'not-compliant';
 	const COMPLIANT = 'compliant';
-
 }

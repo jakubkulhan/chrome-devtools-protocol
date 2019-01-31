@@ -1,4 +1,5 @@
 <?php
+
 namespace ChromeDevtoolsProtocol\Model\DOMStorage;
 
 use ChromeDevtoolsProtocol\Exception\BuilderException;

@@ -1,4 +1,5 @@
 <?php
+
 namespace ChromeDevtoolsProtocol\Model\Memory;
 
 use ChromeDevtoolsProtocol\Exception\BuilderException;

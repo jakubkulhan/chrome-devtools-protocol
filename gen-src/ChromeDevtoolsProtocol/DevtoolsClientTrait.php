@@ -1,4 +1,5 @@
 <?php
+
 namespace ChromeDevtoolsProtocol;
 
 use ChromeDevtoolsProtocol\Domain\AccessibilityDomain;

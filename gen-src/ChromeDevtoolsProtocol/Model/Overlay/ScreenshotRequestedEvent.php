@@ -1,4 +1,5 @@
 <?php
+
 namespace ChromeDevtoolsProtocol\Model\Overlay;
 
 use ChromeDevtoolsProtocol\Model\Page\Viewport;

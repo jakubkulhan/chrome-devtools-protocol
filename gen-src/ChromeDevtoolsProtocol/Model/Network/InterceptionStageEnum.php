@@ -1,4 +1,5 @@
 <?php
+
 namespace ChromeDevtoolsProtocol\Model\Network;
 
 /**
@@ -12,5 +13,4 @@ final class InterceptionStageEnum
 {
 	const REQUEST = 'Request';
 	const HEADERS_RECEIVED = 'HeadersReceived';
-
 }

@@ -1,4 +1,5 @@
 <?php
+
 namespace ChromeDevtoolsProtocol\Model\Accessibility;
 
 /**
@@ -27,5 +28,4 @@ final class AXValueTypeEnum
 	const ROLE = 'role';
 	const INTERNAL_ROLE = 'internalRole';
 	const VALUE_UNDEFINED = 'valueUndefined';
-
 }

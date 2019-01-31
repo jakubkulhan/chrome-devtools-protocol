@@ -1,4 +1,5 @@
 <?php
+
 namespace ChromeDevtoolsProtocol\Model\ServiceWorker;
 
 /**
@@ -16,5 +17,4 @@ final class ServiceWorkerVersionStatusEnum
 	const ACTIVATING = 'activating';
 	const ACTIVATED = 'activated';
 	const REDUNDANT = 'redundant';
-
 }

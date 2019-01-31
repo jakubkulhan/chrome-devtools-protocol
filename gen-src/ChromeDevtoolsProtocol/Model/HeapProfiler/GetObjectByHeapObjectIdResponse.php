@@ -1,4 +1,5 @@
 <?php
+
 namespace ChromeDevtoolsProtocol\Model\HeapProfiler;
 
 use ChromeDevtoolsProtocol\Model\Runtime\RemoteObject;
