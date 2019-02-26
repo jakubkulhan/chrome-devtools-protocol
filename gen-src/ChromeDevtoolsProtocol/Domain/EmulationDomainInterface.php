@@ -21,9 +21,7 @@ use ChromeDevtoolsProtocol\Model\Emulation\SetUserAgentOverrideRequest;
 use ChromeDevtoolsProtocol\Model\Emulation\SetVirtualTimePolicyRequest;
 use ChromeDevtoolsProtocol\Model\Emulation\SetVirtualTimePolicyResponse;
 use ChromeDevtoolsProtocol\Model\Emulation\SetVisibleSizeRequest;
-use ChromeDevtoolsProtocol\Model\Emulation\VirtualTimeAdvancedEvent;
 use ChromeDevtoolsProtocol\Model\Emulation\VirtualTimeBudgetExpiredEvent;
-use ChromeDevtoolsProtocol\Model\Emulation\VirtualTimePausedEvent;
 use ChromeDevtoolsProtocol\SubscriptionInterface;
 
 /**
@@ -252,30 +250,6 @@ interface EmulationDomainInterface
 
 
 	/**
-	 * Notification sent after the virtual time has advanced.
-	 *
-	 * Listener will be called whenever event Emulation.virtualTimeAdvanced is fired.
-	 *
-	 * @param callable $listener
-	 *
-	 * @return SubscriptionInterface
-	 */
-	public function addVirtualTimeAdvancedListener(callable $listener): SubscriptionInterface;
-
-
-	/**
-	 * Notification sent after the virtual time has advanced.
-	 *
-	 * Method will block until first Emulation.virtualTimeAdvanced event is fired.
-	 *
-	 * @param ContextInterface $ctx
-	 *
-	 * @return VirtualTimeAdvancedEvent
-	 */
-	public function awaitVirtualTimeAdvanced(ContextInterface $ctx): VirtualTimeAdvancedEvent;
-
-
-	/**
 	 * Notification sent after the virtual time budget for the current VirtualTimePolicy has run out.
 	 *
 	 * Listener will be called whenever event Emulation.virtualTimeBudgetExpired is fired.
@@ -297,28 +271,4 @@ interface EmulationDomainInterface
 	 * @return VirtualTimeBudgetExpiredEvent
 	 */
 	public function awaitVirtualTimeBudgetExpired(ContextInterface $ctx): VirtualTimeBudgetExpiredEvent;
-
-
-	/**
-	 * Notification sent after the virtual time has paused.
-	 *
-	 * Listener will be called whenever event Emulation.virtualTimePaused is fired.
-	 *
-	 * @param callable $listener
-	 *
-	 * @return SubscriptionInterface
-	 */
-	public function addVirtualTimePausedListener(callable $listener): SubscriptionInterface;
-
-
-	/**
-	 * Notification sent after the virtual time has paused.
-	 *
-	 * Method will block until first Emulation.virtualTimePaused event is fired.
-	 *
-	 * @param ContextInterface $ctx
-	 *
-	 * @return VirtualTimePausedEvent
-	 */
-	public function awaitVirtualTimePaused(ContextInterface $ctx): VirtualTimePausedEvent;
 }

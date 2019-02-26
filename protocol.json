@@ -1121,6 +1121,11 @@
                     "experimental": true
                 },
                 {
+                    "name": "crashGpuProcess",
+                    "description": "Crashes GPU process.",
+                    "experimental": true
+                },
+                {
                     "name": "getBrowserCommandLine",
                     "description": "Returns the command line switches for the browser process if, and only if --enable-automation is on the commandline.",
                     "experimental": true,
@@ -1504,6 +1509,14 @@
                             "name": "requestURL",
                             "description": "URL spec of the request.",
                             "type": "string"
+                        },
+                        {
+                            "name": "requestHeaders",
+                            "description": "headers of the request.",
+                            "type": "array",
+                            "items": {
+                                "$ref": "Header"
+                            }
                         }
                     ],
                     "returns": [
@@ -7167,33 +7180,9 @@
             ],
             "events": [
                 {
-                    "name": "virtualTimeAdvanced",
-                    "description": "Notification sent after the virtual time has advanced.",
-                    "experimental": true,
-                    "parameters": [
-                        {
-                            "name": "virtualTimeElapsed",
-                            "description": "The amount of virtual time that has elapsed in milliseconds since virtual time was first enabled.",
-                            "type": "number"
-                        }
-                    ]
-                },
-                {
                     "name": "virtualTimeBudgetExpired",
                     "description": "Notification sent after the virtual time budget for the current VirtualTimePolicy has run out.",
                     "experimental": true
-                },
-                {
-                    "name": "virtualTimePaused",
-                    "description": "Notification sent after the virtual time has paused.",
-                    "experimental": true,
-                    "parameters": [
-                        {
-                            "name": "virtualTimeElapsed",
-                            "description": "The amount of virtual time that has elapsed in milliseconds since virtual time was first enabled.",
-                            "type": "number"
-                        }
-                    ]
                 }
             ]
         },
@@ -8233,6 +8222,34 @@
                 {
                     "name": "enable",
                     "description": "Enables events from backend."
+                },
+                {
+                    "name": "getKeyGeneratorCurrentNumber",
+                    "description": "Gets the auto increment number of an object store. Only meaningful when objectStore.autoIncrement is true.",
+                    "parameters": [
+                        {
+                            "name": "securityOrigin",
+                            "description": "Security origin.",
+                            "type": "string"
+                        },
+                        {
+                            "name": "databaseName",
+                            "description": "Database name.",
+                            "type": "string"
+                        },
+                        {
+                            "name": "objectStoreName",
+                            "description": "Object store name.",
+                            "type": "string"
+                        }
+                    ],
+                    "returns": [
+                        {
+                            "name": "currentNumber",
+                            "description": "the current value of key generator, to become the next inserted key into the object store.",
+                            "type": "number"
+                        }
+                    ]
                 },
                 {
                     "name": "requestData",

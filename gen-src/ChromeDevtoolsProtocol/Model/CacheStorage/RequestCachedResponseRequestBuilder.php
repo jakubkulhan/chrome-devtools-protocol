@@ -15,6 +15,8 @@ final class RequestCachedResponseRequestBuilder
 
 	private $requestURL;
 
+	private $requestHeaders;
+
 
 	/**
 	 * Validate non-optional parameters and return new instance.
@@ -30,6 +32,10 @@ final class RequestCachedResponseRequestBuilder
 			throw new BuilderException('Property [requestURL] is required.');
 		}
 		$instance->requestURL = $this->requestURL;
+		if ($this->requestHeaders === null) {
+			throw new BuilderException('Property [requestHeaders] is required.');
+		}
+		$instance->requestHeaders = $this->requestHeaders;
 		return $instance;
 	}
 
@@ -54,6 +60,18 @@ final class RequestCachedResponseRequestBuilder
 	public function setRequestURL($requestURL): self
 	{
 		$this->requestURL = $requestURL;
+		return $this;
+	}
+
+
+	/**
+	 * @param Header[] $requestHeaders
+	 *
+	 * @return self
+	 */
+	public function setRequestHeaders($requestHeaders): self
+	{
+		$this->requestHeaders = $requestHeaders;
 		return $this;
 	}
 }

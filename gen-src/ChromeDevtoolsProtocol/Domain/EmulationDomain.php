@@ -22,9 +22,7 @@ use ChromeDevtoolsProtocol\Model\Emulation\SetUserAgentOverrideRequest;
 use ChromeDevtoolsProtocol\Model\Emulation\SetVirtualTimePolicyRequest;
 use ChromeDevtoolsProtocol\Model\Emulation\SetVirtualTimePolicyResponse;
 use ChromeDevtoolsProtocol\Model\Emulation\SetVisibleSizeRequest;
-use ChromeDevtoolsProtocol\Model\Emulation\VirtualTimeAdvancedEvent;
 use ChromeDevtoolsProtocol\Model\Emulation\VirtualTimeBudgetExpiredEvent;
-use ChromeDevtoolsProtocol\Model\Emulation\VirtualTimePausedEvent;
 use ChromeDevtoolsProtocol\SubscriptionInterface;
 
 class EmulationDomain implements EmulationDomainInterface
@@ -165,20 +163,6 @@ class EmulationDomain implements EmulationDomainInterface
 	}
 
 
-	public function addVirtualTimeAdvancedListener(callable $listener): SubscriptionInterface
-	{
-		return $this->internalClient->addListener('Emulation.virtualTimeAdvanced', function ($event) use ($listener) {
-			return $listener(VirtualTimeAdvancedEvent::fromJson($event));
-		});
-	}
-
-
-	public function awaitVirtualTimeAdvanced(ContextInterface $ctx): VirtualTimeAdvancedEvent
-	{
-		return VirtualTimeAdvancedEvent::fromJson($this->internalClient->awaitEvent($ctx, 'Emulation.virtualTimeAdvanced'));
-	}
-
-
 	public function addVirtualTimeBudgetExpiredListener(callable $listener): SubscriptionInterface
 	{
 		return $this->internalClient->addListener('Emulation.virtualTimeBudgetExpired', function ($event) use ($listener) {
@@ -190,19 +174,5 @@ class EmulationDomain implements EmulationDomainInterface
 	public function awaitVirtualTimeBudgetExpired(ContextInterface $ctx): VirtualTimeBudgetExpiredEvent
 	{
 		return VirtualTimeBudgetExpiredEvent::fromJson($this->internalClient->awaitEvent($ctx, 'Emulation.virtualTimeBudgetExpired'));
-	}
-
-
-	public function addVirtualTimePausedListener(callable $listener): SubscriptionInterface
-	{
-		return $this->internalClient->addListener('Emulation.virtualTimePaused', function ($event) use ($listener) {
-			return $listener(VirtualTimePausedEvent::fromJson($event));
-		});
-	}
-
-
-	public function awaitVirtualTimePaused(ContextInterface $ctx): VirtualTimePausedEvent
-	{
-		return VirtualTimePausedEvent::fromJson($this->internalClient->awaitEvent($ctx, 'Emulation.virtualTimePaused'));
 	}
 }

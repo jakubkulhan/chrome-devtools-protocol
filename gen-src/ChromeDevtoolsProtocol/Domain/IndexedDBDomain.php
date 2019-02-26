@@ -7,6 +7,8 @@ use ChromeDevtoolsProtocol\InternalClientInterface;
 use ChromeDevtoolsProtocol\Model\IndexedDB\ClearObjectStoreRequest;
 use ChromeDevtoolsProtocol\Model\IndexedDB\DeleteDatabaseRequest;
 use ChromeDevtoolsProtocol\Model\IndexedDB\DeleteObjectStoreEntriesRequest;
+use ChromeDevtoolsProtocol\Model\IndexedDB\GetKeyGeneratorCurrentNumberRequest;
+use ChromeDevtoolsProtocol\Model\IndexedDB\GetKeyGeneratorCurrentNumberResponse;
 use ChromeDevtoolsProtocol\Model\IndexedDB\RequestDataRequest;
 use ChromeDevtoolsProtocol\Model\IndexedDB\RequestDataResponse;
 use ChromeDevtoolsProtocol\Model\IndexedDB\RequestDatabaseNamesRequest;
@@ -55,6 +57,13 @@ class IndexedDBDomain implements IndexedDBDomainInterface
 	{
 		$request = new \stdClass();
 		$this->internalClient->executeCommand($ctx, 'IndexedDB.enable', $request);
+	}
+
+
+	public function getKeyGeneratorCurrentNumber(ContextInterface $ctx, GetKeyGeneratorCurrentNumberRequest $request): GetKeyGeneratorCurrentNumberResponse
+	{
+		$response = $this->internalClient->executeCommand($ctx, 'IndexedDB.getKeyGeneratorCurrentNumber', $request);
+		return GetKeyGeneratorCurrentNumberResponse::fromJson($response);
 	}
 
 

@@ -48,6 +48,16 @@ interface BrowserDomainInterface
 
 
 	/**
+	 * Crashes GPU process.
+	 *
+	 * @param ContextInterface $ctx
+	 *
+	 * @return void
+	 */
+	public function crashGpuProcess(ContextInterface $ctx): void;
+
+
+	/**
 	 * Returns the command line switches for the browser process if, and only if --enable-automation is on the commandline.
 	 *
 	 * @param ContextInterface $ctx
