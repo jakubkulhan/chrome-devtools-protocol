@@ -10,6 +10,8 @@ use ChromeDevtoolsProtocol\Domain\ApplicationCacheDomain;
 use ChromeDevtoolsProtocol\Domain\ApplicationCacheDomainInterface;
 use ChromeDevtoolsProtocol\Domain\AuditsDomain;
 use ChromeDevtoolsProtocol\Domain\AuditsDomainInterface;
+use ChromeDevtoolsProtocol\Domain\BackgroundServiceDomain;
+use ChromeDevtoolsProtocol\Domain\BackgroundServiceDomainInterface;
 use ChromeDevtoolsProtocol\Domain\BrowserDomain;
 use ChromeDevtoolsProtocol\Domain\BrowserDomainInterface;
 use ChromeDevtoolsProtocol\Domain\CSSDomain;
@@ -137,6 +139,18 @@ trait DevtoolsClientTrait
 		}
 		/** @var AuditsDomainInterface $domain */
 		$domain = $this->domains['Audits'];
+		return $domain;
+	}
+
+
+	public function backgroundService(): BackgroundServiceDomainInterface
+	{
+		if (!isset($this->domains['BackgroundService'])) {
+			/** @var InternalClientInterface $this */
+			$this->domains['BackgroundService'] = new BackgroundServiceDomain($this);
+		}
+		/** @var BackgroundServiceDomainInterface $domain */
+		$domain = $this->domains['BackgroundService'];
 		return $domain;
 	}
 
