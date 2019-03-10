@@ -26,6 +26,13 @@ final class GetPropertiesResponse implements \JsonSerializable
 	public $internalProperties;
 
 	/**
+	 * Object private properties.
+	 *
+	 * @var PrivatePropertyDescriptor[]|null
+	 */
+	public $privateProperties;
+
+	/**
 	 * Exception details.
 	 *
 	 * @var ExceptionDetails|null
@@ -48,6 +55,12 @@ final class GetPropertiesResponse implements \JsonSerializable
 				$instance->internalProperties[] = InternalPropertyDescriptor::fromJson($item);
 			}
 		}
+		if (isset($data->privateProperties)) {
+			$instance->privateProperties = [];
+			foreach ($data->privateProperties as $item) {
+				$instance->privateProperties[] = PrivatePropertyDescriptor::fromJson($item);
+			}
+		}
 		if (isset($data->exceptionDetails)) {
 			$instance->exceptionDetails = ExceptionDetails::fromJson($data->exceptionDetails);
 		}
@@ -68,6 +81,12 @@ final class GetPropertiesResponse implements \JsonSerializable
 			$data->internalProperties = [];
 			foreach ($this->internalProperties as $item) {
 				$data->internalProperties[] = $item->jsonSerialize();
+			}
+		}
+		if ($this->privateProperties !== null) {
+			$data->privateProperties = [];
+			foreach ($this->privateProperties as $item) {
+				$data->privateProperties[] = $item->jsonSerialize();
 			}
 		}
 		if ($this->exceptionDetails !== null) {
