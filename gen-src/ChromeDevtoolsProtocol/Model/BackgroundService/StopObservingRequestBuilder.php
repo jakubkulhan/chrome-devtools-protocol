@@ -9,7 +9,7 @@ use ChromeDevtoolsProtocol\Exception\BuilderException;
  *
  * @author Jakub Kulhan <jakub.kulhan@gmail.com>
  */
-final class DisableRequestBuilder
+final class StopObservingRequestBuilder
 {
 	private $service;
 
@@ -17,9 +17,9 @@ final class DisableRequestBuilder
 	/**
 	 * Validate non-optional parameters and return new instance.
 	 */
-	public function build(): DisableRequest
+	public function build(): StopObservingRequest
 	{
-		$instance = new DisableRequest();
+		$instance = new StopObservingRequest();
 		if ($this->service === null) {
 			throw new BuilderException('Property [service] is required.');
 		}

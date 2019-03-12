@@ -3,13 +3,13 @@
 namespace ChromeDevtoolsProtocol\Model\BackgroundService;
 
 /**
- * Request for BackgroundService.disable command.
+ * Request for BackgroundService.startObserving command.
  *
  * @generated This file has been auto-generated, do not edit.
  *
  * @author Jakub Kulhan <jakub.kulhan@gmail.com>
  */
-final class DisableRequest implements \JsonSerializable
+final class StartObservingRequest implements \JsonSerializable
 {
 	/** @var string */
 	public $service;
@@ -38,10 +38,10 @@ final class DisableRequest implements \JsonSerializable
 	/**
 	 * Create new instance using builder.
 	 *
-	 * @return DisableRequestBuilder
+	 * @return StartObservingRequestBuilder
 	 */
-	public static function builder(): DisableRequestBuilder
+	public static function builder(): StartObservingRequestBuilder
 	{
-		return new DisableRequestBuilder();
+		return new StartObservingRequestBuilder();
 	}
 }

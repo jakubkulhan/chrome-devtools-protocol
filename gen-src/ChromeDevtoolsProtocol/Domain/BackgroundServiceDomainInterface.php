@@ -3,10 +3,12 @@
 namespace ChromeDevtoolsProtocol\Domain;
 
 use ChromeDevtoolsProtocol\ContextInterface;
-use ChromeDevtoolsProtocol\Model\BackgroundService\DisableRequest;
-use ChromeDevtoolsProtocol\Model\BackgroundService\EnableRequest;
+use ChromeDevtoolsProtocol\Model\BackgroundService\BackgroundServiceEventReceivedEvent;
+use ChromeDevtoolsProtocol\Model\BackgroundService\ClearEventsRequest;
 use ChromeDevtoolsProtocol\Model\BackgroundService\RecordingStateChangedEvent;
 use ChromeDevtoolsProtocol\Model\BackgroundService\SetRecordingRequest;
+use ChromeDevtoolsProtocol\Model\BackgroundService\StartObservingRequest;
+use ChromeDevtoolsProtocol\Model\BackgroundService\StopObservingRequest;
 use ChromeDevtoolsProtocol\SubscriptionInterface;
 
 /**
@@ -21,25 +23,14 @@ use ChromeDevtoolsProtocol\SubscriptionInterface;
 interface BackgroundServiceDomainInterface
 {
 	/**
-	 * Call BackgroundService.disable command.
+	 * Clears all stored data for the service.
 	 *
 	 * @param ContextInterface $ctx
-	 * @param DisableRequest $request
+	 * @param ClearEventsRequest $request
 	 *
 	 * @return void
 	 */
-	public function disable(ContextInterface $ctx, DisableRequest $request): void;
-
-
-	/**
-	 * Call BackgroundService.enable command.
-	 *
-	 * @param ContextInterface $ctx
-	 * @param EnableRequest $request
-	 *
-	 * @return void
-	 */
-	public function enable(ContextInterface $ctx, EnableRequest $request): void;
+	public function clearEvents(ContextInterface $ctx, ClearEventsRequest $request): void;
 
 
 	/**
@@ -51,6 +42,52 @@ interface BackgroundServiceDomainInterface
 	 * @return void
 	 */
 	public function setRecording(ContextInterface $ctx, SetRecordingRequest $request): void;
+
+
+	/**
+	 * Enables event updates for the service.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param StartObservingRequest $request
+	 *
+	 * @return void
+	 */
+	public function startObserving(ContextInterface $ctx, StartObservingRequest $request): void;
+
+
+	/**
+	 * Disables event updates for the service.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param StopObservingRequest $request
+	 *
+	 * @return void
+	 */
+	public function stopObserving(ContextInterface $ctx, StopObservingRequest $request): void;
+
+
+	/**
+	 * Called with all existing backgroundServiceEvents when enabled, and all new events afterwards if enabled and recording.
+	 *
+	 * Listener will be called whenever event BackgroundService.backgroundServiceEventReceived is fired.
+	 *
+	 * @param callable $listener
+	 *
+	 * @return SubscriptionInterface
+	 */
+	public function addBackgroundServiceEventReceivedListener(callable $listener): SubscriptionInterface;
+
+
+	/**
+	 * Called with all existing backgroundServiceEvents when enabled, and all new events afterwards if enabled and recording.
+	 *
+	 * Method will block until first BackgroundService.backgroundServiceEventReceived event is fired.
+	 *
+	 * @param ContextInterface $ctx
+	 *
+	 * @return BackgroundServiceEventReceivedEvent
+	 */
+	public function awaitBackgroundServiceEventReceived(ContextInterface $ctx): BackgroundServiceEventReceivedEvent;
 
 
 	/**
