@@ -22,7 +22,6 @@ use ChromeDevtoolsProtocol\Model\Overlay\SetShowHitTestBordersRequest;
 use ChromeDevtoolsProtocol\Model\Overlay\SetShowPaintRectsRequest;
 use ChromeDevtoolsProtocol\Model\Overlay\SetShowScrollBottleneckRectsRequest;
 use ChromeDevtoolsProtocol\Model\Overlay\SetShowViewportSizeOnResizeRequest;
-use ChromeDevtoolsProtocol\Model\Overlay\SetSuspendedRequest;
 use ChromeDevtoolsProtocol\SubscriptionInterface;
 
 /**
@@ -218,17 +217,6 @@ interface OverlayDomainInterface
 	 * @return void
 	 */
 	public function setShowViewportSizeOnResize(ContextInterface $ctx, SetShowViewportSizeOnResizeRequest $request): void;
-
-
-	/**
-	 * Call Overlay.setSuspended command.
-	 *
-	 * @param ContextInterface $ctx
-	 * @param SetSuspendedRequest $request
-	 *
-	 * @return void
-	 */
-	public function setSuspended(ContextInterface $ctx, SetSuspendedRequest $request): void;
 
 
 	/**

@@ -23,7 +23,6 @@ use ChromeDevtoolsProtocol\Model\Overlay\SetShowHitTestBordersRequest;
 use ChromeDevtoolsProtocol\Model\Overlay\SetShowPaintRectsRequest;
 use ChromeDevtoolsProtocol\Model\Overlay\SetShowScrollBottleneckRectsRequest;
 use ChromeDevtoolsProtocol\Model\Overlay\SetShowViewportSizeOnResizeRequest;
-use ChromeDevtoolsProtocol\Model\Overlay\SetSuspendedRequest;
 use ChromeDevtoolsProtocol\SubscriptionInterface;
 
 class OverlayDomain implements OverlayDomainInterface
@@ -141,12 +140,6 @@ class OverlayDomain implements OverlayDomainInterface
 	public function setShowViewportSizeOnResize(ContextInterface $ctx, SetShowViewportSizeOnResizeRequest $request): void
 	{
 		$this->internalClient->executeCommand($ctx, 'Overlay.setShowViewportSizeOnResize', $request);
-	}
-
-
-	public function setSuspended(ContextInterface $ctx, SetSuspendedRequest $request): void
-	{
-		$this->internalClient->executeCommand($ctx, 'Overlay.setSuspended', $request);
 	}
 
 
