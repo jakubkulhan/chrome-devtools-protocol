@@ -6,8 +6,8 @@ use ChromeDevtoolsProtocol\ContextInterface;
 use ChromeDevtoolsProtocol\Model\IndexedDB\ClearObjectStoreRequest;
 use ChromeDevtoolsProtocol\Model\IndexedDB\DeleteDatabaseRequest;
 use ChromeDevtoolsProtocol\Model\IndexedDB\DeleteObjectStoreEntriesRequest;
-use ChromeDevtoolsProtocol\Model\IndexedDB\GetKeyGeneratorCurrentNumberRequest;
-use ChromeDevtoolsProtocol\Model\IndexedDB\GetKeyGeneratorCurrentNumberResponse;
+use ChromeDevtoolsProtocol\Model\IndexedDB\GetMetadataRequest;
+use ChromeDevtoolsProtocol\Model\IndexedDB\GetMetadataResponse;
 use ChromeDevtoolsProtocol\Model\IndexedDB\RequestDataRequest;
 use ChromeDevtoolsProtocol\Model\IndexedDB\RequestDataResponse;
 use ChromeDevtoolsProtocol\Model\IndexedDB\RequestDatabaseNamesRequest;
@@ -80,14 +80,14 @@ interface IndexedDBDomainInterface
 
 
 	/**
-	 * Gets the auto increment number of an object store. Only meaningful when objectStore.autoIncrement is true.
+	 * Gets metadata of an object store
 	 *
 	 * @param ContextInterface $ctx
-	 * @param GetKeyGeneratorCurrentNumberRequest $request
+	 * @param GetMetadataRequest $request
 	 *
-	 * @return GetKeyGeneratorCurrentNumberResponse
+	 * @return GetMetadataResponse
 	 */
-	public function getKeyGeneratorCurrentNumber(ContextInterface $ctx, GetKeyGeneratorCurrentNumberRequest $request): GetKeyGeneratorCurrentNumberResponse;
+	public function getMetadata(ContextInterface $ctx, GetMetadataRequest $request): GetMetadataResponse;
 
 
 	/**

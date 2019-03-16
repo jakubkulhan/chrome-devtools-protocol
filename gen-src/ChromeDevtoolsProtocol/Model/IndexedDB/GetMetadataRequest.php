@@ -3,13 +3,13 @@
 namespace ChromeDevtoolsProtocol\Model\IndexedDB;
 
 /**
- * Request for IndexedDB.getKeyGeneratorCurrentNumber command.
+ * Request for IndexedDB.getMetadata command.
  *
  * @generated This file has been auto-generated, do not edit.
  *
  * @author Jakub Kulhan <jakub.kulhan@gmail.com>
  */
-final class GetKeyGeneratorCurrentNumberRequest implements \JsonSerializable
+final class GetMetadataRequest implements \JsonSerializable
 {
 	/**
 	 * Security origin.
@@ -68,10 +68,10 @@ final class GetKeyGeneratorCurrentNumberRequest implements \JsonSerializable
 	/**
 	 * Create new instance using builder.
 	 *
-	 * @return GetKeyGeneratorCurrentNumberRequestBuilder
+	 * @return GetMetadataRequestBuilder
 	 */
-	public static function builder(): GetKeyGeneratorCurrentNumberRequestBuilder
+	public static function builder(): GetMetadataRequestBuilder
 	{
-		return new GetKeyGeneratorCurrentNumberRequestBuilder();
+		return new GetMetadataRequestBuilder();
 	}
 }

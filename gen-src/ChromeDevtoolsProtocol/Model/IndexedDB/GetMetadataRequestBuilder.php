@@ -9,7 +9,7 @@ use ChromeDevtoolsProtocol\Exception\BuilderException;
  *
  * @author Jakub Kulhan <jakub.kulhan@gmail.com>
  */
-final class GetKeyGeneratorCurrentNumberRequestBuilder
+final class GetMetadataRequestBuilder
 {
 	private $securityOrigin;
 
@@ -21,9 +21,9 @@ final class GetKeyGeneratorCurrentNumberRequestBuilder
 	/**
 	 * Validate non-optional parameters and return new instance.
 	 */
-	public function build(): GetKeyGeneratorCurrentNumberRequest
+	public function build(): GetMetadataRequest
 	{
-		$instance = new GetKeyGeneratorCurrentNumberRequest();
+		$instance = new GetMetadataRequest();
 		if ($this->securityOrigin === null) {
 			throw new BuilderException('Property [securityOrigin] is required.');
 		}
