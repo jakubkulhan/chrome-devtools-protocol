@@ -5,6 +5,7 @@ namespace ChromeDevtoolsProtocol\Domain;
 use ChromeDevtoolsProtocol\ContextInterface;
 use ChromeDevtoolsProtocol\Model\Debugger\BreakpointResolvedEvent;
 use ChromeDevtoolsProtocol\Model\Debugger\ContinueToLocationRequest;
+use ChromeDevtoolsProtocol\Model\Debugger\EnableRequest;
 use ChromeDevtoolsProtocol\Model\Debugger\EnableResponse;
 use ChromeDevtoolsProtocol\Model\Debugger\EvaluateOnCallFrameRequest;
 use ChromeDevtoolsProtocol\Model\Debugger\EvaluateOnCallFrameResponse;
@@ -77,10 +78,11 @@ interface DebuggerDomainInterface
 	 * Enables debugger for the given page. Clients should not assume that the debugging has been enabled until the result for this command is received.
 	 *
 	 * @param ContextInterface $ctx
+	 * @param EnableRequest $request
 	 *
 	 * @return EnableResponse
 	 */
-	public function enable(ContextInterface $ctx): EnableResponse;
+	public function enable(ContextInterface $ctx, EnableRequest $request): EnableResponse;
 
 
 	/**

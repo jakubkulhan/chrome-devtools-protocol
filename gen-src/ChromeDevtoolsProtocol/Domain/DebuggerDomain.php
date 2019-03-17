@@ -6,6 +6,7 @@ use ChromeDevtoolsProtocol\ContextInterface;
 use ChromeDevtoolsProtocol\InternalClientInterface;
 use ChromeDevtoolsProtocol\Model\Debugger\BreakpointResolvedEvent;
 use ChromeDevtoolsProtocol\Model\Debugger\ContinueToLocationRequest;
+use ChromeDevtoolsProtocol\Model\Debugger\EnableRequest;
 use ChromeDevtoolsProtocol\Model\Debugger\EnableResponse;
 use ChromeDevtoolsProtocol\Model\Debugger\EvaluateOnCallFrameRequest;
 use ChromeDevtoolsProtocol\Model\Debugger\EvaluateOnCallFrameResponse;
@@ -69,9 +70,8 @@ class DebuggerDomain implements DebuggerDomainInterface
 	}
 
 
-	public function enable(ContextInterface $ctx): EnableResponse
+	public function enable(ContextInterface $ctx, EnableRequest $request): EnableResponse
 	{
-		$request = new \stdClass();
 		$response = $this->internalClient->executeCommand($ctx, 'Debugger.enable', $request);
 		return EnableResponse::fromJson($response);
 	}
