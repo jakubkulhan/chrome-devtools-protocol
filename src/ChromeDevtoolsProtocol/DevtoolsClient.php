@@ -77,7 +77,7 @@ class DevtoolsClient implements DevtoolsClientInterface, InternalClientInterface
 
 		for (; ;) {
 			$this->getWsClient()->setDeadline($ctx->getDeadline());
-			foreach ($this->getWsClient()->receive() as $payload) {
+			foreach ($this->getWsClient()->receive() ?: [] as $payload) {
 				/** @var Payload $payload */
 				$message = json_decode($payload->getPayload());
 				$this->handleMessage($message);
@@ -106,7 +106,7 @@ class DevtoolsClient implements DevtoolsClientInterface, InternalClientInterface
 			$eventMessage = null;
 
 			$this->getWsClient()->setDeadline($ctx->getDeadline());
-			foreach ($this->getWsClient()->receive() as $payload) {
+			foreach ($this->getWsClient()->receive() ?: [] as $payload) {
 				/** @var Payload $payload */
 				$message = json_decode($payload->getPayload());
 
