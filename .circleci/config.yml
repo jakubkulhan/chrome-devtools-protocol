@@ -41,7 +41,7 @@ jobs:
     - run:
         command: |
           mkdir -p /tmp/phpunit
-          PHPUNIT_FLAGS="--log-junit /tmp/phpunit/junit.xml" make -e test
+          PHPUNIT_FLAGS="--log-junit /tmp/phpunit/junit.xml" make -e lint phpunit
     - store_test_results:
         path: /tmp/phpunit
 
@@ -85,7 +85,7 @@ jobs:
     - run:
         command: |
           mkdir -p /tmp/phpunit
-          PHPUNIT_FLAGS="--log-junit /tmp/phpunit/junit.xml" make -e test
+          PHPUNIT_FLAGS="--log-junit /tmp/phpunit/junit.xml" make -e lint phpunit
     - store_test_results:
         path: /tmp/phpunit
 
