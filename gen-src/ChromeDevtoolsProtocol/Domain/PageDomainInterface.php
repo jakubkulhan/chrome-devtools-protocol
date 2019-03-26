@@ -21,6 +21,7 @@ use ChromeDevtoolsProtocol\Model\Page\FrameAttachedEvent;
 use ChromeDevtoolsProtocol\Model\Page\FrameClearedScheduledNavigationEvent;
 use ChromeDevtoolsProtocol\Model\Page\FrameDetachedEvent;
 use ChromeDevtoolsProtocol\Model\Page\FrameNavigatedEvent;
+use ChromeDevtoolsProtocol\Model\Page\FrameRequestedNavigationEvent;
 use ChromeDevtoolsProtocol\Model\Page\FrameResizedEvent;
 use ChromeDevtoolsProtocol\Model\Page\FrameScheduledNavigationEvent;
 use ChromeDevtoolsProtocol\Model\Page\FrameStartedLoadingEvent;
@@ -765,6 +766,30 @@ interface PageDomainInterface
 	 * @return FrameNavigatedEvent
 	 */
 	public function awaitFrameNavigated(ContextInterface $ctx): FrameNavigatedEvent;
+
+
+	/**
+	 * Fired when a renderer-initiated navigation is requested. Navigation may still be cancelled after the event is issued.
+	 *
+	 * Listener will be called whenever event Page.frameRequestedNavigation is fired.
+	 *
+	 * @param callable $listener
+	 *
+	 * @return SubscriptionInterface
+	 */
+	public function addFrameRequestedNavigationListener(callable $listener): SubscriptionInterface;
+
+
+	/**
+	 * Fired when a renderer-initiated navigation is requested. Navigation may still be cancelled after the event is issued.
+	 *
+	 * Method will block until first Page.frameRequestedNavigation event is fired.
+	 *
+	 * @param ContextInterface $ctx
+	 *
+	 * @return FrameRequestedNavigationEvent
+	 */
+	public function awaitFrameRequestedNavigation(ContextInterface $ctx): FrameRequestedNavigationEvent;
 
 
 	/**

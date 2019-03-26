@@ -22,6 +22,7 @@ use ChromeDevtoolsProtocol\Model\Page\FrameAttachedEvent;
 use ChromeDevtoolsProtocol\Model\Page\FrameClearedScheduledNavigationEvent;
 use ChromeDevtoolsProtocol\Model\Page\FrameDetachedEvent;
 use ChromeDevtoolsProtocol\Model\Page\FrameNavigatedEvent;
+use ChromeDevtoolsProtocol\Model\Page\FrameRequestedNavigationEvent;
 use ChromeDevtoolsProtocol\Model\Page\FrameResizedEvent;
 use ChromeDevtoolsProtocol\Model\Page\FrameScheduledNavigationEvent;
 use ChromeDevtoolsProtocol\Model\Page\FrameStartedLoadingEvent;
@@ -506,6 +507,20 @@ class PageDomain implements PageDomainInterface
 	public function awaitFrameNavigated(ContextInterface $ctx): FrameNavigatedEvent
 	{
 		return FrameNavigatedEvent::fromJson($this->internalClient->awaitEvent($ctx, 'Page.frameNavigated'));
+	}
+
+
+	public function addFrameRequestedNavigationListener(callable $listener): SubscriptionInterface
+	{
+		return $this->internalClient->addListener('Page.frameRequestedNavigation', function ($event) use ($listener) {
+			return $listener(FrameRequestedNavigationEvent::fromJson($event));
+		});
+	}
+
+
+	public function awaitFrameRequestedNavigation(ContextInterface $ctx): FrameRequestedNavigationEvent
+	{
+		return FrameRequestedNavigationEvent::fromJson($this->internalClient->awaitEvent($ctx, 'Page.frameRequestedNavigation'));
 	}
 
 
