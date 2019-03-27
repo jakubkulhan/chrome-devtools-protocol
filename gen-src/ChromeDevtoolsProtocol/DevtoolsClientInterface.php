@@ -42,7 +42,6 @@ use ChromeDevtoolsProtocol\Domain\ServiceWorkerDomainInterface;
 use ChromeDevtoolsProtocol\Domain\StorageDomainInterface;
 use ChromeDevtoolsProtocol\Domain\SystemInfoDomainInterface;
 use ChromeDevtoolsProtocol\Domain\TargetDomainInterface;
-use ChromeDevtoolsProtocol\Domain\TestingDomainInterface;
 use ChromeDevtoolsProtocol\Domain\TetheringDomainInterface;
 use ChromeDevtoolsProtocol\Domain\TracingDomainInterface;
 
@@ -339,14 +338,6 @@ interface DevtoolsClientInterface extends CloseableResourceInterface
 	 * Supports additional targets discovery and allows to attach to them.
 	 */
 	public function target(): TargetDomainInterface;
-
-
-	/**
-	 * Testing domain is a dumping ground for the capabilities requires for browser or app testing that do not fit other domains.
-	 *
-	 * @experimental
-	 */
-	public function testing(): TestingDomainInterface;
 
 
 	/**

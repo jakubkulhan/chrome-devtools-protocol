@@ -82,8 +82,6 @@ use ChromeDevtoolsProtocol\Domain\SystemInfoDomain;
 use ChromeDevtoolsProtocol\Domain\SystemInfoDomainInterface;
 use ChromeDevtoolsProtocol\Domain\TargetDomain;
 use ChromeDevtoolsProtocol\Domain\TargetDomainInterface;
-use ChromeDevtoolsProtocol\Domain\TestingDomain;
-use ChromeDevtoolsProtocol\Domain\TestingDomainInterface;
 use ChromeDevtoolsProtocol\Domain\TetheringDomain;
 use ChromeDevtoolsProtocol\Domain\TetheringDomainInterface;
 use ChromeDevtoolsProtocol\Domain\TracingDomain;
@@ -571,18 +569,6 @@ trait DevtoolsClientTrait
 		}
 		/** @var TargetDomainInterface $domain */
 		$domain = $this->domains['Target'];
-		return $domain;
-	}
-
-
-	public function testing(): TestingDomainInterface
-	{
-		if (!isset($this->domains['Testing'])) {
-			/** @var InternalClientInterface $this */
-			$this->domains['Testing'] = new TestingDomain($this);
-		}
-		/** @var TestingDomainInterface $domain */
-		$domain = $this->domains['Testing'];
 		return $domain;
 	}
 

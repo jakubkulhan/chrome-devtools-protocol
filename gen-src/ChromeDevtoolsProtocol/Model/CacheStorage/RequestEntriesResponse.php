@@ -19,11 +19,11 @@ final class RequestEntriesResponse implements \JsonSerializable
 	public $cacheDataEntries;
 
 	/**
-	 * If true, there are more entries to fetch in the given range.
+	 * Count of returned entries from this storage. If pathFilter is empty, it is the count of all entries from this storage.
 	 *
-	 * @var bool
+	 * @var int|float
 	 */
-	public $hasMore;
+	public $returnCount;
 
 
 	public static function fromJson($data)
@@ -35,8 +35,8 @@ final class RequestEntriesResponse implements \JsonSerializable
 				$instance->cacheDataEntries[] = DataEntry::fromJson($item);
 			}
 		}
-		if (isset($data->hasMore)) {
-			$instance->hasMore = (bool)$data->hasMore;
+		if (isset($data->returnCount)) {
+			$instance->returnCount = $data->returnCount;
 		}
 		return $instance;
 	}
@@ -51,8 +51,8 @@ final class RequestEntriesResponse implements \JsonSerializable
 				$data->cacheDataEntries[] = $item->jsonSerialize();
 			}
 		}
-		if ($this->hasMore !== null) {
-			$data->hasMore = $this->hasMore;
+		if ($this->returnCount !== null) {
+			$data->returnCount = $this->returnCount;
 		}
 		return $data;
 	}
