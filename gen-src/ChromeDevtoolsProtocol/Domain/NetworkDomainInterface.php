@@ -333,7 +333,7 @@ interface NetworkDomainInterface
 
 
 	/**
-	 * Sets the requests to intercept that match a the provided patterns and optionally resource types.
+	 * Sets the requests to intercept that match the provided patterns and optionally resource types.
 	 *
 	 * @param ContextInterface $ctx
 	 * @param SetRequestInterceptionRequest $request
