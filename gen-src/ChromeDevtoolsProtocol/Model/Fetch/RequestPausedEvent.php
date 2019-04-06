@@ -62,6 +62,13 @@ final class RequestPausedEvent implements \JsonSerializable
 	 */
 	public $responseHeaders;
 
+	/**
+	 * If the intercepted request had a corresponding Network.requestWillBeSent event fired for it, then this networkId will be the same as the requestId present in the requestWillBeSent event.
+	 *
+	 * @var string
+	 */
+	public $networkId;
+
 
 	public static function fromJson($data)
 	{
@@ -89,6 +96,9 @@ final class RequestPausedEvent implements \JsonSerializable
 			foreach ($data->responseHeaders as $item) {
 				$instance->responseHeaders[] = HeaderEntry::fromJson($item);
 			}
+		}
+		if (isset($data->networkId)) {
+			$instance->networkId = (string)$data->networkId;
 		}
 		return $instance;
 	}
@@ -120,6 +130,9 @@ final class RequestPausedEvent implements \JsonSerializable
 			foreach ($this->responseHeaders as $item) {
 				$data->responseHeaders[] = $item->jsonSerialize();
 			}
+		}
+		if ($this->networkId !== null) {
+			$data->networkId = $this->networkId;
 		}
 		return $data;
 	}

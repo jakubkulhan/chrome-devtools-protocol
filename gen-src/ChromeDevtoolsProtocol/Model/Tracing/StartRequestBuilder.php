@@ -17,6 +17,8 @@ final class StartRequestBuilder
 
 	private $transferMode;
 
+	private $streamFormat;
+
 	private $streamCompression;
 
 	private $traceConfig;
@@ -32,6 +34,7 @@ final class StartRequestBuilder
 		$instance->options = $this->options;
 		$instance->bufferUsageReportingInterval = $this->bufferUsageReportingInterval;
 		$instance->transferMode = $this->transferMode;
+		$instance->streamFormat = $this->streamFormat;
 		$instance->streamCompression = $this->streamCompression;
 		$instance->traceConfig = $this->traceConfig;
 		return $instance;
@@ -82,6 +85,18 @@ final class StartRequestBuilder
 	public function setTransferMode($transferMode): self
 	{
 		$this->transferMode = $transferMode;
+		return $this;
+	}
+
+
+	/**
+	 * @param string $streamFormat
+	 *
+	 * @return self
+	 */
+	public function setStreamFormat($streamFormat): self
+	{
+		$this->streamFormat = $streamFormat;
 		return $this;
 	}
 

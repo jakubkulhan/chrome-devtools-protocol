@@ -84,6 +84,13 @@ final class RequestInterceptedEvent implements \JsonSerializable
 	 */
 	public $responseHeaders;
 
+	/**
+	 * If the intercepted request had a corresponding requestWillBeSent event fired for it, then this requestId will be the same as the requestId present in the requestWillBeSent event.
+	 *
+	 * @var string
+	 */
+	public $requestId;
+
 
 	public static function fromJson($data)
 	{
@@ -120,6 +127,9 @@ final class RequestInterceptedEvent implements \JsonSerializable
 		}
 		if (isset($data->responseHeaders)) {
 			$instance->responseHeaders = Headers::fromJson($data->responseHeaders);
+		}
+		if (isset($data->requestId)) {
+			$instance->requestId = (string)$data->requestId;
 		}
 		return $instance;
 	}
@@ -160,6 +170,9 @@ final class RequestInterceptedEvent implements \JsonSerializable
 		}
 		if ($this->responseHeaders !== null) {
 			$data->responseHeaders = $this->responseHeaders->jsonSerialize();
+		}
+		if ($this->requestId !== null) {
+			$data->requestId = $this->requestId;
 		}
 		return $data;
 	}

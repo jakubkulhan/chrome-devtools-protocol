@@ -40,6 +40,13 @@ final class StartRequest implements \JsonSerializable
 	public $transferMode;
 
 	/**
+	 * Trace data format to use. This only applies when using `ReturnAsStream` transfer mode (defaults to `json`).
+	 *
+	 * @var string
+	 */
+	public $streamFormat;
+
+	/**
 	 * Compression format to use. This only applies when using `ReturnAsStream` transfer mode (defaults to `none`)
 	 *
 	 * @var string
@@ -65,6 +72,9 @@ final class StartRequest implements \JsonSerializable
 		if (isset($data->transferMode)) {
 			$instance->transferMode = (string)$data->transferMode;
 		}
+		if (isset($data->streamFormat)) {
+			$instance->streamFormat = (string)$data->streamFormat;
+		}
 		if (isset($data->streamCompression)) {
 			$instance->streamCompression = (string)$data->streamCompression;
 		}
@@ -89,6 +99,9 @@ final class StartRequest implements \JsonSerializable
 		}
 		if ($this->transferMode !== null) {
 			$data->transferMode = $this->transferMode;
+		}
+		if ($this->streamFormat !== null) {
+			$data->streamFormat = $this->streamFormat;
 		}
 		if ($this->streamCompression !== null) {
 			$data->streamCompression = $this->streamCompression;
