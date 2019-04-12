@@ -31,6 +31,7 @@ use ChromeDevtoolsProtocol\Model\Page\GenerateTestReportRequest;
 use ChromeDevtoolsProtocol\Model\Page\GetAppManifestResponse;
 use ChromeDevtoolsProtocol\Model\Page\GetCookiesResponse;
 use ChromeDevtoolsProtocol\Model\Page\GetFrameTreeResponse;
+use ChromeDevtoolsProtocol\Model\Page\GetInstallabilityErrorsResponse;
 use ChromeDevtoolsProtocol\Model\Page\GetLayoutMetricsResponse;
 use ChromeDevtoolsProtocol\Model\Page\GetNavigationHistoryResponse;
 use ChromeDevtoolsProtocol\Model\Page\GetResourceContentRequest;
@@ -223,6 +224,14 @@ class PageDomain implements PageDomainInterface
 		$request = new \stdClass();
 		$response = $this->internalClient->executeCommand($ctx, 'Page.getFrameTree', $request);
 		return GetFrameTreeResponse::fromJson($response);
+	}
+
+
+	public function getInstallabilityErrors(ContextInterface $ctx): GetInstallabilityErrorsResponse
+	{
+		$request = new \stdClass();
+		$response = $this->internalClient->executeCommand($ctx, 'Page.getInstallabilityErrors', $request);
+		return GetInstallabilityErrorsResponse::fromJson($response);
 	}
 
 

@@ -30,6 +30,7 @@ use ChromeDevtoolsProtocol\Model\Page\GenerateTestReportRequest;
 use ChromeDevtoolsProtocol\Model\Page\GetAppManifestResponse;
 use ChromeDevtoolsProtocol\Model\Page\GetCookiesResponse;
 use ChromeDevtoolsProtocol\Model\Page\GetFrameTreeResponse;
+use ChromeDevtoolsProtocol\Model\Page\GetInstallabilityErrorsResponse;
 use ChromeDevtoolsProtocol\Model\Page\GetLayoutMetricsResponse;
 use ChromeDevtoolsProtocol\Model\Page\GetNavigationHistoryResponse;
 use ChromeDevtoolsProtocol\Model\Page\GetResourceContentRequest;
@@ -288,6 +289,16 @@ interface PageDomainInterface
 	 * @return GetFrameTreeResponse
 	 */
 	public function getFrameTree(ContextInterface $ctx): GetFrameTreeResponse;
+
+
+	/**
+	 * Call Page.getInstallabilityErrors command.
+	 *
+	 * @param ContextInterface $ctx
+	 *
+	 * @return GetInstallabilityErrorsResponse
+	 */
+	public function getInstallabilityErrors(ContextInterface $ctx): GetInstallabilityErrorsResponse;
 
 
 	/**

@@ -13246,6 +13246,19 @@
                     ]
                 },
                 {
+                    "name": "getInstallabilityErrors",
+                    "experimental": true,
+                    "returns": [
+                        {
+                            "name": "errors",
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            }
+                        }
+                    ]
+                },
+                {
                     "name": "getLayoutMetrics",
                     "description": "Returns metrics relating to the layouting of the page, such as viewport bounds/scale.",
                     "returns": [
