@@ -12,49 +12,49 @@ namespace ChromeDevtoolsProtocol\Model\Security;
 final class InsecureContentStatus implements \JsonSerializable
 {
 	/**
-	 * True if the page was loaded over HTTPS and ran mixed (HTTP) content such as scripts.
+	 * Always false.
 	 *
 	 * @var bool
 	 */
 	public $ranMixedContent;
 
 	/**
-	 * True if the page was loaded over HTTPS and displayed mixed (HTTP) content such as images.
+	 * Always false.
 	 *
 	 * @var bool
 	 */
 	public $displayedMixedContent;
 
 	/**
-	 * True if the page was loaded over HTTPS and contained a form targeting an insecure url.
+	 * Always false.
 	 *
 	 * @var bool
 	 */
 	public $containedMixedForm;
 
 	/**
-	 * True if the page was loaded over HTTPS without certificate errors, and ran content such as scripts that were loaded with certificate errors.
+	 * Always false.
 	 *
 	 * @var bool
 	 */
 	public $ranContentWithCertErrors;
 
 	/**
-	 * True if the page was loaded over HTTPS without certificate errors, and displayed content such as images that were loaded with certificate errors.
+	 * Always false.
 	 *
 	 * @var bool
 	 */
 	public $displayedContentWithCertErrors;
 
 	/**
-	 * Security state representing a page that ran insecure content.
+	 * Always set to unknown.
 	 *
 	 * @var string
 	 */
 	public $ranInsecureContentStyle;
 
 	/**
-	 * Security state representing a page that displayed insecure content.
+	 * Always set to unknown.
 	 *
 	 * @var string
 	 */
