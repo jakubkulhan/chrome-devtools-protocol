@@ -12,7 +12,7 @@ namespace ChromeDevtoolsProtocol\Model\Page;
 final class FrameRequestedNavigationEvent implements \JsonSerializable
 {
 	/**
-	 * Id of the frame that has scheduled a navigation.
+	 * Id of the frame that is being navigated.
 	 *
 	 * @var string
 	 */

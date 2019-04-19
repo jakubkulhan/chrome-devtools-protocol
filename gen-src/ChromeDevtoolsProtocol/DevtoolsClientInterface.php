@@ -44,6 +44,7 @@ use ChromeDevtoolsProtocol\Domain\SystemInfoDomainInterface;
 use ChromeDevtoolsProtocol\Domain\TargetDomainInterface;
 use ChromeDevtoolsProtocol\Domain\TetheringDomainInterface;
 use ChromeDevtoolsProtocol\Domain\TracingDomainInterface;
+use ChromeDevtoolsProtocol\Domain\WebAudioDomainInterface;
 
 /**
  * Interface for Chrome devtools protocol client.
@@ -354,4 +355,12 @@ interface DevtoolsClientInterface extends CloseableResourceInterface
 	 * @experimental
 	 */
 	public function tracing(): TracingDomainInterface;
+
+
+	/**
+	 * This domain allows inspection of Web Audio API. https://webaudio.github.io/web-audio-api/
+	 *
+	 * @experimental
+	 */
+	public function webAudio(): WebAudioDomainInterface;
 }

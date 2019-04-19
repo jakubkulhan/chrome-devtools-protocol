@@ -86,6 +86,8 @@ use ChromeDevtoolsProtocol\Domain\TetheringDomain;
 use ChromeDevtoolsProtocol\Domain\TetheringDomainInterface;
 use ChromeDevtoolsProtocol\Domain\TracingDomain;
 use ChromeDevtoolsProtocol\Domain\TracingDomainInterface;
+use ChromeDevtoolsProtocol\Domain\WebAudioDomain;
+use ChromeDevtoolsProtocol\Domain\WebAudioDomainInterface;
 
 trait DevtoolsClientTrait
 {
@@ -593,6 +595,18 @@ trait DevtoolsClientTrait
 		}
 		/** @var TracingDomainInterface $domain */
 		$domain = $this->domains['Tracing'];
+		return $domain;
+	}
+
+
+	public function webAudio(): WebAudioDomainInterface
+	{
+		if (!isset($this->domains['WebAudio'])) {
+			/** @var InternalClientInterface $this */
+			$this->domains['WebAudio'] = new WebAudioDomain($this);
+		}
+		/** @var WebAudioDomainInterface $domain */
+		$domain = $this->domains['WebAudio'];
 		return $domain;
 	}
 }
