@@ -18,6 +18,7 @@ use ChromeDevtoolsProtocol\Model\Page\CreateIsolatedWorldRequest;
 use ChromeDevtoolsProtocol\Model\Page\CreateIsolatedWorldResponse;
 use ChromeDevtoolsProtocol\Model\Page\DeleteCookieRequest;
 use ChromeDevtoolsProtocol\Model\Page\DomContentEventFiredEvent;
+use ChromeDevtoolsProtocol\Model\Page\DownloadWillBeginEvent;
 use ChromeDevtoolsProtocol\Model\Page\FrameAttachedEvent;
 use ChromeDevtoolsProtocol\Model\Page\FrameClearedScheduledNavigationEvent;
 use ChromeDevtoolsProtocol\Model\Page\FrameDetachedEvent;
@@ -460,6 +461,20 @@ class PageDomain implements PageDomainInterface
 	public function awaitDomContentEventFired(ContextInterface $ctx): DomContentEventFiredEvent
 	{
 		return DomContentEventFiredEvent::fromJson($this->internalClient->awaitEvent($ctx, 'Page.domContentEventFired'));
+	}
+
+
+	public function addDownloadWillBeginListener(callable $listener): SubscriptionInterface
+	{
+		return $this->internalClient->addListener('Page.downloadWillBegin', function ($event) use ($listener) {
+			return $listener(DownloadWillBeginEvent::fromJson($event));
+		});
+	}
+
+
+	public function awaitDownloadWillBegin(ContextInterface $ctx): DownloadWillBeginEvent
+	{
+		return DownloadWillBeginEvent::fromJson($this->internalClient->awaitEvent($ctx, 'Page.downloadWillBegin'));
 	}
 
 

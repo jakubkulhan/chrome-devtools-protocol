@@ -17,6 +17,7 @@ use ChromeDevtoolsProtocol\Model\Page\CreateIsolatedWorldRequest;
 use ChromeDevtoolsProtocol\Model\Page\CreateIsolatedWorldResponse;
 use ChromeDevtoolsProtocol\Model\Page\DeleteCookieRequest;
 use ChromeDevtoolsProtocol\Model\Page\DomContentEventFiredEvent;
+use ChromeDevtoolsProtocol\Model\Page\DownloadWillBeginEvent;
 use ChromeDevtoolsProtocol\Model\Page\FrameAttachedEvent;
 use ChromeDevtoolsProtocol\Model\Page\FrameClearedScheduledNavigationEvent;
 use ChromeDevtoolsProtocol\Model\Page\FrameDetachedEvent;
@@ -681,6 +682,30 @@ interface PageDomainInterface
 	 * @return DomContentEventFiredEvent
 	 */
 	public function awaitDomContentEventFired(ContextInterface $ctx): DomContentEventFiredEvent;
+
+
+	/**
+	 * Fired when page is about to start a download.
+	 *
+	 * Listener will be called whenever event Page.downloadWillBegin is fired.
+	 *
+	 * @param callable $listener
+	 *
+	 * @return SubscriptionInterface
+	 */
+	public function addDownloadWillBeginListener(callable $listener): SubscriptionInterface;
+
+
+	/**
+	 * Fired when page is about to start a download.
+	 *
+	 * Method will block until first Page.downloadWillBegin event is fired.
+	 *
+	 * @param ContextInterface $ctx
+	 *
+	 * @return DownloadWillBeginEvent
+	 */
+	public function awaitDownloadWillBegin(ContextInterface $ctx): DownloadWillBeginEvent;
 
 
 	/**
