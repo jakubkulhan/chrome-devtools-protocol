@@ -24,6 +24,7 @@ final class PermissionTypeEnum
 	const MIDI_SYSEX = 'midiSysex';
 	const NOTIFICATIONS = 'notifications';
 	const PAYMENT_HANDLER = 'paymentHandler';
+	const PERIODIC_BACKGROUND_SYNC = 'periodicBackgroundSync';
 	const PROTECTED_MEDIA_IDENTIFIER = 'protectedMediaIdentifier';
 	const SENSORS = 'sensors';
 	const VIDEO_CAPTURE = 'videoCapture';
