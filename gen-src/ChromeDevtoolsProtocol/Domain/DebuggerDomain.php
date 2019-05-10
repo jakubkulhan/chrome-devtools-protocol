@@ -36,6 +36,8 @@ use ChromeDevtoolsProtocol\Model\Debugger\SetBreakpointOnFunctionCallResponse;
 use ChromeDevtoolsProtocol\Model\Debugger\SetBreakpointRequest;
 use ChromeDevtoolsProtocol\Model\Debugger\SetBreakpointResponse;
 use ChromeDevtoolsProtocol\Model\Debugger\SetBreakpointsActiveRequest;
+use ChromeDevtoolsProtocol\Model\Debugger\SetInstrumentationBreakpointRequest;
+use ChromeDevtoolsProtocol\Model\Debugger\SetInstrumentationBreakpointResponse;
 use ChromeDevtoolsProtocol\Model\Debugger\SetPauseOnExceptionsRequest;
 use ChromeDevtoolsProtocol\Model\Debugger\SetReturnValueRequest;
 use ChromeDevtoolsProtocol\Model\Debugger\SetScriptSourceRequest;
@@ -187,6 +189,13 @@ class DebuggerDomain implements DebuggerDomainInterface
 	public function setBreakpointsActive(ContextInterface $ctx, SetBreakpointsActiveRequest $request): void
 	{
 		$this->internalClient->executeCommand($ctx, 'Debugger.setBreakpointsActive', $request);
+	}
+
+
+	public function setInstrumentationBreakpoint(ContextInterface $ctx, SetInstrumentationBreakpointRequest $request): SetInstrumentationBreakpointResponse
+	{
+		$response = $this->internalClient->executeCommand($ctx, 'Debugger.setInstrumentationBreakpoint', $request);
+		return SetInstrumentationBreakpointResponse::fromJson($response);
 	}
 
 

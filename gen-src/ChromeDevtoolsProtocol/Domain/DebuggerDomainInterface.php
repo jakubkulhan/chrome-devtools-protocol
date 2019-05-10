@@ -35,6 +35,8 @@ use ChromeDevtoolsProtocol\Model\Debugger\SetBreakpointOnFunctionCallResponse;
 use ChromeDevtoolsProtocol\Model\Debugger\SetBreakpointRequest;
 use ChromeDevtoolsProtocol\Model\Debugger\SetBreakpointResponse;
 use ChromeDevtoolsProtocol\Model\Debugger\SetBreakpointsActiveRequest;
+use ChromeDevtoolsProtocol\Model\Debugger\SetInstrumentationBreakpointRequest;
+use ChromeDevtoolsProtocol\Model\Debugger\SetInstrumentationBreakpointResponse;
 use ChromeDevtoolsProtocol\Model\Debugger\SetPauseOnExceptionsRequest;
 use ChromeDevtoolsProtocol\Model\Debugger\SetReturnValueRequest;
 use ChromeDevtoolsProtocol\Model\Debugger\SetScriptSourceRequest;
@@ -268,6 +270,17 @@ interface DebuggerDomainInterface
 	 * @return void
 	 */
 	public function setBreakpointsActive(ContextInterface $ctx, SetBreakpointsActiveRequest $request): void;
+
+
+	/**
+	 * Sets instrumentation breakpoint.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param SetInstrumentationBreakpointRequest $request
+	 *
+	 * @return SetInstrumentationBreakpointResponse
+	 */
+	public function setInstrumentationBreakpoint(ContextInterface $ctx, SetInstrumentationBreakpointRequest $request): SetInstrumentationBreakpointResponse;
 
 
 	/**
