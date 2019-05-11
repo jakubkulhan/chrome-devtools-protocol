@@ -13,6 +13,8 @@ final class GetHighlightObjectForTestRequestBuilder
 {
 	private $nodeId;
 
+	private $includeDistance;
+
 
 	/**
 	 * Validate non-optional parameters and return new instance.
@@ -24,6 +26,7 @@ final class GetHighlightObjectForTestRequestBuilder
 			throw new BuilderException('Property [nodeId] is required.');
 		}
 		$instance->nodeId = $this->nodeId;
+		$instance->includeDistance = $this->includeDistance;
 		return $instance;
 	}
 
@@ -36,6 +39,18 @@ final class GetHighlightObjectForTestRequestBuilder
 	public function setNodeId($nodeId): self
 	{
 		$this->nodeId = $nodeId;
+		return $this;
+	}
+
+
+	/**
+	 * @param bool|null $includeDistance
+	 *
+	 * @return self
+	 */
+	public function setIncludeDistance($includeDistance): self
+	{
+		$this->includeDistance = $includeDistance;
 		return $this;
 	}
 }
