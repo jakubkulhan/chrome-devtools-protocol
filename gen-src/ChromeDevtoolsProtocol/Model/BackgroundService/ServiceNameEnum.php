@@ -13,4 +13,6 @@ final class ServiceNameEnum
 {
 	const BACKGROUND_FETCH = 'backgroundFetch';
 	const BACKGROUND_SYNC = 'backgroundSync';
+	const PUSH_MESSAGING = 'pushMessaging';
+	const NOTIFICATIONS = 'notifications';
 }
