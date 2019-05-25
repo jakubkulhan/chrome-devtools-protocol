@@ -110,6 +110,13 @@ final class Response implements \JsonSerializable
 	public $fromServiceWorker;
 
 	/**
+	 * Specifies that the request was served from the prefetch cache.
+	 *
+	 * @var bool|null
+	 */
+	public $fromPrefetchCache;
+
+	/**
 	 * Total number of bytes received for this request so far.
 	 *
 	 * @var int|float
@@ -190,6 +197,9 @@ final class Response implements \JsonSerializable
 		if (isset($data->fromServiceWorker)) {
 			$instance->fromServiceWorker = (bool)$data->fromServiceWorker;
 		}
+		if (isset($data->fromPrefetchCache)) {
+			$instance->fromPrefetchCache = (bool)$data->fromPrefetchCache;
+		}
 		if (isset($data->encodedDataLength)) {
 			$instance->encodedDataLength = $data->encodedDataLength;
 		}
@@ -253,6 +263,9 @@ final class Response implements \JsonSerializable
 		}
 		if ($this->fromServiceWorker !== null) {
 			$data->fromServiceWorker = $this->fromServiceWorker;
+		}
+		if ($this->fromPrefetchCache !== null) {
+			$data->fromPrefetchCache = $this->fromPrefetchCache;
 		}
 		if ($this->encodedDataLength !== null) {
 			$data->encodedDataLength = $this->encodedDataLength;

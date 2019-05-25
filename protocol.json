@@ -7260,6 +7260,18 @@
                     ]
                 },
                 {
+                    "name": "setTimezoneOverride",
+                    "description": "Overrides default host system timezone with the specified one.",
+                    "experimental": true,
+                    "parameters": [
+                        {
+                            "name": "timezoneId",
+                            "description": "The timezone identifier. If empty, disables the override and restores default host system timezone.",
+                            "type": "string"
+                        }
+                    ]
+                },
+                {
                     "name": "setTouchEmulationEnabled",
                     "description": "Enables touch on platforms which do not support them.",
                     "parameters": [
@@ -10475,6 +10487,12 @@
                         {
                             "name": "fromServiceWorker",
                             "description": "Specifies that the request was served from the ServiceWorker.",
+                            "optional": true,
+                            "type": "boolean"
+                        },
+                        {
+                            "name": "fromPrefetchCache",
+                            "description": "Specifies that the request was served from the prefetch cache.",
                             "optional": true,
                             "type": "boolean"
                         },

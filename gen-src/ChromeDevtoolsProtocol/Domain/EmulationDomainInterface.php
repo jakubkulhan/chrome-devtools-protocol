@@ -16,6 +16,7 @@ use ChromeDevtoolsProtocol\Model\Emulation\SetNavigatorOverridesRequest;
 use ChromeDevtoolsProtocol\Model\Emulation\SetPageScaleFactorRequest;
 use ChromeDevtoolsProtocol\Model\Emulation\SetScriptExecutionDisabledRequest;
 use ChromeDevtoolsProtocol\Model\Emulation\SetScrollbarsHiddenRequest;
+use ChromeDevtoolsProtocol\Model\Emulation\SetTimezoneOverrideRequest;
 use ChromeDevtoolsProtocol\Model\Emulation\SetTouchEmulationEnabledRequest;
 use ChromeDevtoolsProtocol\Model\Emulation\SetUserAgentOverrideRequest;
 use ChromeDevtoolsProtocol\Model\Emulation\SetVirtualTimePolicyRequest;
@@ -203,6 +204,17 @@ interface EmulationDomainInterface
 	 * @return void
 	 */
 	public function setScrollbarsHidden(ContextInterface $ctx, SetScrollbarsHiddenRequest $request): void;
+
+
+	/**
+	 * Overrides default host system timezone with the specified one.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param SetTimezoneOverrideRequest $request
+	 *
+	 * @return void
+	 */
+	public function setTimezoneOverride(ContextInterface $ctx, SetTimezoneOverrideRequest $request): void;
 
 
 	/**
