@@ -11,17 +11,17 @@ namespace ChromeDevtoolsProtocol\Model\Cast;
  */
 final class SinksUpdatedEvent implements \JsonSerializable
 {
-	/** @var string[] */
-	public $sinkNames;
+	/** @var Sink[] */
+	public $sinks;
 
 
 	public static function fromJson($data)
 	{
 		$instance = new static();
-		if (isset($data->sinkNames)) {
-			$instance->sinkNames = [];
-			foreach ($data->sinkNames as $item) {
-				$instance->sinkNames[] = (string)$item;
+		if (isset($data->sinks)) {
+			$instance->sinks = [];
+			foreach ($data->sinks as $item) {
+				$instance->sinks[] = Sink::fromJson($item);
 			}
 		}
 		return $instance;
@@ -31,10 +31,10 @@ final class SinksUpdatedEvent implements \JsonSerializable
 	public function jsonSerialize()
 	{
 		$data = new \stdClass();
-		if ($this->sinkNames !== null) {
-			$data->sinkNames = [];
-			foreach ($this->sinkNames as $item) {
-				$data->sinkNames[] = $item;
+		if ($this->sinks !== null) {
+			$data->sinks = [];
+			foreach ($this->sinks as $item) {
+				$data->sinks[] = $item->jsonSerialize();
 			}
 		}
 		return $data;

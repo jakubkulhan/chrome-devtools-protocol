@@ -45,6 +45,7 @@ use ChromeDevtoolsProtocol\Domain\TargetDomainInterface;
 use ChromeDevtoolsProtocol\Domain\TetheringDomainInterface;
 use ChromeDevtoolsProtocol\Domain\TracingDomainInterface;
 use ChromeDevtoolsProtocol\Domain\WebAudioDomainInterface;
+use ChromeDevtoolsProtocol\Domain\WebAuthnDomainInterface;
 
 /**
  * Interface for Chrome devtools protocol client.
@@ -363,4 +364,12 @@ interface DevtoolsClientInterface extends CloseableResourceInterface
 	 * @experimental
 	 */
 	public function webAudio(): WebAudioDomainInterface;
+
+
+	/**
+	 * This domain allows configuring virtual authenticators to test the WebAuthn API.
+	 *
+	 * @experimental
+	 */
+	public function webAuthn(): WebAuthnDomainInterface;
 }

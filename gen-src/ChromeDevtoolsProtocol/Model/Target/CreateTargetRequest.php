@@ -46,6 +46,20 @@ final class CreateTargetRequest implements \JsonSerializable
 	 */
 	public $enableBeginFrameControl;
 
+	/**
+	 * Whether to create a new Window or Tab (chrome-only, false by default).
+	 *
+	 * @var bool|null
+	 */
+	public $newWindow;
+
+	/**
+	 * Whether to create the target in background or foreground (chrome-only, false by default).
+	 *
+	 * @var bool|null
+	 */
+	public $background;
+
 
 	public static function fromJson($data)
 	{
@@ -64,6 +78,12 @@ final class CreateTargetRequest implements \JsonSerializable
 		}
 		if (isset($data->enableBeginFrameControl)) {
 			$instance->enableBeginFrameControl = (bool)$data->enableBeginFrameControl;
+		}
+		if (isset($data->newWindow)) {
+			$instance->newWindow = (bool)$data->newWindow;
+		}
+		if (isset($data->background)) {
+			$instance->background = (bool)$data->background;
 		}
 		return $instance;
 	}
@@ -86,6 +106,12 @@ final class CreateTargetRequest implements \JsonSerializable
 		}
 		if ($this->enableBeginFrameControl !== null) {
 			$data->enableBeginFrameControl = $this->enableBeginFrameControl;
+		}
+		if ($this->newWindow !== null) {
+			$data->newWindow = $this->newWindow;
+		}
+		if ($this->background !== null) {
+			$data->background = $this->background;
 		}
 		return $data;
 	}

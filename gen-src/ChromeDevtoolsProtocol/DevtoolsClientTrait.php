@@ -88,6 +88,8 @@ use ChromeDevtoolsProtocol\Domain\TracingDomain;
 use ChromeDevtoolsProtocol\Domain\TracingDomainInterface;
 use ChromeDevtoolsProtocol\Domain\WebAudioDomain;
 use ChromeDevtoolsProtocol\Domain\WebAudioDomainInterface;
+use ChromeDevtoolsProtocol\Domain\WebAuthnDomain;
+use ChromeDevtoolsProtocol\Domain\WebAuthnDomainInterface;
 
 trait DevtoolsClientTrait
 {
@@ -607,6 +609,18 @@ trait DevtoolsClientTrait
 		}
 		/** @var WebAudioDomainInterface $domain */
 		$domain = $this->domains['WebAudio'];
+		return $domain;
+	}
+
+
+	public function webAuthn(): WebAuthnDomainInterface
+	{
+		if (!isset($this->domains['WebAuthn'])) {
+			/** @var InternalClientInterface $this */
+			$this->domains['WebAuthn'] = new WebAuthnDomain($this);
+		}
+		/** @var WebAuthnDomainInterface $domain */
+		$domain = $this->domains['WebAuthn'];
 		return $domain;
 	}
 }

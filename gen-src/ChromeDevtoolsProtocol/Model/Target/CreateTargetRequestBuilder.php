@@ -21,6 +21,10 @@ final class CreateTargetRequestBuilder
 
 	private $enableBeginFrameControl;
 
+	private $newWindow;
+
+	private $background;
+
 
 	/**
 	 * Validate non-optional parameters and return new instance.
@@ -36,6 +40,8 @@ final class CreateTargetRequestBuilder
 		$instance->height = $this->height;
 		$instance->browserContextId = $this->browserContextId;
 		$instance->enableBeginFrameControl = $this->enableBeginFrameControl;
+		$instance->newWindow = $this->newWindow;
+		$instance->background = $this->background;
 		return $instance;
 	}
 
@@ -96,6 +102,30 @@ final class CreateTargetRequestBuilder
 	public function setEnableBeginFrameControl($enableBeginFrameControl): self
 	{
 		$this->enableBeginFrameControl = $enableBeginFrameControl;
+		return $this;
+	}
+
+
+	/**
+	 * @param bool|null $newWindow
+	 *
+	 * @return self
+	 */
+	public function setNewWindow($newWindow): self
+	{
+		$this->newWindow = $newWindow;
+		return $this;
+	}
+
+
+	/**
+	 * @param bool|null $background
+	 *
+	 * @return self
+	 */
+	public function setBackground($background): self
+	{
+		$this->background = $background;
 		return $this;
 	}
 }
