@@ -3,7 +3,7 @@
 namespace ChromeDevtoolsProtocol\Model\DOMSnapshot;
 
 /**
- * Details of post layout rendered text positions. The exact layout should not be regarded as stable and may change between versions.
+ * Table of details of the post layout rendered text positions. The exact layout should not be regarded as stable and may change between versions.
  *
  * @generated This file has been auto-generated, do not edit.
  *
@@ -12,7 +12,7 @@ namespace ChromeDevtoolsProtocol\Model\DOMSnapshot;
 final class TextBoxSnapshot implements \JsonSerializable
 {
 	/**
-	 * Intex of th elayout tree node that owns this box collection.
+	 * Index of the layout tree node that owns this box collection.
 	 *
 	 * @var int[]
 	 */

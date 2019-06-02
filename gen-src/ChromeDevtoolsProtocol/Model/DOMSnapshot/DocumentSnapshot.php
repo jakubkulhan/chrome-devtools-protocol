@@ -82,13 +82,17 @@ final class DocumentSnapshot implements \JsonSerializable
 	public $textBoxes;
 
 	/**
-	 * Scroll offsets.
+	 * Horizontal scroll offset.
 	 *
 	 * @var int|float|null
 	 */
 	public $scrollOffsetX;
 
-	/** @var int|float|null */
+	/**
+	 * Vertical scroll offset.
+	 *
+	 * @var int|float|null
+	 */
 	public $scrollOffsetY;
 
 

@@ -3,7 +3,7 @@
 namespace ChromeDevtoolsProtocol\Model\DOMSnapshot;
 
 /**
- * Details of an element in the DOM tree with a LayoutObject.
+ * Table of details of an element in the DOM tree with a LayoutObject.
  *
  * @generated This file has been auto-generated, do not edit.
  *
@@ -12,14 +12,14 @@ namespace ChromeDevtoolsProtocol\Model\DOMSnapshot;
 final class LayoutTreeSnapshot implements \JsonSerializable
 {
 	/**
-	 * The index of the related DOM node in the `domNodes` array returned by `getSnapshot`.
+	 * Index of the corresponding node in the `NodeTreeSnapshot` array returned by `captureSnapshot`.
 	 *
 	 * @var int[]
 	 */
 	public $nodeIndex;
 
 	/**
-	 * Index into the `computedStyles` array returned by `captureSnapshot`.
+	 * Array of indexes specifying computed style strings, filtered according to the `computedStyles` parameter passed to `captureSnapshot`.
 	 *
 	 * @var int[][]
 	 */
