@@ -3,6 +3,9 @@
 namespace ChromeDevtoolsProtocol\Domain;
 
 use ChromeDevtoolsProtocol\ContextInterface;
+use ChromeDevtoolsProtocol\Model\WebAuthn\AddVirtualAuthenticatorRequest;
+use ChromeDevtoolsProtocol\Model\WebAuthn\AddVirtualAuthenticatorResponse;
+use ChromeDevtoolsProtocol\Model\WebAuthn\RemoveVirtualAuthenticatorRequest;
 
 /**
  * This domain allows configuring virtual authenticators to test the WebAuthn API.
@@ -15,6 +18,17 @@ use ChromeDevtoolsProtocol\ContextInterface;
  */
 interface WebAuthnDomainInterface
 {
+	/**
+	 * Creates and adds a virtual authenticator.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param AddVirtualAuthenticatorRequest $request
+	 *
+	 * @return AddVirtualAuthenticatorResponse
+	 */
+	public function addVirtualAuthenticator(ContextInterface $ctx, AddVirtualAuthenticatorRequest $request): AddVirtualAuthenticatorResponse;
+
+
 	/**
 	 * Disable the WebAuthn domain.
 	 *
@@ -33,4 +47,15 @@ interface WebAuthnDomainInterface
 	 * @return void
 	 */
 	public function enable(ContextInterface $ctx): void;
+
+
+	/**
+	 * Removes the given authenticator.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param RemoveVirtualAuthenticatorRequest $request
+	 *
+	 * @return void
+	 */
+	public function removeVirtualAuthenticator(ContextInterface $ctx, RemoveVirtualAuthenticatorRequest $request): void;
 }
