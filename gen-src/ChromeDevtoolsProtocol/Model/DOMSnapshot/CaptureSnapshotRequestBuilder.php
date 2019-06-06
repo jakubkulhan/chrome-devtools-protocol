@@ -13,6 +13,8 @@ final class CaptureSnapshotRequestBuilder
 {
 	private $computedStyles;
 
+	private $includeDOMRects;
+
 
 	/**
 	 * Validate non-optional parameters and return new instance.
@@ -24,6 +26,7 @@ final class CaptureSnapshotRequestBuilder
 			throw new BuilderException('Property [computedStyles] is required.');
 		}
 		$instance->computedStyles = $this->computedStyles;
+		$instance->includeDOMRects = $this->includeDOMRects;
 		return $instance;
 	}
 
@@ -36,6 +39,18 @@ final class CaptureSnapshotRequestBuilder
 	public function setComputedStyles($computedStyles): self
 	{
 		$this->computedStyles = $computedStyles;
+		return $this;
+	}
+
+
+	/**
+	 * @param bool|null $includeDOMRects
+	 *
+	 * @return self
+	 */
+	public function setIncludeDOMRects($includeDOMRects): self
+	{
+		$this->includeDOMRects = $includeDOMRects;
 		return $this;
 	}
 }

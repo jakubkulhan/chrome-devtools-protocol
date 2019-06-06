@@ -18,6 +18,13 @@ final class CaptureSnapshotRequest implements \JsonSerializable
 	 */
 	public $computedStyles;
 
+	/**
+	 * Whether to include DOM rectangles (offsetRects, clientRects, scrollRects) into the snapshot
+	 *
+	 * @var bool|null
+	 */
+	public $includeDOMRects;
+
 
 	public static function fromJson($data)
 	{
@@ -27,6 +34,9 @@ final class CaptureSnapshotRequest implements \JsonSerializable
 			foreach ($data->computedStyles as $item) {
 				$instance->computedStyles[] = (string)$item;
 			}
+		}
+		if (isset($data->includeDOMRects)) {
+			$instance->includeDOMRects = (bool)$data->includeDOMRects;
 		}
 		return $instance;
 	}
@@ -40,6 +50,9 @@ final class CaptureSnapshotRequest implements \JsonSerializable
 			foreach ($this->computedStyles as $item) {
 				$data->computedStyles[] = $item;
 			}
+		}
+		if ($this->includeDOMRects !== null) {
+			$data->includeDOMRects = $this->includeDOMRects;
 		}
 		return $data;
 	}

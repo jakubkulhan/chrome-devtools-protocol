@@ -46,6 +46,27 @@ final class LayoutTreeSnapshot implements \JsonSerializable
 	 */
 	public $stackingContexts;
 
+	/**
+	 * The offset rect of nodes. Only available when includeDOMRects is set to true
+	 *
+	 * @var int[][]|float[][]|null
+	 */
+	public $offsetRects;
+
+	/**
+	 * The scroll rect of nodes. Only available when includeDOMRects is set to true
+	 *
+	 * @var int[][]|float[][]|null
+	 */
+	public $scrollRects;
+
+	/**
+	 * The client rect of nodes. Only available when includeDOMRects is set to true
+	 *
+	 * @var int[][]|float[][]|null
+	 */
+	public $clientRects;
+
 
 	public static function fromJson($data)
 	{
@@ -93,6 +114,45 @@ final class LayoutTreeSnapshot implements \JsonSerializable
 		}
 		if (isset($data->stackingContexts)) {
 			$instance->stackingContexts = RareBooleanData::fromJson($data->stackingContexts);
+		}
+		if (isset($data->offsetRects)) {
+			$instance->offsetRects = [];
+		if (isset($data->offsetRects)) {
+			$instance->offsetRects = [];
+			foreach ($data->offsetRects as $item) {
+				$nested = [];
+				foreach ($item as $nestedItem) {
+					$nested[] = $nestedItem;
+				}
+				$instance->offsetRects[] = $nested;
+			}
+		}
+		}
+		if (isset($data->scrollRects)) {
+			$instance->scrollRects = [];
+		if (isset($data->scrollRects)) {
+			$instance->scrollRects = [];
+			foreach ($data->scrollRects as $item) {
+				$nested = [];
+				foreach ($item as $nestedItem) {
+					$nested[] = $nestedItem;
+				}
+				$instance->scrollRects[] = $nested;
+			}
+		}
+		}
+		if (isset($data->clientRects)) {
+			$instance->clientRects = [];
+		if (isset($data->clientRects)) {
+			$instance->clientRects = [];
+			foreach ($data->clientRects as $item) {
+				$nested = [];
+				foreach ($item as $nestedItem) {
+					$nested[] = $nestedItem;
+				}
+				$instance->clientRects[] = $nested;
+			}
+		}
 		}
 		return $instance;
 	}
@@ -144,6 +204,45 @@ final class LayoutTreeSnapshot implements \JsonSerializable
 		}
 		if ($this->stackingContexts !== null) {
 			$data->stackingContexts = $this->stackingContexts->jsonSerialize();
+		}
+		if ($this->offsetRects !== null) {
+			$data->offsetRects = [];
+		if ($this->offsetRects !== null) {
+			$data->offsetRects = [];
+			foreach ($this->offsetRects as $item) {
+				$nested = [];
+				foreach ($item as $nestedItem) {
+					$nested[] = $nestedItem;
+				}
+				$data->offsetRects[] = $nested;
+			}
+		}
+		}
+		if ($this->scrollRects !== null) {
+			$data->scrollRects = [];
+		if ($this->scrollRects !== null) {
+			$data->scrollRects = [];
+			foreach ($this->scrollRects as $item) {
+				$nested = [];
+				foreach ($item as $nestedItem) {
+					$nested[] = $nestedItem;
+				}
+				$data->scrollRects[] = $nested;
+			}
+		}
+		}
+		if ($this->clientRects !== null) {
+			$data->clientRects = [];
+		if ($this->clientRects !== null) {
+			$data->clientRects = [];
+			foreach ($this->clientRects as $item) {
+				$nested = [];
+				foreach ($item as $nestedItem) {
+					$nested[] = $nestedItem;
+				}
+				$data->clientRects[] = $nested;
+			}
+		}
 		}
 		return $data;
 	}
