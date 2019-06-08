@@ -19,6 +19,7 @@ use ChromeDevtoolsProtocol\Model\Overlay\SetShowAdHighlightsRequest;
 use ChromeDevtoolsProtocol\Model\Overlay\SetShowDebugBordersRequest;
 use ChromeDevtoolsProtocol\Model\Overlay\SetShowFPSCounterRequest;
 use ChromeDevtoolsProtocol\Model\Overlay\SetShowHitTestBordersRequest;
+use ChromeDevtoolsProtocol\Model\Overlay\SetShowLayoutShiftRegionsRequest;
 use ChromeDevtoolsProtocol\Model\Overlay\SetShowPaintRectsRequest;
 use ChromeDevtoolsProtocol\Model\Overlay\SetShowScrollBottleneckRectsRequest;
 use ChromeDevtoolsProtocol\Model\Overlay\SetShowViewportSizeOnResizeRequest;
@@ -184,6 +185,17 @@ interface OverlayDomainInterface
 	 * @return void
 	 */
 	public function setShowHitTestBorders(ContextInterface $ctx, SetShowHitTestBordersRequest $request): void;
+
+
+	/**
+	 * Requests that backend shows layout shift regions
+	 *
+	 * @param ContextInterface $ctx
+	 * @param SetShowLayoutShiftRegionsRequest $request
+	 *
+	 * @return void
+	 */
+	public function setShowLayoutShiftRegions(ContextInterface $ctx, SetShowLayoutShiftRegionsRequest $request): void;
 
 
 	/**

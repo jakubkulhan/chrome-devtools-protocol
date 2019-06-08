@@ -20,6 +20,7 @@ use ChromeDevtoolsProtocol\Model\Overlay\SetShowAdHighlightsRequest;
 use ChromeDevtoolsProtocol\Model\Overlay\SetShowDebugBordersRequest;
 use ChromeDevtoolsProtocol\Model\Overlay\SetShowFPSCounterRequest;
 use ChromeDevtoolsProtocol\Model\Overlay\SetShowHitTestBordersRequest;
+use ChromeDevtoolsProtocol\Model\Overlay\SetShowLayoutShiftRegionsRequest;
 use ChromeDevtoolsProtocol\Model\Overlay\SetShowPaintRectsRequest;
 use ChromeDevtoolsProtocol\Model\Overlay\SetShowScrollBottleneckRectsRequest;
 use ChromeDevtoolsProtocol\Model\Overlay\SetShowViewportSizeOnResizeRequest;
@@ -122,6 +123,12 @@ class OverlayDomain implements OverlayDomainInterface
 	public function setShowHitTestBorders(ContextInterface $ctx, SetShowHitTestBordersRequest $request): void
 	{
 		$this->internalClient->executeCommand($ctx, 'Overlay.setShowHitTestBorders', $request);
+	}
+
+
+	public function setShowLayoutShiftRegions(ContextInterface $ctx, SetShowLayoutShiftRegionsRequest $request): void
+	{
+		$this->internalClient->executeCommand($ctx, 'Overlay.setShowLayoutShiftRegions', $request);
 	}
 
 
