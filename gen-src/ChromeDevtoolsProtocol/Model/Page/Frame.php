@@ -40,11 +40,18 @@ final class Frame implements \JsonSerializable
 	public $name;
 
 	/**
-	 * Frame document's URL.
+	 * Frame document's URL without fragment.
 	 *
 	 * @var string
 	 */
 	public $url;
+
+	/**
+	 * Frame document's URL fragment including the '#'.
+	 *
+	 * @var string|null
+	 */
+	public $urlFragment;
 
 	/**
 	 * Frame document's security origin.
@@ -61,7 +68,7 @@ final class Frame implements \JsonSerializable
 	public $mimeType;
 
 	/**
-	 * If the frame failed to load, this contains the URL that could not be loaded.
+	 * If the frame failed to load, this contains the URL that could not be loaded. Note that unlike url above, this URL may contain a fragment.
 	 *
 	 * @var string|null
 	 */
@@ -85,6 +92,9 @@ final class Frame implements \JsonSerializable
 		}
 		if (isset($data->url)) {
 			$instance->url = (string)$data->url;
+		}
+		if (isset($data->urlFragment)) {
+			$instance->urlFragment = (string)$data->urlFragment;
 		}
 		if (isset($data->securityOrigin)) {
 			$instance->securityOrigin = (string)$data->securityOrigin;
@@ -116,6 +126,9 @@ final class Frame implements \JsonSerializable
 		}
 		if ($this->url !== null) {
 			$data->url = $this->url;
+		}
+		if ($this->urlFragment !== null) {
+			$data->urlFragment = $this->urlFragment;
 		}
 		if ($this->securityOrigin !== null) {
 			$data->securityOrigin = $this->securityOrigin;
