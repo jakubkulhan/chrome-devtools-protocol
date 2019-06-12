@@ -12,11 +12,18 @@ namespace ChromeDevtoolsProtocol\Model\Page;
 final class PrintToPDFResponse implements \JsonSerializable
 {
 	/**
-	 * Base64-encoded pdf data.
+	 * Base64-encoded pdf data. Empty if |returnAsStream| is specified.
 	 *
 	 * @var string
 	 */
 	public $data;
+
+	/**
+	 * A handle of the stream that holds resulting PDF data.
+	 *
+	 * @var string
+	 */
+	public $stream;
 
 
 	public static function fromJson($data)
@@ -24,6 +31,9 @@ final class PrintToPDFResponse implements \JsonSerializable
 		$instance = new static();
 		if (isset($data->data)) {
 			$instance->data = (string)$data->data;
+		}
+		if (isset($data->stream)) {
+			$instance->stream = (string)$data->stream;
 		}
 		return $instance;
 	}
@@ -34,6 +44,9 @@ final class PrintToPDFResponse implements \JsonSerializable
 		$data = new \stdClass();
 		if ($this->data !== null) {
 			$data->data = $this->data;
+		}
+		if ($this->stream !== null) {
+			$data->stream = $this->stream;
 		}
 		return $data;
 	}

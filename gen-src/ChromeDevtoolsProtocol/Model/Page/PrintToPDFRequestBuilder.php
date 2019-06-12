@@ -39,6 +39,8 @@ final class PrintToPDFRequestBuilder
 
 	private $preferCSSPageSize;
 
+	private $transferMode;
+
 
 	/**
 	 * Validate non-optional parameters and return new instance.
@@ -61,6 +63,7 @@ final class PrintToPDFRequestBuilder
 		$instance->headerTemplate = $this->headerTemplate;
 		$instance->footerTemplate = $this->footerTemplate;
 		$instance->preferCSSPageSize = $this->preferCSSPageSize;
+		$instance->transferMode = $this->transferMode;
 		return $instance;
 	}
 
@@ -241,6 +244,18 @@ final class PrintToPDFRequestBuilder
 	public function setPreferCSSPageSize($preferCSSPageSize): self
 	{
 		$this->preferCSSPageSize = $preferCSSPageSize;
+		return $this;
+	}
+
+
+	/**
+	 * @param string|null $transferMode
+	 *
+	 * @return self
+	 */
+	public function setTransferMode($transferMode): self
+	{
+		$this->transferMode = $transferMode;
 		return $this;
 	}
 }

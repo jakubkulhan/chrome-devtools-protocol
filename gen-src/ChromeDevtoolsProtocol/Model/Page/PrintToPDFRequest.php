@@ -116,6 +116,13 @@ final class PrintToPDFRequest implements \JsonSerializable
 	 */
 	public $preferCSSPageSize;
 
+	/**
+	 * return as stream
+	 *
+	 * @var string|null
+	 */
+	public $transferMode;
+
 
 	public static function fromJson($data)
 	{
@@ -164,6 +171,9 @@ final class PrintToPDFRequest implements \JsonSerializable
 		}
 		if (isset($data->preferCSSPageSize)) {
 			$instance->preferCSSPageSize = (bool)$data->preferCSSPageSize;
+		}
+		if (isset($data->transferMode)) {
+			$instance->transferMode = (string)$data->transferMode;
 		}
 		return $instance;
 	}
@@ -216,6 +226,9 @@ final class PrintToPDFRequest implements \JsonSerializable
 		}
 		if ($this->preferCSSPageSize !== null) {
 			$data->preferCSSPageSize = $this->preferCSSPageSize;
+		}
+		if ($this->transferMode !== null) {
+			$data->transferMode = $this->transferMode;
 		}
 		return $data;
 	}
