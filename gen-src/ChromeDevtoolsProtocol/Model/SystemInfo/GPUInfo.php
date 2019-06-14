@@ -39,6 +39,27 @@ final class GPUInfo implements \JsonSerializable
 	 */
 	public $driverBugWorkarounds;
 
+	/**
+	 * Supported accelerated video decoding capabilities.
+	 *
+	 * @var VideoDecodeAcceleratorCapability[]
+	 */
+	public $videoDecoding;
+
+	/**
+	 * Supported accelerated video encoding capabilities.
+	 *
+	 * @var VideoEncodeAcceleratorCapability[]
+	 */
+	public $videoEncoding;
+
+	/**
+	 * Supported accelerated image decoding capabilities.
+	 *
+	 * @var ImageDecodeAcceleratorCapability[]
+	 */
+	public $imageDecoding;
+
 
 	public static function fromJson($data)
 	{
@@ -59,6 +80,24 @@ final class GPUInfo implements \JsonSerializable
 			$instance->driverBugWorkarounds = [];
 			foreach ($data->driverBugWorkarounds as $item) {
 				$instance->driverBugWorkarounds[] = (string)$item;
+			}
+		}
+		if (isset($data->videoDecoding)) {
+			$instance->videoDecoding = [];
+			foreach ($data->videoDecoding as $item) {
+				$instance->videoDecoding[] = VideoDecodeAcceleratorCapability::fromJson($item);
+			}
+		}
+		if (isset($data->videoEncoding)) {
+			$instance->videoEncoding = [];
+			foreach ($data->videoEncoding as $item) {
+				$instance->videoEncoding[] = VideoEncodeAcceleratorCapability::fromJson($item);
+			}
+		}
+		if (isset($data->imageDecoding)) {
+			$instance->imageDecoding = [];
+			foreach ($data->imageDecoding as $item) {
+				$instance->imageDecoding[] = ImageDecodeAcceleratorCapability::fromJson($item);
 			}
 		}
 		return $instance;
@@ -84,6 +123,24 @@ final class GPUInfo implements \JsonSerializable
 			$data->driverBugWorkarounds = [];
 			foreach ($this->driverBugWorkarounds as $item) {
 				$data->driverBugWorkarounds[] = $item;
+			}
+		}
+		if ($this->videoDecoding !== null) {
+			$data->videoDecoding = [];
+			foreach ($this->videoDecoding as $item) {
+				$data->videoDecoding[] = $item->jsonSerialize();
+			}
+		}
+		if ($this->videoEncoding !== null) {
+			$data->videoEncoding = [];
+			foreach ($this->videoEncoding as $item) {
+				$data->videoEncoding[] = $item->jsonSerialize();
+			}
+		}
+		if ($this->imageDecoding !== null) {
+			$data->imageDecoding = [];
+			foreach ($this->imageDecoding as $item) {
+				$data->imageDecoding[] = $item->jsonSerialize();
 			}
 		}
 		return $data;
