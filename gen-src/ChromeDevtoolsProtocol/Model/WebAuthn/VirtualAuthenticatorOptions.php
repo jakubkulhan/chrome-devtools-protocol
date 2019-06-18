@@ -23,6 +23,13 @@ final class VirtualAuthenticatorOptions implements \JsonSerializable
 	/** @var bool */
 	public $hasUserVerification;
 
+	/**
+	 * If set to true, tests of user presence will succeed immediately. Otherwise, they will not be resolved. Defaults to true.
+	 *
+	 * @var bool|null
+	 */
+	public $automaticPresenceSimulation;
+
 
 	public static function fromJson($data)
 	{
@@ -38,6 +45,9 @@ final class VirtualAuthenticatorOptions implements \JsonSerializable
 		}
 		if (isset($data->hasUserVerification)) {
 			$instance->hasUserVerification = (bool)$data->hasUserVerification;
+		}
+		if (isset($data->automaticPresenceSimulation)) {
+			$instance->automaticPresenceSimulation = (bool)$data->automaticPresenceSimulation;
 		}
 		return $instance;
 	}
@@ -57,6 +67,9 @@ final class VirtualAuthenticatorOptions implements \JsonSerializable
 		}
 		if ($this->hasUserVerification !== null) {
 			$data->hasUserVerification = $this->hasUserVerification;
+		}
+		if ($this->automaticPresenceSimulation !== null) {
+			$data->automaticPresenceSimulation = $this->automaticPresenceSimulation;
 		}
 		return $data;
 	}
