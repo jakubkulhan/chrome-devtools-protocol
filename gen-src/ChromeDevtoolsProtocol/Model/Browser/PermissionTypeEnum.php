@@ -29,4 +29,6 @@ final class PermissionTypeEnum
 	const SENSORS = 'sensors';
 	const VIDEO_CAPTURE = 'videoCapture';
 	const IDLE_DETECTION = 'idleDetection';
+	const WAKE_LOCK_SCREEN = 'wakeLockScreen';
+	const WAKE_LOCK_SYSTEM = 'wakeLockSystem';
 }

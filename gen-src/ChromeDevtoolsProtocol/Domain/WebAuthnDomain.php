@@ -11,6 +11,7 @@ use ChromeDevtoolsProtocol\Model\WebAuthn\ClearCredentialsRequest;
 use ChromeDevtoolsProtocol\Model\WebAuthn\GetCredentialsRequest;
 use ChromeDevtoolsProtocol\Model\WebAuthn\GetCredentialsResponse;
 use ChromeDevtoolsProtocol\Model\WebAuthn\RemoveVirtualAuthenticatorRequest;
+use ChromeDevtoolsProtocol\Model\WebAuthn\SetUserVerifiedRequest;
 
 class WebAuthnDomain implements WebAuthnDomainInterface
 {
@@ -67,5 +68,11 @@ class WebAuthnDomain implements WebAuthnDomainInterface
 	public function removeVirtualAuthenticator(ContextInterface $ctx, RemoveVirtualAuthenticatorRequest $request): void
 	{
 		$this->internalClient->executeCommand($ctx, 'WebAuthn.removeVirtualAuthenticator', $request);
+	}
+
+
+	public function setUserVerified(ContextInterface $ctx, SetUserVerifiedRequest $request): void
+	{
+		$this->internalClient->executeCommand($ctx, 'WebAuthn.setUserVerified', $request);
 	}
 }

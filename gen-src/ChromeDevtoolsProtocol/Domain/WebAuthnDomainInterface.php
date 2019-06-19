@@ -10,6 +10,7 @@ use ChromeDevtoolsProtocol\Model\WebAuthn\ClearCredentialsRequest;
 use ChromeDevtoolsProtocol\Model\WebAuthn\GetCredentialsRequest;
 use ChromeDevtoolsProtocol\Model\WebAuthn\GetCredentialsResponse;
 use ChromeDevtoolsProtocol\Model\WebAuthn\RemoveVirtualAuthenticatorRequest;
+use ChromeDevtoolsProtocol\Model\WebAuthn\SetUserVerifiedRequest;
 
 /**
  * This domain allows configuring virtual authenticators to test the WebAuthn API.
@@ -95,4 +96,15 @@ interface WebAuthnDomainInterface
 	 * @return void
 	 */
 	public function removeVirtualAuthenticator(ContextInterface $ctx, RemoveVirtualAuthenticatorRequest $request): void;
+
+
+	/**
+	 * Sets whether User Verification succeeds or fails for an authenticator. The default is true.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param SetUserVerifiedRequest $request
+	 *
+	 * @return void
+	 */
+	public function setUserVerified(ContextInterface $ctx, SetUserVerifiedRequest $request): void;
 }
