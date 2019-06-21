@@ -12,6 +12,13 @@ namespace ChromeDevtoolsProtocol\Model\Tracing;
 final class TracingCompleteEvent implements \JsonSerializable
 {
 	/**
+	 * Indicates whether some trace data is known to have been lost, e.g. because the trace ring buffer wrapped around.
+	 *
+	 * @var bool
+	 */
+	public $dataLossOccurred;
+
+	/**
 	 * A handle of the stream that holds resulting trace data.
 	 *
 	 * @var string
@@ -36,6 +43,9 @@ final class TracingCompleteEvent implements \JsonSerializable
 	public static function fromJson($data)
 	{
 		$instance = new static();
+		if (isset($data->dataLossOccurred)) {
+			$instance->dataLossOccurred = (bool)$data->dataLossOccurred;
+		}
 		if (isset($data->stream)) {
 			$instance->stream = (string)$data->stream;
 		}
@@ -52,6 +62,9 @@ final class TracingCompleteEvent implements \JsonSerializable
 	public function jsonSerialize()
 	{
 		$data = new \stdClass();
+		if ($this->dataLossOccurred !== null) {
+			$data->dataLossOccurred = $this->dataLossOccurred;
+		}
 		if ($this->stream !== null) {
 			$data->stream = $this->stream;
 		}
