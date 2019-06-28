@@ -19,6 +19,7 @@ use ChromeDevtoolsProtocol\Model\Page\CreateIsolatedWorldResponse;
 use ChromeDevtoolsProtocol\Model\Page\DeleteCookieRequest;
 use ChromeDevtoolsProtocol\Model\Page\DomContentEventFiredEvent;
 use ChromeDevtoolsProtocol\Model\Page\DownloadWillBeginEvent;
+use ChromeDevtoolsProtocol\Model\Page\FileChooserOpenedEvent;
 use ChromeDevtoolsProtocol\Model\Page\FrameAttachedEvent;
 use ChromeDevtoolsProtocol\Model\Page\FrameClearedScheduledNavigationEvent;
 use ChromeDevtoolsProtocol\Model\Page\FrameDetachedEvent;
@@ -38,6 +39,7 @@ use ChromeDevtoolsProtocol\Model\Page\GetNavigationHistoryResponse;
 use ChromeDevtoolsProtocol\Model\Page\GetResourceContentRequest;
 use ChromeDevtoolsProtocol\Model\Page\GetResourceContentResponse;
 use ChromeDevtoolsProtocol\Model\Page\GetResourceTreeResponse;
+use ChromeDevtoolsProtocol\Model\Page\HandleFileChooserRequest;
 use ChromeDevtoolsProtocol\Model\Page\HandleJavaScriptDialogRequest;
 use ChromeDevtoolsProtocol\Model\Page\InterstitialHiddenEvent;
 use ChromeDevtoolsProtocol\Model\Page\InterstitialShownEvent;
@@ -68,6 +70,7 @@ use ChromeDevtoolsProtocol\Model\Page\SetDownloadBehaviorRequest;
 use ChromeDevtoolsProtocol\Model\Page\SetFontFamiliesRequest;
 use ChromeDevtoolsProtocol\Model\Page\SetFontSizesRequest;
 use ChromeDevtoolsProtocol\Model\Page\SetGeolocationOverrideRequest;
+use ChromeDevtoolsProtocol\Model\Page\SetInterceptFileChooserDialogRequest;
 use ChromeDevtoolsProtocol\Model\Page\SetLifecycleEventsEnabledRequest;
 use ChromeDevtoolsProtocol\Model\Page\SetProduceCompilationCacheRequest;
 use ChromeDevtoolsProtocol\Model\Page\SetTouchEmulationEnabledRequest;
@@ -267,6 +270,12 @@ class PageDomain implements PageDomainInterface
 	}
 
 
+	public function handleFileChooser(ContextInterface $ctx, HandleFileChooserRequest $request): void
+	{
+		$this->internalClient->executeCommand($ctx, 'Page.handleFileChooser', $request);
+	}
+
+
 	public function handleJavaScriptDialog(ContextInterface $ctx, HandleJavaScriptDialogRequest $request): void
 	{
 		$this->internalClient->executeCommand($ctx, 'Page.handleJavaScriptDialog', $request);
@@ -385,6 +394,12 @@ class PageDomain implements PageDomainInterface
 	}
 
 
+	public function setInterceptFileChooserDialog(ContextInterface $ctx, SetInterceptFileChooserDialogRequest $request): void
+	{
+		$this->internalClient->executeCommand($ctx, 'Page.setInterceptFileChooserDialog', $request);
+	}
+
+
 	public function setLifecycleEventsEnabled(ContextInterface $ctx, SetLifecycleEventsEnabledRequest $request): void
 	{
 		$this->internalClient->executeCommand($ctx, 'Page.setLifecycleEventsEnabled', $request);
@@ -475,6 +490,20 @@ class PageDomain implements PageDomainInterface
 	public function awaitDownloadWillBegin(ContextInterface $ctx): DownloadWillBeginEvent
 	{
 		return DownloadWillBeginEvent::fromJson($this->internalClient->awaitEvent($ctx, 'Page.downloadWillBegin'));
+	}
+
+
+	public function addFileChooserOpenedListener(callable $listener): SubscriptionInterface
+	{
+		return $this->internalClient->addListener('Page.fileChooserOpened', function ($event) use ($listener) {
+			return $listener(FileChooserOpenedEvent::fromJson($event));
+		});
+	}
+
+
+	public function awaitFileChooserOpened(ContextInterface $ctx): FileChooserOpenedEvent
+	{
+		return FileChooserOpenedEvent::fromJson($this->internalClient->awaitEvent($ctx, 'Page.fileChooserOpened'));
 	}
 
 

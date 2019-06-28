@@ -13469,6 +13469,31 @@
                     ]
                 },
                 {
+                    "name": "handleFileChooser",
+                    "description": "Accepts or cancels an intercepted file chooser dialog.",
+                    "experimental": true,
+                    "parameters": [
+                        {
+                            "name": "action",
+                            "type": "string",
+                            "enum": [
+                                "accept",
+                                "cancel",
+                                "fallback"
+                            ]
+                        },
+                        {
+                            "name": "files",
+                            "description": "Array of absolute file paths to set, only respected with `accept` action.",
+                            "optional": true,
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            }
+                        }
+                    ]
+                },
+                {
                     "name": "handleJavaScriptDialog",
                     "description": "Accepts or dismisses a JavaScript initiated dialog (alert, confirm, prompt, or onbeforeunload).",
                     "parameters": [
@@ -13980,6 +14005,17 @@
                     ]
                 },
                 {
+                    "name": "setInterceptFileChooserDialog",
+                    "description": "Intercept file chooser requests and transfer control to protocol clients. When file chooser interception is enabled, native file chooser dialog is not shown. Instead, a protocol event `Page.fileChooserOpened` is emitted. File chooser can be handled with `page.handleFileChooser` command.",
+                    "experimental": true,
+                    "parameters": [
+                        {
+                            "name": "enabled",
+                            "type": "boolean"
+                        }
+                    ]
+                },
+                {
                     "name": "setLifecycleEventsEnabled",
                     "description": "Controls whether page will emit lifecycle events.",
                     "experimental": true,
@@ -14138,6 +14174,20 @@
                             "name": "url",
                             "description": "URL of the resource being downloaded.",
                             "type": "string"
+                        }
+                    ]
+                },
+                {
+                    "name": "fileChooserOpened",
+                    "description": "Emitted only when `page.interceptFileChooser` is enabled.",
+                    "parameters": [
+                        {
+                            "name": "mode",
+                            "type": "string",
+                            "enum": [
+                                "selectSingle",
+                                "selectMultiple"
+                            ]
                         }
                     ]
                 },

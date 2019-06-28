@@ -18,6 +18,7 @@ use ChromeDevtoolsProtocol\Model\Page\CreateIsolatedWorldResponse;
 use ChromeDevtoolsProtocol\Model\Page\DeleteCookieRequest;
 use ChromeDevtoolsProtocol\Model\Page\DomContentEventFiredEvent;
 use ChromeDevtoolsProtocol\Model\Page\DownloadWillBeginEvent;
+use ChromeDevtoolsProtocol\Model\Page\FileChooserOpenedEvent;
 use ChromeDevtoolsProtocol\Model\Page\FrameAttachedEvent;
 use ChromeDevtoolsProtocol\Model\Page\FrameClearedScheduledNavigationEvent;
 use ChromeDevtoolsProtocol\Model\Page\FrameDetachedEvent;
@@ -37,6 +38,7 @@ use ChromeDevtoolsProtocol\Model\Page\GetNavigationHistoryResponse;
 use ChromeDevtoolsProtocol\Model\Page\GetResourceContentRequest;
 use ChromeDevtoolsProtocol\Model\Page\GetResourceContentResponse;
 use ChromeDevtoolsProtocol\Model\Page\GetResourceTreeResponse;
+use ChromeDevtoolsProtocol\Model\Page\HandleFileChooserRequest;
 use ChromeDevtoolsProtocol\Model\Page\HandleJavaScriptDialogRequest;
 use ChromeDevtoolsProtocol\Model\Page\InterstitialHiddenEvent;
 use ChromeDevtoolsProtocol\Model\Page\InterstitialShownEvent;
@@ -67,6 +69,7 @@ use ChromeDevtoolsProtocol\Model\Page\SetDownloadBehaviorRequest;
 use ChromeDevtoolsProtocol\Model\Page\SetFontFamiliesRequest;
 use ChromeDevtoolsProtocol\Model\Page\SetFontSizesRequest;
 use ChromeDevtoolsProtocol\Model\Page\SetGeolocationOverrideRequest;
+use ChromeDevtoolsProtocol\Model\Page\SetInterceptFileChooserDialogRequest;
 use ChromeDevtoolsProtocol\Model\Page\SetLifecycleEventsEnabledRequest;
 use ChromeDevtoolsProtocol\Model\Page\SetProduceCompilationCacheRequest;
 use ChromeDevtoolsProtocol\Model\Page\SetTouchEmulationEnabledRequest;
@@ -344,6 +347,17 @@ interface PageDomainInterface
 
 
 	/**
+	 * Accepts or cancels an intercepted file chooser dialog.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param HandleFileChooserRequest $request
+	 *
+	 * @return void
+	 */
+	public function handleFileChooser(ContextInterface $ctx, HandleFileChooserRequest $request): void;
+
+
+	/**
 	 * Accepts or dismisses a JavaScript initiated dialog (alert, confirm, prompt, or onbeforeunload).
 	 *
 	 * @param ContextInterface $ctx
@@ -552,6 +566,17 @@ interface PageDomainInterface
 
 
 	/**
+	 * Intercept file chooser requests and transfer control to protocol clients. When file chooser interception is enabled, native file chooser dialog is not shown. Instead, a protocol event `Page.fileChooserOpened` is emitted. File chooser can be handled with `page.handleFileChooser` command.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param SetInterceptFileChooserDialogRequest $request
+	 *
+	 * @return void
+	 */
+	public function setInterceptFileChooserDialog(ContextInterface $ctx, SetInterceptFileChooserDialogRequest $request): void;
+
+
+	/**
 	 * Controls whether page will emit lifecycle events.
 	 *
 	 * @param ContextInterface $ctx
@@ -706,6 +731,30 @@ interface PageDomainInterface
 	 * @return DownloadWillBeginEvent
 	 */
 	public function awaitDownloadWillBegin(ContextInterface $ctx): DownloadWillBeginEvent;
+
+
+	/**
+	 * Emitted only when `page.interceptFileChooser` is enabled.
+	 *
+	 * Listener will be called whenever event Page.fileChooserOpened is fired.
+	 *
+	 * @param callable $listener
+	 *
+	 * @return SubscriptionInterface
+	 */
+	public function addFileChooserOpenedListener(callable $listener): SubscriptionInterface;
+
+
+	/**
+	 * Emitted only when `page.interceptFileChooser` is enabled.
+	 *
+	 * Method will block until first Page.fileChooserOpened event is fired.
+	 *
+	 * @param ContextInterface $ctx
+	 *
+	 * @return FileChooserOpenedEvent
+	 */
+	public function awaitFileChooserOpened(ContextInterface $ctx): FileChooserOpenedEvent;
 
 
 	/**
