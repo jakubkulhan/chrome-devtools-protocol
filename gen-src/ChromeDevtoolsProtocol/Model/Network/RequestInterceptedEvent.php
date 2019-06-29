@@ -3,7 +3,7 @@
 namespace ChromeDevtoolsProtocol\Model\Network;
 
 /**
- * Details of an intercepted HTTP request, which must be either allowed, blocked, modified or mocked.
+ * Details of an intercepted HTTP request, which must be either allowed, blocked, modified or mocked. Deprecated, use Fetch.requestPaused instead.
  *
  * @generated This file has been auto-generated, do not edit.
  *

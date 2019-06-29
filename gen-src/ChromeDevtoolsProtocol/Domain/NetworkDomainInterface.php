@@ -115,7 +115,7 @@ interface NetworkDomainInterface
 
 
 	/**
-	 * Response to Network.requestIntercepted which either modifies the request to continue with any modifications, or blocks it, or completes it with the provided response bytes. If a network fetch occurs as a result which encounters a redirect an additional Network.requestIntercepted event will be sent with the same InterceptionId.
+	 * Response to Network.requestIntercepted which either modifies the request to continue with any modifications, or blocks it, or completes it with the provided response bytes. If a network fetch occurs as a result which encounters a redirect an additional Network.requestIntercepted event will be sent with the same InterceptionId. Deprecated, use Fetch.continueRequest, Fetch.fulfillRequest and Fetch.failRequest instead.
 	 *
 	 * @param ContextInterface $ctx
 	 * @param ContinueInterceptedRequestRequest $request
@@ -333,7 +333,7 @@ interface NetworkDomainInterface
 
 
 	/**
-	 * Sets the requests to intercept that match the provided patterns and optionally resource types.
+	 * Sets the requests to intercept that match the provided patterns and optionally resource types. Deprecated, please use Fetch.enable instead.
 	 *
 	 * @param ContextInterface $ctx
 	 * @param SetRequestInterceptionRequest $request
@@ -462,7 +462,7 @@ interface NetworkDomainInterface
 
 
 	/**
-	 * Details of an intercepted HTTP request, which must be either allowed, blocked, modified or mocked.
+	 * Details of an intercepted HTTP request, which must be either allowed, blocked, modified or mocked. Deprecated, use Fetch.requestPaused instead.
 	 *
 	 * Listener will be called whenever event Network.requestIntercepted is fired.
 	 *
@@ -474,7 +474,7 @@ interface NetworkDomainInterface
 
 
 	/**
-	 * Details of an intercepted HTTP request, which must be either allowed, blocked, modified or mocked.
+	 * Details of an intercepted HTTP request, which must be either allowed, blocked, modified or mocked. Deprecated, use Fetch.requestPaused instead.
 	 *
 	 * Method will block until first Network.requestIntercepted event is fired.
 	 *
