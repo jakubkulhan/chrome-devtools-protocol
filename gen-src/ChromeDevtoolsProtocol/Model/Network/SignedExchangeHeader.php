@@ -39,6 +39,13 @@ final class SignedExchangeHeader implements \JsonSerializable
 	 */
 	public $signatures;
 
+	/**
+	 * Signed exchange header integrity hash in the form of "sha256-<base64-hash-value>".
+	 *
+	 * @var string
+	 */
+	public $headerIntegrity;
+
 
 	public static function fromJson($data)
 	{
@@ -57,6 +64,9 @@ final class SignedExchangeHeader implements \JsonSerializable
 			foreach ($data->signatures as $item) {
 				$instance->signatures[] = SignedExchangeSignature::fromJson($item);
 			}
+		}
+		if (isset($data->headerIntegrity)) {
+			$instance->headerIntegrity = (string)$data->headerIntegrity;
 		}
 		return $instance;
 	}
@@ -79,6 +89,9 @@ final class SignedExchangeHeader implements \JsonSerializable
 			foreach ($this->signatures as $item) {
 				$data->signatures[] = $item->jsonSerialize();
 			}
+		}
+		if ($this->headerIntegrity !== null) {
+			$data->headerIntegrity = $this->headerIntegrity;
 		}
 		return $data;
 	}
