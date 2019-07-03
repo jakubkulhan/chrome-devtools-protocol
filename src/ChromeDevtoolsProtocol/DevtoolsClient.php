@@ -34,12 +34,18 @@ class DevtoolsClient implements DevtoolsClientInterface, InternalClientInterface
 	/** @var object[][] */
 	private $eventBuffers = [];
 
-	public function __construct(string $wsUrl)
+	public function __construct(WebSocketClient $wsClient)
 	{
-		$this->wsClient = new WebSocketClient($wsUrl, "http://" . parse_url($wsUrl, PHP_URL_HOST));
-		if (!$this->wsClient->connect()) {
+		$this->wsClient = $wsClient;
+	}
+
+	public static function createFromDebuggerUrl(string $wsUrl)
+	{
+		$wsClient = new WebSocketClient($wsUrl, "http://" . parse_url($wsUrl, PHP_URL_HOST));
+		if (!$wsClient->connect()) {
 			throw new RuntimeException(sprintf("Could not connect to [%s].", $wsUrl));
 		}
+		return new self($wsClient);
 	}
 
 	public function __destruct()

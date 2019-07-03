@@ -103,7 +103,7 @@ class Instance implements InstanceInterface, InternalInstanceInterface
 			throw new RuntimeException("No browser debugger URL. Try upgrading to newer version of Chrome.");
 		}
 
-		$browser = new DevtoolsClient($version->webSocketDebuggerUrl);
+		$browser = DevtoolsClient::createFromDebuggerUrl($version->webSocketDebuggerUrl);
 		try {
 			$browserContextId = $browser->target()->createBrowserContext($ctx)->browserContextId;
 			try {
