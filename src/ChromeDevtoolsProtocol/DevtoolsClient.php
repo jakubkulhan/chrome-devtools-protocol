@@ -109,27 +109,21 @@ class DevtoolsClient implements DevtoolsClientInterface, InternalClientInterface
 		$this->eventBuffers = [];
 
 		for (; ;) {
-			$eventMessage = null;
-
 			$this->getWsClient()->setDeadline($ctx->getDeadline());
 			foreach ($this->getWsClient()->receive() ?: [] as $payload) {
 				/** @var Payload $payload */
 				$message = json_decode($payload->getPayload());
 
-				$nextEventMessage = $this->handleMessage($message, $eventMessage === null ? $method : null);
-
-				if ($nextEventMessage !== null) {
-					$eventMessage = $nextEventMessage;
-				}
+				$this->handleMessage($message);
 			}
 
-			if ($eventMessage !== null) {
-				return $eventMessage->params;
+			if (!empty($this->eventBuffers[$method])) {
+				return array_shift($this->eventBuffers[$method])->params;
 			}
 		}
 	}
 
-	private function handleMessage($message, ?string $returnIfEventMethod = null)
+	private function handleMessage($message)
 	{
 		if (isset($message->error)) {
 			throw new ErrorException($message->error->message, $message->error->code);
@@ -141,14 +135,10 @@ class DevtoolsClient implements DevtoolsClientInterface, InternalClientInterface
 				}
 			}
 
-			if ($returnIfEventMethod !== null && $message->method === $returnIfEventMethod) {
-				return $message;
-			} else {
-				if (!isset($this->eventBuffers[$message->method])) {
-					$this->eventBuffers[$message->method] = [];
-				}
-				array_push($this->eventBuffers[$message->method], $message);
+			if (!isset($this->eventBuffers[$message->method])) {
+				$this->eventBuffers[$message->method] = [];
 			}
+			array_push($this->eventBuffers[$message->method], $message);
 
 		} else if (isset($message->id)) {
 			$this->commandResults[$message->id] = $message->result ?? new \stdClass();
