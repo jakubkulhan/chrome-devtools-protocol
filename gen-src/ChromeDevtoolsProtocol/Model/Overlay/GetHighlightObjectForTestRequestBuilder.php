@@ -15,6 +15,8 @@ final class GetHighlightObjectForTestRequestBuilder
 
 	private $includeDistance;
 
+	private $includeStyle;
+
 
 	/**
 	 * Validate non-optional parameters and return new instance.
@@ -27,6 +29,7 @@ final class GetHighlightObjectForTestRequestBuilder
 		}
 		$instance->nodeId = $this->nodeId;
 		$instance->includeDistance = $this->includeDistance;
+		$instance->includeStyle = $this->includeStyle;
 		return $instance;
 	}
 
@@ -51,6 +54,18 @@ final class GetHighlightObjectForTestRequestBuilder
 	public function setIncludeDistance($includeDistance): self
 	{
 		$this->includeDistance = $includeDistance;
+		return $this;
+	}
+
+
+	/**
+	 * @param bool|null $includeStyle
+	 *
+	 * @return self
+	 */
+	public function setIncludeStyle($includeStyle): self
+	{
+		$this->includeStyle = $includeStyle;
 		return $this;
 	}
 }

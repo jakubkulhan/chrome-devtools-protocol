@@ -25,6 +25,13 @@ final class GetHighlightObjectForTestRequest implements \JsonSerializable
 	 */
 	public $includeDistance;
 
+	/**
+	 * Whether to include style info.
+	 *
+	 * @var bool|null
+	 */
+	public $includeStyle;
+
 
 	public static function fromJson($data)
 	{
@@ -34,6 +41,9 @@ final class GetHighlightObjectForTestRequest implements \JsonSerializable
 		}
 		if (isset($data->includeDistance)) {
 			$instance->includeDistance = (bool)$data->includeDistance;
+		}
+		if (isset($data->includeStyle)) {
+			$instance->includeStyle = (bool)$data->includeStyle;
 		}
 		return $instance;
 	}
@@ -47,6 +57,9 @@ final class GetHighlightObjectForTestRequest implements \JsonSerializable
 		}
 		if ($this->includeDistance !== null) {
 			$data->includeDistance = $this->includeDistance;
+		}
+		if ($this->includeStyle !== null) {
+			$data->includeStyle = $this->includeStyle;
 		}
 		return $data;
 	}
