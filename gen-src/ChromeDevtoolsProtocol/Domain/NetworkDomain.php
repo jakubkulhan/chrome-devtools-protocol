@@ -30,8 +30,10 @@ use ChromeDevtoolsProtocol\Model\Network\ReplayXHRRequest;
 use ChromeDevtoolsProtocol\Model\Network\RequestInterceptedEvent;
 use ChromeDevtoolsProtocol\Model\Network\RequestServedFromCacheEvent;
 use ChromeDevtoolsProtocol\Model\Network\RequestWillBeSentEvent;
+use ChromeDevtoolsProtocol\Model\Network\RequestWillBeSentExtraInfoEvent;
 use ChromeDevtoolsProtocol\Model\Network\ResourceChangedPriorityEvent;
 use ChromeDevtoolsProtocol\Model\Network\ResponseReceivedEvent;
+use ChromeDevtoolsProtocol\Model\Network\ResponseReceivedExtraInfoEvent;
 use ChromeDevtoolsProtocol\Model\Network\SearchInResponseBodyRequest;
 use ChromeDevtoolsProtocol\Model\Network\SearchInResponseBodyResponse;
 use ChromeDevtoolsProtocol\Model\Network\SetBlockedURLsRequest;
@@ -353,6 +355,20 @@ class NetworkDomain implements NetworkDomainInterface
 	}
 
 
+	public function addRequestWillBeSentExtraInfoListener(callable $listener): SubscriptionInterface
+	{
+		return $this->internalClient->addListener('Network.requestWillBeSentExtraInfo', function ($event) use ($listener) {
+			return $listener(RequestWillBeSentExtraInfoEvent::fromJson($event));
+		});
+	}
+
+
+	public function awaitRequestWillBeSentExtraInfo(ContextInterface $ctx): RequestWillBeSentExtraInfoEvent
+	{
+		return RequestWillBeSentExtraInfoEvent::fromJson($this->internalClient->awaitEvent($ctx, 'Network.requestWillBeSentExtraInfo'));
+	}
+
+
 	public function addResourceChangedPriorityListener(callable $listener): SubscriptionInterface
 	{
 		return $this->internalClient->addListener('Network.resourceChangedPriority', function ($event) use ($listener) {
@@ -378,6 +394,20 @@ class NetworkDomain implements NetworkDomainInterface
 	public function awaitResponseReceived(ContextInterface $ctx): ResponseReceivedEvent
 	{
 		return ResponseReceivedEvent::fromJson($this->internalClient->awaitEvent($ctx, 'Network.responseReceived'));
+	}
+
+
+	public function addResponseReceivedExtraInfoListener(callable $listener): SubscriptionInterface
+	{
+		return $this->internalClient->addListener('Network.responseReceivedExtraInfo', function ($event) use ($listener) {
+			return $listener(ResponseReceivedExtraInfoEvent::fromJson($event));
+		});
+	}
+
+
+	public function awaitResponseReceivedExtraInfo(ContextInterface $ctx): ResponseReceivedExtraInfoEvent
+	{
+		return ResponseReceivedExtraInfoEvent::fromJson($this->internalClient->awaitEvent($ctx, 'Network.responseReceivedExtraInfo'));
 	}
 
 

@@ -29,8 +29,10 @@ use ChromeDevtoolsProtocol\Model\Network\ReplayXHRRequest;
 use ChromeDevtoolsProtocol\Model\Network\RequestInterceptedEvent;
 use ChromeDevtoolsProtocol\Model\Network\RequestServedFromCacheEvent;
 use ChromeDevtoolsProtocol\Model\Network\RequestWillBeSentEvent;
+use ChromeDevtoolsProtocol\Model\Network\RequestWillBeSentExtraInfoEvent;
 use ChromeDevtoolsProtocol\Model\Network\ResourceChangedPriorityEvent;
 use ChromeDevtoolsProtocol\Model\Network\ResponseReceivedEvent;
+use ChromeDevtoolsProtocol\Model\Network\ResponseReceivedExtraInfoEvent;
 use ChromeDevtoolsProtocol\Model\Network\SearchInResponseBodyRequest;
 use ChromeDevtoolsProtocol\Model\Network\SearchInResponseBodyResponse;
 use ChromeDevtoolsProtocol\Model\Network\SetBlockedURLsRequest;
@@ -534,6 +536,30 @@ interface NetworkDomainInterface
 
 
 	/**
+	 * Fired when additional information about a requestWillBeSent event is available from the network stack. Not every requestWillBeSent event will have an additional requestWillBeSentExtraInfo fired for it, and there is no guarantee whether requestWillBeSent or requestWillBeSentExtraInfo will be fired first for the same request.
+	 *
+	 * Listener will be called whenever event Network.requestWillBeSentExtraInfo is fired.
+	 *
+	 * @param callable $listener
+	 *
+	 * @return SubscriptionInterface
+	 */
+	public function addRequestWillBeSentExtraInfoListener(callable $listener): SubscriptionInterface;
+
+
+	/**
+	 * Fired when additional information about a requestWillBeSent event is available from the network stack. Not every requestWillBeSent event will have an additional requestWillBeSentExtraInfo fired for it, and there is no guarantee whether requestWillBeSent or requestWillBeSentExtraInfo will be fired first for the same request.
+	 *
+	 * Method will block until first Network.requestWillBeSentExtraInfo event is fired.
+	 *
+	 * @param ContextInterface $ctx
+	 *
+	 * @return RequestWillBeSentExtraInfoEvent
+	 */
+	public function awaitRequestWillBeSentExtraInfo(ContextInterface $ctx): RequestWillBeSentExtraInfoEvent;
+
+
+	/**
 	 * Fired when resource loading priority is changed
 	 *
 	 * Listener will be called whenever event Network.resourceChangedPriority is fired.
@@ -579,6 +605,30 @@ interface NetworkDomainInterface
 	 * @return ResponseReceivedEvent
 	 */
 	public function awaitResponseReceived(ContextInterface $ctx): ResponseReceivedEvent;
+
+
+	/**
+	 * Fired when additional information about a responseReceived event is available from the network stack. Not every responseReceived event will have an additional responseReceivedExtraInfo for it, and responseReceivedExtraInfo may be fired before or after responseReceived.
+	 *
+	 * Listener will be called whenever event Network.responseReceivedExtraInfo is fired.
+	 *
+	 * @param callable $listener
+	 *
+	 * @return SubscriptionInterface
+	 */
+	public function addResponseReceivedExtraInfoListener(callable $listener): SubscriptionInterface;
+
+
+	/**
+	 * Fired when additional information about a responseReceived event is available from the network stack. Not every responseReceived event will have an additional responseReceivedExtraInfo for it, and responseReceivedExtraInfo may be fired before or after responseReceived.
+	 *
+	 * Method will block until first Network.responseReceivedExtraInfo event is fired.
+	 *
+	 * @param ContextInterface $ctx
+	 *
+	 * @return ResponseReceivedExtraInfoEvent
+	 */
+	public function awaitResponseReceivedExtraInfo(ContextInterface $ctx): ResponseReceivedExtraInfoEvent;
 
 
 	/**
