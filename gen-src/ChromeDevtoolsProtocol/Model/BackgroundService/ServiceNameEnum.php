@@ -16,4 +16,5 @@ final class ServiceNameEnum
 	const PUSH_MESSAGING = 'pushMessaging';
 	const NOTIFICATIONS = 'notifications';
 	const PAYMENT_HANDLER = 'paymentHandler';
+	const PERIODIC_BACKGROUND_SYNC = 'periodicBackgroundSync';
 }

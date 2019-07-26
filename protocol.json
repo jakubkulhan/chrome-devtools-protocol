@@ -986,7 +986,8 @@
                         "backgroundSync",
                         "pushMessaging",
                         "notifications",
-                        "paymentHandler"
+                        "paymentHandler",
+                        "periodicBackgroundSync"
                     ]
                 },
                 {
