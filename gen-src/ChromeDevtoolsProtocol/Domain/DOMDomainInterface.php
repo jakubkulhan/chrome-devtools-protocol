@@ -35,6 +35,8 @@ use ChromeDevtoolsProtocol\Model\DOM\GetFrameOwnerRequest;
 use ChromeDevtoolsProtocol\Model\DOM\GetFrameOwnerResponse;
 use ChromeDevtoolsProtocol\Model\DOM\GetNodeForLocationRequest;
 use ChromeDevtoolsProtocol\Model\DOM\GetNodeForLocationResponse;
+use ChromeDevtoolsProtocol\Model\DOM\GetNodeStackTracesRequest;
+use ChromeDevtoolsProtocol\Model\DOM\GetNodeStackTracesResponse;
 use ChromeDevtoolsProtocol\Model\DOM\GetOuterHTMLRequest;
 use ChromeDevtoolsProtocol\Model\DOM\GetOuterHTMLResponse;
 use ChromeDevtoolsProtocol\Model\DOM\GetRelayoutBoundaryRequest;
@@ -70,6 +72,7 @@ use ChromeDevtoolsProtocol\Model\DOM\SetFileInputFilesRequest;
 use ChromeDevtoolsProtocol\Model\DOM\SetInspectedNodeRequest;
 use ChromeDevtoolsProtocol\Model\DOM\SetNodeNameRequest;
 use ChromeDevtoolsProtocol\Model\DOM\SetNodeNameResponse;
+use ChromeDevtoolsProtocol\Model\DOM\SetNodeStackTracesEnabledRequest;
 use ChromeDevtoolsProtocol\Model\DOM\SetNodeValueRequest;
 use ChromeDevtoolsProtocol\Model\DOM\SetOuterHTMLRequest;
 use ChromeDevtoolsProtocol\Model\DOM\ShadowRootPoppedEvent;
@@ -246,6 +249,17 @@ interface DOMDomainInterface
 	 * @return GetNodeForLocationResponse
 	 */
 	public function getNodeForLocation(ContextInterface $ctx, GetNodeForLocationRequest $request): GetNodeForLocationResponse;
+
+
+	/**
+	 * Gets stack traces associated with a Node. As of now, only provides stack trace for Node creation.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param GetNodeStackTracesRequest $request
+	 *
+	 * @return GetNodeStackTracesResponse
+	 */
+	public function getNodeStackTraces(ContextInterface $ctx, GetNodeStackTracesRequest $request): GetNodeStackTracesResponse;
 
 
 	/**
@@ -505,6 +519,17 @@ interface DOMDomainInterface
 	 * @return SetNodeNameResponse
 	 */
 	public function setNodeName(ContextInterface $ctx, SetNodeNameRequest $request): SetNodeNameResponse;
+
+
+	/**
+	 * Sets if stack traces should be captured for Nodes. See `Node.getNodeStackTraces`. Default is disabled.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param SetNodeStackTracesEnabledRequest $request
+	 *
+	 * @return void
+	 */
+	public function setNodeStackTracesEnabled(ContextInterface $ctx, SetNodeStackTracesEnabledRequest $request): void;
 
 
 	/**

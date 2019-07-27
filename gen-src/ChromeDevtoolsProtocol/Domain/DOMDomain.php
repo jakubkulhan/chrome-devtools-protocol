@@ -36,6 +36,8 @@ use ChromeDevtoolsProtocol\Model\DOM\GetFrameOwnerRequest;
 use ChromeDevtoolsProtocol\Model\DOM\GetFrameOwnerResponse;
 use ChromeDevtoolsProtocol\Model\DOM\GetNodeForLocationRequest;
 use ChromeDevtoolsProtocol\Model\DOM\GetNodeForLocationResponse;
+use ChromeDevtoolsProtocol\Model\DOM\GetNodeStackTracesRequest;
+use ChromeDevtoolsProtocol\Model\DOM\GetNodeStackTracesResponse;
 use ChromeDevtoolsProtocol\Model\DOM\GetOuterHTMLRequest;
 use ChromeDevtoolsProtocol\Model\DOM\GetOuterHTMLResponse;
 use ChromeDevtoolsProtocol\Model\DOM\GetRelayoutBoundaryRequest;
@@ -71,6 +73,7 @@ use ChromeDevtoolsProtocol\Model\DOM\SetFileInputFilesRequest;
 use ChromeDevtoolsProtocol\Model\DOM\SetInspectedNodeRequest;
 use ChromeDevtoolsProtocol\Model\DOM\SetNodeNameRequest;
 use ChromeDevtoolsProtocol\Model\DOM\SetNodeNameResponse;
+use ChromeDevtoolsProtocol\Model\DOM\SetNodeStackTracesEnabledRequest;
 use ChromeDevtoolsProtocol\Model\DOM\SetNodeValueRequest;
 use ChromeDevtoolsProtocol\Model\DOM\SetOuterHTMLRequest;
 use ChromeDevtoolsProtocol\Model\DOM\ShadowRootPoppedEvent;
@@ -189,6 +192,13 @@ class DOMDomain implements DOMDomainInterface
 	{
 		$response = $this->internalClient->executeCommand($ctx, 'DOM.getNodeForLocation', $request);
 		return GetNodeForLocationResponse::fromJson($response);
+	}
+
+
+	public function getNodeStackTraces(ContextInterface $ctx, GetNodeStackTracesRequest $request): GetNodeStackTracesResponse
+	{
+		$response = $this->internalClient->executeCommand($ctx, 'DOM.getNodeStackTraces', $request);
+		return GetNodeStackTracesResponse::fromJson($response);
 	}
 
 
@@ -350,6 +360,12 @@ class DOMDomain implements DOMDomainInterface
 	{
 		$response = $this->internalClient->executeCommand($ctx, 'DOM.setNodeName', $request);
 		return SetNodeNameResponse::fromJson($response);
+	}
+
+
+	public function setNodeStackTracesEnabled(ContextInterface $ctx, SetNodeStackTracesEnabledRequest $request): void
+	{
+		$this->internalClient->executeCommand($ctx, 'DOM.setNodeStackTracesEnabled', $request);
 	}
 
 
