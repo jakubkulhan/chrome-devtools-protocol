@@ -3,13 +3,13 @@
 namespace ChromeDevtoolsProtocol\Model\WebAudio;
 
 /**
- * Notifies that existing BaseAudioContext has been destroyed.
+ * Notifies that an existing BaseAudioContext will be destroyed.
  *
  * @generated This file has been auto-generated, do not edit.
  *
  * @author Jakub Kulhan <jakub.kulhan@gmail.com>
  */
-final class ContextDestroyedEvent implements \JsonSerializable
+final class ContextWillBeDestroyedEvent implements \JsonSerializable
 {
 	/** @var string */
 	public $contextId;

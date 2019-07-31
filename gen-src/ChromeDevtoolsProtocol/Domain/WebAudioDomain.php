@@ -6,7 +6,7 @@ use ChromeDevtoolsProtocol\ContextInterface;
 use ChromeDevtoolsProtocol\InternalClientInterface;
 use ChromeDevtoolsProtocol\Model\WebAudio\ContextChangedEvent;
 use ChromeDevtoolsProtocol\Model\WebAudio\ContextCreatedEvent;
-use ChromeDevtoolsProtocol\Model\WebAudio\ContextDestroyedEvent;
+use ChromeDevtoolsProtocol\Model\WebAudio\ContextWillBeDestroyedEvent;
 use ChromeDevtoolsProtocol\Model\WebAudio\GetRealtimeDataRequest;
 use ChromeDevtoolsProtocol\Model\WebAudio\GetRealtimeDataResponse;
 use ChromeDevtoolsProtocol\SubscriptionInterface;
@@ -72,16 +72,16 @@ class WebAudioDomain implements WebAudioDomainInterface
 	}
 
 
-	public function addContextDestroyedListener(callable $listener): SubscriptionInterface
+	public function addContextWillBeDestroyedListener(callable $listener): SubscriptionInterface
 	{
-		return $this->internalClient->addListener('WebAudio.contextDestroyed', function ($event) use ($listener) {
-			return $listener(ContextDestroyedEvent::fromJson($event));
+		return $this->internalClient->addListener('WebAudio.contextWillBeDestroyed', function ($event) use ($listener) {
+			return $listener(ContextWillBeDestroyedEvent::fromJson($event));
 		});
 	}
 
 
-	public function awaitContextDestroyed(ContextInterface $ctx): ContextDestroyedEvent
+	public function awaitContextWillBeDestroyed(ContextInterface $ctx): ContextWillBeDestroyedEvent
 	{
-		return ContextDestroyedEvent::fromJson($this->internalClient->awaitEvent($ctx, 'WebAudio.contextDestroyed'));
+		return ContextWillBeDestroyedEvent::fromJson($this->internalClient->awaitEvent($ctx, 'WebAudio.contextWillBeDestroyed'));
 	}
 }

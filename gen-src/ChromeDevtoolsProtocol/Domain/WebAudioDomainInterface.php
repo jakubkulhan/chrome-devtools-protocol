@@ -5,7 +5,7 @@ namespace ChromeDevtoolsProtocol\Domain;
 use ChromeDevtoolsProtocol\ContextInterface;
 use ChromeDevtoolsProtocol\Model\WebAudio\ContextChangedEvent;
 use ChromeDevtoolsProtocol\Model\WebAudio\ContextCreatedEvent;
-use ChromeDevtoolsProtocol\Model\WebAudio\ContextDestroyedEvent;
+use ChromeDevtoolsProtocol\Model\WebAudio\ContextWillBeDestroyedEvent;
 use ChromeDevtoolsProtocol\Model\WebAudio\GetRealtimeDataRequest;
 use ChromeDevtoolsProtocol\Model\WebAudio\GetRealtimeDataResponse;
 use ChromeDevtoolsProtocol\SubscriptionInterface;
@@ -101,25 +101,25 @@ interface WebAudioDomainInterface
 
 
 	/**
-	 * Notifies that existing BaseAudioContext has been destroyed.
+	 * Notifies that an existing BaseAudioContext will be destroyed.
 	 *
-	 * Listener will be called whenever event WebAudio.contextDestroyed is fired.
+	 * Listener will be called whenever event WebAudio.contextWillBeDestroyed is fired.
 	 *
 	 * @param callable $listener
 	 *
 	 * @return SubscriptionInterface
 	 */
-	public function addContextDestroyedListener(callable $listener): SubscriptionInterface;
+	public function addContextWillBeDestroyedListener(callable $listener): SubscriptionInterface;
 
 
 	/**
-	 * Notifies that existing BaseAudioContext has been destroyed.
+	 * Notifies that an existing BaseAudioContext will be destroyed.
 	 *
-	 * Method will block until first WebAudio.contextDestroyed event is fired.
+	 * Method will block until first WebAudio.contextWillBeDestroyed event is fired.
 	 *
 	 * @param ContextInterface $ctx
 	 *
-	 * @return ContextDestroyedEvent
+	 * @return ContextWillBeDestroyedEvent
 	 */
-	public function awaitContextDestroyed(ContextInterface $ctx): ContextDestroyedEvent;
+	public function awaitContextWillBeDestroyed(ContextInterface $ctx): ContextWillBeDestroyedEvent;
 }
