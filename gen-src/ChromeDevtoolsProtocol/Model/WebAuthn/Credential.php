@@ -14,19 +14,29 @@ final class Credential implements \JsonSerializable
 	/** @var string */
 	public $credentialId;
 
-	/**
-	 * SHA-256 hash of the Relying Party ID the credential is scoped to. Must be 32 bytes long. See https://w3c.github.io/webauthn/#rpidhash
-	 *
-	 * @var string
-	 */
-	public $rpIdHash;
+	/** @var bool */
+	public $isResidentCredential;
 
 	/**
-	 * The private key in PKCS#8 format.
+	 * Relying Party ID the credential is scoped to. Must be set when adding a credential.
+	 *
+	 * @var string|null
+	 */
+	public $rpId;
+
+	/**
+	 * The ECDSA P-256 private key in PKCS#8 format.
 	 *
 	 * @var string
 	 */
 	public $privateKey;
+
+	/**
+	 * An opaque byte sequence with a maximum size of 64 bytes mapping the credential to a specific user.
+	 *
+	 * @var string|null
+	 */
+	public $userHandle;
 
 	/**
 	 * Signature counter. This is incremented by one for each successful assertion. See https://w3c.github.io/webauthn/#signature-counter
@@ -42,11 +52,17 @@ final class Credential implements \JsonSerializable
 		if (isset($data->credentialId)) {
 			$instance->credentialId = (string)$data->credentialId;
 		}
-		if (isset($data->rpIdHash)) {
-			$instance->rpIdHash = (string)$data->rpIdHash;
+		if (isset($data->isResidentCredential)) {
+			$instance->isResidentCredential = (bool)$data->isResidentCredential;
+		}
+		if (isset($data->rpId)) {
+			$instance->rpId = (string)$data->rpId;
 		}
 		if (isset($data->privateKey)) {
 			$instance->privateKey = (string)$data->privateKey;
+		}
+		if (isset($data->userHandle)) {
+			$instance->userHandle = (string)$data->userHandle;
 		}
 		if (isset($data->signCount)) {
 			$instance->signCount = (int)$data->signCount;
@@ -61,11 +77,17 @@ final class Credential implements \JsonSerializable
 		if ($this->credentialId !== null) {
 			$data->credentialId = $this->credentialId;
 		}
-		if ($this->rpIdHash !== null) {
-			$data->rpIdHash = $this->rpIdHash;
+		if ($this->isResidentCredential !== null) {
+			$data->isResidentCredential = $this->isResidentCredential;
+		}
+		if ($this->rpId !== null) {
+			$data->rpId = $this->rpId;
 		}
 		if ($this->privateKey !== null) {
 			$data->privateKey = $this->privateKey;
+		}
+		if ($this->userHandle !== null) {
+			$data->userHandle = $this->userHandle;
 		}
 		if ($this->signCount !== null) {
 			$data->signCount = $this->signCount;
