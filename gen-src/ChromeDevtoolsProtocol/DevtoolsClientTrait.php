@@ -56,6 +56,8 @@ use ChromeDevtoolsProtocol\Domain\LayerTreeDomain;
 use ChromeDevtoolsProtocol\Domain\LayerTreeDomainInterface;
 use ChromeDevtoolsProtocol\Domain\LogDomain;
 use ChromeDevtoolsProtocol\Domain\LogDomainInterface;
+use ChromeDevtoolsProtocol\Domain\MediaDomain;
+use ChromeDevtoolsProtocol\Domain\MediaDomainInterface;
 use ChromeDevtoolsProtocol\Domain\MemoryDomain;
 use ChromeDevtoolsProtocol\Domain\MemoryDomainInterface;
 use ChromeDevtoolsProtocol\Domain\NetworkDomain;
@@ -417,6 +419,18 @@ trait DevtoolsClientTrait
 		}
 		/** @var LogDomainInterface $domain */
 		$domain = $this->domains['Log'];
+		return $domain;
+	}
+
+
+	public function media(): MediaDomainInterface
+	{
+		if (!isset($this->domains['Media'])) {
+			/** @var InternalClientInterface $this */
+			$this->domains['Media'] = new MediaDomain($this);
+		}
+		/** @var MediaDomainInterface $domain */
+		$domain = $this->domains['Media'];
 		return $domain;
 	}
 

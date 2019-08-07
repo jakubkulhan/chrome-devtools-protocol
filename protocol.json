@@ -9875,6 +9875,130 @@
             ]
         },
         {
+            "domain": "Media",
+            "description": "This domain allows detailed inspection of media elements",
+            "experimental": true,
+            "types": [
+                {
+                    "id": "PlayerId",
+                    "description": "Players will get an ID that is unique within the agent context.",
+                    "type": "string"
+                },
+                {
+                    "id": "Timestamp",
+                    "type": "number"
+                },
+                {
+                    "id": "PlayerProperty",
+                    "description": "Player Property type",
+                    "type": "object",
+                    "properties": [
+                        {
+                            "name": "name",
+                            "type": "string"
+                        },
+                        {
+                            "name": "value",
+                            "optional": true,
+                            "type": "string"
+                        }
+                    ]
+                },
+                {
+                    "id": "PlayerEventType",
+                    "description": "Break out events into different types",
+                    "type": "string",
+                    "enum": [
+                        "playbackEvent",
+                        "systemEvent",
+                        "messageEvent"
+                    ]
+                },
+                {
+                    "id": "PlayerEvent",
+                    "type": "object",
+                    "properties": [
+                        {
+                            "name": "type",
+                            "$ref": "PlayerEventType"
+                        },
+                        {
+                            "name": "timestamp",
+                            "description": "Events are timestamped relative to the start of the player creation not relative to the start of playback.",
+                            "$ref": "Timestamp"
+                        },
+                        {
+                            "name": "name",
+                            "type": "string"
+                        },
+                        {
+                            "name": "value",
+                            "type": "string"
+                        }
+                    ]
+                }
+            ],
+            "events": [
+                {
+                    "name": "playerEventsAdded",
+                    "description": "Send events as a list, allowing them to be batched on the browser for less congestion. If batched, events must ALWAYS be in chronological order.",
+                    "parameters": [
+                        {
+                            "name": "playerId",
+                            "$ref": "PlayerId"
+                        },
+                        {
+                            "name": "events",
+                            "type": "array",
+                            "items": {
+                                "$ref": "PlayerEvent"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "playerPropertiesChanged",
+                    "description": "This can be called multiple times, and can be used to set / override / remove player properties. A null propValue indicates removal.",
+                    "parameters": [
+                        {
+                            "name": "playerId",
+                            "$ref": "PlayerId"
+                        },
+                        {
+                            "name": "properties",
+                            "type": "array",
+                            "items": {
+                                "$ref": "PlayerProperty"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "playersCreated",
+                    "description": "Called whenever a player is created, or when a new agent joins and recieves a list of active players. If an agent is restored, it will recieve the full list of player ids and all events again.",
+                    "parameters": [
+                        {
+                            "name": "players",
+                            "type": "array",
+                            "items": {
+                                "$ref": "PlayerId"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "commands": [
+                {
+                    "name": "disable",
+                    "description": "Disables the Media domain."
+                },
+                {
+                    "name": "enable",
+                    "description": "Enables the Media domain"
+                }
+            ]
+        },
+        {
             "domain": "Memory",
             "experimental": true,
             "types": [
@@ -12790,7 +12914,7 @@
                         {
                             "name": "id",
                             "description": "Frame unique identifier.",
-                            "type": "string"
+                            "$ref": "FrameId"
                         },
                         {
                             "name": "parentId",

@@ -29,6 +29,7 @@ use ChromeDevtoolsProtocol\Domain\InputDomainInterface;
 use ChromeDevtoolsProtocol\Domain\InspectorDomainInterface;
 use ChromeDevtoolsProtocol\Domain\LayerTreeDomainInterface;
 use ChromeDevtoolsProtocol\Domain\LogDomainInterface;
+use ChromeDevtoolsProtocol\Domain\MediaDomainInterface;
 use ChromeDevtoolsProtocol\Domain\MemoryDomainInterface;
 use ChromeDevtoolsProtocol\Domain\NetworkDomainInterface;
 use ChromeDevtoolsProtocol\Domain\OverlayDomainInterface;
@@ -252,6 +253,14 @@ interface DevtoolsClientInterface extends CloseableResourceInterface
 	 * Provides access to log entries.
 	 */
 	public function log(): LogDomainInterface;
+
+
+	/**
+	 * This domain allows detailed inspection of media elements
+	 *
+	 * @experimental
+	 */
+	public function media(): MediaDomainInterface;
 
 
 	/**
