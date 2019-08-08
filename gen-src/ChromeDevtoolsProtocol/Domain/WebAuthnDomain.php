@@ -8,6 +8,8 @@ use ChromeDevtoolsProtocol\Model\WebAuthn\AddCredentialRequest;
 use ChromeDevtoolsProtocol\Model\WebAuthn\AddVirtualAuthenticatorRequest;
 use ChromeDevtoolsProtocol\Model\WebAuthn\AddVirtualAuthenticatorResponse;
 use ChromeDevtoolsProtocol\Model\WebAuthn\ClearCredentialsRequest;
+use ChromeDevtoolsProtocol\Model\WebAuthn\GetCredentialRequest;
+use ChromeDevtoolsProtocol\Model\WebAuthn\GetCredentialResponse;
 use ChromeDevtoolsProtocol\Model\WebAuthn\GetCredentialsRequest;
 use ChromeDevtoolsProtocol\Model\WebAuthn\GetCredentialsResponse;
 use ChromeDevtoolsProtocol\Model\WebAuthn\RemoveVirtualAuthenticatorRequest;
@@ -55,6 +57,13 @@ class WebAuthnDomain implements WebAuthnDomainInterface
 	{
 		$request = new \stdClass();
 		$this->internalClient->executeCommand($ctx, 'WebAuthn.enable', $request);
+	}
+
+
+	public function getCredential(ContextInterface $ctx, GetCredentialRequest $request): GetCredentialResponse
+	{
+		$response = $this->internalClient->executeCommand($ctx, 'WebAuthn.getCredential', $request);
+		return GetCredentialResponse::fromJson($response);
 	}
 
 

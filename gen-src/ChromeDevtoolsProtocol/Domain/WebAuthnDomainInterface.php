@@ -7,6 +7,8 @@ use ChromeDevtoolsProtocol\Model\WebAuthn\AddCredentialRequest;
 use ChromeDevtoolsProtocol\Model\WebAuthn\AddVirtualAuthenticatorRequest;
 use ChromeDevtoolsProtocol\Model\WebAuthn\AddVirtualAuthenticatorResponse;
 use ChromeDevtoolsProtocol\Model\WebAuthn\ClearCredentialsRequest;
+use ChromeDevtoolsProtocol\Model\WebAuthn\GetCredentialRequest;
+use ChromeDevtoolsProtocol\Model\WebAuthn\GetCredentialResponse;
 use ChromeDevtoolsProtocol\Model\WebAuthn\GetCredentialsRequest;
 use ChromeDevtoolsProtocol\Model\WebAuthn\GetCredentialsResponse;
 use ChromeDevtoolsProtocol\Model\WebAuthn\RemoveVirtualAuthenticatorRequest;
@@ -74,6 +76,17 @@ interface WebAuthnDomainInterface
 	 * @return void
 	 */
 	public function enable(ContextInterface $ctx): void;
+
+
+	/**
+	 * Returns a single credential stored in the given virtual authenticator that matches the credential ID.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param GetCredentialRequest $request
+	 *
+	 * @return GetCredentialResponse
+	 */
+	public function getCredential(ContextInterface $ctx, GetCredentialRequest $request): GetCredentialResponse;
 
 
 	/**
