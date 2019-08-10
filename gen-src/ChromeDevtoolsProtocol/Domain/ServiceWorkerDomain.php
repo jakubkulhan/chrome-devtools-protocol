@@ -5,6 +5,7 @@ namespace ChromeDevtoolsProtocol\Domain;
 use ChromeDevtoolsProtocol\ContextInterface;
 use ChromeDevtoolsProtocol\InternalClientInterface;
 use ChromeDevtoolsProtocol\Model\ServiceWorker\DeliverPushMessageRequest;
+use ChromeDevtoolsProtocol\Model\ServiceWorker\DispatchPeriodicSyncEventRequest;
 use ChromeDevtoolsProtocol\Model\ServiceWorker\DispatchSyncEventRequest;
 use ChromeDevtoolsProtocol\Model\ServiceWorker\InspectWorkerRequest;
 use ChromeDevtoolsProtocol\Model\ServiceWorker\SetForceUpdateOnPageLoadRequest;
@@ -40,6 +41,12 @@ class ServiceWorkerDomain implements ServiceWorkerDomainInterface
 	{
 		$request = new \stdClass();
 		$this->internalClient->executeCommand($ctx, 'ServiceWorker.disable', $request);
+	}
+
+
+	public function dispatchPeriodicSyncEvent(ContextInterface $ctx, DispatchPeriodicSyncEventRequest $request): void
+	{
+		$this->internalClient->executeCommand($ctx, 'ServiceWorker.dispatchPeriodicSyncEvent', $request);
 	}
 
 

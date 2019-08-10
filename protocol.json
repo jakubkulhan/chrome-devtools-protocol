@@ -17111,6 +17111,23 @@
                     "name": "disable"
                 },
                 {
+                    "name": "dispatchPeriodicSyncEvent",
+                    "parameters": [
+                        {
+                            "name": "origin",
+                            "type": "string"
+                        },
+                        {
+                            "name": "registrationId",
+                            "$ref": "RegistrationID"
+                        },
+                        {
+                            "name": "tag",
+                            "type": "string"
+                        }
+                    ]
+                },
+                {
                     "name": "dispatchSyncEvent",
                     "parameters": [
                         {

@@ -4,6 +4,7 @@ namespace ChromeDevtoolsProtocol\Domain;
 
 use ChromeDevtoolsProtocol\ContextInterface;
 use ChromeDevtoolsProtocol\Model\ServiceWorker\DeliverPushMessageRequest;
+use ChromeDevtoolsProtocol\Model\ServiceWorker\DispatchPeriodicSyncEventRequest;
 use ChromeDevtoolsProtocol\Model\ServiceWorker\DispatchSyncEventRequest;
 use ChromeDevtoolsProtocol\Model\ServiceWorker\InspectWorkerRequest;
 use ChromeDevtoolsProtocol\Model\ServiceWorker\SetForceUpdateOnPageLoadRequest;
@@ -47,6 +48,17 @@ interface ServiceWorkerDomainInterface
 	 * @return void
 	 */
 	public function disable(ContextInterface $ctx): void;
+
+
+	/**
+	 * Call ServiceWorker.dispatchPeriodicSyncEvent command.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param DispatchPeriodicSyncEventRequest $request
+	 *
+	 * @return void
+	 */
+	public function dispatchPeriodicSyncEvent(ContextInterface $ctx, DispatchPeriodicSyncEventRequest $request): void;
 
 
 	/**
