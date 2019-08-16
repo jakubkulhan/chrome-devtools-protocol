@@ -47,6 +47,13 @@ final class LayoutTreeSnapshot implements \JsonSerializable
 	public $stackingContexts;
 
 	/**
+	 * Global paint order index, which is determined by the stacking order of the nodes. Nodes that are painted together will have the same index. Only provided if includePaintOrder in captureSnapshot was true.
+	 *
+	 * @var int[]|null
+	 */
+	public $paintOrders;
+
+	/**
 	 * The offset rect of nodes. Only available when includeDOMRects is set to true
 	 *
 	 * @var int[][]|float[][]|null
@@ -114,6 +121,12 @@ final class LayoutTreeSnapshot implements \JsonSerializable
 		}
 		if (isset($data->stackingContexts)) {
 			$instance->stackingContexts = RareBooleanData::fromJson($data->stackingContexts);
+		}
+		if (isset($data->paintOrders)) {
+			$instance->paintOrders = [];
+			foreach ($data->paintOrders as $item) {
+				$instance->paintOrders[] = (int)$item;
+			}
 		}
 		if (isset($data->offsetRects)) {
 			$instance->offsetRects = [];
@@ -204,6 +217,12 @@ final class LayoutTreeSnapshot implements \JsonSerializable
 		}
 		if ($this->stackingContexts !== null) {
 			$data->stackingContexts = $this->stackingContexts->jsonSerialize();
+		}
+		if ($this->paintOrders !== null) {
+			$data->paintOrders = [];
+			foreach ($this->paintOrders as $item) {
+				$data->paintOrders[] = $item;
+			}
 		}
 		if ($this->offsetRects !== null) {
 			$data->offsetRects = [];
