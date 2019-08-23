@@ -12,6 +12,7 @@ use ChromeDevtoolsProtocol\Model\WebAuthn\GetCredentialRequest;
 use ChromeDevtoolsProtocol\Model\WebAuthn\GetCredentialResponse;
 use ChromeDevtoolsProtocol\Model\WebAuthn\GetCredentialsRequest;
 use ChromeDevtoolsProtocol\Model\WebAuthn\GetCredentialsResponse;
+use ChromeDevtoolsProtocol\Model\WebAuthn\RemoveCredentialRequest;
 use ChromeDevtoolsProtocol\Model\WebAuthn\RemoveVirtualAuthenticatorRequest;
 use ChromeDevtoolsProtocol\Model\WebAuthn\SetUserVerifiedRequest;
 
@@ -71,6 +72,12 @@ class WebAuthnDomain implements WebAuthnDomainInterface
 	{
 		$response = $this->internalClient->executeCommand($ctx, 'WebAuthn.getCredentials', $request);
 		return GetCredentialsResponse::fromJson($response);
+	}
+
+
+	public function removeCredential(ContextInterface $ctx, RemoveCredentialRequest $request): void
+	{
+		$this->internalClient->executeCommand($ctx, 'WebAuthn.removeCredential', $request);
 	}
 
 

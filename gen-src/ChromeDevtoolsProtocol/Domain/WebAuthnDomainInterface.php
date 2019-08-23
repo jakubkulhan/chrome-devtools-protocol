@@ -11,6 +11,7 @@ use ChromeDevtoolsProtocol\Model\WebAuthn\GetCredentialRequest;
 use ChromeDevtoolsProtocol\Model\WebAuthn\GetCredentialResponse;
 use ChromeDevtoolsProtocol\Model\WebAuthn\GetCredentialsRequest;
 use ChromeDevtoolsProtocol\Model\WebAuthn\GetCredentialsResponse;
+use ChromeDevtoolsProtocol\Model\WebAuthn\RemoveCredentialRequest;
 use ChromeDevtoolsProtocol\Model\WebAuthn\RemoveVirtualAuthenticatorRequest;
 use ChromeDevtoolsProtocol\Model\WebAuthn\SetUserVerifiedRequest;
 
@@ -98,6 +99,17 @@ interface WebAuthnDomainInterface
 	 * @return GetCredentialsResponse
 	 */
 	public function getCredentials(ContextInterface $ctx, GetCredentialsRequest $request): GetCredentialsResponse;
+
+
+	/**
+	 * Removes a credential from the authenticator.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param RemoveCredentialRequest $request
+	 *
+	 * @return void
+	 */
+	public function removeCredential(ContextInterface $ctx, RemoveCredentialRequest $request): void;
 
 
 	/**

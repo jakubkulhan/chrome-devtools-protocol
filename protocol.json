@@ -19193,6 +19193,20 @@
                     ]
                 },
                 {
+                    "name": "removeCredential",
+                    "description": "Removes a credential from the authenticator.",
+                    "parameters": [
+                        {
+                            "name": "authenticatorId",
+                            "$ref": "AuthenticatorId"
+                        },
+                        {
+                            "name": "credentialId",
+                            "type": "string"
+                        }
+                    ]
+                },
+                {
                     "name": "removeVirtualAuthenticator",
                     "description": "Removes the given authenticator.",
                     "parameters": [
