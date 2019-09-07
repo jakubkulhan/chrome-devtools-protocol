@@ -17,6 +17,8 @@ final class GetNodeForLocationRequestBuilder
 
 	private $includeUserAgentShadowDOM;
 
+	private $ignorePointerEventsNone;
+
 
 	/**
 	 * Validate non-optional parameters and return new instance.
@@ -33,6 +35,7 @@ final class GetNodeForLocationRequestBuilder
 		}
 		$instance->y = $this->y;
 		$instance->includeUserAgentShadowDOM = $this->includeUserAgentShadowDOM;
+		$instance->ignorePointerEventsNone = $this->ignorePointerEventsNone;
 		return $instance;
 	}
 
@@ -69,6 +72,18 @@ final class GetNodeForLocationRequestBuilder
 	public function setIncludeUserAgentShadowDOM($includeUserAgentShadowDOM): self
 	{
 		$this->includeUserAgentShadowDOM = $includeUserAgentShadowDOM;
+		return $this;
+	}
+
+
+	/**
+	 * @param bool|null $ignorePointerEventsNone
+	 *
+	 * @return self
+	 */
+	public function setIgnorePointerEventsNone($ignorePointerEventsNone): self
+	{
+		$this->ignorePointerEventsNone = $ignorePointerEventsNone;
 		return $this;
 	}
 }

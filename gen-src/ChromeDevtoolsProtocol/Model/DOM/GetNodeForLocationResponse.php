@@ -19,6 +19,13 @@ final class GetNodeForLocationResponse implements \JsonSerializable
 	public $backendNodeId;
 
 	/**
+	 * Frame this node belongs to.
+	 *
+	 * @var string
+	 */
+	public $frameId;
+
+	/**
 	 * Id of the node at given coordinates, only when enabled and requested document.
 	 *
 	 * @var int
@@ -32,6 +39,9 @@ final class GetNodeForLocationResponse implements \JsonSerializable
 		if (isset($data->backendNodeId)) {
 			$instance->backendNodeId = (int)$data->backendNodeId;
 		}
+		if (isset($data->frameId)) {
+			$instance->frameId = (string)$data->frameId;
+		}
 		if (isset($data->nodeId)) {
 			$instance->nodeId = (int)$data->nodeId;
 		}
@@ -44,6 +54,9 @@ final class GetNodeForLocationResponse implements \JsonSerializable
 		$data = new \stdClass();
 		if ($this->backendNodeId !== null) {
 			$data->backendNodeId = $this->backendNodeId;
+		}
+		if ($this->frameId !== null) {
+			$data->frameId = $this->frameId;
 		}
 		if ($this->nodeId !== null) {
 			$data->nodeId = $this->nodeId;

@@ -32,6 +32,13 @@ final class GetNodeForLocationRequest implements \JsonSerializable
 	 */
 	public $includeUserAgentShadowDOM;
 
+	/**
+	 * Whether to ignore pointer-events: none on elements and hit test them.
+	 *
+	 * @var bool|null
+	 */
+	public $ignorePointerEventsNone;
+
 
 	public static function fromJson($data)
 	{
@@ -44,6 +51,9 @@ final class GetNodeForLocationRequest implements \JsonSerializable
 		}
 		if (isset($data->includeUserAgentShadowDOM)) {
 			$instance->includeUserAgentShadowDOM = (bool)$data->includeUserAgentShadowDOM;
+		}
+		if (isset($data->ignorePointerEventsNone)) {
+			$instance->ignorePointerEventsNone = (bool)$data->ignorePointerEventsNone;
 		}
 		return $instance;
 	}
@@ -60,6 +70,9 @@ final class GetNodeForLocationRequest implements \JsonSerializable
 		}
 		if ($this->includeUserAgentShadowDOM !== null) {
 			$data->includeUserAgentShadowDOM = $this->includeUserAgentShadowDOM;
+		}
+		if ($this->ignorePointerEventsNone !== null) {
+			$data->ignorePointerEventsNone = $this->ignorePointerEventsNone;
 		}
 		return $data;
 	}

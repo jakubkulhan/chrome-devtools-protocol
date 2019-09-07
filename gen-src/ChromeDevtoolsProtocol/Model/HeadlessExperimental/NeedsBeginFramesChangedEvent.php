@@ -3,7 +3,7 @@
 namespace ChromeDevtoolsProtocol\Model\HeadlessExperimental;
 
 /**
- * Issued when the target starts or stops needing BeginFrames.
+ * Issued when the target starts or stops needing BeginFrames. Deprecated. Issue beginFrame unconditionally instead and use result from beginFrame to detect whether the frames were suppressed.
  *
  * @generated This file has been auto-generated, do not edit.
  *
