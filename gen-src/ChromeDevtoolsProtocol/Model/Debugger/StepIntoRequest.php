@@ -12,7 +12,7 @@ namespace ChromeDevtoolsProtocol\Model\Debugger;
 final class StepIntoRequest implements \JsonSerializable
 {
 	/**
-	 * Debugger will issue additional Debugger.paused notification if any async task is scheduled before next pause.
+	 * Debugger will pause on the execution of the first async task which was scheduled before next pause.
 	 *
 	 * @var bool|null
 	 */

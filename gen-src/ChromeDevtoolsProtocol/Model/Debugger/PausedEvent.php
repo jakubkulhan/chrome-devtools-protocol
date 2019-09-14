@@ -57,7 +57,7 @@ final class PausedEvent implements \JsonSerializable
 	public $asyncStackTraceId;
 
 	/**
-	 * Just scheduled async call will have this stack trace as parent stack during async execution. This field is available only after `Debugger.stepInto` call with `breakOnAsynCall` flag.
+	 * Never present, will be removed.
 	 *
 	 * @var StackTraceId|null
 	 */

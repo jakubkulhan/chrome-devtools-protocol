@@ -12,11 +12,11 @@ namespace ChromeDevtoolsProtocol\Model\Network;
 final class BlockedCookieWithReason implements \JsonSerializable
 {
 	/**
-	 * The reason the cookie was blocked.
+	 * The reason(s) the cookie was blocked.
 	 *
-	 * @var string
+	 * @var string[]
 	 */
-	public $blockedReason;
+	public $blockedReasons;
 
 	/**
 	 * The cookie object representing the cookie which was not sent.
@@ -29,8 +29,14 @@ final class BlockedCookieWithReason implements \JsonSerializable
 	public static function fromJson($data)
 	{
 		$instance = new static();
-		if (isset($data->blockedReason)) {
-			$instance->blockedReason = (string)$data->blockedReason;
+		if (isset($data->blockedReasons)) {
+			$instance->blockedReasons = [];
+		if (isset($data->blockedReasons)) {
+			$instance->blockedReasons = [];
+			foreach ($data->blockedReasons as $item) {
+				$instance->blockedReasons[] = (string)$item;
+			}
+		}
 		}
 		if (isset($data->cookie)) {
 			$instance->cookie = Cookie::fromJson($data->cookie);
@@ -42,8 +48,14 @@ final class BlockedCookieWithReason implements \JsonSerializable
 	public function jsonSerialize()
 	{
 		$data = new \stdClass();
-		if ($this->blockedReason !== null) {
-			$data->blockedReason = $this->blockedReason;
+		if ($this->blockedReasons !== null) {
+			$data->blockedReasons = [];
+		if ($this->blockedReasons !== null) {
+			$data->blockedReasons = [];
+			foreach ($this->blockedReasons as $item) {
+				$data->blockedReasons[] = $item;
+			}
+		}
 		}
 		if ($this->cookie !== null) {
 			$data->cookie = $this->cookie->jsonSerialize();
