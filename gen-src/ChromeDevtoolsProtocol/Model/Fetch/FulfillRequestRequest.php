@@ -28,9 +28,16 @@ final class FulfillRequestRequest implements \JsonSerializable
 	/**
 	 * Response headers.
 	 *
-	 * @var HeaderEntry[]
+	 * @var HeaderEntry[]|null
 	 */
 	public $responseHeaders;
+
+	/**
+	 * Alternative way of specifying response headers as a \0-separated series of name: value pairs. Prefer the above method unless you need to represent some non-UTF8 values that can't be transmitted over the protocol as text.
+	 *
+	 * @var string|null
+	 */
+	public $binaryResponseHeaders;
 
 	/**
 	 * A response body.
@@ -40,7 +47,7 @@ final class FulfillRequestRequest implements \JsonSerializable
 	public $body;
 
 	/**
-	 * A textual representation of responseCode. If absent, a standard phrase mathcing responseCode is used.
+	 * A textual representation of responseCode. If absent, a standard phrase matching responseCode is used.
 	 *
 	 * @var string|null
 	 */
@@ -61,6 +68,9 @@ final class FulfillRequestRequest implements \JsonSerializable
 			foreach ($data->responseHeaders as $item) {
 				$instance->responseHeaders[] = HeaderEntry::fromJson($item);
 			}
+		}
+		if (isset($data->binaryResponseHeaders)) {
+			$instance->binaryResponseHeaders = (string)$data->binaryResponseHeaders;
 		}
 		if (isset($data->body)) {
 			$instance->body = (string)$data->body;
@@ -86,6 +96,9 @@ final class FulfillRequestRequest implements \JsonSerializable
 			foreach ($this->responseHeaders as $item) {
 				$data->responseHeaders[] = $item->jsonSerialize();
 			}
+		}
+		if ($this->binaryResponseHeaders !== null) {
+			$data->binaryResponseHeaders = $this->binaryResponseHeaders;
 		}
 		if ($this->body !== null) {
 			$data->body = $this->body;

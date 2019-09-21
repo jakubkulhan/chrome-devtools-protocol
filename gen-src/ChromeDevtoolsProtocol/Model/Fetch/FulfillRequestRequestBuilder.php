@@ -17,6 +17,8 @@ final class FulfillRequestRequestBuilder
 
 	private $responseHeaders;
 
+	private $binaryResponseHeaders;
+
 	private $body;
 
 	private $responsePhrase;
@@ -36,10 +38,8 @@ final class FulfillRequestRequestBuilder
 			throw new BuilderException('Property [responseCode] is required.');
 		}
 		$instance->responseCode = $this->responseCode;
-		if ($this->responseHeaders === null) {
-			throw new BuilderException('Property [responseHeaders] is required.');
-		}
 		$instance->responseHeaders = $this->responseHeaders;
+		$instance->binaryResponseHeaders = $this->binaryResponseHeaders;
 		$instance->body = $this->body;
 		$instance->responsePhrase = $this->responsePhrase;
 		return $instance;
@@ -71,13 +71,25 @@ final class FulfillRequestRequestBuilder
 
 
 	/**
-	 * @param HeaderEntry[] $responseHeaders
+	 * @param HeaderEntry[]|null $responseHeaders
 	 *
 	 * @return self
 	 */
 	public function setResponseHeaders($responseHeaders): self
 	{
 		$this->responseHeaders = $responseHeaders;
+		return $this;
+	}
+
+
+	/**
+	 * @param string|null $binaryResponseHeaders
+	 *
+	 * @return self
+	 */
+	public function setBinaryResponseHeaders($binaryResponseHeaders): self
+	{
+		$this->binaryResponseHeaders = $binaryResponseHeaders;
 		return $this;
 	}
 
