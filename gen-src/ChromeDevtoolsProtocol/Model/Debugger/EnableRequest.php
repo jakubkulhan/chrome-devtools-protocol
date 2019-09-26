@@ -18,12 +18,22 @@ final class EnableRequest implements \JsonSerializable
 	 */
 	public $maxScriptsCacheSize;
 
+	/**
+	 * Whether to report Wasm modules as raw binaries instead of disassembled functions.
+	 *
+	 * @var bool|null
+	 */
+	public $supportsWasmDwarf;
+
 
 	public static function fromJson($data)
 	{
 		$instance = new static();
 		if (isset($data->maxScriptsCacheSize)) {
 			$instance->maxScriptsCacheSize = $data->maxScriptsCacheSize;
+		}
+		if (isset($data->supportsWasmDwarf)) {
+			$instance->supportsWasmDwarf = (bool)$data->supportsWasmDwarf;
 		}
 		return $instance;
 	}
@@ -34,6 +44,9 @@ final class EnableRequest implements \JsonSerializable
 		$data = new \stdClass();
 		if ($this->maxScriptsCacheSize !== null) {
 			$data->maxScriptsCacheSize = $this->maxScriptsCacheSize;
+		}
+		if ($this->supportsWasmDwarf !== null) {
+			$data->supportsWasmDwarf = $this->supportsWasmDwarf;
 		}
 		return $data;
 	}

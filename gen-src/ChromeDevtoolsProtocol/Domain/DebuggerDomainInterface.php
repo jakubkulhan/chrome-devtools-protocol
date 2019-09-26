@@ -15,6 +15,8 @@ use ChromeDevtoolsProtocol\Model\Debugger\GetScriptSourceRequest;
 use ChromeDevtoolsProtocol\Model\Debugger\GetScriptSourceResponse;
 use ChromeDevtoolsProtocol\Model\Debugger\GetStackTraceRequest;
 use ChromeDevtoolsProtocol\Model\Debugger\GetStackTraceResponse;
+use ChromeDevtoolsProtocol\Model\Debugger\GetWasmBytecodeRequest;
+use ChromeDevtoolsProtocol\Model\Debugger\GetWasmBytecodeResponse;
 use ChromeDevtoolsProtocol\Model\Debugger\PauseOnAsyncCallRequest;
 use ChromeDevtoolsProtocol\Model\Debugger\PausedEvent;
 use ChromeDevtoolsProtocol\Model\Debugger\RemoveBreakpointRequest;
@@ -129,6 +131,17 @@ interface DebuggerDomainInterface
 	 * @return GetStackTraceResponse
 	 */
 	public function getStackTrace(ContextInterface $ctx, GetStackTraceRequest $request): GetStackTraceResponse;
+
+
+	/**
+	 * Returns bytecode for the WebAssembly script with given id.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param GetWasmBytecodeRequest $request
+	 *
+	 * @return GetWasmBytecodeResponse
+	 */
+	public function getWasmBytecode(ContextInterface $ctx, GetWasmBytecodeRequest $request): GetWasmBytecodeResponse;
 
 
 	/**

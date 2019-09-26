@@ -16,6 +16,8 @@ use ChromeDevtoolsProtocol\Model\Debugger\GetScriptSourceRequest;
 use ChromeDevtoolsProtocol\Model\Debugger\GetScriptSourceResponse;
 use ChromeDevtoolsProtocol\Model\Debugger\GetStackTraceRequest;
 use ChromeDevtoolsProtocol\Model\Debugger\GetStackTraceResponse;
+use ChromeDevtoolsProtocol\Model\Debugger\GetWasmBytecodeRequest;
+use ChromeDevtoolsProtocol\Model\Debugger\GetWasmBytecodeResponse;
 use ChromeDevtoolsProtocol\Model\Debugger\PauseOnAsyncCallRequest;
 use ChromeDevtoolsProtocol\Model\Debugger\PausedEvent;
 use ChromeDevtoolsProtocol\Model\Debugger\RemoveBreakpointRequest;
@@ -104,6 +106,13 @@ class DebuggerDomain implements DebuggerDomainInterface
 	{
 		$response = $this->internalClient->executeCommand($ctx, 'Debugger.getStackTrace', $request);
 		return GetStackTraceResponse::fromJson($response);
+	}
+
+
+	public function getWasmBytecode(ContextInterface $ctx, GetWasmBytecodeRequest $request): GetWasmBytecodeResponse
+	{
+		$response = $this->internalClient->executeCommand($ctx, 'Debugger.getWasmBytecode', $request);
+		return GetWasmBytecodeResponse::fromJson($response);
 	}
 
 

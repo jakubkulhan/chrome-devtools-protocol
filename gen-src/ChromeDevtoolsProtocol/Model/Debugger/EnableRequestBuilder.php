@@ -11,6 +11,8 @@ final class EnableRequestBuilder
 {
 	private $maxScriptsCacheSize;
 
+	private $supportsWasmDwarf;
+
 
 	/**
 	 * Validate non-optional parameters and return new instance.
@@ -19,6 +21,7 @@ final class EnableRequestBuilder
 	{
 		$instance = new EnableRequest();
 		$instance->maxScriptsCacheSize = $this->maxScriptsCacheSize;
+		$instance->supportsWasmDwarf = $this->supportsWasmDwarf;
 		return $instance;
 	}
 
@@ -31,6 +34,18 @@ final class EnableRequestBuilder
 	public function setMaxScriptsCacheSize($maxScriptsCacheSize): self
 	{
 		$this->maxScriptsCacheSize = $maxScriptsCacheSize;
+		return $this;
+	}
+
+
+	/**
+	 * @param bool|null $supportsWasmDwarf
+	 *
+	 * @return self
+	 */
+	public function setSupportsWasmDwarf($supportsWasmDwarf): self
+	{
+		$this->supportsWasmDwarf = $supportsWasmDwarf;
 		return $this;
 	}
 }
