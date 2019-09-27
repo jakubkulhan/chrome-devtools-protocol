@@ -26,6 +26,20 @@ final class GPUDevice implements \JsonSerializable
 	public $deviceId;
 
 	/**
+	 * Sub sys ID of the GPU, only available on Windows.
+	 *
+	 * @var int|float|null
+	 */
+	public $subSysId;
+
+	/**
+	 * Revision of the GPU, only available on Windows.
+	 *
+	 * @var int|float|null
+	 */
+	public $revision;
+
+	/**
 	 * String description of the GPU vendor, if the PCI ID is not available.
 	 *
 	 * @var string
@@ -63,6 +77,12 @@ final class GPUDevice implements \JsonSerializable
 		if (isset($data->deviceId)) {
 			$instance->deviceId = $data->deviceId;
 		}
+		if (isset($data->subSysId)) {
+			$instance->subSysId = $data->subSysId;
+		}
+		if (isset($data->revision)) {
+			$instance->revision = $data->revision;
+		}
 		if (isset($data->vendorString)) {
 			$instance->vendorString = (string)$data->vendorString;
 		}
@@ -87,6 +107,12 @@ final class GPUDevice implements \JsonSerializable
 		}
 		if ($this->deviceId !== null) {
 			$data->deviceId = $this->deviceId;
+		}
+		if ($this->subSysId !== null) {
+			$data->subSysId = $this->subSysId;
+		}
+		if ($this->revision !== null) {
+			$data->revision = $this->revision;
 		}
 		if ($this->vendorString !== null) {
 			$data->vendorString = $this->vendorString;

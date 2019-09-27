@@ -170,7 +170,7 @@ interface TargetDomainInterface
 
 
 	/**
-	 * Sends protocol message over session with given id.
+	 * Sends protocol message over session with given id. Consider using flat mode instead; see commands attachToTarget, setAutoAttach, and crbug.com/991325.
 	 *
 	 * @param ContextInterface $ctx
 	 * @param SendMessageToTargetRequest $request

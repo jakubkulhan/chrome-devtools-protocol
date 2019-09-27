@@ -26,11 +26,18 @@ final class SetAutoAttachRequest implements \JsonSerializable
 	public $waitForDebuggerOnStart;
 
 	/**
-	 * Enables "flat" access to the session via specifying sessionId attribute in the commands.
+	 * Enables "flat" access to the session via specifying sessionId attribute in the commands. We plan to make this the default, deprecate non-flattened mode, and eventually retire it. See crbug.com/991325.
 	 *
 	 * @var bool|null
 	 */
 	public $flatten;
+
+	/**
+	 * Auto-attach to the targets created via window.open from current target.
+	 *
+	 * @var bool|null
+	 */
+	public $windowOpen;
 
 
 	public static function fromJson($data)
@@ -44,6 +51,9 @@ final class SetAutoAttachRequest implements \JsonSerializable
 		}
 		if (isset($data->flatten)) {
 			$instance->flatten = (bool)$data->flatten;
+		}
+		if (isset($data->windowOpen)) {
+			$instance->windowOpen = (bool)$data->windowOpen;
 		}
 		return $instance;
 	}
@@ -60,6 +70,9 @@ final class SetAutoAttachRequest implements \JsonSerializable
 		}
 		if ($this->flatten !== null) {
 			$data->flatten = $this->flatten;
+		}
+		if ($this->windowOpen !== null) {
+			$data->windowOpen = $this->windowOpen;
 		}
 		return $data;
 	}

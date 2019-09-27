@@ -17536,6 +17536,18 @@
                             "type": "number"
                         },
                         {
+                            "name": "subSysId",
+                            "description": "Sub sys ID of the GPU, only available on Windows.",
+                            "optional": true,
+                            "type": "number"
+                        },
+                        {
+                            "name": "revision",
+                            "description": "Revision of the GPU, only available on Windows.",
+                            "optional": true,
+                            "type": "number"
+                        },
+                        {
                             "name": "vendorString",
                             "description": "String description of the GPU vendor, if the PCI ID is not available.",
                             "type": "string"
@@ -17904,8 +17916,7 @@
                         },
                         {
                             "name": "flatten",
-                            "description": "Enables \"flat\" access to the session via specifying sessionId attribute in the commands.",
-                            "experimental": true,
+                            "description": "Enables \"flat\" access to the session via specifying sessionId attribute in the commands. We plan to make this the default, deprecate non-flattened mode, and eventually retire it. See crbug.com/991325.",
                             "optional": true,
                             "type": "boolean"
                         }
@@ -18097,7 +18108,8 @@
                 },
                 {
                     "name": "sendMessageToTarget",
-                    "description": "Sends protocol message over session with given id.",
+                    "description": "Sends protocol message over session with given id. Consider using flat mode instead; see commands attachToTarget, setAutoAttach, and crbug.com/991325.",
+                    "deprecated": true,
                     "parameters": [
                         {
                             "name": "message",
@@ -18135,7 +18147,13 @@
                         },
                         {
                             "name": "flatten",
-                            "description": "Enables \"flat\" access to the session via specifying sessionId attribute in the commands.",
+                            "description": "Enables \"flat\" access to the session via specifying sessionId attribute in the commands. We plan to make this the default, deprecate non-flattened mode, and eventually retire it. See crbug.com/991325.",
+                            "optional": true,
+                            "type": "boolean"
+                        },
+                        {
+                            "name": "windowOpen",
+                            "description": "Auto-attach to the targets created via window.open from current target.",
                             "experimental": true,
                             "optional": true,
                             "type": "boolean"
