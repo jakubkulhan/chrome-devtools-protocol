@@ -75,7 +75,7 @@ final class EvaluateRequest implements \JsonSerializable
 	public $awaitPromise;
 
 	/**
-	 * Whether to throw an exception if side effect cannot be ruled out during evaluation.
+	 * Whether to throw an exception if side effect cannot be ruled out during evaluation. This implies `disableBreaks` below.
 	 *
 	 * @var bool|null
 	 */
@@ -87,6 +87,13 @@ final class EvaluateRequest implements \JsonSerializable
 	 * @var int|float
 	 */
 	public $timeout;
+
+	/**
+	 * Disable breakpoints during execution.
+	 *
+	 * @var bool|null
+	 */
+	public $disableBreaks;
 
 
 	public static function fromJson($data)
@@ -124,6 +131,9 @@ final class EvaluateRequest implements \JsonSerializable
 		}
 		if (isset($data->timeout)) {
 			$instance->timeout = $data->timeout;
+		}
+		if (isset($data->disableBreaks)) {
+			$instance->disableBreaks = (bool)$data->disableBreaks;
 		}
 		return $instance;
 	}
@@ -164,6 +174,9 @@ final class EvaluateRequest implements \JsonSerializable
 		}
 		if ($this->timeout !== null) {
 			$data->timeout = $this->timeout;
+		}
+		if ($this->disableBreaks !== null) {
+			$data->disableBreaks = $this->disableBreaks;
 		}
 		return $data;
 	}

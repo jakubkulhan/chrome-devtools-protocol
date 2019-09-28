@@ -7,6 +7,7 @@ use ChromeDevtoolsProtocol\Model\Tracing\BufferUsageEvent;
 use ChromeDevtoolsProtocol\Model\Tracing\DataCollectedEvent;
 use ChromeDevtoolsProtocol\Model\Tracing\GetCategoriesResponse;
 use ChromeDevtoolsProtocol\Model\Tracing\RecordClockSyncMarkerRequest;
+use ChromeDevtoolsProtocol\Model\Tracing\RequestMemoryDumpRequest;
 use ChromeDevtoolsProtocol\Model\Tracing\RequestMemoryDumpResponse;
 use ChromeDevtoolsProtocol\Model\Tracing\StartRequest;
 use ChromeDevtoolsProtocol\Model\Tracing\TracingCompleteEvent;
@@ -58,10 +59,11 @@ interface TracingDomainInterface
 	 * Request a global memory dump.
 	 *
 	 * @param ContextInterface $ctx
+	 * @param RequestMemoryDumpRequest $request
 	 *
 	 * @return RequestMemoryDumpResponse
 	 */
-	public function requestMemoryDump(ContextInterface $ctx): RequestMemoryDumpResponse;
+	public function requestMemoryDump(ContextInterface $ctx, RequestMemoryDumpRequest $request): RequestMemoryDumpResponse;
 
 
 	/**
