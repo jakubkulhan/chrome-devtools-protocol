@@ -14,9 +14,16 @@ final class SetEmulatedMediaRequest implements \JsonSerializable
 	/**
 	 * Media type to emulate. Empty string disables the override.
 	 *
-	 * @var string
+	 * @var string|null
 	 */
 	public $media;
+
+	/**
+	 * Media features to emulate.
+	 *
+	 * @var MediaFeature[]|null
+	 */
+	public $features;
 
 
 	public static function fromJson($data)
@@ -24,6 +31,12 @@ final class SetEmulatedMediaRequest implements \JsonSerializable
 		$instance = new static();
 		if (isset($data->media)) {
 			$instance->media = (string)$data->media;
+		}
+		if (isset($data->features)) {
+			$instance->features = [];
+			foreach ($data->features as $item) {
+				$instance->features[] = MediaFeature::fromJson($item);
+			}
 		}
 		return $instance;
 	}
@@ -34,6 +47,12 @@ final class SetEmulatedMediaRequest implements \JsonSerializable
 		$data = new \stdClass();
 		if ($this->media !== null) {
 			$data->media = $this->media;
+		}
+		if ($this->features !== null) {
+			$data->features = [];
+			foreach ($this->features as $item) {
+				$data->features[] = $item->jsonSerialize();
+			}
 		}
 		return $data;
 	}
@@ -47,5 +66,16 @@ final class SetEmulatedMediaRequest implements \JsonSerializable
 	public static function builder(): SetEmulatedMediaRequestBuilder
 	{
 		return new SetEmulatedMediaRequestBuilder();
+	}
+
+
+	/**
+	 * Create new empty instance.
+	 *
+	 * @return self
+	 */
+	public static function make(): self
+	{
+		return static::builder()->build();
 	}
 }

@@ -2,8 +2,6 @@
 
 namespace ChromeDevtoolsProtocol\Model\Emulation;
 
-use ChromeDevtoolsProtocol\Exception\BuilderException;
-
 /**
  * @generated This file has been auto-generated, do not edit.
  *
@@ -13,6 +11,8 @@ final class SetEmulatedMediaRequestBuilder
 {
 	private $media;
 
+	private $features;
+
 
 	/**
 	 * Validate non-optional parameters and return new instance.
@@ -20,22 +20,32 @@ final class SetEmulatedMediaRequestBuilder
 	public function build(): SetEmulatedMediaRequest
 	{
 		$instance = new SetEmulatedMediaRequest();
-		if ($this->media === null) {
-			throw new BuilderException('Property [media] is required.');
-		}
 		$instance->media = $this->media;
+		$instance->features = $this->features;
 		return $instance;
 	}
 
 
 	/**
-	 * @param string $media
+	 * @param string|null $media
 	 *
 	 * @return self
 	 */
 	public function setMedia($media): self
 	{
 		$this->media = $media;
+		return $this;
+	}
+
+
+	/**
+	 * @param MediaFeature[]|null $features
+	 *
+	 * @return self
+	 */
+	public function setFeatures($features): self
+	{
+		$this->features = $features;
 		return $this;
 	}
 }
