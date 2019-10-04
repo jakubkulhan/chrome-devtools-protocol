@@ -17,10 +17,18 @@ final class VirtualAuthenticatorOptions implements \JsonSerializable
 	/** @var string */
 	public $transport;
 
-	/** @var bool */
+	/**
+	 * Defaults to false.
+	 *
+	 * @var bool|null
+	 */
 	public $hasResidentKey;
 
-	/** @var bool */
+	/**
+	 * Defaults to false.
+	 *
+	 * @var bool|null
+	 */
 	public $hasUserVerification;
 
 	/**
@@ -29,6 +37,13 @@ final class VirtualAuthenticatorOptions implements \JsonSerializable
 	 * @var bool|null
 	 */
 	public $automaticPresenceSimulation;
+
+	/**
+	 * Sets whether User Verification succeeds or fails for an authenticator. Defaults to false.
+	 *
+	 * @var bool|null
+	 */
+	public $isUserVerified;
 
 
 	public static function fromJson($data)
@@ -48,6 +63,9 @@ final class VirtualAuthenticatorOptions implements \JsonSerializable
 		}
 		if (isset($data->automaticPresenceSimulation)) {
 			$instance->automaticPresenceSimulation = (bool)$data->automaticPresenceSimulation;
+		}
+		if (isset($data->isUserVerified)) {
+			$instance->isUserVerified = (bool)$data->isUserVerified;
 		}
 		return $instance;
 	}
@@ -70,6 +88,9 @@ final class VirtualAuthenticatorOptions implements \JsonSerializable
 		}
 		if ($this->automaticPresenceSimulation !== null) {
 			$data->automaticPresenceSimulation = $this->automaticPresenceSimulation;
+		}
+		if ($this->isUserVerified !== null) {
+			$data->isUserVerified = $this->isUserVerified;
 		}
 		return $data;
 	}
