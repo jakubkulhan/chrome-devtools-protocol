@@ -8,6 +8,7 @@ use ChromeDevtoolsProtocol\Model\Security\HandleCertificateErrorRequest;
 use ChromeDevtoolsProtocol\Model\Security\SecurityStateChangedEvent;
 use ChromeDevtoolsProtocol\Model\Security\SetIgnoreCertificateErrorsRequest;
 use ChromeDevtoolsProtocol\Model\Security\SetOverrideCertificateErrorsRequest;
+use ChromeDevtoolsProtocol\Model\Security\VisibleSecurityStateChangedEvent;
 use ChromeDevtoolsProtocol\SubscriptionInterface;
 
 /**
@@ -118,4 +119,28 @@ interface SecurityDomainInterface
 	 * @return SecurityStateChangedEvent
 	 */
 	public function awaitSecurityStateChanged(ContextInterface $ctx): SecurityStateChangedEvent;
+
+
+	/**
+	 * The security state of the page changed.
+	 *
+	 * Listener will be called whenever event Security.visibleSecurityStateChanged is fired.
+	 *
+	 * @param callable $listener
+	 *
+	 * @return SubscriptionInterface
+	 */
+	public function addVisibleSecurityStateChangedListener(callable $listener): SubscriptionInterface;
+
+
+	/**
+	 * The security state of the page changed.
+	 *
+	 * Method will block until first Security.visibleSecurityStateChanged event is fired.
+	 *
+	 * @param ContextInterface $ctx
+	 *
+	 * @return VisibleSecurityStateChangedEvent
+	 */
+	public function awaitVisibleSecurityStateChanged(ContextInterface $ctx): VisibleSecurityStateChangedEvent;
 }

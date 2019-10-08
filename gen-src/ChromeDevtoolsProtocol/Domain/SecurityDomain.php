@@ -9,6 +9,7 @@ use ChromeDevtoolsProtocol\Model\Security\HandleCertificateErrorRequest;
 use ChromeDevtoolsProtocol\Model\Security\SecurityStateChangedEvent;
 use ChromeDevtoolsProtocol\Model\Security\SetIgnoreCertificateErrorsRequest;
 use ChromeDevtoolsProtocol\Model\Security\SetOverrideCertificateErrorsRequest;
+use ChromeDevtoolsProtocol\Model\Security\VisibleSecurityStateChangedEvent;
 use ChromeDevtoolsProtocol\SubscriptionInterface;
 
 class SecurityDomain implements SecurityDomainInterface
@@ -80,5 +81,19 @@ class SecurityDomain implements SecurityDomainInterface
 	public function awaitSecurityStateChanged(ContextInterface $ctx): SecurityStateChangedEvent
 	{
 		return SecurityStateChangedEvent::fromJson($this->internalClient->awaitEvent($ctx, 'Security.securityStateChanged'));
+	}
+
+
+	public function addVisibleSecurityStateChangedListener(callable $listener): SubscriptionInterface
+	{
+		return $this->internalClient->addListener('Security.visibleSecurityStateChanged', function ($event) use ($listener) {
+			return $listener(VisibleSecurityStateChangedEvent::fromJson($event));
+		});
+	}
+
+
+	public function awaitVisibleSecurityStateChanged(ContextInterface $ctx): VisibleSecurityStateChangedEvent
+	{
+		return VisibleSecurityStateChangedEvent::fromJson($this->internalClient->awaitEvent($ctx, 'Security.visibleSecurityStateChanged'));
 	}
 }
