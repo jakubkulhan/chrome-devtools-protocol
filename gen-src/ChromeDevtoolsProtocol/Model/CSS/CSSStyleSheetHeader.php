@@ -102,6 +102,20 @@ final class CSSStyleSheetHeader implements \JsonSerializable
 	 */
 	public $length;
 
+	/**
+	 * Line offset of the end of the stylesheet within the resource (zero based).
+	 *
+	 * @var int|float
+	 */
+	public $endLine;
+
+	/**
+	 * Column offset of the end of the stylesheet within the resource (zero based).
+	 *
+	 * @var int|float
+	 */
+	public $endColumn;
+
 
 	public static function fromJson($data)
 	{
@@ -144,6 +158,12 @@ final class CSSStyleSheetHeader implements \JsonSerializable
 		}
 		if (isset($data->length)) {
 			$instance->length = $data->length;
+		}
+		if (isset($data->endLine)) {
+			$instance->endLine = $data->endLine;
+		}
+		if (isset($data->endColumn)) {
+			$instance->endColumn = $data->endColumn;
 		}
 		return $instance;
 	}
@@ -190,6 +210,12 @@ final class CSSStyleSheetHeader implements \JsonSerializable
 		}
 		if ($this->length !== null) {
 			$data->length = $this->length;
+		}
+		if ($this->endLine !== null) {
+			$data->endLine = $this->endLine;
+		}
+		if ($this->endColumn !== null) {
+			$data->endColumn = $this->endColumn;
 		}
 		return $data;
 	}
