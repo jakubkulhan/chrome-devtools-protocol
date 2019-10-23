@@ -95,6 +95,13 @@ final class EvaluateRequest implements \JsonSerializable
 	 */
 	public $disableBreaks;
 
+	/**
+	 * Reserved flag for future REPL mode support. Setting this flag has currently no effect.
+	 *
+	 * @var bool|null
+	 */
+	public $replMode;
+
 
 	public static function fromJson($data)
 	{
@@ -134,6 +141,9 @@ final class EvaluateRequest implements \JsonSerializable
 		}
 		if (isset($data->disableBreaks)) {
 			$instance->disableBreaks = (bool)$data->disableBreaks;
+		}
+		if (isset($data->replMode)) {
+			$instance->replMode = (bool)$data->replMode;
 		}
 		return $instance;
 	}
@@ -177,6 +187,9 @@ final class EvaluateRequest implements \JsonSerializable
 		}
 		if ($this->disableBreaks !== null) {
 			$data->disableBreaks = $this->disableBreaks;
+		}
+		if ($this->replMode !== null) {
+			$data->replMode = $this->replMode;
 		}
 		return $data;
 	}

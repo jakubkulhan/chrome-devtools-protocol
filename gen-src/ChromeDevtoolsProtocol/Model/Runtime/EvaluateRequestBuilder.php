@@ -35,6 +35,8 @@ final class EvaluateRequestBuilder
 
 	private $disableBreaks;
 
+	private $replMode;
+
 
 	/**
 	 * Validate non-optional parameters and return new instance.
@@ -57,6 +59,7 @@ final class EvaluateRequestBuilder
 		$instance->throwOnSideEffect = $this->throwOnSideEffect;
 		$instance->timeout = $this->timeout;
 		$instance->disableBreaks = $this->disableBreaks;
+		$instance->replMode = $this->replMode;
 		return $instance;
 	}
 
@@ -201,6 +204,18 @@ final class EvaluateRequestBuilder
 	public function setDisableBreaks($disableBreaks): self
 	{
 		$this->disableBreaks = $disableBreaks;
+		return $this;
+	}
+
+
+	/**
+	 * @param bool|null $replMode
+	 *
+	 * @return self
+	 */
+	public function setReplMode($replMode): self
+	{
+		$this->replMode = $replMode;
 		return $this;
 	}
 }
