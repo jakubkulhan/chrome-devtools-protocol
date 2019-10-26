@@ -16,4 +16,5 @@ final class SecurityStateEnum
 	const INSECURE = 'insecure';
 	const SECURE = 'secure';
 	const INFO = 'info';
+	const INSECURE_BROKEN = 'insecure-broken';
 }

@@ -30,13 +30,7 @@ final class RequestEntriesRequestBuilder
 			throw new BuilderException('Property [cacheId] is required.');
 		}
 		$instance->cacheId = $this->cacheId;
-		if ($this->skipCount === null) {
-			throw new BuilderException('Property [skipCount] is required.');
-		}
 		$instance->skipCount = $this->skipCount;
-		if ($this->pageSize === null) {
-			throw new BuilderException('Property [pageSize] is required.');
-		}
 		$instance->pageSize = $this->pageSize;
 		$instance->pathFilter = $this->pathFilter;
 		return $instance;
@@ -56,7 +50,7 @@ final class RequestEntriesRequestBuilder
 
 
 	/**
-	 * @param int $skipCount
+	 * @param int|null $skipCount
 	 *
 	 * @return self
 	 */
@@ -68,7 +62,7 @@ final class RequestEntriesRequestBuilder
 
 
 	/**
-	 * @param int $pageSize
+	 * @param int|null $pageSize
 	 *
 	 * @return self
 	 */

@@ -21,14 +21,14 @@ final class RequestEntriesRequest implements \JsonSerializable
 	/**
 	 * Number of records to skip.
 	 *
-	 * @var int
+	 * @var int|null
 	 */
 	public $skipCount;
 
 	/**
 	 * Number of records to fetch.
 	 *
-	 * @var int
+	 * @var int|null
 	 */
 	public $pageSize;
 
