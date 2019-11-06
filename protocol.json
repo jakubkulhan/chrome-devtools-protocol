@@ -1198,6 +1198,7 @@
                         "geolocation",
                         "midi",
                         "midiSysex",
+                        "nfc",
                         "notifications",
                         "paymentHandler",
                         "periodicBackgroundSync",
@@ -15319,6 +15320,24 @@
                             }
                         }
                     ]
+                },
+                {
+                    "id": "CounterInfo",
+                    "description": "Collected counter information.",
+                    "experimental": true,
+                    "type": "object",
+                    "properties": [
+                        {
+                            "name": "name",
+                            "description": "Counter name.",
+                            "type": "string"
+                        },
+                        {
+                            "name": "value",
+                            "description": "Counter value.",
+                            "type": "integer"
+                        }
+                    ]
                 }
             ],
             "commands": [
@@ -15326,7 +15345,17 @@
                     "name": "disable"
                 },
                 {
+                    "name": "disableRuntimeCallStats",
+                    "description": "Disable run time call stats collection.",
+                    "experimental": true
+                },
+                {
                     "name": "enable"
+                },
+                {
+                    "name": "enableRuntimeCallStats",
+                    "description": "Enable run time call stats collection.",
+                    "experimental": true
                 },
                 {
                     "name": "getBestEffortCoverage",
@@ -15338,6 +15367,21 @@
                             "type": "array",
                             "items": {
                                 "$ref": "ScriptCoverage"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "getRuntimeCallStats",
+                    "description": "Retrieve run time call stats.",
+                    "experimental": true,
+                    "returns": [
+                        {
+                            "name": "result",
+                            "description": "Collected counter information.",
+                            "type": "array",
+                            "items": {
+                                "$ref": "CounterInfo"
                             }
                         }
                     ]

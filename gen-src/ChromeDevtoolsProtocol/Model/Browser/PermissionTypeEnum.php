@@ -22,6 +22,7 @@ final class PermissionTypeEnum
 	const GEOLOCATION = 'geolocation';
 	const MIDI = 'midi';
 	const MIDI_SYSEX = 'midiSysex';
+	const NFC = 'nfc';
 	const NOTIFICATIONS = 'notifications';
 	const PAYMENT_HANDLER = 'paymentHandler';
 	const PERIODIC_BACKGROUND_SYNC = 'periodicBackgroundSync';
