@@ -134,7 +134,7 @@ interface DebuggerDomainInterface
 
 
 	/**
-	 * Returns bytecode for the WebAssembly script with given id.
+	 * This command is deprecated. Use getScriptSource instead.
 	 *
 	 * @param ContextInterface $ctx
 	 * @param GetWasmBytecodeRequest $request

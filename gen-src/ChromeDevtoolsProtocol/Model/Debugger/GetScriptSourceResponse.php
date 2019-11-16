@@ -12,11 +12,18 @@ namespace ChromeDevtoolsProtocol\Model\Debugger;
 final class GetScriptSourceResponse implements \JsonSerializable
 {
 	/**
-	 * Script source.
+	 * Script source (empty in case of Wasm bytecode).
 	 *
 	 * @var string
 	 */
 	public $scriptSource;
+
+	/**
+	 * Wasm bytecode.
+	 *
+	 * @var string|null
+	 */
+	public $bytecode;
 
 
 	public static function fromJson($data)
@@ -24,6 +31,9 @@ final class GetScriptSourceResponse implements \JsonSerializable
 		$instance = new static();
 		if (isset($data->scriptSource)) {
 			$instance->scriptSource = (string)$data->scriptSource;
+		}
+		if (isset($data->bytecode)) {
+			$instance->bytecode = (string)$data->bytecode;
 		}
 		return $instance;
 	}
@@ -34,6 +44,9 @@ final class GetScriptSourceResponse implements \JsonSerializable
 		$data = new \stdClass();
 		if ($this->scriptSource !== null) {
 			$data->scriptSource = $this->scriptSource;
+		}
+		if ($this->bytecode !== null) {
+			$data->bytecode = $this->bytecode;
 		}
 		return $data;
 	}
