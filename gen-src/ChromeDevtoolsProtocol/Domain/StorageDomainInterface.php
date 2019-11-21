@@ -5,11 +5,15 @@ namespace ChromeDevtoolsProtocol\Domain;
 use ChromeDevtoolsProtocol\ContextInterface;
 use ChromeDevtoolsProtocol\Model\Storage\CacheStorageContentUpdatedEvent;
 use ChromeDevtoolsProtocol\Model\Storage\CacheStorageListUpdatedEvent;
+use ChromeDevtoolsProtocol\Model\Storage\ClearCookiesRequest;
 use ChromeDevtoolsProtocol\Model\Storage\ClearDataForOriginRequest;
+use ChromeDevtoolsProtocol\Model\Storage\GetCookiesRequest;
+use ChromeDevtoolsProtocol\Model\Storage\GetCookiesResponse;
 use ChromeDevtoolsProtocol\Model\Storage\GetUsageAndQuotaRequest;
 use ChromeDevtoolsProtocol\Model\Storage\GetUsageAndQuotaResponse;
 use ChromeDevtoolsProtocol\Model\Storage\IndexedDBContentUpdatedEvent;
 use ChromeDevtoolsProtocol\Model\Storage\IndexedDBListUpdatedEvent;
+use ChromeDevtoolsProtocol\Model\Storage\SetCookiesRequest;
 use ChromeDevtoolsProtocol\Model\Storage\TrackCacheStorageForOriginRequest;
 use ChromeDevtoolsProtocol\Model\Storage\TrackIndexedDBForOriginRequest;
 use ChromeDevtoolsProtocol\Model\Storage\UntrackCacheStorageForOriginRequest;
@@ -28,6 +32,17 @@ use ChromeDevtoolsProtocol\SubscriptionInterface;
 interface StorageDomainInterface
 {
 	/**
+	 * Clears cookies.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param ClearCookiesRequest $request
+	 *
+	 * @return void
+	 */
+	public function clearCookies(ContextInterface $ctx, ClearCookiesRequest $request): void;
+
+
+	/**
 	 * Clears storage for origin.
 	 *
 	 * @param ContextInterface $ctx
@@ -39,6 +54,17 @@ interface StorageDomainInterface
 
 
 	/**
+	 * Returns all browser cookies.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param GetCookiesRequest $request
+	 *
+	 * @return GetCookiesResponse
+	 */
+	public function getCookies(ContextInterface $ctx, GetCookiesRequest $request): GetCookiesResponse;
+
+
+	/**
 	 * Returns usage and quota in bytes.
 	 *
 	 * @param ContextInterface $ctx
@@ -47,6 +73,17 @@ interface StorageDomainInterface
 	 * @return GetUsageAndQuotaResponse
 	 */
 	public function getUsageAndQuota(ContextInterface $ctx, GetUsageAndQuotaRequest $request): GetUsageAndQuotaResponse;
+
+
+	/**
+	 * Sets given cookies.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param SetCookiesRequest $request
+	 *
+	 * @return void
+	 */
+	public function setCookies(ContextInterface $ctx, SetCookiesRequest $request): void;
 
 
 	/**

@@ -1128,6 +1128,11 @@
             "description": "The Browser domain defines methods and events for browser managing.",
             "types": [
                 {
+                    "id": "BrowserContextID",
+                    "experimental": true,
+                    "type": "string"
+                },
+                {
                     "id": "WindowID",
                     "experimental": true,
                     "type": "integer"
@@ -1485,7 +1490,7 @@
                             "name": "browserContextId",
                             "description": "BrowserContext to override permissions. When omitted, default browser context is used.",
                             "optional": true,
-                            "$ref": "Target.BrowserContextID"
+                            "$ref": "BrowserContextID"
                         }
                     ]
                 },
@@ -1498,7 +1503,7 @@
                             "name": "browserContextId",
                             "description": "BrowserContext to reset permissions. When omitted, default browser context is used.",
                             "optional": true,
-                            "$ref": "Target.BrowserContextID"
+                            "$ref": "BrowserContextID"
                         }
                     ]
                 },
@@ -1544,7 +1549,7 @@
                             "name": "browserContextId",
                             "description": "Context to override. When omitted, default browser context is used.",
                             "optional": true,
-                            "$ref": "Target.TargetID"
+                            "$ref": "BrowserContextID"
                         }
                     ]
                 },
@@ -17010,6 +17015,33 @@
                     ]
                 },
                 {
+                    "id": "SafetyTipStatus",
+                    "experimental": true,
+                    "type": "string",
+                    "enum": [
+                        "badReputation",
+                        "lookalike"
+                    ]
+                },
+                {
+                    "id": "SafetyTipInfo",
+                    "experimental": true,
+                    "type": "object",
+                    "properties": [
+                        {
+                            "name": "safetyTipStatus",
+                            "description": "Describes whether the page triggers any safety tips or reputation warnings. Default is unknown.",
+                            "$ref": "SafetyTipStatus"
+                        },
+                        {
+                            "name": "safeUrl",
+                            "description": "The URL the safety tip suggested (\"Did you mean?\"). Only filled in for lookalike matches.",
+                            "optional": true,
+                            "type": "string"
+                        }
+                    ]
+                },
+                {
                     "id": "VisibleSecurityState",
                     "description": "Security state information about the page.",
                     "experimental": true,
@@ -17025,6 +17057,12 @@
                             "description": "Security state details about the page certificate.",
                             "optional": true,
                             "$ref": "CertificateSecurityState"
+                        },
+                        {
+                            "name": "safetyTipInfo",
+                            "description": "The type of Safety Tip triggered on the page. Note that this field will be set even if the Safety Tip UI was not actually shown.",
+                            "optional": true,
+                            "$ref": "SafetyTipInfo"
                         },
                         {
                             "name": "securityStateIssueIds",
@@ -17564,6 +17602,10 @@
         {
             "domain": "Storage",
             "experimental": true,
+            "dependencies": [
+                "Browser",
+                "Network"
+            ],
             "types": [
                 {
                     "id": "StorageType",
@@ -17603,6 +17645,18 @@
             ],
             "commands": [
                 {
+                    "name": "clearCookies",
+                    "description": "Clears cookies.",
+                    "parameters": [
+                        {
+                            "name": "browserContextId",
+                            "description": "Browser context to use when called on the browser endpoint.",
+                            "optional": true,
+                            "$ref": "Browser.BrowserContextID"
+                        }
+                    ]
+                },
+                {
                     "name": "clearDataForOrigin",
                     "description": "Clears storage for origin.",
                     "parameters": [
@@ -17615,6 +17669,28 @@
                             "name": "storageTypes",
                             "description": "Comma separated list of StorageType to clear.",
                             "type": "string"
+                        }
+                    ]
+                },
+                {
+                    "name": "getCookies",
+                    "description": "Returns all browser cookies.",
+                    "parameters": [
+                        {
+                            "name": "browserContextId",
+                            "description": "Browser context to use when called on the browser endpoint.",
+                            "optional": true,
+                            "$ref": "Browser.BrowserContextID"
+                        }
+                    ],
+                    "returns": [
+                        {
+                            "name": "cookies",
+                            "description": "Array of cookie objects.",
+                            "type": "array",
+                            "items": {
+                                "$ref": "Network.Cookie"
+                            }
                         }
                     ]
                 },
@@ -17646,6 +17722,26 @@
                             "items": {
                                 "$ref": "UsageForType"
                             }
+                        }
+                    ]
+                },
+                {
+                    "name": "setCookies",
+                    "description": "Sets given cookies.",
+                    "parameters": [
+                        {
+                            "name": "cookies",
+                            "description": "Cookies to be set.",
+                            "type": "array",
+                            "items": {
+                                "$ref": "Network.CookieParam"
+                            }
+                        },
+                        {
+                            "name": "browserContextId",
+                            "description": "Browser context to use when called on the browser endpoint.",
+                            "optional": true,
+                            "$ref": "Browser.BrowserContextID"
                         }
                     ]
                 },
@@ -18065,11 +18161,6 @@
                     "type": "string"
                 },
                 {
-                    "id": "BrowserContextID",
-                    "experimental": true,
-                    "type": "string"
-                },
-                {
                     "id": "TargetInfo",
                     "type": "object",
                     "properties": [
@@ -18104,7 +18195,7 @@
                             "name": "browserContextId",
                             "experimental": true,
                             "optional": true,
-                            "$ref": "BrowserContextID"
+                            "$ref": "Browser.BrowserContextID"
                         }
                     ]
                 },
@@ -18194,7 +18285,7 @@
                         {
                             "name": "browserContextId",
                             "description": "The id of the context created.",
-                            "$ref": "BrowserContextID"
+                            "$ref": "Browser.BrowserContextID"
                         }
                     ]
                 },
@@ -18223,7 +18314,7 @@
                             "name": "browserContextId",
                             "description": "The browser context to create the page in.",
                             "optional": true,
-                            "$ref": "BrowserContextID"
+                            "$ref": "Browser.BrowserContextID"
                         },
                         {
                             "name": "enableBeginFrameControl",
@@ -18279,7 +18370,7 @@
                     "parameters": [
                         {
                             "name": "browserContextId",
-                            "$ref": "BrowserContextID"
+                            "$ref": "Browser.BrowserContextID"
                         }
                     ]
                 },
@@ -18310,7 +18401,7 @@
                             "description": "An array of browser context ids.",
                             "type": "array",
                             "items": {
-                                "$ref": "BrowserContextID"
+                                "$ref": "Browser.BrowserContextID"
                             }
                         }
                     ]

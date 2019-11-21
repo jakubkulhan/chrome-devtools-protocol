@@ -6,11 +6,15 @@ use ChromeDevtoolsProtocol\ContextInterface;
 use ChromeDevtoolsProtocol\InternalClientInterface;
 use ChromeDevtoolsProtocol\Model\Storage\CacheStorageContentUpdatedEvent;
 use ChromeDevtoolsProtocol\Model\Storage\CacheStorageListUpdatedEvent;
+use ChromeDevtoolsProtocol\Model\Storage\ClearCookiesRequest;
 use ChromeDevtoolsProtocol\Model\Storage\ClearDataForOriginRequest;
+use ChromeDevtoolsProtocol\Model\Storage\GetCookiesRequest;
+use ChromeDevtoolsProtocol\Model\Storage\GetCookiesResponse;
 use ChromeDevtoolsProtocol\Model\Storage\GetUsageAndQuotaRequest;
 use ChromeDevtoolsProtocol\Model\Storage\GetUsageAndQuotaResponse;
 use ChromeDevtoolsProtocol\Model\Storage\IndexedDBContentUpdatedEvent;
 use ChromeDevtoolsProtocol\Model\Storage\IndexedDBListUpdatedEvent;
+use ChromeDevtoolsProtocol\Model\Storage\SetCookiesRequest;
 use ChromeDevtoolsProtocol\Model\Storage\TrackCacheStorageForOriginRequest;
 use ChromeDevtoolsProtocol\Model\Storage\TrackIndexedDBForOriginRequest;
 use ChromeDevtoolsProtocol\Model\Storage\UntrackCacheStorageForOriginRequest;
@@ -29,9 +33,22 @@ class StorageDomain implements StorageDomainInterface
 	}
 
 
+	public function clearCookies(ContextInterface $ctx, ClearCookiesRequest $request): void
+	{
+		$this->internalClient->executeCommand($ctx, 'Storage.clearCookies', $request);
+	}
+
+
 	public function clearDataForOrigin(ContextInterface $ctx, ClearDataForOriginRequest $request): void
 	{
 		$this->internalClient->executeCommand($ctx, 'Storage.clearDataForOrigin', $request);
+	}
+
+
+	public function getCookies(ContextInterface $ctx, GetCookiesRequest $request): GetCookiesResponse
+	{
+		$response = $this->internalClient->executeCommand($ctx, 'Storage.getCookies', $request);
+		return GetCookiesResponse::fromJson($response);
 	}
 
 
@@ -39,6 +56,12 @@ class StorageDomain implements StorageDomainInterface
 	{
 		$response = $this->internalClient->executeCommand($ctx, 'Storage.getUsageAndQuota', $request);
 		return GetUsageAndQuotaResponse::fromJson($response);
+	}
+
+
+	public function setCookies(ContextInterface $ctx, SetCookiesRequest $request): void
+	{
+		$this->internalClient->executeCommand($ctx, 'Storage.setCookies', $request);
 	}
 
 

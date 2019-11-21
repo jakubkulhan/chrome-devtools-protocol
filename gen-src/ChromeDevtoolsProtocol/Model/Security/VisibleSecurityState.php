@@ -26,6 +26,13 @@ final class VisibleSecurityState implements \JsonSerializable
 	public $certificateSecurityState;
 
 	/**
+	 * The type of Safety Tip triggered on the page. Note that this field will be set even if the Safety Tip UI was not actually shown.
+	 *
+	 * @var SafetyTipInfo|null
+	 */
+	public $safetyTipInfo;
+
+	/**
 	 * Array of security state issues ids.
 	 *
 	 * @var string[]
@@ -41,6 +48,9 @@ final class VisibleSecurityState implements \JsonSerializable
 		}
 		if (isset($data->certificateSecurityState)) {
 			$instance->certificateSecurityState = CertificateSecurityState::fromJson($data->certificateSecurityState);
+		}
+		if (isset($data->safetyTipInfo)) {
+			$instance->safetyTipInfo = SafetyTipInfo::fromJson($data->safetyTipInfo);
 		}
 		if (isset($data->securityStateIssueIds)) {
 			$instance->securityStateIssueIds = [];
@@ -60,6 +70,9 @@ final class VisibleSecurityState implements \JsonSerializable
 		}
 		if ($this->certificateSecurityState !== null) {
 			$data->certificateSecurityState = $this->certificateSecurityState->jsonSerialize();
+		}
+		if ($this->safetyTipInfo !== null) {
+			$data->safetyTipInfo = $this->safetyTipInfo->jsonSerialize();
 		}
 		if ($this->securityStateIssueIds !== null) {
 			$data->securityStateIssueIds = [];
