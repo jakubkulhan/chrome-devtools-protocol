@@ -82,11 +82,25 @@ final class CertificateSecurityState implements \JsonSerializable
 	public $validTo;
 
 	/**
+	 * The highest priority network error code, if the certificate has an error.
+	 *
+	 * @var string|null
+	 */
+	public $certificateNetworkError;
+
+	/**
 	 * True if the certificate uses a weak signature aglorithm.
 	 *
 	 * @var bool
 	 */
-	public $certifcateHasWeakSignature;
+	public $certificateHasWeakSignature;
+
+	/**
+	 * True if the certificate has a SHA1 signature in the chain.
+	 *
+	 * @var bool
+	 */
+	public $certificateHasSha1Signature;
 
 	/**
 	 * True if modern SSL
@@ -160,8 +174,14 @@ final class CertificateSecurityState implements \JsonSerializable
 		if (isset($data->validTo)) {
 			$instance->validTo = $data->validTo;
 		}
-		if (isset($data->certifcateHasWeakSignature)) {
-			$instance->certifcateHasWeakSignature = (bool)$data->certifcateHasWeakSignature;
+		if (isset($data->certificateNetworkError)) {
+			$instance->certificateNetworkError = (string)$data->certificateNetworkError;
+		}
+		if (isset($data->certificateHasWeakSignature)) {
+			$instance->certificateHasWeakSignature = (bool)$data->certificateHasWeakSignature;
+		}
+		if (isset($data->certificateHasSha1Signature)) {
+			$instance->certificateHasSha1Signature = (bool)$data->certificateHasSha1Signature;
 		}
 		if (isset($data->modernSSL)) {
 			$instance->modernSSL = (bool)$data->modernSSL;
@@ -218,8 +238,14 @@ final class CertificateSecurityState implements \JsonSerializable
 		if ($this->validTo !== null) {
 			$data->validTo = $this->validTo;
 		}
-		if ($this->certifcateHasWeakSignature !== null) {
-			$data->certifcateHasWeakSignature = $this->certifcateHasWeakSignature;
+		if ($this->certificateNetworkError !== null) {
+			$data->certificateNetworkError = $this->certificateNetworkError;
+		}
+		if ($this->certificateHasWeakSignature !== null) {
+			$data->certificateHasWeakSignature = $this->certificateHasWeakSignature;
+		}
+		if ($this->certificateHasSha1Signature !== null) {
+			$data->certificateHasSha1Signature = $this->certificateHasSha1Signature;
 		}
 		if ($this->modernSSL !== null) {
 			$data->modernSSL = $this->modernSSL;
