@@ -38,7 +38,6 @@ use ChromeDevtoolsProtocol\Model\Page\GetNavigationHistoryResponse;
 use ChromeDevtoolsProtocol\Model\Page\GetResourceContentRequest;
 use ChromeDevtoolsProtocol\Model\Page\GetResourceContentResponse;
 use ChromeDevtoolsProtocol\Model\Page\GetResourceTreeResponse;
-use ChromeDevtoolsProtocol\Model\Page\HandleFileChooserRequest;
 use ChromeDevtoolsProtocol\Model\Page\HandleJavaScriptDialogRequest;
 use ChromeDevtoolsProtocol\Model\Page\InterstitialHiddenEvent;
 use ChromeDevtoolsProtocol\Model\Page\InterstitialShownEvent;
@@ -347,17 +346,6 @@ interface PageDomainInterface
 
 
 	/**
-	 * Accepts or cancels an intercepted file chooser dialog.
-	 *
-	 * @param ContextInterface $ctx
-	 * @param HandleFileChooserRequest $request
-	 *
-	 * @return void
-	 */
-	public function handleFileChooser(ContextInterface $ctx, HandleFileChooserRequest $request): void;
-
-
-	/**
 	 * Accepts or dismisses a JavaScript initiated dialog (alert, confirm, prompt, or onbeforeunload).
 	 *
 	 * @param ContextInterface $ctx
@@ -566,7 +554,7 @@ interface PageDomainInterface
 
 
 	/**
-	 * Intercept file chooser requests and transfer control to protocol clients. When file chooser interception is enabled, native file chooser dialog is not shown. Instead, a protocol event `Page.fileChooserOpened` is emitted. File chooser can be handled with `page.handleFileChooser` command.
+	 * Intercept file chooser requests and transfer control to protocol clients. When file chooser interception is enabled, native file chooser dialog is not shown. Instead, a protocol event `Page.fileChooserOpened` is emitted.
 	 *
 	 * @param ContextInterface $ctx
 	 * @param SetInterceptFileChooserDialogRequest $request

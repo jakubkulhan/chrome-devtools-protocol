@@ -11,13 +11,37 @@ namespace ChromeDevtoolsProtocol\Model\Page;
  */
 final class FileChooserOpenedEvent implements \JsonSerializable
 {
-	/** @var string */
+	/**
+	 * Id of the frame containing input node.
+	 *
+	 * @var string
+	 */
+	public $frameId;
+
+	/**
+	 * Input node id.
+	 *
+	 * @var int
+	 */
+	public $backendNodeId;
+
+	/**
+	 * Input mode.
+	 *
+	 * @var string
+	 */
 	public $mode;
 
 
 	public static function fromJson($data)
 	{
 		$instance = new static();
+		if (isset($data->frameId)) {
+			$instance->frameId = (string)$data->frameId;
+		}
+		if (isset($data->backendNodeId)) {
+			$instance->backendNodeId = (int)$data->backendNodeId;
+		}
 		if (isset($data->mode)) {
 			$instance->mode = (string)$data->mode;
 		}
@@ -28,6 +52,12 @@ final class FileChooserOpenedEvent implements \JsonSerializable
 	public function jsonSerialize()
 	{
 		$data = new \stdClass();
+		if ($this->frameId !== null) {
+			$data->frameId = $this->frameId;
+		}
+		if ($this->backendNodeId !== null) {
+			$data->backendNodeId = $this->backendNodeId;
+		}
 		if ($this->mode !== null) {
 			$data->mode = $this->mode;
 		}

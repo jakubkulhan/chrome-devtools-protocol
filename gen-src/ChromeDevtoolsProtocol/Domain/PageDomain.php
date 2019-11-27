@@ -39,7 +39,6 @@ use ChromeDevtoolsProtocol\Model\Page\GetNavigationHistoryResponse;
 use ChromeDevtoolsProtocol\Model\Page\GetResourceContentRequest;
 use ChromeDevtoolsProtocol\Model\Page\GetResourceContentResponse;
 use ChromeDevtoolsProtocol\Model\Page\GetResourceTreeResponse;
-use ChromeDevtoolsProtocol\Model\Page\HandleFileChooserRequest;
 use ChromeDevtoolsProtocol\Model\Page\HandleJavaScriptDialogRequest;
 use ChromeDevtoolsProtocol\Model\Page\InterstitialHiddenEvent;
 use ChromeDevtoolsProtocol\Model\Page\InterstitialShownEvent;
@@ -267,12 +266,6 @@ class PageDomain implements PageDomainInterface
 		$request = new \stdClass();
 		$response = $this->internalClient->executeCommand($ctx, 'Page.getResourceTree', $request);
 		return GetResourceTreeResponse::fromJson($response);
-	}
-
-
-	public function handleFileChooser(ContextInterface $ctx, HandleFileChooserRequest $request): void
-	{
-		$this->internalClient->executeCommand($ctx, 'Page.handleFileChooser', $request);
 	}
 
 
