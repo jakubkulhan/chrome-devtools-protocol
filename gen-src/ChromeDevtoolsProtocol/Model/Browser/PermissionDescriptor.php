@@ -39,6 +39,13 @@ final class PermissionDescriptor implements \JsonSerializable
 	 */
 	public $type;
 
+	/**
+	 * For "clipboard" permission, may specify allowWithoutSanitization.
+	 *
+	 * @var bool|null
+	 */
+	public $allowWithoutSanitization;
+
 
 	public static function fromJson($data)
 	{
@@ -54,6 +61,9 @@ final class PermissionDescriptor implements \JsonSerializable
 		}
 		if (isset($data->type)) {
 			$instance->type = (string)$data->type;
+		}
+		if (isset($data->allowWithoutSanitization)) {
+			$instance->allowWithoutSanitization = (bool)$data->allowWithoutSanitization;
 		}
 		return $instance;
 	}
@@ -73,6 +83,9 @@ final class PermissionDescriptor implements \JsonSerializable
 		}
 		if ($this->type !== null) {
 			$data->type = $this->type;
+		}
+		if ($this->allowWithoutSanitization !== null) {
+			$data->allowWithoutSanitization = $this->allowWithoutSanitization;
 		}
 		return $data;
 	}

@@ -15,8 +15,8 @@ final class PermissionTypeEnum
 	const AUDIO_CAPTURE = 'audioCapture';
 	const BACKGROUND_SYNC = 'backgroundSync';
 	const BACKGROUND_FETCH = 'backgroundFetch';
-	const CLIPBOARD_READ = 'clipboardRead';
-	const CLIPBOARD_WRITE = 'clipboardWrite';
+	const CLIPBOARD_READ_WRITE = 'clipboardReadWrite';
+	const CLIPBOARD_SANITIZED_WRITE = 'clipboardSanitizedWrite';
 	const DURABLE_STORAGE = 'durableStorage';
 	const FLASH = 'flash';
 	const GEOLOCATION = 'geolocation';
