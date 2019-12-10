@@ -21,9 +21,23 @@ final class PrivatePropertyDescriptor implements \JsonSerializable
 	/**
 	 * The value associated with the private property.
 	 *
-	 * @var RemoteObject
+	 * @var RemoteObject|null
 	 */
 	public $value;
+
+	/**
+	 * A function which serves as a getter for the private property, or `undefined` if there is no getter (accessor descriptors only).
+	 *
+	 * @var RemoteObject|null
+	 */
+	public $get;
+
+	/**
+	 * A function which serves as a setter for the private property, or `undefined` if there is no setter (accessor descriptors only).
+	 *
+	 * @var RemoteObject|null
+	 */
+	public $set;
 
 
 	public static function fromJson($data)
@@ -34,6 +48,12 @@ final class PrivatePropertyDescriptor implements \JsonSerializable
 		}
 		if (isset($data->value)) {
 			$instance->value = RemoteObject::fromJson($data->value);
+		}
+		if (isset($data->get)) {
+			$instance->get = RemoteObject::fromJson($data->get);
+		}
+		if (isset($data->set)) {
+			$instance->set = RemoteObject::fromJson($data->set);
 		}
 		return $instance;
 	}
@@ -47,6 +67,12 @@ final class PrivatePropertyDescriptor implements \JsonSerializable
 		}
 		if ($this->value !== null) {
 			$data->value = $this->value->jsonSerialize();
+		}
+		if ($this->get !== null) {
+			$data->get = $this->get->jsonSerialize();
+		}
+		if ($this->set !== null) {
+			$data->set = $this->set->jsonSerialize();
 		}
 		return $data;
 	}
