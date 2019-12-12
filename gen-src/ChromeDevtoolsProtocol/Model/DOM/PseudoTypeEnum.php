@@ -15,6 +15,7 @@ final class PseudoTypeEnum
 	const FIRST_LETTER = 'first-letter';
 	const BEFORE = 'before';
 	const AFTER = 'after';
+	const MARKER = 'marker';
 	const BACKDROP = 'backdrop';
 	const SELECTION = 'selection';
 	const FIRST_LINE_INHERITED = 'first-line-inherited';
