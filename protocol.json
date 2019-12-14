@@ -8907,6 +8907,18 @@
                     ]
                 },
                 {
+                    "id": "MouseButton",
+                    "type": "string",
+                    "enum": [
+                        "none",
+                        "left",
+                        "middle",
+                        "right",
+                        "back",
+                        "forward"
+                    ]
+                },
+                {
                     "id": "TimeSinceEpoch",
                     "description": "UTC time in seconds, counted from January 1, 1970.",
                     "type": "number"
@@ -9049,15 +9061,7 @@
                             "name": "button",
                             "description": "Mouse button (default: \"none\").",
                             "optional": true,
-                            "type": "string",
-                            "enum": [
-                                "none",
-                                "left",
-                                "middle",
-                                "right",
-                                "back",
-                                "forward"
-                            ]
+                            "$ref": "MouseButton"
                         },
                         {
                             "name": "buttons",
@@ -9160,14 +9164,8 @@
                         },
                         {
                             "name": "button",
-                            "description": "Mouse button.",
-                            "type": "string",
-                            "enum": [
-                                "none",
-                                "left",
-                                "middle",
-                                "right"
-                            ]
+                            "description": "Mouse button. Only \"none\", \"left\", \"right\" are supported.",
+                            "$ref": "MouseButton"
                         },
                         {
                             "name": "timestamp",
@@ -10492,6 +10490,17 @@
                     ]
                 },
                 {
+                    "id": "CookiePriority",
+                    "description": "Represents the cookie's 'Priority' status: https://tools.ietf.org/html/draft-west-cookie-priority-00",
+                    "experimental": true,
+                    "type": "string",
+                    "enum": [
+                        "Low",
+                        "Medium",
+                        "High"
+                    ]
+                },
+                {
                     "id": "ResourceTiming",
                     "description": "Timing information for the request.",
                     "type": "object",
@@ -11130,6 +11139,12 @@
                             "description": "Cookie SameSite type.",
                             "optional": true,
                             "$ref": "CookieSameSite"
+                        },
+                        {
+                            "name": "priority",
+                            "description": "Cookie Priority",
+                            "experimental": true,
+                            "$ref": "CookiePriority"
                         }
                     ]
                 },
@@ -11274,6 +11289,12 @@
                             "description": "Cookie expiration date, session cookie if not set",
                             "optional": true,
                             "$ref": "TimeSinceEpoch"
+                        },
+                        {
+                            "name": "priority",
+                            "description": "Cookie Priority.",
+                            "optional": true,
+                            "$ref": "CookiePriority"
                         }
                     ]
                 },
@@ -12004,6 +12025,12 @@
                             "description": "Cookie expiration date, session cookie if not set",
                             "optional": true,
                             "$ref": "TimeSinceEpoch"
+                        },
+                        {
+                            "name": "priority",
+                            "description": "Cookie Priority type.",
+                            "optional": true,
+                            "$ref": "CookiePriority"
                         }
                     ],
                     "returns": [
@@ -13400,6 +13427,19 @@
                     ]
                 },
                 {
+                    "id": "AppManifestParsedProperties",
+                    "description": "Parsed app manifest properties.",
+                    "experimental": true,
+                    "type": "object",
+                    "properties": [
+                        {
+                            "name": "scope",
+                            "description": "Computed scope value",
+                            "type": "string"
+                        }
+                    ]
+                },
+                {
                     "id": "LayoutViewport",
                     "description": "Layout viewport position and dimensions.",
                     "type": "object",
@@ -13850,6 +13890,13 @@
                             "description": "Manifest content.",
                             "optional": true,
                             "type": "string"
+                        },
+                        {
+                            "name": "parsed",
+                            "description": "Parsed manifest properties",
+                            "experimental": true,
+                            "optional": true,
+                            "$ref": "AppManifestParsedProperties"
                         }
                     ]
                 },

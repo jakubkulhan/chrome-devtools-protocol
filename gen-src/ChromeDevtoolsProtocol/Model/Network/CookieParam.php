@@ -74,6 +74,13 @@ final class CookieParam implements \JsonSerializable
 	 */
 	public $expires;
 
+	/**
+	 * Cookie Priority.
+	 *
+	 * @var string
+	 */
+	public $priority;
+
 
 	public static function fromJson($data)
 	{
@@ -104,6 +111,9 @@ final class CookieParam implements \JsonSerializable
 		}
 		if (isset($data->expires)) {
 			$instance->expires = $data->expires;
+		}
+		if (isset($data->priority)) {
+			$instance->priority = (string)$data->priority;
 		}
 		return $instance;
 	}
@@ -138,6 +148,9 @@ final class CookieParam implements \JsonSerializable
 		}
 		if ($this->expires !== null) {
 			$data->expires = $this->expires;
+		}
+		if ($this->priority !== null) {
+			$data->priority = $this->priority;
 		}
 		return $data;
 	}

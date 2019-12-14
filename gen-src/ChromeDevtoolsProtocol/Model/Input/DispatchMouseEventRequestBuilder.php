@@ -125,7 +125,7 @@ final class DispatchMouseEventRequestBuilder
 
 
 	/**
-	 * @param string|null $button
+	 * @param string $button
 	 *
 	 * @return self
 	 */

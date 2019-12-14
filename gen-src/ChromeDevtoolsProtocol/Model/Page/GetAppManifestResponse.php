@@ -28,6 +28,13 @@ final class GetAppManifestResponse implements \JsonSerializable
 	 */
 	public $data;
 
+	/**
+	 * Parsed manifest properties
+	 *
+	 * @var AppManifestParsedProperties|null
+	 */
+	public $parsed;
+
 
 	public static function fromJson($data)
 	{
@@ -43,6 +50,9 @@ final class GetAppManifestResponse implements \JsonSerializable
 		}
 		if (isset($data->data)) {
 			$instance->data = (string)$data->data;
+		}
+		if (isset($data->parsed)) {
+			$instance->parsed = AppManifestParsedProperties::fromJson($data->parsed);
 		}
 		return $instance;
 	}
@@ -62,6 +72,9 @@ final class GetAppManifestResponse implements \JsonSerializable
 		}
 		if ($this->data !== null) {
 			$data->data = $this->data;
+		}
+		if ($this->parsed !== null) {
+			$data->parsed = $this->parsed->jsonSerialize();
 		}
 		return $data;
 	}

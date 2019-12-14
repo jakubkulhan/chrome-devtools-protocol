@@ -49,7 +49,7 @@ final class DispatchMouseEventRequest implements \JsonSerializable
 	/**
 	 * Mouse button (default: "none").
 	 *
-	 * @var string|null
+	 * @var string
 	 */
 	public $button;
 

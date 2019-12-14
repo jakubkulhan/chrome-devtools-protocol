@@ -81,6 +81,13 @@ final class Cookie implements \JsonSerializable
 	 */
 	public $sameSite;
 
+	/**
+	 * Cookie Priority
+	 *
+	 * @var string
+	 */
+	public $priority;
+
 
 	public static function fromJson($data)
 	{
@@ -114,6 +121,9 @@ final class Cookie implements \JsonSerializable
 		}
 		if (isset($data->sameSite)) {
 			$instance->sameSite = (string)$data->sameSite;
+		}
+		if (isset($data->priority)) {
+			$instance->priority = (string)$data->priority;
 		}
 		return $instance;
 	}
@@ -151,6 +161,9 @@ final class Cookie implements \JsonSerializable
 		}
 		if ($this->sameSite !== null) {
 			$data->sameSite = $this->sameSite;
+		}
+		if ($this->priority !== null) {
+			$data->priority = $this->priority;
 		}
 		return $data;
 	}

@@ -29,6 +29,8 @@ final class SetCookieRequestBuilder
 
 	private $expires;
 
+	private $priority;
+
 
 	/**
 	 * Validate non-optional parameters and return new instance.
@@ -51,6 +53,7 @@ final class SetCookieRequestBuilder
 		$instance->httpOnly = $this->httpOnly;
 		$instance->sameSite = $this->sameSite;
 		$instance->expires = $this->expires;
+		$instance->priority = $this->priority;
 		return $instance;
 	}
 
@@ -159,6 +162,18 @@ final class SetCookieRequestBuilder
 	public function setExpires($expires): self
 	{
 		$this->expires = $expires;
+		return $this;
+	}
+
+
+	/**
+	 * @param string $priority
+	 *
+	 * @return self
+	 */
+	public function setPriority($priority): self
+	{
+		$this->priority = $priority;
 		return $this;
 	}
 }

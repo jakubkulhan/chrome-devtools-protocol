@@ -33,7 +33,7 @@ final class EmulateTouchFromMouseEventRequest implements \JsonSerializable
 	public $y;
 
 	/**
-	 * Mouse button.
+	 * Mouse button. Only "none", "left", "right" are supported.
 	 *
 	 * @var string
 	 */
