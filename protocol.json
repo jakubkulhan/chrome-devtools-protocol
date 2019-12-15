@@ -13963,6 +13963,17 @@
                     ]
                 },
                 {
+                    "name": "getManifestIcons",
+                    "experimental": true,
+                    "returns": [
+                        {
+                            "name": "primaryIcon",
+                            "optional": true,
+                            "type": "string"
+                        }
+                    ]
+                },
+                {
                     "name": "getNavigationHistory",
                     "description": "Returns navigation history for the current page.",
                     "returns": [
