@@ -11293,6 +11293,7 @@
                         {
                             "name": "priority",
                             "description": "Cookie Priority.",
+                            "experimental": true,
                             "optional": true,
                             "$ref": "CookiePriority"
                         }
@@ -12029,6 +12030,7 @@
                         {
                             "name": "priority",
                             "description": "Cookie Priority type.",
+                            "experimental": true,
                             "optional": true,
                             "$ref": "CookiePriority"
                         }
