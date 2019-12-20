@@ -18,12 +18,22 @@ final class TakeHeapSnapshotRequest implements \JsonSerializable
 	 */
 	public $reportProgress;
 
+	/**
+	 * If true, a raw snapshot without artifical roots will be generated
+	 *
+	 * @var bool|null
+	 */
+	public $treatGlobalObjectsAsRoots;
+
 
 	public static function fromJson($data)
 	{
 		$instance = new static();
 		if (isset($data->reportProgress)) {
 			$instance->reportProgress = (bool)$data->reportProgress;
+		}
+		if (isset($data->treatGlobalObjectsAsRoots)) {
+			$instance->treatGlobalObjectsAsRoots = (bool)$data->treatGlobalObjectsAsRoots;
 		}
 		return $instance;
 	}
@@ -34,6 +44,9 @@ final class TakeHeapSnapshotRequest implements \JsonSerializable
 		$data = new \stdClass();
 		if ($this->reportProgress !== null) {
 			$data->reportProgress = $this->reportProgress;
+		}
+		if ($this->treatGlobalObjectsAsRoots !== null) {
+			$data->treatGlobalObjectsAsRoots = $this->treatGlobalObjectsAsRoots;
 		}
 		return $data;
 	}

@@ -11,6 +11,8 @@ final class StopTrackingHeapObjectsRequestBuilder
 {
 	private $reportProgress;
 
+	private $treatGlobalObjectsAsRoots;
+
 
 	/**
 	 * Validate non-optional parameters and return new instance.
@@ -19,6 +21,7 @@ final class StopTrackingHeapObjectsRequestBuilder
 	{
 		$instance = new StopTrackingHeapObjectsRequest();
 		$instance->reportProgress = $this->reportProgress;
+		$instance->treatGlobalObjectsAsRoots = $this->treatGlobalObjectsAsRoots;
 		return $instance;
 	}
 
@@ -31,6 +34,18 @@ final class StopTrackingHeapObjectsRequestBuilder
 	public function setReportProgress($reportProgress): self
 	{
 		$this->reportProgress = $reportProgress;
+		return $this;
+	}
+
+
+	/**
+	 * @param bool|null $treatGlobalObjectsAsRoots
+	 *
+	 * @return self
+	 */
+	public function setTreatGlobalObjectsAsRoots($treatGlobalObjectsAsRoots): self
+	{
+		$this->treatGlobalObjectsAsRoots = $treatGlobalObjectsAsRoots;
 		return $this;
 	}
 }

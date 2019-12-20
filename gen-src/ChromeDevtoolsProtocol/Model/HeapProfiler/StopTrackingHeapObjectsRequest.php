@@ -18,12 +18,18 @@ final class StopTrackingHeapObjectsRequest implements \JsonSerializable
 	 */
 	public $reportProgress;
 
+	/** @var bool|null */
+	public $treatGlobalObjectsAsRoots;
+
 
 	public static function fromJson($data)
 	{
 		$instance = new static();
 		if (isset($data->reportProgress)) {
 			$instance->reportProgress = (bool)$data->reportProgress;
+		}
+		if (isset($data->treatGlobalObjectsAsRoots)) {
+			$instance->treatGlobalObjectsAsRoots = (bool)$data->treatGlobalObjectsAsRoots;
 		}
 		return $instance;
 	}
@@ -34,6 +40,9 @@ final class StopTrackingHeapObjectsRequest implements \JsonSerializable
 		$data = new \stdClass();
 		if ($this->reportProgress !== null) {
 			$data->reportProgress = $this->reportProgress;
+		}
+		if ($this->treatGlobalObjectsAsRoots !== null) {
+			$data->treatGlobalObjectsAsRoots = $this->treatGlobalObjectsAsRoots;
 		}
 		return $data;
 	}

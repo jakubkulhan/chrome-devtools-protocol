@@ -8347,6 +8347,11 @@
                             "description": "If true 'reportHeapSnapshotProgress' events will be generated while snapshot is being taken when the tracking is stopped.",
                             "optional": true,
                             "type": "boolean"
+                        },
+                        {
+                            "name": "treatGlobalObjectsAsRoots",
+                            "optional": true,
+                            "type": "boolean"
                         }
                     ]
                 },
@@ -8356,6 +8361,12 @@
                         {
                             "name": "reportProgress",
                             "description": "If true 'reportHeapSnapshotProgress' events will be generated while snapshot is being taken.",
+                            "optional": true,
+                            "type": "boolean"
+                        },
+                        {
+                            "name": "treatGlobalObjectsAsRoots",
+                            "description": "If true, a raw snapshot without artifical roots will be generated",
                             "optional": true,
                             "type": "boolean"
                         }
