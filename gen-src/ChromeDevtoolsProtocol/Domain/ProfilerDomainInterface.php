@@ -9,6 +9,7 @@ use ChromeDevtoolsProtocol\Model\Profiler\GetBestEffortCoverageResponse;
 use ChromeDevtoolsProtocol\Model\Profiler\GetRuntimeCallStatsResponse;
 use ChromeDevtoolsProtocol\Model\Profiler\SetSamplingIntervalRequest;
 use ChromeDevtoolsProtocol\Model\Profiler\StartPreciseCoverageRequest;
+use ChromeDevtoolsProtocol\Model\Profiler\StartPreciseCoverageResponse;
 use ChromeDevtoolsProtocol\Model\Profiler\StopResponse;
 use ChromeDevtoolsProtocol\Model\Profiler\TakePreciseCoverageResponse;
 use ChromeDevtoolsProtocol\Model\Profiler\TakeTypeProfileResponse;
@@ -110,9 +111,9 @@ interface ProfilerDomainInterface
 	 * @param ContextInterface $ctx
 	 * @param StartPreciseCoverageRequest $request
 	 *
-	 * @return void
+	 * @return StartPreciseCoverageResponse
 	 */
-	public function startPreciseCoverage(ContextInterface $ctx, StartPreciseCoverageRequest $request): void;
+	public function startPreciseCoverage(ContextInterface $ctx, StartPreciseCoverageRequest $request): StartPreciseCoverageResponse;
 
 
 	/**

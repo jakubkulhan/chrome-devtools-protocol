@@ -3,21 +3,14 @@
 namespace ChromeDevtoolsProtocol\Model\Profiler;
 
 /**
- * Response to Profiler.takePreciseCoverage command.
+ * Response to Profiler.startPreciseCoverage command.
  *
  * @generated This file has been auto-generated, do not edit.
  *
  * @author Jakub Kulhan <jakub.kulhan@gmail.com>
  */
-final class TakePreciseCoverageResponse implements \JsonSerializable
+final class StartPreciseCoverageResponse implements \JsonSerializable
 {
-	/**
-	 * Coverage data for the current isolate.
-	 *
-	 * @var ScriptCoverage[]
-	 */
-	public $result;
-
 	/**
 	 * The timestamp (in milliseconds) the coverage update was taken in the backend.
 	 *
@@ -29,12 +22,6 @@ final class TakePreciseCoverageResponse implements \JsonSerializable
 	public static function fromJson($data)
 	{
 		$instance = new static();
-		if (isset($data->result)) {
-			$instance->result = [];
-			foreach ($data->result as $item) {
-				$instance->result[] = ScriptCoverage::fromJson($item);
-			}
-		}
 		if (isset($data->timestamp)) {
 			$instance->timestamp = $data->timestamp;
 		}
@@ -45,12 +32,6 @@ final class TakePreciseCoverageResponse implements \JsonSerializable
 	public function jsonSerialize()
 	{
 		$data = new \stdClass();
-		if ($this->result !== null) {
-			$data->result = [];
-			foreach ($this->result as $item) {
-				$data->result[] = $item->jsonSerialize();
-			}
-		}
 		if ($this->timestamp !== null) {
 			$data->timestamp = $this->timestamp;
 		}
