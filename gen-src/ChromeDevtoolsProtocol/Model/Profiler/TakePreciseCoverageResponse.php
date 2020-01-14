@@ -19,7 +19,7 @@ final class TakePreciseCoverageResponse implements \JsonSerializable
 	public $result;
 
 	/**
-	 * The timestamp (in milliseconds) the coverage update was taken in the backend.
+	 * Monotonically increasing time (in seconds) when the coverage update was taken in the backend.
 	 *
 	 * @var int|float
 	 */

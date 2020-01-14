@@ -12,7 +12,7 @@ namespace ChromeDevtoolsProtocol\Model\Profiler;
 final class StartPreciseCoverageResponse implements \JsonSerializable
 {
 	/**
-	 * The timestamp (in milliseconds) the coverage update was taken in the backend.
+	 * Monotonically increasing time (in seconds) when the coverage update was taken in the backend.
 	 *
 	 * @var int|float
 	 */
