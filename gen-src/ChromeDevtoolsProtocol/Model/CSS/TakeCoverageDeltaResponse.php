@@ -14,6 +14,13 @@ final class TakeCoverageDeltaResponse implements \JsonSerializable
 	/** @var RuleUsage[] */
 	public $coverage;
 
+	/**
+	 * Monotonically increasing time, in seconds.
+	 *
+	 * @var int|float
+	 */
+	public $timestamp;
+
 
 	public static function fromJson($data)
 	{
@@ -23,6 +30,9 @@ final class TakeCoverageDeltaResponse implements \JsonSerializable
 			foreach ($data->coverage as $item) {
 				$instance->coverage[] = RuleUsage::fromJson($item);
 			}
+		}
+		if (isset($data->timestamp)) {
+			$instance->timestamp = $data->timestamp;
 		}
 		return $instance;
 	}
@@ -36,6 +46,9 @@ final class TakeCoverageDeltaResponse implements \JsonSerializable
 			foreach ($this->coverage as $item) {
 				$data->coverage[] = $item->jsonSerialize();
 			}
+		}
+		if ($this->timestamp !== null) {
+			$data->timestamp = $this->timestamp;
 		}
 		return $data;
 	}
