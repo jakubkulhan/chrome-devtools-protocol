@@ -18,4 +18,5 @@ final class ClientNavigationReasonEnum
 	const META_TAG_REFRESH = 'metaTagRefresh';
 	const PAGE_BLOCK_INTERSTITIAL = 'pageBlockInterstitial';
 	const RELOAD = 'reload';
+	const ANCHOR_CLICK = 'anchorClick';
 }
