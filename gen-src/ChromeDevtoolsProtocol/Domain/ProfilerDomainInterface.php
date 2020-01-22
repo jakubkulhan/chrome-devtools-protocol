@@ -7,6 +7,7 @@ use ChromeDevtoolsProtocol\Model\Profiler\ConsoleProfileFinishedEvent;
 use ChromeDevtoolsProtocol\Model\Profiler\ConsoleProfileStartedEvent;
 use ChromeDevtoolsProtocol\Model\Profiler\GetBestEffortCoverageResponse;
 use ChromeDevtoolsProtocol\Model\Profiler\GetRuntimeCallStatsResponse;
+use ChromeDevtoolsProtocol\Model\Profiler\PreciseCoverageDeltaUpdateEvent;
 use ChromeDevtoolsProtocol\Model\Profiler\SetSamplingIntervalRequest;
 use ChromeDevtoolsProtocol\Model\Profiler\StartPreciseCoverageRequest;
 use ChromeDevtoolsProtocol\Model\Profiler\StartPreciseCoverageResponse;
@@ -222,4 +223,28 @@ interface ProfilerDomainInterface
 	 * @return ConsoleProfileStartedEvent
 	 */
 	public function awaitConsoleProfileStarted(ContextInterface $ctx): ConsoleProfileStartedEvent;
+
+
+	/**
+	 * Reports coverage delta since the last poll (either from an event like this, or from `takePreciseCoverage` for the current isolate. May only be sent if precise code coverage has been started. This event can be trigged by the embedder to, for example, trigger collection of coverage data immediatelly at a certain point in time.
+	 *
+	 * Listener will be called whenever event Profiler.preciseCoverageDeltaUpdate is fired.
+	 *
+	 * @param callable $listener
+	 *
+	 * @return SubscriptionInterface
+	 */
+	public function addPreciseCoverageDeltaUpdateListener(callable $listener): SubscriptionInterface;
+
+
+	/**
+	 * Reports coverage delta since the last poll (either from an event like this, or from `takePreciseCoverage` for the current isolate. May only be sent if precise code coverage has been started. This event can be trigged by the embedder to, for example, trigger collection of coverage data immediatelly at a certain point in time.
+	 *
+	 * Method will block until first Profiler.preciseCoverageDeltaUpdate event is fired.
+	 *
+	 * @param ContextInterface $ctx
+	 *
+	 * @return PreciseCoverageDeltaUpdateEvent
+	 */
+	public function awaitPreciseCoverageDeltaUpdate(ContextInterface $ctx): PreciseCoverageDeltaUpdateEvent;
 }

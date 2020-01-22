@@ -8,6 +8,7 @@ use ChromeDevtoolsProtocol\Model\Profiler\ConsoleProfileFinishedEvent;
 use ChromeDevtoolsProtocol\Model\Profiler\ConsoleProfileStartedEvent;
 use ChromeDevtoolsProtocol\Model\Profiler\GetBestEffortCoverageResponse;
 use ChromeDevtoolsProtocol\Model\Profiler\GetRuntimeCallStatsResponse;
+use ChromeDevtoolsProtocol\Model\Profiler\PreciseCoverageDeltaUpdateEvent;
 use ChromeDevtoolsProtocol\Model\Profiler\SetSamplingIntervalRequest;
 use ChromeDevtoolsProtocol\Model\Profiler\StartPreciseCoverageRequest;
 use ChromeDevtoolsProtocol\Model\Profiler\StartPreciseCoverageResponse;
@@ -162,5 +163,19 @@ class ProfilerDomain implements ProfilerDomainInterface
 	public function awaitConsoleProfileStarted(ContextInterface $ctx): ConsoleProfileStartedEvent
 	{
 		return ConsoleProfileStartedEvent::fromJson($this->internalClient->awaitEvent($ctx, 'Profiler.consoleProfileStarted'));
+	}
+
+
+	public function addPreciseCoverageDeltaUpdateListener(callable $listener): SubscriptionInterface
+	{
+		return $this->internalClient->addListener('Profiler.preciseCoverageDeltaUpdate', function ($event) use ($listener) {
+			return $listener(PreciseCoverageDeltaUpdateEvent::fromJson($event));
+		});
+	}
+
+
+	public function awaitPreciseCoverageDeltaUpdate(ContextInterface $ctx): PreciseCoverageDeltaUpdateEvent
+	{
+		return PreciseCoverageDeltaUpdateEvent::fromJson($this->internalClient->awaitEvent($ctx, 'Profiler.preciseCoverageDeltaUpdate'));
 	}
 }
