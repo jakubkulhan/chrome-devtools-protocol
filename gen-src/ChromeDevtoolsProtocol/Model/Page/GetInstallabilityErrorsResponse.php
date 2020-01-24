@@ -14,6 +14,9 @@ final class GetInstallabilityErrorsResponse implements \JsonSerializable
 	/** @var string[] */
 	public $errors;
 
+	/** @var InstallabilityError[] */
+	public $installabilityErrors;
+
 
 	public static function fromJson($data)
 	{
@@ -22,6 +25,12 @@ final class GetInstallabilityErrorsResponse implements \JsonSerializable
 			$instance->errors = [];
 			foreach ($data->errors as $item) {
 				$instance->errors[] = (string)$item;
+			}
+		}
+		if (isset($data->installabilityErrors)) {
+			$instance->installabilityErrors = [];
+			foreach ($data->installabilityErrors as $item) {
+				$instance->installabilityErrors[] = InstallabilityError::fromJson($item);
 			}
 		}
 		return $instance;
@@ -35,6 +44,12 @@ final class GetInstallabilityErrorsResponse implements \JsonSerializable
 			$data->errors = [];
 			foreach ($this->errors as $item) {
 				$data->errors[] = $item;
+			}
+		}
+		if ($this->installabilityErrors !== null) {
+			$data->installabilityErrors = [];
+			foreach ($this->installabilityErrors as $item) {
+				$data->installabilityErrors[] = $item->jsonSerialize();
 			}
 		}
 		return $data;

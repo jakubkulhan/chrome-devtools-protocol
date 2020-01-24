@@ -11,7 +11,7 @@ namespace ChromeDevtoolsProtocol\Model\Media;
  */
 final class PlayerEventTypeEnum
 {
-	const PLAYBACK_EVENT = 'playbackEvent';
-	const SYSTEM_EVENT = 'systemEvent';
+	const ERROR_EVENT = 'errorEvent';
+	const TRIGGERED_EVENT = 'triggeredEvent';
 	const MESSAGE_EVENT = 'messageEvent';
 }
