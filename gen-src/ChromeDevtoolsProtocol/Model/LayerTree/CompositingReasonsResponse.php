@@ -18,6 +18,13 @@ final class CompositingReasonsResponse implements \JsonSerializable
 	 */
 	public $compositingReasons;
 
+	/**
+	 * A list of strings specifying reason IDs for the given layer to become composited.
+	 *
+	 * @var string[]
+	 */
+	public $compositingReasonIds;
+
 
 	public static function fromJson($data)
 	{
@@ -26,6 +33,12 @@ final class CompositingReasonsResponse implements \JsonSerializable
 			$instance->compositingReasons = [];
 			foreach ($data->compositingReasons as $item) {
 				$instance->compositingReasons[] = (string)$item;
+			}
+		}
+		if (isset($data->compositingReasonIds)) {
+			$instance->compositingReasonIds = [];
+			foreach ($data->compositingReasonIds as $item) {
+				$instance->compositingReasonIds[] = (string)$item;
 			}
 		}
 		return $instance;
@@ -39,6 +52,12 @@ final class CompositingReasonsResponse implements \JsonSerializable
 			$data->compositingReasons = [];
 			foreach ($this->compositingReasons as $item) {
 				$data->compositingReasons[] = $item;
+			}
+		}
+		if ($this->compositingReasonIds !== null) {
+			$data->compositingReasonIds = [];
+			foreach ($this->compositingReasonIds as $item) {
+				$data->compositingReasonIds[] = $item;
 			}
 		}
 		return $data;
