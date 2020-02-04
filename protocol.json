@@ -917,7 +917,27 @@
             "dependencies": [
                 "Network"
             ],
+            "types": [
+                {
+                    "id": "Issue",
+                    "type": "object",
+                    "properties": [
+                        {
+                            "name": "code",
+                            "type": "string"
+                        }
+                    ]
+                }
+            ],
             "commands": [
+                {
+                    "name": "disable",
+                    "description": "Disables issues domain, prevents further issues from being reported to the client."
+                },
+                {
+                    "name": "enable",
+                    "description": "Enables issues domain, sends the issues collected so far to the client by means of the `issueAdded` event."
+                },
                 {
                     "name": "getEncodedResponse",
                     "description": "Returns the response body and size if it were re-encoded with the specified settings. Only applies to images.",
@@ -970,7 +990,17 @@
                     ]
                 }
             ],
-            "events": []
+            "events": [
+                {
+                    "name": "issueAdded",
+                    "parameters": [
+                        {
+                            "name": "issue",
+                            "$ref": "Issue"
+                        }
+                    ]
+                }
+            ]
         },
         {
             "domain": "BackgroundService",
