@@ -23,6 +23,7 @@ use ChromeDevtoolsProtocol\Model\Debugger\PausedEvent;
 use ChromeDevtoolsProtocol\Model\Debugger\RemoveBreakpointRequest;
 use ChromeDevtoolsProtocol\Model\Debugger\RestartFrameRequest;
 use ChromeDevtoolsProtocol\Model\Debugger\RestartFrameResponse;
+use ChromeDevtoolsProtocol\Model\Debugger\ResumeRequest;
 use ChromeDevtoolsProtocol\Model\Debugger\ResumedEvent;
 use ChromeDevtoolsProtocol\Model\Debugger\ScriptFailedToParseEvent;
 use ChromeDevtoolsProtocol\Model\Debugger\ScriptParsedEvent;
@@ -142,9 +143,8 @@ class DebuggerDomain implements DebuggerDomainInterface
 	}
 
 
-	public function resume(ContextInterface $ctx): void
+	public function resume(ContextInterface $ctx, ResumeRequest $request): void
 	{
-		$request = new \stdClass();
 		$this->internalClient->executeCommand($ctx, 'Debugger.resume', $request);
 	}
 
