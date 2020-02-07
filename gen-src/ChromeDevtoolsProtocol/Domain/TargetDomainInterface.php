@@ -10,6 +10,7 @@ use ChromeDevtoolsProtocol\Model\Target\AttachToTargetResponse;
 use ChromeDevtoolsProtocol\Model\Target\AttachedToTargetEvent;
 use ChromeDevtoolsProtocol\Model\Target\CloseTargetRequest;
 use ChromeDevtoolsProtocol\Model\Target\CloseTargetResponse;
+use ChromeDevtoolsProtocol\Model\Target\CreateBrowserContextRequest;
 use ChromeDevtoolsProtocol\Model\Target\CreateBrowserContextResponse;
 use ChromeDevtoolsProtocol\Model\Target\CreateTargetRequest;
 use ChromeDevtoolsProtocol\Model\Target\CreateTargetResponse;
@@ -88,10 +89,11 @@ interface TargetDomainInterface
 	 * Creates a new empty BrowserContext. Similar to an incognito profile but you can have more than one.
 	 *
 	 * @param ContextInterface $ctx
+	 * @param CreateBrowserContextRequest $request
 	 *
 	 * @return CreateBrowserContextResponse
 	 */
-	public function createBrowserContext(ContextInterface $ctx): CreateBrowserContextResponse;
+	public function createBrowserContext(ContextInterface $ctx, CreateBrowserContextRequest $request): CreateBrowserContextResponse;
 
 
 	/**

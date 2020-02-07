@@ -66,6 +66,7 @@ use ChromeDevtoolsProtocol\Model\DOM\RequestNodeRequest;
 use ChromeDevtoolsProtocol\Model\DOM\RequestNodeResponse;
 use ChromeDevtoolsProtocol\Model\DOM\ResolveNodeRequest;
 use ChromeDevtoolsProtocol\Model\DOM\ResolveNodeResponse;
+use ChromeDevtoolsProtocol\Model\DOM\ScrollIntoViewIfNeededRequest;
 use ChromeDevtoolsProtocol\Model\DOM\SetAttributeValueRequest;
 use ChromeDevtoolsProtocol\Model\DOM\SetAttributesAsTextRequest;
 use ChromeDevtoolsProtocol\Model\DOM\SetChildNodesEvent;
@@ -329,6 +330,12 @@ class DOMDomain implements DOMDomainInterface
 	{
 		$response = $this->internalClient->executeCommand($ctx, 'DOM.resolveNode', $request);
 		return ResolveNodeResponse::fromJson($response);
+	}
+
+
+	public function scrollIntoViewIfNeeded(ContextInterface $ctx, ScrollIntoViewIfNeededRequest $request): void
+	{
+		$this->internalClient->executeCommand($ctx, 'DOM.scrollIntoViewIfNeeded', $request);
 	}
 
 

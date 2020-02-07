@@ -11,6 +11,7 @@ use ChromeDevtoolsProtocol\Model\Target\AttachToTargetResponse;
 use ChromeDevtoolsProtocol\Model\Target\AttachedToTargetEvent;
 use ChromeDevtoolsProtocol\Model\Target\CloseTargetRequest;
 use ChromeDevtoolsProtocol\Model\Target\CloseTargetResponse;
+use ChromeDevtoolsProtocol\Model\Target\CreateBrowserContextRequest;
 use ChromeDevtoolsProtocol\Model\Target\CreateBrowserContextResponse;
 use ChromeDevtoolsProtocol\Model\Target\CreateTargetRequest;
 use ChromeDevtoolsProtocol\Model\Target\CreateTargetResponse;
@@ -73,9 +74,8 @@ class TargetDomain implements TargetDomainInterface
 	}
 
 
-	public function createBrowserContext(ContextInterface $ctx): CreateBrowserContextResponse
+	public function createBrowserContext(ContextInterface $ctx, CreateBrowserContextRequest $request): CreateBrowserContextResponse
 	{
-		$request = new \stdClass();
 		$response = $this->internalClient->executeCommand($ctx, 'Target.createBrowserContext', $request);
 		return CreateBrowserContextResponse::fromJson($response);
 	}
