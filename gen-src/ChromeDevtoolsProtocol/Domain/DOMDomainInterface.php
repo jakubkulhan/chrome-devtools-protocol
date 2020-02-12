@@ -65,6 +65,7 @@ use ChromeDevtoolsProtocol\Model\DOM\RequestNodeRequest;
 use ChromeDevtoolsProtocol\Model\DOM\RequestNodeResponse;
 use ChromeDevtoolsProtocol\Model\DOM\ResolveNodeRequest;
 use ChromeDevtoolsProtocol\Model\DOM\ResolveNodeResponse;
+use ChromeDevtoolsProtocol\Model\DOM\ScrollIntoViewIfNeededRequest;
 use ChromeDevtoolsProtocol\Model\DOM\SetAttributeValueRequest;
 use ChromeDevtoolsProtocol\Model\DOM\SetAttributesAsTextRequest;
 use ChromeDevtoolsProtocol\Model\DOM\SetChildNodesEvent;
@@ -464,6 +465,17 @@ interface DOMDomainInterface
 	 * @return ResolveNodeResponse
 	 */
 	public function resolveNode(ContextInterface $ctx, ResolveNodeRequest $request): ResolveNodeResponse;
+
+
+	/**
+	 * Scrolls the specified rect of the given node into view if not already visible. Note: exactly one between nodeId, backendNodeId and objectId should be passed to identify the node.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param ScrollIntoViewIfNeededRequest $request
+	 *
+	 * @return void
+	 */
+	public function scrollIntoViewIfNeeded(ContextInterface $ctx, ScrollIntoViewIfNeededRequest $request): void;
 
 
 	/**
