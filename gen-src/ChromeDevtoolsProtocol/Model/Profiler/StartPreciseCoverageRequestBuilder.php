@@ -13,6 +13,8 @@ final class StartPreciseCoverageRequestBuilder
 
 	private $detailed;
 
+	private $allowTriggeredUpdates;
+
 
 	/**
 	 * Validate non-optional parameters and return new instance.
@@ -22,6 +24,7 @@ final class StartPreciseCoverageRequestBuilder
 		$instance = new StartPreciseCoverageRequest();
 		$instance->callCount = $this->callCount;
 		$instance->detailed = $this->detailed;
+		$instance->allowTriggeredUpdates = $this->allowTriggeredUpdates;
 		return $instance;
 	}
 
@@ -46,6 +49,18 @@ final class StartPreciseCoverageRequestBuilder
 	public function setDetailed($detailed): self
 	{
 		$this->detailed = $detailed;
+		return $this;
+	}
+
+
+	/**
+	 * @param bool|null $allowTriggeredUpdates
+	 *
+	 * @return self
+	 */
+	public function setAllowTriggeredUpdates($allowTriggeredUpdates): self
+	{
+		$this->allowTriggeredUpdates = $allowTriggeredUpdates;
 		return $this;
 	}
 }

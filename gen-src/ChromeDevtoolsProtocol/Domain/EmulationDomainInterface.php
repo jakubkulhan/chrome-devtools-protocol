@@ -12,6 +12,7 @@ use ChromeDevtoolsProtocol\Model\Emulation\SetEmitTouchEventsForMouseRequest;
 use ChromeDevtoolsProtocol\Model\Emulation\SetEmulatedMediaRequest;
 use ChromeDevtoolsProtocol\Model\Emulation\SetFocusEmulationEnabledRequest;
 use ChromeDevtoolsProtocol\Model\Emulation\SetGeolocationOverrideRequest;
+use ChromeDevtoolsProtocol\Model\Emulation\SetLocaleOverrideRequest;
 use ChromeDevtoolsProtocol\Model\Emulation\SetNavigatorOverridesRequest;
 use ChromeDevtoolsProtocol\Model\Emulation\SetPageScaleFactorRequest;
 use ChromeDevtoolsProtocol\Model\Emulation\SetScriptExecutionDisabledRequest;
@@ -160,6 +161,17 @@ interface EmulationDomainInterface
 	 * @return void
 	 */
 	public function setGeolocationOverride(ContextInterface $ctx, SetGeolocationOverrideRequest $request): void;
+
+
+	/**
+	 * Overrides default host system locale with the specified one.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param SetLocaleOverrideRequest $request
+	 *
+	 * @return void
+	 */
+	public function setLocaleOverride(ContextInterface $ctx, SetLocaleOverrideRequest $request): void;
 
 
 	/**

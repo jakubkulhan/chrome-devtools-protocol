@@ -25,6 +25,13 @@ final class StartPreciseCoverageRequest implements \JsonSerializable
 	 */
 	public $detailed;
 
+	/**
+	 * Allow the backend to send updates on its own initiative
+	 *
+	 * @var bool|null
+	 */
+	public $allowTriggeredUpdates;
+
 
 	public static function fromJson($data)
 	{
@@ -34,6 +41,9 @@ final class StartPreciseCoverageRequest implements \JsonSerializable
 		}
 		if (isset($data->detailed)) {
 			$instance->detailed = (bool)$data->detailed;
+		}
+		if (isset($data->allowTriggeredUpdates)) {
+			$instance->allowTriggeredUpdates = (bool)$data->allowTriggeredUpdates;
 		}
 		return $instance;
 	}
@@ -47,6 +57,9 @@ final class StartPreciseCoverageRequest implements \JsonSerializable
 		}
 		if ($this->detailed !== null) {
 			$data->detailed = $this->detailed;
+		}
+		if ($this->allowTriggeredUpdates !== null) {
+			$data->allowTriggeredUpdates = $this->allowTriggeredUpdates;
 		}
 		return $data;
 	}
