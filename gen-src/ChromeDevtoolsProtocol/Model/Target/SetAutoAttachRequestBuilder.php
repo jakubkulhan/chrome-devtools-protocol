@@ -17,8 +17,6 @@ final class SetAutoAttachRequestBuilder
 
 	private $flatten;
 
-	private $windowOpen;
-
 
 	/**
 	 * Validate non-optional parameters and return new instance.
@@ -35,7 +33,6 @@ final class SetAutoAttachRequestBuilder
 		}
 		$instance->waitForDebuggerOnStart = $this->waitForDebuggerOnStart;
 		$instance->flatten = $this->flatten;
-		$instance->windowOpen = $this->windowOpen;
 		return $instance;
 	}
 
@@ -72,18 +69,6 @@ final class SetAutoAttachRequestBuilder
 	public function setFlatten($flatten): self
 	{
 		$this->flatten = $flatten;
-		return $this;
-	}
-
-
-	/**
-	 * @param bool|null $windowOpen
-	 *
-	 * @return self
-	 */
-	public function setWindowOpen($windowOpen): self
-	{
-		$this->windowOpen = $windowOpen;
 		return $this;
 	}
 }

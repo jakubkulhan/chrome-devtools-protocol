@@ -32,13 +32,6 @@ final class SetAutoAttachRequest implements \JsonSerializable
 	 */
 	public $flatten;
 
-	/**
-	 * Auto-attach to the targets created via window.open from current target.
-	 *
-	 * @var bool|null
-	 */
-	public $windowOpen;
-
 
 	public static function fromJson($data)
 	{
@@ -51,9 +44,6 @@ final class SetAutoAttachRequest implements \JsonSerializable
 		}
 		if (isset($data->flatten)) {
 			$instance->flatten = (bool)$data->flatten;
-		}
-		if (isset($data->windowOpen)) {
-			$instance->windowOpen = (bool)$data->windowOpen;
 		}
 		return $instance;
 	}
@@ -70,9 +60,6 @@ final class SetAutoAttachRequest implements \JsonSerializable
 		}
 		if ($this->flatten !== null) {
 			$data->flatten = $this->flatten;
-		}
-		if ($this->windowOpen !== null) {
-			$data->windowOpen = $this->windowOpen;
 		}
 		return $data;
 	}
