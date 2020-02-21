@@ -6,6 +6,7 @@ jobs:
     - image: circleci/php:7.2-node-browsers
     steps:
     - checkout
+    - run: sudo docker-php-ext-install sockets
     - restore_cache:
         keys:
         - v3_composer_{{ .Branch }}
@@ -28,6 +29,7 @@ jobs:
     - image: circleci/php:7.2-node-browsers
     steps:
     - checkout
+    - run: sudo docker-php-ext-install sockets
     - restore_cache:
         keys:
         - v3_composer_lowest_{{ .Branch }}
@@ -50,6 +52,7 @@ jobs:
     - image: circleci/php:7.3-node-browsers
     steps:
     - checkout
+    - run: sudo docker-php-ext-install sockets
     - restore_cache:
         keys:
         - v3_composer_{{ .Branch }}
@@ -72,6 +75,7 @@ jobs:
     - image: circleci/php:7.3-node-browsers
     steps:
     - checkout
+    - run: sudo docker-php-ext-install sockets
     - restore_cache:
         keys:
         - v3_composer_lowest_{{ .Branch }}
@@ -94,6 +98,7 @@ jobs:
     - image: circleci/php:7.4-node-browsers
     steps:
     - checkout
+    - run: sudo docker-php-ext-install sockets
     - restore_cache:
         keys:
         - v3_composer_{{ .Branch }}
@@ -116,6 +121,7 @@ jobs:
     - image: circleci/php:7.4-node-browsers
     steps:
     - checkout
+    - run: sudo docker-php-ext-install sockets
     - restore_cache:
         keys:
         - v3_composer_lowest_{{ .Branch }}
@@ -138,6 +144,7 @@ jobs:
     - image: circleci/php:7.3-node-browsers
     steps:
     - checkout
+    - run: sudo docker-php-ext-install sockets
     - restore_cache:
         keys:
         - v3_composer_{{ .Branch }}
@@ -153,6 +160,7 @@ jobs:
     - image: circleci/php:7.3-node-browsers
     steps:
     - checkout
+    - run: sudo docker-php-ext-install sockets
     - add_ssh_keys
     - restore_cache:
         keys:
@@ -195,6 +203,8 @@ workflows:
     - test_7_2_lowest
     - test_7_3
     - test_7_3_lowest
+    - test_7_4
+    - test_7_4_lowest
     - check_protocol
 
   nightly:
