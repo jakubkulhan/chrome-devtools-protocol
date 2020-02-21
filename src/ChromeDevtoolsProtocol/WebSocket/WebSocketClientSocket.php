@@ -98,6 +98,10 @@ class WebSocketClientSocket extends ClientSocket
 
 	public function setDeadline(?\DateTimeImmutable $deadline)
 	{
+		if ($this->socket === null) {
+			throw new DeadlineException("Socket closed.");
+		}
+
 		if ($deadline === null) {
 			stream_set_timeout($this->socket, 0);
 		} else {
