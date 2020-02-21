@@ -16,7 +16,6 @@ class LauncherTest extends TestCase
 		$instance = $launcher->launch($ctx);
 		try {
 			$tabs = $instance->tabs($ctx);
-			$this->assertCount(1, $tabs);
 
 			foreach ($tabs as $tab) {
 				$tab->close($ctx);
@@ -48,7 +47,8 @@ class LauncherTest extends TestCase
 
 		$ctx = Context::withTimeout(Context::background(), 30);
 		$launcher = new Launcher(2229);
-		$launcher->launch($ctx, "--remote-debugging-port=9222");
+		$instance = $launcher->launch($ctx, "--remote-debugging-port=9222");
+		$instance->close();
 	}
 
 }

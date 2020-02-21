@@ -64,7 +64,13 @@ class DevtoolsClientTest extends TestCase
 		$launcher = new Launcher();
 		$instance = $launcher->launch($ctx);
 		try {
-			$tab = $instance->tabs($ctx)[0];
+			$tabs = $instance->tabs($ctx);
+			foreach ($tabs as $tab) {
+				$tab->close($ctx);
+			}
+
+			$tab = $instance->open($ctx);
+			$this->assertEquals("about:blank", $tab->url);
 
 			/** @var DevtoolsClientInterface & InternalClientInterface $client */
 			$client = $tab->devtools();

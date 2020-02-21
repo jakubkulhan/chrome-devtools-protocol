@@ -8,6 +8,8 @@ use ChromeDevtoolsProtocol\Exception\RuntimeException;
 use ChromeDevtoolsProtocol\Model\Instance\Version;
 use ChromeDevtoolsProtocol\Model\Target\AttachToTargetRequest;
 use ChromeDevtoolsProtocol\Model\Target\CloseTargetRequest;
+use ChromeDevtoolsProtocol\Model\Target\CreateBrowserContextRequest;
+use ChromeDevtoolsProtocol\Model\Target\CreateBrowserContextRequestBuilder;
 use ChromeDevtoolsProtocol\Model\Target\CreateTargetRequest;
 use ChromeDevtoolsProtocol\Model\Target\DisposeBrowserContextRequest;
 use ChromeDevtoolsProtocol\Session;
@@ -105,7 +107,7 @@ class Instance implements InstanceInterface, InternalInstanceInterface
 
 		$browser = new DevtoolsClient($version->webSocketDebuggerUrl);
 		try {
-			$browserContextId = $browser->target()->createBrowserContext($ctx)->browserContextId;
+			$browserContextId = $browser->target()->createBrowserContext($ctx, CreateBrowserContextRequest::builder()->build())->browserContextId;
 			try {
 				$targetId = $browser->target()->createTarget(
 					$ctx,

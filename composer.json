@@ -19,14 +19,15 @@
   ],
   "minimum-stability": "stable",
   "require": {
+    "ext-json": "*",
     "guzzlehttp/guzzle": "^6.3",
     "php": "~7.1",
     "symfony/filesystem": ">=2.3",
     "symfony/process": ">=3.3",
-    "wrench/wrench": "^2.0"
+    "wrench/wrench": "dev-fix/php7.4-upgrade-phpunit as 3.0.0"
   },
   "require-dev": {
-    "jakub-onderka/php-parallel-lint": "~0.9",
+    "jakub-onderka/php-parallel-lint": "~1.0.0",
     "nette/php-generator": "~2.1|~3.0",
     "phpstan/phpstan": "^0.11.4",
     "phpunit/phpunit": "~6.4"
@@ -45,5 +46,11 @@
         "test/ChromeDevtoolsProtocol/"
       ]
     }
-  }
+  },
+  "repositories": [
+    {
+      "type": "vcs",
+      "url": "https://github.com/wells/Wrench.git"
+    }
+  ]
 }
