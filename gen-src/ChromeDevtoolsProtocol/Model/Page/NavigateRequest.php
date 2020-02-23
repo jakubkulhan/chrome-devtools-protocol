@@ -39,6 +39,13 @@ final class NavigateRequest implements \JsonSerializable
 	 */
 	public $frameId;
 
+	/**
+	 * Referrer-policy used for the navigation.
+	 *
+	 * @var string
+	 */
+	public $referrerPolicy;
+
 
 	public static function fromJson($data)
 	{
@@ -54,6 +61,9 @@ final class NavigateRequest implements \JsonSerializable
 		}
 		if (isset($data->frameId)) {
 			$instance->frameId = (string)$data->frameId;
+		}
+		if (isset($data->referrerPolicy)) {
+			$instance->referrerPolicy = (string)$data->referrerPolicy;
 		}
 		return $instance;
 	}
@@ -73,6 +83,9 @@ final class NavigateRequest implements \JsonSerializable
 		}
 		if ($this->frameId !== null) {
 			$data->frameId = $this->frameId;
+		}
+		if ($this->referrerPolicy !== null) {
+			$data->referrerPolicy = $this->referrerPolicy;
 		}
 		return $data;
 	}

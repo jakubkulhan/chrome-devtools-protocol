@@ -13777,6 +13777,22 @@
                             }
                         }
                     ]
+                },
+                {
+                    "id": "ReferrerPolicy",
+                    "description": "The referring-policy used for the navigation.",
+                    "experimental": true,
+                    "type": "string",
+                    "enum": [
+                        "noReferrer",
+                        "noReferrerWhenDowngrade",
+                        "origin",
+                        "originWhenCrossOrigin",
+                        "sameOrigin",
+                        "strictOrigin",
+                        "strictOriginWhenCrossOrigin",
+                        "unsafeUrl"
+                    ]
                 }
             ],
             "commands": [
@@ -14224,6 +14240,13 @@
                             "description": "Frame id to navigate, if not specified navigates the top frame.",
                             "optional": true,
                             "$ref": "FrameId"
+                        },
+                        {
+                            "name": "referrerPolicy",
+                            "description": "Referrer-policy used for the navigation.",
+                            "experimental": true,
+                            "optional": true,
+                            "$ref": "ReferrerPolicy"
                         }
                     ],
                     "returns": [
