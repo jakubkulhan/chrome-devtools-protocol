@@ -96,7 +96,7 @@ final class EvaluateRequest implements \JsonSerializable
 	public $disableBreaks;
 
 	/**
-	 * Reserved flag for future REPL mode support. Setting this flag has currently no effect.
+	 * Setting this flag to true enables `let` re-declaration and top-level `await`. Note that `let` variables can only be re-declared if they originate from `replMode` themselves.
 	 *
 	 * @var bool|null
 	 */
