@@ -4,6 +4,7 @@ namespace ChromeDevtoolsProtocol\Domain;
 
 use ChromeDevtoolsProtocol\ContextInterface;
 use ChromeDevtoolsProtocol\InternalClientInterface;
+use ChromeDevtoolsProtocol\Model\Performance\EnableRequest;
 use ChromeDevtoolsProtocol\Model\Performance\GetMetricsResponse;
 use ChromeDevtoolsProtocol\Model\Performance\MetricsEvent;
 use ChromeDevtoolsProtocol\Model\Performance\SetTimeDomainRequest;
@@ -28,9 +29,8 @@ class PerformanceDomain implements PerformanceDomainInterface
 	}
 
 
-	public function enable(ContextInterface $ctx): void
+	public function enable(ContextInterface $ctx, EnableRequest $request): void
 	{
-		$request = new \stdClass();
 		$this->internalClient->executeCommand($ctx, 'Performance.enable', $request);
 	}
 

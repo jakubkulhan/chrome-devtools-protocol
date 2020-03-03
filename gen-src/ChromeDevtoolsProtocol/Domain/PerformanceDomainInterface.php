@@ -3,6 +3,7 @@
 namespace ChromeDevtoolsProtocol\Domain;
 
 use ChromeDevtoolsProtocol\ContextInterface;
+use ChromeDevtoolsProtocol\Model\Performance\EnableRequest;
 use ChromeDevtoolsProtocol\Model\Performance\GetMetricsResponse;
 use ChromeDevtoolsProtocol\Model\Performance\MetricsEvent;
 use ChromeDevtoolsProtocol\Model\Performance\SetTimeDomainRequest;
@@ -31,10 +32,11 @@ interface PerformanceDomainInterface
 	 * Enable collecting and reporting metrics.
 	 *
 	 * @param ContextInterface $ctx
+	 * @param EnableRequest $request
 	 *
 	 * @return void
 	 */
-	public function enable(ContextInterface $ctx): void;
+	public function enable(ContextInterface $ctx, EnableRequest $request): void;
 
 
 	/**
