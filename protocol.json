@@ -7530,6 +7530,30 @@
                     ]
                 },
                 {
+                    "name": "setEmulatedVisionDeficiency",
+                    "description": "Emulates the given vision deficiency.",
+                    "experimental": true,
+                    "parameters": [
+                        {
+                            "name": "type",
+                            "description": "Vision deficiency to emulate.",
+                            "type": "string",
+                            "enum": [
+                                "none",
+                                "achromatomaly",
+                                "achromatopsia",
+                                "blurredVision",
+                                "deuteranomaly",
+                                "deuteranopia",
+                                "protanomaly",
+                                "protanopia",
+                                "tritanomaly",
+                                "tritanopia"
+                            ]
+                        }
+                    ]
+                },
+                {
                     "name": "setFocusEmulationEnabled",
                     "description": "Enables or disables simulating a focused and active page.",
                     "experimental": true,

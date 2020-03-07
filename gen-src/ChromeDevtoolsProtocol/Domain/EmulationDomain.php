@@ -11,6 +11,7 @@ use ChromeDevtoolsProtocol\Model\Emulation\SetDeviceMetricsOverrideRequest;
 use ChromeDevtoolsProtocol\Model\Emulation\SetDocumentCookieDisabledRequest;
 use ChromeDevtoolsProtocol\Model\Emulation\SetEmitTouchEventsForMouseRequest;
 use ChromeDevtoolsProtocol\Model\Emulation\SetEmulatedMediaRequest;
+use ChromeDevtoolsProtocol\Model\Emulation\SetEmulatedVisionDeficiencyRequest;
 use ChromeDevtoolsProtocol\Model\Emulation\SetFocusEmulationEnabledRequest;
 use ChromeDevtoolsProtocol\Model\Emulation\SetGeolocationOverrideRequest;
 use ChromeDevtoolsProtocol\Model\Emulation\SetLocaleOverrideRequest;
@@ -101,6 +102,12 @@ class EmulationDomain implements EmulationDomainInterface
 	public function setEmulatedMedia(ContextInterface $ctx, SetEmulatedMediaRequest $request): void
 	{
 		$this->internalClient->executeCommand($ctx, 'Emulation.setEmulatedMedia', $request);
+	}
+
+
+	public function setEmulatedVisionDeficiency(ContextInterface $ctx, SetEmulatedVisionDeficiencyRequest $request): void
+	{
+		$this->internalClient->executeCommand($ctx, 'Emulation.setEmulatedVisionDeficiency', $request);
 	}
 
 

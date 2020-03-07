@@ -10,6 +10,7 @@ use ChromeDevtoolsProtocol\Model\Emulation\SetDeviceMetricsOverrideRequest;
 use ChromeDevtoolsProtocol\Model\Emulation\SetDocumentCookieDisabledRequest;
 use ChromeDevtoolsProtocol\Model\Emulation\SetEmitTouchEventsForMouseRequest;
 use ChromeDevtoolsProtocol\Model\Emulation\SetEmulatedMediaRequest;
+use ChromeDevtoolsProtocol\Model\Emulation\SetEmulatedVisionDeficiencyRequest;
 use ChromeDevtoolsProtocol\Model\Emulation\SetFocusEmulationEnabledRequest;
 use ChromeDevtoolsProtocol\Model\Emulation\SetGeolocationOverrideRequest;
 use ChromeDevtoolsProtocol\Model\Emulation\SetLocaleOverrideRequest;
@@ -139,6 +140,17 @@ interface EmulationDomainInterface
 	 * @return void
 	 */
 	public function setEmulatedMedia(ContextInterface $ctx, SetEmulatedMediaRequest $request): void;
+
+
+	/**
+	 * Emulates the given vision deficiency.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param SetEmulatedVisionDeficiencyRequest $request
+	 *
+	 * @return void
+	 */
+	public function setEmulatedVisionDeficiency(ContextInterface $ctx, SetEmulatedVisionDeficiencyRequest $request): void;
 
 
 	/**
