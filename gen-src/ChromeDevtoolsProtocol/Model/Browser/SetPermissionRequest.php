@@ -12,9 +12,9 @@ namespace ChromeDevtoolsProtocol\Model\Browser;
 final class SetPermissionRequest implements \JsonSerializable
 {
 	/**
-	 * Origin the permission applies to.
+	 * Origin the permission applies to, all origins if not specified.
 	 *
-	 * @var string
+	 * @var string|null
 	 */
 	public $origin;
 

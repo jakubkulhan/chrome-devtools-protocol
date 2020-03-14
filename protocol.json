@@ -1513,6 +1513,8 @@
                     "parameters": [
                         {
                             "name": "origin",
+                            "description": "Origin the permission applies to, all origins if not specified.",
+                            "optional": true,
                             "type": "string"
                         },
                         {
@@ -1568,7 +1570,8 @@
                     "parameters": [
                         {
                             "name": "origin",
-                            "description": "Origin the permission applies to.",
+                            "description": "Origin the permission applies to, all origins if not specified.",
+                            "optional": true,
                             "type": "string"
                         },
                         {

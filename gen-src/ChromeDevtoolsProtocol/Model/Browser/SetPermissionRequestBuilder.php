@@ -26,9 +26,6 @@ final class SetPermissionRequestBuilder
 	public function build(): SetPermissionRequest
 	{
 		$instance = new SetPermissionRequest();
-		if ($this->origin === null) {
-			throw new BuilderException('Property [origin] is required.');
-		}
 		$instance->origin = $this->origin;
 		if ($this->permission === null) {
 			throw new BuilderException('Property [permission] is required.');
@@ -44,7 +41,7 @@ final class SetPermissionRequestBuilder
 
 
 	/**
-	 * @param string $origin
+	 * @param string|null $origin
 	 *
 	 * @return self
 	 */

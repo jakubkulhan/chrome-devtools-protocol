@@ -24,9 +24,6 @@ final class GrantPermissionsRequestBuilder
 	public function build(): GrantPermissionsRequest
 	{
 		$instance = new GrantPermissionsRequest();
-		if ($this->origin === null) {
-			throw new BuilderException('Property [origin] is required.');
-		}
 		$instance->origin = $this->origin;
 		if ($this->permissions === null) {
 			throw new BuilderException('Property [permissions] is required.');
@@ -38,7 +35,7 @@ final class GrantPermissionsRequestBuilder
 
 
 	/**
-	 * @param string $origin
+	 * @param string|null $origin
 	 *
 	 * @return self
 	 */

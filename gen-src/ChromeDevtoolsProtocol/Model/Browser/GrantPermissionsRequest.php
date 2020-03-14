@@ -11,7 +11,11 @@ namespace ChromeDevtoolsProtocol\Model\Browser;
  */
 final class GrantPermissionsRequest implements \JsonSerializable
 {
-	/** @var string */
+	/**
+	 * Origin the permission applies to, all origins if not specified.
+	 *
+	 * @var string|null
+	 */
 	public $origin;
 
 	/** @var string[] */
