@@ -11,7 +11,7 @@ namespace ChromeDevtoolsProtocol\Model\Audits;
  */
 final class IssueAddedEvent implements \JsonSerializable
 {
-	/** @var Issue */
+	/** @var InspectorIssue */
 	public $issue;
 
 
@@ -19,7 +19,7 @@ final class IssueAddedEvent implements \JsonSerializable
 	{
 		$instance = new static();
 		if (isset($data->issue)) {
-			$instance->issue = Issue::fromJson($data->issue);
+			$instance->issue = InspectorIssue::fromJson($data->issue);
 		}
 		return $instance;
 	}
