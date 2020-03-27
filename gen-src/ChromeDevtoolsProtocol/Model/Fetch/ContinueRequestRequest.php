@@ -40,7 +40,7 @@ final class ContinueRequestRequest implements \JsonSerializable
 	public $postData;
 
 	/**
-	 * If set, overrides the request headrts.
+	 * If set, overrides the request headers.
 	 *
 	 * @var HeaderEntry[]|null
 	 */

@@ -19,7 +19,7 @@ final class RemoteObject implements \JsonSerializable
 	public $type;
 
 	/**
-	 * Object subtype hint. Specified for `object` type values only.
+	 * Object subtype hint. Specified for `object` or `wasm` type values only.
 	 *
 	 * @var string|null
 	 */
