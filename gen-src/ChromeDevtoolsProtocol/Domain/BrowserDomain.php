@@ -17,6 +17,7 @@ use ChromeDevtoolsProtocol\Model\Browser\GetWindowForTargetResponse;
 use ChromeDevtoolsProtocol\Model\Browser\GrantPermissionsRequest;
 use ChromeDevtoolsProtocol\Model\Browser\ResetPermissionsRequest;
 use ChromeDevtoolsProtocol\Model\Browser\SetDockTileRequest;
+use ChromeDevtoolsProtocol\Model\Browser\SetDownloadBehaviorRequest;
 use ChromeDevtoolsProtocol\Model\Browser\SetPermissionRequest;
 use ChromeDevtoolsProtocol\Model\Browser\SetWindowBoundsRequest;
 
@@ -112,6 +113,12 @@ class BrowserDomain implements BrowserDomainInterface
 	public function setDockTile(ContextInterface $ctx, SetDockTileRequest $request): void
 	{
 		$this->internalClient->executeCommand($ctx, 'Browser.setDockTile', $request);
+	}
+
+
+	public function setDownloadBehavior(ContextInterface $ctx, SetDownloadBehaviorRequest $request): void
+	{
+		$this->internalClient->executeCommand($ctx, 'Browser.setDownloadBehavior', $request);
 	}
 
 

@@ -19,6 +19,13 @@ final class DownloadWillBeginEvent implements \JsonSerializable
 	public $frameId;
 
 	/**
+	 * Global unique identifier of the download.
+	 *
+	 * @var string
+	 */
+	public $guid;
+
+	/**
 	 * URL of the resource being downloaded.
 	 *
 	 * @var string
@@ -32,6 +39,9 @@ final class DownloadWillBeginEvent implements \JsonSerializable
 		if (isset($data->frameId)) {
 			$instance->frameId = (string)$data->frameId;
 		}
+		if (isset($data->guid)) {
+			$instance->guid = (string)$data->guid;
+		}
 		if (isset($data->url)) {
 			$instance->url = (string)$data->url;
 		}
@@ -44,6 +54,9 @@ final class DownloadWillBeginEvent implements \JsonSerializable
 		$data = new \stdClass();
 		if ($this->frameId !== null) {
 			$data->frameId = $this->frameId;
+		}
+		if ($this->guid !== null) {
+			$data->guid = $this->guid;
 		}
 		if ($this->url !== null) {
 			$data->url = $this->url;

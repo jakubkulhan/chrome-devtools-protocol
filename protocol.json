@@ -1677,6 +1677,36 @@
                     ]
                 },
                 {
+                    "name": "setDownloadBehavior",
+                    "description": "Set the behavior when downloading a file.",
+                    "experimental": true,
+                    "parameters": [
+                        {
+                            "name": "behavior",
+                            "description": "Whether to allow all or deny all download requests, or use default Chrome behavior if available (otherwise deny). |allowAndName| allows download and names files according to their dowmload guids.",
+                            "type": "string",
+                            "enum": [
+                                "deny",
+                                "allow",
+                                "allowAndName",
+                                "default"
+                            ]
+                        },
+                        {
+                            "name": "browserContextId",
+                            "description": "BrowserContext to set download behavior. When omitted, default browser context is used.",
+                            "optional": true,
+                            "$ref": "BrowserContextID"
+                        },
+                        {
+                            "name": "downloadPath",
+                            "description": "The default path to save downloaded files to. This is requred if behavior is set to 'allow' or 'allowAndName'.",
+                            "optional": true,
+                            "type": "string"
+                        }
+                    ]
+                },
+                {
                     "name": "setPermission",
                     "description": "Set permission settings for given origin.",
                     "experimental": true,
@@ -14825,6 +14855,7 @@
                     "name": "setDownloadBehavior",
                     "description": "Set the behavior when downloading a file.",
                     "experimental": true,
+                    "deprecated": true,
                     "parameters": [
                         {
                             "name": "behavior",
@@ -15051,6 +15082,38 @@
                     ]
                 },
                 {
+                    "name": "downloadProgress",
+                    "description": "Fired when download makes progress. Last call has |done| == true.",
+                    "experimental": true,
+                    "parameters": [
+                        {
+                            "name": "guid",
+                            "description": "Global unique identifier of the download.",
+                            "type": "string"
+                        },
+                        {
+                            "name": "totalBytes",
+                            "description": "Total expected bytes to download.",
+                            "type": "number"
+                        },
+                        {
+                            "name": "receivedBytes",
+                            "description": "Total bytes received.",
+                            "type": "number"
+                        },
+                        {
+                            "name": "state",
+                            "description": "Download status.",
+                            "type": "string",
+                            "enum": [
+                                "inProgress",
+                                "completed",
+                                "canceled"
+                            ]
+                        }
+                    ]
+                },
+                {
                     "name": "downloadWillBegin",
                     "description": "Fired when page is about to start a download.",
                     "experimental": true,
@@ -15059,6 +15122,11 @@
                             "name": "frameId",
                             "description": "Id of the frame that caused download to begin.",
                             "$ref": "FrameId"
+                        },
+                        {
+                            "name": "guid",
+                            "description": "Global unique identifier of the download.",
+                            "type": "string"
                         },
                         {
                             "name": "url",
