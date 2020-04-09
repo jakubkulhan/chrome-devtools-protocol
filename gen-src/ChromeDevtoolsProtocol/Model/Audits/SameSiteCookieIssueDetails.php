@@ -11,16 +11,38 @@ namespace ChromeDevtoolsProtocol\Model\Audits;
  */
 final class SameSiteCookieIssueDetails implements \JsonSerializable
 {
+	/** @var AffectedCookie */
+	public $cookie;
+
 	/** @var string[] */
 	public $cookieWarningReasons;
 
 	/** @var string[] */
 	public $cookieExclusionReasons;
 
+	/**
+	 * Optionally identifies the site-for-cookies and the cookie url, which may be used by the front-end as additional context.
+	 *
+	 * @var string
+	 */
+	public $operation;
+
+	/** @var string|null */
+	public $siteForCookies;
+
+	/** @var string|null */
+	public $cookieUrl;
+
+	/** @var AffectedRequest|null */
+	public $request;
+
 
 	public static function fromJson($data)
 	{
 		$instance = new static();
+		if (isset($data->cookie)) {
+			$instance->cookie = AffectedCookie::fromJson($data->cookie);
+		}
 		if (isset($data->cookieWarningReasons)) {
 			$instance->cookieWarningReasons = [];
 		if (isset($data->cookieWarningReasons)) {
@@ -39,6 +61,18 @@ final class SameSiteCookieIssueDetails implements \JsonSerializable
 			}
 		}
 		}
+		if (isset($data->operation)) {
+			$instance->operation = (string)$data->operation;
+		}
+		if (isset($data->siteForCookies)) {
+			$instance->siteForCookies = (string)$data->siteForCookies;
+		}
+		if (isset($data->cookieUrl)) {
+			$instance->cookieUrl = (string)$data->cookieUrl;
+		}
+		if (isset($data->request)) {
+			$instance->request = AffectedRequest::fromJson($data->request);
+		}
 		return $instance;
 	}
 
@@ -46,6 +80,9 @@ final class SameSiteCookieIssueDetails implements \JsonSerializable
 	public function jsonSerialize()
 	{
 		$data = new \stdClass();
+		if ($this->cookie !== null) {
+			$data->cookie = $this->cookie->jsonSerialize();
+		}
 		if ($this->cookieWarningReasons !== null) {
 			$data->cookieWarningReasons = [];
 		if ($this->cookieWarningReasons !== null) {
@@ -63,6 +100,18 @@ final class SameSiteCookieIssueDetails implements \JsonSerializable
 				$data->cookieExclusionReasons[] = $item;
 			}
 		}
+		}
+		if ($this->operation !== null) {
+			$data->operation = $this->operation;
+		}
+		if ($this->siteForCookies !== null) {
+			$data->siteForCookies = $this->siteForCookies;
+		}
+		if ($this->cookieUrl !== null) {
+			$data->cookieUrl = $this->cookieUrl;
+		}
+		if ($this->request !== null) {
+			$data->request = $this->request->jsonSerialize();
 		}
 		return $data;
 	}

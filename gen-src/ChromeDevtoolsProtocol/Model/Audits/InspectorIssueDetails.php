@@ -3,7 +3,7 @@
 namespace ChromeDevtoolsProtocol\Model\Audits;
 
 /**
- * This struct holds a list of optional fields with additional information pertaining to the kind of issue. This is useful if there is a number of very similar issues that only differ in details.
+ * This struct holds a list of optional fields with additional information specific to the kind of issue. When adding a new issue code, please also add a new optional field to this type.
  *
  * @generated This file has been auto-generated, do not edit.
  *

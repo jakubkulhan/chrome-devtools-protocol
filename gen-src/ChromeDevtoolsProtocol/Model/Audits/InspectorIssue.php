@@ -17,9 +17,6 @@ final class InspectorIssue implements \JsonSerializable
 	/** @var InspectorIssueDetails */
 	public $details;
 
-	/** @var AffectedResources */
-	public $resources;
-
 
 	public static function fromJson($data)
 	{
@@ -29,9 +26,6 @@ final class InspectorIssue implements \JsonSerializable
 		}
 		if (isset($data->details)) {
 			$instance->details = InspectorIssueDetails::fromJson($data->details);
-		}
-		if (isset($data->resources)) {
-			$instance->resources = AffectedResources::fromJson($data->resources);
 		}
 		return $instance;
 	}
@@ -45,9 +39,6 @@ final class InspectorIssue implements \JsonSerializable
 		}
 		if ($this->details !== null) {
 			$data->details = $this->details->jsonSerialize();
-		}
-		if ($this->resources !== null) {
-			$data->resources = $this->resources->jsonSerialize();
 		}
 		return $data;
 	}

@@ -24,13 +24,6 @@ final class AffectedCookie implements \JsonSerializable
 	/** @var string */
 	public $domain;
 
-	/**
-	 * Optionally identifies the site-for-cookies, which may be used by the front-end as additional context.
-	 *
-	 * @var string|null
-	 */
-	public $siteForCookies;
-
 
 	public static function fromJson($data)
 	{
@@ -43,9 +36,6 @@ final class AffectedCookie implements \JsonSerializable
 		}
 		if (isset($data->domain)) {
 			$instance->domain = (string)$data->domain;
-		}
-		if (isset($data->siteForCookies)) {
-			$instance->siteForCookies = (string)$data->siteForCookies;
 		}
 		return $instance;
 	}
@@ -62,9 +52,6 @@ final class AffectedCookie implements \JsonSerializable
 		}
 		if ($this->domain !== null) {
 			$data->domain = $this->domain;
-		}
-		if ($this->siteForCookies !== null) {
-			$data->siteForCookies = $this->siteForCookies;
 		}
 		return $data;
 	}
