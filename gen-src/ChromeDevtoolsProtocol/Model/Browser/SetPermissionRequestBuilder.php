@@ -11,11 +11,11 @@ use ChromeDevtoolsProtocol\Exception\BuilderException;
  */
 final class SetPermissionRequestBuilder
 {
-	private $origin;
-
 	private $permission;
 
 	private $setting;
+
+	private $origin;
 
 	private $browserContextId;
 
@@ -26,7 +26,6 @@ final class SetPermissionRequestBuilder
 	public function build(): SetPermissionRequest
 	{
 		$instance = new SetPermissionRequest();
-		$instance->origin = $this->origin;
 		if ($this->permission === null) {
 			throw new BuilderException('Property [permission] is required.');
 		}
@@ -35,20 +34,9 @@ final class SetPermissionRequestBuilder
 			throw new BuilderException('Property [setting] is required.');
 		}
 		$instance->setting = $this->setting;
+		$instance->origin = $this->origin;
 		$instance->browserContextId = $this->browserContextId;
 		return $instance;
-	}
-
-
-	/**
-	 * @param string|null $origin
-	 *
-	 * @return self
-	 */
-	public function setOrigin($origin): self
-	{
-		$this->origin = $origin;
-		return $this;
 	}
 
 
@@ -72,6 +60,18 @@ final class SetPermissionRequestBuilder
 	public function setSetting($setting): self
 	{
 		$this->setting = $setting;
+		return $this;
+	}
+
+
+	/**
+	 * @param string|null $origin
+	 *
+	 * @return self
+	 */
+	public function setOrigin($origin): self
+	{
+		$this->origin = $origin;
 		return $this;
 	}
 

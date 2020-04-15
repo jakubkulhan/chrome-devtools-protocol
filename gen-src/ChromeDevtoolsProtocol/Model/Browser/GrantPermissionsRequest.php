@@ -11,15 +11,15 @@ namespace ChromeDevtoolsProtocol\Model\Browser;
  */
 final class GrantPermissionsRequest implements \JsonSerializable
 {
+	/** @var string[] */
+	public $permissions;
+
 	/**
 	 * Origin the permission applies to, all origins if not specified.
 	 *
 	 * @var string|null
 	 */
 	public $origin;
-
-	/** @var string[] */
-	public $permissions;
 
 	/**
 	 * BrowserContext to override permissions. When omitted, default browser context is used.
@@ -32,9 +32,6 @@ final class GrantPermissionsRequest implements \JsonSerializable
 	public static function fromJson($data)
 	{
 		$instance = new static();
-		if (isset($data->origin)) {
-			$instance->origin = (string)$data->origin;
-		}
 		if (isset($data->permissions)) {
 			$instance->permissions = [];
 		if (isset($data->permissions)) {
@@ -43,6 +40,9 @@ final class GrantPermissionsRequest implements \JsonSerializable
 				$instance->permissions[] = (string)$item;
 			}
 		}
+		}
+		if (isset($data->origin)) {
+			$instance->origin = (string)$data->origin;
 		}
 		if (isset($data->browserContextId)) {
 			$instance->browserContextId = (string)$data->browserContextId;
@@ -54,9 +54,6 @@ final class GrantPermissionsRequest implements \JsonSerializable
 	public function jsonSerialize()
 	{
 		$data = new \stdClass();
-		if ($this->origin !== null) {
-			$data->origin = $this->origin;
-		}
 		if ($this->permissions !== null) {
 			$data->permissions = [];
 		if ($this->permissions !== null) {
@@ -65,6 +62,9 @@ final class GrantPermissionsRequest implements \JsonSerializable
 				$data->permissions[] = $item;
 			}
 		}
+		}
+		if ($this->origin !== null) {
+			$data->origin = $this->origin;
 		}
 		if ($this->browserContextId !== null) {
 			$data->browserContextId = $this->browserContextId;

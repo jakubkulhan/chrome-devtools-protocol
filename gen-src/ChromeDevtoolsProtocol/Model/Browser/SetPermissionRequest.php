@@ -12,13 +12,6 @@ namespace ChromeDevtoolsProtocol\Model\Browser;
 final class SetPermissionRequest implements \JsonSerializable
 {
 	/**
-	 * Origin the permission applies to, all origins if not specified.
-	 *
-	 * @var string|null
-	 */
-	public $origin;
-
-	/**
 	 * Descriptor of permission to override.
 	 *
 	 * @var PermissionDescriptor
@@ -33,6 +26,13 @@ final class SetPermissionRequest implements \JsonSerializable
 	public $setting;
 
 	/**
+	 * Origin the permission applies to, all origins if not specified.
+	 *
+	 * @var string|null
+	 */
+	public $origin;
+
+	/**
 	 * Context to override. When omitted, default browser context is used.
 	 *
 	 * @var string
@@ -43,14 +43,14 @@ final class SetPermissionRequest implements \JsonSerializable
 	public static function fromJson($data)
 	{
 		$instance = new static();
-		if (isset($data->origin)) {
-			$instance->origin = (string)$data->origin;
-		}
 		if (isset($data->permission)) {
 			$instance->permission = PermissionDescriptor::fromJson($data->permission);
 		}
 		if (isset($data->setting)) {
 			$instance->setting = (string)$data->setting;
+		}
+		if (isset($data->origin)) {
+			$instance->origin = (string)$data->origin;
 		}
 		if (isset($data->browserContextId)) {
 			$instance->browserContextId = (string)$data->browserContextId;
@@ -62,14 +62,14 @@ final class SetPermissionRequest implements \JsonSerializable
 	public function jsonSerialize()
 	{
 		$data = new \stdClass();
-		if ($this->origin !== null) {
-			$data->origin = $this->origin;
-		}
 		if ($this->permission !== null) {
 			$data->permission = $this->permission->jsonSerialize();
 		}
 		if ($this->setting !== null) {
 			$data->setting = $this->setting;
+		}
+		if ($this->origin !== null) {
+			$data->origin = $this->origin;
 		}
 		if ($this->browserContextId !== null) {
 			$data->browserContextId = $this->browserContextId;
