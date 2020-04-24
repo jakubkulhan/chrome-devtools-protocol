@@ -14,12 +14,18 @@ final class InspectorIssueDetails implements \JsonSerializable
 	/** @var SameSiteCookieIssueDetails|null */
 	public $sameSiteCookieIssueDetails;
 
+	/** @var MixedContentIssueDetails|null */
+	public $mixedContentIssueDetails;
+
 
 	public static function fromJson($data)
 	{
 		$instance = new static();
 		if (isset($data->sameSiteCookieIssueDetails)) {
 			$instance->sameSiteCookieIssueDetails = SameSiteCookieIssueDetails::fromJson($data->sameSiteCookieIssueDetails);
+		}
+		if (isset($data->mixedContentIssueDetails)) {
+			$instance->mixedContentIssueDetails = MixedContentIssueDetails::fromJson($data->mixedContentIssueDetails);
 		}
 		return $instance;
 	}
@@ -30,6 +36,9 @@ final class InspectorIssueDetails implements \JsonSerializable
 		$data = new \stdClass();
 		if ($this->sameSiteCookieIssueDetails !== null) {
 			$data->sameSiteCookieIssueDetails = $this->sameSiteCookieIssueDetails->jsonSerialize();
+		}
+		if ($this->mixedContentIssueDetails !== null) {
+			$data->mixedContentIssueDetails = $this->mixedContentIssueDetails->jsonSerialize();
 		}
 		return $data;
 	}

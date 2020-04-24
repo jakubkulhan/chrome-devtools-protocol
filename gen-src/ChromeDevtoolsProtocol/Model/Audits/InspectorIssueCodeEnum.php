@@ -12,4 +12,5 @@ namespace ChromeDevtoolsProtocol\Model\Audits;
 final class InspectorIssueCodeEnum
 {
 	const SAME_SITE_COOKIE_ISSUE = 'SameSiteCookieIssue';
+	const MIXED_CONTENT_ISSUE = 'MixedContentIssue';
 }
