@@ -3,7 +3,7 @@
 namespace ChromeDevtoolsProtocol\Model\Media;
 
 /**
- * Player Property type
+ * Corresponds to kMediaPropertyChange
  *
  * @generated This file has been auto-generated, do not edit.
  *
@@ -14,7 +14,7 @@ final class PlayerProperty implements \JsonSerializable
 	/** @var string */
 	public $name;
 
-	/** @var string|null */
+	/** @var string */
 	public $value;
 
 

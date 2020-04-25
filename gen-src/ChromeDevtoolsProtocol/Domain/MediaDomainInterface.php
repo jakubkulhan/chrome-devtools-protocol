@@ -3,7 +3,9 @@
 namespace ChromeDevtoolsProtocol\Domain;
 
 use ChromeDevtoolsProtocol\ContextInterface;
+use ChromeDevtoolsProtocol\Model\Media\PlayerErrorsRaisedEvent;
 use ChromeDevtoolsProtocol\Model\Media\PlayerEventsAddedEvent;
+use ChromeDevtoolsProtocol\Model\Media\PlayerMessagesLoggedEvent;
 use ChromeDevtoolsProtocol\Model\Media\PlayerPropertiesChangedEvent;
 use ChromeDevtoolsProtocol\Model\Media\PlayersCreatedEvent;
 use ChromeDevtoolsProtocol\SubscriptionInterface;
@@ -40,6 +42,30 @@ interface MediaDomainInterface
 
 
 	/**
+	 * Send a list of any errors that need to be delivered.
+	 *
+	 * Listener will be called whenever event Media.playerErrorsRaised is fired.
+	 *
+	 * @param callable $listener
+	 *
+	 * @return SubscriptionInterface
+	 */
+	public function addPlayerErrorsRaisedListener(callable $listener): SubscriptionInterface;
+
+
+	/**
+	 * Send a list of any errors that need to be delivered.
+	 *
+	 * Method will block until first Media.playerErrorsRaised event is fired.
+	 *
+	 * @param ContextInterface $ctx
+	 *
+	 * @return PlayerErrorsRaisedEvent
+	 */
+	public function awaitPlayerErrorsRaised(ContextInterface $ctx): PlayerErrorsRaisedEvent;
+
+
+	/**
 	 * Send events as a list, allowing them to be batched on the browser for less congestion. If batched, events must ALWAYS be in chronological order.
 	 *
 	 * Listener will be called whenever event Media.playerEventsAdded is fired.
@@ -61,6 +87,30 @@ interface MediaDomainInterface
 	 * @return PlayerEventsAddedEvent
 	 */
 	public function awaitPlayerEventsAdded(ContextInterface $ctx): PlayerEventsAddedEvent;
+
+
+	/**
+	 * Send a list of any messages that need to be delivered.
+	 *
+	 * Listener will be called whenever event Media.playerMessagesLogged is fired.
+	 *
+	 * @param callable $listener
+	 *
+	 * @return SubscriptionInterface
+	 */
+	public function addPlayerMessagesLoggedListener(callable $listener): SubscriptionInterface;
+
+
+	/**
+	 * Send a list of any messages that need to be delivered.
+	 *
+	 * Method will block until first Media.playerMessagesLogged event is fired.
+	 *
+	 * @param ContextInterface $ctx
+	 *
+	 * @return PlayerMessagesLoggedEvent
+	 */
+	public function awaitPlayerMessagesLogged(ContextInterface $ctx): PlayerMessagesLoggedEvent;
 
 
 	/**

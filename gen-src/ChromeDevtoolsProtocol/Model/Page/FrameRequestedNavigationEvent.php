@@ -32,6 +32,13 @@ final class FrameRequestedNavigationEvent implements \JsonSerializable
 	 */
 	public $url;
 
+	/**
+	 * The disposition for the navigation.
+	 *
+	 * @var string
+	 */
+	public $disposition;
+
 
 	public static function fromJson($data)
 	{
@@ -44,6 +51,9 @@ final class FrameRequestedNavigationEvent implements \JsonSerializable
 		}
 		if (isset($data->url)) {
 			$instance->url = (string)$data->url;
+		}
+		if (isset($data->disposition)) {
+			$instance->disposition = (string)$data->disposition;
 		}
 		return $instance;
 	}
@@ -60,6 +70,9 @@ final class FrameRequestedNavigationEvent implements \JsonSerializable
 		}
 		if ($this->url !== null) {
 			$data->url = $this->url;
+		}
+		if ($this->disposition !== null) {
+			$data->disposition = $this->disposition;
 		}
 		return $data;
 	}
