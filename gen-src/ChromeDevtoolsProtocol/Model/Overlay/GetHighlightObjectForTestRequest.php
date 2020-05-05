@@ -32,6 +32,13 @@ final class GetHighlightObjectForTestRequest implements \JsonSerializable
 	 */
 	public $includeStyle;
 
+	/**
+	 * The color format to get config with (default: hex)
+	 *
+	 * @var string
+	 */
+	public $colorFormat;
+
 
 	public static function fromJson($data)
 	{
@@ -44,6 +51,9 @@ final class GetHighlightObjectForTestRequest implements \JsonSerializable
 		}
 		if (isset($data->includeStyle)) {
 			$instance->includeStyle = (bool)$data->includeStyle;
+		}
+		if (isset($data->colorFormat)) {
+			$instance->colorFormat = (string)$data->colorFormat;
 		}
 		return $instance;
 	}
@@ -60,6 +70,9 @@ final class GetHighlightObjectForTestRequest implements \JsonSerializable
 		}
 		if ($this->includeStyle !== null) {
 			$data->includeStyle = $this->includeStyle;
+		}
+		if ($this->colorFormat !== null) {
+			$data->colorFormat = $this->colorFormat;
 		}
 		return $data;
 	}

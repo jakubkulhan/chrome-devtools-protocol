@@ -97,6 +97,13 @@ final class HighlightConfig implements \JsonSerializable
 	 */
 	public $cssGridColor;
 
+	/**
+	 * The color format used to format color styles (default: hex).
+	 *
+	 * @var string
+	 */
+	public $colorFormat;
+
 
 	public static function fromJson($data)
 	{
@@ -136,6 +143,9 @@ final class HighlightConfig implements \JsonSerializable
 		}
 		if (isset($data->cssGridColor)) {
 			$instance->cssGridColor = RGBA::fromJson($data->cssGridColor);
+		}
+		if (isset($data->colorFormat)) {
+			$instance->colorFormat = (string)$data->colorFormat;
 		}
 		return $instance;
 	}
@@ -179,6 +189,9 @@ final class HighlightConfig implements \JsonSerializable
 		}
 		if ($this->cssGridColor !== null) {
 			$data->cssGridColor = $this->cssGridColor->jsonSerialize();
+		}
+		if ($this->colorFormat !== null) {
+			$data->colorFormat = $this->colorFormat;
 		}
 		return $data;
 	}

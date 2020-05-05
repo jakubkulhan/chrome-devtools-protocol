@@ -17,6 +17,8 @@ final class GetHighlightObjectForTestRequestBuilder
 
 	private $includeStyle;
 
+	private $colorFormat;
+
 
 	/**
 	 * Validate non-optional parameters and return new instance.
@@ -30,6 +32,7 @@ final class GetHighlightObjectForTestRequestBuilder
 		$instance->nodeId = $this->nodeId;
 		$instance->includeDistance = $this->includeDistance;
 		$instance->includeStyle = $this->includeStyle;
+		$instance->colorFormat = $this->colorFormat;
 		return $instance;
 	}
 
@@ -66,6 +69,18 @@ final class GetHighlightObjectForTestRequestBuilder
 	public function setIncludeStyle($includeStyle): self
 	{
 		$this->includeStyle = $includeStyle;
+		return $this;
+	}
+
+
+	/**
+	 * @param string $colorFormat
+	 *
+	 * @return self
+	 */
+	public function setColorFormat($colorFormat): self
+	{
+		$this->colorFormat = $colorFormat;
 		return $this;
 	}
 }
