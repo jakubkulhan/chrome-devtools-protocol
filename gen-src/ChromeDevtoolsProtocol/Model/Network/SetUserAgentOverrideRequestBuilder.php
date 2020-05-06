@@ -3,6 +3,7 @@
 namespace ChromeDevtoolsProtocol\Model\Network;
 
 use ChromeDevtoolsProtocol\Exception\BuilderException;
+use ChromeDevtoolsProtocol\Model\Emulation\UserAgentMetadata;
 
 /**
  * @generated This file has been auto-generated, do not edit.
@@ -17,6 +18,8 @@ final class SetUserAgentOverrideRequestBuilder
 
 	private $platform;
 
+	private $userAgentMetadata;
+
 
 	/**
 	 * Validate non-optional parameters and return new instance.
@@ -30,6 +33,7 @@ final class SetUserAgentOverrideRequestBuilder
 		$instance->userAgent = $this->userAgent;
 		$instance->acceptLanguage = $this->acceptLanguage;
 		$instance->platform = $this->platform;
+		$instance->userAgentMetadata = $this->userAgentMetadata;
 		return $instance;
 	}
 
@@ -66,6 +70,18 @@ final class SetUserAgentOverrideRequestBuilder
 	public function setPlatform($platform): self
 	{
 		$this->platform = $platform;
+		return $this;
+	}
+
+
+	/**
+	 * @param UserAgentMetadata|null $userAgentMetadata
+	 *
+	 * @return self
+	 */
+	public function setUserAgentMetadata($userAgentMetadata): self
+	{
+		$this->userAgentMetadata = $userAgentMetadata;
 		return $this;
 	}
 }

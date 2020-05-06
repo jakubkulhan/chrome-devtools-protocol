@@ -32,6 +32,13 @@ final class SetUserAgentOverrideRequest implements \JsonSerializable
 	 */
 	public $platform;
 
+	/**
+	 * To be sent in Sec-CH-UA-* headers and returned in navigator.userAgentData
+	 *
+	 * @var UserAgentMetadata|null
+	 */
+	public $userAgentMetadata;
+
 
 	public static function fromJson($data)
 	{
@@ -44,6 +51,9 @@ final class SetUserAgentOverrideRequest implements \JsonSerializable
 		}
 		if (isset($data->platform)) {
 			$instance->platform = (string)$data->platform;
+		}
+		if (isset($data->userAgentMetadata)) {
+			$instance->userAgentMetadata = UserAgentMetadata::fromJson($data->userAgentMetadata);
 		}
 		return $instance;
 	}
@@ -60,6 +70,9 @@ final class SetUserAgentOverrideRequest implements \JsonSerializable
 		}
 		if ($this->platform !== null) {
 			$data->platform = $this->platform;
+		}
+		if ($this->userAgentMetadata !== null) {
+			$data->userAgentMetadata = $this->userAgentMetadata->jsonSerialize();
 		}
 		return $data;
 	}
