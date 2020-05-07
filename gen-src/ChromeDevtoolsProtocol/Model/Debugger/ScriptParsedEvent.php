@@ -132,6 +132,13 @@ final class ScriptParsedEvent implements \JsonSerializable
 	 */
 	public $scriptLanguage;
 
+	/**
+	 * If the scriptLanguage is WebASsembly, the source of debug symbols for the module.
+	 *
+	 * @var DebugSymbols|null
+	 */
+	public $debugSymbols;
+
 
 	public static function fromJson($data)
 	{
@@ -186,6 +193,9 @@ final class ScriptParsedEvent implements \JsonSerializable
 		}
 		if (isset($data->scriptLanguage)) {
 			$instance->scriptLanguage = (string)$data->scriptLanguage;
+		}
+		if (isset($data->debugSymbols)) {
+			$instance->debugSymbols = DebugSymbols::fromJson($data->debugSymbols);
 		}
 		return $instance;
 	}
@@ -244,6 +254,9 @@ final class ScriptParsedEvent implements \JsonSerializable
 		}
 		if ($this->scriptLanguage !== null) {
 			$data->scriptLanguage = $this->scriptLanguage;
+		}
+		if ($this->debugSymbols !== null) {
+			$data->debugSymbols = $this->debugSymbols->jsonSerialize();
 		}
 		return $data;
 	}

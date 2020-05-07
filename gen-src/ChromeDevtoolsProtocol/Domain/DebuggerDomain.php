@@ -10,6 +10,8 @@ use ChromeDevtoolsProtocol\Model\Debugger\EnableRequest;
 use ChromeDevtoolsProtocol\Model\Debugger\EnableResponse;
 use ChromeDevtoolsProtocol\Model\Debugger\EvaluateOnCallFrameRequest;
 use ChromeDevtoolsProtocol\Model\Debugger\EvaluateOnCallFrameResponse;
+use ChromeDevtoolsProtocol\Model\Debugger\ExecuteWasmEvaluatorRequest;
+use ChromeDevtoolsProtocol\Model\Debugger\ExecuteWasmEvaluatorResponse;
 use ChromeDevtoolsProtocol\Model\Debugger\GetPossibleBreakpointsRequest;
 use ChromeDevtoolsProtocol\Model\Debugger\GetPossibleBreakpointsResponse;
 use ChromeDevtoolsProtocol\Model\Debugger\GetScriptSourceRequest;
@@ -86,6 +88,13 @@ class DebuggerDomain implements DebuggerDomainInterface
 	{
 		$response = $this->internalClient->executeCommand($ctx, 'Debugger.evaluateOnCallFrame', $request);
 		return EvaluateOnCallFrameResponse::fromJson($response);
+	}
+
+
+	public function executeWasmEvaluator(ContextInterface $ctx, ExecuteWasmEvaluatorRequest $request): ExecuteWasmEvaluatorResponse
+	{
+		$response = $this->internalClient->executeCommand($ctx, 'Debugger.executeWasmEvaluator', $request);
+		return ExecuteWasmEvaluatorResponse::fromJson($response);
 	}
 
 

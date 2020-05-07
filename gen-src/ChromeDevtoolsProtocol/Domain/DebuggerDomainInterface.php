@@ -9,6 +9,8 @@ use ChromeDevtoolsProtocol\Model\Debugger\EnableRequest;
 use ChromeDevtoolsProtocol\Model\Debugger\EnableResponse;
 use ChromeDevtoolsProtocol\Model\Debugger\EvaluateOnCallFrameRequest;
 use ChromeDevtoolsProtocol\Model\Debugger\EvaluateOnCallFrameResponse;
+use ChromeDevtoolsProtocol\Model\Debugger\ExecuteWasmEvaluatorRequest;
+use ChromeDevtoolsProtocol\Model\Debugger\ExecuteWasmEvaluatorResponse;
 use ChromeDevtoolsProtocol\Model\Debugger\GetPossibleBreakpointsRequest;
 use ChromeDevtoolsProtocol\Model\Debugger\GetPossibleBreakpointsResponse;
 use ChromeDevtoolsProtocol\Model\Debugger\GetScriptSourceRequest;
@@ -99,6 +101,17 @@ interface DebuggerDomainInterface
 	 * @return EvaluateOnCallFrameResponse
 	 */
 	public function evaluateOnCallFrame(ContextInterface $ctx, EvaluateOnCallFrameRequest $request): EvaluateOnCallFrameResponse;
+
+
+	/**
+	 * Execute a Wasm Evaluator module on a given call frame.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param ExecuteWasmEvaluatorRequest $request
+	 *
+	 * @return ExecuteWasmEvaluatorResponse
+	 */
+	public function executeWasmEvaluator(ContextInterface $ctx, ExecuteWasmEvaluatorRequest $request): ExecuteWasmEvaluatorResponse;
 
 
 	/**
