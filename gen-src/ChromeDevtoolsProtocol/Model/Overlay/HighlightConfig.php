@@ -104,6 +104,13 @@ final class HighlightConfig implements \JsonSerializable
 	 */
 	public $colorFormat;
 
+	/**
+	 * The grid layout highlight configuration (default: all transparent).
+	 *
+	 * @var GridHighlightConfig|null
+	 */
+	public $gridHighlightConfig;
+
 
 	public static function fromJson($data)
 	{
@@ -146,6 +153,9 @@ final class HighlightConfig implements \JsonSerializable
 		}
 		if (isset($data->colorFormat)) {
 			$instance->colorFormat = (string)$data->colorFormat;
+		}
+		if (isset($data->gridHighlightConfig)) {
+			$instance->gridHighlightConfig = GridHighlightConfig::fromJson($data->gridHighlightConfig);
 		}
 		return $instance;
 	}
@@ -192,6 +202,9 @@ final class HighlightConfig implements \JsonSerializable
 		}
 		if ($this->colorFormat !== null) {
 			$data->colorFormat = $this->colorFormat;
+		}
+		if ($this->gridHighlightConfig !== null) {
+			$data->gridHighlightConfig = $this->gridHighlightConfig->jsonSerialize();
 		}
 		return $data;
 	}
