@@ -33,11 +33,11 @@ final class DownloadWillBeginEvent implements \JsonSerializable
 	public $url;
 
 	/**
-	 * Filename of the resource (may diverge from the actual filename saved on disk)
+	 * Suggested file name of the resource (the actual name of the file saved on disk may differ).
 	 *
 	 * @var string
 	 */
-	public $filename;
+	public $suggestedFilename;
 
 
 	public static function fromJson($data)
@@ -52,8 +52,8 @@ final class DownloadWillBeginEvent implements \JsonSerializable
 		if (isset($data->url)) {
 			$instance->url = (string)$data->url;
 		}
-		if (isset($data->filename)) {
-			$instance->filename = (string)$data->filename;
+		if (isset($data->suggestedFilename)) {
+			$instance->suggestedFilename = (string)$data->suggestedFilename;
 		}
 		return $instance;
 	}
@@ -71,8 +71,8 @@ final class DownloadWillBeginEvent implements \JsonSerializable
 		if ($this->url !== null) {
 			$data->url = $this->url;
 		}
-		if ($this->filename !== null) {
-			$data->filename = $this->filename;
+		if ($this->suggestedFilename !== null) {
+			$data->suggestedFilename = $this->suggestedFilename;
 		}
 		return $data;
 	}
