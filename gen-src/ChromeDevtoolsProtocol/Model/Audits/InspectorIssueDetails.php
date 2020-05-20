@@ -17,6 +17,9 @@ final class InspectorIssueDetails implements \JsonSerializable
 	/** @var MixedContentIssueDetails|null */
 	public $mixedContentIssueDetails;
 
+	/** @var BlockedByResponseIssueDetails|null */
+	public $blockedByResponseIssueDetails;
+
 
 	public static function fromJson($data)
 	{
@@ -26,6 +29,9 @@ final class InspectorIssueDetails implements \JsonSerializable
 		}
 		if (isset($data->mixedContentIssueDetails)) {
 			$instance->mixedContentIssueDetails = MixedContentIssueDetails::fromJson($data->mixedContentIssueDetails);
+		}
+		if (isset($data->blockedByResponseIssueDetails)) {
+			$instance->blockedByResponseIssueDetails = BlockedByResponseIssueDetails::fromJson($data->blockedByResponseIssueDetails);
 		}
 		return $instance;
 	}
@@ -39,6 +45,9 @@ final class InspectorIssueDetails implements \JsonSerializable
 		}
 		if ($this->mixedContentIssueDetails !== null) {
 			$data->mixedContentIssueDetails = $this->mixedContentIssueDetails->jsonSerialize();
+		}
+		if ($this->blockedByResponseIssueDetails !== null) {
+			$data->blockedByResponseIssueDetails = $this->blockedByResponseIssueDetails->jsonSerialize();
 		}
 		return $data;
 	}

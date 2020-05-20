@@ -13,4 +13,5 @@ final class InspectorIssueCodeEnum
 {
 	const SAME_SITE_COOKIE_ISSUE = 'SameSiteCookieIssue';
 	const MIXED_CONTENT_ISSUE = 'MixedContentIssue';
+	const BLOCKED_BY_RESPONSE_ISSUE = 'BlockedByResponseIssue';
 }
