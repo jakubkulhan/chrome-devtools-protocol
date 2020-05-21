@@ -89,6 +89,20 @@ final class ResourceTiming implements \JsonSerializable
 	public $workerReady;
 
 	/**
+	 * Started fetch event.
+	 *
+	 * @var int|float
+	 */
+	public $workerFetchStart;
+
+	/**
+	 * Settled fetch event respondWith promise.
+	 *
+	 * @var int|float
+	 */
+	public $workerRespondWithSettled;
+
+	/**
 	 * Started sending request.
 	 *
 	 * @var int|float
@@ -160,6 +174,12 @@ final class ResourceTiming implements \JsonSerializable
 		if (isset($data->workerReady)) {
 			$instance->workerReady = $data->workerReady;
 		}
+		if (isset($data->workerFetchStart)) {
+			$instance->workerFetchStart = $data->workerFetchStart;
+		}
+		if (isset($data->workerRespondWithSettled)) {
+			$instance->workerRespondWithSettled = $data->workerRespondWithSettled;
+		}
 		if (isset($data->sendStart)) {
 			$instance->sendStart = $data->sendStart;
 		}
@@ -214,6 +234,12 @@ final class ResourceTiming implements \JsonSerializable
 		}
 		if ($this->workerReady !== null) {
 			$data->workerReady = $this->workerReady;
+		}
+		if ($this->workerFetchStart !== null) {
+			$data->workerFetchStart = $this->workerFetchStart;
+		}
+		if ($this->workerRespondWithSettled !== null) {
+			$data->workerRespondWithSettled = $this->workerRespondWithSettled;
 		}
 		if ($this->sendStart !== null) {
 			$data->sendStart = $this->sendStart;
