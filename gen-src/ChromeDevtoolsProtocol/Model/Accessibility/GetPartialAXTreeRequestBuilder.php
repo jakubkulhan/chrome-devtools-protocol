@@ -10,11 +10,8 @@ namespace ChromeDevtoolsProtocol\Model\Accessibility;
 final class GetPartialAXTreeRequestBuilder
 {
 	private $nodeId;
-
 	private $backendNodeId;
-
 	private $objectId;
-
 	private $fetchRelatives;
 
 

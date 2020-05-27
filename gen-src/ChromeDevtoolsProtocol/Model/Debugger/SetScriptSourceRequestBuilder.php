@@ -12,9 +12,7 @@ use ChromeDevtoolsProtocol\Exception\BuilderException;
 final class SetScriptSourceRequestBuilder
 {
 	private $scriptId;
-
 	private $scriptSource;
-
 	private $dryRun;
 
 

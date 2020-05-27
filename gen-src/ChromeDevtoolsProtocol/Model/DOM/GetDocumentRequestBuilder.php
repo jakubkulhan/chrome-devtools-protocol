@@ -10,7 +10,6 @@ namespace ChromeDevtoolsProtocol\Model\DOM;
 final class GetDocumentRequestBuilder
 {
 	private $depth;
-
 	private $pierce;
 
 

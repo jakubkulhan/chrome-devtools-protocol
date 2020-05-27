@@ -13,9 +13,7 @@ use ChromeDevtoolsProtocol\Model\DOM\RGBA;
 final class HighlightQuadRequestBuilder
 {
 	private $quad;
-
 	private $color;
-
 	private $outlineColor;
 
 

@@ -12,11 +12,8 @@ use ChromeDevtoolsProtocol\Exception\BuilderException;
 final class SetPermissionRequestBuilder
 {
 	private $permission;
-
 	private $setting;
-
 	private $origin;
-
 	private $browserContextId;
 
 

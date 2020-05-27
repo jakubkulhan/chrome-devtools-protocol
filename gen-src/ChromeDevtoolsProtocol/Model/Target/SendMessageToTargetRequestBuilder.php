@@ -12,9 +12,7 @@ use ChromeDevtoolsProtocol\Exception\BuilderException;
 final class SendMessageToTargetRequestBuilder
 {
 	private $message;
-
 	private $sessionId;
-
 	private $targetId;
 
 

@@ -12,7 +12,6 @@ use ChromeDevtoolsProtocol\Exception\BuilderException;
 final class GetResourceContentRequestBuilder
 {
 	private $frameId;
-
 	private $url;
 
 

@@ -12,7 +12,6 @@ use ChromeDevtoolsProtocol\Exception\BuilderException;
 final class SetDOMBreakpointRequestBuilder
 {
 	private $nodeId;
-
 	private $type;
 
 

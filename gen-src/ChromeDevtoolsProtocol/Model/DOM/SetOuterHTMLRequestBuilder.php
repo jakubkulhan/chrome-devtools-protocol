@@ -12,7 +12,6 @@ use ChromeDevtoolsProtocol\Exception\BuilderException;
 final class SetOuterHTMLRequestBuilder
 {
 	private $nodeId;
-
 	private $outerHTML;
 
 

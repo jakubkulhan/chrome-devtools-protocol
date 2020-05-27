@@ -12,9 +12,7 @@ use ChromeDevtoolsProtocol\Exception\BuilderException;
 final class GetPossibleBreakpointsRequestBuilder
 {
 	private $start;
-
 	private $end;
-
 	private $restrictToFunction;
 
 

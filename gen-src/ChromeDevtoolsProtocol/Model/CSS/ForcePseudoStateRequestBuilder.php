@@ -12,7 +12,6 @@ use ChromeDevtoolsProtocol\Exception\BuilderException;
 final class ForcePseudoStateRequestBuilder
 {
 	private $nodeId;
-
 	private $forcedPseudoClasses;
 
 

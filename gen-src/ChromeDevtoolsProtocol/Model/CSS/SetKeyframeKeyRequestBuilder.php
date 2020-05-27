@@ -12,9 +12,7 @@ use ChromeDevtoolsProtocol\Exception\BuilderException;
 final class SetKeyframeKeyRequestBuilder
 {
 	private $styleSheetId;
-
 	private $range;
-
 	private $keyText;
 
 

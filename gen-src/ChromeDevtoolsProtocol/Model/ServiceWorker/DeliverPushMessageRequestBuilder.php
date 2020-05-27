@@ -12,9 +12,7 @@ use ChromeDevtoolsProtocol\Exception\BuilderException;
 final class DeliverPushMessageRequestBuilder
 {
 	private $origin;
-
 	private $registrationId;
-
 	private $data;
 
 

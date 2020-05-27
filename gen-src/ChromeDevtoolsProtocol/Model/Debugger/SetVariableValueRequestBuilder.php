@@ -13,11 +13,8 @@ use ChromeDevtoolsProtocol\Model\Runtime\CallArgument;
 final class SetVariableValueRequestBuilder
 {
 	private $scopeNumber;
-
 	private $variableName;
-
 	private $newValue;
-
 	private $callFrameId;
 
 

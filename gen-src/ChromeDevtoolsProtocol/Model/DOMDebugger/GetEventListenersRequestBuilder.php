@@ -12,9 +12,7 @@ use ChromeDevtoolsProtocol\Exception\BuilderException;
 final class GetEventListenersRequestBuilder
 {
 	private $objectId;
-
 	private $depth;
-
 	private $pierce;
 
 

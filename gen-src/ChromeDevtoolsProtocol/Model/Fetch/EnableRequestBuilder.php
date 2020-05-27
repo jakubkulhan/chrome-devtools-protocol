@@ -10,7 +10,6 @@ namespace ChromeDevtoolsProtocol\Model\Fetch;
 final class EnableRequestBuilder
 {
 	private $patterns;
-
 	private $handleAuthRequests;
 
 

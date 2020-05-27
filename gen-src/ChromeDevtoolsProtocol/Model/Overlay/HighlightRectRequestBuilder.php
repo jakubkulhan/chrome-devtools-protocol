@@ -13,15 +13,10 @@ use ChromeDevtoolsProtocol\Model\DOM\RGBA;
 final class HighlightRectRequestBuilder
 {
 	private $x;
-
 	private $y;
-
 	private $width;
-
 	private $height;
-
 	private $color;
-
 	private $outlineColor;
 
 

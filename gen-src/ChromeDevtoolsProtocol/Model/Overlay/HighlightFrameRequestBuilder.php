@@ -13,9 +13,7 @@ use ChromeDevtoolsProtocol\Model\DOM\RGBA;
 final class HighlightFrameRequestBuilder
 {
 	private $frameId;
-
 	private $contentColor;
-
 	private $contentOutlineColor;
 
 

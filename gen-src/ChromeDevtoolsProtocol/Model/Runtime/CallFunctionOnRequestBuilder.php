@@ -12,23 +12,14 @@ use ChromeDevtoolsProtocol\Exception\BuilderException;
 final class CallFunctionOnRequestBuilder
 {
 	private $functionDeclaration;
-
 	private $objectId;
-
 	private $arguments;
-
 	private $silent;
-
 	private $returnByValue;
-
 	private $generatePreview;
-
 	private $userGesture;
-
 	private $awaitPromise;
-
 	private $executionContextId;
-
 	private $objectGroup;
 
 

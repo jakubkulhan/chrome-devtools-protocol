@@ -10,9 +10,7 @@ namespace ChromeDevtoolsProtocol\Model\DOM;
 final class FocusRequestBuilder
 {
 	private $nodeId;
-
 	private $backendNodeId;
-
 	private $objectId;
 
 

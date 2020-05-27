@@ -10,7 +10,6 @@ namespace ChromeDevtoolsProtocol\Model\Memory;
 final class StartSamplingRequestBuilder
 {
 	private $samplingInterval;
-
 	private $suppressRandomness;
 
 

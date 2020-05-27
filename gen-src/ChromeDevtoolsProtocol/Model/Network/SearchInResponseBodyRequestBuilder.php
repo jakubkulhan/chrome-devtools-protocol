@@ -12,11 +12,8 @@ use ChromeDevtoolsProtocol\Exception\BuilderException;
 final class SearchInResponseBodyRequestBuilder
 {
 	private $requestId;
-
 	private $query;
-
 	private $caseSensitive;
-
 	private $isRegex;
 
 

@@ -12,17 +12,11 @@ use ChromeDevtoolsProtocol\Exception\BuilderException;
 final class RequestDataRequestBuilder
 {
 	private $securityOrigin;
-
 	private $databaseName;
-
 	private $objectStoreName;
-
 	private $indexName;
-
 	private $skipCount;
-
 	private $pageSize;
-
 	private $keyRange;
 
 

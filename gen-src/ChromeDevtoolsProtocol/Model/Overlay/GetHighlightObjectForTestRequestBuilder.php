@@ -12,11 +12,8 @@ use ChromeDevtoolsProtocol\Exception\BuilderException;
 final class GetHighlightObjectForTestRequestBuilder
 {
 	private $nodeId;
-
 	private $includeDistance;
-
 	private $includeStyle;
-
 	private $colorFormat;
 
 

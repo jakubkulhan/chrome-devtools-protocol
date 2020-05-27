@@ -12,7 +12,6 @@ use ChromeDevtoolsProtocol\Exception\BuilderException;
 final class SeekAnimationsRequestBuilder
 {
 	private $animations;
-
 	private $currentTime;
 
 

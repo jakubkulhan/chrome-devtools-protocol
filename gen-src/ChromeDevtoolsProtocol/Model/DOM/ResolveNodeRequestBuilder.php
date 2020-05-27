@@ -10,11 +10,8 @@ namespace ChromeDevtoolsProtocol\Model\DOM;
 final class ResolveNodeRequestBuilder
 {
 	private $nodeId;
-
 	private $backendNodeId;
-
 	private $objectGroup;
-
 	private $executionContextId;
 
 

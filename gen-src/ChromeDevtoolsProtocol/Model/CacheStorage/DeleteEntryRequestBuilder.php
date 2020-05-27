@@ -12,7 +12,6 @@ use ChromeDevtoolsProtocol\Exception\BuilderException;
 final class DeleteEntryRequestBuilder
 {
 	private $cacheId;
-
 	private $request;
 
 

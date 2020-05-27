@@ -13,11 +13,8 @@ use ChromeDevtoolsProtocol\Model\Emulation\UserAgentMetadata;
 final class SetUserAgentOverrideRequestBuilder
 {
 	private $userAgent;
-
 	private $acceptLanguage;
-
 	private $platform;
-
 	private $userAgentMetadata;
 
 

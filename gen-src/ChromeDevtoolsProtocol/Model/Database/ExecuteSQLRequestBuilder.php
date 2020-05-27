@@ -12,7 +12,6 @@ use ChromeDevtoolsProtocol\Exception\BuilderException;
 final class ExecuteSQLRequestBuilder
 {
 	private $databaseId;
-
 	private $query;
 
 

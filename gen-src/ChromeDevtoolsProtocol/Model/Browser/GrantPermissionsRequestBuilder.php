@@ -12,9 +12,7 @@ use ChromeDevtoolsProtocol\Exception\BuilderException;
 final class GrantPermissionsRequestBuilder
 {
 	private $permissions;
-
 	private $origin;
-
 	private $browserContextId;
 
 

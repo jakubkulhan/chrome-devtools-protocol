@@ -12,7 +12,6 @@ use ChromeDevtoolsProtocol\Exception\BuilderException;
 final class SetRecordingRequestBuilder
 {
 	private $shouldRecord;
-
 	private $service;
 
 

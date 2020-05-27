@@ -12,7 +12,6 @@ use ChromeDevtoolsProtocol\Exception\BuilderException;
 final class SetBreakpointRequestBuilder
 {
 	private $location;
-
 	private $condition;
 
 

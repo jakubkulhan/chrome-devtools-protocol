@@ -10,35 +10,20 @@ namespace ChromeDevtoolsProtocol\Model\Page;
 final class PrintToPDFRequestBuilder
 {
 	private $landscape;
-
 	private $displayHeaderFooter;
-
 	private $printBackground;
-
 	private $scale;
-
 	private $paperWidth;
-
 	private $paperHeight;
-
 	private $marginTop;
-
 	private $marginBottom;
-
 	private $marginLeft;
-
 	private $marginRight;
-
 	private $pageRanges;
-
 	private $ignoreInvalidPageRanges;
-
 	private $headerTemplate;
-
 	private $footerTemplate;
-
 	private $preferCSSPageSize;
-
 	private $transferMode;
 
 

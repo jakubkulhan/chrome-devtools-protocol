@@ -12,11 +12,8 @@ use ChromeDevtoolsProtocol\Exception\BuilderException;
 final class SetUserAgentOverrideRequestBuilder
 {
 	private $userAgent;
-
 	private $acceptLanguage;
-
 	private $platform;
-
 	private $userAgentMetadata;
 
 

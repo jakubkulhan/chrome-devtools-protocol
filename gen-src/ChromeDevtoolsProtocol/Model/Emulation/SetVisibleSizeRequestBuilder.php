@@ -12,7 +12,6 @@ use ChromeDevtoolsProtocol\Exception\BuilderException;
 final class SetVisibleSizeRequestBuilder
 {
 	private $width;
-
 	private $height;
 
 

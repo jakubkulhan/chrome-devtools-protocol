@@ -12,11 +12,8 @@ use ChromeDevtoolsProtocol\Exception\BuilderException;
 final class DeleteObjectStoreEntriesRequestBuilder
 {
 	private $securityOrigin;
-
 	private $databaseName;
-
 	private $objectStoreName;
-
 	private $keyRange;
 
 

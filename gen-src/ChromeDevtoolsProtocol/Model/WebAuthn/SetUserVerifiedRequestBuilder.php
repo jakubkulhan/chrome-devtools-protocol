@@ -12,7 +12,6 @@ use ChromeDevtoolsProtocol\Exception\BuilderException;
 final class SetUserVerifiedRequestBuilder
 {
 	private $authenticatorId;
-
 	private $isUserVerified;
 
 

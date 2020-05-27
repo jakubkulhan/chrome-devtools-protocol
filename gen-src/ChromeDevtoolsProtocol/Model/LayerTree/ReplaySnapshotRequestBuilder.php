@@ -12,11 +12,8 @@ use ChromeDevtoolsProtocol\Exception\BuilderException;
 final class ReplaySnapshotRequestBuilder
 {
 	private $snapshotId;
-
 	private $fromStep;
-
 	private $toStep;
-
 	private $scale;
 
 

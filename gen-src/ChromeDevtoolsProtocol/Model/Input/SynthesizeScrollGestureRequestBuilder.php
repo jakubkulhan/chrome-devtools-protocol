@@ -12,27 +12,16 @@ use ChromeDevtoolsProtocol\Exception\BuilderException;
 final class SynthesizeScrollGestureRequestBuilder
 {
 	private $x;
-
 	private $y;
-
 	private $xDistance;
-
 	private $yDistance;
-
 	private $xOverscroll;
-
 	private $yOverscroll;
-
 	private $preventFling;
-
 	private $speed;
-
 	private $gestureSourceType;
-
 	private $repeatCount;
-
 	private $repeatDelayMs;
-
 	private $interactionMarkerName;
 
 

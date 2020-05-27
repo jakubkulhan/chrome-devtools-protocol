@@ -10,7 +10,6 @@ namespace ChromeDevtoolsProtocol\Model\Page;
 final class ReloadRequestBuilder
 {
 	private $ignoreCache;
-
 	private $scriptToEvaluateOnLoad;
 
 

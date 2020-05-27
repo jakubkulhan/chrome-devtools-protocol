@@ -12,11 +12,8 @@ use ChromeDevtoolsProtocol\Exception\BuilderException;
 final class DispatchTouchEventRequestBuilder
 {
 	private $type;
-
 	private $touchPoints;
-
 	private $modifiers;
-
 	private $timestamp;
 
 

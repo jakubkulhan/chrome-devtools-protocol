@@ -10,11 +10,8 @@ namespace ChromeDevtoolsProtocol\Model\Page;
 final class CaptureScreenshotRequestBuilder
 {
 	private $format;
-
 	private $quality;
-
 	private $clip;
-
 	private $fromSurface;
 
 

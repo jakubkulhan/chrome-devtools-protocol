@@ -12,7 +12,6 @@ use ChromeDevtoolsProtocol\Exception\BuilderException;
 final class SetStyleSheetTextRequestBuilder
 {
 	private $styleSheetId;
-
 	private $text;
 
 

@@ -10,11 +10,8 @@ namespace ChromeDevtoolsProtocol\Model\HeadlessExperimental;
 final class BeginFrameRequestBuilder
 {
 	private $frameTimeTicks;
-
 	private $interval;
-
 	private $noDisplayUpdates;
-
 	private $screenshot;
 
 

@@ -12,19 +12,12 @@ use ChromeDevtoolsProtocol\Exception\BuilderException;
 final class RunScriptRequestBuilder
 {
 	private $scriptId;
-
 	private $executionContextId;
-
 	private $objectGroup;
-
 	private $silent;
-
 	private $includeCommandLineAPI;
-
 	private $returnByValue;
-
 	private $generatePreview;
-
 	private $awaitPromise;
 
 

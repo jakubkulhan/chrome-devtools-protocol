@@ -12,9 +12,7 @@ use ChromeDevtoolsProtocol\Exception\BuilderException;
 final class SetMediaTextRequestBuilder
 {
 	private $styleSheetId;
-
 	private $range;
-
 	private $text;
 
 

@@ -10,11 +10,8 @@ namespace ChromeDevtoolsProtocol\Model\DOM;
 final class ScrollIntoViewIfNeededRequestBuilder
 {
 	private $nodeId;
-
 	private $backendNodeId;
-
 	private $objectId;
-
 	private $rect;
 
 

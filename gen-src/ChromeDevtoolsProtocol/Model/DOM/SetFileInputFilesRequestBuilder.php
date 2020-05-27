@@ -12,11 +12,8 @@ use ChromeDevtoolsProtocol\Exception\BuilderException;
 final class SetFileInputFilesRequestBuilder
 {
 	private $files;
-
 	private $nodeId;
-
 	private $backendNodeId;
-
 	private $objectId;
 
 

@@ -12,9 +12,7 @@ use ChromeDevtoolsProtocol\Exception\BuilderException;
 final class RequestCachedResponseRequestBuilder
 {
 	private $cacheId;
-
 	private $requestURL;
-
 	private $requestHeaders;
 
 

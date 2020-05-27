@@ -12,23 +12,14 @@ use ChromeDevtoolsProtocol\Exception\BuilderException;
 final class SetCookieRequestBuilder
 {
 	private $name;
-
 	private $value;
-
 	private $url;
-
 	private $domain;
-
 	private $path;
-
 	private $secure;
-
 	private $httpOnly;
-
 	private $sameSite;
-
 	private $expires;
-
 	private $priority;
 
 

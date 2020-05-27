@@ -12,9 +12,7 @@ use ChromeDevtoolsProtocol\Exception\BuilderException;
 final class SetTimingRequestBuilder
 {
 	private $animationId;
-
 	private $duration;
-
 	private $delay;
 
 

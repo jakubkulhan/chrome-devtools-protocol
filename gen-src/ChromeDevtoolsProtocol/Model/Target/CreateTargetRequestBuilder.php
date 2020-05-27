@@ -12,17 +12,11 @@ use ChromeDevtoolsProtocol\Exception\BuilderException;
 final class CreateTargetRequestBuilder
 {
 	private $url;
-
 	private $width;
-
 	private $height;
-
 	private $browserContextId;
-
 	private $enableBeginFrameControl;
-
 	private $newWindow;
-
 	private $background;
 
 

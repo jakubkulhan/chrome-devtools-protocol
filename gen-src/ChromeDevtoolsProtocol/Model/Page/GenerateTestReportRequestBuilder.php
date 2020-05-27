@@ -12,7 +12,6 @@ use ChromeDevtoolsProtocol\Exception\BuilderException;
 final class GenerateTestReportRequestBuilder
 {
 	private $message;
-
 	private $group;
 
 

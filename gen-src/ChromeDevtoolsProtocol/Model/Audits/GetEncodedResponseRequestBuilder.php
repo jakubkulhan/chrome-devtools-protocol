@@ -12,11 +12,8 @@ use ChromeDevtoolsProtocol\Exception\BuilderException;
 final class GetEncodedResponseRequestBuilder
 {
 	private $requestId;
-
 	private $encoding;
-
 	private $quality;
-
 	private $sizeOnly;
 
 

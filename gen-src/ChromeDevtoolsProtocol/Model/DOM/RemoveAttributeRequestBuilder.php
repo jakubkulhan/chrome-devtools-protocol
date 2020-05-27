@@ -12,7 +12,6 @@ use ChromeDevtoolsProtocol\Exception\BuilderException;
 final class RemoveAttributeRequestBuilder
 {
 	private $nodeId;
-
 	private $name;
 
 

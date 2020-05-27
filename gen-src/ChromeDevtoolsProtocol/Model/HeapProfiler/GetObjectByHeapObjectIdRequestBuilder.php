@@ -12,7 +12,6 @@ use ChromeDevtoolsProtocol\Exception\BuilderException;
 final class GetObjectByHeapObjectIdRequestBuilder
 {
 	private $objectId;
-
 	private $objectGroup;
 
 

@@ -10,7 +10,6 @@ namespace ChromeDevtoolsProtocol\Model\DOM;
 final class GetFlattenedDocumentRequestBuilder
 {
 	private $depth;
-
 	private $pierce;
 
 

@@ -12,9 +12,7 @@ use ChromeDevtoolsProtocol\Exception\BuilderException;
 final class SetEffectivePropertyValueForNodeRequestBuilder
 {
 	private $nodeId;
-
 	private $propertyName;
-
 	private $value;
 
 

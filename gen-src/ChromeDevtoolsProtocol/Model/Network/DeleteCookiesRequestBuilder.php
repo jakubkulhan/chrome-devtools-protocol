@@ -12,11 +12,8 @@ use ChromeDevtoolsProtocol\Exception\BuilderException;
 final class DeleteCookiesRequestBuilder
 {
 	private $name;
-
 	private $url;
-
 	private $domain;
-
 	private $path;
 
 

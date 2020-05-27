@@ -12,21 +12,13 @@ use ChromeDevtoolsProtocol\Exception\BuilderException;
 final class EvaluateOnCallFrameRequestBuilder
 {
 	private $callFrameId;
-
 	private $expression;
-
 	private $objectGroup;
-
 	private $includeCommandLineAPI;
-
 	private $silent;
-
 	private $returnByValue;
-
 	private $generatePreview;
-
 	private $throwOnSideEffect;
-
 	private $timeout;
 
 

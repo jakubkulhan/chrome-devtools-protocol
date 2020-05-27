@@ -12,7 +12,6 @@ use ChromeDevtoolsProtocol\Exception\BuilderException;
 final class RemoveEventListenerBreakpointRequestBuilder
 {
 	private $eventName;
-
 	private $targetName;
 
 

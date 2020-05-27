@@ -12,9 +12,7 @@ use ChromeDevtoolsProtocol\Exception\BuilderException;
 final class SetAttributesAsTextRequestBuilder
 {
 	private $nodeId;
-
 	private $text;
-
 	private $name;
 
 

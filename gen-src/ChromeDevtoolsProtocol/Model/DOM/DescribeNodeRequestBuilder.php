@@ -10,13 +10,9 @@ namespace ChromeDevtoolsProtocol\Model\DOM;
 final class DescribeNodeRequestBuilder
 {
 	private $nodeId;
-
 	private $backendNodeId;
-
 	private $objectId;
-
 	private $depth;
-
 	private $pierce;
 
 

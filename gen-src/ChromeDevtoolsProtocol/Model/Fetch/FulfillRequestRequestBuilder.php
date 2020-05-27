@@ -12,15 +12,10 @@ use ChromeDevtoolsProtocol\Exception\BuilderException;
 final class FulfillRequestRequestBuilder
 {
 	private $requestId;
-
 	private $responseCode;
-
 	private $responseHeaders;
-
 	private $binaryResponseHeaders;
-
 	private $body;
-
 	private $responsePhrase;
 
 

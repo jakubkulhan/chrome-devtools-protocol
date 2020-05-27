@@ -12,9 +12,7 @@ use ChromeDevtoolsProtocol\Exception\BuilderException;
 final class SetDeviceOrientationOverrideRequestBuilder
 {
 	private $alpha;
-
 	private $beta;
-
 	private $gamma;
 
 

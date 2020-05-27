@@ -12,7 +12,6 @@ use ChromeDevtoolsProtocol\Exception\BuilderException;
 final class SetPausedRequestBuilder
 {
 	private $animations;
-
 	private $paused;
 
 

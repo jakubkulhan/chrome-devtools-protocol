@@ -12,13 +12,9 @@ use ChromeDevtoolsProtocol\Exception\BuilderException;
 final class SynthesizeTapGestureRequestBuilder
 {
 	private $x;
-
 	private $y;
-
 	private $duration;
-
 	private $tapCount;
-
 	private $gestureSourceType;
 
 

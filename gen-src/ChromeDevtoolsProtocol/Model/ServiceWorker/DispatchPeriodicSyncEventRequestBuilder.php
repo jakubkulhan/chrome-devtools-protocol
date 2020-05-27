@@ -12,9 +12,7 @@ use ChromeDevtoolsProtocol\Exception\BuilderException;
 final class DispatchPeriodicSyncEventRequestBuilder
 {
 	private $origin;
-
 	private $registrationId;
-
 	private $tag;
 
 

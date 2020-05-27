@@ -12,11 +12,8 @@ use ChromeDevtoolsProtocol\Exception\BuilderException;
 final class GetPropertiesRequestBuilder
 {
 	private $objectId;
-
 	private $ownProperties;
-
 	private $accessorPropertiesOnly;
-
 	private $generatePreview;
 
 

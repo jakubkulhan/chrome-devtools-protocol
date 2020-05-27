@@ -12,9 +12,7 @@ use ChromeDevtoolsProtocol\Exception\BuilderException;
 final class ReadRequestBuilder
 {
 	private $handle;
-
 	private $offset;
-
 	private $size;
 
 

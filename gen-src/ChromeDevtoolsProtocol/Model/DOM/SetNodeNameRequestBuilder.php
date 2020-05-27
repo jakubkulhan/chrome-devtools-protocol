@@ -12,7 +12,6 @@ use ChromeDevtoolsProtocol\Exception\BuilderException;
 final class SetNodeNameRequestBuilder
 {
 	private $nodeId;
-
 	private $name;
 
 

@@ -12,7 +12,6 @@ use ChromeDevtoolsProtocol\Exception\BuilderException;
 final class ContinueToLocationRequestBuilder
 {
 	private $location;
-
 	private $targetCallFrames;
 
 

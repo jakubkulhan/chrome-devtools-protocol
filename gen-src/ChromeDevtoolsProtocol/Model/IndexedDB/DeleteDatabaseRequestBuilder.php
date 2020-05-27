@@ -12,7 +12,6 @@ use ChromeDevtoolsProtocol\Exception\BuilderException;
 final class DeleteDatabaseRequestBuilder
 {
 	private $securityOrigin;
-
 	private $databaseName;
 
 

@@ -12,9 +12,7 @@ use ChromeDevtoolsProtocol\Exception\BuilderException;
 final class AddRuleRequestBuilder
 {
 	private $styleSheetId;
-
 	private $ruleText;
-
 	private $location;
 
 

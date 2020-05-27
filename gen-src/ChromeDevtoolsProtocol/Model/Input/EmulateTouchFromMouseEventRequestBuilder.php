@@ -12,21 +12,13 @@ use ChromeDevtoolsProtocol\Exception\BuilderException;
 final class EmulateTouchFromMouseEventRequestBuilder
 {
 	private $type;
-
 	private $x;
-
 	private $y;
-
 	private $button;
-
 	private $timestamp;
-
 	private $deltaX;
-
 	private $deltaY;
-
 	private $modifiers;
-
 	private $clickCount;
 
 

@@ -12,7 +12,6 @@ use ChromeDevtoolsProtocol\Exception\BuilderException;
 final class SetEmitTouchEventsForMouseRequestBuilder
 {
 	private $enabled;
-
 	private $configuration;
 
 

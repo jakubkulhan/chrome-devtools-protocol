@@ -12,9 +12,7 @@ use ChromeDevtoolsProtocol\Exception\BuilderException;
 final class GetSearchResultsRequestBuilder
 {
 	private $searchId;
-
 	private $fromIndex;
-
 	private $toIndex;
 
 

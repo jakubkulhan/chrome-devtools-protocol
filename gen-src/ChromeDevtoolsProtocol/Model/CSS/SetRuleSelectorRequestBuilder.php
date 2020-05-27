@@ -12,9 +12,7 @@ use ChromeDevtoolsProtocol\Exception\BuilderException;
 final class SetRuleSelectorRequestBuilder
 {
 	private $styleSheetId;
-
 	private $range;
-
 	private $selector;
 
 

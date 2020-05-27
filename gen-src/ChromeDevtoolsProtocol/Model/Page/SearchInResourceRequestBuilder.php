@@ -12,13 +12,9 @@ use ChromeDevtoolsProtocol\Exception\BuilderException;
 final class SearchInResourceRequestBuilder
 {
 	private $frameId;
-
 	private $url;
-
 	private $query;
-
 	private $caseSensitive;
-
 	private $isRegex;
 
 

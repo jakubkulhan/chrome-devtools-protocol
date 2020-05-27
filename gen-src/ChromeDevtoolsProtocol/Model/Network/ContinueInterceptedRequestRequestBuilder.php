@@ -12,19 +12,12 @@ use ChromeDevtoolsProtocol\Exception\BuilderException;
 final class ContinueInterceptedRequestRequestBuilder
 {
 	private $interceptionId;
-
 	private $errorReason;
-
 	private $rawResponse;
-
 	private $url;
-
 	private $method;
-
 	private $postData;
-
 	private $headers;
-
 	private $authChallengeResponse;
 
 

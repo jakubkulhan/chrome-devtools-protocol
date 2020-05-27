@@ -12,13 +12,9 @@ use ChromeDevtoolsProtocol\Exception\BuilderException;
 final class HighlightNodeRequestBuilder
 {
 	private $highlightConfig;
-
 	private $nodeId;
-
 	private $backendNodeId;
-
 	private $objectId;
-
 	private $selector;
 
 

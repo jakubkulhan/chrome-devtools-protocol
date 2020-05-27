@@ -10,13 +10,9 @@ namespace ChromeDevtoolsProtocol\Model\Page;
 final class StartScreencastRequestBuilder
 {
 	private $format;
-
 	private $quality;
-
 	private $maxWidth;
-
 	private $maxHeight;
-
 	private $everyNthFrame;
 
 

@@ -10,7 +10,6 @@ namespace ChromeDevtoolsProtocol\Model\Target;
 final class DetachFromTargetRequestBuilder
 {
 	private $sessionId;
-
 	private $targetId;
 
 

@@ -13,27 +13,16 @@ use ChromeDevtoolsProtocol\Model\Page\Viewport;
 final class SetDeviceMetricsOverrideRequestBuilder
 {
 	private $width;
-
 	private $height;
-
 	private $deviceScaleFactor;
-
 	private $mobile;
-
 	private $scale;
-
 	private $screenWidth;
-
 	private $screenHeight;
-
 	private $positionX;
-
 	private $positionY;
-
 	private $dontSetVisibleSize;
-
 	private $screenOrientation;
-
 	private $viewport;
 
 

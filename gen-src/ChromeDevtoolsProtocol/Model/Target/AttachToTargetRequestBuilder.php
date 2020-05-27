@@ -12,7 +12,6 @@ use ChromeDevtoolsProtocol\Exception\BuilderException;
 final class AttachToTargetRequestBuilder
 {
 	private $targetId;
-
 	private $flatten;
 
 

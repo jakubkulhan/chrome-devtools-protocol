@@ -12,9 +12,7 @@ use ChromeDevtoolsProtocol\Exception\BuilderException;
 final class MoveToRequestBuilder
 {
 	private $nodeId;
-
 	private $targetNodeId;
-
 	private $insertBeforeNodeId;
 
 

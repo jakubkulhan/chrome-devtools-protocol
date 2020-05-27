@@ -10,9 +10,7 @@ namespace ChromeDevtoolsProtocol\Model\Profiler;
 final class StartPreciseCoverageRequestBuilder
 {
 	private $callCount;
-
 	private $detailed;
-
 	private $allowTriggeredUpdates;
 
 

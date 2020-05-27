@@ -12,15 +12,10 @@ use ChromeDevtoolsProtocol\Exception\BuilderException;
 final class SetBreakpointByUrlRequestBuilder
 {
 	private $lineNumber;
-
 	private $url;
-
 	private $urlRegex;
-
 	private $scriptHash;
-
 	private $columnNumber;
-
 	private $condition;
 
 

@@ -10,7 +10,6 @@ namespace ChromeDevtoolsProtocol\Model\Browser;
 final class GetHistogramsRequestBuilder
 {
 	private $query;
-
 	private $delta;
 
 

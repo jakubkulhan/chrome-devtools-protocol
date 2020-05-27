@@ -12,9 +12,7 @@ use ChromeDevtoolsProtocol\Exception\BuilderException;
 final class SetDownloadBehaviorRequestBuilder
 {
 	private $behavior;
-
 	private $browserContextId;
-
 	private $downloadPath;
 
 

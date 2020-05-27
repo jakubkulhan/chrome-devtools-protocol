@@ -13,11 +13,8 @@ use ChromeDevtoolsProtocol\Model\DOM\Rect;
 final class ProfileSnapshotRequestBuilder
 {
 	private $snapshotId;
-
 	private $minRepeatCount;
-
 	private $minDuration;
-
 	private $clipRect;
 
 

@@ -12,9 +12,7 @@ use ChromeDevtoolsProtocol\Exception\BuilderException;
 final class CaptureSnapshotRequestBuilder
 {
 	private $computedStyles;
-
 	private $includePaintOrder;
-
 	private $includeDOMRects;
 
 

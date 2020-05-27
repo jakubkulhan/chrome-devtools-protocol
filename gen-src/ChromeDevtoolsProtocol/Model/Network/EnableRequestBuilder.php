@@ -10,9 +10,7 @@ namespace ChromeDevtoolsProtocol\Model\Network;
 final class EnableRequestBuilder
 {
 	private $maxTotalBufferSize;
-
 	private $maxResourceBufferSize;
-
 	private $maxPostDataSize;
 
 

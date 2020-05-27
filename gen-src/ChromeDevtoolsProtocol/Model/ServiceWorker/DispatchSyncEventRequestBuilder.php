@@ -12,11 +12,8 @@ use ChromeDevtoolsProtocol\Exception\BuilderException;
 final class DispatchSyncEventRequestBuilder
 {
 	private $origin;
-
 	private $registrationId;
-
 	private $tag;
-
 	private $lastChance;
 
 

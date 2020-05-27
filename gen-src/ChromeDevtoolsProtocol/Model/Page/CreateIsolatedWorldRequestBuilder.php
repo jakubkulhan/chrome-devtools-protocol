@@ -12,9 +12,7 @@ use ChromeDevtoolsProtocol\Exception\BuilderException;
 final class CreateIsolatedWorldRequestBuilder
 {
 	private $frameId;
-
 	private $worldName;
-
 	private $grantUniveralAccess;
 
 

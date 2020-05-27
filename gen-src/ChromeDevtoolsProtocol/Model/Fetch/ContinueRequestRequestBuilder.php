@@ -12,13 +12,9 @@ use ChromeDevtoolsProtocol\Exception\BuilderException;
 final class ContinueRequestRequestBuilder
 {
 	private $requestId;
-
 	private $url;
-
 	private $method;
-
 	private $postData;
-
 	private $headers;
 
 

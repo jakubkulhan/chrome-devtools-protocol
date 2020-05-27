@@ -12,13 +12,9 @@ use ChromeDevtoolsProtocol\Exception\BuilderException;
 final class NavigateRequestBuilder
 {
 	private $url;
-
 	private $referrer;
-
 	private $transitionType;
-
 	private $frameId;
-
 	private $referrerPolicy;
 
 

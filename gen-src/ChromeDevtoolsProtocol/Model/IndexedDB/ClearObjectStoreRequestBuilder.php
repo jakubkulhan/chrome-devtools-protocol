@@ -12,9 +12,7 @@ use ChromeDevtoolsProtocol\Exception\BuilderException;
 final class ClearObjectStoreRequestBuilder
 {
 	private $securityOrigin;
-
 	private $databaseName;
-
 	private $objectStoreName;
 
 

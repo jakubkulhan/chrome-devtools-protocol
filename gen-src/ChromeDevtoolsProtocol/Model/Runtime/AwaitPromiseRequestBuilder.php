@@ -12,9 +12,7 @@ use ChromeDevtoolsProtocol\Exception\BuilderException;
 final class AwaitPromiseRequestBuilder
 {
 	private $promiseObjectId;
-
 	private $returnByValue;
-
 	private $generatePreview;
 
 

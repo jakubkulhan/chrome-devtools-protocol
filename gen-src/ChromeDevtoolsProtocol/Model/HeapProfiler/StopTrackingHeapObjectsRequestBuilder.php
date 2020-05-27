@@ -10,7 +10,6 @@ namespace ChromeDevtoolsProtocol\Model\HeapProfiler;
 final class StopTrackingHeapObjectsRequestBuilder
 {
 	private $reportProgress;
-
 	private $treatGlobalObjectsAsRoots;
 
 

@@ -10,17 +10,11 @@ namespace ChromeDevtoolsProtocol\Model\Tracing;
 final class StartRequestBuilder
 {
 	private $categories;
-
 	private $options;
-
 	private $bufferUsageReportingInterval;
-
 	private $transferMode;
-
 	private $streamFormat;
-
 	private $streamCompression;
-
 	private $traceConfig;
 
 

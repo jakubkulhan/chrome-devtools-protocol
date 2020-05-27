@@ -12,7 +12,6 @@ use ChromeDevtoolsProtocol\Exception\BuilderException;
 final class HandleJavaScriptDialogRequestBuilder
 {
 	private $accept;
-
 	private $promptText;
 
 

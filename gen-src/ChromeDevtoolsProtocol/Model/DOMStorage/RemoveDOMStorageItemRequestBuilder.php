@@ -12,7 +12,6 @@ use ChromeDevtoolsProtocol\Exception\BuilderException;
 final class RemoveDOMStorageItemRequestBuilder
 {
 	private $storageId;
-
 	private $key;
 
 

@@ -12,11 +12,8 @@ use ChromeDevtoolsProtocol\Exception\BuilderException;
 final class GetNodeForLocationRequestBuilder
 {
 	private $x;
-
 	private $y;
-
 	private $includeUserAgentShadowDOM;
-
 	private $ignorePointerEventsNone;
 
 

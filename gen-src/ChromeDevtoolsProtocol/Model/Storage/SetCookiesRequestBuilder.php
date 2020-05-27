@@ -13,7 +13,6 @@ use ChromeDevtoolsProtocol\Model\Network\CookieParam;
 final class SetCookiesRequestBuilder
 {
 	private $cookies;
-
 	private $browserContextId;
 
 

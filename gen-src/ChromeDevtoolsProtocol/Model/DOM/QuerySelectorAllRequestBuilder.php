@@ -12,7 +12,6 @@ use ChromeDevtoolsProtocol\Exception\BuilderException;
 final class QuerySelectorAllRequestBuilder
 {
 	private $nodeId;
-
 	private $selector;
 
 

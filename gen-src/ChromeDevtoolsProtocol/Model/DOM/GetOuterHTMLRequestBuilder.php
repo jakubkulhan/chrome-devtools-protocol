@@ -10,9 +10,7 @@ namespace ChromeDevtoolsProtocol\Model\DOM;
 final class GetOuterHTMLRequestBuilder
 {
 	private $nodeId;
-
 	private $backendNodeId;
-
 	private $objectId;
 
 

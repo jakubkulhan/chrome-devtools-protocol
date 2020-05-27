@@ -10,7 +10,6 @@ namespace ChromeDevtoolsProtocol\Model\HeapProfiler;
 final class TakeHeapSnapshotRequestBuilder
 {
 	private $reportProgress;
-
 	private $treatGlobalObjectsAsRoots;
 
 

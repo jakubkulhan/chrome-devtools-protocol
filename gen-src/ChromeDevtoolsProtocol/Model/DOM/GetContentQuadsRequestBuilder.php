@@ -10,9 +10,7 @@ namespace ChromeDevtoolsProtocol\Model\DOM;
 final class GetContentQuadsRequestBuilder
 {
 	private $nodeId;
-
 	private $backendNodeId;
-
 	private $objectId;
 
 

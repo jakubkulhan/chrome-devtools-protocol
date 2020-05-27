@@ -12,9 +12,7 @@ use ChromeDevtoolsProtocol\Exception\BuilderException;
 final class SetDOMStorageItemRequestBuilder
 {
 	private $storageId;
-
 	private $key;
-
 	private $value;
 
 

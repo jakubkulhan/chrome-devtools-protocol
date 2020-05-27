@@ -12,7 +12,6 @@ use ChromeDevtoolsProtocol\Exception\BuilderException;
 final class SetInspectModeRequestBuilder
 {
 	private $mode;
-
 	private $highlightConfig;
 
 

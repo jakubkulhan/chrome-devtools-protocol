@@ -12,29 +12,17 @@ use ChromeDevtoolsProtocol\Exception\BuilderException;
 final class EvaluateRequestBuilder
 {
 	private $expression;
-
 	private $objectGroup;
-
 	private $includeCommandLineAPI;
-
 	private $silent;
-
 	private $contextId;
-
 	private $returnByValue;
-
 	private $generatePreview;
-
 	private $userGesture;
-
 	private $awaitPromise;
-
 	private $throwOnSideEffect;
-
 	private $timeout;
-
 	private $disableBreaks;
-
 	private $replMode;
 
 

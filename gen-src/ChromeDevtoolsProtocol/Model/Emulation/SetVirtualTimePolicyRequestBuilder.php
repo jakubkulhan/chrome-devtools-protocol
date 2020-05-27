@@ -12,13 +12,9 @@ use ChromeDevtoolsProtocol\Exception\BuilderException;
 final class SetVirtualTimePolicyRequestBuilder
 {
 	private $policy;
-
 	private $budget;
-
 	private $maxVirtualTimeTaskStarvationCount;
-
 	private $waitForNavigation;
-
 	private $initialVirtualTime;
 
 

@@ -12,7 +12,6 @@ use ChromeDevtoolsProtocol\Exception\BuilderException;
 final class QueryObjectsRequestBuilder
 {
 	private $prototypeObjectId;
-
 	private $objectGroup;
 
 

@@ -10,9 +10,7 @@ namespace ChromeDevtoolsProtocol\Model\Emulation;
 final class SetGeolocationOverrideRequestBuilder
 {
 	private $latitude;
-
 	private $longitude;
-
 	private $accuracy;
 
 

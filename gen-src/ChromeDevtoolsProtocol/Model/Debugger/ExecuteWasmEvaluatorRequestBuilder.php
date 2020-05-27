@@ -12,9 +12,7 @@ use ChromeDevtoolsProtocol\Exception\BuilderException;
 final class ExecuteWasmEvaluatorRequestBuilder
 {
 	private $callFrameId;
-
 	private $evaluator;
-
 	private $timeout;
 
 

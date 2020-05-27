@@ -12,25 +12,15 @@ use ChromeDevtoolsProtocol\Exception\BuilderException;
 final class DispatchMouseEventRequestBuilder
 {
 	private $type;
-
 	private $x;
-
 	private $y;
-
 	private $modifiers;
-
 	private $timestamp;
-
 	private $button;
-
 	private $buttons;
-
 	private $clickCount;
-
 	private $deltaX;
-
 	private $deltaY;
-
 	private $pointerType;
 
 

@@ -12,7 +12,6 @@ use ChromeDevtoolsProtocol\Exception\BuilderException;
 final class ClearDataForOriginRequestBuilder
 {
 	private $origin;
-
 	private $storageTypes;
 
 

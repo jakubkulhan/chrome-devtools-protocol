@@ -12,11 +12,8 @@ use ChromeDevtoolsProtocol\Exception\BuilderException;
 final class CompileScriptRequestBuilder
 {
 	private $expression;
-
 	private $sourceURL;
-
 	private $persistScript;
-
 	private $executionContextId;
 
 

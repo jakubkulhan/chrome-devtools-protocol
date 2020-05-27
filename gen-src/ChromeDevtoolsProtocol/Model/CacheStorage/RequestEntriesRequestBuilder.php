@@ -12,11 +12,8 @@ use ChromeDevtoolsProtocol\Exception\BuilderException;
 final class RequestEntriesRequestBuilder
 {
 	private $cacheId;
-
 	private $skipCount;
-
 	private $pageSize;
-
 	private $pathFilter;
 
 

@@ -12,13 +12,9 @@ use ChromeDevtoolsProtocol\Exception\BuilderException;
 final class SynthesizePinchGestureRequestBuilder
 {
 	private $x;
-
 	private $y;
-
 	private $scaleFactor;
-
 	private $relativeSpeed;
-
 	private $gestureSourceType;
 
 

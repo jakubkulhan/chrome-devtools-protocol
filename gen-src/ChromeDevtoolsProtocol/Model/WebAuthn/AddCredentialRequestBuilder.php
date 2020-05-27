@@ -12,7 +12,6 @@ use ChromeDevtoolsProtocol\Exception\BuilderException;
 final class AddCredentialRequestBuilder
 {
 	private $authenticatorId;
-
 	private $credential;
 
 

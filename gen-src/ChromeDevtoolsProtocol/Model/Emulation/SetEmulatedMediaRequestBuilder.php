@@ -10,7 +10,6 @@ namespace ChromeDevtoolsProtocol\Model\Emulation;
 final class SetEmulatedMediaRequestBuilder
 {
 	private $media;
-
 	private $features;
 
 

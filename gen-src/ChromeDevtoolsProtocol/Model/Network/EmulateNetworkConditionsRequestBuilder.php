@@ -12,13 +12,9 @@ use ChromeDevtoolsProtocol\Exception\BuilderException;
 final class EmulateNetworkConditionsRequestBuilder
 {
 	private $offline;
-
 	private $latency;
-
 	private $downloadThroughput;
-
 	private $uploadThroughput;
-
 	private $connectionType;
 
 

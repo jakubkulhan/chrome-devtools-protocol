@@ -12,9 +12,7 @@ use ChromeDevtoolsProtocol\Exception\BuilderException;
 final class RequestChildNodesRequestBuilder
 {
 	private $nodeId;
-
 	private $depth;
-
 	private $pierce;
 
 

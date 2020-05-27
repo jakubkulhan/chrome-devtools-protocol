@@ -12,7 +12,6 @@ use ChromeDevtoolsProtocol\Exception\BuilderException;
 final class ExposeDevToolsProtocolRequestBuilder
 {
 	private $targetId;
-
 	private $bindingName;
 
 

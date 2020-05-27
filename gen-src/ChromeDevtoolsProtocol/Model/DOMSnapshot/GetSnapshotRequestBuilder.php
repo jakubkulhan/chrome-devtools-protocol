@@ -12,11 +12,8 @@ use ChromeDevtoolsProtocol\Exception\BuilderException;
 final class GetSnapshotRequestBuilder
 {
 	private $computedStyleWhitelist;
-
 	private $includeEventListeners;
-
 	private $includePaintOrder;
-
 	private $includeUserAgentShadowTree;
 
 

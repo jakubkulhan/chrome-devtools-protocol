@@ -12,9 +12,7 @@ use ChromeDevtoolsProtocol\Exception\BuilderException;
 final class SetAutoAttachRequestBuilder
 {
 	private $autoAttach;
-
 	private $waitForDebuggerOnStart;
-
 	private $flatten;
 
 

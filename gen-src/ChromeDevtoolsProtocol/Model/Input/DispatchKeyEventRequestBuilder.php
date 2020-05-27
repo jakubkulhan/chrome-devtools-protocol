@@ -12,31 +12,18 @@ use ChromeDevtoolsProtocol\Exception\BuilderException;
 final class DispatchKeyEventRequestBuilder
 {
 	private $type;
-
 	private $modifiers;
-
 	private $timestamp;
-
 	private $text;
-
 	private $unmodifiedText;
-
 	private $keyIdentifier;
-
 	private $code;
-
 	private $key;
-
 	private $windowsVirtualKeyCode;
-
 	private $nativeVirtualKeyCode;
-
 	private $autoRepeat;
-
 	private $isKeypad;
-
 	private $isSystemKey;
-
 	private $location;
 
 

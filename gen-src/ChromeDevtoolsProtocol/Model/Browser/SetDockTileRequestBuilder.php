@@ -10,7 +10,6 @@ namespace ChromeDevtoolsProtocol\Model\Browser;
 final class SetDockTileRequestBuilder
 {
 	private $badgeLabel;
-
 	private $image;
 
 
