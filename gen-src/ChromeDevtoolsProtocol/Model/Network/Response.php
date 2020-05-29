@@ -131,6 +131,27 @@ final class Response implements \JsonSerializable
 	public $timing;
 
 	/**
+	 * Response source of response from ServiceWorker.
+	 *
+	 * @var string
+	 */
+	public $serviceWorkerResponseSource;
+
+	/**
+	 * The time at which the returned response was generated.
+	 *
+	 * @var int|float
+	 */
+	public $responseTime;
+
+	/**
+	 * Cache Storage Cache Name.
+	 *
+	 * @var string|null
+	 */
+	public $cacheStorageCacheName;
+
+	/**
 	 * Protocol used to fetch this request.
 	 *
 	 * @var string|null
@@ -206,6 +227,15 @@ final class Response implements \JsonSerializable
 		if (isset($data->timing)) {
 			$instance->timing = ResourceTiming::fromJson($data->timing);
 		}
+		if (isset($data->serviceWorkerResponseSource)) {
+			$instance->serviceWorkerResponseSource = (string)$data->serviceWorkerResponseSource;
+		}
+		if (isset($data->responseTime)) {
+			$instance->responseTime = $data->responseTime;
+		}
+		if (isset($data->cacheStorageCacheName)) {
+			$instance->cacheStorageCacheName = (string)$data->cacheStorageCacheName;
+		}
 		if (isset($data->protocol)) {
 			$instance->protocol = (string)$data->protocol;
 		}
@@ -272,6 +302,15 @@ final class Response implements \JsonSerializable
 		}
 		if ($this->timing !== null) {
 			$data->timing = $this->timing->jsonSerialize();
+		}
+		if ($this->serviceWorkerResponseSource !== null) {
+			$data->serviceWorkerResponseSource = $this->serviceWorkerResponseSource;
+		}
+		if ($this->responseTime !== null) {
+			$data->responseTime = $this->responseTime;
+		}
+		if ($this->cacheStorageCacheName !== null) {
+			$data->cacheStorageCacheName = $this->cacheStorageCacheName;
 		}
 		if ($this->protocol !== null) {
 			$data->protocol = $this->protocol;
