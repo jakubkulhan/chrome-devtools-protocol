@@ -10,6 +10,8 @@ namespace ChromeDevtoolsProtocol\Model\Target;
 final class CreateBrowserContextRequestBuilder
 {
 	private $disposeOnDetach;
+	private $proxyServer;
+	private $proxyBypassList;
 
 
 	/**
@@ -19,6 +21,8 @@ final class CreateBrowserContextRequestBuilder
 	{
 		$instance = new CreateBrowserContextRequest();
 		$instance->disposeOnDetach = $this->disposeOnDetach;
+		$instance->proxyServer = $this->proxyServer;
+		$instance->proxyBypassList = $this->proxyBypassList;
 		return $instance;
 	}
 
@@ -31,6 +35,30 @@ final class CreateBrowserContextRequestBuilder
 	public function setDisposeOnDetach($disposeOnDetach): self
 	{
 		$this->disposeOnDetach = $disposeOnDetach;
+		return $this;
+	}
+
+
+	/**
+	 * @param string|null $proxyServer
+	 *
+	 * @return self
+	 */
+	public function setProxyServer($proxyServer): self
+	{
+		$this->proxyServer = $proxyServer;
+		return $this;
+	}
+
+
+	/**
+	 * @param string|null $proxyBypassList
+	 *
+	 * @return self
+	 */
+	public function setProxyBypassList($proxyBypassList): self
+	{
+		$this->proxyBypassList = $proxyBypassList;
 		return $this;
 	}
 }
