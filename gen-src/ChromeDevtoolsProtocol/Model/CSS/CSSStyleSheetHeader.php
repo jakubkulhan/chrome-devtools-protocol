@@ -82,6 +82,13 @@ final class CSSStyleSheetHeader implements \JsonSerializable
 	public $isInline;
 
 	/**
+	 * Whether this stylesheet is mutable. Inline stylesheets become mutable after they have been modified via CSSOM API. <link> element's stylesheets are never mutable. Constructed stylesheets (new CSSStyleSheet()) are mutable immediately after creation.
+	 *
+	 * @var bool
+	 */
+	public $isMutable;
+
+	/**
 	 * Line offset of the stylesheet within the resource (zero based).
 	 *
 	 * @var int|float
@@ -150,6 +157,9 @@ final class CSSStyleSheetHeader implements \JsonSerializable
 		if (isset($data->isInline)) {
 			$instance->isInline = (bool)$data->isInline;
 		}
+		if (isset($data->isMutable)) {
+			$instance->isMutable = (bool)$data->isMutable;
+		}
 		if (isset($data->startLine)) {
 			$instance->startLine = $data->startLine;
 		}
@@ -201,6 +211,9 @@ final class CSSStyleSheetHeader implements \JsonSerializable
 		}
 		if ($this->isInline !== null) {
 			$data->isInline = $this->isInline;
+		}
+		if ($this->isMutable !== null) {
+			$data->isMutable = $this->isMutable;
 		}
 		if ($this->startLine !== null) {
 			$data->startLine = $this->startLine;
