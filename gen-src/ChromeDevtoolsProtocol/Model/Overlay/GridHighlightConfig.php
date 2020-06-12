@@ -21,6 +21,13 @@ final class GridHighlightConfig implements \JsonSerializable
 	public $showGridExtensionLines;
 
 	/**
+	 * Show Positive line number labels (default: false).
+	 *
+	 * @var bool|null
+	 */
+	public $showPositiveLineNumbers;
+
+	/**
 	 * The grid container border highlight color (default: transparent).
 	 *
 	 * @var RGBA|null
@@ -83,6 +90,9 @@ final class GridHighlightConfig implements \JsonSerializable
 		if (isset($data->showGridExtensionLines)) {
 			$instance->showGridExtensionLines = (bool)$data->showGridExtensionLines;
 		}
+		if (isset($data->showPositiveLineNumbers)) {
+			$instance->showPositiveLineNumbers = (bool)$data->showPositiveLineNumbers;
+		}
 		if (isset($data->gridBorderColor)) {
 			$instance->gridBorderColor = RGBA::fromJson($data->gridBorderColor);
 		}
@@ -116,6 +126,9 @@ final class GridHighlightConfig implements \JsonSerializable
 		$data = new \stdClass();
 		if ($this->showGridExtensionLines !== null) {
 			$data->showGridExtensionLines = $this->showGridExtensionLines;
+		}
+		if ($this->showPositiveLineNumbers !== null) {
+			$data->showPositiveLineNumbers = $this->showPositiveLineNumbers;
 		}
 		if ($this->gridBorderColor !== null) {
 			$data->gridBorderColor = $this->gridBorderColor->jsonSerialize();
