@@ -28,6 +28,13 @@ final class GridHighlightConfig implements \JsonSerializable
 	public $showPositiveLineNumbers;
 
 	/**
+	 * Show Negative line number labels (default: false).
+	 *
+	 * @var bool|null
+	 */
+	public $showNegativeLineNumbers;
+
+	/**
 	 * The grid container border highlight color (default: transparent).
 	 *
 	 * @var RGBA|null
@@ -93,6 +100,9 @@ final class GridHighlightConfig implements \JsonSerializable
 		if (isset($data->showPositiveLineNumbers)) {
 			$instance->showPositiveLineNumbers = (bool)$data->showPositiveLineNumbers;
 		}
+		if (isset($data->showNegativeLineNumbers)) {
+			$instance->showNegativeLineNumbers = (bool)$data->showNegativeLineNumbers;
+		}
 		if (isset($data->gridBorderColor)) {
 			$instance->gridBorderColor = RGBA::fromJson($data->gridBorderColor);
 		}
@@ -129,6 +139,9 @@ final class GridHighlightConfig implements \JsonSerializable
 		}
 		if ($this->showPositiveLineNumbers !== null) {
 			$data->showPositiveLineNumbers = $this->showPositiveLineNumbers;
+		}
+		if ($this->showNegativeLineNumbers !== null) {
+			$data->showNegativeLineNumbers = $this->showNegativeLineNumbers;
 		}
 		if ($this->gridBorderColor !== null) {
 			$data->gridBorderColor = $this->gridBorderColor->jsonSerialize();
