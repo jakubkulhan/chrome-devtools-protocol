@@ -35,6 +35,13 @@ final class HighlightConfig implements \JsonSerializable
 	public $showRulers;
 
 	/**
+	 * Whether the a11y info should be shown (default: true).
+	 *
+	 * @var bool|null
+	 */
+	public $showAccessibilityInfo;
+
+	/**
 	 * Whether the extension lines from node to the rulers should be shown (default: false).
 	 *
 	 * @var bool|null
@@ -124,6 +131,9 @@ final class HighlightConfig implements \JsonSerializable
 		if (isset($data->showRulers)) {
 			$instance->showRulers = (bool)$data->showRulers;
 		}
+		if (isset($data->showAccessibilityInfo)) {
+			$instance->showAccessibilityInfo = (bool)$data->showAccessibilityInfo;
+		}
 		if (isset($data->showExtensionLines)) {
 			$instance->showExtensionLines = (bool)$data->showExtensionLines;
 		}
@@ -172,6 +182,9 @@ final class HighlightConfig implements \JsonSerializable
 		}
 		if ($this->showRulers !== null) {
 			$data->showRulers = $this->showRulers;
+		}
+		if ($this->showAccessibilityInfo !== null) {
+			$data->showAccessibilityInfo = $this->showAccessibilityInfo;
 		}
 		if ($this->showExtensionLines !== null) {
 			$data->showExtensionLines = $this->showExtensionLines;

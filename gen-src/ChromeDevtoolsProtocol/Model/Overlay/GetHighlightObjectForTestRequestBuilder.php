@@ -15,6 +15,7 @@ final class GetHighlightObjectForTestRequestBuilder
 	private $includeDistance;
 	private $includeStyle;
 	private $colorFormat;
+	private $showAccessibilityInfo;
 
 
 	/**
@@ -30,6 +31,7 @@ final class GetHighlightObjectForTestRequestBuilder
 		$instance->includeDistance = $this->includeDistance;
 		$instance->includeStyle = $this->includeStyle;
 		$instance->colorFormat = $this->colorFormat;
+		$instance->showAccessibilityInfo = $this->showAccessibilityInfo;
 		return $instance;
 	}
 
@@ -78,6 +80,18 @@ final class GetHighlightObjectForTestRequestBuilder
 	public function setColorFormat($colorFormat): self
 	{
 		$this->colorFormat = $colorFormat;
+		return $this;
+	}
+
+
+	/**
+	 * @param bool|null $showAccessibilityInfo
+	 *
+	 * @return self
+	 */
+	public function setShowAccessibilityInfo($showAccessibilityInfo): self
+	{
+		$this->showAccessibilityInfo = $showAccessibilityInfo;
 		return $this;
 	}
 }
