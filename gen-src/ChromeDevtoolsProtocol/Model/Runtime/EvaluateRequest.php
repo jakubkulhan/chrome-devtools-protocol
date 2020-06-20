@@ -102,6 +102,13 @@ final class EvaluateRequest implements \JsonSerializable
 	 */
 	public $replMode;
 
+	/**
+	 * The Content Security Policy (CSP) for the target might block 'unsafe-eval' which includes eval(), Function(), setTimeout() and setInterval() when called with non-callable arguments. This flag bypasses CSP for this evaluation and allows unsafe-eval. Defaults to true.
+	 *
+	 * @var bool|null
+	 */
+	public $allowUnsafeEvalBlockedByCSP;
+
 
 	public static function fromJson($data)
 	{
@@ -144,6 +151,9 @@ final class EvaluateRequest implements \JsonSerializable
 		}
 		if (isset($data->replMode)) {
 			$instance->replMode = (bool)$data->replMode;
+		}
+		if (isset($data->allowUnsafeEvalBlockedByCSP)) {
+			$instance->allowUnsafeEvalBlockedByCSP = (bool)$data->allowUnsafeEvalBlockedByCSP;
 		}
 		return $instance;
 	}
@@ -190,6 +200,9 @@ final class EvaluateRequest implements \JsonSerializable
 		}
 		if ($this->replMode !== null) {
 			$data->replMode = $this->replMode;
+		}
+		if ($this->allowUnsafeEvalBlockedByCSP !== null) {
+			$data->allowUnsafeEvalBlockedByCSP = $this->allowUnsafeEvalBlockedByCSP;
 		}
 		return $data;
 	}

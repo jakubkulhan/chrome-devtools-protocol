@@ -24,6 +24,7 @@ final class EvaluateRequestBuilder
 	private $timeout;
 	private $disableBreaks;
 	private $replMode;
+	private $allowUnsafeEvalBlockedByCSP;
 
 
 	/**
@@ -48,6 +49,7 @@ final class EvaluateRequestBuilder
 		$instance->timeout = $this->timeout;
 		$instance->disableBreaks = $this->disableBreaks;
 		$instance->replMode = $this->replMode;
+		$instance->allowUnsafeEvalBlockedByCSP = $this->allowUnsafeEvalBlockedByCSP;
 		return $instance;
 	}
 
@@ -204,6 +206,18 @@ final class EvaluateRequestBuilder
 	public function setReplMode($replMode): self
 	{
 		$this->replMode = $replMode;
+		return $this;
+	}
+
+
+	/**
+	 * @param bool|null $allowUnsafeEvalBlockedByCSP
+	 *
+	 * @return self
+	 */
+	public function setAllowUnsafeEvalBlockedByCSP($allowUnsafeEvalBlockedByCSP): self
+	{
+		$this->allowUnsafeEvalBlockedByCSP = $allowUnsafeEvalBlockedByCSP;
 		return $this;
 	}
 }
