@@ -20,6 +20,9 @@ final class InspectorIssueDetails implements \JsonSerializable
 	/** @var BlockedByResponseIssueDetails|null */
 	public $blockedByResponseIssueDetails;
 
+	/** @var HeavyAdIssueDetails|null */
+	public $heavyAdIssueDetails;
+
 
 	public static function fromJson($data)
 	{
@@ -32,6 +35,9 @@ final class InspectorIssueDetails implements \JsonSerializable
 		}
 		if (isset($data->blockedByResponseIssueDetails)) {
 			$instance->blockedByResponseIssueDetails = BlockedByResponseIssueDetails::fromJson($data->blockedByResponseIssueDetails);
+		}
+		if (isset($data->heavyAdIssueDetails)) {
+			$instance->heavyAdIssueDetails = HeavyAdIssueDetails::fromJson($data->heavyAdIssueDetails);
 		}
 		return $instance;
 	}
@@ -48,6 +54,9 @@ final class InspectorIssueDetails implements \JsonSerializable
 		}
 		if ($this->blockedByResponseIssueDetails !== null) {
 			$data->blockedByResponseIssueDetails = $this->blockedByResponseIssueDetails->jsonSerialize();
+		}
+		if ($this->heavyAdIssueDetails !== null) {
+			$data->heavyAdIssueDetails = $this->heavyAdIssueDetails->jsonSerialize();
 		}
 		return $data;
 	}

@@ -109,6 +109,13 @@ final class DispatchKeyEventRequest implements \JsonSerializable
 	 */
 	public $location;
 
+	/**
+	 * Editing commands to send with the key event (e.g., 'selectAll') (default: []). These are related to but not equal the command names used in `document.execCommand` and NSStandardKeyBindingResponding. See https://source.chromium.org/chromium/chromium/src/+/master:third_party/blink/renderer/core/editing/commands/editor_command_names.h for valid command names.
+	 *
+	 * @var string[]|null
+	 */
+	public $commands;
+
 
 	public static function fromJson($data)
 	{
@@ -154,6 +161,12 @@ final class DispatchKeyEventRequest implements \JsonSerializable
 		}
 		if (isset($data->location)) {
 			$instance->location = (int)$data->location;
+		}
+		if (isset($data->commands)) {
+			$instance->commands = [];
+			foreach ($data->commands as $item) {
+				$instance->commands[] = (string)$item;
+			}
 		}
 		return $instance;
 	}
@@ -203,6 +216,12 @@ final class DispatchKeyEventRequest implements \JsonSerializable
 		}
 		if ($this->location !== null) {
 			$data->location = $this->location;
+		}
+		if ($this->commands !== null) {
+			$data->commands = [];
+			foreach ($this->commands as $item) {
+				$data->commands[] = $item;
+			}
 		}
 		return $data;
 	}
