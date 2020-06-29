@@ -15,4 +15,5 @@ final class InspectorIssueCodeEnum
 	const MIXED_CONTENT_ISSUE = 'MixedContentIssue';
 	const BLOCKED_BY_RESPONSE_ISSUE = 'BlockedByResponseIssue';
 	const HEAVY_AD_ISSUE = 'HeavyAdIssue';
+	const CONTENT_SECURITY_POLICY_ISSUE = 'ContentSecurityPolicyIssue';
 }

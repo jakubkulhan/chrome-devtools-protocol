@@ -28,6 +28,7 @@ use ChromeDevtoolsProtocol\Model\CSS\MediaQueryResultChangedEvent;
 use ChromeDevtoolsProtocol\Model\CSS\SetEffectivePropertyValueForNodeRequest;
 use ChromeDevtoolsProtocol\Model\CSS\SetKeyframeKeyRequest;
 use ChromeDevtoolsProtocol\Model\CSS\SetKeyframeKeyResponse;
+use ChromeDevtoolsProtocol\Model\CSS\SetLocalFontsEnabledRequest;
 use ChromeDevtoolsProtocol\Model\CSS\SetMediaTextRequest;
 use ChromeDevtoolsProtocol\Model\CSS\SetMediaTextResponse;
 use ChromeDevtoolsProtocol\Model\CSS\SetRuleSelectorRequest;
@@ -214,6 +215,17 @@ interface CSSDomainInterface
 	 * @return SetKeyframeKeyResponse
 	 */
 	public function setKeyframeKey(ContextInterface $ctx, SetKeyframeKeyRequest $request): SetKeyframeKeyResponse;
+
+
+	/**
+	 * Enables/disables rendering of local CSS fonts (enabled by default).
+	 *
+	 * @param ContextInterface $ctx
+	 * @param SetLocalFontsEnabledRequest $request
+	 *
+	 * @return void
+	 */
+	public function setLocalFontsEnabled(ContextInterface $ctx, SetLocalFontsEnabledRequest $request): void;
 
 
 	/**

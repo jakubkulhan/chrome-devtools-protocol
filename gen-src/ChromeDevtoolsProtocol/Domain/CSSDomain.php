@@ -29,6 +29,7 @@ use ChromeDevtoolsProtocol\Model\CSS\MediaQueryResultChangedEvent;
 use ChromeDevtoolsProtocol\Model\CSS\SetEffectivePropertyValueForNodeRequest;
 use ChromeDevtoolsProtocol\Model\CSS\SetKeyframeKeyRequest;
 use ChromeDevtoolsProtocol\Model\CSS\SetKeyframeKeyResponse;
+use ChromeDevtoolsProtocol\Model\CSS\SetLocalFontsEnabledRequest;
 use ChromeDevtoolsProtocol\Model\CSS\SetMediaTextRequest;
 use ChromeDevtoolsProtocol\Model\CSS\SetMediaTextResponse;
 use ChromeDevtoolsProtocol\Model\CSS\SetRuleSelectorRequest;
@@ -157,6 +158,12 @@ class CSSDomain implements CSSDomainInterface
 	{
 		$response = $this->internalClient->executeCommand($ctx, 'CSS.setKeyframeKey', $request);
 		return SetKeyframeKeyResponse::fromJson($response);
+	}
+
+
+	public function setLocalFontsEnabled(ContextInterface $ctx, SetLocalFontsEnabledRequest $request): void
+	{
+		$this->internalClient->executeCommand($ctx, 'CSS.setLocalFontsEnabled', $request);
 	}
 
 
