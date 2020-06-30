@@ -23,9 +23,6 @@ final class InspectorIssueDetails implements \JsonSerializable
 	/** @var HeavyAdIssueDetails|null */
 	public $heavyAdIssueDetails;
 
-	/** @var ContentSecurityPolicyIssueDetails|null */
-	public $contentSecurityPolicyIssueDetails;
-
 
 	public static function fromJson($data)
 	{
@@ -41,9 +38,6 @@ final class InspectorIssueDetails implements \JsonSerializable
 		}
 		if (isset($data->heavyAdIssueDetails)) {
 			$instance->heavyAdIssueDetails = HeavyAdIssueDetails::fromJson($data->heavyAdIssueDetails);
-		}
-		if (isset($data->contentSecurityPolicyIssueDetails)) {
-			$instance->contentSecurityPolicyIssueDetails = ContentSecurityPolicyIssueDetails::fromJson($data->contentSecurityPolicyIssueDetails);
 		}
 		return $instance;
 	}
@@ -63,9 +57,6 @@ final class InspectorIssueDetails implements \JsonSerializable
 		}
 		if ($this->heavyAdIssueDetails !== null) {
 			$data->heavyAdIssueDetails = $this->heavyAdIssueDetails->jsonSerialize();
-		}
-		if ($this->contentSecurityPolicyIssueDetails !== null) {
-			$data->contentSecurityPolicyIssueDetails = $this->contentSecurityPolicyIssueDetails->jsonSerialize();
 		}
 		return $data;
 	}
