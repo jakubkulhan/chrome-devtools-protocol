@@ -35,6 +35,13 @@ final class GridHighlightConfig implements \JsonSerializable
 	public $showNegativeLineNumbers;
 
 	/**
+	 * Show area name labels (default: false).
+	 *
+	 * @var bool|null
+	 */
+	public $showAreaNames;
+
+	/**
 	 * The grid container border highlight color (default: transparent).
 	 *
 	 * @var RGBA|null
@@ -90,6 +97,13 @@ final class GridHighlightConfig implements \JsonSerializable
 	 */
 	public $columnHatchColor;
 
+	/**
+	 * The named grid areas border color (Default: transparent).
+	 *
+	 * @var RGBA|null
+	 */
+	public $areaBorderColor;
+
 
 	public static function fromJson($data)
 	{
@@ -102,6 +116,9 @@ final class GridHighlightConfig implements \JsonSerializable
 		}
 		if (isset($data->showNegativeLineNumbers)) {
 			$instance->showNegativeLineNumbers = (bool)$data->showNegativeLineNumbers;
+		}
+		if (isset($data->showAreaNames)) {
+			$instance->showAreaNames = (bool)$data->showAreaNames;
 		}
 		if (isset($data->gridBorderColor)) {
 			$instance->gridBorderColor = RGBA::fromJson($data->gridBorderColor);
@@ -127,6 +144,9 @@ final class GridHighlightConfig implements \JsonSerializable
 		if (isset($data->columnHatchColor)) {
 			$instance->columnHatchColor = RGBA::fromJson($data->columnHatchColor);
 		}
+		if (isset($data->areaBorderColor)) {
+			$instance->areaBorderColor = RGBA::fromJson($data->areaBorderColor);
+		}
 		return $instance;
 	}
 
@@ -142,6 +162,9 @@ final class GridHighlightConfig implements \JsonSerializable
 		}
 		if ($this->showNegativeLineNumbers !== null) {
 			$data->showNegativeLineNumbers = $this->showNegativeLineNumbers;
+		}
+		if ($this->showAreaNames !== null) {
+			$data->showAreaNames = $this->showAreaNames;
 		}
 		if ($this->gridBorderColor !== null) {
 			$data->gridBorderColor = $this->gridBorderColor->jsonSerialize();
@@ -166,6 +189,9 @@ final class GridHighlightConfig implements \JsonSerializable
 		}
 		if ($this->columnHatchColor !== null) {
 			$data->columnHatchColor = $this->columnHatchColor->jsonSerialize();
+		}
+		if ($this->areaBorderColor !== null) {
+			$data->areaBorderColor = $this->areaBorderColor->jsonSerialize();
 		}
 		return $data;
 	}

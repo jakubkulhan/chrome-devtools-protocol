@@ -13,6 +13,7 @@ use ChromeDevtoolsProtocol\Model\WebAuthn\GetCredentialsRequest;
 use ChromeDevtoolsProtocol\Model\WebAuthn\GetCredentialsResponse;
 use ChromeDevtoolsProtocol\Model\WebAuthn\RemoveCredentialRequest;
 use ChromeDevtoolsProtocol\Model\WebAuthn\RemoveVirtualAuthenticatorRequest;
+use ChromeDevtoolsProtocol\Model\WebAuthn\SetAutomaticPresenceSimulationRequest;
 use ChromeDevtoolsProtocol\Model\WebAuthn\SetUserVerifiedRequest;
 
 /**
@@ -121,6 +122,17 @@ interface WebAuthnDomainInterface
 	 * @return void
 	 */
 	public function removeVirtualAuthenticator(ContextInterface $ctx, RemoveVirtualAuthenticatorRequest $request): void;
+
+
+	/**
+	 * Sets whether tests of user presence will succeed immediately (if true) or fail to resolve (if false) for an authenticator. The default is true.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param SetAutomaticPresenceSimulationRequest $request
+	 *
+	 * @return void
+	 */
+	public function setAutomaticPresenceSimulation(ContextInterface $ctx, SetAutomaticPresenceSimulationRequest $request): void;
 
 
 	/**

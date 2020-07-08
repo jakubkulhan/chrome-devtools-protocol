@@ -13560,6 +13560,12 @@
                             "type": "boolean"
                         },
                         {
+                            "name": "showAreaNames",
+                            "description": "Show area name labels (default: false).",
+                            "optional": true,
+                            "type": "boolean"
+                        },
+                        {
                             "name": "gridBorderColor",
                             "description": "The grid container border highlight color (default: transparent).",
                             "optional": true,
@@ -13604,6 +13610,12 @@
                         {
                             "name": "columnHatchColor",
                             "description": "The column gap hatching fill color (default: transparent).",
+                            "optional": true,
+                            "$ref": "DOM.RGBA"
+                        },
+                        {
+                            "name": "areaBorderColor",
+                            "description": "The named grid areas border color (Default: transparent).",
                             "optional": true,
                             "$ref": "DOM.RGBA"
                         }
@@ -20885,6 +20897,20 @@
                         {
                             "name": "authenticatorId",
                             "$ref": "AuthenticatorId"
+                        }
+                    ]
+                },
+                {
+                    "name": "setAutomaticPresenceSimulation",
+                    "description": "Sets whether tests of user presence will succeed immediately (if true) or fail to resolve (if false) for an authenticator. The default is true.",
+                    "parameters": [
+                        {
+                            "name": "authenticatorId",
+                            "$ref": "AuthenticatorId"
+                        },
+                        {
+                            "name": "enabled",
+                            "type": "boolean"
                         }
                     ]
                 },
