@@ -97,6 +97,13 @@ final class SetDeviceMetricsOverrideRequest implements \JsonSerializable
 	 */
 	public $viewport;
 
+	/**
+	 * If set, the display feature of a multi-segment screen. If not set, multi-segment support is turned-off.
+	 *
+	 * @var DisplayFeature|null
+	 */
+	public $displayFeature;
+
 
 	public static function fromJson($data)
 	{
@@ -136,6 +143,9 @@ final class SetDeviceMetricsOverrideRequest implements \JsonSerializable
 		}
 		if (isset($data->viewport)) {
 			$instance->viewport = Viewport::fromJson($data->viewport);
+		}
+		if (isset($data->displayFeature)) {
+			$instance->displayFeature = DisplayFeature::fromJson($data->displayFeature);
 		}
 		return $instance;
 	}
@@ -179,6 +189,9 @@ final class SetDeviceMetricsOverrideRequest implements \JsonSerializable
 		}
 		if ($this->viewport !== null) {
 			$data->viewport = $this->viewport->jsonSerialize();
+		}
+		if ($this->displayFeature !== null) {
+			$data->displayFeature = $this->displayFeature->jsonSerialize();
 		}
 		return $data;
 	}

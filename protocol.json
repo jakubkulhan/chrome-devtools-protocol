@@ -7840,6 +7840,31 @@
                     ]
                 },
                 {
+                    "id": "DisplayFeature",
+                    "type": "object",
+                    "properties": [
+                        {
+                            "name": "orientation",
+                            "description": "Orientation of a display feature in relation to screen",
+                            "type": "string",
+                            "enum": [
+                                "vertical",
+                                "horizontal"
+                            ]
+                        },
+                        {
+                            "name": "offset",
+                            "description": "The offset from the screen origin in either the x (for vertical orientation) or y (for horizontal orientation) direction.",
+                            "type": "integer"
+                        },
+                        {
+                            "name": "maskLength",
+                            "description": "A display feature may mask content such that it is not physically displayed - this length along with the offset describes this area. A display feature that only splits content will have a 0 mask_length.",
+                            "type": "integer"
+                        }
+                    ]
+                },
+                {
                     "id": "MediaFeature",
                     "type": "object",
                     "properties": [
@@ -8047,6 +8072,13 @@
                             "experimental": true,
                             "optional": true,
                             "$ref": "Page.Viewport"
+                        },
+                        {
+                            "name": "displayFeature",
+                            "description": "If set, the display feature of a multi-segment screen. If not set, multi-segment support is turned-off.",
+                            "experimental": true,
+                            "optional": true,
+                            "$ref": "DisplayFeature"
                         }
                     ]
                 },
