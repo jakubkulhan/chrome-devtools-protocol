@@ -4,6 +4,8 @@ namespace ChromeDevtoolsProtocol\Domain;
 
 use ChromeDevtoolsProtocol\ContextInterface;
 use ChromeDevtoolsProtocol\InternalClientInterface;
+use ChromeDevtoolsProtocol\Model\Overlay\GetGridHighlightObjectsForTestRequest;
+use ChromeDevtoolsProtocol\Model\Overlay\GetGridHighlightObjectsForTestResponse;
 use ChromeDevtoolsProtocol\Model\Overlay\GetHighlightObjectForTestRequest;
 use ChromeDevtoolsProtocol\Model\Overlay\GetHighlightObjectForTestResponse;
 use ChromeDevtoolsProtocol\Model\Overlay\HighlightFrameRequest;
@@ -19,6 +21,7 @@ use ChromeDevtoolsProtocol\Model\Overlay\SetPausedInDebuggerMessageRequest;
 use ChromeDevtoolsProtocol\Model\Overlay\SetShowAdHighlightsRequest;
 use ChromeDevtoolsProtocol\Model\Overlay\SetShowDebugBordersRequest;
 use ChromeDevtoolsProtocol\Model\Overlay\SetShowFPSCounterRequest;
+use ChromeDevtoolsProtocol\Model\Overlay\SetShowGridOverlaysRequest;
 use ChromeDevtoolsProtocol\Model\Overlay\SetShowHingeRequest;
 use ChromeDevtoolsProtocol\Model\Overlay\SetShowHitTestBordersRequest;
 use ChromeDevtoolsProtocol\Model\Overlay\SetShowLayoutShiftRegionsRequest;
@@ -50,6 +53,13 @@ class OverlayDomain implements OverlayDomainInterface
 	{
 		$request = new \stdClass();
 		$this->internalClient->executeCommand($ctx, 'Overlay.enable', $request);
+	}
+
+
+	public function getGridHighlightObjectsForTest(ContextInterface $ctx, GetGridHighlightObjectsForTestRequest $request): GetGridHighlightObjectsForTestResponse
+	{
+		$response = $this->internalClient->executeCommand($ctx, 'Overlay.getGridHighlightObjectsForTest', $request);
+		return GetGridHighlightObjectsForTestResponse::fromJson($response);
 	}
 
 
@@ -118,6 +128,12 @@ class OverlayDomain implements OverlayDomainInterface
 	public function setShowFPSCounter(ContextInterface $ctx, SetShowFPSCounterRequest $request): void
 	{
 		$this->internalClient->executeCommand($ctx, 'Overlay.setShowFPSCounter', $request);
+	}
+
+
+	public function setShowGridOverlays(ContextInterface $ctx, SetShowGridOverlaysRequest $request): void
+	{
+		$this->internalClient->executeCommand($ctx, 'Overlay.setShowGridOverlays', $request);
 	}
 
 

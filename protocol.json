@@ -3014,8 +3014,40 @@
                     ]
                 },
                 {
+                    "id": "FontVariationAxis",
+                    "description": "Information about font variation axes for variable fonts",
+                    "type": "object",
+                    "properties": [
+                        {
+                            "name": "tag",
+                            "description": "The font-variation-setting tag (a.k.a. \"axis tag\").",
+                            "type": "string"
+                        },
+                        {
+                            "name": "name",
+                            "description": "Human-readable variation name in the default language (normally, \"en\").",
+                            "type": "string"
+                        },
+                        {
+                            "name": "minValue",
+                            "description": "The minimum value (inclusive) the font supports for this tag.",
+                            "type": "number"
+                        },
+                        {
+                            "name": "maxValue",
+                            "description": "The maximum value (inclusive) the font supports for this tag.",
+                            "type": "number"
+                        },
+                        {
+                            "name": "defaultValue",
+                            "description": "The default value.",
+                            "type": "number"
+                        }
+                    ]
+                },
+                {
                     "id": "FontFace",
-                    "description": "Properties of a web font: https://www.w3.org/TR/2008/REC-CSS2-20080411/fonts.html#font-descriptions",
+                    "description": "Properties of a web font: https://www.w3.org/TR/2008/REC-CSS2-20080411/fonts.html#font-descriptions and additional information such as platformFontFamily and fontVariationAxes.",
                     "type": "object",
                     "properties": [
                         {
@@ -3057,6 +3089,15 @@
                             "name": "platformFontFamily",
                             "description": "The resolved platform font family",
                             "type": "string"
+                        },
+                        {
+                            "name": "fontVariationAxes",
+                            "description": "Available variation settings (a.k.a. \"axes\").",
+                            "optional": true,
+                            "type": "array",
+                            "items": {
+                                "$ref": "FontVariationAxis"
+                            }
                         }
                     ]
                 },
@@ -13760,6 +13801,23 @@
                     ]
                 },
                 {
+                    "id": "GridNodeHighlightConfig",
+                    "description": "Configurations for Persistent Grid Highlight",
+                    "type": "object",
+                    "properties": [
+                        {
+                            "name": "gridHighlightConfig",
+                            "description": "A descriptor for the highlight appearance.",
+                            "$ref": "GridHighlightConfig"
+                        },
+                        {
+                            "name": "nodeId",
+                            "description": "Identifier of the node to highlight.",
+                            "$ref": "DOM.NodeId"
+                        }
+                    ]
+                },
+                {
                     "id": "HingeConfig",
                     "description": "Configuration for dual screen hinge",
                     "type": "object",
@@ -13803,6 +13861,27 @@
                 {
                     "name": "enable",
                     "description": "Enables domain notifications."
+                },
+                {
+                    "name": "getGridHighlightObjectsForTest",
+                    "description": "For Persistent Grid testing.",
+                    "parameters": [
+                        {
+                            "name": "nodeIds",
+                            "description": "Ids of the node to get highlight object for.",
+                            "type": "array",
+                            "items": {
+                                "$ref": "DOM.NodeId"
+                            }
+                        }
+                    ],
+                    "returns": [
+                        {
+                            "name": "highlights",
+                            "description": "Grid Highlight data for the node ids provided.",
+                            "type": "object"
+                        }
+                    ]
                 },
                 {
                     "name": "getHighlightObjectForTest",
@@ -14027,6 +14106,20 @@
                             "name": "show",
                             "description": "True for showing the FPS counter",
                             "type": "boolean"
+                        }
+                    ]
+                },
+                {
+                    "name": "setShowGridOverlays",
+                    "description": "Highlight multiple elements with the CSS Grid overlay.",
+                    "parameters": [
+                        {
+                            "name": "gridNodeHighlightConfigs",
+                            "description": "An array of node identifiers and descriptors for the highlight appearance.",
+                            "type": "array",
+                            "items": {
+                                "$ref": "GridNodeHighlightConfig"
+                            }
                         }
                     ]
                 },

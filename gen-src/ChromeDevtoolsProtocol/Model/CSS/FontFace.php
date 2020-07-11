@@ -3,7 +3,7 @@
 namespace ChromeDevtoolsProtocol\Model\CSS;
 
 /**
- * Properties of a web font: https://www.w3.org/TR/2008/REC-CSS2-20080411/fonts.html#font-descriptions
+ * Properties of a web font: https://www.w3.org/TR/2008/REC-CSS2-20080411/fonts.html#font-descriptions and additional information such as platformFontFamily and fontVariationAxes.
  *
  * @generated This file has been auto-generated, do not edit.
  *
@@ -67,6 +67,13 @@ final class FontFace implements \JsonSerializable
 	 */
 	public $platformFontFamily;
 
+	/**
+	 * Available variation settings (a.k.a. "axes").
+	 *
+	 * @var FontVariationAxis[]|null
+	 */
+	public $fontVariationAxes;
+
 
 	public static function fromJson($data)
 	{
@@ -94,6 +101,12 @@ final class FontFace implements \JsonSerializable
 		}
 		if (isset($data->platformFontFamily)) {
 			$instance->platformFontFamily = (string)$data->platformFontFamily;
+		}
+		if (isset($data->fontVariationAxes)) {
+			$instance->fontVariationAxes = [];
+			foreach ($data->fontVariationAxes as $item) {
+				$instance->fontVariationAxes[] = FontVariationAxis::fromJson($item);
+			}
 		}
 		return $instance;
 	}
@@ -125,6 +138,12 @@ final class FontFace implements \JsonSerializable
 		}
 		if ($this->platformFontFamily !== null) {
 			$data->platformFontFamily = $this->platformFontFamily;
+		}
+		if ($this->fontVariationAxes !== null) {
+			$data->fontVariationAxes = [];
+			foreach ($this->fontVariationAxes as $item) {
+				$data->fontVariationAxes[] = $item->jsonSerialize();
+			}
 		}
 		return $data;
 	}

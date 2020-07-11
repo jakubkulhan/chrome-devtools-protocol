@@ -3,6 +3,8 @@
 namespace ChromeDevtoolsProtocol\Domain;
 
 use ChromeDevtoolsProtocol\ContextInterface;
+use ChromeDevtoolsProtocol\Model\Overlay\GetGridHighlightObjectsForTestRequest;
+use ChromeDevtoolsProtocol\Model\Overlay\GetGridHighlightObjectsForTestResponse;
 use ChromeDevtoolsProtocol\Model\Overlay\GetHighlightObjectForTestRequest;
 use ChromeDevtoolsProtocol\Model\Overlay\GetHighlightObjectForTestResponse;
 use ChromeDevtoolsProtocol\Model\Overlay\HighlightFrameRequest;
@@ -18,6 +20,7 @@ use ChromeDevtoolsProtocol\Model\Overlay\SetPausedInDebuggerMessageRequest;
 use ChromeDevtoolsProtocol\Model\Overlay\SetShowAdHighlightsRequest;
 use ChromeDevtoolsProtocol\Model\Overlay\SetShowDebugBordersRequest;
 use ChromeDevtoolsProtocol\Model\Overlay\SetShowFPSCounterRequest;
+use ChromeDevtoolsProtocol\Model\Overlay\SetShowGridOverlaysRequest;
 use ChromeDevtoolsProtocol\Model\Overlay\SetShowHingeRequest;
 use ChromeDevtoolsProtocol\Model\Overlay\SetShowHitTestBordersRequest;
 use ChromeDevtoolsProtocol\Model\Overlay\SetShowLayoutShiftRegionsRequest;
@@ -55,6 +58,17 @@ interface OverlayDomainInterface
 	 * @return void
 	 */
 	public function enable(ContextInterface $ctx): void;
+
+
+	/**
+	 * For Persistent Grid testing.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param GetGridHighlightObjectsForTestRequest $request
+	 *
+	 * @return GetGridHighlightObjectsForTestResponse
+	 */
+	public function getGridHighlightObjectsForTest(ContextInterface $ctx, GetGridHighlightObjectsForTestRequest $request): GetGridHighlightObjectsForTestResponse;
 
 
 	/**
@@ -175,6 +189,17 @@ interface OverlayDomainInterface
 	 * @return void
 	 */
 	public function setShowFPSCounter(ContextInterface $ctx, SetShowFPSCounterRequest $request): void;
+
+
+	/**
+	 * Highlight multiple elements with the CSS Grid overlay.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param SetShowGridOverlaysRequest $request
+	 *
+	 * @return void
+	 */
+	public function setShowGridOverlays(ContextInterface $ctx, SetShowGridOverlaysRequest $request): void;
 
 
 	/**
