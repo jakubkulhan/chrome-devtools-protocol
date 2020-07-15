@@ -74,6 +74,13 @@ final class Frame implements \JsonSerializable
 	 */
 	public $unreachableUrl;
 
+	/**
+	 * Indicates whether this frame was tagged as an ad.
+	 *
+	 * @var string
+	 */
+	public $adFrameType;
+
 
 	public static function fromJson($data)
 	{
@@ -104,6 +111,9 @@ final class Frame implements \JsonSerializable
 		}
 		if (isset($data->unreachableUrl)) {
 			$instance->unreachableUrl = (string)$data->unreachableUrl;
+		}
+		if (isset($data->adFrameType)) {
+			$instance->adFrameType = (string)$data->adFrameType;
 		}
 		return $instance;
 	}
@@ -138,6 +148,9 @@ final class Frame implements \JsonSerializable
 		}
 		if ($this->unreachableUrl !== null) {
 			$data->unreachableUrl = $this->unreachableUrl;
+		}
+		if ($this->adFrameType !== null) {
+			$data->adFrameType = $this->adFrameType;
 		}
 		return $data;
 	}
