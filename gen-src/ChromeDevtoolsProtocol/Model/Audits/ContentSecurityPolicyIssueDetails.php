@@ -31,6 +31,9 @@ final class ContentSecurityPolicyIssueDetails implements \JsonSerializable
 	/** @var AffectedFrame|null */
 	public $frameAncestor;
 
+	/** @var SourceCodeLocation|null */
+	public $sourceCodeLocation;
+
 
 	public static function fromJson($data)
 	{
@@ -46,6 +49,9 @@ final class ContentSecurityPolicyIssueDetails implements \JsonSerializable
 		}
 		if (isset($data->frameAncestor)) {
 			$instance->frameAncestor = AffectedFrame::fromJson($data->frameAncestor);
+		}
+		if (isset($data->sourceCodeLocation)) {
+			$instance->sourceCodeLocation = SourceCodeLocation::fromJson($data->sourceCodeLocation);
 		}
 		return $instance;
 	}
@@ -65,6 +71,9 @@ final class ContentSecurityPolicyIssueDetails implements \JsonSerializable
 		}
 		if ($this->frameAncestor !== null) {
 			$data->frameAncestor = $this->frameAncestor->jsonSerialize();
+		}
+		if ($this->sourceCodeLocation !== null) {
+			$data->sourceCodeLocation = $this->sourceCodeLocation->jsonSerialize();
 		}
 		return $data;
 	}
