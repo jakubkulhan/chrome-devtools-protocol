@@ -42,6 +42,13 @@ final class GridHighlightConfig implements \JsonSerializable
 	public $showAreaNames;
 
 	/**
+	 * Show line name labels (default: false).
+	 *
+	 * @var bool|null
+	 */
+	public $showLineNames;
+
+	/**
 	 * The grid container border highlight color (default: transparent).
 	 *
 	 * @var RGBA|null
@@ -120,6 +127,9 @@ final class GridHighlightConfig implements \JsonSerializable
 		if (isset($data->showAreaNames)) {
 			$instance->showAreaNames = (bool)$data->showAreaNames;
 		}
+		if (isset($data->showLineNames)) {
+			$instance->showLineNames = (bool)$data->showLineNames;
+		}
 		if (isset($data->gridBorderColor)) {
 			$instance->gridBorderColor = RGBA::fromJson($data->gridBorderColor);
 		}
@@ -165,6 +175,9 @@ final class GridHighlightConfig implements \JsonSerializable
 		}
 		if ($this->showAreaNames !== null) {
 			$data->showAreaNames = $this->showAreaNames;
+		}
+		if ($this->showLineNames !== null) {
+			$data->showLineNames = $this->showLineNames;
 		}
 		if ($this->gridBorderColor !== null) {
 			$data->gridBorderColor = $this->gridBorderColor->jsonSerialize();
