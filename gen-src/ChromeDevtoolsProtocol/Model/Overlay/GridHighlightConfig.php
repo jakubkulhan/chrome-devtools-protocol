@@ -49,6 +49,13 @@ final class GridHighlightConfig implements \JsonSerializable
 	public $showLineNames;
 
 	/**
+	 * Show track size labels (default: false).
+	 *
+	 * @var bool|null
+	 */
+	public $showTrackSizes;
+
+	/**
 	 * The grid container border highlight color (default: transparent).
 	 *
 	 * @var RGBA|null
@@ -130,6 +137,9 @@ final class GridHighlightConfig implements \JsonSerializable
 		if (isset($data->showLineNames)) {
 			$instance->showLineNames = (bool)$data->showLineNames;
 		}
+		if (isset($data->showTrackSizes)) {
+			$instance->showTrackSizes = (bool)$data->showTrackSizes;
+		}
 		if (isset($data->gridBorderColor)) {
 			$instance->gridBorderColor = RGBA::fromJson($data->gridBorderColor);
 		}
@@ -178,6 +188,9 @@ final class GridHighlightConfig implements \JsonSerializable
 		}
 		if ($this->showLineNames !== null) {
 			$data->showLineNames = $this->showLineNames;
+		}
+		if ($this->showTrackSizes !== null) {
+			$data->showTrackSizes = $this->showTrackSizes;
 		}
 		if ($this->gridBorderColor !== null) {
 			$data->gridBorderColor = $this->gridBorderColor->jsonSerialize();
