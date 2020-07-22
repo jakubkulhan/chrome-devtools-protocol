@@ -54,6 +54,13 @@ final class Request implements \JsonSerializable
 	public $hasPostData;
 
 	/**
+	 * Request body elements. This will be converted from base64 to binary
+	 *
+	 * @var PostDataEntry[]|null
+	 */
+	public $postDataEntries;
+
+	/**
 	 * The mixed content type of the request.
 	 *
 	 * @var string
@@ -103,6 +110,12 @@ final class Request implements \JsonSerializable
 		if (isset($data->hasPostData)) {
 			$instance->hasPostData = (bool)$data->hasPostData;
 		}
+		if (isset($data->postDataEntries)) {
+			$instance->postDataEntries = [];
+			foreach ($data->postDataEntries as $item) {
+				$instance->postDataEntries[] = PostDataEntry::fromJson($item);
+			}
+		}
 		if (isset($data->mixedContentType)) {
 			$instance->mixedContentType = (string)$data->mixedContentType;
 		}
@@ -139,6 +152,12 @@ final class Request implements \JsonSerializable
 		}
 		if ($this->hasPostData !== null) {
 			$data->hasPostData = $this->hasPostData;
+		}
+		if ($this->postDataEntries !== null) {
+			$data->postDataEntries = [];
+			foreach ($this->postDataEntries as $item) {
+				$data->postDataEntries[] = $item->jsonSerialize();
+			}
 		}
 		if ($this->mixedContentType !== null) {
 			$data->mixedContentType = $this->mixedContentType;
