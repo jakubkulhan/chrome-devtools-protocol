@@ -139,6 +139,13 @@ final class ScriptParsedEvent implements \JsonSerializable
 	 */
 	public $debugSymbols;
 
+	/**
+	 * The name the embedder supplied for this script.
+	 *
+	 * @var string|null
+	 */
+	public $embedderName;
+
 
 	public static function fromJson($data)
 	{
@@ -196,6 +203,9 @@ final class ScriptParsedEvent implements \JsonSerializable
 		}
 		if (isset($data->debugSymbols)) {
 			$instance->debugSymbols = DebugSymbols::fromJson($data->debugSymbols);
+		}
+		if (isset($data->embedderName)) {
+			$instance->embedderName = (string)$data->embedderName;
 		}
 		return $instance;
 	}
@@ -257,6 +267,9 @@ final class ScriptParsedEvent implements \JsonSerializable
 		}
 		if ($this->debugSymbols !== null) {
 			$data->debugSymbols = $this->debugSymbols->jsonSerialize();
+		}
+		if ($this->embedderName !== null) {
+			$data->embedderName = $this->embedderName;
 		}
 		return $data;
 	}

@@ -4956,6 +4956,13 @@
                             "experimental": true,
                             "optional": true,
                             "$ref": "Debugger.ScriptLanguage"
+                        },
+                        {
+                            "name": "embedderName",
+                            "description": "The name the embedder supplied for this script.",
+                            "experimental": true,
+                            "optional": true,
+                            "type": "string"
                         }
                     ]
                 },
@@ -5067,6 +5074,13 @@
                             "experimental": true,
                             "optional": true,
                             "$ref": "Debugger.DebugSymbols"
+                        },
+                        {
+                            "name": "embedderName",
+                            "description": "The name the embedder supplied for this script.",
+                            "experimental": true,
+                            "optional": true,
+                            "type": "string"
                         }
                     ]
                 }
