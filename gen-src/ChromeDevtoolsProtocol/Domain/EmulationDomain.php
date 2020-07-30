@@ -14,6 +14,7 @@ use ChromeDevtoolsProtocol\Model\Emulation\SetEmulatedMediaRequest;
 use ChromeDevtoolsProtocol\Model\Emulation\SetEmulatedVisionDeficiencyRequest;
 use ChromeDevtoolsProtocol\Model\Emulation\SetFocusEmulationEnabledRequest;
 use ChromeDevtoolsProtocol\Model\Emulation\SetGeolocationOverrideRequest;
+use ChromeDevtoolsProtocol\Model\Emulation\SetIdleOverrideRequest;
 use ChromeDevtoolsProtocol\Model\Emulation\SetLocaleOverrideRequest;
 use ChromeDevtoolsProtocol\Model\Emulation\SetNavigatorOverridesRequest;
 use ChromeDevtoolsProtocol\Model\Emulation\SetPageScaleFactorRequest;
@@ -59,6 +60,13 @@ class EmulationDomain implements EmulationDomainInterface
 	{
 		$request = new \stdClass();
 		$this->internalClient->executeCommand($ctx, 'Emulation.clearGeolocationOverride', $request);
+	}
+
+
+	public function clearIdleOverride(ContextInterface $ctx): void
+	{
+		$request = new \stdClass();
+		$this->internalClient->executeCommand($ctx, 'Emulation.clearIdleOverride', $request);
 	}
 
 
@@ -120,6 +128,12 @@ class EmulationDomain implements EmulationDomainInterface
 	public function setGeolocationOverride(ContextInterface $ctx, SetGeolocationOverrideRequest $request): void
 	{
 		$this->internalClient->executeCommand($ctx, 'Emulation.setGeolocationOverride', $request);
+	}
+
+
+	public function setIdleOverride(ContextInterface $ctx, SetIdleOverrideRequest $request): void
+	{
+		$this->internalClient->executeCommand($ctx, 'Emulation.setIdleOverride', $request);
 	}
 
 

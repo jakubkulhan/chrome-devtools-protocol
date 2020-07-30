@@ -7,10 +7,13 @@ use ChromeDevtoolsProtocol\Model\Overlay\GetGridHighlightObjectsForTestRequest;
 use ChromeDevtoolsProtocol\Model\Overlay\GetGridHighlightObjectsForTestResponse;
 use ChromeDevtoolsProtocol\Model\Overlay\GetHighlightObjectForTestRequest;
 use ChromeDevtoolsProtocol\Model\Overlay\GetHighlightObjectForTestResponse;
+use ChromeDevtoolsProtocol\Model\Overlay\GetSourceOrderHighlightObjectForTestRequest;
+use ChromeDevtoolsProtocol\Model\Overlay\GetSourceOrderHighlightObjectForTestResponse;
 use ChromeDevtoolsProtocol\Model\Overlay\HighlightFrameRequest;
 use ChromeDevtoolsProtocol\Model\Overlay\HighlightNodeRequest;
 use ChromeDevtoolsProtocol\Model\Overlay\HighlightQuadRequest;
 use ChromeDevtoolsProtocol\Model\Overlay\HighlightRectRequest;
+use ChromeDevtoolsProtocol\Model\Overlay\HighlightSourceOrderRequest;
 use ChromeDevtoolsProtocol\Model\Overlay\InspectModeCanceledEvent;
 use ChromeDevtoolsProtocol\Model\Overlay\InspectNodeRequestedEvent;
 use ChromeDevtoolsProtocol\Model\Overlay\NodeHighlightRequestedEvent;
@@ -83,6 +86,17 @@ interface OverlayDomainInterface
 
 
 	/**
+	 * For Source Order Viewer testing.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param GetSourceOrderHighlightObjectForTestRequest $request
+	 *
+	 * @return GetSourceOrderHighlightObjectForTestResponse
+	 */
+	public function getSourceOrderHighlightObjectForTest(ContextInterface $ctx, GetSourceOrderHighlightObjectForTestRequest $request): GetSourceOrderHighlightObjectForTestResponse;
+
+
+	/**
 	 * Hides any highlight.
 	 *
 	 * @param ContextInterface $ctx
@@ -134,6 +148,17 @@ interface OverlayDomainInterface
 	 * @return void
 	 */
 	public function highlightRect(ContextInterface $ctx, HighlightRectRequest $request): void;
+
+
+	/**
+	 * Highlights the source order of the children of the DOM node with given id or with the given JavaScript object wrapper. Either nodeId or objectId must be specified.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param HighlightSourceOrderRequest $request
+	 *
+	 * @return void
+	 */
+	public function highlightSourceOrder(ContextInterface $ctx, HighlightSourceOrderRequest $request): void;
 
 
 	/**

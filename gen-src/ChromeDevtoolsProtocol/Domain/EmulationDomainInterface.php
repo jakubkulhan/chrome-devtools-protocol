@@ -13,6 +13,7 @@ use ChromeDevtoolsProtocol\Model\Emulation\SetEmulatedMediaRequest;
 use ChromeDevtoolsProtocol\Model\Emulation\SetEmulatedVisionDeficiencyRequest;
 use ChromeDevtoolsProtocol\Model\Emulation\SetFocusEmulationEnabledRequest;
 use ChromeDevtoolsProtocol\Model\Emulation\SetGeolocationOverrideRequest;
+use ChromeDevtoolsProtocol\Model\Emulation\SetIdleOverrideRequest;
 use ChromeDevtoolsProtocol\Model\Emulation\SetLocaleOverrideRequest;
 use ChromeDevtoolsProtocol\Model\Emulation\SetNavigatorOverridesRequest;
 use ChromeDevtoolsProtocol\Model\Emulation\SetPageScaleFactorRequest;
@@ -64,6 +65,16 @@ interface EmulationDomainInterface
 	 * @return void
 	 */
 	public function clearGeolocationOverride(ContextInterface $ctx): void;
+
+
+	/**
+	 * Clears Idle state overrides.
+	 *
+	 * @param ContextInterface $ctx
+	 *
+	 * @return void
+	 */
+	public function clearIdleOverride(ContextInterface $ctx): void;
 
 
 	/**
@@ -173,6 +184,17 @@ interface EmulationDomainInterface
 	 * @return void
 	 */
 	public function setGeolocationOverride(ContextInterface $ctx, SetGeolocationOverrideRequest $request): void;
+
+
+	/**
+	 * Overrides the Idle state.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param SetIdleOverrideRequest $request
+	 *
+	 * @return void
+	 */
+	public function setIdleOverride(ContextInterface $ctx, SetIdleOverrideRequest $request): void;
 
 
 	/**

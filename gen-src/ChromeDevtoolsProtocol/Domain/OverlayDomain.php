@@ -8,10 +8,13 @@ use ChromeDevtoolsProtocol\Model\Overlay\GetGridHighlightObjectsForTestRequest;
 use ChromeDevtoolsProtocol\Model\Overlay\GetGridHighlightObjectsForTestResponse;
 use ChromeDevtoolsProtocol\Model\Overlay\GetHighlightObjectForTestRequest;
 use ChromeDevtoolsProtocol\Model\Overlay\GetHighlightObjectForTestResponse;
+use ChromeDevtoolsProtocol\Model\Overlay\GetSourceOrderHighlightObjectForTestRequest;
+use ChromeDevtoolsProtocol\Model\Overlay\GetSourceOrderHighlightObjectForTestResponse;
 use ChromeDevtoolsProtocol\Model\Overlay\HighlightFrameRequest;
 use ChromeDevtoolsProtocol\Model\Overlay\HighlightNodeRequest;
 use ChromeDevtoolsProtocol\Model\Overlay\HighlightQuadRequest;
 use ChromeDevtoolsProtocol\Model\Overlay\HighlightRectRequest;
+use ChromeDevtoolsProtocol\Model\Overlay\HighlightSourceOrderRequest;
 use ChromeDevtoolsProtocol\Model\Overlay\InspectModeCanceledEvent;
 use ChromeDevtoolsProtocol\Model\Overlay\InspectNodeRequestedEvent;
 use ChromeDevtoolsProtocol\Model\Overlay\NodeHighlightRequestedEvent;
@@ -70,6 +73,13 @@ class OverlayDomain implements OverlayDomainInterface
 	}
 
 
+	public function getSourceOrderHighlightObjectForTest(ContextInterface $ctx, GetSourceOrderHighlightObjectForTestRequest $request): GetSourceOrderHighlightObjectForTestResponse
+	{
+		$response = $this->internalClient->executeCommand($ctx, 'Overlay.getSourceOrderHighlightObjectForTest', $request);
+		return GetSourceOrderHighlightObjectForTestResponse::fromJson($response);
+	}
+
+
 	public function hideHighlight(ContextInterface $ctx): void
 	{
 		$request = new \stdClass();
@@ -98,6 +108,12 @@ class OverlayDomain implements OverlayDomainInterface
 	public function highlightRect(ContextInterface $ctx, HighlightRectRequest $request): void
 	{
 		$this->internalClient->executeCommand($ctx, 'Overlay.highlightRect', $request);
+	}
+
+
+	public function highlightSourceOrder(ContextInterface $ctx, HighlightSourceOrderRequest $request): void
+	{
+		$this->internalClient->executeCommand($ctx, 'Overlay.highlightSourceOrder', $request);
 	}
 
 

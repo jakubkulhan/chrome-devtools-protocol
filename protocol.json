@@ -974,7 +974,9 @@
                     "type": "string",
                     "enum": [
                         "ExcludeSameSiteUnspecifiedTreatedAsLax",
-                        "ExcludeSameSiteNoneInsecure"
+                        "ExcludeSameSiteNoneInsecure",
+                        "ExcludeSameSiteLax",
+                        "ExcludeSameSiteStrict"
                     ]
                 },
                 {
@@ -8044,6 +8046,11 @@
                     "description": "Clears the overriden Geolocation Position and Error."
                 },
                 {
+                    "name": "clearIdleOverride",
+                    "description": "Clears Idle state overrides.",
+                    "experimental": true
+                },
+                {
                     "name": "resetPageScaleFactor",
                     "description": "Requests that page scale factor is reset to initial values.",
                     "experimental": true
@@ -8266,6 +8273,23 @@
                             "description": "Mock accuracy",
                             "optional": true,
                             "type": "number"
+                        }
+                    ]
+                },
+                {
+                    "name": "setIdleOverride",
+                    "description": "Overrides the Idle state.",
+                    "experimental": true,
+                    "parameters": [
+                        {
+                            "name": "isUserActive",
+                            "description": "Mock isUserActive",
+                            "type": "boolean"
+                        },
+                        {
+                            "name": "isScreenUnlocked",
+                            "description": "Mock isScreenUnlocked",
+                            "type": "boolean"
                         }
                     ]
                 },
@@ -13669,6 +13693,23 @@
             ],
             "types": [
                 {
+                    "id": "SourceOrderConfig",
+                    "description": "Configuration data for drawing the source order of an elements children.",
+                    "type": "object",
+                    "properties": [
+                        {
+                            "name": "parentOutlineColor",
+                            "description": "the color to outline the givent element in.",
+                            "$ref": "DOM.RGBA"
+                        },
+                        {
+                            "name": "childOutlineColor",
+                            "description": "the color to outline the child elements in.",
+                            "$ref": "DOM.RGBA"
+                        }
+                    ]
+                },
+                {
                     "id": "GridHighlightConfig",
                     "description": "Configuration data for the highlighting of Grid elements.",
                     "type": "object",
@@ -13997,6 +14038,24 @@
                     ]
                 },
                 {
+                    "name": "getSourceOrderHighlightObjectForTest",
+                    "description": "For Source Order Viewer testing.",
+                    "parameters": [
+                        {
+                            "name": "nodeId",
+                            "description": "Id of the node to highlight.",
+                            "$ref": "DOM.NodeId"
+                        }
+                    ],
+                    "returns": [
+                        {
+                            "name": "highlight",
+                            "description": "Source order highlight data for the node id provided.",
+                            "type": "object"
+                        }
+                    ]
+                },
+                {
                     "name": "hideHighlight",
                     "description": "Hides any highlight."
                 },
@@ -14116,6 +14175,35 @@
                             "description": "The highlight outline color (default: transparent).",
                             "optional": true,
                             "$ref": "DOM.RGBA"
+                        }
+                    ]
+                },
+                {
+                    "name": "highlightSourceOrder",
+                    "description": "Highlights the source order of the children of the DOM node with given id or with the given JavaScript object wrapper. Either nodeId or objectId must be specified.",
+                    "parameters": [
+                        {
+                            "name": "sourceOrderConfig",
+                            "description": "A descriptor for the appearance of the overlay drawing.",
+                            "$ref": "SourceOrderConfig"
+                        },
+                        {
+                            "name": "nodeId",
+                            "description": "Identifier of the node to highlight.",
+                            "optional": true,
+                            "$ref": "DOM.NodeId"
+                        },
+                        {
+                            "name": "backendNodeId",
+                            "description": "Identifier of the backend node to highlight.",
+                            "optional": true,
+                            "$ref": "DOM.BackendNodeId"
+                        },
+                        {
+                            "name": "objectId",
+                            "description": "JavaScript object id of the node to be highlighted.",
+                            "optional": true,
+                            "$ref": "Runtime.RemoteObjectId"
                         }
                     ]
                 },
