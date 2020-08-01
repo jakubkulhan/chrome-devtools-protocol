@@ -15,7 +15,10 @@ final class BlockedByResponseIssueDetails implements \JsonSerializable
 	public $request;
 
 	/** @var AffectedFrame|null */
-	public $frame;
+	public $parentFrame;
+
+	/** @var AffectedFrame|null */
+	public $blockedFrame;
 
 	/** @var string */
 	public $reason;
@@ -27,8 +30,11 @@ final class BlockedByResponseIssueDetails implements \JsonSerializable
 		if (isset($data->request)) {
 			$instance->request = AffectedRequest::fromJson($data->request);
 		}
-		if (isset($data->frame)) {
-			$instance->frame = AffectedFrame::fromJson($data->frame);
+		if (isset($data->parentFrame)) {
+			$instance->parentFrame = AffectedFrame::fromJson($data->parentFrame);
+		}
+		if (isset($data->blockedFrame)) {
+			$instance->blockedFrame = AffectedFrame::fromJson($data->blockedFrame);
 		}
 		if (isset($data->reason)) {
 			$instance->reason = (string)$data->reason;
@@ -43,8 +49,11 @@ final class BlockedByResponseIssueDetails implements \JsonSerializable
 		if ($this->request !== null) {
 			$data->request = $this->request->jsonSerialize();
 		}
-		if ($this->frame !== null) {
-			$data->frame = $this->frame->jsonSerialize();
+		if ($this->parentFrame !== null) {
+			$data->parentFrame = $this->parentFrame->jsonSerialize();
+		}
+		if ($this->blockedFrame !== null) {
+			$data->blockedFrame = $this->blockedFrame->jsonSerialize();
 		}
 		if ($this->reason !== null) {
 			$data->reason = $this->reason;

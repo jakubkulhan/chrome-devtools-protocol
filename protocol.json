@@ -1148,7 +1148,12 @@
                             "$ref": "AffectedRequest"
                         },
                         {
-                            "name": "frame",
+                            "name": "parentFrame",
+                            "optional": true,
+                            "$ref": "AffectedFrame"
+                        },
+                        {
+                            "name": "blockedFrame",
                             "optional": true,
                             "$ref": "AffectedFrame"
                         },
