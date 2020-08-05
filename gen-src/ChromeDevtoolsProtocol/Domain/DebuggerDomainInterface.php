@@ -49,6 +49,7 @@ use ChromeDevtoolsProtocol\Model\Debugger\SetScriptSourceResponse;
 use ChromeDevtoolsProtocol\Model\Debugger\SetSkipAllPausesRequest;
 use ChromeDevtoolsProtocol\Model\Debugger\SetVariableValueRequest;
 use ChromeDevtoolsProtocol\Model\Debugger\StepIntoRequest;
+use ChromeDevtoolsProtocol\Model\Debugger\StepOverRequest;
 use ChromeDevtoolsProtocol\SubscriptionInterface;
 
 /**
@@ -391,10 +392,11 @@ interface DebuggerDomainInterface
 	 * Steps over the statement.
 	 *
 	 * @param ContextInterface $ctx
+	 * @param StepOverRequest $request
 	 *
 	 * @return void
 	 */
-	public function stepOver(ContextInterface $ctx): void;
+	public function stepOver(ContextInterface $ctx, StepOverRequest $request): void;
 
 
 	/**

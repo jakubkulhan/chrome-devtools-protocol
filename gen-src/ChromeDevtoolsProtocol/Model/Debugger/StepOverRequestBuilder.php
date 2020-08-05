@@ -7,33 +7,19 @@ namespace ChromeDevtoolsProtocol\Model\Debugger;
  *
  * @author Jakub Kulhan <jakub.kulhan@gmail.com>
  */
-final class StepIntoRequestBuilder
+final class StepOverRequestBuilder
 {
-	private $breakOnAsyncCall;
 	private $skipList;
 
 
 	/**
 	 * Validate non-optional parameters and return new instance.
 	 */
-	public function build(): StepIntoRequest
+	public function build(): StepOverRequest
 	{
-		$instance = new StepIntoRequest();
-		$instance->breakOnAsyncCall = $this->breakOnAsyncCall;
+		$instance = new StepOverRequest();
 		$instance->skipList = $this->skipList;
 		return $instance;
-	}
-
-
-	/**
-	 * @param bool|null $breakOnAsyncCall
-	 *
-	 * @return self
-	 */
-	public function setBreakOnAsyncCall($breakOnAsyncCall): self
-	{
-		$this->breakOnAsyncCall = $breakOnAsyncCall;
-		return $this;
 	}
 
 

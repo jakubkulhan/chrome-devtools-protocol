@@ -41,7 +41,9 @@ use ChromeDevtoolsProtocol\Model\CSS\StopRuleUsageTrackingResponse;
 use ChromeDevtoolsProtocol\Model\CSS\StyleSheetAddedEvent;
 use ChromeDevtoolsProtocol\Model\CSS\StyleSheetChangedEvent;
 use ChromeDevtoolsProtocol\Model\CSS\StyleSheetRemovedEvent;
+use ChromeDevtoolsProtocol\Model\CSS\TakeComputedStyleUpdatesResponse;
 use ChromeDevtoolsProtocol\Model\CSS\TakeCoverageDeltaResponse;
+use ChromeDevtoolsProtocol\Model\CSS\TrackComputedStyleUpdatesRequest;
 use ChromeDevtoolsProtocol\SubscriptionInterface;
 
 /**
@@ -293,6 +295,16 @@ interface CSSDomainInterface
 
 
 	/**
+	 * Polls the next batch of computed style updates.
+	 *
+	 * @param ContextInterface $ctx
+	 *
+	 * @return TakeComputedStyleUpdatesResponse
+	 */
+	public function takeComputedStyleUpdates(ContextInterface $ctx): TakeComputedStyleUpdatesResponse;
+
+
+	/**
 	 * Obtain list of rules that became used since last call to this method (or since start of coverage instrumentation)
 	 *
 	 * @param ContextInterface $ctx
@@ -300,6 +312,17 @@ interface CSSDomainInterface
 	 * @return TakeCoverageDeltaResponse
 	 */
 	public function takeCoverageDelta(ContextInterface $ctx): TakeCoverageDeltaResponse;
+
+
+	/**
+	 * Starts tracking the given computed styles for updates. The specified array of properties replaces the one previously specified. Pass empty array to disable tracking. Use takeComputedStyleUpdates to retrieve the list of nodes that had properties modified. The changes to computed style properties are only tracked for nodes pushed to the front-end by the DOM agent. If no changes to the tracked properties occur after the node has been pushed to the front-end, no updates will be issued for the node.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param TrackComputedStyleUpdatesRequest $request
+	 *
+	 * @return void
+	 */
+	public function trackComputedStyleUpdates(ContextInterface $ctx, TrackComputedStyleUpdatesRequest $request): void;
 
 
 	/**

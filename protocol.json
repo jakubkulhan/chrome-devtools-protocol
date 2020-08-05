@@ -1258,6 +1258,11 @@
                             "name": "sourceCodeLocation",
                             "optional": true,
                             "$ref": "SourceCodeLocation"
+                        },
+                        {
+                            "name": "violatingNodeId",
+                            "optional": true,
+                            "type": "integer"
                         }
                     ]
                 },
@@ -3652,6 +3657,21 @@
                     ]
                 },
                 {
+                    "name": "takeComputedStyleUpdates",
+                    "description": "Polls the next batch of computed style updates.",
+                    "experimental": true,
+                    "returns": [
+                        {
+                            "name": "nodeIds",
+                            "description": "The list of node Ids that have their tracked computed styles updated",
+                            "type": "array",
+                            "items": {
+                                "$ref": "DOM.NodeId"
+                            }
+                        }
+                    ]
+                },
+                {
                     "name": "takeCoverageDelta",
                     "description": "Obtain list of rules that became used since last call to this method (or since start of coverage instrumentation)",
                     "returns": [
@@ -3666,6 +3686,20 @@
                             "name": "timestamp",
                             "description": "Monotonically increasing time, in seconds.",
                             "type": "number"
+                        }
+                    ]
+                },
+                {
+                    "name": "trackComputedStyleUpdates",
+                    "description": "Starts tracking the given computed styles for updates. The specified array of properties replaces the one previously specified. Pass empty array to disable tracking. Use takeComputedStyleUpdates to retrieve the list of nodes that had properties modified. The changes to computed style properties are only tracked for nodes pushed to the front-end by the DOM agent. If no changes to the tracked properties occur after the node has been pushed to the front-end, no updates will be issued for the node.",
+                    "experimental": true,
+                    "parameters": [
+                        {
+                            "name": "propertiesToTrack",
+                            "type": "array",
+                            "items": {
+                                "$ref": "CSSComputedStyleProperty"
+                            }
                         }
                     ]
                 }
@@ -3904,6 +3938,26 @@
                         {
                             "name": "columnNumber",
                             "type": "integer"
+                        }
+                    ]
+                },
+                {
+                    "id": "LocationRange",
+                    "description": "Location range within one script.",
+                    "experimental": true,
+                    "type": "object",
+                    "properties": [
+                        {
+                            "name": "scriptId",
+                            "$ref": "Runtime.ScriptId"
+                        },
+                        {
+                            "name": "start",
+                            "$ref": "ScriptPosition"
+                        },
+                        {
+                            "name": "end",
+                            "$ref": "ScriptPosition"
                         }
                     ]
                 },
@@ -4768,6 +4822,16 @@
                             "experimental": true,
                             "optional": true,
                             "type": "boolean"
+                        },
+                        {
+                            "name": "skipList",
+                            "description": "The skipList specifies location ranges that should be skipped on step into.",
+                            "experimental": true,
+                            "optional": true,
+                            "type": "array",
+                            "items": {
+                                "$ref": "LocationRange"
+                            }
                         }
                     ]
                 },
@@ -4777,7 +4841,19 @@
                 },
                 {
                     "name": "stepOver",
-                    "description": "Steps over the statement."
+                    "description": "Steps over the statement.",
+                    "parameters": [
+                        {
+                            "name": "skipList",
+                            "description": "The skipList specifies location ranges that should be skipped on step over.",
+                            "experimental": true,
+                            "optional": true,
+                            "type": "array",
+                            "items": {
+                                "$ref": "LocationRange"
+                            }
+                        }
+                    ]
                 }
             ],
             "events": [
@@ -13763,7 +13839,20 @@
                         },
                         {
                             "name": "cellBorderColor",
-                            "description": "The cell border color (default: transparent).",
+                            "description": "The cell border color (default: transparent). Deprecated, please use rowLineColor and columnLineColor instead.",
+                            "deprecated": true,
+                            "optional": true,
+                            "$ref": "DOM.RGBA"
+                        },
+                        {
+                            "name": "rowLineColor",
+                            "description": "The row line color (default: transparent).",
+                            "optional": true,
+                            "$ref": "DOM.RGBA"
+                        },
+                        {
+                            "name": "columnLineColor",
+                            "description": "The column line color (default: transparent).",
                             "optional": true,
                             "$ref": "DOM.RGBA"
                         },
@@ -13775,7 +13864,20 @@
                         },
                         {
                             "name": "cellBorderDash",
-                            "description": "Whether the cell border is dashed (default: false).",
+                            "description": "Whether the cell border is dashed (default: false). Deprecated, please us rowLineDash and columnLineDash instead.",
+                            "deprecated": true,
+                            "optional": true,
+                            "type": "boolean"
+                        },
+                        {
+                            "name": "rowLineDash",
+                            "description": "Whether row lines are dashed (default: false).",
+                            "optional": true,
+                            "type": "boolean"
+                        },
+                        {
+                            "name": "columnLineDash",
+                            "description": "Whether column lines are dashed (default: false).",
                             "optional": true,
                             "type": "boolean"
                         },
@@ -14458,6 +14560,12 @@
                             "description": "Frame document's URL fragment including the '#'.",
                             "experimental": true,
                             "optional": true,
+                            "type": "string"
+                        },
+                        {
+                            "name": "domainAndRegistry",
+                            "description": "Frame document's registered domain, taking the public suffixes list into account. Extracted from the Frame's url. Example URLs: http://www.google.com/file.html -> \"google.com\" http://a.b.co.uk/file.html -> \"b.co.uk\"",
+                            "experimental": true,
                             "type": "string"
                         },
                         {

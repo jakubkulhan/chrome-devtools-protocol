@@ -50,6 +50,7 @@ use ChromeDevtoolsProtocol\Model\Debugger\SetScriptSourceResponse;
 use ChromeDevtoolsProtocol\Model\Debugger\SetSkipAllPausesRequest;
 use ChromeDevtoolsProtocol\Model\Debugger\SetVariableValueRequest;
 use ChromeDevtoolsProtocol\Model\Debugger\StepIntoRequest;
+use ChromeDevtoolsProtocol\Model\Debugger\StepOverRequest;
 use ChromeDevtoolsProtocol\SubscriptionInterface;
 
 class DebuggerDomain implements DebuggerDomainInterface
@@ -261,9 +262,8 @@ class DebuggerDomain implements DebuggerDomainInterface
 	}
 
 
-	public function stepOver(ContextInterface $ctx): void
+	public function stepOver(ContextInterface $ctx, StepOverRequest $request): void
 	{
-		$request = new \stdClass();
 		$this->internalClient->executeCommand($ctx, 'Debugger.stepOver', $request);
 	}
 

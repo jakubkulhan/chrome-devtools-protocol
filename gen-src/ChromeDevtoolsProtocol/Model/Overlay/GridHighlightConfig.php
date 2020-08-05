@@ -63,11 +63,25 @@ final class GridHighlightConfig implements \JsonSerializable
 	public $gridBorderColor;
 
 	/**
-	 * The cell border color (default: transparent).
+	 * The cell border color (default: transparent). Deprecated, please use rowLineColor and columnLineColor instead.
 	 *
 	 * @var RGBA|null
 	 */
 	public $cellBorderColor;
+
+	/**
+	 * The row line color (default: transparent).
+	 *
+	 * @var RGBA|null
+	 */
+	public $rowLineColor;
+
+	/**
+	 * The column line color (default: transparent).
+	 *
+	 * @var RGBA|null
+	 */
+	public $columnLineColor;
 
 	/**
 	 * Whether the grid border is dashed (default: false).
@@ -77,11 +91,25 @@ final class GridHighlightConfig implements \JsonSerializable
 	public $gridBorderDash;
 
 	/**
-	 * Whether the cell border is dashed (default: false).
+	 * Whether the cell border is dashed (default: false). Deprecated, please us rowLineDash and columnLineDash instead.
 	 *
 	 * @var bool|null
 	 */
 	public $cellBorderDash;
+
+	/**
+	 * Whether row lines are dashed (default: false).
+	 *
+	 * @var bool|null
+	 */
+	public $rowLineDash;
+
+	/**
+	 * Whether column lines are dashed (default: false).
+	 *
+	 * @var bool|null
+	 */
+	public $columnLineDash;
 
 	/**
 	 * The row gap highlight fill color (default: transparent).
@@ -146,11 +174,23 @@ final class GridHighlightConfig implements \JsonSerializable
 		if (isset($data->cellBorderColor)) {
 			$instance->cellBorderColor = RGBA::fromJson($data->cellBorderColor);
 		}
+		if (isset($data->rowLineColor)) {
+			$instance->rowLineColor = RGBA::fromJson($data->rowLineColor);
+		}
+		if (isset($data->columnLineColor)) {
+			$instance->columnLineColor = RGBA::fromJson($data->columnLineColor);
+		}
 		if (isset($data->gridBorderDash)) {
 			$instance->gridBorderDash = (bool)$data->gridBorderDash;
 		}
 		if (isset($data->cellBorderDash)) {
 			$instance->cellBorderDash = (bool)$data->cellBorderDash;
+		}
+		if (isset($data->rowLineDash)) {
+			$instance->rowLineDash = (bool)$data->rowLineDash;
+		}
+		if (isset($data->columnLineDash)) {
+			$instance->columnLineDash = (bool)$data->columnLineDash;
 		}
 		if (isset($data->rowGapColor)) {
 			$instance->rowGapColor = RGBA::fromJson($data->rowGapColor);
@@ -198,11 +238,23 @@ final class GridHighlightConfig implements \JsonSerializable
 		if ($this->cellBorderColor !== null) {
 			$data->cellBorderColor = $this->cellBorderColor->jsonSerialize();
 		}
+		if ($this->rowLineColor !== null) {
+			$data->rowLineColor = $this->rowLineColor->jsonSerialize();
+		}
+		if ($this->columnLineColor !== null) {
+			$data->columnLineColor = $this->columnLineColor->jsonSerialize();
+		}
 		if ($this->gridBorderDash !== null) {
 			$data->gridBorderDash = $this->gridBorderDash;
 		}
 		if ($this->cellBorderDash !== null) {
 			$data->cellBorderDash = $this->cellBorderDash;
+		}
+		if ($this->rowLineDash !== null) {
+			$data->rowLineDash = $this->rowLineDash;
+		}
+		if ($this->columnLineDash !== null) {
+			$data->columnLineDash = $this->columnLineDash;
 		}
 		if ($this->rowGapColor !== null) {
 			$data->rowGapColor = $this->rowGapColor->jsonSerialize();

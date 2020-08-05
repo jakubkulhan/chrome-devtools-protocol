@@ -3,23 +3,16 @@
 namespace ChromeDevtoolsProtocol\Model\Debugger;
 
 /**
- * Request for Debugger.stepInto command.
+ * Request for Debugger.stepOver command.
  *
  * @generated This file has been auto-generated, do not edit.
  *
  * @author Jakub Kulhan <jakub.kulhan@gmail.com>
  */
-final class StepIntoRequest implements \JsonSerializable
+final class StepOverRequest implements \JsonSerializable
 {
 	/**
-	 * Debugger will pause on the execution of the first async task which was scheduled before next pause.
-	 *
-	 * @var bool|null
-	 */
-	public $breakOnAsyncCall;
-
-	/**
-	 * The skipList specifies location ranges that should be skipped on step into.
+	 * The skipList specifies location ranges that should be skipped on step over.
 	 *
 	 * @var LocationRange[]|null
 	 */
@@ -29,9 +22,6 @@ final class StepIntoRequest implements \JsonSerializable
 	public static function fromJson($data)
 	{
 		$instance = new static();
-		if (isset($data->breakOnAsyncCall)) {
-			$instance->breakOnAsyncCall = (bool)$data->breakOnAsyncCall;
-		}
 		if (isset($data->skipList)) {
 			$instance->skipList = [];
 			foreach ($data->skipList as $item) {
@@ -45,9 +35,6 @@ final class StepIntoRequest implements \JsonSerializable
 	public function jsonSerialize()
 	{
 		$data = new \stdClass();
-		if ($this->breakOnAsyncCall !== null) {
-			$data->breakOnAsyncCall = $this->breakOnAsyncCall;
-		}
 		if ($this->skipList !== null) {
 			$data->skipList = [];
 			foreach ($this->skipList as $item) {
@@ -61,11 +48,11 @@ final class StepIntoRequest implements \JsonSerializable
 	/**
 	 * Create new instance using builder.
 	 *
-	 * @return StepIntoRequestBuilder
+	 * @return StepOverRequestBuilder
 	 */
-	public static function builder(): StepIntoRequestBuilder
+	public static function builder(): StepOverRequestBuilder
 	{
-		return new StepIntoRequestBuilder();
+		return new StepOverRequestBuilder();
 	}
 
 

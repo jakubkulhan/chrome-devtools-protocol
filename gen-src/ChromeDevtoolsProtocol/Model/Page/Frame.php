@@ -54,6 +54,13 @@ final class Frame implements \JsonSerializable
 	public $urlFragment;
 
 	/**
+	 * Frame document's registered domain, taking the public suffixes list into account. Extracted from the Frame's url. Example URLs: http://www.google.com/file.html -> "google.com" http://a.b.co.uk/file.html -> "b.co.uk"
+	 *
+	 * @var string
+	 */
+	public $domainAndRegistry;
+
+	/**
 	 * Frame document's security origin.
 	 *
 	 * @var string
@@ -103,6 +110,9 @@ final class Frame implements \JsonSerializable
 		if (isset($data->urlFragment)) {
 			$instance->urlFragment = (string)$data->urlFragment;
 		}
+		if (isset($data->domainAndRegistry)) {
+			$instance->domainAndRegistry = (string)$data->domainAndRegistry;
+		}
 		if (isset($data->securityOrigin)) {
 			$instance->securityOrigin = (string)$data->securityOrigin;
 		}
@@ -139,6 +149,9 @@ final class Frame implements \JsonSerializable
 		}
 		if ($this->urlFragment !== null) {
 			$data->urlFragment = $this->urlFragment;
+		}
+		if ($this->domainAndRegistry !== null) {
+			$data->domainAndRegistry = $this->domainAndRegistry;
 		}
 		if ($this->securityOrigin !== null) {
 			$data->securityOrigin = $this->securityOrigin;

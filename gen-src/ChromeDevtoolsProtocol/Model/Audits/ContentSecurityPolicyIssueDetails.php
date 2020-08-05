@@ -34,6 +34,9 @@ final class ContentSecurityPolicyIssueDetails implements \JsonSerializable
 	/** @var SourceCodeLocation|null */
 	public $sourceCodeLocation;
 
+	/** @var int|null */
+	public $violatingNodeId;
+
 
 	public static function fromJson($data)
 	{
@@ -52,6 +55,9 @@ final class ContentSecurityPolicyIssueDetails implements \JsonSerializable
 		}
 		if (isset($data->sourceCodeLocation)) {
 			$instance->sourceCodeLocation = SourceCodeLocation::fromJson($data->sourceCodeLocation);
+		}
+		if (isset($data->violatingNodeId)) {
+			$instance->violatingNodeId = (int)$data->violatingNodeId;
 		}
 		return $instance;
 	}
@@ -74,6 +80,9 @@ final class ContentSecurityPolicyIssueDetails implements \JsonSerializable
 		}
 		if ($this->sourceCodeLocation !== null) {
 			$data->sourceCodeLocation = $this->sourceCodeLocation->jsonSerialize();
+		}
+		if ($this->violatingNodeId !== null) {
+			$data->violatingNodeId = $this->violatingNodeId;
 		}
 		return $data;
 	}

@@ -42,7 +42,9 @@ use ChromeDevtoolsProtocol\Model\CSS\StopRuleUsageTrackingResponse;
 use ChromeDevtoolsProtocol\Model\CSS\StyleSheetAddedEvent;
 use ChromeDevtoolsProtocol\Model\CSS\StyleSheetChangedEvent;
 use ChromeDevtoolsProtocol\Model\CSS\StyleSheetRemovedEvent;
+use ChromeDevtoolsProtocol\Model\CSS\TakeComputedStyleUpdatesResponse;
 use ChromeDevtoolsProtocol\Model\CSS\TakeCoverageDeltaResponse;
+use ChromeDevtoolsProtocol\Model\CSS\TrackComputedStyleUpdatesRequest;
 use ChromeDevtoolsProtocol\SubscriptionInterface;
 
 class CSSDomain implements CSSDomainInterface
@@ -210,11 +212,25 @@ class CSSDomain implements CSSDomainInterface
 	}
 
 
+	public function takeComputedStyleUpdates(ContextInterface $ctx): TakeComputedStyleUpdatesResponse
+	{
+		$request = new \stdClass();
+		$response = $this->internalClient->executeCommand($ctx, 'CSS.takeComputedStyleUpdates', $request);
+		return TakeComputedStyleUpdatesResponse::fromJson($response);
+	}
+
+
 	public function takeCoverageDelta(ContextInterface $ctx): TakeCoverageDeltaResponse
 	{
 		$request = new \stdClass();
 		$response = $this->internalClient->executeCommand($ctx, 'CSS.takeCoverageDelta', $request);
 		return TakeCoverageDeltaResponse::fromJson($response);
+	}
+
+
+	public function trackComputedStyleUpdates(ContextInterface $ctx, TrackComputedStyleUpdatesRequest $request): void
+	{
+		$this->internalClient->executeCommand($ctx, 'CSS.trackComputedStyleUpdates', $request);
 	}
 
 
