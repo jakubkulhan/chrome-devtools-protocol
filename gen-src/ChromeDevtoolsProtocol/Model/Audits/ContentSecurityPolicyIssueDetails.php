@@ -34,7 +34,7 @@ final class ContentSecurityPolicyIssueDetails implements \JsonSerializable
 	/** @var SourceCodeLocation|null */
 	public $sourceCodeLocation;
 
-	/** @var int|null */
+	/** @var int */
 	public $violatingNodeId;
 
 
