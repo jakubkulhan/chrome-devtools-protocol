@@ -38,6 +38,8 @@ use ChromeDevtoolsProtocol\Model\DOM\GetNodeForLocationRequest;
 use ChromeDevtoolsProtocol\Model\DOM\GetNodeForLocationResponse;
 use ChromeDevtoolsProtocol\Model\DOM\GetNodeStackTracesRequest;
 use ChromeDevtoolsProtocol\Model\DOM\GetNodeStackTracesResponse;
+use ChromeDevtoolsProtocol\Model\DOM\GetNodesForSubtreeByStyleRequest;
+use ChromeDevtoolsProtocol\Model\DOM\GetNodesForSubtreeByStyleResponse;
 use ChromeDevtoolsProtocol\Model\DOM\GetOuterHTMLRequest;
 use ChromeDevtoolsProtocol\Model\DOM\GetOuterHTMLResponse;
 use ChromeDevtoolsProtocol\Model\DOM\GetRelayoutBoundaryRequest;
@@ -193,6 +195,13 @@ class DOMDomain implements DOMDomainInterface
 	{
 		$response = $this->internalClient->executeCommand($ctx, 'DOM.getNodeForLocation', $request);
 		return GetNodeForLocationResponse::fromJson($response);
+	}
+
+
+	public function getNodesForSubtreeByStyle(ContextInterface $ctx, GetNodesForSubtreeByStyleRequest $request): GetNodesForSubtreeByStyleResponse
+	{
+		$response = $this->internalClient->executeCommand($ctx, 'DOM.getNodesForSubtreeByStyle', $request);
+		return GetNodesForSubtreeByStyleResponse::fromJson($response);
 	}
 
 

@@ -37,6 +37,8 @@ use ChromeDevtoolsProtocol\Model\DOM\GetNodeForLocationRequest;
 use ChromeDevtoolsProtocol\Model\DOM\GetNodeForLocationResponse;
 use ChromeDevtoolsProtocol\Model\DOM\GetNodeStackTracesRequest;
 use ChromeDevtoolsProtocol\Model\DOM\GetNodeStackTracesResponse;
+use ChromeDevtoolsProtocol\Model\DOM\GetNodesForSubtreeByStyleRequest;
+use ChromeDevtoolsProtocol\Model\DOM\GetNodesForSubtreeByStyleResponse;
 use ChromeDevtoolsProtocol\Model\DOM\GetOuterHTMLRequest;
 use ChromeDevtoolsProtocol\Model\DOM\GetOuterHTMLResponse;
 use ChromeDevtoolsProtocol\Model\DOM\GetRelayoutBoundaryRequest;
@@ -250,6 +252,17 @@ interface DOMDomainInterface
 	 * @return GetNodeForLocationResponse
 	 */
 	public function getNodeForLocation(ContextInterface $ctx, GetNodeForLocationRequest $request): GetNodeForLocationResponse;
+
+
+	/**
+	 * Finds nodes with a given computed style in a subtree.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param GetNodesForSubtreeByStyleRequest $request
+	 *
+	 * @return GetNodesForSubtreeByStyleResponse
+	 */
+	public function getNodesForSubtreeByStyle(ContextInterface $ctx, GetNodesForSubtreeByStyleRequest $request): GetNodesForSubtreeByStyleResponse;
 
 
 	/**
