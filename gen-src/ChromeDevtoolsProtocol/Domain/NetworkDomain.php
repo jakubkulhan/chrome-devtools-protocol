@@ -24,6 +24,8 @@ use ChromeDevtoolsProtocol\Model\Network\GetResponseBodyForInterceptionRequest;
 use ChromeDevtoolsProtocol\Model\Network\GetResponseBodyForInterceptionResponse;
 use ChromeDevtoolsProtocol\Model\Network\GetResponseBodyRequest;
 use ChromeDevtoolsProtocol\Model\Network\GetResponseBodyResponse;
+use ChromeDevtoolsProtocol\Model\Network\GetSecurityIsolationStatusRequest;
+use ChromeDevtoolsProtocol\Model\Network\GetSecurityIsolationStatusResponse;
 use ChromeDevtoolsProtocol\Model\Network\LoadingFailedEvent;
 use ChromeDevtoolsProtocol\Model\Network\LoadingFinishedEvent;
 use ChromeDevtoolsProtocol\Model\Network\ReplayXHRRequest;
@@ -179,6 +181,13 @@ class NetworkDomain implements NetworkDomainInterface
 	{
 		$response = $this->internalClient->executeCommand($ctx, 'Network.getResponseBodyForInterception', $request);
 		return GetResponseBodyForInterceptionResponse::fromJson($response);
+	}
+
+
+	public function getSecurityIsolationStatus(ContextInterface $ctx, GetSecurityIsolationStatusRequest $request): GetSecurityIsolationStatusResponse
+	{
+		$response = $this->internalClient->executeCommand($ctx, 'Network.getSecurityIsolationStatus', $request);
+		return GetSecurityIsolationStatusResponse::fromJson($response);
 	}
 
 

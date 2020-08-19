@@ -23,6 +23,8 @@ use ChromeDevtoolsProtocol\Model\Network\GetResponseBodyForInterceptionRequest;
 use ChromeDevtoolsProtocol\Model\Network\GetResponseBodyForInterceptionResponse;
 use ChromeDevtoolsProtocol\Model\Network\GetResponseBodyRequest;
 use ChromeDevtoolsProtocol\Model\Network\GetResponseBodyResponse;
+use ChromeDevtoolsProtocol\Model\Network\GetSecurityIsolationStatusRequest;
+use ChromeDevtoolsProtocol\Model\Network\GetSecurityIsolationStatusResponse;
 use ChromeDevtoolsProtocol\Model\Network\LoadingFailedEvent;
 use ChromeDevtoolsProtocol\Model\Network\LoadingFinishedEvent;
 use ChromeDevtoolsProtocol\Model\Network\ReplayXHRRequest;
@@ -233,6 +235,17 @@ interface NetworkDomainInterface
 	 * @return GetResponseBodyForInterceptionResponse
 	 */
 	public function getResponseBodyForInterception(ContextInterface $ctx, GetResponseBodyForInterceptionRequest $request): GetResponseBodyForInterceptionResponse;
+
+
+	/**
+	 * Returns information about the COEP/COOP isolation status.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param GetSecurityIsolationStatusRequest $request
+	 *
+	 * @return GetSecurityIsolationStatusResponse
+	 */
+	public function getSecurityIsolationStatus(ContextInterface $ctx, GetSecurityIsolationStatusRequest $request): GetSecurityIsolationStatusResponse;
 
 
 	/**
