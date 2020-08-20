@@ -88,6 +88,20 @@ final class Frame implements \JsonSerializable
 	 */
 	public $adFrameType;
 
+	/**
+	 * Indicates whether the main document is a secure context and explains why that is the case.
+	 *
+	 * @var string
+	 */
+	public $secureContextType;
+
+	/**
+	 * Indicates whether this is a cross origin isolated context.
+	 *
+	 * @var string
+	 */
+	public $crossOriginIsolatedContextType;
+
 
 	public static function fromJson($data)
 	{
@@ -124,6 +138,12 @@ final class Frame implements \JsonSerializable
 		}
 		if (isset($data->adFrameType)) {
 			$instance->adFrameType = (string)$data->adFrameType;
+		}
+		if (isset($data->secureContextType)) {
+			$instance->secureContextType = (string)$data->secureContextType;
+		}
+		if (isset($data->crossOriginIsolatedContextType)) {
+			$instance->crossOriginIsolatedContextType = (string)$data->crossOriginIsolatedContextType;
 		}
 		return $instance;
 	}
@@ -164,6 +184,12 @@ final class Frame implements \JsonSerializable
 		}
 		if ($this->adFrameType !== null) {
 			$data->adFrameType = $this->adFrameType;
+		}
+		if ($this->secureContextType !== null) {
+			$data->secureContextType = $this->secureContextType;
+		}
+		if ($this->crossOriginIsolatedContextType !== null) {
+			$data->crossOriginIsolatedContextType = $this->crossOriginIsolatedContextType;
 		}
 		return $data;
 	}
