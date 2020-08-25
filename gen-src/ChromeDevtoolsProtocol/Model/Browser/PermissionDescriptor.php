@@ -33,13 +33,6 @@ final class PermissionDescriptor implements \JsonSerializable
 	public $userVisibleOnly;
 
 	/**
-	 * For "wake-lock" permission, must specify type as either "screen" or "system".
-	 *
-	 * @var string|null
-	 */
-	public $type;
-
-	/**
 	 * For "clipboard" permission, may specify allowWithoutSanitization.
 	 *
 	 * @var bool|null
@@ -59,9 +52,6 @@ final class PermissionDescriptor implements \JsonSerializable
 		if (isset($data->userVisibleOnly)) {
 			$instance->userVisibleOnly = (bool)$data->userVisibleOnly;
 		}
-		if (isset($data->type)) {
-			$instance->type = (string)$data->type;
-		}
 		if (isset($data->allowWithoutSanitization)) {
 			$instance->allowWithoutSanitization = (bool)$data->allowWithoutSanitization;
 		}
@@ -80,9 +70,6 @@ final class PermissionDescriptor implements \JsonSerializable
 		}
 		if ($this->userVisibleOnly !== null) {
 			$data->userVisibleOnly = $this->userVisibleOnly;
-		}
-		if ($this->type !== null) {
-			$data->type = $this->type;
 		}
 		if ($this->allowWithoutSanitization !== null) {
 			$data->allowWithoutSanitization = $this->allowWithoutSanitization;
