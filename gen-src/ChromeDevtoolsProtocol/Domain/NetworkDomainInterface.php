@@ -37,6 +37,7 @@ use ChromeDevtoolsProtocol\Model\Network\ResponseReceivedEvent;
 use ChromeDevtoolsProtocol\Model\Network\ResponseReceivedExtraInfoEvent;
 use ChromeDevtoolsProtocol\Model\Network\SearchInResponseBodyRequest;
 use ChromeDevtoolsProtocol\Model\Network\SearchInResponseBodyResponse;
+use ChromeDevtoolsProtocol\Model\Network\SetAttachDebugHeaderRequest;
 use ChromeDevtoolsProtocol\Model\Network\SetBlockedURLsRequest;
 use ChromeDevtoolsProtocol\Model\Network\SetBypassServiceWorkerRequest;
 use ChromeDevtoolsProtocol\Model\Network\SetCacheDisabledRequest;
@@ -268,6 +269,17 @@ interface NetworkDomainInterface
 	 * @return SearchInResponseBodyResponse
 	 */
 	public function searchInResponseBody(ContextInterface $ctx, SearchInResponseBodyRequest $request): SearchInResponseBodyResponse;
+
+
+	/**
+	 * Specifies whether to sned a debug header to all outgoing requests.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param SetAttachDebugHeaderRequest $request
+	 *
+	 * @return void
+	 */
+	public function setAttachDebugHeader(ContextInterface $ctx, SetAttachDebugHeaderRequest $request): void;
 
 
 	/**

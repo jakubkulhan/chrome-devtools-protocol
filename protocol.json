@@ -13115,6 +13115,18 @@
                     ]
                 },
                 {
+                    "name": "setAttachDebugHeader",
+                    "description": "Specifies whether to sned a debug header to all outgoing requests.",
+                    "experimental": true,
+                    "parameters": [
+                        {
+                            "name": "enabled",
+                            "description": "Whether to send a debug header.",
+                            "type": "boolean"
+                        }
+                    ]
+                },
+                {
                     "name": "setBlockedURLs",
                     "description": "Blocks URLs from loading.",
                     "experimental": true,
