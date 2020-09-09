@@ -3,18 +3,18 @@
 namespace ChromeDevtoolsProtocol\Model\Profiler;
 
 /**
- * Response to Profiler.getRuntimeCallStats command.
+ * Response to Profiler.getCounters command.
  *
  * @generated This file has been auto-generated, do not edit.
  *
  * @author Jakub Kulhan <jakub.kulhan@gmail.com>
  */
-final class GetRuntimeCallStatsResponse implements \JsonSerializable
+final class GetCountersResponse implements \JsonSerializable
 {
 	/**
-	 * Collected runtime call counter information.
+	 * Collected counters information.
 	 *
-	 * @var RuntimeCallCounterInfo[]
+	 * @var CounterInfo[]
 	 */
 	public $result;
 
@@ -25,7 +25,7 @@ final class GetRuntimeCallStatsResponse implements \JsonSerializable
 		if (isset($data->result)) {
 			$instance->result = [];
 			foreach ($data->result as $item) {
-				$instance->result[] = RuntimeCallCounterInfo::fromJson($item);
+				$instance->result[] = CounterInfo::fromJson($item);
 			}
 		}
 		return $instance;

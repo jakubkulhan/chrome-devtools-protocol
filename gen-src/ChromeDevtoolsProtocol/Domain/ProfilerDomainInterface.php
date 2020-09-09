@@ -6,6 +6,7 @@ use ChromeDevtoolsProtocol\ContextInterface;
 use ChromeDevtoolsProtocol\Model\Profiler\ConsoleProfileFinishedEvent;
 use ChromeDevtoolsProtocol\Model\Profiler\ConsoleProfileStartedEvent;
 use ChromeDevtoolsProtocol\Model\Profiler\GetBestEffortCoverageResponse;
+use ChromeDevtoolsProtocol\Model\Profiler\GetCountersResponse;
 use ChromeDevtoolsProtocol\Model\Profiler\GetRuntimeCallStatsResponse;
 use ChromeDevtoolsProtocol\Model\Profiler\PreciseCoverageDeltaUpdateEvent;
 use ChromeDevtoolsProtocol\Model\Profiler\SetSamplingIntervalRequest;
@@ -36,6 +37,16 @@ interface ProfilerDomainInterface
 
 
 	/**
+	 * Disable counters collection.
+	 *
+	 * @param ContextInterface $ctx
+	 *
+	 * @return void
+	 */
+	public function disableCounters(ContextInterface $ctx): void;
+
+
+	/**
 	 * Disable run time call stats collection.
 	 *
 	 * @param ContextInterface $ctx
@@ -56,6 +67,16 @@ interface ProfilerDomainInterface
 
 
 	/**
+	 * Enable counters collection.
+	 *
+	 * @param ContextInterface $ctx
+	 *
+	 * @return void
+	 */
+	public function enableCounters(ContextInterface $ctx): void;
+
+
+	/**
 	 * Enable run time call stats collection.
 	 *
 	 * @param ContextInterface $ctx
@@ -73,6 +94,16 @@ interface ProfilerDomainInterface
 	 * @return GetBestEffortCoverageResponse
 	 */
 	public function getBestEffortCoverage(ContextInterface $ctx): GetBestEffortCoverageResponse;
+
+
+	/**
+	 * Retrieve counters.
+	 *
+	 * @param ContextInterface $ctx
+	 *
+	 * @return GetCountersResponse
+	 */
+	public function getCounters(ContextInterface $ctx): GetCountersResponse;
 
 
 	/**

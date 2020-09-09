@@ -7,6 +7,7 @@ use ChromeDevtoolsProtocol\InternalClientInterface;
 use ChromeDevtoolsProtocol\Model\Profiler\ConsoleProfileFinishedEvent;
 use ChromeDevtoolsProtocol\Model\Profiler\ConsoleProfileStartedEvent;
 use ChromeDevtoolsProtocol\Model\Profiler\GetBestEffortCoverageResponse;
+use ChromeDevtoolsProtocol\Model\Profiler\GetCountersResponse;
 use ChromeDevtoolsProtocol\Model\Profiler\GetRuntimeCallStatsResponse;
 use ChromeDevtoolsProtocol\Model\Profiler\PreciseCoverageDeltaUpdateEvent;
 use ChromeDevtoolsProtocol\Model\Profiler\SetSamplingIntervalRequest;
@@ -36,6 +37,13 @@ class ProfilerDomain implements ProfilerDomainInterface
 	}
 
 
+	public function disableCounters(ContextInterface $ctx): void
+	{
+		$request = new \stdClass();
+		$this->internalClient->executeCommand($ctx, 'Profiler.disableCounters', $request);
+	}
+
+
 	public function disableRuntimeCallStats(ContextInterface $ctx): void
 	{
 		$request = new \stdClass();
@@ -47,6 +55,13 @@ class ProfilerDomain implements ProfilerDomainInterface
 	{
 		$request = new \stdClass();
 		$this->internalClient->executeCommand($ctx, 'Profiler.enable', $request);
+	}
+
+
+	public function enableCounters(ContextInterface $ctx): void
+	{
+		$request = new \stdClass();
+		$this->internalClient->executeCommand($ctx, 'Profiler.enableCounters', $request);
 	}
 
 
@@ -62,6 +77,14 @@ class ProfilerDomain implements ProfilerDomainInterface
 		$request = new \stdClass();
 		$response = $this->internalClient->executeCommand($ctx, 'Profiler.getBestEffortCoverage', $request);
 		return GetBestEffortCoverageResponse::fromJson($response);
+	}
+
+
+	public function getCounters(ContextInterface $ctx): GetCountersResponse
+	{
+		$request = new \stdClass();
+		$response = $this->internalClient->executeCommand($ctx, 'Profiler.getCounters', $request);
+		return GetCountersResponse::fromJson($response);
 	}
 
 
