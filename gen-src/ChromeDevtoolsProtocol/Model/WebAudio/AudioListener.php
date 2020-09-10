@@ -3,7 +3,7 @@
 namespace ChromeDevtoolsProtocol\Model\WebAudio;
 
 /**
- * Protocol object for AudioListner
+ * Protocol object for AudioListener
  *
  * @generated This file has been auto-generated, do not edit.
  *
