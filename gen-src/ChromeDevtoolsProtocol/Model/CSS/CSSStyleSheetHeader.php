@@ -82,11 +82,18 @@ final class CSSStyleSheetHeader implements \JsonSerializable
 	public $isInline;
 
 	/**
-	 * Whether this stylesheet is mutable. Inline stylesheets become mutable after they have been modified via CSSOM API. <link> element's stylesheets are never mutable. Constructed stylesheets (new CSSStyleSheet()) are mutable immediately after creation.
+	 * Whether this stylesheet is mutable. Inline stylesheets become mutable after they have been modified via CSSOM API. <link> element's stylesheets become mutable only if DevTools modifies them. Constructed stylesheets (new CSSStyleSheet()) are mutable immediately after creation.
 	 *
 	 * @var bool
 	 */
 	public $isMutable;
+
+	/**
+	 * Whether this stylesheet is a constructed stylesheet (created using new CSSStyleSheet()).
+	 *
+	 * @var bool
+	 */
+	public $isConstructed;
 
 	/**
 	 * Line offset of the stylesheet within the resource (zero based).
@@ -160,6 +167,9 @@ final class CSSStyleSheetHeader implements \JsonSerializable
 		if (isset($data->isMutable)) {
 			$instance->isMutable = (bool)$data->isMutable;
 		}
+		if (isset($data->isConstructed)) {
+			$instance->isConstructed = (bool)$data->isConstructed;
+		}
 		if (isset($data->startLine)) {
 			$instance->startLine = $data->startLine;
 		}
@@ -214,6 +224,9 @@ final class CSSStyleSheetHeader implements \JsonSerializable
 		}
 		if ($this->isMutable !== null) {
 			$data->isMutable = $this->isMutable;
+		}
+		if ($this->isConstructed !== null) {
+			$data->isConstructed = $this->isConstructed;
 		}
 		if ($this->startLine !== null) {
 			$data->startLine = $this->startLine;
