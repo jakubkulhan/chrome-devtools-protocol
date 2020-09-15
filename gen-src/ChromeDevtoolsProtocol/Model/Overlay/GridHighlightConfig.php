@@ -146,6 +146,13 @@ final class GridHighlightConfig implements \JsonSerializable
 	 */
 	public $areaBorderColor;
 
+	/**
+	 * The grid container background color (Default: transparent).
+	 *
+	 * @var RGBA|null
+	 */
+	public $gridBackgroundColor;
+
 
 	public static function fromJson($data)
 	{
@@ -206,6 +213,9 @@ final class GridHighlightConfig implements \JsonSerializable
 		}
 		if (isset($data->areaBorderColor)) {
 			$instance->areaBorderColor = RGBA::fromJson($data->areaBorderColor);
+		}
+		if (isset($data->gridBackgroundColor)) {
+			$instance->gridBackgroundColor = RGBA::fromJson($data->gridBackgroundColor);
 		}
 		return $instance;
 	}
@@ -270,6 +280,9 @@ final class GridHighlightConfig implements \JsonSerializable
 		}
 		if ($this->areaBorderColor !== null) {
 			$data->areaBorderColor = $this->areaBorderColor->jsonSerialize();
+		}
+		if ($this->gridBackgroundColor !== null) {
+			$data->gridBackgroundColor = $this->gridBackgroundColor->jsonSerialize();
 		}
 		return $data;
 	}

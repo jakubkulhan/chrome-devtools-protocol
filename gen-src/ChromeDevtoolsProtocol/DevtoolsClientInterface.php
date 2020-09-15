@@ -191,8 +191,6 @@ interface DevtoolsClientInterface extends CloseableResourceInterface
 
 	/**
 	 * A domain for letting clients substitute browser's network layer with client code.
-	 *
-	 * @experimental
 	 */
 	public function fetch(): FetchDomainInterface;
 
