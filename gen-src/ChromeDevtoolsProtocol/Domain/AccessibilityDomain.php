@@ -7,6 +7,8 @@ use ChromeDevtoolsProtocol\InternalClientInterface;
 use ChromeDevtoolsProtocol\Model\Accessibility\GetFullAXTreeResponse;
 use ChromeDevtoolsProtocol\Model\Accessibility\GetPartialAXTreeRequest;
 use ChromeDevtoolsProtocol\Model\Accessibility\GetPartialAXTreeResponse;
+use ChromeDevtoolsProtocol\Model\Accessibility\QueryAXTreeRequest;
+use ChromeDevtoolsProtocol\Model\Accessibility\QueryAXTreeResponse;
 
 class AccessibilityDomain implements AccessibilityDomainInterface
 {
@@ -46,5 +48,12 @@ class AccessibilityDomain implements AccessibilityDomainInterface
 	{
 		$response = $this->internalClient->executeCommand($ctx, 'Accessibility.getPartialAXTree', $request);
 		return GetPartialAXTreeResponse::fromJson($response);
+	}
+
+
+	public function queryAXTree(ContextInterface $ctx, QueryAXTreeRequest $request): QueryAXTreeResponse
+	{
+		$response = $this->internalClient->executeCommand($ctx, 'Accessibility.queryAXTree', $request);
+		return QueryAXTreeResponse::fromJson($response);
 	}
 }
