@@ -25,6 +25,8 @@ use ChromeDevtoolsProtocol\Model\Network\GetResponseBodyRequest;
 use ChromeDevtoolsProtocol\Model\Network\GetResponseBodyResponse;
 use ChromeDevtoolsProtocol\Model\Network\GetSecurityIsolationStatusRequest;
 use ChromeDevtoolsProtocol\Model\Network\GetSecurityIsolationStatusResponse;
+use ChromeDevtoolsProtocol\Model\Network\LoadNetworkResourceRequest;
+use ChromeDevtoolsProtocol\Model\Network\LoadNetworkResourceResponse;
 use ChromeDevtoolsProtocol\Model\Network\LoadingFailedEvent;
 use ChromeDevtoolsProtocol\Model\Network\LoadingFinishedEvent;
 use ChromeDevtoolsProtocol\Model\Network\ReplayXHRRequest;
@@ -247,6 +249,17 @@ interface NetworkDomainInterface
 	 * @return GetSecurityIsolationStatusResponse
 	 */
 	public function getSecurityIsolationStatus(ContextInterface $ctx, GetSecurityIsolationStatusRequest $request): GetSecurityIsolationStatusResponse;
+
+
+	/**
+	 * Fetches the resource and returns the content.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param LoadNetworkResourceRequest $request
+	 *
+	 * @return LoadNetworkResourceResponse
+	 */
+	public function loadNetworkResource(ContextInterface $ctx, LoadNetworkResourceRequest $request): LoadNetworkResourceResponse;
 
 
 	/**

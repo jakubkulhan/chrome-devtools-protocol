@@ -26,6 +26,8 @@ use ChromeDevtoolsProtocol\Model\Network\GetResponseBodyRequest;
 use ChromeDevtoolsProtocol\Model\Network\GetResponseBodyResponse;
 use ChromeDevtoolsProtocol\Model\Network\GetSecurityIsolationStatusRequest;
 use ChromeDevtoolsProtocol\Model\Network\GetSecurityIsolationStatusResponse;
+use ChromeDevtoolsProtocol\Model\Network\LoadNetworkResourceRequest;
+use ChromeDevtoolsProtocol\Model\Network\LoadNetworkResourceResponse;
 use ChromeDevtoolsProtocol\Model\Network\LoadingFailedEvent;
 use ChromeDevtoolsProtocol\Model\Network\LoadingFinishedEvent;
 use ChromeDevtoolsProtocol\Model\Network\ReplayXHRRequest;
@@ -189,6 +191,13 @@ class NetworkDomain implements NetworkDomainInterface
 	{
 		$response = $this->internalClient->executeCommand($ctx, 'Network.getSecurityIsolationStatus', $request);
 		return GetSecurityIsolationStatusResponse::fromJson($response);
+	}
+
+
+	public function loadNetworkResource(ContextInterface $ctx, LoadNetworkResourceRequest $request): LoadNetworkResourceResponse
+	{
+		$response = $this->internalClient->executeCommand($ctx, 'Network.loadNetworkResource', $request);
+		return LoadNetworkResourceResponse::fromJson($response);
 	}
 
 
