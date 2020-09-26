@@ -12,7 +12,7 @@ namespace ChromeDevtoolsProtocol\Model\Network;
 final class SetCookieResponse implements \JsonSerializable
 {
 	/**
-	 * True if successfully set cookie.
+	 * Always set to true. If an error occurs, the response indicates protocol error.
 	 *
 	 * @var bool
 	 */

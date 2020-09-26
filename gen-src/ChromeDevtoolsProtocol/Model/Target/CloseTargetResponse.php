@@ -11,7 +11,11 @@ namespace ChromeDevtoolsProtocol\Model\Target;
  */
 final class CloseTargetResponse implements \JsonSerializable
 {
-	/** @var bool */
+	/**
+	 * Always set to true. If an error occurs, the response indicates protocol error.
+	 *
+	 * @var bool
+	 */
 	public $success;
 
 
