@@ -38,11 +38,18 @@ final class TargetInfo implements \JsonSerializable
 	public $openerId;
 
 	/**
-	 * Whether the opened window has access to the originating window.
+	 * Whether the target has access to the originating window.
 	 *
 	 * @var bool
 	 */
 	public $canAccessOpener;
+
+	/**
+	 * Frame id of originating window (is only set if target has an opener).
+	 *
+	 * @var string
+	 */
+	public $openerFrameId;
 
 	/** @var string */
 	public $browserContextId;
@@ -71,6 +78,9 @@ final class TargetInfo implements \JsonSerializable
 		}
 		if (isset($data->canAccessOpener)) {
 			$instance->canAccessOpener = (bool)$data->canAccessOpener;
+		}
+		if (isset($data->openerFrameId)) {
+			$instance->openerFrameId = (string)$data->openerFrameId;
 		}
 		if (isset($data->browserContextId)) {
 			$instance->browserContextId = (string)$data->browserContextId;
@@ -102,6 +112,9 @@ final class TargetInfo implements \JsonSerializable
 		}
 		if ($this->canAccessOpener !== null) {
 			$data->canAccessOpener = $this->canAccessOpener;
+		}
+		if ($this->openerFrameId !== null) {
+			$data->openerFrameId = $this->openerFrameId;
 		}
 		if ($this->browserContextId !== null) {
 			$data->browserContextId = $this->browserContextId;
