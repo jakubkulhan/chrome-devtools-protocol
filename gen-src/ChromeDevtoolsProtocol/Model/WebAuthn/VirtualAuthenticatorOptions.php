@@ -32,6 +32,13 @@ final class VirtualAuthenticatorOptions implements \JsonSerializable
 	public $hasUserVerification;
 
 	/**
+	 * If set to true, the authenticator will support the largeBlob extension. https://w3c.github.io/webauthn#largeBlob Defaults to false.
+	 *
+	 * @var bool|null
+	 */
+	public $hasLargeBlob;
+
+	/**
 	 * If set to true, tests of user presence will succeed immediately. Otherwise, they will not be resolved. Defaults to true.
 	 *
 	 * @var bool|null
@@ -61,6 +68,9 @@ final class VirtualAuthenticatorOptions implements \JsonSerializable
 		if (isset($data->hasUserVerification)) {
 			$instance->hasUserVerification = (bool)$data->hasUserVerification;
 		}
+		if (isset($data->hasLargeBlob)) {
+			$instance->hasLargeBlob = (bool)$data->hasLargeBlob;
+		}
 		if (isset($data->automaticPresenceSimulation)) {
 			$instance->automaticPresenceSimulation = (bool)$data->automaticPresenceSimulation;
 		}
@@ -85,6 +95,9 @@ final class VirtualAuthenticatorOptions implements \JsonSerializable
 		}
 		if ($this->hasUserVerification !== null) {
 			$data->hasUserVerification = $this->hasUserVerification;
+		}
+		if ($this->hasLargeBlob !== null) {
+			$data->hasLargeBlob = $this->hasLargeBlob;
 		}
 		if ($this->automaticPresenceSimulation !== null) {
 			$data->automaticPresenceSimulation = $this->automaticPresenceSimulation;
