@@ -29,6 +29,7 @@ final class PermissionTypeEnum
 	const PROTECTED_MEDIA_IDENTIFIER = 'protectedMediaIdentifier';
 	const SENSORS = 'sensors';
 	const VIDEO_CAPTURE = 'videoCapture';
+	const VIDEO_CAPTURE_PAN_TILT_ZOOM = 'videoCapturePanTiltZoom';
 	const IDLE_DETECTION = 'idleDetection';
 	const WAKE_LOCK_SCREEN = 'wakeLockScreen';
 	const WAKE_LOCK_SYSTEM = 'wakeLockSystem';

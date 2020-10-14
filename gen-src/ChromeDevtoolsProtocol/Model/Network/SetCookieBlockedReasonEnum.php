@@ -23,4 +23,7 @@ final class SetCookieBlockedReasonEnum
 	const INVALID_DOMAIN = 'InvalidDomain';
 	const INVALID_PREFIX = 'InvalidPrefix';
 	const UNKNOWN_ERROR = 'UnknownError';
+	const SCHEMEFUL_SAME_SITE_STRICT = 'SchemefulSameSiteStrict';
+	const SCHEMEFUL_SAME_SITE_LAX = 'SchemefulSameSiteLax';
+	const SCHEMEFUL_SAME_SITE_UNSPECIFIED_TREATED_AS_LAX = 'SchemefulSameSiteUnspecifiedTreatedAsLax';
 }

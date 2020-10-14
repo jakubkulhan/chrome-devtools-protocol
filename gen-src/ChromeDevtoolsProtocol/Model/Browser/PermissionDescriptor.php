@@ -39,6 +39,13 @@ final class PermissionDescriptor implements \JsonSerializable
 	 */
 	public $allowWithoutSanitization;
 
+	/**
+	 * For "camera" permission, may specify panTiltZoom.
+	 *
+	 * @var bool|null
+	 */
+	public $panTiltZoom;
+
 
 	public static function fromJson($data)
 	{
@@ -54,6 +61,9 @@ final class PermissionDescriptor implements \JsonSerializable
 		}
 		if (isset($data->allowWithoutSanitization)) {
 			$instance->allowWithoutSanitization = (bool)$data->allowWithoutSanitization;
+		}
+		if (isset($data->panTiltZoom)) {
+			$instance->panTiltZoom = (bool)$data->panTiltZoom;
 		}
 		return $instance;
 	}
@@ -73,6 +83,9 @@ final class PermissionDescriptor implements \JsonSerializable
 		}
 		if ($this->allowWithoutSanitization !== null) {
 			$data->allowWithoutSanitization = $this->allowWithoutSanitization;
+		}
+		if ($this->panTiltZoom !== null) {
+			$data->panTiltZoom = $this->panTiltZoom;
 		}
 		return $data;
 	}
