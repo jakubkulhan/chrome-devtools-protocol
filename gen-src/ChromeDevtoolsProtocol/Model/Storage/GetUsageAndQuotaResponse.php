@@ -26,6 +26,13 @@ final class GetUsageAndQuotaResponse implements \JsonSerializable
 	public $quota;
 
 	/**
+	 * Whether or not the origin has an active storage quota override
+	 *
+	 * @var bool
+	 */
+	public $overrideActive;
+
+	/**
 	 * Storage usage per type (bytes).
 	 *
 	 * @var UsageForType[]
@@ -41,6 +48,9 @@ final class GetUsageAndQuotaResponse implements \JsonSerializable
 		}
 		if (isset($data->quota)) {
 			$instance->quota = $data->quota;
+		}
+		if (isset($data->overrideActive)) {
+			$instance->overrideActive = (bool)$data->overrideActive;
 		}
 		if (isset($data->usageBreakdown)) {
 			$instance->usageBreakdown = [];
@@ -60,6 +70,9 @@ final class GetUsageAndQuotaResponse implements \JsonSerializable
 		}
 		if ($this->quota !== null) {
 			$data->quota = $this->quota;
+		}
+		if ($this->overrideActive !== null) {
+			$data->overrideActive = $this->overrideActive;
 		}
 		if ($this->usageBreakdown !== null) {
 			$data->usageBreakdown = [];

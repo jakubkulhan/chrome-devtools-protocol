@@ -13,6 +13,7 @@ use ChromeDevtoolsProtocol\Model\Storage\GetUsageAndQuotaRequest;
 use ChromeDevtoolsProtocol\Model\Storage\GetUsageAndQuotaResponse;
 use ChromeDevtoolsProtocol\Model\Storage\IndexedDBContentUpdatedEvent;
 use ChromeDevtoolsProtocol\Model\Storage\IndexedDBListUpdatedEvent;
+use ChromeDevtoolsProtocol\Model\Storage\OverrideQuotaForOriginRequest;
 use ChromeDevtoolsProtocol\Model\Storage\SetCookiesRequest;
 use ChromeDevtoolsProtocol\Model\Storage\TrackCacheStorageForOriginRequest;
 use ChromeDevtoolsProtocol\Model\Storage\TrackIndexedDBForOriginRequest;
@@ -73,6 +74,17 @@ interface StorageDomainInterface
 	 * @return GetUsageAndQuotaResponse
 	 */
 	public function getUsageAndQuota(ContextInterface $ctx, GetUsageAndQuotaRequest $request): GetUsageAndQuotaResponse;
+
+
+	/**
+	 * Override quota for the specified origin
+	 *
+	 * @param ContextInterface $ctx
+	 * @param OverrideQuotaForOriginRequest $request
+	 *
+	 * @return void
+	 */
+	public function overrideQuotaForOrigin(ContextInterface $ctx, OverrideQuotaForOriginRequest $request): void;
 
 
 	/**

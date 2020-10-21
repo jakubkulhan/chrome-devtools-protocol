@@ -25,6 +25,9 @@ final class ContentSecurityPolicyIssueDetails implements \JsonSerializable
 	 */
 	public $violatedDirective;
 
+	/** @var bool */
+	public $isReportOnly;
+
 	/** @var string */
 	public $contentSecurityPolicyViolationType;
 
@@ -46,6 +49,9 @@ final class ContentSecurityPolicyIssueDetails implements \JsonSerializable
 		}
 		if (isset($data->violatedDirective)) {
 			$instance->violatedDirective = (string)$data->violatedDirective;
+		}
+		if (isset($data->isReportOnly)) {
+			$instance->isReportOnly = (bool)$data->isReportOnly;
 		}
 		if (isset($data->contentSecurityPolicyViolationType)) {
 			$instance->contentSecurityPolicyViolationType = (string)$data->contentSecurityPolicyViolationType;
@@ -71,6 +77,9 @@ final class ContentSecurityPolicyIssueDetails implements \JsonSerializable
 		}
 		if ($this->violatedDirective !== null) {
 			$data->violatedDirective = $this->violatedDirective;
+		}
+		if ($this->isReportOnly !== null) {
+			$data->isReportOnly = $this->isReportOnly;
 		}
 		if ($this->contentSecurityPolicyViolationType !== null) {
 			$data->contentSecurityPolicyViolationType = $this->contentSecurityPolicyViolationType;
