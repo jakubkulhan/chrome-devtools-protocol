@@ -45,6 +45,13 @@ final class Credential implements \JsonSerializable
 	 */
 	public $signCount;
 
+	/**
+	 * The large blob associated with the credential. See https://w3c.github.io/webauthn/#sctn-large-blob-extension
+	 *
+	 * @var string|null
+	 */
+	public $largeBlob;
+
 
 	public static function fromJson($data)
 	{
@@ -66,6 +73,9 @@ final class Credential implements \JsonSerializable
 		}
 		if (isset($data->signCount)) {
 			$instance->signCount = (int)$data->signCount;
+		}
+		if (isset($data->largeBlob)) {
+			$instance->largeBlob = (string)$data->largeBlob;
 		}
 		return $instance;
 	}
@@ -91,6 +101,9 @@ final class Credential implements \JsonSerializable
 		}
 		if ($this->signCount !== null) {
 			$data->signCount = $this->signCount;
+		}
+		if ($this->largeBlob !== null) {
+			$data->largeBlob = $this->largeBlob;
 		}
 		return $data;
 	}

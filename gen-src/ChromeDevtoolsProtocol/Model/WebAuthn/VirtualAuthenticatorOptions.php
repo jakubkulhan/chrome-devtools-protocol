@@ -14,6 +14,13 @@ final class VirtualAuthenticatorOptions implements \JsonSerializable
 	/** @var string */
 	public $protocol;
 
+	/**
+	 * Defaults to ctap2_0. Ignored if |protocol| == u2f.
+	 *
+	 * @var string
+	 */
+	public $ctap2Version;
+
 	/** @var string */
 	public $transport;
 
@@ -59,6 +66,9 @@ final class VirtualAuthenticatorOptions implements \JsonSerializable
 		if (isset($data->protocol)) {
 			$instance->protocol = (string)$data->protocol;
 		}
+		if (isset($data->ctap2Version)) {
+			$instance->ctap2Version = (string)$data->ctap2Version;
+		}
 		if (isset($data->transport)) {
 			$instance->transport = (string)$data->transport;
 		}
@@ -86,6 +96,9 @@ final class VirtualAuthenticatorOptions implements \JsonSerializable
 		$data = new \stdClass();
 		if ($this->protocol !== null) {
 			$data->protocol = $this->protocol;
+		}
+		if ($this->ctap2Version !== null) {
+			$data->ctap2Version = $this->ctap2Version;
 		}
 		if ($this->transport !== null) {
 			$data->transport = $this->transport;
