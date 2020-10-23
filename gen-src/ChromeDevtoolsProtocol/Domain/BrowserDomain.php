@@ -4,6 +4,7 @@ namespace ChromeDevtoolsProtocol\Domain;
 
 use ChromeDevtoolsProtocol\ContextInterface;
 use ChromeDevtoolsProtocol\InternalClientInterface;
+use ChromeDevtoolsProtocol\Model\Browser\ExecuteBrowserCommandRequest;
 use ChromeDevtoolsProtocol\Model\Browser\GetBrowserCommandLineResponse;
 use ChromeDevtoolsProtocol\Model\Browser\GetHistogramRequest;
 use ChromeDevtoolsProtocol\Model\Browser\GetHistogramResponse;
@@ -51,6 +52,12 @@ class BrowserDomain implements BrowserDomainInterface
 	{
 		$request = new \stdClass();
 		$this->internalClient->executeCommand($ctx, 'Browser.crashGpuProcess', $request);
+	}
+
+
+	public function executeBrowserCommand(ContextInterface $ctx, ExecuteBrowserCommandRequest $request): void
+	{
+		$this->internalClient->executeCommand($ctx, 'Browser.executeBrowserCommand', $request);
 	}
 
 

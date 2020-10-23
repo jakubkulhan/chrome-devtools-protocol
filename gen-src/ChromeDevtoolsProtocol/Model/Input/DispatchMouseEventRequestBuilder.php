@@ -19,6 +19,11 @@ final class DispatchMouseEventRequestBuilder
 	private $button;
 	private $buttons;
 	private $clickCount;
+	private $force;
+	private $tangentialPressure;
+	private $tiltX;
+	private $tiltY;
+	private $twist;
 	private $deltaX;
 	private $deltaY;
 	private $pointerType;
@@ -47,6 +52,11 @@ final class DispatchMouseEventRequestBuilder
 		$instance->button = $this->button;
 		$instance->buttons = $this->buttons;
 		$instance->clickCount = $this->clickCount;
+		$instance->force = $this->force;
+		$instance->tangentialPressure = $this->tangentialPressure;
+		$instance->tiltX = $this->tiltX;
+		$instance->tiltY = $this->tiltY;
+		$instance->twist = $this->twist;
 		$instance->deltaX = $this->deltaX;
 		$instance->deltaY = $this->deltaY;
 		$instance->pointerType = $this->pointerType;
@@ -146,6 +156,66 @@ final class DispatchMouseEventRequestBuilder
 	public function setClickCount($clickCount): self
 	{
 		$this->clickCount = $clickCount;
+		return $this;
+	}
+
+
+	/**
+	 * @param int|float|null $force
+	 *
+	 * @return self
+	 */
+	public function setForce($force): self
+	{
+		$this->force = $force;
+		return $this;
+	}
+
+
+	/**
+	 * @param int|float|null $tangentialPressure
+	 *
+	 * @return self
+	 */
+	public function setTangentialPressure($tangentialPressure): self
+	{
+		$this->tangentialPressure = $tangentialPressure;
+		return $this;
+	}
+
+
+	/**
+	 * @param int|null $tiltX
+	 *
+	 * @return self
+	 */
+	public function setTiltX($tiltX): self
+	{
+		$this->tiltX = $tiltX;
+		return $this;
+	}
+
+
+	/**
+	 * @param int|null $tiltY
+	 *
+	 * @return self
+	 */
+	public function setTiltY($tiltY): self
+	{
+		$this->tiltY = $tiltY;
+		return $this;
+	}
+
+
+	/**
+	 * @param int|null $twist
+	 *
+	 * @return self
+	 */
+	public function setTwist($twist): self
+	{
+		$this->twist = $twist;
 		return $this;
 	}
 

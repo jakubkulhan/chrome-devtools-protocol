@@ -3,6 +3,7 @@
 namespace ChromeDevtoolsProtocol\Domain;
 
 use ChromeDevtoolsProtocol\ContextInterface;
+use ChromeDevtoolsProtocol\Model\Browser\ExecuteBrowserCommandRequest;
 use ChromeDevtoolsProtocol\Model\Browser\GetBrowserCommandLineResponse;
 use ChromeDevtoolsProtocol\Model\Browser\GetHistogramRequest;
 use ChromeDevtoolsProtocol\Model\Browser\GetHistogramResponse;
@@ -57,6 +58,17 @@ interface BrowserDomainInterface
 	 * @return void
 	 */
 	public function crashGpuProcess(ContextInterface $ctx): void;
+
+
+	/**
+	 * Invoke custom browser commands used by telemetry.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param ExecuteBrowserCommandRequest $request
+	 *
+	 * @return void
+	 */
+	public function executeBrowserCommand(ContextInterface $ctx, ExecuteBrowserCommandRequest $request): void;
 
 
 	/**

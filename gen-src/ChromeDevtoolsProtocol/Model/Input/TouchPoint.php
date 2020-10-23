@@ -54,6 +54,34 @@ final class TouchPoint implements \JsonSerializable
 	public $force;
 
 	/**
+	 * The normalized tangential pressure, which has a range of [-1,1] (default: 0).
+	 *
+	 * @var int|float|null
+	 */
+	public $tangentialPressure;
+
+	/**
+	 * The plane angle between the Y-Z plane and the plane containing both the stylus axis and the Y axis, in degrees of the range [-90,90], a positive tiltX is to the right (default: 0)
+	 *
+	 * @var int|null
+	 */
+	public $tiltX;
+
+	/**
+	 * The plane angle between the X-Z plane and the plane containing both the stylus axis and the X axis, in degrees of the range [-90,90], a positive tiltY is towards the user (default: 0).
+	 *
+	 * @var int|null
+	 */
+	public $tiltY;
+
+	/**
+	 * The clockwise rotation of a pen stylus around its own major axis, in degrees in the range [0,359] (default: 0).
+	 *
+	 * @var int|null
+	 */
+	public $twist;
+
+	/**
 	 * Identifier used to track touch sources between events, must be unique within an event.
 	 *
 	 * @var int|float|null
@@ -82,6 +110,18 @@ final class TouchPoint implements \JsonSerializable
 		if (isset($data->force)) {
 			$instance->force = $data->force;
 		}
+		if (isset($data->tangentialPressure)) {
+			$instance->tangentialPressure = $data->tangentialPressure;
+		}
+		if (isset($data->tiltX)) {
+			$instance->tiltX = (int)$data->tiltX;
+		}
+		if (isset($data->tiltY)) {
+			$instance->tiltY = (int)$data->tiltY;
+		}
+		if (isset($data->twist)) {
+			$instance->twist = (int)$data->twist;
+		}
 		if (isset($data->id)) {
 			$instance->id = $data->id;
 		}
@@ -109,6 +149,18 @@ final class TouchPoint implements \JsonSerializable
 		}
 		if ($this->force !== null) {
 			$data->force = $this->force;
+		}
+		if ($this->tangentialPressure !== null) {
+			$data->tangentialPressure = $this->tangentialPressure;
+		}
+		if ($this->tiltX !== null) {
+			$data->tiltX = $this->tiltX;
+		}
+		if ($this->tiltY !== null) {
+			$data->tiltY = $this->tiltY;
+		}
+		if ($this->twist !== null) {
+			$data->twist = $this->twist;
 		}
 		if ($this->id !== null) {
 			$data->id = $this->id;

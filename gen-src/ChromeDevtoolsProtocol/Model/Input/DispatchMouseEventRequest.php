@@ -68,6 +68,41 @@ final class DispatchMouseEventRequest implements \JsonSerializable
 	public $clickCount;
 
 	/**
+	 * The normalized pressure, which has a range of [0,1] (default: 0).
+	 *
+	 * @var int|float|null
+	 */
+	public $force;
+
+	/**
+	 * The normalized tangential pressure, which has a range of [-1,1] (default: 0).
+	 *
+	 * @var int|float|null
+	 */
+	public $tangentialPressure;
+
+	/**
+	 * The plane angle between the Y-Z plane and the plane containing both the stylus axis and the Y axis, in degrees of the range [-90,90], a positive tiltX is to the right (default: 0).
+	 *
+	 * @var int|null
+	 */
+	public $tiltX;
+
+	/**
+	 * The plane angle between the X-Z plane and the plane containing both the stylus axis and the X axis, in degrees of the range [-90,90], a positive tiltY is towards the user (default: 0).
+	 *
+	 * @var int|null
+	 */
+	public $tiltY;
+
+	/**
+	 * The clockwise rotation of a pen stylus around its own major axis, in degrees in the range [0,359] (default: 0).
+	 *
+	 * @var int|null
+	 */
+	public $twist;
+
+	/**
 	 * X delta in CSS pixels for mouse wheel event (default: 0).
 	 *
 	 * @var int|float|null
@@ -116,6 +151,21 @@ final class DispatchMouseEventRequest implements \JsonSerializable
 		if (isset($data->clickCount)) {
 			$instance->clickCount = (int)$data->clickCount;
 		}
+		if (isset($data->force)) {
+			$instance->force = $data->force;
+		}
+		if (isset($data->tangentialPressure)) {
+			$instance->tangentialPressure = $data->tangentialPressure;
+		}
+		if (isset($data->tiltX)) {
+			$instance->tiltX = (int)$data->tiltX;
+		}
+		if (isset($data->tiltY)) {
+			$instance->tiltY = (int)$data->tiltY;
+		}
+		if (isset($data->twist)) {
+			$instance->twist = (int)$data->twist;
+		}
 		if (isset($data->deltaX)) {
 			$instance->deltaX = $data->deltaX;
 		}
@@ -155,6 +205,21 @@ final class DispatchMouseEventRequest implements \JsonSerializable
 		}
 		if ($this->clickCount !== null) {
 			$data->clickCount = $this->clickCount;
+		}
+		if ($this->force !== null) {
+			$data->force = $this->force;
+		}
+		if ($this->tangentialPressure !== null) {
+			$data->tangentialPressure = $this->tangentialPressure;
+		}
+		if ($this->tiltX !== null) {
+			$data->tiltX = $this->tiltX;
+		}
+		if ($this->tiltY !== null) {
+			$data->tiltY = $this->tiltY;
+		}
+		if ($this->twist !== null) {
+			$data->twist = $this->twist;
 		}
 		if ($this->deltaX !== null) {
 			$data->deltaX = $this->deltaX;
