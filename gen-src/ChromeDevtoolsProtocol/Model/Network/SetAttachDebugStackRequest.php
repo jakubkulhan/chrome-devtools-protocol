@@ -3,16 +3,16 @@
 namespace ChromeDevtoolsProtocol\Model\Network;
 
 /**
- * Request for Network.setAttachDebugHeader command.
+ * Request for Network.setAttachDebugStack command.
  *
  * @generated This file has been auto-generated, do not edit.
  *
  * @author Jakub Kulhan <jakub.kulhan@gmail.com>
  */
-final class SetAttachDebugHeaderRequest implements \JsonSerializable
+final class SetAttachDebugStackRequest implements \JsonSerializable
 {
 	/**
-	 * Whether to send a debug header.
+	 * Whether to attach a page script stack for debugging purpose.
 	 *
 	 * @var bool
 	 */
@@ -42,10 +42,10 @@ final class SetAttachDebugHeaderRequest implements \JsonSerializable
 	/**
 	 * Create new instance using builder.
 	 *
-	 * @return SetAttachDebugHeaderRequestBuilder
+	 * @return SetAttachDebugStackRequestBuilder
 	 */
-	public static function builder(): SetAttachDebugHeaderRequestBuilder
+	public static function builder(): SetAttachDebugStackRequestBuilder
 	{
-		return new SetAttachDebugHeaderRequestBuilder();
+		return new SetAttachDebugStackRequestBuilder();
 	}
 }

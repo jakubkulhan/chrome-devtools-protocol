@@ -40,7 +40,7 @@ use ChromeDevtoolsProtocol\Model\Network\ResponseReceivedEvent;
 use ChromeDevtoolsProtocol\Model\Network\ResponseReceivedExtraInfoEvent;
 use ChromeDevtoolsProtocol\Model\Network\SearchInResponseBodyRequest;
 use ChromeDevtoolsProtocol\Model\Network\SearchInResponseBodyResponse;
-use ChromeDevtoolsProtocol\Model\Network\SetAttachDebugHeaderRequest;
+use ChromeDevtoolsProtocol\Model\Network\SetAttachDebugStackRequest;
 use ChromeDevtoolsProtocol\Model\Network\SetBlockedURLsRequest;
 use ChromeDevtoolsProtocol\Model\Network\SetBypassServiceWorkerRequest;
 use ChromeDevtoolsProtocol\Model\Network\SetCacheDisabledRequest;
@@ -214,9 +214,9 @@ class NetworkDomain implements NetworkDomainInterface
 	}
 
 
-	public function setAttachDebugHeader(ContextInterface $ctx, SetAttachDebugHeaderRequest $request): void
+	public function setAttachDebugStack(ContextInterface $ctx, SetAttachDebugStackRequest $request): void
 	{
-		$this->internalClient->executeCommand($ctx, 'Network.setAttachDebugHeader', $request);
+		$this->internalClient->executeCommand($ctx, 'Network.setAttachDebugStack', $request);
 	}
 
 

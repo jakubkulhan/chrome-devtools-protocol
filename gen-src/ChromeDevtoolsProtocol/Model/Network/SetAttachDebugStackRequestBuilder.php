@@ -9,7 +9,7 @@ use ChromeDevtoolsProtocol\Exception\BuilderException;
  *
  * @author Jakub Kulhan <jakub.kulhan@gmail.com>
  */
-final class SetAttachDebugHeaderRequestBuilder
+final class SetAttachDebugStackRequestBuilder
 {
 	private $enabled;
 
@@ -17,9 +17,9 @@ final class SetAttachDebugHeaderRequestBuilder
 	/**
 	 * Validate non-optional parameters and return new instance.
 	 */
-	public function build(): SetAttachDebugHeaderRequest
+	public function build(): SetAttachDebugStackRequest
 	{
-		$instance = new SetAttachDebugHeaderRequest();
+		$instance = new SetAttachDebugStackRequest();
 		if ($this->enabled === null) {
 			throw new BuilderException('Property [enabled] is required.');
 		}

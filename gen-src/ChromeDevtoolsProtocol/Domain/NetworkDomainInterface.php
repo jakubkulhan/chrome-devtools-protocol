@@ -39,7 +39,7 @@ use ChromeDevtoolsProtocol\Model\Network\ResponseReceivedEvent;
 use ChromeDevtoolsProtocol\Model\Network\ResponseReceivedExtraInfoEvent;
 use ChromeDevtoolsProtocol\Model\Network\SearchInResponseBodyRequest;
 use ChromeDevtoolsProtocol\Model\Network\SearchInResponseBodyResponse;
-use ChromeDevtoolsProtocol\Model\Network\SetAttachDebugHeaderRequest;
+use ChromeDevtoolsProtocol\Model\Network\SetAttachDebugStackRequest;
 use ChromeDevtoolsProtocol\Model\Network\SetBlockedURLsRequest;
 use ChromeDevtoolsProtocol\Model\Network\SetBypassServiceWorkerRequest;
 use ChromeDevtoolsProtocol\Model\Network\SetCacheDisabledRequest;
@@ -285,14 +285,14 @@ interface NetworkDomainInterface
 
 
 	/**
-	 * Specifies whether to sned a debug header to all outgoing requests.
+	 * Specifies whether to attach a page script stack id in requests
 	 *
 	 * @param ContextInterface $ctx
-	 * @param SetAttachDebugHeaderRequest $request
+	 * @param SetAttachDebugStackRequest $request
 	 *
 	 * @return void
 	 */
-	public function setAttachDebugHeader(ContextInterface $ctx, SetAttachDebugHeaderRequest $request): void;
+	public function setAttachDebugStack(ContextInterface $ctx, SetAttachDebugStackRequest $request): void;
 
 
 	/**
