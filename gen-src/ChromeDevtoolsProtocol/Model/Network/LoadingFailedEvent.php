@@ -53,6 +53,13 @@ final class LoadingFailedEvent implements \JsonSerializable
 	 */
 	public $blockedReason;
 
+	/**
+	 * The reason why loading was blocked by CORS, if any.
+	 *
+	 * @var CorsErrorStatus|null
+	 */
+	public $corsErrorStatus;
+
 
 	public static function fromJson($data)
 	{
@@ -74,6 +81,9 @@ final class LoadingFailedEvent implements \JsonSerializable
 		}
 		if (isset($data->blockedReason)) {
 			$instance->blockedReason = (string)$data->blockedReason;
+		}
+		if (isset($data->corsErrorStatus)) {
+			$instance->corsErrorStatus = CorsErrorStatus::fromJson($data->corsErrorStatus);
 		}
 		return $instance;
 	}
@@ -99,6 +109,9 @@ final class LoadingFailedEvent implements \JsonSerializable
 		}
 		if ($this->blockedReason !== null) {
 			$data->blockedReason = $this->blockedReason;
+		}
+		if ($this->corsErrorStatus !== null) {
+			$data->corsErrorStatus = $this->corsErrorStatus->jsonSerialize();
 		}
 		return $data;
 	}
