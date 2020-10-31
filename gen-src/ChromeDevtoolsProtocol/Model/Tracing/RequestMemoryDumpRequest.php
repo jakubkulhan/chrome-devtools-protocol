@@ -18,12 +18,22 @@ final class RequestMemoryDumpRequest implements \JsonSerializable
 	 */
 	public $deterministic;
 
+	/**
+	 * Specifies level of details in memory dump. Defaults to "detailed".
+	 *
+	 * @var string
+	 */
+	public $levelOfDetail;
+
 
 	public static function fromJson($data)
 	{
 		$instance = new static();
 		if (isset($data->deterministic)) {
 			$instance->deterministic = (bool)$data->deterministic;
+		}
+		if (isset($data->levelOfDetail)) {
+			$instance->levelOfDetail = (string)$data->levelOfDetail;
 		}
 		return $instance;
 	}
@@ -34,6 +44,9 @@ final class RequestMemoryDumpRequest implements \JsonSerializable
 		$data = new \stdClass();
 		if ($this->deterministic !== null) {
 			$data->deterministic = $this->deterministic;
+		}
+		if ($this->levelOfDetail !== null) {
+			$data->levelOfDetail = $this->levelOfDetail;
 		}
 		return $data;
 	}

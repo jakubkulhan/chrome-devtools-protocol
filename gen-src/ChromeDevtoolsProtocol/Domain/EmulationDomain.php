@@ -8,6 +8,7 @@ use ChromeDevtoolsProtocol\Model\Emulation\CanEmulateResponse;
 use ChromeDevtoolsProtocol\Model\Emulation\SetCPUThrottlingRateRequest;
 use ChromeDevtoolsProtocol\Model\Emulation\SetDefaultBackgroundColorOverrideRequest;
 use ChromeDevtoolsProtocol\Model\Emulation\SetDeviceMetricsOverrideRequest;
+use ChromeDevtoolsProtocol\Model\Emulation\SetDisabledImageTypesRequest;
 use ChromeDevtoolsProtocol\Model\Emulation\SetDocumentCookieDisabledRequest;
 use ChromeDevtoolsProtocol\Model\Emulation\SetEmitTouchEventsForMouseRequest;
 use ChromeDevtoolsProtocol\Model\Emulation\SetEmulatedMediaRequest;
@@ -92,6 +93,12 @@ class EmulationDomain implements EmulationDomainInterface
 	public function setDeviceMetricsOverride(ContextInterface $ctx, SetDeviceMetricsOverrideRequest $request): void
 	{
 		$this->internalClient->executeCommand($ctx, 'Emulation.setDeviceMetricsOverride', $request);
+	}
+
+
+	public function setDisabledImageTypes(ContextInterface $ctx, SetDisabledImageTypesRequest $request): void
+	{
+		$this->internalClient->executeCommand($ctx, 'Emulation.setDisabledImageTypes', $request);
 	}
 
 

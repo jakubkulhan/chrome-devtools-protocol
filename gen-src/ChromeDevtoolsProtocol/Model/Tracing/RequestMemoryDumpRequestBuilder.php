@@ -10,6 +10,7 @@ namespace ChromeDevtoolsProtocol\Model\Tracing;
 final class RequestMemoryDumpRequestBuilder
 {
 	private $deterministic;
+	private $levelOfDetail;
 
 
 	/**
@@ -19,6 +20,7 @@ final class RequestMemoryDumpRequestBuilder
 	{
 		$instance = new RequestMemoryDumpRequest();
 		$instance->deterministic = $this->deterministic;
+		$instance->levelOfDetail = $this->levelOfDetail;
 		return $instance;
 	}
 
@@ -31,6 +33,18 @@ final class RequestMemoryDumpRequestBuilder
 	public function setDeterministic($deterministic): self
 	{
 		$this->deterministic = $deterministic;
+		return $this;
+	}
+
+
+	/**
+	 * @param string $levelOfDetail
+	 *
+	 * @return self
+	 */
+	public function setLevelOfDetail($levelOfDetail): self
+	{
+		$this->levelOfDetail = $levelOfDetail;
 		return $this;
 	}
 }

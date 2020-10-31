@@ -8235,6 +8235,16 @@
                             "type": "boolean"
                         }
                     ]
+                },
+                {
+                    "id": "DisabledImageType",
+                    "description": "Enum of image types that can be disabled.",
+                    "experimental": true,
+                    "type": "string",
+                    "enum": [
+                        "avif",
+                        "webp"
+                    ]
                 }
             ],
             "commands": [
@@ -8376,6 +8386,20 @@
                             "experimental": true,
                             "optional": true,
                             "$ref": "DisplayFeature"
+                        }
+                    ]
+                },
+                {
+                    "name": "setDisabledImageTypes",
+                    "experimental": true,
+                    "parameters": [
+                        {
+                            "name": "imageTypes",
+                            "description": "Image types to disable.",
+                            "type": "array",
+                            "items": {
+                                "$ref": "DisabledImageType"
+                            }
                         }
                     ]
                 },
@@ -21085,6 +21109,16 @@
                         "none",
                         "gzip"
                     ]
+                },
+                {
+                    "id": "MemoryDumpLevelOfDetail",
+                    "description": "Details exposed when memory request explicitly declared. Keep consistent with memory_dump_request_args.h and memory_instrumentation.mojom",
+                    "type": "string",
+                    "enum": [
+                        "background",
+                        "light",
+                        "detailed"
+                    ]
                 }
             ],
             "commands": [
@@ -21126,6 +21160,12 @@
                             "description": "Enables more deterministic results by forcing garbage collection",
                             "optional": true,
                             "type": "boolean"
+                        },
+                        {
+                            "name": "levelOfDetail",
+                            "description": "Specifies level of details in memory dump. Defaults to \"detailed\".",
+                            "optional": true,
+                            "$ref": "MemoryDumpLevelOfDetail"
                         }
                     ],
                     "returns": [
