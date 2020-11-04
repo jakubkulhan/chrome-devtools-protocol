@@ -20,7 +20,7 @@
   "minimum-stability": "stable",
   "require": {
     "ext-json": "*",
-    "guzzlehttp/guzzle": "^6.3",
+    "guzzlehttp/guzzle": "^7.0",
     "php": "~7.1",
     "symfony/filesystem": ">=2.3",
     "symfony/process": ">=3.3",
