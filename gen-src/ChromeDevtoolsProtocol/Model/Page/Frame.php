@@ -102,6 +102,13 @@ final class Frame implements \JsonSerializable
 	 */
 	public $crossOriginIsolatedContextType;
 
+	/**
+	 * Indicated which gated APIs / features are available.
+	 *
+	 * @var string[]
+	 */
+	public $gatedAPIFeatures;
+
 
 	public static function fromJson($data)
 	{
@@ -144,6 +151,15 @@ final class Frame implements \JsonSerializable
 		}
 		if (isset($data->crossOriginIsolatedContextType)) {
 			$instance->crossOriginIsolatedContextType = (string)$data->crossOriginIsolatedContextType;
+		}
+		if (isset($data->gatedAPIFeatures)) {
+			$instance->gatedAPIFeatures = [];
+		if (isset($data->gatedAPIFeatures)) {
+			$instance->gatedAPIFeatures = [];
+			foreach ($data->gatedAPIFeatures as $item) {
+				$instance->gatedAPIFeatures[] = (string)$item;
+			}
+		}
 		}
 		return $instance;
 	}
@@ -190,6 +206,15 @@ final class Frame implements \JsonSerializable
 		}
 		if ($this->crossOriginIsolatedContextType !== null) {
 			$data->crossOriginIsolatedContextType = $this->crossOriginIsolatedContextType;
+		}
+		if ($this->gatedAPIFeatures !== null) {
+			$data->gatedAPIFeatures = [];
+		if ($this->gatedAPIFeatures !== null) {
+			$data->gatedAPIFeatures = [];
+			foreach ($this->gatedAPIFeatures as $item) {
+				$data->gatedAPIFeatures[] = $item;
+			}
+		}
 		}
 		return $data;
 	}
