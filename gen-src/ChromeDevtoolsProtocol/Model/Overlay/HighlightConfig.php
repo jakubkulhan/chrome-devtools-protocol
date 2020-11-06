@@ -118,6 +118,13 @@ final class HighlightConfig implements \JsonSerializable
 	 */
 	public $gridHighlightConfig;
 
+	/**
+	 * The flex container highlight configuration (default: all transparent).
+	 *
+	 * @var FlexContainerHighlightConfig|null
+	 */
+	public $flexContainerHighlightConfig;
+
 
 	public static function fromJson($data)
 	{
@@ -166,6 +173,9 @@ final class HighlightConfig implements \JsonSerializable
 		}
 		if (isset($data->gridHighlightConfig)) {
 			$instance->gridHighlightConfig = GridHighlightConfig::fromJson($data->gridHighlightConfig);
+		}
+		if (isset($data->flexContainerHighlightConfig)) {
+			$instance->flexContainerHighlightConfig = FlexContainerHighlightConfig::fromJson($data->flexContainerHighlightConfig);
 		}
 		return $instance;
 	}
@@ -218,6 +228,9 @@ final class HighlightConfig implements \JsonSerializable
 		}
 		if ($this->gridHighlightConfig !== null) {
 			$data->gridHighlightConfig = $this->gridHighlightConfig->jsonSerialize();
+		}
+		if ($this->flexContainerHighlightConfig !== null) {
+			$data->flexContainerHighlightConfig = $this->flexContainerHighlightConfig->jsonSerialize();
 		}
 		return $data;
 	}
