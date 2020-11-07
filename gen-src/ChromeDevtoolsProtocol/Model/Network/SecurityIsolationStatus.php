@@ -11,10 +11,10 @@ namespace ChromeDevtoolsProtocol\Model\Network;
  */
 final class SecurityIsolationStatus implements \JsonSerializable
 {
-	/** @var CrossOriginOpenerPolicyStatus */
+	/** @var CrossOriginOpenerPolicyStatus|null */
 	public $coop;
 
-	/** @var CrossOriginEmbedderPolicyStatus */
+	/** @var CrossOriginEmbedderPolicyStatus|null */
 	public $coep;
 
 
