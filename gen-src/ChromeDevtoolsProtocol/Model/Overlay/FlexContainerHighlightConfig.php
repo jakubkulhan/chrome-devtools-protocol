@@ -18,12 +18,32 @@ final class FlexContainerHighlightConfig implements \JsonSerializable
 	 */
 	public $containerBorder;
 
+	/**
+	 * The style of the separator between lines
+	 *
+	 * @var LineStyle|null
+	 */
+	public $lineSeparator;
+
+	/**
+	 * The style of the separator between items
+	 *
+	 * @var LineStyle|null
+	 */
+	public $itemSeparator;
+
 
 	public static function fromJson($data)
 	{
 		$instance = new static();
 		if (isset($data->containerBorder)) {
 			$instance->containerBorder = LineStyle::fromJson($data->containerBorder);
+		}
+		if (isset($data->lineSeparator)) {
+			$instance->lineSeparator = LineStyle::fromJson($data->lineSeparator);
+		}
+		if (isset($data->itemSeparator)) {
+			$instance->itemSeparator = LineStyle::fromJson($data->itemSeparator);
 		}
 		return $instance;
 	}
@@ -34,6 +54,12 @@ final class FlexContainerHighlightConfig implements \JsonSerializable
 		$data = new \stdClass();
 		if ($this->containerBorder !== null) {
 			$data->containerBorder = $this->containerBorder->jsonSerialize();
+		}
+		if ($this->lineSeparator !== null) {
+			$data->lineSeparator = $this->lineSeparator->jsonSerialize();
+		}
+		if ($this->itemSeparator !== null) {
+			$data->itemSeparator = $this->itemSeparator->jsonSerialize();
 		}
 		return $data;
 	}
