@@ -18,12 +18,18 @@ final class FrameDetachedEvent implements \JsonSerializable
 	 */
 	public $frameId;
 
+	/** @var string */
+	public $reason;
+
 
 	public static function fromJson($data)
 	{
 		$instance = new static();
 		if (isset($data->frameId)) {
 			$instance->frameId = (string)$data->frameId;
+		}
+		if (isset($data->reason)) {
+			$instance->reason = (string)$data->reason;
 		}
 		return $instance;
 	}
@@ -34,6 +40,9 @@ final class FrameDetachedEvent implements \JsonSerializable
 		$data = new \stdClass();
 		if ($this->frameId !== null) {
 			$data->frameId = $this->frameId;
+		}
+		if ($this->reason !== null) {
+			$data->reason = $this->reason;
 		}
 		return $data;
 	}
