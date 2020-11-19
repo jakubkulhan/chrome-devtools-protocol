@@ -32,6 +32,34 @@ final class FlexContainerHighlightConfig implements \JsonSerializable
 	 */
 	public $itemSeparator;
 
+	/**
+	 * Style of content-distribution space on the main axis (justify-content).
+	 *
+	 * @var BoxStyle|null
+	 */
+	public $mainDistributedSpace;
+
+	/**
+	 * Style of content-distribution space on the cross axis (align-content).
+	 *
+	 * @var BoxStyle|null
+	 */
+	public $crossDistributedSpace;
+
+	/**
+	 * Style of empty space caused by row gaps (gap/row-gap).
+	 *
+	 * @var BoxStyle|null
+	 */
+	public $rowGapSpace;
+
+	/**
+	 * Style of empty space caused by columns gaps (gap/column-gap).
+	 *
+	 * @var BoxStyle|null
+	 */
+	public $columnGapSpace;
+
 
 	public static function fromJson($data)
 	{
@@ -44,6 +72,18 @@ final class FlexContainerHighlightConfig implements \JsonSerializable
 		}
 		if (isset($data->itemSeparator)) {
 			$instance->itemSeparator = LineStyle::fromJson($data->itemSeparator);
+		}
+		if (isset($data->mainDistributedSpace)) {
+			$instance->mainDistributedSpace = BoxStyle::fromJson($data->mainDistributedSpace);
+		}
+		if (isset($data->crossDistributedSpace)) {
+			$instance->crossDistributedSpace = BoxStyle::fromJson($data->crossDistributedSpace);
+		}
+		if (isset($data->rowGapSpace)) {
+			$instance->rowGapSpace = BoxStyle::fromJson($data->rowGapSpace);
+		}
+		if (isset($data->columnGapSpace)) {
+			$instance->columnGapSpace = BoxStyle::fromJson($data->columnGapSpace);
 		}
 		return $instance;
 	}
@@ -60,6 +100,18 @@ final class FlexContainerHighlightConfig implements \JsonSerializable
 		}
 		if ($this->itemSeparator !== null) {
 			$data->itemSeparator = $this->itemSeparator->jsonSerialize();
+		}
+		if ($this->mainDistributedSpace !== null) {
+			$data->mainDistributedSpace = $this->mainDistributedSpace->jsonSerialize();
+		}
+		if ($this->crossDistributedSpace !== null) {
+			$data->crossDistributedSpace = $this->crossDistributedSpace->jsonSerialize();
+		}
+		if ($this->rowGapSpace !== null) {
+			$data->rowGapSpace = $this->rowGapSpace->jsonSerialize();
+		}
+		if ($this->columnGapSpace !== null) {
+			$data->columnGapSpace = $this->columnGapSpace->jsonSerialize();
 		}
 		return $data;
 	}
