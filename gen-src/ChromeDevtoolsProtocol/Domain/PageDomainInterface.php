@@ -16,6 +16,7 @@ use ChromeDevtoolsProtocol\Model\Page\CompilationCacheProducedEvent;
 use ChromeDevtoolsProtocol\Model\Page\CreateIsolatedWorldRequest;
 use ChromeDevtoolsProtocol\Model\Page\CreateIsolatedWorldResponse;
 use ChromeDevtoolsProtocol\Model\Page\DeleteCookieRequest;
+use ChromeDevtoolsProtocol\Model\Page\DocumentOpenedEvent;
 use ChromeDevtoolsProtocol\Model\Page\DomContentEventFiredEvent;
 use ChromeDevtoolsProtocol\Model\Page\DownloadProgressEvent;
 use ChromeDevtoolsProtocol\Model\Page\DownloadWillBeginEvent;
@@ -683,6 +684,30 @@ interface PageDomainInterface
 	 * @return CompilationCacheProducedEvent
 	 */
 	public function awaitCompilationCacheProduced(ContextInterface $ctx): CompilationCacheProducedEvent;
+
+
+	/**
+	 * Fired when opening document to write to.
+	 *
+	 * Listener will be called whenever event Page.documentOpened is fired.
+	 *
+	 * @param callable $listener
+	 *
+	 * @return SubscriptionInterface
+	 */
+	public function addDocumentOpenedListener(callable $listener): SubscriptionInterface;
+
+
+	/**
+	 * Fired when opening document to write to.
+	 *
+	 * Method will block until first Page.documentOpened event is fired.
+	 *
+	 * @param ContextInterface $ctx
+	 *
+	 * @return DocumentOpenedEvent
+	 */
+	public function awaitDocumentOpened(ContextInterface $ctx): DocumentOpenedEvent;
 
 
 	/**

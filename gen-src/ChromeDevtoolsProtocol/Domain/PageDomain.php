@@ -17,6 +17,7 @@ use ChromeDevtoolsProtocol\Model\Page\CompilationCacheProducedEvent;
 use ChromeDevtoolsProtocol\Model\Page\CreateIsolatedWorldRequest;
 use ChromeDevtoolsProtocol\Model\Page\CreateIsolatedWorldResponse;
 use ChromeDevtoolsProtocol\Model\Page\DeleteCookieRequest;
+use ChromeDevtoolsProtocol\Model\Page\DocumentOpenedEvent;
 use ChromeDevtoolsProtocol\Model\Page\DomContentEventFiredEvent;
 use ChromeDevtoolsProtocol\Model\Page\DownloadProgressEvent;
 use ChromeDevtoolsProtocol\Model\Page\DownloadWillBeginEvent;
@@ -465,6 +466,20 @@ class PageDomain implements PageDomainInterface
 	public function awaitCompilationCacheProduced(ContextInterface $ctx): CompilationCacheProducedEvent
 	{
 		return CompilationCacheProducedEvent::fromJson($this->internalClient->awaitEvent($ctx, 'Page.compilationCacheProduced'));
+	}
+
+
+	public function addDocumentOpenedListener(callable $listener): SubscriptionInterface
+	{
+		return $this->internalClient->addListener('Page.documentOpened', function ($event) use ($listener) {
+			return $listener(DocumentOpenedEvent::fromJson($event));
+		});
+	}
+
+
+	public function awaitDocumentOpened(ContextInterface $ctx): DocumentOpenedEvent
+	{
+		return DocumentOpenedEvent::fromJson($this->internalClient->awaitEvent($ctx, 'Page.documentOpened'));
 	}
 
 

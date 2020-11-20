@@ -16911,6 +16911,18 @@
                     ]
                 },
                 {
+                    "name": "documentOpened",
+                    "description": "Fired when opening document to write to.",
+                    "experimental": true,
+                    "parameters": [
+                        {
+                            "name": "frame",
+                            "description": "Frame object.",
+                            "$ref": "Frame"
+                        }
+                    ]
+                },
+                {
                     "name": "domContentEventFired",
                     "parameters": [
                         {
