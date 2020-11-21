@@ -32,6 +32,13 @@ final class RequestWillBeSentExtraInfoEvent implements \JsonSerializable
 	 */
 	public $headers;
 
+	/**
+	 * The client security state set for the request.
+	 *
+	 * @var ClientSecurityState|null
+	 */
+	public $clientSecurityState;
+
 
 	public static function fromJson($data)
 	{
@@ -47,6 +54,9 @@ final class RequestWillBeSentExtraInfoEvent implements \JsonSerializable
 		}
 		if (isset($data->headers)) {
 			$instance->headers = Headers::fromJson($data->headers);
+		}
+		if (isset($data->clientSecurityState)) {
+			$instance->clientSecurityState = ClientSecurityState::fromJson($data->clientSecurityState);
 		}
 		return $instance;
 	}
@@ -66,6 +76,9 @@ final class RequestWillBeSentExtraInfoEvent implements \JsonSerializable
 		}
 		if ($this->headers !== null) {
 			$data->headers = $this->headers->jsonSerialize();
+		}
+		if ($this->clientSecurityState !== null) {
+			$data->clientSecurityState = $this->clientSecurityState->jsonSerialize();
 		}
 		return $data;
 	}

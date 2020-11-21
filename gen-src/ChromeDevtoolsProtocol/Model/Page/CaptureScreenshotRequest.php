@@ -39,6 +39,13 @@ final class CaptureScreenshotRequest implements \JsonSerializable
 	 */
 	public $fromSurface;
 
+	/**
+	 * Capture the screenshot beyond the viewport. Defaults to false.
+	 *
+	 * @var bool|null
+	 */
+	public $captureBeyondViewport;
+
 
 	public static function fromJson($data)
 	{
@@ -54,6 +61,9 @@ final class CaptureScreenshotRequest implements \JsonSerializable
 		}
 		if (isset($data->fromSurface)) {
 			$instance->fromSurface = (bool)$data->fromSurface;
+		}
+		if (isset($data->captureBeyondViewport)) {
+			$instance->captureBeyondViewport = (bool)$data->captureBeyondViewport;
 		}
 		return $instance;
 	}
@@ -73,6 +83,9 @@ final class CaptureScreenshotRequest implements \JsonSerializable
 		}
 		if ($this->fromSurface !== null) {
 			$data->fromSurface = $this->fromSurface;
+		}
+		if ($this->captureBeyondViewport !== null) {
+			$data->captureBeyondViewport = $this->captureBeyondViewport;
 		}
 		return $data;
 	}
