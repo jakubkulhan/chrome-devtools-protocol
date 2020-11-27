@@ -26,5 +26,6 @@ final class ResourceTypeEnum
 	const SIGNED_EXCHANGE = 'SignedExchange';
 	const PING = 'Ping';
 	const CSP_VIOLATION_REPORT = 'CSPViolationReport';
+	const PREFLIGHT = 'Preflight';
 	const OTHER = 'Other';
 }

@@ -60,6 +60,13 @@ final class FlexContainerHighlightConfig implements \JsonSerializable
 	 */
 	public $columnGapSpace;
 
+	/**
+	 * Style of the self-alignment line (align-items).
+	 *
+	 * @var LineStyle|null
+	 */
+	public $crossAlignment;
+
 
 	public static function fromJson($data)
 	{
@@ -84,6 +91,9 @@ final class FlexContainerHighlightConfig implements \JsonSerializable
 		}
 		if (isset($data->columnGapSpace)) {
 			$instance->columnGapSpace = BoxStyle::fromJson($data->columnGapSpace);
+		}
+		if (isset($data->crossAlignment)) {
+			$instance->crossAlignment = LineStyle::fromJson($data->crossAlignment);
 		}
 		return $instance;
 	}
@@ -112,6 +122,9 @@ final class FlexContainerHighlightConfig implements \JsonSerializable
 		}
 		if ($this->columnGapSpace !== null) {
 			$data->columnGapSpace = $this->columnGapSpace->jsonSerialize();
+		}
+		if ($this->crossAlignment !== null) {
+			$data->crossAlignment = $this->crossAlignment->jsonSerialize();
 		}
 		return $data;
 	}

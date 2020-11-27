@@ -48,6 +48,13 @@ final class Initiator implements \JsonSerializable
 	 */
 	public $columnNumber;
 
+	/**
+	 * Set if another request triggered this request (e.g. preflight).
+	 *
+	 * @var string
+	 */
+	public $requestId;
+
 
 	public static function fromJson($data)
 	{
@@ -66,6 +73,9 @@ final class Initiator implements \JsonSerializable
 		}
 		if (isset($data->columnNumber)) {
 			$instance->columnNumber = $data->columnNumber;
+		}
+		if (isset($data->requestId)) {
+			$instance->requestId = (string)$data->requestId;
 		}
 		return $instance;
 	}
@@ -88,6 +98,9 @@ final class Initiator implements \JsonSerializable
 		}
 		if ($this->columnNumber !== null) {
 			$data->columnNumber = $this->columnNumber;
+		}
+		if ($this->requestId !== null) {
+			$data->requestId = $this->requestId;
 		}
 		return $data;
 	}
