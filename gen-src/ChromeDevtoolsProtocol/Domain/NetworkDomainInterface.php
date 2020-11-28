@@ -60,6 +60,8 @@ use ChromeDevtoolsProtocol\Model\Network\WebSocketFrameReceivedEvent;
 use ChromeDevtoolsProtocol\Model\Network\WebSocketFrameSentEvent;
 use ChromeDevtoolsProtocol\Model\Network\WebSocketHandshakeResponseReceivedEvent;
 use ChromeDevtoolsProtocol\Model\Network\WebSocketWillSendHandshakeRequestEvent;
+use ChromeDevtoolsProtocol\Model\Network\WebTransportClosedEvent;
+use ChromeDevtoolsProtocol\Model\Network\WebTransportCreatedEvent;
 use ChromeDevtoolsProtocol\SubscriptionInterface;
 
 /**
@@ -859,4 +861,52 @@ interface NetworkDomainInterface
 	 * @return WebSocketWillSendHandshakeRequestEvent
 	 */
 	public function awaitWebSocketWillSendHandshakeRequest(ContextInterface $ctx): WebSocketWillSendHandshakeRequestEvent;
+
+
+	/**
+	 * Subscribe to Network.webTransportClosed event.
+	 *
+	 * Listener will be called whenever event Network.webTransportClosed is fired.
+	 *
+	 * @param callable $listener
+	 *
+	 * @return SubscriptionInterface
+	 */
+	public function addWebTransportClosedListener(callable $listener): SubscriptionInterface;
+
+
+	/**
+	 * Wait for Network.webTransportClosed event.
+	 *
+	 * Method will block until first Network.webTransportClosed event is fired.
+	 *
+	 * @param ContextInterface $ctx
+	 *
+	 * @return WebTransportClosedEvent
+	 */
+	public function awaitWebTransportClosed(ContextInterface $ctx): WebTransportClosedEvent;
+
+
+	/**
+	 * Fired upon WebTransport creation.
+	 *
+	 * Listener will be called whenever event Network.webTransportCreated is fired.
+	 *
+	 * @param callable $listener
+	 *
+	 * @return SubscriptionInterface
+	 */
+	public function addWebTransportCreatedListener(callable $listener): SubscriptionInterface;
+
+
+	/**
+	 * Fired upon WebTransport creation.
+	 *
+	 * Method will block until first Network.webTransportCreated event is fired.
+	 *
+	 * @param ContextInterface $ctx
+	 *
+	 * @return WebTransportCreatedEvent
+	 */
+	public function awaitWebTransportCreated(ContextInterface $ctx): WebTransportCreatedEvent;
 }
