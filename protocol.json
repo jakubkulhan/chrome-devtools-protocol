@@ -14220,6 +14220,56 @@
                     ]
                 },
                 {
+                    "name": "trustTokenOperationDone",
+                    "description": "Fired exactly once for each Trust Token operation. Depending on the type of the operation and whether the operation succeeded or failed, the event is fired before the corresponding request was sent or after the response was received.",
+                    "experimental": true,
+                    "parameters": [
+                        {
+                            "name": "status",
+                            "description": "Detailed success or error status of the operation. 'AlreadyExists' also signifies a successful operation, as the result of the operation already exists und thus, the operation was abort preemptively (e.g. a cache hit).",
+                            "type": "string",
+                            "enum": [
+                                "Ok",
+                                "InvalidArgument",
+                                "FailedPrecondition",
+                                "ResourceExhausted",
+                                "AlreadyExists",
+                                "Unavailable",
+                                "BadResponse",
+                                "InternalError",
+                                "UnknownError",
+                                "FulfilledLocally"
+                            ]
+                        },
+                        {
+                            "name": "type",
+                            "$ref": "TrustTokenOperationType"
+                        },
+                        {
+                            "name": "requestId",
+                            "$ref": "RequestId"
+                        },
+                        {
+                            "name": "topLevelOrigin",
+                            "description": "Top level origin. The context in which the operation was attempted.",
+                            "optional": true,
+                            "type": "string"
+                        },
+                        {
+                            "name": "issuerOrigin",
+                            "description": "Origin of the issuer in case of a \"Issuance\" or \"Redemption\" operation.",
+                            "optional": true,
+                            "type": "string"
+                        },
+                        {
+                            "name": "issuedTokenCount",
+                            "description": "The number of obtained Trust Tokens on a successful \"Issuance\" operation.",
+                            "optional": true,
+                            "type": "integer"
+                        }
+                    ]
+                },
+                {
                     "name": "webSocketClosed",
                     "description": "Fired when WebSocket is closed.",
                     "parameters": [

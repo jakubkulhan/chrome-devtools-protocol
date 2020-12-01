@@ -54,6 +54,7 @@ use ChromeDevtoolsProtocol\Model\Network\SetUserAgentOverrideRequest;
 use ChromeDevtoolsProtocol\Model\Network\SignedExchangeReceivedEvent;
 use ChromeDevtoolsProtocol\Model\Network\TakeResponseBodyForInterceptionAsStreamRequest;
 use ChromeDevtoolsProtocol\Model\Network\TakeResponseBodyForInterceptionAsStreamResponse;
+use ChromeDevtoolsProtocol\Model\Network\TrustTokenOperationDoneEvent;
 use ChromeDevtoolsProtocol\Model\Network\WebSocketClosedEvent;
 use ChromeDevtoolsProtocol\Model\Network\WebSocketCreatedEvent;
 use ChromeDevtoolsProtocol\Model\Network\WebSocketFrameErrorEvent;
@@ -449,6 +450,20 @@ class NetworkDomain implements NetworkDomainInterface
 	public function awaitSignedExchangeReceived(ContextInterface $ctx): SignedExchangeReceivedEvent
 	{
 		return SignedExchangeReceivedEvent::fromJson($this->internalClient->awaitEvent($ctx, 'Network.signedExchangeReceived'));
+	}
+
+
+	public function addTrustTokenOperationDoneListener(callable $listener): SubscriptionInterface
+	{
+		return $this->internalClient->addListener('Network.trustTokenOperationDone', function ($event) use ($listener) {
+			return $listener(TrustTokenOperationDoneEvent::fromJson($event));
+		});
+	}
+
+
+	public function awaitTrustTokenOperationDone(ContextInterface $ctx): TrustTokenOperationDoneEvent
+	{
+		return TrustTokenOperationDoneEvent::fromJson($this->internalClient->awaitEvent($ctx, 'Network.trustTokenOperationDone'));
 	}
 
 

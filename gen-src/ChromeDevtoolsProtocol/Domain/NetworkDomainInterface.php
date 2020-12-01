@@ -53,6 +53,7 @@ use ChromeDevtoolsProtocol\Model\Network\SetUserAgentOverrideRequest;
 use ChromeDevtoolsProtocol\Model\Network\SignedExchangeReceivedEvent;
 use ChromeDevtoolsProtocol\Model\Network\TakeResponseBodyForInterceptionAsStreamRequest;
 use ChromeDevtoolsProtocol\Model\Network\TakeResponseBodyForInterceptionAsStreamResponse;
+use ChromeDevtoolsProtocol\Model\Network\TrustTokenOperationDoneEvent;
 use ChromeDevtoolsProtocol\Model\Network\WebSocketClosedEvent;
 use ChromeDevtoolsProtocol\Model\Network\WebSocketCreatedEvent;
 use ChromeDevtoolsProtocol\Model\Network\WebSocketFrameErrorEvent;
@@ -693,6 +694,30 @@ interface NetworkDomainInterface
 	 * @return SignedExchangeReceivedEvent
 	 */
 	public function awaitSignedExchangeReceived(ContextInterface $ctx): SignedExchangeReceivedEvent;
+
+
+	/**
+	 * Fired exactly once for each Trust Token operation. Depending on the type of the operation and whether the operation succeeded or failed, the event is fired before the corresponding request was sent or after the response was received.
+	 *
+	 * Listener will be called whenever event Network.trustTokenOperationDone is fired.
+	 *
+	 * @param callable $listener
+	 *
+	 * @return SubscriptionInterface
+	 */
+	public function addTrustTokenOperationDoneListener(callable $listener): SubscriptionInterface;
+
+
+	/**
+	 * Fired exactly once for each Trust Token operation. Depending on the type of the operation and whether the operation succeeded or failed, the event is fired before the corresponding request was sent or after the response was received.
+	 *
+	 * Method will block until first Network.trustTokenOperationDone event is fired.
+	 *
+	 * @param ContextInterface $ctx
+	 *
+	 * @return TrustTokenOperationDoneEvent
+	 */
+	public function awaitTrustTokenOperationDone(ContextInterface $ctx): TrustTokenOperationDoneEvent;
 
 
 	/**
