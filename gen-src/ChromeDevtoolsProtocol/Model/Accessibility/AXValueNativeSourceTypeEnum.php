@@ -16,6 +16,7 @@ final class AXValueNativeSourceTypeEnum
 	const LABELFOR = 'labelfor';
 	const LABELWRAPPED = 'labelwrapped';
 	const LEGEND = 'legend';
+	const RUBYANNOTATION = 'rubyannotation';
 	const TABLECAPTION = 'tablecaption';
 	const TITLE = 'title';
 	const OTHER = 'other';
