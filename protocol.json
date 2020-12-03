@@ -335,9 +335,37 @@
                     "description": "Enables the accessibility domain which causes `AXNodeId`s to remain consistent between method calls. This turns on accessibility for the page, which can impact performance until accessibility is disabled."
                 },
                 {
-                    "name": "getFullAXTree",
-                    "description": "Fetches the entire accessibility tree",
+                    "name": "getChildAXNodes",
+                    "description": "Fetches a particular accessibility node by AXNodeId. Requires `enable()` to have been called previously.",
                     "experimental": true,
+                    "parameters": [
+                        {
+                            "name": "id",
+                            "$ref": "AXNodeId"
+                        }
+                    ],
+                    "returns": [
+                        {
+                            "name": "nodes",
+                            "type": "array",
+                            "items": {
+                                "$ref": "AXNode"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "getFullAXTree",
+                    "description": "Fetches the entire accessibility tree for the root Document",
+                    "experimental": true,
+                    "parameters": [
+                        {
+                            "name": "max_depth",
+                            "description": "The maximum depth at which descendants of the root node should be retrieved. If omitted, the full tree is returned.",
+                            "optional": true,
+                            "type": "integer"
+                        }
+                    ],
                     "returns": [
                         {
                             "name": "nodes",

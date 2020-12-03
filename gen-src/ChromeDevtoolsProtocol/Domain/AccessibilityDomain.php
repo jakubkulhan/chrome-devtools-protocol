@@ -4,6 +4,9 @@ namespace ChromeDevtoolsProtocol\Domain;
 
 use ChromeDevtoolsProtocol\ContextInterface;
 use ChromeDevtoolsProtocol\InternalClientInterface;
+use ChromeDevtoolsProtocol\Model\Accessibility\GetChildAXNodesRequest;
+use ChromeDevtoolsProtocol\Model\Accessibility\GetChildAXNodesResponse;
+use ChromeDevtoolsProtocol\Model\Accessibility\GetFullAXTreeRequest;
 use ChromeDevtoolsProtocol\Model\Accessibility\GetFullAXTreeResponse;
 use ChromeDevtoolsProtocol\Model\Accessibility\GetPartialAXTreeRequest;
 use ChromeDevtoolsProtocol\Model\Accessibility\GetPartialAXTreeResponse;
@@ -36,9 +39,15 @@ class AccessibilityDomain implements AccessibilityDomainInterface
 	}
 
 
-	public function getFullAXTree(ContextInterface $ctx): GetFullAXTreeResponse
+	public function getChildAXNodes(ContextInterface $ctx, GetChildAXNodesRequest $request): GetChildAXNodesResponse
 	{
-		$request = new \stdClass();
+		$response = $this->internalClient->executeCommand($ctx, 'Accessibility.getChildAXNodes', $request);
+		return GetChildAXNodesResponse::fromJson($response);
+	}
+
+
+	public function getFullAXTree(ContextInterface $ctx, GetFullAXTreeRequest $request): GetFullAXTreeResponse
+	{
 		$response = $this->internalClient->executeCommand($ctx, 'Accessibility.getFullAXTree', $request);
 		return GetFullAXTreeResponse::fromJson($response);
 	}

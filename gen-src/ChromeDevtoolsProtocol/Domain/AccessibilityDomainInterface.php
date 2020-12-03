@@ -3,6 +3,9 @@
 namespace ChromeDevtoolsProtocol\Domain;
 
 use ChromeDevtoolsProtocol\ContextInterface;
+use ChromeDevtoolsProtocol\Model\Accessibility\GetChildAXNodesRequest;
+use ChromeDevtoolsProtocol\Model\Accessibility\GetChildAXNodesResponse;
+use ChromeDevtoolsProtocol\Model\Accessibility\GetFullAXTreeRequest;
 use ChromeDevtoolsProtocol\Model\Accessibility\GetFullAXTreeResponse;
 use ChromeDevtoolsProtocol\Model\Accessibility\GetPartialAXTreeRequest;
 use ChromeDevtoolsProtocol\Model\Accessibility\GetPartialAXTreeResponse;
@@ -41,13 +44,25 @@ interface AccessibilityDomainInterface
 
 
 	/**
-	 * Fetches the entire accessibility tree
+	 * Fetches a particular accessibility node by AXNodeId. Requires `enable()` to have been called previously.
 	 *
 	 * @param ContextInterface $ctx
+	 * @param GetChildAXNodesRequest $request
+	 *
+	 * @return GetChildAXNodesResponse
+	 */
+	public function getChildAXNodes(ContextInterface $ctx, GetChildAXNodesRequest $request): GetChildAXNodesResponse;
+
+
+	/**
+	 * Fetches the entire accessibility tree for the root Document
+	 *
+	 * @param ContextInterface $ctx
+	 * @param GetFullAXTreeRequest $request
 	 *
 	 * @return GetFullAXTreeResponse
 	 */
-	public function getFullAXTree(ContextInterface $ctx): GetFullAXTreeResponse;
+	public function getFullAXTree(ContextInterface $ctx, GetFullAXTreeRequest $request): GetFullAXTreeResponse;
 
 
 	/**
