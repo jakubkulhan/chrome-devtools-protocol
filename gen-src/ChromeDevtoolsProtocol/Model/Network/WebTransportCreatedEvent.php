@@ -26,6 +26,13 @@ final class WebTransportCreatedEvent implements \JsonSerializable
 	public $url;
 
 	/**
+	 * Timestamp.
+	 *
+	 * @var int|float
+	 */
+	public $timestamp;
+
+	/**
 	 * Request initiator.
 	 *
 	 * @var Initiator|null
@@ -42,6 +49,9 @@ final class WebTransportCreatedEvent implements \JsonSerializable
 		if (isset($data->url)) {
 			$instance->url = (string)$data->url;
 		}
+		if (isset($data->timestamp)) {
+			$instance->timestamp = $data->timestamp;
+		}
 		if (isset($data->initiator)) {
 			$instance->initiator = Initiator::fromJson($data->initiator);
 		}
@@ -57,6 +67,9 @@ final class WebTransportCreatedEvent implements \JsonSerializable
 		}
 		if ($this->url !== null) {
 			$data->url = $this->url;
+		}
+		if ($this->timestamp !== null) {
+			$data->timestamp = $this->timestamp;
 		}
 		if ($this->initiator !== null) {
 			$data->initiator = $this->initiator->jsonSerialize();

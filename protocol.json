@@ -14453,6 +14453,11 @@
                             "name": "transportId",
                             "description": "WebTransport identifier.",
                             "$ref": "RequestId"
+                        },
+                        {
+                            "name": "timestamp",
+                            "description": "Timestamp.",
+                            "$ref": "MonotonicTime"
                         }
                     ]
                 },
@@ -14469,6 +14474,11 @@
                             "name": "url",
                             "description": "WebTransport request URL.",
                             "type": "string"
+                        },
+                        {
+                            "name": "timestamp",
+                            "description": "Timestamp.",
+                            "$ref": "MonotonicTime"
                         },
                         {
                             "name": "initiator",

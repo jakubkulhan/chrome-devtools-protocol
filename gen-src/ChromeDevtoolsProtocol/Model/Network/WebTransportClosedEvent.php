@@ -18,12 +18,22 @@ final class WebTransportClosedEvent implements \JsonSerializable
 	 */
 	public $transportId;
 
+	/**
+	 * Timestamp.
+	 *
+	 * @var int|float
+	 */
+	public $timestamp;
+
 
 	public static function fromJson($data)
 	{
 		$instance = new static();
 		if (isset($data->transportId)) {
 			$instance->transportId = (string)$data->transportId;
+		}
+		if (isset($data->timestamp)) {
+			$instance->timestamp = $data->timestamp;
 		}
 		return $instance;
 	}
@@ -34,6 +44,9 @@ final class WebTransportClosedEvent implements \JsonSerializable
 		$data = new \stdClass();
 		if ($this->transportId !== null) {
 			$data->transportId = $this->transportId;
+		}
+		if ($this->timestamp !== null) {
+			$data->timestamp = $this->timestamp;
 		}
 		return $data;
 	}
