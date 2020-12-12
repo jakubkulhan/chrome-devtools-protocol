@@ -17,6 +17,7 @@ final class PermissionTypeEnum
 	const BACKGROUND_FETCH = 'backgroundFetch';
 	const CLIPBOARD_READ_WRITE = 'clipboardReadWrite';
 	const CLIPBOARD_SANITIZED_WRITE = 'clipboardSanitizedWrite';
+	const DISPLAY_CAPTURE = 'displayCapture';
 	const DURABLE_STORAGE = 'durableStorage';
 	const FLASH = 'flash';
 	const GEOLOCATION = 'geolocation';

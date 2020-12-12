@@ -56,6 +56,13 @@ final class StartRequest implements \JsonSerializable
 	/** @var TraceConfig|null */
 	public $traceConfig;
 
+	/**
+	 * Base64-encoded serialized perfetto.protos.TraceConfig protobuf message When specified, the parameters `categories`, `options`, `traceConfig` are ignored.
+	 *
+	 * @var string|null
+	 */
+	public $perfettoConfig;
+
 
 	public static function fromJson($data)
 	{
@@ -80,6 +87,9 @@ final class StartRequest implements \JsonSerializable
 		}
 		if (isset($data->traceConfig)) {
 			$instance->traceConfig = TraceConfig::fromJson($data->traceConfig);
+		}
+		if (isset($data->perfettoConfig)) {
+			$instance->perfettoConfig = (string)$data->perfettoConfig;
 		}
 		return $instance;
 	}
@@ -108,6 +118,9 @@ final class StartRequest implements \JsonSerializable
 		}
 		if ($this->traceConfig !== null) {
 			$data->traceConfig = $this->traceConfig->jsonSerialize();
+		}
+		if ($this->perfettoConfig !== null) {
+			$data->perfettoConfig = $this->perfettoConfig;
 		}
 		return $data;
 	}
