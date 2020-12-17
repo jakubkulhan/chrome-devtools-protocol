@@ -26,6 +26,9 @@ final class InspectorIssueDetails implements \JsonSerializable
 	/** @var ContentSecurityPolicyIssueDetails|null */
 	public $contentSecurityPolicyIssueDetails;
 
+	/** @var SharedArrayBufferTransferIssueDetails|null */
+	public $sharedArrayBufferTransferIssueDetails;
+
 
 	public static function fromJson($data)
 	{
@@ -44,6 +47,9 @@ final class InspectorIssueDetails implements \JsonSerializable
 		}
 		if (isset($data->contentSecurityPolicyIssueDetails)) {
 			$instance->contentSecurityPolicyIssueDetails = ContentSecurityPolicyIssueDetails::fromJson($data->contentSecurityPolicyIssueDetails);
+		}
+		if (isset($data->sharedArrayBufferTransferIssueDetails)) {
+			$instance->sharedArrayBufferTransferIssueDetails = SharedArrayBufferTransferIssueDetails::fromJson($data->sharedArrayBufferTransferIssueDetails);
 		}
 		return $instance;
 	}
@@ -66,6 +72,9 @@ final class InspectorIssueDetails implements \JsonSerializable
 		}
 		if ($this->contentSecurityPolicyIssueDetails !== null) {
 			$data->contentSecurityPolicyIssueDetails = $this->contentSecurityPolicyIssueDetails->jsonSerialize();
+		}
+		if ($this->sharedArrayBufferTransferIssueDetails !== null) {
+			$data->sharedArrayBufferTransferIssueDetails = $this->sharedArrayBufferTransferIssueDetails->jsonSerialize();
 		}
 		return $data;
 	}
