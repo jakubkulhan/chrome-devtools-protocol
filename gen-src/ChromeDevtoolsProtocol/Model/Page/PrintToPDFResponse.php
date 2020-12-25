@@ -12,7 +12,7 @@ namespace ChromeDevtoolsProtocol\Model\Page;
 final class PrintToPDFResponse implements \JsonSerializable
 {
 	/**
-	 * Base64-encoded pdf data. Empty if |returnAsStream| is specified.
+	 * Base64-encoded pdf data. Empty if |returnAsStream| is specified. (Encoded as a base64 string when passed over JSON)
 	 *
 	 * @var string
 	 */

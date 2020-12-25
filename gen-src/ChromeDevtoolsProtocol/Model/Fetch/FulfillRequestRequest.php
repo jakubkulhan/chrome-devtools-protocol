@@ -33,14 +33,14 @@ final class FulfillRequestRequest implements \JsonSerializable
 	public $responseHeaders;
 
 	/**
-	 * Alternative way of specifying response headers as a \0-separated series of name: value pairs. Prefer the above method unless you need to represent some non-UTF8 values that can't be transmitted over the protocol as text.
+	 * Alternative way of specifying response headers as a \0-separated series of name: value pairs. Prefer the above method unless you need to represent some non-UTF8 values that can't be transmitted over the protocol as text. (Encoded as a base64 string when passed over JSON)
 	 *
 	 * @var string|null
 	 */
 	public $binaryResponseHeaders;
 
 	/**
-	 * A response body.
+	 * A response body. (Encoded as a base64 string when passed over JSON)
 	 *
 	 * @var string|null
 	 */

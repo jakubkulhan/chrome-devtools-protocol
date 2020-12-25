@@ -33,7 +33,7 @@ final class ContinueRequestRequest implements \JsonSerializable
 	public $method;
 
 	/**
-	 * If set, overrides the post data in the request.
+	 * If set, overrides the post data in the request. (Encoded as a base64 string when passed over JSON)
 	 *
 	 * @var string|null
 	 */

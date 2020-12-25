@@ -25,14 +25,14 @@ final class Credential implements \JsonSerializable
 	public $rpId;
 
 	/**
-	 * The ECDSA P-256 private key in PKCS#8 format.
+	 * The ECDSA P-256 private key in PKCS#8 format. (Encoded as a base64 string when passed over JSON)
 	 *
 	 * @var string
 	 */
 	public $privateKey;
 
 	/**
-	 * An opaque byte sequence with a maximum size of 64 bytes mapping the credential to a specific user.
+	 * An opaque byte sequence with a maximum size of 64 bytes mapping the credential to a specific user. (Encoded as a base64 string when passed over JSON)
 	 *
 	 * @var string|null
 	 */
@@ -46,7 +46,7 @@ final class Credential implements \JsonSerializable
 	public $signCount;
 
 	/**
-	 * The large blob associated with the credential. See https://w3c.github.io/webauthn/#sctn-large-blob-extension
+	 * The large blob associated with the credential. See https://w3c.github.io/webauthn/#sctn-large-blob-extension (Encoded as a base64 string when passed over JSON)
 	 *
 	 * @var string|null
 	 */

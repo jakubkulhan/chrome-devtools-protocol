@@ -12,7 +12,7 @@ namespace ChromeDevtoolsProtocol\Model\Page;
 final class CaptureScreenshotResponse implements \JsonSerializable
 {
 	/**
-	 * Base64-encoded image data.
+	 * Base64-encoded image data. (Encoded as a base64 string when passed over JSON)
 	 *
 	 * @var string
 	 */

@@ -57,7 +57,7 @@ final class StartRequest implements \JsonSerializable
 	public $traceConfig;
 
 	/**
-	 * Base64-encoded serialized perfetto.protos.TraceConfig protobuf message When specified, the parameters `categories`, `options`, `traceConfig` are ignored.
+	 * Base64-encoded serialized perfetto.protos.TraceConfig protobuf message When specified, the parameters `categories`, `options`, `traceConfig` are ignored. (Encoded as a base64 string when passed over JSON)
 	 *
 	 * @var string|null
 	 */

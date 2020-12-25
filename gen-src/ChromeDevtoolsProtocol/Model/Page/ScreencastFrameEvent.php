@@ -12,7 +12,7 @@ namespace ChromeDevtoolsProtocol\Model\Page;
 final class ScreencastFrameEvent implements \JsonSerializable
 {
 	/**
-	 * Base64-encoded compressed image.
+	 * Base64-encoded compressed image. (Encoded as a base64 string when passed over JSON)
 	 *
 	 * @var string
 	 */

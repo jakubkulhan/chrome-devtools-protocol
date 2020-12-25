@@ -12,7 +12,7 @@ namespace ChromeDevtoolsProtocol\Model\Debugger;
 final class GetWasmBytecodeResponse implements \JsonSerializable
 {
 	/**
-	 * Script source.
+	 * Script source. (Encoded as a base64 string when passed over JSON)
 	 *
 	 * @var string
 	 */

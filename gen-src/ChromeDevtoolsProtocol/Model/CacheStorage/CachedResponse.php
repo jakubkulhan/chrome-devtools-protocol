@@ -12,7 +12,7 @@ namespace ChromeDevtoolsProtocol\Model\CacheStorage;
 final class CachedResponse implements \JsonSerializable
 {
 	/**
-	 * Entry content, base64-encoded.
+	 * Entry content, base64-encoded. (Encoded as a base64 string when passed over JSON)
 	 *
 	 * @var string
 	 */

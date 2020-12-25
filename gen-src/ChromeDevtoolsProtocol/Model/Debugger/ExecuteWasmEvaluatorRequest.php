@@ -19,7 +19,7 @@ final class ExecuteWasmEvaluatorRequest implements \JsonSerializable
 	public $callFrameId;
 
 	/**
-	 * Code of the evaluator module.
+	 * Code of the evaluator module. (Encoded as a base64 string when passed over JSON)
 	 *
 	 * @var string
 	 */

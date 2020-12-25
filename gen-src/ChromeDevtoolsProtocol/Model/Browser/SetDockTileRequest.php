@@ -15,7 +15,7 @@ final class SetDockTileRequest implements \JsonSerializable
 	public $badgeLabel;
 
 	/**
-	 * Png encoded image.
+	 * Png encoded image. (Encoded as a base64 string when passed over JSON)
 	 *
 	 * @var string|null
 	 */

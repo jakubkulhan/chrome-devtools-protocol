@@ -19,7 +19,7 @@ final class GetScriptSourceResponse implements \JsonSerializable
 	public $scriptSource;
 
 	/**
-	 * Wasm bytecode.
+	 * Wasm bytecode. (Encoded as a base64 string when passed over JSON)
 	 *
 	 * @var string|null
 	 */
