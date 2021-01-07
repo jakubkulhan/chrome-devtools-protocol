@@ -35,6 +35,7 @@ use ChromeDevtoolsProtocol\Domain\NetworkDomainInterface;
 use ChromeDevtoolsProtocol\Domain\OverlayDomainInterface;
 use ChromeDevtoolsProtocol\Domain\PageDomainInterface;
 use ChromeDevtoolsProtocol\Domain\PerformanceDomainInterface;
+use ChromeDevtoolsProtocol\Domain\PerformanceTimelineDomainInterface;
 use ChromeDevtoolsProtocol\Domain\ProfilerDomainInterface;
 use ChromeDevtoolsProtocol\Domain\RuntimeDomainInterface;
 use ChromeDevtoolsProtocol\Domain\SchemaDomainInterface;
@@ -293,6 +294,14 @@ interface DevtoolsClientInterface extends CloseableResourceInterface
 	 * Performance domain.
 	 */
 	public function performance(): PerformanceDomainInterface;
+
+
+	/**
+	 * Reporting of performance timeline events, as specified in https://w3c.github.io/performance-timeline/#dom-performanceobserver.
+	 *
+	 * @experimental
+	 */
+	public function performanceTimeline(): PerformanceTimelineDomainInterface;
 
 
 	/**
