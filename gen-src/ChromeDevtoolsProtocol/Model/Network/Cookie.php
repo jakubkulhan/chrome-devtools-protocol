@@ -88,6 +88,13 @@ final class Cookie implements \JsonSerializable
 	 */
 	public $priority;
 
+	/**
+	 * True if cookie is SameParty.
+	 *
+	 * @var bool
+	 */
+	public $sameParty;
+
 
 	public static function fromJson($data)
 	{
@@ -124,6 +131,9 @@ final class Cookie implements \JsonSerializable
 		}
 		if (isset($data->priority)) {
 			$instance->priority = (string)$data->priority;
+		}
+		if (isset($data->sameParty)) {
+			$instance->sameParty = (bool)$data->sameParty;
 		}
 		return $instance;
 	}
@@ -164,6 +174,9 @@ final class Cookie implements \JsonSerializable
 		}
 		if ($this->priority !== null) {
 			$data->priority = $this->priority;
+		}
+		if ($this->sameParty !== null) {
+			$data->sameParty = $this->sameParty;
 		}
 		return $data;
 	}
