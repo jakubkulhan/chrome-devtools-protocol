@@ -32,6 +32,7 @@ use ChromeDevtoolsProtocol\Model\Overlay\SetShowLayoutShiftRegionsRequest;
 use ChromeDevtoolsProtocol\Model\Overlay\SetShowPaintRectsRequest;
 use ChromeDevtoolsProtocol\Model\Overlay\SetShowScrollBottleneckRectsRequest;
 use ChromeDevtoolsProtocol\Model\Overlay\SetShowViewportSizeOnResizeRequest;
+use ChromeDevtoolsProtocol\Model\Overlay\SetShowWebVitalsRequest;
 use ChromeDevtoolsProtocol\SubscriptionInterface;
 
 class OverlayDomain implements OverlayDomainInterface
@@ -193,6 +194,12 @@ class OverlayDomain implements OverlayDomainInterface
 	public function setShowViewportSizeOnResize(ContextInterface $ctx, SetShowViewportSizeOnResizeRequest $request): void
 	{
 		$this->internalClient->executeCommand($ctx, 'Overlay.setShowViewportSizeOnResize', $request);
+	}
+
+
+	public function setShowWebVitals(ContextInterface $ctx, SetShowWebVitalsRequest $request): void
+	{
+		$this->internalClient->executeCommand($ctx, 'Overlay.setShowWebVitals', $request);
 	}
 
 

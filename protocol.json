@@ -15365,6 +15365,16 @@
                             "type": "boolean"
                         }
                     ]
+                },
+                {
+                    "name": "setShowWebVitals",
+                    "description": "Request that backend shows an overlay with web vital metrics.",
+                    "parameters": [
+                        {
+                            "name": "show",
+                            "type": "boolean"
+                        }
+                    ]
                 }
             ],
             "events": [

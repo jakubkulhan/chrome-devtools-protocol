@@ -31,6 +31,7 @@ use ChromeDevtoolsProtocol\Model\Overlay\SetShowLayoutShiftRegionsRequest;
 use ChromeDevtoolsProtocol\Model\Overlay\SetShowPaintRectsRequest;
 use ChromeDevtoolsProtocol\Model\Overlay\SetShowScrollBottleneckRectsRequest;
 use ChromeDevtoolsProtocol\Model\Overlay\SetShowViewportSizeOnResizeRequest;
+use ChromeDevtoolsProtocol\Model\Overlay\SetShowWebVitalsRequest;
 use ChromeDevtoolsProtocol\SubscriptionInterface;
 
 /**
@@ -303,6 +304,17 @@ interface OverlayDomainInterface
 	 * @return void
 	 */
 	public function setShowViewportSizeOnResize(ContextInterface $ctx, SetShowViewportSizeOnResizeRequest $request): void;
+
+
+	/**
+	 * Request that backend shows an overlay with web vital metrics.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param SetShowWebVitalsRequest $request
+	 *
+	 * @return void
+	 */
+	public function setShowWebVitals(ContextInterface $ctx, SetShowWebVitalsRequest $request): void;
 
 
 	/**
