@@ -10,6 +10,7 @@ use ChromeDevtoolsProtocol\Model\Storage\ClearCookiesRequest;
 use ChromeDevtoolsProtocol\Model\Storage\ClearDataForOriginRequest;
 use ChromeDevtoolsProtocol\Model\Storage\GetCookiesRequest;
 use ChromeDevtoolsProtocol\Model\Storage\GetCookiesResponse;
+use ChromeDevtoolsProtocol\Model\Storage\GetTrustTokensResponse;
 use ChromeDevtoolsProtocol\Model\Storage\GetUsageAndQuotaRequest;
 use ChromeDevtoolsProtocol\Model\Storage\GetUsageAndQuotaResponse;
 use ChromeDevtoolsProtocol\Model\Storage\IndexedDBContentUpdatedEvent;
@@ -50,6 +51,14 @@ class StorageDomain implements StorageDomainInterface
 	{
 		$response = $this->internalClient->executeCommand($ctx, 'Storage.getCookies', $request);
 		return GetCookiesResponse::fromJson($response);
+	}
+
+
+	public function getTrustTokens(ContextInterface $ctx): GetTrustTokensResponse
+	{
+		$request = new \stdClass();
+		$response = $this->internalClient->executeCommand($ctx, 'Storage.getTrustTokens', $request);
+		return GetTrustTokensResponse::fromJson($response);
 	}
 
 

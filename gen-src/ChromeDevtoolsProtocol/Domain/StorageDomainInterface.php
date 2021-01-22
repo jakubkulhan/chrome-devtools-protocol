@@ -9,6 +9,7 @@ use ChromeDevtoolsProtocol\Model\Storage\ClearCookiesRequest;
 use ChromeDevtoolsProtocol\Model\Storage\ClearDataForOriginRequest;
 use ChromeDevtoolsProtocol\Model\Storage\GetCookiesRequest;
 use ChromeDevtoolsProtocol\Model\Storage\GetCookiesResponse;
+use ChromeDevtoolsProtocol\Model\Storage\GetTrustTokensResponse;
 use ChromeDevtoolsProtocol\Model\Storage\GetUsageAndQuotaRequest;
 use ChromeDevtoolsProtocol\Model\Storage\GetUsageAndQuotaResponse;
 use ChromeDevtoolsProtocol\Model\Storage\IndexedDBContentUpdatedEvent;
@@ -63,6 +64,16 @@ interface StorageDomainInterface
 	 * @return GetCookiesResponse
 	 */
 	public function getCookies(ContextInterface $ctx, GetCookiesRequest $request): GetCookiesResponse;
+
+
+	/**
+	 * Returns the number of stored Trust Tokens per issuer for the current browsing context.
+	 *
+	 * @param ContextInterface $ctx
+	 *
+	 * @return GetTrustTokensResponse
+	 */
+	public function getTrustTokens(ContextInterface $ctx): GetTrustTokensResponse;
 
 
 	/**
