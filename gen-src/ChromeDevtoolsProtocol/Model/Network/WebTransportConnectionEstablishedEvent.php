@@ -3,13 +3,13 @@
 namespace ChromeDevtoolsProtocol\Model\Network;
 
 /**
- * Fired when WebTransport is disposed.
+ * Fired when WebTransport handshake is finished.
  *
  * @generated This file has been auto-generated, do not edit.
  *
  * @author Jakub Kulhan <jakub.kulhan@gmail.com>
  */
-final class WebTransportClosedEvent implements \JsonSerializable
+final class WebTransportConnectionEstablishedEvent implements \JsonSerializable
 {
 	/**
 	 * WebTransport identifier.

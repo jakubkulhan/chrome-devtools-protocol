@@ -63,6 +63,7 @@ use ChromeDevtoolsProtocol\Model\Network\WebSocketFrameSentEvent;
 use ChromeDevtoolsProtocol\Model\Network\WebSocketHandshakeResponseReceivedEvent;
 use ChromeDevtoolsProtocol\Model\Network\WebSocketWillSendHandshakeRequestEvent;
 use ChromeDevtoolsProtocol\Model\Network\WebTransportClosedEvent;
+use ChromeDevtoolsProtocol\Model\Network\WebTransportConnectionEstablishedEvent;
 use ChromeDevtoolsProtocol\Model\Network\WebTransportCreatedEvent;
 use ChromeDevtoolsProtocol\SubscriptionInterface;
 
@@ -576,6 +577,20 @@ class NetworkDomain implements NetworkDomainInterface
 	public function awaitWebTransportClosed(ContextInterface $ctx): WebTransportClosedEvent
 	{
 		return WebTransportClosedEvent::fromJson($this->internalClient->awaitEvent($ctx, 'Network.webTransportClosed'));
+	}
+
+
+	public function addWebTransportConnectionEstablishedListener(callable $listener): SubscriptionInterface
+	{
+		return $this->internalClient->addListener('Network.webTransportConnectionEstablished', function ($event) use ($listener) {
+			return $listener(WebTransportConnectionEstablishedEvent::fromJson($event));
+		});
+	}
+
+
+	public function awaitWebTransportConnectionEstablished(ContextInterface $ctx): WebTransportConnectionEstablishedEvent
+	{
+		return WebTransportConnectionEstablishedEvent::fromJson($this->internalClient->awaitEvent($ctx, 'Network.webTransportConnectionEstablished'));
 	}
 
 

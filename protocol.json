@@ -14525,6 +14525,23 @@
                 },
                 {
                     "name": "webTransportClosed",
+                    "description": "Fired when WebTransport is disposed.",
+                    "parameters": [
+                        {
+                            "name": "transportId",
+                            "description": "WebTransport identifier.",
+                            "$ref": "RequestId"
+                        },
+                        {
+                            "name": "timestamp",
+                            "description": "Timestamp.",
+                            "$ref": "MonotonicTime"
+                        }
+                    ]
+                },
+                {
+                    "name": "webTransportConnectionEstablished",
+                    "description": "Fired when WebTransport handshake is finished.",
                     "parameters": [
                         {
                             "name": "transportId",

@@ -62,6 +62,7 @@ use ChromeDevtoolsProtocol\Model\Network\WebSocketFrameSentEvent;
 use ChromeDevtoolsProtocol\Model\Network\WebSocketHandshakeResponseReceivedEvent;
 use ChromeDevtoolsProtocol\Model\Network\WebSocketWillSendHandshakeRequestEvent;
 use ChromeDevtoolsProtocol\Model\Network\WebTransportClosedEvent;
+use ChromeDevtoolsProtocol\Model\Network\WebTransportConnectionEstablishedEvent;
 use ChromeDevtoolsProtocol\Model\Network\WebTransportCreatedEvent;
 use ChromeDevtoolsProtocol\SubscriptionInterface;
 
@@ -889,7 +890,7 @@ interface NetworkDomainInterface
 
 
 	/**
-	 * Subscribe to Network.webTransportClosed event.
+	 * Fired when WebTransport is disposed.
 	 *
 	 * Listener will be called whenever event Network.webTransportClosed is fired.
 	 *
@@ -901,7 +902,7 @@ interface NetworkDomainInterface
 
 
 	/**
-	 * Wait for Network.webTransportClosed event.
+	 * Fired when WebTransport is disposed.
 	 *
 	 * Method will block until first Network.webTransportClosed event is fired.
 	 *
@@ -910,6 +911,30 @@ interface NetworkDomainInterface
 	 * @return WebTransportClosedEvent
 	 */
 	public function awaitWebTransportClosed(ContextInterface $ctx): WebTransportClosedEvent;
+
+
+	/**
+	 * Fired when WebTransport handshake is finished.
+	 *
+	 * Listener will be called whenever event Network.webTransportConnectionEstablished is fired.
+	 *
+	 * @param callable $listener
+	 *
+	 * @return SubscriptionInterface
+	 */
+	public function addWebTransportConnectionEstablishedListener(callable $listener): SubscriptionInterface;
+
+
+	/**
+	 * Fired when WebTransport handshake is finished.
+	 *
+	 * Method will block until first Network.webTransportConnectionEstablished event is fired.
+	 *
+	 * @param ContextInterface $ctx
+	 *
+	 * @return WebTransportConnectionEstablishedEvent
+	 */
+	public function awaitWebTransportConnectionEstablished(ContextInterface $ctx): WebTransportConnectionEstablishedEvent;
 
 
 	/**
