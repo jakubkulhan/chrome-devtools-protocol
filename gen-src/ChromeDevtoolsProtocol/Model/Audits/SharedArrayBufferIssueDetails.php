@@ -9,13 +9,16 @@ namespace ChromeDevtoolsProtocol\Model\Audits;
  *
  * @author Jakub Kulhan <jakub.kulhan@gmail.com>
  */
-final class SharedArrayBufferTransferIssueDetails implements \JsonSerializable
+final class SharedArrayBufferIssueDetails implements \JsonSerializable
 {
 	/** @var SourceCodeLocation */
 	public $sourceCodeLocation;
 
 	/** @var bool */
 	public $isWarning;
+
+	/** @var string */
+	public $type;
 
 
 	public static function fromJson($data)
@@ -26,6 +29,9 @@ final class SharedArrayBufferTransferIssueDetails implements \JsonSerializable
 		}
 		if (isset($data->isWarning)) {
 			$instance->isWarning = (bool)$data->isWarning;
+		}
+		if (isset($data->type)) {
+			$instance->type = (string)$data->type;
 		}
 		return $instance;
 	}
@@ -39,6 +45,9 @@ final class SharedArrayBufferTransferIssueDetails implements \JsonSerializable
 		}
 		if ($this->isWarning !== null) {
 			$data->isWarning = $this->isWarning;
+		}
+		if ($this->type !== null) {
+			$data->type = $this->type;
 		}
 		return $data;
 	}

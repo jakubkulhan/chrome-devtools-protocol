@@ -16,6 +16,6 @@ final class InspectorIssueCodeEnum
 	const BLOCKED_BY_RESPONSE_ISSUE = 'BlockedByResponseIssue';
 	const HEAVY_AD_ISSUE = 'HeavyAdIssue';
 	const CONTENT_SECURITY_POLICY_ISSUE = 'ContentSecurityPolicyIssue';
-	const SHARED_ARRAY_BUFFER_TRANSFER_ISSUE = 'SharedArrayBufferTransferIssue';
+	const SHARED_ARRAY_BUFFER_ISSUE = 'SharedArrayBufferIssue';
 	const TRUSTED_WEB_ACTIVITY_ISSUE = 'TrustedWebActivityIssue';
 }

@@ -1347,7 +1347,15 @@
                     ]
                 },
                 {
-                    "id": "SharedArrayBufferTransferIssueDetails",
+                    "id": "SharedArrayBufferIssueType",
+                    "type": "string",
+                    "enum": [
+                        "TransferIssue",
+                        "CreationIssue"
+                    ]
+                },
+                {
+                    "id": "SharedArrayBufferIssueDetails",
                     "description": "Details for a request that has been blocked with the BLOCKED_BY_RESPONSE code. Currently only used for COEP/COOP, but may be extended to include some CSP errors in the future.",
                     "type": "object",
                     "properties": [
@@ -1358,6 +1366,10 @@
                         {
                             "name": "isWarning",
                             "type": "boolean"
+                        },
+                        {
+                            "name": "type",
+                            "$ref": "SharedArrayBufferIssueType"
                         }
                     ]
                 },
@@ -1412,7 +1424,7 @@
                         "BlockedByResponseIssue",
                         "HeavyAdIssue",
                         "ContentSecurityPolicyIssue",
-                        "SharedArrayBufferTransferIssue",
+                        "SharedArrayBufferIssue",
                         "TrustedWebActivityIssue"
                     ]
                 },
@@ -1447,9 +1459,9 @@
                             "$ref": "ContentSecurityPolicyIssueDetails"
                         },
                         {
-                            "name": "sharedArrayBufferTransferIssueDetails",
+                            "name": "sharedArrayBufferIssueDetails",
                             "optional": true,
-                            "$ref": "SharedArrayBufferTransferIssueDetails"
+                            "$ref": "SharedArrayBufferIssueDetails"
                         },
                         {
                             "name": "twaQualityEnforcementDetails",
