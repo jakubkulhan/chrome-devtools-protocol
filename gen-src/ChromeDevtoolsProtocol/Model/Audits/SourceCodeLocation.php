@@ -12,6 +12,9 @@ namespace ChromeDevtoolsProtocol\Model\Audits;
 final class SourceCodeLocation implements \JsonSerializable
 {
 	/** @var string */
+	public $scriptId;
+
+	/** @var string */
 	public $url;
 
 	/** @var int */
@@ -24,6 +27,9 @@ final class SourceCodeLocation implements \JsonSerializable
 	public static function fromJson($data)
 	{
 		$instance = new static();
+		if (isset($data->scriptId)) {
+			$instance->scriptId = (string)$data->scriptId;
+		}
 		if (isset($data->url)) {
 			$instance->url = (string)$data->url;
 		}
@@ -40,6 +46,9 @@ final class SourceCodeLocation implements \JsonSerializable
 	public function jsonSerialize()
 	{
 		$data = new \stdClass();
+		if ($this->scriptId !== null) {
+			$data->scriptId = $this->scriptId;
+		}
 		if ($this->url !== null) {
 			$data->url = $this->url;
 		}
