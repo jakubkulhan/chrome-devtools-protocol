@@ -33,6 +33,13 @@ final class ResponseReceivedExtraInfoEvent implements \JsonSerializable
 	public $headers;
 
 	/**
+	 * The IP address space of the resource. The address space can only be determined once the transport established the connection, so we can't send it in `requestWillBeSentExtraInfo`.
+	 *
+	 * @var string
+	 */
+	public $resourceIPAddressSpace;
+
+	/**
 	 * Raw response header text as it was received over the wire. The raw text may not always be available, such as in the case of HTTP/2 or QUIC.
 	 *
 	 * @var string|null
@@ -55,6 +62,9 @@ final class ResponseReceivedExtraInfoEvent implements \JsonSerializable
 		if (isset($data->headers)) {
 			$instance->headers = Headers::fromJson($data->headers);
 		}
+		if (isset($data->resourceIPAddressSpace)) {
+			$instance->resourceIPAddressSpace = (string)$data->resourceIPAddressSpace;
+		}
 		if (isset($data->headersText)) {
 			$instance->headersText = (string)$data->headersText;
 		}
@@ -76,6 +86,9 @@ final class ResponseReceivedExtraInfoEvent implements \JsonSerializable
 		}
 		if ($this->headers !== null) {
 			$data->headers = $this->headers->jsonSerialize();
+		}
+		if ($this->resourceIPAddressSpace !== null) {
+			$data->resourceIPAddressSpace = $this->resourceIPAddressSpace;
 		}
 		if ($this->headersText !== null) {
 			$data->headersText = $this->headersText;

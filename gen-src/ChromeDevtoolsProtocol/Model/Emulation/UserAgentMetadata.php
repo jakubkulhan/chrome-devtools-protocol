@@ -3,7 +3,7 @@
 namespace ChromeDevtoolsProtocol\Model\Emulation;
 
 /**
- * Used to specify User Agent Cient Hints to emulate. See https://wicg.github.io/ua-client-hints
+ * Used to specify User Agent Cient Hints to emulate. See https://wicg.github.io/ua-client-hints Missing optional values will be filled in by the target with what it would normally use.
  *
  * @generated This file has been auto-generated, do not edit.
  *
@@ -11,10 +11,10 @@ namespace ChromeDevtoolsProtocol\Model\Emulation;
  */
 final class UserAgentMetadata implements \JsonSerializable
 {
-	/** @var UserAgentBrandVersion[] */
+	/** @var UserAgentBrandVersion[]|null */
 	public $brands;
 
-	/** @var string */
+	/** @var string|null */
 	public $fullVersion;
 
 	/** @var string */
