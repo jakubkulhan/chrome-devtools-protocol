@@ -18,4 +18,5 @@ final class InspectorIssueCodeEnum
 	const CONTENT_SECURITY_POLICY_ISSUE = 'ContentSecurityPolicyIssue';
 	const SHARED_ARRAY_BUFFER_ISSUE = 'SharedArrayBufferIssue';
 	const TRUSTED_WEB_ACTIVITY_ISSUE = 'TrustedWebActivityIssue';
+	const LOW_TEXT_CONTRAST_ISSUE = 'LowTextContrastIssue';
 }

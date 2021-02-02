@@ -20,6 +20,16 @@ use ChromeDevtoolsProtocol\SubscriptionInterface;
 interface AuditsDomainInterface
 {
 	/**
+	 * Runs the contrast check for the target page. Found issues are reported using Audits.issueAdded event.
+	 *
+	 * @param ContextInterface $ctx
+	 *
+	 * @return void
+	 */
+	public function checkContrast(ContextInterface $ctx): void;
+
+
+	/**
 	 * Disables issues domain, prevents further issues from being reported to the client.
 	 *
 	 * @param ContextInterface $ctx

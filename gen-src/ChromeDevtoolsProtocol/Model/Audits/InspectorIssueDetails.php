@@ -32,6 +32,9 @@ final class InspectorIssueDetails implements \JsonSerializable
 	/** @var TrustedWebActivityIssueDetails|null */
 	public $twaQualityEnforcementDetails;
 
+	/** @var LowTextContrastIssueDetails|null */
+	public $lowTextContrastIssueDetails;
+
 
 	public static function fromJson($data)
 	{
@@ -56,6 +59,9 @@ final class InspectorIssueDetails implements \JsonSerializable
 		}
 		if (isset($data->twaQualityEnforcementDetails)) {
 			$instance->twaQualityEnforcementDetails = TrustedWebActivityIssueDetails::fromJson($data->twaQualityEnforcementDetails);
+		}
+		if (isset($data->lowTextContrastIssueDetails)) {
+			$instance->lowTextContrastIssueDetails = LowTextContrastIssueDetails::fromJson($data->lowTextContrastIssueDetails);
 		}
 		return $instance;
 	}
@@ -84,6 +90,9 @@ final class InspectorIssueDetails implements \JsonSerializable
 		}
 		if ($this->twaQualityEnforcementDetails !== null) {
 			$data->twaQualityEnforcementDetails = $this->twaQualityEnforcementDetails->jsonSerialize();
+		}
+		if ($this->lowTextContrastIssueDetails !== null) {
+			$data->lowTextContrastIssueDetails = $this->lowTextContrastIssueDetails->jsonSerialize();
 		}
 		return $data;
 	}

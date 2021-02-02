@@ -1420,6 +1420,40 @@
                     ]
                 },
                 {
+                    "id": "LowTextContrastIssueDetails",
+                    "type": "object",
+                    "properties": [
+                        {
+                            "name": "violatingNodeId",
+                            "$ref": "DOM.BackendNodeId"
+                        },
+                        {
+                            "name": "violatingNodeSelector",
+                            "type": "string"
+                        },
+                        {
+                            "name": "contrastRatio",
+                            "type": "number"
+                        },
+                        {
+                            "name": "thresholdAA",
+                            "type": "number"
+                        },
+                        {
+                            "name": "thresholdAAA",
+                            "type": "number"
+                        },
+                        {
+                            "name": "fontSize",
+                            "type": "string"
+                        },
+                        {
+                            "name": "fontWeight",
+                            "type": "string"
+                        }
+                    ]
+                },
+                {
                     "id": "InspectorIssueCode",
                     "description": "A unique identifier for the type of issue. Each type may use one of the optional fields in InspectorIssueDetails to convey more specific information about the kind of issue.",
                     "type": "string",
@@ -1430,7 +1464,8 @@
                         "HeavyAdIssue",
                         "ContentSecurityPolicyIssue",
                         "SharedArrayBufferIssue",
-                        "TrustedWebActivityIssue"
+                        "TrustedWebActivityIssue",
+                        "LowTextContrastIssue"
                     ]
                 },
                 {
@@ -1472,6 +1507,11 @@
                             "name": "twaQualityEnforcementDetails",
                             "optional": true,
                             "$ref": "TrustedWebActivityIssueDetails"
+                        },
+                        {
+                            "name": "lowTextContrastIssueDetails",
+                            "optional": true,
+                            "$ref": "LowTextContrastIssueDetails"
                         }
                     ]
                 },
@@ -1492,6 +1532,10 @@
                 }
             ],
             "commands": [
+                {
+                    "name": "checkContrast",
+                    "description": "Runs the contrast check for the target page. Found issues are reported using Audits.issueAdded event."
+                },
                 {
                     "name": "disable",
                     "description": "Disables issues domain, prevents further issues from being reported to the client."
