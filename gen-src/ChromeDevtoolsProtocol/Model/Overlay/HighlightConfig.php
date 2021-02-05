@@ -126,6 +126,13 @@ final class HighlightConfig implements \JsonSerializable
 	public $flexContainerHighlightConfig;
 
 	/**
+	 * The flex item highlight configuration (default: all transparent).
+	 *
+	 * @var FlexItemHighlightConfig|null
+	 */
+	public $flexItemHighlightConfig;
+
+	/**
 	 * The contrast algorithm to use for the contrast ratio (default: aa).
 	 *
 	 * @var string
@@ -184,6 +191,9 @@ final class HighlightConfig implements \JsonSerializable
 		if (isset($data->flexContainerHighlightConfig)) {
 			$instance->flexContainerHighlightConfig = FlexContainerHighlightConfig::fromJson($data->flexContainerHighlightConfig);
 		}
+		if (isset($data->flexItemHighlightConfig)) {
+			$instance->flexItemHighlightConfig = FlexItemHighlightConfig::fromJson($data->flexItemHighlightConfig);
+		}
 		if (isset($data->contrastAlgorithm)) {
 			$instance->contrastAlgorithm = (string)$data->contrastAlgorithm;
 		}
@@ -241,6 +251,9 @@ final class HighlightConfig implements \JsonSerializable
 		}
 		if ($this->flexContainerHighlightConfig !== null) {
 			$data->flexContainerHighlightConfig = $this->flexContainerHighlightConfig->jsonSerialize();
+		}
+		if ($this->flexItemHighlightConfig !== null) {
+			$data->flexItemHighlightConfig = $this->flexItemHighlightConfig->jsonSerialize();
 		}
 		if ($this->contrastAlgorithm !== null) {
 			$data->contrastAlgorithm = $this->contrastAlgorithm;
