@@ -13,4 +13,5 @@ final class PrivateNetworkRequestPolicyEnum
 {
 	const ALLOW = 'Allow';
 	const BLOCK_FROM_INSECURE_TO_MORE_PRIVATE = 'BlockFromInsecureToMorePrivate';
+	const WARN_FROM_INSECURE_TO_MORE_PRIVATE = 'WarnFromInsecureToMorePrivate';
 }
