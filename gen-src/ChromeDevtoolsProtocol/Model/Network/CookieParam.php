@@ -26,7 +26,7 @@ final class CookieParam implements \JsonSerializable
 	public $value;
 
 	/**
-	 * The request-URI to associate with the setting of the cookie. This value can affect the default domain and path values of the created cookie.
+	 * The request-URI to associate with the setting of the cookie. This value can affect the default domain, path, source port, and source scheme values of the created cookie.
 	 *
 	 * @var string|null
 	 */
@@ -81,6 +81,27 @@ final class CookieParam implements \JsonSerializable
 	 */
 	public $priority;
 
+	/**
+	 * True if cookie is SameParty.
+	 *
+	 * @var bool|null
+	 */
+	public $sameParty;
+
+	/**
+	 * Cookie source scheme type.
+	 *
+	 * @var string
+	 */
+	public $sourceScheme;
+
+	/**
+	 * Cookie source port. Valid values are {-1, [1, 65535]}, -1 indicates an unspecified port. An unspecified port value allows protocol clients to emulate legacy cookie scope for the port. This is a temporary ability and it will be removed in the future.
+	 *
+	 * @var int|null
+	 */
+	public $sourcePort;
+
 
 	public static function fromJson($data)
 	{
@@ -114,6 +135,15 @@ final class CookieParam implements \JsonSerializable
 		}
 		if (isset($data->priority)) {
 			$instance->priority = (string)$data->priority;
+		}
+		if (isset($data->sameParty)) {
+			$instance->sameParty = (bool)$data->sameParty;
+		}
+		if (isset($data->sourceScheme)) {
+			$instance->sourceScheme = (string)$data->sourceScheme;
+		}
+		if (isset($data->sourcePort)) {
+			$instance->sourcePort = (int)$data->sourcePort;
 		}
 		return $instance;
 	}
@@ -151,6 +181,15 @@ final class CookieParam implements \JsonSerializable
 		}
 		if ($this->priority !== null) {
 			$data->priority = $this->priority;
+		}
+		if ($this->sameParty !== null) {
+			$data->sameParty = $this->sameParty;
+		}
+		if ($this->sourceScheme !== null) {
+			$data->sourceScheme = $this->sourceScheme;
+		}
+		if ($this->sourcePort !== null) {
+			$data->sourcePort = $this->sourcePort;
 		}
 		return $data;
 	}
