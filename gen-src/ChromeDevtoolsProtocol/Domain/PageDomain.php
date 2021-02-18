@@ -39,6 +39,8 @@ use ChromeDevtoolsProtocol\Model\Page\GetInstallabilityErrorsResponse;
 use ChromeDevtoolsProtocol\Model\Page\GetLayoutMetricsResponse;
 use ChromeDevtoolsProtocol\Model\Page\GetManifestIconsResponse;
 use ChromeDevtoolsProtocol\Model\Page\GetNavigationHistoryResponse;
+use ChromeDevtoolsProtocol\Model\Page\GetPermissionsPolicyStateRequest;
+use ChromeDevtoolsProtocol\Model\Page\GetPermissionsPolicyStateResponse;
 use ChromeDevtoolsProtocol\Model\Page\GetResourceContentRequest;
 use ChromeDevtoolsProtocol\Model\Page\GetResourceContentResponse;
 use ChromeDevtoolsProtocol\Model\Page\GetResourceTreeResponse;
@@ -262,6 +264,13 @@ class PageDomain implements PageDomainInterface
 		$request = new \stdClass();
 		$response = $this->internalClient->executeCommand($ctx, 'Page.getNavigationHistory', $request);
 		return GetNavigationHistoryResponse::fromJson($response);
+	}
+
+
+	public function getPermissionsPolicyState(ContextInterface $ctx, GetPermissionsPolicyStateRequest $request): GetPermissionsPolicyStateResponse
+	{
+		$response = $this->internalClient->executeCommand($ctx, 'Page.getPermissionsPolicyState', $request);
+		return GetPermissionsPolicyStateResponse::fromJson($response);
 	}
 
 

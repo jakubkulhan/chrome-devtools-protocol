@@ -38,6 +38,8 @@ use ChromeDevtoolsProtocol\Model\Page\GetInstallabilityErrorsResponse;
 use ChromeDevtoolsProtocol\Model\Page\GetLayoutMetricsResponse;
 use ChromeDevtoolsProtocol\Model\Page\GetManifestIconsResponse;
 use ChromeDevtoolsProtocol\Model\Page\GetNavigationHistoryResponse;
+use ChromeDevtoolsProtocol\Model\Page\GetPermissionsPolicyStateRequest;
+use ChromeDevtoolsProtocol\Model\Page\GetPermissionsPolicyStateResponse;
 use ChromeDevtoolsProtocol\Model\Page\GetResourceContentRequest;
 use ChromeDevtoolsProtocol\Model\Page\GetResourceContentResponse;
 use ChromeDevtoolsProtocol\Model\Page\GetResourceTreeResponse;
@@ -335,6 +337,17 @@ interface PageDomainInterface
 	 * @return GetNavigationHistoryResponse
 	 */
 	public function getNavigationHistory(ContextInterface $ctx): GetNavigationHistoryResponse;
+
+
+	/**
+	 * Get Permissions Policy state on given frame.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param GetPermissionsPolicyStateRequest $request
+	 *
+	 * @return GetPermissionsPolicyStateResponse
+	 */
+	public function getPermissionsPolicyState(ContextInterface $ctx, GetPermissionsPolicyStateRequest $request): GetPermissionsPolicyStateResponse;
 
 
 	/**
