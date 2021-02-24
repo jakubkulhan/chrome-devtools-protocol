@@ -25,6 +25,7 @@ final class EvaluateRequestBuilder
 	private $disableBreaks;
 	private $replMode;
 	private $allowUnsafeEvalBlockedByCSP;
+	private $uniqueContextId;
 
 
 	/**
@@ -50,6 +51,7 @@ final class EvaluateRequestBuilder
 		$instance->disableBreaks = $this->disableBreaks;
 		$instance->replMode = $this->replMode;
 		$instance->allowUnsafeEvalBlockedByCSP = $this->allowUnsafeEvalBlockedByCSP;
+		$instance->uniqueContextId = $this->uniqueContextId;
 		return $instance;
 	}
 
@@ -218,6 +220,18 @@ final class EvaluateRequestBuilder
 	public function setAllowUnsafeEvalBlockedByCSP($allowUnsafeEvalBlockedByCSP): self
 	{
 		$this->allowUnsafeEvalBlockedByCSP = $allowUnsafeEvalBlockedByCSP;
+		return $this;
+	}
+
+
+	/**
+	 * @param string|null $uniqueContextId
+	 *
+	 * @return self
+	 */
+	public function setUniqueContextId($uniqueContextId): self
+	{
+		$this->uniqueContextId = $uniqueContextId;
 		return $this;
 	}
 }

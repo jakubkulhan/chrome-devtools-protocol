@@ -1569,7 +1569,15 @@
             "commands": [
                 {
                     "name": "checkContrast",
-                    "description": "Runs the contrast check for the target page. Found issues are reported using Audits.issueAdded event."
+                    "description": "Runs the contrast check for the target page. Found issues are reported using Audits.issueAdded event.",
+                    "parameters": [
+                        {
+                            "name": "reportAAA",
+                            "description": "Whether to report WCAG AAA level issues. Default is false.",
+                            "optional": true,
+                            "type": "boolean"
+                        }
+                    ]
                 },
                 {
                     "name": "disable",
@@ -4534,43 +4542,6 @@
                     ]
                 },
                 {
-                    "name": "executeWasmEvaluator",
-                    "description": "Execute a Wasm Evaluator module on a given call frame.",
-                    "experimental": true,
-                    "parameters": [
-                        {
-                            "name": "callFrameId",
-                            "description": "WebAssembly call frame identifier to evaluate on.",
-                            "$ref": "CallFrameId"
-                        },
-                        {
-                            "name": "evaluator",
-                            "description": "Code of the evaluator module. (Encoded as a base64 string when passed over JSON)",
-                            "type": "string"
-                        },
-                        {
-                            "name": "timeout",
-                            "description": "Terminate execution after timing out (number of milliseconds).",
-                            "experimental": true,
-                            "optional": true,
-                            "$ref": "Runtime.TimeDelta"
-                        }
-                    ],
-                    "returns": [
-                        {
-                            "name": "result",
-                            "description": "Object wrapper for the evaluation result.",
-                            "$ref": "Runtime.RemoteObject"
-                        },
-                        {
-                            "name": "exceptionDetails",
-                            "description": "Exception details.",
-                            "optional": true,
-                            "$ref": "Runtime.ExceptionDetails"
-                        }
-                    ]
-                },
-                {
                     "name": "getPossibleBreakpoints",
                     "description": "Returns possible locations for breakpoint. scriptId in start and end range locations should be the same.",
                     "parameters": [
@@ -5164,6 +5135,7 @@
                             "enum": [
                                 "ambiguous",
                                 "assert",
+                                "CSPViolation",
                                 "debugCommand",
                                 "DOM",
                                 "EventListener",
@@ -18802,13 +18774,12 @@
                                 "number",
                                 "boolean",
                                 "symbol",
-                                "bigint",
-                                "wasm"
+                                "bigint"
                             ]
                         },
                         {
                             "name": "subtype",
-                            "description": "Object subtype hint. Specified for `object` or `wasm` type values only.",
+                            "description": "Object subtype hint. Specified for `object` type values only. NOTE: If you change anything here, make sure to also update `subtype` in `ObjectPreview` and `PropertyPreview` below.",
                             "optional": true,
                             "type": "string",
                             "enum": [
@@ -18829,12 +18800,8 @@
                                 "typedarray",
                                 "arraybuffer",
                                 "dataview",
-                                "i32",
-                                "i64",
-                                "f32",
-                                "f64",
-                                "v128",
-                                "externref"
+                                "webassemblymemory",
+                                "wasmvalue"
                             ]
                         },
                         {
@@ -18938,7 +18905,14 @@
                                 "weakset",
                                 "iterator",
                                 "generator",
-                                "error"
+                                "error",
+                                "proxy",
+                                "promise",
+                                "typedarray",
+                                "arraybuffer",
+                                "dataview",
+                                "webassemblymemory",
+                                "wasmvalue"
                             ]
                         },
                         {
@@ -19026,7 +19000,14 @@
                                 "weakset",
                                 "iterator",
                                 "generator",
-                                "error"
+                                "error",
+                                "proxy",
+                                "promise",
+                                "typedarray",
+                                "arraybuffer",
+                                "dataview",
+                                "webassemblymemory",
+                                "wasmvalue"
                             ]
                         }
                     ]
@@ -19213,6 +19194,12 @@
                             "type": "string"
                         },
                         {
+                            "name": "uniqueId",
+                            "description": "A system-unique execution context identifier. Unlike the id, this is unique accross multiple processes, so can be reliably used to identify specific context while backend performs a cross-process navigation.",
+                            "experimental": true,
+                            "type": "string"
+                        },
+                        {
                             "name": "auxData",
                             "description": "Embedder-specific auxiliary data.",
                             "optional": true,
@@ -19380,7 +19367,7 @@
             "commands": [
                 {
                     "name": "addBinding",
-                    "description": "If executionContextId is empty, adds binding with the given name on the global objects of all inspected contexts, including those created later, bindings survive reloads. If executionContextId is specified, adds binding only on global object of given execution context. Binding function takes exactly one argument, this argument should be string, in case of any other input, function throws an exception. Each binding function call produces Runtime.bindingCalled notification.",
+                    "description": "If executionContextId is empty, adds binding with the given name on the global objects of all inspected contexts, including those created later, bindings survive reloads. Binding function takes exactly one argument, this argument should be string, in case of any other input, function throws an exception. Each binding function call produces Runtime.bindingCalled notification.",
                     "experimental": true,
                     "parameters": [
                         {
@@ -19389,8 +19376,16 @@
                         },
                         {
                             "name": "executionContextId",
+                            "description": "If specified, the binding would only be exposed to the specified execution context. If omitted and `executionContextName` is not set, the binding is exposed to all execution contexts of the target. This parameter is mutually exclusive with `executionContextName`.",
                             "optional": true,
                             "$ref": "ExecutionContextId"
+                        },
+                        {
+                            "name": "executionContextName",
+                            "description": "If specified, the binding is exposed to the executionContext with matching name, even for contexts created after the binding is added. See also `ExecutionContext.name` and `worldName` parameter to `Page.addScriptToEvaluateOnNewDocument`. This parameter is mutually exclusive with `executionContextId`.",
+                            "experimental": true,
+                            "optional": true,
+                            "type": "string"
                         }
                     ]
                 },
@@ -19594,7 +19589,7 @@
                         },
                         {
                             "name": "contextId",
-                            "description": "Specifies in which execution context to perform evaluation. If the parameter is omitted the evaluation will be performed in the context of the inspected page.",
+                            "description": "Specifies in which execution context to perform evaluation. If the parameter is omitted the evaluation will be performed in the context of the inspected page. This is mutually exclusive with `uniqueContextId`, which offers an alternative way to identify the execution context that is more reliable in a multi-process environment.",
                             "optional": true,
                             "$ref": "ExecutionContextId"
                         },
@@ -19657,6 +19652,13 @@
                             "experimental": true,
                             "optional": true,
                             "type": "boolean"
+                        },
+                        {
+                            "name": "uniqueContextId",
+                            "description": "An alternative way to specify the execution context to evaluate in. Compared to contextId that may be reused accross processes, this is guaranteed to be system-unique, so it can be used to prevent accidental evaluation of the expression in context different than intended (e.g. as a result of navigation accross process boundaries). This is mutually exclusive with `contextId`.",
+                            "experimental": true,
+                            "optional": true,
+                            "type": "string"
                         }
                     ],
                     "returns": [

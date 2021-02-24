@@ -40,7 +40,7 @@ final class EvaluateRequest implements \JsonSerializable
 	public $silent;
 
 	/**
-	 * Specifies in which execution context to perform evaluation. If the parameter is omitted the evaluation will be performed in the context of the inspected page.
+	 * Specifies in which execution context to perform evaluation. If the parameter is omitted the evaluation will be performed in the context of the inspected page. This is mutually exclusive with `uniqueContextId`, which offers an alternative way to identify the execution context that is more reliable in a multi-process environment.
 	 *
 	 * @var int
 	 */
@@ -109,6 +109,13 @@ final class EvaluateRequest implements \JsonSerializable
 	 */
 	public $allowUnsafeEvalBlockedByCSP;
 
+	/**
+	 * An alternative way to specify the execution context to evaluate in. Compared to contextId that may be reused accross processes, this is guaranteed to be system-unique, so it can be used to prevent accidental evaluation of the expression in context different than intended (e.g. as a result of navigation accross process boundaries). This is mutually exclusive with `contextId`.
+	 *
+	 * @var string|null
+	 */
+	public $uniqueContextId;
+
 
 	public static function fromJson($data)
 	{
@@ -154,6 +161,9 @@ final class EvaluateRequest implements \JsonSerializable
 		}
 		if (isset($data->allowUnsafeEvalBlockedByCSP)) {
 			$instance->allowUnsafeEvalBlockedByCSP = (bool)$data->allowUnsafeEvalBlockedByCSP;
+		}
+		if (isset($data->uniqueContextId)) {
+			$instance->uniqueContextId = (string)$data->uniqueContextId;
 		}
 		return $instance;
 	}
@@ -203,6 +213,9 @@ final class EvaluateRequest implements \JsonSerializable
 		}
 		if ($this->allowUnsafeEvalBlockedByCSP !== null) {
 			$data->allowUnsafeEvalBlockedByCSP = $this->allowUnsafeEvalBlockedByCSP;
+		}
+		if ($this->uniqueContextId !== null) {
+			$data->uniqueContextId = $this->uniqueContextId;
 		}
 		return $data;
 	}

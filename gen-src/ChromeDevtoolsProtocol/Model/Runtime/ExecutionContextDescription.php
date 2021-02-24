@@ -33,6 +33,13 @@ final class ExecutionContextDescription implements \JsonSerializable
 	public $name;
 
 	/**
+	 * A system-unique execution context identifier. Unlike the id, this is unique accross multiple processes, so can be reliably used to identify specific context while backend performs a cross-process navigation.
+	 *
+	 * @var string
+	 */
+	public $uniqueId;
+
+	/**
 	 * Embedder-specific auxiliary data.
 	 *
 	 * @var object|null
@@ -52,6 +59,9 @@ final class ExecutionContextDescription implements \JsonSerializable
 		if (isset($data->name)) {
 			$instance->name = (string)$data->name;
 		}
+		if (isset($data->uniqueId)) {
+			$instance->uniqueId = (string)$data->uniqueId;
+		}
 		if (isset($data->auxData)) {
 			$instance->auxData = $data->auxData;
 		}
@@ -70,6 +80,9 @@ final class ExecutionContextDescription implements \JsonSerializable
 		}
 		if ($this->name !== null) {
 			$data->name = $this->name;
+		}
+		if ($this->uniqueId !== null) {
+			$data->uniqueId = $this->uniqueId;
 		}
 		if ($this->auxData !== null) {
 			$data->auxData = $this->auxData;
