@@ -101,15 +101,19 @@ class PageDomain implements PageDomainInterface
 	}
 
 
-	public function addScriptToEvaluateOnLoad(ContextInterface $ctx, AddScriptToEvaluateOnLoadRequest $request): AddScriptToEvaluateOnLoadResponse
-	{
+	public function addScriptToEvaluateOnLoad(
+		ContextInterface $ctx,
+		AddScriptToEvaluateOnLoadRequest $request
+	): AddScriptToEvaluateOnLoadResponse {
 		$response = $this->internalClient->executeCommand($ctx, 'Page.addScriptToEvaluateOnLoad', $request);
 		return AddScriptToEvaluateOnLoadResponse::fromJson($response);
 	}
 
 
-	public function addScriptToEvaluateOnNewDocument(ContextInterface $ctx, AddScriptToEvaluateOnNewDocumentRequest $request): AddScriptToEvaluateOnNewDocumentResponse
-	{
+	public function addScriptToEvaluateOnNewDocument(
+		ContextInterface $ctx,
+		AddScriptToEvaluateOnNewDocumentRequest $request
+	): AddScriptToEvaluateOnNewDocumentResponse {
 		$response = $this->internalClient->executeCommand($ctx, 'Page.addScriptToEvaluateOnNewDocument', $request);
 		return AddScriptToEvaluateOnNewDocumentResponse::fromJson($response);
 	}
@@ -178,8 +182,10 @@ class PageDomain implements PageDomainInterface
 	}
 
 
-	public function createIsolatedWorld(ContextInterface $ctx, CreateIsolatedWorldRequest $request): CreateIsolatedWorldResponse
-	{
+	public function createIsolatedWorld(
+		ContextInterface $ctx,
+		CreateIsolatedWorldRequest $request
+	): CreateIsolatedWorldResponse {
 		$response = $this->internalClient->executeCommand($ctx, 'Page.createIsolatedWorld', $request);
 		return CreateIsolatedWorldResponse::fromJson($response);
 	}
@@ -267,15 +273,19 @@ class PageDomain implements PageDomainInterface
 	}
 
 
-	public function getPermissionsPolicyState(ContextInterface $ctx, GetPermissionsPolicyStateRequest $request): GetPermissionsPolicyStateResponse
-	{
+	public function getPermissionsPolicyState(
+		ContextInterface $ctx,
+		GetPermissionsPolicyStateRequest $request
+	): GetPermissionsPolicyStateResponse {
 		$response = $this->internalClient->executeCommand($ctx, 'Page.getPermissionsPolicyState', $request);
 		return GetPermissionsPolicyStateResponse::fromJson($response);
 	}
 
 
-	public function getResourceContent(ContextInterface $ctx, GetResourceContentRequest $request): GetResourceContentResponse
-	{
+	public function getResourceContent(
+		ContextInterface $ctx,
+		GetResourceContentRequest $request
+	): GetResourceContentResponse {
 		$response = $this->internalClient->executeCommand($ctx, 'Page.getResourceContent', $request);
 		return GetResourceContentResponse::fromJson($response);
 	}
@@ -327,8 +337,10 @@ class PageDomain implements PageDomainInterface
 	}
 
 
-	public function removeScriptToEvaluateOnNewDocument(ContextInterface $ctx, RemoveScriptToEvaluateOnNewDocumentRequest $request): void
-	{
+	public function removeScriptToEvaluateOnNewDocument(
+		ContextInterface $ctx,
+		RemoveScriptToEvaluateOnNewDocumentRequest $request
+	): void {
 		$this->internalClient->executeCommand($ctx, 'Page.removeScriptToEvaluateOnNewDocument', $request);
 	}
 
@@ -407,8 +419,10 @@ class PageDomain implements PageDomainInterface
 	}
 
 
-	public function setInterceptFileChooserDialog(ContextInterface $ctx, SetInterceptFileChooserDialogRequest $request): void
-	{
+	public function setInterceptFileChooserDialog(
+		ContextInterface $ctx,
+		SetInterceptFileChooserDialogRequest $request
+	): void {
 		$this->internalClient->executeCommand($ctx, 'Page.setInterceptFileChooserDialog', $request);
 	}
 

@@ -99,7 +99,10 @@ interface DebuggerDomainInterface
 	 *
 	 * @return EvaluateOnCallFrameResponse
 	 */
-	public function evaluateOnCallFrame(ContextInterface $ctx, EvaluateOnCallFrameRequest $request): EvaluateOnCallFrameResponse;
+	public function evaluateOnCallFrame(
+		ContextInterface $ctx,
+		EvaluateOnCallFrameRequest $request
+	): EvaluateOnCallFrameResponse;
 
 
 	/**
@@ -110,7 +113,10 @@ interface DebuggerDomainInterface
 	 *
 	 * @return GetPossibleBreakpointsResponse
 	 */
-	public function getPossibleBreakpoints(ContextInterface $ctx, GetPossibleBreakpointsRequest $request): GetPossibleBreakpointsResponse;
+	public function getPossibleBreakpoints(
+		ContextInterface $ctx,
+		GetPossibleBreakpointsRequest $request
+	): GetPossibleBreakpointsResponse;
 
 
 	/**
@@ -263,7 +269,10 @@ interface DebuggerDomainInterface
 	 *
 	 * @return SetBreakpointByUrlResponse
 	 */
-	public function setBreakpointByUrl(ContextInterface $ctx, SetBreakpointByUrlRequest $request): SetBreakpointByUrlResponse;
+	public function setBreakpointByUrl(
+		ContextInterface $ctx,
+		SetBreakpointByUrlRequest $request
+	): SetBreakpointByUrlResponse;
 
 
 	/**
@@ -274,7 +283,10 @@ interface DebuggerDomainInterface
 	 *
 	 * @return SetBreakpointOnFunctionCallResponse
 	 */
-	public function setBreakpointOnFunctionCall(ContextInterface $ctx, SetBreakpointOnFunctionCallRequest $request): SetBreakpointOnFunctionCallResponse;
+	public function setBreakpointOnFunctionCall(
+		ContextInterface $ctx,
+		SetBreakpointOnFunctionCallRequest $request
+	): SetBreakpointOnFunctionCallResponse;
 
 
 	/**
@@ -296,7 +308,10 @@ interface DebuggerDomainInterface
 	 *
 	 * @return SetInstrumentationBreakpointResponse
 	 */
-	public function setInstrumentationBreakpoint(ContextInterface $ctx, SetInstrumentationBreakpointRequest $request): SetInstrumentationBreakpointResponse;
+	public function setInstrumentationBreakpoint(
+		ContextInterface $ctx,
+		SetInstrumentationBreakpointRequest $request
+	): SetInstrumentationBreakpointResponse;
 
 
 	/**

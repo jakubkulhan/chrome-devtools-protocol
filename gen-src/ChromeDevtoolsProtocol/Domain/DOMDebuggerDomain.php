@@ -41,14 +41,18 @@ class DOMDebuggerDomain implements DOMDebuggerDomainInterface
 	}
 
 
-	public function removeEventListenerBreakpoint(ContextInterface $ctx, RemoveEventListenerBreakpointRequest $request): void
-	{
+	public function removeEventListenerBreakpoint(
+		ContextInterface $ctx,
+		RemoveEventListenerBreakpointRequest $request
+	): void {
 		$this->internalClient->executeCommand($ctx, 'DOMDebugger.removeEventListenerBreakpoint', $request);
 	}
 
 
-	public function removeInstrumentationBreakpoint(ContextInterface $ctx, RemoveInstrumentationBreakpointRequest $request): void
-	{
+	public function removeInstrumentationBreakpoint(
+		ContextInterface $ctx,
+		RemoveInstrumentationBreakpointRequest $request
+	): void {
 		$this->internalClient->executeCommand($ctx, 'DOMDebugger.removeInstrumentationBreakpoint', $request);
 	}
 

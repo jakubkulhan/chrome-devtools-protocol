@@ -99,7 +99,10 @@ interface DOMDomainInterface
 	 *
 	 * @return CollectClassNamesFromSubtreeResponse
 	 */
-	public function collectClassNamesFromSubtree(ContextInterface $ctx, CollectClassNamesFromSubtreeRequest $request): CollectClassNamesFromSubtreeResponse;
+	public function collectClassNamesFromSubtree(
+		ContextInterface $ctx,
+		CollectClassNamesFromSubtreeRequest $request
+	): CollectClassNamesFromSubtreeResponse;
 
 
 	/**
@@ -229,7 +232,10 @@ interface DOMDomainInterface
 	 *
 	 * @return GetFlattenedDocumentResponse
 	 */
-	public function getFlattenedDocument(ContextInterface $ctx, GetFlattenedDocumentRequest $request): GetFlattenedDocumentResponse;
+	public function getFlattenedDocument(
+		ContextInterface $ctx,
+		GetFlattenedDocumentRequest $request
+	): GetFlattenedDocumentResponse;
 
 
 	/**
@@ -251,7 +257,10 @@ interface DOMDomainInterface
 	 *
 	 * @return GetNodeForLocationResponse
 	 */
-	public function getNodeForLocation(ContextInterface $ctx, GetNodeForLocationRequest $request): GetNodeForLocationResponse;
+	public function getNodeForLocation(
+		ContextInterface $ctx,
+		GetNodeForLocationRequest $request
+	): GetNodeForLocationResponse;
 
 
 	/**
@@ -262,7 +271,10 @@ interface DOMDomainInterface
 	 *
 	 * @return GetNodesForSubtreeByStyleResponse
 	 */
-	public function getNodesForSubtreeByStyle(ContextInterface $ctx, GetNodesForSubtreeByStyleRequest $request): GetNodesForSubtreeByStyleResponse;
+	public function getNodesForSubtreeByStyle(
+		ContextInterface $ctx,
+		GetNodesForSubtreeByStyleRequest $request
+	): GetNodesForSubtreeByStyleResponse;
 
 
 	/**
@@ -273,7 +285,10 @@ interface DOMDomainInterface
 	 *
 	 * @return GetNodeStackTracesResponse
 	 */
-	public function getNodeStackTraces(ContextInterface $ctx, GetNodeStackTracesRequest $request): GetNodeStackTracesResponse;
+	public function getNodeStackTraces(
+		ContextInterface $ctx,
+		GetNodeStackTracesRequest $request
+	): GetNodeStackTracesResponse;
 
 
 	/**
@@ -295,7 +310,10 @@ interface DOMDomainInterface
 	 *
 	 * @return GetRelayoutBoundaryResponse
 	 */
-	public function getRelayoutBoundary(ContextInterface $ctx, GetRelayoutBoundaryRequest $request): GetRelayoutBoundaryResponse;
+	public function getRelayoutBoundary(
+		ContextInterface $ctx,
+		GetRelayoutBoundaryRequest $request
+	): GetRelayoutBoundaryResponse;
 
 
 	/**
@@ -379,7 +397,10 @@ interface DOMDomainInterface
 	 *
 	 * @return PushNodeByPathToFrontendResponse
 	 */
-	public function pushNodeByPathToFrontend(ContextInterface $ctx, PushNodeByPathToFrontendRequest $request): PushNodeByPathToFrontendResponse;
+	public function pushNodeByPathToFrontend(
+		ContextInterface $ctx,
+		PushNodeByPathToFrontendRequest $request
+	): PushNodeByPathToFrontendResponse;
 
 
 	/**
@@ -390,7 +411,10 @@ interface DOMDomainInterface
 	 *
 	 * @return PushNodesByBackendIdsToFrontendResponse
 	 */
-	public function pushNodesByBackendIdsToFrontend(ContextInterface $ctx, PushNodesByBackendIdsToFrontendRequest $request): PushNodesByBackendIdsToFrontendResponse;
+	public function pushNodesByBackendIdsToFrontend(
+		ContextInterface $ctx,
+		PushNodesByBackendIdsToFrontendRequest $request
+	): PushNodesByBackendIdsToFrontendResponse;
 
 
 	/**

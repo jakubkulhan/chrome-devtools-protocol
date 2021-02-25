@@ -60,7 +60,10 @@ interface DatabaseDomainInterface
 	 *
 	 * @return GetDatabaseTableNamesResponse
 	 */
-	public function getDatabaseTableNames(ContextInterface $ctx, GetDatabaseTableNamesRequest $request): GetDatabaseTableNamesResponse;
+	public function getDatabaseTableNames(
+		ContextInterface $ctx,
+		GetDatabaseTableNamesRequest $request
+	): GetDatabaseTableNamesResponse;
 
 
 	/**

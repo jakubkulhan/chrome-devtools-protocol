@@ -70,8 +70,10 @@ class MemoryDomain implements MemoryDomainInterface
 	}
 
 
-	public function setPressureNotificationsSuppressed(ContextInterface $ctx, SetPressureNotificationsSuppressedRequest $request): void
-	{
+	public function setPressureNotificationsSuppressed(
+		ContextInterface $ctx,
+		SetPressureNotificationsSuppressedRequest $request
+	): void {
 		$this->internalClient->executeCommand($ctx, 'Memory.setPressureNotificationsSuppressed', $request);
 	}
 

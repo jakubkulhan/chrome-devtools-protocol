@@ -170,8 +170,10 @@ class NetworkDomain implements NetworkDomainInterface
 	}
 
 
-	public function getRequestPostData(ContextInterface $ctx, GetRequestPostDataRequest $request): GetRequestPostDataResponse
-	{
+	public function getRequestPostData(
+		ContextInterface $ctx,
+		GetRequestPostDataRequest $request
+	): GetRequestPostDataResponse {
 		$response = $this->internalClient->executeCommand($ctx, 'Network.getRequestPostData', $request);
 		return GetRequestPostDataResponse::fromJson($response);
 	}
@@ -184,22 +186,28 @@ class NetworkDomain implements NetworkDomainInterface
 	}
 
 
-	public function getResponseBodyForInterception(ContextInterface $ctx, GetResponseBodyForInterceptionRequest $request): GetResponseBodyForInterceptionResponse
-	{
+	public function getResponseBodyForInterception(
+		ContextInterface $ctx,
+		GetResponseBodyForInterceptionRequest $request
+	): GetResponseBodyForInterceptionResponse {
 		$response = $this->internalClient->executeCommand($ctx, 'Network.getResponseBodyForInterception', $request);
 		return GetResponseBodyForInterceptionResponse::fromJson($response);
 	}
 
 
-	public function getSecurityIsolationStatus(ContextInterface $ctx, GetSecurityIsolationStatusRequest $request): GetSecurityIsolationStatusResponse
-	{
+	public function getSecurityIsolationStatus(
+		ContextInterface $ctx,
+		GetSecurityIsolationStatusRequest $request
+	): GetSecurityIsolationStatusResponse {
 		$response = $this->internalClient->executeCommand($ctx, 'Network.getSecurityIsolationStatus', $request);
 		return GetSecurityIsolationStatusResponse::fromJson($response);
 	}
 
 
-	public function loadNetworkResource(ContextInterface $ctx, LoadNetworkResourceRequest $request): LoadNetworkResourceResponse
-	{
+	public function loadNetworkResource(
+		ContextInterface $ctx,
+		LoadNetworkResourceRequest $request
+	): LoadNetworkResourceResponse {
 		$response = $this->internalClient->executeCommand($ctx, 'Network.loadNetworkResource', $request);
 		return LoadNetworkResourceResponse::fromJson($response);
 	}
@@ -211,8 +219,10 @@ class NetworkDomain implements NetworkDomainInterface
 	}
 
 
-	public function searchInResponseBody(ContextInterface $ctx, SearchInResponseBodyRequest $request): SearchInResponseBodyResponse
-	{
+	public function searchInResponseBody(
+		ContextInterface $ctx,
+		SearchInResponseBodyRequest $request
+	): SearchInResponseBodyResponse {
 		$response = $this->internalClient->executeCommand($ctx, 'Network.searchInResponseBody', $request);
 		return SearchInResponseBodyResponse::fromJson($response);
 	}
@@ -279,8 +289,10 @@ class NetworkDomain implements NetworkDomainInterface
 	}
 
 
-	public function takeResponseBodyForInterceptionAsStream(ContextInterface $ctx, TakeResponseBodyForInterceptionAsStreamRequest $request): TakeResponseBodyForInterceptionAsStreamResponse
-	{
+	public function takeResponseBodyForInterceptionAsStream(
+		ContextInterface $ctx,
+		TakeResponseBodyForInterceptionAsStreamRequest $request
+	): TakeResponseBodyForInterceptionAsStreamResponse {
 		$response = $this->internalClient->executeCommand($ctx, 'Network.takeResponseBodyForInterceptionAsStream', $request);
 		return TakeResponseBodyForInterceptionAsStreamResponse::fromJson($response);
 	}

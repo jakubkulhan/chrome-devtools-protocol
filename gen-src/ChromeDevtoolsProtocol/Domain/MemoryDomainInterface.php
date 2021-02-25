@@ -90,7 +90,10 @@ interface MemoryDomainInterface
 	 *
 	 * @return void
 	 */
-	public function setPressureNotificationsSuppressed(ContextInterface $ctx, SetPressureNotificationsSuppressedRequest $request): void;
+	public function setPressureNotificationsSuppressed(
+		ContextInterface $ctx,
+		SetPressureNotificationsSuppressedRequest $request
+	): void;
 
 
 	/**

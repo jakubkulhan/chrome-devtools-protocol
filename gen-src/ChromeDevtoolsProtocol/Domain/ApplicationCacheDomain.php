@@ -32,8 +32,10 @@ class ApplicationCacheDomain implements ApplicationCacheDomainInterface
 	}
 
 
-	public function getApplicationCacheForFrame(ContextInterface $ctx, GetApplicationCacheForFrameRequest $request): GetApplicationCacheForFrameResponse
-	{
+	public function getApplicationCacheForFrame(
+		ContextInterface $ctx,
+		GetApplicationCacheForFrameRequest $request
+	): GetApplicationCacheForFrameResponse {
 		$response = $this->internalClient->executeCommand($ctx, 'ApplicationCache.getApplicationCacheForFrame', $request);
 		return GetApplicationCacheForFrameResponse::fromJson($response);
 	}
@@ -47,8 +49,10 @@ class ApplicationCacheDomain implements ApplicationCacheDomainInterface
 	}
 
 
-	public function getManifestForFrame(ContextInterface $ctx, GetManifestForFrameRequest $request): GetManifestForFrameResponse
-	{
+	public function getManifestForFrame(
+		ContextInterface $ctx,
+		GetManifestForFrameRequest $request
+	): GetManifestForFrameResponse {
 		$response = $this->internalClient->executeCommand($ctx, 'ApplicationCache.getManifestForFrame', $request);
 		return GetManifestForFrameResponse::fromJson($response);
 	}

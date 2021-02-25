@@ -59,7 +59,10 @@ interface AuditsDomainInterface
 	 *
 	 * @return GetEncodedResponseResponse
 	 */
-	public function getEncodedResponse(ContextInterface $ctx, GetEncodedResponseRequest $request): GetEncodedResponseResponse;
+	public function getEncodedResponse(
+		ContextInterface $ctx,
+		GetEncodedResponseRequest $request
+	): GetEncodedResponseResponse;
 
 
 	/**

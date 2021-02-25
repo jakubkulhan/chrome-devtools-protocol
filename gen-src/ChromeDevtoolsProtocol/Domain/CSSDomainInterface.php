@@ -129,7 +129,10 @@ interface CSSDomainInterface
 	 *
 	 * @return GetBackgroundColorsResponse
 	 */
-	public function getBackgroundColors(ContextInterface $ctx, GetBackgroundColorsRequest $request): GetBackgroundColorsResponse;
+	public function getBackgroundColors(
+		ContextInterface $ctx,
+		GetBackgroundColorsRequest $request
+	): GetBackgroundColorsResponse;
 
 
 	/**
@@ -140,7 +143,10 @@ interface CSSDomainInterface
 	 *
 	 * @return GetComputedStyleForNodeResponse
 	 */
-	public function getComputedStyleForNode(ContextInterface $ctx, GetComputedStyleForNodeRequest $request): GetComputedStyleForNodeResponse;
+	public function getComputedStyleForNode(
+		ContextInterface $ctx,
+		GetComputedStyleForNodeRequest $request
+	): GetComputedStyleForNodeResponse;
 
 
 	/**
@@ -151,7 +157,10 @@ interface CSSDomainInterface
 	 *
 	 * @return GetInlineStylesForNodeResponse
 	 */
-	public function getInlineStylesForNode(ContextInterface $ctx, GetInlineStylesForNodeRequest $request): GetInlineStylesForNodeResponse;
+	public function getInlineStylesForNode(
+		ContextInterface $ctx,
+		GetInlineStylesForNodeRequest $request
+	): GetInlineStylesForNodeResponse;
 
 
 	/**
@@ -162,7 +171,10 @@ interface CSSDomainInterface
 	 *
 	 * @return GetMatchedStylesForNodeResponse
 	 */
-	public function getMatchedStylesForNode(ContextInterface $ctx, GetMatchedStylesForNodeRequest $request): GetMatchedStylesForNodeResponse;
+	public function getMatchedStylesForNode(
+		ContextInterface $ctx,
+		GetMatchedStylesForNodeRequest $request
+	): GetMatchedStylesForNodeResponse;
 
 
 	/**
@@ -183,7 +195,10 @@ interface CSSDomainInterface
 	 *
 	 * @return GetPlatformFontsForNodeResponse
 	 */
-	public function getPlatformFontsForNode(ContextInterface $ctx, GetPlatformFontsForNodeRequest $request): GetPlatformFontsForNodeResponse;
+	public function getPlatformFontsForNode(
+		ContextInterface $ctx,
+		GetPlatformFontsForNodeRequest $request
+	): GetPlatformFontsForNodeResponse;
 
 
 	/**
@@ -205,7 +220,10 @@ interface CSSDomainInterface
 	 *
 	 * @return void
 	 */
-	public function setEffectivePropertyValueForNode(ContextInterface $ctx, SetEffectivePropertyValueForNodeRequest $request): void;
+	public function setEffectivePropertyValueForNode(
+		ContextInterface $ctx,
+		SetEffectivePropertyValueForNodeRequest $request
+	): void;
 
 
 	/**

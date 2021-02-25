@@ -68,8 +68,10 @@ class HeapProfilerDomain implements HeapProfilerDomainInterface
 	}
 
 
-	public function getObjectByHeapObjectId(ContextInterface $ctx, GetObjectByHeapObjectIdRequest $request): GetObjectByHeapObjectIdResponse
-	{
+	public function getObjectByHeapObjectId(
+		ContextInterface $ctx,
+		GetObjectByHeapObjectIdRequest $request
+	): GetObjectByHeapObjectIdResponse {
 		$response = $this->internalClient->executeCommand($ctx, 'HeapProfiler.getObjectByHeapObjectId', $request);
 		return GetObjectByHeapObjectIdResponse::fromJson($response);
 	}

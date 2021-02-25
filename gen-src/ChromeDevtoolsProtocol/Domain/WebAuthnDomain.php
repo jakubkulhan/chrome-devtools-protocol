@@ -35,8 +35,10 @@ class WebAuthnDomain implements WebAuthnDomainInterface
 	}
 
 
-	public function addVirtualAuthenticator(ContextInterface $ctx, AddVirtualAuthenticatorRequest $request): AddVirtualAuthenticatorResponse
-	{
+	public function addVirtualAuthenticator(
+		ContextInterface $ctx,
+		AddVirtualAuthenticatorRequest $request
+	): AddVirtualAuthenticatorResponse {
 		$response = $this->internalClient->executeCommand($ctx, 'WebAuthn.addVirtualAuthenticator', $request);
 		return AddVirtualAuthenticatorResponse::fromJson($response);
 	}
@@ -88,8 +90,10 @@ class WebAuthnDomain implements WebAuthnDomainInterface
 	}
 
 
-	public function setAutomaticPresenceSimulation(ContextInterface $ctx, SetAutomaticPresenceSimulationRequest $request): void
-	{
+	public function setAutomaticPresenceSimulation(
+		ContextInterface $ctx,
+		SetAutomaticPresenceSimulationRequest $request
+	): void {
 		$this->internalClient->executeCommand($ctx, 'WebAuthn.setAutomaticPresenceSimulation', $request);
 	}
 

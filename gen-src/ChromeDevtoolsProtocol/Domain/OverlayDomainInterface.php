@@ -73,7 +73,10 @@ interface OverlayDomainInterface
 	 *
 	 * @return GetGridHighlightObjectsForTestResponse
 	 */
-	public function getGridHighlightObjectsForTest(ContextInterface $ctx, GetGridHighlightObjectsForTestRequest $request): GetGridHighlightObjectsForTestResponse;
+	public function getGridHighlightObjectsForTest(
+		ContextInterface $ctx,
+		GetGridHighlightObjectsForTestRequest $request
+	): GetGridHighlightObjectsForTestResponse;
 
 
 	/**
@@ -84,7 +87,10 @@ interface OverlayDomainInterface
 	 *
 	 * @return GetHighlightObjectForTestResponse
 	 */
-	public function getHighlightObjectForTest(ContextInterface $ctx, GetHighlightObjectForTestRequest $request): GetHighlightObjectForTestResponse;
+	public function getHighlightObjectForTest(
+		ContextInterface $ctx,
+		GetHighlightObjectForTestRequest $request
+	): GetHighlightObjectForTestResponse;
 
 
 	/**
@@ -95,7 +101,10 @@ interface OverlayDomainInterface
 	 *
 	 * @return GetSourceOrderHighlightObjectForTestResponse
 	 */
-	public function getSourceOrderHighlightObjectForTest(ContextInterface $ctx, GetSourceOrderHighlightObjectForTestRequest $request): GetSourceOrderHighlightObjectForTestResponse;
+	public function getSourceOrderHighlightObjectForTest(
+		ContextInterface $ctx,
+		GetSourceOrderHighlightObjectForTestRequest $request
+	): GetSourceOrderHighlightObjectForTestResponse;
 
 
 	/**

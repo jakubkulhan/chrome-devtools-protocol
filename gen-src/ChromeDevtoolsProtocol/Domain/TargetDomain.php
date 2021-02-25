@@ -74,8 +74,10 @@ class TargetDomain implements TargetDomainInterface
 	}
 
 
-	public function createBrowserContext(ContextInterface $ctx, CreateBrowserContextRequest $request): CreateBrowserContextResponse
-	{
+	public function createBrowserContext(
+		ContextInterface $ctx,
+		CreateBrowserContextRequest $request
+	): CreateBrowserContextResponse {
 		$response = $this->internalClient->executeCommand($ctx, 'Target.createBrowserContext', $request);
 		return CreateBrowserContextResponse::fromJson($response);
 	}

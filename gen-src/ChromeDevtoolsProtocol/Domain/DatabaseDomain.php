@@ -44,8 +44,10 @@ class DatabaseDomain implements DatabaseDomainInterface
 	}
 
 
-	public function getDatabaseTableNames(ContextInterface $ctx, GetDatabaseTableNamesRequest $request): GetDatabaseTableNamesResponse
-	{
+	public function getDatabaseTableNames(
+		ContextInterface $ctx,
+		GetDatabaseTableNamesRequest $request
+	): GetDatabaseTableNamesResponse {
 		$response = $this->internalClient->executeCommand($ctx, 'Database.getDatabaseTableNames', $request);
 		return GetDatabaseTableNamesResponse::fromJson($response);
 	}

@@ -84,8 +84,10 @@ class EmulationDomain implements EmulationDomainInterface
 	}
 
 
-	public function setDefaultBackgroundColorOverride(ContextInterface $ctx, SetDefaultBackgroundColorOverrideRequest $request): void
-	{
+	public function setDefaultBackgroundColorOverride(
+		ContextInterface $ctx,
+		SetDefaultBackgroundColorOverrideRequest $request
+	): void {
 		$this->internalClient->executeCommand($ctx, 'Emulation.setDefaultBackgroundColorOverride', $request);
 	}
 
@@ -192,8 +194,10 @@ class EmulationDomain implements EmulationDomainInterface
 	}
 
 
-	public function setVirtualTimePolicy(ContextInterface $ctx, SetVirtualTimePolicyRequest $request): SetVirtualTimePolicyResponse
-	{
+	public function setVirtualTimePolicy(
+		ContextInterface $ctx,
+		SetVirtualTimePolicyRequest $request
+	): SetVirtualTimePolicyResponse {
 		$response = $this->internalClient->executeCommand($ctx, 'Emulation.setVirtualTimePolicy', $request);
 		return SetVirtualTimePolicyResponse::fromJson($response);
 	}

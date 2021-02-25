@@ -53,7 +53,10 @@ interface CacheStorageDomainInterface
 	 *
 	 * @return RequestCachedResponseResponse
 	 */
-	public function requestCachedResponse(ContextInterface $ctx, RequestCachedResponseRequest $request): RequestCachedResponseResponse;
+	public function requestCachedResponse(
+		ContextInterface $ctx,
+		RequestCachedResponseRequest $request
+	): RequestCachedResponseResponse;
 
 
 	/**

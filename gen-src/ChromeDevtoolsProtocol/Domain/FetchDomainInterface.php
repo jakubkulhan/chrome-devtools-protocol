@@ -109,7 +109,10 @@ interface FetchDomainInterface
 	 *
 	 * @return TakeResponseBodyAsStreamResponse
 	 */
-	public function takeResponseBodyAsStream(ContextInterface $ctx, TakeResponseBodyAsStreamRequest $request): TakeResponseBodyAsStreamResponse;
+	public function takeResponseBodyAsStream(
+		ContextInterface $ctx,
+		TakeResponseBodyAsStreamRequest $request
+	): TakeResponseBodyAsStreamResponse;
 
 
 	/**

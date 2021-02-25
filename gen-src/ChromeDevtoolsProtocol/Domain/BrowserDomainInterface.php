@@ -132,7 +132,10 @@ interface BrowserDomainInterface
 	 *
 	 * @return GetWindowForTargetResponse
 	 */
-	public function getWindowForTarget(ContextInterface $ctx, GetWindowForTargetRequest $request): GetWindowForTargetResponse;
+	public function getWindowForTarget(
+		ContextInterface $ctx,
+		GetWindowForTargetRequest $request
+	): GetWindowForTargetResponse;
 
 
 	/**

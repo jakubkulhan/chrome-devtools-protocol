@@ -33,8 +33,10 @@ class LayerTreeDomain implements LayerTreeDomainInterface
 	}
 
 
-	public function compositingReasons(ContextInterface $ctx, CompositingReasonsRequest $request): CompositingReasonsResponse
-	{
+	public function compositingReasons(
+		ContextInterface $ctx,
+		CompositingReasonsRequest $request
+	): CompositingReasonsResponse {
 		$response = $this->internalClient->executeCommand($ctx, 'LayerTree.compositingReasons', $request);
 		return CompositingReasonsResponse::fromJson($response);
 	}
@@ -88,8 +90,10 @@ class LayerTreeDomain implements LayerTreeDomainInterface
 	}
 
 
-	public function snapshotCommandLog(ContextInterface $ctx, SnapshotCommandLogRequest $request): SnapshotCommandLogResponse
-	{
+	public function snapshotCommandLog(
+		ContextInterface $ctx,
+		SnapshotCommandLogRequest $request
+	): SnapshotCommandLogResponse {
 		$response = $this->internalClient->executeCommand($ctx, 'LayerTree.snapshotCommandLog', $request);
 		return SnapshotCommandLogResponse::fromJson($response);
 	}

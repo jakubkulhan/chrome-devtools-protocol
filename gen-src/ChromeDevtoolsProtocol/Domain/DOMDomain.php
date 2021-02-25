@@ -95,8 +95,10 @@ class DOMDomain implements DOMDomainInterface
 	}
 
 
-	public function collectClassNamesFromSubtree(ContextInterface $ctx, CollectClassNamesFromSubtreeRequest $request): CollectClassNamesFromSubtreeResponse
-	{
+	public function collectClassNamesFromSubtree(
+		ContextInterface $ctx,
+		CollectClassNamesFromSubtreeRequest $request
+	): CollectClassNamesFromSubtreeResponse {
 		$response = $this->internalClient->executeCommand($ctx, 'DOM.collectClassNamesFromSubtree', $request);
 		return CollectClassNamesFromSubtreeResponse::fromJson($response);
 	}
@@ -177,8 +179,10 @@ class DOMDomain implements DOMDomainInterface
 	}
 
 
-	public function getFlattenedDocument(ContextInterface $ctx, GetFlattenedDocumentRequest $request): GetFlattenedDocumentResponse
-	{
+	public function getFlattenedDocument(
+		ContextInterface $ctx,
+		GetFlattenedDocumentRequest $request
+	): GetFlattenedDocumentResponse {
 		$response = $this->internalClient->executeCommand($ctx, 'DOM.getFlattenedDocument', $request);
 		return GetFlattenedDocumentResponse::fromJson($response);
 	}
@@ -191,22 +195,28 @@ class DOMDomain implements DOMDomainInterface
 	}
 
 
-	public function getNodeForLocation(ContextInterface $ctx, GetNodeForLocationRequest $request): GetNodeForLocationResponse
-	{
+	public function getNodeForLocation(
+		ContextInterface $ctx,
+		GetNodeForLocationRequest $request
+	): GetNodeForLocationResponse {
 		$response = $this->internalClient->executeCommand($ctx, 'DOM.getNodeForLocation', $request);
 		return GetNodeForLocationResponse::fromJson($response);
 	}
 
 
-	public function getNodesForSubtreeByStyle(ContextInterface $ctx, GetNodesForSubtreeByStyleRequest $request): GetNodesForSubtreeByStyleResponse
-	{
+	public function getNodesForSubtreeByStyle(
+		ContextInterface $ctx,
+		GetNodesForSubtreeByStyleRequest $request
+	): GetNodesForSubtreeByStyleResponse {
 		$response = $this->internalClient->executeCommand($ctx, 'DOM.getNodesForSubtreeByStyle', $request);
 		return GetNodesForSubtreeByStyleResponse::fromJson($response);
 	}
 
 
-	public function getNodeStackTraces(ContextInterface $ctx, GetNodeStackTracesRequest $request): GetNodeStackTracesResponse
-	{
+	public function getNodeStackTraces(
+		ContextInterface $ctx,
+		GetNodeStackTracesRequest $request
+	): GetNodeStackTracesResponse {
 		$response = $this->internalClient->executeCommand($ctx, 'DOM.getNodeStackTraces', $request);
 		return GetNodeStackTracesResponse::fromJson($response);
 	}
@@ -219,8 +229,10 @@ class DOMDomain implements DOMDomainInterface
 	}
 
 
-	public function getRelayoutBoundary(ContextInterface $ctx, GetRelayoutBoundaryRequest $request): GetRelayoutBoundaryResponse
-	{
+	public function getRelayoutBoundary(
+		ContextInterface $ctx,
+		GetRelayoutBoundaryRequest $request
+	): GetRelayoutBoundaryResponse {
 		$response = $this->internalClient->executeCommand($ctx, 'DOM.getRelayoutBoundary', $request);
 		return GetRelayoutBoundaryResponse::fromJson($response);
 	}
@@ -275,15 +287,19 @@ class DOMDomain implements DOMDomainInterface
 	}
 
 
-	public function pushNodeByPathToFrontend(ContextInterface $ctx, PushNodeByPathToFrontendRequest $request): PushNodeByPathToFrontendResponse
-	{
+	public function pushNodeByPathToFrontend(
+		ContextInterface $ctx,
+		PushNodeByPathToFrontendRequest $request
+	): PushNodeByPathToFrontendResponse {
 		$response = $this->internalClient->executeCommand($ctx, 'DOM.pushNodeByPathToFrontend', $request);
 		return PushNodeByPathToFrontendResponse::fromJson($response);
 	}
 
 
-	public function pushNodesByBackendIdsToFrontend(ContextInterface $ctx, PushNodesByBackendIdsToFrontendRequest $request): PushNodesByBackendIdsToFrontendResponse
-	{
+	public function pushNodesByBackendIdsToFrontend(
+		ContextInterface $ctx,
+		PushNodesByBackendIdsToFrontendRequest $request
+	): PushNodesByBackendIdsToFrontendResponse {
 		$response = $this->internalClient->executeCommand($ctx, 'DOM.pushNodesByBackendIdsToFrontend', $request);
 		return PushNodesByBackendIdsToFrontendResponse::fromJson($response);
 	}

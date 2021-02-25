@@ -129,8 +129,10 @@ class RuntimeDomain implements RuntimeDomainInterface
 	}
 
 
-	public function globalLexicalScopeNames(ContextInterface $ctx, GlobalLexicalScopeNamesRequest $request): GlobalLexicalScopeNamesResponse
-	{
+	public function globalLexicalScopeNames(
+		ContextInterface $ctx,
+		GlobalLexicalScopeNamesRequest $request
+	): GlobalLexicalScopeNamesResponse {
 		$response = $this->internalClient->executeCommand($ctx, 'Runtime.globalLexicalScopeNames', $request);
 		return GlobalLexicalScopeNamesResponse::fromJson($response);
 	}
@@ -181,8 +183,10 @@ class RuntimeDomain implements RuntimeDomainInterface
 	}
 
 
-	public function setCustomObjectFormatterEnabled(ContextInterface $ctx, SetCustomObjectFormatterEnabledRequest $request): void
-	{
+	public function setCustomObjectFormatterEnabled(
+		ContextInterface $ctx,
+		SetCustomObjectFormatterEnabledRequest $request
+	): void {
 		$this->internalClient->executeCommand($ctx, 'Runtime.setCustomObjectFormatterEnabled', $request);
 	}
 

@@ -100,29 +100,37 @@ class CSSDomain implements CSSDomainInterface
 	}
 
 
-	public function getBackgroundColors(ContextInterface $ctx, GetBackgroundColorsRequest $request): GetBackgroundColorsResponse
-	{
+	public function getBackgroundColors(
+		ContextInterface $ctx,
+		GetBackgroundColorsRequest $request
+	): GetBackgroundColorsResponse {
 		$response = $this->internalClient->executeCommand($ctx, 'CSS.getBackgroundColors', $request);
 		return GetBackgroundColorsResponse::fromJson($response);
 	}
 
 
-	public function getComputedStyleForNode(ContextInterface $ctx, GetComputedStyleForNodeRequest $request): GetComputedStyleForNodeResponse
-	{
+	public function getComputedStyleForNode(
+		ContextInterface $ctx,
+		GetComputedStyleForNodeRequest $request
+	): GetComputedStyleForNodeResponse {
 		$response = $this->internalClient->executeCommand($ctx, 'CSS.getComputedStyleForNode', $request);
 		return GetComputedStyleForNodeResponse::fromJson($response);
 	}
 
 
-	public function getInlineStylesForNode(ContextInterface $ctx, GetInlineStylesForNodeRequest $request): GetInlineStylesForNodeResponse
-	{
+	public function getInlineStylesForNode(
+		ContextInterface $ctx,
+		GetInlineStylesForNodeRequest $request
+	): GetInlineStylesForNodeResponse {
 		$response = $this->internalClient->executeCommand($ctx, 'CSS.getInlineStylesForNode', $request);
 		return GetInlineStylesForNodeResponse::fromJson($response);
 	}
 
 
-	public function getMatchedStylesForNode(ContextInterface $ctx, GetMatchedStylesForNodeRequest $request): GetMatchedStylesForNodeResponse
-	{
+	public function getMatchedStylesForNode(
+		ContextInterface $ctx,
+		GetMatchedStylesForNodeRequest $request
+	): GetMatchedStylesForNodeResponse {
 		$response = $this->internalClient->executeCommand($ctx, 'CSS.getMatchedStylesForNode', $request);
 		return GetMatchedStylesForNodeResponse::fromJson($response);
 	}
@@ -136,8 +144,10 @@ class CSSDomain implements CSSDomainInterface
 	}
 
 
-	public function getPlatformFontsForNode(ContextInterface $ctx, GetPlatformFontsForNodeRequest $request): GetPlatformFontsForNodeResponse
-	{
+	public function getPlatformFontsForNode(
+		ContextInterface $ctx,
+		GetPlatformFontsForNodeRequest $request
+	): GetPlatformFontsForNodeResponse {
 		$response = $this->internalClient->executeCommand($ctx, 'CSS.getPlatformFontsForNode', $request);
 		return GetPlatformFontsForNodeResponse::fromJson($response);
 	}
@@ -150,8 +160,10 @@ class CSSDomain implements CSSDomainInterface
 	}
 
 
-	public function setEffectivePropertyValueForNode(ContextInterface $ctx, SetEffectivePropertyValueForNodeRequest $request): void
-	{
+	public function setEffectivePropertyValueForNode(
+		ContextInterface $ctx,
+		SetEffectivePropertyValueForNodeRequest $request
+	): void {
 		$this->internalClient->executeCommand($ctx, 'CSS.setEffectivePropertyValueForNode', $request);
 	}
 

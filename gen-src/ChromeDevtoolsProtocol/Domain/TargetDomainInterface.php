@@ -93,7 +93,10 @@ interface TargetDomainInterface
 	 *
 	 * @return CreateBrowserContextResponse
 	 */
-	public function createBrowserContext(ContextInterface $ctx, CreateBrowserContextRequest $request): CreateBrowserContextResponse;
+	public function createBrowserContext(
+		ContextInterface $ctx,
+		CreateBrowserContextRequest $request
+	): CreateBrowserContextResponse;
 
 
 	/**

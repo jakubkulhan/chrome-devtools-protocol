@@ -219,7 +219,10 @@ interface NetworkDomainInterface
 	 *
 	 * @return GetRequestPostDataResponse
 	 */
-	public function getRequestPostData(ContextInterface $ctx, GetRequestPostDataRequest $request): GetRequestPostDataResponse;
+	public function getRequestPostData(
+		ContextInterface $ctx,
+		GetRequestPostDataRequest $request
+	): GetRequestPostDataResponse;
 
 
 	/**
@@ -241,7 +244,10 @@ interface NetworkDomainInterface
 	 *
 	 * @return GetResponseBodyForInterceptionResponse
 	 */
-	public function getResponseBodyForInterception(ContextInterface $ctx, GetResponseBodyForInterceptionRequest $request): GetResponseBodyForInterceptionResponse;
+	public function getResponseBodyForInterception(
+		ContextInterface $ctx,
+		GetResponseBodyForInterceptionRequest $request
+	): GetResponseBodyForInterceptionResponse;
 
 
 	/**
@@ -252,7 +258,10 @@ interface NetworkDomainInterface
 	 *
 	 * @return GetSecurityIsolationStatusResponse
 	 */
-	public function getSecurityIsolationStatus(ContextInterface $ctx, GetSecurityIsolationStatusRequest $request): GetSecurityIsolationStatusResponse;
+	public function getSecurityIsolationStatus(
+		ContextInterface $ctx,
+		GetSecurityIsolationStatusRequest $request
+	): GetSecurityIsolationStatusResponse;
 
 
 	/**
@@ -263,7 +272,10 @@ interface NetworkDomainInterface
 	 *
 	 * @return LoadNetworkResourceResponse
 	 */
-	public function loadNetworkResource(ContextInterface $ctx, LoadNetworkResourceRequest $request): LoadNetworkResourceResponse;
+	public function loadNetworkResource(
+		ContextInterface $ctx,
+		LoadNetworkResourceRequest $request
+	): LoadNetworkResourceResponse;
 
 
 	/**
@@ -285,7 +297,10 @@ interface NetworkDomainInterface
 	 *
 	 * @return SearchInResponseBodyResponse
 	 */
-	public function searchInResponseBody(ContextInterface $ctx, SearchInResponseBodyRequest $request): SearchInResponseBodyResponse;
+	public function searchInResponseBody(
+		ContextInterface $ctx,
+		SearchInResponseBodyRequest $request
+	): SearchInResponseBodyResponse;
 
 
 	/**
@@ -406,7 +421,10 @@ interface NetworkDomainInterface
 	 *
 	 * @return TakeResponseBodyForInterceptionAsStreamResponse
 	 */
-	public function takeResponseBodyForInterceptionAsStream(ContextInterface $ctx, TakeResponseBodyForInterceptionAsStreamRequest $request): TakeResponseBodyForInterceptionAsStreamResponse;
+	public function takeResponseBodyForInterceptionAsStream(
+		ContextInterface $ctx,
+		TakeResponseBodyForInterceptionAsStreamRequest $request
+	): TakeResponseBodyForInterceptionAsStreamResponse;
 
 
 	/**

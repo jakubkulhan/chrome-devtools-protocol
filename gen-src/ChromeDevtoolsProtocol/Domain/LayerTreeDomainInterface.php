@@ -39,7 +39,10 @@ interface LayerTreeDomainInterface
 	 *
 	 * @return CompositingReasonsResponse
 	 */
-	public function compositingReasons(ContextInterface $ctx, CompositingReasonsRequest $request): CompositingReasonsResponse;
+	public function compositingReasons(
+		ContextInterface $ctx,
+		CompositingReasonsRequest $request
+	): CompositingReasonsResponse;
 
 
 	/**
@@ -125,7 +128,10 @@ interface LayerTreeDomainInterface
 	 *
 	 * @return SnapshotCommandLogResponse
 	 */
-	public function snapshotCommandLog(ContextInterface $ctx, SnapshotCommandLogRequest $request): SnapshotCommandLogResponse;
+	public function snapshotCommandLog(
+		ContextInterface $ctx,
+		SnapshotCommandLogRequest $request
+	): SnapshotCommandLogResponse;
 
 
 	/**

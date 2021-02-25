@@ -54,7 +54,10 @@ interface DOMDebuggerDomainInterface
 	 *
 	 * @return void
 	 */
-	public function removeEventListenerBreakpoint(ContextInterface $ctx, RemoveEventListenerBreakpointRequest $request): void;
+	public function removeEventListenerBreakpoint(
+		ContextInterface $ctx,
+		RemoveEventListenerBreakpointRequest $request
+	): void;
 
 
 	/**
@@ -65,7 +68,10 @@ interface DOMDebuggerDomainInterface
 	 *
 	 * @return void
 	 */
-	public function removeInstrumentationBreakpoint(ContextInterface $ctx, RemoveInstrumentationBreakpointRequest $request): void;
+	public function removeInstrumentationBreakpoint(
+		ContextInterface $ctx,
+		RemoveInstrumentationBreakpointRequest $request
+	): void;
 
 
 	/**

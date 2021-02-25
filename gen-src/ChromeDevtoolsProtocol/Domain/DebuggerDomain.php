@@ -83,15 +83,19 @@ class DebuggerDomain implements DebuggerDomainInterface
 	}
 
 
-	public function evaluateOnCallFrame(ContextInterface $ctx, EvaluateOnCallFrameRequest $request): EvaluateOnCallFrameResponse
-	{
+	public function evaluateOnCallFrame(
+		ContextInterface $ctx,
+		EvaluateOnCallFrameRequest $request
+	): EvaluateOnCallFrameResponse {
 		$response = $this->internalClient->executeCommand($ctx, 'Debugger.evaluateOnCallFrame', $request);
 		return EvaluateOnCallFrameResponse::fromJson($response);
 	}
 
 
-	public function getPossibleBreakpoints(ContextInterface $ctx, GetPossibleBreakpointsRequest $request): GetPossibleBreakpointsResponse
-	{
+	public function getPossibleBreakpoints(
+		ContextInterface $ctx,
+		GetPossibleBreakpointsRequest $request
+	): GetPossibleBreakpointsResponse {
 		$response = $this->internalClient->executeCommand($ctx, 'Debugger.getPossibleBreakpoints', $request);
 		return GetPossibleBreakpointsResponse::fromJson($response);
 	}
@@ -182,15 +186,19 @@ class DebuggerDomain implements DebuggerDomainInterface
 	}
 
 
-	public function setBreakpointByUrl(ContextInterface $ctx, SetBreakpointByUrlRequest $request): SetBreakpointByUrlResponse
-	{
+	public function setBreakpointByUrl(
+		ContextInterface $ctx,
+		SetBreakpointByUrlRequest $request
+	): SetBreakpointByUrlResponse {
 		$response = $this->internalClient->executeCommand($ctx, 'Debugger.setBreakpointByUrl', $request);
 		return SetBreakpointByUrlResponse::fromJson($response);
 	}
 
 
-	public function setBreakpointOnFunctionCall(ContextInterface $ctx, SetBreakpointOnFunctionCallRequest $request): SetBreakpointOnFunctionCallResponse
-	{
+	public function setBreakpointOnFunctionCall(
+		ContextInterface $ctx,
+		SetBreakpointOnFunctionCallRequest $request
+	): SetBreakpointOnFunctionCallResponse {
 		$response = $this->internalClient->executeCommand($ctx, 'Debugger.setBreakpointOnFunctionCall', $request);
 		return SetBreakpointOnFunctionCallResponse::fromJson($response);
 	}
@@ -202,8 +210,10 @@ class DebuggerDomain implements DebuggerDomainInterface
 	}
 
 
-	public function setInstrumentationBreakpoint(ContextInterface $ctx, SetInstrumentationBreakpointRequest $request): SetInstrumentationBreakpointResponse
-	{
+	public function setInstrumentationBreakpoint(
+		ContextInterface $ctx,
+		SetInstrumentationBreakpointRequest $request
+	): SetInstrumentationBreakpointResponse {
 		$response = $this->internalClient->executeCommand($ctx, 'Debugger.setInstrumentationBreakpoint', $request);
 		return SetInstrumentationBreakpointResponse::fromJson($response);
 	}

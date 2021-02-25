@@ -41,7 +41,10 @@ interface ApplicationCacheDomainInterface
 	 *
 	 * @return GetApplicationCacheForFrameResponse
 	 */
-	public function getApplicationCacheForFrame(ContextInterface $ctx, GetApplicationCacheForFrameRequest $request): GetApplicationCacheForFrameResponse;
+	public function getApplicationCacheForFrame(
+		ContextInterface $ctx,
+		GetApplicationCacheForFrameRequest $request
+	): GetApplicationCacheForFrameResponse;
 
 
 	/**
@@ -62,7 +65,10 @@ interface ApplicationCacheDomainInterface
 	 *
 	 * @return GetManifestForFrameResponse
 	 */
-	public function getManifestForFrame(ContextInterface $ctx, GetManifestForFrameRequest $request): GetManifestForFrameResponse;
+	public function getManifestForFrame(
+		ContextInterface $ctx,
+		GetManifestForFrameRequest $request
+	): GetManifestForFrameResponse;
 
 
 	/**

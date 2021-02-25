@@ -171,7 +171,10 @@ interface RuntimeDomainInterface
 	 *
 	 * @return GlobalLexicalScopeNamesResponse
 	 */
-	public function globalLexicalScopeNames(ContextInterface $ctx, GlobalLexicalScopeNamesRequest $request): GlobalLexicalScopeNamesResponse;
+	public function globalLexicalScopeNames(
+		ContextInterface $ctx,
+		GlobalLexicalScopeNamesRequest $request
+	): GlobalLexicalScopeNamesResponse;
 
 
 	/**
@@ -258,7 +261,10 @@ interface RuntimeDomainInterface
 	 *
 	 * @return void
 	 */
-	public function setCustomObjectFormatterEnabled(ContextInterface $ctx, SetCustomObjectFormatterEnabledRequest $request): void;
+	public function setCustomObjectFormatterEnabled(
+		ContextInterface $ctx,
+		SetCustomObjectFormatterEnabledRequest $request
+	): void;
 
 
 	/**

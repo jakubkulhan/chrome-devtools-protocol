@@ -42,8 +42,10 @@ class AuditsDomain implements AuditsDomainInterface
 	}
 
 
-	public function getEncodedResponse(ContextInterface $ctx, GetEncodedResponseRequest $request): GetEncodedResponseResponse
-	{
+	public function getEncodedResponse(
+		ContextInterface $ctx,
+		GetEncodedResponseRequest $request
+	): GetEncodedResponseResponse {
 		$response = $this->internalClient->executeCommand($ctx, 'Audits.getEncodedResponse', $request);
 		return GetEncodedResponseResponse::fromJson($response);
 	}

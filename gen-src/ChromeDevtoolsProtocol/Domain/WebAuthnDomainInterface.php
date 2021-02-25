@@ -46,7 +46,10 @@ interface WebAuthnDomainInterface
 	 *
 	 * @return AddVirtualAuthenticatorResponse
 	 */
-	public function addVirtualAuthenticator(ContextInterface $ctx, AddVirtualAuthenticatorRequest $request): AddVirtualAuthenticatorResponse;
+	public function addVirtualAuthenticator(
+		ContextInterface $ctx,
+		AddVirtualAuthenticatorRequest $request
+	): AddVirtualAuthenticatorResponse;
 
 
 	/**
@@ -132,7 +135,10 @@ interface WebAuthnDomainInterface
 	 *
 	 * @return void
 	 */
-	public function setAutomaticPresenceSimulation(ContextInterface $ctx, SetAutomaticPresenceSimulationRequest $request): void;
+	public function setAutomaticPresenceSimulation(
+		ContextInterface $ctx,
+		SetAutomaticPresenceSimulationRequest $request
+	): void;
 
 
 	/**

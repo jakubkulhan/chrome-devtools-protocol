@@ -64,7 +64,10 @@ interface DOMStorageDomainInterface
 	 *
 	 * @return GetDOMStorageItemsResponse
 	 */
-	public function getDOMStorageItems(ContextInterface $ctx, GetDOMStorageItemsRequest $request): GetDOMStorageItemsResponse;
+	public function getDOMStorageItems(
+		ContextInterface $ctx,
+		GetDOMStorageItemsRequest $request
+	): GetDOMStorageItemsResponse;
 
 
 	/**

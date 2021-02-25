@@ -107,7 +107,10 @@ interface EmulationDomainInterface
 	 *
 	 * @return void
 	 */
-	public function setDefaultBackgroundColorOverride(ContextInterface $ctx, SetDefaultBackgroundColorOverrideRequest $request): void;
+	public function setDefaultBackgroundColorOverride(
+		ContextInterface $ctx,
+		SetDefaultBackgroundColorOverrideRequest $request
+	): void;
 
 
 	/**
@@ -305,7 +308,10 @@ interface EmulationDomainInterface
 	 *
 	 * @return SetVirtualTimePolicyResponse
 	 */
-	public function setVirtualTimePolicy(ContextInterface $ctx, SetVirtualTimePolicyRequest $request): SetVirtualTimePolicyResponse;
+	public function setVirtualTimePolicy(
+		ContextInterface $ctx,
+		SetVirtualTimePolicyRequest $request
+	): SetVirtualTimePolicyResponse;
 
 
 	/**

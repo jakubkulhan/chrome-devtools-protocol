@@ -98,8 +98,10 @@ class BrowserDomain implements BrowserDomainInterface
 	}
 
 
-	public function getWindowForTarget(ContextInterface $ctx, GetWindowForTargetRequest $request): GetWindowForTargetResponse
-	{
+	public function getWindowForTarget(
+		ContextInterface $ctx,
+		GetWindowForTargetRequest $request
+	): GetWindowForTargetResponse {
 		$response = $this->internalClient->executeCommand($ctx, 'Browser.getWindowForTarget', $request);
 		return GetWindowForTargetResponse::fromJson($response);
 	}

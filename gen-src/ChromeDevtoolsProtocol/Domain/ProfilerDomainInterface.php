@@ -145,7 +145,10 @@ interface ProfilerDomainInterface
 	 *
 	 * @return StartPreciseCoverageResponse
 	 */
-	public function startPreciseCoverage(ContextInterface $ctx, StartPreciseCoverageRequest $request): StartPreciseCoverageResponse;
+	public function startPreciseCoverage(
+		ContextInterface $ctx,
+		StartPreciseCoverageRequest $request
+	): StartPreciseCoverageResponse;
 
 
 	/**

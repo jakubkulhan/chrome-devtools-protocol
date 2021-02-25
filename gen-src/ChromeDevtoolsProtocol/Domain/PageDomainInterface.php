@@ -110,7 +110,10 @@ interface PageDomainInterface
 	 *
 	 * @return AddScriptToEvaluateOnLoadResponse
 	 */
-	public function addScriptToEvaluateOnLoad(ContextInterface $ctx, AddScriptToEvaluateOnLoadRequest $request): AddScriptToEvaluateOnLoadResponse;
+	public function addScriptToEvaluateOnLoad(
+		ContextInterface $ctx,
+		AddScriptToEvaluateOnLoadRequest $request
+	): AddScriptToEvaluateOnLoadResponse;
 
 
 	/**
@@ -121,7 +124,10 @@ interface PageDomainInterface
 	 *
 	 * @return AddScriptToEvaluateOnNewDocumentResponse
 	 */
-	public function addScriptToEvaluateOnNewDocument(ContextInterface $ctx, AddScriptToEvaluateOnNewDocumentRequest $request): AddScriptToEvaluateOnNewDocumentResponse;
+	public function addScriptToEvaluateOnNewDocument(
+		ContextInterface $ctx,
+		AddScriptToEvaluateOnNewDocumentRequest $request
+	): AddScriptToEvaluateOnNewDocumentResponse;
 
 
 	/**
@@ -224,7 +230,10 @@ interface PageDomainInterface
 	 *
 	 * @return CreateIsolatedWorldResponse
 	 */
-	public function createIsolatedWorld(ContextInterface $ctx, CreateIsolatedWorldRequest $request): CreateIsolatedWorldResponse;
+	public function createIsolatedWorld(
+		ContextInterface $ctx,
+		CreateIsolatedWorldRequest $request
+	): CreateIsolatedWorldResponse;
 
 
 	/**
@@ -347,7 +356,10 @@ interface PageDomainInterface
 	 *
 	 * @return GetPermissionsPolicyStateResponse
 	 */
-	public function getPermissionsPolicyState(ContextInterface $ctx, GetPermissionsPolicyStateRequest $request): GetPermissionsPolicyStateResponse;
+	public function getPermissionsPolicyState(
+		ContextInterface $ctx,
+		GetPermissionsPolicyStateRequest $request
+	): GetPermissionsPolicyStateResponse;
 
 
 	/**
@@ -358,7 +370,10 @@ interface PageDomainInterface
 	 *
 	 * @return GetResourceContentResponse
 	 */
-	public function getResourceContent(ContextInterface $ctx, GetResourceContentRequest $request): GetResourceContentResponse;
+	public function getResourceContent(
+		ContextInterface $ctx,
+		GetResourceContentRequest $request
+	): GetResourceContentResponse;
 
 
 	/**
@@ -445,7 +460,10 @@ interface PageDomainInterface
 	 *
 	 * @return void
 	 */
-	public function removeScriptToEvaluateOnNewDocument(ContextInterface $ctx, RemoveScriptToEvaluateOnNewDocumentRequest $request): void;
+	public function removeScriptToEvaluateOnNewDocument(
+		ContextInterface $ctx,
+		RemoveScriptToEvaluateOnNewDocumentRequest $request
+	): void;
 
 
 	/**
@@ -587,7 +605,10 @@ interface PageDomainInterface
 	 *
 	 * @return void
 	 */
-	public function setInterceptFileChooserDialog(ContextInterface $ctx, SetInterceptFileChooserDialogRequest $request): void;
+	public function setInterceptFileChooserDialog(
+		ContextInterface $ctx,
+		SetInterceptFileChooserDialogRequest $request
+	): void;
 
 
 	/**

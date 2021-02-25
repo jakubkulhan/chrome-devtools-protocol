@@ -92,7 +92,10 @@ interface HeapProfilerDomainInterface
 	 *
 	 * @return GetObjectByHeapObjectIdResponse
 	 */
-	public function getObjectByHeapObjectId(ContextInterface $ctx, GetObjectByHeapObjectIdRequest $request): GetObjectByHeapObjectIdResponse;
+	public function getObjectByHeapObjectId(
+		ContextInterface $ctx,
+		GetObjectByHeapObjectIdRequest $request
+	): GetObjectByHeapObjectIdResponse;
 
 
 	/**

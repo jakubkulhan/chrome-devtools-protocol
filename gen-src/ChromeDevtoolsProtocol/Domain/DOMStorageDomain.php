@@ -47,8 +47,10 @@ class DOMStorageDomain implements DOMStorageDomainInterface
 	}
 
 
-	public function getDOMStorageItems(ContextInterface $ctx, GetDOMStorageItemsRequest $request): GetDOMStorageItemsResponse
-	{
+	public function getDOMStorageItems(
+		ContextInterface $ctx,
+		GetDOMStorageItemsRequest $request
+	): GetDOMStorageItemsResponse {
 		$response = $this->internalClient->executeCommand($ctx, 'DOMStorage.getDOMStorageItems', $request);
 		return GetDOMStorageItemsResponse::fromJson($response);
 	}

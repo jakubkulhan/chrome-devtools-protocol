@@ -73,8 +73,10 @@ class FetchDomain implements FetchDomainInterface
 	}
 
 
-	public function takeResponseBodyAsStream(ContextInterface $ctx, TakeResponseBodyAsStreamRequest $request): TakeResponseBodyAsStreamResponse
-	{
+	public function takeResponseBodyAsStream(
+		ContextInterface $ctx,
+		TakeResponseBodyAsStreamRequest $request
+	): TakeResponseBodyAsStreamResponse {
 		$response = $this->internalClient->executeCommand($ctx, 'Fetch.takeResponseBodyAsStream', $request);
 		return TakeResponseBodyAsStreamResponse::fromJson($response);
 	}

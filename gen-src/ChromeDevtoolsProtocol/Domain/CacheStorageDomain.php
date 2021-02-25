@@ -37,8 +37,10 @@ class CacheStorageDomain implements CacheStorageDomainInterface
 	}
 
 
-	public function requestCachedResponse(ContextInterface $ctx, RequestCachedResponseRequest $request): RequestCachedResponseResponse
-	{
+	public function requestCachedResponse(
+		ContextInterface $ctx,
+		RequestCachedResponseRequest $request
+	): RequestCachedResponseResponse {
 		$response = $this->internalClient->executeCommand($ctx, 'CacheStorage.requestCachedResponse', $request);
 		return RequestCachedResponseResponse::fromJson($response);
 	}

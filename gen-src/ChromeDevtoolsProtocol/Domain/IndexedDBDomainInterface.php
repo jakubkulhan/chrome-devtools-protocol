@@ -120,5 +120,8 @@ interface IndexedDBDomainInterface
 	 *
 	 * @return RequestDatabaseNamesResponse
 	 */
-	public function requestDatabaseNames(ContextInterface $ctx, RequestDatabaseNamesRequest $request): RequestDatabaseNamesResponse;
+	public function requestDatabaseNames(
+		ContextInterface $ctx,
+		RequestDatabaseNamesRequest $request
+	): RequestDatabaseNamesResponse;
 }

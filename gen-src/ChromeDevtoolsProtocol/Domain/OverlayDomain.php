@@ -61,22 +61,28 @@ class OverlayDomain implements OverlayDomainInterface
 	}
 
 
-	public function getGridHighlightObjectsForTest(ContextInterface $ctx, GetGridHighlightObjectsForTestRequest $request): GetGridHighlightObjectsForTestResponse
-	{
+	public function getGridHighlightObjectsForTest(
+		ContextInterface $ctx,
+		GetGridHighlightObjectsForTestRequest $request
+	): GetGridHighlightObjectsForTestResponse {
 		$response = $this->internalClient->executeCommand($ctx, 'Overlay.getGridHighlightObjectsForTest', $request);
 		return GetGridHighlightObjectsForTestResponse::fromJson($response);
 	}
 
 
-	public function getHighlightObjectForTest(ContextInterface $ctx, GetHighlightObjectForTestRequest $request): GetHighlightObjectForTestResponse
-	{
+	public function getHighlightObjectForTest(
+		ContextInterface $ctx,
+		GetHighlightObjectForTestRequest $request
+	): GetHighlightObjectForTestResponse {
 		$response = $this->internalClient->executeCommand($ctx, 'Overlay.getHighlightObjectForTest', $request);
 		return GetHighlightObjectForTestResponse::fromJson($response);
 	}
 
 
-	public function getSourceOrderHighlightObjectForTest(ContextInterface $ctx, GetSourceOrderHighlightObjectForTestRequest $request): GetSourceOrderHighlightObjectForTestResponse
-	{
+	public function getSourceOrderHighlightObjectForTest(
+		ContextInterface $ctx,
+		GetSourceOrderHighlightObjectForTestRequest $request
+	): GetSourceOrderHighlightObjectForTestResponse {
 		$response = $this->internalClient->executeCommand($ctx, 'Overlay.getSourceOrderHighlightObjectForTest', $request);
 		return GetSourceOrderHighlightObjectForTestResponse::fromJson($response);
 	}
