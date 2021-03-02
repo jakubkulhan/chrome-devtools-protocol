@@ -57,6 +57,7 @@ use ChromeDevtoolsProtocol\Model\Page\NavigateToHistoryEntryRequest;
 use ChromeDevtoolsProtocol\Model\Page\NavigatedWithinDocumentEvent;
 use ChromeDevtoolsProtocol\Model\Page\PrintToPDFRequest;
 use ChromeDevtoolsProtocol\Model\Page\PrintToPDFResponse;
+use ChromeDevtoolsProtocol\Model\Page\ProduceCompilationCacheRequest;
 use ChromeDevtoolsProtocol\Model\Page\ReloadRequest;
 use ChromeDevtoolsProtocol\Model\Page\RemoveScriptToEvaluateOnLoadRequest;
 use ChromeDevtoolsProtocol\Model\Page\RemoveScriptToEvaluateOnNewDocumentRequest;
@@ -322,6 +323,12 @@ class PageDomain implements PageDomainInterface
 	{
 		$response = $this->internalClient->executeCommand($ctx, 'Page.printToPDF', $request);
 		return PrintToPDFResponse::fromJson($response);
+	}
+
+
+	public function produceCompilationCache(ContextInterface $ctx, ProduceCompilationCacheRequest $request): void
+	{
+		$this->internalClient->executeCommand($ctx, 'Page.produceCompilationCache', $request);
 	}
 
 
