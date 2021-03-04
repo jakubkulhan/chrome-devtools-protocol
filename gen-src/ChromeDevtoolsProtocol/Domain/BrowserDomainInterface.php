@@ -3,6 +3,7 @@
 namespace ChromeDevtoolsProtocol\Domain;
 
 use ChromeDevtoolsProtocol\ContextInterface;
+use ChromeDevtoolsProtocol\Model\Browser\CancelDownloadRequest;
 use ChromeDevtoolsProtocol\Model\Browser\ExecuteBrowserCommandRequest;
 use ChromeDevtoolsProtocol\Model\Browser\GetBrowserCommandLineResponse;
 use ChromeDevtoolsProtocol\Model\Browser\GetHistogramRequest;
@@ -30,6 +31,17 @@ use ChromeDevtoolsProtocol\Model\Browser\SetWindowBoundsRequest;
  */
 interface BrowserDomainInterface
 {
+	/**
+	 * Cancel a download if in progress
+	 *
+	 * @param ContextInterface $ctx
+	 * @param CancelDownloadRequest $request
+	 *
+	 * @return void
+	 */
+	public function cancelDownload(ContextInterface $ctx, CancelDownloadRequest $request): void;
+
+
 	/**
 	 * Close browser gracefully.
 	 *
