@@ -8,6 +8,8 @@ use ChromeDevtoolsProtocol\Model\Storage\CacheStorageContentUpdatedEvent;
 use ChromeDevtoolsProtocol\Model\Storage\CacheStorageListUpdatedEvent;
 use ChromeDevtoolsProtocol\Model\Storage\ClearCookiesRequest;
 use ChromeDevtoolsProtocol\Model\Storage\ClearDataForOriginRequest;
+use ChromeDevtoolsProtocol\Model\Storage\ClearTrustTokensRequest;
+use ChromeDevtoolsProtocol\Model\Storage\ClearTrustTokensResponse;
 use ChromeDevtoolsProtocol\Model\Storage\GetCookiesRequest;
 use ChromeDevtoolsProtocol\Model\Storage\GetCookiesResponse;
 use ChromeDevtoolsProtocol\Model\Storage\GetTrustTokensResponse;
@@ -44,6 +46,13 @@ class StorageDomain implements StorageDomainInterface
 	public function clearDataForOrigin(ContextInterface $ctx, ClearDataForOriginRequest $request): void
 	{
 		$this->internalClient->executeCommand($ctx, 'Storage.clearDataForOrigin', $request);
+	}
+
+
+	public function clearTrustTokens(ContextInterface $ctx, ClearTrustTokensRequest $request): ClearTrustTokensResponse
+	{
+		$response = $this->internalClient->executeCommand($ctx, 'Storage.clearTrustTokens', $request);
+		return ClearTrustTokensResponse::fromJson($response);
 	}
 
 

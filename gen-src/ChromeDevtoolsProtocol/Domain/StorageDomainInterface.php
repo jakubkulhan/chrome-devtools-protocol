@@ -7,6 +7,8 @@ use ChromeDevtoolsProtocol\Model\Storage\CacheStorageContentUpdatedEvent;
 use ChromeDevtoolsProtocol\Model\Storage\CacheStorageListUpdatedEvent;
 use ChromeDevtoolsProtocol\Model\Storage\ClearCookiesRequest;
 use ChromeDevtoolsProtocol\Model\Storage\ClearDataForOriginRequest;
+use ChromeDevtoolsProtocol\Model\Storage\ClearTrustTokensRequest;
+use ChromeDevtoolsProtocol\Model\Storage\ClearTrustTokensResponse;
 use ChromeDevtoolsProtocol\Model\Storage\GetCookiesRequest;
 use ChromeDevtoolsProtocol\Model\Storage\GetCookiesResponse;
 use ChromeDevtoolsProtocol\Model\Storage\GetTrustTokensResponse;
@@ -53,6 +55,17 @@ interface StorageDomainInterface
 	 * @return void
 	 */
 	public function clearDataForOrigin(ContextInterface $ctx, ClearDataForOriginRequest $request): void;
+
+
+	/**
+	 * Removes all Trust Tokens issued by the provided issuerOrigin. Leaves other stored data, including the issuer's Redemption Records, intact.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param ClearTrustTokensRequest $request
+	 *
+	 * @return ClearTrustTokensResponse
+	 */
+	public function clearTrustTokens(ContextInterface $ctx, ClearTrustTokensRequest $request): ClearTrustTokensResponse;
 
 
 	/**
