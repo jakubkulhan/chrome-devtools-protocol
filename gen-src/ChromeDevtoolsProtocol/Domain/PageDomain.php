@@ -45,6 +45,7 @@ use ChromeDevtoolsProtocol\Model\Page\GetResourceContentRequest;
 use ChromeDevtoolsProtocol\Model\Page\GetResourceContentResponse;
 use ChromeDevtoolsProtocol\Model\Page\GetResourceTreeResponse;
 use ChromeDevtoolsProtocol\Model\Page\HandleJavaScriptDialogRequest;
+use ChromeDevtoolsProtocol\Model\Page\HistoryNavigationOutcomeReportedEvent;
 use ChromeDevtoolsProtocol\Model\Page\InterstitialHiddenEvent;
 use ChromeDevtoolsProtocol\Model\Page\InterstitialShownEvent;
 use ChromeDevtoolsProtocol\Model\Page\JavascriptDialogClosedEvent;
@@ -692,6 +693,20 @@ class PageDomain implements PageDomainInterface
 	public function awaitFrameStoppedLoading(ContextInterface $ctx): FrameStoppedLoadingEvent
 	{
 		return FrameStoppedLoadingEvent::fromJson($this->internalClient->awaitEvent($ctx, 'Page.frameStoppedLoading'));
+	}
+
+
+	public function addHistoryNavigationOutcomeReportedListener(callable $listener): SubscriptionInterface
+	{
+		return $this->internalClient->addListener('Page.historyNavigationOutcomeReported', function ($event) use ($listener) {
+			return $listener(HistoryNavigationOutcomeReportedEvent::fromJson($event));
+		});
+	}
+
+
+	public function awaitHistoryNavigationOutcomeReported(ContextInterface $ctx): HistoryNavigationOutcomeReportedEvent
+	{
+		return HistoryNavigationOutcomeReportedEvent::fromJson($this->internalClient->awaitEvent($ctx, 'Page.historyNavigationOutcomeReported'));
 	}
 
 
