@@ -44,7 +44,6 @@ use ChromeDevtoolsProtocol\Model\Page\GetResourceContentRequest;
 use ChromeDevtoolsProtocol\Model\Page\GetResourceContentResponse;
 use ChromeDevtoolsProtocol\Model\Page\GetResourceTreeResponse;
 use ChromeDevtoolsProtocol\Model\Page\HandleJavaScriptDialogRequest;
-use ChromeDevtoolsProtocol\Model\Page\HistoryNavigationOutcomeReportedEvent;
 use ChromeDevtoolsProtocol\Model\Page\InterstitialHiddenEvent;
 use ChromeDevtoolsProtocol\Model\Page\InterstitialShownEvent;
 use ChromeDevtoolsProtocol\Model\Page\JavascriptDialogClosedEvent;
@@ -1067,30 +1066,6 @@ interface PageDomainInterface
 	 * @return FrameStoppedLoadingEvent
 	 */
 	public function awaitFrameStoppedLoading(ContextInterface $ctx): FrameStoppedLoadingEvent;
-
-
-	/**
-	 * Fired for all history navigations if BackForwardCache feature is enabled. Do not assume any ordering with the Page.frameNavigated event. This event is fired only for main-frame history navigation where the document changes (non-same-document navigations).
-	 *
-	 * Listener will be called whenever event Page.historyNavigationOutcomeReported is fired.
-	 *
-	 * @param callable $listener
-	 *
-	 * @return SubscriptionInterface
-	 */
-	public function addHistoryNavigationOutcomeReportedListener(callable $listener): SubscriptionInterface;
-
-
-	/**
-	 * Fired for all history navigations if BackForwardCache feature is enabled. Do not assume any ordering with the Page.frameNavigated event. This event is fired only for main-frame history navigation where the document changes (non-same-document navigations).
-	 *
-	 * Method will block until first Page.historyNavigationOutcomeReported event is fired.
-	 *
-	 * @param ContextInterface $ctx
-	 *
-	 * @return HistoryNavigationOutcomeReportedEvent
-	 */
-	public function awaitHistoryNavigationOutcomeReported(ContextInterface $ctx): HistoryNavigationOutcomeReportedEvent;
 
 
 	/**

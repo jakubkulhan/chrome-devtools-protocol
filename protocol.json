@@ -17842,28 +17842,6 @@
                     ]
                 },
                 {
-                    "name": "historyNavigationOutcomeReported",
-                    "description": "Fired for all history navigations if BackForwardCache feature is enabled. Do not assume any ordering with the Page.frameNavigated event. This event is fired only for main-frame history navigation where the document changes (non-same-document navigations).",
-                    "experimental": true,
-                    "parameters": [
-                        {
-                            "name": "requestId",
-                            "description": "The request id of the associated navigation.",
-                            "$ref": "Network.RequestId"
-                        },
-                        {
-                            "name": "frameId",
-                            "description": "The frame id of the associated frame.",
-                            "$ref": "FrameId"
-                        },
-                        {
-                            "name": "isRestoredFromBackForwardCache",
-                            "description": "Indicates whether the frame is restored from BackForwardCache.",
-                            "type": "boolean"
-                        }
-                    ]
-                },
-                {
                     "name": "interstitialHidden",
                     "description": "Fired when interstitial page was hidden"
                 },
@@ -21770,7 +21748,7 @@
                     "parameters": [
                         {
                             "name": "url",
-                            "description": "The initial URL the page will be navigated to.",
+                            "description": "The initial URL the page will be navigated to. An empty string indicates about:blank.",
                             "type": "string"
                         },
                         {

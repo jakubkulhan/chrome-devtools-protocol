@@ -12,7 +12,7 @@ namespace ChromeDevtoolsProtocol\Model\Target;
 final class CreateTargetRequest implements \JsonSerializable
 {
 	/**
-	 * The initial URL the page will be navigated to.
+	 * The initial URL the page will be navigated to. An empty string indicates about:blank.
 	 *
 	 * @var string
 	 */
