@@ -63,6 +63,13 @@ final class StartRequest implements \JsonSerializable
 	 */
 	public $perfettoConfig;
 
+	/**
+	 * Backend type (defaults to `auto`)
+	 *
+	 * @var string
+	 */
+	public $tracingBackend;
+
 
 	public static function fromJson($data)
 	{
@@ -90,6 +97,9 @@ final class StartRequest implements \JsonSerializable
 		}
 		if (isset($data->perfettoConfig)) {
 			$instance->perfettoConfig = (string)$data->perfettoConfig;
+		}
+		if (isset($data->tracingBackend)) {
+			$instance->tracingBackend = (string)$data->tracingBackend;
 		}
 		return $instance;
 	}
@@ -121,6 +131,9 @@ final class StartRequest implements \JsonSerializable
 		}
 		if ($this->perfettoConfig !== null) {
 			$data->perfettoConfig = $this->perfettoConfig;
+		}
+		if ($this->tracingBackend !== null) {
+			$data->tracingBackend = $this->tracingBackend;
 		}
 		return $data;
 	}

@@ -22233,6 +22233,16 @@
                         "light",
                         "detailed"
                     ]
+                },
+                {
+                    "id": "TracingBackend",
+                    "description": "Backend type to use for tracing. `chrome` uses the Chrome-integrated tracing service and is supported on all platforms. `system` is only supported on Chrome OS and uses the Perfetto system tracing service. `auto` chooses `system` when the perfettoConfig provided to Tracing.start specifies at least one non-Chrome data source; otherwise uses `chrome`.",
+                    "type": "string",
+                    "enum": [
+                        "auto",
+                        "chrome",
+                        "system"
+                    ]
                 }
             ],
             "commands": [
@@ -22351,6 +22361,12 @@
                             "description": "Base64-encoded serialized perfetto.protos.TraceConfig protobuf message When specified, the parameters `categories`, `options`, `traceConfig` are ignored. (Encoded as a base64 string when passed over JSON)",
                             "optional": true,
                             "type": "string"
+                        },
+                        {
+                            "name": "tracingBackend",
+                            "description": "Backend type (defaults to `auto`)",
+                            "optional": true,
+                            "$ref": "TracingBackend"
                         }
                     ]
                 }

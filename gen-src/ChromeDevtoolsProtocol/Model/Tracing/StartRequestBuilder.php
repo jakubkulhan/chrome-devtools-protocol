@@ -17,6 +17,7 @@ final class StartRequestBuilder
 	private $streamCompression;
 	private $traceConfig;
 	private $perfettoConfig;
+	private $tracingBackend;
 
 
 	/**
@@ -33,6 +34,7 @@ final class StartRequestBuilder
 		$instance->streamCompression = $this->streamCompression;
 		$instance->traceConfig = $this->traceConfig;
 		$instance->perfettoConfig = $this->perfettoConfig;
+		$instance->tracingBackend = $this->tracingBackend;
 		return $instance;
 	}
 
@@ -129,6 +131,18 @@ final class StartRequestBuilder
 	public function setPerfettoConfig($perfettoConfig): self
 	{
 		$this->perfettoConfig = $perfettoConfig;
+		return $this;
+	}
+
+
+	/**
+	 * @param string $tracingBackend
+	 *
+	 * @return self
+	 */
+	public function setTracingBackend($tracingBackend): self
+	{
+		$this->tracingBackend = $tracingBackend;
 		return $this;
 	}
 }
