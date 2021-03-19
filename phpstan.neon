@@ -1,4 +1,5 @@
 parameters:
+  checkMissingIterableValueType: false
   excludes_analyse:
   # Probably some messed-up imports in PHPStan 0.9, reports errors such as:
   # Method ChromeDevtoolsProtocol\Session::accessibility() should return ChromeDevtoolsProtocol\Domain\AccessibilityDomainInterface but returns object.
