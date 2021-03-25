@@ -39,6 +39,7 @@ use ChromeDevtoolsProtocol\Model\Network\ResponseReceivedEvent;
 use ChromeDevtoolsProtocol\Model\Network\ResponseReceivedExtraInfoEvent;
 use ChromeDevtoolsProtocol\Model\Network\SearchInResponseBodyRequest;
 use ChromeDevtoolsProtocol\Model\Network\SearchInResponseBodyResponse;
+use ChromeDevtoolsProtocol\Model\Network\SetAcceptedEncodingsRequest;
 use ChromeDevtoolsProtocol\Model\Network\SetAttachDebugStackRequest;
 use ChromeDevtoolsProtocol\Model\Network\SetBlockedURLsRequest;
 use ChromeDevtoolsProtocol\Model\Network\SetBypassServiceWorkerRequest;
@@ -103,6 +104,16 @@ interface NetworkDomainInterface
 	 * @return CanEmulateNetworkConditionsResponse
 	 */
 	public function canEmulateNetworkConditions(ContextInterface $ctx): CanEmulateNetworkConditionsResponse;
+
+
+	/**
+	 * Clears accepted encodings set by setAcceptedEncodings
+	 *
+	 * @param ContextInterface $ctx
+	 *
+	 * @return void
+	 */
+	public function clearAcceptedEncodingsOverride(ContextInterface $ctx): void;
 
 
 	/**
@@ -301,6 +312,17 @@ interface NetworkDomainInterface
 		ContextInterface $ctx,
 		SearchInResponseBodyRequest $request
 	): SearchInResponseBodyResponse;
+
+
+	/**
+	 * Sets a list of content encodings that will be accepted. Empty list means no encoding is accepted.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param SetAcceptedEncodingsRequest $request
+	 *
+	 * @return void
+	 */
+	public function setAcceptedEncodings(ContextInterface $ctx, SetAcceptedEncodingsRequest $request): void;
 
 
 	/**

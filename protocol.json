@@ -13217,6 +13217,17 @@
                     ]
                 },
                 {
+                    "id": "ContentEncoding",
+                    "description": "List of content encodings supported by the backend.",
+                    "experimental": true,
+                    "type": "string",
+                    "enum": [
+                        "deflate",
+                        "gzip",
+                        "br"
+                    ]
+                },
+                {
                     "id": "PrivateNetworkRequestPolicy",
                     "experimental": true,
                     "type": "string",
@@ -13437,6 +13448,11 @@
                             "type": "boolean"
                         }
                     ]
+                },
+                {
+                    "name": "clearAcceptedEncodingsOverride",
+                    "description": "Clears accepted encodings set by setAcceptedEncodings",
+                    "experimental": true
                 },
                 {
                     "name": "clearBrowserCache",
@@ -13810,6 +13826,21 @@
                             "type": "array",
                             "items": {
                                 "$ref": "Debugger.SearchMatch"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "setAcceptedEncodings",
+                    "description": "Sets a list of content encodings that will be accepted. Empty list means no encoding is accepted.",
+                    "experimental": true,
+                    "parameters": [
+                        {
+                            "name": "encodings",
+                            "description": "List of accepted content encodings.",
+                            "type": "array",
+                            "items": {
+                                "$ref": "ContentEncoding"
                             }
                         }
                     ]

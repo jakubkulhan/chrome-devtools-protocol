@@ -40,6 +40,7 @@ use ChromeDevtoolsProtocol\Model\Network\ResponseReceivedEvent;
 use ChromeDevtoolsProtocol\Model\Network\ResponseReceivedExtraInfoEvent;
 use ChromeDevtoolsProtocol\Model\Network\SearchInResponseBodyRequest;
 use ChromeDevtoolsProtocol\Model\Network\SearchInResponseBodyResponse;
+use ChromeDevtoolsProtocol\Model\Network\SetAcceptedEncodingsRequest;
 use ChromeDevtoolsProtocol\Model\Network\SetAttachDebugStackRequest;
 use ChromeDevtoolsProtocol\Model\Network\SetBlockedURLsRequest;
 use ChromeDevtoolsProtocol\Model\Network\SetBypassServiceWorkerRequest;
@@ -100,6 +101,13 @@ class NetworkDomain implements NetworkDomainInterface
 		$request = new \stdClass();
 		$response = $this->internalClient->executeCommand($ctx, 'Network.canEmulateNetworkConditions', $request);
 		return CanEmulateNetworkConditionsResponse::fromJson($response);
+	}
+
+
+	public function clearAcceptedEncodingsOverride(ContextInterface $ctx): void
+	{
+		$request = new \stdClass();
+		$this->internalClient->executeCommand($ctx, 'Network.clearAcceptedEncodingsOverride', $request);
 	}
 
 
@@ -225,6 +233,12 @@ class NetworkDomain implements NetworkDomainInterface
 	): SearchInResponseBodyResponse {
 		$response = $this->internalClient->executeCommand($ctx, 'Network.searchInResponseBody', $request);
 		return SearchInResponseBodyResponse::fromJson($response);
+	}
+
+
+	public function setAcceptedEncodings(ContextInterface $ctx, SetAcceptedEncodingsRequest $request): void
+	{
+		$this->internalClient->executeCommand($ctx, 'Network.setAcceptedEncodings', $request);
 	}
 
 
