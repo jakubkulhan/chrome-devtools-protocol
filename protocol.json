@@ -1471,6 +1471,11 @@
                             "$ref": "AffectedRequest"
                         },
                         {
+                            "name": "initiatorOrigin",
+                            "optional": true,
+                            "type": "string"
+                        },
+                        {
                             "name": "resourceIPAddressSpace",
                             "optional": true,
                             "$ref": "Network.IPAddressSpace"
