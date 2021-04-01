@@ -30,6 +30,7 @@ use ChromeDevtoolsProtocol\Model\Overlay\SetShowHitTestBordersRequest;
 use ChromeDevtoolsProtocol\Model\Overlay\SetShowLayoutShiftRegionsRequest;
 use ChromeDevtoolsProtocol\Model\Overlay\SetShowPaintRectsRequest;
 use ChromeDevtoolsProtocol\Model\Overlay\SetShowScrollBottleneckRectsRequest;
+use ChromeDevtoolsProtocol\Model\Overlay\SetShowScrollSnapOverlaysRequest;
 use ChromeDevtoolsProtocol\Model\Overlay\SetShowViewportSizeOnResizeRequest;
 use ChromeDevtoolsProtocol\Model\Overlay\SetShowWebVitalsRequest;
 use ChromeDevtoolsProtocol\SubscriptionInterface;
@@ -302,6 +303,17 @@ interface OverlayDomainInterface
 	 * @return void
 	 */
 	public function setShowScrollBottleneckRects(ContextInterface $ctx, SetShowScrollBottleneckRectsRequest $request): void;
+
+
+	/**
+	 * Call Overlay.setShowScrollSnapOverlays command.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param SetShowScrollSnapOverlaysRequest $request
+	 *
+	 * @return void
+	 */
+	public function setShowScrollSnapOverlays(ContextInterface $ctx, SetShowScrollSnapOverlaysRequest $request): void;
 
 
 	/**

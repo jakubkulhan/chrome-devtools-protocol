@@ -31,6 +31,7 @@ use ChromeDevtoolsProtocol\Model\Overlay\SetShowHitTestBordersRequest;
 use ChromeDevtoolsProtocol\Model\Overlay\SetShowLayoutShiftRegionsRequest;
 use ChromeDevtoolsProtocol\Model\Overlay\SetShowPaintRectsRequest;
 use ChromeDevtoolsProtocol\Model\Overlay\SetShowScrollBottleneckRectsRequest;
+use ChromeDevtoolsProtocol\Model\Overlay\SetShowScrollSnapOverlaysRequest;
 use ChromeDevtoolsProtocol\Model\Overlay\SetShowViewportSizeOnResizeRequest;
 use ChromeDevtoolsProtocol\Model\Overlay\SetShowWebVitalsRequest;
 use ChromeDevtoolsProtocol\SubscriptionInterface;
@@ -194,6 +195,12 @@ class OverlayDomain implements OverlayDomainInterface
 	public function setShowScrollBottleneckRects(ContextInterface $ctx, SetShowScrollBottleneckRectsRequest $request): void
 	{
 		$this->internalClient->executeCommand($ctx, 'Overlay.setShowScrollBottleneckRects', $request);
+	}
+
+
+	public function setShowScrollSnapOverlays(ContextInterface $ctx, SetShowScrollSnapOverlaysRequest $request): void
+	{
+		$this->internalClient->executeCommand($ctx, 'Overlay.setShowScrollSnapOverlays', $request);
 	}
 
 
