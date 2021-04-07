@@ -32,6 +32,13 @@ final class SetDownloadBehaviorRequest implements \JsonSerializable
 	 */
 	public $downloadPath;
 
+	/**
+	 * Whether to emit download events (defaults to false).
+	 *
+	 * @var bool|null
+	 */
+	public $eventsEnabled;
+
 
 	public static function fromJson($data)
 	{
@@ -44,6 +51,9 @@ final class SetDownloadBehaviorRequest implements \JsonSerializable
 		}
 		if (isset($data->downloadPath)) {
 			$instance->downloadPath = (string)$data->downloadPath;
+		}
+		if (isset($data->eventsEnabled)) {
+			$instance->eventsEnabled = (bool)$data->eventsEnabled;
 		}
 		return $instance;
 	}
@@ -60,6 +70,9 @@ final class SetDownloadBehaviorRequest implements \JsonSerializable
 		}
 		if ($this->downloadPath !== null) {
 			$data->downloadPath = $this->downloadPath;
+		}
+		if ($this->eventsEnabled !== null) {
+			$data->eventsEnabled = $this->eventsEnabled;
 		}
 		return $data;
 	}

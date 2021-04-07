@@ -14,6 +14,7 @@ final class SetDownloadBehaviorRequestBuilder
 	private $behavior;
 	private $browserContextId;
 	private $downloadPath;
+	private $eventsEnabled;
 
 
 	/**
@@ -28,6 +29,7 @@ final class SetDownloadBehaviorRequestBuilder
 		$instance->behavior = $this->behavior;
 		$instance->browserContextId = $this->browserContextId;
 		$instance->downloadPath = $this->downloadPath;
+		$instance->eventsEnabled = $this->eventsEnabled;
 		return $instance;
 	}
 
@@ -64,6 +66,18 @@ final class SetDownloadBehaviorRequestBuilder
 	public function setDownloadPath($downloadPath): self
 	{
 		$this->downloadPath = $downloadPath;
+		return $this;
+	}
+
+
+	/**
+	 * @param bool|null $eventsEnabled
+	 *
+	 * @return self
+	 */
+	public function setEventsEnabled($eventsEnabled): self
+	{
+		$this->eventsEnabled = $eventsEnabled;
 		return $this;
 	}
 }

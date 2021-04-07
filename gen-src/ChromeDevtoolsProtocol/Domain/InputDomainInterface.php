@@ -3,6 +3,7 @@
 namespace ChromeDevtoolsProtocol\Domain;
 
 use ChromeDevtoolsProtocol\ContextInterface;
+use ChromeDevtoolsProtocol\Model\Input\DispatchDragEventRequest;
 use ChromeDevtoolsProtocol\Model\Input\DispatchKeyEventRequest;
 use ChromeDevtoolsProtocol\Model\Input\DispatchMouseEventRequest;
 use ChromeDevtoolsProtocol\Model\Input\DispatchTouchEventRequest;
@@ -22,6 +23,17 @@ use ChromeDevtoolsProtocol\Model\Input\SynthesizeTapGestureRequest;
  */
 interface InputDomainInterface
 {
+	/**
+	 * Dispatches a drag event into the page.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param DispatchDragEventRequest $request
+	 *
+	 * @return void
+	 */
+	public function dispatchDragEvent(ContextInterface $ctx, DispatchDragEventRequest $request): void;
+
+
 	/**
 	 * Dispatches a key event to the page.
 	 *

@@ -1,9 +1,9 @@
 <?php
 
-namespace ChromeDevtoolsProtocol\Model\Page;
+namespace ChromeDevtoolsProtocol\Model\Browser;
 
 /**
- * Fired when page is about to start a download. Deprecated. Use Browser.downloadWillBegin instead.
+ * Fired when page is about to start a download.
  *
  * @generated This file has been auto-generated, do not edit.
  *
@@ -12,7 +12,7 @@ namespace ChromeDevtoolsProtocol\Model\Page;
 final class DownloadWillBeginEvent implements \JsonSerializable
 {
 	/**
-	 * Id of the frame that caused download to begin.
+	 * Id of the frame that caused the download to begin.
 	 *
 	 * @var string
 	 */

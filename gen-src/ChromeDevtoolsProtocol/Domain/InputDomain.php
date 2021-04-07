@@ -4,6 +4,7 @@ namespace ChromeDevtoolsProtocol\Domain;
 
 use ChromeDevtoolsProtocol\ContextInterface;
 use ChromeDevtoolsProtocol\InternalClientInterface;
+use ChromeDevtoolsProtocol\Model\Input\DispatchDragEventRequest;
 use ChromeDevtoolsProtocol\Model\Input\DispatchKeyEventRequest;
 use ChromeDevtoolsProtocol\Model\Input\DispatchMouseEventRequest;
 use ChromeDevtoolsProtocol\Model\Input\DispatchTouchEventRequest;
@@ -23,6 +24,12 @@ class InputDomain implements InputDomainInterface
 	public function __construct(InternalClientInterface $internalClient)
 	{
 		$this->internalClient = $internalClient;
+	}
+
+
+	public function dispatchDragEvent(ContextInterface $ctx, DispatchDragEventRequest $request): void
+	{
+		$this->internalClient->executeCommand($ctx, 'Input.dispatchDragEvent', $request);
 	}
 
 

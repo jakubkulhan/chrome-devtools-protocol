@@ -1,9 +1,9 @@
 <?php
 
-namespace ChromeDevtoolsProtocol\Model\Page;
+namespace ChromeDevtoolsProtocol\Model\Browser;
 
 /**
- * Fired when download makes progress. Last call has |done| == true. Deprecated. Use Browser.downloadProgress instead.
+ * Fired when download makes progress. Last call has |done| == true.
  *
  * @generated This file has been auto-generated, do not edit.
  *

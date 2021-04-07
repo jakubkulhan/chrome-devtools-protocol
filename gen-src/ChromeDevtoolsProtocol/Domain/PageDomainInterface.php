@@ -781,7 +781,7 @@ interface PageDomainInterface
 
 
 	/**
-	 * Fired when download makes progress. Last call has |done| == true.
+	 * Fired when download makes progress. Last call has |done| == true. Deprecated. Use Browser.downloadProgress instead.
 	 *
 	 * Listener will be called whenever event Page.downloadProgress is fired.
 	 *
@@ -793,7 +793,7 @@ interface PageDomainInterface
 
 
 	/**
-	 * Fired when download makes progress. Last call has |done| == true.
+	 * Fired when download makes progress. Last call has |done| == true. Deprecated. Use Browser.downloadProgress instead.
 	 *
 	 * Method will block until first Page.downloadProgress event is fired.
 	 *
@@ -805,7 +805,7 @@ interface PageDomainInterface
 
 
 	/**
-	 * Fired when page is about to start a download.
+	 * Fired when page is about to start a download. Deprecated. Use Browser.downloadWillBegin instead.
 	 *
 	 * Listener will be called whenever event Page.downloadWillBegin is fired.
 	 *
@@ -817,7 +817,7 @@ interface PageDomainInterface
 
 
 	/**
-	 * Fired when page is about to start a download.
+	 * Fired when page is about to start a download. Deprecated. Use Browser.downloadWillBegin instead.
 	 *
 	 * Method will block until first Page.downloadWillBegin event is fired.
 	 *
