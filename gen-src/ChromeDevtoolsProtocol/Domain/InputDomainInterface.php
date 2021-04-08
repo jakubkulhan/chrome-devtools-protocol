@@ -7,12 +7,15 @@ use ChromeDevtoolsProtocol\Model\Input\DispatchDragEventRequest;
 use ChromeDevtoolsProtocol\Model\Input\DispatchKeyEventRequest;
 use ChromeDevtoolsProtocol\Model\Input\DispatchMouseEventRequest;
 use ChromeDevtoolsProtocol\Model\Input\DispatchTouchEventRequest;
+use ChromeDevtoolsProtocol\Model\Input\DragInterceptedEvent;
 use ChromeDevtoolsProtocol\Model\Input\EmulateTouchFromMouseEventRequest;
 use ChromeDevtoolsProtocol\Model\Input\InsertTextRequest;
 use ChromeDevtoolsProtocol\Model\Input\SetIgnoreInputEventsRequest;
+use ChromeDevtoolsProtocol\Model\Input\SetInterceptDragsRequest;
 use ChromeDevtoolsProtocol\Model\Input\SynthesizePinchGestureRequest;
 use ChromeDevtoolsProtocol\Model\Input\SynthesizeScrollGestureRequest;
 use ChromeDevtoolsProtocol\Model\Input\SynthesizeTapGestureRequest;
+use ChromeDevtoolsProtocol\SubscriptionInterface;
 
 /**
  * Input domain.
@@ -101,6 +104,17 @@ interface InputDomainInterface
 
 
 	/**
+	 * Prevents default drag and drop behavior and instead emits `Input.dragIntercepted` events. Drag and drop behavior can be directly controlled via `Input.dispatchDragEvent`.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param SetInterceptDragsRequest $request
+	 *
+	 * @return void
+	 */
+	public function setInterceptDrags(ContextInterface $ctx, SetInterceptDragsRequest $request): void;
+
+
+	/**
 	 * Synthesizes a pinch gesture over a time period by issuing appropriate touch events.
 	 *
 	 * @param ContextInterface $ctx
@@ -131,4 +145,28 @@ interface InputDomainInterface
 	 * @return void
 	 */
 	public function synthesizeTapGesture(ContextInterface $ctx, SynthesizeTapGestureRequest $request): void;
+
+
+	/**
+	 * Emitted only when `Input.setInterceptDrags` is enabled. Use this data with `Input.dispatchDragEvent` to restore normal drag and drop behavior.
+	 *
+	 * Listener will be called whenever event Input.dragIntercepted is fired.
+	 *
+	 * @param callable $listener
+	 *
+	 * @return SubscriptionInterface
+	 */
+	public function addDragInterceptedListener(callable $listener): SubscriptionInterface;
+
+
+	/**
+	 * Emitted only when `Input.setInterceptDrags` is enabled. Use this data with `Input.dispatchDragEvent` to restore normal drag and drop behavior.
+	 *
+	 * Method will block until first Input.dragIntercepted event is fired.
+	 *
+	 * @param ContextInterface $ctx
+	 *
+	 * @return DragInterceptedEvent
+	 */
+	public function awaitDragIntercepted(ContextInterface $ctx): DragInterceptedEvent;
 }
