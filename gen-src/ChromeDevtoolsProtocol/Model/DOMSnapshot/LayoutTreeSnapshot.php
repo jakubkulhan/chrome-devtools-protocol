@@ -74,6 +74,20 @@ final class LayoutTreeSnapshot implements \JsonSerializable
 	 */
 	public $clientRects;
 
+	/**
+	 * The list of background colors that are blended with colors of overlapping elements.
+	 *
+	 * @var int[]|null
+	 */
+	public $blendedBackgroundColors;
+
+	/**
+	 * The list of computed text opacities.
+	 *
+	 * @var int[]|float[]|null
+	 */
+	public $textColorOpacities;
+
 
 	public static function fromJson($data)
 	{
@@ -166,6 +180,21 @@ final class LayoutTreeSnapshot implements \JsonSerializable
 				$instance->clientRects[] = $nested;
 			}
 		}
+		}
+		if (isset($data->blendedBackgroundColors)) {
+			$instance->blendedBackgroundColors = [];
+		if (isset($data->blendedBackgroundColors)) {
+			$instance->blendedBackgroundColors = [];
+			foreach ($data->blendedBackgroundColors as $item) {
+				$instance->blendedBackgroundColors[] = (int)$item;
+			}
+		}
+		}
+		if (isset($data->textColorOpacities)) {
+			$instance->textColorOpacities = [];
+			foreach ($data->textColorOpacities as $item) {
+				$instance->textColorOpacities[] = $item;
+			}
 		}
 		return $instance;
 	}
@@ -262,6 +291,21 @@ final class LayoutTreeSnapshot implements \JsonSerializable
 				$data->clientRects[] = $nested;
 			}
 		}
+		}
+		if ($this->blendedBackgroundColors !== null) {
+			$data->blendedBackgroundColors = [];
+		if ($this->blendedBackgroundColors !== null) {
+			$data->blendedBackgroundColors = [];
+			foreach ($this->blendedBackgroundColors as $item) {
+				$data->blendedBackgroundColors[] = $item;
+			}
+		}
+		}
+		if ($this->textColorOpacities !== null) {
+			$data->textColorOpacities = [];
+			foreach ($this->textColorOpacities as $item) {
+				$data->textColorOpacities[] = $item;
+			}
 		}
 		return $data;
 	}

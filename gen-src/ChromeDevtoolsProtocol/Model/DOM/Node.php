@@ -187,7 +187,7 @@ final class Node implements \JsonSerializable
 	public $pseudoElements;
 
 	/**
-	 * Import document for the HTMLImport links.
+	 * Deprecated, as the HTML Imports API has been removed (crbug.com/937746). This property used to return the imported document for the HTMLImport links. The property is always undefined now.
 	 *
 	 * @var Node|null
 	 */
