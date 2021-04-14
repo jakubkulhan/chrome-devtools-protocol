@@ -38,6 +38,9 @@ final class InspectorIssueDetails implements \JsonSerializable
 	/** @var CorsIssueDetails|null */
 	public $corsIssueDetails;
 
+	/** @var AttributionReportingIssueDetails|null */
+	public $attributionReportingIssueDetails;
+
 
 	public static function fromJson($data)
 	{
@@ -68,6 +71,9 @@ final class InspectorIssueDetails implements \JsonSerializable
 		}
 		if (isset($data->corsIssueDetails)) {
 			$instance->corsIssueDetails = CorsIssueDetails::fromJson($data->corsIssueDetails);
+		}
+		if (isset($data->attributionReportingIssueDetails)) {
+			$instance->attributionReportingIssueDetails = AttributionReportingIssueDetails::fromJson($data->attributionReportingIssueDetails);
 		}
 		return $instance;
 	}
@@ -102,6 +108,9 @@ final class InspectorIssueDetails implements \JsonSerializable
 		}
 		if ($this->corsIssueDetails !== null) {
 			$data->corsIssueDetails = $this->corsIssueDetails->jsonSerialize();
+		}
+		if ($this->attributionReportingIssueDetails !== null) {
+			$data->attributionReportingIssueDetails = $this->attributionReportingIssueDetails->jsonSerialize();
 		}
 		return $data;
 	}

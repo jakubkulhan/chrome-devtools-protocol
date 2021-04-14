@@ -20,4 +20,5 @@ final class InspectorIssueCodeEnum
 	const TRUSTED_WEB_ACTIVITY_ISSUE = 'TrustedWebActivityIssue';
 	const LOW_TEXT_CONTRAST_ISSUE = 'LowTextContrastIssue';
 	const CORS_ISSUE = 'CorsIssue';
+	const ATTRIBUTION_REPORTING_ISSUE = 'AttributionReportingIssue';
 }
