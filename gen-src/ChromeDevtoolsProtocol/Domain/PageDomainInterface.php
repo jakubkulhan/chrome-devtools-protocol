@@ -8,6 +8,7 @@ use ChromeDevtoolsProtocol\Model\Page\AddScriptToEvaluateOnLoadRequest;
 use ChromeDevtoolsProtocol\Model\Page\AddScriptToEvaluateOnLoadResponse;
 use ChromeDevtoolsProtocol\Model\Page\AddScriptToEvaluateOnNewDocumentRequest;
 use ChromeDevtoolsProtocol\Model\Page\AddScriptToEvaluateOnNewDocumentResponse;
+use ChromeDevtoolsProtocol\Model\Page\BackForwardCacheNotUsedEvent;
 use ChromeDevtoolsProtocol\Model\Page\CaptureScreenshotRequest;
 use ChromeDevtoolsProtocol\Model\Page\CaptureScreenshotResponse;
 use ChromeDevtoolsProtocol\Model\Page\CaptureSnapshotRequest;
@@ -706,6 +707,30 @@ interface PageDomainInterface
 	 * @return void
 	 */
 	public function waitForDebugger(ContextInterface $ctx): void;
+
+
+	/**
+	 * Fired for failed bfcache history navigations if BackForwardCache feature is enabled. Do not assume any ordering with the Page.frameNavigated event. This event is fired only for main-frame history navigation where the document changes (non-same-document navigations), when bfcache navigation fails.
+	 *
+	 * Listener will be called whenever event Page.backForwardCacheNotUsed is fired.
+	 *
+	 * @param callable $listener
+	 *
+	 * @return SubscriptionInterface
+	 */
+	public function addBackForwardCacheNotUsedListener(callable $listener): SubscriptionInterface;
+
+
+	/**
+	 * Fired for failed bfcache history navigations if BackForwardCache feature is enabled. Do not assume any ordering with the Page.frameNavigated event. This event is fired only for main-frame history navigation where the document changes (non-same-document navigations), when bfcache navigation fails.
+	 *
+	 * Method will block until first Page.backForwardCacheNotUsed event is fired.
+	 *
+	 * @param ContextInterface $ctx
+	 *
+	 * @return BackForwardCacheNotUsedEvent
+	 */
+	public function awaitBackForwardCacheNotUsed(ContextInterface $ctx): BackForwardCacheNotUsedEvent;
 
 
 	/**

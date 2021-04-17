@@ -9,6 +9,7 @@ use ChromeDevtoolsProtocol\Model\Page\AddScriptToEvaluateOnLoadRequest;
 use ChromeDevtoolsProtocol\Model\Page\AddScriptToEvaluateOnLoadResponse;
 use ChromeDevtoolsProtocol\Model\Page\AddScriptToEvaluateOnNewDocumentRequest;
 use ChromeDevtoolsProtocol\Model\Page\AddScriptToEvaluateOnNewDocumentResponse;
+use ChromeDevtoolsProtocol\Model\Page\BackForwardCacheNotUsedEvent;
 use ChromeDevtoolsProtocol\Model\Page\CaptureScreenshotRequest;
 use ChromeDevtoolsProtocol\Model\Page\CaptureScreenshotResponse;
 use ChromeDevtoolsProtocol\Model\Page\CaptureSnapshotRequest;
@@ -482,6 +483,20 @@ class PageDomain implements PageDomainInterface
 	{
 		$request = new \stdClass();
 		$this->internalClient->executeCommand($ctx, 'Page.waitForDebugger', $request);
+	}
+
+
+	public function addBackForwardCacheNotUsedListener(callable $listener): SubscriptionInterface
+	{
+		return $this->internalClient->addListener('Page.backForwardCacheNotUsed', function ($event) use ($listener) {
+			return $listener(BackForwardCacheNotUsedEvent::fromJson($event));
+		});
+	}
+
+
+	public function awaitBackForwardCacheNotUsed(ContextInterface $ctx): BackForwardCacheNotUsedEvent
+	{
+		return BackForwardCacheNotUsedEvent::fromJson($this->internalClient->awaitEvent($ctx, 'Page.backForwardCacheNotUsed'));
 	}
 
 

@@ -46,6 +46,13 @@ final class VirtualAuthenticatorOptions implements \JsonSerializable
 	public $hasLargeBlob;
 
 	/**
+	 * If set to true, the authenticator will support the credBlob extension. https://fidoalliance.org/specs/fido-v2.1-rd-20201208/fido-client-to-authenticator-protocol-v2.1-rd-20201208.html#sctn-credBlob-extension Defaults to false.
+	 *
+	 * @var bool|null
+	 */
+	public $hasCredBlob;
+
+	/**
 	 * If set to true, tests of user presence will succeed immediately. Otherwise, they will not be resolved. Defaults to true.
 	 *
 	 * @var bool|null
@@ -81,6 +88,9 @@ final class VirtualAuthenticatorOptions implements \JsonSerializable
 		if (isset($data->hasLargeBlob)) {
 			$instance->hasLargeBlob = (bool)$data->hasLargeBlob;
 		}
+		if (isset($data->hasCredBlob)) {
+			$instance->hasCredBlob = (bool)$data->hasCredBlob;
+		}
 		if (isset($data->automaticPresenceSimulation)) {
 			$instance->automaticPresenceSimulation = (bool)$data->automaticPresenceSimulation;
 		}
@@ -111,6 +121,9 @@ final class VirtualAuthenticatorOptions implements \JsonSerializable
 		}
 		if ($this->hasLargeBlob !== null) {
 			$data->hasLargeBlob = $this->hasLargeBlob;
+		}
+		if ($this->hasCredBlob !== null) {
+			$data->hasCredBlob = $this->hasCredBlob;
 		}
 		if ($this->automaticPresenceSimulation !== null) {
 			$data->automaticPresenceSimulation = $this->automaticPresenceSimulation;
