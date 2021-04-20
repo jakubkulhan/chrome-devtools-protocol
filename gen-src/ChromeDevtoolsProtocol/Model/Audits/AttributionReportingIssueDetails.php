@@ -23,6 +23,9 @@ final class AttributionReportingIssueDetails implements \JsonSerializable
 	/** @var int */
 	public $violatingNodeId;
 
+	/** @var string|null */
+	public $invalidParameter;
+
 
 	public static function fromJson($data)
 	{
@@ -38,6 +41,9 @@ final class AttributionReportingIssueDetails implements \JsonSerializable
 		}
 		if (isset($data->violatingNodeId)) {
 			$instance->violatingNodeId = (int)$data->violatingNodeId;
+		}
+		if (isset($data->invalidParameter)) {
+			$instance->invalidParameter = (string)$data->invalidParameter;
 		}
 		return $instance;
 	}
@@ -57,6 +63,9 @@ final class AttributionReportingIssueDetails implements \JsonSerializable
 		}
 		if ($this->violatingNodeId !== null) {
 			$data->violatingNodeId = $this->violatingNodeId;
+		}
+		if ($this->invalidParameter !== null) {
+			$data->invalidParameter = $this->invalidParameter;
 		}
 		return $data;
 	}
