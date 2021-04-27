@@ -26,7 +26,7 @@ final class SetDownloadBehaviorRequest implements \JsonSerializable
 	public $browserContextId;
 
 	/**
-	 * The default path to save downloaded files to. This is requred if behavior is set to 'allow' or 'allowAndName'.
+	 * The default path to save downloaded files to. This is required if behavior is set to 'allow' or 'allowAndName'.
 	 *
 	 * @var string|null
 	 */

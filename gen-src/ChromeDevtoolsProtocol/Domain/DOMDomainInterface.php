@@ -758,7 +758,7 @@ interface DOMDomainInterface
 
 
 	/**
-	 * Called when distrubution is changed.
+	 * Called when distribution is changed.
 	 *
 	 * Listener will be called whenever event DOM.distributedNodesUpdated is fired.
 	 *
@@ -770,7 +770,7 @@ interface DOMDomainInterface
 
 
 	/**
-	 * Called when distrubution is changed.
+	 * Called when distribution is changed.
 	 *
 	 * Method will block until first DOM.distributedNodesUpdated event is fired.
 	 *

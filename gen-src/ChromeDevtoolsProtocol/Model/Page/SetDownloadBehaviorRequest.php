@@ -19,7 +19,7 @@ final class SetDownloadBehaviorRequest implements \JsonSerializable
 	public $behavior;
 
 	/**
-	 * The default path to save downloaded files to. This is requred if behavior is set to 'allow'
+	 * The default path to save downloaded files to. This is required if behavior is set to 'allow'
 	 *
 	 * @var string|null
 	 */

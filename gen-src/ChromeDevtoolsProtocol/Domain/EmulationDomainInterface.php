@@ -49,7 +49,7 @@ interface EmulationDomainInterface
 
 
 	/**
-	 * Clears the overriden device metrics.
+	 * Clears the overridden device metrics.
 	 *
 	 * @param ContextInterface $ctx
 	 *
@@ -59,7 +59,7 @@ interface EmulationDomainInterface
 
 
 	/**
-	 * Clears the overriden Geolocation Position and Error.
+	 * Clears the overridden Geolocation Position and Error.
 	 *
 	 * @param ContextInterface $ctx
 	 *

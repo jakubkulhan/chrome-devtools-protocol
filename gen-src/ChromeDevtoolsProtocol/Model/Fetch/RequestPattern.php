@@ -26,7 +26,7 @@ final class RequestPattern implements \JsonSerializable
 	public $resourceType;
 
 	/**
-	 * Stage at wich to begin intercepting requests. Default is Request.
+	 * Stage at which to begin intercepting requests. Default is Request.
 	 *
 	 * @var string
 	 */

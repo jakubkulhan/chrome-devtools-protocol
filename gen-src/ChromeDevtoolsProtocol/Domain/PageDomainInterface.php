@@ -175,7 +175,7 @@ interface PageDomainInterface
 
 
 	/**
-	 * Clears the overriden device metrics.
+	 * Clears the overridden device metrics.
 	 *
 	 * @param ContextInterface $ctx
 	 *
@@ -195,7 +195,7 @@ interface PageDomainInterface
 
 
 	/**
-	 * Clears the overriden Geolocation Position and Error.
+	 * Clears the overridden Geolocation Position and Error.
 	 *
 	 * @param ContextInterface $ctx
 	 *

@@ -36,7 +36,7 @@ final class SetVirtualTimePolicyRequest implements \JsonSerializable
 	public $waitForNavigation;
 
 	/**
-	 * If set, base::Time::Now will be overriden to initially return this value.
+	 * If set, base::Time::Now will be overridden to initially return this value.
 	 *
 	 * @var int|float
 	 */
