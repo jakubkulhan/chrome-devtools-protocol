@@ -1492,7 +1492,8 @@
                     "type": "string",
                     "enum": [
                         "PermissionPolicyDisabled",
-                        "InvalidAttributionData"
+                        "InvalidAttributionData",
+                        "AttributionSourceUntrustworthyOrigin"
                     ]
                 },
                 {

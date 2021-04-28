@@ -13,4 +13,5 @@ final class AttributionReportingIssueTypeEnum
 {
 	const PERMISSION_POLICY_DISABLED = 'PermissionPolicyDisabled';
 	const INVALID_ATTRIBUTION_DATA = 'InvalidAttributionData';
+	const ATTRIBUTION_SOURCE_UNTRUSTWORTHY_ORIGIN = 'AttributionSourceUntrustworthyOrigin';
 }
