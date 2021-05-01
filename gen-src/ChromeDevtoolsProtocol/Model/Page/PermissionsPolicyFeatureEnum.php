@@ -57,6 +57,7 @@ final class PermissionsPolicyFeatureEnum
 	const PUBLICKEY_CREDENTIALS_GET = 'publickey-credentials-get';
 	const SCREEN_WAKE_LOCK = 'screen-wake-lock';
 	const SERIAL = 'serial';
+	const SHARED_AUTOFILL = 'shared-autofill';
 	const STORAGE_ACCESS_API = 'storage-access-api';
 	const SYNC_XHR = 'sync-xhr';
 	const TRUST_TOKEN_REDEMPTION = 'trust-token-redemption';

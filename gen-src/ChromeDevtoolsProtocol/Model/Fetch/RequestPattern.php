@@ -12,7 +12,7 @@ namespace ChromeDevtoolsProtocol\Model\Fetch;
 final class RequestPattern implements \JsonSerializable
 {
 	/**
-	 * Wildcards ('*' -> zero or more, '?' -> exactly one) are allowed. Escape character is backslash. Omitting is equivalent to "*".
+	 * Wildcards (`'*'` -> zero or more, `'?'` -> exactly one) are allowed. Escape character is backslash. Omitting is equivalent to `"*"`.
 	 *
 	 * @var string|null
 	 */
