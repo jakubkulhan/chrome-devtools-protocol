@@ -34,6 +34,7 @@ final class PermissionsPolicyFeatureEnum
 	const CLIPBOARD_WRITE = 'clipboard-write';
 	const CONVERSION_MEASUREMENT = 'conversion-measurement';
 	const CROSS_ORIGIN_ISOLATED = 'cross-origin-isolated';
+	const DIRECT_SOCKETS = 'direct-sockets';
 	const DISPLAY_CAPTURE = 'display-capture';
 	const DOCUMENT_DOMAIN = 'document-domain';
 	const ENCRYPTED_MEDIA = 'encrypted-media';
