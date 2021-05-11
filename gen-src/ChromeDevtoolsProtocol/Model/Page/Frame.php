@@ -109,6 +109,13 @@ final class Frame implements \JsonSerializable
 	 */
 	public $gatedAPIFeatures;
 
+	/**
+	 * Frame document's origin trials with at least one token present.
+	 *
+	 * @var OriginTrial[]|null
+	 */
+	public $originTrials;
+
 
 	public static function fromJson($data)
 	{
@@ -160,6 +167,12 @@ final class Frame implements \JsonSerializable
 				$instance->gatedAPIFeatures[] = (string)$item;
 			}
 		}
+		}
+		if (isset($data->originTrials)) {
+			$instance->originTrials = [];
+			foreach ($data->originTrials as $item) {
+				$instance->originTrials[] = OriginTrial::fromJson($item);
+			}
 		}
 		return $instance;
 	}
@@ -215,6 +228,12 @@ final class Frame implements \JsonSerializable
 				$data->gatedAPIFeatures[] = $item;
 			}
 		}
+		}
+		if ($this->originTrials !== null) {
+			$data->originTrials = [];
+			foreach ($this->originTrials as $item) {
+				$data->originTrials[] = $item->jsonSerialize();
+			}
 		}
 		return $data;
 	}
