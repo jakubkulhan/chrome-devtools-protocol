@@ -1530,6 +1530,34 @@
                     ]
                 },
                 {
+                    "id": "QuirksModeIssueDetails",
+                    "description": "Details for issues about documents in Quirks Mode or Limited Quirks Mode that affects page layouting.",
+                    "type": "object",
+                    "properties": [
+                        {
+                            "name": "isLimitedQuirksMode",
+                            "description": "If false, it means the document's mode is \"quirks\" instead of \"limited-quirks\".",
+                            "type": "boolean"
+                        },
+                        {
+                            "name": "documentNodeId",
+                            "$ref": "DOM.BackendNodeId"
+                        },
+                        {
+                            "name": "url",
+                            "type": "string"
+                        },
+                        {
+                            "name": "frameId",
+                            "$ref": "Page.FrameId"
+                        },
+                        {
+                            "name": "loaderId",
+                            "$ref": "Network.LoaderId"
+                        }
+                    ]
+                },
+                {
                     "id": "InspectorIssueCode",
                     "description": "A unique identifier for the type of issue. Each type may use one of the optional fields in InspectorIssueDetails to convey more specific information about the kind of issue.",
                     "type": "string",
@@ -1543,7 +1571,8 @@
                         "TrustedWebActivityIssue",
                         "LowTextContrastIssue",
                         "CorsIssue",
-                        "AttributionReportingIssue"
+                        "AttributionReportingIssue",
+                        "QuirksModeIssue"
                     ]
                 },
                 {
@@ -1600,6 +1629,11 @@
                             "name": "attributionReportingIssueDetails",
                             "optional": true,
                             "$ref": "AttributionReportingIssueDetails"
+                        },
+                        {
+                            "name": "quirksModeIssueDetails",
+                            "optional": true,
+                            "$ref": "QuirksModeIssueDetails"
                         }
                     ]
                 },

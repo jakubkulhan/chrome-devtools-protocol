@@ -41,6 +41,9 @@ final class InspectorIssueDetails implements \JsonSerializable
 	/** @var AttributionReportingIssueDetails|null */
 	public $attributionReportingIssueDetails;
 
+	/** @var QuirksModeIssueDetails|null */
+	public $quirksModeIssueDetails;
+
 
 	public static function fromJson($data)
 	{
@@ -74,6 +77,9 @@ final class InspectorIssueDetails implements \JsonSerializable
 		}
 		if (isset($data->attributionReportingIssueDetails)) {
 			$instance->attributionReportingIssueDetails = AttributionReportingIssueDetails::fromJson($data->attributionReportingIssueDetails);
+		}
+		if (isset($data->quirksModeIssueDetails)) {
+			$instance->quirksModeIssueDetails = QuirksModeIssueDetails::fromJson($data->quirksModeIssueDetails);
 		}
 		return $instance;
 	}
@@ -111,6 +117,9 @@ final class InspectorIssueDetails implements \JsonSerializable
 		}
 		if ($this->attributionReportingIssueDetails !== null) {
 			$data->attributionReportingIssueDetails = $this->attributionReportingIssueDetails->jsonSerialize();
+		}
+		if ($this->quirksModeIssueDetails !== null) {
+			$data->quirksModeIssueDetails = $this->quirksModeIssueDetails->jsonSerialize();
 		}
 		return $data;
 	}

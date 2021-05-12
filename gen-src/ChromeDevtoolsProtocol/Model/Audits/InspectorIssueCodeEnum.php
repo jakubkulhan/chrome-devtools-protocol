@@ -21,4 +21,5 @@ final class InspectorIssueCodeEnum
 	const LOW_TEXT_CONTRAST_ISSUE = 'LowTextContrastIssue';
 	const CORS_ISSUE = 'CorsIssue';
 	const ATTRIBUTION_REPORTING_ISSUE = 'AttributionReportingIssue';
+	const QUIRKS_MODE_ISSUE = 'QuirksModeIssue';
 }
