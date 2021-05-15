@@ -13,6 +13,7 @@ final class PermissionsPolicyFeatureEnum
 {
 	const ACCELEROMETER = 'accelerometer';
 	const AMBIENT_LIGHT_SENSOR = 'ambient-light-sensor';
+	const ATTRIBUTION_REPORTING = 'attribution-reporting';
 	const AUTOPLAY = 'autoplay';
 	const CAMERA = 'camera';
 	const CH_DPR = 'ch-dpr';
@@ -32,7 +33,6 @@ final class PermissionsPolicyFeatureEnum
 	const CH_WIDTH = 'ch-width';
 	const CLIPBOARD_READ = 'clipboard-read';
 	const CLIPBOARD_WRITE = 'clipboard-write';
-	const CONVERSION_MEASUREMENT = 'conversion-measurement';
 	const CROSS_ORIGIN_ISOLATED = 'cross-origin-isolated';
 	const DIRECT_SOCKETS = 'direct-sockets';
 	const DISPLAY_CAPTURE = 'display-capture';
