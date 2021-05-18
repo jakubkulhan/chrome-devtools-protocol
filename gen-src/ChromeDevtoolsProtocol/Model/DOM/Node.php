@@ -207,6 +207,9 @@ final class Node implements \JsonSerializable
 	 */
 	public $isSVG;
 
+	/** @var string */
+	public $compatibilityMode;
+
 
 	public static function fromJson($data)
 	{
@@ -309,6 +312,9 @@ final class Node implements \JsonSerializable
 		}
 		if (isset($data->isSVG)) {
 			$instance->isSVG = (bool)$data->isSVG;
+		}
+		if (isset($data->compatibilityMode)) {
+			$instance->compatibilityMode = (string)$data->compatibilityMode;
 		}
 		return $instance;
 	}
@@ -415,6 +421,9 @@ final class Node implements \JsonSerializable
 		}
 		if ($this->isSVG !== null) {
 			$data->isSVG = $this->isSVG;
+		}
+		if ($this->compatibilityMode !== null) {
+			$data->compatibilityMode = $this->compatibilityMode;
 		}
 		return $data;
 	}
