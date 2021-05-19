@@ -16145,7 +16145,7 @@
                 },
                 {
                     "id": "PermissionsPolicyFeature",
-                    "description": "All Permissions Policy features. This enum should match the one defined in renderer/core/feature_policy/feature_policy_features.json5.",
+                    "description": "All Permissions Policy features. This enum should match the one defined in third_party/blink/renderer/core/permissions_policy/permissions_policy_features.json5.",
                     "experimental": true,
                     "type": "string",
                     "enum": [
@@ -16159,6 +16159,7 @@
                         "ch-downlink",
                         "ch-ect",
                         "ch-lang",
+                        "ch-prefers-color-scheme",
                         "ch-rtt",
                         "ch-ua",
                         "ch-ua-arch",
@@ -16203,6 +16204,7 @@
                         "usb",
                         "vertical-scroll",
                         "web-share",
+                        "window-placement",
                         "xr-spatial-tracking"
                     ]
                 },
