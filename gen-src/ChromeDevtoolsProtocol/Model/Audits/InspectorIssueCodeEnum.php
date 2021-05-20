@@ -22,4 +22,5 @@ final class InspectorIssueCodeEnum
 	const CORS_ISSUE = 'CorsIssue';
 	const ATTRIBUTION_REPORTING_ISSUE = 'AttributionReportingIssue';
 	const QUIRKS_MODE_ISSUE = 'QuirksModeIssue';
+	const NAVIGATOR_USER_AGENT_ISSUE = 'NavigatorUserAgentIssue';
 }
