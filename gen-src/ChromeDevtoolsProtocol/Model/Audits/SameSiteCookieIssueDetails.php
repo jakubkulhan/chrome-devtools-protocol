@@ -11,8 +11,15 @@ namespace ChromeDevtoolsProtocol\Model\Audits;
  */
 final class SameSiteCookieIssueDetails implements \JsonSerializable
 {
-	/** @var AffectedCookie */
+	/**
+	 * If AffectedCookie is not set then rawCookieLine contains the raw Set-Cookie header string. This hints at a problem where the cookie line is syntactically or semantically malformed in a way that no valid cookie could be created.
+	 *
+	 * @var AffectedCookie|null
+	 */
 	public $cookie;
+
+	/** @var string|null */
+	public $rawCookieLine;
 
 	/** @var string[] */
 	public $cookieWarningReasons;
@@ -42,6 +49,9 @@ final class SameSiteCookieIssueDetails implements \JsonSerializable
 		$instance = new static();
 		if (isset($data->cookie)) {
 			$instance->cookie = AffectedCookie::fromJson($data->cookie);
+		}
+		if (isset($data->rawCookieLine)) {
+			$instance->rawCookieLine = (string)$data->rawCookieLine;
 		}
 		if (isset($data->cookieWarningReasons)) {
 			$instance->cookieWarningReasons = [];
@@ -82,6 +92,9 @@ final class SameSiteCookieIssueDetails implements \JsonSerializable
 		$data = new \stdClass();
 		if ($this->cookie !== null) {
 			$data->cookie = $this->cookie->jsonSerialize();
+		}
+		if ($this->rawCookieLine !== null) {
+			$data->rawCookieLine = $this->rawCookieLine;
 		}
 		if ($this->cookieWarningReasons !== null) {
 			$data->cookieWarningReasons = [];
