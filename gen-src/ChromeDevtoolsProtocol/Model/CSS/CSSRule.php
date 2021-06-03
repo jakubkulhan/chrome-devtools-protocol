@@ -46,6 +46,13 @@ final class CSSRule implements \JsonSerializable
 	 */
 	public $media;
 
+	/**
+	 * Container query list array (for rules involving container queries). The array enumerates container queries starting with the innermost one, going outwards.
+	 *
+	 * @var CSSContainerQuery[]|null
+	 */
+	public $containerQueries;
+
 
 	public static function fromJson($data)
 	{
@@ -66,6 +73,12 @@ final class CSSRule implements \JsonSerializable
 			$instance->media = [];
 			foreach ($data->media as $item) {
 				$instance->media[] = CSSMedia::fromJson($item);
+			}
+		}
+		if (isset($data->containerQueries)) {
+			$instance->containerQueries = [];
+			foreach ($data->containerQueries as $item) {
+				$instance->containerQueries[] = CSSContainerQuery::fromJson($item);
 			}
 		}
 		return $instance;
@@ -91,6 +104,12 @@ final class CSSRule implements \JsonSerializable
 			$data->media = [];
 			foreach ($this->media as $item) {
 				$data->media[] = $item->jsonSerialize();
+			}
+		}
+		if ($this->containerQueries !== null) {
+			$data->containerQueries = [];
+			foreach ($this->containerQueries as $item) {
+				$data->containerQueries[] = $item->jsonSerialize();
 			}
 		}
 		return $data;
