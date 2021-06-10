@@ -26,6 +26,8 @@ use ChromeDevtoolsProtocol\Model\CSS\GetPlatformFontsForNodeResponse;
 use ChromeDevtoolsProtocol\Model\CSS\GetStyleSheetTextRequest;
 use ChromeDevtoolsProtocol\Model\CSS\GetStyleSheetTextResponse;
 use ChromeDevtoolsProtocol\Model\CSS\MediaQueryResultChangedEvent;
+use ChromeDevtoolsProtocol\Model\CSS\SetContainerQueryTextRequest;
+use ChromeDevtoolsProtocol\Model\CSS\SetContainerQueryTextResponse;
 use ChromeDevtoolsProtocol\Model\CSS\SetEffectivePropertyValueForNodeRequest;
 use ChromeDevtoolsProtocol\Model\CSS\SetKeyframeKeyRequest;
 use ChromeDevtoolsProtocol\Model\CSS\SetKeyframeKeyResponse;
@@ -157,6 +159,15 @@ class CSSDomain implements CSSDomainInterface
 	{
 		$response = $this->internalClient->executeCommand($ctx, 'CSS.getStyleSheetText', $request);
 		return GetStyleSheetTextResponse::fromJson($response);
+	}
+
+
+	public function setContainerQueryText(
+		ContextInterface $ctx,
+		SetContainerQueryTextRequest $request
+	): SetContainerQueryTextResponse {
+		$response = $this->internalClient->executeCommand($ctx, 'CSS.setContainerQueryText', $request);
+		return SetContainerQueryTextResponse::fromJson($response);
 	}
 
 

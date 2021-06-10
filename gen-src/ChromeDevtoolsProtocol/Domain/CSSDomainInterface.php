@@ -25,6 +25,8 @@ use ChromeDevtoolsProtocol\Model\CSS\GetPlatformFontsForNodeResponse;
 use ChromeDevtoolsProtocol\Model\CSS\GetStyleSheetTextRequest;
 use ChromeDevtoolsProtocol\Model\CSS\GetStyleSheetTextResponse;
 use ChromeDevtoolsProtocol\Model\CSS\MediaQueryResultChangedEvent;
+use ChromeDevtoolsProtocol\Model\CSS\SetContainerQueryTextRequest;
+use ChromeDevtoolsProtocol\Model\CSS\SetContainerQueryTextResponse;
 use ChromeDevtoolsProtocol\Model\CSS\SetEffectivePropertyValueForNodeRequest;
 use ChromeDevtoolsProtocol\Model\CSS\SetKeyframeKeyRequest;
 use ChromeDevtoolsProtocol\Model\CSS\SetKeyframeKeyResponse;
@@ -210,6 +212,20 @@ interface CSSDomainInterface
 	 * @return GetStyleSheetTextResponse
 	 */
 	public function getStyleSheetText(ContextInterface $ctx, GetStyleSheetTextRequest $request): GetStyleSheetTextResponse;
+
+
+	/**
+	 * Modifies the expression of a container query.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param SetContainerQueryTextRequest $request
+	 *
+	 * @return SetContainerQueryTextResponse
+	 */
+	public function setContainerQueryText(
+		ContextInterface $ctx,
+		SetContainerQueryTextRequest $request
+	): SetContainerQueryTextResponse;
 
 
 	/**
