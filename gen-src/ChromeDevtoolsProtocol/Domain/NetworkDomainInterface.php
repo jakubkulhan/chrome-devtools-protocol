@@ -47,7 +47,6 @@ use ChromeDevtoolsProtocol\Model\Network\SetCacheDisabledRequest;
 use ChromeDevtoolsProtocol\Model\Network\SetCookieRequest;
 use ChromeDevtoolsProtocol\Model\Network\SetCookieResponse;
 use ChromeDevtoolsProtocol\Model\Network\SetCookiesRequest;
-use ChromeDevtoolsProtocol\Model\Network\SetDataSizeLimitsForTestRequest;
 use ChromeDevtoolsProtocol\Model\Network\SetExtraHTTPHeadersRequest;
 use ChromeDevtoolsProtocol\Model\Network\SetRequestInterceptionRequest;
 use ChromeDevtoolsProtocol\Model\Network\SetUserAgentOverrideRequest;
@@ -393,17 +392,6 @@ interface NetworkDomainInterface
 	 * @return void
 	 */
 	public function setCookies(ContextInterface $ctx, SetCookiesRequest $request): void;
-
-
-	/**
-	 * For testing.
-	 *
-	 * @param ContextInterface $ctx
-	 * @param SetDataSizeLimitsForTestRequest $request
-	 *
-	 * @return void
-	 */
-	public function setDataSizeLimitsForTest(ContextInterface $ctx, SetDataSizeLimitsForTestRequest $request): void;
 
 
 	/**

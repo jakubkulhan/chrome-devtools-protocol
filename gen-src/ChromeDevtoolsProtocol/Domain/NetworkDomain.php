@@ -48,7 +48,6 @@ use ChromeDevtoolsProtocol\Model\Network\SetCacheDisabledRequest;
 use ChromeDevtoolsProtocol\Model\Network\SetCookieRequest;
 use ChromeDevtoolsProtocol\Model\Network\SetCookieResponse;
 use ChromeDevtoolsProtocol\Model\Network\SetCookiesRequest;
-use ChromeDevtoolsProtocol\Model\Network\SetDataSizeLimitsForTestRequest;
 use ChromeDevtoolsProtocol\Model\Network\SetExtraHTTPHeadersRequest;
 use ChromeDevtoolsProtocol\Model\Network\SetRequestInterceptionRequest;
 use ChromeDevtoolsProtocol\Model\Network\SetUserAgentOverrideRequest;
@@ -280,12 +279,6 @@ class NetworkDomain implements NetworkDomainInterface
 	public function setCookies(ContextInterface $ctx, SetCookiesRequest $request): void
 	{
 		$this->internalClient->executeCommand($ctx, 'Network.setCookies', $request);
-	}
-
-
-	public function setDataSizeLimitsForTest(ContextInterface $ctx, SetDataSizeLimitsForTestRequest $request): void
-	{
-		$this->internalClient->executeCommand($ctx, 'Network.setDataSizeLimitsForTest', $request);
 	}
 
 

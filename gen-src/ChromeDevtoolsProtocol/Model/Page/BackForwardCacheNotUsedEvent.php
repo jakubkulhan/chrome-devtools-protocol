@@ -25,6 +25,13 @@ final class BackForwardCacheNotUsedEvent implements \JsonSerializable
 	 */
 	public $frameId;
 
+	/**
+	 * Array of reasons why the page could not be cached. This must not be empty.
+	 *
+	 * @var BackForwardCacheNotRestoredExplanation[]
+	 */
+	public $notRestoredExplanations;
+
 
 	public static function fromJson($data)
 	{
@@ -34,6 +41,12 @@ final class BackForwardCacheNotUsedEvent implements \JsonSerializable
 		}
 		if (isset($data->frameId)) {
 			$instance->frameId = (string)$data->frameId;
+		}
+		if (isset($data->notRestoredExplanations)) {
+			$instance->notRestoredExplanations = [];
+			foreach ($data->notRestoredExplanations as $item) {
+				$instance->notRestoredExplanations[] = BackForwardCacheNotRestoredExplanation::fromJson($item);
+			}
 		}
 		return $instance;
 	}
@@ -47,6 +60,12 @@ final class BackForwardCacheNotUsedEvent implements \JsonSerializable
 		}
 		if ($this->frameId !== null) {
 			$data->frameId = $this->frameId;
+		}
+		if ($this->notRestoredExplanations !== null) {
+			$data->notRestoredExplanations = [];
+			foreach ($this->notRestoredExplanations as $item) {
+				$data->notRestoredExplanations[] = $item->jsonSerialize();
+			}
 		}
 		return $data;
 	}
