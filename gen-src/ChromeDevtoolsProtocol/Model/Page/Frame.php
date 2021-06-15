@@ -82,11 +82,11 @@ final class Frame implements \JsonSerializable
 	public $unreachableUrl;
 
 	/**
-	 * Indicates whether this frame was tagged as an ad.
+	 * Indicates whether this frame was tagged as an ad and why.
 	 *
-	 * @var string
+	 * @var AdFrameStatus|null
 	 */
-	public $adFrameType;
+	public $adFrameStatus;
 
 	/**
 	 * Indicates whether the main document is a secure context and explains why that is the case.
@@ -150,8 +150,8 @@ final class Frame implements \JsonSerializable
 		if (isset($data->unreachableUrl)) {
 			$instance->unreachableUrl = (string)$data->unreachableUrl;
 		}
-		if (isset($data->adFrameType)) {
-			$instance->adFrameType = (string)$data->adFrameType;
+		if (isset($data->adFrameStatus)) {
+			$instance->adFrameStatus = AdFrameStatus::fromJson($data->adFrameStatus);
 		}
 		if (isset($data->secureContextType)) {
 			$instance->secureContextType = (string)$data->secureContextType;
@@ -211,8 +211,8 @@ final class Frame implements \JsonSerializable
 		if ($this->unreachableUrl !== null) {
 			$data->unreachableUrl = $this->unreachableUrl;
 		}
-		if ($this->adFrameType !== null) {
-			$data->adFrameType = $this->adFrameType;
+		if ($this->adFrameStatus !== null) {
+			$data->adFrameStatus = $this->adFrameStatus->jsonSerialize();
 		}
 		if ($this->secureContextType !== null) {
 			$data->secureContextType = $this->secureContextType;

@@ -83,7 +83,6 @@ final class BackForwardCacheNotRestoredReasonEnum
 	const REQUESTED_BACKGROUND_WORK_PERMISSION = 'RequestedBackgroundWorkPermission';
 	const BROADCAST_CHANNEL = 'BroadcastChannel';
 	const INDEXED_D_B_CONNECTION = 'IndexedDBConnection';
-	const WEB_V_R = 'WebVR';
 	const WEB_X_R = 'WebXR';
 	const SHARED_WORKER = 'SharedWorker';
 	const WEB_LOCKS = 'WebLocks';
