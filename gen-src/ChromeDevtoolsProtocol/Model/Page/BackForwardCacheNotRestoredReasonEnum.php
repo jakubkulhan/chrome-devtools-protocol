@@ -64,12 +64,6 @@ final class BackForwardCacheNotRestoredReasonEnum
 	const MAIN_RESOURCE_HAS_CACHE_CONTROL_NO_CACHE = 'MainResourceHasCacheControlNoCache';
 	const SUBRESOURCE_HAS_CACHE_CONTROL_NO_STORE = 'SubresourceHasCacheControlNoStore';
 	const SUBRESOURCE_HAS_CACHE_CONTROL_NO_CACHE = 'SubresourceHasCacheControlNoCache';
-	const PAGE_SHOW_EVENT_LISTENER = 'PageShowEventListener';
-	const PAGE_HIDE_EVENT_LISTENER = 'PageHideEventListener';
-	const BEFORE_UNLOAD_EVENT_LISTENER = 'BeforeUnloadEventListener';
-	const UNLOAD_EVENT_LISTENER = 'UnloadEventListener';
-	const FREEZE_EVENT_LISTENER = 'FreezeEventListener';
-	const RESUME_EVENT_LISTENER = 'ResumeEventListener';
 	const CONTAINS_PLUGINS = 'ContainsPlugins';
 	const DOCUMENT_LOADED = 'DocumentLoaded';
 	const DEDICATED_WORKER_OR_WORKLET = 'DedicatedWorkerOrWorklet';

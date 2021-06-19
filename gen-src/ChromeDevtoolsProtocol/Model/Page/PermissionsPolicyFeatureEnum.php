@@ -25,6 +25,7 @@ final class PermissionsPolicyFeatureEnum
 	const CH_RTT = 'ch-rtt';
 	const CH_UA = 'ch-ua';
 	const CH_UA_ARCH = 'ch-ua-arch';
+	const CH_UA_BITNESS = 'ch-ua-bitness';
 	const CH_UA_PLATFORM = 'ch-ua-platform';
 	const CH_UA_MODEL = 'ch-ua-model';
 	const CH_UA_MOBILE = 'ch-ua-mobile';
