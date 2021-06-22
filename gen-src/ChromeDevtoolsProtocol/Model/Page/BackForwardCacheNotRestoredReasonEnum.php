@@ -55,7 +55,6 @@ final class BackForwardCacheNotRestoredReasonEnum
 	const BROWSING_INSTANCE_NOT_SWAPPED = 'BrowsingInstanceNotSwapped';
 	const BACK_FORWARD_CACHE_DISABLED_FOR_DELEGATE = 'BackForwardCacheDisabledForDelegate';
 	const OPT_IN_UNLOAD_HEADER_NOT_PRESENT = 'OptInUnloadHeaderNotPresent';
-	const UNLOAD_HANDLER_EXISTS_IN_MAIN_FRAME = 'UnloadHandlerExistsInMainFrame';
 	const UNLOAD_HANDLER_EXISTS_IN_SUB_FRAME = 'UnloadHandlerExistsInSubFrame';
 	const SERVICE_WORKER_UNREGISTRATION = 'ServiceWorkerUnregistration';
 	const WEB_SOCKET = 'WebSocket';
