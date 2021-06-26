@@ -20,7 +20,7 @@ final class InspectorIssue implements \JsonSerializable
 	/**
 	 * A unique id for this issue. May be omitted if no other entity (e.g. exception, CDP message, etc.) is referencing this issue.
 	 *
-	 * @var string|null
+	 * @var string
 	 */
 	public $issueId;
 
