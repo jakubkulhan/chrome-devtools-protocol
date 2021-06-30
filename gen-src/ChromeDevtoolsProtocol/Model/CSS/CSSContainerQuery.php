@@ -32,6 +32,13 @@ final class CSSContainerQuery implements \JsonSerializable
 	 */
 	public $styleSheetId;
 
+	/**
+	 * Optional name for the container.
+	 *
+	 * @var string|null
+	 */
+	public $name;
+
 
 	public static function fromJson($data)
 	{
@@ -44,6 +51,9 @@ final class CSSContainerQuery implements \JsonSerializable
 		}
 		if (isset($data->styleSheetId)) {
 			$instance->styleSheetId = (string)$data->styleSheetId;
+		}
+		if (isset($data->name)) {
+			$instance->name = (string)$data->name;
 		}
 		return $instance;
 	}
@@ -60,6 +70,9 @@ final class CSSContainerQuery implements \JsonSerializable
 		}
 		if ($this->styleSheetId !== null) {
 			$data->styleSheetId = $this->styleSheetId;
+		}
+		if ($this->name !== null) {
+			$data->name = $this->name;
 		}
 		return $data;
 	}

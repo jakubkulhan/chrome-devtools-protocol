@@ -23,6 +23,8 @@ use ChromeDevtoolsProtocol\Model\DOM\GetAttributesRequest;
 use ChromeDevtoolsProtocol\Model\DOM\GetAttributesResponse;
 use ChromeDevtoolsProtocol\Model\DOM\GetBoxModelRequest;
 use ChromeDevtoolsProtocol\Model\DOM\GetBoxModelResponse;
+use ChromeDevtoolsProtocol\Model\DOM\GetContainerForNodeRequest;
+use ChromeDevtoolsProtocol\Model\DOM\GetContainerForNodeResponse;
 use ChromeDevtoolsProtocol\Model\DOM\GetContentQuadsRequest;
 use ChromeDevtoolsProtocol\Model\DOM\GetContentQuadsResponse;
 use ChromeDevtoolsProtocol\Model\DOM\GetDocumentRequest;
@@ -189,6 +191,20 @@ interface DOMDomainInterface
 	 * @return GetBoxModelResponse
 	 */
 	public function getBoxModel(ContextInterface $ctx, GetBoxModelRequest $request): GetBoxModelResponse;
+
+
+	/**
+	 * Returns the container of the given node based on container query conditions. If containerName is given, it will find the nearest container with a matching name; otherwise it will find the nearest container regardless of its container name.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param GetContainerForNodeRequest $request
+	 *
+	 * @return GetContainerForNodeResponse
+	 */
+	public function getContainerForNode(
+		ContextInterface $ctx,
+		GetContainerForNodeRequest $request
+	): GetContainerForNodeResponse;
 
 
 	/**

@@ -24,6 +24,8 @@ use ChromeDevtoolsProtocol\Model\DOM\GetAttributesRequest;
 use ChromeDevtoolsProtocol\Model\DOM\GetAttributesResponse;
 use ChromeDevtoolsProtocol\Model\DOM\GetBoxModelRequest;
 use ChromeDevtoolsProtocol\Model\DOM\GetBoxModelResponse;
+use ChromeDevtoolsProtocol\Model\DOM\GetContainerForNodeRequest;
+use ChromeDevtoolsProtocol\Model\DOM\GetContainerForNodeResponse;
 use ChromeDevtoolsProtocol\Model\DOM\GetContentQuadsRequest;
 use ChromeDevtoolsProtocol\Model\DOM\GetContentQuadsResponse;
 use ChromeDevtoolsProtocol\Model\DOM\GetDocumentRequest;
@@ -155,6 +157,15 @@ class DOMDomain implements DOMDomainInterface
 	{
 		$response = $this->internalClient->executeCommand($ctx, 'DOM.getBoxModel', $request);
 		return GetBoxModelResponse::fromJson($response);
+	}
+
+
+	public function getContainerForNode(
+		ContextInterface $ctx,
+		GetContainerForNodeRequest $request
+	): GetContainerForNodeResponse {
+		$response = $this->internalClient->executeCommand($ctx, 'DOM.getContainerForNode', $request);
+		return GetContainerForNodeResponse::fromJson($response);
 	}
 
 
