@@ -23,4 +23,5 @@ final class InspectorIssueCodeEnum
 	const ATTRIBUTION_REPORTING_ISSUE = 'AttributionReportingIssue';
 	const QUIRKS_MODE_ISSUE = 'QuirksModeIssue';
 	const NAVIGATOR_USER_AGENT_ISSUE = 'NavigatorUserAgentIssue';
+	const WASM_CROSS_ORIGIN_MODULE_SHARING_ISSUE = 'WasmCrossOriginModuleSharingIssue';
 }

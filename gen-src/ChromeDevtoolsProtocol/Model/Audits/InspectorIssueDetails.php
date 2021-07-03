@@ -47,6 +47,9 @@ final class InspectorIssueDetails implements \JsonSerializable
 	/** @var NavigatorUserAgentIssueDetails|null */
 	public $navigatorUserAgentIssueDetails;
 
+	/** @var WasmCrossOriginModuleSharingIssueDetails|null */
+	public $wasmCrossOriginModuleSharingIssue;
+
 
 	public static function fromJson($data)
 	{
@@ -86,6 +89,9 @@ final class InspectorIssueDetails implements \JsonSerializable
 		}
 		if (isset($data->navigatorUserAgentIssueDetails)) {
 			$instance->navigatorUserAgentIssueDetails = NavigatorUserAgentIssueDetails::fromJson($data->navigatorUserAgentIssueDetails);
+		}
+		if (isset($data->wasmCrossOriginModuleSharingIssue)) {
+			$instance->wasmCrossOriginModuleSharingIssue = WasmCrossOriginModuleSharingIssueDetails::fromJson($data->wasmCrossOriginModuleSharingIssue);
 		}
 		return $instance;
 	}
@@ -129,6 +135,9 @@ final class InspectorIssueDetails implements \JsonSerializable
 		}
 		if ($this->navigatorUserAgentIssueDetails !== null) {
 			$data->navigatorUserAgentIssueDetails = $this->navigatorUserAgentIssueDetails->jsonSerialize();
+		}
+		if ($this->wasmCrossOriginModuleSharingIssue !== null) {
+			$data->wasmCrossOriginModuleSharingIssue = $this->wasmCrossOriginModuleSharingIssue->jsonSerialize();
 		}
 		return $data;
 	}

@@ -1586,6 +1586,28 @@
                     ]
                 },
                 {
+                    "id": "WasmCrossOriginModuleSharingIssueDetails",
+                    "type": "object",
+                    "properties": [
+                        {
+                            "name": "wasmModuleUrl",
+                            "type": "string"
+                        },
+                        {
+                            "name": "sourceOrigin",
+                            "type": "string"
+                        },
+                        {
+                            "name": "targetOrigin",
+                            "type": "string"
+                        },
+                        {
+                            "name": "isWarning",
+                            "type": "boolean"
+                        }
+                    ]
+                },
+                {
                     "id": "InspectorIssueCode",
                     "description": "A unique identifier for the type of issue. Each type may use one of the optional fields in InspectorIssueDetails to convey more specific information about the kind of issue.",
                     "type": "string",
@@ -1601,7 +1623,8 @@
                         "CorsIssue",
                         "AttributionReportingIssue",
                         "QuirksModeIssue",
-                        "NavigatorUserAgentIssue"
+                        "NavigatorUserAgentIssue",
+                        "WasmCrossOriginModuleSharingIssue"
                     ]
                 },
                 {
@@ -1668,6 +1691,11 @@
                             "name": "navigatorUserAgentIssueDetails",
                             "optional": true,
                             "$ref": "NavigatorUserAgentIssueDetails"
+                        },
+                        {
+                            "name": "wasmCrossOriginModuleSharingIssue",
+                            "optional": true,
+                            "$ref": "WasmCrossOriginModuleSharingIssueDetails"
                         }
                     ]
                 },
@@ -5781,6 +5809,7 @@
                         "target-text",
                         "spelling-error",
                         "grammar-error",
+                        "highlight",
                         "first-line-inherited",
                         "scrollbar",
                         "scrollbar-thumb",

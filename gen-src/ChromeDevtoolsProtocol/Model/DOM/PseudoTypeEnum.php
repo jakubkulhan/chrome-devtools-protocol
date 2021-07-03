@@ -21,6 +21,7 @@ final class PseudoTypeEnum
 	const TARGET_TEXT = 'target-text';
 	const SPELLING_ERROR = 'spelling-error';
 	const GRAMMAR_ERROR = 'grammar-error';
+	const HIGHLIGHT = 'highlight';
 	const FIRST_LINE_INHERITED = 'first-line-inherited';
 	const SCROLLBAR = 'scrollbar';
 	const SCROLLBAR_THUMB = 'scrollbar-thumb';
