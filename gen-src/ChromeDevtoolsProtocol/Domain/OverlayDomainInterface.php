@@ -21,6 +21,7 @@ use ChromeDevtoolsProtocol\Model\Overlay\ScreenshotRequestedEvent;
 use ChromeDevtoolsProtocol\Model\Overlay\SetInspectModeRequest;
 use ChromeDevtoolsProtocol\Model\Overlay\SetPausedInDebuggerMessageRequest;
 use ChromeDevtoolsProtocol\Model\Overlay\SetShowAdHighlightsRequest;
+use ChromeDevtoolsProtocol\Model\Overlay\SetShowContainerQueryOverlaysRequest;
 use ChromeDevtoolsProtocol\Model\Overlay\SetShowDebugBordersRequest;
 use ChromeDevtoolsProtocol\Model\Overlay\SetShowFPSCounterRequest;
 use ChromeDevtoolsProtocol\Model\Overlay\SetShowFlexOverlaysRequest;
@@ -204,6 +205,20 @@ interface OverlayDomainInterface
 	 * @return void
 	 */
 	public function setShowAdHighlights(ContextInterface $ctx, SetShowAdHighlightsRequest $request): void;
+
+
+	/**
+	 * Call Overlay.setShowContainerQueryOverlays command.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param SetShowContainerQueryOverlaysRequest $request
+	 *
+	 * @return void
+	 */
+	public function setShowContainerQueryOverlays(
+		ContextInterface $ctx,
+		SetShowContainerQueryOverlaysRequest $request
+	): void;
 
 
 	/**
