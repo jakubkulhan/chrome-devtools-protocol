@@ -26,6 +26,13 @@ final class NodeTreeSnapshot implements \JsonSerializable
 	public $nodeType;
 
 	/**
+	 * Type of the shadow root the `Node` is in. String values are equal to the `ShadowRootType` enum.
+	 *
+	 * @var RareStringData|null
+	 */
+	public $shadowRootType;
+
+	/**
 	 * `Node`'s nodeName.
 	 *
 	 * @var int[]|null
@@ -132,6 +139,9 @@ final class NodeTreeSnapshot implements \JsonSerializable
 				$instance->nodeType[] = (int)$item;
 			}
 		}
+		if (isset($data->shadowRootType)) {
+			$instance->shadowRootType = RareStringData::fromJson($data->shadowRootType);
+		}
 		if (isset($data->nodeName)) {
 			$instance->nodeName = [];
 		if (isset($data->nodeName)) {
@@ -217,6 +227,9 @@ final class NodeTreeSnapshot implements \JsonSerializable
 			foreach ($this->nodeType as $item) {
 				$data->nodeType[] = $item;
 			}
+		}
+		if ($this->shadowRootType !== null) {
+			$data->shadowRootType = $this->shadowRootType->jsonSerialize();
 		}
 		if ($this->nodeName !== null) {
 			$data->nodeName = [];
