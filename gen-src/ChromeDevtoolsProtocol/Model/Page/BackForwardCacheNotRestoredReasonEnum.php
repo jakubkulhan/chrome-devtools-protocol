@@ -68,7 +68,6 @@ final class BackForwardCacheNotRestoredReasonEnum
 	const DEDICATED_WORKER_OR_WORKLET = 'DedicatedWorkerOrWorklet';
 	const OUTSTANDING_NETWORK_REQUEST_OTHERS = 'OutstandingNetworkRequestOthers';
 	const OUTSTANDING_INDEXED_D_B_TRANSACTION = 'OutstandingIndexedDBTransaction';
-	const REQUESTED_GEOLOCATION_PERMISSION = 'RequestedGeolocationPermission';
 	const REQUESTED_NOTIFICATIONS_PERMISSION = 'RequestedNotificationsPermission';
 	const REQUESTED_M_I_D_I_PERMISSION = 'RequestedMIDIPermission';
 	const REQUESTED_AUDIO_CAPTURE_PERMISSION = 'RequestedAudioCapturePermission';
