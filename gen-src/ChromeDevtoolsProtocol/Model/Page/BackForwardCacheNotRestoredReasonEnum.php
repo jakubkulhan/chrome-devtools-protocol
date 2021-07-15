@@ -57,6 +57,9 @@ final class BackForwardCacheNotRestoredReasonEnum
 	const OPT_IN_UNLOAD_HEADER_NOT_PRESENT = 'OptInUnloadHeaderNotPresent';
 	const UNLOAD_HANDLER_EXISTS_IN_SUB_FRAME = 'UnloadHandlerExistsInSubFrame';
 	const SERVICE_WORKER_UNREGISTRATION = 'ServiceWorkerUnregistration';
+	const CACHE_CONTROL_NO_STORE = 'CacheControlNoStore';
+	const CACHE_CONTROL_NO_STORE_COOKIE_MODIFIED = 'CacheControlNoStoreCookieModified';
+	const CACHE_CONTROL_NO_STORE_H_T_T_P_ONLY_COOKIE_MODIFIED = 'CacheControlNoStoreHTTPOnlyCookieModified';
 	const WEB_SOCKET = 'WebSocket';
 	const WEB_R_T_C = 'WebRTC';
 	const MAIN_RESOURCE_HAS_CACHE_CONTROL_NO_STORE = 'MainResourceHasCacheControlNoStore';
