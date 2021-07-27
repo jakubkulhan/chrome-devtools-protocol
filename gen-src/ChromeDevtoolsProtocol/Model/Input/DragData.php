@@ -15,6 +15,13 @@ final class DragData implements \JsonSerializable
 	public $items;
 
 	/**
+	 * List of filenames that should be included when dropping
+	 *
+	 * @var string[]|null
+	 */
+	public $files;
+
+	/**
 	 * Bit field representing allowed drag operations. Copy = 1, Link = 2, Move = 16
 	 *
 	 * @var int
@@ -31,6 +38,12 @@ final class DragData implements \JsonSerializable
 				$instance->items[] = DragDataItem::fromJson($item);
 			}
 		}
+		if (isset($data->files)) {
+			$instance->files = [];
+			foreach ($data->files as $item) {
+				$instance->files[] = (string)$item;
+			}
+		}
 		if (isset($data->dragOperationsMask)) {
 			$instance->dragOperationsMask = (int)$data->dragOperationsMask;
 		}
@@ -45,6 +58,12 @@ final class DragData implements \JsonSerializable
 			$data->items = [];
 			foreach ($this->items as $item) {
 				$data->items[] = $item->jsonSerialize();
+			}
+		}
+		if ($this->files !== null) {
+			$data->files = [];
+			foreach ($this->files as $item) {
+				$data->files[] = $item;
 			}
 		}
 		if ($this->dragOperationsMask !== null) {

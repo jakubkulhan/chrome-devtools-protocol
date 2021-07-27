@@ -40,6 +40,13 @@ final class ResponseReceivedExtraInfoEvent implements \JsonSerializable
 	public $resourceIPAddressSpace;
 
 	/**
+	 * The status code of the response. This is useful in cases the request failed and no responseReceived event is triggered, which is the case for, e.g., CORS errors.
+	 *
+	 * @var int
+	 */
+	public $statusCode;
+
+	/**
 	 * Raw response header text as it was received over the wire. The raw text may not always be available, such as in the case of HTTP/2 or QUIC.
 	 *
 	 * @var string|null
@@ -65,6 +72,9 @@ final class ResponseReceivedExtraInfoEvent implements \JsonSerializable
 		if (isset($data->resourceIPAddressSpace)) {
 			$instance->resourceIPAddressSpace = (string)$data->resourceIPAddressSpace;
 		}
+		if (isset($data->statusCode)) {
+			$instance->statusCode = (int)$data->statusCode;
+		}
 		if (isset($data->headersText)) {
 			$instance->headersText = (string)$data->headersText;
 		}
@@ -89,6 +99,9 @@ final class ResponseReceivedExtraInfoEvent implements \JsonSerializable
 		}
 		if ($this->resourceIPAddressSpace !== null) {
 			$data->resourceIPAddressSpace = $this->resourceIPAddressSpace;
+		}
+		if ($this->statusCode !== null) {
+			$data->statusCode = $this->statusCode;
 		}
 		if ($this->headersText !== null) {
 			$data->headersText = $this->headersText;
