@@ -60,6 +60,7 @@ final class BackForwardCacheNotRestoredReasonEnum
 	const CACHE_CONTROL_NO_STORE = 'CacheControlNoStore';
 	const CACHE_CONTROL_NO_STORE_COOKIE_MODIFIED = 'CacheControlNoStoreCookieModified';
 	const CACHE_CONTROL_NO_STORE_H_T_T_P_ONLY_COOKIE_MODIFIED = 'CacheControlNoStoreHTTPOnlyCookieModified';
+	const NO_RESPONSE_HEAD = 'NoResponseHead';
 	const WEB_SOCKET = 'WebSocket';
 	const WEB_R_T_C = 'WebRTC';
 	const MAIN_RESOURCE_HAS_CACHE_CONTROL_NO_STORE = 'MainResourceHasCacheControlNoStore';
