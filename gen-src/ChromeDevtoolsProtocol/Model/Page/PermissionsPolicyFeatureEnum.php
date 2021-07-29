@@ -31,6 +31,7 @@ final class PermissionsPolicyFeatureEnum
 	const CH_UA_MOBILE = 'ch-ua-mobile';
 	const CH_UA_FULL_VERSION = 'ch-ua-full-version';
 	const CH_UA_PLATFORM_VERSION = 'ch-ua-platform-version';
+	const CH_UA_REDUCED = 'ch-ua-reduced';
 	const CH_VIEWPORT_WIDTH = 'ch-viewport-width';
 	const CH_WIDTH = 'ch-width';
 	const CLIPBOARD_READ = 'clipboard-read';
