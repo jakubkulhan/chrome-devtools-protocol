@@ -9,6 +9,7 @@ use ChromeDevtoolsProtocol\Model\Input\DispatchMouseEventRequest;
 use ChromeDevtoolsProtocol\Model\Input\DispatchTouchEventRequest;
 use ChromeDevtoolsProtocol\Model\Input\DragInterceptedEvent;
 use ChromeDevtoolsProtocol\Model\Input\EmulateTouchFromMouseEventRequest;
+use ChromeDevtoolsProtocol\Model\Input\ImeSetCompositionRequest;
 use ChromeDevtoolsProtocol\Model\Input\InsertTextRequest;
 use ChromeDevtoolsProtocol\Model\Input\SetIgnoreInputEventsRequest;
 use ChromeDevtoolsProtocol\Model\Input\SetInterceptDragsRequest;
@@ -79,6 +80,17 @@ interface InputDomainInterface
 	 * @return void
 	 */
 	public function emulateTouchFromMouseEvent(ContextInterface $ctx, EmulateTouchFromMouseEventRequest $request): void;
+
+
+	/**
+	 * This method sets the current candidate text for ime. Use imeCommitComposition to commit the final text. Use imeSetComposition with empty string as text to cancel composition.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param ImeSetCompositionRequest $request
+	 *
+	 * @return void
+	 */
+	public function imeSetComposition(ContextInterface $ctx, ImeSetCompositionRequest $request): void;
 
 
 	/**

@@ -11021,6 +11021,40 @@
                     ]
                 },
                 {
+                    "name": "imeSetComposition",
+                    "description": "This method sets the current candidate text for ime. Use imeCommitComposition to commit the final text. Use imeSetComposition with empty string as text to cancel composition.",
+                    "experimental": true,
+                    "parameters": [
+                        {
+                            "name": "text",
+                            "description": "The text to insert",
+                            "type": "string"
+                        },
+                        {
+                            "name": "selectionStart",
+                            "description": "selection start",
+                            "type": "integer"
+                        },
+                        {
+                            "name": "selectionEnd",
+                            "description": "selection end",
+                            "type": "integer"
+                        },
+                        {
+                            "name": "replacementStart",
+                            "description": "replacement start",
+                            "optional": true,
+                            "type": "integer"
+                        },
+                        {
+                            "name": "replacementEnd",
+                            "description": "replacement end",
+                            "optional": true,
+                            "type": "integer"
+                        }
+                    ]
+                },
+                {
                     "name": "insertText",
                     "description": "This method emulates inserting text that doesn't come from a key press, for example an emoji keyboard or an IME.",
                     "experimental": true,

@@ -10,6 +10,7 @@ use ChromeDevtoolsProtocol\Model\Input\DispatchMouseEventRequest;
 use ChromeDevtoolsProtocol\Model\Input\DispatchTouchEventRequest;
 use ChromeDevtoolsProtocol\Model\Input\DragInterceptedEvent;
 use ChromeDevtoolsProtocol\Model\Input\EmulateTouchFromMouseEventRequest;
+use ChromeDevtoolsProtocol\Model\Input\ImeSetCompositionRequest;
 use ChromeDevtoolsProtocol\Model\Input\InsertTextRequest;
 use ChromeDevtoolsProtocol\Model\Input\SetIgnoreInputEventsRequest;
 use ChromeDevtoolsProtocol\Model\Input\SetInterceptDragsRequest;
@@ -57,6 +58,12 @@ class InputDomain implements InputDomainInterface
 	public function emulateTouchFromMouseEvent(ContextInterface $ctx, EmulateTouchFromMouseEventRequest $request): void
 	{
 		$this->internalClient->executeCommand($ctx, 'Input.emulateTouchFromMouseEvent', $request);
+	}
+
+
+	public function imeSetComposition(ContextInterface $ctx, ImeSetCompositionRequest $request): void
+	{
+		$this->internalClient->executeCommand($ctx, 'Input.imeSetComposition', $request);
 	}
 
 
