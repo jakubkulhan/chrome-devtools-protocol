@@ -44,6 +44,8 @@ use ChromeDevtoolsProtocol\Model\DOM\GetNodesForSubtreeByStyleRequest;
 use ChromeDevtoolsProtocol\Model\DOM\GetNodesForSubtreeByStyleResponse;
 use ChromeDevtoolsProtocol\Model\DOM\GetOuterHTMLRequest;
 use ChromeDevtoolsProtocol\Model\DOM\GetOuterHTMLResponse;
+use ChromeDevtoolsProtocol\Model\DOM\GetQueryingDescendantsForContainerRequest;
+use ChromeDevtoolsProtocol\Model\DOM\GetQueryingDescendantsForContainerResponse;
 use ChromeDevtoolsProtocol\Model\DOM\GetRelayoutBoundaryRequest;
 use ChromeDevtoolsProtocol\Model\DOM\GetRelayoutBoundaryResponse;
 use ChromeDevtoolsProtocol\Model\DOM\GetSearchResultsRequest;
@@ -237,6 +239,15 @@ class DOMDomain implements DOMDomainInterface
 	{
 		$response = $this->internalClient->executeCommand($ctx, 'DOM.getOuterHTML', $request);
 		return GetOuterHTMLResponse::fromJson($response);
+	}
+
+
+	public function getQueryingDescendantsForContainer(
+		ContextInterface $ctx,
+		GetQueryingDescendantsForContainerRequest $request
+	): GetQueryingDescendantsForContainerResponse {
+		$response = $this->internalClient->executeCommand($ctx, 'DOM.getQueryingDescendantsForContainer', $request);
+		return GetQueryingDescendantsForContainerResponse::fromJson($response);
 	}
 
 

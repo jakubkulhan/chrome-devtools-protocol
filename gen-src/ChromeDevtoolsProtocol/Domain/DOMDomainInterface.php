@@ -43,6 +43,8 @@ use ChromeDevtoolsProtocol\Model\DOM\GetNodesForSubtreeByStyleRequest;
 use ChromeDevtoolsProtocol\Model\DOM\GetNodesForSubtreeByStyleResponse;
 use ChromeDevtoolsProtocol\Model\DOM\GetOuterHTMLRequest;
 use ChromeDevtoolsProtocol\Model\DOM\GetOuterHTMLResponse;
+use ChromeDevtoolsProtocol\Model\DOM\GetQueryingDescendantsForContainerRequest;
+use ChromeDevtoolsProtocol\Model\DOM\GetQueryingDescendantsForContainerResponse;
 use ChromeDevtoolsProtocol\Model\DOM\GetRelayoutBoundaryRequest;
 use ChromeDevtoolsProtocol\Model\DOM\GetRelayoutBoundaryResponse;
 use ChromeDevtoolsProtocol\Model\DOM\GetSearchResultsRequest;
@@ -316,6 +318,20 @@ interface DOMDomainInterface
 	 * @return GetOuterHTMLResponse
 	 */
 	public function getOuterHTML(ContextInterface $ctx, GetOuterHTMLRequest $request): GetOuterHTMLResponse;
+
+
+	/**
+	 * Returns the descendants of a container query container that have container queries against this container.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param GetQueryingDescendantsForContainerRequest $request
+	 *
+	 * @return GetQueryingDescendantsForContainerResponse
+	 */
+	public function getQueryingDescendantsForContainer(
+		ContextInterface $ctx,
+		GetQueryingDescendantsForContainerRequest $request
+	): GetQueryingDescendantsForContainerResponse;
 
 
 	/**
