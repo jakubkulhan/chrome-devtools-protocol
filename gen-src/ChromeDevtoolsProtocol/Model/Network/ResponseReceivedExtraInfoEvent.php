@@ -40,7 +40,7 @@ final class ResponseReceivedExtraInfoEvent implements \JsonSerializable
 	public $resourceIPAddressSpace;
 
 	/**
-	 * The status code of the response. This is useful in cases the request failed and no responseReceived event is triggered, which is the case for, e.g., CORS errors.
+	 * The status code of the response. This is useful in cases the request failed and no responseReceived event is triggered, which is the case for, e.g., CORS errors. This is also the correct status code for cached requests, where the status in responseReceived is a 200 and this will be 304.
 	 *
 	 * @var int
 	 */

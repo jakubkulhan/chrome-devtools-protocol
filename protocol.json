@@ -9488,6 +9488,13 @@
                             "items": {
                                 "$ref": "HeaderEntry"
                             }
+                        },
+                        {
+                            "name": "interceptResponse",
+                            "description": "If set, overrides response interception behavior for this request.",
+                            "experimental": true,
+                            "optional": true,
+                            "type": "boolean"
                         }
                     ]
                 },
@@ -12982,7 +12989,8 @@
                         },
                         {
                             "name": "headersText",
-                            "description": "HTTP response headers text.",
+                            "description": "HTTP response headers text. This has been replaced by the headers in Network.responseReceivedExtraInfo.",
+                            "deprecated": true,
                             "optional": true,
                             "type": "string"
                         },
@@ -12999,7 +13007,8 @@
                         },
                         {
                             "name": "requestHeadersText",
-                            "description": "HTTP request headers text.",
+                            "description": "HTTP request headers text. This has been replaced by the headers in Network.requestWillBeSentExtraInfo.",
+                            "deprecated": true,
                             "optional": true,
                             "type": "string"
                         },
@@ -15035,7 +15044,7 @@
                         },
                         {
                             "name": "statusCode",
-                            "description": "The status code of the response. This is useful in cases the request failed and no responseReceived event is triggered, which is the case for, e.g., CORS errors.",
+                            "description": "The status code of the response. This is useful in cases the request failed and no responseReceived event is triggered, which is the case for, e.g., CORS errors. This is also the correct status code for cached requests, where the status in responseReceived is a 200 and this will be 304.",
                             "type": "integer"
                         },
                         {

@@ -40,7 +40,7 @@ final class Response implements \JsonSerializable
 	public $headers;
 
 	/**
-	 * HTTP response headers text.
+	 * HTTP response headers text. This has been replaced by the headers in Network.responseReceivedExtraInfo.
 	 *
 	 * @var string|null
 	 */
@@ -61,7 +61,7 @@ final class Response implements \JsonSerializable
 	public $requestHeaders;
 
 	/**
-	 * HTTP request headers text.
+	 * HTTP request headers text. This has been replaced by the headers in Network.requestWillBeSentExtraInfo.
 	 *
 	 * @var string|null
 	 */

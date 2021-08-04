@@ -46,6 +46,13 @@ final class ContinueRequestRequest implements \JsonSerializable
 	 */
 	public $headers;
 
+	/**
+	 * If set, overrides response interception behavior for this request.
+	 *
+	 * @var bool|null
+	 */
+	public $interceptResponse;
+
 
 	public static function fromJson($data)
 	{
@@ -67,6 +74,9 @@ final class ContinueRequestRequest implements \JsonSerializable
 			foreach ($data->headers as $item) {
 				$instance->headers[] = HeaderEntry::fromJson($item);
 			}
+		}
+		if (isset($data->interceptResponse)) {
+			$instance->interceptResponse = (bool)$data->interceptResponse;
 		}
 		return $instance;
 	}
@@ -92,6 +102,9 @@ final class ContinueRequestRequest implements \JsonSerializable
 			foreach ($this->headers as $item) {
 				$data->headers[] = $item->jsonSerialize();
 			}
+		}
+		if ($this->interceptResponse !== null) {
+			$data->interceptResponse = $this->interceptResponse;
 		}
 		return $data;
 	}

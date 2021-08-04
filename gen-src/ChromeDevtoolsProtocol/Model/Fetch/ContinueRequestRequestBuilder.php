@@ -16,6 +16,7 @@ final class ContinueRequestRequestBuilder
 	private $method;
 	private $postData;
 	private $headers;
+	private $interceptResponse;
 
 
 	/**
@@ -32,6 +33,7 @@ final class ContinueRequestRequestBuilder
 		$instance->method = $this->method;
 		$instance->postData = $this->postData;
 		$instance->headers = $this->headers;
+		$instance->interceptResponse = $this->interceptResponse;
 		return $instance;
 	}
 
@@ -92,6 +94,18 @@ final class ContinueRequestRequestBuilder
 	public function setHeaders($headers): self
 	{
 		$this->headers = $headers;
+		return $this;
+	}
+
+
+	/**
+	 * @param bool|null $interceptResponse
+	 *
+	 * @return self
+	 */
+	public function setInterceptResponse($interceptResponse): self
+	{
+		$this->interceptResponse = $interceptResponse;
 		return $this;
 	}
 }
