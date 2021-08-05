@@ -40,6 +40,8 @@ use ChromeDevtoolsProtocol\Model\Page\GetInstallabilityErrorsResponse;
 use ChromeDevtoolsProtocol\Model\Page\GetLayoutMetricsResponse;
 use ChromeDevtoolsProtocol\Model\Page\GetManifestIconsResponse;
 use ChromeDevtoolsProtocol\Model\Page\GetNavigationHistoryResponse;
+use ChromeDevtoolsProtocol\Model\Page\GetOriginTrialsRequest;
+use ChromeDevtoolsProtocol\Model\Page\GetOriginTrialsResponse;
 use ChromeDevtoolsProtocol\Model\Page\GetPermissionsPolicyStateRequest;
 use ChromeDevtoolsProtocol\Model\Page\GetPermissionsPolicyStateResponse;
 use ChromeDevtoolsProtocol\Model\Page\GetResourceContentRequest;
@@ -272,6 +274,13 @@ class PageDomain implements PageDomainInterface
 		$request = new \stdClass();
 		$response = $this->internalClient->executeCommand($ctx, 'Page.getNavigationHistory', $request);
 		return GetNavigationHistoryResponse::fromJson($response);
+	}
+
+
+	public function getOriginTrials(ContextInterface $ctx, GetOriginTrialsRequest $request): GetOriginTrialsResponse
+	{
+		$response = $this->internalClient->executeCommand($ctx, 'Page.getOriginTrials', $request);
+		return GetOriginTrialsResponse::fromJson($response);
 	}
 
 

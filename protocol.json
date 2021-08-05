@@ -17935,6 +17935,26 @@
                     ]
                 },
                 {
+                    "name": "getOriginTrials",
+                    "description": "Get Origin Trials on given frame.",
+                    "experimental": true,
+                    "parameters": [
+                        {
+                            "name": "frameId",
+                            "$ref": "FrameId"
+                        }
+                    ],
+                    "returns": [
+                        {
+                            "name": "originTrials",
+                            "type": "array",
+                            "items": {
+                                "$ref": "OriginTrial"
+                            }
+                        }
+                    ]
+                },
+                {
                     "name": "getPermissionsPolicyState",
                     "description": "Get Permissions Policy state on given frame.",
                     "experimental": true,
