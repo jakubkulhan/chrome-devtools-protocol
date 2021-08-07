@@ -12,11 +12,18 @@ namespace ChromeDevtoolsProtocol\Model\Overlay;
 final class ContainerQueryContainerHighlightConfig implements \JsonSerializable
 {
 	/**
-	 * The style of the container border
+	 * The style of the container border.
 	 *
 	 * @var LineStyle|null
 	 */
 	public $containerBorder;
+
+	/**
+	 * The style of the descendants' borders.
+	 *
+	 * @var LineStyle|null
+	 */
+	public $descendantBorder;
 
 
 	public static function fromJson($data)
@@ -24,6 +31,9 @@ final class ContainerQueryContainerHighlightConfig implements \JsonSerializable
 		$instance = new static();
 		if (isset($data->containerBorder)) {
 			$instance->containerBorder = LineStyle::fromJson($data->containerBorder);
+		}
+		if (isset($data->descendantBorder)) {
+			$instance->descendantBorder = LineStyle::fromJson($data->descendantBorder);
 		}
 		return $instance;
 	}
@@ -34,6 +44,9 @@ final class ContainerQueryContainerHighlightConfig implements \JsonSerializable
 		$data = new \stdClass();
 		if ($this->containerBorder !== null) {
 			$data->containerBorder = $this->containerBorder->jsonSerialize();
+		}
+		if ($this->descendantBorder !== null) {
+			$data->descendantBorder = $this->descendantBorder->jsonSerialize();
 		}
 		return $data;
 	}
