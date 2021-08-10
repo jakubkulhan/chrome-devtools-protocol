@@ -16,4 +16,5 @@ final class SameSiteCookieExclusionReasonEnum
 	const EXCLUDE_SAME_SITE_LAX = 'ExcludeSameSiteLax';
 	const EXCLUDE_SAME_SITE_STRICT = 'ExcludeSameSiteStrict';
 	const EXCLUDE_INVALID_SAME_PARTY = 'ExcludeInvalidSameParty';
+	const EXCLUDE_SAME_PARTY_CROSS_PARTY_CONTEXT = 'ExcludeSamePartyCrossPartyContext';
 }
