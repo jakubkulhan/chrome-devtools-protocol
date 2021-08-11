@@ -22,9 +22,6 @@ final class LoadNetworkResourceRequestBuilder
 	public function build(): LoadNetworkResourceRequest
 	{
 		$instance = new LoadNetworkResourceRequest();
-		if ($this->frameId === null) {
-			throw new BuilderException('Property [frameId] is required.');
-		}
 		$instance->frameId = $this->frameId;
 		if ($this->url === null) {
 			throw new BuilderException('Property [url] is required.');

@@ -21,7 +21,7 @@ final class Frame implements \JsonSerializable
 	/**
 	 * Parent frame identifier.
 	 *
-	 * @var string|null
+	 * @var string
 	 */
 	public $parentId;
 

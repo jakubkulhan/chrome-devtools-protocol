@@ -14325,7 +14325,8 @@
                     "parameters": [
                         {
                             "name": "frameId",
-                            "description": "Frame id to get the resource for.",
+                            "description": "Frame id to get the resource for. Mandatory for frame targets, and should be omitted for worker targets.",
+                            "optional": true,
                             "$ref": "Page.FrameId"
                         },
                         {
@@ -16791,7 +16792,7 @@
                             "name": "parentId",
                             "description": "Parent frame identifier.",
                             "optional": true,
-                            "type": "string"
+                            "$ref": "FrameId"
                         },
                         {
                             "name": "loaderId",

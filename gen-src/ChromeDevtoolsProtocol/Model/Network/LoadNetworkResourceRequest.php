@@ -12,7 +12,7 @@ namespace ChromeDevtoolsProtocol\Model\Network;
 final class LoadNetworkResourceRequest implements \JsonSerializable
 {
 	/**
-	 * Frame id to get the resource for.
+	 * Frame id to get the resource for. Mandatory for frame targets, and should be omitted for worker targets.
 	 *
 	 * @var string
 	 */
