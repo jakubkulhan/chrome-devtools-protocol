@@ -12,6 +12,7 @@ use ChromeDevtoolsProtocol\Exception\BuilderException;
 final class GetChildAXNodesRequestBuilder
 {
 	private $id;
+	private $frameId;
 
 
 	/**
@@ -24,6 +25,7 @@ final class GetChildAXNodesRequestBuilder
 			throw new BuilderException('Property [id] is required.');
 		}
 		$instance->id = $this->id;
+		$instance->frameId = $this->frameId;
 		return $instance;
 	}
 
@@ -36,6 +38,18 @@ final class GetChildAXNodesRequestBuilder
 	public function setId($id): self
 	{
 		$this->id = $id;
+		return $this;
+	}
+
+
+	/**
+	 * @param string $frameId
+	 *
+	 * @return self
+	 */
+	public function setFrameId($frameId): self
+	{
+		$this->frameId = $frameId;
 		return $this;
 	}
 }

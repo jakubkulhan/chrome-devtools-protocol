@@ -342,6 +342,12 @@
                         {
                             "name": "id",
                             "$ref": "AXNodeId"
+                        },
+                        {
+                            "name": "frameId",
+                            "description": "The frame in whose document the node resides. If omitted, the root frame is used.",
+                            "optional": true,
+                            "$ref": "Page.FrameId"
                         }
                     ],
                     "returns": [
@@ -364,6 +370,12 @@
                             "description": "The maximum depth at which descendants of the root node should be retrieved. If omitted, the full tree is returned.",
                             "optional": true,
                             "type": "integer"
+                        },
+                        {
+                            "name": "frameId",
+                            "description": "The frame for whose document the AX tree should be retrieved. If omited, the root frame is used.",
+                            "optional": true,
+                            "$ref": "Page.FrameId"
                         }
                     ],
                     "returns": [
@@ -17472,7 +17484,10 @@
                         "CacheControlNoStoreCookieModified",
                         "CacheControlNoStoreHTTPOnlyCookieModified",
                         "NoResponseHead",
+                        "Unknown",
+                        "ActivationNavigationsDisallowedForBug1234857",
                         "WebSocket",
+                        "WebTransport",
                         "WebRTC",
                         "MainResourceHasCacheControlNoStore",
                         "MainResourceHasCacheControlNoCache",
@@ -17516,7 +17531,15 @@
                         "IsolatedWorldScript",
                         "InjectedStyleSheet",
                         "MediaSessionImplOnServiceCreated",
-                        "Unknown"
+                        "SecurityHandler",
+                        "WebAuthenticationAPI",
+                        "FileChooser",
+                        "Serial",
+                        "FileSystemAccess",
+                        "MediaDevicesDispatcherHost",
+                        "WebBluetooth",
+                        "WebUSB",
+                        "MediaSession"
                     ]
                 },
                 {

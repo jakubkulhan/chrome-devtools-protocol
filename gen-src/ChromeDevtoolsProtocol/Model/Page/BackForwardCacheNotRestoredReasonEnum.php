@@ -61,7 +61,10 @@ final class BackForwardCacheNotRestoredReasonEnum
 	const CACHE_CONTROL_NO_STORE_COOKIE_MODIFIED = 'CacheControlNoStoreCookieModified';
 	const CACHE_CONTROL_NO_STORE_H_T_T_P_ONLY_COOKIE_MODIFIED = 'CacheControlNoStoreHTTPOnlyCookieModified';
 	const NO_RESPONSE_HEAD = 'NoResponseHead';
+	const UNKNOWN = 'Unknown';
+	const ACTIVATION_NAVIGATIONS_DISALLOWED_FOR_BUG1234857 = 'ActivationNavigationsDisallowedForBug1234857';
 	const WEB_SOCKET = 'WebSocket';
+	const WEB_TRANSPORT = 'WebTransport';
 	const WEB_R_T_C = 'WebRTC';
 	const MAIN_RESOURCE_HAS_CACHE_CONTROL_NO_STORE = 'MainResourceHasCacheControlNoStore';
 	const MAIN_RESOURCE_HAS_CACHE_CONTROL_NO_CACHE = 'MainResourceHasCacheControlNoCache';
@@ -105,5 +108,13 @@ final class BackForwardCacheNotRestoredReasonEnum
 	const ISOLATED_WORLD_SCRIPT = 'IsolatedWorldScript';
 	const INJECTED_STYLE_SHEET = 'InjectedStyleSheet';
 	const MEDIA_SESSION_IMPL_ON_SERVICE_CREATED = 'MediaSessionImplOnServiceCreated';
-	const UNKNOWN = 'Unknown';
+	const SECURITY_HANDLER = 'SecurityHandler';
+	const WEB_AUTHENTICATION_A_P_I = 'WebAuthenticationAPI';
+	const FILE_CHOOSER = 'FileChooser';
+	const SERIAL = 'Serial';
+	const FILE_SYSTEM_ACCESS = 'FileSystemAccess';
+	const MEDIA_DEVICES_DISPATCHER_HOST = 'MediaDevicesDispatcherHost';
+	const WEB_BLUETOOTH = 'WebBluetooth';
+	const WEB_U_S_B = 'WebUSB';
+	const MEDIA_SESSION = 'MediaSession';
 }

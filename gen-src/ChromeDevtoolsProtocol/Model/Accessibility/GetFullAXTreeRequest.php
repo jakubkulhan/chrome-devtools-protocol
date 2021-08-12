@@ -18,12 +18,22 @@ final class GetFullAXTreeRequest implements \JsonSerializable
 	 */
 	public $max_depth;
 
+	/**
+	 * The frame for whose document the AX tree should be retrieved. If omited, the root frame is used.
+	 *
+	 * @var string
+	 */
+	public $frameId;
+
 
 	public static function fromJson($data)
 	{
 		$instance = new static();
 		if (isset($data->max_depth)) {
 			$instance->max_depth = (int)$data->max_depth;
+		}
+		if (isset($data->frameId)) {
+			$instance->frameId = (string)$data->frameId;
 		}
 		return $instance;
 	}
@@ -34,6 +44,9 @@ final class GetFullAXTreeRequest implements \JsonSerializable
 		$data = new \stdClass();
 		if ($this->max_depth !== null) {
 			$data->max_depth = $this->max_depth;
+		}
+		if ($this->frameId !== null) {
+			$data->frameId = $this->frameId;
 		}
 		return $data;
 	}
