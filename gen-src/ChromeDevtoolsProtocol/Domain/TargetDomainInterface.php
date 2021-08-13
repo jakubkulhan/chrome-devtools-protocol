@@ -8,6 +8,7 @@ use ChromeDevtoolsProtocol\Model\Target\AttachToBrowserTargetResponse;
 use ChromeDevtoolsProtocol\Model\Target\AttachToTargetRequest;
 use ChromeDevtoolsProtocol\Model\Target\AttachToTargetResponse;
 use ChromeDevtoolsProtocol\Model\Target\AttachedToTargetEvent;
+use ChromeDevtoolsProtocol\Model\Target\AutoAttachRelatedRequest;
 use ChromeDevtoolsProtocol\Model\Target\CloseTargetRequest;
 use ChromeDevtoolsProtocol\Model\Target\CloseTargetResponse;
 use ChromeDevtoolsProtocol\Model\Target\CreateBrowserContextRequest;
@@ -72,6 +73,17 @@ interface TargetDomainInterface
 	 * @return AttachToTargetResponse
 	 */
 	public function attachToTarget(ContextInterface $ctx, AttachToTargetRequest $request): AttachToTargetResponse;
+
+
+	/**
+	 * Adds the specified target to the list of targets that will be monitored for any related target creation (such as child frames, child workers and new versions of service worker) and reported through `attachedToTarget`. This cancel the effect of any previous `setAutoAttach` and is also cancelled by subsequent `setAutoAttach`. Only available at the Browser target.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param AutoAttachRelatedRequest $request
+	 *
+	 * @return void
+	 */
+	public function autoAttachRelated(ContextInterface $ctx, AutoAttachRelatedRequest $request): void;
 
 
 	/**
@@ -186,7 +198,7 @@ interface TargetDomainInterface
 
 
 	/**
-	 * Controls whether to automatically attach to new targets which are considered to be related to this one. When turned on, attaches to all existing related targets as well. When turned off, automatically detaches from all currently attached targets.
+	 * Controls whether to automatically attach to new targets which are considered to be related to this one. When turned on, attaches to all existing related targets as well. When turned off, automatically detaches from all currently attached targets. This also clears all targets added by `autoAttachRelated` from the list of targets to watch for creation of related targets.
 	 *
 	 * @param ContextInterface $ctx
 	 * @param SetAutoAttachRequest $request

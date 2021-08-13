@@ -9,6 +9,7 @@ use ChromeDevtoolsProtocol\Model\Target\AttachToBrowserTargetResponse;
 use ChromeDevtoolsProtocol\Model\Target\AttachToTargetRequest;
 use ChromeDevtoolsProtocol\Model\Target\AttachToTargetResponse;
 use ChromeDevtoolsProtocol\Model\Target\AttachedToTargetEvent;
+use ChromeDevtoolsProtocol\Model\Target\AutoAttachRelatedRequest;
 use ChromeDevtoolsProtocol\Model\Target\CloseTargetRequest;
 use ChromeDevtoolsProtocol\Model\Target\CloseTargetResponse;
 use ChromeDevtoolsProtocol\Model\Target\CreateBrowserContextRequest;
@@ -64,6 +65,12 @@ class TargetDomain implements TargetDomainInterface
 	{
 		$response = $this->internalClient->executeCommand($ctx, 'Target.attachToTarget', $request);
 		return AttachToTargetResponse::fromJson($response);
+	}
+
+
+	public function autoAttachRelated(ContextInterface $ctx, AutoAttachRelatedRequest $request): void
+	{
+		$this->internalClient->executeCommand($ctx, 'Target.autoAttachRelated', $request);
 	}
 
 
