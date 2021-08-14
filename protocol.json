@@ -1521,7 +1521,8 @@
                         "InvalidAttributionSourceEventId",
                         "InvalidAttributionData",
                         "AttributionSourceUntrustworthyOrigin",
-                        "AttributionUntrustworthyOrigin"
+                        "AttributionUntrustworthyOrigin",
+                        "AttributionTriggerDataTooLarge"
                     ]
                 },
                 {
@@ -13828,6 +13829,18 @@
                     ]
                 },
                 {
+                    "id": "ConnectTiming",
+                    "experimental": true,
+                    "type": "object",
+                    "properties": [
+                        {
+                            "name": "requestTime",
+                            "description": "Timing's requestTime is a baseline in seconds, while the other numbers are ticks in milliseconds relatively to this requestTime. Matches ResourceTiming's requestTime for the same request (but not for redirected requests).",
+                            "type": "number"
+                        }
+                    ]
+                },
+                {
                     "id": "ClientSecurityState",
                     "experimental": true,
                     "type": "object",
@@ -14960,6 +14973,12 @@
                             "name": "headers",
                             "description": "Raw request headers as they will be sent over the wire.",
                             "$ref": "Headers"
+                        },
+                        {
+                            "name": "connectTiming",
+                            "description": "Connection timing information for the request.",
+                            "experimental": true,
+                            "$ref": "ConnectTiming"
                         },
                         {
                             "name": "clientSecurityState",

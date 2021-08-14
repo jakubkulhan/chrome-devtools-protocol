@@ -33,6 +33,13 @@ final class RequestWillBeSentExtraInfoEvent implements \JsonSerializable
 	public $headers;
 
 	/**
+	 * Connection timing information for the request.
+	 *
+	 * @var ConnectTiming
+	 */
+	public $connectTiming;
+
+	/**
 	 * The client security state set for the request.
 	 *
 	 * @var ClientSecurityState|null
@@ -55,6 +62,9 @@ final class RequestWillBeSentExtraInfoEvent implements \JsonSerializable
 		if (isset($data->headers)) {
 			$instance->headers = Headers::fromJson($data->headers);
 		}
+		if (isset($data->connectTiming)) {
+			$instance->connectTiming = ConnectTiming::fromJson($data->connectTiming);
+		}
 		if (isset($data->clientSecurityState)) {
 			$instance->clientSecurityState = ClientSecurityState::fromJson($data->clientSecurityState);
 		}
@@ -76,6 +86,9 @@ final class RequestWillBeSentExtraInfoEvent implements \JsonSerializable
 		}
 		if ($this->headers !== null) {
 			$data->headers = $this->headers->jsonSerialize();
+		}
+		if ($this->connectTiming !== null) {
+			$data->connectTiming = $this->connectTiming->jsonSerialize();
 		}
 		if ($this->clientSecurityState !== null) {
 			$data->clientSecurityState = $this->clientSecurityState->jsonSerialize();
