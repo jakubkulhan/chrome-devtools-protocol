@@ -9721,6 +9721,12 @@
                             "type": "integer"
                         },
                         {
+                            "name": "responseStatusText",
+                            "description": "Response status text if intercepted at response stage.",
+                            "optional": true,
+                            "type": "string"
+                        },
+                        {
                             "name": "responseHeaders",
                             "description": "Response headers if intercepted at the response stage.",
                             "optional": true,
@@ -16610,6 +16616,7 @@
                         "ch-ua-full-version",
                         "ch-ua-platform-version",
                         "ch-ua-reduced",
+                        "ch-viewport-height",
                         "ch-viewport-width",
                         "ch-width",
                         "clipboard-read",

@@ -56,6 +56,13 @@ final class RequestPausedEvent implements \JsonSerializable
 	public $responseStatusCode;
 
 	/**
+	 * Response status text if intercepted at response stage.
+	 *
+	 * @var string|null
+	 */
+	public $responseStatusText;
+
+	/**
 	 * Response headers if intercepted at the response stage.
 	 *
 	 * @var HeaderEntry[]|null
@@ -91,6 +98,9 @@ final class RequestPausedEvent implements \JsonSerializable
 		if (isset($data->responseStatusCode)) {
 			$instance->responseStatusCode = (int)$data->responseStatusCode;
 		}
+		if (isset($data->responseStatusText)) {
+			$instance->responseStatusText = (string)$data->responseStatusText;
+		}
 		if (isset($data->responseHeaders)) {
 			$instance->responseHeaders = [];
 			foreach ($data->responseHeaders as $item) {
@@ -124,6 +134,9 @@ final class RequestPausedEvent implements \JsonSerializable
 		}
 		if ($this->responseStatusCode !== null) {
 			$data->responseStatusCode = $this->responseStatusCode;
+		}
+		if ($this->responseStatusText !== null) {
+			$data->responseStatusText = $this->responseStatusText;
 		}
 		if ($this->responseHeaders !== null) {
 			$data->responseHeaders = [];
