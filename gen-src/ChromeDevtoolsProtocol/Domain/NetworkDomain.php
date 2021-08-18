@@ -11,6 +11,7 @@ use ChromeDevtoolsProtocol\Model\Network\ContinueInterceptedRequestRequest;
 use ChromeDevtoolsProtocol\Model\Network\DataReceivedEvent;
 use ChromeDevtoolsProtocol\Model\Network\DeleteCookiesRequest;
 use ChromeDevtoolsProtocol\Model\Network\EmulateNetworkConditionsRequest;
+use ChromeDevtoolsProtocol\Model\Network\EnableReportingApiRequest;
 use ChromeDevtoolsProtocol\Model\Network\EnableRequest;
 use ChromeDevtoolsProtocol\Model\Network\EventSourceMessageReceivedEvent;
 use ChromeDevtoolsProtocol\Model\Network\GetAllCookiesResponse;
@@ -31,6 +32,7 @@ use ChromeDevtoolsProtocol\Model\Network\LoadNetworkResourceResponse;
 use ChromeDevtoolsProtocol\Model\Network\LoadingFailedEvent;
 use ChromeDevtoolsProtocol\Model\Network\LoadingFinishedEvent;
 use ChromeDevtoolsProtocol\Model\Network\ReplayXHRRequest;
+use ChromeDevtoolsProtocol\Model\Network\ReportingApiReportAddedEvent;
 use ChromeDevtoolsProtocol\Model\Network\RequestInterceptedEvent;
 use ChromeDevtoolsProtocol\Model\Network\RequestServedFromCacheEvent;
 use ChromeDevtoolsProtocol\Model\Network\RequestWillBeSentEvent;
@@ -156,6 +158,12 @@ class NetworkDomain implements NetworkDomainInterface
 	public function enable(ContextInterface $ctx, EnableRequest $request): void
 	{
 		$this->internalClient->executeCommand($ctx, 'Network.enable', $request);
+	}
+
+
+	public function enableReportingApi(ContextInterface $ctx, EnableReportingApiRequest $request): void
+	{
+		$this->internalClient->executeCommand($ctx, 'Network.enableReportingApi', $request);
 	}
 
 
@@ -362,6 +370,20 @@ class NetworkDomain implements NetworkDomainInterface
 	public function awaitLoadingFinished(ContextInterface $ctx): LoadingFinishedEvent
 	{
 		return LoadingFinishedEvent::fromJson($this->internalClient->awaitEvent($ctx, 'Network.loadingFinished'));
+	}
+
+
+	public function addReportingApiReportAddedListener(callable $listener): SubscriptionInterface
+	{
+		return $this->internalClient->addListener('Network.reportingApiReportAdded', function ($event) use ($listener) {
+			return $listener(ReportingApiReportAddedEvent::fromJson($event));
+		});
+	}
+
+
+	public function awaitReportingApiReportAdded(ContextInterface $ctx): ReportingApiReportAddedEvent
+	{
+		return ReportingApiReportAddedEvent::fromJson($this->internalClient->awaitEvent($ctx, 'Network.reportingApiReportAdded'));
 	}
 
 

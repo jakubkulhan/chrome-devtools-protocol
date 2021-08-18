@@ -90,7 +90,6 @@ final class BackForwardCacheNotRestoredReasonEnum
 	const WEB_SHARE = 'WebShare';
 	const REQUESTED_STORAGE_ACCESS_GRANT = 'RequestedStorageAccessGrant';
 	const WEB_NFC = 'WebNfc';
-	const WEB_FILE_SYSTEM = 'WebFileSystem';
 	const OUTSTANDING_NETWORK_REQUEST_FETCH = 'OutstandingNetworkRequestFetch';
 	const OUTSTANDING_NETWORK_REQUEST_X_H_R = 'OutstandingNetworkRequestXHR';
 	const APP_BANNER = 'AppBanner';
