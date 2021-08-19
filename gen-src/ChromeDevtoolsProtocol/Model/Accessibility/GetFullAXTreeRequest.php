@@ -16,6 +16,13 @@ final class GetFullAXTreeRequest implements \JsonSerializable
 	 *
 	 * @var int|null
 	 */
+	public $depth;
+
+	/**
+	 * Deprecated. This parameter has been renamed to `depth`. If depth is not provided, max_depth will be used.
+	 *
+	 * @var int|null
+	 */
 	public $max_depth;
 
 	/**
@@ -29,6 +36,9 @@ final class GetFullAXTreeRequest implements \JsonSerializable
 	public static function fromJson($data)
 	{
 		$instance = new static();
+		if (isset($data->depth)) {
+			$instance->depth = (int)$data->depth;
+		}
 		if (isset($data->max_depth)) {
 			$instance->max_depth = (int)$data->max_depth;
 		}
@@ -42,6 +52,9 @@ final class GetFullAXTreeRequest implements \JsonSerializable
 	public function jsonSerialize()
 	{
 		$data = new \stdClass();
+		if ($this->depth !== null) {
+			$data->depth = $this->depth;
+		}
 		if ($this->max_depth !== null) {
 			$data->max_depth = $this->max_depth;
 		}

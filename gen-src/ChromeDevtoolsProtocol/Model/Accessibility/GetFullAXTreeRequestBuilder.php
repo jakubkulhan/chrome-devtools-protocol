@@ -9,6 +9,7 @@ namespace ChromeDevtoolsProtocol\Model\Accessibility;
  */
 final class GetFullAXTreeRequestBuilder
 {
+	private $depth;
 	private $max_depth;
 	private $frameId;
 
@@ -19,9 +20,22 @@ final class GetFullAXTreeRequestBuilder
 	public function build(): GetFullAXTreeRequest
 	{
 		$instance = new GetFullAXTreeRequest();
+		$instance->depth = $this->depth;
 		$instance->max_depth = $this->max_depth;
 		$instance->frameId = $this->frameId;
 		return $instance;
+	}
+
+
+	/**
+	 * @param int|null $depth
+	 *
+	 * @return self
+	 */
+	public function setDepth($depth): self
+	{
+		$this->depth = $depth;
+		return $this;
 	}
 
 
