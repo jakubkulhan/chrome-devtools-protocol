@@ -35,6 +35,9 @@ final class LogEntry implements \JsonSerializable
 	 */
 	public $text;
 
+	/** @var string|null */
+	public $category;
+
 	/**
 	 * Timestamp when this entry was added.
 	 *
@@ -97,6 +100,9 @@ final class LogEntry implements \JsonSerializable
 		if (isset($data->text)) {
 			$instance->text = (string)$data->text;
 		}
+		if (isset($data->category)) {
+			$instance->category = (string)$data->category;
+		}
 		if (isset($data->timestamp)) {
 			$instance->timestamp = $data->timestamp;
 		}
@@ -136,6 +142,9 @@ final class LogEntry implements \JsonSerializable
 		}
 		if ($this->text !== null) {
 			$data->text = $this->text;
+		}
+		if ($this->category !== null) {
+			$data->category = $this->category;
 		}
 		if ($this->timestamp !== null) {
 			$data->timestamp = $this->timestamp;
