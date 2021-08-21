@@ -5,6 +5,7 @@ namespace ChromeDevtoolsProtocol\Domain;
 use ChromeDevtoolsProtocol\ContextInterface;
 use ChromeDevtoolsProtocol\Model\Fetch\AuthRequiredEvent;
 use ChromeDevtoolsProtocol\Model\Fetch\ContinueRequestRequest;
+use ChromeDevtoolsProtocol\Model\Fetch\ContinueResponseRequest;
 use ChromeDevtoolsProtocol\Model\Fetch\ContinueWithAuthRequest;
 use ChromeDevtoolsProtocol\Model\Fetch\EnableRequest;
 use ChromeDevtoolsProtocol\Model\Fetch\FailRequestRequest;
@@ -34,6 +35,17 @@ interface FetchDomainInterface
 	 * @return void
 	 */
 	public function continueRequest(ContextInterface $ctx, ContinueRequestRequest $request): void;
+
+
+	/**
+	 * Continues loading of the paused response, optionally modifying the response headers. If either responseCode or headers are modified, all of them must be present.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param ContinueResponseRequest $request
+	 *
+	 * @return void
+	 */
+	public function continueResponse(ContextInterface $ctx, ContinueResponseRequest $request): void;
 
 
 	/**

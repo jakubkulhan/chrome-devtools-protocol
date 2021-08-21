@@ -9520,6 +9520,45 @@
                     ]
                 },
                 {
+                    "name": "continueResponse",
+                    "description": "Continues loading of the paused response, optionally modifying the response headers. If either responseCode or headers are modified, all of them must be present.",
+                    "experimental": true,
+                    "parameters": [
+                        {
+                            "name": "requestId",
+                            "description": "An id the client received in requestPaused event.",
+                            "$ref": "RequestId"
+                        },
+                        {
+                            "name": "responseCode",
+                            "description": "An HTTP response code. If absent, original response code will be used.",
+                            "optional": true,
+                            "type": "integer"
+                        },
+                        {
+                            "name": "responsePhrase",
+                            "description": "A textual representation of responseCode. If absent, a standard phrase matching responseCode is used.",
+                            "optional": true,
+                            "type": "string"
+                        },
+                        {
+                            "name": "responseHeaders",
+                            "description": "Response headers. If absent, original response headers will be used.",
+                            "optional": true,
+                            "type": "array",
+                            "items": {
+                                "$ref": "HeaderEntry"
+                            }
+                        },
+                        {
+                            "name": "binaryResponseHeaders",
+                            "description": "Alternative way of specifying response headers as a \\0-separated series of name: value pairs. Prefer the above method unless you need to represent some non-UTF8 values that can't be transmitted over the protocol as text. (Encoded as a base64 string when passed over JSON)",
+                            "optional": true,
+                            "type": "string"
+                        }
+                    ]
+                },
+                {
                     "name": "continueWithAuth",
                     "description": "Continues a request supplying authChallengeResponse following authRequired event.",
                     "parameters": [
@@ -9607,7 +9646,7 @@
                         },
                         {
                             "name": "body",
-                            "description": "A response body. (Encoded as a base64 string when passed over JSON)",
+                            "description": "A response body. If absent, original response body will be used if the request is intercepted at the response stage and empty body will be used if the request is intercepted at the request stage. (Encoded as a base64 string when passed over JSON)",
                             "optional": true,
                             "type": "string"
                         },

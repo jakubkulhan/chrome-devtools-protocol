@@ -3,13 +3,13 @@
 namespace ChromeDevtoolsProtocol\Model\Fetch;
 
 /**
- * Request for Fetch.fulfillRequest command.
+ * Request for Fetch.continueResponse command.
  *
  * @generated This file has been auto-generated, do not edit.
  *
  * @author Jakub Kulhan <jakub.kulhan@gmail.com>
  */
-final class FulfillRequestRequest implements \JsonSerializable
+final class ContinueResponseRequest implements \JsonSerializable
 {
 	/**
 	 * An id the client received in requestPaused event.
@@ -19,14 +19,21 @@ final class FulfillRequestRequest implements \JsonSerializable
 	public $requestId;
 
 	/**
-	 * An HTTP response code.
+	 * An HTTP response code. If absent, original response code will be used.
 	 *
-	 * @var int
+	 * @var int|null
 	 */
 	public $responseCode;
 
 	/**
-	 * Response headers.
+	 * A textual representation of responseCode. If absent, a standard phrase matching responseCode is used.
+	 *
+	 * @var string|null
+	 */
+	public $responsePhrase;
+
+	/**
+	 * Response headers. If absent, original response headers will be used.
 	 *
 	 * @var HeaderEntry[]|null
 	 */
@@ -39,20 +46,6 @@ final class FulfillRequestRequest implements \JsonSerializable
 	 */
 	public $binaryResponseHeaders;
 
-	/**
-	 * A response body. If absent, original response body will be used if the request is intercepted at the response stage and empty body will be used if the request is intercepted at the request stage. (Encoded as a base64 string when passed over JSON)
-	 *
-	 * @var string|null
-	 */
-	public $body;
-
-	/**
-	 * A textual representation of responseCode. If absent, a standard phrase matching responseCode is used.
-	 *
-	 * @var string|null
-	 */
-	public $responsePhrase;
-
 
 	public static function fromJson($data)
 	{
@@ -63,6 +56,9 @@ final class FulfillRequestRequest implements \JsonSerializable
 		if (isset($data->responseCode)) {
 			$instance->responseCode = (int)$data->responseCode;
 		}
+		if (isset($data->responsePhrase)) {
+			$instance->responsePhrase = (string)$data->responsePhrase;
+		}
 		if (isset($data->responseHeaders)) {
 			$instance->responseHeaders = [];
 			foreach ($data->responseHeaders as $item) {
@@ -71,12 +67,6 @@ final class FulfillRequestRequest implements \JsonSerializable
 		}
 		if (isset($data->binaryResponseHeaders)) {
 			$instance->binaryResponseHeaders = (string)$data->binaryResponseHeaders;
-		}
-		if (isset($data->body)) {
-			$instance->body = (string)$data->body;
-		}
-		if (isset($data->responsePhrase)) {
-			$instance->responsePhrase = (string)$data->responsePhrase;
 		}
 		return $instance;
 	}
@@ -91,6 +81,9 @@ final class FulfillRequestRequest implements \JsonSerializable
 		if ($this->responseCode !== null) {
 			$data->responseCode = $this->responseCode;
 		}
+		if ($this->responsePhrase !== null) {
+			$data->responsePhrase = $this->responsePhrase;
+		}
 		if ($this->responseHeaders !== null) {
 			$data->responseHeaders = [];
 			foreach ($this->responseHeaders as $item) {
@@ -100,12 +93,6 @@ final class FulfillRequestRequest implements \JsonSerializable
 		if ($this->binaryResponseHeaders !== null) {
 			$data->binaryResponseHeaders = $this->binaryResponseHeaders;
 		}
-		if ($this->body !== null) {
-			$data->body = $this->body;
-		}
-		if ($this->responsePhrase !== null) {
-			$data->responsePhrase = $this->responsePhrase;
-		}
 		return $data;
 	}
 
@@ -113,10 +100,10 @@ final class FulfillRequestRequest implements \JsonSerializable
 	/**
 	 * Create new instance using builder.
 	 *
-	 * @return FulfillRequestRequestBuilder
+	 * @return ContinueResponseRequestBuilder
 	 */
-	public static function builder(): FulfillRequestRequestBuilder
+	public static function builder(): ContinueResponseRequestBuilder
 	{
-		return new FulfillRequestRequestBuilder();
+		return new ContinueResponseRequestBuilder();
 	}
 }
