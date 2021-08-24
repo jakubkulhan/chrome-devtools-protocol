@@ -33,6 +33,7 @@ use ChromeDevtoolsProtocol\Model\Page\FrameScheduledNavigationEvent;
 use ChromeDevtoolsProtocol\Model\Page\FrameStartedLoadingEvent;
 use ChromeDevtoolsProtocol\Model\Page\FrameStoppedLoadingEvent;
 use ChromeDevtoolsProtocol\Model\Page\GenerateTestReportRequest;
+use ChromeDevtoolsProtocol\Model\Page\GetAppIdResponse;
 use ChromeDevtoolsProtocol\Model\Page\GetAppManifestResponse;
 use ChromeDevtoolsProtocol\Model\Page\GetCookiesResponse;
 use ChromeDevtoolsProtocol\Model\Page\GetFrameTreeResponse;
@@ -218,6 +219,14 @@ class PageDomain implements PageDomainInterface
 	public function generateTestReport(ContextInterface $ctx, GenerateTestReportRequest $request): void
 	{
 		$this->internalClient->executeCommand($ctx, 'Page.generateTestReport', $request);
+	}
+
+
+	public function getAppId(ContextInterface $ctx): GetAppIdResponse
+	{
+		$request = new \stdClass();
+		$response = $this->internalClient->executeCommand($ctx, 'Page.getAppId', $request);
+		return GetAppIdResponse::fromJson($response);
 	}
 
 

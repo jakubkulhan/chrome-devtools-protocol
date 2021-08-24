@@ -17680,15 +17680,31 @@
                         "IsolatedWorldScript",
                         "InjectedStyleSheet",
                         "MediaSessionImplOnServiceCreated",
-                        "SecurityHandler",
-                        "WebAuthenticationAPI",
-                        "FileChooser",
-                        "Serial",
-                        "FileSystemAccess",
-                        "MediaDevicesDispatcherHost",
-                        "WebBluetooth",
-                        "WebUSB",
-                        "MediaSession"
+                        "ContentMediaSessionImplOnServiceCreated",
+                        "ContentSecurityHandler",
+                        "ContentWebAuthenticationAPI",
+                        "ContentFileChooser",
+                        "ContentSerial",
+                        "ContentFileSystemAccess",
+                        "ContentMediaDevicesDispatcherHost",
+                        "ContentWebBluetooth",
+                        "ContentWebUSB",
+                        "ContentMediaSession",
+                        "EmbedderPopupBlockerTabHelper",
+                        "EmbedderSafeBrowsingTriggeredPopupBlocker",
+                        "EmbedderSafeBrowsingThreatDetails",
+                        "EmbedderAppBannerManager",
+                        "EmbedderDomDistillerViewerSource",
+                        "EmbedderDomDistillerSelfDeletingRequestDelegate",
+                        "EmbedderOomInterventionTabHelper",
+                        "EmbedderOfflinePage",
+                        "EmbedderChromePasswordManagerClientBindCredentialManager",
+                        "EmbedderPermissionRequestManager",
+                        "EmbedderModalDialog",
+                        "EmbedderExtensions",
+                        "EmbedderExtensionMessaging",
+                        "EmbedderExtensionMessagingForOpenPort",
+                        "EmbedderExtensionSentMessageToCachedFrame"
                     ]
                 },
                 {
@@ -17969,6 +17985,19 @@
                         {
                             "name": "group",
                             "description": "Specifies the endpoint group to deliver the report to.",
+                            "optional": true,
+                            "type": "string"
+                        }
+                    ]
+                },
+                {
+                    "name": "getAppId",
+                    "description": "Returns the unique (PWA) app id.",
+                    "experimental": true,
+                    "returns": [
+                        {
+                            "name": "appId",
+                            "description": "Only returns a value if the feature flag 'WebAppEnableManifestId' is enabled",
                             "optional": true,
                             "type": "string"
                         }

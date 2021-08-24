@@ -32,6 +32,7 @@ use ChromeDevtoolsProtocol\Model\Page\FrameScheduledNavigationEvent;
 use ChromeDevtoolsProtocol\Model\Page\FrameStartedLoadingEvent;
 use ChromeDevtoolsProtocol\Model\Page\FrameStoppedLoadingEvent;
 use ChromeDevtoolsProtocol\Model\Page\GenerateTestReportRequest;
+use ChromeDevtoolsProtocol\Model\Page\GetAppIdResponse;
 use ChromeDevtoolsProtocol\Model\Page\GetAppManifestResponse;
 use ChromeDevtoolsProtocol\Model\Page\GetCookiesResponse;
 use ChromeDevtoolsProtocol\Model\Page\GetFrameTreeResponse;
@@ -280,6 +281,16 @@ interface PageDomainInterface
 	 * @return void
 	 */
 	public function generateTestReport(ContextInterface $ctx, GenerateTestReportRequest $request): void;
+
+
+	/**
+	 * Returns the unique (PWA) app id.
+	 *
+	 * @param ContextInterface $ctx
+	 *
+	 * @return GetAppIdResponse
+	 */
+	public function getAppId(ContextInterface $ctx): GetAppIdResponse;
 
 
 	/**
