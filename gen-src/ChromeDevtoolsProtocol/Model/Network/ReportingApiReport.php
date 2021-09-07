@@ -11,6 +11,9 @@ namespace ChromeDevtoolsProtocol\Model\Network;
  */
 final class ReportingApiReport implements \JsonSerializable
 {
+	/** @var string */
+	public $id;
+
 	/**
 	 * The URL of the document that triggered the report.
 	 *
@@ -53,6 +56,9 @@ final class ReportingApiReport implements \JsonSerializable
 	public static function fromJson($data)
 	{
 		$instance = new static();
+		if (isset($data->id)) {
+			$instance->id = (string)$data->id;
+		}
 		if (isset($data->initiatorUrl)) {
 			$instance->initiatorUrl = (string)$data->initiatorUrl;
 		}
@@ -78,6 +84,9 @@ final class ReportingApiReport implements \JsonSerializable
 	public function jsonSerialize()
 	{
 		$data = new \stdClass();
+		if ($this->id !== null) {
+			$data->id = $this->id;
+		}
 		if ($this->initiatorUrl !== null) {
 			$data->initiatorUrl = $this->initiatorUrl;
 		}
