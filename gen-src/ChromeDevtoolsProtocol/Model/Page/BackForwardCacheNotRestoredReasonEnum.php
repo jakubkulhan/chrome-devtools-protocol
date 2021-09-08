@@ -105,7 +105,7 @@ final class BackForwardCacheNotRestoredReasonEnum
 	const KEYBOARD_LOCK = 'KeyboardLock';
 	const WEB_O_T_P_SERVICE = 'WebOTPService';
 	const OUTSTANDING_NETWORK_REQUEST_DIRECT_SOCKET = 'OutstandingNetworkRequestDirectSocket';
-	const ISOLATED_WORLD_SCRIPT = 'IsolatedWorldScript';
+	const INJECTED_JAVASCRIPT = 'InjectedJavascript';
 	const INJECTED_STYLE_SHEET = 'InjectedStyleSheet';
 	const CONTENT_SECURITY_HANDLER = 'ContentSecurityHandler';
 	const CONTENT_WEB_AUTHENTICATION_A_P_I = 'ContentWebAuthenticationAPI';

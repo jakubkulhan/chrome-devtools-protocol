@@ -32,6 +32,7 @@ use ChromeDevtoolsProtocol\Model\Network\LoadingFailedEvent;
 use ChromeDevtoolsProtocol\Model\Network\LoadingFinishedEvent;
 use ChromeDevtoolsProtocol\Model\Network\ReplayXHRRequest;
 use ChromeDevtoolsProtocol\Model\Network\ReportingApiReportAddedEvent;
+use ChromeDevtoolsProtocol\Model\Network\ReportingApiReportUpdatedEvent;
 use ChromeDevtoolsProtocol\Model\Network\RequestInterceptedEvent;
 use ChromeDevtoolsProtocol\Model\Network\RequestServedFromCacheEvent;
 use ChromeDevtoolsProtocol\Model\Network\RequestWillBeSentEvent;
@@ -572,6 +573,30 @@ interface NetworkDomainInterface
 	 * @return ReportingApiReportAddedEvent
 	 */
 	public function awaitReportingApiReportAdded(ContextInterface $ctx): ReportingApiReportAddedEvent;
+
+
+	/**
+	 * Subscribe to Network.reportingApiReportUpdated event.
+	 *
+	 * Listener will be called whenever event Network.reportingApiReportUpdated is fired.
+	 *
+	 * @param callable $listener
+	 *
+	 * @return SubscriptionInterface
+	 */
+	public function addReportingApiReportUpdatedListener(callable $listener): SubscriptionInterface;
+
+
+	/**
+	 * Wait for Network.reportingApiReportUpdated event.
+	 *
+	 * Method will block until first Network.reportingApiReportUpdated event is fired.
+	 *
+	 * @param ContextInterface $ctx
+	 *
+	 * @return ReportingApiReportUpdatedEvent
+	 */
+	public function awaitReportingApiReportUpdated(ContextInterface $ctx): ReportingApiReportUpdatedEvent;
 
 
 	/**

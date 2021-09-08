@@ -49,8 +49,18 @@ final class ReportingApiReport implements \JsonSerializable
 	 */
 	public $depth;
 
+	/**
+	 * The number of delivery attempts made so far, not including an active attempt.
+	 *
+	 * @var int
+	 */
+	public $completedAttempts;
+
 	/** @var object */
 	public $body;
+
+	/** @var string */
+	public $status;
 
 
 	public static function fromJson($data)
@@ -74,8 +84,14 @@ final class ReportingApiReport implements \JsonSerializable
 		if (isset($data->depth)) {
 			$instance->depth = (int)$data->depth;
 		}
+		if (isset($data->completedAttempts)) {
+			$instance->completedAttempts = (int)$data->completedAttempts;
+		}
 		if (isset($data->body)) {
 			$instance->body = $data->body;
+		}
+		if (isset($data->status)) {
+			$instance->status = (string)$data->status;
 		}
 		return $instance;
 	}
@@ -102,8 +118,14 @@ final class ReportingApiReport implements \JsonSerializable
 		if ($this->depth !== null) {
 			$data->depth = $this->depth;
 		}
+		if ($this->completedAttempts !== null) {
+			$data->completedAttempts = $this->completedAttempts;
+		}
 		if ($this->body !== null) {
 			$data->body = $this->body;
+		}
+		if ($this->status !== null) {
+			$data->status = $this->status;
 		}
 		return $data;
 	}

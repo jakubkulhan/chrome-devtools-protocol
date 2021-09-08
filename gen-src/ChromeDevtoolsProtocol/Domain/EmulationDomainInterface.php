@@ -4,6 +4,7 @@ namespace ChromeDevtoolsProtocol\Domain;
 
 use ChromeDevtoolsProtocol\ContextInterface;
 use ChromeDevtoolsProtocol\Model\Emulation\CanEmulateResponse;
+use ChromeDevtoolsProtocol\Model\Emulation\SetAutoDarkModeOverrideRequest;
 use ChromeDevtoolsProtocol\Model\Emulation\SetCPUThrottlingRateRequest;
 use ChromeDevtoolsProtocol\Model\Emulation\SetDefaultBackgroundColorOverrideRequest;
 use ChromeDevtoolsProtocol\Model\Emulation\SetDeviceMetricsOverrideRequest;
@@ -86,6 +87,17 @@ interface EmulationDomainInterface
 	 * @return void
 	 */
 	public function resetPageScaleFactor(ContextInterface $ctx): void;
+
+
+	/**
+	 * Automatically render all web contents using a dark theme.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param SetAutoDarkModeOverrideRequest $request
+	 *
+	 * @return void
+	 */
+	public function setAutoDarkModeOverride(ContextInterface $ctx, SetAutoDarkModeOverrideRequest $request): void;
 
 
 	/**

@@ -33,6 +33,7 @@ use ChromeDevtoolsProtocol\Model\Network\LoadingFailedEvent;
 use ChromeDevtoolsProtocol\Model\Network\LoadingFinishedEvent;
 use ChromeDevtoolsProtocol\Model\Network\ReplayXHRRequest;
 use ChromeDevtoolsProtocol\Model\Network\ReportingApiReportAddedEvent;
+use ChromeDevtoolsProtocol\Model\Network\ReportingApiReportUpdatedEvent;
 use ChromeDevtoolsProtocol\Model\Network\RequestInterceptedEvent;
 use ChromeDevtoolsProtocol\Model\Network\RequestServedFromCacheEvent;
 use ChromeDevtoolsProtocol\Model\Network\RequestWillBeSentEvent;
@@ -384,6 +385,20 @@ class NetworkDomain implements NetworkDomainInterface
 	public function awaitReportingApiReportAdded(ContextInterface $ctx): ReportingApiReportAddedEvent
 	{
 		return ReportingApiReportAddedEvent::fromJson($this->internalClient->awaitEvent($ctx, 'Network.reportingApiReportAdded'));
+	}
+
+
+	public function addReportingApiReportUpdatedListener(callable $listener): SubscriptionInterface
+	{
+		return $this->internalClient->addListener('Network.reportingApiReportUpdated', function ($event) use ($listener) {
+			return $listener(ReportingApiReportUpdatedEvent::fromJson($event));
+		});
+	}
+
+
+	public function awaitReportingApiReportUpdated(ContextInterface $ctx): ReportingApiReportUpdatedEvent
+	{
+		return ReportingApiReportUpdatedEvent::fromJson($this->internalClient->awaitEvent($ctx, 'Network.reportingApiReportUpdated'));
 	}
 
 

@@ -8910,6 +8910,19 @@
                     "experimental": true
                 },
                 {
+                    "name": "setAutoDarkModeOverride",
+                    "description": "Automatically render all web contents using a dark theme.",
+                    "experimental": true,
+                    "parameters": [
+                        {
+                            "name": "enabled",
+                            "description": "Whether to enable or disable automatic dark mode. If not specified, any existing override will be cleared.",
+                            "optional": true,
+                            "type": "boolean"
+                        }
+                    ]
+                },
+                {
                     "name": "setCPUThrottlingRate",
                     "description": "Enables CPU throttling to emulate slow CPUs.",
                     "experimental": true,
@@ -14014,7 +14027,9 @@
                     "type": "string",
                     "enum": [
                         "Queued",
-                        "Pending"
+                        "Pending",
+                        "MarkedForRemoval",
+                        "Success"
                     ]
                 },
                 {
@@ -14058,8 +14073,17 @@
                             "type": "integer"
                         },
                         {
+                            "name": "completedAttempts",
+                            "description": "The number of delivery attempts made so far, not including an active attempt.",
+                            "type": "integer"
+                        },
+                        {
                             "name": "body",
                             "type": "object"
+                        },
+                        {
+                            "name": "status",
+                            "$ref": "ReportStatus"
                         }
                     ]
                 },
@@ -14932,6 +14956,16 @@
                 {
                     "name": "reportingApiReportAdded",
                     "description": "Is sent whenever a new report is added. And after 'enableReportingApi' for all existing reports.",
+                    "experimental": true,
+                    "parameters": [
+                        {
+                            "name": "report",
+                            "$ref": "ReportingApiReport"
+                        }
+                    ]
+                },
+                {
+                    "name": "reportingApiReportUpdated",
                     "experimental": true,
                     "parameters": [
                         {
@@ -17677,7 +17711,7 @@
                         "KeyboardLock",
                         "WebOTPService",
                         "OutstandingNetworkRequestDirectSocket",
-                        "IsolatedWorldScript",
+                        "InjectedJavascript",
                         "InjectedStyleSheet",
                         "ContentSecurityHandler",
                         "ContentWebAuthenticationAPI",

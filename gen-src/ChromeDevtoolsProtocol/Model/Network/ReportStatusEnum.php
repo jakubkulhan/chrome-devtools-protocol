@@ -13,4 +13,6 @@ final class ReportStatusEnum
 {
 	const QUEUED = 'Queued';
 	const PENDING = 'Pending';
+	const MARKED_FOR_REMOVAL = 'MarkedForRemoval';
+	const SUCCESS = 'Success';
 }
