@@ -17,4 +17,5 @@ final class AttributionReportingIssueTypeEnum
 	const ATTRIBUTION_SOURCE_UNTRUSTWORTHY_ORIGIN = 'AttributionSourceUntrustworthyOrigin';
 	const ATTRIBUTION_UNTRUSTWORTHY_ORIGIN = 'AttributionUntrustworthyOrigin';
 	const ATTRIBUTION_TRIGGER_DATA_TOO_LARGE = 'AttributionTriggerDataTooLarge';
+	const ATTRIBUTION_EVENT_SOURCE_TRIGGER_DATA_TOO_LARGE = 'AttributionEventSourceTriggerDataTooLarge';
 }

@@ -1529,7 +1529,8 @@
                         "InvalidAttributionData",
                         "AttributionSourceUntrustworthyOrigin",
                         "AttributionUntrustworthyOrigin",
-                        "AttributionTriggerDataTooLarge"
+                        "AttributionTriggerDataTooLarge",
+                        "AttributionEventSourceTriggerDataTooLarge"
                     ]
                 },
                 {
