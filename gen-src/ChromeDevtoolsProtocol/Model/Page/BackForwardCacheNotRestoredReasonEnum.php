@@ -107,6 +107,7 @@ final class BackForwardCacheNotRestoredReasonEnum
 	const OUTSTANDING_NETWORK_REQUEST_DIRECT_SOCKET = 'OutstandingNetworkRequestDirectSocket';
 	const INJECTED_JAVASCRIPT = 'InjectedJavascript';
 	const INJECTED_STYLE_SHEET = 'InjectedStyleSheet';
+	const DUMMY = 'Dummy';
 	const CONTENT_SECURITY_HANDLER = 'ContentSecurityHandler';
 	const CONTENT_WEB_AUTHENTICATION_A_P_I = 'ContentWebAuthenticationAPI';
 	const CONTENT_FILE_CHOOSER = 'ContentFileChooser';
