@@ -20,7 +20,6 @@ final class PermissionsPolicyFeatureEnum
 	const CH_DEVICE_MEMORY = 'ch-device-memory';
 	const CH_DOWNLINK = 'ch-downlink';
 	const CH_ECT = 'ch-ect';
-	const CH_LANG = 'ch-lang';
 	const CH_PREFERS_COLOR_SCHEME = 'ch-prefers-color-scheme';
 	const CH_RTT = 'ch-rtt';
 	const CH_UA = 'ch-ua';
