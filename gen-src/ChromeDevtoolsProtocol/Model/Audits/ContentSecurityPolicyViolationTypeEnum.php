@@ -11,9 +11,9 @@ namespace ChromeDevtoolsProtocol\Model\Audits;
  */
 final class ContentSecurityPolicyViolationTypeEnum
 {
-	const K_INLINE_VIOLATION = 'kInlineViolation';
-	const K_EVAL_VIOLATION = 'kEvalViolation';
-	const K_U_R_L_VIOLATION = 'kURLViolation';
-	const K_TRUSTED_TYPES_SINK_VIOLATION = 'kTrustedTypesSinkViolation';
-	const K_TRUSTED_TYPES_POLICY_VIOLATION = 'kTrustedTypesPolicyViolation';
+	public const K_INLINE_VIOLATION = 'kInlineViolation';
+	public const K_EVAL_VIOLATION = 'kEvalViolation';
+	public const K_U_R_L_VIOLATION = 'kURLViolation';
+	public const K_TRUSTED_TYPES_SINK_VIOLATION = 'kTrustedTypesSinkViolation';
+	public const K_TRUSTED_TYPES_POLICY_VIOLATION = 'kTrustedTypesPolicyViolation';
 }

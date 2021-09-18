@@ -11,6 +11,6 @@ namespace ChromeDevtoolsProtocol\Model\DOMDebugger;
  */
 final class CSPViolationTypeEnum
 {
-	const TRUSTEDTYPE_SINK_VIOLATION = 'trustedtype-sink-violation';
-	const TRUSTEDTYPE_POLICY_VIOLATION = 'trustedtype-policy-violation';
+	public const TRUSTEDTYPE_SINK_VIOLATION = 'trustedtype-sink-violation';
+	public const TRUSTEDTYPE_POLICY_VIOLATION = 'trustedtype-policy-violation';
 }

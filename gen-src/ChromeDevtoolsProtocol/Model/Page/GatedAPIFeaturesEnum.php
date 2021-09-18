@@ -11,8 +11,8 @@ namespace ChromeDevtoolsProtocol\Model\Page;
  */
 final class GatedAPIFeaturesEnum
 {
-	const SHARED_ARRAY_BUFFERS = 'SharedArrayBuffers';
-	const SHARED_ARRAY_BUFFERS_TRANSFER_ALLOWED = 'SharedArrayBuffersTransferAllowed';
-	const PERFORMANCE_MEASURE_MEMORY = 'PerformanceMeasureMemory';
-	const PERFORMANCE_PROFILE = 'PerformanceProfile';
+	public const SHARED_ARRAY_BUFFERS = 'SharedArrayBuffers';
+	public const SHARED_ARRAY_BUFFERS_TRANSFER_ALLOWED = 'SharedArrayBuffersTransferAllowed';
+	public const PERFORMANCE_MEASURE_MEMORY = 'PerformanceMeasureMemory';
+	public const PERFORMANCE_PROFILE = 'PerformanceProfile';
 }

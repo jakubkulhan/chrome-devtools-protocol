@@ -11,7 +11,7 @@ namespace ChromeDevtoolsProtocol\Model\SystemInfo;
  */
 final class ImageTypeEnum
 {
-	const JPEG = 'jpeg';
-	const WEBP = 'webp';
-	const UNKNOWN = 'unknown';
+	public const JPEG = 'jpeg';
+	public const WEBP = 'webp';
+	public const UNKNOWN = 'unknown';
 }

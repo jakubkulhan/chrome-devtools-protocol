@@ -11,7 +11,7 @@ namespace ChromeDevtoolsProtocol\Model\Audits;
  */
 final class TwaQualityEnforcementViolationTypeEnum
 {
-	const K_HTTP_ERROR = 'kHttpError';
-	const K_UNAVAILABLE_OFFLINE = 'kUnavailableOffline';
-	const K_DIGITAL_ASSET_LINKS = 'kDigitalAssetLinks';
+	public const K_HTTP_ERROR = 'kHttpError';
+	public const K_UNAVAILABLE_OFFLINE = 'kUnavailableOffline';
+	public const K_DIGITAL_ASSET_LINKS = 'kDigitalAssetLinks';
 }

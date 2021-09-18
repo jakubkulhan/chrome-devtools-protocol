@@ -11,10 +11,10 @@ namespace ChromeDevtoolsProtocol\Model\ServiceWorker;
  */
 final class ServiceWorkerVersionStatusEnum
 {
-	const NEW = 'new';
-	const INSTALLING = 'installing';
-	const INSTALLED = 'installed';
-	const ACTIVATING = 'activating';
-	const ACTIVATED = 'activated';
-	const REDUNDANT = 'redundant';
+	public const NEW = 'new';
+	public const INSTALLING = 'installing';
+	public const INSTALLED = 'installed';
+	public const ACTIVATING = 'activating';
+	public const ACTIVATED = 'activated';
+	public const REDUNDANT = 'redundant';
 }

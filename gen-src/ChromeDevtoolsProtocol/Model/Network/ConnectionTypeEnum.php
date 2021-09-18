@@ -11,13 +11,13 @@ namespace ChromeDevtoolsProtocol\Model\Network;
  */
 final class ConnectionTypeEnum
 {
-	const NONE = 'none';
-	const CELLULAR2G = 'cellular2g';
-	const CELLULAR3G = 'cellular3g';
-	const CELLULAR4G = 'cellular4g';
-	const BLUETOOTH = 'bluetooth';
-	const ETHERNET = 'ethernet';
-	const WIFI = 'wifi';
-	const WIMAX = 'wimax';
-	const OTHER = 'other';
+	public const NONE = 'none';
+	public const CELLULAR2G = 'cellular2g';
+	public const CELLULAR3G = 'cellular3g';
+	public const CELLULAR4G = 'cellular4g';
+	public const BLUETOOTH = 'bluetooth';
+	public const ETHERNET = 'ethernet';
+	public const WIFI = 'wifi';
+	public const WIMAX = 'wimax';
+	public const OTHER = 'other';
 }

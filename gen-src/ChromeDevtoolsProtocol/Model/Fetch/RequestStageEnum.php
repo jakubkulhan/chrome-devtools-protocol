@@ -11,6 +11,6 @@ namespace ChromeDevtoolsProtocol\Model\Fetch;
  */
 final class RequestStageEnum
 {
-	const REQUEST = 'Request';
-	const RESPONSE = 'Response';
+	public const REQUEST = 'Request';
+	public const RESPONSE = 'Response';
 }

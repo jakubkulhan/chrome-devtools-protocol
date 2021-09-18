@@ -11,6 +11,6 @@ namespace ChromeDevtoolsProtocol\Model\WebAudio;
  */
 final class ContextTypeEnum
 {
-	const REALTIME = 'realtime';
-	const OFFLINE = 'offline';
+	public const REALTIME = 'realtime';
+	public const OFFLINE = 'offline';
 }

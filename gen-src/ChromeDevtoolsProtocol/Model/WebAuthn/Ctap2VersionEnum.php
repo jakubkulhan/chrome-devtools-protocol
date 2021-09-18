@@ -11,6 +11,6 @@ namespace ChromeDevtoolsProtocol\Model\WebAuthn;
  */
 final class Ctap2VersionEnum
 {
-	const CTAP2_0 = 'ctap2_0';
-	const CTAP2_1 = 'ctap2_1';
+	public const CTAP2_0 = 'ctap2_0';
+	public const CTAP2_1 = 'ctap2_1';
 }

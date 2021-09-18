@@ -11,8 +11,8 @@ namespace ChromeDevtoolsProtocol\Model\Network;
  */
 final class ReportStatusEnum
 {
-	const QUEUED = 'Queued';
-	const PENDING = 'Pending';
-	const MARKED_FOR_REMOVAL = 'MarkedForRemoval';
-	const SUCCESS = 'Success';
+	public const QUEUED = 'Queued';
+	public const PENDING = 'Pending';
+	public const MARKED_FOR_REMOVAL = 'MarkedForRemoval';
+	public const SUCCESS = 'Success';
 }

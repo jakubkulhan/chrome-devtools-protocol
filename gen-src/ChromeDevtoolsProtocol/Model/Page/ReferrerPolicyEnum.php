@@ -11,12 +11,12 @@ namespace ChromeDevtoolsProtocol\Model\Page;
  */
 final class ReferrerPolicyEnum
 {
-	const NO_REFERRER = 'noReferrer';
-	const NO_REFERRER_WHEN_DOWNGRADE = 'noReferrerWhenDowngrade';
-	const ORIGIN = 'origin';
-	const ORIGIN_WHEN_CROSS_ORIGIN = 'originWhenCrossOrigin';
-	const SAME_ORIGIN = 'sameOrigin';
-	const STRICT_ORIGIN = 'strictOrigin';
-	const STRICT_ORIGIN_WHEN_CROSS_ORIGIN = 'strictOriginWhenCrossOrigin';
-	const UNSAFE_URL = 'unsafeUrl';
+	public const NO_REFERRER = 'noReferrer';
+	public const NO_REFERRER_WHEN_DOWNGRADE = 'noReferrerWhenDowngrade';
+	public const ORIGIN = 'origin';
+	public const ORIGIN_WHEN_CROSS_ORIGIN = 'originWhenCrossOrigin';
+	public const SAME_ORIGIN = 'sameOrigin';
+	public const STRICT_ORIGIN = 'strictOrigin';
+	public const STRICT_ORIGIN_WHEN_CROSS_ORIGIN = 'strictOriginWhenCrossOrigin';
+	public const UNSAFE_URL = 'unsafeUrl';
 }

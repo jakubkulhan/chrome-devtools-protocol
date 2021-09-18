@@ -11,9 +11,9 @@ namespace ChromeDevtoolsProtocol\Model\Network;
  */
 final class ResourcePriorityEnum
 {
-	const VERY_LOW = 'VeryLow';
-	const LOW = 'Low';
-	const MEDIUM = 'Medium';
-	const HIGH = 'High';
-	const VERY_HIGH = 'VeryHigh';
+	public const VERY_LOW = 'VeryLow';
+	public const LOW = 'Low';
+	public const MEDIUM = 'Medium';
+	public const HIGH = 'High';
+	public const VERY_HIGH = 'VeryHigh';
 }

@@ -11,7 +11,7 @@ namespace ChromeDevtoolsProtocol\Model\Tracing;
  */
 final class TracingBackendEnum
 {
-	const AUTO = 'auto';
-	const CHROME = 'chrome';
-	const SYSTEM = 'system';
+	public const AUTO = 'auto';
+	public const CHROME = 'chrome';
+	public const SYSTEM = 'system';
 }

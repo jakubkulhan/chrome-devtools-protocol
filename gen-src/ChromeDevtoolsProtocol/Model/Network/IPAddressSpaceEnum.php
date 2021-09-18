@@ -11,8 +11,8 @@ namespace ChromeDevtoolsProtocol\Model\Network;
  */
 final class IPAddressSpaceEnum
 {
-	const LOCAL = 'Local';
-	const PRIVATE = 'Private';
-	const PUBLIC = 'Public';
-	const UNKNOWN = 'Unknown';
+	public const LOCAL = 'Local';
+	public const PRIVATE = 'Private';
+	public const PUBLIC = 'Public';
+	public const UNKNOWN = 'Unknown';
 }

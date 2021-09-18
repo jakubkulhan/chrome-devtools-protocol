@@ -11,6 +11,6 @@ namespace ChromeDevtoolsProtocol\Model\Page;
  */
 final class OriginTrialUsageRestrictionEnum
 {
-	const NONE = 'None';
-	const SUBSET = 'Subset';
+	public const NONE = 'None';
+	public const SUBSET = 'Subset';
 }

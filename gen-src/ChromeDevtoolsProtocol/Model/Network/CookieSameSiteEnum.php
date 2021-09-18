@@ -11,7 +11,7 @@ namespace ChromeDevtoolsProtocol\Model\Network;
  */
 final class CookieSameSiteEnum
 {
-	const STRICT = 'Strict';
-	const LAX = 'Lax';
-	const NONE = 'None';
+	public const STRICT = 'Strict';
+	public const LAX = 'Lax';
+	public const NONE = 'None';
 }

@@ -11,18 +11,18 @@ namespace ChromeDevtoolsProtocol\Model\Network;
  */
 final class ErrorReasonEnum
 {
-	const FAILED = 'Failed';
-	const ABORTED = 'Aborted';
-	const TIMED_OUT = 'TimedOut';
-	const ACCESS_DENIED = 'AccessDenied';
-	const CONNECTION_CLOSED = 'ConnectionClosed';
-	const CONNECTION_RESET = 'ConnectionReset';
-	const CONNECTION_REFUSED = 'ConnectionRefused';
-	const CONNECTION_ABORTED = 'ConnectionAborted';
-	const CONNECTION_FAILED = 'ConnectionFailed';
-	const NAME_NOT_RESOLVED = 'NameNotResolved';
-	const INTERNET_DISCONNECTED = 'InternetDisconnected';
-	const ADDRESS_UNREACHABLE = 'AddressUnreachable';
-	const BLOCKED_BY_CLIENT = 'BlockedByClient';
-	const BLOCKED_BY_RESPONSE = 'BlockedByResponse';
+	public const FAILED = 'Failed';
+	public const ABORTED = 'Aborted';
+	public const TIMED_OUT = 'TimedOut';
+	public const ACCESS_DENIED = 'AccessDenied';
+	public const CONNECTION_CLOSED = 'ConnectionClosed';
+	public const CONNECTION_RESET = 'ConnectionReset';
+	public const CONNECTION_REFUSED = 'ConnectionRefused';
+	public const CONNECTION_ABORTED = 'ConnectionAborted';
+	public const CONNECTION_FAILED = 'ConnectionFailed';
+	public const NAME_NOT_RESOLVED = 'NameNotResolved';
+	public const INTERNET_DISCONNECTED = 'InternetDisconnected';
+	public const ADDRESS_UNREACHABLE = 'AddressUnreachable';
+	public const BLOCKED_BY_CLIENT = 'BlockedByClient';
+	public const BLOCKED_BY_RESPONSE = 'BlockedByResponse';
 }

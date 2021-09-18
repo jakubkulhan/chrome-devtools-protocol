@@ -11,12 +11,12 @@ namespace ChromeDevtoolsProtocol\Model\Audits;
  */
 final class SameSiteCookieWarningReasonEnum
 {
-	const WARN_SAME_SITE_UNSPECIFIED_CROSS_SITE_CONTEXT = 'WarnSameSiteUnspecifiedCrossSiteContext';
-	const WARN_SAME_SITE_NONE_INSECURE = 'WarnSameSiteNoneInsecure';
-	const WARN_SAME_SITE_UNSPECIFIED_LAX_ALLOW_UNSAFE = 'WarnSameSiteUnspecifiedLaxAllowUnsafe';
-	const WARN_SAME_SITE_STRICT_LAX_DOWNGRADE_STRICT = 'WarnSameSiteStrictLaxDowngradeStrict';
-	const WARN_SAME_SITE_STRICT_CROSS_DOWNGRADE_STRICT = 'WarnSameSiteStrictCrossDowngradeStrict';
-	const WARN_SAME_SITE_STRICT_CROSS_DOWNGRADE_LAX = 'WarnSameSiteStrictCrossDowngradeLax';
-	const WARN_SAME_SITE_LAX_CROSS_DOWNGRADE_STRICT = 'WarnSameSiteLaxCrossDowngradeStrict';
-	const WARN_SAME_SITE_LAX_CROSS_DOWNGRADE_LAX = 'WarnSameSiteLaxCrossDowngradeLax';
+	public const WARN_SAME_SITE_UNSPECIFIED_CROSS_SITE_CONTEXT = 'WarnSameSiteUnspecifiedCrossSiteContext';
+	public const WARN_SAME_SITE_NONE_INSECURE = 'WarnSameSiteNoneInsecure';
+	public const WARN_SAME_SITE_UNSPECIFIED_LAX_ALLOW_UNSAFE = 'WarnSameSiteUnspecifiedLaxAllowUnsafe';
+	public const WARN_SAME_SITE_STRICT_LAX_DOWNGRADE_STRICT = 'WarnSameSiteStrictLaxDowngradeStrict';
+	public const WARN_SAME_SITE_STRICT_CROSS_DOWNGRADE_STRICT = 'WarnSameSiteStrictCrossDowngradeStrict';
+	public const WARN_SAME_SITE_STRICT_CROSS_DOWNGRADE_LAX = 'WarnSameSiteStrictCrossDowngradeLax';
+	public const WARN_SAME_SITE_LAX_CROSS_DOWNGRADE_STRICT = 'WarnSameSiteLaxCrossDowngradeStrict';
+	public const WARN_SAME_SITE_LAX_CROSS_DOWNGRADE_LAX = 'WarnSameSiteLaxCrossDowngradeLax';
 }

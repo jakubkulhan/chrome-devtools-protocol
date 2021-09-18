@@ -11,6 +11,6 @@ namespace ChromeDevtoolsProtocol\Model\Audits;
  */
 final class SameSiteCookieOperationEnum
 {
-	const SET_COOKIE = 'SetCookie';
-	const READ_COOKIE = 'ReadCookie';
+	public const SET_COOKIE = 'SetCookie';
+	public const READ_COOKIE = 'ReadCookie';
 }

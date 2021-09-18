@@ -11,8 +11,8 @@ namespace ChromeDevtoolsProtocol\Model\Page;
  */
 final class ClientNavigationDispositionEnum
 {
-	const CURRENT_TAB = 'currentTab';
-	const NEW_TAB = 'newTab';
-	const NEW_WINDOW = 'newWindow';
-	const DOWNLOAD = 'download';
+	public const CURRENT_TAB = 'currentTab';
+	public const NEW_TAB = 'newTab';
+	public const NEW_WINDOW = 'newWindow';
+	public const DOWNLOAD = 'download';
 }

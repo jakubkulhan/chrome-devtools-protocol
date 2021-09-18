@@ -11,7 +11,7 @@ namespace ChromeDevtoolsProtocol\Model\WebAudio;
  */
 final class ChannelCountModeEnum
 {
-	const CLAMPED_MAX = 'clamped-max';
-	const EXPLICIT = 'explicit';
-	const MAX = 'max';
+	public const CLAMPED_MAX = 'clamped-max';
+	public const EXPLICIT = 'explicit';
+	public const MAX = 'max';
 }

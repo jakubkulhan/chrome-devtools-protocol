@@ -11,6 +11,6 @@ namespace ChromeDevtoolsProtocol\Model\Audits;
  */
 final class SharedArrayBufferIssueTypeEnum
 {
-	const TRANSFER_ISSUE = 'TransferIssue';
-	const CREATION_ISSUE = 'CreationIssue';
+	public const TRANSFER_ISSUE = 'TransferIssue';
+	public const CREATION_ISSUE = 'CreationIssue';
 }

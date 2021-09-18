@@ -11,17 +11,17 @@ namespace ChromeDevtoolsProtocol\Model\Network;
  */
 final class CookieBlockedReasonEnum
 {
-	const SECURE_ONLY = 'SecureOnly';
-	const NOT_ON_PATH = 'NotOnPath';
-	const DOMAIN_MISMATCH = 'DomainMismatch';
-	const SAME_SITE_STRICT = 'SameSiteStrict';
-	const SAME_SITE_LAX = 'SameSiteLax';
-	const SAME_SITE_UNSPECIFIED_TREATED_AS_LAX = 'SameSiteUnspecifiedTreatedAsLax';
-	const SAME_SITE_NONE_INSECURE = 'SameSiteNoneInsecure';
-	const USER_PREFERENCES = 'UserPreferences';
-	const UNKNOWN_ERROR = 'UnknownError';
-	const SCHEMEFUL_SAME_SITE_STRICT = 'SchemefulSameSiteStrict';
-	const SCHEMEFUL_SAME_SITE_LAX = 'SchemefulSameSiteLax';
-	const SCHEMEFUL_SAME_SITE_UNSPECIFIED_TREATED_AS_LAX = 'SchemefulSameSiteUnspecifiedTreatedAsLax';
-	const SAME_PARTY_FROM_CROSS_PARTY_CONTEXT = 'SamePartyFromCrossPartyContext';
+	public const SECURE_ONLY = 'SecureOnly';
+	public const NOT_ON_PATH = 'NotOnPath';
+	public const DOMAIN_MISMATCH = 'DomainMismatch';
+	public const SAME_SITE_STRICT = 'SameSiteStrict';
+	public const SAME_SITE_LAX = 'SameSiteLax';
+	public const SAME_SITE_UNSPECIFIED_TREATED_AS_LAX = 'SameSiteUnspecifiedTreatedAsLax';
+	public const SAME_SITE_NONE_INSECURE = 'SameSiteNoneInsecure';
+	public const USER_PREFERENCES = 'UserPreferences';
+	public const UNKNOWN_ERROR = 'UnknownError';
+	public const SCHEMEFUL_SAME_SITE_STRICT = 'SchemefulSameSiteStrict';
+	public const SCHEMEFUL_SAME_SITE_LAX = 'SchemefulSameSiteLax';
+	public const SCHEMEFUL_SAME_SITE_UNSPECIFIED_TREATED_AS_LAX = 'SchemefulSameSiteUnspecifiedTreatedAsLax';
+	public const SAME_PARTY_FROM_CROSS_PARTY_CONTEXT = 'SamePartyFromCrossPartyContext';
 }

@@ -11,10 +11,10 @@ namespace ChromeDevtoolsProtocol\Model\Audits;
  */
 final class SameSiteCookieExclusionReasonEnum
 {
-	const EXCLUDE_SAME_SITE_UNSPECIFIED_TREATED_AS_LAX = 'ExcludeSameSiteUnspecifiedTreatedAsLax';
-	const EXCLUDE_SAME_SITE_NONE_INSECURE = 'ExcludeSameSiteNoneInsecure';
-	const EXCLUDE_SAME_SITE_LAX = 'ExcludeSameSiteLax';
-	const EXCLUDE_SAME_SITE_STRICT = 'ExcludeSameSiteStrict';
-	const EXCLUDE_INVALID_SAME_PARTY = 'ExcludeInvalidSameParty';
-	const EXCLUDE_SAME_PARTY_CROSS_PARTY_CONTEXT = 'ExcludeSamePartyCrossPartyContext';
+	public const EXCLUDE_SAME_SITE_UNSPECIFIED_TREATED_AS_LAX = 'ExcludeSameSiteUnspecifiedTreatedAsLax';
+	public const EXCLUDE_SAME_SITE_NONE_INSECURE = 'ExcludeSameSiteNoneInsecure';
+	public const EXCLUDE_SAME_SITE_LAX = 'ExcludeSameSiteLax';
+	public const EXCLUDE_SAME_SITE_STRICT = 'ExcludeSameSiteStrict';
+	public const EXCLUDE_INVALID_SAME_PARTY = 'ExcludeInvalidSameParty';
+	public const EXCLUDE_SAME_PARTY_CROSS_PARTY_CONTEXT = 'ExcludeSamePartyCrossPartyContext';
 }

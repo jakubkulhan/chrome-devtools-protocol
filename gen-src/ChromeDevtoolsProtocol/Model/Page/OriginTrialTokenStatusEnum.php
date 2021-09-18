@@ -11,15 +11,16 @@ namespace ChromeDevtoolsProtocol\Model\Page;
  */
 final class OriginTrialTokenStatusEnum
 {
-	const SUCCESS = 'Success';
-	const NOT_SUPPORTED = 'NotSupported';
-	const INSECURE = 'Insecure';
-	const EXPIRED = 'Expired';
-	const WRONG_ORIGIN = 'WrongOrigin';
-	const INVALID_SIGNATURE = 'InvalidSignature';
-	const MALFORMED = 'Malformed';
-	const WRONG_VERSION = 'WrongVersion';
-	const FEATURE_DISABLED = 'FeatureDisabled';
-	const TOKEN_DISABLED = 'TokenDisabled';
-	const FEATURE_DISABLED_FOR_USER = 'FeatureDisabledForUser';
+	public const SUCCESS = 'Success';
+	public const NOT_SUPPORTED = 'NotSupported';
+	public const INSECURE = 'Insecure';
+	public const EXPIRED = 'Expired';
+	public const WRONG_ORIGIN = 'WrongOrigin';
+	public const INVALID_SIGNATURE = 'InvalidSignature';
+	public const MALFORMED = 'Malformed';
+	public const WRONG_VERSION = 'WrongVersion';
+	public const FEATURE_DISABLED = 'FeatureDisabled';
+	public const TOKEN_DISABLED = 'TokenDisabled';
+	public const FEATURE_DISABLED_FOR_USER = 'FeatureDisabledForUser';
+	public const UNKNOWN_TRIAL = 'UnknownTrial';
 }

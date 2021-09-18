@@ -11,21 +11,21 @@ namespace ChromeDevtoolsProtocol\Model\Network;
  */
 final class SetCookieBlockedReasonEnum
 {
-	const SECURE_ONLY = 'SecureOnly';
-	const SAME_SITE_STRICT = 'SameSiteStrict';
-	const SAME_SITE_LAX = 'SameSiteLax';
-	const SAME_SITE_UNSPECIFIED_TREATED_AS_LAX = 'SameSiteUnspecifiedTreatedAsLax';
-	const SAME_SITE_NONE_INSECURE = 'SameSiteNoneInsecure';
-	const USER_PREFERENCES = 'UserPreferences';
-	const SYNTAX_ERROR = 'SyntaxError';
-	const SCHEME_NOT_SUPPORTED = 'SchemeNotSupported';
-	const OVERWRITE_SECURE = 'OverwriteSecure';
-	const INVALID_DOMAIN = 'InvalidDomain';
-	const INVALID_PREFIX = 'InvalidPrefix';
-	const UNKNOWN_ERROR = 'UnknownError';
-	const SCHEMEFUL_SAME_SITE_STRICT = 'SchemefulSameSiteStrict';
-	const SCHEMEFUL_SAME_SITE_LAX = 'SchemefulSameSiteLax';
-	const SCHEMEFUL_SAME_SITE_UNSPECIFIED_TREATED_AS_LAX = 'SchemefulSameSiteUnspecifiedTreatedAsLax';
-	const SAME_PARTY_FROM_CROSS_PARTY_CONTEXT = 'SamePartyFromCrossPartyContext';
-	const SAME_PARTY_CONFLICTS_WITH_OTHER_ATTRIBUTES = 'SamePartyConflictsWithOtherAttributes';
+	public const SECURE_ONLY = 'SecureOnly';
+	public const SAME_SITE_STRICT = 'SameSiteStrict';
+	public const SAME_SITE_LAX = 'SameSiteLax';
+	public const SAME_SITE_UNSPECIFIED_TREATED_AS_LAX = 'SameSiteUnspecifiedTreatedAsLax';
+	public const SAME_SITE_NONE_INSECURE = 'SameSiteNoneInsecure';
+	public const USER_PREFERENCES = 'UserPreferences';
+	public const SYNTAX_ERROR = 'SyntaxError';
+	public const SCHEME_NOT_SUPPORTED = 'SchemeNotSupported';
+	public const OVERWRITE_SECURE = 'OverwriteSecure';
+	public const INVALID_DOMAIN = 'InvalidDomain';
+	public const INVALID_PREFIX = 'InvalidPrefix';
+	public const UNKNOWN_ERROR = 'UnknownError';
+	public const SCHEMEFUL_SAME_SITE_STRICT = 'SchemefulSameSiteStrict';
+	public const SCHEMEFUL_SAME_SITE_LAX = 'SchemefulSameSiteLax';
+	public const SCHEMEFUL_SAME_SITE_UNSPECIFIED_TREATED_AS_LAX = 'SchemefulSameSiteUnspecifiedTreatedAsLax';
+	public const SAME_PARTY_FROM_CROSS_PARTY_CONTEXT = 'SamePartyFromCrossPartyContext';
+	public const SAME_PARTY_CONFLICTS_WITH_OTHER_ATTRIBUTES = 'SamePartyConflictsWithOtherAttributes';
 }

@@ -11,8 +11,8 @@ namespace ChromeDevtoolsProtocol\Model\Network;
  */
 final class ServiceWorkerResponseSourceEnum
 {
-	const CACHE_STORAGE = 'cache-storage';
-	const HTTP_CACHE = 'http-cache';
-	const FALLBACK_CODE = 'fallback-code';
-	const NETWORK = 'network';
+	public const CACHE_STORAGE = 'cache-storage';
+	public const HTTP_CACHE = 'http-cache';
+	public const FALLBACK_CODE = 'fallback-code';
+	public const NETWORK = 'network';
 }

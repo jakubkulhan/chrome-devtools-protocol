@@ -11,6 +11,6 @@ namespace ChromeDevtoolsProtocol\Model\WebAudio;
  */
 final class AutomationRateEnum
 {
-	const A_RATE = 'a-rate';
-	const K_RATE = 'k-rate';
+	public const A_RATE = 'a-rate';
+	public const K_RATE = 'k-rate';
 }

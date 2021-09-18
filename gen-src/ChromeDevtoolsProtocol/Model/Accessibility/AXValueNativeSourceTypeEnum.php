@@ -11,13 +11,13 @@ namespace ChromeDevtoolsProtocol\Model\Accessibility;
  */
 final class AXValueNativeSourceTypeEnum
 {
-	const FIGCAPTION = 'figcaption';
-	const LABEL = 'label';
-	const LABELFOR = 'labelfor';
-	const LABELWRAPPED = 'labelwrapped';
-	const LEGEND = 'legend';
-	const RUBYANNOTATION = 'rubyannotation';
-	const TABLECAPTION = 'tablecaption';
-	const TITLE = 'title';
-	const OTHER = 'other';
+	public const FIGCAPTION = 'figcaption';
+	public const LABEL = 'label';
+	public const LABELFOR = 'labelfor';
+	public const LABELWRAPPED = 'labelwrapped';
+	public const LEGEND = 'legend';
+	public const RUBYANNOTATION = 'rubyannotation';
+	public const TABLECAPTION = 'tablecaption';
+	public const TITLE = 'title';
+	public const OTHER = 'other';
 }

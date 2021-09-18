@@ -11,24 +11,24 @@ namespace ChromeDevtoolsProtocol\Model\DOM;
  */
 final class PseudoTypeEnum
 {
-	const FIRST_LINE = 'first-line';
-	const FIRST_LETTER = 'first-letter';
-	const BEFORE = 'before';
-	const AFTER = 'after';
-	const MARKER = 'marker';
-	const BACKDROP = 'backdrop';
-	const SELECTION = 'selection';
-	const TARGET_TEXT = 'target-text';
-	const SPELLING_ERROR = 'spelling-error';
-	const GRAMMAR_ERROR = 'grammar-error';
-	const HIGHLIGHT = 'highlight';
-	const FIRST_LINE_INHERITED = 'first-line-inherited';
-	const SCROLLBAR = 'scrollbar';
-	const SCROLLBAR_THUMB = 'scrollbar-thumb';
-	const SCROLLBAR_BUTTON = 'scrollbar-button';
-	const SCROLLBAR_TRACK = 'scrollbar-track';
-	const SCROLLBAR_TRACK_PIECE = 'scrollbar-track-piece';
-	const SCROLLBAR_CORNER = 'scrollbar-corner';
-	const RESIZER = 'resizer';
-	const INPUT_LIST_BUTTON = 'input-list-button';
+	public const FIRST_LINE = 'first-line';
+	public const FIRST_LETTER = 'first-letter';
+	public const BEFORE = 'before';
+	public const AFTER = 'after';
+	public const MARKER = 'marker';
+	public const BACKDROP = 'backdrop';
+	public const SELECTION = 'selection';
+	public const TARGET_TEXT = 'target-text';
+	public const SPELLING_ERROR = 'spelling-error';
+	public const GRAMMAR_ERROR = 'grammar-error';
+	public const HIGHLIGHT = 'highlight';
+	public const FIRST_LINE_INHERITED = 'first-line-inherited';
+	public const SCROLLBAR = 'scrollbar';
+	public const SCROLLBAR_THUMB = 'scrollbar-thumb';
+	public const SCROLLBAR_BUTTON = 'scrollbar-button';
+	public const SCROLLBAR_TRACK = 'scrollbar-track';
+	public const SCROLLBAR_TRACK_PIECE = 'scrollbar-track-piece';
+	public const SCROLLBAR_CORNER = 'scrollbar-corner';
+	public const RESIZER = 'resizer';
+	public const INPUT_LIST_BUTTON = 'input-list-button';
 }
