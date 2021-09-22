@@ -13444,7 +13444,8 @@
                         "SchemefulSameSiteLax",
                         "SchemefulSameSiteUnspecifiedTreatedAsLax",
                         "SamePartyFromCrossPartyContext",
-                        "SamePartyConflictsWithOtherAttributes"
+                        "SamePartyConflictsWithOtherAttributes",
+                        "NameValuePairExceedsMaxSize"
                     ]
                 },
                 {
@@ -13465,7 +13466,8 @@
                         "SchemefulSameSiteStrict",
                         "SchemefulSameSiteLax",
                         "SchemefulSameSiteUnspecifiedTreatedAsLax",
-                        "SamePartyFromCrossPartyContext"
+                        "SamePartyFromCrossPartyContext",
+                        "NameValuePairExceedsMaxSize"
                     ]
                 },
                 {
@@ -17724,6 +17726,7 @@
                         "ContentWebBluetooth",
                         "ContentWebUSB",
                         "ContentMediaSession",
+                        "ContentMediaSessionService",
                         "EmbedderPopupBlockerTabHelper",
                         "EmbedderSafeBrowsingTriggeredPopupBlocker",
                         "EmbedderSafeBrowsingThreatDetails",
