@@ -75,7 +75,7 @@ interface DevtoolsClientInterface extends CloseableResourceInterface
 
 
 	/**
-	 * ApplicationCache domain.
+	 * The domain is deprecated as AppCache is being removed (see crbug.com/582750).
 	 *
 	 * @experimental
 	 */

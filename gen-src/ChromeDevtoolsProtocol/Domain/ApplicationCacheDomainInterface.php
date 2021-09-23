@@ -13,7 +13,7 @@ use ChromeDevtoolsProtocol\Model\ApplicationCache\NetworkStateUpdatedEvent;
 use ChromeDevtoolsProtocol\SubscriptionInterface;
 
 /**
- * ApplicationCache domain.
+ * The domain is deprecated as AppCache is being removed (see crbug.com/582750).
  *
  * @experimental
  *
