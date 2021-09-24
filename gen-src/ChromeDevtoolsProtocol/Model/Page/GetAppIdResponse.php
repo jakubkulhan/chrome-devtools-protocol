@@ -12,11 +12,18 @@ namespace ChromeDevtoolsProtocol\Model\Page;
 final class GetAppIdResponse implements \JsonSerializable
 {
 	/**
-	 * Only returns a value if the feature flag 'WebAppEnableManifestId' is enabled
+	 * App id, either from manifest's id attribute or computed from start_url
 	 *
 	 * @var string|null
 	 */
 	public $appId;
+
+	/**
+	 * Recommendation for manifest's id attribute to match current id computed from start_url
+	 *
+	 * @var string|null
+	 */
+	public $recommendedId;
 
 
 	public static function fromJson($data)
@@ -24,6 +31,9 @@ final class GetAppIdResponse implements \JsonSerializable
 		$instance = new static();
 		if (isset($data->appId)) {
 			$instance->appId = (string)$data->appId;
+		}
+		if (isset($data->recommendedId)) {
+			$instance->recommendedId = (string)$data->recommendedId;
 		}
 		return $instance;
 	}
@@ -34,6 +44,9 @@ final class GetAppIdResponse implements \JsonSerializable
 		$data = new \stdClass();
 		if ($this->appId !== null) {
 			$data->appId = $this->appId;
+		}
+		if ($this->recommendedId !== null) {
+			$data->recommendedId = $this->recommendedId;
 		}
 		return $data;
 	}
