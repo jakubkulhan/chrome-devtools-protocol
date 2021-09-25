@@ -24,4 +24,5 @@ final class InspectorIssueCodeEnum
 	public const QUIRKS_MODE_ISSUE = 'QuirksModeIssue';
 	public const NAVIGATOR_USER_AGENT_ISSUE = 'NavigatorUserAgentIssue';
 	public const WASM_CROSS_ORIGIN_MODULE_SHARING_ISSUE = 'WasmCrossOriginModuleSharingIssue';
+	public const GENERIC_ISSUE = 'GenericIssue';
 }
