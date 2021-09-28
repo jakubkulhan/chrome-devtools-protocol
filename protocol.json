@@ -13014,6 +13014,7 @@
                         "HeaderDisallowedByPreflightResponse",
                         "RedirectContainsCredentials",
                         "InsecurePrivateNetwork",
+                        "InvalidPrivateNetworkAccess",
                         "NoCorsRedirectModeNotFollow"
                     ]
                 },

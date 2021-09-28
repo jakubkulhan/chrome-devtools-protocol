@@ -36,5 +36,6 @@ final class CorsErrorEnum
 	public const HEADER_DISALLOWED_BY_PREFLIGHT_RESPONSE = 'HeaderDisallowedByPreflightResponse';
 	public const REDIRECT_CONTAINS_CREDENTIALS = 'RedirectContainsCredentials';
 	public const INSECURE_PRIVATE_NETWORK = 'InsecurePrivateNetwork';
+	public const INVALID_PRIVATE_NETWORK_ACCESS = 'InvalidPrivateNetworkAccess';
 	public const NO_CORS_REDIRECT_MODE_NOT_FOLLOW = 'NoCorsRedirectModeNotFollow';
 }
