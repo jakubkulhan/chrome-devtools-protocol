@@ -834,183 +834,6 @@
             ]
         },
         {
-            "domain": "ApplicationCache",
-            "description": "The domain is deprecated as AppCache is being removed (see crbug.com/582750).",
-            "experimental": true,
-            "deprecated": true,
-            "dependencies": [
-                "Page"
-            ],
-            "types": [
-                {
-                    "id": "ApplicationCacheResource",
-                    "description": "Detailed application cache resource information.",
-                    "type": "object",
-                    "properties": [
-                        {
-                            "name": "url",
-                            "description": "Resource url.",
-                            "type": "string"
-                        },
-                        {
-                            "name": "size",
-                            "description": "Resource size.",
-                            "type": "integer"
-                        },
-                        {
-                            "name": "type",
-                            "description": "Resource type.",
-                            "type": "string"
-                        }
-                    ]
-                },
-                {
-                    "id": "ApplicationCache",
-                    "description": "Detailed application cache information.",
-                    "type": "object",
-                    "properties": [
-                        {
-                            "name": "manifestURL",
-                            "description": "Manifest URL.",
-                            "type": "string"
-                        },
-                        {
-                            "name": "size",
-                            "description": "Application cache size.",
-                            "type": "number"
-                        },
-                        {
-                            "name": "creationTime",
-                            "description": "Application cache creation time.",
-                            "type": "number"
-                        },
-                        {
-                            "name": "updateTime",
-                            "description": "Application cache update time.",
-                            "type": "number"
-                        },
-                        {
-                            "name": "resources",
-                            "description": "Application cache resources.",
-                            "type": "array",
-                            "items": {
-                                "$ref": "ApplicationCacheResource"
-                            }
-                        }
-                    ]
-                },
-                {
-                    "id": "FrameWithManifest",
-                    "description": "Frame identifier - manifest URL pair.",
-                    "type": "object",
-                    "properties": [
-                        {
-                            "name": "frameId",
-                            "description": "Frame identifier.",
-                            "$ref": "Page.FrameId"
-                        },
-                        {
-                            "name": "manifestURL",
-                            "description": "Manifest URL.",
-                            "type": "string"
-                        },
-                        {
-                            "name": "status",
-                            "description": "Application cache status.",
-                            "type": "integer"
-                        }
-                    ]
-                }
-            ],
-            "commands": [
-                {
-                    "name": "enable",
-                    "description": "Enables application cache domain notifications."
-                },
-                {
-                    "name": "getApplicationCacheForFrame",
-                    "description": "Returns relevant application cache data for the document in given frame.",
-                    "parameters": [
-                        {
-                            "name": "frameId",
-                            "description": "Identifier of the frame containing document whose application cache is retrieved.",
-                            "$ref": "Page.FrameId"
-                        }
-                    ],
-                    "returns": [
-                        {
-                            "name": "applicationCache",
-                            "description": "Relevant application cache data for the document in given frame.",
-                            "$ref": "ApplicationCache"
-                        }
-                    ]
-                },
-                {
-                    "name": "getFramesWithManifests",
-                    "description": "Returns array of frame identifiers with manifest urls for each frame containing a document associated with some application cache.",
-                    "returns": [
-                        {
-                            "name": "frameIds",
-                            "description": "Array of frame identifiers with manifest urls for each frame containing a document associated with some application cache.",
-                            "type": "array",
-                            "items": {
-                                "$ref": "FrameWithManifest"
-                            }
-                        }
-                    ]
-                },
-                {
-                    "name": "getManifestForFrame",
-                    "description": "Returns manifest URL for document in the given frame.",
-                    "parameters": [
-                        {
-                            "name": "frameId",
-                            "description": "Identifier of the frame containing document whose manifest is retrieved.",
-                            "$ref": "Page.FrameId"
-                        }
-                    ],
-                    "returns": [
-                        {
-                            "name": "manifestURL",
-                            "description": "Manifest URL for document in the given frame.",
-                            "type": "string"
-                        }
-                    ]
-                }
-            ],
-            "events": [
-                {
-                    "name": "applicationCacheStatusUpdated",
-                    "parameters": [
-                        {
-                            "name": "frameId",
-                            "description": "Identifier of the frame containing document whose application cache updated status.",
-                            "$ref": "Page.FrameId"
-                        },
-                        {
-                            "name": "manifestURL",
-                            "description": "Manifest URL.",
-                            "type": "string"
-                        },
-                        {
-                            "name": "status",
-                            "description": "Updated application cache status.",
-                            "type": "integer"
-                        }
-                    ]
-                },
-                {
-                    "name": "networkStateUpdated",
-                    "parameters": [
-                        {
-                            "name": "isNowOnline",
-                            "type": "boolean"
-                        }
-                    ]
-                }
-            ]
-        },
-        {
             "domain": "Audits",
             "description": "Audits domain allows investigation of page violations and possible improvements.",
             "experimental": true,
@@ -16216,6 +16039,46 @@
                     ]
                 },
                 {
+                    "id": "IsolatedElementHighlightConfig",
+                    "type": "object",
+                    "properties": [
+                        {
+                            "name": "isolationModeHighlightConfig",
+                            "description": "A descriptor for the highlight appearance of an element in isolation mode.",
+                            "$ref": "IsolationModeHighlightConfig"
+                        },
+                        {
+                            "name": "nodeId",
+                            "description": "Identifier of the isolated element to highlight.",
+                            "$ref": "DOM.NodeId"
+                        }
+                    ]
+                },
+                {
+                    "id": "IsolationModeHighlightConfig",
+                    "type": "object",
+                    "properties": [
+                        {
+                            "name": "resizerColor",
+                            "description": "The fill color of the resizers (default: transparent).",
+                            "optional": true,
+                            "$ref": "DOM.RGBA"
+                        },
+                        {
+                            "name": "resizerHandleColor",
+                            "description": "The fill color for resizer handles (default: transparent).",
+                            "optional": true,
+                            "$ref": "DOM.RGBA"
+                        },
+                        {
+                            "name": "maskColor",
+                            "description": "The fill color for the mask covering non-isolated elements (default: transparent).",
+                            "optional": true,
+                            "$ref": "DOM.RGBA"
+                        }
+                    ]
+                },
+                {
                     "id": "InspectMode",
                     "type": "string",
                     "enum": [
@@ -16591,6 +16454,20 @@
                             "name": "show",
                             "description": "True for showing hit-test borders",
                             "type": "boolean"
+                        }
+                    ]
+                },
+                {
+                    "name": "setShowIsolatedElements",
+                    "description": "Show elements in isolation mode with overlays.",
+                    "parameters": [
+                        {
+                            "name": "isolatedElementHighlightConfigs",
+                            "description": "An array of node identifiers and descriptors for the highlight appearance.",
+                            "type": "array",
+                            "items": {
+                                "$ref": "IsolatedElementHighlightConfig"
+                            }
                         }
                     ]
                 },

@@ -28,6 +28,7 @@ use ChromeDevtoolsProtocol\Model\Overlay\SetShowFlexOverlaysRequest;
 use ChromeDevtoolsProtocol\Model\Overlay\SetShowGridOverlaysRequest;
 use ChromeDevtoolsProtocol\Model\Overlay\SetShowHingeRequest;
 use ChromeDevtoolsProtocol\Model\Overlay\SetShowHitTestBordersRequest;
+use ChromeDevtoolsProtocol\Model\Overlay\SetShowIsolatedElementsRequest;
 use ChromeDevtoolsProtocol\Model\Overlay\SetShowLayoutShiftRegionsRequest;
 use ChromeDevtoolsProtocol\Model\Overlay\SetShowPaintRectsRequest;
 use ChromeDevtoolsProtocol\Model\Overlay\SetShowScrollBottleneckRectsRequest;
@@ -285,6 +286,17 @@ interface OverlayDomainInterface
 	 * @return void
 	 */
 	public function setShowHitTestBorders(ContextInterface $ctx, SetShowHitTestBordersRequest $request): void;
+
+
+	/**
+	 * Show elements in isolation mode with overlays.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param SetShowIsolatedElementsRequest $request
+	 *
+	 * @return void
+	 */
+	public function setShowIsolatedElements(ContextInterface $ctx, SetShowIsolatedElementsRequest $request): void;
 
 
 	/**

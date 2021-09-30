@@ -29,6 +29,7 @@ use ChromeDevtoolsProtocol\Model\Overlay\SetShowFlexOverlaysRequest;
 use ChromeDevtoolsProtocol\Model\Overlay\SetShowGridOverlaysRequest;
 use ChromeDevtoolsProtocol\Model\Overlay\SetShowHingeRequest;
 use ChromeDevtoolsProtocol\Model\Overlay\SetShowHitTestBordersRequest;
+use ChromeDevtoolsProtocol\Model\Overlay\SetShowIsolatedElementsRequest;
 use ChromeDevtoolsProtocol\Model\Overlay\SetShowLayoutShiftRegionsRequest;
 use ChromeDevtoolsProtocol\Model\Overlay\SetShowPaintRectsRequest;
 use ChromeDevtoolsProtocol\Model\Overlay\SetShowScrollBottleneckRectsRequest;
@@ -186,6 +187,12 @@ class OverlayDomain implements OverlayDomainInterface
 	public function setShowHitTestBorders(ContextInterface $ctx, SetShowHitTestBordersRequest $request): void
 	{
 		$this->internalClient->executeCommand($ctx, 'Overlay.setShowHitTestBorders', $request);
+	}
+
+
+	public function setShowIsolatedElements(ContextInterface $ctx, SetShowIsolatedElementsRequest $request): void
+	{
+		$this->internalClient->executeCommand($ctx, 'Overlay.setShowIsolatedElements', $request);
 	}
 
 
