@@ -21,6 +21,13 @@ final class StopTrackingHeapObjectsRequest implements \JsonSerializable
 	/** @var bool|null */
 	public $treatGlobalObjectsAsRoots;
 
+	/**
+	 * If true, numerical values are included in the snapshot
+	 *
+	 * @var bool|null
+	 */
+	public $captureNumericValue;
+
 
 	public static function fromJson($data)
 	{
@@ -30,6 +37,9 @@ final class StopTrackingHeapObjectsRequest implements \JsonSerializable
 		}
 		if (isset($data->treatGlobalObjectsAsRoots)) {
 			$instance->treatGlobalObjectsAsRoots = (bool)$data->treatGlobalObjectsAsRoots;
+		}
+		if (isset($data->captureNumericValue)) {
+			$instance->captureNumericValue = (bool)$data->captureNumericValue;
 		}
 		return $instance;
 	}
@@ -43,6 +53,9 @@ final class StopTrackingHeapObjectsRequest implements \JsonSerializable
 		}
 		if ($this->treatGlobalObjectsAsRoots !== null) {
 			$data->treatGlobalObjectsAsRoots = $this->treatGlobalObjectsAsRoots;
+		}
+		if ($this->captureNumericValue !== null) {
+			$data->captureNumericValue = $this->captureNumericValue;
 		}
 		return $data;
 	}

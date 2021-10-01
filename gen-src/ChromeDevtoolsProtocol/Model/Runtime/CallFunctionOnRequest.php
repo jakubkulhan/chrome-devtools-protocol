@@ -81,6 +81,13 @@ final class CallFunctionOnRequest implements \JsonSerializable
 	 */
 	public $objectGroup;
 
+	/**
+	 * Whether to throw an exception if side effect cannot be ruled out during evaluation.
+	 *
+	 * @var bool|null
+	 */
+	public $throwOnSideEffect;
+
 
 	public static function fromJson($data)
 	{
@@ -117,6 +124,9 @@ final class CallFunctionOnRequest implements \JsonSerializable
 		}
 		if (isset($data->objectGroup)) {
 			$instance->objectGroup = (string)$data->objectGroup;
+		}
+		if (isset($data->throwOnSideEffect)) {
+			$instance->throwOnSideEffect = (bool)$data->throwOnSideEffect;
 		}
 		return $instance;
 	}
@@ -157,6 +167,9 @@ final class CallFunctionOnRequest implements \JsonSerializable
 		}
 		if ($this->objectGroup !== null) {
 			$data->objectGroup = $this->objectGroup;
+		}
+		if ($this->throwOnSideEffect !== null) {
+			$data->throwOnSideEffect = $this->throwOnSideEffect;
 		}
 		return $data;
 	}

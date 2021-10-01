@@ -110,7 +110,7 @@ final class EvaluateRequest implements \JsonSerializable
 	public $allowUnsafeEvalBlockedByCSP;
 
 	/**
-	 * An alternative way to specify the execution context to evaluate in. Compared to contextId that may be reused accross processes, this is guaranteed to be system-unique, so it can be used to prevent accidental evaluation of the expression in context different than intended (e.g. as a result of navigation accross process boundaries). This is mutually exclusive with `contextId`.
+	 * An alternative way to specify the execution context to evaluate in. Compared to contextId that may be reused across processes, this is guaranteed to be system-unique, so it can be used to prevent accidental evaluation of the expression in context different than intended (e.g. as a result of navigation across process boundaries). This is mutually exclusive with `contextId`.
 	 *
 	 * @var string|null
 	 */

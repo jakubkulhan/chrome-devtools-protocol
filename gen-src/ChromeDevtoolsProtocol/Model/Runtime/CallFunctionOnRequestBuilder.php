@@ -21,6 +21,7 @@ final class CallFunctionOnRequestBuilder
 	private $awaitPromise;
 	private $executionContextId;
 	private $objectGroup;
+	private $throwOnSideEffect;
 
 
 	/**
@@ -42,6 +43,7 @@ final class CallFunctionOnRequestBuilder
 		$instance->awaitPromise = $this->awaitPromise;
 		$instance->executionContextId = $this->executionContextId;
 		$instance->objectGroup = $this->objectGroup;
+		$instance->throwOnSideEffect = $this->throwOnSideEffect;
 		return $instance;
 	}
 
@@ -162,6 +164,18 @@ final class CallFunctionOnRequestBuilder
 	public function setObjectGroup($objectGroup): self
 	{
 		$this->objectGroup = $objectGroup;
+		return $this;
+	}
+
+
+	/**
+	 * @param bool|null $throwOnSideEffect
+	 *
+	 * @return self
+	 */
+	public function setThrowOnSideEffect($throwOnSideEffect): self
+	{
+		$this->throwOnSideEffect = $throwOnSideEffect;
 		return $this;
 	}
 }

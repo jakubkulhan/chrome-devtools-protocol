@@ -4641,7 +4641,7 @@
                     "parameters": [
                         {
                             "name": "maxScriptsCacheSize",
-                            "description": "The maximum size in bytes of collected scripts (not referenced by other heap objects) the debugger can hold. Puts no limit if paramter is omitted.",
+                            "description": "The maximum size in bytes of collected scripts (not referenced by other heap objects) the debugger can hold. Puts no limit if parameter is omitted.",
                             "experimental": true,
                             "optional": true,
                             "type": "number"
@@ -4851,6 +4851,7 @@
                 {
                     "name": "restartFrame",
                     "description": "Restarts particular call frame from the beginning.",
+                    "deprecated": true,
                     "parameters": [
                         {
                             "name": "callFrameId",
@@ -9958,6 +9959,12 @@
                             "name": "treatGlobalObjectsAsRoots",
                             "optional": true,
                             "type": "boolean"
+                        },
+                        {
+                            "name": "captureNumericValue",
+                            "description": "If true, numerical values are included in the snapshot",
+                            "optional": true,
+                            "type": "boolean"
                         }
                     ]
                 },
@@ -9972,7 +9979,13 @@
                         },
                         {
                             "name": "treatGlobalObjectsAsRoots",
-                            "description": "If true, a raw snapshot without artifical roots will be generated",
+                            "description": "If true, a raw snapshot without artificial roots will be generated",
+                            "optional": true,
+                            "type": "boolean"
+                        },
+                        {
+                            "name": "captureNumericValue",
+                            "description": "If true, numerical values are included in the snapshot",
                             "optional": true,
                             "type": "boolean"
                         }
@@ -19820,47 +19833,6 @@
                             }
                         }
                     ]
-                },
-                {
-                    "id": "CounterInfo",
-                    "description": "Collected counter information.",
-                    "experimental": true,
-                    "type": "object",
-                    "properties": [
-                        {
-                            "name": "name",
-                            "description": "Counter name.",
-                            "type": "string"
-                        },
-                        {
-                            "name": "value",
-                            "description": "Counter value.",
-                            "type": "integer"
-                        }
-                    ]
-                },
-                {
-                    "id": "RuntimeCallCounterInfo",
-                    "description": "Runtime call counter information.",
-                    "experimental": true,
-                    "type": "object",
-                    "properties": [
-                        {
-                            "name": "name",
-                            "description": "Counter name.",
-                            "type": "string"
-                        },
-                        {
-                            "name": "value",
-                            "description": "Counter value.",
-                            "type": "number"
-                        },
-                        {
-                            "name": "time",
-                            "description": "Counter time in seconds.",
-                            "type": "number"
-                        }
-                    ]
                 }
             ],
             "commands": [
@@ -19868,27 +19840,7 @@
                     "name": "disable"
                 },
                 {
-                    "name": "disableCounters",
-                    "description": "Disable counters collection.",
-                    "experimental": true
-                },
-                {
-                    "name": "disableRuntimeCallStats",
-                    "description": "Disable run time call stats collection.",
-                    "experimental": true
-                },
-                {
                     "name": "enable"
-                },
-                {
-                    "name": "enableCounters",
-                    "description": "Enable counters collection.",
-                    "experimental": true
-                },
-                {
-                    "name": "enableRuntimeCallStats",
-                    "description": "Enable run time call stats collection.",
-                    "experimental": true
                 },
                 {
                     "name": "getBestEffortCoverage",
@@ -19900,36 +19852,6 @@
                             "type": "array",
                             "items": {
                                 "$ref": "ScriptCoverage"
-                            }
-                        }
-                    ]
-                },
-                {
-                    "name": "getCounters",
-                    "description": "Retrieve counters.",
-                    "experimental": true,
-                    "returns": [
-                        {
-                            "name": "result",
-                            "description": "Collected counters information.",
-                            "type": "array",
-                            "items": {
-                                "$ref": "CounterInfo"
-                            }
-                        }
-                    ]
-                },
-                {
-                    "name": "getRuntimeCallStats",
-                    "description": "Retrieve run time call stats.",
-                    "experimental": true,
-                    "returns": [
-                        {
-                            "name": "result",
-                            "description": "Collected runtime call counter information.",
-                            "type": "array",
-                            "items": {
-                                "$ref": "RuntimeCallCounterInfo"
                             }
                         }
                     ]
@@ -20086,7 +20008,7 @@
                 },
                 {
                     "name": "preciseCoverageDeltaUpdate",
-                    "description": "Reports coverage delta since the last poll (either from an event like this, or from `takePreciseCoverage` for the current isolate. May only be sent if precise code coverage has been started. This event can be trigged by the embedder to, for example, trigger collection of coverage data immediatelly at a certain point in time.",
+                    "description": "Reports coverage delta since the last poll (either from an event like this, or from `takePreciseCoverage` for the current isolate. May only be sent if precise code coverage has been started. This event can be trigged by the embedder to, for example, trigger collection of coverage data immediately at a certain point in time.",
                     "experimental": true,
                     "parameters": [
                         {
@@ -20095,7 +20017,7 @@
                             "type": "number"
                         },
                         {
-                            "name": "occassion",
+                            "name": "occasion",
                             "description": "Identifier for distinguishing coverage events.",
                             "type": "string"
                         },
@@ -20568,7 +20490,7 @@
                         },
                         {
                             "name": "uniqueId",
-                            "description": "A system-unique execution context identifier. Unlike the id, this is unique accross multiple processes, so can be reliably used to identify specific context while backend performs a cross-process navigation.",
+                            "description": "A system-unique execution context identifier. Unlike the id, this is unique across multiple processes, so can be reliably used to identify specific context while backend performs a cross-process navigation.",
                             "experimental": true,
                             "type": "string"
                         },
@@ -20634,6 +20556,13 @@
                             "description": "Identifier of the context where exception happened.",
                             "optional": true,
                             "$ref": "ExecutionContextId"
+                        },
+                        {
+                            "name": "exceptionMetaData",
+                            "description": "Dictionary with entries of meta data that the client associated with this exception, such as information about associated network requests, etc.",
+                            "experimental": true,
+                            "optional": true,
+                            "type": "object"
                         }
                     ]
                 },
@@ -20749,7 +20678,8 @@
                         },
                         {
                             "name": "executionContextId",
-                            "description": "If specified, the binding would only be exposed to the specified execution context. If omitted and `executionContextName` is not set, the binding is exposed to all execution contexts of the target. This parameter is mutually exclusive with `executionContextName`.",
+                            "description": "If specified, the binding would only be exposed to the specified execution context. If omitted and `executionContextName` is not set, the binding is exposed to all execution contexts of the target. This parameter is mutually exclusive with `executionContextName`. Deprecated in favor of `executionContextName` due to an unclear use case and bugs in implementation (crbug.com/1169639). `executionContextId` will be removed in the future.",
+                            "deprecated": true,
                             "optional": true,
                             "$ref": "ExecutionContextId"
                         },
@@ -20864,6 +20794,13 @@
                             "description": "Symbolic group name that can be used to release multiple objects. If objectGroup is not specified and objectId is, objectGroup will be inherited from object.",
                             "optional": true,
                             "type": "string"
+                        },
+                        {
+                            "name": "throwOnSideEffect",
+                            "description": "Whether to throw an exception if side effect cannot be ruled out during evaluation.",
+                            "experimental": true,
+                            "optional": true,
+                            "type": "boolean"
                         }
                     ],
                     "returns": [
@@ -21028,7 +20965,7 @@
                         },
                         {
                             "name": "uniqueContextId",
-                            "description": "An alternative way to specify the execution context to evaluate in. Compared to contextId that may be reused accross processes, this is guaranteed to be system-unique, so it can be used to prevent accidental evaluation of the expression in context different than intended (e.g. as a result of navigation accross process boundaries). This is mutually exclusive with `contextId`.",
+                            "description": "An alternative way to specify the execution context to evaluate in. Compared to contextId that may be reused across processes, this is guaranteed to be system-unique, so it can be used to prevent accidental evaluation of the expression in context different than intended (e.g. as a result of navigation across process boundaries). This is mutually exclusive with `contextId`.",
                             "experimental": true,
                             "optional": true,
                             "type": "string"
@@ -21102,6 +21039,13 @@
                         {
                             "name": "generatePreview",
                             "description": "Whether preview should be generated for the results.",
+                            "experimental": true,
+                            "optional": true,
+                            "type": "boolean"
+                        },
+                        {
+                            "name": "nonIndexedPropertiesOnly",
+                            "description": "If true, returns non-indexed properties only.",
                             "experimental": true,
                             "optional": true,
                             "type": "boolean"
@@ -21479,6 +21423,13 @@
                         {
                             "name": "hints",
                             "type": "object"
+                        },
+                        {
+                            "name": "executionContextId",
+                            "description": "Identifier of the context where the call was made.",
+                            "experimental": true,
+                            "optional": true,
+                            "$ref": "ExecutionContextId"
                         }
                     ]
                 }

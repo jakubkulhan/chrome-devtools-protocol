@@ -39,6 +39,13 @@ final class GetPropertiesRequest implements \JsonSerializable
 	 */
 	public $generatePreview;
 
+	/**
+	 * If true, returns non-indexed properties only.
+	 *
+	 * @var bool|null
+	 */
+	public $nonIndexedPropertiesOnly;
+
 
 	public static function fromJson($data)
 	{
@@ -54,6 +61,9 @@ final class GetPropertiesRequest implements \JsonSerializable
 		}
 		if (isset($data->generatePreview)) {
 			$instance->generatePreview = (bool)$data->generatePreview;
+		}
+		if (isset($data->nonIndexedPropertiesOnly)) {
+			$instance->nonIndexedPropertiesOnly = (bool)$data->nonIndexedPropertiesOnly;
 		}
 		return $instance;
 	}
@@ -73,6 +83,9 @@ final class GetPropertiesRequest implements \JsonSerializable
 		}
 		if ($this->generatePreview !== null) {
 			$data->generatePreview = $this->generatePreview;
+		}
+		if ($this->nonIndexedPropertiesOnly !== null) {
+			$data->nonIndexedPropertiesOnly = $this->nonIndexedPropertiesOnly;
 		}
 		return $data;
 	}

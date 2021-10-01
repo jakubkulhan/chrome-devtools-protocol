@@ -6,8 +6,6 @@ use ChromeDevtoolsProtocol\ContextInterface;
 use ChromeDevtoolsProtocol\Model\Profiler\ConsoleProfileFinishedEvent;
 use ChromeDevtoolsProtocol\Model\Profiler\ConsoleProfileStartedEvent;
 use ChromeDevtoolsProtocol\Model\Profiler\GetBestEffortCoverageResponse;
-use ChromeDevtoolsProtocol\Model\Profiler\GetCountersResponse;
-use ChromeDevtoolsProtocol\Model\Profiler\GetRuntimeCallStatsResponse;
 use ChromeDevtoolsProtocol\Model\Profiler\PreciseCoverageDeltaUpdateEvent;
 use ChromeDevtoolsProtocol\Model\Profiler\SetSamplingIntervalRequest;
 use ChromeDevtoolsProtocol\Model\Profiler\StartPreciseCoverageRequest;
@@ -37,26 +35,6 @@ interface ProfilerDomainInterface
 
 
 	/**
-	 * Disable counters collection.
-	 *
-	 * @param ContextInterface $ctx
-	 *
-	 * @return void
-	 */
-	public function disableCounters(ContextInterface $ctx): void;
-
-
-	/**
-	 * Disable run time call stats collection.
-	 *
-	 * @param ContextInterface $ctx
-	 *
-	 * @return void
-	 */
-	public function disableRuntimeCallStats(ContextInterface $ctx): void;
-
-
-	/**
 	 * Call Profiler.enable command.
 	 *
 	 * @param ContextInterface $ctx
@@ -67,26 +45,6 @@ interface ProfilerDomainInterface
 
 
 	/**
-	 * Enable counters collection.
-	 *
-	 * @param ContextInterface $ctx
-	 *
-	 * @return void
-	 */
-	public function enableCounters(ContextInterface $ctx): void;
-
-
-	/**
-	 * Enable run time call stats collection.
-	 *
-	 * @param ContextInterface $ctx
-	 *
-	 * @return void
-	 */
-	public function enableRuntimeCallStats(ContextInterface $ctx): void;
-
-
-	/**
 	 * Collect coverage data for the current isolate. The coverage data may be incomplete due to garbage collection.
 	 *
 	 * @param ContextInterface $ctx
@@ -94,26 +52,6 @@ interface ProfilerDomainInterface
 	 * @return GetBestEffortCoverageResponse
 	 */
 	public function getBestEffortCoverage(ContextInterface $ctx): GetBestEffortCoverageResponse;
-
-
-	/**
-	 * Retrieve counters.
-	 *
-	 * @param ContextInterface $ctx
-	 *
-	 * @return GetCountersResponse
-	 */
-	public function getCounters(ContextInterface $ctx): GetCountersResponse;
-
-
-	/**
-	 * Retrieve run time call stats.
-	 *
-	 * @param ContextInterface $ctx
-	 *
-	 * @return GetRuntimeCallStatsResponse
-	 */
-	public function getRuntimeCallStats(ContextInterface $ctx): GetRuntimeCallStatsResponse;
 
 
 	/**
@@ -260,7 +198,7 @@ interface ProfilerDomainInterface
 
 
 	/**
-	 * Reports coverage delta since the last poll (either from an event like this, or from `takePreciseCoverage` for the current isolate. May only be sent if precise code coverage has been started. This event can be trigged by the embedder to, for example, trigger collection of coverage data immediatelly at a certain point in time.
+	 * Reports coverage delta since the last poll (either from an event like this, or from `takePreciseCoverage` for the current isolate. May only be sent if precise code coverage has been started. This event can be trigged by the embedder to, for example, trigger collection of coverage data immediately at a certain point in time.
 	 *
 	 * Listener will be called whenever event Profiler.preciseCoverageDeltaUpdate is fired.
 	 *
@@ -272,7 +210,7 @@ interface ProfilerDomainInterface
 
 
 	/**
-	 * Reports coverage delta since the last poll (either from an event like this, or from `takePreciseCoverage` for the current isolate. May only be sent if precise code coverage has been started. This event can be trigged by the embedder to, for example, trigger collection of coverage data immediatelly at a certain point in time.
+	 * Reports coverage delta since the last poll (either from an event like this, or from `takePreciseCoverage` for the current isolate. May only be sent if precise code coverage has been started. This event can be trigged by the embedder to, for example, trigger collection of coverage data immediately at a certain point in time.
 	 *
 	 * Method will block until first Profiler.preciseCoverageDeltaUpdate event is fired.
 	 *

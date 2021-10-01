@@ -11,6 +11,7 @@ final class StopTrackingHeapObjectsRequestBuilder
 {
 	private $reportProgress;
 	private $treatGlobalObjectsAsRoots;
+	private $captureNumericValue;
 
 
 	/**
@@ -21,6 +22,7 @@ final class StopTrackingHeapObjectsRequestBuilder
 		$instance = new StopTrackingHeapObjectsRequest();
 		$instance->reportProgress = $this->reportProgress;
 		$instance->treatGlobalObjectsAsRoots = $this->treatGlobalObjectsAsRoots;
+		$instance->captureNumericValue = $this->captureNumericValue;
 		return $instance;
 	}
 
@@ -45,6 +47,18 @@ final class StopTrackingHeapObjectsRequestBuilder
 	public function setTreatGlobalObjectsAsRoots($treatGlobalObjectsAsRoots): self
 	{
 		$this->treatGlobalObjectsAsRoots = $treatGlobalObjectsAsRoots;
+		return $this;
+	}
+
+
+	/**
+	 * @param bool|null $captureNumericValue
+	 *
+	 * @return self
+	 */
+	public function setCaptureNumericValue($captureNumericValue): self
+	{
+		$this->captureNumericValue = $captureNumericValue;
 		return $this;
 	}
 }

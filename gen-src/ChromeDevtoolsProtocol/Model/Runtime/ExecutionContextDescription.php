@@ -33,7 +33,7 @@ final class ExecutionContextDescription implements \JsonSerializable
 	public $name;
 
 	/**
-	 * A system-unique execution context identifier. Unlike the id, this is unique accross multiple processes, so can be reliably used to identify specific context while backend performs a cross-process navigation.
+	 * A system-unique execution context identifier. Unlike the id, this is unique across multiple processes, so can be reliably used to identify specific context while backend performs a cross-process navigation.
 	 *
 	 * @var string
 	 */

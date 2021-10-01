@@ -15,6 +15,7 @@ final class GetPropertiesRequestBuilder
 	private $ownProperties;
 	private $accessorPropertiesOnly;
 	private $generatePreview;
+	private $nonIndexedPropertiesOnly;
 
 
 	/**
@@ -30,6 +31,7 @@ final class GetPropertiesRequestBuilder
 		$instance->ownProperties = $this->ownProperties;
 		$instance->accessorPropertiesOnly = $this->accessorPropertiesOnly;
 		$instance->generatePreview = $this->generatePreview;
+		$instance->nonIndexedPropertiesOnly = $this->nonIndexedPropertiesOnly;
 		return $instance;
 	}
 
@@ -78,6 +80,18 @@ final class GetPropertiesRequestBuilder
 	public function setGeneratePreview($generatePreview): self
 	{
 		$this->generatePreview = $generatePreview;
+		return $this;
+	}
+
+
+	/**
+	 * @param bool|null $nonIndexedPropertiesOnly
+	 *
+	 * @return self
+	 */
+	public function setNonIndexedPropertiesOnly($nonIndexedPropertiesOnly): self
+	{
+		$this->nonIndexedPropertiesOnly = $nonIndexedPropertiesOnly;
 		return $this;
 	}
 }
