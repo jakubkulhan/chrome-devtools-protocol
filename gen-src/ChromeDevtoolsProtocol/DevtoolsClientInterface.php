@@ -4,6 +4,7 @@ namespace ChromeDevtoolsProtocol;
 
 use ChromeDevtoolsProtocol\Domain\AccessibilityDomainInterface;
 use ChromeDevtoolsProtocol\Domain\AnimationDomainInterface;
+use ChromeDevtoolsProtocol\Domain\ApplicationCacheDomainInterface;
 use ChromeDevtoolsProtocol\Domain\AuditsDomainInterface;
 use ChromeDevtoolsProtocol\Domain\BackgroundServiceDomainInterface;
 use ChromeDevtoolsProtocol\Domain\BrowserDomainInterface;
@@ -71,6 +72,14 @@ interface DevtoolsClientInterface extends CloseableResourceInterface
 	 * @experimental
 	 */
 	public function animation(): AnimationDomainInterface;
+
+
+	/**
+	 * The domain is deprecated as AppCache is being removed (see crbug.com/582750).
+	 *
+	 * @experimental
+	 */
+	public function applicationCache(): ApplicationCacheDomainInterface;
 
 
 	/**

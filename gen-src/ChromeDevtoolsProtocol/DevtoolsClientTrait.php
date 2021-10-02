@@ -6,6 +6,8 @@ use ChromeDevtoolsProtocol\Domain\AccessibilityDomain;
 use ChromeDevtoolsProtocol\Domain\AccessibilityDomainInterface;
 use ChromeDevtoolsProtocol\Domain\AnimationDomain;
 use ChromeDevtoolsProtocol\Domain\AnimationDomainInterface;
+use ChromeDevtoolsProtocol\Domain\ApplicationCacheDomain;
+use ChromeDevtoolsProtocol\Domain\ApplicationCacheDomainInterface;
 use ChromeDevtoolsProtocol\Domain\AuditsDomain;
 use ChromeDevtoolsProtocol\Domain\AuditsDomainInterface;
 use ChromeDevtoolsProtocol\Domain\BackgroundServiceDomain;
@@ -119,6 +121,18 @@ trait DevtoolsClientTrait
 		}
 		/** @var AnimationDomainInterface $domain */
 		$domain = $this->domains['Animation'];
+		return $domain;
+	}
+
+
+	public function applicationCache(): ApplicationCacheDomainInterface
+	{
+		if (!isset($this->domains['ApplicationCache'])) {
+			/** @var InternalClientInterface $this */
+			$this->domains['ApplicationCache'] = new ApplicationCacheDomain($this);
+		}
+		/** @var ApplicationCacheDomainInterface $domain */
+		$domain = $this->domains['ApplicationCache'];
 		return $domain;
 	}
 
