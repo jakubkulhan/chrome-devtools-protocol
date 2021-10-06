@@ -37,5 +37,6 @@ final class CorsErrorEnum
 	public const REDIRECT_CONTAINS_CREDENTIALS = 'RedirectContainsCredentials';
 	public const INSECURE_PRIVATE_NETWORK = 'InsecurePrivateNetwork';
 	public const INVALID_PRIVATE_NETWORK_ACCESS = 'InvalidPrivateNetworkAccess';
+	public const UNEXPECTED_PRIVATE_NETWORK_ACCESS = 'UnexpectedPrivateNetworkAccess';
 	public const NO_CORS_REDIRECT_MODE_NOT_FOLLOW = 'NoCorsRedirectModeNotFollow';
 }
