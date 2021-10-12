@@ -80,7 +80,6 @@ use ChromeDevtoolsProtocol\Model\Page\SetFontSizesRequest;
 use ChromeDevtoolsProtocol\Model\Page\SetGeolocationOverrideRequest;
 use ChromeDevtoolsProtocol\Model\Page\SetInterceptFileChooserDialogRequest;
 use ChromeDevtoolsProtocol\Model\Page\SetLifecycleEventsEnabledRequest;
-use ChromeDevtoolsProtocol\Model\Page\SetProduceCompilationCacheRequest;
 use ChromeDevtoolsProtocol\Model\Page\SetTouchEmulationEnabledRequest;
 use ChromeDevtoolsProtocol\Model\Page\SetWebLifecycleStateRequest;
 use ChromeDevtoolsProtocol\Model\Page\StartScreencastRequest;
@@ -457,7 +456,7 @@ interface PageDomainInterface
 
 
 	/**
-	 * Requests backend to produce compilation cache for the specified scripts. Unlike setProduceCompilationCache, this allows client to only produce cache for specific scripts. `scripts` are appeneded to the list of scripts for which the cache for would produced. Disabling compilation cache with `setProduceCompilationCache` would reset all pending cache requests. The list may also be reset during page navigation. When script with a matching URL is encountered, the cache is optionally produced upon backend discretion, based on internal heuristics. See also: `Page.compilationCacheProduced`.
+	 * Requests backend to produce compilation cache for the specified scripts. `scripts` are appeneded to the list of scripts for which the cache would be produced. The list may be reset during page navigation. When script with a matching URL is encountered, the cache is optionally produced upon backend discretion, based on internal heuristics. See also: `Page.compilationCacheProduced`.
 	 *
 	 * @param ContextInterface $ctx
 	 * @param ProduceCompilationCacheRequest $request
@@ -657,17 +656,6 @@ interface PageDomainInterface
 	 * @return void
 	 */
 	public function setLifecycleEventsEnabled(ContextInterface $ctx, SetLifecycleEventsEnabledRequest $request): void;
-
-
-	/**
-	 * Forces compilation cache to be generated for every subresource script. See also: `Page.produceCompilationCache`.
-	 *
-	 * @param ContextInterface $ctx
-	 * @param SetProduceCompilationCacheRequest $request
-	 *
-	 * @return void
-	 */
-	public function setProduceCompilationCache(ContextInterface $ctx, SetProduceCompilationCacheRequest $request): void;
 
 
 	/**
