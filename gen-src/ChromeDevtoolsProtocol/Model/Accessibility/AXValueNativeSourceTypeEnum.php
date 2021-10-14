@@ -11,6 +11,7 @@ namespace ChromeDevtoolsProtocol\Model\Accessibility;
  */
 final class AXValueNativeSourceTypeEnum
 {
+	public const DESCRIPTION = 'description';
 	public const FIGCAPTION = 'figcaption';
 	public const LABEL = 'label';
 	public const LABELFOR = 'labelfor';

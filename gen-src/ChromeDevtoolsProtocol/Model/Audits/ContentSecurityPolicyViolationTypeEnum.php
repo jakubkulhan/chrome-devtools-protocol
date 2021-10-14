@@ -16,4 +16,5 @@ final class ContentSecurityPolicyViolationTypeEnum
 	public const K_U_R_L_VIOLATION = 'kURLViolation';
 	public const K_TRUSTED_TYPES_SINK_VIOLATION = 'kTrustedTypesSinkViolation';
 	public const K_TRUSTED_TYPES_POLICY_VIOLATION = 'kTrustedTypesPolicyViolation';
+	public const K_WASM_EVAL_VIOLATION = 'kWasmEvalViolation';
 }
