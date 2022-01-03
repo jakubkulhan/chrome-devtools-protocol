@@ -25,7 +25,7 @@ final class AudioParamCreatedEvent implements \JsonSerializable
 	}
 
 
-	public function jsonSerialize()
+	public function jsonSerialize(): mixed
 	{
 		$data = new \stdClass();
 		if ($this->param !== null) {

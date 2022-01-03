@@ -25,7 +25,7 @@ final class TimelineEventAddedEvent implements \JsonSerializable
 	}
 
 
-	public function jsonSerialize()
+	public function jsonSerialize(): mixed
 	{
 		$data = new \stdClass();
 		if ($this->event !== null) {

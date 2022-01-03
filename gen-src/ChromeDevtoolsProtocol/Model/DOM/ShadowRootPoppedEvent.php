@@ -39,7 +39,7 @@ final class ShadowRootPoppedEvent implements \JsonSerializable
 	}
 
 
-	public function jsonSerialize()
+	public function jsonSerialize(): mixed
 	{
 		$data = new \stdClass();
 		if ($this->hostId !== null) {

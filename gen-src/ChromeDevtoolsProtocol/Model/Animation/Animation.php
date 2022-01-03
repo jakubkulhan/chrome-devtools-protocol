@@ -119,7 +119,7 @@ final class Animation implements \JsonSerializable
 	}
 
 
-	public function jsonSerialize()
+	public function jsonSerialize(): mixed
 	{
 		$data = new \stdClass();
 		if ($this->id !== null) {

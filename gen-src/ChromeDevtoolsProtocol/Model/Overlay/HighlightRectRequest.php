@@ -81,7 +81,7 @@ final class HighlightRectRequest implements \JsonSerializable
 	}
 
 
-	public function jsonSerialize()
+	public function jsonSerialize(): mixed
 	{
 		$data = new \stdClass();
 		if ($this->x !== null) {

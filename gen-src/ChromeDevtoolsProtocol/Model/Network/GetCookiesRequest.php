@@ -32,7 +32,7 @@ final class GetCookiesRequest implements \JsonSerializable
 	}
 
 
-	public function jsonSerialize()
+	public function jsonSerialize(): mixed
 	{
 		$data = new \stdClass();
 		if ($this->urls !== null) {

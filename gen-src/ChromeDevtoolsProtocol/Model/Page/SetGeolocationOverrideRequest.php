@@ -49,7 +49,7 @@ final class SetGeolocationOverrideRequest implements \JsonSerializable
 	}
 
 
-	public function jsonSerialize()
+	public function jsonSerialize(): mixed
 	{
 		$data = new \stdClass();
 		if ($this->latitude !== null) {

@@ -432,6 +432,7 @@ class Generator
 		$fromJson->addBody("return new static(\$rawData);");
 
 		$jsonSerialize = $objectClass->addMethod("jsonSerialize");
+        $jsonSerialize->setReturnType('mixed');
 		$jsonSerialize->addBody("return \$this->rawData;");
 
 		$objectClass->addMethod("getRawData")
@@ -473,6 +474,7 @@ class Generator
 
 			$objectClass->addImplement(\IteratorAggregate::class);
 			$getIterator = $objectClass->addMethod("getIterator");
+            $getIterator->setReturnType(\ArrayIterator::class);
 			$objectClass->getNamespace()->addUse(\ArrayIterator::class, null, $arrayIteratorAlias);
 			$getIterator->addBody("return new {$arrayIteratorAlias}(\$this->headers);");
 		}
@@ -502,6 +504,7 @@ class Generator
 		$fromJson->addBody("\$instance = new static();");
 
 		$jsonSerialize = $objectClass->addMethod("jsonSerialize");
+        $jsonSerialize->setReturnType('mixed');
 		$jsonSerialize->addBody("\$data = new \\stdClass();");
 
 		$builderClass = null;

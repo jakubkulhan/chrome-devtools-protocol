@@ -42,7 +42,7 @@ final class RequestDataResponse implements \JsonSerializable
 	}
 
 
-	public function jsonSerialize()
+	public function jsonSerialize(): mixed
 	{
 		$data = new \stdClass();
 		if ($this->objectStoreDataEntries !== null) {

@@ -39,7 +39,7 @@ final class QueryObjectsRequest implements \JsonSerializable
 	}
 
 
-	public function jsonSerialize()
+	public function jsonSerialize(): mixed
 	{
 		$data = new \stdClass();
 		if ($this->prototypeObjectId !== null) {

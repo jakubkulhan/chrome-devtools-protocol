@@ -34,7 +34,7 @@ final class SamplingHeapProfile implements \JsonSerializable
 	}
 
 
-	public function jsonSerialize()
+	public function jsonSerialize(): mixed
 	{
 		$data = new \stdClass();
 		if ($this->head !== null) {

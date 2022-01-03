@@ -29,7 +29,7 @@ final class ResumeRequest implements \JsonSerializable
 	}
 
 
-	public function jsonSerialize()
+	public function jsonSerialize(): mixed
 	{
 		$data = new \stdClass();
 		if ($this->terminateOnResume !== null) {

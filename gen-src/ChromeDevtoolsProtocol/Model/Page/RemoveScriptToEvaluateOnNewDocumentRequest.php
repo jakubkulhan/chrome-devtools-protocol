@@ -25,7 +25,7 @@ final class RemoveScriptToEvaluateOnNewDocumentRequest implements \JsonSerializa
 	}
 
 
-	public function jsonSerialize()
+	public function jsonSerialize(): mixed
 	{
 		$data = new \stdClass();
 		if ($this->identifier !== null) {

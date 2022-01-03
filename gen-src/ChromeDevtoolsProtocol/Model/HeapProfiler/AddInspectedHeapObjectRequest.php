@@ -29,7 +29,7 @@ final class AddInspectedHeapObjectRequest implements \JsonSerializable
 	}
 
 
-	public function jsonSerialize()
+	public function jsonSerialize(): mixed
 	{
 		$data = new \stdClass();
 		if ($this->heapObjectId !== null) {

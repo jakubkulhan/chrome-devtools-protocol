@@ -29,7 +29,7 @@ final class GetQueryingDescendantsForContainerRequest implements \JsonSerializab
 	}
 
 
-	public function jsonSerialize()
+	public function jsonSerialize(): mixed
 	{
 		$data = new \stdClass();
 		if ($this->nodeId !== null) {

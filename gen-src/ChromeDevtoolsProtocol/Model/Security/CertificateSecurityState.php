@@ -202,7 +202,7 @@ final class CertificateSecurityState implements \JsonSerializable
 	}
 
 
-	public function jsonSerialize()
+	public function jsonSerialize(): mixed
 	{
 		$data = new \stdClass();
 		if ($this->protocol !== null) {

@@ -28,7 +28,7 @@ final class GetCertificateResponse implements \JsonSerializable
 	}
 
 
-	public function jsonSerialize()
+	public function jsonSerialize(): mixed
 	{
 		$data = new \stdClass();
 		if ($this->tableNames !== null) {

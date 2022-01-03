@@ -32,7 +32,7 @@ final class CollectClassNamesFromSubtreeResponse implements \JsonSerializable
 	}
 
 
-	public function jsonSerialize()
+	public function jsonSerialize(): mixed
 	{
 		$data = new \stdClass();
 		if ($this->classNames !== null) {

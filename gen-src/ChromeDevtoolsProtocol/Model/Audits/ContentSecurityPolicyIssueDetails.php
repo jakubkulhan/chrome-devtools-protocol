@@ -69,7 +69,7 @@ final class ContentSecurityPolicyIssueDetails implements \JsonSerializable
 	}
 
 
-	public function jsonSerialize()
+	public function jsonSerialize(): mixed
 	{
 		$data = new \stdClass();
 		if ($this->blockedURL !== null) {

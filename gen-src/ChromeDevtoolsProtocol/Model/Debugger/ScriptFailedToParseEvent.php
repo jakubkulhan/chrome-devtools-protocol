@@ -191,7 +191,7 @@ final class ScriptFailedToParseEvent implements \JsonSerializable
 	}
 
 
-	public function jsonSerialize()
+	public function jsonSerialize(): mixed
 	{
 		$data = new \stdClass();
 		if ($this->scriptId !== null) {

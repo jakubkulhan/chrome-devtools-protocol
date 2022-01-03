@@ -32,7 +32,7 @@ final class GetBrowserCommandLineResponse implements \JsonSerializable
 	}
 
 
-	public function jsonSerialize()
+	public function jsonSerialize(): mixed
 	{
 		$data = new \stdClass();
 		if ($this->arguments !== null) {

@@ -29,7 +29,7 @@ final class GetOuterHTMLResponse implements \JsonSerializable
 	}
 
 
-	public function jsonSerialize()
+	public function jsonSerialize(): mixed
 	{
 		$data = new \stdClass();
 		if ($this->outerHTML !== null) {

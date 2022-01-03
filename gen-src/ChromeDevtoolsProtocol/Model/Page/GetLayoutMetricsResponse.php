@@ -81,7 +81,7 @@ final class GetLayoutMetricsResponse implements \JsonSerializable
 	}
 
 
-	public function jsonSerialize()
+	public function jsonSerialize(): mixed
 	{
 		$data = new \stdClass();
 		if ($this->layoutViewport !== null) {

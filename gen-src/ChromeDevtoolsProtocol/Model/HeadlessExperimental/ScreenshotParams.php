@@ -39,7 +39,7 @@ final class ScreenshotParams implements \JsonSerializable
 	}
 
 
-	public function jsonSerialize()
+	public function jsonSerialize(): mixed
 	{
 		$data = new \stdClass();
 		if ($this->format !== null) {

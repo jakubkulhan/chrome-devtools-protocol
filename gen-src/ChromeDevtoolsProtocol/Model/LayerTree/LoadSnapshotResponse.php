@@ -29,7 +29,7 @@ final class LoadSnapshotResponse implements \JsonSerializable
 	}
 
 
-	public function jsonSerialize()
+	public function jsonSerialize(): mixed
 	{
 		$data = new \stdClass();
 		if ($this->snapshotId !== null) {

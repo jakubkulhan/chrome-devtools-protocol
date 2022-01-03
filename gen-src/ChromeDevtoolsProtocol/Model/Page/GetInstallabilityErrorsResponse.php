@@ -28,7 +28,7 @@ final class GetInstallabilityErrorsResponse implements \JsonSerializable
 	}
 
 
-	public function jsonSerialize()
+	public function jsonSerialize(): mixed
 	{
 		$data = new \stdClass();
 		if ($this->installabilityErrors !== null) {
