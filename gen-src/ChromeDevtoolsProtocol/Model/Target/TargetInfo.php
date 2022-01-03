@@ -89,7 +89,7 @@ final class TargetInfo implements \JsonSerializable
 	}
 
 
-	public function jsonSerialize()
+	public function jsonSerialize(): mixed
 	{
 		$data = new \stdClass();
 		if ($this->targetId !== null) {

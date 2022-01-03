@@ -67,7 +67,7 @@ final class LoadNetworkResourcePageResult implements \JsonSerializable
 	}
 
 
-	public function jsonSerialize()
+	public function jsonSerialize(): mixed
 	{
 		$data = new \stdClass();
 		if ($this->success !== null) {

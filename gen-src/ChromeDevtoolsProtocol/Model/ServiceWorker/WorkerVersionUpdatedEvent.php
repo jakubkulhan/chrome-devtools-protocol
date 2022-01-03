@@ -28,7 +28,7 @@ final class WorkerVersionUpdatedEvent implements \JsonSerializable
 	}
 
 
-	public function jsonSerialize()
+	public function jsonSerialize(): mixed
 	{
 		$data = new \stdClass();
 		if ($this->versions !== null) {

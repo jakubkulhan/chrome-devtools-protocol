@@ -32,7 +32,7 @@ final class GetTargetsResponse implements \JsonSerializable
 	}
 
 
-	public function jsonSerialize()
+	public function jsonSerialize(): mixed
 	{
 		$data = new \stdClass();
 		if ($this->targetInfos !== null) {

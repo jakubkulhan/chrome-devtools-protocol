@@ -40,7 +40,7 @@ final class OriginTrial implements \JsonSerializable
 	}
 
 
-	public function jsonSerialize()
+	public function jsonSerialize(): mixed
 	{
 		$data = new \stdClass();
 		if ($this->trialName !== null) {

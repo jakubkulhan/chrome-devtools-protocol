@@ -213,7 +213,7 @@ final class NodeTreeSnapshot implements \JsonSerializable
 	}
 
 
-	public function jsonSerialize()
+	public function jsonSerialize(): mixed
 	{
 		$data = new \stdClass();
 		if ($this->parentIndex !== null) {

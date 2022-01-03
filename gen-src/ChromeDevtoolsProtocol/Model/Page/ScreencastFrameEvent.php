@@ -49,7 +49,7 @@ final class ScreencastFrameEvent implements \JsonSerializable
 	}
 
 
-	public function jsonSerialize()
+	public function jsonSerialize(): mixed
 	{
 		$data = new \stdClass();
 		if ($this->data !== null) {

@@ -34,7 +34,7 @@ final class PlayerMessagesLoggedEvent implements \JsonSerializable
 	}
 
 
-	public function jsonSerialize()
+	public function jsonSerialize(): mixed
 	{
 		$data = new \stdClass();
 		if ($this->playerId !== null) {

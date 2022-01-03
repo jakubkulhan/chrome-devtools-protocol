@@ -49,7 +49,7 @@ final class HeavyAdIssueDetails implements \JsonSerializable
 	}
 
 
-	public function jsonSerialize()
+	public function jsonSerialize(): mixed
 	{
 		$data = new \stdClass();
 		if ($this->resolution !== null) {

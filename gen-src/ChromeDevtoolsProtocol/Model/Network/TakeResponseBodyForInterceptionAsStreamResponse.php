@@ -25,7 +25,7 @@ final class TakeResponseBodyForInterceptionAsStreamResponse implements \JsonSeri
 	}
 
 
-	public function jsonSerialize()
+	public function jsonSerialize(): mixed
 	{
 		$data = new \stdClass();
 		if ($this->stream !== null) {

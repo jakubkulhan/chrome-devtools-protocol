@@ -31,7 +31,7 @@ final class LoadNetworkResourceOptions implements \JsonSerializable
 	}
 
 
-	public function jsonSerialize()
+	public function jsonSerialize(): mixed
 	{
 		$data = new \stdClass();
 		if ($this->disableCache !== null) {

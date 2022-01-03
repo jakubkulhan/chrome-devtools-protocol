@@ -39,7 +39,7 @@ final class BeginFrameResponse implements \JsonSerializable
 	}
 
 
-	public function jsonSerialize()
+	public function jsonSerialize(): mixed
 	{
 		$data = new \stdClass();
 		if ($this->hasDamage !== null) {

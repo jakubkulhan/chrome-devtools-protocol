@@ -42,7 +42,7 @@ final class SetEmulatedMediaRequest implements \JsonSerializable
 	}
 
 
-	public function jsonSerialize()
+	public function jsonSerialize(): mixed
 	{
 		$data = new \stdClass();
 		if ($this->media !== null) {

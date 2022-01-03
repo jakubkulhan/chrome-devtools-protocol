@@ -37,7 +37,7 @@ final class Headers implements \JsonSerializable, \IteratorAggregate
 	}
 
 
-	public function jsonSerialize()
+	public function jsonSerialize(): mixed
 	{
 		return $this->rawData;
 	}
@@ -72,7 +72,7 @@ final class Headers implements \JsonSerializable, \IteratorAggregate
 	}
 
 
-	public function getIterator()
+	public function getIterator(): ArrayIterator
 	{
 		return new ArrayIterator($this->headers);
 	}

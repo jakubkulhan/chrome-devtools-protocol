@@ -31,7 +31,7 @@ final class SetStyleSheetTextRequest implements \JsonSerializable
 	}
 
 
-	public function jsonSerialize()
+	public function jsonSerialize(): mixed
 	{
 		$data = new \stdClass();
 		if ($this->styleSheetId !== null) {

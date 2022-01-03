@@ -32,7 +32,7 @@ final class GetEventListenersResponse implements \JsonSerializable
 	}
 
 
-	public function jsonSerialize()
+	public function jsonSerialize(): mixed
 	{
 		$data = new \stdClass();
 		if ($this->listeners !== null) {

@@ -59,7 +59,7 @@ final class PrivatePropertyDescriptor implements \JsonSerializable
 	}
 
 
-	public function jsonSerialize()
+	public function jsonSerialize(): mixed
 	{
 		$data = new \stdClass();
 		if ($this->name !== null) {
