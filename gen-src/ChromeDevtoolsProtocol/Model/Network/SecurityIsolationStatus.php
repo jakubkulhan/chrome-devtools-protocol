@@ -18,6 +18,10 @@ final class SecurityIsolationStatus implements \JsonSerializable
 	public $coep;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

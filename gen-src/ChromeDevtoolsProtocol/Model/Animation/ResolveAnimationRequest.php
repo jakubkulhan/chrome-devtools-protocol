@@ -19,6 +19,10 @@ final class ResolveAnimationRequest implements \JsonSerializable
 	public $animationId;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

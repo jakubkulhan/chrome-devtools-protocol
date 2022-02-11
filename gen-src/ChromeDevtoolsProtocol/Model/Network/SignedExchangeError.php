@@ -33,6 +33,10 @@ final class SignedExchangeError implements \JsonSerializable
 	public $errorField;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

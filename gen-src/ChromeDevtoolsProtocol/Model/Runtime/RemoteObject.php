@@ -71,6 +71,10 @@ final class RemoteObject implements \JsonSerializable
 	public $customPreview;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

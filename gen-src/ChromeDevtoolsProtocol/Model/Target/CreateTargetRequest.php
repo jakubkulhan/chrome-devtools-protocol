@@ -61,6 +61,10 @@ final class CreateTargetRequest implements \JsonSerializable
 	public $background;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

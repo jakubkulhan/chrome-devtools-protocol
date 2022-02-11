@@ -19,6 +19,10 @@ final class GetBrowserCommandLineResponse implements \JsonSerializable
 	public $arguments;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

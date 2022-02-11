@@ -26,6 +26,10 @@ final class CacheStorageContentUpdatedEvent implements \JsonSerializable
 	public $cacheName;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

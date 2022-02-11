@@ -61,6 +61,10 @@ final class SecurityStateExplanation implements \JsonSerializable
 	public $recommendations;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

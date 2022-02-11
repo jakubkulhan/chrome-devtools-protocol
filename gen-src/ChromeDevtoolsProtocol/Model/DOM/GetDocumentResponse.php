@@ -19,6 +19,10 @@ final class GetDocumentResponse implements \JsonSerializable
 	public $root;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

@@ -15,6 +15,10 @@ final class ClearTrustTokensRequest implements \JsonSerializable
 	public $issuerOrigin;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

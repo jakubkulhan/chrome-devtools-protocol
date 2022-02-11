@@ -40,6 +40,10 @@ final class DownloadWillBeginEvent implements \JsonSerializable
 	public $suggestedFilename;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

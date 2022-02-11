@@ -18,6 +18,10 @@ final class AdFrameStatus implements \JsonSerializable
 	public $explanations;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

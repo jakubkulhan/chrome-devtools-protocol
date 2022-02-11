@@ -26,6 +26,10 @@ final class MetricsEvent implements \JsonSerializable
 	public $title;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

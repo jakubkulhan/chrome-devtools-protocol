@@ -68,6 +68,10 @@ final class TraceConfig implements \JsonSerializable
 	public $memoryDumpConfig;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

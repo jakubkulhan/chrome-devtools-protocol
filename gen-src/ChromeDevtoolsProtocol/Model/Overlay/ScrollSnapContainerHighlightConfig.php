@@ -42,6 +42,10 @@ final class ScrollSnapContainerHighlightConfig implements \JsonSerializable
 	public $scrollPaddingColor;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

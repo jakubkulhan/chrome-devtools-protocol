@@ -88,6 +88,10 @@ final class LogEntry implements \JsonSerializable
 	public $args;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

@@ -33,6 +33,10 @@ final class BackForwardCacheNotUsedEvent implements \JsonSerializable
 	public $notRestoredExplanations;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

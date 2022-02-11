@@ -15,6 +15,10 @@ final class NodeHighlightRequestedEvent implements \JsonSerializable
 	public $nodeId;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

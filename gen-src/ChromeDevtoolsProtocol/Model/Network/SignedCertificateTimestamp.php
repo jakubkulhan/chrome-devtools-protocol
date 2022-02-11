@@ -68,6 +68,10 @@ final class SignedCertificateTimestamp implements \JsonSerializable
 	public $signatureData;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

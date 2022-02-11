@@ -40,6 +40,10 @@ final class CachedResource implements \JsonSerializable
 	public $bodySize;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

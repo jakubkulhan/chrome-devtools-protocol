@@ -21,6 +21,10 @@ final class AudioParamWillBeDestroyedEvent implements \JsonSerializable
 	public $paramId;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

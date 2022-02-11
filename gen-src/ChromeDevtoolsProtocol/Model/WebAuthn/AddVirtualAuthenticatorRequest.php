@@ -15,6 +15,10 @@ final class AddVirtualAuthenticatorRequest implements \JsonSerializable
 	public $options;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

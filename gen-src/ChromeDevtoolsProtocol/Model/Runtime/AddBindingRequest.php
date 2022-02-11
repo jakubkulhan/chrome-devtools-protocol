@@ -29,6 +29,10 @@ final class AddBindingRequest implements \JsonSerializable
 	public $executionContextName;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

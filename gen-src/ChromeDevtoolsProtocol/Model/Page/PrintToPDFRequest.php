@@ -124,6 +124,10 @@ final class PrintToPDFRequest implements \JsonSerializable
 	public $transferMode;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

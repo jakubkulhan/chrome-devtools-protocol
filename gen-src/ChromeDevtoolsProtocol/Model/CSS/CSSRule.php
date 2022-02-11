@@ -54,6 +54,10 @@ final class CSSRule implements \JsonSerializable
 	public $containerQueries;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

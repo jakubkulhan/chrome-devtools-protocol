@@ -40,6 +40,10 @@ final class RGBA implements \JsonSerializable
 	public $a;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

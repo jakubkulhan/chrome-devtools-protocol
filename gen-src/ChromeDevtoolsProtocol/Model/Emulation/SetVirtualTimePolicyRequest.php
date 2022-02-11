@@ -43,6 +43,10 @@ final class SetVirtualTimePolicyRequest implements \JsonSerializable
 	public $initialVirtualTime;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

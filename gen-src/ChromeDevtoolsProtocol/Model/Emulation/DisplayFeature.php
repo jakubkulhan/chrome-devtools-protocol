@@ -33,6 +33,10 @@ final class DisplayFeature implements \JsonSerializable
 	public $maskLength;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

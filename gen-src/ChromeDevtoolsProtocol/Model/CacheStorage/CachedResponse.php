@@ -19,6 +19,10 @@ final class CachedResponse implements \JsonSerializable
 	public $body;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

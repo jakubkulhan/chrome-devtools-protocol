@@ -147,6 +147,10 @@ final class HighlightConfig implements \JsonSerializable
 	public $containerQueryContainerHighlightConfig;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

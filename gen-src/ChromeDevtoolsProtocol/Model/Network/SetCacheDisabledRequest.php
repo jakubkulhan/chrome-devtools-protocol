@@ -19,6 +19,10 @@ final class SetCacheDisabledRequest implements \JsonSerializable
 	public $cacheDisabled;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

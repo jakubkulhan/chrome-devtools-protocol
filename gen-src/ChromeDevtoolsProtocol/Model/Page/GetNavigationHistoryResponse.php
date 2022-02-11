@@ -26,6 +26,10 @@ final class GetNavigationHistoryResponse implements \JsonSerializable
 	public $entries;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

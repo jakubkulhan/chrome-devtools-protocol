@@ -15,6 +15,10 @@ final class TargetInfoChangedEvent implements \JsonSerializable
 	public $targetInfo;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

@@ -27,6 +27,10 @@ final class NodesDisconnectedEvent implements \JsonSerializable
 	public $destinationInputIndex;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

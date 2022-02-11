@@ -15,6 +15,10 @@ final class IssueUpdatedEvent implements \JsonSerializable
 	public $issueMessage;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

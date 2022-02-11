@@ -228,7 +228,7 @@ class Launcher
 
 			$instance = new ProcessInstance($process, $temporaryUserDataDir, $this->port);
 
-			for (; ;) {
+			while (true) {
 				try {
 					$instance->version($ctx);
 					return $instance;

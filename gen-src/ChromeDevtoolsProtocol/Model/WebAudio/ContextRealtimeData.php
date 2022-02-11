@@ -40,6 +40,10 @@ final class ContextRealtimeData implements \JsonSerializable
 	public $callbackIntervalVariance;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

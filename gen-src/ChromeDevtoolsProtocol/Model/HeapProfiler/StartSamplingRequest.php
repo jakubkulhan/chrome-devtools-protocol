@@ -19,6 +19,10 @@ final class StartSamplingRequest implements \JsonSerializable
 	public $samplingInterval;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

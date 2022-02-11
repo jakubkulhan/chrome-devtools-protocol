@@ -26,6 +26,10 @@ final class SearchMatch implements \JsonSerializable
 	public $lineContent;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

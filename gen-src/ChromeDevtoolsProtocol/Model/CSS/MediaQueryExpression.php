@@ -47,6 +47,10 @@ final class MediaQueryExpression implements \JsonSerializable
 	public $computedLength;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

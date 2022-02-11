@@ -29,6 +29,10 @@ final class AddScriptToEvaluateOnNewDocumentRequest implements \JsonSerializable
 	public $includeCommandLineAPI;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

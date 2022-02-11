@@ -26,6 +26,10 @@ final class SetBreakpointResponse implements \JsonSerializable
 	public $actualLocation;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

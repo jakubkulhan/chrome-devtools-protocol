@@ -26,6 +26,10 @@ final class ShadowRootPushedEvent implements \JsonSerializable
 	public $root;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

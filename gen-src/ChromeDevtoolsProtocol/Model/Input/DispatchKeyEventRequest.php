@@ -117,6 +117,10 @@ final class DispatchKeyEventRequest implements \JsonSerializable
 	public $commands;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

@@ -96,6 +96,10 @@ final class SynthesizeScrollGestureRequest implements \JsonSerializable
 	public $interactionMarkerName;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

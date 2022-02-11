@@ -40,6 +40,10 @@ final class LoadingFinishedEvent implements \JsonSerializable
 	public $shouldReportCorbBlocking;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

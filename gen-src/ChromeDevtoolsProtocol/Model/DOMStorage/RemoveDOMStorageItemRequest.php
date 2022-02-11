@@ -18,6 +18,10 @@ final class RemoveDOMStorageItemRequest implements \JsonSerializable
 	public $key;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

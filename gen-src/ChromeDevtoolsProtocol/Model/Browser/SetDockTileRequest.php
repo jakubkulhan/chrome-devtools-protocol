@@ -22,6 +22,10 @@ final class SetDockTileRequest implements \JsonSerializable
 	public $image;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

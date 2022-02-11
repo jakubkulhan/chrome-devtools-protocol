@@ -124,6 +124,10 @@ final class NodeTreeSnapshot implements \JsonSerializable
 	public $originURL;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

@@ -26,6 +26,10 @@ final class RequestMemoryDumpResponse implements \JsonSerializable
 	public $success;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

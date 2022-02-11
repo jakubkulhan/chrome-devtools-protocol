@@ -19,6 +19,10 @@ final class SetTimeDomainRequest implements \JsonSerializable
 	public $timeDomain;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

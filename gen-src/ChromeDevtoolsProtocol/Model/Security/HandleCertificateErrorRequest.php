@@ -26,6 +26,10 @@ final class HandleCertificateErrorRequest implements \JsonSerializable
 	public $action;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

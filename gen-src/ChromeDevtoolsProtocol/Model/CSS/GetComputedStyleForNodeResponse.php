@@ -19,6 +19,10 @@ final class GetComputedStyleForNodeResponse implements \JsonSerializable
 	public $computedStyle;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

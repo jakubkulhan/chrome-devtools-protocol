@@ -40,6 +40,10 @@ final class GetEncodedResponseRequest implements \JsonSerializable
 	public $sizeOnly;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

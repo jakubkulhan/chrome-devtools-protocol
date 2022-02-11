@@ -26,6 +26,10 @@ final class ContinueWithAuthRequest implements \JsonSerializable
 	public $authChallengeResponse;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

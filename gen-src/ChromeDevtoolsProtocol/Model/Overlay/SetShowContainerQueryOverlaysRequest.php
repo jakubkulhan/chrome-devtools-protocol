@@ -19,6 +19,10 @@ final class SetShowContainerQueryOverlaysRequest implements \JsonSerializable
 	public $containerQueryHighlightConfigs;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

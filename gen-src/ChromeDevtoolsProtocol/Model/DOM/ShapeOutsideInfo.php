@@ -33,6 +33,10 @@ final class ShapeOutsideInfo implements \JsonSerializable
 	public $marginShape;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

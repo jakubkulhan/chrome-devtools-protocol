@@ -19,6 +19,10 @@ final class SetVirtualTimePolicyResponse implements \JsonSerializable
 	public $virtualTimeTicksBase;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

@@ -33,6 +33,10 @@ final class RequestCachedResponseRequest implements \JsonSerializable
 	public $requestHeaders;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

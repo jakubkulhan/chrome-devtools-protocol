@@ -33,6 +33,10 @@ final class FunctionCoverage implements \JsonSerializable
 	public $isBlockCoverage;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

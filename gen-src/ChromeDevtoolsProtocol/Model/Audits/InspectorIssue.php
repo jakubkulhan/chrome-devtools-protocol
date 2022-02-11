@@ -25,6 +25,10 @@ final class InspectorIssue implements \JsonSerializable
 	public $issueId;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

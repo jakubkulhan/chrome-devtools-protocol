@@ -26,6 +26,10 @@ final class HandleJavaScriptDialogRequest implements \JsonSerializable
 	public $promptText;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

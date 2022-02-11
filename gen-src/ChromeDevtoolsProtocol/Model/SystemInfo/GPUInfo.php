@@ -61,6 +61,10 @@ final class GPUInfo implements \JsonSerializable
 	public $imageDecoding;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

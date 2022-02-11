@@ -82,6 +82,10 @@ final class PropertyDescriptor implements \JsonSerializable
 	public $symbol;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

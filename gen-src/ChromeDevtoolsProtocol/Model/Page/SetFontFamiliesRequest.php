@@ -19,6 +19,10 @@ final class SetFontFamiliesRequest implements \JsonSerializable
 	public $fontFamilies;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

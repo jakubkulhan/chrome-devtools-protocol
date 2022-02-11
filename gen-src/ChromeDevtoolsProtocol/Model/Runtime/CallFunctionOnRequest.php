@@ -89,6 +89,10 @@ final class CallFunctionOnRequest implements \JsonSerializable
 	public $throwOnSideEffect;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

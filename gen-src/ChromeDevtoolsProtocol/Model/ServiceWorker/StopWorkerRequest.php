@@ -15,6 +15,10 @@ final class StopWorkerRequest implements \JsonSerializable
 	public $versionId;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

@@ -15,6 +15,10 @@ final class RareBooleanData implements \JsonSerializable
 	public $index;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

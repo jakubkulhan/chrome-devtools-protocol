@@ -21,6 +21,10 @@ final class GetDOMCountersResponse implements \JsonSerializable
 	public $jsEventListeners;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

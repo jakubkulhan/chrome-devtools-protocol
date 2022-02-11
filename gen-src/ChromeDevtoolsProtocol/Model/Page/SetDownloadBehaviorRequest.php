@@ -26,6 +26,10 @@ final class SetDownloadBehaviorRequest implements \JsonSerializable
 	public $downloadPath;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

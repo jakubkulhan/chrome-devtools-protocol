@@ -19,6 +19,10 @@ final class SetOverrideCertificateErrorsRequest implements \JsonSerializable
 	public $override;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

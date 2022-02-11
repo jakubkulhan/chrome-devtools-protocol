@@ -26,6 +26,10 @@ final class GenerateTestReportRequest implements \JsonSerializable
 	public $group;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

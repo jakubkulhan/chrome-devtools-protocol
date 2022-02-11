@@ -26,6 +26,10 @@ final class AwaitPromiseResponse implements \JsonSerializable
 	public $exceptionDetails;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

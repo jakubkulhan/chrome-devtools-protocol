@@ -47,6 +47,10 @@ final class FontVariationAxis implements \JsonSerializable
 	public $defaultValue;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

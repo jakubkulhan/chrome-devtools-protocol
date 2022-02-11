@@ -19,6 +19,10 @@ final class LoadSnapshotResponse implements \JsonSerializable
 	public $snapshotId;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

@@ -24,6 +24,10 @@ final class DomStorageItemUpdatedEvent implements \JsonSerializable
 	public $newValue;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

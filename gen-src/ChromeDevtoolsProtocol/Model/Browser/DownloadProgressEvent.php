@@ -40,6 +40,10 @@ final class DownloadProgressEvent implements \JsonSerializable
 	public $state;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

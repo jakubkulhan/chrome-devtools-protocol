@@ -15,6 +15,10 @@ final class AddScriptToEvaluateOnLoadRequest implements \JsonSerializable
 	public $scriptSource;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

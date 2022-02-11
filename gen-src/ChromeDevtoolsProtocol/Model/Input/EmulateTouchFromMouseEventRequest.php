@@ -75,6 +75,10 @@ final class EmulateTouchFromMouseEventRequest implements \JsonSerializable
 	public $clickCount;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

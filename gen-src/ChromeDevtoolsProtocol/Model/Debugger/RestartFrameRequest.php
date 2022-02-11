@@ -19,6 +19,10 @@ final class RestartFrameRequest implements \JsonSerializable
 	public $callFrameId;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

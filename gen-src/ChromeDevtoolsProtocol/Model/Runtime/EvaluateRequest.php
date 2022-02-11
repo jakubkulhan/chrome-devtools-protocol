@@ -117,6 +117,10 @@ final class EvaluateRequest implements \JsonSerializable
 	public $uniqueContextId;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

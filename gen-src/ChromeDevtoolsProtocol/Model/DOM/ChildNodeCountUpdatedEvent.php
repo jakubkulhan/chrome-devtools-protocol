@@ -26,6 +26,10 @@ final class ChildNodeCountUpdatedEvent implements \JsonSerializable
 	public $childNodeCount;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

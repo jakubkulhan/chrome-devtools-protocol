@@ -47,6 +47,10 @@ final class JavascriptDialogOpeningEvent implements \JsonSerializable
 	public $defaultPrompt;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

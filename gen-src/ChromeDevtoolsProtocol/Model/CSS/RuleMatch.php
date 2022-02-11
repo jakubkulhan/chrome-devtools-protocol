@@ -26,6 +26,10 @@ final class RuleMatch implements \JsonSerializable
 	public $matchingSelectors;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

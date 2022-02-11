@@ -15,6 +15,10 @@ final class ReportingApiReportAddedEvent implements \JsonSerializable
 	public $report;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

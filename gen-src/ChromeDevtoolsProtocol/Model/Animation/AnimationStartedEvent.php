@@ -19,6 +19,10 @@ final class AnimationStartedEvent implements \JsonSerializable
 	public $animation;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

@@ -15,6 +15,10 @@ final class StopRuleUsageTrackingResponse implements \JsonSerializable
 	public $ruleUsage;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

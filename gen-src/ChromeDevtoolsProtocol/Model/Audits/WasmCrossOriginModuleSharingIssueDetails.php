@@ -24,6 +24,10 @@ final class WasmCrossOriginModuleSharingIssueDetails implements \JsonSerializabl
 	public $isWarning;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

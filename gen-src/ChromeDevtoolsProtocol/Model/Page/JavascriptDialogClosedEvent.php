@@ -26,6 +26,10 @@ final class JavascriptDialogClosedEvent implements \JsonSerializable
 	public $userInput;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

@@ -33,6 +33,10 @@ final class GetPossibleBreakpointsRequest implements \JsonSerializable
 	public $restrictToFunction;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

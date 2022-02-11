@@ -47,6 +47,10 @@ final class GetHighlightObjectForTestRequest implements \JsonSerializable
 	public $showAccessibilityInfo;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

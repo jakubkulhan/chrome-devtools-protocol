@@ -54,6 +54,10 @@ final class FulfillRequestRequest implements \JsonSerializable
 	public $responsePhrase;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

@@ -19,6 +19,10 @@ final class RequestDatabaseNamesResponse implements \JsonSerializable
 	public $databaseNames;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

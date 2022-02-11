@@ -26,6 +26,10 @@ final class PositionTickInfo implements \JsonSerializable
 	public $ticks;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

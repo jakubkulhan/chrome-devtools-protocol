@@ -19,6 +19,10 @@ final class GetPlatformFontsForNodeResponse implements \JsonSerializable
 	public $fonts;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

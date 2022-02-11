@@ -18,6 +18,10 @@ final class SetUserVerifiedRequest implements \JsonSerializable
 	public $isUserVerified;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

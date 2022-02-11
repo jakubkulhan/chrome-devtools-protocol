@@ -19,6 +19,10 @@ final class GetHistogramsResponse implements \JsonSerializable
 	public $histograms;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

@@ -138,6 +138,10 @@ final class ResourceTiming implements \JsonSerializable
 	public $receiveHeadersEnd;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

@@ -26,6 +26,10 @@ final class GetAppIdResponse implements \JsonSerializable
 	public $recommendedId;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

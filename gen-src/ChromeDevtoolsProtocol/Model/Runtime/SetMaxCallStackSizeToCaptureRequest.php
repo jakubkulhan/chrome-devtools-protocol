@@ -15,6 +15,10 @@ final class SetMaxCallStackSizeToCaptureRequest implements \JsonSerializable
 	public $size;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

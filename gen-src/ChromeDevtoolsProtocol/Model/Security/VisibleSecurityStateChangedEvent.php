@@ -19,6 +19,10 @@ final class VisibleSecurityStateChangedEvent implements \JsonSerializable
 	public $visibleSecurityState;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

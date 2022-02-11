@@ -103,6 +103,10 @@ final class SecurityDetails implements \JsonSerializable
 	public $certificateTransparencyCompliance;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

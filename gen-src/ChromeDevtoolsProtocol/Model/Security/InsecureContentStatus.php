@@ -61,6 +61,10 @@ final class InsecureContentStatus implements \JsonSerializable
 	public $displayedInsecureContentStyle;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();
