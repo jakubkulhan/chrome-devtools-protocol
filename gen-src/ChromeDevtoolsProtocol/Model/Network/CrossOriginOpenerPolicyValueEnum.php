@@ -15,4 +15,5 @@ final class CrossOriginOpenerPolicyValueEnum
 	public const SAME_ORIGIN_ALLOW_POPUPS = 'SameOriginAllowPopups';
 	public const UNSAFE_NONE = 'UnsafeNone';
 	public const SAME_ORIGIN_PLUS_COEP = 'SameOriginPlusCoep';
+	public const SAME_ORIGIN_ALLOW_POPUPS_PLUS_COEP = 'SameOriginAllowPopupsPlusCoep';
 }

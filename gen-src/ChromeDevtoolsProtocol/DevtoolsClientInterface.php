@@ -19,6 +19,7 @@ use ChromeDevtoolsProtocol\Domain\DatabaseDomainInterface;
 use ChromeDevtoolsProtocol\Domain\DebuggerDomainInterface;
 use ChromeDevtoolsProtocol\Domain\DeviceOrientationDomainInterface;
 use ChromeDevtoolsProtocol\Domain\EmulationDomainInterface;
+use ChromeDevtoolsProtocol\Domain\EventBreakpointsDomainInterface;
 use ChromeDevtoolsProtocol\Domain\FetchDomainInterface;
 use ChromeDevtoolsProtocol\Domain\HeadlessExperimentalDomainInterface;
 use ChromeDevtoolsProtocol\Domain\HeapProfilerDomainInterface;
@@ -179,6 +180,14 @@ interface DevtoolsClientInterface extends CloseableResourceInterface
 	 * This domain emulates different environments for the page.
 	 */
 	public function emulation(): EmulationDomainInterface;
+
+
+	/**
+	 * EventBreakpoints permits setting breakpoints on particular operations and events in targets that run JavaScript but do not have a DOM. JavaScript execution will stop on these operations as if there was a regular breakpoint set.
+	 *
+	 * @experimental
+	 */
+	public function eventBreakpoints(): EventBreakpointsDomainInterface;
 
 
 	/**

@@ -102,6 +102,13 @@ final class SetCookieRequest implements \JsonSerializable
 	 */
 	public $sourcePort;
 
+	/**
+	 * Cookie partition key. The site of the top-level URL the browser was visiting at the start of the request to the endpoint that set the cookie. If not set, the cookie will be set as not partitioned.
+	 *
+	 * @var string|null
+	 */
+	public $partitionKey;
+
 
 	/**
 	 * @param object $data
@@ -149,6 +156,9 @@ final class SetCookieRequest implements \JsonSerializable
 		if (isset($data->sourcePort)) {
 			$instance->sourcePort = (int)$data->sourcePort;
 		}
+		if (isset($data->partitionKey)) {
+			$instance->partitionKey = (string)$data->partitionKey;
+		}
 		return $instance;
 	}
 
@@ -194,6 +204,9 @@ final class SetCookieRequest implements \JsonSerializable
 		}
 		if ($this->sourcePort !== null) {
 			$data->sourcePort = $this->sourcePort;
+		}
+		if ($this->partitionKey !== null) {
+			$data->partitionKey = $this->partitionKey;
 		}
 		return $data;
 	}

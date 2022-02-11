@@ -53,6 +53,13 @@ final class CSSRule implements \JsonSerializable
 	 */
 	public $containerQueries;
 
+	/**
+	 * @supports CSS at-rule array. The array enumerates @supports at-rules starting with the innermost one, going outwards.
+	 *
+	 * @var CSSSupports[]|null
+	 */
+	public $supports;
+
 
 	/**
 	 * @param object $data
@@ -85,6 +92,12 @@ final class CSSRule implements \JsonSerializable
 				$instance->containerQueries[] = CSSContainerQuery::fromJson($item);
 			}
 		}
+		if (isset($data->supports)) {
+			$instance->supports = [];
+			foreach ($data->supports as $item) {
+				$instance->supports[] = CSSSupports::fromJson($item);
+			}
+		}
 		return $instance;
 	}
 
@@ -114,6 +127,12 @@ final class CSSRule implements \JsonSerializable
 			$data->containerQueries = [];
 			foreach ($this->containerQueries as $item) {
 				$data->containerQueries[] = $item->jsonSerialize();
+			}
+		}
+		if ($this->supports !== null) {
+			$data->supports = [];
+			foreach ($this->supports as $item) {
+				$data->supports[] = $item->jsonSerialize();
 			}
 		}
 		return $data;

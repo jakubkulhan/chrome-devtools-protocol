@@ -31,4 +31,8 @@ final class PseudoTypeEnum
 	public const SCROLLBAR_CORNER = 'scrollbar-corner';
 	public const RESIZER = 'resizer';
 	public const INPUT_LIST_BUTTON = 'input-list-button';
+	public const TRANSITION = 'transition';
+	public const TRANSITION_CONTAINER = 'transition-container';
+	public const TRANSITION_OLD_CONTENT = 'transition-old-content';
+	public const TRANSITION_NEW_CONTENT = 'transition-new-content';
 }

@@ -12,6 +12,7 @@ final class CreateBrowserContextRequestBuilder
 	private $disposeOnDetach;
 	private $proxyServer;
 	private $proxyBypassList;
+	private $originsWithUniversalNetworkAccess;
 
 
 	/**
@@ -23,6 +24,7 @@ final class CreateBrowserContextRequestBuilder
 		$instance->disposeOnDetach = $this->disposeOnDetach;
 		$instance->proxyServer = $this->proxyServer;
 		$instance->proxyBypassList = $this->proxyBypassList;
+		$instance->originsWithUniversalNetworkAccess = $this->originsWithUniversalNetworkAccess;
 		return $instance;
 	}
 
@@ -59,6 +61,18 @@ final class CreateBrowserContextRequestBuilder
 	public function setProxyBypassList($proxyBypassList): self
 	{
 		$this->proxyBypassList = $proxyBypassList;
+		return $this;
+	}
+
+
+	/**
+	 * @param string[]|null $originsWithUniversalNetworkAccess
+	 *
+	 * @return self
+	 */
+	public function setOriginsWithUniversalNetworkAccess($originsWithUniversalNetworkAccess): self
+	{
+		$this->originsWithUniversalNetworkAccess = $originsWithUniversalNetworkAccess;
 		return $this;
 	}
 }

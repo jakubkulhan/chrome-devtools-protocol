@@ -19,6 +19,7 @@ use ChromeDevtoolsProtocol\Model\DOM\DescribeNodeResponse;
 use ChromeDevtoolsProtocol\Model\DOM\DiscardSearchResultsRequest;
 use ChromeDevtoolsProtocol\Model\DOM\DistributedNodesUpdatedEvent;
 use ChromeDevtoolsProtocol\Model\DOM\DocumentUpdatedEvent;
+use ChromeDevtoolsProtocol\Model\DOM\EnableRequest;
 use ChromeDevtoolsProtocol\Model\DOM\FocusRequest;
 use ChromeDevtoolsProtocol\Model\DOM\GetAttributesRequest;
 use ChromeDevtoolsProtocol\Model\DOM\GetAttributesResponse;
@@ -135,9 +136,8 @@ class DOMDomain implements DOMDomainInterface
 	}
 
 
-	public function enable(ContextInterface $ctx): void
+	public function enable(ContextInterface $ctx, EnableRequest $request): void
 	{
-		$request = new \stdClass();
 		$this->internalClient->executeCommand($ctx, 'DOM.enable', $request);
 	}
 

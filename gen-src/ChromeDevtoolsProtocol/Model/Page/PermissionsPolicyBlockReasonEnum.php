@@ -13,4 +13,5 @@ final class PermissionsPolicyBlockReasonEnum
 {
 	public const HEADER = 'Header';
 	public const IFRAME_ATTRIBUTE = 'IframeAttribute';
+	public const IN_FENCED_FRAME_TREE = 'InFencedFrameTree';
 }
