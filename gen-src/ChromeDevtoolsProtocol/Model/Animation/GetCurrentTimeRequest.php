@@ -19,6 +19,10 @@ final class GetCurrentTimeRequest implements \JsonSerializable
 	public $id;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

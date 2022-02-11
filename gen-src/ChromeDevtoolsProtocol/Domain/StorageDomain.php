@@ -12,13 +12,17 @@ use ChromeDevtoolsProtocol\Model\Storage\ClearTrustTokensRequest;
 use ChromeDevtoolsProtocol\Model\Storage\ClearTrustTokensResponse;
 use ChromeDevtoolsProtocol\Model\Storage\GetCookiesRequest;
 use ChromeDevtoolsProtocol\Model\Storage\GetCookiesResponse;
+use ChromeDevtoolsProtocol\Model\Storage\GetInterestGroupDetailsRequest;
+use ChromeDevtoolsProtocol\Model\Storage\GetInterestGroupDetailsResponse;
 use ChromeDevtoolsProtocol\Model\Storage\GetTrustTokensResponse;
 use ChromeDevtoolsProtocol\Model\Storage\GetUsageAndQuotaRequest;
 use ChromeDevtoolsProtocol\Model\Storage\GetUsageAndQuotaResponse;
 use ChromeDevtoolsProtocol\Model\Storage\IndexedDBContentUpdatedEvent;
 use ChromeDevtoolsProtocol\Model\Storage\IndexedDBListUpdatedEvent;
+use ChromeDevtoolsProtocol\Model\Storage\InterestGroupAccessedEvent;
 use ChromeDevtoolsProtocol\Model\Storage\OverrideQuotaForOriginRequest;
 use ChromeDevtoolsProtocol\Model\Storage\SetCookiesRequest;
+use ChromeDevtoolsProtocol\Model\Storage\SetInterestGroupTrackingRequest;
 use ChromeDevtoolsProtocol\Model\Storage\TrackCacheStorageForOriginRequest;
 use ChromeDevtoolsProtocol\Model\Storage\TrackIndexedDBForOriginRequest;
 use ChromeDevtoolsProtocol\Model\Storage\UntrackCacheStorageForOriginRequest;
@@ -63,6 +67,15 @@ class StorageDomain implements StorageDomainInterface
 	}
 
 
+	public function getInterestGroupDetails(
+		ContextInterface $ctx,
+		GetInterestGroupDetailsRequest $request
+	): GetInterestGroupDetailsResponse {
+		$response = $this->internalClient->executeCommand($ctx, 'Storage.getInterestGroupDetails', $request);
+		return GetInterestGroupDetailsResponse::fromJson($response);
+	}
+
+
 	public function getTrustTokens(ContextInterface $ctx): GetTrustTokensResponse
 	{
 		$request = new \stdClass();
@@ -87,6 +100,12 @@ class StorageDomain implements StorageDomainInterface
 	public function setCookies(ContextInterface $ctx, SetCookiesRequest $request): void
 	{
 		$this->internalClient->executeCommand($ctx, 'Storage.setCookies', $request);
+	}
+
+
+	public function setInterestGroupTracking(ContextInterface $ctx, SetInterestGroupTrackingRequest $request): void
+	{
+		$this->internalClient->executeCommand($ctx, 'Storage.setInterestGroupTracking', $request);
 	}
 
 
@@ -167,5 +186,19 @@ class StorageDomain implements StorageDomainInterface
 	public function awaitIndexedDBListUpdated(ContextInterface $ctx): IndexedDBListUpdatedEvent
 	{
 		return IndexedDBListUpdatedEvent::fromJson($this->internalClient->awaitEvent($ctx, 'Storage.indexedDBListUpdated'));
+	}
+
+
+	public function addInterestGroupAccessedListener(callable $listener): SubscriptionInterface
+	{
+		return $this->internalClient->addListener('Storage.interestGroupAccessed', function ($event) use ($listener) {
+			return $listener(InterestGroupAccessedEvent::fromJson($event));
+		});
+	}
+
+
+	public function awaitInterestGroupAccessed(ContextInterface $ctx): InterestGroupAccessedEvent
+	{
+		return InterestGroupAccessedEvent::fromJson($this->internalClient->awaitEvent($ctx, 'Storage.interestGroupAccessed'));
 	}
 }

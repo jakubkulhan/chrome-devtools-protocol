@@ -18,6 +18,10 @@ final class CorsErrorStatus implements \JsonSerializable
 	public $failedParameter;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

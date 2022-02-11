@@ -21,6 +21,10 @@ final class DispatchPeriodicSyncEventRequest implements \JsonSerializable
 	public $tag;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

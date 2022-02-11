@@ -15,6 +15,10 @@ final class GetBrowserSamplingProfileResponse implements \JsonSerializable
 	public $profile;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

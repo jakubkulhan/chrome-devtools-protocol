@@ -40,6 +40,10 @@ final class ResolveNodeRequest implements \JsonSerializable
 	public $executionContextId;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

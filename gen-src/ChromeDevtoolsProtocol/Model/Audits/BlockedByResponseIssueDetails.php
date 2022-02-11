@@ -24,6 +24,10 @@ final class BlockedByResponseIssueDetails implements \JsonSerializable
 	public $reason;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

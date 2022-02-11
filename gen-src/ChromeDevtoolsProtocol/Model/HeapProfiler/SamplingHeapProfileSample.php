@@ -33,6 +33,10 @@ final class SamplingHeapProfileSample implements \JsonSerializable
 	public $ordinal;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

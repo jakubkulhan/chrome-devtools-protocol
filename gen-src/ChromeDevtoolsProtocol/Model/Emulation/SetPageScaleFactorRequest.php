@@ -19,6 +19,10 @@ final class SetPageScaleFactorRequest implements \JsonSerializable
 	public $pageScaleFactor;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

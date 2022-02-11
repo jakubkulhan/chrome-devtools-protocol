@@ -26,6 +26,10 @@ final class AcceptedEvent implements \JsonSerializable
 	public $connectionId;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

@@ -11,6 +11,10 @@ namespace ChromeDevtoolsProtocol\Model\Inspector;
  */
 final class TargetReloadedAfterCrashEvent implements \JsonSerializable
 {
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

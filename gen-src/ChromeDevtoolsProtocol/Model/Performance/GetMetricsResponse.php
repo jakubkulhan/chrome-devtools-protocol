@@ -19,6 +19,10 @@ final class GetMetricsResponse implements \JsonSerializable
 	public $metrics;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

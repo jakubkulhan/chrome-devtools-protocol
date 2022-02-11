@@ -61,6 +61,13 @@ final class RequestWillBeSentEvent implements \JsonSerializable
 	public $initiator;
 
 	/**
+	 * In the case that redirectResponse is populated, this flag indicates whether requestWillBeSentExtraInfo and responseReceivedExtraInfo events will be or were emitted for the request which was just redirected.
+	 *
+	 * @var bool
+	 */
+	public $redirectHasExtraInfo;
+
+	/**
 	 * Redirect response data.
 	 *
 	 * @var Response|null
@@ -89,6 +96,10 @@ final class RequestWillBeSentEvent implements \JsonSerializable
 	public $hasUserGesture;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();
@@ -112,6 +123,9 @@ final class RequestWillBeSentEvent implements \JsonSerializable
 		}
 		if (isset($data->initiator)) {
 			$instance->initiator = Initiator::fromJson($data->initiator);
+		}
+		if (isset($data->redirectHasExtraInfo)) {
+			$instance->redirectHasExtraInfo = (bool)$data->redirectHasExtraInfo;
 		}
 		if (isset($data->redirectResponse)) {
 			$instance->redirectResponse = Response::fromJson($data->redirectResponse);
@@ -152,6 +166,9 @@ final class RequestWillBeSentEvent implements \JsonSerializable
 		}
 		if ($this->initiator !== null) {
 			$data->initiator = $this->initiator->jsonSerialize();
+		}
+		if ($this->redirectHasExtraInfo !== null) {
+			$data->redirectHasExtraInfo = $this->redirectHasExtraInfo;
 		}
 		if ($this->redirectResponse !== null) {
 			$data->redirectResponse = $this->redirectResponse->jsonSerialize();

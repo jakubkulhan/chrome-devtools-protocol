@@ -15,6 +15,10 @@ final class SetForceUpdateOnPageLoadRequest implements \JsonSerializable
 	public $forceUpdateOnPageLoad;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

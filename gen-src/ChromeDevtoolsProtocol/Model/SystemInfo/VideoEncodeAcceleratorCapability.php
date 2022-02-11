@@ -36,6 +36,10 @@ final class VideoEncodeAcceleratorCapability implements \JsonSerializable
 	public $maxFramerateDenominator;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

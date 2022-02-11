@@ -18,6 +18,10 @@ final class StackTraceId implements \JsonSerializable
 	public $debuggerId;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

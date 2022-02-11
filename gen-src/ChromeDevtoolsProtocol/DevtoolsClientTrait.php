@@ -36,6 +36,8 @@ use ChromeDevtoolsProtocol\Domain\DeviceOrientationDomain;
 use ChromeDevtoolsProtocol\Domain\DeviceOrientationDomainInterface;
 use ChromeDevtoolsProtocol\Domain\EmulationDomain;
 use ChromeDevtoolsProtocol\Domain\EmulationDomainInterface;
+use ChromeDevtoolsProtocol\Domain\EventBreakpointsDomain;
+use ChromeDevtoolsProtocol\Domain\EventBreakpointsDomainInterface;
 use ChromeDevtoolsProtocol\Domain\FetchDomain;
 use ChromeDevtoolsProtocol\Domain\FetchDomainInterface;
 use ChromeDevtoolsProtocol\Domain\HeadlessExperimentalDomain;
@@ -299,6 +301,18 @@ trait DevtoolsClientTrait
 		}
 		/** @var EmulationDomainInterface $domain */
 		$domain = $this->domains['Emulation'];
+		return $domain;
+	}
+
+
+	public function eventBreakpoints(): EventBreakpointsDomainInterface
+	{
+		if (!isset($this->domains['EventBreakpoints'])) {
+			/** @var InternalClientInterface $this */
+			$this->domains['EventBreakpoints'] = new EventBreakpointsDomain($this);
+		}
+		/** @var EventBreakpointsDomainInterface $domain */
+		$domain = $this->domains['EventBreakpoints'];
 		return $domain;
 	}
 

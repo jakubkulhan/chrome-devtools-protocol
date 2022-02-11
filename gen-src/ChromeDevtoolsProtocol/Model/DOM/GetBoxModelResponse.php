@@ -19,6 +19,10 @@ final class GetBoxModelResponse implements \JsonSerializable
 	public $model;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

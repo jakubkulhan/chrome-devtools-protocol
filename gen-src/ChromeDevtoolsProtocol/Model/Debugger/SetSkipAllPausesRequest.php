@@ -19,6 +19,10 @@ final class SetSkipAllPausesRequest implements \JsonSerializable
 	public $skip;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

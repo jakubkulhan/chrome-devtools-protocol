@@ -46,6 +46,10 @@ final class TrustTokenOperationDoneEvent implements \JsonSerializable
 	public $issuedTokenCount;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

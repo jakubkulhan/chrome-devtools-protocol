@@ -11,7 +11,7 @@ namespace ChromeDevtoolsProtocol\Model\Page;
  */
 final class BackForwardCacheNotRestoredReasonEnum
 {
-	public const NOT_MAIN_FRAME = 'NotMainFrame';
+	public const NOT_PRIMARY_MAIN_FRAME = 'NotPrimaryMainFrame';
 	public const BACK_FORWARD_CACHE_DISABLED = 'BackForwardCacheDisabled';
 	public const RELATED_ACTIVE_CONTENTS_EXIST = 'RelatedActiveContentsExist';
 	public const HTTP_STATUS_NOT_O_K = 'HTTPStatusNotOK';
@@ -118,7 +118,7 @@ final class BackForwardCacheNotRestoredReasonEnum
 	public const CONTENT_WEB_U_S_B = 'ContentWebUSB';
 	public const CONTENT_MEDIA_SESSION = 'ContentMediaSession';
 	public const CONTENT_MEDIA_SESSION_SERVICE = 'ContentMediaSessionService';
-	public const CONTENT_MEDIA_PLAY = 'ContentMediaPlay';
+	public const CONTENT_SCREEN_READER = 'ContentScreenReader';
 	public const EMBEDDER_POPUP_BLOCKER_TAB_HELPER = 'EmbedderPopupBlockerTabHelper';
 	public const EMBEDDER_SAFE_BROWSING_TRIGGERED_POPUP_BLOCKER = 'EmbedderSafeBrowsingTriggeredPopupBlocker';
 	public const EMBEDDER_SAFE_BROWSING_THREAT_DETAILS = 'EmbedderSafeBrowsingThreatDetails';

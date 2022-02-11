@@ -19,6 +19,10 @@ final class CloseRequest implements \JsonSerializable
 	public $handle;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

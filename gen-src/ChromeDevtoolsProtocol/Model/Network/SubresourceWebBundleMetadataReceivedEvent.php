@@ -26,6 +26,10 @@ final class SubresourceWebBundleMetadataReceivedEvent implements \JsonSerializab
 	public $urls;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

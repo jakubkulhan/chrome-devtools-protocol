@@ -21,6 +21,10 @@ final class ScreenshotRequestedEvent implements \JsonSerializable
 	public $viewport;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

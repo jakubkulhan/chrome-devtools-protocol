@@ -19,6 +19,10 @@ final class HeapStatsUpdateEvent implements \JsonSerializable
 	public $statsUpdate;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

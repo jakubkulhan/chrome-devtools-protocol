@@ -26,6 +26,10 @@ final class GetHistogramsRequest implements \JsonSerializable
 	public $delta;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

@@ -15,6 +15,10 @@ final class DomStorageItemsClearedEvent implements \JsonSerializable
 	public $storageId;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

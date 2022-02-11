@@ -40,6 +40,10 @@ final class GetUsageAndQuotaResponse implements \JsonSerializable
 	public $usageBreakdown;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

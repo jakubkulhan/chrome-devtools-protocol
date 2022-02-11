@@ -33,6 +33,10 @@ final class PreciseCoverageDeltaUpdateEvent implements \JsonSerializable
 	public $result;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

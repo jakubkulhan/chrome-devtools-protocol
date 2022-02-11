@@ -19,6 +19,10 @@ final class GetAttributesResponse implements \JsonSerializable
 	public $attributes;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

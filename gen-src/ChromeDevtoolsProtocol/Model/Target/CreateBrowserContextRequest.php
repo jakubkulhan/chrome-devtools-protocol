@@ -32,7 +32,18 @@ final class CreateBrowserContextRequest implements \JsonSerializable
 	 */
 	public $proxyBypassList;
 
+	/**
+	 * An optional list of origins to grant unlimited cross-origin access to. Parts of the URL other than those constituting origin are ignored.
+	 *
+	 * @var string[]|null
+	 */
+	public $originsWithUniversalNetworkAccess;
 
+
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();
@@ -44,6 +55,12 @@ final class CreateBrowserContextRequest implements \JsonSerializable
 		}
 		if (isset($data->proxyBypassList)) {
 			$instance->proxyBypassList = (string)$data->proxyBypassList;
+		}
+		if (isset($data->originsWithUniversalNetworkAccess)) {
+			$instance->originsWithUniversalNetworkAccess = [];
+			foreach ($data->originsWithUniversalNetworkAccess as $item) {
+				$instance->originsWithUniversalNetworkAccess[] = (string)$item;
+			}
 		}
 		return $instance;
 	}
@@ -60,6 +77,12 @@ final class CreateBrowserContextRequest implements \JsonSerializable
 		}
 		if ($this->proxyBypassList !== null) {
 			$data->proxyBypassList = $this->proxyBypassList;
+		}
+		if ($this->originsWithUniversalNetworkAccess !== null) {
+			$data->originsWithUniversalNetworkAccess = [];
+			foreach ($this->originsWithUniversalNetworkAccess as $item) {
+				$data->originsWithUniversalNetworkAccess[] = $item;
+			}
 		}
 		return $data;
 	}

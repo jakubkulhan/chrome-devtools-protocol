@@ -28,12 +28,16 @@ final class PermissionsPolicyFeatureEnum
 	public const CH_UA_PLATFORM = 'ch-ua-platform';
 	public const CH_UA_MODEL = 'ch-ua-model';
 	public const CH_UA_MOBILE = 'ch-ua-mobile';
+	public const CH_UA_FULL = 'ch-ua-full';
 	public const CH_UA_FULL_VERSION = 'ch-ua-full-version';
+	public const CH_UA_FULL_VERSION_LIST = 'ch-ua-full-version-list';
 	public const CH_UA_PLATFORM_VERSION = 'ch-ua-platform-version';
 	public const CH_UA_REDUCED = 'ch-ua-reduced';
+	public const CH_UA_WOW64 = 'ch-ua-wow64';
 	public const CH_VIEWPORT_HEIGHT = 'ch-viewport-height';
 	public const CH_VIEWPORT_WIDTH = 'ch-viewport-width';
 	public const CH_WIDTH = 'ch-width';
+	public const CH_PARTITIONED_COOKIES = 'ch-partitioned-cookies';
 	public const CLIPBOARD_READ = 'clipboard-read';
 	public const CLIPBOARD_WRITE = 'clipboard-write';
 	public const CROSS_ORIGIN_ISOLATED = 'cross-origin-isolated';
@@ -51,7 +55,8 @@ final class PermissionsPolicyFeatureEnum
 	public const GYROSCOPE = 'gyroscope';
 	public const HID = 'hid';
 	public const IDLE_DETECTION = 'idle-detection';
-	public const INTEREST_COHORT = 'interest-cohort';
+	public const JOIN_AD_INTEREST_GROUP = 'join-ad-interest-group';
+	public const KEYBOARD_MAP = 'keyboard-map';
 	public const MAGNETOMETER = 'magnetometer';
 	public const MICROPHONE = 'microphone';
 	public const MIDI = 'midi';
@@ -59,6 +64,7 @@ final class PermissionsPolicyFeatureEnum
 	public const PAYMENT = 'payment';
 	public const PICTURE_IN_PICTURE = 'picture-in-picture';
 	public const PUBLICKEY_CREDENTIALS_GET = 'publickey-credentials-get';
+	public const RUN_AD_AUCTION = 'run-ad-auction';
 	public const SCREEN_WAKE_LOCK = 'screen-wake-lock';
 	public const SERIAL = 'serial';
 	public const SHARED_AUTOFILL = 'shared-autofill';

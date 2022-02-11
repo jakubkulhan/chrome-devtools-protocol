@@ -26,6 +26,10 @@ final class OverrideQuotaForOriginRequest implements \JsonSerializable
 	public $quotaSize;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

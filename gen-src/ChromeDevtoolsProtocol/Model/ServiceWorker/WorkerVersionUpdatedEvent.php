@@ -15,6 +15,10 @@ final class WorkerVersionUpdatedEvent implements \JsonSerializable
 	public $versions;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

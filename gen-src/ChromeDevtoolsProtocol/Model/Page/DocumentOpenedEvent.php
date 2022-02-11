@@ -19,6 +19,10 @@ final class DocumentOpenedEvent implements \JsonSerializable
 	public $frame;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

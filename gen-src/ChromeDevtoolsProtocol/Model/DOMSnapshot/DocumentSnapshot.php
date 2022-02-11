@@ -117,6 +117,10 @@ final class DocumentSnapshot implements \JsonSerializable
 	public $contentHeight;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

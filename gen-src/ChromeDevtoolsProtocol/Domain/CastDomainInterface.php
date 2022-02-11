@@ -7,6 +7,7 @@ use ChromeDevtoolsProtocol\Model\Cast\EnableRequest;
 use ChromeDevtoolsProtocol\Model\Cast\IssueUpdatedEvent;
 use ChromeDevtoolsProtocol\Model\Cast\SetSinkToUseRequest;
 use ChromeDevtoolsProtocol\Model\Cast\SinksUpdatedEvent;
+use ChromeDevtoolsProtocol\Model\Cast\StartDesktopMirroringRequest;
 use ChromeDevtoolsProtocol\Model\Cast\StartTabMirroringRequest;
 use ChromeDevtoolsProtocol\Model\Cast\StopCastingRequest;
 use ChromeDevtoolsProtocol\SubscriptionInterface;
@@ -52,6 +53,17 @@ interface CastDomainInterface
 	 * @return void
 	 */
 	public function setSinkToUse(ContextInterface $ctx, SetSinkToUseRequest $request): void;
+
+
+	/**
+	 * Starts mirroring the desktop to the sink.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param StartDesktopMirroringRequest $request
+	 *
+	 * @return void
+	 */
+	public function startDesktopMirroring(ContextInterface $ctx, StartDesktopMirroringRequest $request): void;
 
 
 	/**

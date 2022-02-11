@@ -28,6 +28,10 @@ final class SetCookiesRequest implements \JsonSerializable
 	public $browserContextId;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

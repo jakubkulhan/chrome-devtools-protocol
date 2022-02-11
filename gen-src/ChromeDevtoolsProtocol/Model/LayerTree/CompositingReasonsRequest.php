@@ -19,6 +19,10 @@ final class CompositingReasonsRequest implements \JsonSerializable
 	public $layerId;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

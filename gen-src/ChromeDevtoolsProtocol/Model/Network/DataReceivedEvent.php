@@ -40,6 +40,10 @@ final class DataReceivedEvent implements \JsonSerializable
 	public $encodedDataLength;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

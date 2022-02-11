@@ -19,6 +19,10 @@ final class SetRequestInterceptionRequest implements \JsonSerializable
 	public $patterns;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

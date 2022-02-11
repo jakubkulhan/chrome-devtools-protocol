@@ -19,6 +19,10 @@ final class SetAsyncCallStackDepthRequest implements \JsonSerializable
 	public $maxDepth;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

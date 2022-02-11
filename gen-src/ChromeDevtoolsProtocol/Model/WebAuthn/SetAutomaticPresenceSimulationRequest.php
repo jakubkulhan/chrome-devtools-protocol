@@ -18,6 +18,10 @@ final class SetAutomaticPresenceSimulationRequest implements \JsonSerializable
 	public $enabled;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

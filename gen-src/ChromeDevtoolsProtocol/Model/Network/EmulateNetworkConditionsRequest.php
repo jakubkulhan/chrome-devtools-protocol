@@ -47,6 +47,10 @@ final class EmulateNetworkConditionsRequest implements \JsonSerializable
 	public $connectionType;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

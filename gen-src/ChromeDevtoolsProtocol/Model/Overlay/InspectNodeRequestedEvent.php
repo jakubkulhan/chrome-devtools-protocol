@@ -19,6 +19,10 @@ final class InspectNodeRequestedEvent implements \JsonSerializable
 	public $backendNodeId;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

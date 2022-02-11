@@ -19,6 +19,10 @@ final class LayerTreeDidChangeEvent implements \JsonSerializable
 	public $layers;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

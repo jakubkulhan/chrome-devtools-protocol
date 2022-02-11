@@ -33,6 +33,10 @@ final class PictureTile implements \JsonSerializable
 	public $picture;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

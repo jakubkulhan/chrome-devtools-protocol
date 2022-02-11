@@ -40,6 +40,10 @@ final class AXValue implements \JsonSerializable
 	public $sources;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

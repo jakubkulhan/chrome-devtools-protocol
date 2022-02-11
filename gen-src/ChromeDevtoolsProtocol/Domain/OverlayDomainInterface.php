@@ -278,7 +278,7 @@ interface OverlayDomainInterface
 
 
 	/**
-	 * Requests that backend shows hit-test borders on layers
+	 * Deprecated, no longer has any effect.
 	 *
 	 * @param ContextInterface $ctx
 	 * @param SetShowHitTestBordersRequest $request

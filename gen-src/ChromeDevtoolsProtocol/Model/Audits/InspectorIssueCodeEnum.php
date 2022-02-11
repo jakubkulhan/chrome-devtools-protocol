@@ -23,6 +23,8 @@ final class InspectorIssueCodeEnum
 	public const ATTRIBUTION_REPORTING_ISSUE = 'AttributionReportingIssue';
 	public const QUIRKS_MODE_ISSUE = 'QuirksModeIssue';
 	public const NAVIGATOR_USER_AGENT_ISSUE = 'NavigatorUserAgentIssue';
-	public const WASM_CROSS_ORIGIN_MODULE_SHARING_ISSUE = 'WasmCrossOriginModuleSharingIssue';
 	public const GENERIC_ISSUE = 'GenericIssue';
+	public const DEPRECATION_ISSUE = 'DeprecationIssue';
+	public const CLIENT_HINT_ISSUE = 'ClientHintIssue';
+	public const FEDERATED_AUTH_REQUEST_ISSUE = 'FederatedAuthRequestIssue';
 }

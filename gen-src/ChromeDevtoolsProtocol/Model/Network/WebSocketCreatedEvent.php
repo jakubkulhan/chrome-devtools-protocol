@@ -33,6 +33,10 @@ final class WebSocketCreatedEvent implements \JsonSerializable
 	public $initiator;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

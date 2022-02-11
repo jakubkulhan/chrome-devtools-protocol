@@ -21,6 +21,10 @@ final class ExecuteSQLResponse implements \JsonSerializable
 	public $sqlError;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

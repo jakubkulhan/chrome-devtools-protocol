@@ -19,6 +19,10 @@ final class CheckContrastRequest implements \JsonSerializable
 	public $reportAAA;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

@@ -26,6 +26,10 @@ final class RemoveEventListenerBreakpointRequest implements \JsonSerializable
 	public $targetName;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

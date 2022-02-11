@@ -24,6 +24,7 @@ final class SetCookieRequestBuilder
 	private $sameParty;
 	private $sourceScheme;
 	private $sourcePort;
+	private $partitionKey;
 
 
 	/**
@@ -51,6 +52,7 @@ final class SetCookieRequestBuilder
 		$instance->sameParty = $this->sameParty;
 		$instance->sourceScheme = $this->sourceScheme;
 		$instance->sourcePort = $this->sourcePort;
+		$instance->partitionKey = $this->partitionKey;
 		return $instance;
 	}
 
@@ -207,6 +209,18 @@ final class SetCookieRequestBuilder
 	public function setSourcePort($sourcePort): self
 	{
 		$this->sourcePort = $sourcePort;
+		return $this;
+	}
+
+
+	/**
+	 * @param string|null $partitionKey
+	 *
+	 * @return self
+	 */
+	public function setPartitionKey($partitionKey): self
+	{
+		$this->partitionKey = $partitionKey;
 		return $this;
 	}
 }

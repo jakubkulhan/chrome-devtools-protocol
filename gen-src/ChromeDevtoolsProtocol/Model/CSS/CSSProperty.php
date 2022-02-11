@@ -68,6 +68,10 @@ final class CSSProperty implements \JsonSerializable
 	public $range;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

@@ -54,6 +54,10 @@ final class GetMatchedStylesForNodeResponse implements \JsonSerializable
 	public $cssKeyframesRules;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

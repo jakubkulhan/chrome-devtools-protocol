@@ -1,7 +1,9 @@
 parameters:
-  excludes_analyse:
+  checkMissingIterableValueType: false
+  excludePaths:
   # Probably some messed-up imports in PHPStan 0.9, reports errors such as:
   # Method ChromeDevtoolsProtocol\Session::accessibility() should return ChromeDevtoolsProtocol\Domain\AccessibilityDomainInterface but returns object.
   - src/ChromeDevtoolsProtocol/DevtoolsClient.php
   - src/ChromeDevtoolsProtocol/Session.php
+  - src/ChromeDevtoolsProtocol/Model/Instance/Version.php
   - src/ChromeDevtoolsProtocol/WebSocket/WebSocketClientSocket.php

@@ -53,6 +53,10 @@ final class Credential implements \JsonSerializable
 	public $largeBlob;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

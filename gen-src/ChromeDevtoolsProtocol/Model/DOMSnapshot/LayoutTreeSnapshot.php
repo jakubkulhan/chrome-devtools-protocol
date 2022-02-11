@@ -89,6 +89,10 @@ final class LayoutTreeSnapshot implements \JsonSerializable
 	public $textColorOpacities;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

@@ -33,6 +33,10 @@ final class StartPreciseCoverageRequest implements \JsonSerializable
 	public $allowTriggeredUpdates;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

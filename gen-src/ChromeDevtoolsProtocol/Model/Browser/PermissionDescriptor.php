@@ -47,6 +47,10 @@ final class PermissionDescriptor implements \JsonSerializable
 	public $panTiltZoom;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

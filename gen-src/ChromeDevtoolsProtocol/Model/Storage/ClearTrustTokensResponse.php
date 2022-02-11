@@ -19,6 +19,10 @@ final class ClearTrustTokensResponse implements \JsonSerializable
 	public $didDeleteTokens;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

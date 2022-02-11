@@ -23,6 +23,10 @@ final class LayoutShiftAttribution implements \JsonSerializable
 	public $nodeId;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

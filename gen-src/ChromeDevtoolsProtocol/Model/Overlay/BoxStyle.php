@@ -28,6 +28,10 @@ final class BoxStyle implements \JsonSerializable
 	public $hatchColor;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

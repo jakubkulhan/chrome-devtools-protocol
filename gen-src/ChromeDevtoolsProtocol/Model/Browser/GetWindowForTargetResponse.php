@@ -26,6 +26,10 @@ final class GetWindowForTargetResponse implements \JsonSerializable
 	public $bounds;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

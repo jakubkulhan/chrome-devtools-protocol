@@ -40,6 +40,10 @@ final class DragDataItem implements \JsonSerializable
 	public $baseURL;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

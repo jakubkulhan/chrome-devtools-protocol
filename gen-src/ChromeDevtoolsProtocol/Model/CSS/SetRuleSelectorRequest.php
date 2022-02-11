@@ -21,6 +21,10 @@ final class SetRuleSelectorRequest implements \JsonSerializable
 	public $selector;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

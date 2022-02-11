@@ -26,6 +26,10 @@ final class ScreenshotParams implements \JsonSerializable
 	public $quality;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

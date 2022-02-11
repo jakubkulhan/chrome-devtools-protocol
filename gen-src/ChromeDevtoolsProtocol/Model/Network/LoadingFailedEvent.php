@@ -61,6 +61,10 @@ final class LoadingFailedEvent implements \JsonSerializable
 	public $corsErrorStatus;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

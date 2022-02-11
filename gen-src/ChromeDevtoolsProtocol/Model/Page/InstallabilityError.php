@@ -26,6 +26,10 @@ final class InstallabilityError implements \JsonSerializable
 	public $errorArguments;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

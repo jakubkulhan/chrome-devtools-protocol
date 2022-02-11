@@ -40,6 +40,10 @@ final class RuleUsage implements \JsonSerializable
 	public $used;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

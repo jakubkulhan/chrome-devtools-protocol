@@ -82,6 +82,10 @@ final class Animation implements \JsonSerializable
 	public $cssId;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

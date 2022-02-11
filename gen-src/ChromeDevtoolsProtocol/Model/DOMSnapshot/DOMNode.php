@@ -206,6 +206,10 @@ final class DOMNode implements \JsonSerializable
 	public $scrollOffsetY;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

@@ -15,6 +15,10 @@ final class TakeResponseBodyForInterceptionAsStreamRequest implements \JsonSeria
 	public $interceptionId;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

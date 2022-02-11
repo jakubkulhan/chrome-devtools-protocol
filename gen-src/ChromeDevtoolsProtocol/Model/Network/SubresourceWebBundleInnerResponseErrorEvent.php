@@ -40,6 +40,10 @@ final class SubresourceWebBundleInnerResponseErrorEvent implements \JsonSerializ
 	public $bundleRequestId;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

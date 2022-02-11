@@ -40,6 +40,10 @@ final class FrameScheduledNavigationEvent implements \JsonSerializable
 	public $url;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

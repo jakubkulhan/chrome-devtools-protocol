@@ -105,6 +105,10 @@ final class SetDeviceMetricsOverrideRequest implements \JsonSerializable
 	public $displayFeature;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

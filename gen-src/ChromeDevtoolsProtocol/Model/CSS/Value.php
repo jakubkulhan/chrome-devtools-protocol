@@ -26,6 +26,10 @@ final class Value implements \JsonSerializable
 	public $range;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

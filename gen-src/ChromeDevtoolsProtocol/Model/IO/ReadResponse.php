@@ -33,6 +33,10 @@ final class ReadResponse implements \JsonSerializable
 	public $eof;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

@@ -11,6 +11,10 @@ namespace ChromeDevtoolsProtocol\Model\DOM;
  */
 final class DocumentUpdatedEvent implements \JsonSerializable
 {
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

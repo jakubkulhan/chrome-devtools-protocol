@@ -19,6 +19,10 @@ final class PushNodesByBackendIdsToFrontendRequest implements \JsonSerializable
 	public $backendNodeIds;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

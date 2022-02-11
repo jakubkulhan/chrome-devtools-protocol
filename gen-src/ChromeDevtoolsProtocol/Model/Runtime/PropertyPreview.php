@@ -47,6 +47,10 @@ final class PropertyPreview implements \JsonSerializable
 	public $subtype;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

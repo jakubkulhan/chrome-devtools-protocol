@@ -40,7 +40,7 @@ final class SignedCertificateTimestamp implements \JsonSerializable
 	public $logId;
 
 	/**
-	 * Issuance date.
+	 * Issuance date. Unlike TimeSinceEpoch, this contains the number of milliseconds since January 1, 1970, UTC, not the number of seconds.
 	 *
 	 * @var int|float
 	 */
@@ -68,6 +68,10 @@ final class SignedCertificateTimestamp implements \JsonSerializable
 	public $signatureData;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

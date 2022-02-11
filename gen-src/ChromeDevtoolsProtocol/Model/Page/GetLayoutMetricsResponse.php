@@ -56,6 +56,10 @@ final class GetLayoutMetricsResponse implements \JsonSerializable
 	public $cssContentSize;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

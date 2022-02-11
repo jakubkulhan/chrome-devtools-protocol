@@ -26,6 +26,10 @@ final class DebugSymbols implements \JsonSerializable
 	public $externalURL;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

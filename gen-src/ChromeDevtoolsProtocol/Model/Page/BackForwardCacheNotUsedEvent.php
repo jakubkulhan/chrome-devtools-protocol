@@ -32,7 +32,18 @@ final class BackForwardCacheNotUsedEvent implements \JsonSerializable
 	 */
 	public $notRestoredExplanations;
 
+	/**
+	 * Tree structure of reasons why the page could not be cached for each frame.
+	 *
+	 * @var BackForwardCacheNotRestoredExplanationTree|null
+	 */
+	public $notRestoredExplanationsTree;
 
+
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();
@@ -47,6 +58,9 @@ final class BackForwardCacheNotUsedEvent implements \JsonSerializable
 			foreach ($data->notRestoredExplanations as $item) {
 				$instance->notRestoredExplanations[] = BackForwardCacheNotRestoredExplanation::fromJson($item);
 			}
+		}
+		if (isset($data->notRestoredExplanationsTree)) {
+			$instance->notRestoredExplanationsTree = BackForwardCacheNotRestoredExplanationTree::fromJson($data->notRestoredExplanationsTree);
 		}
 		return $instance;
 	}
@@ -66,6 +80,9 @@ final class BackForwardCacheNotUsedEvent implements \JsonSerializable
 			foreach ($this->notRestoredExplanations as $item) {
 				$data->notRestoredExplanations[] = $item->jsonSerialize();
 			}
+		}
+		if ($this->notRestoredExplanationsTree !== null) {
+			$data->notRestoredExplanationsTree = $this->notRestoredExplanationsTree->jsonSerialize();
 		}
 		return $data;
 	}

@@ -56,6 +56,10 @@ final class HighlightRectRequest implements \JsonSerializable
 	public $outlineColor;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

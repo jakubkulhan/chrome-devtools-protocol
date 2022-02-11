@@ -47,6 +47,10 @@ final class CaptureScreenshotRequest implements \JsonSerializable
 	public $captureBeyondViewport;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

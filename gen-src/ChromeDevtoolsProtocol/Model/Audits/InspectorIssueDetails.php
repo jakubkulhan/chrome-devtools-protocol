@@ -47,13 +47,23 @@ final class InspectorIssueDetails implements \JsonSerializable
 	/** @var NavigatorUserAgentIssueDetails|null */
 	public $navigatorUserAgentIssueDetails;
 
-	/** @var WasmCrossOriginModuleSharingIssueDetails|null */
-	public $wasmCrossOriginModuleSharingIssue;
-
 	/** @var GenericIssueDetails|null */
 	public $genericIssueDetails;
 
+	/** @var DeprecationIssueDetails|null */
+	public $deprecationIssueDetails;
 
+	/** @var ClientHintIssueDetails|null */
+	public $clientHintIssueDetails;
+
+	/** @var FederatedAuthRequestIssueDetails|null */
+	public $federatedAuthRequestIssueDetails;
+
+
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();
@@ -93,11 +103,17 @@ final class InspectorIssueDetails implements \JsonSerializable
 		if (isset($data->navigatorUserAgentIssueDetails)) {
 			$instance->navigatorUserAgentIssueDetails = NavigatorUserAgentIssueDetails::fromJson($data->navigatorUserAgentIssueDetails);
 		}
-		if (isset($data->wasmCrossOriginModuleSharingIssue)) {
-			$instance->wasmCrossOriginModuleSharingIssue = WasmCrossOriginModuleSharingIssueDetails::fromJson($data->wasmCrossOriginModuleSharingIssue);
-		}
 		if (isset($data->genericIssueDetails)) {
 			$instance->genericIssueDetails = GenericIssueDetails::fromJson($data->genericIssueDetails);
+		}
+		if (isset($data->deprecationIssueDetails)) {
+			$instance->deprecationIssueDetails = DeprecationIssueDetails::fromJson($data->deprecationIssueDetails);
+		}
+		if (isset($data->clientHintIssueDetails)) {
+			$instance->clientHintIssueDetails = ClientHintIssueDetails::fromJson($data->clientHintIssueDetails);
+		}
+		if (isset($data->federatedAuthRequestIssueDetails)) {
+			$instance->federatedAuthRequestIssueDetails = FederatedAuthRequestIssueDetails::fromJson($data->federatedAuthRequestIssueDetails);
 		}
 		return $instance;
 	}
@@ -142,11 +158,17 @@ final class InspectorIssueDetails implements \JsonSerializable
 		if ($this->navigatorUserAgentIssueDetails !== null) {
 			$data->navigatorUserAgentIssueDetails = $this->navigatorUserAgentIssueDetails->jsonSerialize();
 		}
-		if ($this->wasmCrossOriginModuleSharingIssue !== null) {
-			$data->wasmCrossOriginModuleSharingIssue = $this->wasmCrossOriginModuleSharingIssue->jsonSerialize();
-		}
 		if ($this->genericIssueDetails !== null) {
 			$data->genericIssueDetails = $this->genericIssueDetails->jsonSerialize();
+		}
+		if ($this->deprecationIssueDetails !== null) {
+			$data->deprecationIssueDetails = $this->deprecationIssueDetails->jsonSerialize();
+		}
+		if ($this->clientHintIssueDetails !== null) {
+			$data->clientHintIssueDetails = $this->clientHintIssueDetails->jsonSerialize();
+		}
+		if ($this->federatedAuthRequestIssueDetails !== null) {
+			$data->federatedAuthRequestIssueDetails = $this->federatedAuthRequestIssueDetails->jsonSerialize();
 		}
 		return $data;
 	}

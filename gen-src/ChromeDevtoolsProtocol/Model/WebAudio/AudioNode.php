@@ -36,6 +36,10 @@ final class AudioNode implements \JsonSerializable
 	public $channelInterpretation;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

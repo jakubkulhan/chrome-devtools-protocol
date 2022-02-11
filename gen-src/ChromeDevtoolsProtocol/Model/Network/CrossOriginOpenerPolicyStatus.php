@@ -24,6 +24,10 @@ final class CrossOriginOpenerPolicyStatus implements \JsonSerializable
 	public $reportOnlyReportingEndpoint;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

@@ -19,6 +19,10 @@ final class QuerySelectorAllResponse implements \JsonSerializable
 	public $nodeIds;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

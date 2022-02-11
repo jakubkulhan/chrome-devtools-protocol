@@ -14,6 +14,9 @@ final class UserAgentMetadata implements \JsonSerializable
 	/** @var UserAgentBrandVersion[]|null */
 	public $brands;
 
+	/** @var UserAgentBrandVersion[]|null */
+	public $fullVersionList;
+
 	/** @var string|null */
 	public $fullVersion;
 
@@ -33,6 +36,10 @@ final class UserAgentMetadata implements \JsonSerializable
 	public $mobile;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();
@@ -40,6 +47,12 @@ final class UserAgentMetadata implements \JsonSerializable
 			$instance->brands = [];
 			foreach ($data->brands as $item) {
 				$instance->brands[] = UserAgentBrandVersion::fromJson($item);
+			}
+		}
+		if (isset($data->fullVersionList)) {
+			$instance->fullVersionList = [];
+			foreach ($data->fullVersionList as $item) {
+				$instance->fullVersionList[] = UserAgentBrandVersion::fromJson($item);
 			}
 		}
 		if (isset($data->fullVersion)) {
@@ -71,6 +84,12 @@ final class UserAgentMetadata implements \JsonSerializable
 			$data->brands = [];
 			foreach ($this->brands as $item) {
 				$data->brands[] = $item->jsonSerialize();
+			}
+		}
+		if ($this->fullVersionList !== null) {
+			$data->fullVersionList = [];
+			foreach ($this->fullVersionList as $item) {
+				$data->fullVersionList[] = $item->jsonSerialize();
 			}
 		}
 		if ($this->fullVersion !== null) {

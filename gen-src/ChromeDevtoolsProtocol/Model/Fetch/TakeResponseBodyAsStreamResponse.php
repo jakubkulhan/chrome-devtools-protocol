@@ -15,6 +15,10 @@ final class TakeResponseBodyAsStreamResponse implements \JsonSerializable
 	public $stream;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

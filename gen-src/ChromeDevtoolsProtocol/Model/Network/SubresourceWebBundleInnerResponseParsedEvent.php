@@ -33,6 +33,10 @@ final class SubresourceWebBundleInnerResponseParsedEvent implements \JsonSeriali
 	public $bundleRequestId;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

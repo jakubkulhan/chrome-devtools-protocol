@@ -26,6 +26,10 @@ final class RequestEntriesResponse implements \JsonSerializable
 	public $returnCount;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

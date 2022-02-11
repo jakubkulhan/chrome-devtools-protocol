@@ -52,6 +52,11 @@ class Context implements ContextInterface
 		return $this->deadline;
 	}
 
+	public function getParent(): ?ContextInterface
+	{
+		return $this->parent;
+	}
+
 	public function isAfterDeadline(): bool
 	{
 		if ($this->deadline === null) {

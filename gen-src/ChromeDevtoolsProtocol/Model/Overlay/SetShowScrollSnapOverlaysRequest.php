@@ -19,6 +19,10 @@ final class SetShowScrollSnapOverlaysRequest implements \JsonSerializable
 	public $scrollSnapHighlightConfigs;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

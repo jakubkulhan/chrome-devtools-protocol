@@ -21,6 +21,10 @@ final class SetDefaultBackgroundColorOverrideRequest implements \JsonSerializabl
 	public $color;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

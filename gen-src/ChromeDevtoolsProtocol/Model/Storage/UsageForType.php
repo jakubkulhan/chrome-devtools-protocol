@@ -26,6 +26,10 @@ final class UsageForType implements \JsonSerializable
 	public $usage;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

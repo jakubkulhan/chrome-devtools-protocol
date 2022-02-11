@@ -19,6 +19,10 @@ final class EnableRequest implements \JsonSerializable
 	public $eventTypes;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

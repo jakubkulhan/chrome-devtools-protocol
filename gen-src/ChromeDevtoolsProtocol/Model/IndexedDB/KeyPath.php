@@ -33,6 +33,10 @@ final class KeyPath implements \JsonSerializable
 	public $array;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

@@ -11,13 +11,17 @@ use ChromeDevtoolsProtocol\Model\Storage\ClearTrustTokensRequest;
 use ChromeDevtoolsProtocol\Model\Storage\ClearTrustTokensResponse;
 use ChromeDevtoolsProtocol\Model\Storage\GetCookiesRequest;
 use ChromeDevtoolsProtocol\Model\Storage\GetCookiesResponse;
+use ChromeDevtoolsProtocol\Model\Storage\GetInterestGroupDetailsRequest;
+use ChromeDevtoolsProtocol\Model\Storage\GetInterestGroupDetailsResponse;
 use ChromeDevtoolsProtocol\Model\Storage\GetTrustTokensResponse;
 use ChromeDevtoolsProtocol\Model\Storage\GetUsageAndQuotaRequest;
 use ChromeDevtoolsProtocol\Model\Storage\GetUsageAndQuotaResponse;
 use ChromeDevtoolsProtocol\Model\Storage\IndexedDBContentUpdatedEvent;
 use ChromeDevtoolsProtocol\Model\Storage\IndexedDBListUpdatedEvent;
+use ChromeDevtoolsProtocol\Model\Storage\InterestGroupAccessedEvent;
 use ChromeDevtoolsProtocol\Model\Storage\OverrideQuotaForOriginRequest;
 use ChromeDevtoolsProtocol\Model\Storage\SetCookiesRequest;
+use ChromeDevtoolsProtocol\Model\Storage\SetInterestGroupTrackingRequest;
 use ChromeDevtoolsProtocol\Model\Storage\TrackCacheStorageForOriginRequest;
 use ChromeDevtoolsProtocol\Model\Storage\TrackIndexedDBForOriginRequest;
 use ChromeDevtoolsProtocol\Model\Storage\UntrackCacheStorageForOriginRequest;
@@ -80,6 +84,20 @@ interface StorageDomainInterface
 
 
 	/**
+	 * Gets details for a named interest group.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param GetInterestGroupDetailsRequest $request
+	 *
+	 * @return GetInterestGroupDetailsResponse
+	 */
+	public function getInterestGroupDetails(
+		ContextInterface $ctx,
+		GetInterestGroupDetailsRequest $request
+	): GetInterestGroupDetailsResponse;
+
+
+	/**
 	 * Returns the number of stored Trust Tokens per issuer for the current browsing context.
 	 *
 	 * @param ContextInterface $ctx
@@ -120,6 +138,17 @@ interface StorageDomainInterface
 	 * @return void
 	 */
 	public function setCookies(ContextInterface $ctx, SetCookiesRequest $request): void;
+
+
+	/**
+	 * Enables/Disables issuing of interestGroupAccessed events.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param SetInterestGroupTrackingRequest $request
+	 *
+	 * @return void
+	 */
+	public function setInterestGroupTracking(ContextInterface $ctx, SetInterestGroupTrackingRequest $request): void;
 
 
 	/**
@@ -260,4 +289,28 @@ interface StorageDomainInterface
 	 * @return IndexedDBListUpdatedEvent
 	 */
 	public function awaitIndexedDBListUpdated(ContextInterface $ctx): IndexedDBListUpdatedEvent;
+
+
+	/**
+	 * One of the interest groups was accessed by the associated page.
+	 *
+	 * Listener will be called whenever event Storage.interestGroupAccessed is fired.
+	 *
+	 * @param callable $listener
+	 *
+	 * @return SubscriptionInterface
+	 */
+	public function addInterestGroupAccessedListener(callable $listener): SubscriptionInterface;
+
+
+	/**
+	 * One of the interest groups was accessed by the associated page.
+	 *
+	 * Method will block until first Storage.interestGroupAccessed event is fired.
+	 *
+	 * @param ContextInterface $ctx
+	 *
+	 * @return InterestGroupAccessedEvent
+	 */
+	public function awaitInterestGroupAccessed(ContextInterface $ctx): InterestGroupAccessedEvent;
 }

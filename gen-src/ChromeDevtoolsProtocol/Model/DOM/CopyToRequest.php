@@ -33,6 +33,10 @@ final class CopyToRequest implements \JsonSerializable
 	public $insertBeforeNodeId;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

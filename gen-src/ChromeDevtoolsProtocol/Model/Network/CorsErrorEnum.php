@@ -30,6 +30,8 @@ final class CorsErrorEnum
 	public const PREFLIGHT_INVALID_ALLOW_CREDENTIALS = 'PreflightInvalidAllowCredentials';
 	public const PREFLIGHT_MISSING_ALLOW_EXTERNAL = 'PreflightMissingAllowExternal';
 	public const PREFLIGHT_INVALID_ALLOW_EXTERNAL = 'PreflightInvalidAllowExternal';
+	public const PREFLIGHT_MISSING_ALLOW_PRIVATE_NETWORK = 'PreflightMissingAllowPrivateNetwork';
+	public const PREFLIGHT_INVALID_ALLOW_PRIVATE_NETWORK = 'PreflightInvalidAllowPrivateNetwork';
 	public const INVALID_ALLOW_METHODS_PREFLIGHT_RESPONSE = 'InvalidAllowMethodsPreflightResponse';
 	public const INVALID_ALLOW_HEADERS_PREFLIGHT_RESPONSE = 'InvalidAllowHeadersPreflightResponse';
 	public const METHOD_DISALLOWED_BY_PREFLIGHT_RESPONSE = 'MethodDisallowedByPreflightResponse';

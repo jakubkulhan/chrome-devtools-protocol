@@ -63,6 +63,10 @@ final class ReportingApiReport implements \JsonSerializable
 	public $status;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

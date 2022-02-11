@@ -19,6 +19,10 @@ final class EnableReportingApiRequest implements \JsonSerializable
 	public $enable;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

@@ -26,6 +26,10 @@ final class TypeProfileEntry implements \JsonSerializable
 	public $types;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

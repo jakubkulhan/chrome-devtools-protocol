@@ -19,6 +19,10 @@ final class GetBrowserContextsResponse implements \JsonSerializable
 	public $browserContextIds;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

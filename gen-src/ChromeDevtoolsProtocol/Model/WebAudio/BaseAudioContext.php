@@ -45,6 +45,10 @@ final class BaseAudioContext implements \JsonSerializable
 	public $sampleRate;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

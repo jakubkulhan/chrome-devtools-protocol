@@ -40,6 +40,10 @@ final class SignedExchangeInfo implements \JsonSerializable
 	public $errors;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

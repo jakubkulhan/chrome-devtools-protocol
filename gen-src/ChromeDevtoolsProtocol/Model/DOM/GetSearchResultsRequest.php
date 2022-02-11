@@ -33,6 +33,10 @@ final class GetSearchResultsRequest implements \JsonSerializable
 	public $toIndex;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

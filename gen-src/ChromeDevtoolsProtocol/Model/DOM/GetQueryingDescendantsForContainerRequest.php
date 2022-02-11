@@ -19,6 +19,10 @@ final class GetQueryingDescendantsForContainerRequest implements \JsonSerializab
 	public $nodeId;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

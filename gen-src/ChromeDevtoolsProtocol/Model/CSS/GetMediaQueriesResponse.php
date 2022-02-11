@@ -15,6 +15,10 @@ final class GetMediaQueriesResponse implements \JsonSerializable
 	public $medias;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

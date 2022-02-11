@@ -33,6 +33,10 @@ final class SetDeviceOrientationOverrideRequest implements \JsonSerializable
 	public $gamma;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

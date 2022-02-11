@@ -77,6 +77,10 @@ final class RequestPausedEvent implements \JsonSerializable
 	public $networkId;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

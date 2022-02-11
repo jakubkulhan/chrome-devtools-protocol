@@ -19,6 +19,10 @@ final class SetCPUThrottlingRateRequest implements \JsonSerializable
 	public $rate;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

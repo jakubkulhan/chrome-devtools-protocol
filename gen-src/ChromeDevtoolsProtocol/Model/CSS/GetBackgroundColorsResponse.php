@@ -33,6 +33,10 @@ final class GetBackgroundColorsResponse implements \JsonSerializable
 	public $computedFontWeight;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

@@ -33,6 +33,10 @@ final class FrameResourceTree implements \JsonSerializable
 	public $resources;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

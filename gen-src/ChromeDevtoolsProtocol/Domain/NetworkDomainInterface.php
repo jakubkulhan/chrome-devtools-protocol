@@ -31,6 +31,7 @@ use ChromeDevtoolsProtocol\Model\Network\LoadNetworkResourceResponse;
 use ChromeDevtoolsProtocol\Model\Network\LoadingFailedEvent;
 use ChromeDevtoolsProtocol\Model\Network\LoadingFinishedEvent;
 use ChromeDevtoolsProtocol\Model\Network\ReplayXHRRequest;
+use ChromeDevtoolsProtocol\Model\Network\ReportingApiEndpointsChangedForOriginEvent;
 use ChromeDevtoolsProtocol\Model\Network\ReportingApiReportAddedEvent;
 use ChromeDevtoolsProtocol\Model\Network\ReportingApiReportUpdatedEvent;
 use ChromeDevtoolsProtocol\Model\Network\RequestInterceptedEvent;
@@ -549,6 +550,30 @@ interface NetworkDomainInterface
 	 * @return LoadingFinishedEvent
 	 */
 	public function awaitLoadingFinished(ContextInterface $ctx): LoadingFinishedEvent;
+
+
+	/**
+	 * Subscribe to Network.reportingApiEndpointsChangedForOrigin event.
+	 *
+	 * Listener will be called whenever event Network.reportingApiEndpointsChangedForOrigin is fired.
+	 *
+	 * @param callable $listener
+	 *
+	 * @return SubscriptionInterface
+	 */
+	public function addReportingApiEndpointsChangedForOriginListener(callable $listener): SubscriptionInterface;
+
+
+	/**
+	 * Wait for Network.reportingApiEndpointsChangedForOrigin event.
+	 *
+	 * Method will block until first Network.reportingApiEndpointsChangedForOrigin event is fired.
+	 *
+	 * @param ContextInterface $ctx
+	 *
+	 * @return ReportingApiEndpointsChangedForOriginEvent
+	 */
+	public function awaitReportingApiEndpointsChangedForOrigin(ContextInterface $ctx): ReportingApiEndpointsChangedForOriginEvent;
 
 
 	/**

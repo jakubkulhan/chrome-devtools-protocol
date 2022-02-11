@@ -21,6 +21,9 @@ final class MemoryDumpConfig implements \JsonSerializable
 	}
 
 
+	/**
+	 * @param object $rawData
+	 */
 	public static function fromJson($rawData)
 	{
 		return new static($rawData);

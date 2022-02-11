@@ -40,6 +40,10 @@ final class GetSnapshotRequest implements \JsonSerializable
 	public $includeUserAgentShadowTree;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

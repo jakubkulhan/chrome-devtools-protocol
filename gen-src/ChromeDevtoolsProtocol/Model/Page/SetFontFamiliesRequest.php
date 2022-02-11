@@ -18,12 +18,29 @@ final class SetFontFamiliesRequest implements \JsonSerializable
 	 */
 	public $fontFamilies;
 
+	/**
+	 * Specifies font families to set for individual scripts.
+	 *
+	 * @var ScriptFontFamilies[]|null
+	 */
+	public $forScripts;
 
+
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();
 		if (isset($data->fontFamilies)) {
 			$instance->fontFamilies = FontFamilies::fromJson($data->fontFamilies);
+		}
+		if (isset($data->forScripts)) {
+			$instance->forScripts = [];
+			foreach ($data->forScripts as $item) {
+				$instance->forScripts[] = ScriptFontFamilies::fromJson($item);
+			}
 		}
 		return $instance;
 	}
@@ -34,6 +51,12 @@ final class SetFontFamiliesRequest implements \JsonSerializable
 		$data = new \stdClass();
 		if ($this->fontFamilies !== null) {
 			$data->fontFamilies = $this->fontFamilies->jsonSerialize();
+		}
+		if ($this->forScripts !== null) {
+			$data->forScripts = [];
+			foreach ($this->forScripts as $item) {
+				$data->forScripts[] = $item->jsonSerialize();
+			}
 		}
 		return $data;
 	}

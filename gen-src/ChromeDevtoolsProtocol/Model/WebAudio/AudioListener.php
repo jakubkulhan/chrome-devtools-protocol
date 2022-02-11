@@ -18,6 +18,10 @@ final class AudioListener implements \JsonSerializable
 	public $contextId;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

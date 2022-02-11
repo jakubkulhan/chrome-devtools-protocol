@@ -21,6 +21,10 @@ final class OriginTrial implements \JsonSerializable
 	public $tokensWithStatus;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

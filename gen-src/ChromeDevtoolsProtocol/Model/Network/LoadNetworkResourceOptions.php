@@ -18,6 +18,10 @@ final class LoadNetworkResourceOptions implements \JsonSerializable
 	public $includeCredentials;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

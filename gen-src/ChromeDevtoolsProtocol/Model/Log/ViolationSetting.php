@@ -26,6 +26,10 @@ final class ViolationSetting implements \JsonSerializable
 	public $threshold;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

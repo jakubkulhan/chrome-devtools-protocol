@@ -26,6 +26,10 @@ final class DeleteDatabaseRequest implements \JsonSerializable
 	public $databaseName;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

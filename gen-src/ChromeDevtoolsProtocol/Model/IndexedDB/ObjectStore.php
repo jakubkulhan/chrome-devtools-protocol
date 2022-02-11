@@ -40,6 +40,10 @@ final class ObjectStore implements \JsonSerializable
 	public $indexes;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

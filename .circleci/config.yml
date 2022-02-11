@@ -139,6 +139,52 @@ jobs:
     - store_test_results:
         path: /tmp/phpunit
 
+  test_8_0:
+    docker:
+    - image: circleci/php:8.0-node-browsers
+    steps:
+    - checkout
+    - run: sudo docker-php-ext-install sockets
+    - restore_cache:
+        keys:
+        - v3_composer_{{ .Branch }}
+    - run:
+        command: |
+          composer update --prefer-dist --no-progress --classmap-authoritative
+    - save_cache:
+        key: v3_composer_{{ .Branch }}
+        paths:
+        - ~/.composer/cache
+    - run:
+        command: |
+          mkdir -p /tmp/phpunit
+          PHPUNIT_FLAGS="--log-junit /tmp/phpunit/junit.xml" make -e test
+    - store_test_results:
+        path: /tmp/phpunit
+
+  test_8_0_lowest:
+    docker:
+    - image: circleci/php:8.0-node-browsers
+    steps:
+    - checkout
+    - run: sudo docker-php-ext-install sockets
+    - restore_cache:
+        keys:
+        - v3_composer_lowest_{{ .Branch }}
+    - run:
+        command: |
+          composer update --prefer-dist --no-progress --classmap-authoritative --prefer-lowest
+    - save_cache:
+        key: v3_composer_lowest_{{ .Branch }}
+        paths:
+        - ~/.composer/cache
+    - run:
+        command: |
+          mkdir -p /tmp/phpunit
+          PHPUNIT_FLAGS="--log-junit /tmp/phpunit/junit.xml" make -e lint phpunit
+    - store_test_results:
+        path: /tmp/phpunit
+
   check_protocol:
     docker:
     - image: circleci/php:7.3-node-browsers
@@ -157,7 +203,7 @@ jobs:
 
   autoupdate_protocol:
     docker:
-    - image: circleci/php:7.3-node-browsers
+    - image: circleci/php:8.0-node-browsers
     steps:
     - checkout
     - run: sudo docker-php-ext-install sockets
@@ -205,6 +251,8 @@ workflows:
     - test_7_3_lowest
     - test_7_4
     - test_7_4_lowest
+    - test_8_0
+    - test_8_0_lowest
     - check_protocol
 
   nightly:

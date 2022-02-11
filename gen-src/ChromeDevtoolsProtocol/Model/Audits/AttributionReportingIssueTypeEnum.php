@@ -18,4 +18,9 @@ final class AttributionReportingIssueTypeEnum
 	public const ATTRIBUTION_UNTRUSTWORTHY_ORIGIN = 'AttributionUntrustworthyOrigin';
 	public const ATTRIBUTION_TRIGGER_DATA_TOO_LARGE = 'AttributionTriggerDataTooLarge';
 	public const ATTRIBUTION_EVENT_SOURCE_TRIGGER_DATA_TOO_LARGE = 'AttributionEventSourceTriggerDataTooLarge';
+	public const INVALID_ATTRIBUTION_SOURCE_EXPIRY = 'InvalidAttributionSourceExpiry';
+	public const INVALID_ATTRIBUTION_SOURCE_PRIORITY = 'InvalidAttributionSourcePriority';
+	public const INVALID_EVENT_SOURCE_TRIGGER_DATA = 'InvalidEventSourceTriggerData';
+	public const INVALID_TRIGGER_PRIORITY = 'InvalidTriggerPriority';
+	public const INVALID_TRIGGER_DEDUP_KEY = 'InvalidTriggerDedupKey';
 }

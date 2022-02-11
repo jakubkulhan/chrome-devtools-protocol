@@ -19,6 +19,10 @@ final class AppManifestParsedProperties implements \JsonSerializable
 	public $scope;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

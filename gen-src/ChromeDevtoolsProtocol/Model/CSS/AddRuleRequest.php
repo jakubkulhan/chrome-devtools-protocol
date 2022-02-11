@@ -33,6 +33,10 @@ final class AddRuleRequest implements \JsonSerializable
 	public $location;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

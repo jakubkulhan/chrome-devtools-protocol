@@ -98,7 +98,7 @@ interface SecurityDomainInterface
 
 
 	/**
-	 * The security state of the page changed.
+	 * The security state of the page changed. No longer being sent.
 	 *
 	 * Listener will be called whenever event Security.securityStateChanged is fired.
 	 *
@@ -110,7 +110,7 @@ interface SecurityDomainInterface
 
 
 	/**
-	 * The security state of the page changed.
+	 * The security state of the page changed. No longer being sent.
 	 *
 	 * Method will block until first Security.securityStateChanged event is fired.
 	 *

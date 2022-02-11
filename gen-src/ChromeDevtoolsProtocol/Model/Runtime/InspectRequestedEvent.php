@@ -25,6 +25,10 @@ final class InspectRequestedEvent implements \JsonSerializable
 	public $executionContextId;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

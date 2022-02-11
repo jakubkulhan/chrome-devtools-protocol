@@ -19,6 +19,10 @@ final class GetEventListenersResponse implements \JsonSerializable
 	public $listeners;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

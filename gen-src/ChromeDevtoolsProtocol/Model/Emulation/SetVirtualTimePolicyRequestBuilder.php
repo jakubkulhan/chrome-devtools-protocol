@@ -14,7 +14,6 @@ final class SetVirtualTimePolicyRequestBuilder
 	private $policy;
 	private $budget;
 	private $maxVirtualTimeTaskStarvationCount;
-	private $waitForNavigation;
 	private $initialVirtualTime;
 
 
@@ -30,7 +29,6 @@ final class SetVirtualTimePolicyRequestBuilder
 		$instance->policy = $this->policy;
 		$instance->budget = $this->budget;
 		$instance->maxVirtualTimeTaskStarvationCount = $this->maxVirtualTimeTaskStarvationCount;
-		$instance->waitForNavigation = $this->waitForNavigation;
 		$instance->initialVirtualTime = $this->initialVirtualTime;
 		return $instance;
 	}
@@ -68,18 +66,6 @@ final class SetVirtualTimePolicyRequestBuilder
 	public function setMaxVirtualTimeTaskStarvationCount($maxVirtualTimeTaskStarvationCount): self
 	{
 		$this->maxVirtualTimeTaskStarvationCount = $maxVirtualTimeTaskStarvationCount;
-		return $this;
-	}
-
-
-	/**
-	 * @param bool|null $waitForNavigation
-	 *
-	 * @return self
-	 */
-	public function setWaitForNavigation($waitForNavigation): self
-	{
-		$this->waitForNavigation = $waitForNavigation;
 		return $this;
 	}
 

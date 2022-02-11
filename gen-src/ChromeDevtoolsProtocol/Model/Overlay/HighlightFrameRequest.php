@@ -35,6 +35,10 @@ final class HighlightFrameRequest implements \JsonSerializable
 	public $contentOutlineColor;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

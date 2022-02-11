@@ -47,6 +47,10 @@ final class SignedExchangeHeader implements \JsonSerializable
 	public $headerIntegrity;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

@@ -47,6 +47,10 @@ final class CaptureSnapshotRequest implements \JsonSerializable
 	public $includeTextColorOpacities;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

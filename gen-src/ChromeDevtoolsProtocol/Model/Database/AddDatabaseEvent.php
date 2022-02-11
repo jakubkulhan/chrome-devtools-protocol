@@ -15,6 +15,10 @@ final class AddDatabaseEvent implements \JsonSerializable
 	public $database;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

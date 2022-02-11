@@ -45,6 +45,10 @@ final class Scope implements \JsonSerializable
 	public $endLocation;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

@@ -47,6 +47,10 @@ final class NavigationEntry implements \JsonSerializable
 	public $transitionType;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

@@ -15,6 +15,10 @@ final class WorkerErrorReportedEvent implements \JsonSerializable
 	public $errorMessage;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

@@ -26,6 +26,10 @@ final class FrameTree implements \JsonSerializable
 	public $childFrames;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

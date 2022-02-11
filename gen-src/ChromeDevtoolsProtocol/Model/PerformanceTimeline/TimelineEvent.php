@@ -53,6 +53,10 @@ final class TimelineEvent implements \JsonSerializable
 	public $layoutShiftDetails;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

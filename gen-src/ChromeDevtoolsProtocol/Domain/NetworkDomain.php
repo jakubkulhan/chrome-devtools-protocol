@@ -32,6 +32,7 @@ use ChromeDevtoolsProtocol\Model\Network\LoadNetworkResourceResponse;
 use ChromeDevtoolsProtocol\Model\Network\LoadingFailedEvent;
 use ChromeDevtoolsProtocol\Model\Network\LoadingFinishedEvent;
 use ChromeDevtoolsProtocol\Model\Network\ReplayXHRRequest;
+use ChromeDevtoolsProtocol\Model\Network\ReportingApiEndpointsChangedForOriginEvent;
 use ChromeDevtoolsProtocol\Model\Network\ReportingApiReportAddedEvent;
 use ChromeDevtoolsProtocol\Model\Network\ReportingApiReportUpdatedEvent;
 use ChromeDevtoolsProtocol\Model\Network\RequestInterceptedEvent;
@@ -371,6 +372,20 @@ class NetworkDomain implements NetworkDomainInterface
 	public function awaitLoadingFinished(ContextInterface $ctx): LoadingFinishedEvent
 	{
 		return LoadingFinishedEvent::fromJson($this->internalClient->awaitEvent($ctx, 'Network.loadingFinished'));
+	}
+
+
+	public function addReportingApiEndpointsChangedForOriginListener(callable $listener): SubscriptionInterface
+	{
+		return $this->internalClient->addListener('Network.reportingApiEndpointsChangedForOrigin', function ($event) use ($listener) {
+			return $listener(ReportingApiEndpointsChangedForOriginEvent::fromJson($event));
+		});
+	}
+
+
+	public function awaitReportingApiEndpointsChangedForOrigin(ContextInterface $ctx): ReportingApiEndpointsChangedForOriginEvent
+	{
+		return ReportingApiEndpointsChangedForOriginEvent::fromJson($this->internalClient->awaitEvent($ctx, 'Network.reportingApiEndpointsChangedForOrigin'));
 	}
 
 

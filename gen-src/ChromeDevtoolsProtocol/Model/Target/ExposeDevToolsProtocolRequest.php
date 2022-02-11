@@ -22,6 +22,10 @@ final class ExposeDevToolsProtocolRequest implements \JsonSerializable
 	public $bindingName;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

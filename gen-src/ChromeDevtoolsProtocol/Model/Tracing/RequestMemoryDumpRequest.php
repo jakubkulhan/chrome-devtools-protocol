@@ -26,6 +26,10 @@ final class RequestMemoryDumpRequest implements \JsonSerializable
 	public $levelOfDetail;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

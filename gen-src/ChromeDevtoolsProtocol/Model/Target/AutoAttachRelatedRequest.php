@@ -22,6 +22,10 @@ final class AutoAttachRelatedRequest implements \JsonSerializable
 	public $waitForDebuggerOnStart;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

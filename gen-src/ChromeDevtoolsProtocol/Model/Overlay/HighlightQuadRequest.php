@@ -35,6 +35,10 @@ final class HighlightQuadRequest implements \JsonSerializable
 	public $outlineColor;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

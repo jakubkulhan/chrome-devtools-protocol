@@ -61,6 +61,10 @@ final class RequestDataRequest implements \JsonSerializable
 	public $keyRange;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

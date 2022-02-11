@@ -29,6 +29,10 @@ final class DragData implements \JsonSerializable
 	public $dragOperationsMask;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

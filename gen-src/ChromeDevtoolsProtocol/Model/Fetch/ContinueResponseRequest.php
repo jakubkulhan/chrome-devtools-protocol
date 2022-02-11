@@ -47,6 +47,10 @@ final class ContinueResponseRequest implements \JsonSerializable
 	public $binaryResponseHeaders;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();
