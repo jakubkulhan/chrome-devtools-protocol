@@ -13,12 +13,12 @@ final class FederatedAuthRequestIssueReasonEnum
 {
 	public const APPROVAL_DECLINED = 'ApprovalDeclined';
 	public const TOO_MANY_REQUESTS = 'TooManyRequests';
-	public const WELL_KNOWN_HTTP_NOT_FOUND = 'WellKnownHttpNotFound';
-	public const WELL_KNOWN_NO_RESPONSE = 'WellKnownNoResponse';
-	public const WELL_KNOWN_INVALID_RESPONSE = 'WellKnownInvalidResponse';
-	public const CLIENT_ID_METADATA_HTTP_NOT_FOUND = 'ClientIdMetadataHttpNotFound';
-	public const CLIENT_ID_METADATA_NO_RESPONSE = 'ClientIdMetadataNoResponse';
-	public const CLIENT_ID_METADATA_INVALID_RESPONSE = 'ClientIdMetadataInvalidResponse';
+	public const MANIFEST_HTTP_NOT_FOUND = 'ManifestHttpNotFound';
+	public const MANIFEST_NO_RESPONSE = 'ManifestNoResponse';
+	public const MANIFEST_INVALID_RESPONSE = 'ManifestInvalidResponse';
+	public const CLIENT_METADATA_HTTP_NOT_FOUND = 'ClientMetadataHttpNotFound';
+	public const CLIENT_METADATA_NO_RESPONSE = 'ClientMetadataNoResponse';
+	public const CLIENT_METADATA_INVALID_RESPONSE = 'ClientMetadataInvalidResponse';
 	public const ERROR_FETCHING_SIGNIN = 'ErrorFetchingSignin';
 	public const INVALID_SIGNIN_RESPONSE = 'InvalidSigninResponse';
 	public const ACCOUNTS_HTTP_NOT_FOUND = 'AccountsHttpNotFound';
