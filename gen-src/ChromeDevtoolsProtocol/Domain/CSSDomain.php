@@ -40,6 +40,8 @@ use ChromeDevtoolsProtocol\Model\CSS\SetStyleSheetTextRequest;
 use ChromeDevtoolsProtocol\Model\CSS\SetStyleSheetTextResponse;
 use ChromeDevtoolsProtocol\Model\CSS\SetStyleTextsRequest;
 use ChromeDevtoolsProtocol\Model\CSS\SetStyleTextsResponse;
+use ChromeDevtoolsProtocol\Model\CSS\SetSupportsTextRequest;
+use ChromeDevtoolsProtocol\Model\CSS\SetSupportsTextResponse;
 use ChromeDevtoolsProtocol\Model\CSS\StopRuleUsageTrackingResponse;
 use ChromeDevtoolsProtocol\Model\CSS\StyleSheetAddedEvent;
 use ChromeDevtoolsProtocol\Model\CSS\StyleSheetChangedEvent;
@@ -217,6 +219,13 @@ class CSSDomain implements CSSDomainInterface
 	{
 		$response = $this->internalClient->executeCommand($ctx, 'CSS.setStyleTexts', $request);
 		return SetStyleTextsResponse::fromJson($response);
+	}
+
+
+	public function setSupportsText(ContextInterface $ctx, SetSupportsTextRequest $request): SetSupportsTextResponse
+	{
+		$response = $this->internalClient->executeCommand($ctx, 'CSS.setSupportsText', $request);
+		return SetSupportsTextResponse::fromJson($response);
 	}
 
 

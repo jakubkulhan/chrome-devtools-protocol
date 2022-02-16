@@ -1082,6 +1082,7 @@
                     "id": "MixedContentResourceType",
                     "type": "string",
                     "enum": [
+                        "AttributionSrc",
                         "Audio",
                         "Beacon",
                         "CSPReport",
@@ -4325,6 +4326,32 @@
                             "items": {
                                 "$ref": "CSSStyle"
                             }
+                        }
+                    ]
+                },
+                {
+                    "name": "setSupportsText",
+                    "description": "Modifies the expression of a supports at-rule.",
+                    "experimental": true,
+                    "parameters": [
+                        {
+                            "name": "styleSheetId",
+                            "$ref": "StyleSheetId"
+                        },
+                        {
+                            "name": "range",
+                            "$ref": "SourceRange"
+                        },
+                        {
+                            "name": "text",
+                            "type": "string"
+                        }
+                    ],
+                    "returns": [
+                        {
+                            "name": "supports",
+                            "description": "The resulting CSS Supports rule after modification.",
+                            "$ref": "CSSSupports"
                         }
                     ]
                 },

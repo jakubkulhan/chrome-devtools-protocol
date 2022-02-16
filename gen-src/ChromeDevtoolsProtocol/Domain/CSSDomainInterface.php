@@ -39,6 +39,8 @@ use ChromeDevtoolsProtocol\Model\CSS\SetStyleSheetTextRequest;
 use ChromeDevtoolsProtocol\Model\CSS\SetStyleSheetTextResponse;
 use ChromeDevtoolsProtocol\Model\CSS\SetStyleTextsRequest;
 use ChromeDevtoolsProtocol\Model\CSS\SetStyleTextsResponse;
+use ChromeDevtoolsProtocol\Model\CSS\SetSupportsTextRequest;
+use ChromeDevtoolsProtocol\Model\CSS\SetSupportsTextResponse;
 use ChromeDevtoolsProtocol\Model\CSS\StopRuleUsageTrackingResponse;
 use ChromeDevtoolsProtocol\Model\CSS\StyleSheetAddedEvent;
 use ChromeDevtoolsProtocol\Model\CSS\StyleSheetChangedEvent;
@@ -306,6 +308,17 @@ interface CSSDomainInterface
 	 * @return SetStyleTextsResponse
 	 */
 	public function setStyleTexts(ContextInterface $ctx, SetStyleTextsRequest $request): SetStyleTextsResponse;
+
+
+	/**
+	 * Modifies the expression of a supports at-rule.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param SetSupportsTextRequest $request
+	 *
+	 * @return SetSupportsTextResponse
+	 */
+	public function setSupportsText(ContextInterface $ctx, SetSupportsTextRequest $request): SetSupportsTextResponse;
 
 
 	/**
