@@ -31,8 +31,9 @@ final class PseudoTypeEnum
 	public const SCROLLBAR_CORNER = 'scrollbar-corner';
 	public const RESIZER = 'resizer';
 	public const INPUT_LIST_BUTTON = 'input-list-button';
-	public const TRANSITION = 'transition';
-	public const TRANSITION_CONTAINER = 'transition-container';
-	public const TRANSITION_OLD_CONTENT = 'transition-old-content';
-	public const TRANSITION_NEW_CONTENT = 'transition-new-content';
+	public const PAGE_TRANSITION = 'page-transition';
+	public const PAGE_TRANSITION_CONTAINER = 'page-transition-container';
+	public const PAGE_TRANSITION_IMAGE_WRAPPER = 'page-transition-image-wrapper';
+	public const PAGE_TRANSITION_OUTGOING_IMAGE = 'page-transition-outgoing-image';
+	public const PAGE_TRANSITION_INCOMING_IMAGE = 'page-transition-incoming-image';
 }
