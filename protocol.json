@@ -9048,6 +9048,18 @@
                     ]
                 },
                 {
+                    "name": "setAutomationOverride",
+                    "description": "Allows overriding the automation flag.",
+                    "experimental": true,
+                    "parameters": [
+                        {
+                            "name": "enabled",
+                            "description": "Whether the override should be enabled.",
+                            "type": "boolean"
+                        }
+                    ]
+                },
+                {
                     "name": "setCPUThrottlingRate",
                     "description": "Enables CPU throttling to emulate slow CPUs.",
                     "experimental": true,
