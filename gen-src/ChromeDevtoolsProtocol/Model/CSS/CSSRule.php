@@ -60,6 +60,13 @@ final class CSSRule implements \JsonSerializable
 	 */
 	public $supports;
 
+	/**
+	 * Cascade layer array. Contains the layer hierarchy that this rule belongs to starting with the innermost layer and going outwards.
+	 *
+	 * @var CSSLayer[]|null
+	 */
+	public $layers;
+
 
 	/**
 	 * @param object $data
@@ -98,6 +105,12 @@ final class CSSRule implements \JsonSerializable
 				$instance->supports[] = CSSSupports::fromJson($item);
 			}
 		}
+		if (isset($data->layers)) {
+			$instance->layers = [];
+			foreach ($data->layers as $item) {
+				$instance->layers[] = CSSLayer::fromJson($item);
+			}
+		}
 		return $instance;
 	}
 
@@ -133,6 +146,12 @@ final class CSSRule implements \JsonSerializable
 			$data->supports = [];
 			foreach ($this->supports as $item) {
 				$data->supports[] = $item->jsonSerialize();
+			}
+		}
+		if ($this->layers !== null) {
+			$data->layers = [];
+			foreach ($this->layers as $item) {
+				$data->layers[] = $item->jsonSerialize();
 			}
 		}
 		return $data;
