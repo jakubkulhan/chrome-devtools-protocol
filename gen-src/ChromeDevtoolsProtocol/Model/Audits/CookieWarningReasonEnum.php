@@ -3,13 +3,13 @@
 namespace ChromeDevtoolsProtocol\Model\Audits;
 
 /**
- * Values of named type Audits.SameSiteCookieWarningReason.
+ * Values of named type Audits.CookieWarningReason.
  *
  * @generated This file has been auto-generated, do not edit.
  *
  * @author Jakub Kulhan <jakub.kulhan@gmail.com>
  */
-final class SameSiteCookieWarningReasonEnum
+final class CookieWarningReasonEnum
 {
 	public const WARN_SAME_SITE_UNSPECIFIED_CROSS_SITE_CONTEXT = 'WarnSameSiteUnspecifiedCrossSiteContext';
 	public const WARN_SAME_SITE_NONE_INSECURE = 'WarnSameSiteNoneInsecure';

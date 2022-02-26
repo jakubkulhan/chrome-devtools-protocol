@@ -11,8 +11,8 @@ namespace ChromeDevtoolsProtocol\Model\Audits;
  */
 final class InspectorIssueDetails implements \JsonSerializable
 {
-	/** @var SameSiteCookieIssueDetails|null */
-	public $sameSiteCookieIssueDetails;
+	/** @var CookieIssueDetails|null */
+	public $cookieIssueDetails;
 
 	/** @var MixedContentIssueDetails|null */
 	public $mixedContentIssueDetails;
@@ -67,8 +67,8 @@ final class InspectorIssueDetails implements \JsonSerializable
 	public static function fromJson($data)
 	{
 		$instance = new static();
-		if (isset($data->sameSiteCookieIssueDetails)) {
-			$instance->sameSiteCookieIssueDetails = SameSiteCookieIssueDetails::fromJson($data->sameSiteCookieIssueDetails);
+		if (isset($data->cookieIssueDetails)) {
+			$instance->cookieIssueDetails = CookieIssueDetails::fromJson($data->cookieIssueDetails);
 		}
 		if (isset($data->mixedContentIssueDetails)) {
 			$instance->mixedContentIssueDetails = MixedContentIssueDetails::fromJson($data->mixedContentIssueDetails);
@@ -122,8 +122,8 @@ final class InspectorIssueDetails implements \JsonSerializable
 	public function jsonSerialize()
 	{
 		$data = new \stdClass();
-		if ($this->sameSiteCookieIssueDetails !== null) {
-			$data->sameSiteCookieIssueDetails = $this->sameSiteCookieIssueDetails->jsonSerialize();
+		if ($this->cookieIssueDetails !== null) {
+			$data->cookieIssueDetails = $this->cookieIssueDetails->jsonSerialize();
 		}
 		if ($this->mixedContentIssueDetails !== null) {
 			$data->mixedContentIssueDetails = $this->mixedContentIssueDetails->jsonSerialize();

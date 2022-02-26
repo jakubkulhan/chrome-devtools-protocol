@@ -25,6 +25,13 @@ final class BackForwardCacheNotRestoredExplanation implements \JsonSerializable
 	 */
 	public $reason;
 
+	/**
+	 * Context associated with the reason. The meaning of this context is dependent on the reason: - EmbedderExtensionSentMessageToCachedFrame: the extension ID.
+	 *
+	 * @var string|null
+	 */
+	public $context;
+
 
 	/**
 	 * @param object $data
@@ -39,6 +46,9 @@ final class BackForwardCacheNotRestoredExplanation implements \JsonSerializable
 		if (isset($data->reason)) {
 			$instance->reason = (string)$data->reason;
 		}
+		if (isset($data->context)) {
+			$instance->context = (string)$data->context;
+		}
 		return $instance;
 	}
 
@@ -51,6 +61,9 @@ final class BackForwardCacheNotRestoredExplanation implements \JsonSerializable
 		}
 		if ($this->reason !== null) {
 			$data->reason = $this->reason;
+		}
+		if ($this->context !== null) {
+			$data->context = $this->context;
 		}
 		return $data;
 	}
