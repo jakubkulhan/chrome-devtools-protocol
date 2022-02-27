@@ -13,5 +13,6 @@ final class ColorFormatEnum
 {
 	public const RGB = 'rgb';
 	public const HSL = 'hsl';
+	public const HWB = 'hwb';
 	public const HEX = 'hex';
 }
