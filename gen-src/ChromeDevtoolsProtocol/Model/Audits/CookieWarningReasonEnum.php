@@ -19,4 +19,5 @@ final class CookieWarningReasonEnum
 	public const WARN_SAME_SITE_STRICT_CROSS_DOWNGRADE_LAX = 'WarnSameSiteStrictCrossDowngradeLax';
 	public const WARN_SAME_SITE_LAX_CROSS_DOWNGRADE_STRICT = 'WarnSameSiteLaxCrossDowngradeStrict';
 	public const WARN_SAME_SITE_LAX_CROSS_DOWNGRADE_LAX = 'WarnSameSiteLaxCrossDowngradeLax';
+	public const WARN_ATTRIBUTE_VALUE_EXCEEDS_MAX_SIZE = 'WarnAttributeValueExceedsMaxSize';
 }
