@@ -19,6 +19,7 @@ final class FederatedAuthRequestIssueReasonEnum
 	public const CLIENT_METADATA_HTTP_NOT_FOUND = 'ClientMetadataHttpNotFound';
 	public const CLIENT_METADATA_NO_RESPONSE = 'ClientMetadataNoResponse';
 	public const CLIENT_METADATA_INVALID_RESPONSE = 'ClientMetadataInvalidResponse';
+	public const CLIENT_METADATA_MISSING_PRIVACY_POLICY_URL = 'ClientMetadataMissingPrivacyPolicyUrl';
 	public const ERROR_FETCHING_SIGNIN = 'ErrorFetchingSignin';
 	public const INVALID_SIGNIN_RESPONSE = 'InvalidSigninResponse';
 	public const ACCOUNTS_HTTP_NOT_FOUND = 'AccountsHttpNotFound';
