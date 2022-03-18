@@ -19,6 +19,13 @@ final class CSSSupports implements \JsonSerializable
 	public $text;
 
 	/**
+	 * Whether the supports condition is satisfied.
+	 *
+	 * @var bool
+	 */
+	public $active;
+
+	/**
 	 * The associated rule header range in the enclosing stylesheet (if available).
 	 *
 	 * @var SourceRange|null
@@ -43,6 +50,9 @@ final class CSSSupports implements \JsonSerializable
 		if (isset($data->text)) {
 			$instance->text = (string)$data->text;
 		}
+		if (isset($data->active)) {
+			$instance->active = (bool)$data->active;
+		}
 		if (isset($data->range)) {
 			$instance->range = SourceRange::fromJson($data->range);
 		}
@@ -58,6 +68,9 @@ final class CSSSupports implements \JsonSerializable
 		$data = new \stdClass();
 		if ($this->text !== null) {
 			$data->text = $this->text;
+		}
+		if ($this->active !== null) {
+			$data->active = $this->active;
 		}
 		if ($this->range !== null) {
 			$data->range = $this->range->jsonSerialize();

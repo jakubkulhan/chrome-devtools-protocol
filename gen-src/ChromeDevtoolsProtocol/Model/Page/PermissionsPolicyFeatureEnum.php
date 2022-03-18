@@ -15,6 +15,7 @@ final class PermissionsPolicyFeatureEnum
 	public const AMBIENT_LIGHT_SENSOR = 'ambient-light-sensor';
 	public const ATTRIBUTION_REPORTING = 'attribution-reporting';
 	public const AUTOPLAY = 'autoplay';
+	public const BROWSING_TOPICS = 'browsing-topics';
 	public const CAMERA = 'camera';
 	public const CH_DPR = 'ch-dpr';
 	public const CH_DEVICE_MEMORY = 'ch-device-memory';
@@ -55,6 +56,7 @@ final class PermissionsPolicyFeatureEnum
 	public const GYROSCOPE = 'gyroscope';
 	public const HID = 'hid';
 	public const IDLE_DETECTION = 'idle-detection';
+	public const INTEREST_COHORT = 'interest-cohort';
 	public const JOIN_AD_INTEREST_GROUP = 'join-ad-interest-group';
 	public const KEYBOARD_MAP = 'keyboard-map';
 	public const MAGNETOMETER = 'magnetometer';
