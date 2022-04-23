@@ -53,13 +53,6 @@ final class FontFamilies implements \JsonSerializable
 	 */
 	public $fantasy;
 
-	/**
-	 * The pictograph font-family.
-	 *
-	 * @var string|null
-	 */
-	public $pictograph;
-
 
 	/**
 	 * @param object $data
@@ -86,9 +79,6 @@ final class FontFamilies implements \JsonSerializable
 		if (isset($data->fantasy)) {
 			$instance->fantasy = (string)$data->fantasy;
 		}
-		if (isset($data->pictograph)) {
-			$instance->pictograph = (string)$data->pictograph;
-		}
 		return $instance;
 	}
 
@@ -113,9 +103,6 @@ final class FontFamilies implements \JsonSerializable
 		}
 		if ($this->fantasy !== null) {
 			$data->fantasy = $this->fantasy;
-		}
-		if ($this->pictograph !== null) {
-			$data->pictograph = $this->pictograph;
 		}
 		return $data;
 	}

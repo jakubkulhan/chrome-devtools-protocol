@@ -20,6 +20,8 @@ use ChromeDevtoolsProtocol\Model\Runtime\ExceptionThrownEvent;
 use ChromeDevtoolsProtocol\Model\Runtime\ExecutionContextCreatedEvent;
 use ChromeDevtoolsProtocol\Model\Runtime\ExecutionContextDestroyedEvent;
 use ChromeDevtoolsProtocol\Model\Runtime\ExecutionContextsClearedEvent;
+use ChromeDevtoolsProtocol\Model\Runtime\GetExceptionDetailsRequest;
+use ChromeDevtoolsProtocol\Model\Runtime\GetExceptionDetailsResponse;
 use ChromeDevtoolsProtocol\Model\Runtime\GetHeapUsageResponse;
 use ChromeDevtoolsProtocol\Model\Runtime\GetIsolateIdResponse;
 use ChromeDevtoolsProtocol\Model\Runtime\GetPropertiesRequest;
@@ -103,6 +105,15 @@ class RuntimeDomain implements RuntimeDomainInterface
 	{
 		$response = $this->internalClient->executeCommand($ctx, 'Runtime.evaluate', $request);
 		return EvaluateResponse::fromJson($response);
+	}
+
+
+	public function getExceptionDetails(
+		ContextInterface $ctx,
+		GetExceptionDetailsRequest $request
+	): GetExceptionDetailsResponse {
+		$response = $this->internalClient->executeCommand($ctx, 'Runtime.getExceptionDetails', $request);
+		return GetExceptionDetailsResponse::fromJson($response);
 	}
 
 

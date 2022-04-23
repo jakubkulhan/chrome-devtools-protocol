@@ -13,6 +13,11 @@ final class FederatedAuthRequestIssueReasonEnum
 {
 	public const APPROVAL_DECLINED = 'ApprovalDeclined';
 	public const TOO_MANY_REQUESTS = 'TooManyRequests';
+	public const MANIFEST_LIST_HTTP_NOT_FOUND = 'ManifestListHttpNotFound';
+	public const MANIFEST_LIST_NO_RESPONSE = 'ManifestListNoResponse';
+	public const MANIFEST_LIST_INVALID_RESPONSE = 'ManifestListInvalidResponse';
+	public const MANIFEST_NOT_IN_MANIFEST_LIST = 'ManifestNotInManifestList';
+	public const MANIFEST_LIST_TOO_BIG = 'ManifestListTooBig';
 	public const MANIFEST_HTTP_NOT_FOUND = 'ManifestHttpNotFound';
 	public const MANIFEST_NO_RESPONSE = 'ManifestNoResponse';
 	public const MANIFEST_INVALID_RESPONSE = 'ManifestInvalidResponse';

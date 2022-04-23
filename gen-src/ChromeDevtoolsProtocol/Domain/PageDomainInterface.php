@@ -58,6 +58,7 @@ use ChromeDevtoolsProtocol\Model\Page\NavigateRequest;
 use ChromeDevtoolsProtocol\Model\Page\NavigateResponse;
 use ChromeDevtoolsProtocol\Model\Page\NavigateToHistoryEntryRequest;
 use ChromeDevtoolsProtocol\Model\Page\NavigatedWithinDocumentEvent;
+use ChromeDevtoolsProtocol\Model\Page\PrerenderAttemptCompletedEvent;
 use ChromeDevtoolsProtocol\Model\Page\PrintToPDFRequest;
 use ChromeDevtoolsProtocol\Model\Page\PrintToPDFResponse;
 use ChromeDevtoolsProtocol\Model\Page\ProduceCompilationCacheRequest;
@@ -1283,6 +1284,30 @@ interface PageDomainInterface
 	 * @return NavigatedWithinDocumentEvent
 	 */
 	public function awaitNavigatedWithinDocument(ContextInterface $ctx): NavigatedWithinDocumentEvent;
+
+
+	/**
+	 * Fired when a prerender attempt is completed.
+	 *
+	 * Listener will be called whenever event Page.prerenderAttemptCompleted is fired.
+	 *
+	 * @param callable $listener
+	 *
+	 * @return SubscriptionInterface
+	 */
+	public function addPrerenderAttemptCompletedListener(callable $listener): SubscriptionInterface;
+
+
+	/**
+	 * Fired when a prerender attempt is completed.
+	 *
+	 * Method will block until first Page.prerenderAttemptCompleted event is fired.
+	 *
+	 * @param ContextInterface $ctx
+	 *
+	 * @return PrerenderAttemptCompletedEvent
+	 */
+	public function awaitPrerenderAttemptCompleted(ContextInterface $ctx): PrerenderAttemptCompletedEvent;
 
 
 	/**

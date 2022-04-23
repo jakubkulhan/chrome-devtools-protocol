@@ -22,6 +22,7 @@ final class CallFunctionOnRequestBuilder
 	private $executionContextId;
 	private $objectGroup;
 	private $throwOnSideEffect;
+	private $generateWebDriverValue;
 
 
 	/**
@@ -44,6 +45,7 @@ final class CallFunctionOnRequestBuilder
 		$instance->executionContextId = $this->executionContextId;
 		$instance->objectGroup = $this->objectGroup;
 		$instance->throwOnSideEffect = $this->throwOnSideEffect;
+		$instance->generateWebDriverValue = $this->generateWebDriverValue;
 		return $instance;
 	}
 
@@ -176,6 +178,18 @@ final class CallFunctionOnRequestBuilder
 	public function setThrowOnSideEffect($throwOnSideEffect): self
 	{
 		$this->throwOnSideEffect = $throwOnSideEffect;
+		return $this;
+	}
+
+
+	/**
+	 * @param bool|null $generateWebDriverValue
+	 *
+	 * @return self
+	 */
+	public function setGenerateWebDriverValue($generateWebDriverValue): self
+	{
+		$this->generateWebDriverValue = $generateWebDriverValue;
 		return $this;
 	}
 }

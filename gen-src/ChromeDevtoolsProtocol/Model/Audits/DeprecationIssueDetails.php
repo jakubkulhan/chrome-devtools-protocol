@@ -27,9 +27,12 @@ final class DeprecationIssueDetails implements \JsonSerializable
 	/**
 	 * The id of an untranslated deprecation issue e.g. PrefixedStorageInfo.
 	 *
-	 * @var string
+	 * @var string|null
 	 */
 	public $deprecationType;
+
+	/** @var string */
+	public $type;
 
 
 	/**
@@ -51,6 +54,9 @@ final class DeprecationIssueDetails implements \JsonSerializable
 		if (isset($data->deprecationType)) {
 			$instance->deprecationType = (string)$data->deprecationType;
 		}
+		if (isset($data->type)) {
+			$instance->type = (string)$data->type;
+		}
 		return $instance;
 	}
 
@@ -69,6 +75,9 @@ final class DeprecationIssueDetails implements \JsonSerializable
 		}
 		if ($this->deprecationType !== null) {
 			$data->deprecationType = $this->deprecationType;
+		}
+		if ($this->type !== null) {
+			$data->type = $this->type;
 		}
 		return $data;
 	}

@@ -35,6 +35,12 @@ final class UserAgentMetadata implements \JsonSerializable
 	/** @var bool */
 	public $mobile;
 
+	/** @var string|null */
+	public $bitness;
+
+	/** @var bool|null */
+	public $wow64;
+
 
 	/**
 	 * @param object $data
@@ -73,6 +79,12 @@ final class UserAgentMetadata implements \JsonSerializable
 		if (isset($data->mobile)) {
 			$instance->mobile = (bool)$data->mobile;
 		}
+		if (isset($data->bitness)) {
+			$instance->bitness = (string)$data->bitness;
+		}
+		if (isset($data->wow64)) {
+			$instance->wow64 = (bool)$data->wow64;
+		}
 		return $instance;
 	}
 
@@ -109,6 +121,12 @@ final class UserAgentMetadata implements \JsonSerializable
 		}
 		if ($this->mobile !== null) {
 			$data->mobile = $this->mobile;
+		}
+		if ($this->bitness !== null) {
+			$data->bitness = $this->bitness;
+		}
+		if ($this->wow64 !== null) {
+			$data->wow64 = $this->wow64;
 		}
 		return $data;
 	}

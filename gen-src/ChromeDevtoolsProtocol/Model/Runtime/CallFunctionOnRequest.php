@@ -88,6 +88,13 @@ final class CallFunctionOnRequest implements \JsonSerializable
 	 */
 	public $throwOnSideEffect;
 
+	/**
+	 * Whether the result should be serialized according to https://w3c.github.io/webdriver-bidi.
+	 *
+	 * @var bool|null
+	 */
+	public $generateWebDriverValue;
+
 
 	/**
 	 * @param object $data
@@ -132,6 +139,9 @@ final class CallFunctionOnRequest implements \JsonSerializable
 		if (isset($data->throwOnSideEffect)) {
 			$instance->throwOnSideEffect = (bool)$data->throwOnSideEffect;
 		}
+		if (isset($data->generateWebDriverValue)) {
+			$instance->generateWebDriverValue = (bool)$data->generateWebDriverValue;
+		}
 		return $instance;
 	}
 
@@ -174,6 +184,9 @@ final class CallFunctionOnRequest implements \JsonSerializable
 		}
 		if ($this->throwOnSideEffect !== null) {
 			$data->throwOnSideEffect = $this->throwOnSideEffect;
+		}
+		if ($this->generateWebDriverValue !== null) {
+			$data->generateWebDriverValue = $this->generateWebDriverValue;
 		}
 		return $data;
 	}
