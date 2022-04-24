@@ -20,7 +20,6 @@ final class PrintToPDFRequestBuilder
 	private $marginLeft;
 	private $marginRight;
 	private $pageRanges;
-	private $ignoreInvalidPageRanges;
 	private $headerTemplate;
 	private $footerTemplate;
 	private $preferCSSPageSize;
@@ -44,7 +43,6 @@ final class PrintToPDFRequestBuilder
 		$instance->marginLeft = $this->marginLeft;
 		$instance->marginRight = $this->marginRight;
 		$instance->pageRanges = $this->pageRanges;
-		$instance->ignoreInvalidPageRanges = $this->ignoreInvalidPageRanges;
 		$instance->headerTemplate = $this->headerTemplate;
 		$instance->footerTemplate = $this->footerTemplate;
 		$instance->preferCSSPageSize = $this->preferCSSPageSize;
@@ -181,18 +179,6 @@ final class PrintToPDFRequestBuilder
 	public function setPageRanges($pageRanges): self
 	{
 		$this->pageRanges = $pageRanges;
-		return $this;
-	}
-
-
-	/**
-	 * @param bool|null $ignoreInvalidPageRanges
-	 *
-	 * @return self
-	 */
-	public function setIgnoreInvalidPageRanges($ignoreInvalidPageRanges): self
-	{
-		$this->ignoreInvalidPageRanges = $ignoreInvalidPageRanges;
 		return $this;
 	}
 
