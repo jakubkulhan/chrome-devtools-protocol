@@ -60,6 +60,7 @@ final class PermissionsPolicyFeatureEnum
 	public const INTEREST_COHORT = 'interest-cohort';
 	public const JOIN_AD_INTEREST_GROUP = 'join-ad-interest-group';
 	public const KEYBOARD_MAP = 'keyboard-map';
+	public const LOCAL_FONTS = 'local-fonts';
 	public const MAGNETOMETER = 'magnetometer';
 	public const MICROPHONE = 'microphone';
 	public const MIDI = 'midi';
