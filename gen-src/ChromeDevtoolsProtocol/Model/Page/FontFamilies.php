@@ -53,6 +53,13 @@ final class FontFamilies implements \JsonSerializable
 	 */
 	public $fantasy;
 
+	/**
+	 * The math font-family.
+	 *
+	 * @var string|null
+	 */
+	public $math;
+
 
 	/**
 	 * @param object $data
@@ -79,6 +86,9 @@ final class FontFamilies implements \JsonSerializable
 		if (isset($data->fantasy)) {
 			$instance->fantasy = (string)$data->fantasy;
 		}
+		if (isset($data->math)) {
+			$instance->math = (string)$data->math;
+		}
 		return $instance;
 	}
 
@@ -103,6 +113,9 @@ final class FontFamilies implements \JsonSerializable
 		}
 		if ($this->fantasy !== null) {
 			$data->fantasy = $this->fantasy;
+		}
+		if ($this->math !== null) {
+			$data->math = $this->math;
 		}
 		return $data;
 	}
