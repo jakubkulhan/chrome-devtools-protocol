@@ -67,7 +67,6 @@ final class DeprecationIssueTypeEnum
 	public const SELECTION_ADD_RANGE_INTERSECT = 'SelectionAddRangeIntersect';
 	public const SHARED_ARRAY_BUFFER_CONSTRUCTED_WITHOUT_ISOLATION = 'SharedArrayBufferConstructedWithoutIsolation';
 	public const TEXT_TO_SPEECH_DISALLOWED_BY_AUTOPLAY = 'TextToSpeech_DisallowedByAutoplay';
-	public const UNTRANSLATED = 'Untranslated';
 	public const V8_SHARED_ARRAY_BUFFER_CONSTRUCTED_IN_EXTENSION_WITHOUT_ISOLATION = 'V8SharedArrayBufferConstructedInExtensionWithoutIsolation';
 	public const WEB_CODECS_VIDEO_FRAME_DEFAULT_TIMESTAMP = 'WebCodecsVideoFrameDefaultTimestamp';
 	public const XHRJSON_ENCODING_DETECTION = 'XHRJSONEncodingDetection';

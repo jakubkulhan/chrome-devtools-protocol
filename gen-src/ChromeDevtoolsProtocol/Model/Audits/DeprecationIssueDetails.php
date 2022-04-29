@@ -3,7 +3,7 @@
 namespace ChromeDevtoolsProtocol\Model\Audits;
 
 /**
- * This issue tracks information needed to print a deprecation message. The formatting is inherited from the old console.log version, see more at: https://source.chromium.org/chromium/chromium/src/+/main:third_party/blink/renderer/core/frame/deprecation.cc TODO(crbug.com/1264960): Re-work format to add i18n support per: https://source.chromium.org/chromium/chromium/src/+/main:third_party/blink/public/devtools_protocol/README.md
+ * This issue tracks information needed to print a deprecation message. https://source.chromium.org/chromium/chromium/src/+/main:third_party/blink/renderer/core/frame/third_party/blink/renderer/core/frame/deprecation/README.md
  *
  * @generated This file has been auto-generated, do not edit.
  *
@@ -16,20 +16,6 @@ final class DeprecationIssueDetails implements \JsonSerializable
 
 	/** @var SourceCodeLocation */
 	public $sourceCodeLocation;
-
-	/**
-	 * The content of an untranslated deprecation issue, e.g. "window.inefficientLegacyStorageMethod will be removed in M97, around January 2022. Please use Web Storage or Indexed Database instead. This standard was abandoned in January, 1970. See https://www.chromestatus.com/feature/5684870116278272 for more details."
-	 *
-	 * @var string|null
-	 */
-	public $message;
-
-	/**
-	 * The id of an untranslated deprecation issue e.g. PrefixedStorageInfo.
-	 *
-	 * @var string|null
-	 */
-	public $deprecationType;
 
 	/** @var string */
 	public $type;
@@ -48,12 +34,6 @@ final class DeprecationIssueDetails implements \JsonSerializable
 		if (isset($data->sourceCodeLocation)) {
 			$instance->sourceCodeLocation = SourceCodeLocation::fromJson($data->sourceCodeLocation);
 		}
-		if (isset($data->message)) {
-			$instance->message = (string)$data->message;
-		}
-		if (isset($data->deprecationType)) {
-			$instance->deprecationType = (string)$data->deprecationType;
-		}
 		if (isset($data->type)) {
 			$instance->type = (string)$data->type;
 		}
@@ -69,12 +49,6 @@ final class DeprecationIssueDetails implements \JsonSerializable
 		}
 		if ($this->sourceCodeLocation !== null) {
 			$data->sourceCodeLocation = $this->sourceCodeLocation->jsonSerialize();
-		}
-		if ($this->message !== null) {
-			$data->message = $this->message;
-		}
-		if ($this->deprecationType !== null) {
-			$data->deprecationType = $this->deprecationType;
 		}
 		if ($this->type !== null) {
 			$data->type = $this->type;
