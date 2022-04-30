@@ -12,7 +12,6 @@ namespace ChromeDevtoolsProtocol\Model\Audits;
 final class DeprecationIssueTypeEnum
 {
 	public const AUTHORIZATION_COVERED_BY_WILDCARD = 'AuthorizationCoveredByWildcard';
-	public const BATTERY_STATUS_INSECURE_ORIGIN = 'BatteryStatusInsecureOrigin';
 	public const CAN_REQUEST_U_R_L_H_T_T_P_CONTAINING_NEWLINE = 'CanRequestURLHTTPContainingNewline';
 	public const CHROME_LOAD_TIMES_CONNECTION_INFO = 'ChromeLoadTimesConnectionInfo';
 	public const CHROME_LOAD_TIMES_FIRST_PAINT_AFTER_LOAD_TIME = 'ChromeLoadTimesFirstPaintAfterLoadTime';
