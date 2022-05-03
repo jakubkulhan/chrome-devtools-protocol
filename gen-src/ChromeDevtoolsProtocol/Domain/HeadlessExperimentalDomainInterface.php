@@ -20,7 +20,7 @@ use ChromeDevtoolsProtocol\SubscriptionInterface;
 interface HeadlessExperimentalDomainInterface
 {
 	/**
-	 * Sends a BeginFrame to the target and returns when the frame was completed. Optionally captures a screenshot from the resulting frame. Requires that the target was created with enabled BeginFrameControl. Designed for use with --run-all-compositor-stages-before-draw, see also https://goo.gl/3zHXhB for more background.
+	 * Sends a BeginFrame to the target and returns when the frame was completed. Optionally captures a screenshot from the resulting frame. Requires that the target was created with enabled BeginFrameControl. Designed for use with --run-all-compositor-stages-before-draw, see also https://goo.gle/chrome-headless-rendering for more background.
 	 *
 	 * @param ContextInterface $ctx
 	 * @param BeginFrameRequest $request
