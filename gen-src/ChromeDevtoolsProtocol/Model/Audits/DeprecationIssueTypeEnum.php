@@ -67,7 +67,6 @@ final class DeprecationIssueTypeEnum
 	public const SHARED_ARRAY_BUFFER_CONSTRUCTED_WITHOUT_ISOLATION = 'SharedArrayBufferConstructedWithoutIsolation';
 	public const TEXT_TO_SPEECH_DISALLOWED_BY_AUTOPLAY = 'TextToSpeech_DisallowedByAutoplay';
 	public const V8_SHARED_ARRAY_BUFFER_CONSTRUCTED_IN_EXTENSION_WITHOUT_ISOLATION = 'V8SharedArrayBufferConstructedInExtensionWithoutIsolation';
-	public const WEB_CODECS_VIDEO_FRAME_DEFAULT_TIMESTAMP = 'WebCodecsVideoFrameDefaultTimestamp';
 	public const XHRJSON_ENCODING_DETECTION = 'XHRJSONEncodingDetection';
 	public const XML_HTTP_REQUEST_SYNCHRONOUS_IN_NON_WORKER_OUTSIDE_BEFORE_UNLOAD = 'XMLHttpRequestSynchronousInNonWorkerOutsideBeforeUnload';
 	public const XR_SUPPORTS_SESSION = 'XRSupportsSession';
