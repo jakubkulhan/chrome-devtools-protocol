@@ -63,7 +63,7 @@ final class ScriptFailedToParseEvent implements \JsonSerializable
 	public $executionContextId;
 
 	/**
-	 * Content hash of the script.
+	 * Content hash of the script, SHA-256.
 	 *
 	 * @var string
 	 */

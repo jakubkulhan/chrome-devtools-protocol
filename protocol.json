@@ -5836,7 +5836,7 @@
                         },
                         {
                             "name": "hash",
-                            "description": "Content hash of the script.",
+                            "description": "Content hash of the script, SHA-256.",
                             "type": "string"
                         },
                         {
@@ -5940,7 +5940,7 @@
                         },
                         {
                             "name": "hash",
-                            "description": "Content hash of the script.",
+                            "description": "Content hash of the script, SHA-256.",
                             "type": "string"
                         },
                         {
@@ -21566,7 +21566,7 @@
                         },
                         {
                             "name": "generateWebDriverValue",
-                            "description": "Whether the result should be serialized according to https://w3c.github.io/webdriver-bidi.",
+                            "description": "Whether the result should contain `webDriverValue`, serialized according to https://w3c.github.io/webdriver-bidi. This is mutually exclusive with `returnByValue`, but resulting `objectId` is still provided.",
                             "experimental": true,
                             "optional": true,
                             "type": "boolean"
