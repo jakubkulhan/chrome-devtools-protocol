@@ -30,10 +30,7 @@ final class DeprecationIssueTypeEnum
 	public const GET_USER_MEDIA_INSECURE_ORIGIN = 'GetUserMediaInsecureOrigin';
 	public const HOST_CANDIDATE_ATTRIBUTE_GETTER = 'HostCandidateAttributeGetter';
 	public const INSECURE_PRIVATE_NETWORK_SUBRESOURCE_REQUEST = 'InsecurePrivateNetworkSubresourceRequest';
-	public const LEGACY_CONSTRAINT_GOOG_CPU_OVERUSE_DETECTION = 'LegacyConstraintGoogCpuOveruseDetection';
 	public const LEGACY_CONSTRAINT_GOOG_I_PV6 = 'LegacyConstraintGoogIPv6';
-	public const LEGACY_CONSTRAINT_GOOG_SCREENCAST_MIN_BITRATE = 'LegacyConstraintGoogScreencastMinBitrate';
-	public const LEGACY_CONSTRAINT_GOOG_SUSPEND_BELOW_MIN_BITRATE = 'LegacyConstraintGoogSuspendBelowMinBitrate';
 	public const LOCAL_C_S_S_FILE_EXTENSION_REJECTED = 'LocalCSSFileExtensionRejected';
 	public const MEDIA_ELEMENT_AUDIO_SOURCE_NODE = 'MediaElementAudioSourceNode';
 	public const MEDIA_SOURCE_ABORT_REMOVE = 'MediaSourceAbortRemove';
@@ -59,11 +56,9 @@ final class DeprecationIssueTypeEnum
 	public const RTC_CONSTRAINT_ENABLE_DTLS_SRTP_FALSE = 'RTCConstraintEnableDtlsSrtpFalse';
 	public const RTC_CONSTRAINT_ENABLE_DTLS_SRTP_TRUE = 'RTCConstraintEnableDtlsSrtpTrue';
 	public const RTC_PEER_CONNECTION_COMPLEX_PLAN_B_SDP_USING_DEFAULT_SDP_SEMANTICS = 'RTCPeerConnectionComplexPlanBSdpUsingDefaultSdpSemantics';
-	public const RTC_PEER_CONNECTION_LEGACY_CREATE_WITH_MEDIA_CONSTRAINTS = 'RTCPeerConnectionLegacyCreateWithMediaConstraints';
 	public const RTC_PEER_CONNECTION_SDP_SEMANTICS_PLAN_B = 'RTCPeerConnectionSdpSemanticsPlanB';
 	public const RTCP_MUX_POLICY_NEGOTIATE = 'RtcpMuxPolicyNegotiate';
 	public const RTP_DATA_CHANNEL = 'RTPDataChannel';
-	public const SELECTION_ADD_RANGE_INTERSECT = 'SelectionAddRangeIntersect';
 	public const SHARED_ARRAY_BUFFER_CONSTRUCTED_WITHOUT_ISOLATION = 'SharedArrayBufferConstructedWithoutIsolation';
 	public const TEXT_TO_SPEECH_DISALLOWED_BY_AUTOPLAY = 'TextToSpeech_DisallowedByAutoplay';
 	public const V8_SHARED_ARRAY_BUFFER_CONSTRUCTED_IN_EXTENSION_WITHOUT_ISOLATION = 'V8SharedArrayBufferConstructedInExtensionWithoutIsolation';
