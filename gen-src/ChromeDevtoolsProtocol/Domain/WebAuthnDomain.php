@@ -8,6 +8,7 @@ use ChromeDevtoolsProtocol\Model\WebAuthn\AddCredentialRequest;
 use ChromeDevtoolsProtocol\Model\WebAuthn\AddVirtualAuthenticatorRequest;
 use ChromeDevtoolsProtocol\Model\WebAuthn\AddVirtualAuthenticatorResponse;
 use ChromeDevtoolsProtocol\Model\WebAuthn\ClearCredentialsRequest;
+use ChromeDevtoolsProtocol\Model\WebAuthn\EnableRequest;
 use ChromeDevtoolsProtocol\Model\WebAuthn\GetCredentialRequest;
 use ChromeDevtoolsProtocol\Model\WebAuthn\GetCredentialResponse;
 use ChromeDevtoolsProtocol\Model\WebAuthn\GetCredentialsRequest;
@@ -57,9 +58,8 @@ class WebAuthnDomain implements WebAuthnDomainInterface
 	}
 
 
-	public function enable(ContextInterface $ctx): void
+	public function enable(ContextInterface $ctx, EnableRequest $request): void
 	{
-		$request = new \stdClass();
 		$this->internalClient->executeCommand($ctx, 'WebAuthn.enable', $request);
 	}
 

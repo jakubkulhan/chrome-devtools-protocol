@@ -7,6 +7,7 @@ use ChromeDevtoolsProtocol\Model\WebAuthn\AddCredentialRequest;
 use ChromeDevtoolsProtocol\Model\WebAuthn\AddVirtualAuthenticatorRequest;
 use ChromeDevtoolsProtocol\Model\WebAuthn\AddVirtualAuthenticatorResponse;
 use ChromeDevtoolsProtocol\Model\WebAuthn\ClearCredentialsRequest;
+use ChromeDevtoolsProtocol\Model\WebAuthn\EnableRequest;
 use ChromeDevtoolsProtocol\Model\WebAuthn\GetCredentialRequest;
 use ChromeDevtoolsProtocol\Model\WebAuthn\GetCredentialResponse;
 use ChromeDevtoolsProtocol\Model\WebAuthn\GetCredentialsRequest;
@@ -77,10 +78,11 @@ interface WebAuthnDomainInterface
 	 * Enable the WebAuthn domain and start intercepting credential storage and retrieval with a virtual authenticator.
 	 *
 	 * @param ContextInterface $ctx
+	 * @param EnableRequest $request
 	 *
 	 * @return void
 	 */
-	public function enable(ContextInterface $ctx): void;
+	public function enable(ContextInterface $ctx, EnableRequest $request): void;
 
 
 	/**
