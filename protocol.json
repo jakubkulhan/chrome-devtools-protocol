@@ -17316,6 +17316,7 @@
                         "ambient-light-sensor",
                         "attribution-reporting",
                         "autoplay",
+                        "bluetooth",
                         "browsing-topics",
                         "camera",
                         "ch-dpr",
@@ -18978,7 +18979,7 @@
                         },
                         {
                             "name": "loaderId",
-                            "description": "Loader identifier.",
+                            "description": "Loader identifier. This is omitted in case of same-document navigation, as the previously committed loaderId would not change.",
                             "optional": true,
                             "$ref": "Network.LoaderId"
                         },

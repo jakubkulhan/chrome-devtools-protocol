@@ -15,6 +15,7 @@ final class PermissionsPolicyFeatureEnum
 	public const AMBIENT_LIGHT_SENSOR = 'ambient-light-sensor';
 	public const ATTRIBUTION_REPORTING = 'attribution-reporting';
 	public const AUTOPLAY = 'autoplay';
+	public const BLUETOOTH = 'bluetooth';
 	public const BROWSING_TOPICS = 'browsing-topics';
 	public const CAMERA = 'camera';
 	public const CH_DPR = 'ch-dpr';

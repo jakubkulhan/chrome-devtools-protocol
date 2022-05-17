@@ -19,7 +19,7 @@ final class NavigateResponse implements \JsonSerializable
 	public $frameId;
 
 	/**
-	 * Loader identifier.
+	 * Loader identifier. This is omitted in case of same-document navigation, as the previously committed loaderId would not change.
 	 *
 	 * @var string
 	 */
