@@ -6321,6 +6321,11 @@
                             "name": "compatibilityMode",
                             "optional": true,
                             "$ref": "CompatibilityMode"
+                        },
+                        {
+                            "name": "assignedSlot",
+                            "optional": true,
+                            "$ref": "BackendNode"
                         }
                     ]
                 },
