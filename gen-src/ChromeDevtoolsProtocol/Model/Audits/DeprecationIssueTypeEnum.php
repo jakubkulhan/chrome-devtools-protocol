@@ -32,7 +32,6 @@ final class DeprecationIssueTypeEnum
 	public const INSECURE_PRIVATE_NETWORK_SUBRESOURCE_REQUEST = 'InsecurePrivateNetworkSubresourceRequest';
 	public const LEGACY_CONSTRAINT_GOOG_I_PV6 = 'LegacyConstraintGoogIPv6';
 	public const LOCAL_C_S_S_FILE_EXTENSION_REJECTED = 'LocalCSSFileExtensionRejected';
-	public const MEDIA_ELEMENT_AUDIO_SOURCE_NODE = 'MediaElementAudioSourceNode';
 	public const MEDIA_SOURCE_ABORT_REMOVE = 'MediaSourceAbortRemove';
 	public const MEDIA_SOURCE_DURATION_TRUNCATING_BUFFERED = 'MediaSourceDurationTruncatingBuffered';
 	public const NO_SYSEX_WEB_M_I_D_I_WITHOUT_PERMISSION = 'NoSysexWebMIDIWithoutPermission';
@@ -40,7 +39,6 @@ final class DeprecationIssueTypeEnum
 	public const NOTIFICATION_PERMISSION_REQUESTED_IFRAME = 'NotificationPermissionRequestedIframe';
 	public const OBSOLETE_WEB_RTC_CIPHER_SUITE = 'ObsoleteWebRtcCipherSuite';
 	public const PAYMENT_REQUEST_BASIC_CARD = 'PaymentRequestBasicCard';
-	public const PAYMENT_REQUEST_SHOW_WITHOUT_GESTURE = 'PaymentRequestShowWithoutGesture';
 	public const PICTURE_SOURCE_SRC = 'PictureSourceSrc';
 	public const PREFIXED_CANCEL_ANIMATION_FRAME = 'PrefixedCancelAnimationFrame';
 	public const PREFIXED_REQUEST_ANIMATION_FRAME = 'PrefixedRequestAnimationFrame';
