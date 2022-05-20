@@ -1,9 +1,9 @@
 <?php
 
-namespace ChromeDevtoolsProtocol\Model\DOMStorage;
+namespace ChromeDevtoolsProtocol\Model\Storage;
 
 /**
- * Response to DOMStorage.getStorageKeyForFrame command.
+ * Response to Storage.getStorageKeyForFrame command.
  *
  * @generated This file has been auto-generated, do not edit.
  *

@@ -21,7 +21,6 @@ final class DeprecationIssueTypeEnum
 	public const CROSS_ORIGIN_WINDOW_ALERT = 'CrossOriginWindowAlert';
 	public const CROSS_ORIGIN_WINDOW_CONFIRM = 'CrossOriginWindowConfirm';
 	public const CSS_SELECTOR_INTERNAL_MEDIA_CONTROLS_OVERLAY_CAST_BUTTON = 'CSSSelectorInternalMediaControlsOverlayCastButton';
-	public const CUSTOM_CURSOR_INTERSECTS_VIEWPORT = 'CustomCursorIntersectsViewport';
 	public const DEPRECATION_EXAMPLE = 'DeprecationExample';
 	public const DOCUMENT_DOMAIN_SETTING_WITHOUT_ORIGIN_AGENT_CLUSTER_HEADER = 'DocumentDomainSettingWithoutOriginAgentClusterHeader';
 	public const EVENT_PATH = 'EventPath';

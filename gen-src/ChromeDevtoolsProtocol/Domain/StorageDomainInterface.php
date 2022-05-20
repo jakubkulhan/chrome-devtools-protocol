@@ -13,6 +13,8 @@ use ChromeDevtoolsProtocol\Model\Storage\GetCookiesRequest;
 use ChromeDevtoolsProtocol\Model\Storage\GetCookiesResponse;
 use ChromeDevtoolsProtocol\Model\Storage\GetInterestGroupDetailsRequest;
 use ChromeDevtoolsProtocol\Model\Storage\GetInterestGroupDetailsResponse;
+use ChromeDevtoolsProtocol\Model\Storage\GetStorageKeyForFrameRequest;
+use ChromeDevtoolsProtocol\Model\Storage\GetStorageKeyForFrameResponse;
 use ChromeDevtoolsProtocol\Model\Storage\GetTrustTokensResponse;
 use ChromeDevtoolsProtocol\Model\Storage\GetUsageAndQuotaRequest;
 use ChromeDevtoolsProtocol\Model\Storage\GetUsageAndQuotaResponse;
@@ -95,6 +97,20 @@ interface StorageDomainInterface
 		ContextInterface $ctx,
 		GetInterestGroupDetailsRequest $request
 	): GetInterestGroupDetailsResponse;
+
+
+	/**
+	 * Returns a storage key given a frame id.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param GetStorageKeyForFrameRequest $request
+	 *
+	 * @return GetStorageKeyForFrameResponse
+	 */
+	public function getStorageKeyForFrame(
+		ContextInterface $ctx,
+		GetStorageKeyForFrameRequest $request
+	): GetStorageKeyForFrameResponse;
 
 
 	/**

@@ -14,6 +14,8 @@ use ChromeDevtoolsProtocol\Model\Storage\GetCookiesRequest;
 use ChromeDevtoolsProtocol\Model\Storage\GetCookiesResponse;
 use ChromeDevtoolsProtocol\Model\Storage\GetInterestGroupDetailsRequest;
 use ChromeDevtoolsProtocol\Model\Storage\GetInterestGroupDetailsResponse;
+use ChromeDevtoolsProtocol\Model\Storage\GetStorageKeyForFrameRequest;
+use ChromeDevtoolsProtocol\Model\Storage\GetStorageKeyForFrameResponse;
 use ChromeDevtoolsProtocol\Model\Storage\GetTrustTokensResponse;
 use ChromeDevtoolsProtocol\Model\Storage\GetUsageAndQuotaRequest;
 use ChromeDevtoolsProtocol\Model\Storage\GetUsageAndQuotaResponse;
@@ -73,6 +75,15 @@ class StorageDomain implements StorageDomainInterface
 	): GetInterestGroupDetailsResponse {
 		$response = $this->internalClient->executeCommand($ctx, 'Storage.getInterestGroupDetails', $request);
 		return GetInterestGroupDetailsResponse::fromJson($response);
+	}
+
+
+	public function getStorageKeyForFrame(
+		ContextInterface $ctx,
+		GetStorageKeyForFrameRequest $request
+	): GetStorageKeyForFrameResponse {
+		$response = $this->internalClient->executeCommand($ctx, 'Storage.getStorageKeyForFrame', $request);
+		return GetStorageKeyForFrameResponse::fromJson($response);
 	}
 
 

@@ -1557,7 +1557,6 @@
                         "CrossOriginWindowAlert",
                         "CrossOriginWindowConfirm",
                         "CSSSelectorInternalMediaControlsOverlayCastButton",
-                        "CustomCursorIntersectsViewport",
                         "DeprecationExample",
                         "DocumentDomainSettingWithoutOriginAgentClusterHeader",
                         "EventPath",
@@ -8930,21 +8929,6 @@
                             "items": {
                                 "$ref": "Item"
                             }
-                        }
-                    ]
-                },
-                {
-                    "name": "getStorageKeyForFrame",
-                    "parameters": [
-                        {
-                            "name": "frameId",
-                            "$ref": "Page.FrameId"
-                        }
-                    ],
-                    "returns": [
-                        {
-                            "name": "storageKey",
-                            "$ref": "SerializedStorageKey"
                         }
                     ]
                 },
@@ -23302,6 +23286,22 @@
                         {
                             "name": "details",
                             "$ref": "InterestGroupDetails"
+                        }
+                    ]
+                },
+                {
+                    "name": "getStorageKeyForFrame",
+                    "description": "Returns a storage key given a frame id.",
+                    "parameters": [
+                        {
+                            "name": "frameId",
+                            "$ref": "Page.FrameId"
+                        }
+                    ],
+                    "returns": [
+                        {
+                            "name": "storageKey",
+                            "$ref": "SerializedStorageKey"
                         }
                     ]
                 },

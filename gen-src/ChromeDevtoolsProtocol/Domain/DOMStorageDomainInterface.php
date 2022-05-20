@@ -10,8 +10,6 @@ use ChromeDevtoolsProtocol\Model\DOMStorage\DomStorageItemUpdatedEvent;
 use ChromeDevtoolsProtocol\Model\DOMStorage\DomStorageItemsClearedEvent;
 use ChromeDevtoolsProtocol\Model\DOMStorage\GetDOMStorageItemsRequest;
 use ChromeDevtoolsProtocol\Model\DOMStorage\GetDOMStorageItemsResponse;
-use ChromeDevtoolsProtocol\Model\DOMStorage\GetStorageKeyForFrameRequest;
-use ChromeDevtoolsProtocol\Model\DOMStorage\GetStorageKeyForFrameResponse;
 use ChromeDevtoolsProtocol\Model\DOMStorage\RemoveDOMStorageItemRequest;
 use ChromeDevtoolsProtocol\Model\DOMStorage\SetDOMStorageItemRequest;
 use ChromeDevtoolsProtocol\SubscriptionInterface;
@@ -70,20 +68,6 @@ interface DOMStorageDomainInterface
 		ContextInterface $ctx,
 		GetDOMStorageItemsRequest $request
 	): GetDOMStorageItemsResponse;
-
-
-	/**
-	 * Call DOMStorage.getStorageKeyForFrame command.
-	 *
-	 * @param ContextInterface $ctx
-	 * @param GetStorageKeyForFrameRequest $request
-	 *
-	 * @return GetStorageKeyForFrameResponse
-	 */
-	public function getStorageKeyForFrame(
-		ContextInterface $ctx,
-		GetStorageKeyForFrameRequest $request
-	): GetStorageKeyForFrameResponse;
 
 
 	/**

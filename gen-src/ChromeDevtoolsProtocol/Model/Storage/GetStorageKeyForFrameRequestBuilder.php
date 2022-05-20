@@ -1,6 +1,6 @@
 <?php
 
-namespace ChromeDevtoolsProtocol\Model\DOMStorage;
+namespace ChromeDevtoolsProtocol\Model\Storage;
 
 use ChromeDevtoolsProtocol\Exception\BuilderException;
 
