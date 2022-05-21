@@ -9487,6 +9487,17 @@
                     ]
                 },
                 {
+                    "name": "setHardwareConcurrencyOverride",
+                    "experimental": true,
+                    "parameters": [
+                        {
+                            "name": "hardwareConcurrency",
+                            "description": "Hardware concurrency to report",
+                            "type": "integer"
+                        }
+                    ]
+                },
+                {
                     "name": "setIdleOverride",
                     "description": "Overrides the Idle state.",
                     "experimental": true,

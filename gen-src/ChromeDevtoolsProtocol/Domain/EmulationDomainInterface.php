@@ -16,6 +16,7 @@ use ChromeDevtoolsProtocol\Model\Emulation\SetEmulatedMediaRequest;
 use ChromeDevtoolsProtocol\Model\Emulation\SetEmulatedVisionDeficiencyRequest;
 use ChromeDevtoolsProtocol\Model\Emulation\SetFocusEmulationEnabledRequest;
 use ChromeDevtoolsProtocol\Model\Emulation\SetGeolocationOverrideRequest;
+use ChromeDevtoolsProtocol\Model\Emulation\SetHardwareConcurrencyOverrideRequest;
 use ChromeDevtoolsProtocol\Model\Emulation\SetIdleOverrideRequest;
 use ChromeDevtoolsProtocol\Model\Emulation\SetLocaleOverrideRequest;
 use ChromeDevtoolsProtocol\Model\Emulation\SetNavigatorOverridesRequest;
@@ -223,6 +224,20 @@ interface EmulationDomainInterface
 	 * @return void
 	 */
 	public function setGeolocationOverride(ContextInterface $ctx, SetGeolocationOverrideRequest $request): void;
+
+
+	/**
+	 * Call Emulation.setHardwareConcurrencyOverride command.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param SetHardwareConcurrencyOverrideRequest $request
+	 *
+	 * @return void
+	 */
+	public function setHardwareConcurrencyOverride(
+		ContextInterface $ctx,
+		SetHardwareConcurrencyOverrideRequest $request
+	): void;
 
 
 	/**
