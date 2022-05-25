@@ -22,7 +22,6 @@ final class PermissionsPolicyFeatureEnum
 	public const CH_DEVICE_MEMORY = 'ch-device-memory';
 	public const CH_DOWNLINK = 'ch-downlink';
 	public const CH_ECT = 'ch-ect';
-	public const CH_PARTITIONED_COOKIES = 'ch-partitioned-cookies';
 	public const CH_PREFERS_COLOR_SCHEME = 'ch-prefers-color-scheme';
 	public const CH_RTT = 'ch-rtt';
 	public const CH_SAVE_DATA = 'ch-save-data';

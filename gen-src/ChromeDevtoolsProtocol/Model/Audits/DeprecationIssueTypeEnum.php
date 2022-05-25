@@ -55,7 +55,6 @@ final class DeprecationIssueTypeEnum
 	public const RTC_PEER_CONNECTION_COMPLEX_PLAN_B_SDP_USING_DEFAULT_SDP_SEMANTICS = 'RTCPeerConnectionComplexPlanBSdpUsingDefaultSdpSemantics';
 	public const RTC_PEER_CONNECTION_SDP_SEMANTICS_PLAN_B = 'RTCPeerConnectionSdpSemanticsPlanB';
 	public const RTCP_MUX_POLICY_NEGOTIATE = 'RtcpMuxPolicyNegotiate';
-	public const RTP_DATA_CHANNEL = 'RTPDataChannel';
 	public const SHARED_ARRAY_BUFFER_CONSTRUCTED_WITHOUT_ISOLATION = 'SharedArrayBufferConstructedWithoutIsolation';
 	public const TEXT_TO_SPEECH_DISALLOWED_BY_AUTOPLAY = 'TextToSpeech_DisallowedByAutoplay';
 	public const V8_SHARED_ARRAY_BUFFER_CONSTRUCTED_IN_EXTENSION_WITHOUT_ISOLATION = 'V8SharedArrayBufferConstructedInExtensionWithoutIsolation';
