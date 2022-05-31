@@ -116,7 +116,6 @@ final class BackForwardCacheNotRestoredReasonEnum
 	public const CONTENT_MEDIA_DEVICES_DISPATCHER_HOST = 'ContentMediaDevicesDispatcherHost';
 	public const CONTENT_WEB_BLUETOOTH = 'ContentWebBluetooth';
 	public const CONTENT_WEB_U_S_B = 'ContentWebUSB';
-	public const CONTENT_MEDIA_SESSION = 'ContentMediaSession';
 	public const CONTENT_MEDIA_SESSION_SERVICE = 'ContentMediaSessionService';
 	public const CONTENT_SCREEN_READER = 'ContentScreenReader';
 	public const EMBEDDER_POPUP_BLOCKER_TAB_HELPER = 'EmbedderPopupBlockerTabHelper';
