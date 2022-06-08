@@ -12,6 +12,7 @@ final class TakeHeapSnapshotRequestBuilder
 	private $reportProgress;
 	private $treatGlobalObjectsAsRoots;
 	private $captureNumericValue;
+	private $exposeInternals;
 
 
 	/**
@@ -23,6 +24,7 @@ final class TakeHeapSnapshotRequestBuilder
 		$instance->reportProgress = $this->reportProgress;
 		$instance->treatGlobalObjectsAsRoots = $this->treatGlobalObjectsAsRoots;
 		$instance->captureNumericValue = $this->captureNumericValue;
+		$instance->exposeInternals = $this->exposeInternals;
 		return $instance;
 	}
 
@@ -59,6 +61,18 @@ final class TakeHeapSnapshotRequestBuilder
 	public function setCaptureNumericValue($captureNumericValue): self
 	{
 		$this->captureNumericValue = $captureNumericValue;
+		return $this;
+	}
+
+
+	/**
+	 * @param bool|null $exposeInternals
+	 *
+	 * @return self
+	 */
+	public function setExposeInternals($exposeInternals): self
+	{
+		$this->exposeInternals = $exposeInternals;
 		return $this;
 	}
 }
