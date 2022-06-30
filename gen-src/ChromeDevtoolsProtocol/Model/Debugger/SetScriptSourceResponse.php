@@ -44,7 +44,14 @@ final class SetScriptSourceResponse implements \JsonSerializable
 	public $asyncStackTraceId;
 
 	/**
-	 * Exception details if any.
+	 * Whether the operation was successful or not. Only `Ok` denotes a successful live edit while the other enum variants denote why the live edit failed.
+	 *
+	 * @var string
+	 */
+	public $status;
+
+	/**
+	 * Exception details if any. Only present when `status` is `CompileError`.
 	 *
 	 * @var ExceptionDetails|null
 	 */
@@ -73,6 +80,9 @@ final class SetScriptSourceResponse implements \JsonSerializable
 		if (isset($data->asyncStackTraceId)) {
 			$instance->asyncStackTraceId = StackTraceId::fromJson($data->asyncStackTraceId);
 		}
+		if (isset($data->status)) {
+			$instance->status = (string)$data->status;
+		}
 		if (isset($data->exceptionDetails)) {
 			$instance->exceptionDetails = ExceptionDetails::fromJson($data->exceptionDetails);
 		}
@@ -97,6 +107,9 @@ final class SetScriptSourceResponse implements \JsonSerializable
 		}
 		if ($this->asyncStackTraceId !== null) {
 			$data->asyncStackTraceId = $this->asyncStackTraceId->jsonSerialize();
+		}
+		if ($this->status !== null) {
+			$data->status = $this->status;
 		}
 		if ($this->exceptionDetails !== null) {
 			$data->exceptionDetails = $this->exceptionDetails->jsonSerialize();

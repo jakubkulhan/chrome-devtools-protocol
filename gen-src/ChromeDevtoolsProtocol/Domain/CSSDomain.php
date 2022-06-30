@@ -38,6 +38,8 @@ use ChromeDevtoolsProtocol\Model\CSS\SetMediaTextRequest;
 use ChromeDevtoolsProtocol\Model\CSS\SetMediaTextResponse;
 use ChromeDevtoolsProtocol\Model\CSS\SetRuleSelectorRequest;
 use ChromeDevtoolsProtocol\Model\CSS\SetRuleSelectorResponse;
+use ChromeDevtoolsProtocol\Model\CSS\SetScopeTextRequest;
+use ChromeDevtoolsProtocol\Model\CSS\SetScopeTextResponse;
 use ChromeDevtoolsProtocol\Model\CSS\SetStyleSheetTextRequest;
 use ChromeDevtoolsProtocol\Model\CSS\SetStyleSheetTextResponse;
 use ChromeDevtoolsProtocol\Model\CSS\SetStyleTextsRequest;
@@ -214,6 +216,13 @@ class CSSDomain implements CSSDomainInterface
 	{
 		$response = $this->internalClient->executeCommand($ctx, 'CSS.setRuleSelector', $request);
 		return SetRuleSelectorResponse::fromJson($response);
+	}
+
+
+	public function setScopeText(ContextInterface $ctx, SetScopeTextRequest $request): SetScopeTextResponse
+	{
+		$response = $this->internalClient->executeCommand($ctx, 'CSS.setScopeText', $request);
+		return SetScopeTextResponse::fromJson($response);
 	}
 
 

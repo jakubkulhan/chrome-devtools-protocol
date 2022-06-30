@@ -337,7 +337,7 @@ interface DebuggerDomainInterface
 
 
 	/**
-	 * Edits JavaScript source live.
+	 * Edits JavaScript source live. In general, functions that are currently on the stack can not be edited with a single exception: If the edited function is the top-most stack frame and that is the only activation of that function on the stack. In this case the live edit will be successful and a `Debugger.restartFrame` for the top-most function is automatically triggered.
 	 *
 	 * @param ContextInterface $ctx
 	 * @param SetScriptSourceRequest $request

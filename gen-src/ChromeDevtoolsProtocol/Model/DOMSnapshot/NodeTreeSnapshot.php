@@ -103,6 +103,13 @@ final class NodeTreeSnapshot implements \JsonSerializable
 	public $pseudoType;
 
 	/**
+	 * Pseudo element identifier for this node. Only present if there is a valid pseudoType.
+	 *
+	 * @var RareStringData|null
+	 */
+	public $pseudoIdentifier;
+
+	/**
 	 * Whether this DOM node responds to mouse clicks. This includes nodes that have had click event listeners attached via JavaScript as well as anchor tags that naturally navigate when clicked.
 	 *
 	 * @var RareBooleanData|null
@@ -204,6 +211,9 @@ final class NodeTreeSnapshot implements \JsonSerializable
 		if (isset($data->pseudoType)) {
 			$instance->pseudoType = RareStringData::fromJson($data->pseudoType);
 		}
+		if (isset($data->pseudoIdentifier)) {
+			$instance->pseudoIdentifier = RareStringData::fromJson($data->pseudoIdentifier);
+		}
 		if (isset($data->isClickable)) {
 			$instance->isClickable = RareBooleanData::fromJson($data->isClickable);
 		}
@@ -292,6 +302,9 @@ final class NodeTreeSnapshot implements \JsonSerializable
 		}
 		if ($this->pseudoType !== null) {
 			$data->pseudoType = $this->pseudoType->jsonSerialize();
+		}
+		if ($this->pseudoIdentifier !== null) {
+			$data->pseudoIdentifier = $this->pseudoIdentifier->jsonSerialize();
 		}
 		if ($this->isClickable !== null) {
 			$data->isClickable = $this->isClickable->jsonSerialize();

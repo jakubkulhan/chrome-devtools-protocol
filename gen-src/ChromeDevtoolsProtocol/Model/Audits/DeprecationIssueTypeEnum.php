@@ -28,6 +28,7 @@ final class DeprecationIssueTypeEnum
 	public const GEOLOCATION_INSECURE_ORIGIN_DEPRECATED_NOT_REMOVED = 'GeolocationInsecureOriginDeprecatedNotRemoved';
 	public const GET_USER_MEDIA_INSECURE_ORIGIN = 'GetUserMediaInsecureOrigin';
 	public const HOST_CANDIDATE_ATTRIBUTE_GETTER = 'HostCandidateAttributeGetter';
+	public const IDENTITY_IN_CAN_MAKE_PAYMENT_EVENT = 'IdentityInCanMakePaymentEvent';
 	public const INSECURE_PRIVATE_NETWORK_SUBRESOURCE_REQUEST = 'InsecurePrivateNetworkSubresourceRequest';
 	public const LEGACY_CONSTRAINT_GOOG_I_PV6 = 'LegacyConstraintGoogIPv6';
 	public const LOCAL_C_S_S_FILE_EXTENSION_REJECTED = 'LocalCSSFileExtensionRejected';
@@ -37,6 +38,7 @@ final class DeprecationIssueTypeEnum
 	public const NOTIFICATION_INSECURE_ORIGIN = 'NotificationInsecureOrigin';
 	public const NOTIFICATION_PERMISSION_REQUESTED_IFRAME = 'NotificationPermissionRequestedIframe';
 	public const OBSOLETE_WEB_RTC_CIPHER_SUITE = 'ObsoleteWebRtcCipherSuite';
+	public const OPEN_WEB_DATABASE_INSECURE_CONTEXT = 'OpenWebDatabaseInsecureContext';
 	public const PICTURE_SOURCE_SRC = 'PictureSourceSrc';
 	public const PREFIXED_CANCEL_ANIMATION_FRAME = 'PrefixedCancelAnimationFrame';
 	public const PREFIXED_REQUEST_ANIMATION_FRAME = 'PrefixedRequestAnimationFrame';

@@ -19,6 +19,13 @@ final class TraceConfig implements \JsonSerializable
 	public $recordMode;
 
 	/**
+	 * Size of the trace buffer in kilobytes. If not specified or zero is passed, a default value of 200 MB would be used.
+	 *
+	 * @var int|float|null
+	 */
+	public $traceBufferSizeInKb;
+
+	/**
 	 * Turns on JavaScript stack sampling.
 	 *
 	 * @var bool|null
@@ -78,6 +85,9 @@ final class TraceConfig implements \JsonSerializable
 		if (isset($data->recordMode)) {
 			$instance->recordMode = (string)$data->recordMode;
 		}
+		if (isset($data->traceBufferSizeInKb)) {
+			$instance->traceBufferSizeInKb = $data->traceBufferSizeInKb;
+		}
 		if (isset($data->enableSampling)) {
 			$instance->enableSampling = (bool)$data->enableSampling;
 		}
@@ -117,6 +127,9 @@ final class TraceConfig implements \JsonSerializable
 		$data = new \stdClass();
 		if ($this->recordMode !== null) {
 			$data->recordMode = $this->recordMode;
+		}
+		if ($this->traceBufferSizeInKb !== null) {
+			$data->traceBufferSizeInKb = $this->traceBufferSizeInKb;
 		}
 		if ($this->enableSampling !== null) {
 			$data->enableSampling = $this->enableSampling;

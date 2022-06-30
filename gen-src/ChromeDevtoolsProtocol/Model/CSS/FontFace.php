@@ -47,6 +47,13 @@ final class FontFace implements \JsonSerializable
 	public $fontStretch;
 
 	/**
+	 * The font-display.
+	 *
+	 * @var string
+	 */
+	public $fontDisplay;
+
+	/**
 	 * The unicode-range.
 	 *
 	 * @var string
@@ -97,6 +104,9 @@ final class FontFace implements \JsonSerializable
 		if (isset($data->fontStretch)) {
 			$instance->fontStretch = (string)$data->fontStretch;
 		}
+		if (isset($data->fontDisplay)) {
+			$instance->fontDisplay = (string)$data->fontDisplay;
+		}
 		if (isset($data->unicodeRange)) {
 			$instance->unicodeRange = (string)$data->unicodeRange;
 		}
@@ -133,6 +143,9 @@ final class FontFace implements \JsonSerializable
 		}
 		if ($this->fontStretch !== null) {
 			$data->fontStretch = $this->fontStretch;
+		}
+		if ($this->fontDisplay !== null) {
+			$data->fontDisplay = $this->fontDisplay;
 		}
 		if ($this->unicodeRange !== null) {
 			$data->unicodeRange = $this->unicodeRange;

@@ -67,6 +67,13 @@ final class CSSRule implements \JsonSerializable
 	 */
 	public $layers;
 
+	/**
+	 * @scope CSS at-rule array. The array enumerates @scope at-rules starting with the innermost one, going outwards.
+	 *
+	 * @var CSSScope[]|null
+	 */
+	public $scopes;
+
 
 	/**
 	 * @param object $data
@@ -111,6 +118,12 @@ final class CSSRule implements \JsonSerializable
 				$instance->layers[] = CSSLayer::fromJson($item);
 			}
 		}
+		if (isset($data->scopes)) {
+			$instance->scopes = [];
+			foreach ($data->scopes as $item) {
+				$instance->scopes[] = CSSScope::fromJson($item);
+			}
+		}
 		return $instance;
 	}
 
@@ -152,6 +165,12 @@ final class CSSRule implements \JsonSerializable
 			$data->layers = [];
 			foreach ($this->layers as $item) {
 				$data->layers[] = $item->jsonSerialize();
+			}
+		}
+		if ($this->scopes !== null) {
+			$data->scopes = [];
+			foreach ($this->scopes as $item) {
+				$data->scopes[] = $item->jsonSerialize();
 			}
 		}
 		return $data;

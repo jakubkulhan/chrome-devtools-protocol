@@ -37,6 +37,8 @@ use ChromeDevtoolsProtocol\Model\CSS\SetMediaTextRequest;
 use ChromeDevtoolsProtocol\Model\CSS\SetMediaTextResponse;
 use ChromeDevtoolsProtocol\Model\CSS\SetRuleSelectorRequest;
 use ChromeDevtoolsProtocol\Model\CSS\SetRuleSelectorResponse;
+use ChromeDevtoolsProtocol\Model\CSS\SetScopeTextRequest;
+use ChromeDevtoolsProtocol\Model\CSS\SetScopeTextResponse;
 use ChromeDevtoolsProtocol\Model\CSS\SetStyleSheetTextRequest;
 use ChromeDevtoolsProtocol\Model\CSS\SetStyleSheetTextResponse;
 use ChromeDevtoolsProtocol\Model\CSS\SetStyleTextsRequest;
@@ -299,6 +301,17 @@ interface CSSDomainInterface
 	 * @return SetRuleSelectorResponse
 	 */
 	public function setRuleSelector(ContextInterface $ctx, SetRuleSelectorRequest $request): SetRuleSelectorResponse;
+
+
+	/**
+	 * Modifies the expression of a scope at-rule.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param SetScopeTextRequest $request
+	 *
+	 * @return SetScopeTextResponse
+	 */
+	public function setScopeText(ContextInterface $ctx, SetScopeTextRequest $request): SetScopeTextResponse;
 
 
 	/**

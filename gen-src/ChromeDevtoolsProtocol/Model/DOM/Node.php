@@ -145,6 +145,13 @@ final class Node implements \JsonSerializable
 	public $pseudoType;
 
 	/**
+	 * Pseudo element identifier for this node. Only present if there is a valid pseudoType.
+	 *
+	 * @var string|null
+	 */
+	public $pseudoIdentifier;
+
+	/**
 	 * Shadow root type.
 	 *
 	 * @var string
@@ -284,6 +291,9 @@ final class Node implements \JsonSerializable
 		if (isset($data->pseudoType)) {
 			$instance->pseudoType = (string)$data->pseudoType;
 		}
+		if (isset($data->pseudoIdentifier)) {
+			$instance->pseudoIdentifier = (string)$data->pseudoIdentifier;
+		}
 		if (isset($data->shadowRootType)) {
 			$instance->shadowRootType = (string)$data->shadowRootType;
 		}
@@ -395,6 +405,9 @@ final class Node implements \JsonSerializable
 		}
 		if ($this->pseudoType !== null) {
 			$data->pseudoType = $this->pseudoType;
+		}
+		if ($this->pseudoIdentifier !== null) {
+			$data->pseudoIdentifier = $this->pseudoIdentifier;
 		}
 		if ($this->shadowRootType !== null) {
 			$data->shadowRootType = $this->shadowRootType;

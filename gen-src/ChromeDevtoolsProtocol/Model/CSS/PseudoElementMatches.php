@@ -19,6 +19,13 @@ final class PseudoElementMatches implements \JsonSerializable
 	public $pseudoType;
 
 	/**
+	 * Pseudo element custom ident.
+	 *
+	 * @var string|null
+	 */
+	public $pseudoIdentifier;
+
+	/**
 	 * Matches of CSS rules applicable to the pseudo style.
 	 *
 	 * @var RuleMatch[]
@@ -36,6 +43,9 @@ final class PseudoElementMatches implements \JsonSerializable
 		if (isset($data->pseudoType)) {
 			$instance->pseudoType = (string)$data->pseudoType;
 		}
+		if (isset($data->pseudoIdentifier)) {
+			$instance->pseudoIdentifier = (string)$data->pseudoIdentifier;
+		}
 		if (isset($data->matches)) {
 			$instance->matches = [];
 			foreach ($data->matches as $item) {
@@ -51,6 +61,9 @@ final class PseudoElementMatches implements \JsonSerializable
 		$data = new \stdClass();
 		if ($this->pseudoType !== null) {
 			$data->pseudoType = $this->pseudoType;
+		}
+		if ($this->pseudoIdentifier !== null) {
+			$data->pseudoIdentifier = $this->pseudoIdentifier;
 		}
 		if ($this->matches !== null) {
 			$data->matches = [];

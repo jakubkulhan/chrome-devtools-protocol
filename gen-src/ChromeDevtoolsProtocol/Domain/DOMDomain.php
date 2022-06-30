@@ -51,6 +51,7 @@ use ChromeDevtoolsProtocol\Model\DOM\GetRelayoutBoundaryRequest;
 use ChromeDevtoolsProtocol\Model\DOM\GetRelayoutBoundaryResponse;
 use ChromeDevtoolsProtocol\Model\DOM\GetSearchResultsRequest;
 use ChromeDevtoolsProtocol\Model\DOM\GetSearchResultsResponse;
+use ChromeDevtoolsProtocol\Model\DOM\GetTopLayerElementsResponse;
 use ChromeDevtoolsProtocol\Model\DOM\InlineStyleInvalidatedEvent;
 use ChromeDevtoolsProtocol\Model\DOM\MoveToRequest;
 use ChromeDevtoolsProtocol\Model\DOM\MoveToResponse;
@@ -86,6 +87,7 @@ use ChromeDevtoolsProtocol\Model\DOM\SetNodeValueRequest;
 use ChromeDevtoolsProtocol\Model\DOM\SetOuterHTMLRequest;
 use ChromeDevtoolsProtocol\Model\DOM\ShadowRootPoppedEvent;
 use ChromeDevtoolsProtocol\Model\DOM\ShadowRootPushedEvent;
+use ChromeDevtoolsProtocol\Model\DOM\TopLayerElementsUpdatedEvent;
 use ChromeDevtoolsProtocol\SubscriptionInterface;
 
 class DOMDomain implements DOMDomainInterface
@@ -264,6 +266,14 @@ class DOMDomain implements DOMDomainInterface
 	{
 		$response = $this->internalClient->executeCommand($ctx, 'DOM.getSearchResults', $request);
 		return GetSearchResultsResponse::fromJson($response);
+	}
+
+
+	public function getTopLayerElements(ContextInterface $ctx): GetTopLayerElementsResponse
+	{
+		$request = new \stdClass();
+		$response = $this->internalClient->executeCommand($ctx, 'DOM.getTopLayerElements', $request);
+		return GetTopLayerElementsResponse::fromJson($response);
 	}
 
 
@@ -635,5 +645,19 @@ class DOMDomain implements DOMDomainInterface
 	public function awaitShadowRootPushed(ContextInterface $ctx): ShadowRootPushedEvent
 	{
 		return ShadowRootPushedEvent::fromJson($this->internalClient->awaitEvent($ctx, 'DOM.shadowRootPushed'));
+	}
+
+
+	public function addTopLayerElementsUpdatedListener(callable $listener): SubscriptionInterface
+	{
+		return $this->internalClient->addListener('DOM.topLayerElementsUpdated', function ($event) use ($listener) {
+			return $listener(TopLayerElementsUpdatedEvent::fromJson($event));
+		});
+	}
+
+
+	public function awaitTopLayerElementsUpdated(ContextInterface $ctx): TopLayerElementsUpdatedEvent
+	{
+		return TopLayerElementsUpdatedEvent::fromJson($this->internalClient->awaitEvent($ctx, 'DOM.topLayerElementsUpdated'));
 	}
 }

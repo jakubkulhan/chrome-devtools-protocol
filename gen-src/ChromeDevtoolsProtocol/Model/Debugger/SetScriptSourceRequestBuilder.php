@@ -14,6 +14,7 @@ final class SetScriptSourceRequestBuilder
 	private $scriptId;
 	private $scriptSource;
 	private $dryRun;
+	private $allowTopFrameEditing;
 
 
 	/**
@@ -31,6 +32,7 @@ final class SetScriptSourceRequestBuilder
 		}
 		$instance->scriptSource = $this->scriptSource;
 		$instance->dryRun = $this->dryRun;
+		$instance->allowTopFrameEditing = $this->allowTopFrameEditing;
 		return $instance;
 	}
 
@@ -67,6 +69,18 @@ final class SetScriptSourceRequestBuilder
 	public function setDryRun($dryRun): self
 	{
 		$this->dryRun = $dryRun;
+		return $this;
+	}
+
+
+	/**
+	 * @param bool|null $allowTopFrameEditing
+	 *
+	 * @return self
+	 */
+	public function setAllowTopFrameEditing($allowTopFrameEditing): self
+	{
+		$this->allowTopFrameEditing = $allowTopFrameEditing;
 		return $this;
 	}
 }

@@ -50,6 +50,7 @@ use ChromeDevtoolsProtocol\Model\DOM\GetRelayoutBoundaryRequest;
 use ChromeDevtoolsProtocol\Model\DOM\GetRelayoutBoundaryResponse;
 use ChromeDevtoolsProtocol\Model\DOM\GetSearchResultsRequest;
 use ChromeDevtoolsProtocol\Model\DOM\GetSearchResultsResponse;
+use ChromeDevtoolsProtocol\Model\DOM\GetTopLayerElementsResponse;
 use ChromeDevtoolsProtocol\Model\DOM\InlineStyleInvalidatedEvent;
 use ChromeDevtoolsProtocol\Model\DOM\MoveToRequest;
 use ChromeDevtoolsProtocol\Model\DOM\MoveToResponse;
@@ -85,6 +86,7 @@ use ChromeDevtoolsProtocol\Model\DOM\SetNodeValueRequest;
 use ChromeDevtoolsProtocol\Model\DOM\SetOuterHTMLRequest;
 use ChromeDevtoolsProtocol\Model\DOM\ShadowRootPoppedEvent;
 use ChromeDevtoolsProtocol\Model\DOM\ShadowRootPushedEvent;
+use ChromeDevtoolsProtocol\Model\DOM\TopLayerElementsUpdatedEvent;
 use ChromeDevtoolsProtocol\SubscriptionInterface;
 
 /**
@@ -359,6 +361,16 @@ interface DOMDomainInterface
 	 * @return GetSearchResultsResponse
 	 */
 	public function getSearchResults(ContextInterface $ctx, GetSearchResultsRequest $request): GetSearchResultsResponse;
+
+
+	/**
+	 * Returns NodeIds of current top layer elements. Top layer is rendered closest to the user within a viewport, therefore its elements always appear on top of all other content.
+	 *
+	 * @param ContextInterface $ctx
+	 *
+	 * @return GetTopLayerElementsResponse
+	 */
+	public function getTopLayerElements(ContextInterface $ctx): GetTopLayerElementsResponse;
 
 
 	/**
@@ -981,4 +993,28 @@ interface DOMDomainInterface
 	 * @return ShadowRootPushedEvent
 	 */
 	public function awaitShadowRootPushed(ContextInterface $ctx): ShadowRootPushedEvent;
+
+
+	/**
+	 * Called when top layer elements are changed.
+	 *
+	 * Listener will be called whenever event DOM.topLayerElementsUpdated is fired.
+	 *
+	 * @param callable $listener
+	 *
+	 * @return SubscriptionInterface
+	 */
+	public function addTopLayerElementsUpdatedListener(callable $listener): SubscriptionInterface;
+
+
+	/**
+	 * Called when top layer elements are changed.
+	 *
+	 * Method will block until first DOM.topLayerElementsUpdated event is fired.
+	 *
+	 * @param ContextInterface $ctx
+	 *
+	 * @return TopLayerElementsUpdatedEvent
+	 */
+	public function awaitTopLayerElementsUpdated(ContextInterface $ctx): TopLayerElementsUpdatedEvent;
 }
