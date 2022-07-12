@@ -60,6 +60,13 @@ final class GetMatchedStylesForNodeResponse implements \JsonSerializable
 	 */
 	public $cssKeyframesRules;
 
+	/**
+	 * Id of the first parent element that does not have display: contents.
+	 *
+	 * @var int
+	 */
+	public $parentLayoutNodeId;
+
 
 	/**
 	 * @param object $data
@@ -104,6 +111,9 @@ final class GetMatchedStylesForNodeResponse implements \JsonSerializable
 				$instance->cssKeyframesRules[] = CSSKeyframesRule::fromJson($item);
 			}
 		}
+		if (isset($data->parentLayoutNodeId)) {
+			$instance->parentLayoutNodeId = (int)$data->parentLayoutNodeId;
+		}
 		return $instance;
 	}
 
@@ -146,6 +156,9 @@ final class GetMatchedStylesForNodeResponse implements \JsonSerializable
 			foreach ($this->cssKeyframesRules as $item) {
 				$data->cssKeyframesRules[] = $item->jsonSerialize();
 			}
+		}
+		if ($this->parentLayoutNodeId !== null) {
+			$data->parentLayoutNodeId = $this->parentLayoutNodeId;
 		}
 		return $data;
 	}

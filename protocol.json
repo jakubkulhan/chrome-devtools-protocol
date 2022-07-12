@@ -4296,6 +4296,13 @@
                             "items": {
                                 "$ref": "CSSKeyframesRule"
                             }
+                        },
+                        {
+                            "name": "parentLayoutNodeId",
+                            "description": "Id of the first parent element that does not have display: contents.",
+                            "experimental": true,
+                            "optional": true,
+                            "$ref": "DOM.NodeId"
                         }
                     ]
                 },
