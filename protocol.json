@@ -18599,7 +18599,9 @@
                         "TriggerBackgrounded",
                         "EmbedderTriggeredAndSameOriginRedirected",
                         "EmbedderTriggeredAndCrossOriginRedirected",
-                        "EmbedderTriggeredAndDestroyed"
+                        "EmbedderTriggeredAndDestroyed",
+                        "MemoryLimitExceeded",
+                        "FailToGetMemoryUsage"
                     ]
                 }
             ],
