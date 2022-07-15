@@ -17552,6 +17552,7 @@
                         "screen-wake-lock",
                         "serial",
                         "shared-autofill",
+                        "shared-storage",
                         "storage-access-api",
                         "sync-xhr",
                         "trust-token-redemption",
@@ -18599,9 +18600,7 @@
                         "TriggerBackgrounded",
                         "EmbedderTriggeredAndSameOriginRedirected",
                         "EmbedderTriggeredAndCrossOriginRedirected",
-                        "EmbedderTriggeredAndDestroyed",
-                        "MemoryLimitExceeded",
-                        "FailToGetMemoryUsage"
+                        "EmbedderTriggeredAndDestroyed"
                     ]
                 }
             ],
