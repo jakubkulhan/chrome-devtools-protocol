@@ -20,6 +20,7 @@ final class ResourceTypeEnum
 	public const TEXT_TRACK = 'TextTrack';
 	public const XHR = 'XHR';
 	public const FETCH = 'Fetch';
+	public const PREFETCH = 'Prefetch';
 	public const EVENT_SOURCE = 'EventSource';
 	public const WEB_SOCKET = 'WebSocket';
 	public const MANIFEST = 'Manifest';
