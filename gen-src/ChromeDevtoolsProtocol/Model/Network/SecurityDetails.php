@@ -102,6 +102,20 @@ final class SecurityDetails implements \JsonSerializable
 	 */
 	public $certificateTransparencyCompliance;
 
+	/**
+	 * The signature algorithm used by the server in the TLS server signature, represented as a TLS SignatureScheme code point. Omitted if not applicable or not known.
+	 *
+	 * @var int|null
+	 */
+	public $serverSignatureAlgorithm;
+
+	/**
+	 * Whether the connection used Encrypted ClientHello
+	 *
+	 * @var bool
+	 */
+	public $encryptedClientHello;
+
 
 	/**
 	 * @param object $data
@@ -155,6 +169,12 @@ final class SecurityDetails implements \JsonSerializable
 		if (isset($data->certificateTransparencyCompliance)) {
 			$instance->certificateTransparencyCompliance = (string)$data->certificateTransparencyCompliance;
 		}
+		if (isset($data->serverSignatureAlgorithm)) {
+			$instance->serverSignatureAlgorithm = (int)$data->serverSignatureAlgorithm;
+		}
+		if (isset($data->encryptedClientHello)) {
+			$instance->encryptedClientHello = (bool)$data->encryptedClientHello;
+		}
 		return $instance;
 	}
 
@@ -206,6 +226,12 @@ final class SecurityDetails implements \JsonSerializable
 		}
 		if ($this->certificateTransparencyCompliance !== null) {
 			$data->certificateTransparencyCompliance = $this->certificateTransparencyCompliance;
+		}
+		if ($this->serverSignatureAlgorithm !== null) {
+			$data->serverSignatureAlgorithm = $this->serverSignatureAlgorithm;
+		}
+		if ($this->encryptedClientHello !== null) {
+			$data->encryptedClientHello = $this->encryptedClientHello;
 		}
 		return $data;
 	}

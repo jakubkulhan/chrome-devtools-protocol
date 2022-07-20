@@ -1560,7 +1560,6 @@
                         "DeprecationExample",
                         "DocumentDomainSettingWithoutOriginAgentClusterHeader",
                         "EventPath",
-                        "ExpectCTHeader",
                         "GeolocationInsecureOrigin",
                         "GeolocationInsecureOriginDeprecatedNotRemoved",
                         "GetUserMediaInsecureOrigin",
@@ -13490,6 +13489,17 @@
                             "name": "certificateTransparencyCompliance",
                             "description": "Whether the request complied with Certificate Transparency policy",
                             "$ref": "CertificateTransparencyCompliance"
+                        },
+                        {
+                            "name": "serverSignatureAlgorithm",
+                            "description": "The signature algorithm used by the server in the TLS server signature, represented as a TLS SignatureScheme code point. Omitted if not applicable or not known.",
+                            "optional": true,
+                            "type": "integer"
+                        },
+                        {
+                            "name": "encryptedClientHello",
+                            "description": "Whether the connection used Encrypted ClientHello",
+                            "type": "boolean"
                         }
                     ]
                 },

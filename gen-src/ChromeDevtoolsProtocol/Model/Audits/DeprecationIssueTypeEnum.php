@@ -24,7 +24,6 @@ final class DeprecationIssueTypeEnum
 	public const DEPRECATION_EXAMPLE = 'DeprecationExample';
 	public const DOCUMENT_DOMAIN_SETTING_WITHOUT_ORIGIN_AGENT_CLUSTER_HEADER = 'DocumentDomainSettingWithoutOriginAgentClusterHeader';
 	public const EVENT_PATH = 'EventPath';
-	public const EXPECT_C_T_HEADER = 'ExpectCTHeader';
 	public const GEOLOCATION_INSECURE_ORIGIN = 'GeolocationInsecureOrigin';
 	public const GEOLOCATION_INSECURE_ORIGIN_DEPRECATED_NOT_REMOVED = 'GeolocationInsecureOriginDeprecatedNotRemoved';
 	public const GET_USER_MEDIA_INSECURE_ORIGIN = 'GetUserMediaInsecureOrigin';
