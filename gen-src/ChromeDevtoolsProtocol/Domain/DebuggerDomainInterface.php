@@ -5,6 +5,8 @@ namespace ChromeDevtoolsProtocol\Domain;
 use ChromeDevtoolsProtocol\ContextInterface;
 use ChromeDevtoolsProtocol\Model\Debugger\BreakpointResolvedEvent;
 use ChromeDevtoolsProtocol\Model\Debugger\ContinueToLocationRequest;
+use ChromeDevtoolsProtocol\Model\Debugger\DisassembleWasmModuleRequest;
+use ChromeDevtoolsProtocol\Model\Debugger\DisassembleWasmModuleResponse;
 use ChromeDevtoolsProtocol\Model\Debugger\EnableRequest;
 use ChromeDevtoolsProtocol\Model\Debugger\EnableResponse;
 use ChromeDevtoolsProtocol\Model\Debugger\EvaluateOnCallFrameRequest;
@@ -17,6 +19,8 @@ use ChromeDevtoolsProtocol\Model\Debugger\GetStackTraceRequest;
 use ChromeDevtoolsProtocol\Model\Debugger\GetStackTraceResponse;
 use ChromeDevtoolsProtocol\Model\Debugger\GetWasmBytecodeRequest;
 use ChromeDevtoolsProtocol\Model\Debugger\GetWasmBytecodeResponse;
+use ChromeDevtoolsProtocol\Model\Debugger\NextWasmDisassemblyChunkRequest;
+use ChromeDevtoolsProtocol\Model\Debugger\NextWasmDisassemblyChunkResponse;
 use ChromeDevtoolsProtocol\Model\Debugger\PauseOnAsyncCallRequest;
 use ChromeDevtoolsProtocol\Model\Debugger\PausedEvent;
 use ChromeDevtoolsProtocol\Model\Debugger\RemoveBreakpointRequest;
@@ -78,6 +82,20 @@ interface DebuggerDomainInterface
 	 * @return void
 	 */
 	public function disable(ContextInterface $ctx): void;
+
+
+	/**
+	 * Call Debugger.disassembleWasmModule command.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param DisassembleWasmModuleRequest $request
+	 *
+	 * @return DisassembleWasmModuleResponse
+	 */
+	public function disassembleWasmModule(
+		ContextInterface $ctx,
+		DisassembleWasmModuleRequest $request
+	): DisassembleWasmModuleResponse;
 
 
 	/**
@@ -150,6 +168,20 @@ interface DebuggerDomainInterface
 	 * @return GetWasmBytecodeResponse
 	 */
 	public function getWasmBytecode(ContextInterface $ctx, GetWasmBytecodeRequest $request): GetWasmBytecodeResponse;
+
+
+	/**
+	 * Disassemble the next chunk of lines for the module corresponding to the stream. If disassembly is complete, this API will invalidate the streamId and return an empty chunk. Any subsequent calls for the now invalid stream will return errors.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param NextWasmDisassemblyChunkRequest $request
+	 *
+	 * @return NextWasmDisassemblyChunkResponse
+	 */
+	public function nextWasmDisassemblyChunk(
+		ContextInterface $ctx,
+		NextWasmDisassemblyChunkRequest $request
+	): NextWasmDisassemblyChunkResponse;
 
 
 	/**
