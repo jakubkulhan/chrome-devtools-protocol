@@ -35,6 +35,8 @@ final class DeprecationIssueTypeEnum
 	public const LOCAL_C_S_S_FILE_EXTENSION_REJECTED = 'LocalCSSFileExtensionRejected';
 	public const MEDIA_SOURCE_ABORT_REMOVE = 'MediaSourceAbortRemove';
 	public const MEDIA_SOURCE_DURATION_TRUNCATING_BUFFERED = 'MediaSourceDurationTruncatingBuffered';
+	public const NAVIGATE_EVENT_RESTORE_SCROLL = 'NavigateEventRestoreScroll';
+	public const NAVIGATE_EVENT_TRANSITION_WHILE = 'NavigateEventTransitionWhile';
 	public const NO_SYSEX_WEB_M_I_D_I_WITHOUT_PERMISSION = 'NoSysexWebMIDIWithoutPermission';
 	public const NOTIFICATION_INSECURE_ORIGIN = 'NotificationInsecureOrigin';
 	public const NOTIFICATION_PERMISSION_REQUESTED_IFRAME = 'NotificationPermissionRequestedIframe';
