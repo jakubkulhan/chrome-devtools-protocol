@@ -7,6 +7,7 @@ use ChromeDevtoolsProtocol\Model\Storage\CacheStorageContentUpdatedEvent;
 use ChromeDevtoolsProtocol\Model\Storage\CacheStorageListUpdatedEvent;
 use ChromeDevtoolsProtocol\Model\Storage\ClearCookiesRequest;
 use ChromeDevtoolsProtocol\Model\Storage\ClearDataForOriginRequest;
+use ChromeDevtoolsProtocol\Model\Storage\ClearDataForStorageKeyRequest;
 use ChromeDevtoolsProtocol\Model\Storage\ClearTrustTokensRequest;
 use ChromeDevtoolsProtocol\Model\Storage\ClearTrustTokensResponse;
 use ChromeDevtoolsProtocol\Model\Storage\GetCookiesRequest;
@@ -61,6 +62,17 @@ interface StorageDomainInterface
 	 * @return void
 	 */
 	public function clearDataForOrigin(ContextInterface $ctx, ClearDataForOriginRequest $request): void;
+
+
+	/**
+	 * Clears storage for storage key.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param ClearDataForStorageKeyRequest $request
+	 *
+	 * @return void
+	 */
+	public function clearDataForStorageKey(ContextInterface $ctx, ClearDataForStorageKeyRequest $request): void;
 
 
 	/**

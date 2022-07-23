@@ -40,6 +40,13 @@ final class AXNode implements \JsonSerializable
 	public $role;
 
 	/**
+	 * This `Node`'s Chrome raw role.
+	 *
+	 * @var AXValue|null
+	 */
+	public $chromeRole;
+
+	/**
 	 * The accessible name for this `Node`.
 	 *
 	 * @var AXValue|null
@@ -118,6 +125,9 @@ final class AXNode implements \JsonSerializable
 		if (isset($data->role)) {
 			$instance->role = AXValue::fromJson($data->role);
 		}
+		if (isset($data->chromeRole)) {
+			$instance->chromeRole = AXValue::fromJson($data->chromeRole);
+		}
 		if (isset($data->name)) {
 			$instance->name = AXValue::fromJson($data->name);
 		}
@@ -172,6 +182,9 @@ final class AXNode implements \JsonSerializable
 		}
 		if ($this->role !== null) {
 			$data->role = $this->role->jsonSerialize();
+		}
+		if ($this->chromeRole !== null) {
+			$data->chromeRole = $this->chromeRole->jsonSerialize();
 		}
 		if ($this->name !== null) {
 			$data->name = $this->name->jsonSerialize();
