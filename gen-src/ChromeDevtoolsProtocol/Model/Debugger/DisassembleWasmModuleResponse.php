@@ -26,7 +26,7 @@ final class DisassembleWasmModuleResponse implements \JsonSerializable
 	public $totalNumberOfLines;
 
 	/**
-	 * The offsets of all function bodies plus one additional entry pointing one by past the end of the last function.
+	 * The offsets of all function bodies, in the format [start1, end1, start2, end2, ...] where all ends are exclusive.
 	 *
 	 * @var int[]
 	 */
