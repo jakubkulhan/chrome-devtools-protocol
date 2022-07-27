@@ -12,6 +12,7 @@ use ChromeDevtoolsProtocol\Exception\BuilderException;
 final class DeleteDatabaseRequestBuilder
 {
 	private $securityOrigin;
+	private $storageKey;
 	private $databaseName;
 
 
@@ -21,10 +22,8 @@ final class DeleteDatabaseRequestBuilder
 	public function build(): DeleteDatabaseRequest
 	{
 		$instance = new DeleteDatabaseRequest();
-		if ($this->securityOrigin === null) {
-			throw new BuilderException('Property [securityOrigin] is required.');
-		}
 		$instance->securityOrigin = $this->securityOrigin;
+		$instance->storageKey = $this->storageKey;
 		if ($this->databaseName === null) {
 			throw new BuilderException('Property [databaseName] is required.');
 		}
@@ -34,13 +33,25 @@ final class DeleteDatabaseRequestBuilder
 
 
 	/**
-	 * @param string $securityOrigin
+	 * @param string|null $securityOrigin
 	 *
 	 * @return self
 	 */
 	public function setSecurityOrigin($securityOrigin): self
 	{
 		$this->securityOrigin = $securityOrigin;
+		return $this;
+	}
+
+
+	/**
+	 * @param string|null $storageKey
+	 *
+	 * @return self
+	 */
+	public function setStorageKey($storageKey): self
+	{
+		$this->storageKey = $storageKey;
 		return $this;
 	}
 

@@ -14,7 +14,11 @@ final class AttributionReportingIssueDetails implements \JsonSerializable
 	/** @var string */
 	public $violationType;
 
-	/** @var AffectedFrame|null */
+	/**
+	 * TODO(apaseltiner): Remove this once it is no longer referenced by the frontend.
+	 *
+	 * @var AffectedFrame|null
+	 */
 	public $frame;
 
 	/** @var AffectedRequest|null */

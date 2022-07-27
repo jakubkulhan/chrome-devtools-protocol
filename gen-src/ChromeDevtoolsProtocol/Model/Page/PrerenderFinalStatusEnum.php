@@ -44,4 +44,6 @@ final class PrerenderFinalStatusEnum
 	public const EMBEDDER_TRIGGERED_AND_SAME_ORIGIN_REDIRECTED = 'EmbedderTriggeredAndSameOriginRedirected';
 	public const EMBEDDER_TRIGGERED_AND_CROSS_ORIGIN_REDIRECTED = 'EmbedderTriggeredAndCrossOriginRedirected';
 	public const EMBEDDER_TRIGGERED_AND_DESTROYED = 'EmbedderTriggeredAndDestroyed';
+	public const MEMORY_LIMIT_EXCEEDED = 'MemoryLimitExceeded';
+	public const FAIL_TO_GET_MEMORY_USAGE = 'FailToGetMemoryUsage';
 }
