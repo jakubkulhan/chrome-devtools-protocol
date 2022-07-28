@@ -12,6 +12,7 @@ use ChromeDevtoolsProtocol\Exception\BuilderException;
 final class GetMetadataRequestBuilder
 {
 	private $securityOrigin;
+	private $storageKey;
 	private $databaseName;
 	private $objectStoreName;
 
@@ -22,10 +23,8 @@ final class GetMetadataRequestBuilder
 	public function build(): GetMetadataRequest
 	{
 		$instance = new GetMetadataRequest();
-		if ($this->securityOrigin === null) {
-			throw new BuilderException('Property [securityOrigin] is required.');
-		}
 		$instance->securityOrigin = $this->securityOrigin;
+		$instance->storageKey = $this->storageKey;
 		if ($this->databaseName === null) {
 			throw new BuilderException('Property [databaseName] is required.');
 		}
@@ -39,13 +38,25 @@ final class GetMetadataRequestBuilder
 
 
 	/**
-	 * @param string $securityOrigin
+	 * @param string|null $securityOrigin
 	 *
 	 * @return self
 	 */
 	public function setSecurityOrigin($securityOrigin): self
 	{
 		$this->securityOrigin = $securityOrigin;
+		return $this;
+	}
+
+
+	/**
+	 * @param string|null $storageKey
+	 *
+	 * @return self
+	 */
+	public function setStorageKey($storageKey): self
+	{
+		$this->storageKey = $storageKey;
 		return $this;
 	}
 

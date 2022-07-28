@@ -11,8 +11,19 @@ namespace ChromeDevtoolsProtocol\Model\IndexedDB;
  */
 final class DeleteObjectStoreEntriesRequest implements \JsonSerializable
 {
-	/** @var string */
+	/**
+	 * At least and at most one of securityOrigin, storageKey must be specified. Security origin.
+	 *
+	 * @var string|null
+	 */
 	public $securityOrigin;
+
+	/**
+	 * Storage key.
+	 *
+	 * @var string|null
+	 */
+	public $storageKey;
 
 	/** @var string */
 	public $databaseName;
@@ -38,6 +49,9 @@ final class DeleteObjectStoreEntriesRequest implements \JsonSerializable
 		if (isset($data->securityOrigin)) {
 			$instance->securityOrigin = (string)$data->securityOrigin;
 		}
+		if (isset($data->storageKey)) {
+			$instance->storageKey = (string)$data->storageKey;
+		}
 		if (isset($data->databaseName)) {
 			$instance->databaseName = (string)$data->databaseName;
 		}
@@ -56,6 +70,9 @@ final class DeleteObjectStoreEntriesRequest implements \JsonSerializable
 		$data = new \stdClass();
 		if ($this->securityOrigin !== null) {
 			$data->securityOrigin = $this->securityOrigin;
+		}
+		if ($this->storageKey !== null) {
+			$data->storageKey = $this->storageKey;
 		}
 		if ($this->databaseName !== null) {
 			$data->databaseName = $this->databaseName;

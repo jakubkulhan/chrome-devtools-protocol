@@ -43,6 +43,7 @@ final class DeprecationIssueTypeEnum
 	public const OBSOLETE_WEB_RTC_CIPHER_SUITE = 'ObsoleteWebRtcCipherSuite';
 	public const OPEN_WEB_DATABASE_INSECURE_CONTEXT = 'OpenWebDatabaseInsecureContext';
 	public const OVERFLOW_VISIBLE_ON_REPLACED_ELEMENT = 'OverflowVisibleOnReplacedElement';
+	public const PERSISTENT_QUOTA_TYPE = 'PersistentQuotaType';
 	public const PICTURE_SOURCE_SRC = 'PictureSourceSrc';
 	public const PREFIXED_CANCEL_ANIMATION_FRAME = 'PrefixedCancelAnimationFrame';
 	public const PREFIXED_REQUEST_ANIMATION_FRAME = 'PrefixedRequestAnimationFrame';
