@@ -12,11 +12,18 @@ namespace ChromeDevtoolsProtocol\Model\IndexedDB;
 final class RequestDataRequest implements \JsonSerializable
 {
 	/**
-	 * Security origin.
+	 * At least and at most one of securityOrigin, storageKey must be specified. Security origin.
 	 *
-	 * @var string
+	 * @var string|null
 	 */
 	public $securityOrigin;
+
+	/**
+	 * Storage key.
+	 *
+	 * @var string|null
+	 */
+	public $storageKey;
 
 	/**
 	 * Database name.
@@ -71,6 +78,9 @@ final class RequestDataRequest implements \JsonSerializable
 		if (isset($data->securityOrigin)) {
 			$instance->securityOrigin = (string)$data->securityOrigin;
 		}
+		if (isset($data->storageKey)) {
+			$instance->storageKey = (string)$data->storageKey;
+		}
 		if (isset($data->databaseName)) {
 			$instance->databaseName = (string)$data->databaseName;
 		}
@@ -98,6 +108,9 @@ final class RequestDataRequest implements \JsonSerializable
 		$data = new \stdClass();
 		if ($this->securityOrigin !== null) {
 			$data->securityOrigin = $this->securityOrigin;
+		}
+		if ($this->storageKey !== null) {
+			$data->storageKey = $this->storageKey;
 		}
 		if ($this->databaseName !== null) {
 			$data->databaseName = $this->databaseName;

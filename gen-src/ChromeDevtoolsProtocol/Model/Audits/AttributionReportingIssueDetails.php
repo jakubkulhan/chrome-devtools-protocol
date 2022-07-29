@@ -14,13 +14,6 @@ final class AttributionReportingIssueDetails implements \JsonSerializable
 	/** @var string */
 	public $violationType;
 
-	/**
-	 * TODO(apaseltiner): Remove this once it is no longer referenced by the frontend.
-	 *
-	 * @var AffectedFrame|null
-	 */
-	public $frame;
-
 	/** @var AffectedRequest|null */
 	public $request;
 
@@ -41,9 +34,6 @@ final class AttributionReportingIssueDetails implements \JsonSerializable
 		if (isset($data->violationType)) {
 			$instance->violationType = (string)$data->violationType;
 		}
-		if (isset($data->frame)) {
-			$instance->frame = AffectedFrame::fromJson($data->frame);
-		}
 		if (isset($data->request)) {
 			$instance->request = AffectedRequest::fromJson($data->request);
 		}
@@ -62,9 +52,6 @@ final class AttributionReportingIssueDetails implements \JsonSerializable
 		$data = new \stdClass();
 		if ($this->violationType !== null) {
 			$data->violationType = $this->violationType;
-		}
-		if ($this->frame !== null) {
-			$data->frame = $this->frame->jsonSerialize();
 		}
 		if ($this->request !== null) {
 			$data->request = $this->request->jsonSerialize();
