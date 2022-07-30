@@ -3,23 +3,16 @@
 namespace ChromeDevtoolsProtocol\Model\Target;
 
 /**
- * Request for Target.setDiscoverTargets command.
+ * Request for Target.getTargets command.
  *
  * @generated This file has been auto-generated, do not edit.
  *
  * @author Jakub Kulhan <jakub.kulhan@gmail.com>
  */
-final class SetDiscoverTargetsRequest implements \JsonSerializable
+final class GetTargetsRequest implements \JsonSerializable
 {
 	/**
-	 * Whether to discover available targets.
-	 *
-	 * @var bool
-	 */
-	public $discover;
-
-	/**
-	 * Only targets matching filter will be attached. If `discover` is false, `filter` must be omitted or empty.
+	 * Only targets matching filter will be reported. If filter is not specified and target discovery is currently enabled, a filter used for target discovery is used for consistency.
 	 *
 	 * @var FilterEntry[]
 	 */
@@ -33,9 +26,6 @@ final class SetDiscoverTargetsRequest implements \JsonSerializable
 	public static function fromJson($data)
 	{
 		$instance = new static();
-		if (isset($data->discover)) {
-			$instance->discover = (bool)$data->discover;
-		}
 		if (isset($data->filter)) {
 			$instance->filter = [];
 			foreach ($data->filter as $item) {
@@ -49,9 +39,6 @@ final class SetDiscoverTargetsRequest implements \JsonSerializable
 	public function jsonSerialize()
 	{
 		$data = new \stdClass();
-		if ($this->discover !== null) {
-			$data->discover = $this->discover;
-		}
 		if ($this->filter !== null) {
 			$data->filter = [];
 			foreach ($this->filter as $item) {
@@ -65,10 +52,21 @@ final class SetDiscoverTargetsRequest implements \JsonSerializable
 	/**
 	 * Create new instance using builder.
 	 *
-	 * @return SetDiscoverTargetsRequestBuilder
+	 * @return GetTargetsRequestBuilder
 	 */
-	public static function builder(): SetDiscoverTargetsRequestBuilder
+	public static function builder(): GetTargetsRequestBuilder
 	{
-		return new SetDiscoverTargetsRequestBuilder();
+		return new GetTargetsRequestBuilder();
+	}
+
+
+	/**
+	 * Create new empty instance.
+	 *
+	 * @return self
+	 */
+	public static function make(): self
+	{
+		return static::builder()->build();
 	}
 }

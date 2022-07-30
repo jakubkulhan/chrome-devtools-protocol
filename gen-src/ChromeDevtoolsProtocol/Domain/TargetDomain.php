@@ -23,6 +23,7 @@ use ChromeDevtoolsProtocol\Model\Target\ExposeDevToolsProtocolRequest;
 use ChromeDevtoolsProtocol\Model\Target\GetBrowserContextsResponse;
 use ChromeDevtoolsProtocol\Model\Target\GetTargetInfoRequest;
 use ChromeDevtoolsProtocol\Model\Target\GetTargetInfoResponse;
+use ChromeDevtoolsProtocol\Model\Target\GetTargetsRequest;
 use ChromeDevtoolsProtocol\Model\Target\GetTargetsResponse;
 use ChromeDevtoolsProtocol\Model\Target\ReceivedMessageFromTargetEvent;
 use ChromeDevtoolsProtocol\Model\Target\SendMessageToTargetRequest;
@@ -130,9 +131,8 @@ class TargetDomain implements TargetDomainInterface
 	}
 
 
-	public function getTargets(ContextInterface $ctx): GetTargetsResponse
+	public function getTargets(ContextInterface $ctx, GetTargetsRequest $request): GetTargetsResponse
 	{
-		$request = new \stdClass();
 		$response = $this->internalClient->executeCommand($ctx, 'Target.getTargets', $request);
 		return GetTargetsResponse::fromJson($response);
 	}

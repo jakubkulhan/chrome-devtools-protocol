@@ -13,6 +13,7 @@ final class AutoAttachRelatedRequestBuilder
 {
 	private $targetId;
 	private $waitForDebuggerOnStart;
+	private $filter;
 
 
 	/**
@@ -29,6 +30,7 @@ final class AutoAttachRelatedRequestBuilder
 			throw new BuilderException('Property [waitForDebuggerOnStart] is required.');
 		}
 		$instance->waitForDebuggerOnStart = $this->waitForDebuggerOnStart;
+		$instance->filter = $this->filter;
 		return $instance;
 	}
 
@@ -53,6 +55,18 @@ final class AutoAttachRelatedRequestBuilder
 	public function setWaitForDebuggerOnStart($waitForDebuggerOnStart): self
 	{
 		$this->waitForDebuggerOnStart = $waitForDebuggerOnStart;
+		return $this;
+	}
+
+
+	/**
+	 * @param FilterEntry[] $filter
+	 *
+	 * @return self
+	 */
+	public function setFilter($filter): self
+	{
+		$this->filter = $filter;
 		return $this;
 	}
 }

@@ -22,6 +22,7 @@ use ChromeDevtoolsProtocol\Model\Target\ExposeDevToolsProtocolRequest;
 use ChromeDevtoolsProtocol\Model\Target\GetBrowserContextsResponse;
 use ChromeDevtoolsProtocol\Model\Target\GetTargetInfoRequest;
 use ChromeDevtoolsProtocol\Model\Target\GetTargetInfoResponse;
+use ChromeDevtoolsProtocol\Model\Target\GetTargetsRequest;
 use ChromeDevtoolsProtocol\Model\Target\GetTargetsResponse;
 use ChromeDevtoolsProtocol\Model\Target\ReceivedMessageFromTargetEvent;
 use ChromeDevtoolsProtocol\Model\Target\SendMessageToTargetRequest;
@@ -180,10 +181,11 @@ interface TargetDomainInterface
 	 * Retrieves a list of available targets.
 	 *
 	 * @param ContextInterface $ctx
+	 * @param GetTargetsRequest $request
 	 *
 	 * @return GetTargetsResponse
 	 */
-	public function getTargets(ContextInterface $ctx): GetTargetsResponse;
+	public function getTargets(ContextInterface $ctx, GetTargetsRequest $request): GetTargetsResponse;
 
 
 	/**
