@@ -28,8 +28,10 @@ use ChromeDevtoolsProtocol\Model\Storage\SetCookiesRequest;
 use ChromeDevtoolsProtocol\Model\Storage\SetInterestGroupTrackingRequest;
 use ChromeDevtoolsProtocol\Model\Storage\TrackCacheStorageForOriginRequest;
 use ChromeDevtoolsProtocol\Model\Storage\TrackIndexedDBForOriginRequest;
+use ChromeDevtoolsProtocol\Model\Storage\TrackIndexedDBForStorageKeyRequest;
 use ChromeDevtoolsProtocol\Model\Storage\UntrackCacheStorageForOriginRequest;
 use ChromeDevtoolsProtocol\Model\Storage\UntrackIndexedDBForOriginRequest;
+use ChromeDevtoolsProtocol\Model\Storage\UntrackIndexedDBForStorageKeyRequest;
 use ChromeDevtoolsProtocol\SubscriptionInterface;
 
 class StorageDomain implements StorageDomainInterface
@@ -139,6 +141,12 @@ class StorageDomain implements StorageDomainInterface
 	}
 
 
+	public function trackIndexedDBForStorageKey(ContextInterface $ctx, TrackIndexedDBForStorageKeyRequest $request): void
+	{
+		$this->internalClient->executeCommand($ctx, 'Storage.trackIndexedDBForStorageKey', $request);
+	}
+
+
 	public function untrackCacheStorageForOrigin(ContextInterface $ctx, UntrackCacheStorageForOriginRequest $request): void
 	{
 		$this->internalClient->executeCommand($ctx, 'Storage.untrackCacheStorageForOrigin', $request);
@@ -148,6 +156,14 @@ class StorageDomain implements StorageDomainInterface
 	public function untrackIndexedDBForOrigin(ContextInterface $ctx, UntrackIndexedDBForOriginRequest $request): void
 	{
 		$this->internalClient->executeCommand($ctx, 'Storage.untrackIndexedDBForOrigin', $request);
+	}
+
+
+	public function untrackIndexedDBForStorageKey(
+		ContextInterface $ctx,
+		UntrackIndexedDBForStorageKeyRequest $request
+	): void {
+		$this->internalClient->executeCommand($ctx, 'Storage.untrackIndexedDBForStorageKey', $request);
 	}
 
 

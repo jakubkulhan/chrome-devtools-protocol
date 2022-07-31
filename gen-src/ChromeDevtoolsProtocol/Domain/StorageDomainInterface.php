@@ -27,8 +27,10 @@ use ChromeDevtoolsProtocol\Model\Storage\SetCookiesRequest;
 use ChromeDevtoolsProtocol\Model\Storage\SetInterestGroupTrackingRequest;
 use ChromeDevtoolsProtocol\Model\Storage\TrackCacheStorageForOriginRequest;
 use ChromeDevtoolsProtocol\Model\Storage\TrackIndexedDBForOriginRequest;
+use ChromeDevtoolsProtocol\Model\Storage\TrackIndexedDBForStorageKeyRequest;
 use ChromeDevtoolsProtocol\Model\Storage\UntrackCacheStorageForOriginRequest;
 use ChromeDevtoolsProtocol\Model\Storage\UntrackIndexedDBForOriginRequest;
+use ChromeDevtoolsProtocol\Model\Storage\UntrackIndexedDBForStorageKeyRequest;
 use ChromeDevtoolsProtocol\SubscriptionInterface;
 
 /**
@@ -202,6 +204,17 @@ interface StorageDomainInterface
 
 
 	/**
+	 * Registers storage key to be notified when an update occurs to its IndexedDB.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param TrackIndexedDBForStorageKeyRequest $request
+	 *
+	 * @return void
+	 */
+	public function trackIndexedDBForStorageKey(ContextInterface $ctx, TrackIndexedDBForStorageKeyRequest $request): void;
+
+
+	/**
 	 * Unregisters origin from receiving notifications for cache storage.
 	 *
 	 * @param ContextInterface $ctx
@@ -221,6 +234,20 @@ interface StorageDomainInterface
 	 * @return void
 	 */
 	public function untrackIndexedDBForOrigin(ContextInterface $ctx, UntrackIndexedDBForOriginRequest $request): void;
+
+
+	/**
+	 * Unregisters storage key from receiving notifications for IndexedDB.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param UntrackIndexedDBForStorageKeyRequest $request
+	 *
+	 * @return void
+	 */
+	public function untrackIndexedDBForStorageKey(
+		ContextInterface $ctx,
+		UntrackIndexedDBForStorageKeyRequest $request
+	): void;
 
 
 	/**
