@@ -2,8 +2,6 @@
 
 namespace ChromeDevtoolsProtocol\Model\IndexedDB;
 
-use ChromeDevtoolsProtocol\Exception\BuilderException;
-
 /**
  * @generated This file has been auto-generated, do not edit.
  *
@@ -12,6 +10,7 @@ use ChromeDevtoolsProtocol\Exception\BuilderException;
 final class RequestDatabaseNamesRequestBuilder
 {
 	private $securityOrigin;
+	private $storageKey;
 
 
 	/**
@@ -20,22 +19,32 @@ final class RequestDatabaseNamesRequestBuilder
 	public function build(): RequestDatabaseNamesRequest
 	{
 		$instance = new RequestDatabaseNamesRequest();
-		if ($this->securityOrigin === null) {
-			throw new BuilderException('Property [securityOrigin] is required.');
-		}
 		$instance->securityOrigin = $this->securityOrigin;
+		$instance->storageKey = $this->storageKey;
 		return $instance;
 	}
 
 
 	/**
-	 * @param string $securityOrigin
+	 * @param string|null $securityOrigin
 	 *
 	 * @return self
 	 */
 	public function setSecurityOrigin($securityOrigin): self
 	{
 		$this->securityOrigin = $securityOrigin;
+		return $this;
+	}
+
+
+	/**
+	 * @param string|null $storageKey
+	 *
+	 * @return self
+	 */
+	public function setStorageKey($storageKey): self
+	{
+		$this->storageKey = $storageKey;
 		return $this;
 	}
 }
