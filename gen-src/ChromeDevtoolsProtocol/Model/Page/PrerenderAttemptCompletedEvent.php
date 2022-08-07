@@ -24,6 +24,13 @@ final class PrerenderAttemptCompletedEvent implements \JsonSerializable
 	/** @var string */
 	public $finalStatus;
 
+	/**
+	 * This is used to give users more information about the cancellation details, and this will be formatted for display.
+	 *
+	 * @var string|null
+	 */
+	public $reasonDetails;
+
 
 	/**
 	 * @param object $data
@@ -41,6 +48,9 @@ final class PrerenderAttemptCompletedEvent implements \JsonSerializable
 		if (isset($data->finalStatus)) {
 			$instance->finalStatus = (string)$data->finalStatus;
 		}
+		if (isset($data->reasonDetails)) {
+			$instance->reasonDetails = (string)$data->reasonDetails;
+		}
 		return $instance;
 	}
 
@@ -56,6 +66,9 @@ final class PrerenderAttemptCompletedEvent implements \JsonSerializable
 		}
 		if ($this->finalStatus !== null) {
 			$data->finalStatus = $this->finalStatus;
+		}
+		if ($this->reasonDetails !== null) {
+			$data->reasonDetails = $this->reasonDetails;
 		}
 		return $data;
 	}
