@@ -19,4 +19,6 @@ final class AttributionReportingIssueTypeEnum
 	public const INVALID_ELIGIBLE_HEADER = 'InvalidEligibleHeader';
 	public const TOO_MANY_CONCURRENT_REQUESTS = 'TooManyConcurrentRequests';
 	public const SOURCE_AND_TRIGGER_HEADERS = 'SourceAndTriggerHeaders';
+	public const SOURCE_IGNORED = 'SourceIgnored';
+	public const TRIGGER_IGNORED = 'TriggerIgnored';
 }
