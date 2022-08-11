@@ -77,6 +77,7 @@ final class PermissionsPolicyFeatureEnum
 	public const STORAGE_ACCESS_API = 'storage-access-api';
 	public const SYNC_XHR = 'sync-xhr';
 	public const TRUST_TOKEN_REDEMPTION = 'trust-token-redemption';
+	public const UNLOAD = 'unload';
 	public const USB = 'usb';
 	public const VERTICAL_SCROLL = 'vertical-scroll';
 	public const WEB_SHARE = 'web-share';
