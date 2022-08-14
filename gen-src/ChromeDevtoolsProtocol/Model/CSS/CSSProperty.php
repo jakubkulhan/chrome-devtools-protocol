@@ -67,6 +67,13 @@ final class CSSProperty implements \JsonSerializable
 	 */
 	public $range;
 
+	/**
+	 * Parsed longhand components of this property if it is a shorthand. This field will be empty if the given property is not a shorthand.
+	 *
+	 * @var CSSProperty[]|null
+	 */
+	public $longhandProperties;
+
 
 	/**
 	 * @param object $data
@@ -99,6 +106,12 @@ final class CSSProperty implements \JsonSerializable
 		if (isset($data->range)) {
 			$instance->range = SourceRange::fromJson($data->range);
 		}
+		if (isset($data->longhandProperties)) {
+			$instance->longhandProperties = [];
+			foreach ($data->longhandProperties as $item) {
+				$instance->longhandProperties[] = CSSProperty::fromJson($item);
+			}
+		}
 		return $instance;
 	}
 
@@ -129,6 +142,12 @@ final class CSSProperty implements \JsonSerializable
 		}
 		if ($this->range !== null) {
 			$data->range = $this->range->jsonSerialize();
+		}
+		if ($this->longhandProperties !== null) {
+			$data->longhandProperties = [];
+			foreach ($this->longhandProperties as $item) {
+				$data->longhandProperties[] = $item->jsonSerialize();
+			}
 		}
 		return $data;
 	}
