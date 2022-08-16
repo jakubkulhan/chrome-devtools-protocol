@@ -18764,9 +18764,9 @@
                         "TriggerBackgrounded",
                         "EmbedderTriggeredAndSameOriginRedirected",
                         "EmbedderTriggeredAndCrossOriginRedirected",
-                        "EmbedderTriggeredAndDestroyed",
                         "MemoryLimitExceeded",
-                        "FailToGetMemoryUsage"
+                        "FailToGetMemoryUsage",
+                        "DataSaverEnabled"
                     ]
                 }
             ],
