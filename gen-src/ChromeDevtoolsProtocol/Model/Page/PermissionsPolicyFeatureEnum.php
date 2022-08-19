@@ -74,7 +74,7 @@ final class PermissionsPolicyFeatureEnum
 	public const SERIAL = 'serial';
 	public const SHARED_AUTOFILL = 'shared-autofill';
 	public const SHARED_STORAGE = 'shared-storage';
-	public const STORAGE_ACCESS_API = 'storage-access-api';
+	public const STORAGE_ACCESS = 'storage-access';
 	public const SYNC_XHR = 'sync-xhr';
 	public const TRUST_TOKEN_REDEMPTION = 'trust-token-redemption';
 	public const UNLOAD = 'unload';
