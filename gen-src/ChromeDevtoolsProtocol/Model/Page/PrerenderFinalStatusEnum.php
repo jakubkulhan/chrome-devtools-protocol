@@ -46,4 +46,5 @@ final class PrerenderFinalStatusEnum
 	public const MEMORY_LIMIT_EXCEEDED = 'MemoryLimitExceeded';
 	public const FAIL_TO_GET_MEMORY_USAGE = 'FailToGetMemoryUsage';
 	public const DATA_SAVER_ENABLED = 'DataSaverEnabled';
+	public const HAS_EFFECTIVE_URL = 'HasEffectiveUrl';
 }
