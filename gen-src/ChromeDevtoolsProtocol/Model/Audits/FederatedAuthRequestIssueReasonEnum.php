@@ -11,7 +11,7 @@ namespace ChromeDevtoolsProtocol\Model\Audits;
  */
 final class FederatedAuthRequestIssueReasonEnum
 {
-	public const APPROVAL_DECLINED = 'ApprovalDeclined';
+	public const SHOULD_EMBARGO = 'ShouldEmbargo';
 	public const TOO_MANY_REQUESTS = 'TooManyRequests';
 	public const MANIFEST_LIST_HTTP_NOT_FOUND = 'ManifestListHttpNotFound';
 	public const MANIFEST_LIST_NO_RESPONSE = 'ManifestListNoResponse';
@@ -36,4 +36,5 @@ final class FederatedAuthRequestIssueReasonEnum
 	public const ID_TOKEN_INVALID_REQUEST = 'IdTokenInvalidRequest';
 	public const ERROR_ID_TOKEN = 'ErrorIdToken';
 	public const CANCELED = 'Canceled';
+	public const RP_PAGE_NOT_VISIBLE = 'RpPageNotVisible';
 }
