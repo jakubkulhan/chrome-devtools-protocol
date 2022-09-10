@@ -19,7 +19,7 @@ final class ChildNodeInsertedEvent implements \JsonSerializable
 	public $parentNodeId;
 
 	/**
-	 * If of the previous siblint.
+	 * Id of the previous sibling.
 	 *
 	 * @var int
 	 */

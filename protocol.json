@@ -7832,7 +7832,7 @@
                         },
                         {
                             "name": "previousNodeId",
-                            "description": "If of the previous siblint.",
+                            "description": "Id of the previous sibling.",
                             "$ref": "NodeId"
                         },
                         {
