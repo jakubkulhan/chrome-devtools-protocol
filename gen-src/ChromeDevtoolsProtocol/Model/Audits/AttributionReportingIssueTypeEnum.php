@@ -12,6 +12,7 @@ namespace ChromeDevtoolsProtocol\Model\Audits;
 final class AttributionReportingIssueTypeEnum
 {
 	public const PERMISSION_POLICY_DISABLED = 'PermissionPolicyDisabled';
+	public const PERMISSION_POLICY_NOT_DELEGATED = 'PermissionPolicyNotDelegated';
 	public const UNTRUSTWORTHY_REPORTING_ORIGIN = 'UntrustworthyReportingOrigin';
 	public const INSECURE_CONTEXT = 'InsecureContext';
 	public const INVALID_HEADER = 'InvalidHeader';
