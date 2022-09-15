@@ -25,11 +25,11 @@ final class PrerenderAttemptCompletedEvent implements \JsonSerializable
 	public $finalStatus;
 
 	/**
-	 * This is used to give users more information about the cancellation details, and this will be formatted for display.
+	 * This is used to give users more information about the name of the API call that is incompatible with prerender and has caused the cancellation of the attempt
 	 *
 	 * @var string|null
 	 */
-	public $reasonDetails;
+	public $disallowedApiMethod;
 
 
 	/**
@@ -48,8 +48,8 @@ final class PrerenderAttemptCompletedEvent implements \JsonSerializable
 		if (isset($data->finalStatus)) {
 			$instance->finalStatus = (string)$data->finalStatus;
 		}
-		if (isset($data->reasonDetails)) {
-			$instance->reasonDetails = (string)$data->reasonDetails;
+		if (isset($data->disallowedApiMethod)) {
+			$instance->disallowedApiMethod = (string)$data->disallowedApiMethod;
 		}
 		return $instance;
 	}
@@ -67,8 +67,8 @@ final class PrerenderAttemptCompletedEvent implements \JsonSerializable
 		if ($this->finalStatus !== null) {
 			$data->finalStatus = $this->finalStatus;
 		}
-		if ($this->reasonDetails !== null) {
-			$data->reasonDetails = $this->reasonDetails;
+		if ($this->disallowedApiMethod !== null) {
+			$data->disallowedApiMethod = $this->disallowedApiMethod;
 		}
 		return $data;
 	}
