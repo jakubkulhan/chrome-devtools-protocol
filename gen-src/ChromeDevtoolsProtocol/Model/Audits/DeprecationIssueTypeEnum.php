@@ -31,7 +31,6 @@ final class DeprecationIssueTypeEnum
 	public const HOST_CANDIDATE_ATTRIBUTE_GETTER = 'HostCandidateAttributeGetter';
 	public const IDENTITY_IN_CAN_MAKE_PAYMENT_EVENT = 'IdentityInCanMakePaymentEvent';
 	public const INSECURE_PRIVATE_NETWORK_SUBRESOURCE_REQUEST = 'InsecurePrivateNetworkSubresourceRequest';
-	public const LEGACY_CONSTRAINT_GOOG_I_PV6 = 'LegacyConstraintGoogIPv6';
 	public const LOCAL_C_S_S_FILE_EXTENSION_REJECTED = 'LocalCSSFileExtensionRejected';
 	public const MEDIA_SOURCE_ABORT_REMOVE = 'MediaSourceAbortRemove';
 	public const MEDIA_SOURCE_DURATION_TRUNCATING_BUFFERED = 'MediaSourceDurationTruncatingBuffered';
