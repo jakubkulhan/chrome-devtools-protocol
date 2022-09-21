@@ -10,6 +10,8 @@ namespace ChromeDevtoolsProtocol\Model\HeapProfiler;
 final class StartSamplingRequestBuilder
 {
 	private $samplingInterval;
+	private $includeObjectsCollectedByMajorGC;
+	private $includeObjectsCollectedByMinorGC;
 
 
 	/**
@@ -19,6 +21,8 @@ final class StartSamplingRequestBuilder
 	{
 		$instance = new StartSamplingRequest();
 		$instance->samplingInterval = $this->samplingInterval;
+		$instance->includeObjectsCollectedByMajorGC = $this->includeObjectsCollectedByMajorGC;
+		$instance->includeObjectsCollectedByMinorGC = $this->includeObjectsCollectedByMinorGC;
 		return $instance;
 	}
 
@@ -31,6 +35,30 @@ final class StartSamplingRequestBuilder
 	public function setSamplingInterval($samplingInterval): self
 	{
 		$this->samplingInterval = $samplingInterval;
+		return $this;
+	}
+
+
+	/**
+	 * @param bool|null $includeObjectsCollectedByMajorGC
+	 *
+	 * @return self
+	 */
+	public function setIncludeObjectsCollectedByMajorGC($includeObjectsCollectedByMajorGC): self
+	{
+		$this->includeObjectsCollectedByMajorGC = $includeObjectsCollectedByMajorGC;
+		return $this;
+	}
+
+
+	/**
+	 * @param bool|null $includeObjectsCollectedByMinorGC
+	 *
+	 * @return self
+	 */
+	public function setIncludeObjectsCollectedByMinorGC($includeObjectsCollectedByMinorGC): self
+	{
+		$this->includeObjectsCollectedByMinorGC = $includeObjectsCollectedByMinorGC;
 		return $this;
 	}
 }
