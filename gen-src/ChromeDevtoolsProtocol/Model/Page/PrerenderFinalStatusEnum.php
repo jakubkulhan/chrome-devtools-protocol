@@ -47,4 +47,6 @@ final class PrerenderFinalStatusEnum
 	public const DATA_SAVER_ENABLED = 'DataSaverEnabled';
 	public const HAS_EFFECTIVE_URL = 'HasEffectiveUrl';
 	public const ACTIVATED_BEFORE_STARTED = 'ActivatedBeforeStarted';
+	public const INACTIVE_PAGE_RESTRICTION = 'InactivePageRestriction';
+	public const START_FAILED = 'StartFailed';
 }
