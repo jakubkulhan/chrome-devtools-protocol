@@ -54,6 +54,13 @@ final class TargetInfo implements \JsonSerializable
 	/** @var string */
 	public $browserContextId;
 
+	/**
+	 * Provides additional details for specific target types. For example, for the type of "page", this may be set to "portal" or "prerender".
+	 *
+	 * @var string|null
+	 */
+	public $subtype;
+
 
 	/**
 	 * @param object $data
@@ -89,6 +96,9 @@ final class TargetInfo implements \JsonSerializable
 		if (isset($data->browserContextId)) {
 			$instance->browserContextId = (string)$data->browserContextId;
 		}
+		if (isset($data->subtype)) {
+			$instance->subtype = (string)$data->subtype;
+		}
 		return $instance;
 	}
 
@@ -122,6 +132,9 @@ final class TargetInfo implements \JsonSerializable
 		}
 		if ($this->browserContextId !== null) {
 			$data->browserContextId = $this->browserContextId;
+		}
+		if ($this->subtype !== null) {
+			$data->subtype = $this->subtype;
 		}
 		return $data;
 	}

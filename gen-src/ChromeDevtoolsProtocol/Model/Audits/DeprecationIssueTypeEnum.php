@@ -34,8 +34,6 @@ final class DeprecationIssueTypeEnum
 	public const LOCAL_C_S_S_FILE_EXTENSION_REJECTED = 'LocalCSSFileExtensionRejected';
 	public const MEDIA_SOURCE_ABORT_REMOVE = 'MediaSourceAbortRemove';
 	public const MEDIA_SOURCE_DURATION_TRUNCATING_BUFFERED = 'MediaSourceDurationTruncatingBuffered';
-	public const NAVIGATE_EVENT_RESTORE_SCROLL = 'NavigateEventRestoreScroll';
-	public const NAVIGATE_EVENT_TRANSITION_WHILE = 'NavigateEventTransitionWhile';
 	public const NO_SYSEX_WEB_M_I_D_I_WITHOUT_PERMISSION = 'NoSysexWebMIDIWithoutPermission';
 	public const NOTIFICATION_INSECURE_ORIGIN = 'NotificationInsecureOrigin';
 	public const NOTIFICATION_PERMISSION_REQUESTED_IFRAME = 'NotificationPermissionRequestedIframe';
@@ -43,6 +41,7 @@ final class DeprecationIssueTypeEnum
 	public const OPEN_WEB_DATABASE_INSECURE_CONTEXT = 'OpenWebDatabaseInsecureContext';
 	public const OVERFLOW_VISIBLE_ON_REPLACED_ELEMENT = 'OverflowVisibleOnReplacedElement';
 	public const PAYMENT_INSTRUMENTS = 'PaymentInstruments';
+	public const PAYMENT_REQUEST_C_S_P_VIOLATION = 'PaymentRequestCSPViolation';
 	public const PERSISTENT_QUOTA_TYPE = 'PersistentQuotaType';
 	public const PICTURE_SOURCE_SRC = 'PictureSourceSrc';
 	public const PREFIXED_CANCEL_ANIMATION_FRAME = 'PrefixedCancelAnimationFrame';
