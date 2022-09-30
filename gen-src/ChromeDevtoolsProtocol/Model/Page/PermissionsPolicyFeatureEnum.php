@@ -23,6 +23,7 @@ final class PermissionsPolicyFeatureEnum
 	public const CH_DOWNLINK = 'ch-downlink';
 	public const CH_ECT = 'ch-ect';
 	public const CH_PREFERS_COLOR_SCHEME = 'ch-prefers-color-scheme';
+	public const CH_PREFERS_REDUCED_MOTION = 'ch-prefers-reduced-motion';
 	public const CH_RTT = 'ch-rtt';
 	public const CH_SAVE_DATA = 'ch-save-data';
 	public const CH_UA = 'ch-ua';
@@ -49,7 +50,6 @@ final class PermissionsPolicyFeatureEnum
 	public const ENCRYPTED_MEDIA = 'encrypted-media';
 	public const EXECUTION_WHILE_OUT_OF_VIEWPORT = 'execution-while-out-of-viewport';
 	public const EXECUTION_WHILE_NOT_RENDERED = 'execution-while-not-rendered';
-	public const FEDERATED_CREDENTIALS = 'federated-credentials';
 	public const FOCUS_WITHOUT_USER_ACTIVATION = 'focus-without-user-activation';
 	public const FULLSCREEN = 'fullscreen';
 	public const FROBULATE = 'frobulate';
@@ -57,6 +57,7 @@ final class PermissionsPolicyFeatureEnum
 	public const GEOLOCATION = 'geolocation';
 	public const GYROSCOPE = 'gyroscope';
 	public const HID = 'hid';
+	public const IDENTITY_CREDENTIAL_GET = 'identity-credential-get';
 	public const IDLE_DETECTION = 'idle-detection';
 	public const INTEREST_COHORT = 'interest-cohort';
 	public const JOIN_AD_INTEREST_GROUP = 'join-ad-interest-group';
