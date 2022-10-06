@@ -49,4 +49,5 @@ final class PrerenderFinalStatusEnum
 	public const ACTIVATED_BEFORE_STARTED = 'ActivatedBeforeStarted';
 	public const INACTIVE_PAGE_RESTRICTION = 'InactivePageRestriction';
 	public const START_FAILED = 'StartFailed';
+	public const TIMEOUT_BACKGROUNDED = 'TimeoutBackgrounded';
 }
