@@ -57,7 +57,7 @@ final class PermissionsPolicyFeatureEnum
 	public const GEOLOCATION = 'geolocation';
 	public const GYROSCOPE = 'gyroscope';
 	public const HID = 'hid';
-	public const IDENTITY_CREDENTIAL_GET = 'identity-credential-get';
+	public const IDENTITY_CREDENTIALS_GET = 'identity-credentials-get';
 	public const IDLE_DETECTION = 'idle-detection';
 	public const INTEREST_COHORT = 'interest-cohort';
 	public const JOIN_AD_INTEREST_GROUP = 'join-ad-interest-group';
