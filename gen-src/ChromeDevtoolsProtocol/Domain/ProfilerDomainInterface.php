@@ -12,7 +12,6 @@ use ChromeDevtoolsProtocol\Model\Profiler\StartPreciseCoverageRequest;
 use ChromeDevtoolsProtocol\Model\Profiler\StartPreciseCoverageResponse;
 use ChromeDevtoolsProtocol\Model\Profiler\StopResponse;
 use ChromeDevtoolsProtocol\Model\Profiler\TakePreciseCoverageResponse;
-use ChromeDevtoolsProtocol\Model\Profiler\TakeTypeProfileResponse;
 use ChromeDevtoolsProtocol\SubscriptionInterface;
 
 /**
@@ -90,16 +89,6 @@ interface ProfilerDomainInterface
 
 
 	/**
-	 * Enable type profile.
-	 *
-	 * @param ContextInterface $ctx
-	 *
-	 * @return void
-	 */
-	public function startTypeProfile(ContextInterface $ctx): void;
-
-
-	/**
 	 * Call Profiler.stop command.
 	 *
 	 * @param ContextInterface $ctx
@@ -120,16 +109,6 @@ interface ProfilerDomainInterface
 
 
 	/**
-	 * Disable type profile. Disabling releases type profile data collected so far.
-	 *
-	 * @param ContextInterface $ctx
-	 *
-	 * @return void
-	 */
-	public function stopTypeProfile(ContextInterface $ctx): void;
-
-
-	/**
 	 * Collect coverage data for the current isolate, and resets execution counters. Precise code coverage needs to have started.
 	 *
 	 * @param ContextInterface $ctx
@@ -137,16 +116,6 @@ interface ProfilerDomainInterface
 	 * @return TakePreciseCoverageResponse
 	 */
 	public function takePreciseCoverage(ContextInterface $ctx): TakePreciseCoverageResponse;
-
-
-	/**
-	 * Collect type profile.
-	 *
-	 * @param ContextInterface $ctx
-	 *
-	 * @return TakeTypeProfileResponse
-	 */
-	public function takeTypeProfile(ContextInterface $ctx): TakeTypeProfileResponse;
 
 
 	/**

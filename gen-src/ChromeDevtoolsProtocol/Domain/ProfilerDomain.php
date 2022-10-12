@@ -13,7 +13,6 @@ use ChromeDevtoolsProtocol\Model\Profiler\StartPreciseCoverageRequest;
 use ChromeDevtoolsProtocol\Model\Profiler\StartPreciseCoverageResponse;
 use ChromeDevtoolsProtocol\Model\Profiler\StopResponse;
 use ChromeDevtoolsProtocol\Model\Profiler\TakePreciseCoverageResponse;
-use ChromeDevtoolsProtocol\Model\Profiler\TakeTypeProfileResponse;
 use ChromeDevtoolsProtocol\SubscriptionInterface;
 
 class ProfilerDomain implements ProfilerDomainInterface
@@ -72,13 +71,6 @@ class ProfilerDomain implements ProfilerDomainInterface
 	}
 
 
-	public function startTypeProfile(ContextInterface $ctx): void
-	{
-		$request = new \stdClass();
-		$this->internalClient->executeCommand($ctx, 'Profiler.startTypeProfile', $request);
-	}
-
-
 	public function stop(ContextInterface $ctx): StopResponse
 	{
 		$request = new \stdClass();
@@ -94,26 +86,11 @@ class ProfilerDomain implements ProfilerDomainInterface
 	}
 
 
-	public function stopTypeProfile(ContextInterface $ctx): void
-	{
-		$request = new \stdClass();
-		$this->internalClient->executeCommand($ctx, 'Profiler.stopTypeProfile', $request);
-	}
-
-
 	public function takePreciseCoverage(ContextInterface $ctx): TakePreciseCoverageResponse
 	{
 		$request = new \stdClass();
 		$response = $this->internalClient->executeCommand($ctx, 'Profiler.takePreciseCoverage', $request);
 		return TakePreciseCoverageResponse::fromJson($response);
-	}
-
-
-	public function takeTypeProfile(ContextInterface $ctx): TakeTypeProfileResponse
-	{
-		$request = new \stdClass();
-		$response = $this->internalClient->executeCommand($ctx, 'Profiler.takeTypeProfile', $request);
-		return TakeTypeProfileResponse::fromJson($response);
 	}
 
 
