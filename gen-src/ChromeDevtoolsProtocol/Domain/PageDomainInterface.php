@@ -32,6 +32,8 @@ use ChromeDevtoolsProtocol\Model\Page\FrameScheduledNavigationEvent;
 use ChromeDevtoolsProtocol\Model\Page\FrameStartedLoadingEvent;
 use ChromeDevtoolsProtocol\Model\Page\FrameStoppedLoadingEvent;
 use ChromeDevtoolsProtocol\Model\Page\GenerateTestReportRequest;
+use ChromeDevtoolsProtocol\Model\Page\GetAdScriptIdRequest;
+use ChromeDevtoolsProtocol\Model\Page\GetAdScriptIdResponse;
 use ChromeDevtoolsProtocol\Model\Page\GetAppIdResponse;
 use ChromeDevtoolsProtocol\Model\Page\GetAppManifestResponse;
 use ChromeDevtoolsProtocol\Model\Page\GetCookiesResponse;
@@ -282,6 +284,17 @@ interface PageDomainInterface
 	 * @return void
 	 */
 	public function generateTestReport(ContextInterface $ctx, GenerateTestReportRequest $request): void;
+
+
+	/**
+	 * Call Page.getAdScriptId command.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param GetAdScriptIdRequest $request
+	 *
+	 * @return GetAdScriptIdResponse
+	 */
+	public function getAdScriptId(ContextInterface $ctx, GetAdScriptIdRequest $request): GetAdScriptIdResponse;
 
 
 	/**

@@ -33,6 +33,8 @@ use ChromeDevtoolsProtocol\Model\Page\FrameScheduledNavigationEvent;
 use ChromeDevtoolsProtocol\Model\Page\FrameStartedLoadingEvent;
 use ChromeDevtoolsProtocol\Model\Page\FrameStoppedLoadingEvent;
 use ChromeDevtoolsProtocol\Model\Page\GenerateTestReportRequest;
+use ChromeDevtoolsProtocol\Model\Page\GetAdScriptIdRequest;
+use ChromeDevtoolsProtocol\Model\Page\GetAdScriptIdResponse;
 use ChromeDevtoolsProtocol\Model\Page\GetAppIdResponse;
 use ChromeDevtoolsProtocol\Model\Page\GetAppManifestResponse;
 use ChromeDevtoolsProtocol\Model\Page\GetCookiesResponse;
@@ -220,6 +222,13 @@ class PageDomain implements PageDomainInterface
 	public function generateTestReport(ContextInterface $ctx, GenerateTestReportRequest $request): void
 	{
 		$this->internalClient->executeCommand($ctx, 'Page.generateTestReport', $request);
+	}
+
+
+	public function getAdScriptId(ContextInterface $ctx, GetAdScriptIdRequest $request): GetAdScriptIdResponse
+	{
+		$response = $this->internalClient->executeCommand($ctx, 'Page.getAdScriptId', $request);
+		return GetAdScriptIdResponse::fromJson($response);
 	}
 
 

@@ -19073,6 +19073,24 @@
                     ]
                 },
                 {
+                    "name": "getAdScriptId",
+                    "experimental": true,
+                    "parameters": [
+                        {
+                            "name": "frameId",
+                            "$ref": "FrameId"
+                        }
+                    ],
+                    "returns": [
+                        {
+                            "name": "adScriptId",
+                            "description": "Identifies the bottom-most script which caused the frame to be labelled as an ad. Only sent if frame is labelled as an ad and id is available.",
+                            "optional": true,
+                            "$ref": "AdScriptId"
+                        }
+                    ]
+                },
+                {
                     "name": "getAppId",
                     "description": "Returns the unique (PWA) app id. Only returns values if the feature flag 'WebAppEnableManifestId' is enabled",
                     "experimental": true,
@@ -20163,8 +20181,9 @@
                         },
                         {
                             "name": "adScriptId",
-                            "description": "Identifies the bottom-most script which caused the frame to be labelled as an ad. Only sent if frame is labelled as an ad and id is available.",
+                            "description": "Identifies the bottom-most script which caused the frame to be labelled as an ad. Only sent if frame is labelled as an ad and id is available. Deprecated: use Page.getAdScriptId instead.",
                             "experimental": true,
+                            "deprecated": true,
                             "optional": true,
                             "$ref": "AdScriptId"
                         }
