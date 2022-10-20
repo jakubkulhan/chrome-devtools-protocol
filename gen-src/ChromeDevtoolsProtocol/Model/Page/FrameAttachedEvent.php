@@ -34,13 +34,6 @@ final class FrameAttachedEvent implements \JsonSerializable
 	 */
 	public $stack;
 
-	/**
-	 * Identifies the bottom-most script which caused the frame to be labelled as an ad. Only sent if frame is labelled as an ad and id is available. Deprecated: use Page.getAdScriptId instead.
-	 *
-	 * @var AdScriptId|null
-	 */
-	public $adScriptId;
-
 
 	/**
 	 * @param object $data
@@ -58,9 +51,6 @@ final class FrameAttachedEvent implements \JsonSerializable
 		if (isset($data->stack)) {
 			$instance->stack = StackTrace::fromJson($data->stack);
 		}
-		if (isset($data->adScriptId)) {
-			$instance->adScriptId = AdScriptId::fromJson($data->adScriptId);
-		}
 		return $instance;
 	}
 
@@ -76,9 +66,6 @@ final class FrameAttachedEvent implements \JsonSerializable
 		}
 		if ($this->stack !== null) {
 			$data->stack = $this->stack->jsonSerialize();
-		}
-		if ($this->adScriptId !== null) {
-			$data->adScriptId = $this->adScriptId->jsonSerialize();
 		}
 		return $data;
 	}
