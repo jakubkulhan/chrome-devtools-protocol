@@ -14,6 +14,7 @@ final class CaptureScreenshotRequestBuilder
 	private $clip;
 	private $fromSurface;
 	private $captureBeyondViewport;
+	private $optimizeForSpeed;
 
 
 	/**
@@ -27,6 +28,7 @@ final class CaptureScreenshotRequestBuilder
 		$instance->clip = $this->clip;
 		$instance->fromSurface = $this->fromSurface;
 		$instance->captureBeyondViewport = $this->captureBeyondViewport;
+		$instance->optimizeForSpeed = $this->optimizeForSpeed;
 		return $instance;
 	}
 
@@ -87,6 +89,18 @@ final class CaptureScreenshotRequestBuilder
 	public function setCaptureBeyondViewport($captureBeyondViewport): self
 	{
 		$this->captureBeyondViewport = $captureBeyondViewport;
+		return $this;
+	}
+
+
+	/**
+	 * @param bool|null $optimizeForSpeed
+	 *
+	 * @return self
+	 */
+	public function setOptimizeForSpeed($optimizeForSpeed): self
+	{
+		$this->optimizeForSpeed = $optimizeForSpeed;
 		return $this;
 	}
 }

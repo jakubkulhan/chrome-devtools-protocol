@@ -107,6 +107,7 @@ final class BackForwardCacheNotRestoredReasonEnum
 	public const OUTSTANDING_NETWORK_REQUEST_DIRECT_SOCKET = 'OutstandingNetworkRequestDirectSocket';
 	public const INJECTED_JAVASCRIPT = 'InjectedJavascript';
 	public const INJECTED_STYLE_SHEET = 'InjectedStyleSheet';
+	public const KEEPALIVE_REQUEST = 'KeepaliveRequest';
 	public const DUMMY = 'Dummy';
 	public const CONTENT_SECURITY_HANDLER = 'ContentSecurityHandler';
 	public const CONTENT_WEB_AUTHENTICATION_A_P_I = 'ContentWebAuthenticationAPI';
