@@ -14,8 +14,6 @@ final class PrerenderFinalStatusEnum
 	public const ACTIVATED = 'Activated';
 	public const DESTROYED = 'Destroyed';
 	public const LOW_END_DEVICE = 'LowEndDevice';
-	public const CROSS_ORIGIN_REDIRECT = 'CrossOriginRedirect';
-	public const CROSS_ORIGIN_NAVIGATION = 'CrossOriginNavigation';
 	public const INVALID_SCHEME_REDIRECT = 'InvalidSchemeRedirect';
 	public const INVALID_SCHEME_NAVIGATION = 'InvalidSchemeNavigation';
 	public const IN_PROGRESS_NAVIGATION = 'InProgressNavigation';
@@ -50,4 +48,10 @@ final class PrerenderFinalStatusEnum
 	public const INACTIVE_PAGE_RESTRICTION = 'InactivePageRestriction';
 	public const START_FAILED = 'StartFailed';
 	public const TIMEOUT_BACKGROUNDED = 'TimeoutBackgrounded';
+	public const CROSS_SITE_REDIRECT = 'CrossSiteRedirect';
+	public const CROSS_SITE_NAVIGATION = 'CrossSiteNavigation';
+	public const SAME_SITE_CROSS_ORIGIN_REDIRECT = 'SameSiteCrossOriginRedirect';
+	public const SAME_SITE_CROSS_ORIGIN_NAVIGATION = 'SameSiteCrossOriginNavigation';
+	public const SAME_SITE_CROSS_ORIGIN_REDIRECT_NOT_OPT_IN = 'SameSiteCrossOriginRedirectNotOptIn';
+	public const SAME_SITE_CROSS_ORIGIN_NAVIGATION_NOT_OPT_IN = 'SameSiteCrossOriginNavigationNotOptIn';
 }

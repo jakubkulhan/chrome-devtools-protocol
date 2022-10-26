@@ -14,6 +14,10 @@ use ChromeDevtoolsProtocol\Model\Storage\GetCookiesRequest;
 use ChromeDevtoolsProtocol\Model\Storage\GetCookiesResponse;
 use ChromeDevtoolsProtocol\Model\Storage\GetInterestGroupDetailsRequest;
 use ChromeDevtoolsProtocol\Model\Storage\GetInterestGroupDetailsResponse;
+use ChromeDevtoolsProtocol\Model\Storage\GetSharedStorageEntriesRequest;
+use ChromeDevtoolsProtocol\Model\Storage\GetSharedStorageEntriesResponse;
+use ChromeDevtoolsProtocol\Model\Storage\GetSharedStorageMetadataRequest;
+use ChromeDevtoolsProtocol\Model\Storage\GetSharedStorageMetadataResponse;
 use ChromeDevtoolsProtocol\Model\Storage\GetStorageKeyForFrameRequest;
 use ChromeDevtoolsProtocol\Model\Storage\GetStorageKeyForFrameResponse;
 use ChromeDevtoolsProtocol\Model\Storage\GetTrustTokensResponse;
@@ -111,6 +115,34 @@ interface StorageDomainInterface
 		ContextInterface $ctx,
 		GetInterestGroupDetailsRequest $request
 	): GetInterestGroupDetailsResponse;
+
+
+	/**
+	 * Gets the entries in an given origin's shared storage.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param GetSharedStorageEntriesRequest $request
+	 *
+	 * @return GetSharedStorageEntriesResponse
+	 */
+	public function getSharedStorageEntries(
+		ContextInterface $ctx,
+		GetSharedStorageEntriesRequest $request
+	): GetSharedStorageEntriesResponse;
+
+
+	/**
+	 * Gets metadata for an origin's shared storage.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param GetSharedStorageMetadataRequest $request
+	 *
+	 * @return GetSharedStorageMetadataResponse
+	 */
+	public function getSharedStorageMetadata(
+		ContextInterface $ctx,
+		GetSharedStorageMetadataRequest $request
+	): GetSharedStorageMetadataResponse;
 
 
 	/**

@@ -15,6 +15,10 @@ use ChromeDevtoolsProtocol\Model\Storage\GetCookiesRequest;
 use ChromeDevtoolsProtocol\Model\Storage\GetCookiesResponse;
 use ChromeDevtoolsProtocol\Model\Storage\GetInterestGroupDetailsRequest;
 use ChromeDevtoolsProtocol\Model\Storage\GetInterestGroupDetailsResponse;
+use ChromeDevtoolsProtocol\Model\Storage\GetSharedStorageEntriesRequest;
+use ChromeDevtoolsProtocol\Model\Storage\GetSharedStorageEntriesResponse;
+use ChromeDevtoolsProtocol\Model\Storage\GetSharedStorageMetadataRequest;
+use ChromeDevtoolsProtocol\Model\Storage\GetSharedStorageMetadataResponse;
 use ChromeDevtoolsProtocol\Model\Storage\GetStorageKeyForFrameRequest;
 use ChromeDevtoolsProtocol\Model\Storage\GetStorageKeyForFrameResponse;
 use ChromeDevtoolsProtocol\Model\Storage\GetTrustTokensResponse;
@@ -84,6 +88,24 @@ class StorageDomain implements StorageDomainInterface
 	): GetInterestGroupDetailsResponse {
 		$response = $this->internalClient->executeCommand($ctx, 'Storage.getInterestGroupDetails', $request);
 		return GetInterestGroupDetailsResponse::fromJson($response);
+	}
+
+
+	public function getSharedStorageEntries(
+		ContextInterface $ctx,
+		GetSharedStorageEntriesRequest $request
+	): GetSharedStorageEntriesResponse {
+		$response = $this->internalClient->executeCommand($ctx, 'Storage.getSharedStorageEntries', $request);
+		return GetSharedStorageEntriesResponse::fromJson($response);
+	}
+
+
+	public function getSharedStorageMetadata(
+		ContextInterface $ctx,
+		GetSharedStorageMetadataRequest $request
+	): GetSharedStorageMetadataResponse {
+		$response = $this->internalClient->executeCommand($ctx, 'Storage.getSharedStorageMetadata', $request);
+		return GetSharedStorageMetadataResponse::fromJson($response);
 	}
 
 
