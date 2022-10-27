@@ -18826,7 +18826,8 @@
                         "SameSiteCrossOriginRedirect",
                         "SameSiteCrossOriginNavigation",
                         "SameSiteCrossOriginRedirectNotOptIn",
-                        "SameSiteCrossOriginNavigationNotOptIn"
+                        "SameSiteCrossOriginNavigationNotOptIn",
+                        "ActivationNavigationParameterMismatch"
                     ]
                 }
             ],
