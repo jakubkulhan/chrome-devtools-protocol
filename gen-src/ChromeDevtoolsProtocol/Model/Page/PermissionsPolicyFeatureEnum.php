@@ -43,6 +43,7 @@ final class PermissionsPolicyFeatureEnum
 	public const CH_WIDTH = 'ch-width';
 	public const CLIPBOARD_READ = 'clipboard-read';
 	public const CLIPBOARD_WRITE = 'clipboard-write';
+	public const COMPUTE_PRESSURE = 'compute-pressure';
 	public const CROSS_ORIGIN_ISOLATED = 'cross-origin-isolated';
 	public const DIRECT_SOCKETS = 'direct-sockets';
 	public const DISPLAY_CAPTURE = 'display-capture';
