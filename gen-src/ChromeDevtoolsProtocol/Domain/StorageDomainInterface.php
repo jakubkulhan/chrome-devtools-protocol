@@ -29,6 +29,8 @@ use ChromeDevtoolsProtocol\Model\Storage\InterestGroupAccessedEvent;
 use ChromeDevtoolsProtocol\Model\Storage\OverrideQuotaForOriginRequest;
 use ChromeDevtoolsProtocol\Model\Storage\SetCookiesRequest;
 use ChromeDevtoolsProtocol\Model\Storage\SetInterestGroupTrackingRequest;
+use ChromeDevtoolsProtocol\Model\Storage\SetSharedStorageTrackingRequest;
+use ChromeDevtoolsProtocol\Model\Storage\SharedStorageAccessedEvent;
 use ChromeDevtoolsProtocol\Model\Storage\TrackCacheStorageForOriginRequest;
 use ChromeDevtoolsProtocol\Model\Storage\TrackIndexedDBForOriginRequest;
 use ChromeDevtoolsProtocol\Model\Storage\TrackIndexedDBForStorageKeyRequest;
@@ -211,6 +213,17 @@ interface StorageDomainInterface
 	 * @return void
 	 */
 	public function setInterestGroupTracking(ContextInterface $ctx, SetInterestGroupTrackingRequest $request): void;
+
+
+	/**
+	 * Enables/disables issuing of sharedStorageAccessed events.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param SetSharedStorageTrackingRequest $request
+	 *
+	 * @return void
+	 */
+	public function setSharedStorageTracking(ContextInterface $ctx, SetSharedStorageTrackingRequest $request): void;
 
 
 	/**
@@ -400,4 +413,28 @@ interface StorageDomainInterface
 	 * @return InterestGroupAccessedEvent
 	 */
 	public function awaitInterestGroupAccessed(ContextInterface $ctx): InterestGroupAccessedEvent;
+
+
+	/**
+	 * Shared storage was accessed by the associated page. The following parameters are included in all events.
+	 *
+	 * Listener will be called whenever event Storage.sharedStorageAccessed is fired.
+	 *
+	 * @param callable $listener
+	 *
+	 * @return SubscriptionInterface
+	 */
+	public function addSharedStorageAccessedListener(callable $listener): SubscriptionInterface;
+
+
+	/**
+	 * Shared storage was accessed by the associated page. The following parameters are included in all events.
+	 *
+	 * Method will block until first Storage.sharedStorageAccessed event is fired.
+	 *
+	 * @param ContextInterface $ctx
+	 *
+	 * @return SharedStorageAccessedEvent
+	 */
+	public function awaitSharedStorageAccessed(ContextInterface $ctx): SharedStorageAccessedEvent;
 }

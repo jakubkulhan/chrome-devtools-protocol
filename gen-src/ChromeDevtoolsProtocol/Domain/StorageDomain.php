@@ -30,6 +30,8 @@ use ChromeDevtoolsProtocol\Model\Storage\InterestGroupAccessedEvent;
 use ChromeDevtoolsProtocol\Model\Storage\OverrideQuotaForOriginRequest;
 use ChromeDevtoolsProtocol\Model\Storage\SetCookiesRequest;
 use ChromeDevtoolsProtocol\Model\Storage\SetInterestGroupTrackingRequest;
+use ChromeDevtoolsProtocol\Model\Storage\SetSharedStorageTrackingRequest;
+use ChromeDevtoolsProtocol\Model\Storage\SharedStorageAccessedEvent;
 use ChromeDevtoolsProtocol\Model\Storage\TrackCacheStorageForOriginRequest;
 use ChromeDevtoolsProtocol\Model\Storage\TrackIndexedDBForOriginRequest;
 use ChromeDevtoolsProtocol\Model\Storage\TrackIndexedDBForStorageKeyRequest;
@@ -151,6 +153,12 @@ class StorageDomain implements StorageDomainInterface
 	}
 
 
+	public function setSharedStorageTracking(ContextInterface $ctx, SetSharedStorageTrackingRequest $request): void
+	{
+		$this->internalClient->executeCommand($ctx, 'Storage.setSharedStorageTracking', $request);
+	}
+
+
 	public function trackCacheStorageForOrigin(ContextInterface $ctx, TrackCacheStorageForOriginRequest $request): void
 	{
 		$this->internalClient->executeCommand($ctx, 'Storage.trackCacheStorageForOrigin', $request);
@@ -256,5 +264,19 @@ class StorageDomain implements StorageDomainInterface
 	public function awaitInterestGroupAccessed(ContextInterface $ctx): InterestGroupAccessedEvent
 	{
 		return InterestGroupAccessedEvent::fromJson($this->internalClient->awaitEvent($ctx, 'Storage.interestGroupAccessed'));
+	}
+
+
+	public function addSharedStorageAccessedListener(callable $listener): SubscriptionInterface
+	{
+		return $this->internalClient->addListener('Storage.sharedStorageAccessed', function ($event) use ($listener) {
+			return $listener(SharedStorageAccessedEvent::fromJson($event));
+		});
+	}
+
+
+	public function awaitSharedStorageAccessed(ContextInterface $ctx): SharedStorageAccessedEvent
+	{
+		return SharedStorageAccessedEvent::fromJson($this->internalClient->awaitEvent($ctx, 'Storage.sharedStorageAccessed'));
 	}
 }

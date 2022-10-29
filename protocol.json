@@ -23568,6 +23568,29 @@
                     ]
                 },
                 {
+                    "id": "SharedStorageAccessType",
+                    "description": "Enum of shared storage access types.",
+                    "type": "string",
+                    "enum": [
+                        "documentAddModule",
+                        "documentSelectURL",
+                        "documentRun",
+                        "documentSet",
+                        "documentAppend",
+                        "documentDelete",
+                        "documentClear",
+                        "workletSet",
+                        "workletAppend",
+                        "workletDelete",
+                        "workletClear",
+                        "workletGet",
+                        "workletKeys",
+                        "workletEntries",
+                        "workletLength",
+                        "workletRemainingBudget"
+                    ]
+                },
+                {
                     "id": "SharedStorageEntry",
                     "description": "Struct for a single key-value pair in an origin's shared storage.",
                     "type": "object",
@@ -23598,6 +23621,93 @@
                         {
                             "name": "remainingBudget",
                             "type": "number"
+                        }
+                    ]
+                },
+                {
+                    "id": "SharedStorageReportingMetadata",
+                    "description": "Pair of reporting metadata details for a candidate URL for `selectURL()`.",
+                    "type": "object",
+                    "properties": [
+                        {
+                            "name": "eventType",
+                            "type": "string"
+                        },
+                        {
+                            "name": "reportingUrl",
+                            "type": "string"
+                        }
+                    ]
+                },
+                {
+                    "id": "SharedStorageUrlWithMetadata",
+                    "description": "Bundles a candidate URL with its reporting metadata.",
+                    "type": "object",
+                    "properties": [
+                        {
+                            "name": "url",
+                            "description": "Spec of candidate URL.",
+                            "type": "string"
+                        },
+                        {
+                            "name": "reportingMetadata",
+                            "description": "Any associated reporting metadata.",
+                            "type": "array",
+                            "items": {
+                                "$ref": "SharedStorageReportingMetadata"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "id": "SharedStorageAccessParams",
+                    "description": "Bundles the parameters for shared storage access events whose presence/absence can vary according to SharedStorageAccessType.",
+                    "type": "object",
+                    "properties": [
+                        {
+                            "name": "scriptSourceUrl",
+                            "description": "Spec of the module script URL. Present only for SharedStorageAccessType.documentAddModule.",
+                            "optional": true,
+                            "type": "string"
+                        },
+                        {
+                            "name": "operationName",
+                            "description": "Name of the registered operation to be run. Present only for SharedStorageAccessType.documentRun and SharedStorageAccessType.documentSelectURL.",
+                            "optional": true,
+                            "type": "string"
+                        },
+                        {
+                            "name": "serializedData",
+                            "description": "The operation's serialized data in bytes (converted to a string). Present only for SharedStorageAccessType.documentRun and SharedStorageAccessType.documentSelectURL.",
+                            "optional": true,
+                            "type": "string"
+                        },
+                        {
+                            "name": "urlsWithMetadata",
+                            "description": "Array of candidate URLs' specs, along with any associated metadata. Present only for SharedStorageAccessType.documentSelectURL.",
+                            "optional": true,
+                            "type": "array",
+                            "items": {
+                                "$ref": "SharedStorageUrlWithMetadata"
+                            }
+                        },
+                        {
+                            "name": "key",
+                            "description": "Key for a specific entry in an origin's shared storage. Present only for SharedStorageAccessType.documentSet, SharedStorageAccessType.documentAppend, SharedStorageAccessType.documentDelete, SharedStorageAccessType.workletSet, SharedStorageAccessType.workletAppend, SharedStorageAccessType.workletDelete, and SharedStorageAccessType.workletGet.",
+                            "optional": true,
+                            "type": "string"
+                        },
+                        {
+                            "name": "value",
+                            "description": "Value for a specific entry in an origin's shared storage. Present only for SharedStorageAccessType.documentSet, SharedStorageAccessType.documentAppend, SharedStorageAccessType.workletSet, and SharedStorageAccessType.workletAppend.",
+                            "optional": true,
+                            "type": "string"
+                        },
+                        {
+                            "name": "ignoreIfPresent",
+                            "description": "Whether or not to set an entry for a key if that key is already present. Present only for SharedStorageAccessType.documentSet and SharedStorageAccessType.workletSet.",
+                            "optional": true,
+                            "type": "boolean"
                         }
                     ]
                 }
@@ -23861,6 +23971,17 @@
                     ]
                 },
                 {
+                    "name": "setSharedStorageTracking",
+                    "description": "Enables/disables issuing of sharedStorageAccessed events.",
+                    "experimental": true,
+                    "parameters": [
+                        {
+                            "name": "enable",
+                            "type": "boolean"
+                        }
+                    ]
+                },
+                {
                     "name": "trackCacheStorageForOrigin",
                     "description": "Registers origin to be notified when an update occurs to its cache storage list.",
                     "parameters": [
@@ -24016,6 +24137,37 @@
                         {
                             "name": "name",
                             "type": "string"
+                        }
+                    ]
+                },
+                {
+                    "name": "sharedStorageAccessed",
+                    "description": "Shared storage was accessed by the associated page. The following parameters are included in all events.",
+                    "parameters": [
+                        {
+                            "name": "accessTime",
+                            "description": "Time of the access.",
+                            "$ref": "Network.TimeSinceEpoch"
+                        },
+                        {
+                            "name": "type",
+                            "description": "Enum value indicating the Shared Storage API method invoked.",
+                            "$ref": "SharedStorageAccessType"
+                        },
+                        {
+                            "name": "mainFrameId",
+                            "description": "DevTools Frame Token for the primary frame tree's root.",
+                            "$ref": "Page.FrameId"
+                        },
+                        {
+                            "name": "ownerOrigin",
+                            "description": "Serialized origin for the context that invoked the Shared Storage API.",
+                            "type": "string"
+                        },
+                        {
+                            "name": "params",
+                            "description": "The sub-parameters warapped by `params` are all optional and their presence/absence depends on `type`.",
+                            "$ref": "SharedStorageAccessParams"
                         }
                     ]
                 }
