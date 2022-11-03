@@ -15,6 +15,7 @@ use ChromeDevtoolsProtocol\Model\WebAuthn\GetCredentialsResponse;
 use ChromeDevtoolsProtocol\Model\WebAuthn\RemoveCredentialRequest;
 use ChromeDevtoolsProtocol\Model\WebAuthn\RemoveVirtualAuthenticatorRequest;
 use ChromeDevtoolsProtocol\Model\WebAuthn\SetAutomaticPresenceSimulationRequest;
+use ChromeDevtoolsProtocol\Model\WebAuthn\SetResponseOverrideBitsRequest;
 use ChromeDevtoolsProtocol\Model\WebAuthn\SetUserVerifiedRequest;
 
 /**
@@ -141,6 +142,17 @@ interface WebAuthnDomainInterface
 		ContextInterface $ctx,
 		SetAutomaticPresenceSimulationRequest $request
 	): void;
+
+
+	/**
+	 * Resets parameters isBogusSignature, isBadUV, isBadUP to false if they are not present.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param SetResponseOverrideBitsRequest $request
+	 *
+	 * @return void
+	 */
+	public function setResponseOverrideBits(ContextInterface $ctx, SetResponseOverrideBitsRequest $request): void;
 
 
 	/**
