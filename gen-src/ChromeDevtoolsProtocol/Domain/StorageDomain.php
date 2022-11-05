@@ -9,8 +9,10 @@ use ChromeDevtoolsProtocol\Model\Storage\CacheStorageListUpdatedEvent;
 use ChromeDevtoolsProtocol\Model\Storage\ClearCookiesRequest;
 use ChromeDevtoolsProtocol\Model\Storage\ClearDataForOriginRequest;
 use ChromeDevtoolsProtocol\Model\Storage\ClearDataForStorageKeyRequest;
+use ChromeDevtoolsProtocol\Model\Storage\ClearSharedStorageEntriesRequest;
 use ChromeDevtoolsProtocol\Model\Storage\ClearTrustTokensRequest;
 use ChromeDevtoolsProtocol\Model\Storage\ClearTrustTokensResponse;
+use ChromeDevtoolsProtocol\Model\Storage\DeleteSharedStorageEntryRequest;
 use ChromeDevtoolsProtocol\Model\Storage\GetCookiesRequest;
 use ChromeDevtoolsProtocol\Model\Storage\GetCookiesResponse;
 use ChromeDevtoolsProtocol\Model\Storage\GetInterestGroupDetailsRequest;
@@ -70,10 +72,22 @@ class StorageDomain implements StorageDomainInterface
 	}
 
 
+	public function clearSharedStorageEntries(ContextInterface $ctx, ClearSharedStorageEntriesRequest $request): void
+	{
+		$this->internalClient->executeCommand($ctx, 'Storage.clearSharedStorageEntries', $request);
+	}
+
+
 	public function clearTrustTokens(ContextInterface $ctx, ClearTrustTokensRequest $request): ClearTrustTokensResponse
 	{
 		$response = $this->internalClient->executeCommand($ctx, 'Storage.clearTrustTokens', $request);
 		return ClearTrustTokensResponse::fromJson($response);
+	}
+
+
+	public function deleteSharedStorageEntry(ContextInterface $ctx, DeleteSharedStorageEntryRequest $request): void
+	{
+		$this->internalClient->executeCommand($ctx, 'Storage.deleteSharedStorageEntry', $request);
 	}
 
 

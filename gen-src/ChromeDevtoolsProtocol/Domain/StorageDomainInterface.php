@@ -8,8 +8,10 @@ use ChromeDevtoolsProtocol\Model\Storage\CacheStorageListUpdatedEvent;
 use ChromeDevtoolsProtocol\Model\Storage\ClearCookiesRequest;
 use ChromeDevtoolsProtocol\Model\Storage\ClearDataForOriginRequest;
 use ChromeDevtoolsProtocol\Model\Storage\ClearDataForStorageKeyRequest;
+use ChromeDevtoolsProtocol\Model\Storage\ClearSharedStorageEntriesRequest;
 use ChromeDevtoolsProtocol\Model\Storage\ClearTrustTokensRequest;
 use ChromeDevtoolsProtocol\Model\Storage\ClearTrustTokensResponse;
+use ChromeDevtoolsProtocol\Model\Storage\DeleteSharedStorageEntryRequest;
 use ChromeDevtoolsProtocol\Model\Storage\GetCookiesRequest;
 use ChromeDevtoolsProtocol\Model\Storage\GetCookiesResponse;
 use ChromeDevtoolsProtocol\Model\Storage\GetInterestGroupDetailsRequest;
@@ -84,6 +86,17 @@ interface StorageDomainInterface
 
 
 	/**
+	 * Clears all entries for a given origin's shared storage.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param ClearSharedStorageEntriesRequest $request
+	 *
+	 * @return void
+	 */
+	public function clearSharedStorageEntries(ContextInterface $ctx, ClearSharedStorageEntriesRequest $request): void;
+
+
+	/**
 	 * Removes all Trust Tokens issued by the provided issuerOrigin. Leaves other stored data, including the issuer's Redemption Records, intact.
 	 *
 	 * @param ContextInterface $ctx
@@ -92,6 +105,17 @@ interface StorageDomainInterface
 	 * @return ClearTrustTokensResponse
 	 */
 	public function clearTrustTokens(ContextInterface $ctx, ClearTrustTokensRequest $request): ClearTrustTokensResponse;
+
+
+	/**
+	 * Deletes entry for `key` (if it exists) for a given origin's shared storage.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param DeleteSharedStorageEntryRequest $request
+	 *
+	 * @return void
+	 */
+	public function deleteSharedStorageEntry(ContextInterface $ctx, DeleteSharedStorageEntryRequest $request): void;
 
 
 	/**
