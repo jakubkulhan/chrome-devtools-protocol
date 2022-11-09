@@ -17,6 +17,12 @@ final class GetContainerForNodeRequest implements \JsonSerializable
 	/** @var string|null */
 	public $containerName;
 
+	/** @var string */
+	public $physicalAxes;
+
+	/** @var string */
+	public $logicalAxes;
+
 
 	/**
 	 * @param object $data
@@ -31,6 +37,12 @@ final class GetContainerForNodeRequest implements \JsonSerializable
 		if (isset($data->containerName)) {
 			$instance->containerName = (string)$data->containerName;
 		}
+		if (isset($data->physicalAxes)) {
+			$instance->physicalAxes = (string)$data->physicalAxes;
+		}
+		if (isset($data->logicalAxes)) {
+			$instance->logicalAxes = (string)$data->logicalAxes;
+		}
 		return $instance;
 	}
 
@@ -43,6 +55,12 @@ final class GetContainerForNodeRequest implements \JsonSerializable
 		}
 		if ($this->containerName !== null) {
 			$data->containerName = $this->containerName;
+		}
+		if ($this->physicalAxes !== null) {
+			$data->physicalAxes = $this->physicalAxes;
+		}
+		if ($this->logicalAxes !== null) {
+			$data->logicalAxes = $this->logicalAxes;
 		}
 		return $data;
 	}

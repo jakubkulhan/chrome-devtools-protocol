@@ -39,6 +39,20 @@ final class CSSContainerQuery implements \JsonSerializable
 	 */
 	public $name;
 
+	/**
+	 * Optional physical axes queried for the container.
+	 *
+	 * @var string
+	 */
+	public $physicalAxes;
+
+	/**
+	 * Optional logical axes queried for the container.
+	 *
+	 * @var string
+	 */
+	public $logicalAxes;
+
 
 	/**
 	 * @param object $data
@@ -59,6 +73,12 @@ final class CSSContainerQuery implements \JsonSerializable
 		if (isset($data->name)) {
 			$instance->name = (string)$data->name;
 		}
+		if (isset($data->physicalAxes)) {
+			$instance->physicalAxes = (string)$data->physicalAxes;
+		}
+		if (isset($data->logicalAxes)) {
+			$instance->logicalAxes = (string)$data->logicalAxes;
+		}
 		return $instance;
 	}
 
@@ -77,6 +97,12 @@ final class CSSContainerQuery implements \JsonSerializable
 		}
 		if ($this->name !== null) {
 			$data->name = $this->name;
+		}
+		if ($this->physicalAxes !== null) {
+			$data->physicalAxes = $this->physicalAxes;
+		}
+		if ($this->logicalAxes !== null) {
+			$data->logicalAxes = $this->logicalAxes;
 		}
 		return $data;
 	}

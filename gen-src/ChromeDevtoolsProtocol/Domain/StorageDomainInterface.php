@@ -31,6 +31,7 @@ use ChromeDevtoolsProtocol\Model\Storage\InterestGroupAccessedEvent;
 use ChromeDevtoolsProtocol\Model\Storage\OverrideQuotaForOriginRequest;
 use ChromeDevtoolsProtocol\Model\Storage\SetCookiesRequest;
 use ChromeDevtoolsProtocol\Model\Storage\SetInterestGroupTrackingRequest;
+use ChromeDevtoolsProtocol\Model\Storage\SetSharedStorageEntryRequest;
 use ChromeDevtoolsProtocol\Model\Storage\SetSharedStorageTrackingRequest;
 use ChromeDevtoolsProtocol\Model\Storage\SharedStorageAccessedEvent;
 use ChromeDevtoolsProtocol\Model\Storage\TrackCacheStorageForOriginRequest;
@@ -237,6 +238,17 @@ interface StorageDomainInterface
 	 * @return void
 	 */
 	public function setInterestGroupTracking(ContextInterface $ctx, SetInterestGroupTrackingRequest $request): void;
+
+
+	/**
+	 * Sets entry with `key` and `value` for a given origin's shared storage.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param SetSharedStorageEntryRequest $request
+	 *
+	 * @return void
+	 */
+	public function setSharedStorageEntry(ContextInterface $ctx, SetSharedStorageEntryRequest $request): void;
 
 
 	/**

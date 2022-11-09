@@ -13,6 +13,8 @@ final class GetContainerForNodeRequestBuilder
 {
 	private $nodeId;
 	private $containerName;
+	private $physicalAxes;
+	private $logicalAxes;
 
 
 	/**
@@ -26,6 +28,8 @@ final class GetContainerForNodeRequestBuilder
 		}
 		$instance->nodeId = $this->nodeId;
 		$instance->containerName = $this->containerName;
+		$instance->physicalAxes = $this->physicalAxes;
+		$instance->logicalAxes = $this->logicalAxes;
 		return $instance;
 	}
 
@@ -50,6 +54,30 @@ final class GetContainerForNodeRequestBuilder
 	public function setContainerName($containerName): self
 	{
 		$this->containerName = $containerName;
+		return $this;
+	}
+
+
+	/**
+	 * @param string $physicalAxes
+	 *
+	 * @return self
+	 */
+	public function setPhysicalAxes($physicalAxes): self
+	{
+		$this->physicalAxes = $physicalAxes;
+		return $this;
+	}
+
+
+	/**
+	 * @param string $logicalAxes
+	 *
+	 * @return self
+	 */
+	public function setLogicalAxes($logicalAxes): self
+	{
+		$this->logicalAxes = $logicalAxes;
 		return $this;
 	}
 }

@@ -32,6 +32,7 @@ use ChromeDevtoolsProtocol\Model\Storage\InterestGroupAccessedEvent;
 use ChromeDevtoolsProtocol\Model\Storage\OverrideQuotaForOriginRequest;
 use ChromeDevtoolsProtocol\Model\Storage\SetCookiesRequest;
 use ChromeDevtoolsProtocol\Model\Storage\SetInterestGroupTrackingRequest;
+use ChromeDevtoolsProtocol\Model\Storage\SetSharedStorageEntryRequest;
 use ChromeDevtoolsProtocol\Model\Storage\SetSharedStorageTrackingRequest;
 use ChromeDevtoolsProtocol\Model\Storage\SharedStorageAccessedEvent;
 use ChromeDevtoolsProtocol\Model\Storage\TrackCacheStorageForOriginRequest;
@@ -164,6 +165,12 @@ class StorageDomain implements StorageDomainInterface
 	public function setInterestGroupTracking(ContextInterface $ctx, SetInterestGroupTrackingRequest $request): void
 	{
 		$this->internalClient->executeCommand($ctx, 'Storage.setInterestGroupTracking', $request);
+	}
+
+
+	public function setSharedStorageEntry(ContextInterface $ctx, SetSharedStorageEntryRequest $request): void
+	{
+		$this->internalClient->executeCommand($ctx, 'Storage.setSharedStorageEntry', $request);
 	}
 
 
