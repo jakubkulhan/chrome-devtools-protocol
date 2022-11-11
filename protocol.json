@@ -2152,6 +2152,8 @@
                         "durableStorage",
                         "flash",
                         "geolocation",
+                        "idleDetection",
+                        "localFonts",
                         "midi",
                         "midiSysex",
                         "nfc",
@@ -2160,11 +2162,12 @@
                         "periodicBackgroundSync",
                         "protectedMediaIdentifier",
                         "sensors",
+                        "storageAccess",
                         "videoCapture",
                         "videoCapturePanTiltZoom",
-                        "idleDetection",
                         "wakeLockScreen",
-                        "wakeLockSystem"
+                        "wakeLockSystem",
+                        "windowManagement"
                     ]
                 },
                 {
@@ -5733,7 +5736,7 @@
                 },
                 {
                     "name": "setPauseOnExceptions",
-                    "description": "Defines pause on exceptions state. Can be set to stop on all exceptions, uncaught exceptions or no exceptions. Initial pause on exceptions state is `none`.",
+                    "description": "Defines pause on exceptions state. Can be set to stop on all exceptions, uncaught exceptions, or caught exceptions, no exceptions. Initial pause on exceptions state is `none`.",
                     "parameters": [
                         {
                             "name": "state",
@@ -5741,6 +5744,7 @@
                             "type": "string",
                             "enum": [
                                 "none",
+                                "caught",
                                 "uncaught",
                                 "all"
                             ]
