@@ -26,6 +26,13 @@ final class Cache implements \JsonSerializable
 	public $securityOrigin;
 
 	/**
+	 * Storage key of the cache.
+	 *
+	 * @var string
+	 */
+	public $storageKey;
+
+	/**
 	 * The name of the cache.
 	 *
 	 * @var string
@@ -46,6 +53,9 @@ final class Cache implements \JsonSerializable
 		if (isset($data->securityOrigin)) {
 			$instance->securityOrigin = (string)$data->securityOrigin;
 		}
+		if (isset($data->storageKey)) {
+			$instance->storageKey = (string)$data->storageKey;
+		}
 		if (isset($data->cacheName)) {
 			$instance->cacheName = (string)$data->cacheName;
 		}
@@ -61,6 +71,9 @@ final class Cache implements \JsonSerializable
 		}
 		if ($this->securityOrigin !== null) {
 			$data->securityOrigin = $this->securityOrigin;
+		}
+		if ($this->storageKey !== null) {
+			$data->storageKey = $this->storageKey;
 		}
 		if ($this->cacheName !== null) {
 			$data->cacheName = $this->cacheName;
