@@ -17,6 +17,7 @@ final class SetCookieBlockedReasonEnum
 	public const SAME_SITE_UNSPECIFIED_TREATED_AS_LAX = 'SameSiteUnspecifiedTreatedAsLax';
 	public const SAME_SITE_NONE_INSECURE = 'SameSiteNoneInsecure';
 	public const USER_PREFERENCES = 'UserPreferences';
+	public const THIRD_PARTY_BLOCKED_IN_FIRST_PARTY_SET = 'ThirdPartyBlockedInFirstPartySet';
 	public const SYNTAX_ERROR = 'SyntaxError';
 	public const SCHEME_NOT_SUPPORTED = 'SchemeNotSupported';
 	public const OVERWRITE_SECURE = 'OverwriteSecure';

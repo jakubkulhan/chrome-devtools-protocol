@@ -18,4 +18,5 @@ final class CookieExclusionReasonEnum
 	public const EXCLUDE_INVALID_SAME_PARTY = 'ExcludeInvalidSameParty';
 	public const EXCLUDE_SAME_PARTY_CROSS_PARTY_CONTEXT = 'ExcludeSamePartyCrossPartyContext';
 	public const EXCLUDE_DOMAIN_NON_A_S_C_I_I = 'ExcludeDomainNonASCII';
+	public const EXCLUDE_THIRD_PARTY_COOKIE_BLOCKED_IN_FIRST_PARTY_SET = 'ExcludeThirdPartyCookieBlockedInFirstPartySet';
 }
