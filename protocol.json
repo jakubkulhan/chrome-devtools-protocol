@@ -19967,8 +19967,9 @@
                             "type": "string",
                             "enum": [
                                 "none",
-                                "autoaccept",
-                                "autoreject"
+                                "autoAccept",
+                                "autoReject",
+                                "autoOptOut"
                             ]
                         }
                     ]
