@@ -35,9 +35,11 @@ use ChromeDevtoolsProtocol\Model\Storage\SetSharedStorageEntryRequest;
 use ChromeDevtoolsProtocol\Model\Storage\SetSharedStorageTrackingRequest;
 use ChromeDevtoolsProtocol\Model\Storage\SharedStorageAccessedEvent;
 use ChromeDevtoolsProtocol\Model\Storage\TrackCacheStorageForOriginRequest;
+use ChromeDevtoolsProtocol\Model\Storage\TrackCacheStorageForStorageKeyRequest;
 use ChromeDevtoolsProtocol\Model\Storage\TrackIndexedDBForOriginRequest;
 use ChromeDevtoolsProtocol\Model\Storage\TrackIndexedDBForStorageKeyRequest;
 use ChromeDevtoolsProtocol\Model\Storage\UntrackCacheStorageForOriginRequest;
+use ChromeDevtoolsProtocol\Model\Storage\UntrackCacheStorageForStorageKeyRequest;
 use ChromeDevtoolsProtocol\Model\Storage\UntrackIndexedDBForOriginRequest;
 use ChromeDevtoolsProtocol\Model\Storage\UntrackIndexedDBForStorageKeyRequest;
 use ChromeDevtoolsProtocol\SubscriptionInterface;
@@ -274,6 +276,20 @@ interface StorageDomainInterface
 
 
 	/**
+	 * Registers storage key to be notified when an update occurs to its cache storage list.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param TrackCacheStorageForStorageKeyRequest $request
+	 *
+	 * @return void
+	 */
+	public function trackCacheStorageForStorageKey(
+		ContextInterface $ctx,
+		TrackCacheStorageForStorageKeyRequest $request
+	): void;
+
+
+	/**
 	 * Registers origin to be notified when an update occurs to its IndexedDB.
 	 *
 	 * @param ContextInterface $ctx
@@ -304,6 +320,20 @@ interface StorageDomainInterface
 	 * @return void
 	 */
 	public function untrackCacheStorageForOrigin(ContextInterface $ctx, UntrackCacheStorageForOriginRequest $request): void;
+
+
+	/**
+	 * Unregisters storage key from receiving notifications for cache storage.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param UntrackCacheStorageForStorageKeyRequest $request
+	 *
+	 * @return void
+	 */
+	public function untrackCacheStorageForStorageKey(
+		ContextInterface $ctx,
+		UntrackCacheStorageForStorageKeyRequest $request
+	): void;
 
 
 	/**
