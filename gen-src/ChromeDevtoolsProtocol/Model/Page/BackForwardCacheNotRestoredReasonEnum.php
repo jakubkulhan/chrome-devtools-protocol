@@ -108,6 +108,7 @@ final class BackForwardCacheNotRestoredReasonEnum
 	public const INJECTED_STYLE_SHEET = 'InjectedStyleSheet';
 	public const KEEPALIVE_REQUEST = 'KeepaliveRequest';
 	public const DUMMY = 'Dummy';
+	public const AUTHORIZATION_HEADER = 'AuthorizationHeader';
 	public const CONTENT_SECURITY_HANDLER = 'ContentSecurityHandler';
 	public const CONTENT_WEB_AUTHENTICATION_A_P_I = 'ContentWebAuthenticationAPI';
 	public const CONTENT_FILE_CHOOSER = 'ContentFileChooser';

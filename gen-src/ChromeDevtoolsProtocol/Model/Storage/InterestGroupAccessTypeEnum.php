@@ -14,6 +14,7 @@ final class InterestGroupAccessTypeEnum
 	public const JOIN = 'join';
 	public const LEAVE = 'leave';
 	public const UPDATE = 'update';
+	public const LOADED = 'loaded';
 	public const BID = 'bid';
 	public const WIN = 'win';
 }
