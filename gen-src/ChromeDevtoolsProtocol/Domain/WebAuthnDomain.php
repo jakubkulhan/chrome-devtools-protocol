@@ -8,6 +8,8 @@ use ChromeDevtoolsProtocol\Model\WebAuthn\AddCredentialRequest;
 use ChromeDevtoolsProtocol\Model\WebAuthn\AddVirtualAuthenticatorRequest;
 use ChromeDevtoolsProtocol\Model\WebAuthn\AddVirtualAuthenticatorResponse;
 use ChromeDevtoolsProtocol\Model\WebAuthn\ClearCredentialsRequest;
+use ChromeDevtoolsProtocol\Model\WebAuthn\CredentialAddedEvent;
+use ChromeDevtoolsProtocol\Model\WebAuthn\CredentialAssertedEvent;
 use ChromeDevtoolsProtocol\Model\WebAuthn\EnableRequest;
 use ChromeDevtoolsProtocol\Model\WebAuthn\GetCredentialRequest;
 use ChromeDevtoolsProtocol\Model\WebAuthn\GetCredentialResponse;
@@ -18,6 +20,7 @@ use ChromeDevtoolsProtocol\Model\WebAuthn\RemoveVirtualAuthenticatorRequest;
 use ChromeDevtoolsProtocol\Model\WebAuthn\SetAutomaticPresenceSimulationRequest;
 use ChromeDevtoolsProtocol\Model\WebAuthn\SetResponseOverrideBitsRequest;
 use ChromeDevtoolsProtocol\Model\WebAuthn\SetUserVerifiedRequest;
+use ChromeDevtoolsProtocol\SubscriptionInterface;
 
 class WebAuthnDomain implements WebAuthnDomainInterface
 {
@@ -108,5 +111,33 @@ class WebAuthnDomain implements WebAuthnDomainInterface
 	public function setUserVerified(ContextInterface $ctx, SetUserVerifiedRequest $request): void
 	{
 		$this->internalClient->executeCommand($ctx, 'WebAuthn.setUserVerified', $request);
+	}
+
+
+	public function addCredentialAddedListener(callable $listener): SubscriptionInterface
+	{
+		return $this->internalClient->addListener('WebAuthn.credentialAdded', function ($event) use ($listener) {
+			return $listener(CredentialAddedEvent::fromJson($event));
+		});
+	}
+
+
+	public function awaitCredentialAdded(ContextInterface $ctx): CredentialAddedEvent
+	{
+		return CredentialAddedEvent::fromJson($this->internalClient->awaitEvent($ctx, 'WebAuthn.credentialAdded'));
+	}
+
+
+	public function addCredentialAssertedListener(callable $listener): SubscriptionInterface
+	{
+		return $this->internalClient->addListener('WebAuthn.credentialAsserted', function ($event) use ($listener) {
+			return $listener(CredentialAssertedEvent::fromJson($event));
+		});
+	}
+
+
+	public function awaitCredentialAsserted(ContextInterface $ctx): CredentialAssertedEvent
+	{
+		return CredentialAssertedEvent::fromJson($this->internalClient->awaitEvent($ctx, 'WebAuthn.credentialAsserted'));
 	}
 }
