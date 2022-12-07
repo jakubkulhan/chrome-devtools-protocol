@@ -13,4 +13,5 @@ final class PermissionSettingEnum
 {
 	public const GRANTED = 'granted';
 	public const DENIED = 'denied';
+	public const PROMPT = 'prompt';
 }
