@@ -24572,6 +24572,22 @@
             ],
             "commands": [
                 {
+                    "name": "getFeatureState",
+                    "description": "Returns information about the feature state.",
+                    "parameters": [
+                        {
+                            "name": "featureState",
+                            "type": "string"
+                        }
+                    ],
+                    "returns": [
+                        {
+                            "name": "featureEnabled",
+                            "type": "boolean"
+                        }
+                    ]
+                },
+                {
                     "name": "getInfo",
                     "description": "Returns information about the system.",
                     "returns": [

@@ -4,6 +4,8 @@ namespace ChromeDevtoolsProtocol\Domain;
 
 use ChromeDevtoolsProtocol\ContextInterface;
 use ChromeDevtoolsProtocol\InternalClientInterface;
+use ChromeDevtoolsProtocol\Model\SystemInfo\GetFeatureStateRequest;
+use ChromeDevtoolsProtocol\Model\SystemInfo\GetFeatureStateResponse;
 use ChromeDevtoolsProtocol\Model\SystemInfo\GetInfoResponse;
 use ChromeDevtoolsProtocol\Model\SystemInfo\GetProcessInfoResponse;
 
@@ -16,6 +18,13 @@ class SystemInfoDomain implements SystemInfoDomainInterface
 	public function __construct(InternalClientInterface $internalClient)
 	{
 		$this->internalClient = $internalClient;
+	}
+
+
+	public function getFeatureState(ContextInterface $ctx, GetFeatureStateRequest $request): GetFeatureStateResponse
+	{
+		$response = $this->internalClient->executeCommand($ctx, 'SystemInfo.getFeatureState', $request);
+		return GetFeatureStateResponse::fromJson($response);
 	}
 
 
