@@ -13,14 +13,14 @@ final class FederatedAuthRequestIssueReasonEnum
 {
 	public const SHOULD_EMBARGO = 'ShouldEmbargo';
 	public const TOO_MANY_REQUESTS = 'TooManyRequests';
-	public const MANIFEST_LIST_HTTP_NOT_FOUND = 'ManifestListHttpNotFound';
-	public const MANIFEST_LIST_NO_RESPONSE = 'ManifestListNoResponse';
-	public const MANIFEST_LIST_INVALID_RESPONSE = 'ManifestListInvalidResponse';
-	public const MANIFEST_NOT_IN_MANIFEST_LIST = 'ManifestNotInManifestList';
-	public const MANIFEST_LIST_TOO_BIG = 'ManifestListTooBig';
-	public const MANIFEST_HTTP_NOT_FOUND = 'ManifestHttpNotFound';
-	public const MANIFEST_NO_RESPONSE = 'ManifestNoResponse';
-	public const MANIFEST_INVALID_RESPONSE = 'ManifestInvalidResponse';
+	public const WELL_KNOWN_HTTP_NOT_FOUND = 'WellKnownHttpNotFound';
+	public const WELL_KNOWN_NO_RESPONSE = 'WellKnownNoResponse';
+	public const WELL_KNOWN_INVALID_RESPONSE = 'WellKnownInvalidResponse';
+	public const CONFIG_NOT_IN_WELL_KNOWN = 'ConfigNotInWellKnown';
+	public const WELL_KNOWN_TOO_BIG = 'WellKnownTooBig';
+	public const CONFIG_HTTP_NOT_FOUND = 'ConfigHttpNotFound';
+	public const CONFIG_NO_RESPONSE = 'ConfigNoResponse';
+	public const CONFIG_INVALID_RESPONSE = 'ConfigInvalidResponse';
 	public const CLIENT_METADATA_HTTP_NOT_FOUND = 'ClientMetadataHttpNotFound';
 	public const CLIENT_METADATA_NO_RESPONSE = 'ClientMetadataNoResponse';
 	public const CLIENT_METADATA_INVALID_RESPONSE = 'ClientMetadataInvalidResponse';
