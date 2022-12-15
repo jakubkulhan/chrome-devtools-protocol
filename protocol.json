@@ -18890,7 +18890,8 @@
                         "SameSiteCrossOriginRedirectNotOptIn",
                         "SameSiteCrossOriginNavigationNotOptIn",
                         "ActivationNavigationParameterMismatch",
-                        "ActivatedInBackground"
+                        "ActivatedInBackground",
+                        "EmbedderHostDisallowed"
                     ]
                 }
             ],
