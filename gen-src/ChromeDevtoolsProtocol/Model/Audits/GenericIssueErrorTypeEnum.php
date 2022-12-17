@@ -12,4 +12,5 @@ namespace ChromeDevtoolsProtocol\Model\Audits;
 final class GenericIssueErrorTypeEnum
 {
 	public const CROSS_ORIGIN_PORTAL_POST_MESSAGE_ERROR = 'CrossOriginPortalPostMessageError';
+	public const FORM_LABEL_FOR_NAME_ERROR = 'FormLabelForNameError';
 }

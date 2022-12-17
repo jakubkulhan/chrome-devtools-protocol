@@ -107,6 +107,7 @@ final class BackForwardCacheNotRestoredReasonEnum
 	public const INJECTED_JAVASCRIPT = 'InjectedJavascript';
 	public const INJECTED_STYLE_SHEET = 'InjectedStyleSheet';
 	public const KEEPALIVE_REQUEST = 'KeepaliveRequest';
+	public const INDEXED_D_B_EVENT = 'IndexedDBEvent';
 	public const DUMMY = 'Dummy';
 	public const AUTHORIZATION_HEADER = 'AuthorizationHeader';
 	public const CONTENT_SECURITY_HANDLER = 'ContentSecurityHandler';
