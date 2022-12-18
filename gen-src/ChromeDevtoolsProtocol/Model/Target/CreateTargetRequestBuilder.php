@@ -18,6 +18,7 @@ final class CreateTargetRequestBuilder
 	private $enableBeginFrameControl;
 	private $newWindow;
 	private $background;
+	private $forTab;
 
 
 	/**
@@ -36,6 +37,7 @@ final class CreateTargetRequestBuilder
 		$instance->enableBeginFrameControl = $this->enableBeginFrameControl;
 		$instance->newWindow = $this->newWindow;
 		$instance->background = $this->background;
+		$instance->forTab = $this->forTab;
 		return $instance;
 	}
 
@@ -120,6 +122,18 @@ final class CreateTargetRequestBuilder
 	public function setBackground($background): self
 	{
 		$this->background = $background;
+		return $this;
+	}
+
+
+	/**
+	 * @param bool|null $forTab
+	 *
+	 * @return self
+	 */
+	public function setForTab($forTab): self
+	{
+		$this->forTab = $forTab;
 		return $this;
 	}
 }
