@@ -29,6 +29,7 @@ use ChromeDevtoolsProtocol\Model\Storage\IndexedDBContentUpdatedEvent;
 use ChromeDevtoolsProtocol\Model\Storage\IndexedDBListUpdatedEvent;
 use ChromeDevtoolsProtocol\Model\Storage\InterestGroupAccessedEvent;
 use ChromeDevtoolsProtocol\Model\Storage\OverrideQuotaForOriginRequest;
+use ChromeDevtoolsProtocol\Model\Storage\ResetSharedStorageBudgetRequest;
 use ChromeDevtoolsProtocol\Model\Storage\SetCookiesRequest;
 use ChromeDevtoolsProtocol\Model\Storage\SetInterestGroupTrackingRequest;
 use ChromeDevtoolsProtocol\Model\Storage\SetSharedStorageEntryRequest;
@@ -218,6 +219,17 @@ interface StorageDomainInterface
 	 * @return void
 	 */
 	public function overrideQuotaForOrigin(ContextInterface $ctx, OverrideQuotaForOriginRequest $request): void;
+
+
+	/**
+	 * Resets the budget for `ownerOrigin` by clearing all budget withdrawals.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param ResetSharedStorageBudgetRequest $request
+	 *
+	 * @return void
+	 */
+	public function resetSharedStorageBudget(ContextInterface $ctx, ResetSharedStorageBudgetRequest $request): void;
 
 
 	/**

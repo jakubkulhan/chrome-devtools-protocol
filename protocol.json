@@ -24039,6 +24039,17 @@
                     ]
                 },
                 {
+                    "name": "resetSharedStorageBudget",
+                    "description": "Resets the budget for `ownerOrigin` by clearing all budget withdrawals.",
+                    "experimental": true,
+                    "parameters": [
+                        {
+                            "name": "ownerOrigin",
+                            "type": "string"
+                        }
+                    ]
+                },
+                {
                     "name": "setCookies",
                     "description": "Sets given cookies.",
                     "parameters": [

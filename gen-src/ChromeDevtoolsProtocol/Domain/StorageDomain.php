@@ -30,6 +30,7 @@ use ChromeDevtoolsProtocol\Model\Storage\IndexedDBContentUpdatedEvent;
 use ChromeDevtoolsProtocol\Model\Storage\IndexedDBListUpdatedEvent;
 use ChromeDevtoolsProtocol\Model\Storage\InterestGroupAccessedEvent;
 use ChromeDevtoolsProtocol\Model\Storage\OverrideQuotaForOriginRequest;
+use ChromeDevtoolsProtocol\Model\Storage\ResetSharedStorageBudgetRequest;
 use ChromeDevtoolsProtocol\Model\Storage\SetCookiesRequest;
 use ChromeDevtoolsProtocol\Model\Storage\SetInterestGroupTrackingRequest;
 use ChromeDevtoolsProtocol\Model\Storage\SetSharedStorageEntryRequest;
@@ -155,6 +156,12 @@ class StorageDomain implements StorageDomainInterface
 	public function overrideQuotaForOrigin(ContextInterface $ctx, OverrideQuotaForOriginRequest $request): void
 	{
 		$this->internalClient->executeCommand($ctx, 'Storage.overrideQuotaForOrigin', $request);
+	}
+
+
+	public function resetSharedStorageBudget(ContextInterface $ctx, ResetSharedStorageBudgetRequest $request): void
+	{
+		$this->internalClient->executeCommand($ctx, 'Storage.resetSharedStorageBudget', $request);
 	}
 
 
