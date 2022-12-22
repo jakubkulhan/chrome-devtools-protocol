@@ -18899,7 +18899,8 @@
                         "SameSiteCrossOriginNavigationNotOptIn",
                         "ActivationNavigationParameterMismatch",
                         "ActivatedInBackground",
-                        "EmbedderHostDisallowed"
+                        "EmbedderHostDisallowed",
+                        "ActivationNavigationDestroyedBeforeSuccess"
                     ]
                 }
             ],

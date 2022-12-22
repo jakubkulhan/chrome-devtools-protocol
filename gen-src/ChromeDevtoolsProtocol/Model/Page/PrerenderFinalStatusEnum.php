@@ -57,4 +57,5 @@ final class PrerenderFinalStatusEnum
 	public const ACTIVATION_NAVIGATION_PARAMETER_MISMATCH = 'ActivationNavigationParameterMismatch';
 	public const ACTIVATED_IN_BACKGROUND = 'ActivatedInBackground';
 	public const EMBEDDER_HOST_DISALLOWED = 'EmbedderHostDisallowed';
+	public const ACTIVATION_NAVIGATION_DESTROYED_BEFORE_SUCCESS = 'ActivationNavigationDestroyedBeforeSuccess';
 }
