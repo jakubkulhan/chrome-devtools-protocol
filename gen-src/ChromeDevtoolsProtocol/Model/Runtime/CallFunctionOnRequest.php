@@ -89,6 +89,13 @@ final class CallFunctionOnRequest implements \JsonSerializable
 	public $throwOnSideEffect;
 
 	/**
+	 * An alternative way to specify the execution context to call function on. Compared to contextId that may be reused across processes, this is guaranteed to be system-unique, so it can be used to prevent accidental function call in context different than intended (e.g. as a result of navigation across process boundaries). This is mutually exclusive with `executionContextId`.
+	 *
+	 * @var string|null
+	 */
+	public $uniqueContextId;
+
+	/**
 	 * Whether the result should contain `webDriverValue`, serialized according to https://w3c.github.io/webdriver-bidi. This is mutually exclusive with `returnByValue`, but resulting `objectId` is still provided.
 	 *
 	 * @var bool|null
@@ -139,6 +146,9 @@ final class CallFunctionOnRequest implements \JsonSerializable
 		if (isset($data->throwOnSideEffect)) {
 			$instance->throwOnSideEffect = (bool)$data->throwOnSideEffect;
 		}
+		if (isset($data->uniqueContextId)) {
+			$instance->uniqueContextId = (string)$data->uniqueContextId;
+		}
 		if (isset($data->generateWebDriverValue)) {
 			$instance->generateWebDriverValue = (bool)$data->generateWebDriverValue;
 		}
@@ -184,6 +194,9 @@ final class CallFunctionOnRequest implements \JsonSerializable
 		}
 		if ($this->throwOnSideEffect !== null) {
 			$data->throwOnSideEffect = $this->throwOnSideEffect;
+		}
+		if ($this->uniqueContextId !== null) {
+			$data->uniqueContextId = $this->uniqueContextId;
 		}
 		if ($this->generateWebDriverValue !== null) {
 			$data->generateWebDriverValue = $this->generateWebDriverValue;
