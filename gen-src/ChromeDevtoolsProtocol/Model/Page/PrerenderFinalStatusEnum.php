@@ -58,4 +58,6 @@ final class PrerenderFinalStatusEnum
 	public const ACTIVATED_IN_BACKGROUND = 'ActivatedInBackground';
 	public const EMBEDDER_HOST_DISALLOWED = 'EmbedderHostDisallowed';
 	public const ACTIVATION_NAVIGATION_DESTROYED_BEFORE_SUCCESS = 'ActivationNavigationDestroyedBeforeSuccess';
+	public const TAB_CLOSED_BY_USER_GESTURE = 'TabClosedByUserGesture';
+	public const TAB_CLOSED_WITHOUT_USER_GESTURE = 'TabClosedWithoutUserGesture';
 }
