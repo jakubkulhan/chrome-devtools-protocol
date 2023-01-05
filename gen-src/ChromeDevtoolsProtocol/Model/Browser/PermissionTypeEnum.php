@@ -32,6 +32,7 @@ final class PermissionTypeEnum
 	public const PROTECTED_MEDIA_IDENTIFIER = 'protectedMediaIdentifier';
 	public const SENSORS = 'sensors';
 	public const STORAGE_ACCESS = 'storageAccess';
+	public const TOP_LEVEL_STORAGE_ACCESS = 'topLevelStorageAccess';
 	public const VIDEO_CAPTURE = 'videoCapture';
 	public const VIDEO_CAPTURE_PAN_TILT_ZOOM = 'videoCapturePanTiltZoom';
 	public const WAKE_LOCK_SCREEN = 'wakeLockScreen';
