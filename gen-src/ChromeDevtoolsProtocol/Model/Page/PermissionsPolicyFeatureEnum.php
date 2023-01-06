@@ -70,12 +70,14 @@ final class PermissionsPolicyFeatureEnum
 	public const OTP_CREDENTIALS = 'otp-credentials';
 	public const PAYMENT = 'payment';
 	public const PICTURE_IN_PICTURE = 'picture-in-picture';
+	public const PRIVATE_AGGREGATION = 'private-aggregation';
 	public const PUBLICKEY_CREDENTIALS_GET = 'publickey-credentials-get';
 	public const RUN_AD_AUCTION = 'run-ad-auction';
 	public const SCREEN_WAKE_LOCK = 'screen-wake-lock';
 	public const SERIAL = 'serial';
 	public const SHARED_AUTOFILL = 'shared-autofill';
 	public const SHARED_STORAGE = 'shared-storage';
+	public const SHARED_STORAGE_SELECT_URL = 'shared-storage-select-url';
 	public const SMART_CARD = 'smart-card';
 	public const STORAGE_ACCESS = 'storage-access';
 	public const SYNC_XHR = 'sync-xhr';
