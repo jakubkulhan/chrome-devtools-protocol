@@ -16,6 +16,7 @@ final class FederatedAuthRequestIssueReasonEnum
 	public const WELL_KNOWN_HTTP_NOT_FOUND = 'WellKnownHttpNotFound';
 	public const WELL_KNOWN_NO_RESPONSE = 'WellKnownNoResponse';
 	public const WELL_KNOWN_INVALID_RESPONSE = 'WellKnownInvalidResponse';
+	public const WELL_KNOWN_LIST_EMPTY = 'WellKnownListEmpty';
 	public const CONFIG_NOT_IN_WELL_KNOWN = 'ConfigNotInWellKnown';
 	public const WELL_KNOWN_TOO_BIG = 'WellKnownTooBig';
 	public const CONFIG_HTTP_NOT_FOUND = 'ConfigHttpNotFound';
@@ -30,6 +31,7 @@ final class FederatedAuthRequestIssueReasonEnum
 	public const ACCOUNTS_HTTP_NOT_FOUND = 'AccountsHttpNotFound';
 	public const ACCOUNTS_NO_RESPONSE = 'AccountsNoResponse';
 	public const ACCOUNTS_INVALID_RESPONSE = 'AccountsInvalidResponse';
+	public const ACCOUNTS_LIST_EMPTY = 'AccountsListEmpty';
 	public const ID_TOKEN_HTTP_NOT_FOUND = 'IdTokenHttpNotFound';
 	public const ID_TOKEN_NO_RESPONSE = 'IdTokenNoResponse';
 	public const ID_TOKEN_INVALID_RESPONSE = 'IdTokenInvalidResponse';
