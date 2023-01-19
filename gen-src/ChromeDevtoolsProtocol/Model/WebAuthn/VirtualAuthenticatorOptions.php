@@ -60,6 +60,13 @@ final class VirtualAuthenticatorOptions implements \JsonSerializable
 	public $hasMinPinLength;
 
 	/**
+	 * If set to true, the authenticator will support the prf extension. https://w3c.github.io/webauthn/#prf-extension Defaults to false.
+	 *
+	 * @var bool|null
+	 */
+	public $hasPrf;
+
+	/**
 	 * If set to true, tests of user presence will succeed immediately. Otherwise, they will not be resolved. Defaults to true.
 	 *
 	 * @var bool|null
@@ -105,6 +112,9 @@ final class VirtualAuthenticatorOptions implements \JsonSerializable
 		if (isset($data->hasMinPinLength)) {
 			$instance->hasMinPinLength = (bool)$data->hasMinPinLength;
 		}
+		if (isset($data->hasPrf)) {
+			$instance->hasPrf = (bool)$data->hasPrf;
+		}
 		if (isset($data->automaticPresenceSimulation)) {
 			$instance->automaticPresenceSimulation = (bool)$data->automaticPresenceSimulation;
 		}
@@ -141,6 +151,9 @@ final class VirtualAuthenticatorOptions implements \JsonSerializable
 		}
 		if ($this->hasMinPinLength !== null) {
 			$data->hasMinPinLength = $this->hasMinPinLength;
+		}
+		if ($this->hasPrf !== null) {
+			$data->hasPrf = $this->hasPrf;
 		}
 		if ($this->automaticPresenceSimulation !== null) {
 			$data->automaticPresenceSimulation = $this->automaticPresenceSimulation;

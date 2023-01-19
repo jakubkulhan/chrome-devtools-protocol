@@ -11,10 +11,18 @@ namespace ChromeDevtoolsProtocol\Model\Emulation;
  */
 final class UserAgentMetadata implements \JsonSerializable
 {
-	/** @var UserAgentBrandVersion[]|null */
+	/**
+	 * Brands appearing in Sec-CH-UA.
+	 *
+	 * @var UserAgentBrandVersion[]|null
+	 */
 	public $brands;
 
-	/** @var UserAgentBrandVersion[]|null */
+	/**
+	 * Brands appearing in Sec-CH-UA-Full-Version-List.
+	 *
+	 * @var UserAgentBrandVersion[]|null
+	 */
 	public $fullVersionList;
 
 	/** @var string|null */

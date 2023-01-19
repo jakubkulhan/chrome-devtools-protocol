@@ -37,6 +37,7 @@ final class DeprecationIssueTypeEnum
 	public const NO_SYSEX_WEB_M_I_D_I_WITHOUT_PERMISSION = 'NoSysexWebMIDIWithoutPermission';
 	public const NOTIFICATION_INSECURE_ORIGIN = 'NotificationInsecureOrigin';
 	public const NOTIFICATION_PERMISSION_REQUESTED_IFRAME = 'NotificationPermissionRequestedIframe';
+	public const OBSOLETE_CREATE_IMAGE_BITMAP_IMAGE_ORIENTATION_NONE = 'ObsoleteCreateImageBitmapImageOrientationNone';
 	public const OBSOLETE_WEB_RTC_CIPHER_SUITE = 'ObsoleteWebRtcCipherSuite';
 	public const OPEN_WEB_DATABASE_INSECURE_CONTEXT = 'OpenWebDatabaseInsecureContext';
 	public const OVERFLOW_VISIBLE_ON_REPLACED_ELEMENT = 'OverflowVisibleOnReplacedElement';
