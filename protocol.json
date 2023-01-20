@@ -18914,7 +18914,10 @@
                         "EmbedderHostDisallowed",
                         "ActivationNavigationDestroyedBeforeSuccess",
                         "TabClosedByUserGesture",
-                        "TabClosedWithoutUserGesture"
+                        "TabClosedWithoutUserGesture",
+                        "PrimaryMainFrameRendererProcessCrashed",
+                        "PrimaryMainFrameRendererProcessKilled",
+                        "ActivationFramePolicyNotCompatible"
                     ]
                 }
             ],

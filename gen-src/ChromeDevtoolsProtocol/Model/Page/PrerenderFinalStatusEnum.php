@@ -60,4 +60,7 @@ final class PrerenderFinalStatusEnum
 	public const ACTIVATION_NAVIGATION_DESTROYED_BEFORE_SUCCESS = 'ActivationNavigationDestroyedBeforeSuccess';
 	public const TAB_CLOSED_BY_USER_GESTURE = 'TabClosedByUserGesture';
 	public const TAB_CLOSED_WITHOUT_USER_GESTURE = 'TabClosedWithoutUserGesture';
+	public const PRIMARY_MAIN_FRAME_RENDERER_PROCESS_CRASHED = 'PrimaryMainFrameRendererProcessCrashed';
+	public const PRIMARY_MAIN_FRAME_RENDERER_PROCESS_KILLED = 'PrimaryMainFrameRendererProcessKilled';
+	public const ACTIVATION_FRAME_POLICY_NOT_COMPATIBLE = 'ActivationFramePolicyNotCompatible';
 }
