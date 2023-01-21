@@ -12,10 +12,10 @@ namespace ChromeDevtoolsProtocol\Model\Network;
 final class TrustTokenParams implements \JsonSerializable
 {
 	/** @var string */
-	public $type;
+	public $operation;
 
 	/**
-	 * Only set for "token-redemption" type and determine whether to request a fresh SRR or use a still valid cached SRR.
+	 * Only set for "token-redemption" operation and determine whether to request a fresh SRR or use a still valid cached SRR.
 	 *
 	 * @var string
 	 */
@@ -36,8 +36,8 @@ final class TrustTokenParams implements \JsonSerializable
 	public static function fromJson($data)
 	{
 		$instance = new static();
-		if (isset($data->type)) {
-			$instance->type = (string)$data->type;
+		if (isset($data->operation)) {
+			$instance->operation = (string)$data->operation;
 		}
 		if (isset($data->refreshPolicy)) {
 			$instance->refreshPolicy = (string)$data->refreshPolicy;
@@ -55,8 +55,8 @@ final class TrustTokenParams implements \JsonSerializable
 	public function jsonSerialize()
 	{
 		$data = new \stdClass();
-		if ($this->type !== null) {
-			$data->type = $this->type;
+		if ($this->operation !== null) {
+			$data->operation = $this->operation;
 		}
 		if ($this->refreshPolicy !== null) {
 			$data->refreshPolicy = $this->refreshPolicy;
