@@ -19,7 +19,7 @@ final class GetHistogramRequest implements \JsonSerializable
 	public $name;
 
 	/**
-	 * If true, retrieve delta since last call.
+	 * If true, retrieve delta since last delta call.
 	 *
 	 * @var bool|null
 	 */

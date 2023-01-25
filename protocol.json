@@ -2371,7 +2371,7 @@
                         },
                         {
                             "name": "delta",
-                            "description": "If true, retrieve delta since last call.",
+                            "description": "If true, retrieve delta since last delta call.",
                             "optional": true,
                             "type": "boolean"
                         }
@@ -2397,7 +2397,7 @@
                         },
                         {
                             "name": "delta",
-                            "description": "If true, retrieve delta since last call.",
+                            "description": "If true, retrieve delta since last delta call.",
                             "optional": true,
                             "type": "boolean"
                         }
