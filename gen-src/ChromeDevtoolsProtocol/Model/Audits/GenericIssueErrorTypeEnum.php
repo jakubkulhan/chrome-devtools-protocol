@@ -15,4 +15,5 @@ final class GenericIssueErrorTypeEnum
 	public const FORM_LABEL_FOR_NAME_ERROR = 'FormLabelForNameError';
 	public const FORM_DUPLICATE_ID_FOR_INPUT_ERROR = 'FormDuplicateIdForInputError';
 	public const FORM_INPUT_WITH_NO_LABEL_ERROR = 'FormInputWithNoLabelError';
+	public const FORM_AUTOCOMPLETE_ATTRIBUTE_EMPTY_ERROR = 'FormAutocompleteAttributeEmptyError';
 }
