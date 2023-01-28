@@ -63,4 +63,6 @@ final class PrerenderFinalStatusEnum
 	public const PRIMARY_MAIN_FRAME_RENDERER_PROCESS_CRASHED = 'PrimaryMainFrameRendererProcessCrashed';
 	public const PRIMARY_MAIN_FRAME_RENDERER_PROCESS_KILLED = 'PrimaryMainFrameRendererProcessKilled';
 	public const ACTIVATION_FRAME_POLICY_NOT_COMPATIBLE = 'ActivationFramePolicyNotCompatible';
+	public const PRELOADING_DISABLED = 'PreloadingDisabled';
+	public const BATTERY_SAVER_ENABLED = 'BatterySaverEnabled';
 }

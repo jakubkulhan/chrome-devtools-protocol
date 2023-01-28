@@ -54,6 +54,7 @@ final class DeprecationIssueTypeEnum
 	public const PREFIXED_VIDEO_EXIT_FULLSCREEN = 'PrefixedVideoExitFullscreen';
 	public const PREFIXED_VIDEO_EXIT_FULL_SCREEN = 'PrefixedVideoExitFullScreen';
 	public const PREFIXED_VIDEO_SUPPORTS_FULLSCREEN = 'PrefixedVideoSupportsFullscreen';
+	public const PRIVACY_SANDBOX_EXTENSIONS_A_P_I = 'PrivacySandboxExtensionsAPI';
 	public const RANGE_EXPAND = 'RangeExpand';
 	public const REQUESTED_SUBRESOURCE_WITH_EMBEDDED_CREDENTIALS = 'RequestedSubresourceWithEmbeddedCredentials';
 	public const RTC_CONSTRAINT_ENABLE_DTLS_SRTP_FALSE = 'RTCConstraintEnableDtlsSrtpFalse';
