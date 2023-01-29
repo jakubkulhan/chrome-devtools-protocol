@@ -17,4 +17,5 @@ final class GenericIssueErrorTypeEnum
 	public const FORM_INPUT_WITH_NO_LABEL_ERROR = 'FormInputWithNoLabelError';
 	public const FORM_AUTOCOMPLETE_ATTRIBUTE_EMPTY_ERROR = 'FormAutocompleteAttributeEmptyError';
 	public const FORM_EMPTY_ID_AND_NAME_ATTRIBUTES_FOR_INPUT_ERROR = 'FormEmptyIdAndNameAttributesForInputError';
+	public const FORM_ARIA_LABELLED_BY_TO_NON_EXISTING_ID = 'FormAriaLabelledByToNonExistingId';
 }
