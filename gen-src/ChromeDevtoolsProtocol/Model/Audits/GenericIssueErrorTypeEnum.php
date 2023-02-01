@@ -18,4 +18,5 @@ final class GenericIssueErrorTypeEnum
 	public const FORM_AUTOCOMPLETE_ATTRIBUTE_EMPTY_ERROR = 'FormAutocompleteAttributeEmptyError';
 	public const FORM_EMPTY_ID_AND_NAME_ATTRIBUTES_FOR_INPUT_ERROR = 'FormEmptyIdAndNameAttributesForInputError';
 	public const FORM_ARIA_LABELLED_BY_TO_NON_EXISTING_ID = 'FormAriaLabelledByToNonExistingId';
+	public const FORM_INPUT_ASSIGNED_AUTOCOMPLETE_VALUE_TO_ID_OR_NAME_ATTRIBUTE_ERROR = 'FormInputAssignedAutocompleteValueToIdOrNameAttributeError';
 }
