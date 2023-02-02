@@ -65,4 +65,5 @@ final class PrerenderFinalStatusEnum
 	public const ACTIVATION_FRAME_POLICY_NOT_COMPATIBLE = 'ActivationFramePolicyNotCompatible';
 	public const PRELOADING_DISABLED = 'PreloadingDisabled';
 	public const BATTERY_SAVER_ENABLED = 'BatterySaverEnabled';
+	public const ACTIVATED_DURING_MAIN_FRAME_NAVIGATION = 'ActivatedDuringMainFrameNavigation';
 }
