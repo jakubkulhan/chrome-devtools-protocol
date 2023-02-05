@@ -83,6 +83,7 @@ use ChromeDevtoolsProtocol\Model\Page\SetFontSizesRequest;
 use ChromeDevtoolsProtocol\Model\Page\SetGeolocationOverrideRequest;
 use ChromeDevtoolsProtocol\Model\Page\SetInterceptFileChooserDialogRequest;
 use ChromeDevtoolsProtocol\Model\Page\SetLifecycleEventsEnabledRequest;
+use ChromeDevtoolsProtocol\Model\Page\SetRPHRegistrationModeRequest;
 use ChromeDevtoolsProtocol\Model\Page\SetSPCTransactionModeRequest;
 use ChromeDevtoolsProtocol\Model\Page\SetTouchEmulationEnabledRequest;
 use ChromeDevtoolsProtocol\Model\Page\SetWebLifecycleStateRequest;
@@ -671,6 +672,17 @@ interface PageDomainInterface
 	 * @return void
 	 */
 	public function setLifecycleEventsEnabled(ContextInterface $ctx, SetLifecycleEventsEnabledRequest $request): void;
+
+
+	/**
+	 * Extensions for Custom Handlers API: https://html.spec.whatwg.org/multipage/system-state.html#rph-automation
+	 *
+	 * @param ContextInterface $ctx
+	 * @param SetRPHRegistrationModeRequest $request
+	 *
+	 * @return void
+	 */
+	public function setRPHRegistrationMode(ContextInterface $ctx, SetRPHRegistrationModeRequest $request): void;
 
 
 	/**

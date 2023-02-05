@@ -66,4 +66,5 @@ final class PrerenderFinalStatusEnum
 	public const PRELOADING_DISABLED = 'PreloadingDisabled';
 	public const BATTERY_SAVER_ENABLED = 'BatterySaverEnabled';
 	public const ACTIVATED_DURING_MAIN_FRAME_NAVIGATION = 'ActivatedDuringMainFrameNavigation';
+	public const PRELOADING_UNSUPPORTED_BY_WEB_CONTENTS = 'PreloadingUnsupportedByWebContents';
 }
