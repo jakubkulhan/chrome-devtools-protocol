@@ -18677,6 +18677,18 @@
                     ]
                 },
                 {
+                    "id": "AutoResponseMode",
+                    "description": "Enum of possible auto-reponse for permisison / prompt dialogs.",
+                    "experimental": true,
+                    "type": "string",
+                    "enum": [
+                        "none",
+                        "autoAccept",
+                        "autoReject",
+                        "autoOptOut"
+                    ]
+                },
+                {
                     "id": "NavigationType",
                     "description": "The type of a frameNavigated event.",
                     "experimental": true,
@@ -19354,7 +19366,9 @@
                 },
                 {
                     "name": "getManifestIcons",
+                    "description": "Deprecated because it's not guaranteed that the returned icon is in fact the one used for PWA installation.",
                     "experimental": true,
+                    "deprecated": true,
                     "returns": [
                         {
                             "name": "primaryIcon",
@@ -20029,12 +20043,7 @@
                     "parameters": [
                         {
                             "name": "mode",
-                            "type": "string",
-                            "enum": [
-                                "none",
-                                "autoaccept",
-                                "autoreject"
-                            ]
+                            "$ref": "AutoResponseMode"
                         }
                     ]
                 },
@@ -20045,13 +20054,7 @@
                     "parameters": [
                         {
                             "name": "mode",
-                            "type": "string",
-                            "enum": [
-                                "none",
-                                "autoAccept",
-                                "autoReject",
-                                "autoOptOut"
-                            ]
+                            "$ref": "AutoResponseMode"
                         }
                     ]
                 },

@@ -359,7 +359,7 @@ interface PageDomainInterface
 
 
 	/**
-	 * Call Page.getManifestIcons command.
+	 * Deprecated because it's not guaranteed that the returned icon is in fact the one used for PWA installation.
 	 *
 	 * @param ContextInterface $ctx
 	 *
