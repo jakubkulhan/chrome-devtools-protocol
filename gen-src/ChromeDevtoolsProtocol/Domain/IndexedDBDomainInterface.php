@@ -80,7 +80,7 @@ interface IndexedDBDomainInterface
 
 
 	/**
-	 * Gets metadata of an object store
+	 * Gets metadata of an object store.
 	 *
 	 * @param ContextInterface $ctx
 	 * @param GetMetadataRequest $request

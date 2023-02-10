@@ -12,7 +12,7 @@ namespace ChromeDevtoolsProtocol\Model\Emulation;
 final class SetEmulatedVisionDeficiencyRequest implements \JsonSerializable
 {
 	/**
-	 * Vision deficiency to emulate.
+	 * Vision deficiency to emulate. Order: best-effort emulations come first, followed by any physiologically accurate emulations for medically recognized color vision deficiencies.
 	 *
 	 * @var string
 	 */

@@ -17,7 +17,11 @@ final class DeprecationIssueDetails implements \JsonSerializable
 	/** @var SourceCodeLocation */
 	public $sourceCodeLocation;
 
-	/** @var string */
+	/**
+	 * One of the deprecation names from third_party/blink/renderer/core/frame/deprecation/deprecation.json5
+	 *
+	 * @var string
+	 */
 	public $type;
 
 

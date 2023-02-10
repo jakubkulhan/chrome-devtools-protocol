@@ -358,7 +358,7 @@ interface CSSDomainInterface
 
 
 	/**
-	 * Stop tracking rule usage and return the list of rules that were used since last call to `takeCoverageDelta` (or since start of coverage instrumentation)
+	 * Stop tracking rule usage and return the list of rules that were used since last call to `takeCoverageDelta` (or since start of coverage instrumentation).
 	 *
 	 * @param ContextInterface $ctx
 	 *
@@ -378,7 +378,7 @@ interface CSSDomainInterface
 
 
 	/**
-	 * Obtain list of rules that became used since last call to this method (or since start of coverage instrumentation)
+	 * Obtain list of rules that became used since last call to this method (or since start of coverage instrumentation).
 	 *
 	 * @param ContextInterface $ctx
 	 *
@@ -399,7 +399,7 @@ interface CSSDomainInterface
 
 
 	/**
-	 * Fires whenever a web font is updated. A non-empty font parameter indicates a successfully loaded web font
+	 * Fires whenever a web font is updated. A non-empty font parameter indicates a successfully loaded web font.
 	 *
 	 * Listener will be called whenever event CSS.fontsUpdated is fired.
 	 *
@@ -411,7 +411,7 @@ interface CSSDomainInterface
 
 
 	/**
-	 * Fires whenever a web font is updated. A non-empty font parameter indicates a successfully loaded web font
+	 * Fires whenever a web font is updated. A non-empty font parameter indicates a successfully loaded web font.
 	 *
 	 * Method will block until first CSS.fontsUpdated event is fired.
 	 *
