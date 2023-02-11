@@ -32,6 +32,8 @@ use ChromeDevtoolsProtocol\Domain\DatabaseDomain;
 use ChromeDevtoolsProtocol\Domain\DatabaseDomainInterface;
 use ChromeDevtoolsProtocol\Domain\DebuggerDomain;
 use ChromeDevtoolsProtocol\Domain\DebuggerDomainInterface;
+use ChromeDevtoolsProtocol\Domain\DeviceAccessDomain;
+use ChromeDevtoolsProtocol\Domain\DeviceAccessDomainInterface;
 use ChromeDevtoolsProtocol\Domain\DeviceOrientationDomain;
 use ChromeDevtoolsProtocol\Domain\DeviceOrientationDomainInterface;
 use ChromeDevtoolsProtocol\Domain\EmulationDomain;
@@ -229,6 +231,18 @@ trait DevtoolsClientTrait
 		}
 		/** @var DebuggerDomainInterface $domain */
 		$domain = $this->domains['Debugger'];
+		return $domain;
+	}
+
+
+	public function deviceAccess(): DeviceAccessDomainInterface
+	{
+		if (!isset($this->domains['DeviceAccess'])) {
+			/** @var InternalClientInterface $this */
+			$this->domains['DeviceAccess'] = new DeviceAccessDomain($this);
+		}
+		/** @var DeviceAccessDomainInterface $domain */
+		$domain = $this->domains['DeviceAccess'];
 		return $domain;
 	}
 

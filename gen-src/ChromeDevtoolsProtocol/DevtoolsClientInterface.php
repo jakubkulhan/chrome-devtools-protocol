@@ -17,6 +17,7 @@ use ChromeDevtoolsProtocol\Domain\DOMSnapshotDomainInterface;
 use ChromeDevtoolsProtocol\Domain\DOMStorageDomainInterface;
 use ChromeDevtoolsProtocol\Domain\DatabaseDomainInterface;
 use ChromeDevtoolsProtocol\Domain\DebuggerDomainInterface;
+use ChromeDevtoolsProtocol\Domain\DeviceAccessDomainInterface;
 use ChromeDevtoolsProtocol\Domain\DeviceOrientationDomainInterface;
 use ChromeDevtoolsProtocol\Domain\EmulationDomainInterface;
 use ChromeDevtoolsProtocol\Domain\EventBreakpointsDomainInterface;
@@ -138,6 +139,14 @@ interface DevtoolsClientInterface extends CloseableResourceInterface
 	 * Debugger domain exposes JavaScript debugging capabilities. It allows setting and removing breakpoints, stepping through execution, exploring stack traces, etc.
 	 */
 	public function debugger(): DebuggerDomainInterface;
+
+
+	/**
+	 * DeviceAccess domain.
+	 *
+	 * @experimental
+	 */
+	public function deviceAccess(): DeviceAccessDomainInterface;
 
 
 	/**
