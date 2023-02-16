@@ -72,6 +72,8 @@ use ChromeDevtoolsProtocol\Domain\PerformanceDomain;
 use ChromeDevtoolsProtocol\Domain\PerformanceDomainInterface;
 use ChromeDevtoolsProtocol\Domain\PerformanceTimelineDomain;
 use ChromeDevtoolsProtocol\Domain\PerformanceTimelineDomainInterface;
+use ChromeDevtoolsProtocol\Domain\PreloadDomain;
+use ChromeDevtoolsProtocol\Domain\PreloadDomainInterface;
 use ChromeDevtoolsProtocol\Domain\ProfilerDomain;
 use ChromeDevtoolsProtocol\Domain\ProfilerDomainInterface;
 use ChromeDevtoolsProtocol\Domain\RuntimeDomain;
@@ -519,6 +521,18 @@ trait DevtoolsClientTrait
 		}
 		/** @var PerformanceTimelineDomainInterface $domain */
 		$domain = $this->domains['PerformanceTimeline'];
+		return $domain;
+	}
+
+
+	public function preload(): PreloadDomainInterface
+	{
+		if (!isset($this->domains['Preload'])) {
+			/** @var InternalClientInterface $this */
+			$this->domains['Preload'] = new PreloadDomain($this);
+		}
+		/** @var PreloadDomainInterface $domain */
+		$domain = $this->domains['Preload'];
 		return $domain;
 	}
 

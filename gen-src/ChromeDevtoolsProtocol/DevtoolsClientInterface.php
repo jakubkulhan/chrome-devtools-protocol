@@ -37,6 +37,7 @@ use ChromeDevtoolsProtocol\Domain\OverlayDomainInterface;
 use ChromeDevtoolsProtocol\Domain\PageDomainInterface;
 use ChromeDevtoolsProtocol\Domain\PerformanceDomainInterface;
 use ChromeDevtoolsProtocol\Domain\PerformanceTimelineDomainInterface;
+use ChromeDevtoolsProtocol\Domain\PreloadDomainInterface;
 use ChromeDevtoolsProtocol\Domain\ProfilerDomainInterface;
 use ChromeDevtoolsProtocol\Domain\RuntimeDomainInterface;
 use ChromeDevtoolsProtocol\Domain\SchemaDomainInterface;
@@ -311,6 +312,14 @@ interface DevtoolsClientInterface extends CloseableResourceInterface
 	 * @experimental
 	 */
 	public function performanceTimeline(): PerformanceTimelineDomainInterface;
+
+
+	/**
+	 * Preload domain.
+	 *
+	 * @experimental
+	 */
+	public function preload(): PreloadDomainInterface;
 
 
 	/**
