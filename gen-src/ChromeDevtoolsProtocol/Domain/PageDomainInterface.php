@@ -62,6 +62,7 @@ use ChromeDevtoolsProtocol\Model\Page\NavigateToHistoryEntryRequest;
 use ChromeDevtoolsProtocol\Model\Page\NavigatedWithinDocumentEvent;
 use ChromeDevtoolsProtocol\Model\Page\PrefetchStatusUpdatedEvent;
 use ChromeDevtoolsProtocol\Model\Page\PrerenderAttemptCompletedEvent;
+use ChromeDevtoolsProtocol\Model\Page\PrerenderStatusUpdatedEvent;
 use ChromeDevtoolsProtocol\Model\Page\PrintToPDFRequest;
 use ChromeDevtoolsProtocol\Model\Page\PrintToPDFResponse;
 use ChromeDevtoolsProtocol\Model\Page\ProduceCompilationCacheRequest;
@@ -1358,6 +1359,30 @@ interface PageDomainInterface
 	 * @return PrerenderAttemptCompletedEvent
 	 */
 	public function awaitPrerenderAttemptCompleted(ContextInterface $ctx): PrerenderAttemptCompletedEvent;
+
+
+	/**
+	 * TODO(crbug/1384419): Create a dedicated domain for preloading. Fired when a prerender attempt is updated.
+	 *
+	 * Listener will be called whenever event Page.prerenderStatusUpdated is fired.
+	 *
+	 * @param callable $listener
+	 *
+	 * @return SubscriptionInterface
+	 */
+	public function addPrerenderStatusUpdatedListener(callable $listener): SubscriptionInterface;
+
+
+	/**
+	 * TODO(crbug/1384419): Create a dedicated domain for preloading. Fired when a prerender attempt is updated.
+	 *
+	 * Method will block until first Page.prerenderStatusUpdated event is fired.
+	 *
+	 * @param ContextInterface $ctx
+	 *
+	 * @return PrerenderStatusUpdatedEvent
+	 */
+	public function awaitPrerenderStatusUpdated(ContextInterface $ctx): PrerenderStatusUpdatedEvent;
 
 
 	/**
