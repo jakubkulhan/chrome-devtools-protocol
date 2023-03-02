@@ -21,5 +21,4 @@ final class GenericIssueErrorTypeEnum
 	public const FORM_INPUT_ASSIGNED_AUTOCOMPLETE_VALUE_TO_ID_OR_NAME_ATTRIBUTE_ERROR = 'FormInputAssignedAutocompleteValueToIdOrNameAttributeError';
 	public const FORM_LABEL_HAS_NEITHER_FOR_NOR_NESTED_INPUT = 'FormLabelHasNeitherForNorNestedInput';
 	public const FORM_LABEL_FOR_MATCHES_NON_EXISTING_ID_ERROR = 'FormLabelForMatchesNonExistingIdError';
-	public const FORM_HAS_PASSWORD_FIELD_WITHOUT_USERNAME_FIELD_ERROR = 'FormHasPasswordFieldWithoutUsernameFieldError';
 }
