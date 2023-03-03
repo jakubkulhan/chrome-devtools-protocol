@@ -10082,6 +10082,24 @@
             "events": []
         },
         {
+            "domain": "FedCm",
+            "description": "This domain allows interacting with the FedCM dialog.",
+            "experimental": true,
+            "events": [
+                {
+                    "name": "dialogShown"
+                }
+            ],
+            "commands": [
+                {
+                    "name": "disable"
+                },
+                {
+                    "name": "enable"
+                }
+            ]
+        },
+        {
             "domain": "Fetch",
             "description": "A domain for letting clients substitute browser's network layer with client code.",
             "dependencies": [

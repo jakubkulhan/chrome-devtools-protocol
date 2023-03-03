@@ -21,6 +21,7 @@ use ChromeDevtoolsProtocol\Domain\DeviceAccessDomainInterface;
 use ChromeDevtoolsProtocol\Domain\DeviceOrientationDomainInterface;
 use ChromeDevtoolsProtocol\Domain\EmulationDomainInterface;
 use ChromeDevtoolsProtocol\Domain\EventBreakpointsDomainInterface;
+use ChromeDevtoolsProtocol\Domain\FedCmDomainInterface;
 use ChromeDevtoolsProtocol\Domain\FetchDomainInterface;
 use ChromeDevtoolsProtocol\Domain\HeadlessExperimentalDomainInterface;
 use ChromeDevtoolsProtocol\Domain\HeapProfilerDomainInterface;
@@ -198,6 +199,14 @@ interface DevtoolsClientInterface extends CloseableResourceInterface
 	 * @experimental
 	 */
 	public function eventBreakpoints(): EventBreakpointsDomainInterface;
+
+
+	/**
+	 * This domain allows interacting with the FedCM dialog.
+	 *
+	 * @experimental
+	 */
+	public function fedCm(): FedCmDomainInterface;
 
 
 	/**

@@ -40,6 +40,8 @@ use ChromeDevtoolsProtocol\Domain\EmulationDomain;
 use ChromeDevtoolsProtocol\Domain\EmulationDomainInterface;
 use ChromeDevtoolsProtocol\Domain\EventBreakpointsDomain;
 use ChromeDevtoolsProtocol\Domain\EventBreakpointsDomainInterface;
+use ChromeDevtoolsProtocol\Domain\FedCmDomain;
+use ChromeDevtoolsProtocol\Domain\FedCmDomainInterface;
 use ChromeDevtoolsProtocol\Domain\FetchDomain;
 use ChromeDevtoolsProtocol\Domain\FetchDomainInterface;
 use ChromeDevtoolsProtocol\Domain\HeadlessExperimentalDomain;
@@ -329,6 +331,18 @@ trait DevtoolsClientTrait
 		}
 		/** @var EventBreakpointsDomainInterface $domain */
 		$domain = $this->domains['EventBreakpoints'];
+		return $domain;
+	}
+
+
+	public function fedCm(): FedCmDomainInterface
+	{
+		if (!isset($this->domains['FedCm'])) {
+			/** @var InternalClientInterface $this */
+			$this->domains['FedCm'] = new FedCmDomain($this);
+		}
+		/** @var FedCmDomainInterface $domain */
+		$domain = $this->domains['FedCm'];
 		return $domain;
 	}
 
