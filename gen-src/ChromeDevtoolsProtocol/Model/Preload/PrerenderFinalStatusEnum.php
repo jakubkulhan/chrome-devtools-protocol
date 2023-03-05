@@ -1,6 +1,6 @@
 <?php
 
-namespace ChromeDevtoolsProtocol\Model\Page;
+namespace ChromeDevtoolsProtocol\Model\Preload;
 
 /**
  * List of FinalStatus reasons for Prerender2.

@@ -1,25 +1,25 @@
 <?php
 
-namespace ChromeDevtoolsProtocol\Model\Page;
+namespace ChromeDevtoolsProtocol\Model\Preload;
 
 /**
- * TODO(crbug/1384419): Create a dedicated domain for preloading. Fired when a prerender attempt is updated.
+ * Fired when a prefetch attempt is updated.
  *
  * @generated This file has been auto-generated, do not edit.
  *
  * @author Jakub Kulhan <jakub.kulhan@gmail.com>
  */
-final class PrerenderStatusUpdatedEvent implements \JsonSerializable
+final class PrefetchStatusUpdatedEvent implements \JsonSerializable
 {
 	/**
-	 * The frame id of the frame initiating prerender.
+	 * The frame id of the frame initiating prefetch.
 	 *
 	 * @var string
 	 */
 	public $initiatingFrameId;
 
 	/** @var string */
-	public $prerenderingUrl;
+	public $prefetchUrl;
 
 	/** @var string */
 	public $status;
@@ -35,8 +35,8 @@ final class PrerenderStatusUpdatedEvent implements \JsonSerializable
 		if (isset($data->initiatingFrameId)) {
 			$instance->initiatingFrameId = (string)$data->initiatingFrameId;
 		}
-		if (isset($data->prerenderingUrl)) {
-			$instance->prerenderingUrl = (string)$data->prerenderingUrl;
+		if (isset($data->prefetchUrl)) {
+			$instance->prefetchUrl = (string)$data->prefetchUrl;
 		}
 		if (isset($data->status)) {
 			$instance->status = (string)$data->status;
@@ -51,8 +51,8 @@ final class PrerenderStatusUpdatedEvent implements \JsonSerializable
 		if ($this->initiatingFrameId !== null) {
 			$data->initiatingFrameId = $this->initiatingFrameId;
 		}
-		if ($this->prerenderingUrl !== null) {
-			$data->prerenderingUrl = $this->prerenderingUrl;
+		if ($this->prefetchUrl !== null) {
+			$data->prefetchUrl = $this->prefetchUrl;
 		}
 		if ($this->status !== null) {
 			$data->status = $this->status;

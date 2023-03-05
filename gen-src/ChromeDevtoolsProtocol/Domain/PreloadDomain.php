@@ -4,6 +4,9 @@ namespace ChromeDevtoolsProtocol\Domain;
 
 use ChromeDevtoolsProtocol\ContextInterface;
 use ChromeDevtoolsProtocol\InternalClientInterface;
+use ChromeDevtoolsProtocol\Model\Preload\PrefetchStatusUpdatedEvent;
+use ChromeDevtoolsProtocol\Model\Preload\PrerenderAttemptCompletedEvent;
+use ChromeDevtoolsProtocol\Model\Preload\PrerenderStatusUpdatedEvent;
 use ChromeDevtoolsProtocol\Model\Preload\RuleSetRemovedEvent;
 use ChromeDevtoolsProtocol\Model\Preload\RuleSetUpdatedEvent;
 use ChromeDevtoolsProtocol\SubscriptionInterface;
@@ -31,6 +34,48 @@ class PreloadDomain implements PreloadDomainInterface
 	{
 		$request = new \stdClass();
 		$this->internalClient->executeCommand($ctx, 'Preload.enable', $request);
+	}
+
+
+	public function addPrefetchStatusUpdatedListener(callable $listener): SubscriptionInterface
+	{
+		return $this->internalClient->addListener('Preload.prefetchStatusUpdated', function ($event) use ($listener) {
+			return $listener(PrefetchStatusUpdatedEvent::fromJson($event));
+		});
+	}
+
+
+	public function awaitPrefetchStatusUpdated(ContextInterface $ctx): PrefetchStatusUpdatedEvent
+	{
+		return PrefetchStatusUpdatedEvent::fromJson($this->internalClient->awaitEvent($ctx, 'Preload.prefetchStatusUpdated'));
+	}
+
+
+	public function addPrerenderAttemptCompletedListener(callable $listener): SubscriptionInterface
+	{
+		return $this->internalClient->addListener('Preload.prerenderAttemptCompleted', function ($event) use ($listener) {
+			return $listener(PrerenderAttemptCompletedEvent::fromJson($event));
+		});
+	}
+
+
+	public function awaitPrerenderAttemptCompleted(ContextInterface $ctx): PrerenderAttemptCompletedEvent
+	{
+		return PrerenderAttemptCompletedEvent::fromJson($this->internalClient->awaitEvent($ctx, 'Preload.prerenderAttemptCompleted'));
+	}
+
+
+	public function addPrerenderStatusUpdatedListener(callable $listener): SubscriptionInterface
+	{
+		return $this->internalClient->addListener('Preload.prerenderStatusUpdated', function ($event) use ($listener) {
+			return $listener(PrerenderStatusUpdatedEvent::fromJson($event));
+		});
+	}
+
+
+	public function awaitPrerenderStatusUpdated(ContextInterface $ctx): PrerenderStatusUpdatedEvent
+	{
+		return PrerenderStatusUpdatedEvent::fromJson($this->internalClient->awaitEvent($ctx, 'Preload.prerenderStatusUpdated'));
 	}
 
 

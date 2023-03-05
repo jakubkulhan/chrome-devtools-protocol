@@ -60,9 +60,6 @@ use ChromeDevtoolsProtocol\Model\Page\NavigateRequest;
 use ChromeDevtoolsProtocol\Model\Page\NavigateResponse;
 use ChromeDevtoolsProtocol\Model\Page\NavigateToHistoryEntryRequest;
 use ChromeDevtoolsProtocol\Model\Page\NavigatedWithinDocumentEvent;
-use ChromeDevtoolsProtocol\Model\Page\PrefetchStatusUpdatedEvent;
-use ChromeDevtoolsProtocol\Model\Page\PrerenderAttemptCompletedEvent;
-use ChromeDevtoolsProtocol\Model\Page\PrerenderStatusUpdatedEvent;
 use ChromeDevtoolsProtocol\Model\Page\PrintToPDFRequest;
 use ChromeDevtoolsProtocol\Model\Page\PrintToPDFResponse;
 use ChromeDevtoolsProtocol\Model\Page\ProduceCompilationCacheRequest;
@@ -1311,78 +1308,6 @@ interface PageDomainInterface
 	 * @return NavigatedWithinDocumentEvent
 	 */
 	public function awaitNavigatedWithinDocument(ContextInterface $ctx): NavigatedWithinDocumentEvent;
-
-
-	/**
-	 * TODO(crbug/1384419): Create a dedicated domain for preloading. Fired when a prefetch attempt is updated.
-	 *
-	 * Listener will be called whenever event Page.prefetchStatusUpdated is fired.
-	 *
-	 * @param callable $listener
-	 *
-	 * @return SubscriptionInterface
-	 */
-	public function addPrefetchStatusUpdatedListener(callable $listener): SubscriptionInterface;
-
-
-	/**
-	 * TODO(crbug/1384419): Create a dedicated domain for preloading. Fired when a prefetch attempt is updated.
-	 *
-	 * Method will block until first Page.prefetchStatusUpdated event is fired.
-	 *
-	 * @param ContextInterface $ctx
-	 *
-	 * @return PrefetchStatusUpdatedEvent
-	 */
-	public function awaitPrefetchStatusUpdated(ContextInterface $ctx): PrefetchStatusUpdatedEvent;
-
-
-	/**
-	 * Fired when a prerender attempt is completed.
-	 *
-	 * Listener will be called whenever event Page.prerenderAttemptCompleted is fired.
-	 *
-	 * @param callable $listener
-	 *
-	 * @return SubscriptionInterface
-	 */
-	public function addPrerenderAttemptCompletedListener(callable $listener): SubscriptionInterface;
-
-
-	/**
-	 * Fired when a prerender attempt is completed.
-	 *
-	 * Method will block until first Page.prerenderAttemptCompleted event is fired.
-	 *
-	 * @param ContextInterface $ctx
-	 *
-	 * @return PrerenderAttemptCompletedEvent
-	 */
-	public function awaitPrerenderAttemptCompleted(ContextInterface $ctx): PrerenderAttemptCompletedEvent;
-
-
-	/**
-	 * TODO(crbug/1384419): Create a dedicated domain for preloading. Fired when a prerender attempt is updated.
-	 *
-	 * Listener will be called whenever event Page.prerenderStatusUpdated is fired.
-	 *
-	 * @param callable $listener
-	 *
-	 * @return SubscriptionInterface
-	 */
-	public function addPrerenderStatusUpdatedListener(callable $listener): SubscriptionInterface;
-
-
-	/**
-	 * TODO(crbug/1384419): Create a dedicated domain for preloading. Fired when a prerender attempt is updated.
-	 *
-	 * Method will block until first Page.prerenderStatusUpdated event is fired.
-	 *
-	 * @param ContextInterface $ctx
-	 *
-	 * @return PrerenderStatusUpdatedEvent
-	 */
-	public function awaitPrerenderStatusUpdated(ContextInterface $ctx): PrerenderStatusUpdatedEvent;
 
 
 	/**

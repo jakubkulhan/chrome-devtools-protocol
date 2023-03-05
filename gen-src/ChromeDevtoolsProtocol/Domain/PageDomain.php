@@ -61,9 +61,6 @@ use ChromeDevtoolsProtocol\Model\Page\NavigateRequest;
 use ChromeDevtoolsProtocol\Model\Page\NavigateResponse;
 use ChromeDevtoolsProtocol\Model\Page\NavigateToHistoryEntryRequest;
 use ChromeDevtoolsProtocol\Model\Page\NavigatedWithinDocumentEvent;
-use ChromeDevtoolsProtocol\Model\Page\PrefetchStatusUpdatedEvent;
-use ChromeDevtoolsProtocol\Model\Page\PrerenderAttemptCompletedEvent;
-use ChromeDevtoolsProtocol\Model\Page\PrerenderStatusUpdatedEvent;
 use ChromeDevtoolsProtocol\Model\Page\PrintToPDFRequest;
 use ChromeDevtoolsProtocol\Model\Page\PrintToPDFResponse;
 use ChromeDevtoolsProtocol\Model\Page\ProduceCompilationCacheRequest;
@@ -842,48 +839,6 @@ class PageDomain implements PageDomainInterface
 	public function awaitNavigatedWithinDocument(ContextInterface $ctx): NavigatedWithinDocumentEvent
 	{
 		return NavigatedWithinDocumentEvent::fromJson($this->internalClient->awaitEvent($ctx, 'Page.navigatedWithinDocument'));
-	}
-
-
-	public function addPrefetchStatusUpdatedListener(callable $listener): SubscriptionInterface
-	{
-		return $this->internalClient->addListener('Page.prefetchStatusUpdated', function ($event) use ($listener) {
-			return $listener(PrefetchStatusUpdatedEvent::fromJson($event));
-		});
-	}
-
-
-	public function awaitPrefetchStatusUpdated(ContextInterface $ctx): PrefetchStatusUpdatedEvent
-	{
-		return PrefetchStatusUpdatedEvent::fromJson($this->internalClient->awaitEvent($ctx, 'Page.prefetchStatusUpdated'));
-	}
-
-
-	public function addPrerenderAttemptCompletedListener(callable $listener): SubscriptionInterface
-	{
-		return $this->internalClient->addListener('Page.prerenderAttemptCompleted', function ($event) use ($listener) {
-			return $listener(PrerenderAttemptCompletedEvent::fromJson($event));
-		});
-	}
-
-
-	public function awaitPrerenderAttemptCompleted(ContextInterface $ctx): PrerenderAttemptCompletedEvent
-	{
-		return PrerenderAttemptCompletedEvent::fromJson($this->internalClient->awaitEvent($ctx, 'Page.prerenderAttemptCompleted'));
-	}
-
-
-	public function addPrerenderStatusUpdatedListener(callable $listener): SubscriptionInterface
-	{
-		return $this->internalClient->addListener('Page.prerenderStatusUpdated', function ($event) use ($listener) {
-			return $listener(PrerenderStatusUpdatedEvent::fromJson($event));
-		});
-	}
-
-
-	public function awaitPrerenderStatusUpdated(ContextInterface $ctx): PrerenderStatusUpdatedEvent
-	{
-		return PrerenderStatusUpdatedEvent::fromJson($this->internalClient->awaitEvent($ctx, 'Page.prerenderStatusUpdated'));
 	}
 
 

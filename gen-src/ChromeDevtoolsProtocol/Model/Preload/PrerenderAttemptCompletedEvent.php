@@ -1,6 +1,6 @@
 <?php
 
-namespace ChromeDevtoolsProtocol\Model\Page;
+namespace ChromeDevtoolsProtocol\Model\Preload;
 
 /**
  * Fired when a prerender attempt is completed.

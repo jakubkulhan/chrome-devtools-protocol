@@ -3,6 +3,9 @@
 namespace ChromeDevtoolsProtocol\Domain;
 
 use ChromeDevtoolsProtocol\ContextInterface;
+use ChromeDevtoolsProtocol\Model\Preload\PrefetchStatusUpdatedEvent;
+use ChromeDevtoolsProtocol\Model\Preload\PrerenderAttemptCompletedEvent;
+use ChromeDevtoolsProtocol\Model\Preload\PrerenderStatusUpdatedEvent;
 use ChromeDevtoolsProtocol\Model\Preload\RuleSetRemovedEvent;
 use ChromeDevtoolsProtocol\Model\Preload\RuleSetUpdatedEvent;
 use ChromeDevtoolsProtocol\SubscriptionInterface;
@@ -36,6 +39,78 @@ interface PreloadDomainInterface
 	 * @return void
 	 */
 	public function enable(ContextInterface $ctx): void;
+
+
+	/**
+	 * Fired when a prefetch attempt is updated.
+	 *
+	 * Listener will be called whenever event Preload.prefetchStatusUpdated is fired.
+	 *
+	 * @param callable $listener
+	 *
+	 * @return SubscriptionInterface
+	 */
+	public function addPrefetchStatusUpdatedListener(callable $listener): SubscriptionInterface;
+
+
+	/**
+	 * Fired when a prefetch attempt is updated.
+	 *
+	 * Method will block until first Preload.prefetchStatusUpdated event is fired.
+	 *
+	 * @param ContextInterface $ctx
+	 *
+	 * @return PrefetchStatusUpdatedEvent
+	 */
+	public function awaitPrefetchStatusUpdated(ContextInterface $ctx): PrefetchStatusUpdatedEvent;
+
+
+	/**
+	 * Fired when a prerender attempt is completed.
+	 *
+	 * Listener will be called whenever event Preload.prerenderAttemptCompleted is fired.
+	 *
+	 * @param callable $listener
+	 *
+	 * @return SubscriptionInterface
+	 */
+	public function addPrerenderAttemptCompletedListener(callable $listener): SubscriptionInterface;
+
+
+	/**
+	 * Fired when a prerender attempt is completed.
+	 *
+	 * Method will block until first Preload.prerenderAttemptCompleted event is fired.
+	 *
+	 * @param ContextInterface $ctx
+	 *
+	 * @return PrerenderAttemptCompletedEvent
+	 */
+	public function awaitPrerenderAttemptCompleted(ContextInterface $ctx): PrerenderAttemptCompletedEvent;
+
+
+	/**
+	 * Fired when a prerender attempt is updated.
+	 *
+	 * Listener will be called whenever event Preload.prerenderStatusUpdated is fired.
+	 *
+	 * @param callable $listener
+	 *
+	 * @return SubscriptionInterface
+	 */
+	public function addPrerenderStatusUpdatedListener(callable $listener): SubscriptionInterface;
+
+
+	/**
+	 * Fired when a prerender attempt is updated.
+	 *
+	 * Method will block until first Preload.prerenderStatusUpdated event is fired.
+	 *
+	 * @param ContextInterface $ctx
+	 *
+	 * @return PrerenderStatusUpdatedEvent
+	 */
+	public function awaitPrerenderStatusUpdated(ContextInterface $ctx): PrerenderStatusUpdatedEvent;
 
 
 	/**
