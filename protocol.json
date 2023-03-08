@@ -20906,6 +20906,73 @@
                     ]
                 },
                 {
+                    "id": "SpeculationAction",
+                    "description": "The type of preloading attempted. It corresponds to mojom::SpeculationAction (although PrefetchWithSubresources is omitted as it isn't being used by clients).",
+                    "type": "string",
+                    "enum": [
+                        "Prefetch",
+                        "Prerender"
+                    ]
+                },
+                {
+                    "id": "SpeculationTargetHint",
+                    "description": "Corresponds to mojom::SpeculationTargetHint. See https://github.com/WICG/nav-speculation/blob/main/triggers.md#window-name-targeting-hints",
+                    "type": "string",
+                    "enum": [
+                        "Blank",
+                        "Self"
+                    ]
+                },
+                {
+                    "id": "PreloadingAttemptKey",
+                    "description": "A key that identifies a preloading attempt. The url used is the url specified by the trigger (i.e. the initial URL), and not the final url that is navigated to. For example, prerendering allows same-origin main frame navigations during the attempt, but the attempt is still keyed with the initial URL.",
+                    "type": "object",
+                    "properties": [
+                        {
+                            "name": "loaderId",
+                            "$ref": "Network.LoaderId"
+                        },
+                        {
+                            "name": "action",
+                            "$ref": "SpeculationAction"
+                        },
+                        {
+                            "name": "url",
+                            "type": "string"
+                        },
+                        {
+                            "name": "targetHint",
+                            "optional": true,
+                            "$ref": "SpeculationTargetHint"
+                        }
+                    ]
+                },
+                {
+                    "id": "PreloadingAttemptSource",
+                    "description": "Lists sources for a preloading attempt, specifically the ids of rule sets that had a speculation rule that triggered the attempt, and the BackendNodeIds of <a href> or <area href> elements that triggered the attempt (in the case of attempts triggered by a document rule). It is possible for mulitple rule sets and links to trigger a single attempt.",
+                    "type": "object",
+                    "properties": [
+                        {
+                            "name": "key",
+                            "$ref": "PreloadingAttemptKey"
+                        },
+                        {
+                            "name": "ruleSetIds",
+                            "type": "array",
+                            "items": {
+                                "$ref": "RuleSetId"
+                            }
+                        },
+                        {
+                            "name": "nodeIds",
+                            "type": "array",
+                            "items": {
+                                "$ref": "DOM.BackendNodeId"
+                            }
+                        }
+                    ]
+                },
+                {
                     "id": "PrerenderFinalStatus",
                     "description": "List of FinalStatus reasons for Prerender2.",
                     "type": "string",
@@ -21007,6 +21074,19 @@
                         {
                             "name": "status",
                             "$ref": "PreloadingStatus"
+                        }
+                    ]
+                },
+                {
+                    "name": "preloadingAttemptSourcesUpdated",
+                    "description": "Send a list of sources for all preloading attempts.",
+                    "parameters": [
+                        {
+                            "name": "preloadingAttemptSources",
+                            "type": "array",
+                            "items": {
+                                "$ref": "PreloadingAttemptSource"
+                            }
                         }
                     ]
                 },
