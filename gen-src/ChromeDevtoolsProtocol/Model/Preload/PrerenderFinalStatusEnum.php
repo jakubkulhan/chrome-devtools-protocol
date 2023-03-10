@@ -51,7 +51,6 @@ final class PrerenderFinalStatusEnum
 	public const CROSS_SITE_REDIRECT = 'CrossSiteRedirect';
 	public const CROSS_SITE_NAVIGATION = 'CrossSiteNavigation';
 	public const SAME_SITE_CROSS_ORIGIN_REDIRECT = 'SameSiteCrossOriginRedirect';
-	public const SAME_SITE_CROSS_ORIGIN_NAVIGATION = 'SameSiteCrossOriginNavigation';
 	public const SAME_SITE_CROSS_ORIGIN_REDIRECT_NOT_OPT_IN = 'SameSiteCrossOriginRedirectNotOptIn';
 	public const SAME_SITE_CROSS_ORIGIN_NAVIGATION_NOT_OPT_IN = 'SameSiteCrossOriginNavigationNotOptIn';
 	public const ACTIVATION_NAVIGATION_PARAMETER_MISMATCH = 'ActivationNavigationParameterMismatch';
