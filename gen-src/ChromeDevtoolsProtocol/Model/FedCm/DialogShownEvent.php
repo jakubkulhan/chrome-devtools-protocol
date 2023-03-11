@@ -11,6 +11,10 @@ namespace ChromeDevtoolsProtocol\Model\FedCm;
  */
 final class DialogShownEvent implements \JsonSerializable
 {
+	/** @var Account[] */
+	public $accounts;
+
+
 	/**
 	 * @param object $data
 	 * @return static
@@ -18,6 +22,12 @@ final class DialogShownEvent implements \JsonSerializable
 	public static function fromJson($data)
 	{
 		$instance = new static();
+		if (isset($data->accounts)) {
+			$instance->accounts = [];
+			foreach ($data->accounts as $item) {
+				$instance->accounts[] = Account::fromJson($item);
+			}
+		}
 		return $instance;
 	}
 
@@ -25,6 +35,12 @@ final class DialogShownEvent implements \JsonSerializable
 	public function jsonSerialize()
 	{
 		$data = new \stdClass();
+		if ($this->accounts !== null) {
+			$data->accounts = [];
+			foreach ($this->accounts as $item) {
+				$data->accounts[] = $item->jsonSerialize();
+			}
+		}
 		return $data;
 	}
 }
