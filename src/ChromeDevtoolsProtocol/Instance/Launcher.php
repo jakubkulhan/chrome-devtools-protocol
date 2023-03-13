@@ -20,9 +20,10 @@ class Launcher
 	const DEFAULT_LINUX_EXECUTABLE = "google-chrome";
 	const DEFAULT_WINDOWS_EXECUTABLE = "chrome";
 
-	public static $defaultArgs = [
-		"--headless",
-	];
+    public static $defaultArgs = [
+        "--headless",
+        "--remote-allow-origins=http://127.0.0.1"
+    ];
 
 	/** @var string */
 	private $executable;
