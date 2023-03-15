@@ -3,19 +3,19 @@
 namespace ChromeDevtoolsProtocol\Model\FedCm;
 
 /**
- * Named type FedCm.DialogShownEvent.
+ * Request for FedCm.selectAccount command.
  *
  * @generated This file has been auto-generated, do not edit.
  *
  * @author Jakub Kulhan <jakub.kulhan@gmail.com>
  */
-final class DialogShownEvent implements \JsonSerializable
+final class SelectAccountRequest implements \JsonSerializable
 {
 	/** @var string */
 	public $dialogId;
 
-	/** @var Account[] */
-	public $accounts;
+	/** @var int */
+	public $accountIndex;
 
 
 	/**
@@ -28,11 +28,8 @@ final class DialogShownEvent implements \JsonSerializable
 		if (isset($data->dialogId)) {
 			$instance->dialogId = (string)$data->dialogId;
 		}
-		if (isset($data->accounts)) {
-			$instance->accounts = [];
-			foreach ($data->accounts as $item) {
-				$instance->accounts[] = Account::fromJson($item);
-			}
+		if (isset($data->accountIndex)) {
+			$instance->accountIndex = (int)$data->accountIndex;
 		}
 		return $instance;
 	}
@@ -44,12 +41,20 @@ final class DialogShownEvent implements \JsonSerializable
 		if ($this->dialogId !== null) {
 			$data->dialogId = $this->dialogId;
 		}
-		if ($this->accounts !== null) {
-			$data->accounts = [];
-			foreach ($this->accounts as $item) {
-				$data->accounts[] = $item->jsonSerialize();
-			}
+		if ($this->accountIndex !== null) {
+			$data->accountIndex = $this->accountIndex;
 		}
 		return $data;
+	}
+
+
+	/**
+	 * Create new instance using builder.
+	 *
+	 * @return SelectAccountRequestBuilder
+	 */
+	public static function builder(): SelectAccountRequestBuilder
+	{
+		return new SelectAccountRequestBuilder();
 	}
 }

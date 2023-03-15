@@ -21,4 +21,9 @@ final class AttributionReportingIssueTypeEnum
 	public const SOURCE_AND_TRIGGER_HEADERS = 'SourceAndTriggerHeaders';
 	public const SOURCE_IGNORED = 'SourceIgnored';
 	public const TRIGGER_IGNORED = 'TriggerIgnored';
+	public const OS_SOURCE_IGNORED = 'OsSourceIgnored';
+	public const OS_TRIGGER_IGNORED = 'OsTriggerIgnored';
+	public const INVALID_REGISTER_OS_SOURCE_HEADER = 'InvalidRegisterOsSourceHeader';
+	public const INVALID_REGISTER_OS_TRIGGER_HEADER = 'InvalidRegisterOsTriggerHeader';
+	public const WEB_AND_OS_HEADERS = 'WebAndOsHeaders';
 }

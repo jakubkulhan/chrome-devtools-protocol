@@ -1457,7 +1457,12 @@
                         "TooManyConcurrentRequests",
                         "SourceAndTriggerHeaders",
                         "SourceIgnored",
-                        "TriggerIgnored"
+                        "TriggerIgnored",
+                        "OsSourceIgnored",
+                        "OsTriggerIgnored",
+                        "InvalidRegisterOsSourceHeader",
+                        "InvalidRegisterOsTriggerHeader",
+                        "WebAndOsHeaders"
                     ]
                 },
                 {
@@ -10086,6 +10091,15 @@
             "experimental": true,
             "types": [
                 {
+                    "id": "LoginState",
+                    "description": "Whether this is a sign-up or sign-in action for this account, i.e. whether this account has ever been used to sign in to this RP before.",
+                    "type": "string",
+                    "enum": [
+                        "SignIn",
+                        "SignUp"
+                    ]
+                },
+                {
                     "id": "Account",
                     "description": "Corresponds to IdentityRequestAccount",
                     "type": "object",
@@ -10113,6 +10127,25 @@
                         {
                             "name": "idpConfigUrl",
                             "type": "string"
+                        },
+                        {
+                            "name": "idpSigninUrl",
+                            "type": "string"
+                        },
+                        {
+                            "name": "loginState",
+                            "$ref": "LoginState"
+                        },
+                        {
+                            "name": "termsOfServiceUrl",
+                            "description": "These two are only set if the loginState is signUp",
+                            "optional": true,
+                            "type": "string"
+                        },
+                        {
+                            "name": "privacyPolicyUrl",
+                            "optional": true,
+                            "type": "string"
                         }
                     ]
                 }
@@ -10121,6 +10154,10 @@
                 {
                     "name": "dialogShown",
                     "parameters": [
+                        {
+                            "name": "dialogId",
+                            "type": "string"
+                        },
                         {
                             "name": "accounts",
                             "type": "array",
@@ -10136,7 +10173,29 @@
                     "name": "disable"
                 },
                 {
+                    "name": "dismissDialog",
+                    "parameters": [
+                        {
+                            "name": "dialogId",
+                            "type": "string"
+                        }
+                    ]
+                },
+                {
                     "name": "enable"
+                },
+                {
+                    "name": "selectAccount",
+                    "parameters": [
+                        {
+                            "name": "dialogId",
+                            "type": "string"
+                        },
+                        {
+                            "name": "accountIndex",
+                            "type": "integer"
+                        }
+                    ]
                 }
             ]
         },

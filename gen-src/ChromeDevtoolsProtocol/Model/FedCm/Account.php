@@ -29,6 +29,22 @@ final class Account implements \JsonSerializable
 	/** @var string */
 	public $idpConfigUrl;
 
+	/** @var string */
+	public $idpSigninUrl;
+
+	/** @var string */
+	public $loginState;
+
+	/**
+	 * These two are only set if the loginState is signUp
+	 *
+	 * @var string|null
+	 */
+	public $termsOfServiceUrl;
+
+	/** @var string|null */
+	public $privacyPolicyUrl;
+
 
 	/**
 	 * @param object $data
@@ -55,6 +71,18 @@ final class Account implements \JsonSerializable
 		if (isset($data->idpConfigUrl)) {
 			$instance->idpConfigUrl = (string)$data->idpConfigUrl;
 		}
+		if (isset($data->idpSigninUrl)) {
+			$instance->idpSigninUrl = (string)$data->idpSigninUrl;
+		}
+		if (isset($data->loginState)) {
+			$instance->loginState = (string)$data->loginState;
+		}
+		if (isset($data->termsOfServiceUrl)) {
+			$instance->termsOfServiceUrl = (string)$data->termsOfServiceUrl;
+		}
+		if (isset($data->privacyPolicyUrl)) {
+			$instance->privacyPolicyUrl = (string)$data->privacyPolicyUrl;
+		}
 		return $instance;
 	}
 
@@ -79,6 +107,18 @@ final class Account implements \JsonSerializable
 		}
 		if ($this->idpConfigUrl !== null) {
 			$data->idpConfigUrl = $this->idpConfigUrl;
+		}
+		if ($this->idpSigninUrl !== null) {
+			$data->idpSigninUrl = $this->idpSigninUrl;
+		}
+		if ($this->loginState !== null) {
+			$data->loginState = $this->loginState;
+		}
+		if ($this->termsOfServiceUrl !== null) {
+			$data->termsOfServiceUrl = $this->termsOfServiceUrl;
+		}
+		if ($this->privacyPolicyUrl !== null) {
+			$data->privacyPolicyUrl = $this->privacyPolicyUrl;
 		}
 		return $data;
 	}

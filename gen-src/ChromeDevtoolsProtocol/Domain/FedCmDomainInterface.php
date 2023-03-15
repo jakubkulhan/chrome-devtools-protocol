@@ -4,6 +4,8 @@ namespace ChromeDevtoolsProtocol\Domain;
 
 use ChromeDevtoolsProtocol\ContextInterface;
 use ChromeDevtoolsProtocol\Model\FedCm\DialogShownEvent;
+use ChromeDevtoolsProtocol\Model\FedCm\DismissDialogRequest;
+use ChromeDevtoolsProtocol\Model\FedCm\SelectAccountRequest;
 use ChromeDevtoolsProtocol\SubscriptionInterface;
 
 /**
@@ -28,6 +30,17 @@ interface FedCmDomainInterface
 
 
 	/**
+	 * Call FedCm.dismissDialog command.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param DismissDialogRequest $request
+	 *
+	 * @return void
+	 */
+	public function dismissDialog(ContextInterface $ctx, DismissDialogRequest $request): void;
+
+
+	/**
 	 * Call FedCm.enable command.
 	 *
 	 * @param ContextInterface $ctx
@@ -35,6 +48,17 @@ interface FedCmDomainInterface
 	 * @return void
 	 */
 	public function enable(ContextInterface $ctx): void;
+
+
+	/**
+	 * Call FedCm.selectAccount command.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param SelectAccountRequest $request
+	 *
+	 * @return void
+	 */
+	public function selectAccount(ContextInterface $ctx, SelectAccountRequest $request): void;
 
 
 	/**

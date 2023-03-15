@@ -3,19 +3,16 @@
 namespace ChromeDevtoolsProtocol\Model\FedCm;
 
 /**
- * Named type FedCm.DialogShownEvent.
+ * Request for FedCm.dismissDialog command.
  *
  * @generated This file has been auto-generated, do not edit.
  *
  * @author Jakub Kulhan <jakub.kulhan@gmail.com>
  */
-final class DialogShownEvent implements \JsonSerializable
+final class DismissDialogRequest implements \JsonSerializable
 {
 	/** @var string */
 	public $dialogId;
-
-	/** @var Account[] */
-	public $accounts;
 
 
 	/**
@@ -28,12 +25,6 @@ final class DialogShownEvent implements \JsonSerializable
 		if (isset($data->dialogId)) {
 			$instance->dialogId = (string)$data->dialogId;
 		}
-		if (isset($data->accounts)) {
-			$instance->accounts = [];
-			foreach ($data->accounts as $item) {
-				$instance->accounts[] = Account::fromJson($item);
-			}
-		}
 		return $instance;
 	}
 
@@ -44,12 +35,17 @@ final class DialogShownEvent implements \JsonSerializable
 		if ($this->dialogId !== null) {
 			$data->dialogId = $this->dialogId;
 		}
-		if ($this->accounts !== null) {
-			$data->accounts = [];
-			foreach ($this->accounts as $item) {
-				$data->accounts[] = $item->jsonSerialize();
-			}
-		}
 		return $data;
+	}
+
+
+	/**
+	 * Create new instance using builder.
+	 *
+	 * @return DismissDialogRequestBuilder
+	 */
+	public static function builder(): DismissDialogRequestBuilder
+	{
+		return new DismissDialogRequestBuilder();
 	}
 }
