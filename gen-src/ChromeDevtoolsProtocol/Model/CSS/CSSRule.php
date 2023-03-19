@@ -26,6 +26,13 @@ final class CSSRule implements \JsonSerializable
 	public $selectorList;
 
 	/**
+	 * Array of selectors from ancestor style rules, sorted by distance from the current rule.
+	 *
+	 * @var string[]|null
+	 */
+	public $nestingSelectors;
+
+	/**
 	 * Parent stylesheet's origin.
 	 *
 	 * @var string
@@ -88,6 +95,12 @@ final class CSSRule implements \JsonSerializable
 		if (isset($data->selectorList)) {
 			$instance->selectorList = SelectorList::fromJson($data->selectorList);
 		}
+		if (isset($data->nestingSelectors)) {
+			$instance->nestingSelectors = [];
+			foreach ($data->nestingSelectors as $item) {
+				$instance->nestingSelectors[] = (string)$item;
+			}
+		}
 		if (isset($data->origin)) {
 			$instance->origin = (string)$data->origin;
 		}
@@ -136,6 +149,12 @@ final class CSSRule implements \JsonSerializable
 		}
 		if ($this->selectorList !== null) {
 			$data->selectorList = $this->selectorList->jsonSerialize();
+		}
+		if ($this->nestingSelectors !== null) {
+			$data->nestingSelectors = [];
+			foreach ($this->nestingSelectors as $item) {
+				$data->nestingSelectors[] = $item;
+			}
 		}
 		if ($this->origin !== null) {
 			$data->origin = $this->origin;
