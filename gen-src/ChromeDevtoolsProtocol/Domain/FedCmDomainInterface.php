@@ -5,6 +5,7 @@ namespace ChromeDevtoolsProtocol\Domain;
 use ChromeDevtoolsProtocol\ContextInterface;
 use ChromeDevtoolsProtocol\Model\FedCm\DialogShownEvent;
 use ChromeDevtoolsProtocol\Model\FedCm\DismissDialogRequest;
+use ChromeDevtoolsProtocol\Model\FedCm\EnableRequest;
 use ChromeDevtoolsProtocol\Model\FedCm\SelectAccountRequest;
 use ChromeDevtoolsProtocol\SubscriptionInterface;
 
@@ -44,10 +45,11 @@ interface FedCmDomainInterface
 	 * Call FedCm.enable command.
 	 *
 	 * @param ContextInterface $ctx
+	 * @param EnableRequest $request
 	 *
 	 * @return void
 	 */
-	public function enable(ContextInterface $ctx): void;
+	public function enable(ContextInterface $ctx, EnableRequest $request): void;
 
 
 	/**

@@ -6,6 +6,7 @@ use ChromeDevtoolsProtocol\ContextInterface;
 use ChromeDevtoolsProtocol\InternalClientInterface;
 use ChromeDevtoolsProtocol\Model\FedCm\DialogShownEvent;
 use ChromeDevtoolsProtocol\Model\FedCm\DismissDialogRequest;
+use ChromeDevtoolsProtocol\Model\FedCm\EnableRequest;
 use ChromeDevtoolsProtocol\Model\FedCm\SelectAccountRequest;
 use ChromeDevtoolsProtocol\SubscriptionInterface;
 
@@ -34,9 +35,8 @@ class FedCmDomain implements FedCmDomainInterface
 	}
 
 
-	public function enable(ContextInterface $ctx): void
+	public function enable(ContextInterface $ctx, EnableRequest $request): void
 	{
-		$request = new \stdClass();
 		$this->internalClient->executeCommand($ctx, 'FedCm.enable', $request);
 	}
 

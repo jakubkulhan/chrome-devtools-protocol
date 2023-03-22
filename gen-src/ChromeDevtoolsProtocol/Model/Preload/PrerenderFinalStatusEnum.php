@@ -48,11 +48,10 @@ final class PrerenderFinalStatusEnum
 	public const INACTIVE_PAGE_RESTRICTION = 'InactivePageRestriction';
 	public const START_FAILED = 'StartFailed';
 	public const TIMEOUT_BACKGROUNDED = 'TimeoutBackgrounded';
-	public const CROSS_SITE_REDIRECT = 'CrossSiteRedirect';
-	public const CROSS_SITE_NAVIGATION = 'CrossSiteNavigation';
-	public const SAME_SITE_CROSS_ORIGIN_REDIRECT = 'SameSiteCrossOriginRedirect';
-	public const SAME_SITE_CROSS_ORIGIN_REDIRECT_NOT_OPT_IN = 'SameSiteCrossOriginRedirectNotOptIn';
-	public const SAME_SITE_CROSS_ORIGIN_NAVIGATION_NOT_OPT_IN = 'SameSiteCrossOriginNavigationNotOptIn';
+	public const CROSS_SITE_REDIRECT_IN_INITIAL_NAVIGATION = 'CrossSiteRedirectInInitialNavigation';
+	public const CROSS_SITE_NAVIGATION_IN_INITIAL_NAVIGATION = 'CrossSiteNavigationInInitialNavigation';
+	public const SAME_SITE_CROSS_ORIGIN_REDIRECT_NOT_OPT_IN_IN_INITIAL_NAVIGATION = 'SameSiteCrossOriginRedirectNotOptInInInitialNavigation';
+	public const SAME_SITE_CROSS_ORIGIN_NAVIGATION_NOT_OPT_IN_IN_INITIAL_NAVIGATION = 'SameSiteCrossOriginNavigationNotOptInInInitialNavigation';
 	public const ACTIVATION_NAVIGATION_PARAMETER_MISMATCH = 'ActivationNavigationParameterMismatch';
 	public const ACTIVATED_IN_BACKGROUND = 'ActivatedInBackground';
 	public const EMBEDDER_HOST_DISALLOWED = 'EmbedderHostDisallowed';
@@ -66,4 +65,8 @@ final class PrerenderFinalStatusEnum
 	public const BATTERY_SAVER_ENABLED = 'BatterySaverEnabled';
 	public const ACTIVATED_DURING_MAIN_FRAME_NAVIGATION = 'ActivatedDuringMainFrameNavigation';
 	public const PRELOADING_UNSUPPORTED_BY_WEB_CONTENTS = 'PreloadingUnsupportedByWebContents';
+	public const CROSS_SITE_REDIRECT_IN_MAIN_FRAME_NAVIGATION = 'CrossSiteRedirectInMainFrameNavigation';
+	public const CROSS_SITE_NAVIGATION_IN_MAIN_FRAME_NAVIGATION = 'CrossSiteNavigationInMainFrameNavigation';
+	public const SAME_SITE_CROSS_ORIGIN_REDIRECT_NOT_OPT_IN_IN_MAIN_FRAME_NAVIGATION = 'SameSiteCrossOriginRedirectNotOptInInMainFrameNavigation';
+	public const SAME_SITE_CROSS_ORIGIN_NAVIGATION_NOT_OPT_IN_IN_MAIN_FRAME_NAVIGATION = 'SameSiteCrossOriginNavigationNotOptInInMainFrameNavigation';
 }
