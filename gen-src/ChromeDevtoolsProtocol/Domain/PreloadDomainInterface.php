@@ -67,7 +67,7 @@ interface PreloadDomainInterface
 
 
 	/**
-	 * Send a list of sources for all preloading attempts.
+	 * Send a list of sources for all preloading attempts in a document.
 	 *
 	 * Listener will be called whenever event Preload.preloadingAttemptSourcesUpdated is fired.
 	 *
@@ -79,7 +79,7 @@ interface PreloadDomainInterface
 
 
 	/**
-	 * Send a list of sources for all preloading attempts.
+	 * Send a list of sources for all preloading attempts in a document.
 	 *
 	 * Method will block until first Preload.preloadingAttemptSourcesUpdated event is fired.
 	 *
