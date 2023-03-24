@@ -11,6 +11,9 @@ namespace ChromeDevtoolsProtocol\Model\Preload;
  */
 final class PrerenderAttemptCompletedEvent implements \JsonSerializable
 {
+	/** @var PreloadingAttemptKey */
+	public $key;
+
 	/**
 	 * The frame id of the frame initiating prerendering.
 	 *
@@ -39,6 +42,9 @@ final class PrerenderAttemptCompletedEvent implements \JsonSerializable
 	public static function fromJson($data)
 	{
 		$instance = new static();
+		if (isset($data->key)) {
+			$instance->key = PreloadingAttemptKey::fromJson($data->key);
+		}
 		if (isset($data->initiatingFrameId)) {
 			$instance->initiatingFrameId = (string)$data->initiatingFrameId;
 		}
@@ -58,6 +64,9 @@ final class PrerenderAttemptCompletedEvent implements \JsonSerializable
 	public function jsonSerialize()
 	{
 		$data = new \stdClass();
+		if ($this->key !== null) {
+			$data->key = $this->key->jsonSerialize();
+		}
 		if ($this->initiatingFrameId !== null) {
 			$data->initiatingFrameId = $this->initiatingFrameId;
 		}

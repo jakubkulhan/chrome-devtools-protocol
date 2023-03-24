@@ -21184,6 +21184,10 @@
                     "description": "Fired when a prefetch attempt is updated.",
                     "parameters": [
                         {
+                            "name": "key",
+                            "$ref": "PreloadingAttemptKey"
+                        },
+                        {
                             "name": "initiatingFrameId",
                             "description": "The frame id of the frame initiating prefetch.",
                             "$ref": "Page.FrameId"
@@ -21220,6 +21224,10 @@
                     "description": "Fired when a prerender attempt is completed.",
                     "parameters": [
                         {
+                            "name": "key",
+                            "$ref": "PreloadingAttemptKey"
+                        },
+                        {
                             "name": "initiatingFrameId",
                             "description": "The frame id of the frame initiating prerendering.",
                             "$ref": "Page.FrameId"
@@ -21244,6 +21252,10 @@
                     "name": "prerenderStatusUpdated",
                     "description": "Fired when a prerender attempt is updated.",
                     "parameters": [
+                        {
+                            "name": "key",
+                            "$ref": "PreloadingAttemptKey"
+                        },
                         {
                             "name": "initiatingFrameId",
                             "description": "The frame id of the frame initiating prerender.",
