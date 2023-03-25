@@ -28,6 +28,20 @@ final class RuleSet implements \JsonSerializable
 	 */
 	public $sourceText;
 
+	/**
+	 * Error information `errorMessage` is null iff `errorType` is null.
+	 *
+	 * @var string
+	 */
+	public $errorType;
+
+	/**
+	 * TODO(https://crbug.com/1425354): Replace this property with structured error.
+	 *
+	 * @var string|null
+	 */
+	public $errorMessage;
+
 
 	/**
 	 * @param object $data
@@ -45,6 +59,12 @@ final class RuleSet implements \JsonSerializable
 		if (isset($data->sourceText)) {
 			$instance->sourceText = (string)$data->sourceText;
 		}
+		if (isset($data->errorType)) {
+			$instance->errorType = (string)$data->errorType;
+		}
+		if (isset($data->errorMessage)) {
+			$instance->errorMessage = (string)$data->errorMessage;
+		}
 		return $instance;
 	}
 
@@ -60,6 +80,12 @@ final class RuleSet implements \JsonSerializable
 		}
 		if ($this->sourceText !== null) {
 			$data->sourceText = $this->sourceText;
+		}
+		if ($this->errorType !== null) {
+			$data->errorType = $this->errorType;
+		}
+		if ($this->errorMessage !== null) {
+			$data->errorMessage = $this->errorMessage;
 		}
 		return $data;
 	}

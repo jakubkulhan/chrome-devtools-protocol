@@ -14,6 +14,9 @@ final class DismissDialogRequest implements \JsonSerializable
 	/** @var string */
 	public $dialogId;
 
+	/** @var bool|null */
+	public $triggerCooldown;
+
 
 	/**
 	 * @param object $data
@@ -25,6 +28,9 @@ final class DismissDialogRequest implements \JsonSerializable
 		if (isset($data->dialogId)) {
 			$instance->dialogId = (string)$data->dialogId;
 		}
+		if (isset($data->triggerCooldown)) {
+			$instance->triggerCooldown = (bool)$data->triggerCooldown;
+		}
 		return $instance;
 	}
 
@@ -34,6 +40,9 @@ final class DismissDialogRequest implements \JsonSerializable
 		$data = new \stdClass();
 		if ($this->dialogId !== null) {
 			$data->dialogId = $this->dialogId;
+		}
+		if ($this->triggerCooldown !== null) {
+			$data->triggerCooldown = $this->triggerCooldown;
 		}
 		return $data;
 	}

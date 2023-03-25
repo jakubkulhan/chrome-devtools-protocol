@@ -22,6 +22,7 @@ final class StorageTypeEnum
 	public const CACHE_STORAGE = 'cache_storage';
 	public const INTEREST_GROUPS = 'interest_groups';
 	public const SHARED_STORAGE = 'shared_storage';
+	public const STORAGE_BUCKETS = 'storage_buckets';
 	public const ALL = 'all';
 	public const OTHER = 'other';
 }

@@ -10175,6 +10175,16 @@
                             "items": {
                                 "$ref": "Account"
                             }
+                        },
+                        {
+                            "name": "title",
+                            "description": "These exist primarily so that the caller can verify the RP context was used appropriately.",
+                            "type": "string"
+                        },
+                        {
+                            "name": "subtitle",
+                            "optional": true,
+                            "type": "string"
                         }
                     ]
                 }
@@ -10189,6 +10199,11 @@
                         {
                             "name": "dialogId",
                             "type": "string"
+                        },
+                        {
+                            "name": "triggerCooldown",
+                            "optional": true,
+                            "type": "boolean"
                         }
                     ]
                 },
@@ -10202,6 +10217,10 @@
                             "type": "boolean"
                         }
                     ]
+                },
+                {
+                    "name": "resetCooldown",
+                    "description": "Resets the cooldown time, if any, to allow the next FedCM call to show a dialog even if one was recently dismissed by the user."
                 },
                 {
                     "name": "selectAccount",
@@ -21021,7 +21040,28 @@
                             "name": "sourceText",
                             "description": "Source text of JSON representing the rule set. If it comes from <script> tag, it is the textContent of the node. Note that it is a JSON for valid case. See also: - https://wicg.github.io/nav-speculation/speculation-rules.html - https://github.com/WICG/nav-speculation/blob/main/triggers.md",
                             "type": "string"
+                        },
+                        {
+                            "name": "errorType",
+                            "description": "Error information `errorMessage` is null iff `errorType` is null.",
+                            "optional": true,
+                            "$ref": "RuleSetErrorType"
+                        },
+                        {
+                            "name": "errorMessage",
+                            "description": "TODO(https://crbug.com/1425354): Replace this property with structured error.",
+                            "deprecated": true,
+                            "optional": true,
+                            "type": "string"
                         }
+                    ]
+                },
+                {
+                    "id": "RuleSetErrorType",
+                    "type": "string",
+                    "enum": [
+                        "SourceIsNotJsonObject",
+                        "InvalidRulesSkipped"
                     ]
                 },
                 {
@@ -23950,6 +23990,7 @@
                         "cache_storage",
                         "interest_groups",
                         "shared_storage",
+                        "storage_buckets",
                         "all",
                         "other"
                     ]
@@ -24228,6 +24269,53 @@
                             "type": "boolean"
                         }
                     ]
+                },
+                {
+                    "id": "StorageBucketsDurability",
+                    "type": "string",
+                    "enum": [
+                        "relaxed",
+                        "strict"
+                    ]
+                },
+                {
+                    "id": "StorageBucketInfo",
+                    "type": "object",
+                    "properties": [
+                        {
+                            "name": "storageKey",
+                            "$ref": "SerializedStorageKey"
+                        },
+                        {
+                            "name": "id",
+                            "type": "string"
+                        },
+                        {
+                            "name": "name",
+                            "type": "string"
+                        },
+                        {
+                            "name": "isDefault",
+                            "type": "boolean"
+                        },
+                        {
+                            "name": "expiration",
+                            "$ref": "Network.TimeSinceEpoch"
+                        },
+                        {
+                            "name": "quota",
+                            "description": "Storage quota (bytes).",
+                            "type": "number"
+                        },
+                        {
+                            "name": "persistent",
+                            "type": "boolean"
+                        },
+                        {
+                            "name": "durability",
+                            "$ref": "StorageBucketsDurability"
+                        }
+                    ]
                 }
             ],
             "commands": [
@@ -24315,6 +24403,21 @@
                         },
                         {
                             "name": "key",
+                            "type": "string"
+                        }
+                    ]
+                },
+                {
+                    "name": "deleteStorageBucket",
+                    "description": "Deletes the Storage Bucket with the given storage key and bucket name.",
+                    "experimental": true,
+                    "parameters": [
+                        {
+                            "name": "storageKey",
+                            "type": "string"
+                        },
+                        {
+                            "name": "bucketName",
                             "type": "string"
                         }
                     ]
@@ -24562,6 +24665,21 @@
                     ]
                 },
                 {
+                    "name": "setStorageBucketTracking",
+                    "description": "Set tracking for a storage key's buckets.",
+                    "experimental": true,
+                    "parameters": [
+                        {
+                            "name": "storageKey",
+                            "type": "string"
+                        },
+                        {
+                            "name": "enable",
+                            "type": "boolean"
+                        }
+                    ]
+                },
+                {
                     "name": "trackCacheStorageForOrigin",
                     "description": "Registers origin to be notified when an update occurs to its cache storage list.",
                     "parameters": [
@@ -24780,6 +24898,24 @@
                             "name": "params",
                             "description": "The sub-parameters warapped by `params` are all optional and their presence/absence depends on `type`.",
                             "$ref": "SharedStorageAccessParams"
+                        }
+                    ]
+                },
+                {
+                    "name": "storageBucketCreatedOrUpdated",
+                    "parameters": [
+                        {
+                            "name": "bucket",
+                            "$ref": "StorageBucketInfo"
+                        }
+                    ]
+                },
+                {
+                    "name": "storageBucketDeleted",
+                    "parameters": [
+                        {
+                            "name": "bucketId",
+                            "type": "string"
                         }
                     ]
                 }

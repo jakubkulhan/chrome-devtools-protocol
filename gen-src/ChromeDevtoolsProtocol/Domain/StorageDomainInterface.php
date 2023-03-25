@@ -12,6 +12,7 @@ use ChromeDevtoolsProtocol\Model\Storage\ClearSharedStorageEntriesRequest;
 use ChromeDevtoolsProtocol\Model\Storage\ClearTrustTokensRequest;
 use ChromeDevtoolsProtocol\Model\Storage\ClearTrustTokensResponse;
 use ChromeDevtoolsProtocol\Model\Storage\DeleteSharedStorageEntryRequest;
+use ChromeDevtoolsProtocol\Model\Storage\DeleteStorageBucketRequest;
 use ChromeDevtoolsProtocol\Model\Storage\GetCookiesRequest;
 use ChromeDevtoolsProtocol\Model\Storage\GetCookiesResponse;
 use ChromeDevtoolsProtocol\Model\Storage\GetInterestGroupDetailsRequest;
@@ -34,7 +35,10 @@ use ChromeDevtoolsProtocol\Model\Storage\SetCookiesRequest;
 use ChromeDevtoolsProtocol\Model\Storage\SetInterestGroupTrackingRequest;
 use ChromeDevtoolsProtocol\Model\Storage\SetSharedStorageEntryRequest;
 use ChromeDevtoolsProtocol\Model\Storage\SetSharedStorageTrackingRequest;
+use ChromeDevtoolsProtocol\Model\Storage\SetStorageBucketTrackingRequest;
 use ChromeDevtoolsProtocol\Model\Storage\SharedStorageAccessedEvent;
+use ChromeDevtoolsProtocol\Model\Storage\StorageBucketCreatedOrUpdatedEvent;
+use ChromeDevtoolsProtocol\Model\Storage\StorageBucketDeletedEvent;
 use ChromeDevtoolsProtocol\Model\Storage\TrackCacheStorageForOriginRequest;
 use ChromeDevtoolsProtocol\Model\Storage\TrackCacheStorageForStorageKeyRequest;
 use ChromeDevtoolsProtocol\Model\Storage\TrackIndexedDBForOriginRequest;
@@ -120,6 +124,17 @@ interface StorageDomainInterface
 	 * @return void
 	 */
 	public function deleteSharedStorageEntry(ContextInterface $ctx, DeleteSharedStorageEntryRequest $request): void;
+
+
+	/**
+	 * Deletes the Storage Bucket with the given storage key and bucket name.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param DeleteStorageBucketRequest $request
+	 *
+	 * @return void
+	 */
+	public function deleteStorageBucket(ContextInterface $ctx, DeleteStorageBucketRequest $request): void;
 
 
 	/**
@@ -274,6 +289,17 @@ interface StorageDomainInterface
 	 * @return void
 	 */
 	public function setSharedStorageTracking(ContextInterface $ctx, SetSharedStorageTrackingRequest $request): void;
+
+
+	/**
+	 * Set tracking for a storage key's buckets.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param SetStorageBucketTrackingRequest $request
+	 *
+	 * @return void
+	 */
+	public function setStorageBucketTracking(ContextInterface $ctx, SetStorageBucketTrackingRequest $request): void;
 
 
 	/**
@@ -515,4 +541,52 @@ interface StorageDomainInterface
 	 * @return SharedStorageAccessedEvent
 	 */
 	public function awaitSharedStorageAccessed(ContextInterface $ctx): SharedStorageAccessedEvent;
+
+
+	/**
+	 * Subscribe to Storage.storageBucketCreatedOrUpdated event.
+	 *
+	 * Listener will be called whenever event Storage.storageBucketCreatedOrUpdated is fired.
+	 *
+	 * @param callable $listener
+	 *
+	 * @return SubscriptionInterface
+	 */
+	public function addStorageBucketCreatedOrUpdatedListener(callable $listener): SubscriptionInterface;
+
+
+	/**
+	 * Wait for Storage.storageBucketCreatedOrUpdated event.
+	 *
+	 * Method will block until first Storage.storageBucketCreatedOrUpdated event is fired.
+	 *
+	 * @param ContextInterface $ctx
+	 *
+	 * @return StorageBucketCreatedOrUpdatedEvent
+	 */
+	public function awaitStorageBucketCreatedOrUpdated(ContextInterface $ctx): StorageBucketCreatedOrUpdatedEvent;
+
+
+	/**
+	 * Subscribe to Storage.storageBucketDeleted event.
+	 *
+	 * Listener will be called whenever event Storage.storageBucketDeleted is fired.
+	 *
+	 * @param callable $listener
+	 *
+	 * @return SubscriptionInterface
+	 */
+	public function addStorageBucketDeletedListener(callable $listener): SubscriptionInterface;
+
+
+	/**
+	 * Wait for Storage.storageBucketDeleted event.
+	 *
+	 * Method will block until first Storage.storageBucketDeleted event is fired.
+	 *
+	 * @param ContextInterface $ctx
+	 *
+	 * @return StorageBucketDeletedEvent
+	 */
+	public function awaitStorageBucketDeleted(ContextInterface $ctx): StorageBucketDeletedEvent;
 }

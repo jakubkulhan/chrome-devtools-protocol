@@ -17,6 +17,16 @@ final class DialogShownEvent implements \JsonSerializable
 	/** @var Account[] */
 	public $accounts;
 
+	/**
+	 * These exist primarily so that the caller can verify the RP context was used appropriately.
+	 *
+	 * @var string
+	 */
+	public $title;
+
+	/** @var string|null */
+	public $subtitle;
+
 
 	/**
 	 * @param object $data
@@ -34,6 +44,12 @@ final class DialogShownEvent implements \JsonSerializable
 				$instance->accounts[] = Account::fromJson($item);
 			}
 		}
+		if (isset($data->title)) {
+			$instance->title = (string)$data->title;
+		}
+		if (isset($data->subtitle)) {
+			$instance->subtitle = (string)$data->subtitle;
+		}
 		return $instance;
 	}
 
@@ -49,6 +65,12 @@ final class DialogShownEvent implements \JsonSerializable
 			foreach ($this->accounts as $item) {
 				$data->accounts[] = $item->jsonSerialize();
 			}
+		}
+		if ($this->title !== null) {
+			$data->title = $this->title;
+		}
+		if ($this->subtitle !== null) {
+			$data->subtitle = $this->subtitle;
 		}
 		return $data;
 	}

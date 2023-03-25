@@ -12,6 +12,7 @@ use ChromeDevtoolsProtocol\Exception\BuilderException;
 final class DismissDialogRequestBuilder
 {
 	private $dialogId;
+	private $triggerCooldown;
 
 
 	/**
@@ -24,6 +25,7 @@ final class DismissDialogRequestBuilder
 			throw new BuilderException('Property [dialogId] is required.');
 		}
 		$instance->dialogId = $this->dialogId;
+		$instance->triggerCooldown = $this->triggerCooldown;
 		return $instance;
 	}
 
@@ -36,6 +38,18 @@ final class DismissDialogRequestBuilder
 	public function setDialogId($dialogId): self
 	{
 		$this->dialogId = $dialogId;
+		return $this;
+	}
+
+
+	/**
+	 * @param bool|null $triggerCooldown
+	 *
+	 * @return self
+	 */
+	public function setTriggerCooldown($triggerCooldown): self
+	{
+		$this->triggerCooldown = $triggerCooldown;
 		return $this;
 	}
 }

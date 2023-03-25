@@ -13,6 +13,7 @@ use ChromeDevtoolsProtocol\Model\Storage\ClearSharedStorageEntriesRequest;
 use ChromeDevtoolsProtocol\Model\Storage\ClearTrustTokensRequest;
 use ChromeDevtoolsProtocol\Model\Storage\ClearTrustTokensResponse;
 use ChromeDevtoolsProtocol\Model\Storage\DeleteSharedStorageEntryRequest;
+use ChromeDevtoolsProtocol\Model\Storage\DeleteStorageBucketRequest;
 use ChromeDevtoolsProtocol\Model\Storage\GetCookiesRequest;
 use ChromeDevtoolsProtocol\Model\Storage\GetCookiesResponse;
 use ChromeDevtoolsProtocol\Model\Storage\GetInterestGroupDetailsRequest;
@@ -35,7 +36,10 @@ use ChromeDevtoolsProtocol\Model\Storage\SetCookiesRequest;
 use ChromeDevtoolsProtocol\Model\Storage\SetInterestGroupTrackingRequest;
 use ChromeDevtoolsProtocol\Model\Storage\SetSharedStorageEntryRequest;
 use ChromeDevtoolsProtocol\Model\Storage\SetSharedStorageTrackingRequest;
+use ChromeDevtoolsProtocol\Model\Storage\SetStorageBucketTrackingRequest;
 use ChromeDevtoolsProtocol\Model\Storage\SharedStorageAccessedEvent;
+use ChromeDevtoolsProtocol\Model\Storage\StorageBucketCreatedOrUpdatedEvent;
+use ChromeDevtoolsProtocol\Model\Storage\StorageBucketDeletedEvent;
 use ChromeDevtoolsProtocol\Model\Storage\TrackCacheStorageForOriginRequest;
 use ChromeDevtoolsProtocol\Model\Storage\TrackCacheStorageForStorageKeyRequest;
 use ChromeDevtoolsProtocol\Model\Storage\TrackIndexedDBForOriginRequest;
@@ -92,6 +96,12 @@ class StorageDomain implements StorageDomainInterface
 	public function deleteSharedStorageEntry(ContextInterface $ctx, DeleteSharedStorageEntryRequest $request): void
 	{
 		$this->internalClient->executeCommand($ctx, 'Storage.deleteSharedStorageEntry', $request);
+	}
+
+
+	public function deleteStorageBucket(ContextInterface $ctx, DeleteStorageBucketRequest $request): void
+	{
+		$this->internalClient->executeCommand($ctx, 'Storage.deleteStorageBucket', $request);
 	}
 
 
@@ -186,6 +196,12 @@ class StorageDomain implements StorageDomainInterface
 	public function setSharedStorageTracking(ContextInterface $ctx, SetSharedStorageTrackingRequest $request): void
 	{
 		$this->internalClient->executeCommand($ctx, 'Storage.setSharedStorageTracking', $request);
+	}
+
+
+	public function setStorageBucketTracking(ContextInterface $ctx, SetStorageBucketTrackingRequest $request): void
+	{
+		$this->internalClient->executeCommand($ctx, 'Storage.setStorageBucketTracking', $request);
 	}
 
 
@@ -324,5 +340,33 @@ class StorageDomain implements StorageDomainInterface
 	public function awaitSharedStorageAccessed(ContextInterface $ctx): SharedStorageAccessedEvent
 	{
 		return SharedStorageAccessedEvent::fromJson($this->internalClient->awaitEvent($ctx, 'Storage.sharedStorageAccessed'));
+	}
+
+
+	public function addStorageBucketCreatedOrUpdatedListener(callable $listener): SubscriptionInterface
+	{
+		return $this->internalClient->addListener('Storage.storageBucketCreatedOrUpdated', function ($event) use ($listener) {
+			return $listener(StorageBucketCreatedOrUpdatedEvent::fromJson($event));
+		});
+	}
+
+
+	public function awaitStorageBucketCreatedOrUpdated(ContextInterface $ctx): StorageBucketCreatedOrUpdatedEvent
+	{
+		return StorageBucketCreatedOrUpdatedEvent::fromJson($this->internalClient->awaitEvent($ctx, 'Storage.storageBucketCreatedOrUpdated'));
+	}
+
+
+	public function addStorageBucketDeletedListener(callable $listener): SubscriptionInterface
+	{
+		return $this->internalClient->addListener('Storage.storageBucketDeleted', function ($event) use ($listener) {
+			return $listener(StorageBucketDeletedEvent::fromJson($event));
+		});
+	}
+
+
+	public function awaitStorageBucketDeleted(ContextInterface $ctx): StorageBucketDeletedEvent
+	{
+		return StorageBucketDeletedEvent::fromJson($this->internalClient->awaitEvent($ctx, 'Storage.storageBucketDeleted'));
 	}
 }

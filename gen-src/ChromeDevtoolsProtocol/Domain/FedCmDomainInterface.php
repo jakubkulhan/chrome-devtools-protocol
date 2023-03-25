@@ -53,6 +53,16 @@ interface FedCmDomainInterface
 
 
 	/**
+	 * Resets the cooldown time, if any, to allow the next FedCM call to show a dialog even if one was recently dismissed by the user.
+	 *
+	 * @param ContextInterface $ctx
+	 *
+	 * @return void
+	 */
+	public function resetCooldown(ContextInterface $ctx): void;
+
+
+	/**
 	 * Call FedCm.selectAccount command.
 	 *
 	 * @param ContextInterface $ctx

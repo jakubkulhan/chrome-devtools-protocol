@@ -41,6 +41,13 @@ class FedCmDomain implements FedCmDomainInterface
 	}
 
 
+	public function resetCooldown(ContextInterface $ctx): void
+	{
+		$request = new \stdClass();
+		$this->internalClient->executeCommand($ctx, 'FedCm.resetCooldown', $request);
+	}
+
+
 	public function selectAccount(ContextInterface $ctx, SelectAccountRequest $request): void
 	{
 		$this->internalClient->executeCommand($ctx, 'FedCm.selectAccount', $request);
