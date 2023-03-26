@@ -5961,7 +5961,8 @@
                                 "OOM",
                                 "other",
                                 "promiseRejection",
-                                "XHR"
+                                "XHR",
+                                "step"
                             ]
                         },
                         {
