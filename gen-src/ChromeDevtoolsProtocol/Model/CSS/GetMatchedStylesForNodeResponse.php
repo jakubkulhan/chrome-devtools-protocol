@@ -61,6 +61,13 @@ final class GetMatchedStylesForNodeResponse implements \JsonSerializable
 	public $cssKeyframesRules;
 
 	/**
+	 * A list of CSS position fallbacks matching this node.
+	 *
+	 * @var CSSPositionFallbackRule[]|null
+	 */
+	public $cssPositionFallbackRules;
+
+	/**
 	 * Id of the first parent element that does not have display: contents.
 	 *
 	 * @var int
@@ -111,6 +118,12 @@ final class GetMatchedStylesForNodeResponse implements \JsonSerializable
 				$instance->cssKeyframesRules[] = CSSKeyframesRule::fromJson($item);
 			}
 		}
+		if (isset($data->cssPositionFallbackRules)) {
+			$instance->cssPositionFallbackRules = [];
+			foreach ($data->cssPositionFallbackRules as $item) {
+				$instance->cssPositionFallbackRules[] = CSSPositionFallbackRule::fromJson($item);
+			}
+		}
 		if (isset($data->parentLayoutNodeId)) {
 			$instance->parentLayoutNodeId = (int)$data->parentLayoutNodeId;
 		}
@@ -155,6 +168,12 @@ final class GetMatchedStylesForNodeResponse implements \JsonSerializable
 			$data->cssKeyframesRules = [];
 			foreach ($this->cssKeyframesRules as $item) {
 				$data->cssKeyframesRules[] = $item->jsonSerialize();
+			}
+		}
+		if ($this->cssPositionFallbackRules !== null) {
+			$data->cssPositionFallbackRules = [];
+			foreach ($this->cssPositionFallbackRules as $item) {
+				$data->cssPositionFallbackRules[] = $item->jsonSerialize();
 			}
 		}
 		if ($this->parentLayoutNodeId !== null) {
