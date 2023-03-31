@@ -24,6 +24,9 @@ final class GenericIssueDetails implements \JsonSerializable
 	/** @var int */
 	public $violatingNodeId;
 
+	/** @var string|null */
+	public $violatingNodeAttribute;
+
 
 	/**
 	 * @param object $data
@@ -41,6 +44,9 @@ final class GenericIssueDetails implements \JsonSerializable
 		if (isset($data->violatingNodeId)) {
 			$instance->violatingNodeId = (int)$data->violatingNodeId;
 		}
+		if (isset($data->violatingNodeAttribute)) {
+			$instance->violatingNodeAttribute = (string)$data->violatingNodeAttribute;
+		}
 		return $instance;
 	}
 
@@ -56,6 +62,9 @@ final class GenericIssueDetails implements \JsonSerializable
 		}
 		if ($this->violatingNodeId !== null) {
 			$data->violatingNodeId = $this->violatingNodeId;
+		}
+		if ($this->violatingNodeAttribute !== null) {
+			$data->violatingNodeAttribute = $this->violatingNodeAttribute;
 		}
 		return $data;
 	}
