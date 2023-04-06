@@ -28,7 +28,7 @@ final class CSSTryRule implements \JsonSerializable
 	/**
 	 * Associated style declaration.
 	 *
-	 * @var CSSStyle|null
+	 * @var CSSStyle
 	 */
 	public $style;
 
