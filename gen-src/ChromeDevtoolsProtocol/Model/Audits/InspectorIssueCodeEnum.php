@@ -27,4 +27,5 @@ final class InspectorIssueCodeEnum
 	public const DEPRECATION_ISSUE = 'DeprecationIssue';
 	public const CLIENT_HINT_ISSUE = 'ClientHintIssue';
 	public const FEDERATED_AUTH_REQUEST_ISSUE = 'FederatedAuthRequestIssue';
+	public const BOUNCE_TRACKING_ISSUE = 'BounceTrackingIssue';
 }

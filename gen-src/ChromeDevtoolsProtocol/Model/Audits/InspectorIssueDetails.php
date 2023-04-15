@@ -59,6 +59,9 @@ final class InspectorIssueDetails implements \JsonSerializable
 	/** @var FederatedAuthRequestIssueDetails|null */
 	public $federatedAuthRequestIssueDetails;
 
+	/** @var BounceTrackingIssueDetails|null */
+	public $bounceTrackingIssueDetails;
+
 
 	/**
 	 * @param object $data
@@ -115,6 +118,9 @@ final class InspectorIssueDetails implements \JsonSerializable
 		if (isset($data->federatedAuthRequestIssueDetails)) {
 			$instance->federatedAuthRequestIssueDetails = FederatedAuthRequestIssueDetails::fromJson($data->federatedAuthRequestIssueDetails);
 		}
+		if (isset($data->bounceTrackingIssueDetails)) {
+			$instance->bounceTrackingIssueDetails = BounceTrackingIssueDetails::fromJson($data->bounceTrackingIssueDetails);
+		}
 		return $instance;
 	}
 
@@ -169,6 +175,9 @@ final class InspectorIssueDetails implements \JsonSerializable
 		}
 		if ($this->federatedAuthRequestIssueDetails !== null) {
 			$data->federatedAuthRequestIssueDetails = $this->federatedAuthRequestIssueDetails->jsonSerialize();
+		}
+		if ($this->bounceTrackingIssueDetails !== null) {
+			$data->bounceTrackingIssueDetails = $this->bounceTrackingIssueDetails->jsonSerialize();
 		}
 		return $data;
 	}
