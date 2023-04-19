@@ -130,6 +130,13 @@ final class CSSStyleSheetHeader implements \JsonSerializable
 	 */
 	public $endColumn;
 
+	/**
+	 * If the style sheet was loaded from a network resource, this indicates when the resource failed to load
+	 *
+	 * @var bool|null
+	 */
+	public $loadingFailed;
+
 
 	/**
 	 * @param object $data
@@ -189,6 +196,9 @@ final class CSSStyleSheetHeader implements \JsonSerializable
 		if (isset($data->endColumn)) {
 			$instance->endColumn = $data->endColumn;
 		}
+		if (isset($data->loadingFailed)) {
+			$instance->loadingFailed = (bool)$data->loadingFailed;
+		}
 		return $instance;
 	}
 
@@ -246,6 +256,9 @@ final class CSSStyleSheetHeader implements \JsonSerializable
 		}
 		if ($this->endColumn !== null) {
 			$data->endColumn = $this->endColumn;
+		}
+		if ($this->loadingFailed !== null) {
+			$data->loadingFailed = $this->loadingFailed;
 		}
 		return $data;
 	}
