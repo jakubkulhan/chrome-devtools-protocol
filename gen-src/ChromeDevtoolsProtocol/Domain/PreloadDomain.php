@@ -5,6 +5,7 @@ namespace ChromeDevtoolsProtocol\Domain;
 use ChromeDevtoolsProtocol\ContextInterface;
 use ChromeDevtoolsProtocol\InternalClientInterface;
 use ChromeDevtoolsProtocol\Model\Preload\PrefetchStatusUpdatedEvent;
+use ChromeDevtoolsProtocol\Model\Preload\PreloadEnabledStateUpdatedEvent;
 use ChromeDevtoolsProtocol\Model\Preload\PreloadingAttemptSourcesUpdatedEvent;
 use ChromeDevtoolsProtocol\Model\Preload\PrerenderAttemptCompletedEvent;
 use ChromeDevtoolsProtocol\Model\Preload\PrerenderStatusUpdatedEvent;
@@ -49,6 +50,20 @@ class PreloadDomain implements PreloadDomainInterface
 	public function awaitPrefetchStatusUpdated(ContextInterface $ctx): PrefetchStatusUpdatedEvent
 	{
 		return PrefetchStatusUpdatedEvent::fromJson($this->internalClient->awaitEvent($ctx, 'Preload.prefetchStatusUpdated'));
+	}
+
+
+	public function addPreloadEnabledStateUpdatedListener(callable $listener): SubscriptionInterface
+	{
+		return $this->internalClient->addListener('Preload.preloadEnabledStateUpdated', function ($event) use ($listener) {
+			return $listener(PreloadEnabledStateUpdatedEvent::fromJson($event));
+		});
+	}
+
+
+	public function awaitPreloadEnabledStateUpdated(ContextInterface $ctx): PreloadEnabledStateUpdatedEvent
+	{
+		return PreloadEnabledStateUpdatedEvent::fromJson($this->internalClient->awaitEvent($ctx, 'Preload.preloadEnabledStateUpdated'));
 	}
 
 
