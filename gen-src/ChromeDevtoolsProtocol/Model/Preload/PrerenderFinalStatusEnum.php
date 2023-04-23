@@ -69,4 +69,6 @@ final class PrerenderFinalStatusEnum
 	public const CROSS_SITE_NAVIGATION_IN_MAIN_FRAME_NAVIGATION = 'CrossSiteNavigationInMainFrameNavigation';
 	public const SAME_SITE_CROSS_ORIGIN_REDIRECT_NOT_OPT_IN_IN_MAIN_FRAME_NAVIGATION = 'SameSiteCrossOriginRedirectNotOptInInMainFrameNavigation';
 	public const SAME_SITE_CROSS_ORIGIN_NAVIGATION_NOT_OPT_IN_IN_MAIN_FRAME_NAVIGATION = 'SameSiteCrossOriginNavigationNotOptInInMainFrameNavigation';
+	public const MEMORY_PRESSURE_ON_TRIGGER = 'MemoryPressureOnTrigger';
+	public const MEMORY_PRESSURE_AFTER_TRIGGERED = 'MemoryPressureAfterTriggered';
 }
