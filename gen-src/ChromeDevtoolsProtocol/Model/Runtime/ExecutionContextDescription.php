@@ -40,7 +40,7 @@ final class ExecutionContextDescription implements \JsonSerializable
 	public $uniqueId;
 
 	/**
-	 * Embedder-specific auxiliary data.
+	 * Embedder-specific auxiliary data likely matching {isDefault: boolean, type: 'default'|'isolated'|'worker', frameId: string}
 	 *
 	 * @var object|null
 	 */

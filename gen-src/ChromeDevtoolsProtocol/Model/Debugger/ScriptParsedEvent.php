@@ -70,7 +70,7 @@ final class ScriptParsedEvent implements \JsonSerializable
 	public $hash;
 
 	/**
-	 * Embedder-specific auxiliary data.
+	 * Embedder-specific auxiliary data likely matching {isDefault: boolean, type: 'default'|'isolated'|'worker', frameId: string}
 	 *
 	 * @var object|null
 	 */
