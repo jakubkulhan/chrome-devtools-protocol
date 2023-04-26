@@ -71,6 +71,7 @@ final class PermissionsPolicyFeatureEnum
 	public const PAYMENT = 'payment';
 	public const PICTURE_IN_PICTURE = 'picture-in-picture';
 	public const PRIVATE_AGGREGATION = 'private-aggregation';
+	public const PRIVATE_STATE_TOKEN_REDEMPTION = 'private-state-token-redemption';
 	public const PUBLICKEY_CREDENTIALS_GET = 'publickey-credentials-get';
 	public const RUN_AD_AUCTION = 'run-ad-auction';
 	public const SCREEN_WAKE_LOCK = 'screen-wake-lock';
@@ -81,7 +82,6 @@ final class PermissionsPolicyFeatureEnum
 	public const SMART_CARD = 'smart-card';
 	public const STORAGE_ACCESS = 'storage-access';
 	public const SYNC_XHR = 'sync-xhr';
-	public const TRUST_TOKEN_REDEMPTION = 'trust-token-redemption';
 	public const UNLOAD = 'unload';
 	public const USB = 'usb';
 	public const VERTICAL_SCROLL = 'vertical-scroll';
