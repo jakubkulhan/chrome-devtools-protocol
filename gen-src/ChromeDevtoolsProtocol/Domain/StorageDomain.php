@@ -32,6 +32,7 @@ use ChromeDevtoolsProtocol\Model\Storage\IndexedDBListUpdatedEvent;
 use ChromeDevtoolsProtocol\Model\Storage\InterestGroupAccessedEvent;
 use ChromeDevtoolsProtocol\Model\Storage\OverrideQuotaForOriginRequest;
 use ChromeDevtoolsProtocol\Model\Storage\ResetSharedStorageBudgetRequest;
+use ChromeDevtoolsProtocol\Model\Storage\RunBounceTrackingMitigationsResponse;
 use ChromeDevtoolsProtocol\Model\Storage\SetCookiesRequest;
 use ChromeDevtoolsProtocol\Model\Storage\SetInterestGroupTrackingRequest;
 use ChromeDevtoolsProtocol\Model\Storage\SetSharedStorageEntryRequest;
@@ -172,6 +173,14 @@ class StorageDomain implements StorageDomainInterface
 	public function resetSharedStorageBudget(ContextInterface $ctx, ResetSharedStorageBudgetRequest $request): void
 	{
 		$this->internalClient->executeCommand($ctx, 'Storage.resetSharedStorageBudget', $request);
+	}
+
+
+	public function runBounceTrackingMitigations(ContextInterface $ctx): RunBounceTrackingMitigationsResponse
+	{
+		$request = new \stdClass();
+		$response = $this->internalClient->executeCommand($ctx, 'Storage.runBounceTrackingMitigations', $request);
+		return RunBounceTrackingMitigationsResponse::fromJson($response);
 	}
 
 

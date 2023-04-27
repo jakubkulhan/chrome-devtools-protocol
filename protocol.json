@@ -12750,7 +12750,6 @@
                         {
                             "name": "compositingReasons",
                             "description": "A list of strings specifying reasons for the given layer to become composited.",
-                            "deprecated": true,
                             "type": "array",
                             "items": {
                                 "type": "string"
@@ -18128,6 +18127,7 @@
                         "payment",
                         "picture-in-picture",
                         "private-aggregation",
+                        "private-state-token-issuance",
                         "private-state-token-redemption",
                         "publickey-credentials-get",
                         "run-ad-auction",
@@ -24706,6 +24706,20 @@
                         {
                             "name": "ownerOrigin",
                             "type": "string"
+                        }
+                    ]
+                },
+                {
+                    "name": "runBounceTrackingMitigations",
+                    "description": "Deletes state for sites identified as potential bounce trackers, immediately.",
+                    "experimental": true,
+                    "returns": [
+                        {
+                            "name": "deletedSites",
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            }
                         }
                     ]
                 },

@@ -71,6 +71,7 @@ final class PermissionsPolicyFeatureEnum
 	public const PAYMENT = 'payment';
 	public const PICTURE_IN_PICTURE = 'picture-in-picture';
 	public const PRIVATE_AGGREGATION = 'private-aggregation';
+	public const PRIVATE_STATE_TOKEN_ISSUANCE = 'private-state-token-issuance';
 	public const PRIVATE_STATE_TOKEN_REDEMPTION = 'private-state-token-redemption';
 	public const PUBLICKEY_CREDENTIALS_GET = 'publickey-credentials-get';
 	public const RUN_AD_AUCTION = 'run-ad-auction';

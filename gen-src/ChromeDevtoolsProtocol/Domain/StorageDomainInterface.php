@@ -31,6 +31,7 @@ use ChromeDevtoolsProtocol\Model\Storage\IndexedDBListUpdatedEvent;
 use ChromeDevtoolsProtocol\Model\Storage\InterestGroupAccessedEvent;
 use ChromeDevtoolsProtocol\Model\Storage\OverrideQuotaForOriginRequest;
 use ChromeDevtoolsProtocol\Model\Storage\ResetSharedStorageBudgetRequest;
+use ChromeDevtoolsProtocol\Model\Storage\RunBounceTrackingMitigationsResponse;
 use ChromeDevtoolsProtocol\Model\Storage\SetCookiesRequest;
 use ChromeDevtoolsProtocol\Model\Storage\SetInterestGroupTrackingRequest;
 use ChromeDevtoolsProtocol\Model\Storage\SetSharedStorageEntryRequest;
@@ -245,6 +246,16 @@ interface StorageDomainInterface
 	 * @return void
 	 */
 	public function resetSharedStorageBudget(ContextInterface $ctx, ResetSharedStorageBudgetRequest $request): void;
+
+
+	/**
+	 * Deletes state for sites identified as potential bounce trackers, immediately.
+	 *
+	 * @param ContextInterface $ctx
+	 *
+	 * @return RunBounceTrackingMitigationsResponse
+	 */
+	public function runBounceTrackingMitigations(ContextInterface $ctx): RunBounceTrackingMitigationsResponse;
 
 
 	/**
