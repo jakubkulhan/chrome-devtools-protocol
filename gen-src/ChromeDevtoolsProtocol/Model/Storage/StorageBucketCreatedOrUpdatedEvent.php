@@ -12,7 +12,7 @@ namespace ChromeDevtoolsProtocol\Model\Storage;
 final class StorageBucketCreatedOrUpdatedEvent implements \JsonSerializable
 {
 	/** @var StorageBucketInfo */
-	public $bucket;
+	public $bucketInfo;
 
 
 	/**
@@ -22,8 +22,8 @@ final class StorageBucketCreatedOrUpdatedEvent implements \JsonSerializable
 	public static function fromJson($data)
 	{
 		$instance = new static();
-		if (isset($data->bucket)) {
-			$instance->bucket = StorageBucketInfo::fromJson($data->bucket);
+		if (isset($data->bucketInfo)) {
+			$instance->bucketInfo = StorageBucketInfo::fromJson($data->bucketInfo);
 		}
 		return $instance;
 	}
@@ -32,8 +32,8 @@ final class StorageBucketCreatedOrUpdatedEvent implements \JsonSerializable
 	public function jsonSerialize()
 	{
 		$data = new \stdClass();
-		if ($this->bucket !== null) {
-			$data->bucket = $this->bucket->jsonSerialize();
+		if ($this->bucketInfo !== null) {
+			$data->bucketInfo = $this->bucketInfo->jsonSerialize();
 		}
 		return $data;
 	}

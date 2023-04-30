@@ -3,6 +3,7 @@
 namespace ChromeDevtoolsProtocol\Model\IndexedDB;
 
 use ChromeDevtoolsProtocol\Exception\BuilderException;
+use ChromeDevtoolsProtocol\Model\Storage\StorageBucket;
 
 /**
  * @generated This file has been auto-generated, do not edit.
@@ -13,6 +14,7 @@ final class DeleteObjectStoreEntriesRequestBuilder
 {
 	private $securityOrigin;
 	private $storageKey;
+	private $storageBucket;
 	private $databaseName;
 	private $objectStoreName;
 	private $keyRange;
@@ -26,6 +28,7 @@ final class DeleteObjectStoreEntriesRequestBuilder
 		$instance = new DeleteObjectStoreEntriesRequest();
 		$instance->securityOrigin = $this->securityOrigin;
 		$instance->storageKey = $this->storageKey;
+		$instance->storageBucket = $this->storageBucket;
 		if ($this->databaseName === null) {
 			throw new BuilderException('Property [databaseName] is required.');
 		}
@@ -62,6 +65,18 @@ final class DeleteObjectStoreEntriesRequestBuilder
 	public function setStorageKey($storageKey): self
 	{
 		$this->storageKey = $storageKey;
+		return $this;
+	}
+
+
+	/**
+	 * @param StorageBucket|null $storageBucket
+	 *
+	 * @return self
+	 */
+	public function setStorageBucket($storageBucket): self
+	{
+		$this->storageBucket = $storageBucket;
 		return $this;
 	}
 

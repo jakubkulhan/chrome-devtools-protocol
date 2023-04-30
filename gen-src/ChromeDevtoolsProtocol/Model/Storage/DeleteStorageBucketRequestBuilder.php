@@ -11,8 +11,7 @@ use ChromeDevtoolsProtocol\Exception\BuilderException;
  */
 final class DeleteStorageBucketRequestBuilder
 {
-	private $storageKey;
-	private $bucketName;
+	private $bucket;
 
 
 	/**
@@ -21,38 +20,22 @@ final class DeleteStorageBucketRequestBuilder
 	public function build(): DeleteStorageBucketRequest
 	{
 		$instance = new DeleteStorageBucketRequest();
-		if ($this->storageKey === null) {
-			throw new BuilderException('Property [storageKey] is required.');
+		if ($this->bucket === null) {
+			throw new BuilderException('Property [bucket] is required.');
 		}
-		$instance->storageKey = $this->storageKey;
-		if ($this->bucketName === null) {
-			throw new BuilderException('Property [bucketName] is required.');
-		}
-		$instance->bucketName = $this->bucketName;
+		$instance->bucket = $this->bucket;
 		return $instance;
 	}
 
 
 	/**
-	 * @param string $storageKey
+	 * @param StorageBucket $bucket
 	 *
 	 * @return self
 	 */
-	public function setStorageKey($storageKey): self
+	public function setBucket($bucket): self
 	{
-		$this->storageKey = $storageKey;
-		return $this;
-	}
-
-
-	/**
-	 * @param string $bucketName
-	 *
-	 * @return self
-	 */
-	public function setBucketName($bucketName): self
-	{
-		$this->bucketName = $bucketName;
+		$this->bucket = $bucket;
 		return $this;
 	}
 }

@@ -2,6 +2,8 @@
 
 namespace ChromeDevtoolsProtocol\Model\IndexedDB;
 
+use ChromeDevtoolsProtocol\Model\Storage\StorageBucket;
+
 /**
  * Request for IndexedDB.requestDatabaseNames command.
  *
@@ -12,7 +14,7 @@ namespace ChromeDevtoolsProtocol\Model\IndexedDB;
 final class RequestDatabaseNamesRequest implements \JsonSerializable
 {
 	/**
-	 * At least and at most one of securityOrigin, storageKey must be specified. Security origin.
+	 * At least and at most one of securityOrigin, storageKey, or storageBucket must be specified. Security origin.
 	 *
 	 * @var string|null
 	 */
@@ -24,6 +26,13 @@ final class RequestDatabaseNamesRequest implements \JsonSerializable
 	 * @var string|null
 	 */
 	public $storageKey;
+
+	/**
+	 * Storage bucket. If not specified, it uses the default bucket.
+	 *
+	 * @var StorageBucket|null
+	 */
+	public $storageBucket;
 
 
 	/**
@@ -39,6 +48,9 @@ final class RequestDatabaseNamesRequest implements \JsonSerializable
 		if (isset($data->storageKey)) {
 			$instance->storageKey = (string)$data->storageKey;
 		}
+		if (isset($data->storageBucket)) {
+			$instance->storageBucket = StorageBucket::fromJson($data->storageBucket);
+		}
 		return $instance;
 	}
 
@@ -51,6 +63,9 @@ final class RequestDatabaseNamesRequest implements \JsonSerializable
 		}
 		if ($this->storageKey !== null) {
 			$data->storageKey = $this->storageKey;
+		}
+		if ($this->storageBucket !== null) {
+			$data->storageBucket = $this->storageBucket->jsonSerialize();
 		}
 		return $data;
 	}

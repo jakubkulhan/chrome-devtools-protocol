@@ -11,11 +11,8 @@ namespace ChromeDevtoolsProtocol\Model\Storage;
  */
 final class DeleteStorageBucketRequest implements \JsonSerializable
 {
-	/** @var string */
-	public $storageKey;
-
-	/** @var string */
-	public $bucketName;
+	/** @var StorageBucket */
+	public $bucket;
 
 
 	/**
@@ -25,11 +22,8 @@ final class DeleteStorageBucketRequest implements \JsonSerializable
 	public static function fromJson($data)
 	{
 		$instance = new static();
-		if (isset($data->storageKey)) {
-			$instance->storageKey = (string)$data->storageKey;
-		}
-		if (isset($data->bucketName)) {
-			$instance->bucketName = (string)$data->bucketName;
+		if (isset($data->bucket)) {
+			$instance->bucket = StorageBucket::fromJson($data->bucket);
 		}
 		return $instance;
 	}
@@ -38,11 +32,8 @@ final class DeleteStorageBucketRequest implements \JsonSerializable
 	public function jsonSerialize()
 	{
 		$data = new \stdClass();
-		if ($this->storageKey !== null) {
-			$data->storageKey = $this->storageKey;
-		}
-		if ($this->bucketName !== null) {
-			$data->bucketName = $this->bucketName;
+		if ($this->bucket !== null) {
+			$data->bucket = $this->bucket->jsonSerialize();
 		}
 		return $data;
 	}

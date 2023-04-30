@@ -29,6 +29,19 @@ final class RuleSet implements \JsonSerializable
 	public $sourceText;
 
 	/**
+	 * A speculation rule set is either added through an inline <script> tag or through an external resource via the 'Speculation-Rules' HTTP header. For the first case, we include the BackendNodeId of the relevant <script> tag. For the second case, we include the external URL where the rule set was loaded from, and also RequestId if Network domain is enabled. See also: - https://wicg.github.io/nav-speculation/speculation-rules.html#speculation-rules-script - https://wicg.github.io/nav-speculation/speculation-rules.html#speculation-rules-header
+	 *
+	 * @var int
+	 */
+	public $backendNodeId;
+
+	/** @var string|null */
+	public $url;
+
+	/** @var string */
+	public $requestId;
+
+	/**
 	 * Error information `errorMessage` is null iff `errorType` is null.
 	 *
 	 * @var string
@@ -59,6 +72,15 @@ final class RuleSet implements \JsonSerializable
 		if (isset($data->sourceText)) {
 			$instance->sourceText = (string)$data->sourceText;
 		}
+		if (isset($data->backendNodeId)) {
+			$instance->backendNodeId = (int)$data->backendNodeId;
+		}
+		if (isset($data->url)) {
+			$instance->url = (string)$data->url;
+		}
+		if (isset($data->requestId)) {
+			$instance->requestId = (string)$data->requestId;
+		}
 		if (isset($data->errorType)) {
 			$instance->errorType = (string)$data->errorType;
 		}
@@ -80,6 +102,15 @@ final class RuleSet implements \JsonSerializable
 		}
 		if ($this->sourceText !== null) {
 			$data->sourceText = $this->sourceText;
+		}
+		if ($this->backendNodeId !== null) {
+			$data->backendNodeId = $this->backendNodeId;
+		}
+		if ($this->url !== null) {
+			$data->url = $this->url;
+		}
+		if ($this->requestId !== null) {
+			$data->requestId = $this->requestId;
 		}
 		if ($this->errorType !== null) {
 			$data->errorType = $this->errorType;

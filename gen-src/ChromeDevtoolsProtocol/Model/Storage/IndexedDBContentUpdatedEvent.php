@@ -26,6 +26,13 @@ final class IndexedDBContentUpdatedEvent implements \JsonSerializable
 	public $storageKey;
 
 	/**
+	 * Storage bucket to update.
+	 *
+	 * @var string
+	 */
+	public $bucketId;
+
+	/**
 	 * Database to update.
 	 *
 	 * @var string
@@ -53,6 +60,9 @@ final class IndexedDBContentUpdatedEvent implements \JsonSerializable
 		if (isset($data->storageKey)) {
 			$instance->storageKey = (string)$data->storageKey;
 		}
+		if (isset($data->bucketId)) {
+			$instance->bucketId = (string)$data->bucketId;
+		}
 		if (isset($data->databaseName)) {
 			$instance->databaseName = (string)$data->databaseName;
 		}
@@ -71,6 +81,9 @@ final class IndexedDBContentUpdatedEvent implements \JsonSerializable
 		}
 		if ($this->storageKey !== null) {
 			$data->storageKey = $this->storageKey;
+		}
+		if ($this->bucketId !== null) {
+			$data->bucketId = $this->bucketId;
 		}
 		if ($this->databaseName !== null) {
 			$data->databaseName = $this->databaseName;

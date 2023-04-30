@@ -3,34 +3,23 @@
 namespace ChromeDevtoolsProtocol\Model\Storage;
 
 /**
- * The origin's IndexedDB database list has been modified.
+ * Named type Storage.StorageBucket.
  *
  * @generated This file has been auto-generated, do not edit.
  *
  * @author Jakub Kulhan <jakub.kulhan@gmail.com>
  */
-final class IndexedDBListUpdatedEvent implements \JsonSerializable
+final class StorageBucket implements \JsonSerializable
 {
-	/**
-	 * Origin to update.
-	 *
-	 * @var string
-	 */
-	public $origin;
-
-	/**
-	 * Storage key to update.
-	 *
-	 * @var string
-	 */
+	/** @var string */
 	public $storageKey;
 
 	/**
-	 * Storage bucket to update.
+	 * If not specified, it is the default bucket of the storageKey.
 	 *
-	 * @var string
+	 * @var string|null
 	 */
-	public $bucketId;
+	public $name;
 
 
 	/**
@@ -40,14 +29,11 @@ final class IndexedDBListUpdatedEvent implements \JsonSerializable
 	public static function fromJson($data)
 	{
 		$instance = new static();
-		if (isset($data->origin)) {
-			$instance->origin = (string)$data->origin;
-		}
 		if (isset($data->storageKey)) {
 			$instance->storageKey = (string)$data->storageKey;
 		}
-		if (isset($data->bucketId)) {
-			$instance->bucketId = (string)$data->bucketId;
+		if (isset($data->name)) {
+			$instance->name = (string)$data->name;
 		}
 		return $instance;
 	}
@@ -56,14 +42,11 @@ final class IndexedDBListUpdatedEvent implements \JsonSerializable
 	public function jsonSerialize()
 	{
 		$data = new \stdClass();
-		if ($this->origin !== null) {
-			$data->origin = $this->origin;
-		}
 		if ($this->storageKey !== null) {
 			$data->storageKey = $this->storageKey;
 		}
-		if ($this->bucketId !== null) {
-			$data->bucketId = $this->bucketId;
+		if ($this->name !== null) {
+			$data->name = $this->name;
 		}
 		return $data;
 	}
