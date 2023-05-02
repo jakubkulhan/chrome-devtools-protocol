@@ -20,6 +20,13 @@ final class WebDriverValue implements \JsonSerializable
 	/** @var string|null */
 	public $objectId;
 
+	/**
+	 * Set if value reference met more then once during serialization. In such case, value is provided only to one of the serialized values. Unique per value in the scope of one CDP call.
+	 *
+	 * @var int|null
+	 */
+	public $weakLocalObjectReference;
+
 
 	/**
 	 * @param object $data
@@ -37,6 +44,9 @@ final class WebDriverValue implements \JsonSerializable
 		if (isset($data->objectId)) {
 			$instance->objectId = (string)$data->objectId;
 		}
+		if (isset($data->weakLocalObjectReference)) {
+			$instance->weakLocalObjectReference = (int)$data->weakLocalObjectReference;
+		}
 		return $instance;
 	}
 
@@ -52,6 +62,9 @@ final class WebDriverValue implements \JsonSerializable
 		}
 		if ($this->objectId !== null) {
 			$data->objectId = $this->objectId;
+		}
+		if ($this->weakLocalObjectReference !== null) {
+			$data->weakLocalObjectReference = $this->weakLocalObjectReference;
 		}
 		return $data;
 	}
