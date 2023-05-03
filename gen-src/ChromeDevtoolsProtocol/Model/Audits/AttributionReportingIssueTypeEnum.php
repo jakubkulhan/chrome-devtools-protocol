@@ -16,7 +16,6 @@ final class AttributionReportingIssueTypeEnum
 	public const INSECURE_CONTEXT = 'InsecureContext';
 	public const INVALID_HEADER = 'InvalidHeader';
 	public const INVALID_REGISTER_TRIGGER_HEADER = 'InvalidRegisterTriggerHeader';
-	public const INVALID_ELIGIBLE_HEADER = 'InvalidEligibleHeader';
 	public const SOURCE_AND_TRIGGER_HEADERS = 'SourceAndTriggerHeaders';
 	public const SOURCE_IGNORED = 'SourceIgnored';
 	public const TRIGGER_IGNORED = 'TriggerIgnored';
