@@ -21872,8 +21872,8 @@
                     "type": "string"
                 },
                 {
-                    "id": "WebDriverValue",
-                    "description": "Represents the value serialiazed by the WebDriver BiDi specification https://w3c.github.io/webdriver-bidi.",
+                    "id": "DeepSerializedValue",
+                    "description": "Represents the value serialiazed by the WebDriver BiDi specification https://goo.gle/browser-automation-deepserialization.",
                     "type": "object",
                     "properties": [
                         {
@@ -22009,7 +22009,7 @@
                             "description": "WebDriver BiDi representation of the value.",
                             "experimental": true,
                             "optional": true,
-                            "$ref": "WebDriverValue"
+                            "$ref": "DeepSerializedValue"
                         },
                         {
                             "name": "objectId",
@@ -22699,7 +22699,7 @@
                         },
                         {
                             "name": "generateWebDriverValue",
-                            "description": "Whether the result should contain `webDriverValue`, serialized according to https://w3c.github.io/webdriver-bidi. This is mutually exclusive with `returnByValue`, but resulting `objectId` is still provided.",
+                            "description": "Whether the result should contain `webDriverValue`, serialized according to https://goo.gle/browser-automation-deepserialization. This is mutually exclusive with `returnByValue`, but resulting `objectId` is still provided.",
                             "experimental": true,
                             "optional": true,
                             "type": "boolean"
@@ -22874,7 +22874,7 @@
                         },
                         {
                             "name": "generateWebDriverValue",
-                            "description": "Whether the result should be serialized according to https://w3c.github.io/webdriver-bidi.",
+                            "description": "Whether the result should be serialized according to https://goo.gle/browser-automation-deepserialization.",
                             "experimental": true,
                             "optional": true,
                             "type": "boolean"

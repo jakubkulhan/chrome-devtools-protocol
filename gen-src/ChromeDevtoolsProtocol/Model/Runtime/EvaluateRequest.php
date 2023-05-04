@@ -117,7 +117,7 @@ final class EvaluateRequest implements \JsonSerializable
 	public $uniqueContextId;
 
 	/**
-	 * Whether the result should be serialized according to https://w3c.github.io/webdriver-bidi.
+	 * Whether the result should be serialized according to https://goo.gle/browser-automation-deepserialization.
 	 *
 	 * @var bool|null
 	 */

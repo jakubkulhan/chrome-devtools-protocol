@@ -56,7 +56,7 @@ final class RemoteObject implements \JsonSerializable
 	/**
 	 * WebDriver BiDi representation of the value.
 	 *
-	 * @var WebDriverValue|null
+	 * @var DeepSerializedValue|null
 	 */
 	public $webDriverValue;
 
@@ -104,7 +104,7 @@ final class RemoteObject implements \JsonSerializable
 			$instance->description = (string)$data->description;
 		}
 		if (isset($data->webDriverValue)) {
-			$instance->webDriverValue = WebDriverValue::fromJson($data->webDriverValue);
+			$instance->webDriverValue = DeepSerializedValue::fromJson($data->webDriverValue);
 		}
 		if (isset($data->objectId)) {
 			$instance->objectId = (string)$data->objectId;

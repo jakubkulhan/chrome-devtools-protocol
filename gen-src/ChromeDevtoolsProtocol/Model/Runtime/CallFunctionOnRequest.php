@@ -96,7 +96,7 @@ final class CallFunctionOnRequest implements \JsonSerializable
 	public $uniqueContextId;
 
 	/**
-	 * Whether the result should contain `webDriverValue`, serialized according to https://w3c.github.io/webdriver-bidi. This is mutually exclusive with `returnByValue`, but resulting `objectId` is still provided.
+	 * Whether the result should contain `webDriverValue`, serialized according to https://goo.gle/browser-automation-deepserialization. This is mutually exclusive with `returnByValue`, but resulting `objectId` is still provided.
 	 *
 	 * @var bool|null
 	 */

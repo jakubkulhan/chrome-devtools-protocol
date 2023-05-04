@@ -3,13 +3,13 @@
 namespace ChromeDevtoolsProtocol\Model\Runtime;
 
 /**
- * Represents the value serialiazed by the WebDriver BiDi specification https://w3c.github.io/webdriver-bidi.
+ * Represents the value serialiazed by the WebDriver BiDi specification https://goo.gle/browser-automation-deepserialization.
  *
  * @generated This file has been auto-generated, do not edit.
  *
  * @author Jakub Kulhan <jakub.kulhan@gmail.com>
  */
-final class WebDriverValue implements \JsonSerializable
+final class DeepSerializedValue implements \JsonSerializable
 {
 	/** @var string */
 	public $type;
