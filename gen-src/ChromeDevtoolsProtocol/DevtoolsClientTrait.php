@@ -8,6 +8,8 @@ use ChromeDevtoolsProtocol\Domain\AnimationDomain;
 use ChromeDevtoolsProtocol\Domain\AnimationDomainInterface;
 use ChromeDevtoolsProtocol\Domain\AuditsDomain;
 use ChromeDevtoolsProtocol\Domain\AuditsDomainInterface;
+use ChromeDevtoolsProtocol\Domain\AutofillDomain;
+use ChromeDevtoolsProtocol\Domain\AutofillDomainInterface;
 use ChromeDevtoolsProtocol\Domain\BackgroundServiceDomain;
 use ChromeDevtoolsProtocol\Domain\BackgroundServiceDomainInterface;
 use ChromeDevtoolsProtocol\Domain\BrowserDomain;
@@ -139,6 +141,18 @@ trait DevtoolsClientTrait
 		}
 		/** @var AuditsDomainInterface $domain */
 		$domain = $this->domains['Audits'];
+		return $domain;
+	}
+
+
+	public function autofill(): AutofillDomainInterface
+	{
+		if (!isset($this->domains['Autofill'])) {
+			/** @var InternalClientInterface $this */
+			$this->domains['Autofill'] = new AutofillDomain($this);
+		}
+		/** @var AutofillDomainInterface $domain */
+		$domain = $this->domains['Autofill'];
 		return $domain;
 	}
 

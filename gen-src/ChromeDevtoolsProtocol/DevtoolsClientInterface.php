@@ -5,6 +5,7 @@ namespace ChromeDevtoolsProtocol;
 use ChromeDevtoolsProtocol\Domain\AccessibilityDomainInterface;
 use ChromeDevtoolsProtocol\Domain\AnimationDomainInterface;
 use ChromeDevtoolsProtocol\Domain\AuditsDomainInterface;
+use ChromeDevtoolsProtocol\Domain\AutofillDomainInterface;
 use ChromeDevtoolsProtocol\Domain\BackgroundServiceDomainInterface;
 use ChromeDevtoolsProtocol\Domain\BrowserDomainInterface;
 use ChromeDevtoolsProtocol\Domain\CSSDomainInterface;
@@ -83,6 +84,14 @@ interface DevtoolsClientInterface extends CloseableResourceInterface
 	 * @experimental
 	 */
 	public function audits(): AuditsDomainInterface;
+
+
+	/**
+	 * Defines commands and events for Autofill.
+	 *
+	 * @experimental
+	 */
+	public function autofill(): AutofillDomainInterface;
 
 
 	/**
