@@ -29,9 +29,6 @@ final class InspectorIssueDetails implements \JsonSerializable
 	/** @var SharedArrayBufferIssueDetails|null */
 	public $sharedArrayBufferIssueDetails;
 
-	/** @var TrustedWebActivityIssueDetails|null */
-	public $twaQualityEnforcementDetails;
-
 	/** @var LowTextContrastIssueDetails|null */
 	public $lowTextContrastIssueDetails;
 
@@ -88,9 +85,6 @@ final class InspectorIssueDetails implements \JsonSerializable
 		if (isset($data->sharedArrayBufferIssueDetails)) {
 			$instance->sharedArrayBufferIssueDetails = SharedArrayBufferIssueDetails::fromJson($data->sharedArrayBufferIssueDetails);
 		}
-		if (isset($data->twaQualityEnforcementDetails)) {
-			$instance->twaQualityEnforcementDetails = TrustedWebActivityIssueDetails::fromJson($data->twaQualityEnforcementDetails);
-		}
 		if (isset($data->lowTextContrastIssueDetails)) {
 			$instance->lowTextContrastIssueDetails = LowTextContrastIssueDetails::fromJson($data->lowTextContrastIssueDetails);
 		}
@@ -145,9 +139,6 @@ final class InspectorIssueDetails implements \JsonSerializable
 		}
 		if ($this->sharedArrayBufferIssueDetails !== null) {
 			$data->sharedArrayBufferIssueDetails = $this->sharedArrayBufferIssueDetails->jsonSerialize();
-		}
-		if ($this->twaQualityEnforcementDetails !== null) {
-			$data->twaQualityEnforcementDetails = $this->twaQualityEnforcementDetails->jsonSerialize();
 		}
 		if ($this->lowTextContrastIssueDetails !== null) {
 			$data->lowTextContrastIssueDetails = $this->lowTextContrastIssueDetails->jsonSerialize();

@@ -17,7 +17,6 @@ final class InspectorIssueCodeEnum
 	public const HEAVY_AD_ISSUE = 'HeavyAdIssue';
 	public const CONTENT_SECURITY_POLICY_ISSUE = 'ContentSecurityPolicyIssue';
 	public const SHARED_ARRAY_BUFFER_ISSUE = 'SharedArrayBufferIssue';
-	public const TRUSTED_WEB_ACTIVITY_ISSUE = 'TrustedWebActivityIssue';
 	public const LOW_TEXT_CONTRAST_ISSUE = 'LowTextContrastIssue';
 	public const CORS_ISSUE = 'CorsIssue';
 	public const ATTRIBUTION_REPORTING_ISSUE = 'AttributionReportingIssue';
