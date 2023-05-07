@@ -24,6 +24,7 @@ final class CallFunctionOnRequestBuilder
 	private $throwOnSideEffect;
 	private $uniqueContextId;
 	private $generateWebDriverValue;
+	private $serializationOptions;
 
 
 	/**
@@ -48,6 +49,7 @@ final class CallFunctionOnRequestBuilder
 		$instance->throwOnSideEffect = $this->throwOnSideEffect;
 		$instance->uniqueContextId = $this->uniqueContextId;
 		$instance->generateWebDriverValue = $this->generateWebDriverValue;
+		$instance->serializationOptions = $this->serializationOptions;
 		return $instance;
 	}
 
@@ -204,6 +206,18 @@ final class CallFunctionOnRequestBuilder
 	public function setGenerateWebDriverValue($generateWebDriverValue): self
 	{
 		$this->generateWebDriverValue = $generateWebDriverValue;
+		return $this;
+	}
+
+
+	/**
+	 * @param SerializationOptions|null $serializationOptions
+	 *
+	 * @return self
+	 */
+	public function setSerializationOptions($serializationOptions): self
+	{
+		$this->serializationOptions = $serializationOptions;
 		return $this;
 	}
 }

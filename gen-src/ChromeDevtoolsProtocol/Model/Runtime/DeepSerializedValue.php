@@ -3,7 +3,7 @@
 namespace ChromeDevtoolsProtocol\Model\Runtime;
 
 /**
- * Represents the value serialiazed by the WebDriver BiDi specification https://goo.gle/browser-automation-deepserialization.
+ * Represents deep serialized value.
  *
  * @generated This file has been auto-generated, do not edit.
  *

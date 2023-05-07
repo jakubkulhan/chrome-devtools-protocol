@@ -117,11 +117,18 @@ final class EvaluateRequest implements \JsonSerializable
 	public $uniqueContextId;
 
 	/**
-	 * Whether the result should be serialized according to https://goo.gle/browser-automation-deepserialization.
+	 * Deprecated. Use `serializationOptions: {serialization:"deep"}` instead. Whether the result should contain `webDriverValue`, serialized according to https://w3c.github.io/webdriver-bidi. This is mutually exclusive with `returnByValue`, but resulting `objectId` is still provided.
 	 *
 	 * @var bool|null
 	 */
 	public $generateWebDriverValue;
+
+	/**
+	 * Specifies the result serialization. If provided, overrides `returnByValue` and `generateWebDriverValue`.
+	 *
+	 * @var SerializationOptions|null
+	 */
+	public $serializationOptions;
 
 
 	/**
@@ -179,6 +186,9 @@ final class EvaluateRequest implements \JsonSerializable
 		if (isset($data->generateWebDriverValue)) {
 			$instance->generateWebDriverValue = (bool)$data->generateWebDriverValue;
 		}
+		if (isset($data->serializationOptions)) {
+			$instance->serializationOptions = SerializationOptions::fromJson($data->serializationOptions);
+		}
 		return $instance;
 	}
 
@@ -233,6 +243,9 @@ final class EvaluateRequest implements \JsonSerializable
 		}
 		if ($this->generateWebDriverValue !== null) {
 			$data->generateWebDriverValue = $this->generateWebDriverValue;
+		}
+		if ($this->serializationOptions !== null) {
+			$data->serializationOptions = $this->serializationOptions->jsonSerialize();
 		}
 		return $data;
 	}

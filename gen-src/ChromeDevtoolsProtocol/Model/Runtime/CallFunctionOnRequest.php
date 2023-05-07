@@ -40,7 +40,7 @@ final class CallFunctionOnRequest implements \JsonSerializable
 	public $silent;
 
 	/**
-	 * Whether the result is expected to be a JSON object which should be sent by value.
+	 * Whether the result is expected to be a JSON object which should be sent by value. Can be overriden by `serializationOptions`.
 	 *
 	 * @var bool|null
 	 */
@@ -96,11 +96,18 @@ final class CallFunctionOnRequest implements \JsonSerializable
 	public $uniqueContextId;
 
 	/**
-	 * Whether the result should contain `webDriverValue`, serialized according to https://goo.gle/browser-automation-deepserialization. This is mutually exclusive with `returnByValue`, but resulting `objectId` is still provided.
+	 * Deprecated. Use `serializationOptions: {serialization:"deep"}` instead. Whether the result should contain `webDriverValue`, serialized according to https://w3c.github.io/webdriver-bidi. This is mutually exclusive with `returnByValue`, but resulting `objectId` is still provided.
 	 *
 	 * @var bool|null
 	 */
 	public $generateWebDriverValue;
+
+	/**
+	 * Specifies the result serialization. If provided, overrides `returnByValue` and `generateWebDriverValue`.
+	 *
+	 * @var SerializationOptions|null
+	 */
+	public $serializationOptions;
 
 
 	/**
@@ -152,6 +159,9 @@ final class CallFunctionOnRequest implements \JsonSerializable
 		if (isset($data->generateWebDriverValue)) {
 			$instance->generateWebDriverValue = (bool)$data->generateWebDriverValue;
 		}
+		if (isset($data->serializationOptions)) {
+			$instance->serializationOptions = SerializationOptions::fromJson($data->serializationOptions);
+		}
 		return $instance;
 	}
 
@@ -200,6 +210,9 @@ final class CallFunctionOnRequest implements \JsonSerializable
 		}
 		if ($this->generateWebDriverValue !== null) {
 			$data->generateWebDriverValue = $this->generateWebDriverValue;
+		}
+		if ($this->serializationOptions !== null) {
+			$data->serializationOptions = $this->serializationOptions->jsonSerialize();
 		}
 		return $data;
 	}
