@@ -14,6 +14,9 @@ final class DialogShownEvent implements \JsonSerializable
 	/** @var string */
 	public $dialogId;
 
+	/** @var string */
+	public $dialogType;
+
 	/** @var Account[] */
 	public $accounts;
 
@@ -38,6 +41,9 @@ final class DialogShownEvent implements \JsonSerializable
 		if (isset($data->dialogId)) {
 			$instance->dialogId = (string)$data->dialogId;
 		}
+		if (isset($data->dialogType)) {
+			$instance->dialogType = (string)$data->dialogType;
+		}
 		if (isset($data->accounts)) {
 			$instance->accounts = [];
 			foreach ($data->accounts as $item) {
@@ -59,6 +65,9 @@ final class DialogShownEvent implements \JsonSerializable
 		$data = new \stdClass();
 		if ($this->dialogId !== null) {
 			$data->dialogId = $this->dialogId;
+		}
+		if ($this->dialogType !== null) {
+			$data->dialogType = $this->dialogType;
 		}
 		if ($this->accounts !== null) {
 			$data->accounts = [];
