@@ -27,6 +27,9 @@ final class PrefetchStatusUpdatedEvent implements \JsonSerializable
 	/** @var string */
 	public $status;
 
+	/** @var string */
+	public $prefetchStatus;
+
 
 	/**
 	 * @param object $data
@@ -47,6 +50,9 @@ final class PrefetchStatusUpdatedEvent implements \JsonSerializable
 		if (isset($data->status)) {
 			$instance->status = (string)$data->status;
 		}
+		if (isset($data->prefetchStatus)) {
+			$instance->prefetchStatus = (string)$data->prefetchStatus;
+		}
 		return $instance;
 	}
 
@@ -65,6 +71,9 @@ final class PrefetchStatusUpdatedEvent implements \JsonSerializable
 		}
 		if ($this->status !== null) {
 			$data->status = $this->status;
+		}
+		if ($this->prefetchStatus !== null) {
+			$data->prefetchStatus = $this->prefetchStatus;
 		}
 		return $data;
 	}
