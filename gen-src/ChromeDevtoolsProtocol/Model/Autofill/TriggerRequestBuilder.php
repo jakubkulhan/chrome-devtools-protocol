@@ -12,6 +12,7 @@ use ChromeDevtoolsProtocol\Exception\BuilderException;
 final class TriggerRequestBuilder
 {
 	private $fieldId;
+	private $frameId;
 	private $card;
 
 
@@ -25,6 +26,7 @@ final class TriggerRequestBuilder
 			throw new BuilderException('Property [fieldId] is required.');
 		}
 		$instance->fieldId = $this->fieldId;
+		$instance->frameId = $this->frameId;
 		if ($this->card === null) {
 			throw new BuilderException('Property [card] is required.');
 		}
@@ -41,6 +43,18 @@ final class TriggerRequestBuilder
 	public function setFieldId($fieldId): self
 	{
 		$this->fieldId = $fieldId;
+		return $this;
+	}
+
+
+	/**
+	 * @param string $frameId
+	 *
+	 * @return self
+	 */
+	public function setFrameId($frameId): self
+	{
+		$this->frameId = $frameId;
 		return $this;
 	}
 

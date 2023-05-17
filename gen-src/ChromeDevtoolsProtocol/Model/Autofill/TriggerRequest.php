@@ -19,6 +19,13 @@ final class TriggerRequest implements \JsonSerializable
 	public $fieldId;
 
 	/**
+	 * Identifies the frame that field belongs to.
+	 *
+	 * @var string
+	 */
+	public $frameId;
+
+	/**
 	 * Credit card information to fill out the form. Credit card data is not saved.
 	 *
 	 * @var CreditCard
@@ -36,6 +43,9 @@ final class TriggerRequest implements \JsonSerializable
 		if (isset($data->fieldId)) {
 			$instance->fieldId = (int)$data->fieldId;
 		}
+		if (isset($data->frameId)) {
+			$instance->frameId = (string)$data->frameId;
+		}
 		if (isset($data->card)) {
 			$instance->card = CreditCard::fromJson($data->card);
 		}
@@ -48,6 +58,9 @@ final class TriggerRequest implements \JsonSerializable
 		$data = new \stdClass();
 		if ($this->fieldId !== null) {
 			$data->fieldId = $this->fieldId;
+		}
+		if ($this->frameId !== null) {
+			$data->frameId = $this->frameId;
 		}
 		if ($this->card !== null) {
 			$data->card = $this->card->jsonSerialize();
