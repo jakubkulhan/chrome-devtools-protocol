@@ -27,6 +27,9 @@ final class PrerenderStatusUpdatedEvent implements \JsonSerializable
 	/** @var string */
 	public $status;
 
+	/** @var string */
+	public $prerenderStatus;
+
 
 	/**
 	 * @param object $data
@@ -47,6 +50,9 @@ final class PrerenderStatusUpdatedEvent implements \JsonSerializable
 		if (isset($data->status)) {
 			$instance->status = (string)$data->status;
 		}
+		if (isset($data->prerenderStatus)) {
+			$instance->prerenderStatus = (string)$data->prerenderStatus;
+		}
 		return $instance;
 	}
 
@@ -65,6 +71,9 @@ final class PrerenderStatusUpdatedEvent implements \JsonSerializable
 		}
 		if ($this->status !== null) {
 			$data->status = $this->status;
+		}
+		if ($this->prerenderStatus !== null) {
+			$data->prerenderStatus = $this->prerenderStatus;
 		}
 		return $data;
 	}
