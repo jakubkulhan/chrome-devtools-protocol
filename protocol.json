@@ -21436,6 +21436,8 @@
                         "PrefetchNotEligibleSchemeIsNotHttps",
                         "PrefetchNotEligibleUserHasCookies",
                         "PrefetchNotEligibleUserHasServiceWorker",
+                        "PrefetchNotEligibleBatterySaverEnabled",
+                        "PrefetchNotEligiblePreloadingDisabled",
                         "PrefetchNotFinishedInTime",
                         "PrefetchNotStarted",
                         "PrefetchNotUsedCookiesChanged",
@@ -21545,15 +21547,6 @@
                         {
                             "name": "key",
                             "$ref": "PreloadingAttemptKey"
-                        },
-                        {
-                            "name": "initiatingFrameId",
-                            "description": "The frame id of the frame initiating prerender.",
-                            "$ref": "Page.FrameId"
-                        },
-                        {
-                            "name": "prerenderingUrl",
-                            "type": "string"
                         },
                         {
                             "name": "status",

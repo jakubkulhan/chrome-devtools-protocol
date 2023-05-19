@@ -14,16 +14,6 @@ final class PrerenderStatusUpdatedEvent implements \JsonSerializable
 	/** @var PreloadingAttemptKey */
 	public $key;
 
-	/**
-	 * The frame id of the frame initiating prerender.
-	 *
-	 * @var string
-	 */
-	public $initiatingFrameId;
-
-	/** @var string */
-	public $prerenderingUrl;
-
 	/** @var string */
 	public $status;
 
@@ -41,12 +31,6 @@ final class PrerenderStatusUpdatedEvent implements \JsonSerializable
 		if (isset($data->key)) {
 			$instance->key = PreloadingAttemptKey::fromJson($data->key);
 		}
-		if (isset($data->initiatingFrameId)) {
-			$instance->initiatingFrameId = (string)$data->initiatingFrameId;
-		}
-		if (isset($data->prerenderingUrl)) {
-			$instance->prerenderingUrl = (string)$data->prerenderingUrl;
-		}
 		if (isset($data->status)) {
 			$instance->status = (string)$data->status;
 		}
@@ -62,12 +46,6 @@ final class PrerenderStatusUpdatedEvent implements \JsonSerializable
 		$data = new \stdClass();
 		if ($this->key !== null) {
 			$data->key = $this->key->jsonSerialize();
-		}
-		if ($this->initiatingFrameId !== null) {
-			$data->initiatingFrameId = $this->initiatingFrameId;
-		}
-		if ($this->prerenderingUrl !== null) {
-			$data->prerenderingUrl = $this->prerenderingUrl;
 		}
 		if ($this->status !== null) {
 			$data->status = $this->status;
