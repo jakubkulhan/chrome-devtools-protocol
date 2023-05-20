@@ -44,4 +44,5 @@ final class FederatedAuthRequestIssueReasonEnum
 	public const ERROR_ID_TOKEN = 'ErrorIdToken';
 	public const CANCELED = 'Canceled';
 	public const RP_PAGE_NOT_VISIBLE = 'RpPageNotVisible';
+	public const SILENT_MEDIATION_FAILURE = 'SilentMediationFailure';
 }

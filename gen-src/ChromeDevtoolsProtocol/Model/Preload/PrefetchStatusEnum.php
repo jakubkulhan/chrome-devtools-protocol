@@ -18,6 +18,7 @@ final class PrefetchStatusEnum
 	public const PREFETCH_FAILED_NET_ERROR = 'PrefetchFailedNetError';
 	public const PREFETCH_FAILED_NON2_X_X = 'PrefetchFailedNon2XX';
 	public const PREFETCH_FAILED_PER_PAGE_LIMIT_EXCEEDED = 'PrefetchFailedPerPageLimitExceeded';
+	public const PREFETCH_EVICTED = 'PrefetchEvicted';
 	public const PREFETCH_HELDBACK = 'PrefetchHeldback';
 	public const PREFETCH_INELIGIBLE_RETRY_AFTER = 'PrefetchIneligibleRetryAfter';
 	public const PREFETCH_IS_PRIVACY_DECOY = 'PrefetchIsPrivacyDecoy';

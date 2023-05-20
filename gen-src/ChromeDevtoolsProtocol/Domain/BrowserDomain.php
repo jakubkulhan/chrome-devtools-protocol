@@ -4,6 +4,7 @@ namespace ChromeDevtoolsProtocol\Domain;
 
 use ChromeDevtoolsProtocol\ContextInterface;
 use ChromeDevtoolsProtocol\InternalClientInterface;
+use ChromeDevtoolsProtocol\Model\Browser\AddPrivacySandboxEnrollmentOverrideRequest;
 use ChromeDevtoolsProtocol\Model\Browser\CancelDownloadRequest;
 use ChromeDevtoolsProtocol\Model\Browser\DownloadProgressEvent;
 use ChromeDevtoolsProtocol\Model\Browser\DownloadWillBeginEvent;
@@ -35,6 +36,14 @@ class BrowserDomain implements BrowserDomainInterface
 	public function __construct(InternalClientInterface $internalClient)
 	{
 		$this->internalClient = $internalClient;
+	}
+
+
+	public function addPrivacySandboxEnrollmentOverride(
+		ContextInterface $ctx,
+		AddPrivacySandboxEnrollmentOverrideRequest $request
+	): void {
+		$this->internalClient->executeCommand($ctx, 'Browser.addPrivacySandboxEnrollmentOverride', $request);
 	}
 
 

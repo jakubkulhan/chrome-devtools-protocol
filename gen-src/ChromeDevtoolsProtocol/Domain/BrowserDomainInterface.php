@@ -3,6 +3,7 @@
 namespace ChromeDevtoolsProtocol\Domain;
 
 use ChromeDevtoolsProtocol\ContextInterface;
+use ChromeDevtoolsProtocol\Model\Browser\AddPrivacySandboxEnrollmentOverrideRequest;
 use ChromeDevtoolsProtocol\Model\Browser\CancelDownloadRequest;
 use ChromeDevtoolsProtocol\Model\Browser\DownloadProgressEvent;
 use ChromeDevtoolsProtocol\Model\Browser\DownloadWillBeginEvent;
@@ -34,6 +35,20 @@ use ChromeDevtoolsProtocol\SubscriptionInterface;
  */
 interface BrowserDomainInterface
 {
+	/**
+	 * Allows a site to use privacy sandbox features that require enrollment without the site actually being enrolled. Only supported on page targets.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param AddPrivacySandboxEnrollmentOverrideRequest $request
+	 *
+	 * @return void
+	 */
+	public function addPrivacySandboxEnrollmentOverride(
+		ContextInterface $ctx,
+		AddPrivacySandboxEnrollmentOverrideRequest $request
+	): void;
+
+
 	/**
 	 * Cancel a download if in progress
 	 *
