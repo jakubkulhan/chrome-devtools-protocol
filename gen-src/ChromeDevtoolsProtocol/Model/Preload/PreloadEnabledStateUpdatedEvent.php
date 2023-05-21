@@ -11,8 +11,14 @@ namespace ChromeDevtoolsProtocol\Model\Preload;
  */
 final class PreloadEnabledStateUpdatedEvent implements \JsonSerializable
 {
-	/** @var string */
-	public $state;
+	/** @var bool */
+	public $disabledByPreference;
+
+	/** @var bool */
+	public $disabledByDataSaver;
+
+	/** @var bool */
+	public $disabledByBatterySaver;
 
 
 	/**
@@ -22,8 +28,14 @@ final class PreloadEnabledStateUpdatedEvent implements \JsonSerializable
 	public static function fromJson($data)
 	{
 		$instance = new static();
-		if (isset($data->state)) {
-			$instance->state = (string)$data->state;
+		if (isset($data->disabledByPreference)) {
+			$instance->disabledByPreference = (bool)$data->disabledByPreference;
+		}
+		if (isset($data->disabledByDataSaver)) {
+			$instance->disabledByDataSaver = (bool)$data->disabledByDataSaver;
+		}
+		if (isset($data->disabledByBatterySaver)) {
+			$instance->disabledByBatterySaver = (bool)$data->disabledByBatterySaver;
 		}
 		return $instance;
 	}
@@ -32,8 +44,14 @@ final class PreloadEnabledStateUpdatedEvent implements \JsonSerializable
 	public function jsonSerialize()
 	{
 		$data = new \stdClass();
-		if ($this->state !== null) {
-			$data->state = $this->state;
+		if ($this->disabledByPreference !== null) {
+			$data->disabledByPreference = $this->disabledByPreference;
+		}
+		if ($this->disabledByDataSaver !== null) {
+			$data->disabledByDataSaver = $this->disabledByDataSaver;
+		}
+		if ($this->disabledByBatterySaver !== null) {
+			$data->disabledByBatterySaver = $this->disabledByBatterySaver;
 		}
 		return $data;
 	}

@@ -2,6 +2,8 @@
 
 namespace ChromeDevtoolsProtocol\Model\CacheStorage;
 
+use ChromeDevtoolsProtocol\Model\Storage\StorageBucket;
+
 /**
  * @generated This file has been auto-generated, do not edit.
  *
@@ -11,6 +13,7 @@ final class RequestCacheNamesRequestBuilder
 {
 	private $securityOrigin;
 	private $storageKey;
+	private $storageBucket;
 
 
 	/**
@@ -21,6 +24,7 @@ final class RequestCacheNamesRequestBuilder
 		$instance = new RequestCacheNamesRequest();
 		$instance->securityOrigin = $this->securityOrigin;
 		$instance->storageKey = $this->storageKey;
+		$instance->storageBucket = $this->storageBucket;
 		return $instance;
 	}
 
@@ -45,6 +49,18 @@ final class RequestCacheNamesRequestBuilder
 	public function setStorageKey($storageKey): self
 	{
 		$this->storageKey = $storageKey;
+		return $this;
+	}
+
+
+	/**
+	 * @param StorageBucket|null $storageBucket
+	 *
+	 * @return self
+	 */
+	public function setStorageBucket($storageBucket): self
+	{
+		$this->storageBucket = $storageBucket;
 		return $this;
 	}
 }

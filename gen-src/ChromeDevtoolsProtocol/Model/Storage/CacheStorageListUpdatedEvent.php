@@ -25,6 +25,13 @@ final class CacheStorageListUpdatedEvent implements \JsonSerializable
 	 */
 	public $storageKey;
 
+	/**
+	 * Storage bucket to update.
+	 *
+	 * @var string
+	 */
+	public $bucketId;
+
 
 	/**
 	 * @param object $data
@@ -39,6 +46,9 @@ final class CacheStorageListUpdatedEvent implements \JsonSerializable
 		if (isset($data->storageKey)) {
 			$instance->storageKey = (string)$data->storageKey;
 		}
+		if (isset($data->bucketId)) {
+			$instance->bucketId = (string)$data->bucketId;
+		}
 		return $instance;
 	}
 
@@ -51,6 +61,9 @@ final class CacheStorageListUpdatedEvent implements \JsonSerializable
 		}
 		if ($this->storageKey !== null) {
 			$data->storageKey = $this->storageKey;
+		}
+		if ($this->bucketId !== null) {
+			$data->bucketId = $this->bucketId;
 		}
 		return $data;
 	}

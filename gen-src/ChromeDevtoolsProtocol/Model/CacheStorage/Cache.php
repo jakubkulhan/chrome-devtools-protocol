@@ -2,6 +2,8 @@
 
 namespace ChromeDevtoolsProtocol\Model\CacheStorage;
 
+use ChromeDevtoolsProtocol\Model\Storage\StorageBucket;
+
 /**
  * Cache identifier.
  *
@@ -33,6 +35,13 @@ final class Cache implements \JsonSerializable
 	public $storageKey;
 
 	/**
+	 * Storage bucket of the cache.
+	 *
+	 * @var StorageBucket|null
+	 */
+	public $storageBucket;
+
+	/**
 	 * The name of the cache.
 	 *
 	 * @var string
@@ -56,6 +65,9 @@ final class Cache implements \JsonSerializable
 		if (isset($data->storageKey)) {
 			$instance->storageKey = (string)$data->storageKey;
 		}
+		if (isset($data->storageBucket)) {
+			$instance->storageBucket = StorageBucket::fromJson($data->storageBucket);
+		}
 		if (isset($data->cacheName)) {
 			$instance->cacheName = (string)$data->cacheName;
 		}
@@ -74,6 +86,9 @@ final class Cache implements \JsonSerializable
 		}
 		if ($this->storageKey !== null) {
 			$data->storageKey = $this->storageKey;
+		}
+		if ($this->storageBucket !== null) {
+			$data->storageBucket = $this->storageBucket->jsonSerialize();
 		}
 		if ($this->cacheName !== null) {
 			$data->cacheName = $this->cacheName;

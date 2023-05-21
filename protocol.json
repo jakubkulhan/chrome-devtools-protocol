@@ -2712,6 +2712,9 @@
         {
             "domain": "CacheStorage",
             "experimental": true,
+            "dependencies": [
+                "Storage"
+            ],
             "types": [
                 {
                     "id": "CacheId",
@@ -2803,6 +2806,12 @@
                             "name": "storageKey",
                             "description": "Storage key of the cache.",
                             "type": "string"
+                        },
+                        {
+                            "name": "storageBucket",
+                            "description": "Storage bucket of the cache.",
+                            "optional": true,
+                            "$ref": "Storage.StorageBucket"
                         },
                         {
                             "name": "cacheName",
@@ -2903,7 +2912,7 @@
                     "parameters": [
                         {
                             "name": "securityOrigin",
-                            "description": "At least and at most one of securityOrigin, storageKey must be specified. Security origin.",
+                            "description": "At least and at most one of securityOrigin, storageKey, storageBucket must be specified. Security origin.",
                             "optional": true,
                             "type": "string"
                         },
@@ -2912,6 +2921,12 @@
                             "description": "Storage key.",
                             "optional": true,
                             "type": "string"
+                        },
+                        {
+                            "name": "storageBucket",
+                            "description": "Storage bucket. If not specified, it uses the default bucket.",
+                            "optional": true,
+                            "$ref": "Storage.StorageBucket"
                         }
                     ],
                     "returns": [
@@ -21399,17 +21414,6 @@
                     ]
                 },
                 {
-                    "id": "PreloadEnabledState",
-                    "type": "string",
-                    "enum": [
-                        "Enabled",
-                        "DisabledByDataSaver",
-                        "DisabledByBatterySaver",
-                        "DisabledByPreference",
-                        "NotSupported"
-                    ]
-                },
-                {
                     "id": "PreloadingStatus",
                     "description": "Preloading status values, see also PreloadingTriggeringOutcome. This status is shared by prefetchStatusUpdated and prerenderStatusUpdated.",
                     "type": "string",
@@ -21501,8 +21505,16 @@
                     "description": "Fired when a preload enabled state is updated.",
                     "parameters": [
                         {
-                            "name": "state",
-                            "$ref": "PreloadEnabledState"
+                            "name": "disabledByPreference",
+                            "type": "boolean"
+                        },
+                        {
+                            "name": "disabledByDataSaver",
+                            "type": "boolean"
+                        },
+                        {
+                            "name": "disabledByBatterySaver",
+                            "type": "boolean"
                         }
                     ]
                 },
@@ -25111,6 +25123,11 @@
                             "type": "string"
                         },
                         {
+                            "name": "bucketId",
+                            "description": "Storage bucket to update.",
+                            "type": "string"
+                        },
+                        {
                             "name": "cacheName",
                             "description": "Name of cache in origin.",
                             "type": "string"
@@ -25129,6 +25146,11 @@
                         {
                             "name": "storageKey",
                             "description": "Storage key to update.",
+                            "type": "string"
+                        },
+                        {
+                            "name": "bucketId",
+                            "description": "Storage bucket to update.",
                             "type": "string"
                         }
                     ]
