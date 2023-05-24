@@ -25,6 +25,13 @@ final class Value implements \JsonSerializable
 	 */
 	public $range;
 
+	/**
+	 * Specificity of the selector.
+	 *
+	 * @var Specificity|null
+	 */
+	public $specificity;
+
 
 	/**
 	 * @param object $data
@@ -39,6 +46,9 @@ final class Value implements \JsonSerializable
 		if (isset($data->range)) {
 			$instance->range = SourceRange::fromJson($data->range);
 		}
+		if (isset($data->specificity)) {
+			$instance->specificity = Specificity::fromJson($data->specificity);
+		}
 		return $instance;
 	}
 
@@ -51,6 +61,9 @@ final class Value implements \JsonSerializable
 		}
 		if ($this->range !== null) {
 			$data->range = $this->range->jsonSerialize();
+		}
+		if ($this->specificity !== null) {
+			$data->specificity = $this->specificity->jsonSerialize();
 		}
 		return $data;
 	}
