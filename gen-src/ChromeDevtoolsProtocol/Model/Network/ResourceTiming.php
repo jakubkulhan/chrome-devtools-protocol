@@ -131,6 +131,13 @@ final class ResourceTiming implements \JsonSerializable
 	public $pushEnd;
 
 	/**
+	 * Started receiving response headers.
+	 *
+	 * @var int|float
+	 */
+	public $receiveHeadersStart;
+
+	/**
 	 * Finished receiving response headers.
 	 *
 	 * @var int|float
@@ -196,6 +203,9 @@ final class ResourceTiming implements \JsonSerializable
 		if (isset($data->pushEnd)) {
 			$instance->pushEnd = $data->pushEnd;
 		}
+		if (isset($data->receiveHeadersStart)) {
+			$instance->receiveHeadersStart = $data->receiveHeadersStart;
+		}
 		if (isset($data->receiveHeadersEnd)) {
 			$instance->receiveHeadersEnd = $data->receiveHeadersEnd;
 		}
@@ -256,6 +266,9 @@ final class ResourceTiming implements \JsonSerializable
 		}
 		if ($this->pushEnd !== null) {
 			$data->pushEnd = $this->pushEnd;
+		}
+		if ($this->receiveHeadersStart !== null) {
+			$data->receiveHeadersStart = $this->receiveHeadersStart;
 		}
 		if ($this->receiveHeadersEnd !== null) {
 			$data->receiveHeadersEnd = $this->receiveHeadersEnd;

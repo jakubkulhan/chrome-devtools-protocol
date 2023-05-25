@@ -13899,6 +13899,12 @@
                             "type": "number"
                         },
                         {
+                            "name": "receiveHeadersStart",
+                            "description": "Started receiving response headers.",
+                            "experimental": true,
+                            "type": "number"
+                        },
+                        {
                             "name": "receiveHeadersEnd",
                             "description": "Finished receiving response headers.",
                             "type": "number"
