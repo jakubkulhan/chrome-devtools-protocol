@@ -82,6 +82,7 @@ use ChromeDevtoolsProtocol\Model\Page\SetFontSizesRequest;
 use ChromeDevtoolsProtocol\Model\Page\SetGeolocationOverrideRequest;
 use ChromeDevtoolsProtocol\Model\Page\SetInterceptFileChooserDialogRequest;
 use ChromeDevtoolsProtocol\Model\Page\SetLifecycleEventsEnabledRequest;
+use ChromeDevtoolsProtocol\Model\Page\SetPrerenderingAllowedRequest;
 use ChromeDevtoolsProtocol\Model\Page\SetRPHRegistrationModeRequest;
 use ChromeDevtoolsProtocol\Model\Page\SetSPCTransactionModeRequest;
 use ChromeDevtoolsProtocol\Model\Page\SetTouchEmulationEnabledRequest;
@@ -671,6 +672,17 @@ interface PageDomainInterface
 	 * @return void
 	 */
 	public function setLifecycleEventsEnabled(ContextInterface $ctx, SetLifecycleEventsEnabledRequest $request): void;
+
+
+	/**
+	 * Enable/disable prerendering manually. This command is a short-term solution for https://crbug.com/1440085. See https://docs.google.com/document/d/12HVmFxYj5Jc-eJr5OmWsa2bqTJsbgGLKI6ZIyx0_wpA for more details. TODO(https://crbug.com/1440085): Remove this once Puppeteer supports tab targets.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param SetPrerenderingAllowedRequest $request
+	 *
+	 * @return void
+	 */
+	public function setPrerenderingAllowed(ContextInterface $ctx, SetPrerenderingAllowedRequest $request): void;
 
 
 	/**

@@ -124,7 +124,7 @@ final class EvaluateRequest implements \JsonSerializable
 	public $generateWebDriverValue;
 
 	/**
-	 * Specifies the result serialization. If provided, overrides `returnByValue` and `generateWebDriverValue`.
+	 * Specifies the result serialization. If provided, overrides `generatePreview`, `returnByValue` and `generateWebDriverValue`.
 	 *
 	 * @var SerializationOptions|null
 	 */

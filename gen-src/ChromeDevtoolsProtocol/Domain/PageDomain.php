@@ -83,6 +83,7 @@ use ChromeDevtoolsProtocol\Model\Page\SetFontSizesRequest;
 use ChromeDevtoolsProtocol\Model\Page\SetGeolocationOverrideRequest;
 use ChromeDevtoolsProtocol\Model\Page\SetInterceptFileChooserDialogRequest;
 use ChromeDevtoolsProtocol\Model\Page\SetLifecycleEventsEnabledRequest;
+use ChromeDevtoolsProtocol\Model\Page\SetPrerenderingAllowedRequest;
 use ChromeDevtoolsProtocol\Model\Page\SetRPHRegistrationModeRequest;
 use ChromeDevtoolsProtocol\Model\Page\SetSPCTransactionModeRequest;
 use ChromeDevtoolsProtocol\Model\Page\SetTouchEmulationEnabledRequest;
@@ -466,6 +467,12 @@ class PageDomain implements PageDomainInterface
 	public function setLifecycleEventsEnabled(ContextInterface $ctx, SetLifecycleEventsEnabledRequest $request): void
 	{
 		$this->internalClient->executeCommand($ctx, 'Page.setLifecycleEventsEnabled', $request);
+	}
+
+
+	public function setPrerenderingAllowed(ContextInterface $ctx, SetPrerenderingAllowedRequest $request): void
+	{
+		$this->internalClient->executeCommand($ctx, 'Page.setPrerenderingAllowed', $request);
 	}
 
 

@@ -71,4 +71,5 @@ final class PrerenderFinalStatusEnum
 	public const SAME_SITE_CROSS_ORIGIN_NAVIGATION_NOT_OPT_IN_IN_MAIN_FRAME_NAVIGATION = 'SameSiteCrossOriginNavigationNotOptInInMainFrameNavigation';
 	public const MEMORY_PRESSURE_ON_TRIGGER = 'MemoryPressureOnTrigger';
 	public const MEMORY_PRESSURE_AFTER_TRIGGERED = 'MemoryPressureAfterTriggered';
+	public const PRERENDERING_DISABLED_BY_DEV_TOOLS = 'PrerenderingDisabledByDevTools';
 }
