@@ -1627,7 +1627,8 @@
                         "ErrorIdToken",
                         "Canceled",
                         "RpPageNotVisible",
-                        "SilentMediationFailure"
+                        "SilentMediationFailure",
+                        "ThirdPartyCookiesBlocked"
                     ]
                 },
                 {
@@ -19173,6 +19174,7 @@
                         "ActivationNavigationsDisallowedForBug1234857",
                         "ErrorDocument",
                         "FencedFramesEmbedder",
+                        "CookieDisabled",
                         "WebSocket",
                         "WebTransport",
                         "WebRTC",

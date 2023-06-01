@@ -45,4 +45,5 @@ final class FederatedAuthRequestIssueReasonEnum
 	public const CANCELED = 'Canceled';
 	public const RP_PAGE_NOT_VISIBLE = 'RpPageNotVisible';
 	public const SILENT_MEDIATION_FAILURE = 'SilentMediationFailure';
+	public const THIRD_PARTY_COOKIES_BLOCKED = 'ThirdPartyCookiesBlocked';
 }

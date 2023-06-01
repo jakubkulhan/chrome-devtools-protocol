@@ -64,6 +64,7 @@ final class BackForwardCacheNotRestoredReasonEnum
 	public const ACTIVATION_NAVIGATIONS_DISALLOWED_FOR_BUG1234857 = 'ActivationNavigationsDisallowedForBug1234857';
 	public const ERROR_DOCUMENT = 'ErrorDocument';
 	public const FENCED_FRAMES_EMBEDDER = 'FencedFramesEmbedder';
+	public const COOKIE_DISABLED = 'CookieDisabled';
 	public const WEB_SOCKET = 'WebSocket';
 	public const WEB_TRANSPORT = 'WebTransport';
 	public const WEB_R_T_C = 'WebRTC';
