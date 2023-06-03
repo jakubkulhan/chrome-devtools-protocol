@@ -19,7 +19,7 @@ final class ScreenshotParams implements \JsonSerializable
 	public $format;
 
 	/**
-	 * Compression quality from range [0..100] (jpeg only).
+	 * Compression quality from range [0..100] (jpeg and webp only).
 	 *
 	 * @var int|null
 	 */
