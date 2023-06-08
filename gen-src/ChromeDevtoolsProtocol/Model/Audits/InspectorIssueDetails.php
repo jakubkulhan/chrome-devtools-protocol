@@ -59,6 +59,9 @@ final class InspectorIssueDetails implements \JsonSerializable
 	/** @var BounceTrackingIssueDetails|null */
 	public $bounceTrackingIssueDetails;
 
+	/** @var StylesheetLoadingIssueDetails|null */
+	public $stylesheetLoadingIssueDetails;
+
 
 	/**
 	 * @param object $data
@@ -115,6 +118,9 @@ final class InspectorIssueDetails implements \JsonSerializable
 		if (isset($data->bounceTrackingIssueDetails)) {
 			$instance->bounceTrackingIssueDetails = BounceTrackingIssueDetails::fromJson($data->bounceTrackingIssueDetails);
 		}
+		if (isset($data->stylesheetLoadingIssueDetails)) {
+			$instance->stylesheetLoadingIssueDetails = StylesheetLoadingIssueDetails::fromJson($data->stylesheetLoadingIssueDetails);
+		}
 		return $instance;
 	}
 
@@ -169,6 +175,9 @@ final class InspectorIssueDetails implements \JsonSerializable
 		}
 		if ($this->bounceTrackingIssueDetails !== null) {
 			$data->bounceTrackingIssueDetails = $this->bounceTrackingIssueDetails->jsonSerialize();
+		}
+		if ($this->stylesheetLoadingIssueDetails !== null) {
+			$data->stylesheetLoadingIssueDetails = $this->stylesheetLoadingIssueDetails->jsonSerialize();
 		}
 		return $data;
 	}
