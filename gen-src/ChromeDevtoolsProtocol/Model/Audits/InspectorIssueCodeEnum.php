@@ -28,4 +28,5 @@ final class InspectorIssueCodeEnum
 	public const FEDERATED_AUTH_REQUEST_ISSUE = 'FederatedAuthRequestIssue';
 	public const BOUNCE_TRACKING_ISSUE = 'BounceTrackingIssue';
 	public const STYLESHEET_LOADING_ISSUE = 'StylesheetLoadingIssue';
+	public const FEDERATED_AUTH_USER_INFO_REQUEST_ISSUE = 'FederatedAuthUserInfoRequestIssue';
 }

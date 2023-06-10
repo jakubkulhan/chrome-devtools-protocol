@@ -32,11 +32,9 @@ final class PermissionsPolicyFeatureEnum
 	public const CH_UA_PLATFORM = 'ch-ua-platform';
 	public const CH_UA_MODEL = 'ch-ua-model';
 	public const CH_UA_MOBILE = 'ch-ua-mobile';
-	public const CH_UA_FULL = 'ch-ua-full';
 	public const CH_UA_FULL_VERSION = 'ch-ua-full-version';
 	public const CH_UA_FULL_VERSION_LIST = 'ch-ua-full-version-list';
 	public const CH_UA_PLATFORM_VERSION = 'ch-ua-platform-version';
-	public const CH_UA_REDUCED = 'ch-ua-reduced';
 	public const CH_UA_WOW64 = 'ch-ua-wow64';
 	public const CH_VIEWPORT_HEIGHT = 'ch-viewport-height';
 	public const CH_VIEWPORT_WIDTH = 'ch-viewport-width';
