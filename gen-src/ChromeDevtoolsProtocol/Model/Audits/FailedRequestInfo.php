@@ -25,6 +25,9 @@ final class FailedRequestInfo implements \JsonSerializable
 	 */
 	public $failureMessage;
 
+	/** @var string */
+	public $requestId;
+
 
 	/**
 	 * @param object $data
@@ -39,6 +42,9 @@ final class FailedRequestInfo implements \JsonSerializable
 		if (isset($data->failureMessage)) {
 			$instance->failureMessage = (string)$data->failureMessage;
 		}
+		if (isset($data->requestId)) {
+			$instance->requestId = (string)$data->requestId;
+		}
 		return $instance;
 	}
 
@@ -51,6 +57,9 @@ final class FailedRequestInfo implements \JsonSerializable
 		}
 		if ($this->failureMessage !== null) {
 			$data->failureMessage = $this->failureMessage;
+		}
+		if ($this->requestId !== null) {
+			$data->requestId = $this->requestId;
 		}
 		return $data;
 	}
