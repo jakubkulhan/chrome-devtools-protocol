@@ -111,7 +111,6 @@ final class BackForwardCacheNotRestoredReasonEnum
 	public const INDEXED_D_B_EVENT = 'IndexedDBEvent';
 	public const DUMMY = 'Dummy';
 	public const JS_NETWORK_REQUEST_RECEIVED_CACHE_CONTROL_NO_STORE_RESOURCE = 'JsNetworkRequestReceivedCacheControlNoStoreResource';
-	public const WEB_SERIAL = 'WebSerial';
 	public const CONTENT_SECURITY_HANDLER = 'ContentSecurityHandler';
 	public const CONTENT_WEB_AUTHENTICATION_A_P_I = 'ContentWebAuthenticationAPI';
 	public const CONTENT_FILE_CHOOSER = 'ContentFileChooser';
