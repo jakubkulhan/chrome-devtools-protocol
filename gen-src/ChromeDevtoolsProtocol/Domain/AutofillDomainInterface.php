@@ -3,6 +3,7 @@
 namespace ChromeDevtoolsProtocol\Domain;
 
 use ChromeDevtoolsProtocol\ContextInterface;
+use ChromeDevtoolsProtocol\Model\Autofill\SetAddressesRequest;
 use ChromeDevtoolsProtocol\Model\Autofill\TriggerRequest;
 
 /**
@@ -16,6 +17,17 @@ use ChromeDevtoolsProtocol\Model\Autofill\TriggerRequest;
  */
 interface AutofillDomainInterface
 {
+	/**
+	 * Set addresses so that developers can verify their forms implementation.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param SetAddressesRequest $request
+	 *
+	 * @return void
+	 */
+	public function setAddresses(ContextInterface $ctx, SetAddressesRequest $request): void;
+
+
 	/**
 	 * Trigger autofill on a form identified by the fieldId. If the field and related form cannot be autofilled, returns an error.
 	 *
