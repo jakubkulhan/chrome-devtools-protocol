@@ -65,6 +65,7 @@ final class BackForwardCacheNotRestoredReasonEnum
 	public const ERROR_DOCUMENT = 'ErrorDocument';
 	public const FENCED_FRAMES_EMBEDDER = 'FencedFramesEmbedder';
 	public const COOKIE_DISABLED = 'CookieDisabled';
+	public const HTTP_AUTH_REQUIRED = 'HTTPAuthRequired';
 	public const WEB_SOCKET = 'WebSocket';
 	public const WEB_TRANSPORT = 'WebTransport';
 	public const WEB_R_T_C = 'WebRTC';
