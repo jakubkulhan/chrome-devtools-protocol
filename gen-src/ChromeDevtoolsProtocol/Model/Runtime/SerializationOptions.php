@@ -21,6 +21,13 @@ final class SerializationOptions implements \JsonSerializable
 	 */
 	public $maxDepth;
 
+	/**
+	 * Embedder-specific parameters. For example if connected to V8 in Chrome these control DOM serialization via `maxNodeDepth: integer` and `includeShadowTree: "none" | "open" | "all"`. Values can be only of type string or integer.
+	 *
+	 * @var object|null
+	 */
+	public $additionalParameters;
+
 
 	/**
 	 * @param object $data
@@ -35,6 +42,9 @@ final class SerializationOptions implements \JsonSerializable
 		if (isset($data->maxDepth)) {
 			$instance->maxDepth = (int)$data->maxDepth;
 		}
+		if (isset($data->additionalParameters)) {
+			$instance->additionalParameters = $data->additionalParameters;
+		}
 		return $instance;
 	}
 
@@ -47,6 +57,9 @@ final class SerializationOptions implements \JsonSerializable
 		}
 		if ($this->maxDepth !== null) {
 			$data->maxDepth = $this->maxDepth;
+		}
+		if ($this->additionalParameters !== null) {
+			$data->additionalParameters = $this->additionalParameters;
 		}
 		return $data;
 	}

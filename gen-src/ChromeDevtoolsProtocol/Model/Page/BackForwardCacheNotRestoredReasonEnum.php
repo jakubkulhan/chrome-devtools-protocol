@@ -77,14 +77,12 @@ final class BackForwardCacheNotRestoredReasonEnum
 	public const DOCUMENT_LOADED = 'DocumentLoaded';
 	public const DEDICATED_WORKER_OR_WORKLET = 'DedicatedWorkerOrWorklet';
 	public const OUTSTANDING_NETWORK_REQUEST_OTHERS = 'OutstandingNetworkRequestOthers';
-	public const OUTSTANDING_INDEXED_D_B_TRANSACTION = 'OutstandingIndexedDBTransaction';
 	public const REQUESTED_M_I_D_I_PERMISSION = 'RequestedMIDIPermission';
 	public const REQUESTED_AUDIO_CAPTURE_PERMISSION = 'RequestedAudioCapturePermission';
 	public const REQUESTED_VIDEO_CAPTURE_PERMISSION = 'RequestedVideoCapturePermission';
 	public const REQUESTED_BACK_FORWARD_CACHE_BLOCKED_SENSORS = 'RequestedBackForwardCacheBlockedSensors';
 	public const REQUESTED_BACKGROUND_WORK_PERMISSION = 'RequestedBackgroundWorkPermission';
 	public const BROADCAST_CHANNEL = 'BroadcastChannel';
-	public const INDEXED_D_B_CONNECTION = 'IndexedDBConnection';
 	public const WEB_X_R = 'WebXR';
 	public const SHARED_WORKER = 'SharedWorker';
 	public const WEB_LOCKS = 'WebLocks';
