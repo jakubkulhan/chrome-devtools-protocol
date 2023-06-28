@@ -20,6 +20,12 @@ final class PreloadEnabledStateUpdatedEvent implements \JsonSerializable
 	/** @var bool */
 	public $disabledByBatterySaver;
 
+	/** @var bool */
+	public $disabledByHoldbackPrefetchSpeculationRules;
+
+	/** @var bool */
+	public $disabledByHoldbackPrerenderSpeculationRules;
+
 
 	/**
 	 * @param object $data
@@ -37,6 +43,12 @@ final class PreloadEnabledStateUpdatedEvent implements \JsonSerializable
 		if (isset($data->disabledByBatterySaver)) {
 			$instance->disabledByBatterySaver = (bool)$data->disabledByBatterySaver;
 		}
+		if (isset($data->disabledByHoldbackPrefetchSpeculationRules)) {
+			$instance->disabledByHoldbackPrefetchSpeculationRules = (bool)$data->disabledByHoldbackPrefetchSpeculationRules;
+		}
+		if (isset($data->disabledByHoldbackPrerenderSpeculationRules)) {
+			$instance->disabledByHoldbackPrerenderSpeculationRules = (bool)$data->disabledByHoldbackPrerenderSpeculationRules;
+		}
 		return $instance;
 	}
 
@@ -52,6 +64,12 @@ final class PreloadEnabledStateUpdatedEvent implements \JsonSerializable
 		}
 		if ($this->disabledByBatterySaver !== null) {
 			$data->disabledByBatterySaver = $this->disabledByBatterySaver;
+		}
+		if ($this->disabledByHoldbackPrefetchSpeculationRules !== null) {
+			$data->disabledByHoldbackPrefetchSpeculationRules = $this->disabledByHoldbackPrefetchSpeculationRules;
+		}
+		if ($this->disabledByHoldbackPrerenderSpeculationRules !== null) {
+			$data->disabledByHoldbackPrerenderSpeculationRules = $this->disabledByHoldbackPrerenderSpeculationRules;
 		}
 		return $data;
 	}

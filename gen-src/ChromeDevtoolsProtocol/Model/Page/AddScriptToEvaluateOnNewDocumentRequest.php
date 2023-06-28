@@ -28,6 +28,13 @@ final class AddScriptToEvaluateOnNewDocumentRequest implements \JsonSerializable
 	 */
 	public $includeCommandLineAPI;
 
+	/**
+	 * If true, runs the script immediately on existing execution contexts or worlds. Default: false.
+	 *
+	 * @var bool|null
+	 */
+	public $runImmediately;
+
 
 	/**
 	 * @param object $data
@@ -45,6 +52,9 @@ final class AddScriptToEvaluateOnNewDocumentRequest implements \JsonSerializable
 		if (isset($data->includeCommandLineAPI)) {
 			$instance->includeCommandLineAPI = (bool)$data->includeCommandLineAPI;
 		}
+		if (isset($data->runImmediately)) {
+			$instance->runImmediately = (bool)$data->runImmediately;
+		}
 		return $instance;
 	}
 
@@ -60,6 +70,9 @@ final class AddScriptToEvaluateOnNewDocumentRequest implements \JsonSerializable
 		}
 		if ($this->includeCommandLineAPI !== null) {
 			$data->includeCommandLineAPI = $this->includeCommandLineAPI;
+		}
+		if ($this->runImmediately !== null) {
+			$data->runImmediately = $this->runImmediately;
 		}
 		return $data;
 	}

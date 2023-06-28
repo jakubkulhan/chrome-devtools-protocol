@@ -20,6 +20,13 @@ final class PrerenderStatusUpdatedEvent implements \JsonSerializable
 	/** @var string */
 	public $prerenderStatus;
 
+	/**
+	 * This is used to give users more information about the name of Mojo interface that is incompatible with prerender and has caused the cancellation of the attempt.
+	 *
+	 * @var string|null
+	 */
+	public $disallowedMojoInterface;
+
 
 	/**
 	 * @param object $data
@@ -37,6 +44,9 @@ final class PrerenderStatusUpdatedEvent implements \JsonSerializable
 		if (isset($data->prerenderStatus)) {
 			$instance->prerenderStatus = (string)$data->prerenderStatus;
 		}
+		if (isset($data->disallowedMojoInterface)) {
+			$instance->disallowedMojoInterface = (string)$data->disallowedMojoInterface;
+		}
 		return $instance;
 	}
 
@@ -52,6 +62,9 @@ final class PrerenderStatusUpdatedEvent implements \JsonSerializable
 		}
 		if ($this->prerenderStatus !== null) {
 			$data->prerenderStatus = $this->prerenderStatus;
+		}
+		if ($this->disallowedMojoInterface !== null) {
+			$data->disallowedMojoInterface = $this->disallowedMojoInterface;
 		}
 		return $data;
 	}
