@@ -33,6 +33,7 @@ use ChromeDevtoolsProtocol\Model\Storage\InterestGroupAccessedEvent;
 use ChromeDevtoolsProtocol\Model\Storage\OverrideQuotaForOriginRequest;
 use ChromeDevtoolsProtocol\Model\Storage\ResetSharedStorageBudgetRequest;
 use ChromeDevtoolsProtocol\Model\Storage\RunBounceTrackingMitigationsResponse;
+use ChromeDevtoolsProtocol\Model\Storage\SetAttributionReportingLocalTestingModeRequest;
 use ChromeDevtoolsProtocol\Model\Storage\SetCookiesRequest;
 use ChromeDevtoolsProtocol\Model\Storage\SetInterestGroupTrackingRequest;
 use ChromeDevtoolsProtocol\Model\Storage\SetSharedStorageEntryRequest;
@@ -181,6 +182,14 @@ class StorageDomain implements StorageDomainInterface
 		$request = new \stdClass();
 		$response = $this->internalClient->executeCommand($ctx, 'Storage.runBounceTrackingMitigations', $request);
 		return RunBounceTrackingMitigationsResponse::fromJson($response);
+	}
+
+
+	public function setAttributionReportingLocalTestingMode(
+		ContextInterface $ctx,
+		SetAttributionReportingLocalTestingModeRequest $request
+	): void {
+		$this->internalClient->executeCommand($ctx, 'Storage.setAttributionReportingLocalTestingMode', $request);
 	}
 
 

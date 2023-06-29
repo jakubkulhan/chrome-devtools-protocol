@@ -32,6 +32,7 @@ use ChromeDevtoolsProtocol\Model\Storage\InterestGroupAccessedEvent;
 use ChromeDevtoolsProtocol\Model\Storage\OverrideQuotaForOriginRequest;
 use ChromeDevtoolsProtocol\Model\Storage\ResetSharedStorageBudgetRequest;
 use ChromeDevtoolsProtocol\Model\Storage\RunBounceTrackingMitigationsResponse;
+use ChromeDevtoolsProtocol\Model\Storage\SetAttributionReportingLocalTestingModeRequest;
 use ChromeDevtoolsProtocol\Model\Storage\SetCookiesRequest;
 use ChromeDevtoolsProtocol\Model\Storage\SetInterestGroupTrackingRequest;
 use ChromeDevtoolsProtocol\Model\Storage\SetSharedStorageEntryRequest;
@@ -256,6 +257,20 @@ interface StorageDomainInterface
 	 * @return RunBounceTrackingMitigationsResponse
 	 */
 	public function runBounceTrackingMitigations(ContextInterface $ctx): RunBounceTrackingMitigationsResponse;
+
+
+	/**
+	 * https://wicg.github.io/attribution-reporting-api/
+	 *
+	 * @param ContextInterface $ctx
+	 * @param SetAttributionReportingLocalTestingModeRequest $request
+	 *
+	 * @return void
+	 */
+	public function setAttributionReportingLocalTestingMode(
+		ContextInterface $ctx,
+		SetAttributionReportingLocalTestingModeRequest $request
+	): void;
 
 
 	/**
