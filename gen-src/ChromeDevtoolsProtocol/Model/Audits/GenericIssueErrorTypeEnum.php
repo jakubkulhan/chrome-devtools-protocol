@@ -22,4 +22,5 @@ final class GenericIssueErrorTypeEnum
 	public const FORM_LABEL_HAS_NEITHER_FOR_NOR_NESTED_INPUT = 'FormLabelHasNeitherForNorNestedInput';
 	public const FORM_LABEL_FOR_MATCHES_NON_EXISTING_ID_ERROR = 'FormLabelForMatchesNonExistingIdError';
 	public const FORM_INPUT_HAS_WRONG_BUT_WELL_INTENDED_AUTOCOMPLETE_VALUE_ERROR = 'FormInputHasWrongButWellIntendedAutocompleteValueError';
+	public const RESPONSE_WAS_BLOCKED_BY_O_R_B = 'ResponseWasBlockedByORB';
 }
