@@ -81,6 +81,13 @@ final class CSSRule implements \JsonSerializable
 	 */
 	public $scopes;
 
+	/**
+	 * The array keeps the types of ancestor CSSRules from the innermost going outwards.
+	 *
+	 * @var string[]|null
+	 */
+	public $ruleTypes;
+
 
 	/**
 	 * @param object $data
@@ -137,6 +144,15 @@ final class CSSRule implements \JsonSerializable
 				$instance->scopes[] = CSSScope::fromJson($item);
 			}
 		}
+		if (isset($data->ruleTypes)) {
+			$instance->ruleTypes = [];
+		if (isset($data->ruleTypes)) {
+			$instance->ruleTypes = [];
+			foreach ($data->ruleTypes as $item) {
+				$instance->ruleTypes[] = (string)$item;
+			}
+		}
+		}
 		return $instance;
 	}
 
@@ -191,6 +207,15 @@ final class CSSRule implements \JsonSerializable
 			foreach ($this->scopes as $item) {
 				$data->scopes[] = $item->jsonSerialize();
 			}
+		}
+		if ($this->ruleTypes !== null) {
+			$data->ruleTypes = [];
+		if ($this->ruleTypes !== null) {
+			$data->ruleTypes = [];
+			foreach ($this->ruleTypes as $item) {
+				$data->ruleTypes[] = $item;
+			}
+		}
 		}
 		return $data;
 	}
