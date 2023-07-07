@@ -4,6 +4,7 @@ namespace ChromeDevtoolsProtocol\Domain;
 
 use ChromeDevtoolsProtocol\ContextInterface;
 use ChromeDevtoolsProtocol\InternalClientInterface;
+use ChromeDevtoolsProtocol\Model\Storage\AttributionReportingSourceRegisteredEvent;
 use ChromeDevtoolsProtocol\Model\Storage\CacheStorageContentUpdatedEvent;
 use ChromeDevtoolsProtocol\Model\Storage\CacheStorageListUpdatedEvent;
 use ChromeDevtoolsProtocol\Model\Storage\ClearCookiesRequest;
@@ -34,6 +35,7 @@ use ChromeDevtoolsProtocol\Model\Storage\OverrideQuotaForOriginRequest;
 use ChromeDevtoolsProtocol\Model\Storage\ResetSharedStorageBudgetRequest;
 use ChromeDevtoolsProtocol\Model\Storage\RunBounceTrackingMitigationsResponse;
 use ChromeDevtoolsProtocol\Model\Storage\SetAttributionReportingLocalTestingModeRequest;
+use ChromeDevtoolsProtocol\Model\Storage\SetAttributionReportingTrackingRequest;
 use ChromeDevtoolsProtocol\Model\Storage\SetCookiesRequest;
 use ChromeDevtoolsProtocol\Model\Storage\SetInterestGroupTrackingRequest;
 use ChromeDevtoolsProtocol\Model\Storage\SetSharedStorageEntryRequest;
@@ -193,6 +195,14 @@ class StorageDomain implements StorageDomainInterface
 	}
 
 
+	public function setAttributionReportingTracking(
+		ContextInterface $ctx,
+		SetAttributionReportingTrackingRequest $request
+	): void {
+		$this->internalClient->executeCommand($ctx, 'Storage.setAttributionReportingTracking', $request);
+	}
+
+
 	public function setCookies(ContextInterface $ctx, SetCookiesRequest $request): void
 	{
 		$this->internalClient->executeCommand($ctx, 'Storage.setCookies', $request);
@@ -274,6 +284,20 @@ class StorageDomain implements StorageDomainInterface
 		UntrackIndexedDBForStorageKeyRequest $request
 	): void {
 		$this->internalClient->executeCommand($ctx, 'Storage.untrackIndexedDBForStorageKey', $request);
+	}
+
+
+	public function addAttributionReportingSourceRegisteredListener(callable $listener): SubscriptionInterface
+	{
+		return $this->internalClient->addListener('Storage.attributionReportingSourceRegistered', function ($event) use ($listener) {
+			return $listener(AttributionReportingSourceRegisteredEvent::fromJson($event));
+		});
+	}
+
+
+	public function awaitAttributionReportingSourceRegistered(ContextInterface $ctx): AttributionReportingSourceRegisteredEvent
+	{
+		return AttributionReportingSourceRegisteredEvent::fromJson($this->internalClient->awaitEvent($ctx, 'Storage.attributionReportingSourceRegistered'));
 	}
 
 

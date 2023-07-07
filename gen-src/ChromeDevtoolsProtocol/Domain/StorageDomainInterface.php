@@ -3,6 +3,7 @@
 namespace ChromeDevtoolsProtocol\Domain;
 
 use ChromeDevtoolsProtocol\ContextInterface;
+use ChromeDevtoolsProtocol\Model\Storage\AttributionReportingSourceRegisteredEvent;
 use ChromeDevtoolsProtocol\Model\Storage\CacheStorageContentUpdatedEvent;
 use ChromeDevtoolsProtocol\Model\Storage\CacheStorageListUpdatedEvent;
 use ChromeDevtoolsProtocol\Model\Storage\ClearCookiesRequest;
@@ -33,6 +34,7 @@ use ChromeDevtoolsProtocol\Model\Storage\OverrideQuotaForOriginRequest;
 use ChromeDevtoolsProtocol\Model\Storage\ResetSharedStorageBudgetRequest;
 use ChromeDevtoolsProtocol\Model\Storage\RunBounceTrackingMitigationsResponse;
 use ChromeDevtoolsProtocol\Model\Storage\SetAttributionReportingLocalTestingModeRequest;
+use ChromeDevtoolsProtocol\Model\Storage\SetAttributionReportingTrackingRequest;
 use ChromeDevtoolsProtocol\Model\Storage\SetCookiesRequest;
 use ChromeDevtoolsProtocol\Model\Storage\SetInterestGroupTrackingRequest;
 use ChromeDevtoolsProtocol\Model\Storage\SetSharedStorageEntryRequest;
@@ -274,6 +276,20 @@ interface StorageDomainInterface
 
 
 	/**
+	 * Enables/disables issuing of Attribution Reporting events.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param SetAttributionReportingTrackingRequest $request
+	 *
+	 * @return void
+	 */
+	public function setAttributionReportingTracking(
+		ContextInterface $ctx,
+		SetAttributionReportingTrackingRequest $request
+	): void;
+
+
+	/**
 	 * Sets given cookies.
 	 *
 	 * @param ContextInterface $ctx
@@ -423,6 +439,30 @@ interface StorageDomainInterface
 		ContextInterface $ctx,
 		UntrackIndexedDBForStorageKeyRequest $request
 	): void;
+
+
+	/**
+	 * TODO(crbug.com/1458532): Add other Attribution Reporting events, e.g. trigger registration.
+	 *
+	 * Listener will be called whenever event Storage.attributionReportingSourceRegistered is fired.
+	 *
+	 * @param callable $listener
+	 *
+	 * @return SubscriptionInterface
+	 */
+	public function addAttributionReportingSourceRegisteredListener(callable $listener): SubscriptionInterface;
+
+
+	/**
+	 * TODO(crbug.com/1458532): Add other Attribution Reporting events, e.g. trigger registration.
+	 *
+	 * Method will block until first Storage.attributionReportingSourceRegistered event is fired.
+	 *
+	 * @param ContextInterface $ctx
+	 *
+	 * @return AttributionReportingSourceRegisteredEvent
+	 */
+	public function awaitAttributionReportingSourceRegistered(ContextInterface $ctx): AttributionReportingSourceRegisteredEvent;
 
 
 	/**
