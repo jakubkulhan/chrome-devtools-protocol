@@ -1420,7 +1420,8 @@
                         "InvalidRegisterOsSourceHeader",
                         "InvalidRegisterOsTriggerHeader",
                         "WebAndOsHeaders",
-                        "NoWebOrOsSupport"
+                        "NoWebOrOsSupport",
+                        "NavigationRegistrationWithoutTransientUserActivation"
                     ]
                 },
                 {
@@ -12135,6 +12136,10 @@
                 }
             ],
             "commands": [
+                {
+                    "name": "cancelDragging",
+                    "description": "Cancels any active dragging in the page."
+                },
                 {
                     "name": "dispatchDragEvent",
                     "description": "Dispatches a drag event into the page.",

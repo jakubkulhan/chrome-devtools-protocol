@@ -31,6 +31,13 @@ class InputDomain implements InputDomainInterface
 	}
 
 
+	public function cancelDragging(ContextInterface $ctx): void
+	{
+		$request = new \stdClass();
+		$this->internalClient->executeCommand($ctx, 'Input.cancelDragging', $request);
+	}
+
+
 	public function dispatchDragEvent(ContextInterface $ctx, DispatchDragEventRequest $request): void
 	{
 		$this->internalClient->executeCommand($ctx, 'Input.dispatchDragEvent', $request);

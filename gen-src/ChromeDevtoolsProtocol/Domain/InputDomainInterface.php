@@ -28,6 +28,16 @@ use ChromeDevtoolsProtocol\SubscriptionInterface;
 interface InputDomainInterface
 {
 	/**
+	 * Cancels any active dragging in the page.
+	 *
+	 * @param ContextInterface $ctx
+	 *
+	 * @return void
+	 */
+	public function cancelDragging(ContextInterface $ctx): void;
+
+
+	/**
 	 * Dispatches a drag event into the page.
 	 *
 	 * @param ContextInterface $ctx
