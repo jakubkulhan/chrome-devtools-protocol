@@ -14,4 +14,5 @@ final class ContentEncodingEnum
 	public const DEFLATE = 'deflate';
 	public const GZIP = 'gzip';
 	public const BR = 'br';
+	public const ZSTD = 'zstd';
 }
