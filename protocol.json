@@ -19387,6 +19387,7 @@
                         "FencedFramesEmbedder",
                         "CookieDisabled",
                         "HTTPAuthRequired",
+                        "CookieFlushed",
                         "WebSocket",
                         "WebTransport",
                         "WebRTC",
@@ -21681,7 +21682,8 @@
                         "MemoryPressureOnTrigger",
                         "MemoryPressureAfterTriggered",
                         "PrerenderingDisabledByDevTools",
-                        "ResourceLoadBlockedByClient"
+                        "ResourceLoadBlockedByClient",
+                        "SpeculationRuleRemoved"
                     ]
                 },
                 {
