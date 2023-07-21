@@ -21677,7 +21677,8 @@
                         "MemoryPressureAfterTriggered",
                         "PrerenderingDisabledByDevTools",
                         "ResourceLoadBlockedByClient",
-                        "SpeculationRuleRemoved"
+                        "SpeculationRuleRemoved",
+                        "ActivatedWithAuxiliaryBrowsingContexts"
                     ]
                 },
                 {

@@ -74,4 +74,5 @@ final class PrerenderFinalStatusEnum
 	public const PRERENDERING_DISABLED_BY_DEV_TOOLS = 'PrerenderingDisabledByDevTools';
 	public const RESOURCE_LOAD_BLOCKED_BY_CLIENT = 'ResourceLoadBlockedByClient';
 	public const SPECULATION_RULE_REMOVED = 'SpeculationRuleRemoved';
+	public const ACTIVATED_WITH_AUXILIARY_BROWSING_CONTEXTS = 'ActivatedWithAuxiliaryBrowsingContexts';
 }
