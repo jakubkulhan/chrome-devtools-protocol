@@ -26,7 +26,7 @@ final class FileChooserOpenedEvent implements \JsonSerializable
 	public $mode;
 
 	/**
-	 * Input node id. Only present for file choosers opened via an <input type="file"> element.
+	 * Input node id. Only present for file choosers opened via an `<input type="file">` element.
 	 *
 	 * @var int
 	 */

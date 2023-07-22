@@ -47,7 +47,7 @@ final class AXValueSource implements \JsonSerializable
 	public $superseded;
 
 	/**
-	 * The native markup source for this value, e.g. a <label> element.
+	 * The native markup source for this value, e.g. a `<label>` element.
 	 *
 	 * @var string
 	 */

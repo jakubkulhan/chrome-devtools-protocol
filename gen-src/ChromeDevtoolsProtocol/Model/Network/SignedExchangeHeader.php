@@ -40,7 +40,7 @@ final class SignedExchangeHeader implements \JsonSerializable
 	public $signatures;
 
 	/**
-	 * Signed exchange header integrity hash in the form of "sha256-<base64-hash-value>".
+	 * Signed exchange header integrity hash in the form of `sha256-<base64-hash-value>`.
 	 *
 	 * @var string
 	 */

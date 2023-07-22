@@ -39,7 +39,6 @@ final class PrerenderFinalStatusEnum
 	public const AUDIO_OUTPUT_DEVICE_REQUESTED = 'AudioOutputDeviceRequested';
 	public const MIXED_CONTENT = 'MixedContent';
 	public const TRIGGER_BACKGROUNDED = 'TriggerBackgrounded';
-	public const EMBEDDER_TRIGGERED_AND_CROSS_ORIGIN_REDIRECTED = 'EmbedderTriggeredAndCrossOriginRedirected';
 	public const MEMORY_LIMIT_EXCEEDED = 'MemoryLimitExceeded';
 	public const FAIL_TO_GET_MEMORY_USAGE = 'FailToGetMemoryUsage';
 	public const DATA_SAVER_ENABLED = 'DataSaverEnabled';
