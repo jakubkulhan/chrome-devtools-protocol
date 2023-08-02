@@ -14909,7 +14909,8 @@
                         "SchemefulSameSiteUnspecifiedTreatedAsLax",
                         "SamePartyFromCrossPartyContext",
                         "SamePartyConflictsWithOtherAttributes",
-                        "NameValuePairExceedsMaxSize"
+                        "NameValuePairExceedsMaxSize",
+                        "DisallowedCharacter"
                     ]
                 },
                 {
