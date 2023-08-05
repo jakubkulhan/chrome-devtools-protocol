@@ -24,6 +24,7 @@ final class PrintToPDFRequestBuilder
 	private $footerTemplate;
 	private $preferCSSPageSize;
 	private $transferMode;
+	private $generateTaggedPDF;
 
 
 	/**
@@ -47,6 +48,7 @@ final class PrintToPDFRequestBuilder
 		$instance->footerTemplate = $this->footerTemplate;
 		$instance->preferCSSPageSize = $this->preferCSSPageSize;
 		$instance->transferMode = $this->transferMode;
+		$instance->generateTaggedPDF = $this->generateTaggedPDF;
 		return $instance;
 	}
 
@@ -227,6 +229,18 @@ final class PrintToPDFRequestBuilder
 	public function setTransferMode($transferMode): self
 	{
 		$this->transferMode = $transferMode;
+		return $this;
+	}
+
+
+	/**
+	 * @param bool|null $generateTaggedPDF
+	 *
+	 * @return self
+	 */
+	public function setGenerateTaggedPDF($generateTaggedPDF): self
+	{
+		$this->generateTaggedPDF = $generateTaggedPDF;
 		return $this;
 	}
 }

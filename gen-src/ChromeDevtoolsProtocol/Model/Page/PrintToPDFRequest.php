@@ -116,6 +116,13 @@ final class PrintToPDFRequest implements \JsonSerializable
 	 */
 	public $transferMode;
 
+	/**
+	 * Whether or not to generate tagged (accessible) PDF. Defaults to embedder choice.
+	 *
+	 * @var bool|null
+	 */
+	public $generateTaggedPDF;
+
 
 	/**
 	 * @param object $data
@@ -169,6 +176,9 @@ final class PrintToPDFRequest implements \JsonSerializable
 		if (isset($data->transferMode)) {
 			$instance->transferMode = (string)$data->transferMode;
 		}
+		if (isset($data->generateTaggedPDF)) {
+			$instance->generateTaggedPDF = (bool)$data->generateTaggedPDF;
+		}
 		return $instance;
 	}
 
@@ -220,6 +230,9 @@ final class PrintToPDFRequest implements \JsonSerializable
 		}
 		if ($this->transferMode !== null) {
 			$data->transferMode = $this->transferMode;
+		}
+		if ($this->generateTaggedPDF !== null) {
+			$data->generateTaggedPDF = $this->generateTaggedPDF;
 		}
 		return $data;
 	}
