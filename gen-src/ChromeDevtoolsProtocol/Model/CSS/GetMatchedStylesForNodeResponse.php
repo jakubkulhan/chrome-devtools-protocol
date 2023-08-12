@@ -68,6 +68,20 @@ final class GetMatchedStylesForNodeResponse implements \JsonSerializable
 	public $cssPositionFallbackRules;
 
 	/**
+	 * A list of CSS at-property rules matching this node.
+	 *
+	 * @var CSSPropertyRule[]|null
+	 */
+	public $cssPropertyRules;
+
+	/**
+	 * A list of CSS property registrations matching this node.
+	 *
+	 * @var CSSPropertyRegistration[]|null
+	 */
+	public $cssPropertyRegistrations;
+
+	/**
 	 * Id of the first parent element that does not have display: contents.
 	 *
 	 * @var int
@@ -124,6 +138,18 @@ final class GetMatchedStylesForNodeResponse implements \JsonSerializable
 				$instance->cssPositionFallbackRules[] = CSSPositionFallbackRule::fromJson($item);
 			}
 		}
+		if (isset($data->cssPropertyRules)) {
+			$instance->cssPropertyRules = [];
+			foreach ($data->cssPropertyRules as $item) {
+				$instance->cssPropertyRules[] = CSSPropertyRule::fromJson($item);
+			}
+		}
+		if (isset($data->cssPropertyRegistrations)) {
+			$instance->cssPropertyRegistrations = [];
+			foreach ($data->cssPropertyRegistrations as $item) {
+				$instance->cssPropertyRegistrations[] = CSSPropertyRegistration::fromJson($item);
+			}
+		}
 		if (isset($data->parentLayoutNodeId)) {
 			$instance->parentLayoutNodeId = (int)$data->parentLayoutNodeId;
 		}
@@ -174,6 +200,18 @@ final class GetMatchedStylesForNodeResponse implements \JsonSerializable
 			$data->cssPositionFallbackRules = [];
 			foreach ($this->cssPositionFallbackRules as $item) {
 				$data->cssPositionFallbackRules[] = $item->jsonSerialize();
+			}
+		}
+		if ($this->cssPropertyRules !== null) {
+			$data->cssPropertyRules = [];
+			foreach ($this->cssPropertyRules as $item) {
+				$data->cssPropertyRules[] = $item->jsonSerialize();
+			}
+		}
+		if ($this->cssPropertyRegistrations !== null) {
+			$data->cssPropertyRegistrations = [];
+			foreach ($this->cssPropertyRegistrations as $item) {
+				$data->cssPropertyRegistrations[] = $item->jsonSerialize();
 			}
 		}
 		if ($this->parentLayoutNodeId !== null) {

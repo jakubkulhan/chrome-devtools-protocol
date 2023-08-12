@@ -13,4 +13,5 @@ final class DialogTypeEnum
 {
 	public const ACCOUNT_CHOOSER = 'AccountChooser';
 	public const AUTO_REAUTHN = 'AutoReauthn';
+	public const CONFIRM_IDP_SIGNIN = 'ConfirmIdpSignin';
 }
