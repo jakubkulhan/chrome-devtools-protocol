@@ -2051,6 +2051,14 @@
             ],
             "commands": [
                 {
+                    "name": "disable",
+                    "description": "Disables autofill domain notifications."
+                },
+                {
+                    "name": "enable",
+                    "description": "Enables autofill domain notifications."
+                },
+                {
                     "name": "setAddresses",
                     "description": "Set addresses so that developers can verify their forms implementation.",
                     "parameters": [
@@ -10616,6 +10624,16 @@
                 }
             ],
             "commands": [
+                {
+                    "name": "confirmIdpSignin",
+                    "description": "Only valid if the dialog type is ConfirmIdpSignin. Acts as if the user had clicked the continue button.",
+                    "parameters": [
+                        {
+                            "name": "dialogId",
+                            "type": "string"
+                        }
+                    ]
+                },
                 {
                     "name": "disable"
                 },

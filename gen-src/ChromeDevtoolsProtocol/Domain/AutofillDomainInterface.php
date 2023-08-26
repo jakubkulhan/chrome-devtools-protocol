@@ -18,6 +18,26 @@ use ChromeDevtoolsProtocol\Model\Autofill\TriggerRequest;
 interface AutofillDomainInterface
 {
 	/**
+	 * Disables autofill domain notifications.
+	 *
+	 * @param ContextInterface $ctx
+	 *
+	 * @return void
+	 */
+	public function disable(ContextInterface $ctx): void;
+
+
+	/**
+	 * Enables autofill domain notifications.
+	 *
+	 * @param ContextInterface $ctx
+	 *
+	 * @return void
+	 */
+	public function enable(ContextInterface $ctx): void;
+
+
+	/**
 	 * Set addresses so that developers can verify their forms implementation.
 	 *
 	 * @param ContextInterface $ctx

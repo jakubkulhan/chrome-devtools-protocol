@@ -19,6 +19,20 @@ class AutofillDomain implements AutofillDomainInterface
 	}
 
 
+	public function disable(ContextInterface $ctx): void
+	{
+		$request = new \stdClass();
+		$this->internalClient->executeCommand($ctx, 'Autofill.disable', $request);
+	}
+
+
+	public function enable(ContextInterface $ctx): void
+	{
+		$request = new \stdClass();
+		$this->internalClient->executeCommand($ctx, 'Autofill.enable', $request);
+	}
+
+
 	public function setAddresses(ContextInterface $ctx, SetAddressesRequest $request): void
 	{
 		$this->internalClient->executeCommand($ctx, 'Autofill.setAddresses', $request);

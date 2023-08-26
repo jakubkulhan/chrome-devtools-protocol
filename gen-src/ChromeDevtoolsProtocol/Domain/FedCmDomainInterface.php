@@ -3,6 +3,7 @@
 namespace ChromeDevtoolsProtocol\Domain;
 
 use ChromeDevtoolsProtocol\ContextInterface;
+use ChromeDevtoolsProtocol\Model\FedCm\ConfirmIdpSigninRequest;
 use ChromeDevtoolsProtocol\Model\FedCm\DialogShownEvent;
 use ChromeDevtoolsProtocol\Model\FedCm\DismissDialogRequest;
 use ChromeDevtoolsProtocol\Model\FedCm\EnableRequest;
@@ -20,6 +21,17 @@ use ChromeDevtoolsProtocol\SubscriptionInterface;
  */
 interface FedCmDomainInterface
 {
+	/**
+	 * Only valid if the dialog type is ConfirmIdpSignin. Acts as if the user had clicked the continue button.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param ConfirmIdpSigninRequest $request
+	 *
+	 * @return void
+	 */
+	public function confirmIdpSignin(ContextInterface $ctx, ConfirmIdpSigninRequest $request): void;
+
+
 	/**
 	 * Call FedCm.disable command.
 	 *

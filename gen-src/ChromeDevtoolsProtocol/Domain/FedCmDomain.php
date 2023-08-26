@@ -4,6 +4,7 @@ namespace ChromeDevtoolsProtocol\Domain;
 
 use ChromeDevtoolsProtocol\ContextInterface;
 use ChromeDevtoolsProtocol\InternalClientInterface;
+use ChromeDevtoolsProtocol\Model\FedCm\ConfirmIdpSigninRequest;
 use ChromeDevtoolsProtocol\Model\FedCm\DialogShownEvent;
 use ChromeDevtoolsProtocol\Model\FedCm\DismissDialogRequest;
 use ChromeDevtoolsProtocol\Model\FedCm\EnableRequest;
@@ -19,6 +20,12 @@ class FedCmDomain implements FedCmDomainInterface
 	public function __construct(InternalClientInterface $internalClient)
 	{
 		$this->internalClient = $internalClient;
+	}
+
+
+	public function confirmIdpSignin(ContextInterface $ctx, ConfirmIdpSigninRequest $request): void
+	{
+		$this->internalClient->executeCommand($ctx, 'FedCm.confirmIdpSignin', $request);
 	}
 
 
