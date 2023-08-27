@@ -19,7 +19,7 @@ final class AddressField implements \JsonSerializable
 	public $name;
 
 	/**
-	 * address field name, for example Jon Doe.
+	 * address field value, for example Jon Doe.
 	 *
 	 * @var string
 	 */

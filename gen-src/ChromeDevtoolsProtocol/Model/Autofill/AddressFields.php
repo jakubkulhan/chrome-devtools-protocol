@@ -3,19 +3,15 @@
 namespace ChromeDevtoolsProtocol\Model\Autofill;
 
 /**
- * Named type Autofill.Address.
+ * A list of address fields.
  *
  * @generated This file has been auto-generated, do not edit.
  *
  * @author Jakub Kulhan <jakub.kulhan@gmail.com>
  */
-final class Address implements \JsonSerializable
+final class AddressFields implements \JsonSerializable
 {
-	/**
-	 * fields and values defining an address.
-	 *
-	 * @var AddressField[]
-	 */
+	/** @var AddressField[] */
 	public $fields;
 
 
