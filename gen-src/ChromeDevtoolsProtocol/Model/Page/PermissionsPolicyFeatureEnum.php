@@ -24,6 +24,7 @@ final class PermissionsPolicyFeatureEnum
 	public const CH_ECT = 'ch-ect';
 	public const CH_PREFERS_COLOR_SCHEME = 'ch-prefers-color-scheme';
 	public const CH_PREFERS_REDUCED_MOTION = 'ch-prefers-reduced-motion';
+	public const CH_PREFERS_REDUCED_TRANSPARENCY = 'ch-prefers-reduced-transparency';
 	public const CH_RTT = 'ch-rtt';
 	public const CH_SAVE_DATA = 'ch-save-data';
 	public const CH_UA = 'ch-ua';
