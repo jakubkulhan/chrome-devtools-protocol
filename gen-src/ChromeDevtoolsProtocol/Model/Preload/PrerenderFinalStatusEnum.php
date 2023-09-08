@@ -40,7 +40,6 @@ final class PrerenderFinalStatusEnum
 	public const MIXED_CONTENT = 'MixedContent';
 	public const TRIGGER_BACKGROUNDED = 'TriggerBackgrounded';
 	public const MEMORY_LIMIT_EXCEEDED = 'MemoryLimitExceeded';
-	public const FAIL_TO_GET_MEMORY_USAGE = 'FailToGetMemoryUsage';
 	public const DATA_SAVER_ENABLED = 'DataSaverEnabled';
 	public const HAS_EFFECTIVE_URL = 'HasEffectiveUrl';
 	public const ACTIVATED_BEFORE_STARTED = 'ActivatedBeforeStarted';

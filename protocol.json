@@ -21838,7 +21838,6 @@
                         "MixedContent",
                         "TriggerBackgrounded",
                         "MemoryLimitExceeded",
-                        "FailToGetMemoryUsage",
                         "DataSaverEnabled",
                         "HasEffectiveUrl",
                         "ActivatedBeforeStarted",
