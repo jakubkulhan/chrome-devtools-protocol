@@ -22510,7 +22510,8 @@
                                 "typedarray",
                                 "arraybuffer",
                                 "node",
-                                "window"
+                                "window",
+                                "generator"
                             ]
                         },
                         {
