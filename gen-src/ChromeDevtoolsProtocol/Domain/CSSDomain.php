@@ -36,6 +36,8 @@ use ChromeDevtoolsProtocol\Model\CSS\SetKeyframeKeyResponse;
 use ChromeDevtoolsProtocol\Model\CSS\SetLocalFontsEnabledRequest;
 use ChromeDevtoolsProtocol\Model\CSS\SetMediaTextRequest;
 use ChromeDevtoolsProtocol\Model\CSS\SetMediaTextResponse;
+use ChromeDevtoolsProtocol\Model\CSS\SetPropertyRulePropertyNameRequest;
+use ChromeDevtoolsProtocol\Model\CSS\SetPropertyRulePropertyNameResponse;
 use ChromeDevtoolsProtocol\Model\CSS\SetRuleSelectorRequest;
 use ChromeDevtoolsProtocol\Model\CSS\SetRuleSelectorResponse;
 use ChromeDevtoolsProtocol\Model\CSS\SetScopeTextRequest;
@@ -209,6 +211,15 @@ class CSSDomain implements CSSDomainInterface
 	{
 		$response = $this->internalClient->executeCommand($ctx, 'CSS.setMediaText', $request);
 		return SetMediaTextResponse::fromJson($response);
+	}
+
+
+	public function setPropertyRulePropertyName(
+		ContextInterface $ctx,
+		SetPropertyRulePropertyNameRequest $request
+	): SetPropertyRulePropertyNameResponse {
+		$response = $this->internalClient->executeCommand($ctx, 'CSS.setPropertyRulePropertyName', $request);
+		return SetPropertyRulePropertyNameResponse::fromJson($response);
 	}
 
 

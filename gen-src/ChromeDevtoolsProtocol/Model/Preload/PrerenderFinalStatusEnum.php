@@ -28,7 +28,6 @@ final class PrerenderFinalStatusEnum
 	public const NAVIGATION_BAD_HTTP_STATUS = 'NavigationBadHttpStatus';
 	public const CLIENT_CERT_REQUESTED = 'ClientCertRequested';
 	public const NAVIGATION_REQUEST_NETWORK_ERROR = 'NavigationRequestNetworkError';
-	public const MAX_NUM_OF_RUNNING_PRERENDERS_EXCEEDED = 'MaxNumOfRunningPrerendersExceeded';
 	public const CANCEL_ALL_HOSTS_FOR_TESTING = 'CancelAllHostsForTesting';
 	public const DID_FAIL_LOAD = 'DidFailLoad';
 	public const STOP = 'Stop';
@@ -73,4 +72,7 @@ final class PrerenderFinalStatusEnum
 	public const RESOURCE_LOAD_BLOCKED_BY_CLIENT = 'ResourceLoadBlockedByClient';
 	public const SPECULATION_RULE_REMOVED = 'SpeculationRuleRemoved';
 	public const ACTIVATED_WITH_AUXILIARY_BROWSING_CONTEXTS = 'ActivatedWithAuxiliaryBrowsingContexts';
+	public const MAX_NUM_OF_RUNNING_EAGER_PRERENDERS_EXCEEDED = 'MaxNumOfRunningEagerPrerendersExceeded';
+	public const MAX_NUM_OF_RUNNING_NON_EAGER_PRERENDERS_EXCEEDED = 'MaxNumOfRunningNonEagerPrerendersExceeded';
+	public const MAX_NUM_OF_RUNNING_EMBEDDER_PRERENDERS_EXCEEDED = 'MaxNumOfRunningEmbedderPrerendersExceeded';
 }

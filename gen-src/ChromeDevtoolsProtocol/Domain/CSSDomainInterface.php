@@ -35,6 +35,8 @@ use ChromeDevtoolsProtocol\Model\CSS\SetKeyframeKeyResponse;
 use ChromeDevtoolsProtocol\Model\CSS\SetLocalFontsEnabledRequest;
 use ChromeDevtoolsProtocol\Model\CSS\SetMediaTextRequest;
 use ChromeDevtoolsProtocol\Model\CSS\SetMediaTextResponse;
+use ChromeDevtoolsProtocol\Model\CSS\SetPropertyRulePropertyNameRequest;
+use ChromeDevtoolsProtocol\Model\CSS\SetPropertyRulePropertyNameResponse;
 use ChromeDevtoolsProtocol\Model\CSS\SetRuleSelectorRequest;
 use ChromeDevtoolsProtocol\Model\CSS\SetRuleSelectorResponse;
 use ChromeDevtoolsProtocol\Model\CSS\SetScopeTextRequest;
@@ -290,6 +292,20 @@ interface CSSDomainInterface
 	 * @return SetMediaTextResponse
 	 */
 	public function setMediaText(ContextInterface $ctx, SetMediaTextRequest $request): SetMediaTextResponse;
+
+
+	/**
+	 * Modifies the property rule property name.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param SetPropertyRulePropertyNameRequest $request
+	 *
+	 * @return SetPropertyRulePropertyNameResponse
+	 */
+	public function setPropertyRulePropertyName(
+		ContextInterface $ctx,
+		SetPropertyRulePropertyNameRequest $request
+	): SetPropertyRulePropertyNameResponse;
 
 
 	/**
