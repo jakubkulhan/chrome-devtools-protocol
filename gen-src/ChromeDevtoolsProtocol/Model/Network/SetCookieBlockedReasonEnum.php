@@ -17,6 +17,7 @@ final class SetCookieBlockedReasonEnum
 	public const SAME_SITE_UNSPECIFIED_TREATED_AS_LAX = 'SameSiteUnspecifiedTreatedAsLax';
 	public const SAME_SITE_NONE_INSECURE = 'SameSiteNoneInsecure';
 	public const USER_PREFERENCES = 'UserPreferences';
+	public const THIRD_PARTY_PHASEOUT = 'ThirdPartyPhaseout';
 	public const THIRD_PARTY_BLOCKED_IN_FIRST_PARTY_SET = 'ThirdPartyBlockedInFirstPartySet';
 	public const SYNTAX_ERROR = 'SyntaxError';
 	public const SCHEME_NOT_SUPPORTED = 'SchemeNotSupported';
@@ -31,4 +32,5 @@ final class SetCookieBlockedReasonEnum
 	public const SAME_PARTY_CONFLICTS_WITH_OTHER_ATTRIBUTES = 'SamePartyConflictsWithOtherAttributes';
 	public const NAME_VALUE_PAIR_EXCEEDS_MAX_SIZE = 'NameValuePairExceedsMaxSize';
 	public const DISALLOWED_CHARACTER = 'DisallowedCharacter';
+	public const NO_COOKIE_CONTENT = 'NoCookieContent';
 }
