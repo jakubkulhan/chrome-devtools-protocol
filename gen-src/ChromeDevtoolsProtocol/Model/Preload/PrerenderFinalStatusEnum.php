@@ -40,7 +40,7 @@ final class PrerenderFinalStatusEnum
 	public const TRIGGER_BACKGROUNDED = 'TriggerBackgrounded';
 	public const MEMORY_LIMIT_EXCEEDED = 'MemoryLimitExceeded';
 	public const DATA_SAVER_ENABLED = 'DataSaverEnabled';
-	public const HAS_EFFECTIVE_URL = 'HasEffectiveUrl';
+	public const TRIGGER_URL_HAS_EFFECTIVE_URL = 'TriggerUrlHasEffectiveUrl';
 	public const ACTIVATED_BEFORE_STARTED = 'ActivatedBeforeStarted';
 	public const INACTIVE_PAGE_RESTRICTION = 'InactivePageRestriction';
 	public const START_FAILED = 'StartFailed';
@@ -75,4 +75,7 @@ final class PrerenderFinalStatusEnum
 	public const MAX_NUM_OF_RUNNING_EAGER_PRERENDERS_EXCEEDED = 'MaxNumOfRunningEagerPrerendersExceeded';
 	public const MAX_NUM_OF_RUNNING_NON_EAGER_PRERENDERS_EXCEEDED = 'MaxNumOfRunningNonEagerPrerendersExceeded';
 	public const MAX_NUM_OF_RUNNING_EMBEDDER_PRERENDERS_EXCEEDED = 'MaxNumOfRunningEmbedderPrerendersExceeded';
+	public const PRERENDERING_URL_HAS_EFFECTIVE_URL = 'PrerenderingUrlHasEffectiveUrl';
+	public const REDIRECTED_PRERENDERING_URL_HAS_EFFECTIVE_URL = 'RedirectedPrerenderingUrlHasEffectiveUrl';
+	public const ACTIVATION_URL_HAS_EFFECTIVE_URL = 'ActivationUrlHasEffectiveUrl';
 }
