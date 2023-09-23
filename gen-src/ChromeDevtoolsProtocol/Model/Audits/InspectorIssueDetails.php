@@ -62,6 +62,9 @@ final class InspectorIssueDetails implements \JsonSerializable
 	/** @var StylesheetLoadingIssueDetails|null */
 	public $stylesheetLoadingIssueDetails;
 
+	/** @var PropertyRuleIssueDetails|null */
+	public $propertyRuleIssueDetails;
+
 	/** @var FederatedAuthUserInfoRequestIssueDetails|null */
 	public $federatedAuthUserInfoRequestIssueDetails;
 
@@ -124,6 +127,9 @@ final class InspectorIssueDetails implements \JsonSerializable
 		if (isset($data->stylesheetLoadingIssueDetails)) {
 			$instance->stylesheetLoadingIssueDetails = StylesheetLoadingIssueDetails::fromJson($data->stylesheetLoadingIssueDetails);
 		}
+		if (isset($data->propertyRuleIssueDetails)) {
+			$instance->propertyRuleIssueDetails = PropertyRuleIssueDetails::fromJson($data->propertyRuleIssueDetails);
+		}
 		if (isset($data->federatedAuthUserInfoRequestIssueDetails)) {
 			$instance->federatedAuthUserInfoRequestIssueDetails = FederatedAuthUserInfoRequestIssueDetails::fromJson($data->federatedAuthUserInfoRequestIssueDetails);
 		}
@@ -184,6 +190,9 @@ final class InspectorIssueDetails implements \JsonSerializable
 		}
 		if ($this->stylesheetLoadingIssueDetails !== null) {
 			$data->stylesheetLoadingIssueDetails = $this->stylesheetLoadingIssueDetails->jsonSerialize();
+		}
+		if ($this->propertyRuleIssueDetails !== null) {
+			$data->propertyRuleIssueDetails = $this->propertyRuleIssueDetails->jsonSerialize();
 		}
 		if ($this->federatedAuthUserInfoRequestIssueDetails !== null) {
 			$data->federatedAuthUserInfoRequestIssueDetails = $this->federatedAuthUserInfoRequestIssueDetails->jsonSerialize();

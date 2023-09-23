@@ -17,4 +17,6 @@ final class InterestGroupAccessTypeEnum
 	public const LOADED = 'loaded';
 	public const BID = 'bid';
 	public const WIN = 'win';
+	public const ADDITIONAL_BID = 'additionalBid';
+	public const ADDITIONAL_BID_WIN = 'additionalBidWin';
 }
