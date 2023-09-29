@@ -23,7 +23,6 @@ final class CallFunctionOnRequestBuilder
 	private $objectGroup;
 	private $throwOnSideEffect;
 	private $uniqueContextId;
-	private $generateWebDriverValue;
 	private $serializationOptions;
 
 
@@ -48,7 +47,6 @@ final class CallFunctionOnRequestBuilder
 		$instance->objectGroup = $this->objectGroup;
 		$instance->throwOnSideEffect = $this->throwOnSideEffect;
 		$instance->uniqueContextId = $this->uniqueContextId;
-		$instance->generateWebDriverValue = $this->generateWebDriverValue;
 		$instance->serializationOptions = $this->serializationOptions;
 		return $instance;
 	}
@@ -194,18 +192,6 @@ final class CallFunctionOnRequestBuilder
 	public function setUniqueContextId($uniqueContextId): self
 	{
 		$this->uniqueContextId = $uniqueContextId;
-		return $this;
-	}
-
-
-	/**
-	 * @param bool|null $generateWebDriverValue
-	 *
-	 * @return self
-	 */
-	public function setGenerateWebDriverValue($generateWebDriverValue): self
-	{
-		$this->generateWebDriverValue = $generateWebDriverValue;
 		return $this;
 	}
 

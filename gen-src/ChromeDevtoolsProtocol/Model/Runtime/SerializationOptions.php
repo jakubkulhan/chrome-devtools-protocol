@@ -3,7 +3,7 @@
 namespace ChromeDevtoolsProtocol\Model\Runtime;
 
 /**
- * Represents options for serialization. Overrides `generatePreview`, `returnByValue` and `generateWebDriverValue`.
+ * Represents options for serialization. Overrides `generatePreview` and `returnByValue`.
  *
  * @generated This file has been auto-generated, do not edit.
  *

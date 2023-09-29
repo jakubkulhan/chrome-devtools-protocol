@@ -26,7 +26,6 @@ final class EvaluateRequestBuilder
 	private $replMode;
 	private $allowUnsafeEvalBlockedByCSP;
 	private $uniqueContextId;
-	private $generateWebDriverValue;
 	private $serializationOptions;
 
 
@@ -54,7 +53,6 @@ final class EvaluateRequestBuilder
 		$instance->replMode = $this->replMode;
 		$instance->allowUnsafeEvalBlockedByCSP = $this->allowUnsafeEvalBlockedByCSP;
 		$instance->uniqueContextId = $this->uniqueContextId;
-		$instance->generateWebDriverValue = $this->generateWebDriverValue;
 		$instance->serializationOptions = $this->serializationOptions;
 		return $instance;
 	}
@@ -236,18 +234,6 @@ final class EvaluateRequestBuilder
 	public function setUniqueContextId($uniqueContextId): self
 	{
 		$this->uniqueContextId = $uniqueContextId;
-		return $this;
-	}
-
-
-	/**
-	 * @param bool|null $generateWebDriverValue
-	 *
-	 * @return self
-	 */
-	public function setGenerateWebDriverValue($generateWebDriverValue): self
-	{
-		$this->generateWebDriverValue = $generateWebDriverValue;
 		return $this;
 	}
 

@@ -96,14 +96,7 @@ final class CallFunctionOnRequest implements \JsonSerializable
 	public $uniqueContextId;
 
 	/**
-	 * Deprecated. Use `serializationOptions: {serialization:"deep"}` instead. Whether the result should contain `webDriverValue`, serialized according to https://w3c.github.io/webdriver-bidi. This is mutually exclusive with `returnByValue`, but resulting `objectId` is still provided.
-	 *
-	 * @var bool|null
-	 */
-	public $generateWebDriverValue;
-
-	/**
-	 * Specifies the result serialization. If provided, overrides `generatePreview`, `returnByValue` and `generateWebDriverValue`.
+	 * Specifies the result serialization. If provided, overrides `generatePreview` and `returnByValue`.
 	 *
 	 * @var SerializationOptions|null
 	 */
@@ -156,9 +149,6 @@ final class CallFunctionOnRequest implements \JsonSerializable
 		if (isset($data->uniqueContextId)) {
 			$instance->uniqueContextId = (string)$data->uniqueContextId;
 		}
-		if (isset($data->generateWebDriverValue)) {
-			$instance->generateWebDriverValue = (bool)$data->generateWebDriverValue;
-		}
 		if (isset($data->serializationOptions)) {
 			$instance->serializationOptions = SerializationOptions::fromJson($data->serializationOptions);
 		}
@@ -207,9 +197,6 @@ final class CallFunctionOnRequest implements \JsonSerializable
 		}
 		if ($this->uniqueContextId !== null) {
 			$data->uniqueContextId = $this->uniqueContextId;
-		}
-		if ($this->generateWebDriverValue !== null) {
-			$data->generateWebDriverValue = $this->generateWebDriverValue;
 		}
 		if ($this->serializationOptions !== null) {
 			$data->serializationOptions = $this->serializationOptions->jsonSerialize();
