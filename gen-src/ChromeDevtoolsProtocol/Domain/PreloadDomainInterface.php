@@ -6,7 +6,6 @@ use ChromeDevtoolsProtocol\ContextInterface;
 use ChromeDevtoolsProtocol\Model\Preload\PrefetchStatusUpdatedEvent;
 use ChromeDevtoolsProtocol\Model\Preload\PreloadEnabledStateUpdatedEvent;
 use ChromeDevtoolsProtocol\Model\Preload\PreloadingAttemptSourcesUpdatedEvent;
-use ChromeDevtoolsProtocol\Model\Preload\PrerenderAttemptCompletedEvent;
 use ChromeDevtoolsProtocol\Model\Preload\PrerenderStatusUpdatedEvent;
 use ChromeDevtoolsProtocol\Model\Preload\RuleSetRemovedEvent;
 use ChromeDevtoolsProtocol\Model\Preload\RuleSetUpdatedEvent;
@@ -113,30 +112,6 @@ interface PreloadDomainInterface
 	 * @return PreloadingAttemptSourcesUpdatedEvent
 	 */
 	public function awaitPreloadingAttemptSourcesUpdated(ContextInterface $ctx): PreloadingAttemptSourcesUpdatedEvent;
-
-
-	/**
-	 * Fired when a prerender attempt is completed.
-	 *
-	 * Listener will be called whenever event Preload.prerenderAttemptCompleted is fired.
-	 *
-	 * @param callable $listener
-	 *
-	 * @return SubscriptionInterface
-	 */
-	public function addPrerenderAttemptCompletedListener(callable $listener): SubscriptionInterface;
-
-
-	/**
-	 * Fired when a prerender attempt is completed.
-	 *
-	 * Method will block until first Preload.prerenderAttemptCompleted event is fired.
-	 *
-	 * @param ContextInterface $ctx
-	 *
-	 * @return PrerenderAttemptCompletedEvent
-	 */
-	public function awaitPrerenderAttemptCompleted(ContextInterface $ctx): PrerenderAttemptCompletedEvent;
 
 
 	/**

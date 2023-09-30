@@ -12,7 +12,7 @@ namespace ChromeDevtoolsProtocol\Model\Storage;
 final class InterestGroupAd implements \JsonSerializable
 {
 	/** @var string */
-	public $renderUrl;
+	public $renderURL;
 
 	/** @var string|null */
 	public $metadata;
@@ -25,8 +25,8 @@ final class InterestGroupAd implements \JsonSerializable
 	public static function fromJson($data)
 	{
 		$instance = new static();
-		if (isset($data->renderUrl)) {
-			$instance->renderUrl = (string)$data->renderUrl;
+		if (isset($data->renderURL)) {
+			$instance->renderURL = (string)$data->renderURL;
 		}
 		if (isset($data->metadata)) {
 			$instance->metadata = (string)$data->metadata;
@@ -38,8 +38,8 @@ final class InterestGroupAd implements \JsonSerializable
 	public function jsonSerialize()
 	{
 		$data = new \stdClass();
-		if ($this->renderUrl !== null) {
-			$data->renderUrl = $this->renderUrl;
+		if ($this->renderURL !== null) {
+			$data->renderURL = $this->renderURL;
 		}
 		if ($this->metadata !== null) {
 			$data->metadata = $this->metadata;

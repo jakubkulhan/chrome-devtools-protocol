@@ -24,16 +24,16 @@ final class InterestGroupDetails implements \JsonSerializable
 	public $joiningOrigin;
 
 	/** @var string|null */
-	public $biddingUrl;
+	public $biddingLogicURL;
 
 	/** @var string|null */
-	public $biddingWasmHelperUrl;
+	public $biddingWasmHelperURL;
 
 	/** @var string|null */
-	public $updateUrl;
+	public $updateURL;
 
 	/** @var string|null */
-	public $trustedBiddingSignalsUrl;
+	public $trustedBiddingSignalsURL;
 
 	/** @var string[] */
 	public $trustedBiddingSignalsKeys;
@@ -67,17 +67,17 @@ final class InterestGroupDetails implements \JsonSerializable
 		if (isset($data->joiningOrigin)) {
 			$instance->joiningOrigin = (string)$data->joiningOrigin;
 		}
-		if (isset($data->biddingUrl)) {
-			$instance->biddingUrl = (string)$data->biddingUrl;
+		if (isset($data->biddingLogicURL)) {
+			$instance->biddingLogicURL = (string)$data->biddingLogicURL;
 		}
-		if (isset($data->biddingWasmHelperUrl)) {
-			$instance->biddingWasmHelperUrl = (string)$data->biddingWasmHelperUrl;
+		if (isset($data->biddingWasmHelperURL)) {
+			$instance->biddingWasmHelperURL = (string)$data->biddingWasmHelperURL;
 		}
-		if (isset($data->updateUrl)) {
-			$instance->updateUrl = (string)$data->updateUrl;
+		if (isset($data->updateURL)) {
+			$instance->updateURL = (string)$data->updateURL;
 		}
-		if (isset($data->trustedBiddingSignalsUrl)) {
-			$instance->trustedBiddingSignalsUrl = (string)$data->trustedBiddingSignalsUrl;
+		if (isset($data->trustedBiddingSignalsURL)) {
+			$instance->trustedBiddingSignalsURL = (string)$data->trustedBiddingSignalsURL;
 		}
 		if (isset($data->trustedBiddingSignalsKeys)) {
 			$instance->trustedBiddingSignalsKeys = [];
@@ -119,17 +119,17 @@ final class InterestGroupDetails implements \JsonSerializable
 		if ($this->joiningOrigin !== null) {
 			$data->joiningOrigin = $this->joiningOrigin;
 		}
-		if ($this->biddingUrl !== null) {
-			$data->biddingUrl = $this->biddingUrl;
+		if ($this->biddingLogicURL !== null) {
+			$data->biddingLogicURL = $this->biddingLogicURL;
 		}
-		if ($this->biddingWasmHelperUrl !== null) {
-			$data->biddingWasmHelperUrl = $this->biddingWasmHelperUrl;
+		if ($this->biddingWasmHelperURL !== null) {
+			$data->biddingWasmHelperURL = $this->biddingWasmHelperURL;
 		}
-		if ($this->updateUrl !== null) {
-			$data->updateUrl = $this->updateUrl;
+		if ($this->updateURL !== null) {
+			$data->updateURL = $this->updateURL;
 		}
-		if ($this->trustedBiddingSignalsUrl !== null) {
-			$data->trustedBiddingSignalsUrl = $this->trustedBiddingSignalsUrl;
+		if ($this->trustedBiddingSignalsURL !== null) {
+			$data->trustedBiddingSignalsURL = $this->trustedBiddingSignalsURL;
 		}
 		if ($this->trustedBiddingSignalsKeys !== null) {
 			$data->trustedBiddingSignalsKeys = [];
