@@ -16,7 +16,6 @@ final class PrerenderFinalStatusEnum
 	public const LOW_END_DEVICE = 'LowEndDevice';
 	public const INVALID_SCHEME_REDIRECT = 'InvalidSchemeRedirect';
 	public const INVALID_SCHEME_NAVIGATION = 'InvalidSchemeNavigation';
-	public const IN_PROGRESS_NAVIGATION = 'InProgressNavigation';
 	public const NAVIGATION_REQUEST_BLOCKED_BY_CSP = 'NavigationRequestBlockedByCsp';
 	public const MAIN_FRAME_NAVIGATION = 'MainFrameNavigation';
 	public const MOJO_BINDER_POLICY = 'MojoBinderPolicy';
