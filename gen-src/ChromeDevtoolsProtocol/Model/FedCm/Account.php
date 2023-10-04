@@ -30,7 +30,7 @@ final class Account implements \JsonSerializable
 	public $idpConfigUrl;
 
 	/** @var string */
-	public $idpSigninUrl;
+	public $idpLoginUrl;
 
 	/** @var string */
 	public $loginState;
@@ -71,8 +71,8 @@ final class Account implements \JsonSerializable
 		if (isset($data->idpConfigUrl)) {
 			$instance->idpConfigUrl = (string)$data->idpConfigUrl;
 		}
-		if (isset($data->idpSigninUrl)) {
-			$instance->idpSigninUrl = (string)$data->idpSigninUrl;
+		if (isset($data->idpLoginUrl)) {
+			$instance->idpLoginUrl = (string)$data->idpLoginUrl;
 		}
 		if (isset($data->loginState)) {
 			$instance->loginState = (string)$data->loginState;
@@ -108,8 +108,8 @@ final class Account implements \JsonSerializable
 		if ($this->idpConfigUrl !== null) {
 			$data->idpConfigUrl = $this->idpConfigUrl;
 		}
-		if ($this->idpSigninUrl !== null) {
-			$data->idpSigninUrl = $this->idpSigninUrl;
+		if ($this->idpLoginUrl !== null) {
+			$data->idpLoginUrl = $this->idpLoginUrl;
 		}
 		if ($this->loginState !== null) {
 			$data->loginState = $this->loginState;

@@ -3,13 +3,13 @@
 namespace ChromeDevtoolsProtocol\Model\FedCm;
 
 /**
- * Request for FedCm.confirmIdpSignin command.
+ * Request for FedCm.confirmIdpLogin command.
  *
  * @generated This file has been auto-generated, do not edit.
  *
  * @author Jakub Kulhan <jakub.kulhan@gmail.com>
  */
-final class ConfirmIdpSigninRequest implements \JsonSerializable
+final class ConfirmIdpLoginRequest implements \JsonSerializable
 {
 	/** @var string */
 	public $dialogId;
@@ -42,10 +42,10 @@ final class ConfirmIdpSigninRequest implements \JsonSerializable
 	/**
 	 * Create new instance using builder.
 	 *
-	 * @return ConfirmIdpSigninRequestBuilder
+	 * @return ConfirmIdpLoginRequestBuilder
 	 */
-	public static function builder(): ConfirmIdpSigninRequestBuilder
+	public static function builder(): ConfirmIdpLoginRequestBuilder
 	{
-		return new ConfirmIdpSigninRequestBuilder();
+		return new ConfirmIdpLoginRequestBuilder();
 	}
 }

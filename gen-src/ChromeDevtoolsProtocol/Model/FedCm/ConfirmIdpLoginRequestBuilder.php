@@ -9,7 +9,7 @@ use ChromeDevtoolsProtocol\Exception\BuilderException;
  *
  * @author Jakub Kulhan <jakub.kulhan@gmail.com>
  */
-final class ConfirmIdpSigninRequestBuilder
+final class ConfirmIdpLoginRequestBuilder
 {
 	private $dialogId;
 
@@ -17,9 +17,9 @@ final class ConfirmIdpSigninRequestBuilder
 	/**
 	 * Validate non-optional parameters and return new instance.
 	 */
-	public function build(): ConfirmIdpSigninRequest
+	public function build(): ConfirmIdpLoginRequest
 	{
-		$instance = new ConfirmIdpSigninRequest();
+		$instance = new ConfirmIdpLoginRequest();
 		if ($this->dialogId === null) {
 			throw new BuilderException('Property [dialogId] is required.');
 		}

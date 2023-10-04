@@ -10695,7 +10695,7 @@
                     "enum": [
                         "AccountChooser",
                         "AutoReauthn",
-                        "ConfirmIdpSignin"
+                        "ConfirmIdpLogin"
                     ]
                 },
                 {
@@ -10728,7 +10728,7 @@
                             "type": "string"
                         },
                         {
-                            "name": "idpSigninUrl",
+                            "name": "idpLoginUrl",
                             "type": "string"
                         },
                         {
@@ -10783,8 +10783,8 @@
             ],
             "commands": [
                 {
-                    "name": "confirmIdpSignin",
-                    "description": "Only valid if the dialog type is ConfirmIdpSignin. Acts as if the user had clicked the continue button.",
+                    "name": "confirmIdpLogin",
+                    "description": "Only valid if the dialog type is ConfirmIdpLogin. Acts as if the user had clicked the continue button.",
                     "parameters": [
                         {
                             "name": "dialogId",
@@ -24867,7 +24867,8 @@
                         "bid",
                         "win",
                         "additionalBid",
-                        "additionalBidWin"
+                        "additionalBidWin",
+                        "clear"
                     ]
                 },
                 {
