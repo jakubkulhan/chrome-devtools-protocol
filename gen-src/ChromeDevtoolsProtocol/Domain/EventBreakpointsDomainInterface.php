@@ -7,7 +7,7 @@ use ChromeDevtoolsProtocol\Model\EventBreakpoints\RemoveInstrumentationBreakpoin
 use ChromeDevtoolsProtocol\Model\EventBreakpoints\SetInstrumentationBreakpointRequest;
 
 /**
- * EventBreakpoints permits setting breakpoints on particular operations and events in targets that run JavaScript but do not have a DOM. JavaScript execution will stop on these operations as if there was a regular breakpoint set.
+ * EventBreakpoints permits setting JavaScript breakpoints on operations and events occurring in native code invoked from JavaScript. Once breakpoint is hit, it is reported through Debugger domain, similarly to regular breakpoints being hit.
  *
  * @experimental
  *
@@ -17,6 +17,16 @@ use ChromeDevtoolsProtocol\Model\EventBreakpoints\SetInstrumentationBreakpointRe
  */
 interface EventBreakpointsDomainInterface
 {
+	/**
+	 * Removes all breakpoints
+	 *
+	 * @param ContextInterface $ctx
+	 *
+	 * @return void
+	 */
+	public function disable(ContextInterface $ctx): void;
+
+
 	/**
 	 * Removes breakpoint on particular native event.
 	 *

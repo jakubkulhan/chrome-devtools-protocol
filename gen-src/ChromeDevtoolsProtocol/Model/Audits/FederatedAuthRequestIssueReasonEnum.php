@@ -46,4 +46,5 @@ final class FederatedAuthRequestIssueReasonEnum
 	public const RP_PAGE_NOT_VISIBLE = 'RpPageNotVisible';
 	public const SILENT_MEDIATION_FAILURE = 'SilentMediationFailure';
 	public const THIRD_PARTY_COOKIES_BLOCKED = 'ThirdPartyCookiesBlocked';
+	public const NOT_SIGNED_IN_WITH_IDP = 'NotSignedInWithIdp';
 }

@@ -19,6 +19,13 @@ class EventBreakpointsDomain implements EventBreakpointsDomainInterface
 	}
 
 
+	public function disable(ContextInterface $ctx): void
+	{
+		$request = new \stdClass();
+		$this->internalClient->executeCommand($ctx, 'EventBreakpoints.disable', $request);
+	}
+
+
 	public function removeInstrumentationBreakpoint(
 		ContextInterface $ctx,
 		RemoveInstrumentationBreakpointRequest $request
