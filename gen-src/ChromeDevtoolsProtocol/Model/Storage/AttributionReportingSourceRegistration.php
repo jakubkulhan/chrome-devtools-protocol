@@ -17,24 +17,17 @@ final class AttributionReportingSourceRegistration implements \JsonSerializable
 	/**
 	 * duration in seconds
 	 *
-	 * @var int|null
+	 * @var int
 	 */
 	public $expiry;
 
-	/**
-	 * eventReportWindow and eventReportWindows are mutually exclusive duration in seconds
-	 *
-	 * @var int|null
-	 */
-	public $eventReportWindow;
-
-	/** @var AttributionReportingEventReportWindows|null */
+	/** @var AttributionReportingEventReportWindows */
 	public $eventReportWindows;
 
 	/**
 	 * duration in seconds
 	 *
-	 * @var int|null
+	 * @var int
 	 */
 	public $aggregatableReportWindow;
 
@@ -78,9 +71,6 @@ final class AttributionReportingSourceRegistration implements \JsonSerializable
 		}
 		if (isset($data->expiry)) {
 			$instance->expiry = (int)$data->expiry;
-		}
-		if (isset($data->eventReportWindow)) {
-			$instance->eventReportWindow = (int)$data->eventReportWindow;
 		}
 		if (isset($data->eventReportWindows)) {
 			$instance->eventReportWindows = AttributionReportingEventReportWindows::fromJson($data->eventReportWindows);
@@ -136,9 +126,6 @@ final class AttributionReportingSourceRegistration implements \JsonSerializable
 		}
 		if ($this->expiry !== null) {
 			$data->expiry = $this->expiry;
-		}
-		if ($this->eventReportWindow !== null) {
-			$data->eventReportWindow = $this->eventReportWindow;
 		}
 		if ($this->eventReportWindows !== null) {
 			$data->eventReportWindows = $this->eventReportWindows->jsonSerialize();
