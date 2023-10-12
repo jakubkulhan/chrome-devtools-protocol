@@ -68,7 +68,6 @@ final class PrerenderFinalStatusEnum
 	public const MEMORY_PRESSURE_ON_TRIGGER = 'MemoryPressureOnTrigger';
 	public const MEMORY_PRESSURE_AFTER_TRIGGERED = 'MemoryPressureAfterTriggered';
 	public const PRERENDERING_DISABLED_BY_DEV_TOOLS = 'PrerenderingDisabledByDevTools';
-	public const RESOURCE_LOAD_BLOCKED_BY_CLIENT = 'ResourceLoadBlockedByClient';
 	public const SPECULATION_RULE_REMOVED = 'SpeculationRuleRemoved';
 	public const ACTIVATED_WITH_AUXILIARY_BROWSING_CONTEXTS = 'ActivatedWithAuxiliaryBrowsingContexts';
 	public const MAX_NUM_OF_RUNNING_EAGER_PRERENDERS_EXCEEDED = 'MaxNumOfRunningEagerPrerendersExceeded';
