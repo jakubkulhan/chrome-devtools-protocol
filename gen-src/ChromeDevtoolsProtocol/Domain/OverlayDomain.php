@@ -36,6 +36,7 @@ use ChromeDevtoolsProtocol\Model\Overlay\SetShowScrollBottleneckRectsRequest;
 use ChromeDevtoolsProtocol\Model\Overlay\SetShowScrollSnapOverlaysRequest;
 use ChromeDevtoolsProtocol\Model\Overlay\SetShowViewportSizeOnResizeRequest;
 use ChromeDevtoolsProtocol\Model\Overlay\SetShowWebVitalsRequest;
+use ChromeDevtoolsProtocol\Model\Overlay\SetShowWindowControlsOverlayRequest;
 use ChromeDevtoolsProtocol\SubscriptionInterface;
 
 class OverlayDomain implements OverlayDomainInterface
@@ -229,6 +230,12 @@ class OverlayDomain implements OverlayDomainInterface
 	public function setShowWebVitals(ContextInterface $ctx, SetShowWebVitalsRequest $request): void
 	{
 		$this->internalClient->executeCommand($ctx, 'Overlay.setShowWebVitals', $request);
+	}
+
+
+	public function setShowWindowControlsOverlay(ContextInterface $ctx, SetShowWindowControlsOverlayRequest $request): void
+	{
+		$this->internalClient->executeCommand($ctx, 'Overlay.setShowWindowControlsOverlay', $request);
 	}
 
 

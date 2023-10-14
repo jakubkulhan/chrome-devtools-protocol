@@ -35,6 +35,7 @@ use ChromeDevtoolsProtocol\Model\Overlay\SetShowScrollBottleneckRectsRequest;
 use ChromeDevtoolsProtocol\Model\Overlay\SetShowScrollSnapOverlaysRequest;
 use ChromeDevtoolsProtocol\Model\Overlay\SetShowViewportSizeOnResizeRequest;
 use ChromeDevtoolsProtocol\Model\Overlay\SetShowWebVitalsRequest;
+use ChromeDevtoolsProtocol\Model\Overlay\SetShowWindowControlsOverlayRequest;
 use ChromeDevtoolsProtocol\SubscriptionInterface;
 
 /**
@@ -363,6 +364,17 @@ interface OverlayDomainInterface
 	 * @return void
 	 */
 	public function setShowWebVitals(ContextInterface $ctx, SetShowWebVitalsRequest $request): void;
+
+
+	/**
+	 * Show Window Controls Overlay for PWA
+	 *
+	 * @param ContextInterface $ctx
+	 * @param SetShowWindowControlsOverlayRequest $request
+	 *
+	 * @return void
+	 */
+	public function setShowWindowControlsOverlay(ContextInterface $ctx, SetShowWindowControlsOverlayRequest $request): void;
 
 
 	/**
