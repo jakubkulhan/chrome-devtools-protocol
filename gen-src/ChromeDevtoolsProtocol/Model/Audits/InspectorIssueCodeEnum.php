@@ -27,6 +27,7 @@ final class InspectorIssueCodeEnum
 	public const CLIENT_HINT_ISSUE = 'ClientHintIssue';
 	public const FEDERATED_AUTH_REQUEST_ISSUE = 'FederatedAuthRequestIssue';
 	public const BOUNCE_TRACKING_ISSUE = 'BounceTrackingIssue';
+	public const COOKIE_DEPRECATION_METADATA_ISSUE = 'CookieDeprecationMetadataIssue';
 	public const STYLESHEET_LOADING_ISSUE = 'StylesheetLoadingIssue';
 	public const FEDERATED_AUTH_USER_INFO_REQUEST_ISSUE = 'FederatedAuthUserInfoRequestIssue';
 	public const PROPERTY_RULE_ISSUE = 'PropertyRuleIssue';

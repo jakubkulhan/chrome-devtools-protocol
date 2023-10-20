@@ -5,6 +5,8 @@ namespace ChromeDevtoolsProtocol\Domain;
 use ChromeDevtoolsProtocol\ContextInterface;
 use ChromeDevtoolsProtocol\InternalClientInterface;
 use ChromeDevtoolsProtocol\Model\Emulation\CanEmulateResponse;
+use ChromeDevtoolsProtocol\Model\Emulation\GetOverriddenSensorInformationRequest;
+use ChromeDevtoolsProtocol\Model\Emulation\GetOverriddenSensorInformationResponse;
 use ChromeDevtoolsProtocol\Model\Emulation\SetAutoDarkModeOverrideRequest;
 use ChromeDevtoolsProtocol\Model\Emulation\SetAutomationOverrideRequest;
 use ChromeDevtoolsProtocol\Model\Emulation\SetCPUThrottlingRateRequest;
@@ -24,6 +26,8 @@ use ChromeDevtoolsProtocol\Model\Emulation\SetNavigatorOverridesRequest;
 use ChromeDevtoolsProtocol\Model\Emulation\SetPageScaleFactorRequest;
 use ChromeDevtoolsProtocol\Model\Emulation\SetScriptExecutionDisabledRequest;
 use ChromeDevtoolsProtocol\Model\Emulation\SetScrollbarsHiddenRequest;
+use ChromeDevtoolsProtocol\Model\Emulation\SetSensorOverrideEnabledRequest;
+use ChromeDevtoolsProtocol\Model\Emulation\SetSensorOverrideReadingsRequest;
 use ChromeDevtoolsProtocol\Model\Emulation\SetTimezoneOverrideRequest;
 use ChromeDevtoolsProtocol\Model\Emulation\SetTouchEmulationEnabledRequest;
 use ChromeDevtoolsProtocol\Model\Emulation\SetUserAgentOverrideRequest;
@@ -71,6 +75,15 @@ class EmulationDomain implements EmulationDomainInterface
 	{
 		$request = new \stdClass();
 		$this->internalClient->executeCommand($ctx, 'Emulation.clearIdleOverride', $request);
+	}
+
+
+	public function getOverriddenSensorInformation(
+		ContextInterface $ctx,
+		GetOverriddenSensorInformationRequest $request
+	): GetOverriddenSensorInformationResponse {
+		$response = $this->internalClient->executeCommand($ctx, 'Emulation.getOverriddenSensorInformation', $request);
+		return GetOverriddenSensorInformationResponse::fromJson($response);
 	}
 
 
@@ -196,6 +209,18 @@ class EmulationDomain implements EmulationDomainInterface
 	public function setScrollbarsHidden(ContextInterface $ctx, SetScrollbarsHiddenRequest $request): void
 	{
 		$this->internalClient->executeCommand($ctx, 'Emulation.setScrollbarsHidden', $request);
+	}
+
+
+	public function setSensorOverrideEnabled(ContextInterface $ctx, SetSensorOverrideEnabledRequest $request): void
+	{
+		$this->internalClient->executeCommand($ctx, 'Emulation.setSensorOverrideEnabled', $request);
+	}
+
+
+	public function setSensorOverrideReadings(ContextInterface $ctx, SetSensorOverrideReadingsRequest $request): void
+	{
+		$this->internalClient->executeCommand($ctx, 'Emulation.setSensorOverrideReadings', $request);
 	}
 
 

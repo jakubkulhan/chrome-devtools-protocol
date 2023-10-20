@@ -4,6 +4,8 @@ namespace ChromeDevtoolsProtocol\Domain;
 
 use ChromeDevtoolsProtocol\ContextInterface;
 use ChromeDevtoolsProtocol\Model\Emulation\CanEmulateResponse;
+use ChromeDevtoolsProtocol\Model\Emulation\GetOverriddenSensorInformationRequest;
+use ChromeDevtoolsProtocol\Model\Emulation\GetOverriddenSensorInformationResponse;
 use ChromeDevtoolsProtocol\Model\Emulation\SetAutoDarkModeOverrideRequest;
 use ChromeDevtoolsProtocol\Model\Emulation\SetAutomationOverrideRequest;
 use ChromeDevtoolsProtocol\Model\Emulation\SetCPUThrottlingRateRequest;
@@ -23,6 +25,8 @@ use ChromeDevtoolsProtocol\Model\Emulation\SetNavigatorOverridesRequest;
 use ChromeDevtoolsProtocol\Model\Emulation\SetPageScaleFactorRequest;
 use ChromeDevtoolsProtocol\Model\Emulation\SetScriptExecutionDisabledRequest;
 use ChromeDevtoolsProtocol\Model\Emulation\SetScrollbarsHiddenRequest;
+use ChromeDevtoolsProtocol\Model\Emulation\SetSensorOverrideEnabledRequest;
+use ChromeDevtoolsProtocol\Model\Emulation\SetSensorOverrideReadingsRequest;
 use ChromeDevtoolsProtocol\Model\Emulation\SetTimezoneOverrideRequest;
 use ChromeDevtoolsProtocol\Model\Emulation\SetTouchEmulationEnabledRequest;
 use ChromeDevtoolsProtocol\Model\Emulation\SetUserAgentOverrideRequest;
@@ -79,6 +83,20 @@ interface EmulationDomainInterface
 	 * @return void
 	 */
 	public function clearIdleOverride(ContextInterface $ctx): void;
+
+
+	/**
+	 * Call Emulation.getOverriddenSensorInformation command.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param GetOverriddenSensorInformationRequest $request
+	 *
+	 * @return GetOverriddenSensorInformationResponse
+	 */
+	public function getOverriddenSensorInformation(
+		ContextInterface $ctx,
+		GetOverriddenSensorInformationRequest $request
+	): GetOverriddenSensorInformationResponse;
 
 
 	/**
@@ -304,6 +322,28 @@ interface EmulationDomainInterface
 	 * @return void
 	 */
 	public function setScrollbarsHidden(ContextInterface $ctx, SetScrollbarsHiddenRequest $request): void;
+
+
+	/**
+	 * Overrides a platform sensor of a given type. If |enabled| is true, calls to Sensor.start() will use a virtual sensor as backend rather than fetching data from a real hardware sensor. Otherwise, existing virtual sensor-backend Sensor objects will fire an error event and new calls to Sensor.start() will attempt to use a real sensor instead.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param SetSensorOverrideEnabledRequest $request
+	 *
+	 * @return void
+	 */
+	public function setSensorOverrideEnabled(ContextInterface $ctx, SetSensorOverrideEnabledRequest $request): void;
+
+
+	/**
+	 * Updates the sensor readings reported by a sensor type previously overriden by setSensorOverrideEnabled.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param SetSensorOverrideReadingsRequest $request
+	 *
+	 * @return void
+	 */
+	public function setSensorOverrideReadings(ContextInterface $ctx, SetSensorOverrideReadingsRequest $request): void;
 
 
 	/**

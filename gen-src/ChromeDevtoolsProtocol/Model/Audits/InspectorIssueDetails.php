@@ -59,6 +59,9 @@ final class InspectorIssueDetails implements \JsonSerializable
 	/** @var BounceTrackingIssueDetails|null */
 	public $bounceTrackingIssueDetails;
 
+	/** @var CookieDeprecationMetadataIssueDetails|null */
+	public $cookieDeprecationMetadataIssueDetails;
+
 	/** @var StylesheetLoadingIssueDetails|null */
 	public $stylesheetLoadingIssueDetails;
 
@@ -124,6 +127,9 @@ final class InspectorIssueDetails implements \JsonSerializable
 		if (isset($data->bounceTrackingIssueDetails)) {
 			$instance->bounceTrackingIssueDetails = BounceTrackingIssueDetails::fromJson($data->bounceTrackingIssueDetails);
 		}
+		if (isset($data->cookieDeprecationMetadataIssueDetails)) {
+			$instance->cookieDeprecationMetadataIssueDetails = CookieDeprecationMetadataIssueDetails::fromJson($data->cookieDeprecationMetadataIssueDetails);
+		}
 		if (isset($data->stylesheetLoadingIssueDetails)) {
 			$instance->stylesheetLoadingIssueDetails = StylesheetLoadingIssueDetails::fromJson($data->stylesheetLoadingIssueDetails);
 		}
@@ -187,6 +193,9 @@ final class InspectorIssueDetails implements \JsonSerializable
 		}
 		if ($this->bounceTrackingIssueDetails !== null) {
 			$data->bounceTrackingIssueDetails = $this->bounceTrackingIssueDetails->jsonSerialize();
+		}
+		if ($this->cookieDeprecationMetadataIssueDetails !== null) {
+			$data->cookieDeprecationMetadataIssueDetails = $this->cookieDeprecationMetadataIssueDetails->jsonSerialize();
 		}
 		if ($this->stylesheetLoadingIssueDetails !== null) {
 			$data->stylesheetLoadingIssueDetails = $this->stylesheetLoadingIssueDetails->jsonSerialize();

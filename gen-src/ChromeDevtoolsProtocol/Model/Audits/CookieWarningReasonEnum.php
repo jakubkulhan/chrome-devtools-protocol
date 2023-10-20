@@ -22,4 +22,5 @@ final class CookieWarningReasonEnum
 	public const WARN_ATTRIBUTE_VALUE_EXCEEDS_MAX_SIZE = 'WarnAttributeValueExceedsMaxSize';
 	public const WARN_DOMAIN_NON_A_S_C_I_I = 'WarnDomainNonASCII';
 	public const WARN_THIRD_PARTY_PHASEOUT = 'WarnThirdPartyPhaseout';
+	public const WARN_CROSS_SITE_REDIRECT_DOWNGRADE_CHANGES_INCLUSION = 'WarnCrossSiteRedirectDowngradeChangesInclusion';
 }
