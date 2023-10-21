@@ -32,6 +32,9 @@ final class BackForwardCacheNotRestoredExplanation implements \JsonSerializable
 	 */
 	public $context;
 
+	/** @var BackForwardCacheBlockingDetails[]|null */
+	public $details;
+
 
 	/**
 	 * @param object $data
@@ -49,6 +52,12 @@ final class BackForwardCacheNotRestoredExplanation implements \JsonSerializable
 		if (isset($data->context)) {
 			$instance->context = (string)$data->context;
 		}
+		if (isset($data->details)) {
+			$instance->details = [];
+			foreach ($data->details as $item) {
+				$instance->details[] = BackForwardCacheBlockingDetails::fromJson($item);
+			}
+		}
 		return $instance;
 	}
 
@@ -64,6 +73,12 @@ final class BackForwardCacheNotRestoredExplanation implements \JsonSerializable
 		}
 		if ($this->context !== null) {
 			$data->context = $this->context;
+		}
+		if ($this->details !== null) {
+			$data->details = [];
+			foreach ($this->details as $item) {
+				$data->details[] = $item->jsonSerialize();
+			}
 		}
 		return $data;
 	}
