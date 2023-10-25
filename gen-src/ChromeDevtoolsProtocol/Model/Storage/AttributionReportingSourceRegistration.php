@@ -58,6 +58,9 @@ final class AttributionReportingSourceRegistration implements \JsonSerializable
 	/** @var string */
 	public $debugKey;
 
+	/** @var string */
+	public $triggerDataMatching;
+
 
 	/**
 	 * @param object $data
@@ -114,6 +117,9 @@ final class AttributionReportingSourceRegistration implements \JsonSerializable
 		if (isset($data->debugKey)) {
 			$instance->debugKey = (string)$data->debugKey;
 		}
+		if (isset($data->triggerDataMatching)) {
+			$instance->triggerDataMatching = (string)$data->triggerDataMatching;
+		}
 		return $instance;
 	}
 
@@ -168,6 +174,9 @@ final class AttributionReportingSourceRegistration implements \JsonSerializable
 		}
 		if ($this->debugKey !== null) {
 			$data->debugKey = $this->debugKey;
+		}
+		if ($this->triggerDataMatching !== null) {
+			$data->triggerDataMatching = $this->triggerDataMatching;
 		}
 		return $data;
 	}
