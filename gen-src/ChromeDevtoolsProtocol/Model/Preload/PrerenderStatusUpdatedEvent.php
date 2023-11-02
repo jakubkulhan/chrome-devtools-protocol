@@ -27,6 +27,9 @@ final class PrerenderStatusUpdatedEvent implements \JsonSerializable
 	 */
 	public $disallowedMojoInterface;
 
+	/** @var PrerenderMismatchedHeaders[]|null */
+	public $mismatchedHeaders;
+
 
 	/**
 	 * @param object $data
@@ -47,6 +50,12 @@ final class PrerenderStatusUpdatedEvent implements \JsonSerializable
 		if (isset($data->disallowedMojoInterface)) {
 			$instance->disallowedMojoInterface = (string)$data->disallowedMojoInterface;
 		}
+		if (isset($data->mismatchedHeaders)) {
+			$instance->mismatchedHeaders = [];
+			foreach ($data->mismatchedHeaders as $item) {
+				$instance->mismatchedHeaders[] = PrerenderMismatchedHeaders::fromJson($item);
+			}
+		}
 		return $instance;
 	}
 
@@ -65,6 +74,12 @@ final class PrerenderStatusUpdatedEvent implements \JsonSerializable
 		}
 		if ($this->disallowedMojoInterface !== null) {
 			$data->disallowedMojoInterface = $this->disallowedMojoInterface;
+		}
+		if ($this->mismatchedHeaders !== null) {
+			$data->mismatchedHeaders = [];
+			foreach ($this->mismatchedHeaders as $item) {
+				$data->mismatchedHeaders[] = $item->jsonSerialize();
+			}
 		}
 		return $data;
 	}
