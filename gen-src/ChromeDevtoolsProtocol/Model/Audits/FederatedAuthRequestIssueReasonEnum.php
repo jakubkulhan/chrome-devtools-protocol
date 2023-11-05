@@ -39,6 +39,8 @@ final class FederatedAuthRequestIssueReasonEnum
 	public const ID_TOKEN_HTTP_NOT_FOUND = 'IdTokenHttpNotFound';
 	public const ID_TOKEN_NO_RESPONSE = 'IdTokenNoResponse';
 	public const ID_TOKEN_INVALID_RESPONSE = 'IdTokenInvalidResponse';
+	public const ID_TOKEN_IDP_ERROR_RESPONSE = 'IdTokenIdpErrorResponse';
+	public const ID_TOKEN_CROSS_SITE_IDP_ERROR_RESPONSE = 'IdTokenCrossSiteIdpErrorResponse';
 	public const ID_TOKEN_INVALID_REQUEST = 'IdTokenInvalidRequest';
 	public const ID_TOKEN_INVALID_CONTENT_TYPE = 'IdTokenInvalidContentType';
 	public const ERROR_ID_TOKEN = 'ErrorIdToken';

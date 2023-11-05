@@ -3,7 +3,7 @@
 namespace ChromeDevtoolsProtocol\Model\Browser;
 
 /**
- * Definition of PermissionDescriptor defined in the Permissions API: https://w3c.github.io/permissions/#dictdef-permissiondescriptor.
+ * Definition of PermissionDescriptor defined in the Permissions API: https://w3c.github.io/permissions/#dom-permissiondescriptor.
  *
  * @generated This file has been auto-generated, do not edit.
  *
