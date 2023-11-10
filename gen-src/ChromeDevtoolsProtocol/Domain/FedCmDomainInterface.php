@@ -3,7 +3,7 @@
 namespace ChromeDevtoolsProtocol\Domain;
 
 use ChromeDevtoolsProtocol\ContextInterface;
-use ChromeDevtoolsProtocol\Model\FedCm\ConfirmIdpLoginRequest;
+use ChromeDevtoolsProtocol\Model\FedCm\ClickDialogButtonRequest;
 use ChromeDevtoolsProtocol\Model\FedCm\DialogShownEvent;
 use ChromeDevtoolsProtocol\Model\FedCm\DismissDialogRequest;
 use ChromeDevtoolsProtocol\Model\FedCm\EnableRequest;
@@ -22,14 +22,14 @@ use ChromeDevtoolsProtocol\SubscriptionInterface;
 interface FedCmDomainInterface
 {
 	/**
-	 * Only valid if the dialog type is ConfirmIdpLogin. Acts as if the user had clicked the continue button.
+	 * Call FedCm.clickDialogButton command.
 	 *
 	 * @param ContextInterface $ctx
-	 * @param ConfirmIdpLoginRequest $request
+	 * @param ClickDialogButtonRequest $request
 	 *
 	 * @return void
 	 */
-	public function confirmIdpLogin(ContextInterface $ctx, ConfirmIdpLoginRequest $request): void;
+	public function clickDialogButton(ContextInterface $ctx, ClickDialogButtonRequest $request): void;
 
 
 	/**

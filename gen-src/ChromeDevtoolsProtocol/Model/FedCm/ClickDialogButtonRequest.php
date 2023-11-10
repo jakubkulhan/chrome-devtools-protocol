@@ -3,16 +3,19 @@
 namespace ChromeDevtoolsProtocol\Model\FedCm;
 
 /**
- * Request for FedCm.confirmIdpLogin command.
+ * Request for FedCm.clickDialogButton command.
  *
  * @generated This file has been auto-generated, do not edit.
  *
  * @author Jakub Kulhan <jakub.kulhan@gmail.com>
  */
-final class ConfirmIdpLoginRequest implements \JsonSerializable
+final class ClickDialogButtonRequest implements \JsonSerializable
 {
 	/** @var string */
 	public $dialogId;
+
+	/** @var string */
+	public $dialogButton;
 
 
 	/**
@@ -25,6 +28,9 @@ final class ConfirmIdpLoginRequest implements \JsonSerializable
 		if (isset($data->dialogId)) {
 			$instance->dialogId = (string)$data->dialogId;
 		}
+		if (isset($data->dialogButton)) {
+			$instance->dialogButton = (string)$data->dialogButton;
+		}
 		return $instance;
 	}
 
@@ -35,6 +41,9 @@ final class ConfirmIdpLoginRequest implements \JsonSerializable
 		if ($this->dialogId !== null) {
 			$data->dialogId = $this->dialogId;
 		}
+		if ($this->dialogButton !== null) {
+			$data->dialogButton = $this->dialogButton;
+		}
 		return $data;
 	}
 
@@ -42,10 +51,10 @@ final class ConfirmIdpLoginRequest implements \JsonSerializable
 	/**
 	 * Create new instance using builder.
 	 *
-	 * @return ConfirmIdpLoginRequestBuilder
+	 * @return ClickDialogButtonRequestBuilder
 	 */
-	public static function builder(): ConfirmIdpLoginRequestBuilder
+	public static function builder(): ClickDialogButtonRequestBuilder
 	{
-		return new ConfirmIdpLoginRequestBuilder();
+		return new ClickDialogButtonRequestBuilder();
 	}
 }

@@ -3,7 +3,7 @@
 namespace ChromeDevtoolsProtocol\Model\FedCm;
 
 /**
- * Whether the dialog shown is an account chooser or an auto re-authentication dialog.
+ * The types of FedCM dialogs.
  *
  * @generated This file has been auto-generated, do not edit.
  *
