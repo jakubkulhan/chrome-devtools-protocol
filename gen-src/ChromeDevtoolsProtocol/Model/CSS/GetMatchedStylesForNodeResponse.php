@@ -82,6 +82,13 @@ final class GetMatchedStylesForNodeResponse implements \JsonSerializable
 	public $cssPropertyRegistrations;
 
 	/**
+	 * A font-palette-values rule matching this node.
+	 *
+	 * @var CSSFontPaletteValuesRule|null
+	 */
+	public $cssFontPaletteValuesRule;
+
+	/**
 	 * Id of the first parent element that does not have display: contents.
 	 *
 	 * @var int
@@ -150,6 +157,9 @@ final class GetMatchedStylesForNodeResponse implements \JsonSerializable
 				$instance->cssPropertyRegistrations[] = CSSPropertyRegistration::fromJson($item);
 			}
 		}
+		if (isset($data->cssFontPaletteValuesRule)) {
+			$instance->cssFontPaletteValuesRule = CSSFontPaletteValuesRule::fromJson($data->cssFontPaletteValuesRule);
+		}
 		if (isset($data->parentLayoutNodeId)) {
 			$instance->parentLayoutNodeId = (int)$data->parentLayoutNodeId;
 		}
@@ -213,6 +223,9 @@ final class GetMatchedStylesForNodeResponse implements \JsonSerializable
 			foreach ($this->cssPropertyRegistrations as $item) {
 				$data->cssPropertyRegistrations[] = $item->jsonSerialize();
 			}
+		}
+		if ($this->cssFontPaletteValuesRule !== null) {
+			$data->cssFontPaletteValuesRule = $this->cssFontPaletteValuesRule->jsonSerialize();
 		}
 		if ($this->parentLayoutNodeId !== null) {
 			$data->parentLayoutNodeId = $this->parentLayoutNodeId;
