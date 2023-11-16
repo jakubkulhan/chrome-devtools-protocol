@@ -19,7 +19,7 @@ final class SetUserAgentOverrideRequest implements \JsonSerializable
 	public $userAgent;
 
 	/**
-	 * Browser langugage to emulate.
+	 * Browser language to emulate.
 	 *
 	 * @var string|null
 	 */

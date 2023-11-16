@@ -10788,7 +10788,7 @@
                         },
                         {
                             "name": "acceptLanguage",
-                            "description": "Browser langugage to emulate.",
+                            "description": "Browser language to emulate.",
                             "optional": true,
                             "type": "string"
                         },
@@ -16817,7 +16817,7 @@
                         },
                         {
                             "name": "acceptLanguage",
-                            "description": "Browser langugage to emulate.",
+                            "description": "Browser language to emulate.",
                             "optional": true,
                             "type": "string"
                         },
