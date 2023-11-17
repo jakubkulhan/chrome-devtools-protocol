@@ -19,6 +19,13 @@ final class PlatformFontUsage implements \JsonSerializable
 	public $familyName;
 
 	/**
+	 * Font's PostScript name reported by platform.
+	 *
+	 * @var string
+	 */
+	public $postScriptName;
+
+	/**
 	 * Indicates if the font was downloaded or resolved locally.
 	 *
 	 * @var bool
@@ -43,6 +50,9 @@ final class PlatformFontUsage implements \JsonSerializable
 		if (isset($data->familyName)) {
 			$instance->familyName = (string)$data->familyName;
 		}
+		if (isset($data->postScriptName)) {
+			$instance->postScriptName = (string)$data->postScriptName;
+		}
 		if (isset($data->isCustomFont)) {
 			$instance->isCustomFont = (bool)$data->isCustomFont;
 		}
@@ -58,6 +68,9 @@ final class PlatformFontUsage implements \JsonSerializable
 		$data = new \stdClass();
 		if ($this->familyName !== null) {
 			$data->familyName = $this->familyName;
+		}
+		if ($this->postScriptName !== null) {
+			$data->postScriptName = $this->postScriptName;
 		}
 		if ($this->isCustomFont !== null) {
 			$data->isCustomFont = $this->isCustomFont;
