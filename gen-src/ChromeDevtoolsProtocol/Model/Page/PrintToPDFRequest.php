@@ -123,6 +123,13 @@ final class PrintToPDFRequest implements \JsonSerializable
 	 */
 	public $generateTaggedPDF;
 
+	/**
+	 * Whether or not to embed the document outline into the PDF.
+	 *
+	 * @var bool|null
+	 */
+	public $generateDocumentOutline;
+
 
 	/**
 	 * @param object $data
@@ -179,6 +186,9 @@ final class PrintToPDFRequest implements \JsonSerializable
 		if (isset($data->generateTaggedPDF)) {
 			$instance->generateTaggedPDF = (bool)$data->generateTaggedPDF;
 		}
+		if (isset($data->generateDocumentOutline)) {
+			$instance->generateDocumentOutline = (bool)$data->generateDocumentOutline;
+		}
 		return $instance;
 	}
 
@@ -233,6 +243,9 @@ final class PrintToPDFRequest implements \JsonSerializable
 		}
 		if ($this->generateTaggedPDF !== null) {
 			$data->generateTaggedPDF = $this->generateTaggedPDF;
+		}
+		if ($this->generateDocumentOutline !== null) {
+			$data->generateDocumentOutline = $this->generateDocumentOutline;
 		}
 		return $data;
 	}

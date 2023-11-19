@@ -25,6 +25,7 @@ final class PrintToPDFRequestBuilder
 	private $preferCSSPageSize;
 	private $transferMode;
 	private $generateTaggedPDF;
+	private $generateDocumentOutline;
 
 
 	/**
@@ -49,6 +50,7 @@ final class PrintToPDFRequestBuilder
 		$instance->preferCSSPageSize = $this->preferCSSPageSize;
 		$instance->transferMode = $this->transferMode;
 		$instance->generateTaggedPDF = $this->generateTaggedPDF;
+		$instance->generateDocumentOutline = $this->generateDocumentOutline;
 		return $instance;
 	}
 
@@ -241,6 +243,18 @@ final class PrintToPDFRequestBuilder
 	public function setGenerateTaggedPDF($generateTaggedPDF): self
 	{
 		$this->generateTaggedPDF = $generateTaggedPDF;
+		return $this;
+	}
+
+
+	/**
+	 * @param bool|null $generateDocumentOutline
+	 *
+	 * @return self
+	 */
+	public function setGenerateDocumentOutline($generateDocumentOutline): self
+	{
+		$this->generateDocumentOutline = $generateDocumentOutline;
 		return $this;
 	}
 }
