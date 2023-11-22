@@ -15345,6 +15345,7 @@
                             "name": "sameParty",
                             "description": "True if cookie is SameParty.",
                             "experimental": true,
+                            "deprecated": true,
                             "type": "boolean"
                         },
                         {
@@ -20419,23 +20420,6 @@
                             "experimental": true,
                             "optional": true,
                             "$ref": "AppManifestParsedProperties"
-                        }
-                    ]
-                },
-                {
-                    "name": "getCookies",
-                    "description": "Returns all browser cookies for the page and all of its subframes. Depending on the backend support, will return detailed cookie information in the `cookies` field.",
-                    "experimental": true,
-                    "deprecated": true,
-                    "redirect": "Network",
-                    "returns": [
-                        {
-                            "name": "cookies",
-                            "description": "Array of cookie objects.",
-                            "type": "array",
-                            "items": {
-                                "$ref": "Network.Cookie"
-                            }
                         }
                     ]
                 },

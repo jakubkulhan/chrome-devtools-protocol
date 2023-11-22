@@ -37,7 +37,6 @@ use ChromeDevtoolsProtocol\Model\Page\GetAdScriptIdRequest;
 use ChromeDevtoolsProtocol\Model\Page\GetAdScriptIdResponse;
 use ChromeDevtoolsProtocol\Model\Page\GetAppIdResponse;
 use ChromeDevtoolsProtocol\Model\Page\GetAppManifestResponse;
-use ChromeDevtoolsProtocol\Model\Page\GetCookiesResponse;
 use ChromeDevtoolsProtocol\Model\Page\GetFrameTreeResponse;
 use ChromeDevtoolsProtocol\Model\Page\GetInstallabilityErrorsResponse;
 use ChromeDevtoolsProtocol\Model\Page\GetLayoutMetricsResponse;
@@ -246,14 +245,6 @@ class PageDomain implements PageDomainInterface
 		$request = new \stdClass();
 		$response = $this->internalClient->executeCommand($ctx, 'Page.getAppManifest', $request);
 		return GetAppManifestResponse::fromJson($response);
-	}
-
-
-	public function getCookies(ContextInterface $ctx): GetCookiesResponse
-	{
-		$request = new \stdClass();
-		$response = $this->internalClient->executeCommand($ctx, 'Page.getCookies', $request);
-		return GetCookiesResponse::fromJson($response);
 	}
 
 

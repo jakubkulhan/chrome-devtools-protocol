@@ -36,7 +36,6 @@ use ChromeDevtoolsProtocol\Model\Page\GetAdScriptIdRequest;
 use ChromeDevtoolsProtocol\Model\Page\GetAdScriptIdResponse;
 use ChromeDevtoolsProtocol\Model\Page\GetAppIdResponse;
 use ChromeDevtoolsProtocol\Model\Page\GetAppManifestResponse;
-use ChromeDevtoolsProtocol\Model\Page\GetCookiesResponse;
 use ChromeDevtoolsProtocol\Model\Page\GetFrameTreeResponse;
 use ChromeDevtoolsProtocol\Model\Page\GetInstallabilityErrorsResponse;
 use ChromeDevtoolsProtocol\Model\Page\GetLayoutMetricsResponse;
@@ -316,16 +315,6 @@ interface PageDomainInterface
 	 * @return GetAppManifestResponse
 	 */
 	public function getAppManifest(ContextInterface $ctx): GetAppManifestResponse;
-
-
-	/**
-	 * Returns all browser cookies for the page and all of its subframes. Depending on the backend support, will return detailed cookie information in the `cookies` field.
-	 *
-	 * @param ContextInterface $ctx
-	 *
-	 * @return GetCookiesResponse
-	 */
-	public function getCookies(ContextInterface $ctx): GetCookiesResponse;
 
 
 	/**
