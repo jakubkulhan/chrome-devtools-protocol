@@ -117,6 +117,13 @@ final class Response implements \JsonSerializable
 	public $fromPrefetchCache;
 
 	/**
+	 * Infomation about how Service Worker Static Router was used.
+	 *
+	 * @var ServiceWorkerRouterInfo|null
+	 */
+	public $serviceWorkerRouterInfo;
+
+	/**
 	 * Total number of bytes received for this request so far.
 	 *
 	 * @var int|float
@@ -232,6 +239,9 @@ final class Response implements \JsonSerializable
 		if (isset($data->fromPrefetchCache)) {
 			$instance->fromPrefetchCache = (bool)$data->fromPrefetchCache;
 		}
+		if (isset($data->serviceWorkerRouterInfo)) {
+			$instance->serviceWorkerRouterInfo = ServiceWorkerRouterInfo::fromJson($data->serviceWorkerRouterInfo);
+		}
 		if (isset($data->encodedDataLength)) {
 			$instance->encodedDataLength = $data->encodedDataLength;
 		}
@@ -310,6 +320,9 @@ final class Response implements \JsonSerializable
 		}
 		if ($this->fromPrefetchCache !== null) {
 			$data->fromPrefetchCache = $this->fromPrefetchCache;
+		}
+		if ($this->serviceWorkerRouterInfo !== null) {
+			$data->serviceWorkerRouterInfo = $this->serviceWorkerRouterInfo->jsonSerialize();
 		}
 		if ($this->encodedDataLength !== null) {
 			$data->encodedDataLength = $this->encodedDataLength;
