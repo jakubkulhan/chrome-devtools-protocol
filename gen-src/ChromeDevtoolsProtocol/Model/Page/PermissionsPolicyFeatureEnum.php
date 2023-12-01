@@ -85,6 +85,7 @@ final class PermissionsPolicyFeatureEnum
 	public const SYNC_XHR = 'sync-xhr';
 	public const UNLOAD = 'unload';
 	public const USB = 'usb';
+	public const USB_UNRESTRICTED = 'usb-unrestricted';
 	public const VERTICAL_SCROLL = 'vertical-scroll';
 	public const WEB_PRINTING = 'web-printing';
 	public const WEB_SHARE = 'web-share';
