@@ -4,6 +4,7 @@ namespace ChromeDevtoolsProtocol\Domain;
 
 use ChromeDevtoolsProtocol\ContextInterface;
 use ChromeDevtoolsProtocol\Model\FedCm\ClickDialogButtonRequest;
+use ChromeDevtoolsProtocol\Model\FedCm\DialogClosedEvent;
 use ChromeDevtoolsProtocol\Model\FedCm\DialogShownEvent;
 use ChromeDevtoolsProtocol\Model\FedCm\DismissDialogRequest;
 use ChromeDevtoolsProtocol\Model\FedCm\EnableRequest;
@@ -83,6 +84,30 @@ interface FedCmDomainInterface
 	 * @return void
 	 */
 	public function selectAccount(ContextInterface $ctx, SelectAccountRequest $request): void;
+
+
+	/**
+	 * Triggered when a dialog is closed, either by user action, JS abort, or a command below.
+	 *
+	 * Listener will be called whenever event FedCm.dialogClosed is fired.
+	 *
+	 * @param callable $listener
+	 *
+	 * @return SubscriptionInterface
+	 */
+	public function addDialogClosedListener(callable $listener): SubscriptionInterface;
+
+
+	/**
+	 * Triggered when a dialog is closed, either by user action, JS abort, or a command below.
+	 *
+	 * Method will block until first FedCm.dialogClosed event is fired.
+	 *
+	 * @param ContextInterface $ctx
+	 *
+	 * @return DialogClosedEvent
+	 */
+	public function awaitDialogClosed(ContextInterface $ctx): DialogClosedEvent;
 
 
 	/**

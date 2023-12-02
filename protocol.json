@@ -10997,6 +10997,16 @@
             ],
             "events": [
                 {
+                    "name": "dialogClosed",
+                    "description": "Triggered when a dialog is closed, either by user action, JS abort, or a command below.",
+                    "parameters": [
+                        {
+                            "name": "dialogId",
+                            "type": "string"
+                        }
+                    ]
+                },
+                {
                     "name": "dialogShown",
                     "parameters": [
                         {
@@ -28243,6 +28253,18 @@
                         {
                             "name": "isUserVerified",
                             "description": "Sets whether User Verification succeeds or fails for an authenticator. Defaults to false.",
+                            "optional": true,
+                            "type": "boolean"
+                        },
+                        {
+                            "name": "defaultBackupEligibility",
+                            "description": "Credentials created by this authenticator will have the backup eligibility (BE) flag set to this value. Defaults to false. https://w3c.github.io/webauthn/#sctn-credential-backup",
+                            "optional": true,
+                            "type": "boolean"
+                        },
+                        {
+                            "name": "defaultBackupState",
+                            "description": "Credentials created by this authenticator will have the backup state (BS) flag set to this value. Defaults to false. https://w3c.github.io/webauthn/#sctn-credential-backup",
                             "optional": true,
                             "type": "boolean"
                         }

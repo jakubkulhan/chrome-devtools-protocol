@@ -5,6 +5,7 @@ namespace ChromeDevtoolsProtocol\Domain;
 use ChromeDevtoolsProtocol\ContextInterface;
 use ChromeDevtoolsProtocol\InternalClientInterface;
 use ChromeDevtoolsProtocol\Model\FedCm\ClickDialogButtonRequest;
+use ChromeDevtoolsProtocol\Model\FedCm\DialogClosedEvent;
 use ChromeDevtoolsProtocol\Model\FedCm\DialogShownEvent;
 use ChromeDevtoolsProtocol\Model\FedCm\DismissDialogRequest;
 use ChromeDevtoolsProtocol\Model\FedCm\EnableRequest;
@@ -58,6 +59,20 @@ class FedCmDomain implements FedCmDomainInterface
 	public function selectAccount(ContextInterface $ctx, SelectAccountRequest $request): void
 	{
 		$this->internalClient->executeCommand($ctx, 'FedCm.selectAccount', $request);
+	}
+
+
+	public function addDialogClosedListener(callable $listener): SubscriptionInterface
+	{
+		return $this->internalClient->addListener('FedCm.dialogClosed', function ($event) use ($listener) {
+			return $listener(DialogClosedEvent::fromJson($event));
+		});
+	}
+
+
+	public function awaitDialogClosed(ContextInterface $ctx): DialogClosedEvent
+	{
+		return DialogClosedEvent::fromJson($this->internalClient->awaitEvent($ctx, 'FedCm.dialogClosed'));
 	}
 
 

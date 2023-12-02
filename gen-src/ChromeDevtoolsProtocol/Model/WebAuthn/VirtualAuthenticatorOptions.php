@@ -80,6 +80,20 @@ final class VirtualAuthenticatorOptions implements \JsonSerializable
 	 */
 	public $isUserVerified;
 
+	/**
+	 * Credentials created by this authenticator will have the backup eligibility (BE) flag set to this value. Defaults to false. https://w3c.github.io/webauthn/#sctn-credential-backup
+	 *
+	 * @var bool|null
+	 */
+	public $defaultBackupEligibility;
+
+	/**
+	 * Credentials created by this authenticator will have the backup state (BS) flag set to this value. Defaults to false. https://w3c.github.io/webauthn/#sctn-credential-backup
+	 *
+	 * @var bool|null
+	 */
+	public $defaultBackupState;
+
 
 	/**
 	 * @param object $data
@@ -121,6 +135,12 @@ final class VirtualAuthenticatorOptions implements \JsonSerializable
 		if (isset($data->isUserVerified)) {
 			$instance->isUserVerified = (bool)$data->isUserVerified;
 		}
+		if (isset($data->defaultBackupEligibility)) {
+			$instance->defaultBackupEligibility = (bool)$data->defaultBackupEligibility;
+		}
+		if (isset($data->defaultBackupState)) {
+			$instance->defaultBackupState = (bool)$data->defaultBackupState;
+		}
 		return $instance;
 	}
 
@@ -160,6 +180,12 @@ final class VirtualAuthenticatorOptions implements \JsonSerializable
 		}
 		if ($this->isUserVerified !== null) {
 			$data->isUserVerified = $this->isUserVerified;
+		}
+		if ($this->defaultBackupEligibility !== null) {
+			$data->defaultBackupEligibility = $this->defaultBackupEligibility;
+		}
+		if ($this->defaultBackupState !== null) {
+			$data->defaultBackupState = $this->defaultBackupState;
 		}
 		return $data;
 	}
