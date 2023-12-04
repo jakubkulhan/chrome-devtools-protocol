@@ -10096,6 +10096,21 @@
                     ]
                 },
                 {
+                    "id": "DevicePosture",
+                    "type": "object",
+                    "properties": [
+                        {
+                            "name": "type",
+                            "description": "Current posture of the device",
+                            "type": "string",
+                            "enum": [
+                                "continuous",
+                                "folded"
+                            ]
+                        }
+                    ]
+                },
+                {
                     "id": "MediaFeature",
                     "type": "object",
                     "properties": [
@@ -10503,6 +10518,13 @@
                             "experimental": true,
                             "optional": true,
                             "$ref": "DisplayFeature"
+                        },
+                        {
+                            "name": "devicePosture",
+                            "description": "If set, the posture of a foldable device. If not set the posture is set to continuous.",
+                            "experimental": true,
+                            "optional": true,
+                            "$ref": "DevicePosture"
                         }
                     ]
                 },
