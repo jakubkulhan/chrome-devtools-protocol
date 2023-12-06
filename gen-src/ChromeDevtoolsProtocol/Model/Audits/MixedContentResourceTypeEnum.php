@@ -32,6 +32,7 @@ final class MixedContentResourceTypeEnum
 	public const SCRIPT = 'Script';
 	public const SERVICE_WORKER = 'ServiceWorker';
 	public const SHARED_WORKER = 'SharedWorker';
+	public const SPECULATION_RULES = 'SpeculationRules';
 	public const STYLESHEET = 'Stylesheet';
 	public const TRACK = 'Track';
 	public const VIDEO = 'Video';
