@@ -16897,6 +16897,25 @@
                     ]
                 },
                 {
+                    "name": "streamResourceContent",
+                    "description": "Enables streaming of the response for the given requestId. If enabled, the dataReceived event contains the data that was received during streaming.",
+                    "experimental": true,
+                    "parameters": [
+                        {
+                            "name": "requestId",
+                            "description": "Identifier of the request to stream.",
+                            "$ref": "RequestId"
+                        }
+                    ],
+                    "returns": [
+                        {
+                            "name": "bufferedData",
+                            "description": "Data that has been buffered until streaming is enabled. (Encoded as a base64 string when passed over JSON)",
+                            "type": "string"
+                        }
+                    ]
+                },
+                {
                     "name": "takeResponseBodyForInterceptionAsStream",
                     "description": "Returns a handle to the stream representing the response body. Note that after this command, the intercepted request can't be continued as is -- you either need to cancel it or to provide the response body. The stream only supports sequential read, IO.read will fail if the position is specified.",
                     "experimental": true,
@@ -16938,6 +16957,13 @@
                             "name": "encodedDataLength",
                             "description": "Actual bytes received (might be less than dataLength for compressed encodings).",
                             "type": "integer"
+                        },
+                        {
+                            "name": "data",
+                            "description": "Data that was received. (Encoded as a base64 string when passed over JSON)",
+                            "experimental": true,
+                            "optional": true,
+                            "type": "string"
                         }
                     ]
                 },

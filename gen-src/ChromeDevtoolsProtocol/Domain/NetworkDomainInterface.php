@@ -55,6 +55,8 @@ use ChromeDevtoolsProtocol\Model\Network\SetExtraHTTPHeadersRequest;
 use ChromeDevtoolsProtocol\Model\Network\SetRequestInterceptionRequest;
 use ChromeDevtoolsProtocol\Model\Network\SetUserAgentOverrideRequest;
 use ChromeDevtoolsProtocol\Model\Network\SignedExchangeReceivedEvent;
+use ChromeDevtoolsProtocol\Model\Network\StreamResourceContentRequest;
+use ChromeDevtoolsProtocol\Model\Network\StreamResourceContentResponse;
 use ChromeDevtoolsProtocol\Model\Network\SubresourceWebBundleInnerResponseErrorEvent;
 use ChromeDevtoolsProtocol\Model\Network\SubresourceWebBundleInnerResponseParsedEvent;
 use ChromeDevtoolsProtocol\Model\Network\SubresourceWebBundleMetadataErrorEvent;
@@ -440,6 +442,20 @@ interface NetworkDomainInterface
 	 * @return void
 	 */
 	public function setUserAgentOverride(ContextInterface $ctx, SetUserAgentOverrideRequest $request): void;
+
+
+	/**
+	 * Enables streaming of the response for the given requestId. If enabled, the dataReceived event contains the data that was received during streaming.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param StreamResourceContentRequest $request
+	 *
+	 * @return StreamResourceContentResponse
+	 */
+	public function streamResourceContent(
+		ContextInterface $ctx,
+		StreamResourceContentRequest $request
+	): StreamResourceContentResponse;
 
 
 	/**

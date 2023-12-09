@@ -56,6 +56,8 @@ use ChromeDevtoolsProtocol\Model\Network\SetExtraHTTPHeadersRequest;
 use ChromeDevtoolsProtocol\Model\Network\SetRequestInterceptionRequest;
 use ChromeDevtoolsProtocol\Model\Network\SetUserAgentOverrideRequest;
 use ChromeDevtoolsProtocol\Model\Network\SignedExchangeReceivedEvent;
+use ChromeDevtoolsProtocol\Model\Network\StreamResourceContentRequest;
+use ChromeDevtoolsProtocol\Model\Network\StreamResourceContentResponse;
 use ChromeDevtoolsProtocol\Model\Network\SubresourceWebBundleInnerResponseErrorEvent;
 use ChromeDevtoolsProtocol\Model\Network\SubresourceWebBundleInnerResponseParsedEvent;
 use ChromeDevtoolsProtocol\Model\Network\SubresourceWebBundleMetadataErrorEvent;
@@ -307,6 +309,15 @@ class NetworkDomain implements NetworkDomainInterface
 	public function setUserAgentOverride(ContextInterface $ctx, SetUserAgentOverrideRequest $request): void
 	{
 		$this->internalClient->executeCommand($ctx, 'Network.setUserAgentOverride', $request);
+	}
+
+
+	public function streamResourceContent(
+		ContextInterface $ctx,
+		StreamResourceContentRequest $request
+	): StreamResourceContentResponse {
+		$response = $this->internalClient->executeCommand($ctx, 'Network.streamResourceContent', $request);
+		return StreamResourceContentResponse::fromJson($response);
 	}
 
 
