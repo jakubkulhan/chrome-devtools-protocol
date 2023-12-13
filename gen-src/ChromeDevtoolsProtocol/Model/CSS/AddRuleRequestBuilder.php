@@ -14,6 +14,7 @@ final class AddRuleRequestBuilder
 	private $styleSheetId;
 	private $ruleText;
 	private $location;
+	private $nodeForPropertySyntaxValidation;
 
 
 	/**
@@ -34,6 +35,7 @@ final class AddRuleRequestBuilder
 			throw new BuilderException('Property [location] is required.');
 		}
 		$instance->location = $this->location;
+		$instance->nodeForPropertySyntaxValidation = $this->nodeForPropertySyntaxValidation;
 		return $instance;
 	}
 
@@ -70,6 +72,18 @@ final class AddRuleRequestBuilder
 	public function setLocation($location): self
 	{
 		$this->location = $location;
+		return $this;
+	}
+
+
+	/**
+	 * @param int $nodeForPropertySyntaxValidation
+	 *
+	 * @return self
+	 */
+	public function setNodeForPropertySyntaxValidation($nodeForPropertySyntaxValidation): self
+	{
+		$this->nodeForPropertySyntaxValidation = $nodeForPropertySyntaxValidation;
 		return $this;
 	}
 }

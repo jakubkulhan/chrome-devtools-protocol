@@ -3,7 +3,7 @@
 namespace ChromeDevtoolsProtocol\Model\Storage;
 
 /**
- * TODO(crbug.com/1458532): Add other Attribution Reporting events, e.g. trigger registration.
+ * Named type Storage.AttributionReportingSourceRegisteredEvent.
  *
  * @generated This file has been auto-generated, do not edit.
  *

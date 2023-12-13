@@ -5,6 +5,7 @@ namespace ChromeDevtoolsProtocol\Domain;
 use ChromeDevtoolsProtocol\ContextInterface;
 use ChromeDevtoolsProtocol\InternalClientInterface;
 use ChromeDevtoolsProtocol\Model\Storage\AttributionReportingSourceRegisteredEvent;
+use ChromeDevtoolsProtocol\Model\Storage\AttributionReportingTriggerRegisteredEvent;
 use ChromeDevtoolsProtocol\Model\Storage\CacheStorageContentUpdatedEvent;
 use ChromeDevtoolsProtocol\Model\Storage\CacheStorageListUpdatedEvent;
 use ChromeDevtoolsProtocol\Model\Storage\ClearCookiesRequest;
@@ -298,6 +299,20 @@ class StorageDomain implements StorageDomainInterface
 	public function awaitAttributionReportingSourceRegistered(ContextInterface $ctx): AttributionReportingSourceRegisteredEvent
 	{
 		return AttributionReportingSourceRegisteredEvent::fromJson($this->internalClient->awaitEvent($ctx, 'Storage.attributionReportingSourceRegistered'));
+	}
+
+
+	public function addAttributionReportingTriggerRegisteredListener(callable $listener): SubscriptionInterface
+	{
+		return $this->internalClient->addListener('Storage.attributionReportingTriggerRegistered', function ($event) use ($listener) {
+			return $listener(AttributionReportingTriggerRegisteredEvent::fromJson($event));
+		});
+	}
+
+
+	public function awaitAttributionReportingTriggerRegistered(ContextInterface $ctx): AttributionReportingTriggerRegisteredEvent
+	{
+		return AttributionReportingTriggerRegisteredEvent::fromJson($this->internalClient->awaitEvent($ctx, 'Storage.attributionReportingTriggerRegistered'));
 	}
 
 

@@ -4,6 +4,7 @@ namespace ChromeDevtoolsProtocol\Domain;
 
 use ChromeDevtoolsProtocol\ContextInterface;
 use ChromeDevtoolsProtocol\Model\Storage\AttributionReportingSourceRegisteredEvent;
+use ChromeDevtoolsProtocol\Model\Storage\AttributionReportingTriggerRegisteredEvent;
 use ChromeDevtoolsProtocol\Model\Storage\CacheStorageContentUpdatedEvent;
 use ChromeDevtoolsProtocol\Model\Storage\CacheStorageListUpdatedEvent;
 use ChromeDevtoolsProtocol\Model\Storage\ClearCookiesRequest;
@@ -442,7 +443,7 @@ interface StorageDomainInterface
 
 
 	/**
-	 * TODO(crbug.com/1458532): Add other Attribution Reporting events, e.g. trigger registration.
+	 * Subscribe to Storage.attributionReportingSourceRegistered event.
 	 *
 	 * Listener will be called whenever event Storage.attributionReportingSourceRegistered is fired.
 	 *
@@ -454,7 +455,7 @@ interface StorageDomainInterface
 
 
 	/**
-	 * TODO(crbug.com/1458532): Add other Attribution Reporting events, e.g. trigger registration.
+	 * Wait for Storage.attributionReportingSourceRegistered event.
 	 *
 	 * Method will block until first Storage.attributionReportingSourceRegistered event is fired.
 	 *
@@ -463,6 +464,30 @@ interface StorageDomainInterface
 	 * @return AttributionReportingSourceRegisteredEvent
 	 */
 	public function awaitAttributionReportingSourceRegistered(ContextInterface $ctx): AttributionReportingSourceRegisteredEvent;
+
+
+	/**
+	 * Subscribe to Storage.attributionReportingTriggerRegistered event.
+	 *
+	 * Listener will be called whenever event Storage.attributionReportingTriggerRegistered is fired.
+	 *
+	 * @param callable $listener
+	 *
+	 * @return SubscriptionInterface
+	 */
+	public function addAttributionReportingTriggerRegisteredListener(callable $listener): SubscriptionInterface;
+
+
+	/**
+	 * Wait for Storage.attributionReportingTriggerRegistered event.
+	 *
+	 * Method will block until first Storage.attributionReportingTriggerRegistered event is fired.
+	 *
+	 * @param ContextInterface $ctx
+	 *
+	 * @return AttributionReportingTriggerRegisteredEvent
+	 */
+	public function awaitAttributionReportingTriggerRegistered(ContextInterface $ctx): AttributionReportingTriggerRegisteredEvent;
 
 
 	/**

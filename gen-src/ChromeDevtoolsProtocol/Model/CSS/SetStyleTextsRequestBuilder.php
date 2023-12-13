@@ -12,6 +12,7 @@ use ChromeDevtoolsProtocol\Exception\BuilderException;
 final class SetStyleTextsRequestBuilder
 {
 	private $edits;
+	private $nodeForPropertySyntaxValidation;
 
 
 	/**
@@ -24,6 +25,7 @@ final class SetStyleTextsRequestBuilder
 			throw new BuilderException('Property [edits] is required.');
 		}
 		$instance->edits = $this->edits;
+		$instance->nodeForPropertySyntaxValidation = $this->nodeForPropertySyntaxValidation;
 		return $instance;
 	}
 
@@ -36,6 +38,18 @@ final class SetStyleTextsRequestBuilder
 	public function setEdits($edits): self
 	{
 		$this->edits = $edits;
+		return $this;
+	}
+
+
+	/**
+	 * @param int $nodeForPropertySyntaxValidation
+	 *
+	 * @return self
+	 */
+	public function setNodeForPropertySyntaxValidation($nodeForPropertySyntaxValidation): self
+	{
+		$this->nodeForPropertySyntaxValidation = $nodeForPropertySyntaxValidation;
 		return $this;
 	}
 }

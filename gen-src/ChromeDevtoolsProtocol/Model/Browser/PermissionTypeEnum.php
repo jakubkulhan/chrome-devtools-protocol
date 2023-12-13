@@ -15,6 +15,7 @@ final class PermissionTypeEnum
 	public const AUDIO_CAPTURE = 'audioCapture';
 	public const BACKGROUND_SYNC = 'backgroundSync';
 	public const BACKGROUND_FETCH = 'backgroundFetch';
+	public const CAPTURED_SURFACE_CONTROL = 'capturedSurfaceControl';
 	public const CLIPBOARD_READ_WRITE = 'clipboardReadWrite';
 	public const CLIPBOARD_SANITIZED_WRITE = 'clipboardSanitizedWrite';
 	public const DISPLAY_CAPTURE = 'displayCapture';

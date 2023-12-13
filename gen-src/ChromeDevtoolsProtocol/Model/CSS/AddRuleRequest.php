@@ -32,6 +32,13 @@ final class AddRuleRequest implements \JsonSerializable
 	 */
 	public $location;
 
+	/**
+	 * NodeId for the DOM node in whose context custom property declarations for registered properties should be validated. If omitted, declarations in the new rule text can only be validated statically, which may produce incorrect results if the declaration contains a var() for example.
+	 *
+	 * @var int
+	 */
+	public $nodeForPropertySyntaxValidation;
+
 
 	/**
 	 * @param object $data
@@ -49,6 +56,9 @@ final class AddRuleRequest implements \JsonSerializable
 		if (isset($data->location)) {
 			$instance->location = SourceRange::fromJson($data->location);
 		}
+		if (isset($data->nodeForPropertySyntaxValidation)) {
+			$instance->nodeForPropertySyntaxValidation = (int)$data->nodeForPropertySyntaxValidation;
+		}
 		return $instance;
 	}
 
@@ -64,6 +74,9 @@ final class AddRuleRequest implements \JsonSerializable
 		}
 		if ($this->location !== null) {
 			$data->location = $this->location->jsonSerialize();
+		}
+		if ($this->nodeForPropertySyntaxValidation !== null) {
+			$data->nodeForPropertySyntaxValidation = $this->nodeForPropertySyntaxValidation;
 		}
 		return $data;
 	}

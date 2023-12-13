@@ -18,6 +18,7 @@ final class PermissionsPolicyFeatureEnum
 	public const BLUETOOTH = 'bluetooth';
 	public const BROWSING_TOPICS = 'browsing-topics';
 	public const CAMERA = 'camera';
+	public const CAPTURED_SURFACE_CONTROL = 'captured-surface-control';
 	public const CH_DPR = 'ch-dpr';
 	public const CH_DEVICE_MEMORY = 'ch-device-memory';
 	public const CH_DOWNLINK = 'ch-downlink';
