@@ -53,6 +53,13 @@ final class FilledField implements \JsonSerializable
 	 */
 	public $fillingStrategy;
 
+	/**
+	 * The form field's DOM node
+	 *
+	 * @var int
+	 */
+	public $fieldId;
+
 
 	/**
 	 * @param object $data
@@ -79,6 +86,9 @@ final class FilledField implements \JsonSerializable
 		if (isset($data->fillingStrategy)) {
 			$instance->fillingStrategy = (string)$data->fillingStrategy;
 		}
+		if (isset($data->fieldId)) {
+			$instance->fieldId = (int)$data->fieldId;
+		}
 		return $instance;
 	}
 
@@ -103,6 +113,9 @@ final class FilledField implements \JsonSerializable
 		}
 		if ($this->fillingStrategy !== null) {
 			$data->fillingStrategy = $this->fillingStrategy;
+		}
+		if ($this->fieldId !== null) {
+			$data->fieldId = $this->fieldId;
 		}
 		return $data;
 	}
