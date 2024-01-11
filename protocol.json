@@ -20067,6 +20067,7 @@
                         "WebSocketSticky",
                         "SmartCard",
                         "LiveMediaStreamTrack",
+                        "UnloadHandler",
                         "ContentSecurityHandler",
                         "ContentWebAuthenticationAPI",
                         "ContentFileChooser",
