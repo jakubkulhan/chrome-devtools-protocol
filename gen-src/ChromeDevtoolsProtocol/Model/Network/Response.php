@@ -54,6 +54,13 @@ final class Response implements \JsonSerializable
 	public $mimeType;
 
 	/**
+	 * Resource charset as determined by the browser (if applicable).
+	 *
+	 * @var string
+	 */
+	public $charset;
+
+	/**
 	 * Refined HTTP request headers that were actually transmitted over the network.
 	 *
 	 * @var Headers|null
@@ -212,6 +219,9 @@ final class Response implements \JsonSerializable
 		if (isset($data->mimeType)) {
 			$instance->mimeType = (string)$data->mimeType;
 		}
+		if (isset($data->charset)) {
+			$instance->charset = (string)$data->charset;
+		}
 		if (isset($data->requestHeaders)) {
 			$instance->requestHeaders = Headers::fromJson($data->requestHeaders);
 		}
@@ -293,6 +303,9 @@ final class Response implements \JsonSerializable
 		}
 		if ($this->mimeType !== null) {
 			$data->mimeType = $this->mimeType;
+		}
+		if ($this->charset !== null) {
+			$data->charset = $this->charset;
 		}
 		if ($this->requestHeaders !== null) {
 			$data->requestHeaders = $this->requestHeaders->jsonSerialize();
