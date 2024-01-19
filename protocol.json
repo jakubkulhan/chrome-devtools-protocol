@@ -2853,7 +2853,6 @@
                 {
                     "name": "resetPermissions",
                     "description": "Reset all permission management for all origins.",
-                    "experimental": true,
                     "parameters": [
                         {
                             "name": "browserContextId",
@@ -8347,7 +8346,6 @@
                 {
                     "name": "scrollIntoViewIfNeeded",
                     "description": "Scrolls the specified rect of the given node into view if not already visible. Note: exactly one between nodeId, backendNodeId and objectId should be passed to identify the node.",
-                    "experimental": true,
                     "parameters": [
                         {
                             "name": "nodeId",
@@ -10381,8 +10379,7 @@
                 },
                 {
                     "name": "clearIdleOverride",
-                    "description": "Clears Idle state overrides.",
-                    "experimental": true
+                    "description": "Clears Idle state overrides."
                 },
                 {
                     "name": "getOverriddenSensorInformation",
@@ -10433,7 +10430,6 @@
                 {
                     "name": "setCPUThrottlingRate",
                     "description": "Enables CPU throttling to emulate slow CPUs.",
-                    "experimental": true,
                     "parameters": [
                         {
                             "name": "rate",
@@ -10619,7 +10615,6 @@
                 {
                     "name": "setEmulatedVisionDeficiency",
                     "description": "Emulates the given vision deficiency.",
-                    "experimental": true,
                     "parameters": [
                         {
                             "name": "type",
@@ -10687,7 +10682,6 @@
                 {
                     "name": "setIdleOverride",
                     "description": "Overrides the Idle state.",
-                    "experimental": true,
                     "parameters": [
                         {
                             "name": "isUserActive",
@@ -10799,7 +10793,6 @@
                 {
                     "name": "setTimezoneOverride",
                     "description": "Overrides default host system timezone with the specified one.",
-                    "experimental": true,
                     "parameters": [
                         {
                             "name": "timezoneId",
@@ -16728,7 +16721,6 @@
                 {
                     "name": "setBypassServiceWorker",
                     "description": "Toggles ignoring of service worker for each request.",
-                    "experimental": true,
                     "parameters": [
                         {
                             "name": "bypass",
@@ -20385,8 +20377,7 @@
                 },
                 {
                     "name": "close",
-                    "description": "Tries to close page, running its beforeunload hooks, if any.",
-                    "experimental": true
+                    "description": "Tries to close page, running its beforeunload hooks, if any."
                 },
                 {
                     "name": "crash",
@@ -21052,7 +21043,6 @@
                 {
                     "name": "setBypassCSP",
                     "description": "Enable page Content Security Policy by-passing.",
-                    "experimental": true,
                     "parameters": [
                         {
                             "name": "enabled",
@@ -21264,7 +21254,6 @@
                 {
                     "name": "setInterceptFileChooserDialog",
                     "description": "Intercept file chooser requests and transfer control to protocol clients. When file chooser interception is enabled, native file chooser dialog is not shown. Instead, a protocol event `Page.fileChooserOpened` is emitted.",
-                    "experimental": true,
                     "parameters": [
                         {
                             "name": "enabled",
@@ -21275,7 +21264,6 @@
                 {
                     "name": "setLifecycleEventsEnabled",
                     "description": "Controls whether page will emit lifecycle events.",
-                    "experimental": true,
                     "parameters": [
                         {
                             "name": "enabled",
@@ -23655,7 +23643,6 @@
                 {
                     "name": "addBinding",
                     "description": "If executionContextId is empty, adds binding with the given name on the global objects of all inspected contexts, including those created later, bindings survive reloads. Binding function takes exactly one argument, this argument should be string, in case of any other input, function throws an exception. Each binding function call produces Runtime.bindingCalled notification.",
-                    "experimental": true,
                     "parameters": [
                         {
                             "name": "name",
@@ -23664,6 +23651,7 @@
                         {
                             "name": "executionContextId",
                             "description": "If specified, the binding would only be exposed to the specified execution context. If omitted and `executionContextName` is not set, the binding is exposed to all execution contexts of the target. This parameter is mutually exclusive with `executionContextName`. Deprecated in favor of `executionContextName` due to an unclear use case and bugs in implementation (crbug.com/1169639). `executionContextId` will be removed in the future.",
+                            "experimental": true,
                             "deprecated": true,
                             "optional": true,
                             "$ref": "ExecutionContextId"
@@ -23671,7 +23659,6 @@
                         {
                             "name": "executionContextName",
                             "description": "If specified, the binding is exposed to the executionContext with matching name, even for contexts created after the binding is added. See also `ExecutionContext.name` and `worldName` parameter to `Page.addScriptToEvaluateOnNewDocument`. This parameter is mutually exclusive with `executionContextId`.",
-                            "experimental": true,
                             "optional": true,
                             "type": "string"
                         }
@@ -24181,7 +24168,6 @@
                 {
                     "name": "removeBinding",
                     "description": "This method does not remove binding function from global object but unsubscribes current runtime agent from Runtime.bindingCalled notifications.",
-                    "experimental": true,
                     "parameters": [
                         {
                             "name": "name",
@@ -24835,7 +24821,6 @@
                 {
                     "name": "setIgnoreCertificateErrors",
                     "description": "Enable/disable whether all certificate errors should be ignored.",
-                    "experimental": true,
                     "parameters": [
                         {
                             "name": "ignore",
@@ -27252,29 +27237,32 @@
                 {
                     "name": "createBrowserContext",
                     "description": "Creates a new empty BrowserContext. Similar to an incognito profile but you can have more than one.",
-                    "experimental": true,
                     "parameters": [
                         {
                             "name": "disposeOnDetach",
                             "description": "If specified, disposes this context when debugging session disconnects.",
+                            "experimental": true,
                             "optional": true,
                             "type": "boolean"
                         },
                         {
                             "name": "proxyServer",
                             "description": "Proxy server, similar to the one passed to --proxy-server",
+                            "experimental": true,
                             "optional": true,
                             "type": "string"
                         },
                         {
                             "name": "proxyBypassList",
                             "description": "Proxy bypass list, similar to the one passed to --proxy-bypass-list",
+                            "experimental": true,
                             "optional": true,
                             "type": "string"
                         },
                         {
                             "name": "originsWithUniversalNetworkAccess",
                             "description": "An optional list of origins to grant unlimited cross-origin access to. Parts of the URL other than those constituting origin are ignored.",
+                            "experimental": true,
                             "optional": true,
                             "type": "array",
                             "items": {
@@ -27375,7 +27363,6 @@
                 {
                     "name": "disposeBrowserContext",
                     "description": "Deletes a BrowserContext. All the belonging pages will be closed without calling their beforeunload hooks.",
-                    "experimental": true,
                     "parameters": [
                         {
                             "name": "browserContextId",
@@ -27403,7 +27390,6 @@
                 {
                     "name": "getBrowserContexts",
                     "description": "Returns all browser contexts created with `Target.createBrowserContext` method.",
-                    "experimental": true,
                     "returns": [
                         {
                             "name": "browserContextIds",
@@ -27483,7 +27469,6 @@
                 {
                     "name": "setAutoAttach",
                     "description": "Controls whether to automatically attach to new targets which are considered to be related to this one. When turned on, attaches to all existing related targets as well. When turned off, automatically detaches from all currently attached targets. This also clears all targets added by `autoAttachRelated` from the list of targets to watch for creation of related targets.",
-                    "experimental": true,
                     "parameters": [
                         {
                             "name": "autoAttach",
@@ -27498,6 +27483,7 @@
                         {
                             "name": "flatten",
                             "description": "Enables \"flat\" access to the session via specifying sessionId attribute in the commands. We plan to make this the default, deprecate non-flattened mode, and eventually retire it. See crbug.com/991325.",
+                            "experimental": true,
                             "optional": true,
                             "type": "boolean"
                         },
