@@ -3,7 +3,7 @@
 namespace ChromeDevtoolsProtocol\Model\Storage;
 
 /**
- * One of the interest groups was accessed by the associated page.
+ * One of the interest groups was accessed. Note that these events are global to all targets sharing an interest group store.
  *
  * @generated This file has been auto-generated, do not edit.
  *
@@ -22,6 +22,30 @@ final class InterestGroupAccessedEvent implements \JsonSerializable
 
 	/** @var string */
 	public $name;
+
+	/**
+	 * For topLevelBid/topLevelAdditionalBid, and when appropriate, win and additionalBidWin
+	 *
+	 * @var string|null
+	 */
+	public $componentSellerOrigin;
+
+	/**
+	 * For bid or somethingBid event, if done locally and not on a server.
+	 *
+	 * @var int|float|null
+	 */
+	public $bid;
+
+	/** @var string|null */
+	public $bidCurrency;
+
+	/**
+	 * For non-global events --- links to interestGroupAuctionEvent
+	 *
+	 * @var string
+	 */
+	public $uniqueAuctionId;
 
 
 	/**
@@ -43,6 +67,18 @@ final class InterestGroupAccessedEvent implements \JsonSerializable
 		if (isset($data->name)) {
 			$instance->name = (string)$data->name;
 		}
+		if (isset($data->componentSellerOrigin)) {
+			$instance->componentSellerOrigin = (string)$data->componentSellerOrigin;
+		}
+		if (isset($data->bid)) {
+			$instance->bid = $data->bid;
+		}
+		if (isset($data->bidCurrency)) {
+			$instance->bidCurrency = (string)$data->bidCurrency;
+		}
+		if (isset($data->uniqueAuctionId)) {
+			$instance->uniqueAuctionId = (string)$data->uniqueAuctionId;
+		}
 		return $instance;
 	}
 
@@ -61,6 +97,18 @@ final class InterestGroupAccessedEvent implements \JsonSerializable
 		}
 		if ($this->name !== null) {
 			$data->name = $this->name;
+		}
+		if ($this->componentSellerOrigin !== null) {
+			$data->componentSellerOrigin = $this->componentSellerOrigin;
+		}
+		if ($this->bid !== null) {
+			$data->bid = $this->bid;
+		}
+		if ($this->bidCurrency !== null) {
+			$data->bidCurrency = $this->bidCurrency;
+		}
+		if ($this->uniqueAuctionId !== null) {
+			$data->uniqueAuctionId = $this->uniqueAuctionId;
 		}
 		return $data;
 	}

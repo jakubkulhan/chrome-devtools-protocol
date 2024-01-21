@@ -32,12 +32,15 @@ use ChromeDevtoolsProtocol\Model\Storage\GetUsageAndQuotaResponse;
 use ChromeDevtoolsProtocol\Model\Storage\IndexedDBContentUpdatedEvent;
 use ChromeDevtoolsProtocol\Model\Storage\IndexedDBListUpdatedEvent;
 use ChromeDevtoolsProtocol\Model\Storage\InterestGroupAccessedEvent;
+use ChromeDevtoolsProtocol\Model\Storage\InterestGroupAuctionEventOccurredEvent;
+use ChromeDevtoolsProtocol\Model\Storage\InterestGroupAuctionNetworkRequestCreatedEvent;
 use ChromeDevtoolsProtocol\Model\Storage\OverrideQuotaForOriginRequest;
 use ChromeDevtoolsProtocol\Model\Storage\ResetSharedStorageBudgetRequest;
 use ChromeDevtoolsProtocol\Model\Storage\RunBounceTrackingMitigationsResponse;
 use ChromeDevtoolsProtocol\Model\Storage\SetAttributionReportingLocalTestingModeRequest;
 use ChromeDevtoolsProtocol\Model\Storage\SetAttributionReportingTrackingRequest;
 use ChromeDevtoolsProtocol\Model\Storage\SetCookiesRequest;
+use ChromeDevtoolsProtocol\Model\Storage\SetInterestGroupAuctionTrackingRequest;
 use ChromeDevtoolsProtocol\Model\Storage\SetInterestGroupTrackingRequest;
 use ChromeDevtoolsProtocol\Model\Storage\SetSharedStorageEntryRequest;
 use ChromeDevtoolsProtocol\Model\Storage\SetSharedStorageTrackingRequest;
@@ -207,6 +210,14 @@ class StorageDomain implements StorageDomainInterface
 	public function setCookies(ContextInterface $ctx, SetCookiesRequest $request): void
 	{
 		$this->internalClient->executeCommand($ctx, 'Storage.setCookies', $request);
+	}
+
+
+	public function setInterestGroupAuctionTracking(
+		ContextInterface $ctx,
+		SetInterestGroupAuctionTrackingRequest $request
+	): void {
+		$this->internalClient->executeCommand($ctx, 'Storage.setInterestGroupAuctionTracking', $request);
 	}
 
 
@@ -383,6 +394,34 @@ class StorageDomain implements StorageDomainInterface
 	public function awaitInterestGroupAccessed(ContextInterface $ctx): InterestGroupAccessedEvent
 	{
 		return InterestGroupAccessedEvent::fromJson($this->internalClient->awaitEvent($ctx, 'Storage.interestGroupAccessed'));
+	}
+
+
+	public function addInterestGroupAuctionEventOccurredListener(callable $listener): SubscriptionInterface
+	{
+		return $this->internalClient->addListener('Storage.interestGroupAuctionEventOccurred', function ($event) use ($listener) {
+			return $listener(InterestGroupAuctionEventOccurredEvent::fromJson($event));
+		});
+	}
+
+
+	public function awaitInterestGroupAuctionEventOccurred(ContextInterface $ctx): InterestGroupAuctionEventOccurredEvent
+	{
+		return InterestGroupAuctionEventOccurredEvent::fromJson($this->internalClient->awaitEvent($ctx, 'Storage.interestGroupAuctionEventOccurred'));
+	}
+
+
+	public function addInterestGroupAuctionNetworkRequestCreatedListener(callable $listener): SubscriptionInterface
+	{
+		return $this->internalClient->addListener('Storage.interestGroupAuctionNetworkRequestCreated', function ($event) use ($listener) {
+			return $listener(InterestGroupAuctionNetworkRequestCreatedEvent::fromJson($event));
+		});
+	}
+
+
+	public function awaitInterestGroupAuctionNetworkRequestCreated(ContextInterface $ctx): InterestGroupAuctionNetworkRequestCreatedEvent
+	{
+		return InterestGroupAuctionNetworkRequestCreatedEvent::fromJson($this->internalClient->awaitEvent($ctx, 'Storage.interestGroupAuctionNetworkRequestCreated'));
 	}
 
 

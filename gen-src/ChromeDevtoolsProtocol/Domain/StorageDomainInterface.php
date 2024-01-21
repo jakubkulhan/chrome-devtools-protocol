@@ -31,12 +31,15 @@ use ChromeDevtoolsProtocol\Model\Storage\GetUsageAndQuotaResponse;
 use ChromeDevtoolsProtocol\Model\Storage\IndexedDBContentUpdatedEvent;
 use ChromeDevtoolsProtocol\Model\Storage\IndexedDBListUpdatedEvent;
 use ChromeDevtoolsProtocol\Model\Storage\InterestGroupAccessedEvent;
+use ChromeDevtoolsProtocol\Model\Storage\InterestGroupAuctionEventOccurredEvent;
+use ChromeDevtoolsProtocol\Model\Storage\InterestGroupAuctionNetworkRequestCreatedEvent;
 use ChromeDevtoolsProtocol\Model\Storage\OverrideQuotaForOriginRequest;
 use ChromeDevtoolsProtocol\Model\Storage\ResetSharedStorageBudgetRequest;
 use ChromeDevtoolsProtocol\Model\Storage\RunBounceTrackingMitigationsResponse;
 use ChromeDevtoolsProtocol\Model\Storage\SetAttributionReportingLocalTestingModeRequest;
 use ChromeDevtoolsProtocol\Model\Storage\SetAttributionReportingTrackingRequest;
 use ChromeDevtoolsProtocol\Model\Storage\SetCookiesRequest;
+use ChromeDevtoolsProtocol\Model\Storage\SetInterestGroupAuctionTrackingRequest;
 use ChromeDevtoolsProtocol\Model\Storage\SetInterestGroupTrackingRequest;
 use ChromeDevtoolsProtocol\Model\Storage\SetSharedStorageEntryRequest;
 use ChromeDevtoolsProtocol\Model\Storage\SetSharedStorageTrackingRequest;
@@ -299,6 +302,20 @@ interface StorageDomainInterface
 	 * @return void
 	 */
 	public function setCookies(ContextInterface $ctx, SetCookiesRequest $request): void;
+
+
+	/**
+	 * Enables/Disables issuing of interestGroupAuctionEventOccurred and interestGroupAuctionNetworkRequestCreated.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param SetInterestGroupAuctionTrackingRequest $request
+	 *
+	 * @return void
+	 */
+	public function setInterestGroupAuctionTracking(
+		ContextInterface $ctx,
+		SetInterestGroupAuctionTrackingRequest $request
+	): void;
 
 
 	/**
@@ -587,7 +604,7 @@ interface StorageDomainInterface
 
 
 	/**
-	 * One of the interest groups was accessed by the associated page.
+	 * One of the interest groups was accessed. Note that these events are global to all targets sharing an interest group store.
 	 *
 	 * Listener will be called whenever event Storage.interestGroupAccessed is fired.
 	 *
@@ -599,7 +616,7 @@ interface StorageDomainInterface
 
 
 	/**
-	 * One of the interest groups was accessed by the associated page.
+	 * One of the interest groups was accessed. Note that these events are global to all targets sharing an interest group store.
 	 *
 	 * Method will block until first Storage.interestGroupAccessed event is fired.
 	 *
@@ -608,6 +625,54 @@ interface StorageDomainInterface
 	 * @return InterestGroupAccessedEvent
 	 */
 	public function awaitInterestGroupAccessed(ContextInterface $ctx): InterestGroupAccessedEvent;
+
+
+	/**
+	 * An auction involving interest groups is taking place. These events are target-specific.
+	 *
+	 * Listener will be called whenever event Storage.interestGroupAuctionEventOccurred is fired.
+	 *
+	 * @param callable $listener
+	 *
+	 * @return SubscriptionInterface
+	 */
+	public function addInterestGroupAuctionEventOccurredListener(callable $listener): SubscriptionInterface;
+
+
+	/**
+	 * An auction involving interest groups is taking place. These events are target-specific.
+	 *
+	 * Method will block until first Storage.interestGroupAuctionEventOccurred event is fired.
+	 *
+	 * @param ContextInterface $ctx
+	 *
+	 * @return InterestGroupAuctionEventOccurredEvent
+	 */
+	public function awaitInterestGroupAuctionEventOccurred(ContextInterface $ctx): InterestGroupAuctionEventOccurredEvent;
+
+
+	/**
+	 * Specifies which auctions a particular network fetch may be related to, and in what role. Note that it is not ordered with respect to Network.requestWillBeSent (but will happen before loadingFinished loadingFailed).
+	 *
+	 * Listener will be called whenever event Storage.interestGroupAuctionNetworkRequestCreated is fired.
+	 *
+	 * @param callable $listener
+	 *
+	 * @return SubscriptionInterface
+	 */
+	public function addInterestGroupAuctionNetworkRequestCreatedListener(callable $listener): SubscriptionInterface;
+
+
+	/**
+	 * Specifies which auctions a particular network fetch may be related to, and in what role. Note that it is not ordered with respect to Network.requestWillBeSent (but will happen before loadingFinished loadingFailed).
+	 *
+	 * Method will block until first Storage.interestGroupAuctionNetworkRequestCreated event is fired.
+	 *
+	 * @param ContextInterface $ctx
+	 *
+	 * @return InterestGroupAuctionNetworkRequestCreatedEvent
+	 */
+	public function awaitInterestGroupAuctionNetworkRequestCreated(ContextInterface $ctx): InterestGroupAuctionNetworkRequestCreatedEvent;
 
 
 	/**
