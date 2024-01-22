@@ -23,6 +23,7 @@ final class MixedContentResourceTypeEnum
 	public const FRAME = 'Frame';
 	public const IMAGE = 'Image';
 	public const IMPORT = 'Import';
+	public const JSON = 'JSON';
 	public const MANIFEST = 'Manifest';
 	public const PING = 'Ping';
 	public const PLUGIN_DATA = 'PluginData';
