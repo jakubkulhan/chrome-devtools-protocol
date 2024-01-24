@@ -10982,6 +10982,15 @@
                     ]
                 },
                 {
+                    "id": "AccountUrlType",
+                    "description": "The URLs that each account has",
+                    "type": "string",
+                    "enum": [
+                        "TermsOfService",
+                        "PrivacyPolicy"
+                    ]
+                },
+                {
                     "id": "Account",
                     "description": "Corresponds to IdentityRequestAccount",
                     "type": "object",
@@ -11113,6 +11122,23 @@
                             "description": "Allows callers to disable the promise rejection delay that would normally happen, if this is unimportant to what's being tested. (step 4 of https://fedidcg.github.io/FedCM/#browser-api-rp-sign-in)",
                             "optional": true,
                             "type": "boolean"
+                        }
+                    ]
+                },
+                {
+                    "name": "openUrl",
+                    "parameters": [
+                        {
+                            "name": "dialogId",
+                            "type": "string"
+                        },
+                        {
+                            "name": "accountIndex",
+                            "type": "integer"
+                        },
+                        {
+                            "name": "accountUrlType",
+                            "$ref": "AccountUrlType"
                         }
                     ]
                 },
@@ -25325,18 +25351,6 @@
                     ]
                 },
                 {
-                    "id": "InterestGroupAuctionFetchType",
-                    "description": "Enum of network fetches auctions can do.",
-                    "type": "string",
-                    "enum": [
-                        "bidderJs",
-                        "bidderWasm",
-                        "sellerJs",
-                        "bidderTrustedSignals",
-                        "sellerTrustedSignals"
-                    ]
-                },
-                {
                     "id": "InterestGroupAd",
                     "description": "Ad advertising element inside an interest group.",
                     "type": "object",
@@ -26394,7 +26408,7 @@
                 },
                 {
                     "name": "setInterestGroupAuctionTracking",
-                    "description": "Enables/Disables issuing of interestGroupAuctionEventOccurred and interestGroupAuctionNetworkRequestCreated.",
+                    "description": "Enables/Disables issuing of interestGroupAuctionEvent events.",
                     "experimental": true,
                     "parameters": [
                         {
@@ -26758,28 +26772,6 @@
                             "description": "Set for started and configResolved",
                             "optional": true,
                             "type": "object"
-                        }
-                    ]
-                },
-                {
-                    "name": "interestGroupAuctionNetworkRequestCreated",
-                    "description": "Specifies which auctions a particular network fetch may be related to, and in what role. Note that it is not ordered with respect to Network.requestWillBeSent (but will happen before loadingFinished loadingFailed).",
-                    "parameters": [
-                        {
-                            "name": "type",
-                            "$ref": "InterestGroupAuctionFetchType"
-                        },
-                        {
-                            "name": "requestId",
-                            "$ref": "Network.RequestId"
-                        },
-                        {
-                            "name": "auctions",
-                            "description": "This is the set of the auctions using the worklet that issued this request. In the case of trusted signals, it's possible that only some of them actually care about the keys being queried.",
-                            "type": "array",
-                            "items": {
-                                "$ref": "InterestGroupAuctionId"
-                            }
                         }
                     ]
                 },

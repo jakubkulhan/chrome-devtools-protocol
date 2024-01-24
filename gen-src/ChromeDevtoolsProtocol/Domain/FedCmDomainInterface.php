@@ -8,6 +8,7 @@ use ChromeDevtoolsProtocol\Model\FedCm\DialogClosedEvent;
 use ChromeDevtoolsProtocol\Model\FedCm\DialogShownEvent;
 use ChromeDevtoolsProtocol\Model\FedCm\DismissDialogRequest;
 use ChromeDevtoolsProtocol\Model\FedCm\EnableRequest;
+use ChromeDevtoolsProtocol\Model\FedCm\OpenUrlRequest;
 use ChromeDevtoolsProtocol\Model\FedCm\SelectAccountRequest;
 use ChromeDevtoolsProtocol\SubscriptionInterface;
 
@@ -63,6 +64,17 @@ interface FedCmDomainInterface
 	 * @return void
 	 */
 	public function enable(ContextInterface $ctx, EnableRequest $request): void;
+
+
+	/**
+	 * Call FedCm.openUrl command.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param OpenUrlRequest $request
+	 *
+	 * @return void
+	 */
+	public function openUrl(ContextInterface $ctx, OpenUrlRequest $request): void;
 
 
 	/**

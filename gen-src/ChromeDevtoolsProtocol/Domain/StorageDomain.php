@@ -33,7 +33,6 @@ use ChromeDevtoolsProtocol\Model\Storage\IndexedDBContentUpdatedEvent;
 use ChromeDevtoolsProtocol\Model\Storage\IndexedDBListUpdatedEvent;
 use ChromeDevtoolsProtocol\Model\Storage\InterestGroupAccessedEvent;
 use ChromeDevtoolsProtocol\Model\Storage\InterestGroupAuctionEventOccurredEvent;
-use ChromeDevtoolsProtocol\Model\Storage\InterestGroupAuctionNetworkRequestCreatedEvent;
 use ChromeDevtoolsProtocol\Model\Storage\OverrideQuotaForOriginRequest;
 use ChromeDevtoolsProtocol\Model\Storage\ResetSharedStorageBudgetRequest;
 use ChromeDevtoolsProtocol\Model\Storage\RunBounceTrackingMitigationsResponse;
@@ -408,20 +407,6 @@ class StorageDomain implements StorageDomainInterface
 	public function awaitInterestGroupAuctionEventOccurred(ContextInterface $ctx): InterestGroupAuctionEventOccurredEvent
 	{
 		return InterestGroupAuctionEventOccurredEvent::fromJson($this->internalClient->awaitEvent($ctx, 'Storage.interestGroupAuctionEventOccurred'));
-	}
-
-
-	public function addInterestGroupAuctionNetworkRequestCreatedListener(callable $listener): SubscriptionInterface
-	{
-		return $this->internalClient->addListener('Storage.interestGroupAuctionNetworkRequestCreated', function ($event) use ($listener) {
-			return $listener(InterestGroupAuctionNetworkRequestCreatedEvent::fromJson($event));
-		});
-	}
-
-
-	public function awaitInterestGroupAuctionNetworkRequestCreated(ContextInterface $ctx): InterestGroupAuctionNetworkRequestCreatedEvent
-	{
-		return InterestGroupAuctionNetworkRequestCreatedEvent::fromJson($this->internalClient->awaitEvent($ctx, 'Storage.interestGroupAuctionNetworkRequestCreated'));
 	}
 
 
