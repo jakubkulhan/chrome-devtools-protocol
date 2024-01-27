@@ -32,6 +32,7 @@ use ChromeDevtoolsProtocol\Model\Storage\IndexedDBContentUpdatedEvent;
 use ChromeDevtoolsProtocol\Model\Storage\IndexedDBListUpdatedEvent;
 use ChromeDevtoolsProtocol\Model\Storage\InterestGroupAccessedEvent;
 use ChromeDevtoolsProtocol\Model\Storage\InterestGroupAuctionEventOccurredEvent;
+use ChromeDevtoolsProtocol\Model\Storage\InterestGroupAuctionNetworkRequestCreatedEvent;
 use ChromeDevtoolsProtocol\Model\Storage\OverrideQuotaForOriginRequest;
 use ChromeDevtoolsProtocol\Model\Storage\ResetSharedStorageBudgetRequest;
 use ChromeDevtoolsProtocol\Model\Storage\RunBounceTrackingMitigationsResponse;
@@ -304,7 +305,7 @@ interface StorageDomainInterface
 
 
 	/**
-	 * Enables/Disables issuing of interestGroupAuctionEvent events.
+	 * Enables/Disables issuing of interestGroupAuctionEventOccurred and interestGroupAuctionNetworkRequestCreated.
 	 *
 	 * @param ContextInterface $ctx
 	 * @param SetInterestGroupAuctionTrackingRequest $request
@@ -648,6 +649,30 @@ interface StorageDomainInterface
 	 * @return InterestGroupAuctionEventOccurredEvent
 	 */
 	public function awaitInterestGroupAuctionEventOccurred(ContextInterface $ctx): InterestGroupAuctionEventOccurredEvent;
+
+
+	/**
+	 * Specifies which auctions a particular network fetch may be related to, and in what role. Note that it is not ordered with respect to Network.requestWillBeSent (but will happen before loadingFinished loadingFailed).
+	 *
+	 * Listener will be called whenever event Storage.interestGroupAuctionNetworkRequestCreated is fired.
+	 *
+	 * @param callable $listener
+	 *
+	 * @return SubscriptionInterface
+	 */
+	public function addInterestGroupAuctionNetworkRequestCreatedListener(callable $listener): SubscriptionInterface;
+
+
+	/**
+	 * Specifies which auctions a particular network fetch may be related to, and in what role. Note that it is not ordered with respect to Network.requestWillBeSent (but will happen before loadingFinished loadingFailed).
+	 *
+	 * Method will block until first Storage.interestGroupAuctionNetworkRequestCreated event is fired.
+	 *
+	 * @param ContextInterface $ctx
+	 *
+	 * @return InterestGroupAuctionNetworkRequestCreatedEvent
+	 */
+	public function awaitInterestGroupAuctionNetworkRequestCreated(ContextInterface $ctx): InterestGroupAuctionNetworkRequestCreatedEvent;
 
 
 	/**
