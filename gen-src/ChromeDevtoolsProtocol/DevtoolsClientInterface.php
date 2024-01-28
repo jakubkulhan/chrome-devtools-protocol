@@ -404,8 +404,6 @@ interface DevtoolsClientInterface extends CloseableResourceInterface
 
 	/**
 	 * Tracing domain.
-	 *
-	 * @experimental
 	 */
 	public function tracing(): TracingDomainInterface;
 
