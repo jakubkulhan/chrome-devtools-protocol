@@ -67,6 +67,13 @@ final class ResponseReceivedExtraInfoEvent implements \JsonSerializable
 	 */
 	public $cookiePartitionKeyOpaque;
 
+	/**
+	 * A list of cookies which should have been blocked by 3PCD but are exempted and stored from the response with the corresponding reason.
+	 *
+	 * @var ExemptedSetCookieWithReason[]|null
+	 */
+	public $exemptedCookies;
+
 
 	/**
 	 * @param object $data
@@ -102,6 +109,12 @@ final class ResponseReceivedExtraInfoEvent implements \JsonSerializable
 		if (isset($data->cookiePartitionKeyOpaque)) {
 			$instance->cookiePartitionKeyOpaque = (bool)$data->cookiePartitionKeyOpaque;
 		}
+		if (isset($data->exemptedCookies)) {
+			$instance->exemptedCookies = [];
+			foreach ($data->exemptedCookies as $item) {
+				$instance->exemptedCookies[] = ExemptedSetCookieWithReason::fromJson($item);
+			}
+		}
 		return $instance;
 	}
 
@@ -135,6 +148,12 @@ final class ResponseReceivedExtraInfoEvent implements \JsonSerializable
 		}
 		if ($this->cookiePartitionKeyOpaque !== null) {
 			$data->cookiePartitionKeyOpaque = $this->cookiePartitionKeyOpaque;
+		}
+		if ($this->exemptedCookies !== null) {
+			$data->exemptedCookies = [];
+			foreach ($this->exemptedCookies as $item) {
+				$data->exemptedCookies[] = $item->jsonSerialize();
+			}
 		}
 		return $data;
 	}

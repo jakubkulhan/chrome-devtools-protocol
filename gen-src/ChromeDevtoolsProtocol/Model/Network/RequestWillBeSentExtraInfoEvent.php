@@ -19,9 +19,9 @@ final class RequestWillBeSentExtraInfoEvent implements \JsonSerializable
 	public $requestId;
 
 	/**
-	 * A list of cookies potentially associated to the requested URL. This includes both cookies sent with the request and the ones not sent; the latter are distinguished by having blockedReason field set.
+	 * A list of cookies potentially associated to the requested URL. This includes both cookies sent with the request and the ones not sent; the latter are distinguished by having blockedReasons field set.
 	 *
-	 * @var BlockedCookieWithReason[]
+	 * @var AssociatedCookie[]
 	 */
 	public $associatedCookies;
 
@@ -67,7 +67,7 @@ final class RequestWillBeSentExtraInfoEvent implements \JsonSerializable
 		if (isset($data->associatedCookies)) {
 			$instance->associatedCookies = [];
 			foreach ($data->associatedCookies as $item) {
-				$instance->associatedCookies[] = BlockedCookieWithReason::fromJson($item);
+				$instance->associatedCookies[] = AssociatedCookie::fromJson($item);
 			}
 		}
 		if (isset($data->headers)) {

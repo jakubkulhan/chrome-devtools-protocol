@@ -3,27 +3,34 @@
 namespace ChromeDevtoolsProtocol\Model\Network;
 
 /**
- * A cookie with was not sent with a request with the corresponding reason.
+ * A cookie associated with the request which may or may not be sent with it. Includes the cookies itself and reasons for blocking or exemption.
  *
  * @generated This file has been auto-generated, do not edit.
  *
  * @author Jakub Kulhan <jakub.kulhan@gmail.com>
  */
-final class BlockedCookieWithReason implements \JsonSerializable
+final class AssociatedCookie implements \JsonSerializable
 {
-	/**
-	 * The reason(s) the cookie was blocked.
-	 *
-	 * @var string[]
-	 */
-	public $blockedReasons;
-
 	/**
 	 * The cookie object representing the cookie which was not sent.
 	 *
 	 * @var Cookie
 	 */
 	public $cookie;
+
+	/**
+	 * The reason(s) the cookie was blocked. If empty means the cookie is included.
+	 *
+	 * @var string[]
+	 */
+	public $blockedReasons;
+
+	/**
+	 * The reason the cookie should have been blocked by 3PCD but is exempted. A cookie could only have at most one exemption reason.
+	 *
+	 * @var string
+	 */
+	public $exemptionReason;
 
 
 	/**
@@ -33,6 +40,9 @@ final class BlockedCookieWithReason implements \JsonSerializable
 	public static function fromJson($data)
 	{
 		$instance = new static();
+		if (isset($data->cookie)) {
+			$instance->cookie = Cookie::fromJson($data->cookie);
+		}
 		if (isset($data->blockedReasons)) {
 			$instance->blockedReasons = [];
 		if (isset($data->blockedReasons)) {
@@ -42,8 +52,8 @@ final class BlockedCookieWithReason implements \JsonSerializable
 			}
 		}
 		}
-		if (isset($data->cookie)) {
-			$instance->cookie = Cookie::fromJson($data->cookie);
+		if (isset($data->exemptionReason)) {
+			$instance->exemptionReason = (string)$data->exemptionReason;
 		}
 		return $instance;
 	}
@@ -52,6 +62,9 @@ final class BlockedCookieWithReason implements \JsonSerializable
 	public function jsonSerialize()
 	{
 		$data = new \stdClass();
+		if ($this->cookie !== null) {
+			$data->cookie = $this->cookie->jsonSerialize();
+		}
 		if ($this->blockedReasons !== null) {
 			$data->blockedReasons = [];
 		if ($this->blockedReasons !== null) {
@@ -61,8 +74,8 @@ final class BlockedCookieWithReason implements \JsonSerializable
 			}
 		}
 		}
-		if ($this->cookie !== null) {
-			$data->cookie = $this->cookie->jsonSerialize();
+		if ($this->exemptionReason !== null) {
+			$data->exemptionReason = $this->exemptionReason;
 		}
 		return $data;
 	}
