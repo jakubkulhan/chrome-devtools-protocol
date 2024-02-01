@@ -15,6 +15,7 @@ final class DeleteCookiesRequestBuilder
 	private $url;
 	private $domain;
 	private $path;
+	private $partitionKey;
 
 
 	/**
@@ -30,6 +31,7 @@ final class DeleteCookiesRequestBuilder
 		$instance->url = $this->url;
 		$instance->domain = $this->domain;
 		$instance->path = $this->path;
+		$instance->partitionKey = $this->partitionKey;
 		return $instance;
 	}
 
@@ -78,6 +80,18 @@ final class DeleteCookiesRequestBuilder
 	public function setPath($path): self
 	{
 		$this->path = $path;
+		return $this;
+	}
+
+
+	/**
+	 * @param string|null $partitionKey
+	 *
+	 * @return self
+	 */
+	public function setPartitionKey($partitionKey): self
+	{
+		$this->partitionKey = $partitionKey;
 		return $this;
 	}
 }

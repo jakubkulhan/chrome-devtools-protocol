@@ -16418,7 +16418,7 @@
                 },
                 {
                     "name": "deleteCookies",
-                    "description": "Deletes browser cookies with matching name and url or domain/path pair.",
+                    "description": "Deletes browser cookies with matching name and url or domain/path/partitionKey pair.",
                     "parameters": [
                         {
                             "name": "name",
@@ -16440,6 +16440,12 @@
                         {
                             "name": "path",
                             "description": "If specified, deletes only cookies with the exact path.",
+                            "optional": true,
+                            "type": "string"
+                        },
+                        {
+                            "name": "partitionKey",
+                            "description": "If specified, deletes only cookies with the the given name and partitionKey where domain matches provided URL.",
                             "optional": true,
                             "type": "string"
                         }
