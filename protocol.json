@@ -15543,7 +15543,7 @@
                         "EnterprisePolicy",
                         "StorageAccess",
                         "TopLevelStorageAccess",
-                        "BrowserHeuristics"
+                        "CorsOptIn"
                     ]
                 },
                 {

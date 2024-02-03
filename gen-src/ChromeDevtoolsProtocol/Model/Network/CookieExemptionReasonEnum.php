@@ -19,5 +19,5 @@ final class CookieExemptionReasonEnum
 	public const ENTERPRISE_POLICY = 'EnterprisePolicy';
 	public const STORAGE_ACCESS = 'StorageAccess';
 	public const TOP_LEVEL_STORAGE_ACCESS = 'TopLevelStorageAccess';
-	public const BROWSER_HEURISTICS = 'BrowserHeuristics';
+	public const CORS_OPT_IN = 'CorsOptIn';
 }
