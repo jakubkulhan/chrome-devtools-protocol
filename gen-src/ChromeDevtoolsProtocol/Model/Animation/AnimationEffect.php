@@ -40,7 +40,7 @@ final class AnimationEffect implements \JsonSerializable
 	public $iterations;
 
 	/**
-	 * `AnimationEffect`'s iteration duration.
+	 * `AnimationEffect`'s iteration duration. Milliseconds for time based animations and percentage [0 - 100] for scroll driven animations (i.e. when viewOrScrollTimeline exists).
 	 *
 	 * @var int|float
 	 */
