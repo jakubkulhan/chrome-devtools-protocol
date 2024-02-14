@@ -11,14 +11,33 @@ namespace ChromeDevtoolsProtocol\Model\Storage;
  */
 final class SharedStorageMetadata implements \JsonSerializable
 {
-	/** @var int|float */
+	/**
+	 * Time when the origin's shared storage was last created.
+	 *
+	 * @var int|float
+	 */
 	public $creationTime;
 
-	/** @var int */
+	/**
+	 * Number of key-value pairs stored in origin's shared storage.
+	 *
+	 * @var int
+	 */
 	public $length;
 
-	/** @var int|float */
+	/**
+	 * Current amount of bits of entropy remaining in the navigation budget.
+	 *
+	 * @var int|float
+	 */
 	public $remainingBudget;
+
+	/**
+	 * Total number of bytes stored as key-value pairs in origin's shared storage.
+	 *
+	 * @var int
+	 */
+	public $bytesUsed;
 
 
 	/**
@@ -37,6 +56,9 @@ final class SharedStorageMetadata implements \JsonSerializable
 		if (isset($data->remainingBudget)) {
 			$instance->remainingBudget = $data->remainingBudget;
 		}
+		if (isset($data->bytesUsed)) {
+			$instance->bytesUsed = (int)$data->bytesUsed;
+		}
 		return $instance;
 	}
 
@@ -52,6 +74,9 @@ final class SharedStorageMetadata implements \JsonSerializable
 		}
 		if ($this->remainingBudget !== null) {
 			$data->remainingBudget = $this->remainingBudget;
+		}
+		if ($this->bytesUsed !== null) {
+			$data->bytesUsed = $this->bytesUsed;
 		}
 		return $data;
 	}
