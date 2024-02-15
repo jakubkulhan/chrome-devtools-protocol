@@ -18,6 +18,7 @@ use ChromeDevtoolsProtocol\Model\WebAuthn\GetCredentialsResponse;
 use ChromeDevtoolsProtocol\Model\WebAuthn\RemoveCredentialRequest;
 use ChromeDevtoolsProtocol\Model\WebAuthn\RemoveVirtualAuthenticatorRequest;
 use ChromeDevtoolsProtocol\Model\WebAuthn\SetAutomaticPresenceSimulationRequest;
+use ChromeDevtoolsProtocol\Model\WebAuthn\SetCredentialPropertiesRequest;
 use ChromeDevtoolsProtocol\Model\WebAuthn\SetResponseOverrideBitsRequest;
 use ChromeDevtoolsProtocol\Model\WebAuthn\SetUserVerifiedRequest;
 use ChromeDevtoolsProtocol\SubscriptionInterface;
@@ -99,6 +100,12 @@ class WebAuthnDomain implements WebAuthnDomainInterface
 		SetAutomaticPresenceSimulationRequest $request
 	): void {
 		$this->internalClient->executeCommand($ctx, 'WebAuthn.setAutomaticPresenceSimulation', $request);
+	}
+
+
+	public function setCredentialProperties(ContextInterface $ctx, SetCredentialPropertiesRequest $request): void
+	{
+		$this->internalClient->executeCommand($ctx, 'WebAuthn.setCredentialProperties', $request);
 	}
 
 

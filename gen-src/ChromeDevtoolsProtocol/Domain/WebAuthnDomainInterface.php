@@ -17,6 +17,7 @@ use ChromeDevtoolsProtocol\Model\WebAuthn\GetCredentialsResponse;
 use ChromeDevtoolsProtocol\Model\WebAuthn\RemoveCredentialRequest;
 use ChromeDevtoolsProtocol\Model\WebAuthn\RemoveVirtualAuthenticatorRequest;
 use ChromeDevtoolsProtocol\Model\WebAuthn\SetAutomaticPresenceSimulationRequest;
+use ChromeDevtoolsProtocol\Model\WebAuthn\SetCredentialPropertiesRequest;
 use ChromeDevtoolsProtocol\Model\WebAuthn\SetResponseOverrideBitsRequest;
 use ChromeDevtoolsProtocol\Model\WebAuthn\SetUserVerifiedRequest;
 use ChromeDevtoolsProtocol\SubscriptionInterface;
@@ -145,6 +146,17 @@ interface WebAuthnDomainInterface
 		ContextInterface $ctx,
 		SetAutomaticPresenceSimulationRequest $request
 	): void;
+
+
+	/**
+	 * Allows setting credential properties. https://w3c.github.io/webauthn/#sctn-automation-set-credential-properties
+	 *
+	 * @param ContextInterface $ctx
+	 * @param SetCredentialPropertiesRequest $request
+	 *
+	 * @return void
+	 */
+	public function setCredentialProperties(ContextInterface $ctx, SetCredentialPropertiesRequest $request): void;
 
 
 	/**

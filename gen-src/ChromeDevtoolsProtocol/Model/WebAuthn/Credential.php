@@ -52,6 +52,20 @@ final class Credential implements \JsonSerializable
 	 */
 	public $largeBlob;
 
+	/**
+	 * Assertions returned by this credential will have the backup eligibility (BE) flag set to this value. Defaults to the authenticator's defaultBackupEligibility value.
+	 *
+	 * @var bool|null
+	 */
+	public $backupEligibility;
+
+	/**
+	 * Assertions returned by this credential will have the backup state (BS) flag set to this value. Defaults to the authenticator's defaultBackupState value.
+	 *
+	 * @var bool|null
+	 */
+	public $backupState;
+
 
 	/**
 	 * @param object $data
@@ -81,6 +95,12 @@ final class Credential implements \JsonSerializable
 		if (isset($data->largeBlob)) {
 			$instance->largeBlob = (string)$data->largeBlob;
 		}
+		if (isset($data->backupEligibility)) {
+			$instance->backupEligibility = (bool)$data->backupEligibility;
+		}
+		if (isset($data->backupState)) {
+			$instance->backupState = (bool)$data->backupState;
+		}
 		return $instance;
 	}
 
@@ -108,6 +128,12 @@ final class Credential implements \JsonSerializable
 		}
 		if ($this->largeBlob !== null) {
 			$data->largeBlob = $this->largeBlob;
+		}
+		if ($this->backupEligibility !== null) {
+			$data->backupEligibility = $this->backupEligibility;
+		}
+		if ($this->backupState !== null) {
+			$data->backupState = $this->backupState;
 		}
 		return $data;
 	}
