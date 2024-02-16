@@ -54,6 +54,13 @@ final class FilledField implements \JsonSerializable
 	public $fillingStrategy;
 
 	/**
+	 * The frame the field belongs to
+	 *
+	 * @var string
+	 */
+	public $frameId;
+
+	/**
 	 * The form field's DOM node
 	 *
 	 * @var int
@@ -86,6 +93,9 @@ final class FilledField implements \JsonSerializable
 		if (isset($data->fillingStrategy)) {
 			$instance->fillingStrategy = (string)$data->fillingStrategy;
 		}
+		if (isset($data->frameId)) {
+			$instance->frameId = (string)$data->frameId;
+		}
 		if (isset($data->fieldId)) {
 			$instance->fieldId = (int)$data->fieldId;
 		}
@@ -113,6 +123,9 @@ final class FilledField implements \JsonSerializable
 		}
 		if ($this->fillingStrategy !== null) {
 			$data->fillingStrategy = $this->fillingStrategy;
+		}
+		if ($this->frameId !== null) {
+			$data->frameId = $this->frameId;
 		}
 		if ($this->fieldId !== null) {
 			$data->fieldId = $this->fieldId;
