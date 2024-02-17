@@ -11,15 +11,11 @@ namespace ChromeDevtoolsProtocol\Model\Storage;
  */
 final class AttributionReportingAggregatableValueEntry implements \JsonSerializable
 {
-	/** @var string */
-	public $key;
+	/** @var AttributionReportingAggregatableValueDictEntry[] */
+	public $values;
 
-	/**
-	 * number instead of integer because not all uint32 can be represented by int
-	 *
-	 * @var int|float
-	 */
-	public $value;
+	/** @var AttributionReportingFilterPair */
+	public $filters;
 
 
 	/**
@@ -29,11 +25,14 @@ final class AttributionReportingAggregatableValueEntry implements \JsonSerializa
 	public static function fromJson($data)
 	{
 		$instance = new static();
-		if (isset($data->key)) {
-			$instance->key = (string)$data->key;
+		if (isset($data->values)) {
+			$instance->values = [];
+			foreach ($data->values as $item) {
+				$instance->values[] = AttributionReportingAggregatableValueDictEntry::fromJson($item);
+			}
 		}
-		if (isset($data->value)) {
-			$instance->value = $data->value;
+		if (isset($data->filters)) {
+			$instance->filters = AttributionReportingFilterPair::fromJson($data->filters);
 		}
 		return $instance;
 	}
@@ -42,11 +41,14 @@ final class AttributionReportingAggregatableValueEntry implements \JsonSerializa
 	public function jsonSerialize()
 	{
 		$data = new \stdClass();
-		if ($this->key !== null) {
-			$data->key = $this->key;
+		if ($this->values !== null) {
+			$data->values = [];
+			foreach ($this->values as $item) {
+				$data->values[] = $item->jsonSerialize();
+			}
 		}
-		if ($this->value !== null) {
-			$data->value = $this->value;
+		if ($this->filters !== null) {
+			$data->filters = $this->filters->jsonSerialize();
 		}
 		return $data;
 	}
