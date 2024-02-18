@@ -83,6 +83,7 @@ final class PermissionsPolicyFeatureEnum
 	public const SHARED_STORAGE = 'shared-storage';
 	public const SHARED_STORAGE_SELECT_URL = 'shared-storage-select-url';
 	public const SMART_CARD = 'smart-card';
+	public const SPEAKER_SELECTION = 'speaker-selection';
 	public const STORAGE_ACCESS = 'storage-access';
 	public const SUB_APPS = 'sub-apps';
 	public const SYNC_XHR = 'sync-xhr';

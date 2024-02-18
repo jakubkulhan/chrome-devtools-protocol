@@ -14,6 +14,9 @@ final class ServiceWorkerRouterInfo implements \JsonSerializable
 	/** @var int */
 	public $ruleIdMatched;
 
+	/** @var string */
+	public $matchedSourceType;
+
 
 	/**
 	 * @param object $data
@@ -25,6 +28,9 @@ final class ServiceWorkerRouterInfo implements \JsonSerializable
 		if (isset($data->ruleIdMatched)) {
 			$instance->ruleIdMatched = (int)$data->ruleIdMatched;
 		}
+		if (isset($data->matchedSourceType)) {
+			$instance->matchedSourceType = (string)$data->matchedSourceType;
+		}
 		return $instance;
 	}
 
@@ -34,6 +40,9 @@ final class ServiceWorkerRouterInfo implements \JsonSerializable
 		$data = new \stdClass();
 		if ($this->ruleIdMatched !== null) {
 			$data->ruleIdMatched = $this->ruleIdMatched;
+		}
+		if ($this->matchedSourceType !== null) {
+			$data->matchedSourceType = $this->matchedSourceType;
 		}
 		return $data;
 	}
