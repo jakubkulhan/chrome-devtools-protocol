@@ -12,7 +12,7 @@ namespace ChromeDevtoolsProtocol\Model\Page;
 final class BackForwardCacheNotUsedEvent implements \JsonSerializable
 {
 	/**
-	 * The loader id for the associated navgation.
+	 * The loader id for the associated navigation.
 	 *
 	 * @var string
 	 */

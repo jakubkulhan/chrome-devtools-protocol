@@ -19,7 +19,7 @@ final class ReadRequest implements \JsonSerializable
 	public $handle;
 
 	/**
-	 * Seek to the specified offset before reading (if not specificed, proceed with offset following the last read). Some types of streams may only support sequential reads.
+	 * Seek to the specified offset before reading (if not specified, proceed with offset following the last read). Some types of streams may only support sequential reads.
 	 *
 	 * @var int|null
 	 */

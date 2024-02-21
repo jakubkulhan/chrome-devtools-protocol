@@ -12,7 +12,7 @@ namespace ChromeDevtoolsProtocol\Model\LayerTree;
 final class LayerTreeDidChangeEvent implements \JsonSerializable
 {
 	/**
-	 * Layer tree, absent if not in the comspositing mode.
+	 * Layer tree, absent if not in the compositing mode.
 	 *
 	 * @var Layer[]|null
 	 */

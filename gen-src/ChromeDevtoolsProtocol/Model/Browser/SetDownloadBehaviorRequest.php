@@ -12,7 +12,7 @@ namespace ChromeDevtoolsProtocol\Model\Browser;
 final class SetDownloadBehaviorRequest implements \JsonSerializable
 {
 	/**
-	 * Whether to allow all or deny all download requests, or use default Chrome behavior if available (otherwise deny). |allowAndName| allows download and names files according to their dowmload guids.
+	 * Whether to allow all or deny all download requests, or use default Chrome behavior if available (otherwise deny). |allowAndName| allows download and names files according to their download guids.
 	 *
 	 * @var string
 	 */

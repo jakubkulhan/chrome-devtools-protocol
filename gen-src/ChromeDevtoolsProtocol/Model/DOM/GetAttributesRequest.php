@@ -12,7 +12,7 @@ namespace ChromeDevtoolsProtocol\Model\DOM;
 final class GetAttributesRequest implements \JsonSerializable
 {
 	/**
-	 * Id of the node to retrieve attibutes for.
+	 * Id of the node to retrieve attributes for.
 	 *
 	 * @var int
 	 */

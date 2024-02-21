@@ -3,7 +3,7 @@
 namespace ChromeDevtoolsProtocol\Model\Emulation;
 
 /**
- * Used to specify User Agent Cient Hints to emulate. See https://wicg.github.io/ua-client-hints Missing optional values will be filled in by the target with what it would normally use.
+ * Used to specify User Agent Client Hints to emulate. See https://wicg.github.io/ua-client-hints Missing optional values will be filled in by the target with what it would normally use.
  *
  * @generated This file has been auto-generated, do not edit.
  *

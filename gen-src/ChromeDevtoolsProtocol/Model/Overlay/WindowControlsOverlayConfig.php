@@ -19,7 +19,7 @@ final class WindowControlsOverlayConfig implements \JsonSerializable
 	public $showCSS;
 
 	/**
-	 * Seleted platforms to show the overlay.
+	 * Selected platforms to show the overlay.
 	 *
 	 * @var string
 	 */

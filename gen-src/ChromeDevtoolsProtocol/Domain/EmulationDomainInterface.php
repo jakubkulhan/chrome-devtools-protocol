@@ -336,7 +336,7 @@ interface EmulationDomainInterface
 
 
 	/**
-	 * Updates the sensor readings reported by a sensor type previously overriden by setSensorOverrideEnabled.
+	 * Updates the sensor readings reported by a sensor type previously overridden by setSensorOverrideEnabled.
 	 *
 	 * @param ContextInterface $ctx
 	 * @param SetSensorOverrideReadingsRequest $request
@@ -369,7 +369,7 @@ interface EmulationDomainInterface
 
 
 	/**
-	 * Allows overriding user agent with the given string.
+	 * Allows overriding user agent with the given string. `userAgentMetadata` must be set for Client Hint headers to be sent.
 	 *
 	 * @param ContextInterface $ctx
 	 * @param SetUserAgentOverrideRequest $request

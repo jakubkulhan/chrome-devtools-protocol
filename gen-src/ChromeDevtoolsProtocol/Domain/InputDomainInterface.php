@@ -93,7 +93,7 @@ interface InputDomainInterface
 
 
 	/**
-	 * This method sets the current candidate text for ime. Use imeCommitComposition to commit the final text. Use imeSetComposition with empty string as text to cancel composition.
+	 * This method sets the current candidate text for IME. Use imeCommitComposition to commit the final text. Use imeSetComposition with empty string as text to cancel composition.
 	 *
 	 * @param ContextInterface $ctx
 	 * @param ImeSetCompositionRequest $request

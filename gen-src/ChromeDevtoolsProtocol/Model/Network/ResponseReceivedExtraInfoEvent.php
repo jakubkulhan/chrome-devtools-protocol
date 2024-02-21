@@ -61,7 +61,7 @@ final class ResponseReceivedExtraInfoEvent implements \JsonSerializable
 	public $cookiePartitionKey;
 
 	/**
-	 * True if partitioned cookies are enabled, but the partition key is not serializeable to string.
+	 * True if partitioned cookies are enabled, but the partition key is not serializable to string.
 	 *
 	 * @var bool|null
 	 */

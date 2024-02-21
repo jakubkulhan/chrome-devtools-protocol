@@ -19,7 +19,7 @@ final class GetFullAXTreeRequest implements \JsonSerializable
 	public $depth;
 
 	/**
-	 * The frame for whose document the AX tree should be retrieved. If omited, the root frame is used.
+	 * The frame for whose document the AX tree should be retrieved. If omitted, the root frame is used.
 	 *
 	 * @var string
 	 */

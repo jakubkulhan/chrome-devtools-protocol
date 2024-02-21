@@ -19,7 +19,7 @@ final class TimelineEvent implements \JsonSerializable
 	public $frameId;
 
 	/**
-	 * The event type, as specified in https://w3c.github.io/performance-timeline/#dom-performanceentry-entrytype This determines which of the optional "details" fiedls is present.
+	 * The event type, as specified in https://w3c.github.io/performance-timeline/#dom-performanceentry-entrytype This determines which of the optional "details" fields is present.
 	 *
 	 * @var string
 	 */

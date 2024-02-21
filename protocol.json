@@ -426,7 +426,7 @@
                         },
                         {
                             "name": "frameId",
-                            "description": "The frame for whose document the AX tree should be retrieved. If omited, the root frame is used.",
+                            "description": "The frame for whose document the AX tree should be retrieved. If omitted, the root frame is used.",
                             "optional": true,
                             "$ref": "Page.FrameId"
                         }
@@ -503,7 +503,7 @@
                 },
                 {
                     "name": "queryAXTree",
-                    "description": "Query a DOM node's accessibility subtree for accessible name and role. This command computes the name and role for all nodes in the subtree, including those that are ignored for accessibility, and returns those that mactch the specified name and role. If no DOM node is specified, or the DOM node does not exist, the command returns an error. If neither `accessibleName` or `role` is specified, it returns all the accessibility nodes in the subtree.",
+                    "description": "Query a DOM node's accessibility subtree for accessible name and role. This command computes the name and role for all nodes in the subtree, including those that are ignored for accessibility, and returns those that match the specified name and role. If no DOM node is specified, or the DOM node does not exist, the command returns an error. If neither `accessibleName` or `role` is specified, it returns all the accessibility nodes in the subtree.",
                     "experimental": true,
                     "parameters": [
                         {
@@ -2176,7 +2176,7 @@
                     "properties": [
                         {
                             "name": "addressFields",
-                            "description": "A two dimension array containing the repesentation of values from an address profile.",
+                            "description": "A two dimension array containing the representation of values from an address profile.",
                             "type": "array",
                             "items": {
                                 "$ref": "AddressFields"
@@ -2936,7 +2936,7 @@
                     "parameters": [
                         {
                             "name": "behavior",
-                            "description": "Whether to allow all or deny all download requests, or use default Chrome behavior if available (otherwise deny). |allowAndName| allows download and names files according to their dowmload guids.",
+                            "description": "Whether to allow all or deny all download requests, or use default Chrome behavior if available (otherwise deny). |allowAndName| allows download and names files according to their download guids.",
                             "type": "string",
                             "enum": [
                                 "deny",
@@ -3749,7 +3749,7 @@
                         },
                         {
                             "name": "sourceURL",
-                            "description": "Stylesheet resource URL. Empty if this is a constructed stylesheet created using new CSSStyleSheet() (but non-empty if this is a constructed sylesheet imported as a CSS module script).",
+                            "description": "Stylesheet resource URL. Empty if this is a constructed stylesheet created using new CSSStyleSheet() (but non-empty if this is a constructed stylesheet imported as a CSS module script).",
                             "type": "string"
                         },
                         {
@@ -7687,7 +7687,7 @@
                     "parameters": [
                         {
                             "name": "nodeId",
-                            "description": "Id of the node to retrieve attibutes for.",
+                            "description": "Id of the node to retrieve attributes for.",
                             "$ref": "NodeId"
                         }
                     ],
@@ -10214,7 +10214,7 @@
                 },
                 {
                     "id": "UserAgentBrandVersion",
-                    "description": "Used to specify User Agent Cient Hints to emulate. See https://wicg.github.io/ua-client-hints",
+                    "description": "Used to specify User Agent Client Hints to emulate. See https://wicg.github.io/ua-client-hints",
                     "experimental": true,
                     "type": "object",
                     "properties": [
@@ -10230,7 +10230,7 @@
                 },
                 {
                     "id": "UserAgentMetadata",
-                    "description": "Used to specify User Agent Cient Hints to emulate. See https://wicg.github.io/ua-client-hints Missing optional values will be filled in by the target with what it would normally use.",
+                    "description": "Used to specify User Agent Client Hints to emulate. See https://wicg.github.io/ua-client-hints Missing optional values will be filled in by the target with what it would normally use.",
                     "experimental": true,
                     "type": "object",
                     "properties": [
@@ -10835,7 +10835,7 @@
                 },
                 {
                     "name": "setSensorOverrideReadings",
-                    "description": "Updates the sensor readings reported by a sensor type previously overriden by setSensorOverrideEnabled.",
+                    "description": "Updates the sensor readings reported by a sensor type previously overridden by setSensorOverrideEnabled.",
                     "experimental": true,
                     "parameters": [
                         {
@@ -10854,7 +10854,7 @@
                     "parameters": [
                         {
                             "name": "timezoneId",
-                            "description": "The timezone identifier. If empty, disables the override and restores default host system timezone.",
+                            "description": "The timezone identifier. List of supported timezones: https://source.chromium.org/chromium/chromium/deps/icu.git/+/faee8bc70570192d82d2978a71e2a615788597d1:source/data/misc/metaZones.txt If empty, disables the override and restores default host system timezone.",
                             "type": "string"
                         }
                     ]
@@ -10878,7 +10878,7 @@
                 },
                 {
                     "name": "setUserAgentOverride",
-                    "description": "Allows overriding user agent with the given string.",
+                    "description": "Allows overriding user agent with the given string. `userAgentMetadata` must be set for Client Hint headers to be sent.",
                     "parameters": [
                         {
                             "name": "userAgent",
@@ -13123,7 +13123,7 @@
                 },
                 {
                     "name": "imeSetComposition",
-                    "description": "This method sets the current candidate text for ime. Use imeCommitComposition to commit the final text. Use imeSetComposition with empty string as text to cancel composition.",
+                    "description": "This method sets the current candidate text for IME. Use imeCommitComposition to commit the final text. Use imeSetComposition with empty string as text to cancel composition.",
                     "experimental": true,
                     "parameters": [
                         {
@@ -13418,7 +13418,7 @@
                         },
                         {
                             "name": "offset",
-                            "description": "Seek to the specified offset before reading (if not specificed, proceed with offset following the last read). Some types of streams may only support sequential reads.",
+                            "description": "Seek to the specified offset before reading (if not specified, proceed with offset following the last read). Some types of streams may only support sequential reads.",
                             "optional": true,
                             "type": "integer"
                         },
@@ -13875,7 +13875,7 @@
                     "parameters": [
                         {
                             "name": "layers",
-                            "description": "Layer tree, absent if not in the comspositing mode.",
+                            "description": "Layer tree, absent if not in the compositing mode.",
                             "optional": true,
                             "type": "array",
                             "items": {
@@ -14819,7 +14819,7 @@
                         },
                         {
                             "name": "isSameSite",
-                            "description": "True if this resource request is considered to be the 'same site' as the request correspondinfg to the main frame.",
+                            "description": "True if this resource request is considered to be the 'same site' as the request corresponding to the main frame.",
                             "experimental": true,
                             "optional": true,
                             "type": "boolean"
@@ -15238,7 +15238,7 @@
                         },
                         {
                             "name": "serviceWorkerRouterInfo",
-                            "description": "Infomation about how Service Worker Static Router was used.",
+                            "description": "Information about how Service Worker Static Router was used.",
                             "experimental": true,
                             "optional": true,
                             "$ref": "ServiceWorkerRouterInfo"
@@ -16042,7 +16042,7 @@
                         },
                         {
                             "name": "errors",
-                            "description": "Errors occurred while handling the signed exchagne.",
+                            "description": "Errors occurred while handling the signed exchange.",
                             "optional": true,
                             "type": "array",
                             "items": {
@@ -17182,7 +17182,7 @@
                         },
                         {
                             "name": "errorText",
-                            "description": "User friendly error message.",
+                            "description": "Error message. List of network errors: https://cs.chromium.org/chromium/src/net/base/net_error_list.h",
                             "type": "string"
                         },
                         {
@@ -17576,7 +17576,7 @@
                         },
                         {
                             "name": "cookiePartitionKeyOpaque",
-                            "description": "True if partitioned cookies are enabled, but the partition key is not serializeable to string.",
+                            "description": "True if partitioned cookies are enabled, but the partition key is not serializable to string.",
                             "optional": true,
                             "type": "boolean"
                         },
@@ -17974,7 +17974,7 @@
                     "properties": [
                         {
                             "name": "parentOutlineColor",
-                            "description": "the color to outline the givent element in.",
+                            "description": "the color to outline the given element in.",
                             "$ref": "DOM.RGBA"
                         },
                         {
@@ -18490,7 +18490,7 @@
                         },
                         {
                             "name": "selectedPlatform",
-                            "description": "Seleted platforms to show the overlay.",
+                            "description": "Selected platforms to show the overlay.",
                             "type": "string"
                         },
                         {
@@ -18682,7 +18682,7 @@
                 },
                 {
                     "name": "highlightFrame",
-                    "description": "Highlights owner element of the frame with given id. Deprecated: Doesn't work reliablity and cannot be fixed due to process separatation (the owner node might be in a different process). Determine the owner node in the client and use highlightNode.",
+                    "description": "Highlights owner element of the frame with given id. Deprecated: Doesn't work reliably and cannot be fixed due to process separation (the owner node might be in a different process). Determine the owner node in the client and use highlightNode.",
                     "deprecated": true,
                     "parameters": [
                         {
@@ -19765,7 +19765,7 @@
                         },
                         {
                             "name": "critical",
-                            "description": "If criticial, this is a non-recoverable parse error.",
+                            "description": "If critical, this is a non-recoverable parse error.",
                             "type": "integer"
                         },
                         {
@@ -20089,7 +20089,7 @@
                 },
                 {
                     "id": "AutoResponseMode",
-                    "description": "Enum of possible auto-reponse for permisison / prompt dialogs.",
+                    "description": "Enum of possible auto-response for permission / prompt dialogs.",
                     "experimental": true,
                     "type": "string",
                     "enum": [
@@ -20180,7 +20180,6 @@
                         "SubresourceHasCacheControlNoCache",
                         "ContainsPlugins",
                         "DocumentLoaded",
-                        "DedicatedWorkerOrWorklet",
                         "OutstandingNetworkRequestOthers",
                         "RequestedMIDIPermission",
                         "RequestedAudioCapturePermission",
@@ -21072,7 +21071,7 @@
                 },
                 {
                     "name": "produceCompilationCache",
-                    "description": "Requests backend to produce compilation cache for the specified scripts. `scripts` are appeneded to the list of scripts for which the cache would be produced. The list may be reset during page navigation. When script with a matching URL is encountered, the cache is optionally produced upon backend discretion, based on internal heuristics. See also: `Page.compilationCacheProduced`.",
+                    "description": "Requests backend to produce compilation cache for the specified scripts. `scripts` are appended to the list of scripts for which the cache would be produced. The list may be reset during page navigation. When script with a matching URL is encountered, the cache is optionally produced upon backend discretion, based on internal heuristics. See also: `Page.compilationCacheProduced`.",
                     "experimental": true,
                     "parameters": [
                         {
@@ -21565,7 +21564,7 @@
                     "parameters": [
                         {
                             "name": "loaderId",
-                            "description": "The loader id for the associated navgation.",
+                            "description": "The loader id for the associated navigation.",
                             "$ref": "Network.LoaderId"
                         },
                         {
@@ -21912,7 +21911,7 @@
                         },
                         {
                             "name": "hasBrowserHandler",
-                            "description": "True iff browser is capable showing or acting on the given dialog. When browser has no dialog handler for given target, calling alert while Page domain is engaged will stall the page execution. Execution can be resumed via calling Page.handleJavaScriptDialog.",
+                            "description": "True if browser is capable showing or acting on the given dialog. When browser has no dialog handler for given target, calling alert while Page domain is engaged will stall the page execution. Execution can be resumed via calling Page.handleJavaScriptDialog.",
                             "type": "boolean"
                         },
                         {
@@ -22237,7 +22236,7 @@
                         },
                         {
                             "name": "type",
-                            "description": "The event type, as specified in https://w3c.github.io/performance-timeline/#dom-performanceentry-entrytype This determines which of the optional \"details\" fiedls is present.",
+                            "description": "The event type, as specified in https://w3c.github.io/performance-timeline/#dom-performanceentry-entrytype This determines which of the optional \"details\" fields is present.",
                             "type": "string"
                         },
                         {
@@ -22344,7 +22343,7 @@
                         },
                         {
                             "name": "errorType",
-                            "description": "Error information `errorMessage` is null iff `errorType` is null.",
+                            "description": "Error information `errorMessage` is null if `errorType` is null.",
                             "optional": true,
                             "$ref": "RuleSetErrorType"
                         },
@@ -22409,7 +22408,7 @@
                 },
                 {
                     "id": "PreloadingAttemptSource",
-                    "description": "Lists sources for a preloading attempt, specifically the ids of rule sets that had a speculation rule that triggered the attempt, and the BackendNodeIds of <a href> or <area href> elements that triggered the attempt (in the case of attempts triggered by a document rule). It is possible for mulitple rule sets and links to trigger a single attempt.",
+                    "description": "Lists sources for a preloading attempt, specifically the ids of rule sets that had a speculation rule that triggered the attempt, and the BackendNodeIds of <a href> or <area href> elements that triggered the attempt (in the case of attempts triggered by a document rule). It is possible for multiple rule sets and links to trigger a single attempt.",
                     "type": "object",
                     "properties": [
                         {
@@ -24751,7 +24750,7 @@
                         },
                         {
                             "name": "certificateHasWeakSignature",
-                            "description": "True if the certificate uses a weak signature aglorithm.",
+                            "description": "True if the certificate uses a weak signature algorithm.",
                             "type": "boolean"
                         },
                         {
@@ -26990,7 +26989,7 @@
                         },
                         {
                             "name": "params",
-                            "description": "The sub-parameters warapped by `params` are all optional and their presence/absence depends on `type`.",
+                            "description": "The sub-parameters wrapped by `params` are all optional and their presence/absence depends on `type`.",
                             "$ref": "SharedStorageAccessParams"
                         }
                     ]
@@ -27353,6 +27352,7 @@
                         },
                         {
                             "name": "title",
+                            "description": "List of types: https://source.chromium.org/chromium/chromium/src/+/main:content/browser/devtools/devtools_agent_host_impl.cc?ss=chromium&q=f:devtools%20-f:out%20%22::kTypeTab%5B%5D%22",
                             "type": "string"
                         },
                         {
@@ -27406,7 +27406,7 @@
                     "properties": [
                         {
                             "name": "exclude",
-                            "description": "If set, causes exclusion of mathcing targets from the list.",
+                            "description": "If set, causes exclusion of matching targets from the list.",
                             "optional": true,
                             "type": "boolean"
                         },
@@ -27668,7 +27668,7 @@
                 },
                 {
                     "name": "exposeDevToolsProtocol",
-                    "description": "Inject object to the target's main frame that provides a communication channel with browser target. Injected object will be available as `window[bindingName]`. The object has the follwing API: - `binding.send(json)` - a method to send messages over the remote debugging protocol - `binding.onmessage = json => handleMessage(json)` - a callback that will be called for the protocol notifications and command responses.",
+                    "description": "Inject object to the target's main frame that provides a communication channel with browser target. Injected object will be available as `window[bindingName]`. The object has the following API: - `binding.send(json)` - a method to send messages over the remote debugging protocol - `binding.onmessage = json => handleMessage(json)` - a callback that will be called for the protocol notifications and command responses.",
                     "experimental": true,
                     "parameters": [
                         {

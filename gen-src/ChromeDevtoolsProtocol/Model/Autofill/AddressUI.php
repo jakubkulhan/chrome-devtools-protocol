@@ -12,7 +12,7 @@ namespace ChromeDevtoolsProtocol\Model\Autofill;
 final class AddressUI implements \JsonSerializable
 {
 	/**
-	 * A two dimension array containing the repesentation of values from an address profile.
+	 * A two dimension array containing the representation of values from an address profile.
 	 *
 	 * @var AddressFields[]
 	 */

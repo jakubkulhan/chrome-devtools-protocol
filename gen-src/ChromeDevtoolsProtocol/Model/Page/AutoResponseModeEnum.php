@@ -3,7 +3,7 @@
 namespace ChromeDevtoolsProtocol\Model\Page;
 
 /**
- * Enum of possible auto-reponse for permisison / prompt dialogs.
+ * Enum of possible auto-response for permission / prompt dialogs.
  *
  * @generated This file has been auto-generated, do not edit.
  *

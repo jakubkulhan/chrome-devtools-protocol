@@ -26,7 +26,7 @@ final class CSSStyleSheetHeader implements \JsonSerializable
 	public $frameId;
 
 	/**
-	 * Stylesheet resource URL. Empty if this is a constructed stylesheet created using new CSSStyleSheet() (but non-empty if this is a constructed sylesheet imported as a CSS module script).
+	 * Stylesheet resource URL. Empty if this is a constructed stylesheet created using new CSSStyleSheet() (but non-empty if this is a constructed stylesheet imported as a CSS module script).
 	 *
 	 * @var string
 	 */

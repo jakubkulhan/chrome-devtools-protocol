@@ -12,7 +12,7 @@ namespace ChromeDevtoolsProtocol\Model\Target;
 final class FilterEntry implements \JsonSerializable
 {
 	/**
-	 * If set, causes exclusion of mathcing targets from the list.
+	 * If set, causes exclusion of matching targets from the list.
 	 *
 	 * @var bool|null
 	 */

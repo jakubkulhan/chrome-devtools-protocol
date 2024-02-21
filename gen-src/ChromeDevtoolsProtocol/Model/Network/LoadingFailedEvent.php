@@ -33,7 +33,7 @@ final class LoadingFailedEvent implements \JsonSerializable
 	public $type;
 
 	/**
-	 * User friendly error message.
+	 * Error message. List of network errors: https://cs.chromium.org/chromium/src/net/base/net_error_list.h
 	 *
 	 * @var string
 	 */

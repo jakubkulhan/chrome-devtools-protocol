@@ -89,7 +89,7 @@ final class CertificateSecurityState implements \JsonSerializable
 	public $certificateNetworkError;
 
 	/**
-	 * True if the certificate uses a weak signature aglorithm.
+	 * True if the certificate uses a weak signature algorithm.
 	 *
 	 * @var bool
 	 */

@@ -33,7 +33,7 @@ final class SignedExchangeInfo implements \JsonSerializable
 	public $securityDetails;
 
 	/**
-	 * Errors occurred while handling the signed exchagne.
+	 * Errors occurred while handling the signed exchange.
 	 *
 	 * @var SignedExchangeError[]|null
 	 */

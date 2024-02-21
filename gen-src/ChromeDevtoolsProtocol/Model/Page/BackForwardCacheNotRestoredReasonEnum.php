@@ -76,7 +76,6 @@ final class BackForwardCacheNotRestoredReasonEnum
 	public const SUBRESOURCE_HAS_CACHE_CONTROL_NO_CACHE = 'SubresourceHasCacheControlNoCache';
 	public const CONTAINS_PLUGINS = 'ContainsPlugins';
 	public const DOCUMENT_LOADED = 'DocumentLoaded';
-	public const DEDICATED_WORKER_OR_WORKLET = 'DedicatedWorkerOrWorklet';
 	public const OUTSTANDING_NETWORK_REQUEST_OTHERS = 'OutstandingNetworkRequestOthers';
 	public const REQUESTED_M_I_D_I_PERMISSION = 'RequestedMIDIPermission';
 	public const REQUESTED_AUDIO_CAPTURE_PERMISSION = 'RequestedAudioCapturePermission';

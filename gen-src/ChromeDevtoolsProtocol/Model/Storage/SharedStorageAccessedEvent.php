@@ -40,7 +40,7 @@ final class SharedStorageAccessedEvent implements \JsonSerializable
 	public $ownerOrigin;
 
 	/**
-	 * The sub-parameters warapped by `params` are all optional and their presence/absence depends on `type`.
+	 * The sub-parameters wrapped by `params` are all optional and their presence/absence depends on `type`.
 	 *
 	 * @var SharedStorageAccessParams
 	 */

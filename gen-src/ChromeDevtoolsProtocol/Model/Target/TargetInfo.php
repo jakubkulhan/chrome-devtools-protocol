@@ -17,7 +17,11 @@ final class TargetInfo implements \JsonSerializable
 	/** @var string */
 	public $type;
 
-	/** @var string */
+	/**
+	 * List of types: https://source.chromium.org/chromium/chromium/src/+/main:content/browser/devtools/devtools_agent_host_impl.cc?ss=chromium&q=f:devtools%20-f:out%20%22::kTypeTab%5B%5D%22
+	 *
+	 * @var string
+	 */
 	public $title;
 
 	/** @var string */

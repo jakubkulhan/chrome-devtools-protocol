@@ -96,7 +96,7 @@ final class Request implements \JsonSerializable
 	public $trustTokenParams;
 
 	/**
-	 * True if this resource request is considered to be the 'same site' as the request correspondinfg to the main frame.
+	 * True if this resource request is considered to be the 'same site' as the request corresponding to the main frame.
 	 *
 	 * @var bool|null
 	 */

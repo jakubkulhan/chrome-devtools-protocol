@@ -124,7 +124,7 @@ final class Response implements \JsonSerializable
 	public $fromPrefetchCache;
 
 	/**
-	 * Infomation about how Service Worker Static Router was used.
+	 * Information about how Service Worker Static Router was used.
 	 *
 	 * @var ServiceWorkerRouterInfo|null
 	 */
