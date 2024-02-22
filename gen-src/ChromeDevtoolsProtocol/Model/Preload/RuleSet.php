@@ -42,7 +42,7 @@ final class RuleSet implements \JsonSerializable
 	public $requestId;
 
 	/**
-	 * Error information `errorMessage` is null if `errorType` is null.
+	 * Error information `errorMessage` is null iff `errorType` is null.
 	 *
 	 * @var string
 	 */

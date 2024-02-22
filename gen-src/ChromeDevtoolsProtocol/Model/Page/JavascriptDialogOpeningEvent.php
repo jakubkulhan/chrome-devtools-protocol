@@ -33,7 +33,7 @@ final class JavascriptDialogOpeningEvent implements \JsonSerializable
 	public $type;
 
 	/**
-	 * True if browser is capable showing or acting on the given dialog. When browser has no dialog handler for given target, calling alert while Page domain is engaged will stall the page execution. Execution can be resumed via calling Page.handleJavaScriptDialog.
+	 * True iff browser is capable showing or acting on the given dialog. When browser has no dialog handler for given target, calling alert while Page domain is engaged will stall the page execution. Execution can be resumed via calling Page.handleJavaScriptDialog.
 	 *
 	 * @var bool
 	 */
