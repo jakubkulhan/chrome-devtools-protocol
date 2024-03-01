@@ -116,6 +116,7 @@ final class BackForwardCacheNotRestoredReasonEnum
 	public const SMART_CARD = 'SmartCard';
 	public const LIVE_MEDIA_STREAM_TRACK = 'LiveMediaStreamTrack';
 	public const UNLOAD_HANDLER = 'UnloadHandler';
+	public const PARSER_ABORTED = 'ParserAborted';
 	public const CONTENT_SECURITY_HANDLER = 'ContentSecurityHandler';
 	public const CONTENT_WEB_AUTHENTICATION_A_P_I = 'ContentWebAuthenticationAPI';
 	public const CONTENT_FILE_CHOOSER = 'ContentFileChooser';

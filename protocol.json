@@ -20226,6 +20226,7 @@
                         "SmartCard",
                         "LiveMediaStreamTrack",
                         "UnloadHandler",
+                        "ParserAborted",
                         "ContentSecurityHandler",
                         "ContentWebAuthenticationAPI",
                         "ContentFileChooser",
