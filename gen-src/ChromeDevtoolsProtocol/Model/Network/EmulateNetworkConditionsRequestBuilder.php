@@ -16,6 +16,9 @@ final class EmulateNetworkConditionsRequestBuilder
 	private $downloadThroughput;
 	private $uploadThroughput;
 	private $connectionType;
+	private $packetLoss;
+	private $packetQueueLength;
+	private $packetReordering;
 
 
 	/**
@@ -41,6 +44,9 @@ final class EmulateNetworkConditionsRequestBuilder
 		}
 		$instance->uploadThroughput = $this->uploadThroughput;
 		$instance->connectionType = $this->connectionType;
+		$instance->packetLoss = $this->packetLoss;
+		$instance->packetQueueLength = $this->packetQueueLength;
+		$instance->packetReordering = $this->packetReordering;
 		return $instance;
 	}
 
@@ -101,6 +107,42 @@ final class EmulateNetworkConditionsRequestBuilder
 	public function setConnectionType($connectionType): self
 	{
 		$this->connectionType = $connectionType;
+		return $this;
+	}
+
+
+	/**
+	 * @param int|float|null $packetLoss
+	 *
+	 * @return self
+	 */
+	public function setPacketLoss($packetLoss): self
+	{
+		$this->packetLoss = $packetLoss;
+		return $this;
+	}
+
+
+	/**
+	 * @param int|null $packetQueueLength
+	 *
+	 * @return self
+	 */
+	public function setPacketQueueLength($packetQueueLength): self
+	{
+		$this->packetQueueLength = $packetQueueLength;
+		return $this;
+	}
+
+
+	/**
+	 * @param bool|null $packetReordering
+	 *
+	 * @return self
+	 */
+	public function setPacketReordering($packetReordering): self
+	{
+		$this->packetReordering = $packetReordering;
 		return $this;
 	}
 }
