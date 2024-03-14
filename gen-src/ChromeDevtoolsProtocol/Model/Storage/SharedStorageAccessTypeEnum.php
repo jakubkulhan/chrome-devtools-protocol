@@ -27,4 +27,8 @@ final class SharedStorageAccessTypeEnum
 	public const WORKLET_ENTRIES = 'workletEntries';
 	public const WORKLET_LENGTH = 'workletLength';
 	public const WORKLET_REMAINING_BUDGET = 'workletRemainingBudget';
+	public const HEADER_SET = 'headerSet';
+	public const HEADER_APPEND = 'headerAppend';
+	public const HEADER_DELETE = 'headerDelete';
+	public const HEADER_CLEAR = 'headerClear';
 }

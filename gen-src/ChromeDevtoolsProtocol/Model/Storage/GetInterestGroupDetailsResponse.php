@@ -11,7 +11,11 @@ namespace ChromeDevtoolsProtocol\Model\Storage;
  */
 final class GetInterestGroupDetailsResponse implements \JsonSerializable
 {
-	/** @var InterestGroupDetails */
+	/**
+	 * This largely corresponds to: https://wicg.github.io/turtledove/#dictdef-generatebidinterestgroup but has absolute expirationTime instead of relative lifetimeMs and also adds joiningOrigin.
+	 *
+	 * @var object
+	 */
 	public $details;
 
 
@@ -23,7 +27,7 @@ final class GetInterestGroupDetailsResponse implements \JsonSerializable
 	{
 		$instance = new static();
 		if (isset($data->details)) {
-			$instance->details = InterestGroupDetails::fromJson($data->details);
+			$instance->details = $data->details;
 		}
 		return $instance;
 	}
@@ -33,7 +37,7 @@ final class GetInterestGroupDetailsResponse implements \JsonSerializable
 	{
 		$data = new \stdClass();
 		if ($this->details !== null) {
-			$data->details = $this->details->jsonSerialize();
+			$data->details = $this->details;
 		}
 		return $data;
 	}

@@ -34,7 +34,7 @@ final class PermissionsPolicyFeatureEnum
 	public const CH_UA_PLATFORM = 'ch-ua-platform';
 	public const CH_UA_MODEL = 'ch-ua-model';
 	public const CH_UA_MOBILE = 'ch-ua-mobile';
-	public const CH_UA_FORM_FACTOR = 'ch-ua-form-factor';
+	public const CH_UA_FORM_FACTORS = 'ch-ua-form-factors';
 	public const CH_UA_FULL_VERSION = 'ch-ua-full-version';
 	public const CH_UA_FULL_VERSION_LIST = 'ch-ua-full-version-list';
 	public const CH_UA_PLATFORM_VERSION = 'ch-ua-platform-version';

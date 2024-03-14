@@ -19252,7 +19252,7 @@
                         "ch-ua-platform",
                         "ch-ua-model",
                         "ch-ua-mobile",
-                        "ch-ua-form-factor",
+                        "ch-ua-form-factors",
                         "ch-ua-full-version",
                         "ch-ua-full-version-list",
                         "ch-ua-platform-version",
@@ -25520,91 +25520,6 @@
                     ]
                 },
                 {
-                    "id": "InterestGroupAd",
-                    "description": "Ad advertising element inside an interest group.",
-                    "type": "object",
-                    "properties": [
-                        {
-                            "name": "renderURL",
-                            "type": "string"
-                        },
-                        {
-                            "name": "metadata",
-                            "optional": true,
-                            "type": "string"
-                        }
-                    ]
-                },
-                {
-                    "id": "InterestGroupDetails",
-                    "description": "The full details of an interest group.",
-                    "type": "object",
-                    "properties": [
-                        {
-                            "name": "ownerOrigin",
-                            "type": "string"
-                        },
-                        {
-                            "name": "name",
-                            "type": "string"
-                        },
-                        {
-                            "name": "expirationTime",
-                            "$ref": "Network.TimeSinceEpoch"
-                        },
-                        {
-                            "name": "joiningOrigin",
-                            "type": "string"
-                        },
-                        {
-                            "name": "biddingLogicURL",
-                            "optional": true,
-                            "type": "string"
-                        },
-                        {
-                            "name": "biddingWasmHelperURL",
-                            "optional": true,
-                            "type": "string"
-                        },
-                        {
-                            "name": "updateURL",
-                            "optional": true,
-                            "type": "string"
-                        },
-                        {
-                            "name": "trustedBiddingSignalsURL",
-                            "optional": true,
-                            "type": "string"
-                        },
-                        {
-                            "name": "trustedBiddingSignalsKeys",
-                            "type": "array",
-                            "items": {
-                                "type": "string"
-                            }
-                        },
-                        {
-                            "name": "userBiddingSignals",
-                            "optional": true,
-                            "type": "string"
-                        },
-                        {
-                            "name": "ads",
-                            "type": "array",
-                            "items": {
-                                "$ref": "InterestGroupAd"
-                            }
-                        },
-                        {
-                            "name": "adComponents",
-                            "type": "array",
-                            "items": {
-                                "$ref": "InterestGroupAd"
-                            }
-                        }
-                    ]
-                },
-                {
                     "id": "SharedStorageAccessType",
                     "description": "Enum of shared storage access types.",
                     "type": "string",
@@ -25624,7 +25539,11 @@
                         "workletKeys",
                         "workletEntries",
                         "workletLength",
-                        "workletRemainingBudget"
+                        "workletRemainingBudget",
+                        "headerSet",
+                        "headerAppend",
+                        "headerDelete",
+                        "headerClear"
                     ]
                 },
                 {
@@ -25738,19 +25657,19 @@
                         },
                         {
                             "name": "key",
-                            "description": "Key for a specific entry in an origin's shared storage. Present only for SharedStorageAccessType.documentSet, SharedStorageAccessType.documentAppend, SharedStorageAccessType.documentDelete, SharedStorageAccessType.workletSet, SharedStorageAccessType.workletAppend, SharedStorageAccessType.workletDelete, and SharedStorageAccessType.workletGet.",
+                            "description": "Key for a specific entry in an origin's shared storage. Present only for SharedStorageAccessType.documentSet, SharedStorageAccessType.documentAppend, SharedStorageAccessType.documentDelete, SharedStorageAccessType.workletSet, SharedStorageAccessType.workletAppend, SharedStorageAccessType.workletDelete, SharedStorageAccessType.workletGet, SharedStorageAccessType.headerSet, SharedStorageAccessType.headerAppend, and SharedStorageAccessType.headerDelete.",
                             "optional": true,
                             "type": "string"
                         },
                         {
                             "name": "value",
-                            "description": "Value for a specific entry in an origin's shared storage. Present only for SharedStorageAccessType.documentSet, SharedStorageAccessType.documentAppend, SharedStorageAccessType.workletSet, and SharedStorageAccessType.workletAppend.",
+                            "description": "Value for a specific entry in an origin's shared storage. Present only for SharedStorageAccessType.documentSet, SharedStorageAccessType.documentAppend, SharedStorageAccessType.workletSet, SharedStorageAccessType.workletAppend, SharedStorageAccessType.headerSet, and SharedStorageAccessType.headerAppend.",
                             "optional": true,
                             "type": "string"
                         },
                         {
                             "name": "ignoreIfPresent",
-                            "description": "Whether or not to set an entry for a key if that key is already present. Present only for SharedStorageAccessType.documentSet and SharedStorageAccessType.workletSet.",
+                            "description": "Whether or not to set an entry for a key if that key is already present. Present only for SharedStorageAccessType.documentSet, SharedStorageAccessType.workletSet, and SharedStorageAccessType.headerSet.",
                             "optional": true,
                             "type": "boolean"
                         }
@@ -26408,7 +26327,8 @@
                     "returns": [
                         {
                             "name": "details",
-                            "$ref": "InterestGroupDetails"
+                            "description": "This largely corresponds to: https://wicg.github.io/turtledove/#dictdef-generatebidinterestgroup but has absolute expirationTime instead of relative lifetimeMs and also adds joiningOrigin.",
+                            "type": "object"
                         }
                     ]
                 },
