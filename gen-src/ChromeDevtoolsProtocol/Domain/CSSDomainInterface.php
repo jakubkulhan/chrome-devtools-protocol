@@ -19,6 +19,8 @@ use ChromeDevtoolsProtocol\Model\CSS\GetInlineStylesForNodeRequest;
 use ChromeDevtoolsProtocol\Model\CSS\GetInlineStylesForNodeResponse;
 use ChromeDevtoolsProtocol\Model\CSS\GetLayersForNodeRequest;
 use ChromeDevtoolsProtocol\Model\CSS\GetLayersForNodeResponse;
+use ChromeDevtoolsProtocol\Model\CSS\GetLocationForSelectorRequest;
+use ChromeDevtoolsProtocol\Model\CSS\GetLocationForSelectorResponse;
 use ChromeDevtoolsProtocol\Model\CSS\GetMatchedStylesForNodeRequest;
 use ChromeDevtoolsProtocol\Model\CSS\GetMatchedStylesForNodeResponse;
 use ChromeDevtoolsProtocol\Model\CSS\GetMediaQueriesResponse;
@@ -182,6 +184,20 @@ interface CSSDomainInterface
 	 * @return GetLayersForNodeResponse
 	 */
 	public function getLayersForNode(ContextInterface $ctx, GetLayersForNodeRequest $request): GetLayersForNodeResponse;
+
+
+	/**
+	 * Given a CSS selector text and a style sheet ID, getLocationForSelector returns an array of locations of the CSS selector in the style sheet.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param GetLocationForSelectorRequest $request
+	 *
+	 * @return GetLocationForSelectorResponse
+	 */
+	public function getLocationForSelector(
+		ContextInterface $ctx,
+		GetLocationForSelectorRequest $request
+	): GetLocationForSelectorResponse;
 
 
 	/**

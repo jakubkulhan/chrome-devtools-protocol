@@ -20,6 +20,8 @@ use ChromeDevtoolsProtocol\Model\CSS\GetInlineStylesForNodeRequest;
 use ChromeDevtoolsProtocol\Model\CSS\GetInlineStylesForNodeResponse;
 use ChromeDevtoolsProtocol\Model\CSS\GetLayersForNodeRequest;
 use ChromeDevtoolsProtocol\Model\CSS\GetLayersForNodeResponse;
+use ChromeDevtoolsProtocol\Model\CSS\GetLocationForSelectorRequest;
+use ChromeDevtoolsProtocol\Model\CSS\GetLocationForSelectorResponse;
 use ChromeDevtoolsProtocol\Model\CSS\GetMatchedStylesForNodeRequest;
 use ChromeDevtoolsProtocol\Model\CSS\GetMatchedStylesForNodeResponse;
 use ChromeDevtoolsProtocol\Model\CSS\GetMediaQueriesResponse;
@@ -141,6 +143,15 @@ class CSSDomain implements CSSDomainInterface
 	{
 		$response = $this->internalClient->executeCommand($ctx, 'CSS.getLayersForNode', $request);
 		return GetLayersForNodeResponse::fromJson($response);
+	}
+
+
+	public function getLocationForSelector(
+		ContextInterface $ctx,
+		GetLocationForSelectorRequest $request
+	): GetLocationForSelectorResponse {
+		$response = $this->internalClient->executeCommand($ctx, 'CSS.getLocationForSelector', $request);
+		return GetLocationForSelectorResponse::fromJson($response);
 	}
 
 

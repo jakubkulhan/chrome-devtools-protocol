@@ -19,6 +19,7 @@ use ChromeDevtoolsProtocol\Model\Storage\GetCookiesRequest;
 use ChromeDevtoolsProtocol\Model\Storage\GetCookiesResponse;
 use ChromeDevtoolsProtocol\Model\Storage\GetInterestGroupDetailsRequest;
 use ChromeDevtoolsProtocol\Model\Storage\GetInterestGroupDetailsResponse;
+use ChromeDevtoolsProtocol\Model\Storage\GetRelatedWebsiteSetsResponse;
 use ChromeDevtoolsProtocol\Model\Storage\GetSharedStorageEntriesRequest;
 use ChromeDevtoolsProtocol\Model\Storage\GetSharedStorageEntriesResponse;
 use ChromeDevtoolsProtocol\Model\Storage\GetSharedStorageMetadataRequest;
@@ -168,6 +169,16 @@ interface StorageDomainInterface
 		ContextInterface $ctx,
 		GetInterestGroupDetailsRequest $request
 	): GetInterestGroupDetailsResponse;
+
+
+	/**
+	 * Returns the effective Related Website Sets in use by this profile for the browser session. The effective Related Website Sets will not change during a browser session.
+	 *
+	 * @param ContextInterface $ctx
+	 *
+	 * @return GetRelatedWebsiteSetsResponse
+	 */
+	public function getRelatedWebsiteSets(ContextInterface $ctx): GetRelatedWebsiteSetsResponse;
 
 
 	/**

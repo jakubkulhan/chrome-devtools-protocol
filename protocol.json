@@ -4909,6 +4909,30 @@
                     ]
                 },
                 {
+                    "name": "getLocationForSelector",
+                    "description": "Given a CSS selector text and a style sheet ID, getLocationForSelector returns an array of locations of the CSS selector in the style sheet.",
+                    "experimental": true,
+                    "parameters": [
+                        {
+                            "name": "styleSheetId",
+                            "$ref": "StyleSheetId"
+                        },
+                        {
+                            "name": "selectorText",
+                            "type": "string"
+                        }
+                    ],
+                    "returns": [
+                        {
+                            "name": "ranges",
+                            "type": "array",
+                            "items": {
+                                "$ref": "SourceRange"
+                            }
+                        }
+                    ]
+                },
+                {
                     "name": "getMatchedStylesForNode",
                     "description": "Returns requested styles for a DOM node identified by `nodeId`.",
                     "parameters": [
@@ -26186,6 +26210,38 @@
                         "reportWindowPassed",
                         "excessiveReports"
                     ]
+                },
+                {
+                    "id": "RelatedWebsiteSet",
+                    "description": "A single Related Website Set object.",
+                    "experimental": true,
+                    "type": "object",
+                    "properties": [
+                        {
+                            "name": "primarySites",
+                            "description": "The primary site of this set, along with the ccTLDs if there is any.",
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            }
+                        },
+                        {
+                            "name": "associatedSites",
+                            "description": "The associated sites of this set, along with the ccTLDs if there is any.",
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            }
+                        },
+                        {
+                            "name": "serviceSites",
+                            "description": "The service sites of this set, along with the ccTLDs if there is any.",
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            }
+                        }
+                    ]
                 }
             ],
             "commands": [
@@ -26329,6 +26385,20 @@
                             "name": "details",
                             "description": "This largely corresponds to: https://wicg.github.io/turtledove/#dictdef-generatebidinterestgroup but has absolute expirationTime instead of relative lifetimeMs and also adds joiningOrigin.",
                             "type": "object"
+                        }
+                    ]
+                },
+                {
+                    "name": "getRelatedWebsiteSets",
+                    "description": "Returns the effective Related Website Sets in use by this profile for the browser session. The effective Related Website Sets will not change during a browser session.",
+                    "experimental": true,
+                    "returns": [
+                        {
+                            "name": "sets",
+                            "type": "array",
+                            "items": {
+                                "$ref": "RelatedWebsiteSet"
+                            }
                         }
                     ]
                 },

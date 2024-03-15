@@ -20,6 +20,7 @@ use ChromeDevtoolsProtocol\Model\Storage\GetCookiesRequest;
 use ChromeDevtoolsProtocol\Model\Storage\GetCookiesResponse;
 use ChromeDevtoolsProtocol\Model\Storage\GetInterestGroupDetailsRequest;
 use ChromeDevtoolsProtocol\Model\Storage\GetInterestGroupDetailsResponse;
+use ChromeDevtoolsProtocol\Model\Storage\GetRelatedWebsiteSetsResponse;
 use ChromeDevtoolsProtocol\Model\Storage\GetSharedStorageEntriesRequest;
 use ChromeDevtoolsProtocol\Model\Storage\GetSharedStorageEntriesResponse;
 use ChromeDevtoolsProtocol\Model\Storage\GetSharedStorageMetadataRequest;
@@ -126,6 +127,14 @@ class StorageDomain implements StorageDomainInterface
 	): GetInterestGroupDetailsResponse {
 		$response = $this->internalClient->executeCommand($ctx, 'Storage.getInterestGroupDetails', $request);
 		return GetInterestGroupDetailsResponse::fromJson($response);
+	}
+
+
+	public function getRelatedWebsiteSets(ContextInterface $ctx): GetRelatedWebsiteSetsResponse
+	{
+		$request = new \stdClass();
+		$response = $this->internalClient->executeCommand($ctx, 'Storage.getRelatedWebsiteSets', $request);
+		return GetRelatedWebsiteSetsResponse::fromJson($response);
 	}
 
 
