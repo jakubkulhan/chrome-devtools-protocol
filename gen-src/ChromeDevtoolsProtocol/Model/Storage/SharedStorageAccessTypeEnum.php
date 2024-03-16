@@ -18,6 +18,7 @@ final class SharedStorageAccessTypeEnum
 	public const DOCUMENT_APPEND = 'documentAppend';
 	public const DOCUMENT_DELETE = 'documentDelete';
 	public const DOCUMENT_CLEAR = 'documentClear';
+	public const DOCUMENT_GET = 'documentGet';
 	public const WORKLET_SET = 'workletSet';
 	public const WORKLET_APPEND = 'workletAppend';
 	public const WORKLET_DELETE = 'workletDelete';

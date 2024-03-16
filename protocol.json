@@ -4546,6 +4546,7 @@
                 {
                     "id": "CSSPositionFallbackRule",
                     "description": "CSS position-fallback rule representation.",
+                    "deprecated": true,
                     "type": "object",
                     "properties": [
                         {
@@ -4559,6 +4560,34 @@
                             "items": {
                                 "$ref": "CSSTryRule"
                             }
+                        }
+                    ]
+                },
+                {
+                    "id": "CSSPositionTryRule",
+                    "description": "CSS @position-try rule representation.",
+                    "type": "object",
+                    "properties": [
+                        {
+                            "name": "name",
+                            "description": "The prelude dashed-ident name",
+                            "$ref": "Value"
+                        },
+                        {
+                            "name": "styleSheetId",
+                            "description": "The css style sheet identifier (absent for user agent stylesheet and user-specified stylesheet rules) this rule came from.",
+                            "optional": true,
+                            "$ref": "StyleSheetId"
+                        },
+                        {
+                            "name": "origin",
+                            "description": "Parent stylesheet's origin.",
+                            "$ref": "StyleSheetOrigin"
+                        },
+                        {
+                            "name": "style",
+                            "description": "Associated style declaration.",
+                            "$ref": "CSSStyle"
                         }
                     ]
                 },
@@ -5002,10 +5031,20 @@
                         {
                             "name": "cssPositionFallbackRules",
                             "description": "A list of CSS position fallbacks matching this node.",
+                            "deprecated": true,
                             "optional": true,
                             "type": "array",
                             "items": {
                                 "$ref": "CSSPositionFallbackRule"
+                            }
+                        },
+                        {
+                            "name": "cssPositionTryRules",
+                            "description": "A list of CSS @position-try rules matching this node, based on the position-try-options property.",
+                            "optional": true,
+                            "type": "array",
+                            "items": {
+                                "$ref": "CSSPositionTryRule"
                             }
                         },
                         {
@@ -25555,6 +25594,7 @@
                         "documentAppend",
                         "documentDelete",
                         "documentClear",
+                        "documentGet",
                         "workletSet",
                         "workletAppend",
                         "workletDelete",
