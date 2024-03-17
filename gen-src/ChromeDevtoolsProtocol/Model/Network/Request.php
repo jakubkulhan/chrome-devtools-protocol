@@ -40,7 +40,7 @@ final class Request implements \JsonSerializable
 	public $headers;
 
 	/**
-	 * HTTP POST request data.
+	 * HTTP POST request data. Use postDataEntries instead.
 	 *
 	 * @var string|null
 	 */
@@ -54,7 +54,7 @@ final class Request implements \JsonSerializable
 	public $hasPostData;
 
 	/**
-	 * Request body elements. This will be converted from base64 to binary
+	 * Request body elements (post data broken into individual entries).
 	 *
 	 * @var PostDataEntry[]|null
 	 */
