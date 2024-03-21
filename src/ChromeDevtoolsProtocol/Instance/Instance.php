@@ -58,7 +58,7 @@ class Instance implements InstanceInterface, InternalInstanceInterface
 
 	public function tabs(ContextInterface $ctx): array
 	{
-		$response = $this->httpClient->request("POST", "http://{$this->host}:{$this->port}/json/list", [
+		$response = $this->httpClient->request("GET", "http://{$this->host}:{$this->port}/json/list", [
 			"timeout" => $ctx->getDeadline() !== null ? $ctx->deadlineFromNow() : 0,
 		]);
 
@@ -73,7 +73,7 @@ class Instance implements InstanceInterface, InternalInstanceInterface
 	public function open(ContextInterface $ctx, ?string $url = null): Tab
 	{
 		$response = $this->httpClient->request(
-			"POST",
+			"PUT",
 			"http://{$this->host}:{$this->port}/json/new" . ($url !== null ? "?" . urlencode($url) : ""),
 			[
 				"timeout" => $ctx->getDeadline() !== null ? $ctx->deadlineFromNow() : 0,
@@ -84,7 +84,7 @@ class Instance implements InstanceInterface, InternalInstanceInterface
 
 	public function version(ContextInterface $ctx): Version
 	{
-		$response = $this->httpClient->request("POST", "http://{$this->host}:{$this->port}/json/version", [
+		$response = $this->httpClient->request("GET", "http://{$this->host}:{$this->port}/json/version", [
 			"timeout" => $ctx->getDeadline() !== null ? $ctx->deadlineFromNow() : 0,
 		]);
 		return Version::fromJson(json_decode($response->getBody()->getContents()));
@@ -160,7 +160,7 @@ class Instance implements InstanceInterface, InternalInstanceInterface
 	 */
 	public function activateTabById(ContextInterface $ctx, string $id): void
 	{
-		$this->httpClient->request("POST", "http://{$this->host}:{$this->port}/json/activate/{$id}", [
+		$this->httpClient->request("GET", "http://{$this->host}:{$this->port}/json/activate/{$id}", [
 			"timeout" => $ctx->getDeadline() !== null ? $ctx->deadlineFromNow() : 0,
 		]);
 	}
@@ -170,7 +170,7 @@ class Instance implements InstanceInterface, InternalInstanceInterface
 	 */
 	public function closeTabById(ContextInterface $ctx, string $id): void
 	{
-		$this->httpClient->request("POST", "http://{$this->host}:{$this->port}/json/close/{$id}", [
+		$this->httpClient->request("GET", "http://{$this->host}:{$this->port}/json/close/{$id}", [
 			"timeout" => $ctx->getDeadline() !== null ? $ctx->deadlineFromNow() : 0,
 		]);
 	}
