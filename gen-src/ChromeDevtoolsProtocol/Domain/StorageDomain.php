@@ -38,6 +38,7 @@ use ChromeDevtoolsProtocol\Model\Storage\InterestGroupAuctionNetworkRequestCreat
 use ChromeDevtoolsProtocol\Model\Storage\OverrideQuotaForOriginRequest;
 use ChromeDevtoolsProtocol\Model\Storage\ResetSharedStorageBudgetRequest;
 use ChromeDevtoolsProtocol\Model\Storage\RunBounceTrackingMitigationsResponse;
+use ChromeDevtoolsProtocol\Model\Storage\SendPendingAttributionReportsResponse;
 use ChromeDevtoolsProtocol\Model\Storage\SetAttributionReportingLocalTestingModeRequest;
 use ChromeDevtoolsProtocol\Model\Storage\SetAttributionReportingTrackingRequest;
 use ChromeDevtoolsProtocol\Model\Storage\SetCookiesRequest;
@@ -197,6 +198,14 @@ class StorageDomain implements StorageDomainInterface
 		$request = new \stdClass();
 		$response = $this->internalClient->executeCommand($ctx, 'Storage.runBounceTrackingMitigations', $request);
 		return RunBounceTrackingMitigationsResponse::fromJson($response);
+	}
+
+
+	public function sendPendingAttributionReports(ContextInterface $ctx): SendPendingAttributionReportsResponse
+	{
+		$request = new \stdClass();
+		$response = $this->internalClient->executeCommand($ctx, 'Storage.sendPendingAttributionReports', $request);
+		return SendPendingAttributionReportsResponse::fromJson($response);
 	}
 
 

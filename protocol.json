@@ -26590,6 +26590,18 @@
                     ]
                 },
                 {
+                    "name": "sendPendingAttributionReports",
+                    "description": "Sends all pending Attribution Reports immediately, regardless of their scheduled report time.",
+                    "experimental": true,
+                    "returns": [
+                        {
+                            "name": "numSent",
+                            "description": "The number of reports that were sent.",
+                            "type": "integer"
+                        }
+                    ]
+                },
+                {
                     "name": "setAttributionReportingLocalTestingMode",
                     "description": "https://wicg.github.io/attribution-reporting-api/",
                     "experimental": true,

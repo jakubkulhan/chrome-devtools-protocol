@@ -37,6 +37,7 @@ use ChromeDevtoolsProtocol\Model\Storage\InterestGroupAuctionNetworkRequestCreat
 use ChromeDevtoolsProtocol\Model\Storage\OverrideQuotaForOriginRequest;
 use ChromeDevtoolsProtocol\Model\Storage\ResetSharedStorageBudgetRequest;
 use ChromeDevtoolsProtocol\Model\Storage\RunBounceTrackingMitigationsResponse;
+use ChromeDevtoolsProtocol\Model\Storage\SendPendingAttributionReportsResponse;
 use ChromeDevtoolsProtocol\Model\Storage\SetAttributionReportingLocalTestingModeRequest;
 use ChromeDevtoolsProtocol\Model\Storage\SetAttributionReportingTrackingRequest;
 use ChromeDevtoolsProtocol\Model\Storage\SetCookiesRequest;
@@ -274,6 +275,16 @@ interface StorageDomainInterface
 	 * @return RunBounceTrackingMitigationsResponse
 	 */
 	public function runBounceTrackingMitigations(ContextInterface $ctx): RunBounceTrackingMitigationsResponse;
+
+
+	/**
+	 * Sends all pending Attribution Reports immediately, regardless of their scheduled report time.
+	 *
+	 * @param ContextInterface $ctx
+	 *
+	 * @return SendPendingAttributionReportsResponse
+	 */
+	public function sendPendingAttributionReports(ContextInterface $ctx): SendPendingAttributionReportsResponse;
 
 
 	/**
