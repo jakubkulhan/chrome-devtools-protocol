@@ -23,4 +23,5 @@ final class AttributionReportingSourceRegistrationResultEnum
 	public const DESTINATION_BOTH_LIMITS_REACHED = 'destinationBothLimitsReached';
 	public const REPORTING_ORIGINS_PER_SITE_LIMIT_REACHED = 'reportingOriginsPerSiteLimitReached';
 	public const EXCEEDS_MAX_CHANNEL_CAPACITY = 'exceedsMaxChannelCapacity';
+	public const EXCEEDS_MAX_TRIGGER_STATE_CARDINALITY = 'exceedsMaxTriggerStateCardinality';
 }

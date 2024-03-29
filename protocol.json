@@ -26035,7 +26035,8 @@
                         "destinationGlobalLimitReached",
                         "destinationBothLimitsReached",
                         "reportingOriginsPerSiteLimitReached",
-                        "exceedsMaxChannelCapacity"
+                        "exceedsMaxChannelCapacity",
+                        "exceedsMaxTriggerStateCardinality"
                     ]
                 },
                 {
