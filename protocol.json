@@ -10501,6 +10501,11 @@
                     "description": "Clears the overridden device metrics."
                 },
                 {
+                    "name": "clearDevicePostureOverride",
+                    "description": "Clears a device posture override set with either setDeviceMetricsOverride() or setDevicePostureOverride() and starts using posture information from the platform again. Does nothing if no override is set.",
+                    "experimental": true
+                },
+                {
                     "name": "clearGeolocationOverride",
                     "description": "Clears the overridden Geolocation Position and Error."
                 },
@@ -10665,9 +10670,21 @@
                         },
                         {
                             "name": "devicePosture",
-                            "description": "If set, the posture of a foldable device. If not set the posture is set to continuous.",
+                            "description": "If set, the posture of a foldable device. If not set the posture is set to continuous. Deprecated, use Emulation.setDevicePostureOverride.",
                             "experimental": true,
+                            "deprecated": true,
                             "optional": true,
+                            "$ref": "DevicePosture"
+                        }
+                    ]
+                },
+                {
+                    "name": "setDevicePostureOverride",
+                    "description": "Start reporting the given posture value to the Device Posture API. This override can also be set in setDeviceMetricsOverride().",
+                    "experimental": true,
+                    "parameters": [
+                        {
+                            "name": "posture",
                             "$ref": "DevicePosture"
                         }
                     ]
@@ -15302,6 +15319,12 @@
                         },
                         {
                             "name": "fromPrefetchCache",
+                            "description": "Specifies that the request was served from the prefetch cache.",
+                            "optional": true,
+                            "type": "boolean"
+                        },
+                        {
+                            "name": "fromEarlyHints",
                             "description": "Specifies that the request was served from the prefetch cache.",
                             "optional": true,
                             "type": "boolean"

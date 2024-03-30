@@ -12,6 +12,7 @@ use ChromeDevtoolsProtocol\Model\Emulation\SetAutomationOverrideRequest;
 use ChromeDevtoolsProtocol\Model\Emulation\SetCPUThrottlingRateRequest;
 use ChromeDevtoolsProtocol\Model\Emulation\SetDefaultBackgroundColorOverrideRequest;
 use ChromeDevtoolsProtocol\Model\Emulation\SetDeviceMetricsOverrideRequest;
+use ChromeDevtoolsProtocol\Model\Emulation\SetDevicePostureOverrideRequest;
 use ChromeDevtoolsProtocol\Model\Emulation\SetDisabledImageTypesRequest;
 use ChromeDevtoolsProtocol\Model\Emulation\SetDocumentCookieDisabledRequest;
 use ChromeDevtoolsProtocol\Model\Emulation\SetEmitTouchEventsForMouseRequest;
@@ -61,6 +62,13 @@ class EmulationDomain implements EmulationDomainInterface
 	{
 		$request = new \stdClass();
 		$this->internalClient->executeCommand($ctx, 'Emulation.clearDeviceMetricsOverride', $request);
+	}
+
+
+	public function clearDevicePostureOverride(ContextInterface $ctx): void
+	{
+		$request = new \stdClass();
+		$this->internalClient->executeCommand($ctx, 'Emulation.clearDevicePostureOverride', $request);
 	}
 
 
@@ -123,6 +131,12 @@ class EmulationDomain implements EmulationDomainInterface
 	public function setDeviceMetricsOverride(ContextInterface $ctx, SetDeviceMetricsOverrideRequest $request): void
 	{
 		$this->internalClient->executeCommand($ctx, 'Emulation.setDeviceMetricsOverride', $request);
+	}
+
+
+	public function setDevicePostureOverride(ContextInterface $ctx, SetDevicePostureOverrideRequest $request): void
+	{
+		$this->internalClient->executeCommand($ctx, 'Emulation.setDevicePostureOverride', $request);
 	}
 
 

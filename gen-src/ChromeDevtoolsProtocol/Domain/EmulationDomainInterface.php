@@ -11,6 +11,7 @@ use ChromeDevtoolsProtocol\Model\Emulation\SetAutomationOverrideRequest;
 use ChromeDevtoolsProtocol\Model\Emulation\SetCPUThrottlingRateRequest;
 use ChromeDevtoolsProtocol\Model\Emulation\SetDefaultBackgroundColorOverrideRequest;
 use ChromeDevtoolsProtocol\Model\Emulation\SetDeviceMetricsOverrideRequest;
+use ChromeDevtoolsProtocol\Model\Emulation\SetDevicePostureOverrideRequest;
 use ChromeDevtoolsProtocol\Model\Emulation\SetDisabledImageTypesRequest;
 use ChromeDevtoolsProtocol\Model\Emulation\SetDocumentCookieDisabledRequest;
 use ChromeDevtoolsProtocol\Model\Emulation\SetEmitTouchEventsForMouseRequest;
@@ -63,6 +64,16 @@ interface EmulationDomainInterface
 	 * @return void
 	 */
 	public function clearDeviceMetricsOverride(ContextInterface $ctx): void;
+
+
+	/**
+	 * Clears a device posture override set with either setDeviceMetricsOverride() or setDevicePostureOverride() and starts using posture information from the platform again. Does nothing if no override is set.
+	 *
+	 * @param ContextInterface $ctx
+	 *
+	 * @return void
+	 */
+	public function clearDevicePostureOverride(ContextInterface $ctx): void;
 
 
 	/**
@@ -165,6 +176,17 @@ interface EmulationDomainInterface
 	 * @return void
 	 */
 	public function setDeviceMetricsOverride(ContextInterface $ctx, SetDeviceMetricsOverrideRequest $request): void;
+
+
+	/**
+	 * Start reporting the given posture value to the Device Posture API. This override can also be set in setDeviceMetricsOverride().
+	 *
+	 * @param ContextInterface $ctx
+	 * @param SetDevicePostureOverrideRequest $request
+	 *
+	 * @return void
+	 */
+	public function setDevicePostureOverride(ContextInterface $ctx, SetDevicePostureOverrideRequest $request): void;
 
 
 	/**

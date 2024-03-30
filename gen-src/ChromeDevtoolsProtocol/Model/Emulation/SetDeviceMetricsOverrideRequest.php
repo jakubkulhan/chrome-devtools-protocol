@@ -105,7 +105,7 @@ final class SetDeviceMetricsOverrideRequest implements \JsonSerializable
 	public $displayFeature;
 
 	/**
-	 * If set, the posture of a foldable device. If not set the posture is set to continuous.
+	 * If set, the posture of a foldable device. If not set the posture is set to continuous. Deprecated, use Emulation.setDevicePostureOverride.
 	 *
 	 * @var DevicePosture|null
 	 */

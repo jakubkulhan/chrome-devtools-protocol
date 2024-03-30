@@ -124,6 +124,13 @@ final class Response implements \JsonSerializable
 	public $fromPrefetchCache;
 
 	/**
+	 * Specifies that the request was served from the prefetch cache.
+	 *
+	 * @var bool|null
+	 */
+	public $fromEarlyHints;
+
+	/**
 	 * Information about how Service Worker Static Router was used.
 	 *
 	 * @var ServiceWorkerRouterInfo|null
@@ -249,6 +256,9 @@ final class Response implements \JsonSerializable
 		if (isset($data->fromPrefetchCache)) {
 			$instance->fromPrefetchCache = (bool)$data->fromPrefetchCache;
 		}
+		if (isset($data->fromEarlyHints)) {
+			$instance->fromEarlyHints = (bool)$data->fromEarlyHints;
+		}
 		if (isset($data->serviceWorkerRouterInfo)) {
 			$instance->serviceWorkerRouterInfo = ServiceWorkerRouterInfo::fromJson($data->serviceWorkerRouterInfo);
 		}
@@ -333,6 +343,9 @@ final class Response implements \JsonSerializable
 		}
 		if ($this->fromPrefetchCache !== null) {
 			$data->fromPrefetchCache = $this->fromPrefetchCache;
+		}
+		if ($this->fromEarlyHints !== null) {
+			$data->fromEarlyHints = $this->fromEarlyHints;
 		}
 		if ($this->serviceWorkerRouterInfo !== null) {
 			$data->serviceWorkerRouterInfo = $this->serviceWorkerRouterInfo->jsonSerialize();
