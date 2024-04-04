@@ -19,6 +19,13 @@ final class ExemptedSetCookieWithReason implements \JsonSerializable
 	public $exemptionReason;
 
 	/**
+	 * The string representing this individual cookie as it would appear in the header.
+	 *
+	 * @var string
+	 */
+	public $cookieLine;
+
+	/**
 	 * The cookie object representing the cookie.
 	 *
 	 * @var Cookie
@@ -36,6 +43,9 @@ final class ExemptedSetCookieWithReason implements \JsonSerializable
 		if (isset($data->exemptionReason)) {
 			$instance->exemptionReason = (string)$data->exemptionReason;
 		}
+		if (isset($data->cookieLine)) {
+			$instance->cookieLine = (string)$data->cookieLine;
+		}
 		if (isset($data->cookie)) {
 			$instance->cookie = Cookie::fromJson($data->cookie);
 		}
@@ -48,6 +58,9 @@ final class ExemptedSetCookieWithReason implements \JsonSerializable
 		$data = new \stdClass();
 		if ($this->exemptionReason !== null) {
 			$data->exemptionReason = $this->exemptionReason;
+		}
+		if ($this->cookieLine !== null) {
+			$data->cookieLine = $this->cookieLine;
 		}
 		if ($this->cookie !== null) {
 			$data->cookie = $this->cookie->jsonSerialize();

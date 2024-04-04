@@ -39,6 +39,7 @@ use ChromeDevtoolsProtocol\Model\Network\RequestServedFromCacheEvent;
 use ChromeDevtoolsProtocol\Model\Network\RequestWillBeSentEvent;
 use ChromeDevtoolsProtocol\Model\Network\RequestWillBeSentExtraInfoEvent;
 use ChromeDevtoolsProtocol\Model\Network\ResourceChangedPriorityEvent;
+use ChromeDevtoolsProtocol\Model\Network\ResponseReceivedEarlyHintsEvent;
 use ChromeDevtoolsProtocol\Model\Network\ResponseReceivedEvent;
 use ChromeDevtoolsProtocol\Model\Network\ResponseReceivedExtraInfoEvent;
 use ChromeDevtoolsProtocol\Model\Network\SearchInResponseBodyRequest;
@@ -782,6 +783,30 @@ interface NetworkDomainInterface
 	 * @return ResponseReceivedEvent
 	 */
 	public function awaitResponseReceived(ContextInterface $ctx): ResponseReceivedEvent;
+
+
+	/**
+	 * Fired when 103 Early Hints headers is received in addition to the common response. Not every responseReceived event will have an responseReceivedEarlyHints fired. Only one responseReceivedEarlyHints may be fired for eached responseReceived event.
+	 *
+	 * Listener will be called whenever event Network.responseReceivedEarlyHints is fired.
+	 *
+	 * @param callable $listener
+	 *
+	 * @return SubscriptionInterface
+	 */
+	public function addResponseReceivedEarlyHintsListener(callable $listener): SubscriptionInterface;
+
+
+	/**
+	 * Fired when 103 Early Hints headers is received in addition to the common response. Not every responseReceived event will have an responseReceivedEarlyHints fired. Only one responseReceivedEarlyHints may be fired for eached responseReceived event.
+	 *
+	 * Method will block until first Network.responseReceivedEarlyHints event is fired.
+	 *
+	 * @param ContextInterface $ctx
+	 *
+	 * @return ResponseReceivedEarlyHintsEvent
+	 */
+	public function awaitResponseReceivedEarlyHints(ContextInterface $ctx): ResponseReceivedEarlyHintsEvent;
 
 
 	/**

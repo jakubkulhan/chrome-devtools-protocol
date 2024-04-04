@@ -40,6 +40,7 @@ use ChromeDevtoolsProtocol\Model\Network\RequestServedFromCacheEvent;
 use ChromeDevtoolsProtocol\Model\Network\RequestWillBeSentEvent;
 use ChromeDevtoolsProtocol\Model\Network\RequestWillBeSentExtraInfoEvent;
 use ChromeDevtoolsProtocol\Model\Network\ResourceChangedPriorityEvent;
+use ChromeDevtoolsProtocol\Model\Network\ResponseReceivedEarlyHintsEvent;
 use ChromeDevtoolsProtocol\Model\Network\ResponseReceivedEvent;
 use ChromeDevtoolsProtocol\Model\Network\ResponseReceivedExtraInfoEvent;
 use ChromeDevtoolsProtocol\Model\Network\SearchInResponseBodyRequest;
@@ -509,6 +510,20 @@ class NetworkDomain implements NetworkDomainInterface
 	public function awaitResponseReceived(ContextInterface $ctx): ResponseReceivedEvent
 	{
 		return ResponseReceivedEvent::fromJson($this->internalClient->awaitEvent($ctx, 'Network.responseReceived'));
+	}
+
+
+	public function addResponseReceivedEarlyHintsListener(callable $listener): SubscriptionInterface
+	{
+		return $this->internalClient->addListener('Network.responseReceivedEarlyHints', function ($event) use ($listener) {
+			return $listener(ResponseReceivedEarlyHintsEvent::fromJson($event));
+		});
+	}
+
+
+	public function awaitResponseReceivedEarlyHints(ContextInterface $ctx): ResponseReceivedEarlyHintsEvent
+	{
+		return ResponseReceivedEarlyHintsEvent::fromJson($this->internalClient->awaitEvent($ctx, 'Network.responseReceivedEarlyHints'));
 	}
 
 
