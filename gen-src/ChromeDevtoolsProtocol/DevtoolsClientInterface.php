@@ -36,6 +36,7 @@ use ChromeDevtoolsProtocol\Domain\MediaDomainInterface;
 use ChromeDevtoolsProtocol\Domain\MemoryDomainInterface;
 use ChromeDevtoolsProtocol\Domain\NetworkDomainInterface;
 use ChromeDevtoolsProtocol\Domain\OverlayDomainInterface;
+use ChromeDevtoolsProtocol\Domain\PWADomainInterface;
 use ChromeDevtoolsProtocol\Domain\PageDomainInterface;
 use ChromeDevtoolsProtocol\Domain\PerformanceDomainInterface;
 use ChromeDevtoolsProtocol\Domain\PerformanceTimelineDomainInterface;
@@ -344,6 +345,14 @@ interface DevtoolsClientInterface extends CloseableResourceInterface
 	 * Profiler domain.
 	 */
 	public function profiler(): ProfilerDomainInterface;
+
+
+	/**
+	 * This domain allows interacting with the browser to control PWAs.
+	 *
+	 * @experimental
+	 */
+	public function pwa(): PWADomainInterface;
 
 
 	/**

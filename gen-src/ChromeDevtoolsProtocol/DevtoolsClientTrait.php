@@ -70,6 +70,8 @@ use ChromeDevtoolsProtocol\Domain\NetworkDomain;
 use ChromeDevtoolsProtocol\Domain\NetworkDomainInterface;
 use ChromeDevtoolsProtocol\Domain\OverlayDomain;
 use ChromeDevtoolsProtocol\Domain\OverlayDomainInterface;
+use ChromeDevtoolsProtocol\Domain\PWADomain;
+use ChromeDevtoolsProtocol\Domain\PWADomainInterface;
 use ChromeDevtoolsProtocol\Domain\PageDomain;
 use ChromeDevtoolsProtocol\Domain\PageDomainInterface;
 use ChromeDevtoolsProtocol\Domain\PerformanceDomain;
@@ -573,6 +575,18 @@ trait DevtoolsClientTrait
 		}
 		/** @var ProfilerDomainInterface $domain */
 		$domain = $this->domains['Profiler'];
+		return $domain;
+	}
+
+
+	public function pwa(): PWADomainInterface
+	{
+		if (!isset($this->domains['PWA'])) {
+			/** @var InternalClientInterface $this */
+			$this->domains['PWA'] = new PWADomain($this);
+		}
+		/** @var PWADomainInterface $domain */
+		$domain = $this->domains['PWA'];
 		return $domain;
 	}
 
