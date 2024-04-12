@@ -6,6 +6,7 @@ use ChromeDevtoolsProtocol\ContextInterface;
 use ChromeDevtoolsProtocol\Model\Animation\AnimationCanceledEvent;
 use ChromeDevtoolsProtocol\Model\Animation\AnimationCreatedEvent;
 use ChromeDevtoolsProtocol\Model\Animation\AnimationStartedEvent;
+use ChromeDevtoolsProtocol\Model\Animation\AnimationUpdatedEvent;
 use ChromeDevtoolsProtocol\Model\Animation\GetCurrentTimeRequest;
 use ChromeDevtoolsProtocol\Model\Animation\GetCurrentTimeResponse;
 use ChromeDevtoolsProtocol\Model\Animation\GetPlaybackRateResponse;
@@ -206,4 +207,28 @@ interface AnimationDomainInterface
 	 * @return AnimationStartedEvent
 	 */
 	public function awaitAnimationStarted(ContextInterface $ctx): AnimationStartedEvent;
+
+
+	/**
+	 * Event for animation that has been updated.
+	 *
+	 * Listener will be called whenever event Animation.animationUpdated is fired.
+	 *
+	 * @param callable $listener
+	 *
+	 * @return SubscriptionInterface
+	 */
+	public function addAnimationUpdatedListener(callable $listener): SubscriptionInterface;
+
+
+	/**
+	 * Event for animation that has been updated.
+	 *
+	 * Method will block until first Animation.animationUpdated event is fired.
+	 *
+	 * @param ContextInterface $ctx
+	 *
+	 * @return AnimationUpdatedEvent
+	 */
+	public function awaitAnimationUpdated(ContextInterface $ctx): AnimationUpdatedEvent;
 }
