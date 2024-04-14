@@ -49,4 +49,6 @@ final class FederatedAuthRequestIssueReasonEnum
 	public const SILENT_MEDIATION_FAILURE = 'SilentMediationFailure';
 	public const THIRD_PARTY_COOKIES_BLOCKED = 'ThirdPartyCookiesBlocked';
 	public const NOT_SIGNED_IN_WITH_IDP = 'NotSignedInWithIdp';
+	public const MISSING_TRANSIENT_USER_ACTIVATION = 'MissingTransientUserActivation';
+	public const REPLACED_BY_BUTTON_MODE = 'ReplacedByButtonMode';
 }

@@ -36,6 +36,7 @@ use ChromeDevtoolsProtocol\Model\Page\GenerateTestReportRequest;
 use ChromeDevtoolsProtocol\Model\Page\GetAdScriptIdRequest;
 use ChromeDevtoolsProtocol\Model\Page\GetAdScriptIdResponse;
 use ChromeDevtoolsProtocol\Model\Page\GetAppIdResponse;
+use ChromeDevtoolsProtocol\Model\Page\GetAppManifestRequest;
 use ChromeDevtoolsProtocol\Model\Page\GetAppManifestResponse;
 use ChromeDevtoolsProtocol\Model\Page\GetFrameTreeResponse;
 use ChromeDevtoolsProtocol\Model\Page\GetInstallabilityErrorsResponse;
@@ -240,9 +241,8 @@ class PageDomain implements PageDomainInterface
 	}
 
 
-	public function getAppManifest(ContextInterface $ctx): GetAppManifestResponse
+	public function getAppManifest(ContextInterface $ctx, GetAppManifestRequest $request): GetAppManifestResponse
 	{
-		$request = new \stdClass();
 		$response = $this->internalClient->executeCommand($ctx, 'Page.getAppManifest', $request);
 		return GetAppManifestResponse::fromJson($response);
 	}

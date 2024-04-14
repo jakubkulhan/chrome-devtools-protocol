@@ -35,6 +35,7 @@ use ChromeDevtoolsProtocol\Model\Page\GenerateTestReportRequest;
 use ChromeDevtoolsProtocol\Model\Page\GetAdScriptIdRequest;
 use ChromeDevtoolsProtocol\Model\Page\GetAdScriptIdResponse;
 use ChromeDevtoolsProtocol\Model\Page\GetAppIdResponse;
+use ChromeDevtoolsProtocol\Model\Page\GetAppManifestRequest;
 use ChromeDevtoolsProtocol\Model\Page\GetAppManifestResponse;
 use ChromeDevtoolsProtocol\Model\Page\GetFrameTreeResponse;
 use ChromeDevtoolsProtocol\Model\Page\GetInstallabilityErrorsResponse;
@@ -308,13 +309,14 @@ interface PageDomainInterface
 
 
 	/**
-	 * Call Page.getAppManifest command.
+	 * Gets the processed manifest for this current document. This API always waits for the manifest to be loaded. If manifestId is provided, and it does not match the manifest of the current document, this API errors out. If there isn’t a loaded page, this API errors out immediately.
 	 *
 	 * @param ContextInterface $ctx
+	 * @param GetAppManifestRequest $request
 	 *
 	 * @return GetAppManifestResponse
 	 */
-	public function getAppManifest(ContextInterface $ctx): GetAppManifestResponse;
+	public function getAppManifest(ContextInterface $ctx, GetAppManifestRequest $request): GetAppManifestResponse;
 
 
 	/**
