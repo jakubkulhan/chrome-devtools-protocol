@@ -22,6 +22,7 @@ use ChromeDevtoolsProtocol\Domain\DeviceAccessDomainInterface;
 use ChromeDevtoolsProtocol\Domain\DeviceOrientationDomainInterface;
 use ChromeDevtoolsProtocol\Domain\EmulationDomainInterface;
 use ChromeDevtoolsProtocol\Domain\EventBreakpointsDomainInterface;
+use ChromeDevtoolsProtocol\Domain\ExtensionsDomainInterface;
 use ChromeDevtoolsProtocol\Domain\FedCmDomainInterface;
 use ChromeDevtoolsProtocol\Domain\FetchDomainInterface;
 use ChromeDevtoolsProtocol\Domain\HeadlessExperimentalDomainInterface;
@@ -209,6 +210,14 @@ interface DevtoolsClientInterface extends CloseableResourceInterface
 	 * @experimental
 	 */
 	public function eventBreakpoints(): EventBreakpointsDomainInterface;
+
+
+	/**
+	 * Defines commands and events for browser extensions. Available if the client is connected using the --remote-debugging-pipe flag and the --enable-unsafe-extension-debugging flag is set.
+	 *
+	 * @experimental
+	 */
+	public function extensions(): ExtensionsDomainInterface;
 
 
 	/**
