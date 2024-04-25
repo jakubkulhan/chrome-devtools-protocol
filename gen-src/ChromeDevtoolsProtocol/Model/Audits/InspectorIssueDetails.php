@@ -71,6 +71,9 @@ final class InspectorIssueDetails implements \JsonSerializable
 	/** @var FederatedAuthUserInfoRequestIssueDetails|null */
 	public $federatedAuthUserInfoRequestIssueDetails;
 
+	/** @var SharedDictionaryIssueDetails|null */
+	public $sharedDictionaryIssueDetails;
+
 
 	/**
 	 * @param object $data
@@ -139,6 +142,9 @@ final class InspectorIssueDetails implements \JsonSerializable
 		if (isset($data->federatedAuthUserInfoRequestIssueDetails)) {
 			$instance->federatedAuthUserInfoRequestIssueDetails = FederatedAuthUserInfoRequestIssueDetails::fromJson($data->federatedAuthUserInfoRequestIssueDetails);
 		}
+		if (isset($data->sharedDictionaryIssueDetails)) {
+			$instance->sharedDictionaryIssueDetails = SharedDictionaryIssueDetails::fromJson($data->sharedDictionaryIssueDetails);
+		}
 		return $instance;
 	}
 
@@ -205,6 +211,9 @@ final class InspectorIssueDetails implements \JsonSerializable
 		}
 		if ($this->federatedAuthUserInfoRequestIssueDetails !== null) {
 			$data->federatedAuthUserInfoRequestIssueDetails = $this->federatedAuthUserInfoRequestIssueDetails->jsonSerialize();
+		}
+		if ($this->sharedDictionaryIssueDetails !== null) {
+			$data->sharedDictionaryIssueDetails = $this->sharedDictionaryIssueDetails->jsonSerialize();
 		}
 		return $data;
 	}

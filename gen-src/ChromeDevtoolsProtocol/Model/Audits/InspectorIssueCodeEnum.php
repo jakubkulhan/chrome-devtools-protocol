@@ -31,4 +31,5 @@ final class InspectorIssueCodeEnum
 	public const STYLESHEET_LOADING_ISSUE = 'StylesheetLoadingIssue';
 	public const FEDERATED_AUTH_USER_INFO_REQUEST_ISSUE = 'FederatedAuthUserInfoRequestIssue';
 	public const PROPERTY_RULE_ISSUE = 'PropertyRuleIssue';
+	public const SHARED_DICTIONARY_ISSUE = 'SharedDictionaryIssue';
 }
