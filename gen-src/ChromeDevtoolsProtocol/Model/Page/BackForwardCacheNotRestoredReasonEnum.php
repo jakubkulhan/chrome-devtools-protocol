@@ -143,4 +143,5 @@ final class BackForwardCacheNotRestoredReasonEnum
 	public const EMBEDDER_EXTENSION_MESSAGING = 'EmbedderExtensionMessaging';
 	public const EMBEDDER_EXTENSION_MESSAGING_FOR_OPEN_PORT = 'EmbedderExtensionMessagingForOpenPort';
 	public const EMBEDDER_EXTENSION_SENT_MESSAGE_TO_CACHED_FRAME = 'EmbedderExtensionSentMessageToCachedFrame';
+	public const REQUESTED_BY_WEB_VIEW_CLIENT = 'RequestedByWebViewClient';
 }

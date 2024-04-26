@@ -30,6 +30,8 @@ use ChromeDevtoolsProtocol\Model\DOM\GetContentQuadsRequest;
 use ChromeDevtoolsProtocol\Model\DOM\GetContentQuadsResponse;
 use ChromeDevtoolsProtocol\Model\DOM\GetDocumentRequest;
 use ChromeDevtoolsProtocol\Model\DOM\GetDocumentResponse;
+use ChromeDevtoolsProtocol\Model\DOM\GetElementByRelationRequest;
+use ChromeDevtoolsProtocol\Model\DOM\GetElementByRelationResponse;
 use ChromeDevtoolsProtocol\Model\DOM\GetFileInfoRequest;
 use ChromeDevtoolsProtocol\Model\DOM\GetFileInfoResponse;
 use ChromeDevtoolsProtocol\Model\DOM\GetFlattenedDocumentRequest;
@@ -233,6 +235,20 @@ interface DOMDomainInterface
 	 * @return GetDocumentResponse
 	 */
 	public function getDocument(ContextInterface $ctx, GetDocumentRequest $request): GetDocumentResponse;
+
+
+	/**
+	 * Returns the NodeId of the matched element according to certain relations.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param GetElementByRelationRequest $request
+	 *
+	 * @return GetElementByRelationResponse
+	 */
+	public function getElementByRelation(
+		ContextInterface $ctx,
+		GetElementByRelationRequest $request
+	): GetElementByRelationResponse;
 
 
 	/**

@@ -31,6 +31,8 @@ use ChromeDevtoolsProtocol\Model\DOM\GetContentQuadsRequest;
 use ChromeDevtoolsProtocol\Model\DOM\GetContentQuadsResponse;
 use ChromeDevtoolsProtocol\Model\DOM\GetDocumentRequest;
 use ChromeDevtoolsProtocol\Model\DOM\GetDocumentResponse;
+use ChromeDevtoolsProtocol\Model\DOM\GetElementByRelationRequest;
+use ChromeDevtoolsProtocol\Model\DOM\GetElementByRelationResponse;
 use ChromeDevtoolsProtocol\Model\DOM\GetFileInfoRequest;
 use ChromeDevtoolsProtocol\Model\DOM\GetFileInfoResponse;
 use ChromeDevtoolsProtocol\Model\DOM\GetFlattenedDocumentRequest;
@@ -184,6 +186,15 @@ class DOMDomain implements DOMDomainInterface
 	{
 		$response = $this->internalClient->executeCommand($ctx, 'DOM.getDocument', $request);
 		return GetDocumentResponse::fromJson($response);
+	}
+
+
+	public function getElementByRelation(
+		ContextInterface $ctx,
+		GetElementByRelationRequest $request
+	): GetElementByRelationResponse {
+		$response = $this->internalClient->executeCommand($ctx, 'DOM.getElementByRelation', $request);
+		return GetElementByRelationResponse::fromJson($response);
 	}
 
 
