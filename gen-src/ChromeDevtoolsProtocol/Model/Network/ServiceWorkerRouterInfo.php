@@ -11,10 +11,18 @@ namespace ChromeDevtoolsProtocol\Model\Network;
  */
 final class ServiceWorkerRouterInfo implements \JsonSerializable
 {
-	/** @var int */
+	/**
+	 * ID of the rule matched. If there is a matched rule, this field will be set, otherwiser no value will be set.
+	 *
+	 * @var int|null
+	 */
 	public $ruleIdMatched;
 
-	/** @var string */
+	/**
+	 * The router source of the matched rule. If there is a matched rule, this field will be set, otherwise no value will be set.
+	 *
+	 * @var string
+	 */
 	public $matchedSourceType;
 
 

@@ -6,6 +6,8 @@ use ChromeDevtoolsProtocol\ContextInterface;
 use ChromeDevtoolsProtocol\InternalClientInterface;
 use ChromeDevtoolsProtocol\Model\PWA\GetOsAppStateRequest;
 use ChromeDevtoolsProtocol\Model\PWA\GetOsAppStateResponse;
+use ChromeDevtoolsProtocol\Model\PWA\InstallRequest;
+use ChromeDevtoolsProtocol\Model\PWA\UninstallRequest;
 
 class PWADomain implements PWADomainInterface
 {
@@ -23,5 +25,17 @@ class PWADomain implements PWADomainInterface
 	{
 		$response = $this->internalClient->executeCommand($ctx, 'PWA.getOsAppState', $request);
 		return GetOsAppStateResponse::fromJson($response);
+	}
+
+
+	public function install(ContextInterface $ctx, InstallRequest $request): void
+	{
+		$this->internalClient->executeCommand($ctx, 'PWA.install', $request);
+	}
+
+
+	public function uninstall(ContextInterface $ctx, UninstallRequest $request): void
+	{
+		$this->internalClient->executeCommand($ctx, 'PWA.uninstall', $request);
 	}
 }

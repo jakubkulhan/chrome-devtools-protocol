@@ -94,6 +94,5 @@ final class PermissionsPolicyFeatureEnum
 	public const WEB_PRINTING = 'web-printing';
 	public const WEB_SHARE = 'web-share';
 	public const WINDOW_MANAGEMENT = 'window-management';
-	public const WINDOW_PLACEMENT = 'window-placement';
 	public const XR_SPATIAL_TRACKING = 'xr-spatial-tracking';
 }

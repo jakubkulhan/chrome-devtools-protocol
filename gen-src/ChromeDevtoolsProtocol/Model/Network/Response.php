@@ -131,7 +131,7 @@ final class Response implements \JsonSerializable
 	public $fromEarlyHints;
 
 	/**
-	 * Information about how Service Worker Static Router was used.
+	 * Information about how ServiceWorker Static Router API was used. If this field is set with `matchedSourceType` field, a matching rule is found. If this field is set without `matchedSource`, no matching rule is found. Otherwise, the API is not used.
 	 *
 	 * @var ServiceWorkerRouterInfo|null
 	 */
