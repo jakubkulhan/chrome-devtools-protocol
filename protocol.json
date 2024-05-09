@@ -23143,7 +23143,9 @@
                         "MaxNumOfRunningEmbedderPrerendersExceeded",
                         "PrerenderingUrlHasEffectiveUrl",
                         "RedirectedPrerenderingUrlHasEffectiveUrl",
-                        "ActivationUrlHasEffectiveUrl"
+                        "ActivationUrlHasEffectiveUrl",
+                        "JavaScriptInterfaceAdded",
+                        "JavaScriptInterfaceRemoved"
                     ]
                 },
                 {
