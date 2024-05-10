@@ -6,6 +6,8 @@ use ChromeDevtoolsProtocol\ContextInterface;
 use ChromeDevtoolsProtocol\Model\PWA\GetOsAppStateRequest;
 use ChromeDevtoolsProtocol\Model\PWA\GetOsAppStateResponse;
 use ChromeDevtoolsProtocol\Model\PWA\InstallRequest;
+use ChromeDevtoolsProtocol\Model\PWA\LaunchRequest;
+use ChromeDevtoolsProtocol\Model\PWA\LaunchResponse;
 use ChromeDevtoolsProtocol\Model\PWA\UninstallRequest;
 
 /**
@@ -39,6 +41,17 @@ interface PWADomainInterface
 	 * @return void
 	 */
 	public function install(ContextInterface $ctx, InstallRequest $request): void;
+
+
+	/**
+	 * Launches the installed web app, or an url in the same web app instead of the default start url if it is provided. Returns a tab / web contents based Target.TargetID which can be used to attach to via Target.attachToTarget or similar APIs.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param LaunchRequest $request
+	 *
+	 * @return LaunchResponse
+	 */
+	public function launch(ContextInterface $ctx, LaunchRequest $request): LaunchResponse;
 
 
 	/**
