@@ -78,4 +78,5 @@ final class PrerenderFinalStatusEnum
 	public const ACTIVATION_URL_HAS_EFFECTIVE_URL = 'ActivationUrlHasEffectiveUrl';
 	public const JAVA_SCRIPT_INTERFACE_ADDED = 'JavaScriptInterfaceAdded';
 	public const JAVA_SCRIPT_INTERFACE_REMOVED = 'JavaScriptInterfaceRemoved';
+	public const ALL_PRERENDERING_CANCELED = 'AllPrerenderingCanceled';
 }

@@ -23145,7 +23145,8 @@
                         "RedirectedPrerenderingUrlHasEffectiveUrl",
                         "ActivationUrlHasEffectiveUrl",
                         "JavaScriptInterfaceAdded",
-                        "JavaScriptInterfaceRemoved"
+                        "JavaScriptInterfaceRemoved",
+                        "AllPrerenderingCanceled"
                     ]
                 },
                 {
