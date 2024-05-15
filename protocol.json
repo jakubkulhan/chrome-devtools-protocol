@@ -7237,6 +7237,7 @@
                         "marker",
                         "backdrop",
                         "selection",
+                        "search-text",
                         "target-text",
                         "spelling-error",
                         "grammar-error",

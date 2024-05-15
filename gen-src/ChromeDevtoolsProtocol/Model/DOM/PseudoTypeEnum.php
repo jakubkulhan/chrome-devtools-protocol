@@ -18,6 +18,7 @@ final class PseudoTypeEnum
 	public const MARKER = 'marker';
 	public const BACKDROP = 'backdrop';
 	public const SELECTION = 'selection';
+	public const SEARCH_TEXT = 'search-text';
 	public const TARGET_TEXT = 'target-text';
 	public const SPELLING_ERROR = 'spelling-error';
 	public const GRAMMAR_ERROR = 'grammar-error';
