@@ -32,6 +32,9 @@ final class ConsoleAPICalledEvent implements \JsonSerializable
 	 */
 	public $executionContextId;
 
+	/** @var string */
+	public $executionContextUniqueId;
+
 	/**
 	 * Call timestamp.
 	 *
@@ -73,6 +76,9 @@ final class ConsoleAPICalledEvent implements \JsonSerializable
 		if (isset($data->executionContextId)) {
 			$instance->executionContextId = (int)$data->executionContextId;
 		}
+		if (isset($data->executionContextUniqueId)) {
+			$instance->executionContextUniqueId = (string)$data->executionContextUniqueId;
+		}
 		if (isset($data->timestamp)) {
 			$instance->timestamp = $data->timestamp;
 		}
@@ -100,6 +106,9 @@ final class ConsoleAPICalledEvent implements \JsonSerializable
 		}
 		if ($this->executionContextId !== null) {
 			$data->executionContextId = $this->executionContextId;
+		}
+		if ($this->executionContextUniqueId !== null) {
+			$data->executionContextUniqueId = $this->executionContextUniqueId;
 		}
 		if ($this->timestamp !== null) {
 			$data->timestamp = $this->timestamp;

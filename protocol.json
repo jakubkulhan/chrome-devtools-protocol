@@ -15830,7 +15830,8 @@
                         "EnterprisePolicy",
                         "StorageAccess",
                         "TopLevelStorageAccess",
-                        "CorsOptIn"
+                        "CorsOptIn",
+                        "Scheme"
                     ]
                 },
                 {
@@ -24366,6 +24367,11 @@
                     "type": "integer"
                 },
                 {
+                    "id": "ExecutionContextUniqueId",
+                    "description": "Id of an execution context that is unique across processes (unlike ExecutionContextId).",
+                    "type": "string"
+                },
+                {
                     "id": "ExecutionContextDescription",
                     "description": "Description of an isolated world.",
                     "type": "object",
@@ -24389,7 +24395,7 @@
                             "name": "uniqueId",
                             "description": "A system-unique execution context identifier. Unlike the id, this is unique across multiple processes, so can be reliably used to identify specific context while backend performs a cross-process navigation.",
                             "experimental": true,
-                            "type": "string"
+                            "$ref": "ExecutionContextUniqueId"
                         },
                         {
                             "name": "auxData",
@@ -24574,7 +24580,7 @@
                         },
                         {
                             "name": "executionContextId",
-                            "description": "If specified, the binding would only be exposed to the specified execution context. If omitted and `executionContextName` is not set, the binding is exposed to all execution contexts of the target. This parameter is mutually exclusive with `executionContextName`. Deprecated in favor of `executionContextName` due to an unclear use case and bugs in implementation (crbug.com/1169639). `executionContextId` will be removed in the future.",
+                            "description": "If specified, the binding would only be exposed to the specified execution context. If omitted and `executionContextName` is not set, the binding is exposed to all execution contexts of the target. This parameter is mutually exclusive with `executionContextName` and `executionContextUniqueId`. Deprecated in favor of `executionContextName` due to an unclear use case and bugs in implementation (crbug.com/1169639). `executionContextId` will be removed in the future.",
                             "experimental": true,
                             "deprecated": true,
                             "optional": true,
@@ -24582,9 +24588,16 @@
                         },
                         {
                             "name": "executionContextName",
-                            "description": "If specified, the binding is exposed to the executionContext with matching name, even for contexts created after the binding is added. See also `ExecutionContext.name` and `worldName` parameter to `Page.addScriptToEvaluateOnNewDocument`. This parameter is mutually exclusive with `executionContextId`.",
+                            "description": "If specified, the binding is exposed to the executionContext with matching name, even for contexts created after the binding is added. See also `ExecutionContext.name` and `worldName` parameter to `Page.addScriptToEvaluateOnNewDocument`. This parameter is mutually exclusive with `executionContextId` and `executionContextUniqueId`.",
                             "optional": true,
                             "type": "string"
+                        },
+                        {
+                            "name": "executionContextUniqueId",
+                            "description": "This parameter is mutually exclusive with `executionContextId` and `executionContextName`.",
+                            "experimental": true,
+                            "optional": true,
+                            "$ref": "ExecutionContextUniqueId"
                         }
                     ]
                 },
@@ -25225,6 +25238,11 @@
                             "name": "executionContextId",
                             "description": "Identifier of the context where the call was made.",
                             "$ref": "ExecutionContextId"
+                        },
+                        {
+                            "name": "executionContextUniqueId",
+                            "experimental": true,
+                            "$ref": "ExecutionContextUniqueId"
                         }
                     ]
                 },
@@ -25269,6 +25287,11 @@
                             "name": "executionContextId",
                             "description": "Identifier of the context where the call was made.",
                             "$ref": "ExecutionContextId"
+                        },
+                        {
+                            "name": "executionContextUniqueId",
+                            "experimental": true,
+                            "$ref": "ExecutionContextUniqueId"
                         },
                         {
                             "name": "timestamp",
@@ -25346,7 +25369,7 @@
                             "name": "executionContextUniqueId",
                             "description": "Unique Id of the destroyed context",
                             "experimental": true,
-                            "type": "string"
+                            "$ref": "ExecutionContextUniqueId"
                         }
                     ]
                 },
