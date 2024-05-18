@@ -14,6 +14,12 @@ final class CookieDeprecationMetadataIssueDetails implements \JsonSerializable
 	/** @var string[] */
 	public $allowedSites;
 
+	/** @var int|float */
+	public $optOutPercentage;
+
+	/** @var bool */
+	public $isOptOutTopLevel;
+
 
 	/**
 	 * @param object $data
@@ -28,6 +34,12 @@ final class CookieDeprecationMetadataIssueDetails implements \JsonSerializable
 				$instance->allowedSites[] = (string)$item;
 			}
 		}
+		if (isset($data->optOutPercentage)) {
+			$instance->optOutPercentage = $data->optOutPercentage;
+		}
+		if (isset($data->isOptOutTopLevel)) {
+			$instance->isOptOutTopLevel = (bool)$data->isOptOutTopLevel;
+		}
 		return $instance;
 	}
 
@@ -40,6 +52,12 @@ final class CookieDeprecationMetadataIssueDetails implements \JsonSerializable
 			foreach ($this->allowedSites as $item) {
 				$data->allowedSites[] = $item;
 			}
+		}
+		if ($this->optOutPercentage !== null) {
+			$data->optOutPercentage = $this->optOutPercentage;
+		}
+		if ($this->isOptOutTopLevel !== null) {
+			$data->isOptOutTopLevel = $this->isOptOutTopLevel;
 		}
 		return $data;
 	}
