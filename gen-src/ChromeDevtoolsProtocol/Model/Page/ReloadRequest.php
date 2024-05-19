@@ -25,6 +25,13 @@ final class ReloadRequest implements \JsonSerializable
 	 */
 	public $scriptToEvaluateOnLoad;
 
+	/**
+	 * If set, an error will be thrown if the target page's main frame's loader id does not match the provided id. This prevents accidentally reloading an unintended target in case there's a racing navigation.
+	 *
+	 * @var string
+	 */
+	public $loaderId;
+
 
 	/**
 	 * @param object $data
@@ -39,6 +46,9 @@ final class ReloadRequest implements \JsonSerializable
 		if (isset($data->scriptToEvaluateOnLoad)) {
 			$instance->scriptToEvaluateOnLoad = (string)$data->scriptToEvaluateOnLoad;
 		}
+		if (isset($data->loaderId)) {
+			$instance->loaderId = (string)$data->loaderId;
+		}
 		return $instance;
 	}
 
@@ -51,6 +61,9 @@ final class ReloadRequest implements \JsonSerializable
 		}
 		if ($this->scriptToEvaluateOnLoad !== null) {
 			$data->scriptToEvaluateOnLoad = $this->scriptToEvaluateOnLoad;
+		}
+		if ($this->loaderId !== null) {
+			$data->loaderId = $this->loaderId;
 		}
 		return $data;
 	}

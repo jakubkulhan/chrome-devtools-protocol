@@ -14,7 +14,6 @@ final class AddBindingRequestBuilder
 	private $name;
 	private $executionContextId;
 	private $executionContextName;
-	private $executionContextUniqueId;
 
 
 	/**
@@ -29,7 +28,6 @@ final class AddBindingRequestBuilder
 		$instance->name = $this->name;
 		$instance->executionContextId = $this->executionContextId;
 		$instance->executionContextName = $this->executionContextName;
-		$instance->executionContextUniqueId = $this->executionContextUniqueId;
 		return $instance;
 	}
 
@@ -66,18 +64,6 @@ final class AddBindingRequestBuilder
 	public function setExecutionContextName($executionContextName): self
 	{
 		$this->executionContextName = $executionContextName;
-		return $this;
-	}
-
-
-	/**
-	 * @param string $executionContextUniqueId
-	 *
-	 * @return self
-	 */
-	public function setExecutionContextUniqueId($executionContextUniqueId): self
-	{
-		$this->executionContextUniqueId = $executionContextUniqueId;
 		return $this;
 	}
 }

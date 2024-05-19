@@ -15,25 +15,18 @@ final class AddBindingRequest implements \JsonSerializable
 	public $name;
 
 	/**
-	 * If specified, the binding would only be exposed to the specified execution context. If omitted and `executionContextName` is not set, the binding is exposed to all execution contexts of the target. This parameter is mutually exclusive with `executionContextName` and `executionContextUniqueId`. Deprecated in favor of `executionContextName` due to an unclear use case and bugs in implementation (crbug.com/1169639). `executionContextId` will be removed in the future.
+	 * If specified, the binding would only be exposed to the specified execution context. If omitted and `executionContextName` is not set, the binding is exposed to all execution contexts of the target. This parameter is mutually exclusive with `executionContextName`. Deprecated in favor of `executionContextName` due to an unclear use case and bugs in implementation (crbug.com/1169639). `executionContextId` will be removed in the future.
 	 *
 	 * @var int
 	 */
 	public $executionContextId;
 
 	/**
-	 * If specified, the binding is exposed to the executionContext with matching name, even for contexts created after the binding is added. See also `ExecutionContext.name` and `worldName` parameter to `Page.addScriptToEvaluateOnNewDocument`. This parameter is mutually exclusive with `executionContextId` and `executionContextUniqueId`.
+	 * If specified, the binding is exposed to the executionContext with matching name, even for contexts created after the binding is added. See also `ExecutionContext.name` and `worldName` parameter to `Page.addScriptToEvaluateOnNewDocument`. This parameter is mutually exclusive with `executionContextId`.
 	 *
 	 * @var string|null
 	 */
 	public $executionContextName;
-
-	/**
-	 * This parameter is mutually exclusive with `executionContextId` and `executionContextName`.
-	 *
-	 * @var string
-	 */
-	public $executionContextUniqueId;
 
 
 	/**
@@ -52,9 +45,6 @@ final class AddBindingRequest implements \JsonSerializable
 		if (isset($data->executionContextName)) {
 			$instance->executionContextName = (string)$data->executionContextName;
 		}
-		if (isset($data->executionContextUniqueId)) {
-			$instance->executionContextUniqueId = (string)$data->executionContextUniqueId;
-		}
 		return $instance;
 	}
 
@@ -70,9 +60,6 @@ final class AddBindingRequest implements \JsonSerializable
 		}
 		if ($this->executionContextName !== null) {
 			$data->executionContextName = $this->executionContextName;
-		}
-		if ($this->executionContextUniqueId !== null) {
-			$data->executionContextUniqueId = $this->executionContextUniqueId;
 		}
 		return $data;
 	}

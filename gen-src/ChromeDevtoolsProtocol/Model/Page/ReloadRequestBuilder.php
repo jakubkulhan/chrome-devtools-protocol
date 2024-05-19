@@ -11,6 +11,7 @@ final class ReloadRequestBuilder
 {
 	private $ignoreCache;
 	private $scriptToEvaluateOnLoad;
+	private $loaderId;
 
 
 	/**
@@ -21,6 +22,7 @@ final class ReloadRequestBuilder
 		$instance = new ReloadRequest();
 		$instance->ignoreCache = $this->ignoreCache;
 		$instance->scriptToEvaluateOnLoad = $this->scriptToEvaluateOnLoad;
+		$instance->loaderId = $this->loaderId;
 		return $instance;
 	}
 
@@ -45,6 +47,18 @@ final class ReloadRequestBuilder
 	public function setScriptToEvaluateOnLoad($scriptToEvaluateOnLoad): self
 	{
 		$this->scriptToEvaluateOnLoad = $scriptToEvaluateOnLoad;
+		return $this;
+	}
+
+
+	/**
+	 * @param string $loaderId
+	 *
+	 * @return self
+	 */
+	public function setLoaderId($loaderId): self
+	{
+		$this->loaderId = $loaderId;
 		return $this;
 	}
 }

@@ -24,9 +24,6 @@ final class BindingCalledEvent implements \JsonSerializable
 	 */
 	public $executionContextId;
 
-	/** @var string */
-	public $executionContextUniqueId;
-
 
 	/**
 	 * @param object $data
@@ -44,9 +41,6 @@ final class BindingCalledEvent implements \JsonSerializable
 		if (isset($data->executionContextId)) {
 			$instance->executionContextId = (int)$data->executionContextId;
 		}
-		if (isset($data->executionContextUniqueId)) {
-			$instance->executionContextUniqueId = (string)$data->executionContextUniqueId;
-		}
 		return $instance;
 	}
 
@@ -62,9 +56,6 @@ final class BindingCalledEvent implements \JsonSerializable
 		}
 		if ($this->executionContextId !== null) {
 			$data->executionContextId = $this->executionContextId;
-		}
-		if ($this->executionContextUniqueId !== null) {
-			$data->executionContextUniqueId = $this->executionContextUniqueId;
 		}
 		return $data;
 	}
