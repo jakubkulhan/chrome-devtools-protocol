@@ -51,4 +51,5 @@ final class FederatedAuthRequestIssueReasonEnum
 	public const NOT_SIGNED_IN_WITH_IDP = 'NotSignedInWithIdp';
 	public const MISSING_TRANSIENT_USER_ACTIVATION = 'MissingTransientUserActivation';
 	public const REPLACED_BY_BUTTON_MODE = 'ReplacedByButtonMode';
+	public const RELYING_PARTY_ORIGIN_IS_OPAQUE = 'RelyingPartyOriginIsOpaque';
 }
