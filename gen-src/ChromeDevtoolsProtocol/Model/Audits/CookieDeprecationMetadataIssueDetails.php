@@ -20,6 +20,9 @@ final class CookieDeprecationMetadataIssueDetails implements \JsonSerializable
 	/** @var bool */
 	public $isOptOutTopLevel;
 
+	/** @var string */
+	public $operation;
+
 
 	/**
 	 * @param object $data
@@ -40,6 +43,9 @@ final class CookieDeprecationMetadataIssueDetails implements \JsonSerializable
 		if (isset($data->isOptOutTopLevel)) {
 			$instance->isOptOutTopLevel = (bool)$data->isOptOutTopLevel;
 		}
+		if (isset($data->operation)) {
+			$instance->operation = (string)$data->operation;
+		}
 		return $instance;
 	}
 
@@ -58,6 +64,9 @@ final class CookieDeprecationMetadataIssueDetails implements \JsonSerializable
 		}
 		if ($this->isOptOutTopLevel !== null) {
 			$data->isOptOutTopLevel = $this->isOptOutTopLevel;
+		}
+		if ($this->operation !== null) {
+			$data->operation = $this->operation;
 		}
 		return $data;
 	}

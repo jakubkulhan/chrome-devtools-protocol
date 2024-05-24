@@ -103,6 +103,20 @@ final class ResourceTiming implements \JsonSerializable
 	public $workerRespondWithSettled;
 
 	/**
+	 * Started ServiceWorker static routing source evaluation.
+	 *
+	 * @var int|float|null
+	 */
+	public $workerRouterEvaluationStart;
+
+	/**
+	 * Started cache lookup when the source was evaluated to `cache`.
+	 *
+	 * @var int|float|null
+	 */
+	public $workerCacheLookupStart;
+
+	/**
 	 * Started sending request.
 	 *
 	 * @var int|float
@@ -191,6 +205,12 @@ final class ResourceTiming implements \JsonSerializable
 		if (isset($data->workerRespondWithSettled)) {
 			$instance->workerRespondWithSettled = $data->workerRespondWithSettled;
 		}
+		if (isset($data->workerRouterEvaluationStart)) {
+			$instance->workerRouterEvaluationStart = $data->workerRouterEvaluationStart;
+		}
+		if (isset($data->workerCacheLookupStart)) {
+			$instance->workerCacheLookupStart = $data->workerCacheLookupStart;
+		}
 		if (isset($data->sendStart)) {
 			$instance->sendStart = $data->sendStart;
 		}
@@ -254,6 +274,12 @@ final class ResourceTiming implements \JsonSerializable
 		}
 		if ($this->workerRespondWithSettled !== null) {
 			$data->workerRespondWithSettled = $this->workerRespondWithSettled;
+		}
+		if ($this->workerRouterEvaluationStart !== null) {
+			$data->workerRouterEvaluationStart = $this->workerRouterEvaluationStart;
+		}
+		if ($this->workerCacheLookupStart !== null) {
+			$data->workerCacheLookupStart = $this->workerCacheLookupStart;
 		}
 		if ($this->sendStart !== null) {
 			$data->sendStart = $this->sendStart;

@@ -25,6 +25,13 @@ final class ServiceWorkerRouterInfo implements \JsonSerializable
 	 */
 	public $matchedSourceType;
 
+	/**
+	 * The actual router source used.
+	 *
+	 * @var string
+	 */
+	public $actualSourceType;
+
 
 	/**
 	 * @param object $data
@@ -39,6 +46,9 @@ final class ServiceWorkerRouterInfo implements \JsonSerializable
 		if (isset($data->matchedSourceType)) {
 			$instance->matchedSourceType = (string)$data->matchedSourceType;
 		}
+		if (isset($data->actualSourceType)) {
+			$instance->actualSourceType = (string)$data->actualSourceType;
+		}
 		return $instance;
 	}
 
@@ -51,6 +61,9 @@ final class ServiceWorkerRouterInfo implements \JsonSerializable
 		}
 		if ($this->matchedSourceType !== null) {
 			$data->matchedSourceType = $this->matchedSourceType;
+		}
+		if ($this->actualSourceType !== null) {
+			$data->actualSourceType = $this->actualSourceType;
 		}
 		return $data;
 	}
