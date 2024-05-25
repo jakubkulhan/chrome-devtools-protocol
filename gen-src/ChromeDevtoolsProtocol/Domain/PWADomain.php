@@ -7,6 +7,8 @@ use ChromeDevtoolsProtocol\InternalClientInterface;
 use ChromeDevtoolsProtocol\Model\PWA\GetOsAppStateRequest;
 use ChromeDevtoolsProtocol\Model\PWA\GetOsAppStateResponse;
 use ChromeDevtoolsProtocol\Model\PWA\InstallRequest;
+use ChromeDevtoolsProtocol\Model\PWA\LaunchFilesInAppRequest;
+use ChromeDevtoolsProtocol\Model\PWA\LaunchFilesInAppResponse;
 use ChromeDevtoolsProtocol\Model\PWA\LaunchRequest;
 use ChromeDevtoolsProtocol\Model\PWA\LaunchResponse;
 use ChromeDevtoolsProtocol\Model\PWA\UninstallRequest;
@@ -40,6 +42,13 @@ class PWADomain implements PWADomainInterface
 	{
 		$response = $this->internalClient->executeCommand($ctx, 'PWA.launch', $request);
 		return LaunchResponse::fromJson($response);
+	}
+
+
+	public function launchFilesInApp(ContextInterface $ctx, LaunchFilesInAppRequest $request): LaunchFilesInAppResponse
+	{
+		$response = $this->internalClient->executeCommand($ctx, 'PWA.launchFilesInApp', $request);
+		return LaunchFilesInAppResponse::fromJson($response);
 	}
 
 

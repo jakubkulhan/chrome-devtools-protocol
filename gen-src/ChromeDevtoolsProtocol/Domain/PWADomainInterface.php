@@ -6,6 +6,8 @@ use ChromeDevtoolsProtocol\ContextInterface;
 use ChromeDevtoolsProtocol\Model\PWA\GetOsAppStateRequest;
 use ChromeDevtoolsProtocol\Model\PWA\GetOsAppStateResponse;
 use ChromeDevtoolsProtocol\Model\PWA\InstallRequest;
+use ChromeDevtoolsProtocol\Model\PWA\LaunchFilesInAppRequest;
+use ChromeDevtoolsProtocol\Model\PWA\LaunchFilesInAppResponse;
 use ChromeDevtoolsProtocol\Model\PWA\LaunchRequest;
 use ChromeDevtoolsProtocol\Model\PWA\LaunchResponse;
 use ChromeDevtoolsProtocol\Model\PWA\UninstallRequest;
@@ -52,6 +54,17 @@ interface PWADomainInterface
 	 * @return LaunchResponse
 	 */
 	public function launch(ContextInterface $ctx, LaunchRequest $request): LaunchResponse;
+
+
+	/**
+	 * Opens one or more local files from an installed web app identified by its manifestId. The web app needs to have file handlers registered to process the files. The API returns one or more tabs / web contents' based Target.TargetIDs which can be used to attach to via Target.attachToTarget or similar APIs. If some files in the parameters cannot be handled by the web app, they will be ignored. If none of the files can be handled, this API returns an error. If no files provided as the parameter, this API also returns an error. According to the definition of the file handlers in the manifest file, one Target.TargetID may represent a tab handling one or more files. The order of the returned Target.TargetIDs is also not guaranteed. TODO(crbug.com/339454034): Check the existences of the input files.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param LaunchFilesInAppRequest $request
+	 *
+	 * @return LaunchFilesInAppResponse
+	 */
+	public function launchFilesInApp(ContextInterface $ctx, LaunchFilesInAppRequest $request): LaunchFilesInAppResponse;
 
 
 	/**
