@@ -20,6 +20,8 @@ use ChromeDevtoolsProtocol\Model\DOM\DistributedNodesUpdatedEvent;
 use ChromeDevtoolsProtocol\Model\DOM\DocumentUpdatedEvent;
 use ChromeDevtoolsProtocol\Model\DOM\EnableRequest;
 use ChromeDevtoolsProtocol\Model\DOM\FocusRequest;
+use ChromeDevtoolsProtocol\Model\DOM\GetAnchorElementRequest;
+use ChromeDevtoolsProtocol\Model\DOM\GetAnchorElementResponse;
 use ChromeDevtoolsProtocol\Model\DOM\GetAttributesRequest;
 use ChromeDevtoolsProtocol\Model\DOM\GetAttributesResponse;
 use ChromeDevtoolsProtocol\Model\DOM\GetBoxModelRequest;
@@ -177,6 +179,17 @@ interface DOMDomainInterface
 	 * @return void
 	 */
 	public function focus(ContextInterface $ctx, FocusRequest $request): void;
+
+
+	/**
+	 * Returns the target anchor element of the given anchor query according to https://www.w3.org/TR/css-anchor-position-1/#target.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param GetAnchorElementRequest $request
+	 *
+	 * @return GetAnchorElementResponse
+	 */
+	public function getAnchorElement(ContextInterface $ctx, GetAnchorElementRequest $request): GetAnchorElementResponse;
 
 
 	/**

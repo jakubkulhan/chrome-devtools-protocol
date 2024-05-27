@@ -21,6 +21,8 @@ use ChromeDevtoolsProtocol\Model\DOM\DistributedNodesUpdatedEvent;
 use ChromeDevtoolsProtocol\Model\DOM\DocumentUpdatedEvent;
 use ChromeDevtoolsProtocol\Model\DOM\EnableRequest;
 use ChromeDevtoolsProtocol\Model\DOM\FocusRequest;
+use ChromeDevtoolsProtocol\Model\DOM\GetAnchorElementRequest;
+use ChromeDevtoolsProtocol\Model\DOM\GetAnchorElementResponse;
 use ChromeDevtoolsProtocol\Model\DOM\GetAttributesRequest;
 use ChromeDevtoolsProtocol\Model\DOM\GetAttributesResponse;
 use ChromeDevtoolsProtocol\Model\DOM\GetBoxModelRequest;
@@ -149,6 +151,13 @@ class DOMDomain implements DOMDomainInterface
 	public function focus(ContextInterface $ctx, FocusRequest $request): void
 	{
 		$this->internalClient->executeCommand($ctx, 'DOM.focus', $request);
+	}
+
+
+	public function getAnchorElement(ContextInterface $ctx, GetAnchorElementRequest $request): GetAnchorElementResponse
+	{
+		$response = $this->internalClient->executeCommand($ctx, 'DOM.getAnchorElement', $request);
+		return GetAnchorElementResponse::fromJson($response);
 	}
 
 
