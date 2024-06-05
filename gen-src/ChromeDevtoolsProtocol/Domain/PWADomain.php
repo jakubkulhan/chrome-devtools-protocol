@@ -11,6 +11,7 @@ use ChromeDevtoolsProtocol\Model\PWA\LaunchFilesInAppRequest;
 use ChromeDevtoolsProtocol\Model\PWA\LaunchFilesInAppResponse;
 use ChromeDevtoolsProtocol\Model\PWA\LaunchRequest;
 use ChromeDevtoolsProtocol\Model\PWA\LaunchResponse;
+use ChromeDevtoolsProtocol\Model\PWA\OpenCurrentPageInAppRequest;
 use ChromeDevtoolsProtocol\Model\PWA\UninstallRequest;
 
 class PWADomain implements PWADomainInterface
@@ -49,6 +50,12 @@ class PWADomain implements PWADomainInterface
 	{
 		$response = $this->internalClient->executeCommand($ctx, 'PWA.launchFilesInApp', $request);
 		return LaunchFilesInAppResponse::fromJson($response);
+	}
+
+
+	public function openCurrentPageInApp(ContextInterface $ctx, OpenCurrentPageInAppRequest $request): void
+	{
+		$this->internalClient->executeCommand($ctx, 'PWA.openCurrentPageInApp', $request);
 	}
 
 

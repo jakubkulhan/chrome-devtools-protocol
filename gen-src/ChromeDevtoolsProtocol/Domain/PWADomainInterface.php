@@ -10,6 +10,7 @@ use ChromeDevtoolsProtocol\Model\PWA\LaunchFilesInAppRequest;
 use ChromeDevtoolsProtocol\Model\PWA\LaunchFilesInAppResponse;
 use ChromeDevtoolsProtocol\Model\PWA\LaunchRequest;
 use ChromeDevtoolsProtocol\Model\PWA\LaunchResponse;
+use ChromeDevtoolsProtocol\Model\PWA\OpenCurrentPageInAppRequest;
 use ChromeDevtoolsProtocol\Model\PWA\UninstallRequest;
 
 /**
@@ -46,7 +47,7 @@ interface PWADomainInterface
 
 
 	/**
-	 * Launches the installed web app, or an url in the same web app instead of the default start url if it is provided. Returns a tab / web contents based Target.TargetID which can be used to attach to via Target.attachToTarget or similar APIs.
+	 * Launches the installed web app, or an url in the same web app instead of the default start url if it is provided. Returns a page Target.TargetID which can be used to attach to via Target.attachToTarget or similar APIs.
 	 *
 	 * @param ContextInterface $ctx
 	 * @param LaunchRequest $request
@@ -57,7 +58,7 @@ interface PWADomainInterface
 
 
 	/**
-	 * Opens one or more local files from an installed web app identified by its manifestId. The web app needs to have file handlers registered to process the files. The API returns one or more tabs / web contents' based Target.TargetIDs which can be used to attach to via Target.attachToTarget or similar APIs. If some files in the parameters cannot be handled by the web app, they will be ignored. If none of the files can be handled, this API returns an error. If no files provided as the parameter, this API also returns an error. According to the definition of the file handlers in the manifest file, one Target.TargetID may represent a tab handling one or more files. The order of the returned Target.TargetIDs is also not guaranteed. TODO(crbug.com/339454034): Check the existences of the input files.
+	 * Opens one or more local files from an installed web app identified by its manifestId. The web app needs to have file handlers registered to process the files. The API returns one or more page Target.TargetIDs which can be used to attach to via Target.attachToTarget or similar APIs. If some files in the parameters cannot be handled by the web app, they will be ignored. If none of the files can be handled, this API returns an error. If no files provided as the parameter, this API also returns an error. According to the definition of the file handlers in the manifest file, one Target.TargetID may represent a page handling one or more files. The order of the returned Target.TargetIDs is not guaranteed. TODO(crbug.com/339454034): Check the existences of the input files.
 	 *
 	 * @param ContextInterface $ctx
 	 * @param LaunchFilesInAppRequest $request
@@ -65,6 +66,17 @@ interface PWADomainInterface
 	 * @return LaunchFilesInAppResponse
 	 */
 	public function launchFilesInApp(ContextInterface $ctx, LaunchFilesInAppRequest $request): LaunchFilesInAppResponse;
+
+
+	/**
+	 * Opens the current page in its web app identified by the manifest id, needs to be called on a page target. This function returns immediately without waiting for the app finishing loading.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param OpenCurrentPageInAppRequest $request
+	 *
+	 * @return void
+	 */
+	public function openCurrentPageInApp(ContextInterface $ctx, OpenCurrentPageInAppRequest $request): void;
 
 
 	/**
