@@ -15,5 +15,7 @@ final class BlockedByResponseReasonEnum
 	public const COOP_SANDBOXED_I_FRAME_CANNOT_NAVIGATE_TO_COOP_PAGE = 'CoopSandboxedIFrameCannotNavigateToCoopPage';
 	public const CORP_NOT_SAME_ORIGIN = 'CorpNotSameOrigin';
 	public const CORP_NOT_SAME_ORIGIN_AFTER_DEFAULTED_TO_SAME_ORIGIN_BY_COEP = 'CorpNotSameOriginAfterDefaultedToSameOriginByCoep';
+	public const CORP_NOT_SAME_ORIGIN_AFTER_DEFAULTED_TO_SAME_ORIGIN_BY_DIP = 'CorpNotSameOriginAfterDefaultedToSameOriginByDip';
+	public const CORP_NOT_SAME_ORIGIN_AFTER_DEFAULTED_TO_SAME_ORIGIN_BY_COEP_AND_DIP = 'CorpNotSameOriginAfterDefaultedToSameOriginByCoepAndDip';
 	public const CORP_NOT_SAME_SITE = 'CorpNotSameSite';
 }
