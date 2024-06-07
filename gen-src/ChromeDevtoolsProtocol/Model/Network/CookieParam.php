@@ -103,9 +103,9 @@ final class CookieParam implements \JsonSerializable
 	public $sourcePort;
 
 	/**
-	 * Cookie partition key. The site of the top-level URL the browser was visiting at the start of the request to the endpoint that set the cookie. If not set, the cookie will be set as not partitioned.
+	 * Cookie partition key. If not set, the cookie will be set as not partitioned.
 	 *
-	 * @var string|null
+	 * @var CookiePartitionKey|null
 	 */
 	public $partitionKey;
 
@@ -157,7 +157,7 @@ final class CookieParam implements \JsonSerializable
 			$instance->sourcePort = (int)$data->sourcePort;
 		}
 		if (isset($data->partitionKey)) {
-			$instance->partitionKey = (string)$data->partitionKey;
+			$instance->partitionKey = CookiePartitionKey::fromJson($data->partitionKey);
 		}
 		return $instance;
 	}
@@ -206,7 +206,7 @@ final class CookieParam implements \JsonSerializable
 			$data->sourcePort = $this->sourcePort;
 		}
 		if ($this->partitionKey !== null) {
-			$data->partitionKey = $this->partitionKey;
+			$data->partitionKey = $this->partitionKey->jsonSerialize();
 		}
 		return $data;
 	}

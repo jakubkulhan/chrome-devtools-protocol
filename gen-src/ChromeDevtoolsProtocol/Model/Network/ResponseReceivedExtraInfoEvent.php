@@ -56,7 +56,7 @@ final class ResponseReceivedExtraInfoEvent implements \JsonSerializable
 	/**
 	 * The cookie partition key that will be used to store partitioned cookies set in this response. Only sent when partitioned cookies are enabled.
 	 *
-	 * @var string|null
+	 * @var CookiePartitionKey|null
 	 */
 	public $cookiePartitionKey;
 
@@ -104,7 +104,7 @@ final class ResponseReceivedExtraInfoEvent implements \JsonSerializable
 			$instance->headersText = (string)$data->headersText;
 		}
 		if (isset($data->cookiePartitionKey)) {
-			$instance->cookiePartitionKey = (string)$data->cookiePartitionKey;
+			$instance->cookiePartitionKey = CookiePartitionKey::fromJson($data->cookiePartitionKey);
 		}
 		if (isset($data->cookiePartitionKeyOpaque)) {
 			$instance->cookiePartitionKeyOpaque = (bool)$data->cookiePartitionKeyOpaque;
@@ -144,7 +144,7 @@ final class ResponseReceivedExtraInfoEvent implements \JsonSerializable
 			$data->headersText = $this->headersText;
 		}
 		if ($this->cookiePartitionKey !== null) {
-			$data->cookiePartitionKey = $this->cookiePartitionKey;
+			$data->cookiePartitionKey = $this->cookiePartitionKey->jsonSerialize();
 		}
 		if ($this->cookiePartitionKeyOpaque !== null) {
 			$data->cookiePartitionKeyOpaque = $this->cookiePartitionKeyOpaque;

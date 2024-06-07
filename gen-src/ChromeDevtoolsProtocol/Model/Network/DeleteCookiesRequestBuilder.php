@@ -85,7 +85,7 @@ final class DeleteCookiesRequestBuilder
 
 
 	/**
-	 * @param string|null $partitionKey
+	 * @param CookiePartitionKey|null $partitionKey
 	 *
 	 * @return self
 	 */

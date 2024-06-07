@@ -110,9 +110,9 @@ final class Cookie implements \JsonSerializable
 	public $sourcePort;
 
 	/**
-	 * Cookie partition key. The site of the top-level URL the browser was visiting at the start of the request to the endpoint that set the cookie.
+	 * Cookie partition key.
 	 *
-	 * @var string|null
+	 * @var CookiePartitionKey|null
 	 */
 	public $partitionKey;
 
@@ -174,7 +174,7 @@ final class Cookie implements \JsonSerializable
 			$instance->sourcePort = (int)$data->sourcePort;
 		}
 		if (isset($data->partitionKey)) {
-			$instance->partitionKey = (string)$data->partitionKey;
+			$instance->partitionKey = CookiePartitionKey::fromJson($data->partitionKey);
 		}
 		if (isset($data->partitionKeyOpaque)) {
 			$instance->partitionKeyOpaque = (bool)$data->partitionKeyOpaque;
@@ -229,7 +229,7 @@ final class Cookie implements \JsonSerializable
 			$data->sourcePort = $this->sourcePort;
 		}
 		if ($this->partitionKey !== null) {
-			$data->partitionKey = $this->partitionKey;
+			$data->partitionKey = $this->partitionKey->jsonSerialize();
 		}
 		if ($this->partitionKeyOpaque !== null) {
 			$data->partitionKeyOpaque = $this->partitionKeyOpaque;

@@ -214,7 +214,7 @@ final class SetCookieRequestBuilder
 
 
 	/**
-	 * @param string|null $partitionKey
+	 * @param CookiePartitionKey|null $partitionKey
 	 *
 	 * @return self
 	 */
