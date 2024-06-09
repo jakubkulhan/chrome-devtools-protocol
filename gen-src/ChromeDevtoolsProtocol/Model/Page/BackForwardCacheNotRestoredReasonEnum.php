@@ -68,6 +68,11 @@ final class BackForwardCacheNotRestoredReasonEnum
 	public const HTTP_AUTH_REQUIRED = 'HTTPAuthRequired';
 	public const COOKIE_FLUSHED = 'CookieFlushed';
 	public const BROADCAST_CHANNEL_ON_MESSAGE = 'BroadcastChannelOnMessage';
+	public const WEB_VIEW_SETTINGS_CHANGED = 'WebViewSettingsChanged';
+	public const WEB_VIEW_JAVA_SCRIPT_OBJECT_CHANGED = 'WebViewJavaScriptObjectChanged';
+	public const WEB_VIEW_MESSAGE_LISTENER_INJECTED = 'WebViewMessageListenerInjected';
+	public const WEB_VIEW_SAFE_BROWSING_ALLOWLIST_CHANGED = 'WebViewSafeBrowsingAllowlistChanged';
+	public const WEB_VIEW_DOCUMENT_START_JAVASCRIPT_CHANGED = 'WebViewDocumentStartJavascriptChanged';
 	public const WEB_SOCKET = 'WebSocket';
 	public const WEB_TRANSPORT = 'WebTransport';
 	public const WEB_R_T_C = 'WebRTC';

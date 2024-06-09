@@ -40,7 +40,7 @@ final class DeleteCookiesRequest implements \JsonSerializable
 	public $path;
 
 	/**
-	 * If specified, deletes only cookies with the the given name and partitionKey where where all partition key attributes match the cookie partition key attribute.
+	 * If specified, deletes only cookies with the the given name and partitionKey where all partition key attributes match the cookie partition key attribute.
 	 *
 	 * @var CookiePartitionKey|null
 	 */
