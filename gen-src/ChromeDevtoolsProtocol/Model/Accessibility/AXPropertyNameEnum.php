@@ -50,4 +50,5 @@ final class AXPropertyNameEnum
 	public const FLOWTO = 'flowto';
 	public const LABELLEDBY = 'labelledby';
 	public const OWNS = 'owns';
+	public const URL = 'url';
 }

@@ -248,7 +248,8 @@
                         "errormessage",
                         "flowto",
                         "labelledby",
-                        "owns"
+                        "owns",
+                        "url"
                     ]
                 },
                 {
@@ -26845,7 +26846,8 @@
                         "destinationBothLimitsReached",
                         "reportingOriginsPerSiteLimitReached",
                         "exceedsMaxChannelCapacity",
-                        "exceedsMaxTriggerStateCardinality"
+                        "exceedsMaxTriggerStateCardinality",
+                        "destinationPerDayReportingLimitReached"
                     ]
                 },
                 {
