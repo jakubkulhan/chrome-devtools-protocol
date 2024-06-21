@@ -2687,6 +2687,12 @@
                             "type": "boolean"
                         },
                         {
+                            "name": "allowWithoutGesture",
+                            "description": "For \"fullscreen\" permission, must specify allowWithoutGesture:true.",
+                            "optional": true,
+                            "type": "boolean"
+                        },
+                        {
                             "name": "panTiltZoom",
                             "description": "For \"camera\" permission, may specify panTiltZoom.",
                             "optional": true,
@@ -17550,11 +17556,6 @@
                             "type": "number"
                         }
                     ]
-                },
-                {
-                    "name": "policyUpdated",
-                    "description": "Fired once security policy has been updated.",
-                    "experimental": true
                 },
                 {
                     "name": "reportingApiEndpointsChangedForOrigin",

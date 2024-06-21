@@ -40,6 +40,13 @@ final class PermissionDescriptor implements \JsonSerializable
 	public $allowWithoutSanitization;
 
 	/**
+	 * For "fullscreen" permission, must specify allowWithoutGesture:true.
+	 *
+	 * @var bool|null
+	 */
+	public $allowWithoutGesture;
+
+	/**
 	 * For "camera" permission, may specify panTiltZoom.
 	 *
 	 * @var bool|null
@@ -66,6 +73,9 @@ final class PermissionDescriptor implements \JsonSerializable
 		if (isset($data->allowWithoutSanitization)) {
 			$instance->allowWithoutSanitization = (bool)$data->allowWithoutSanitization;
 		}
+		if (isset($data->allowWithoutGesture)) {
+			$instance->allowWithoutGesture = (bool)$data->allowWithoutGesture;
+		}
 		if (isset($data->panTiltZoom)) {
 			$instance->panTiltZoom = (bool)$data->panTiltZoom;
 		}
@@ -87,6 +97,9 @@ final class PermissionDescriptor implements \JsonSerializable
 		}
 		if ($this->allowWithoutSanitization !== null) {
 			$data->allowWithoutSanitization = $this->allowWithoutSanitization;
+		}
+		if ($this->allowWithoutGesture !== null) {
+			$data->allowWithoutGesture = $this->allowWithoutGesture;
 		}
 		if ($this->panTiltZoom !== null) {
 			$data->panTiltZoom = $this->panTiltZoom;
