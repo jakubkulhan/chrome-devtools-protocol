@@ -31,6 +31,7 @@ use ChromeDevtoolsProtocol\Model\Network\LoadNetworkResourceRequest;
 use ChromeDevtoolsProtocol\Model\Network\LoadNetworkResourceResponse;
 use ChromeDevtoolsProtocol\Model\Network\LoadingFailedEvent;
 use ChromeDevtoolsProtocol\Model\Network\LoadingFinishedEvent;
+use ChromeDevtoolsProtocol\Model\Network\PolicyUpdatedEvent;
 use ChromeDevtoolsProtocol\Model\Network\ReplayXHRRequest;
 use ChromeDevtoolsProtocol\Model\Network\ReportingApiEndpointsChangedForOriginEvent;
 use ChromeDevtoolsProtocol\Model\Network\ReportingApiReportAddedEvent;
@@ -384,6 +385,20 @@ class NetworkDomain implements NetworkDomainInterface
 	public function awaitLoadingFinished(ContextInterface $ctx): LoadingFinishedEvent
 	{
 		return LoadingFinishedEvent::fromJson($this->internalClient->awaitEvent($ctx, 'Network.loadingFinished'));
+	}
+
+
+	public function addPolicyUpdatedListener(callable $listener): SubscriptionInterface
+	{
+		return $this->internalClient->addListener('Network.policyUpdated', function ($event) use ($listener) {
+			return $listener(PolicyUpdatedEvent::fromJson($event));
+		});
+	}
+
+
+	public function awaitPolicyUpdated(ContextInterface $ctx): PolicyUpdatedEvent
+	{
+		return PolicyUpdatedEvent::fromJson($this->internalClient->awaitEvent($ctx, 'Network.policyUpdated'));
 	}
 
 

@@ -30,6 +30,7 @@ use ChromeDevtoolsProtocol\Model\Network\LoadNetworkResourceRequest;
 use ChromeDevtoolsProtocol\Model\Network\LoadNetworkResourceResponse;
 use ChromeDevtoolsProtocol\Model\Network\LoadingFailedEvent;
 use ChromeDevtoolsProtocol\Model\Network\LoadingFinishedEvent;
+use ChromeDevtoolsProtocol\Model\Network\PolicyUpdatedEvent;
 use ChromeDevtoolsProtocol\Model\Network\ReplayXHRRequest;
 use ChromeDevtoolsProtocol\Model\Network\ReportingApiEndpointsChangedForOriginEvent;
 use ChromeDevtoolsProtocol\Model\Network\ReportingApiReportAddedEvent;
@@ -567,6 +568,30 @@ interface NetworkDomainInterface
 	 * @return LoadingFinishedEvent
 	 */
 	public function awaitLoadingFinished(ContextInterface $ctx): LoadingFinishedEvent;
+
+
+	/**
+	 * Fired once security policy has been updated.
+	 *
+	 * Listener will be called whenever event Network.policyUpdated is fired.
+	 *
+	 * @param callable $listener
+	 *
+	 * @return SubscriptionInterface
+	 */
+	public function addPolicyUpdatedListener(callable $listener): SubscriptionInterface;
+
+
+	/**
+	 * Fired once security policy has been updated.
+	 *
+	 * Method will block until first Network.policyUpdated event is fired.
+	 *
+	 * @param ContextInterface $ctx
+	 *
+	 * @return PolicyUpdatedEvent
+	 */
+	public function awaitPolicyUpdated(ContextInterface $ctx): PolicyUpdatedEvent;
 
 
 	/**

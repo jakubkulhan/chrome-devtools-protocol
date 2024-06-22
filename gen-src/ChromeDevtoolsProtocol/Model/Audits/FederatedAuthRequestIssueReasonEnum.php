@@ -28,7 +28,9 @@ final class FederatedAuthRequestIssueReasonEnum
 	public const CLIENT_METADATA_NO_RESPONSE = 'ClientMetadataNoResponse';
 	public const CLIENT_METADATA_INVALID_RESPONSE = 'ClientMetadataInvalidResponse';
 	public const CLIENT_METADATA_INVALID_CONTENT_TYPE = 'ClientMetadataInvalidContentType';
+	public const IDP_NOT_POTENTIALLY_TRUSTWORTHY = 'IdpNotPotentiallyTrustworthy';
 	public const DISABLED_IN_SETTINGS = 'DisabledInSettings';
+	public const DISABLED_IN_FLAGS = 'DisabledInFlags';
 	public const ERROR_FETCHING_SIGNIN = 'ErrorFetchingSignin';
 	public const INVALID_SIGNIN_RESPONSE = 'InvalidSigninResponse';
 	public const ACCOUNTS_HTTP_NOT_FOUND = 'AccountsHttpNotFound';
@@ -51,6 +53,7 @@ final class FederatedAuthRequestIssueReasonEnum
 	public const NOT_SIGNED_IN_WITH_IDP = 'NotSignedInWithIdp';
 	public const MISSING_TRANSIENT_USER_ACTIVATION = 'MissingTransientUserActivation';
 	public const REPLACED_BY_BUTTON_MODE = 'ReplacedByButtonMode';
+	public const INVALID_FIELDS_SPECIFIED = 'InvalidFieldsSpecified';
 	public const RELYING_PARTY_ORIGIN_IS_OPAQUE = 'RelyingPartyOriginIsOpaque';
 	public const TYPE_NOT_MATCHING = 'TypeNotMatching';
 }
