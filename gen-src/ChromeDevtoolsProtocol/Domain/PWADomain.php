@@ -4,6 +4,7 @@ namespace ChromeDevtoolsProtocol\Domain;
 
 use ChromeDevtoolsProtocol\ContextInterface;
 use ChromeDevtoolsProtocol\InternalClientInterface;
+use ChromeDevtoolsProtocol\Model\PWA\ChangeAppUserSettingsRequest;
 use ChromeDevtoolsProtocol\Model\PWA\GetOsAppStateRequest;
 use ChromeDevtoolsProtocol\Model\PWA\GetOsAppStateResponse;
 use ChromeDevtoolsProtocol\Model\PWA\InstallRequest;
@@ -23,6 +24,12 @@ class PWADomain implements PWADomainInterface
 	public function __construct(InternalClientInterface $internalClient)
 	{
 		$this->internalClient = $internalClient;
+	}
+
+
+	public function changeAppUserSettings(ContextInterface $ctx, ChangeAppUserSettingsRequest $request): void
+	{
+		$this->internalClient->executeCommand($ctx, 'PWA.changeAppUserSettings', $request);
 	}
 
 
