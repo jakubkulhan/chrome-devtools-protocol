@@ -39,6 +39,9 @@ final class CSSPositionTryRule implements \JsonSerializable
 	 */
 	public $style;
 
+	/** @var bool */
+	public $active;
+
 
 	/**
 	 * @param object $data
@@ -59,6 +62,9 @@ final class CSSPositionTryRule implements \JsonSerializable
 		if (isset($data->style)) {
 			$instance->style = CSSStyle::fromJson($data->style);
 		}
+		if (isset($data->active)) {
+			$instance->active = (bool)$data->active;
+		}
 		return $instance;
 	}
 
@@ -77,6 +83,9 @@ final class CSSPositionTryRule implements \JsonSerializable
 		}
 		if ($this->style !== null) {
 			$data->style = $this->style->jsonSerialize();
+		}
+		if ($this->active !== null) {
+			$data->active = $this->active;
 		}
 		return $data;
 	}
