@@ -68,7 +68,7 @@ final class GetMatchedStylesForNodeResponse implements \JsonSerializable
 	public $cssPositionFallbackRules;
 
 	/**
-	 * A list of CSS @position-try rules matching this node, based on the position-try-options property.
+	 * A list of CSS @position-try rules matching this node, based on the position-try-fallbacks property.
 	 *
 	 * @var CSSPositionTryRule[]|null
 	 */
