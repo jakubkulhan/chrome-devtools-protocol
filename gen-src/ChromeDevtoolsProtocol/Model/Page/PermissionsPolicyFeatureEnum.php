@@ -47,6 +47,7 @@ final class PermissionsPolicyFeatureEnum
 	public const COMPUTE_PRESSURE = 'compute-pressure';
 	public const CROSS_ORIGIN_ISOLATED = 'cross-origin-isolated';
 	public const DEFERRED_FETCH = 'deferred-fetch';
+	public const DIGITAL_CREDENTIALS_GET = 'digital-credentials-get';
 	public const DIRECT_SOCKETS = 'direct-sockets';
 	public const DISPLAY_CAPTURE = 'display-capture';
 	public const DOCUMENT_DOMAIN = 'document-domain';
