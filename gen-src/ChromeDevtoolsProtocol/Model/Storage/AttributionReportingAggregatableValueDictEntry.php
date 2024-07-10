@@ -21,6 +21,9 @@ final class AttributionReportingAggregatableValueDictEntry implements \JsonSeria
 	 */
 	public $value;
 
+	/** @var string */
+	public $filteringId;
+
 
 	/**
 	 * @param object $data
@@ -35,6 +38,9 @@ final class AttributionReportingAggregatableValueDictEntry implements \JsonSeria
 		if (isset($data->value)) {
 			$instance->value = $data->value;
 		}
+		if (isset($data->filteringId)) {
+			$instance->filteringId = (string)$data->filteringId;
+		}
 		return $instance;
 	}
 
@@ -47,6 +53,9 @@ final class AttributionReportingAggregatableValueDictEntry implements \JsonSeria
 		}
 		if ($this->value !== null) {
 			$data->value = $this->value;
+		}
+		if ($this->filteringId !== null) {
+			$data->filteringId = $this->filteringId;
 		}
 		return $data;
 	}

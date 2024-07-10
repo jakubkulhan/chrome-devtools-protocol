@@ -25,6 +25,7 @@ use ChromeDevtoolsProtocol\Domain\EventBreakpointsDomainInterface;
 use ChromeDevtoolsProtocol\Domain\ExtensionsDomainInterface;
 use ChromeDevtoolsProtocol\Domain\FedCmDomainInterface;
 use ChromeDevtoolsProtocol\Domain\FetchDomainInterface;
+use ChromeDevtoolsProtocol\Domain\FileSystemDomainInterface;
 use ChromeDevtoolsProtocol\Domain\HeadlessExperimentalDomainInterface;
 use ChromeDevtoolsProtocol\Domain\HeapProfilerDomainInterface;
 use ChromeDevtoolsProtocol\Domain\IODomainInterface;
@@ -232,6 +233,14 @@ interface DevtoolsClientInterface extends CloseableResourceInterface
 	 * A domain for letting clients substitute browser's network layer with client code.
 	 */
 	public function fetch(): FetchDomainInterface;
+
+
+	/**
+	 * FileSystem domain.
+	 *
+	 * @experimental
+	 */
+	public function fileSystem(): FileSystemDomainInterface;
 
 
 	/**

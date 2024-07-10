@@ -48,6 +48,8 @@ use ChromeDevtoolsProtocol\Domain\FedCmDomain;
 use ChromeDevtoolsProtocol\Domain\FedCmDomainInterface;
 use ChromeDevtoolsProtocol\Domain\FetchDomain;
 use ChromeDevtoolsProtocol\Domain\FetchDomainInterface;
+use ChromeDevtoolsProtocol\Domain\FileSystemDomain;
+use ChromeDevtoolsProtocol\Domain\FileSystemDomainInterface;
 use ChromeDevtoolsProtocol\Domain\HeadlessExperimentalDomain;
 use ChromeDevtoolsProtocol\Domain\HeadlessExperimentalDomainInterface;
 use ChromeDevtoolsProtocol\Domain\HeapProfilerDomain;
@@ -385,6 +387,18 @@ trait DevtoolsClientTrait
 		}
 		/** @var FetchDomainInterface $domain */
 		$domain = $this->domains['Fetch'];
+		return $domain;
+	}
+
+
+	public function fileSystem(): FileSystemDomainInterface
+	{
+		if (!isset($this->domains['FileSystem'])) {
+			/** @var InternalClientInterface $this */
+			$this->domains['FileSystem'] = new FileSystemDomain($this);
+		}
+		/** @var FileSystemDomainInterface $domain */
+		$domain = $this->domains['FileSystem'];
 		return $domain;
 	}
 

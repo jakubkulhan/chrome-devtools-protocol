@@ -29,6 +29,9 @@ final class AttributionReportingTriggerRegistration implements \JsonSerializable
 	/** @var AttributionReportingAggregatableValueEntry[] */
 	public $aggregatableValues;
 
+	/** @var int */
+	public $aggregatableFilteringIdMaxBytes;
+
 	/** @var bool */
 	public $debugReporting;
 
@@ -79,6 +82,9 @@ final class AttributionReportingTriggerRegistration implements \JsonSerializable
 				$instance->aggregatableValues[] = AttributionReportingAggregatableValueEntry::fromJson($item);
 			}
 		}
+		if (isset($data->aggregatableFilteringIdMaxBytes)) {
+			$instance->aggregatableFilteringIdMaxBytes = (int)$data->aggregatableFilteringIdMaxBytes;
+		}
 		if (isset($data->debugReporting)) {
 			$instance->debugReporting = (bool)$data->debugReporting;
 		}
@@ -127,6 +133,9 @@ final class AttributionReportingTriggerRegistration implements \JsonSerializable
 			foreach ($this->aggregatableValues as $item) {
 				$data->aggregatableValues[] = $item->jsonSerialize();
 			}
+		}
+		if ($this->aggregatableFilteringIdMaxBytes !== null) {
+			$data->aggregatableFilteringIdMaxBytes = $this->aggregatableFilteringIdMaxBytes;
 		}
 		if ($this->debugReporting !== null) {
 			$data->debugReporting = $this->debugReporting;
