@@ -79,4 +79,5 @@ final class PrerenderFinalStatusEnum
 	public const JAVA_SCRIPT_INTERFACE_ADDED = 'JavaScriptInterfaceAdded';
 	public const JAVA_SCRIPT_INTERFACE_REMOVED = 'JavaScriptInterfaceRemoved';
 	public const ALL_PRERENDERING_CANCELED = 'AllPrerenderingCanceled';
+	public const WINDOW_CLOSED = 'WindowClosed';
 }

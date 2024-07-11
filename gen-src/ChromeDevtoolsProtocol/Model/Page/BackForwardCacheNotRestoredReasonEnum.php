@@ -102,7 +102,6 @@ final class BackForwardCacheNotRestoredReasonEnum
 	public const PRINTING = 'Printing';
 	public const WEB_DATABASE = 'WebDatabase';
 	public const PICTURE_IN_PICTURE = 'PictureInPicture';
-	public const PORTAL = 'Portal';
 	public const SPEECH_RECOGNIZER = 'SpeechRecognizer';
 	public const IDLE_MANAGER = 'IdleManager';
 	public const PAYMENT_MANAGER = 'PaymentManager';
