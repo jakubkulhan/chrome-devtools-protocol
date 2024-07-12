@@ -5139,6 +5139,12 @@
                             }
                         },
                         {
+                            "name": "activePositionFallbackIndex",
+                            "description": "Index of the active fallback in the applied position-try-fallback property, will not be set if there is no active position-try fallback.",
+                            "optional": true,
+                            "type": "integer"
+                        },
+                        {
                             "name": "cssPropertyRules",
                             "description": "A list of CSS at-property rules matching this node.",
                             "optional": true,
@@ -16545,7 +16551,8 @@
                         "RestrictProperties",
                         "UnsafeNone",
                         "SameOriginPlusCoep",
-                        "RestrictPropertiesPlusCoep"
+                        "RestrictPropertiesPlusCoep",
+                        "NoopenerAllowPopups"
                     ]
                 },
                 {

@@ -75,6 +75,13 @@ final class GetMatchedStylesForNodeResponse implements \JsonSerializable
 	public $cssPositionTryRules;
 
 	/**
+	 * Index of the active fallback in the applied position-try-fallback property, will not be set if there is no active position-try fallback.
+	 *
+	 * @var int|null
+	 */
+	public $activePositionFallbackIndex;
+
+	/**
 	 * A list of CSS at-property rules matching this node.
 	 *
 	 * @var CSSPropertyRule[]|null
@@ -158,6 +165,9 @@ final class GetMatchedStylesForNodeResponse implements \JsonSerializable
 				$instance->cssPositionTryRules[] = CSSPositionTryRule::fromJson($item);
 			}
 		}
+		if (isset($data->activePositionFallbackIndex)) {
+			$instance->activePositionFallbackIndex = (int)$data->activePositionFallbackIndex;
+		}
 		if (isset($data->cssPropertyRules)) {
 			$instance->cssPropertyRules = [];
 			foreach ($data->cssPropertyRules as $item) {
@@ -230,6 +240,9 @@ final class GetMatchedStylesForNodeResponse implements \JsonSerializable
 			foreach ($this->cssPositionTryRules as $item) {
 				$data->cssPositionTryRules[] = $item->jsonSerialize();
 			}
+		}
+		if ($this->activePositionFallbackIndex !== null) {
+			$data->activePositionFallbackIndex = $this->activePositionFallbackIndex;
 		}
 		if ($this->cssPropertyRules !== null) {
 			$data->cssPropertyRules = [];
