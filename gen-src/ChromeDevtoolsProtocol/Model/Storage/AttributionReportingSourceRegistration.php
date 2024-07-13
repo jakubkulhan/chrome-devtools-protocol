@@ -61,6 +61,9 @@ final class AttributionReportingSourceRegistration implements \JsonSerializable
 	/** @var string */
 	public $triggerDataMatching;
 
+	/** @var string */
+	public $destinationLimitPriority;
+
 
 	/**
 	 * @param object $data
@@ -123,6 +126,9 @@ final class AttributionReportingSourceRegistration implements \JsonSerializable
 		if (isset($data->triggerDataMatching)) {
 			$instance->triggerDataMatching = (string)$data->triggerDataMatching;
 		}
+		if (isset($data->destinationLimitPriority)) {
+			$instance->destinationLimitPriority = (string)$data->destinationLimitPriority;
+		}
 		return $instance;
 	}
 
@@ -183,6 +189,9 @@ final class AttributionReportingSourceRegistration implements \JsonSerializable
 		}
 		if ($this->triggerDataMatching !== null) {
 			$data->triggerDataMatching = $this->triggerDataMatching;
+		}
+		if ($this->destinationLimitPriority !== null) {
+			$data->destinationLimitPriority = $this->destinationLimitPriority;
 		}
 		return $data;
 	}

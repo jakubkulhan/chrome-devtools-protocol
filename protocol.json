@@ -26984,6 +26984,10 @@
                         {
                             "name": "triggerDataMatching",
                             "$ref": "AttributionReportingTriggerDataMatching"
+                        },
+                        {
+                            "name": "destinationLimitPriority",
+                            "$ref": "SignedInt64AsBase10"
                         }
                     ]
                 },
