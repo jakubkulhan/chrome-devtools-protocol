@@ -64,6 +64,9 @@ final class AttributionReportingSourceRegistration implements \JsonSerializable
 	/** @var string */
 	public $destinationLimitPriority;
 
+	/** @var AttributionReportingAggregatableDebugReportingConfig */
+	public $aggregatableDebugReportingConfig;
+
 
 	/**
 	 * @param object $data
@@ -129,6 +132,9 @@ final class AttributionReportingSourceRegistration implements \JsonSerializable
 		if (isset($data->destinationLimitPriority)) {
 			$instance->destinationLimitPriority = (string)$data->destinationLimitPriority;
 		}
+		if (isset($data->aggregatableDebugReportingConfig)) {
+			$instance->aggregatableDebugReportingConfig = AttributionReportingAggregatableDebugReportingConfig::fromJson($data->aggregatableDebugReportingConfig);
+		}
 		return $instance;
 	}
 
@@ -192,6 +198,9 @@ final class AttributionReportingSourceRegistration implements \JsonSerializable
 		}
 		if ($this->destinationLimitPriority !== null) {
 			$data->destinationLimitPriority = $this->destinationLimitPriority;
+		}
+		if ($this->aggregatableDebugReportingConfig !== null) {
+			$data->aggregatableDebugReportingConfig = $this->aggregatableDebugReportingConfig->jsonSerialize();
 		}
 		return $data;
 	}

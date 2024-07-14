@@ -44,6 +44,9 @@ final class AttributionReportingTriggerRegistration implements \JsonSerializable
 	/** @var string|null */
 	public $triggerContextId;
 
+	/** @var AttributionReportingAggregatableDebugReportingConfig */
+	public $aggregatableDebugReportingConfig;
+
 
 	/**
 	 * @param object $data
@@ -97,6 +100,9 @@ final class AttributionReportingTriggerRegistration implements \JsonSerializable
 		if (isset($data->triggerContextId)) {
 			$instance->triggerContextId = (string)$data->triggerContextId;
 		}
+		if (isset($data->aggregatableDebugReportingConfig)) {
+			$instance->aggregatableDebugReportingConfig = AttributionReportingAggregatableDebugReportingConfig::fromJson($data->aggregatableDebugReportingConfig);
+		}
 		return $instance;
 	}
 
@@ -148,6 +154,9 @@ final class AttributionReportingTriggerRegistration implements \JsonSerializable
 		}
 		if ($this->triggerContextId !== null) {
 			$data->triggerContextId = $this->triggerContextId;
+		}
+		if ($this->aggregatableDebugReportingConfig !== null) {
+			$data->aggregatableDebugReportingConfig = $this->aggregatableDebugReportingConfig->jsonSerialize();
 		}
 		return $data;
 	}
