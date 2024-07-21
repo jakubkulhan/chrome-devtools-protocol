@@ -24,6 +24,8 @@ use ChromeDevtoolsProtocol\Model\Emulation\SetIdleOverrideRequest;
 use ChromeDevtoolsProtocol\Model\Emulation\SetLocaleOverrideRequest;
 use ChromeDevtoolsProtocol\Model\Emulation\SetNavigatorOverridesRequest;
 use ChromeDevtoolsProtocol\Model\Emulation\SetPageScaleFactorRequest;
+use ChromeDevtoolsProtocol\Model\Emulation\SetPressureSourceOverrideEnabledRequest;
+use ChromeDevtoolsProtocol\Model\Emulation\SetPressureStateOverrideRequest;
 use ChromeDevtoolsProtocol\Model\Emulation\SetScriptExecutionDisabledRequest;
 use ChromeDevtoolsProtocol\Model\Emulation\SetScrollbarsHiddenRequest;
 use ChromeDevtoolsProtocol\Model\Emulation\SetSensorOverrideEnabledRequest;
@@ -322,6 +324,31 @@ interface EmulationDomainInterface
 	 * @return void
 	 */
 	public function setPageScaleFactor(ContextInterface $ctx, SetPageScaleFactorRequest $request): void;
+
+
+	/**
+	 * Overrides a pressure source of a given type, as used by the Compute Pressure API, so that updates to PressureObserver.observe() are provided via setPressureStateOverride instead of being retrieved from platform-provided telemetry data.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param SetPressureSourceOverrideEnabledRequest $request
+	 *
+	 * @return void
+	 */
+	public function setPressureSourceOverrideEnabled(
+		ContextInterface $ctx,
+		SetPressureSourceOverrideEnabledRequest $request
+	): void;
+
+
+	/**
+	 * Provides a given pressure state that will be processed and eventually be delivered to PressureObserver users. |source| must have been previously overridden by setPressureSourceOverrideEnabled.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param SetPressureStateOverrideRequest $request
+	 *
+	 * @return void
+	 */
+	public function setPressureStateOverride(ContextInterface $ctx, SetPressureStateOverrideRequest $request): void;
 
 
 	/**
