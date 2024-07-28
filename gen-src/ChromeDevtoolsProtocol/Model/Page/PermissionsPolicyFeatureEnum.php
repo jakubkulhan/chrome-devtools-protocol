@@ -68,6 +68,7 @@ final class PermissionsPolicyFeatureEnum
 	public const KEYBOARD_MAP = 'keyboard-map';
 	public const LOCAL_FONTS = 'local-fonts';
 	public const MAGNETOMETER = 'magnetometer';
+	public const MEDIA_PLAYBACK_WHILE_NOT_VISIBLE = 'media-playback-while-not-visible';
 	public const MICROPHONE = 'microphone';
 	public const MIDI = 'midi';
 	public const OTP_CREDENTIALS = 'otp-credentials';
