@@ -23439,7 +23439,8 @@
                         "JavaScriptInterfaceAdded",
                         "JavaScriptInterfaceRemoved",
                         "AllPrerenderingCanceled",
-                        "WindowClosed"
+                        "WindowClosed",
+                        "SlowNetwork"
                     ]
                 },
                 {
