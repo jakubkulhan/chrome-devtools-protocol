@@ -81,4 +81,5 @@ final class PrerenderFinalStatusEnum
 	public const ALL_PRERENDERING_CANCELED = 'AllPrerenderingCanceled';
 	public const WINDOW_CLOSED = 'WindowClosed';
 	public const SLOW_NETWORK = 'SlowNetwork';
+	public const OTHER_PRERENDERED_PAGE_ACTIVATED = 'OtherPrerenderedPageActivated';
 }

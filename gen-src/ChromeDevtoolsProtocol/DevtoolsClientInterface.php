@@ -214,7 +214,7 @@ interface DevtoolsClientInterface extends CloseableResourceInterface
 
 
 	/**
-	 * Defines commands and events for browser extensions. Available if the client is connected using the --remote-debugging-pipe flag and the --enable-unsafe-extension-debugging flag is set.
+	 * Defines commands and events for browser extensions.
 	 *
 	 * @experimental
 	 */

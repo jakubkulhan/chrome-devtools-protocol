@@ -4,6 +4,8 @@ namespace ChromeDevtoolsProtocol\Domain;
 
 use ChromeDevtoolsProtocol\ContextInterface;
 use ChromeDevtoolsProtocol\InternalClientInterface;
+use ChromeDevtoolsProtocol\Model\Extensions\GetStorageItemsRequest;
+use ChromeDevtoolsProtocol\Model\Extensions\GetStorageItemsResponse;
 use ChromeDevtoolsProtocol\Model\Extensions\LoadUnpackedRequest;
 use ChromeDevtoolsProtocol\Model\Extensions\LoadUnpackedResponse;
 
@@ -16,6 +18,13 @@ class ExtensionsDomain implements ExtensionsDomainInterface
 	public function __construct(InternalClientInterface $internalClient)
 	{
 		$this->internalClient = $internalClient;
+	}
+
+
+	public function getStorageItems(ContextInterface $ctx, GetStorageItemsRequest $request): GetStorageItemsResponse
+	{
+		$response = $this->internalClient->executeCommand($ctx, 'Extensions.getStorageItems', $request);
+		return GetStorageItemsResponse::fromJson($response);
 	}
 
 

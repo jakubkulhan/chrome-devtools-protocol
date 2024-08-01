@@ -11309,12 +11309,56 @@
         },
         {
             "domain": "Extensions",
-            "description": "Defines commands and events for browser extensions. Available if the client is connected using the --remote-debugging-pipe flag and the --enable-unsafe-extension-debugging flag is set.",
+            "description": "Defines commands and events for browser extensions.",
             "experimental": true,
+            "types": [
+                {
+                    "id": "StorageArea",
+                    "description": "Storage areas.",
+                    "type": "string",
+                    "enum": [
+                        "session",
+                        "local",
+                        "sync",
+                        "managed"
+                    ]
+                }
+            ],
             "commands": [
                 {
+                    "name": "getStorageItems",
+                    "description": "Gets data from extension storage in the given `area`. If `keys` is specified, these are used to filter the result.",
+                    "parameters": [
+                        {
+                            "name": "id",
+                            "description": "ID of extension.",
+                            "type": "string"
+                        },
+                        {
+                            "name": "storageArea",
+                            "description": "StorageArea to retrieve data from.",
+                            "$ref": "StorageArea"
+                        },
+                        {
+                            "name": "keys",
+                            "description": "Keys to retrieve.",
+                            "optional": true,
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            }
+                        }
+                    ],
+                    "returns": [
+                        {
+                            "name": "data",
+                            "type": "object"
+                        }
+                    ]
+                },
+                {
                     "name": "loadUnpacked",
-                    "description": "Installs an unpacked extension from the filesystem similar to --load-extension CLI flags. Returns extension ID once the extension has been installed.",
+                    "description": "Installs an unpacked extension from the filesystem similar to --load-extension CLI flags. Returns extension ID once the extension has been installed. Available if the client is connected using the --remote-debugging-pipe flag and the --enable-unsafe-extension-debugging flag is set.",
                     "parameters": [
                         {
                             "name": "path",
@@ -19739,6 +19783,7 @@
                     "type": "string",
                     "enum": [
                         "accelerometer",
+                        "all-screens-capture",
                         "ambient-light-sensor",
                         "attribution-reporting",
                         "autoplay",
@@ -23440,7 +23485,8 @@
                         "JavaScriptInterfaceRemoved",
                         "AllPrerenderingCanceled",
                         "WindowClosed",
-                        "SlowNetwork"
+                        "SlowNetwork",
+                        "OtherPrerenderedPageActivated"
                     ]
                 },
                 {

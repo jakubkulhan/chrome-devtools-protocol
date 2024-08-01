@@ -12,6 +12,7 @@ namespace ChromeDevtoolsProtocol\Model\Page;
 final class PermissionsPolicyFeatureEnum
 {
 	public const ACCELEROMETER = 'accelerometer';
+	public const ALL_SCREENS_CAPTURE = 'all-screens-capture';
 	public const AMBIENT_LIGHT_SENSOR = 'ambient-light-sensor';
 	public const ATTRIBUTION_REPORTING = 'attribution-reporting';
 	public const AUTOPLAY = 'autoplay';
