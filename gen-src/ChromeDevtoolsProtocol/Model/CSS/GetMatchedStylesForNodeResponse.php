@@ -61,13 +61,6 @@ final class GetMatchedStylesForNodeResponse implements \JsonSerializable
 	public $cssKeyframesRules;
 
 	/**
-	 * A list of CSS position fallbacks matching this node.
-	 *
-	 * @var CSSPositionFallbackRule[]|null
-	 */
-	public $cssPositionFallbackRules;
-
-	/**
 	 * A list of CSS @position-try rules matching this node, based on the position-try-fallbacks property.
 	 *
 	 * @var CSSPositionTryRule[]|null
@@ -153,12 +146,6 @@ final class GetMatchedStylesForNodeResponse implements \JsonSerializable
 				$instance->cssKeyframesRules[] = CSSKeyframesRule::fromJson($item);
 			}
 		}
-		if (isset($data->cssPositionFallbackRules)) {
-			$instance->cssPositionFallbackRules = [];
-			foreach ($data->cssPositionFallbackRules as $item) {
-				$instance->cssPositionFallbackRules[] = CSSPositionFallbackRule::fromJson($item);
-			}
-		}
 		if (isset($data->cssPositionTryRules)) {
 			$instance->cssPositionTryRules = [];
 			foreach ($data->cssPositionTryRules as $item) {
@@ -227,12 +214,6 @@ final class GetMatchedStylesForNodeResponse implements \JsonSerializable
 			$data->cssKeyframesRules = [];
 			foreach ($this->cssKeyframesRules as $item) {
 				$data->cssKeyframesRules[] = $item->jsonSerialize();
-			}
-		}
-		if ($this->cssPositionFallbackRules !== null) {
-			$data->cssPositionFallbackRules = [];
-			foreach ($this->cssPositionFallbackRules as $item) {
-				$data->cssPositionFallbackRules[] = $item->jsonSerialize();
 			}
 		}
 		if ($this->cssPositionTryRules !== null) {
