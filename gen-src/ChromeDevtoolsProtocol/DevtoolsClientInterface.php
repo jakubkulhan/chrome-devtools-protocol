@@ -7,6 +7,7 @@ use ChromeDevtoolsProtocol\Domain\AnimationDomainInterface;
 use ChromeDevtoolsProtocol\Domain\AuditsDomainInterface;
 use ChromeDevtoolsProtocol\Domain\AutofillDomainInterface;
 use ChromeDevtoolsProtocol\Domain\BackgroundServiceDomainInterface;
+use ChromeDevtoolsProtocol\Domain\BluetoothEmulationDomainInterface;
 use ChromeDevtoolsProtocol\Domain\BrowserDomainInterface;
 use ChromeDevtoolsProtocol\Domain\CSSDomainInterface;
 use ChromeDevtoolsProtocol\Domain\CacheStorageDomainInterface;
@@ -103,6 +104,14 @@ interface DevtoolsClientInterface extends CloseableResourceInterface
 	 * @experimental
 	 */
 	public function backgroundService(): BackgroundServiceDomainInterface;
+
+
+	/**
+	 * This domain allows configuring virtual Bluetooth devices to test the web-bluetooth API.
+	 *
+	 * @experimental
+	 */
+	public function bluetoothEmulation(): BluetoothEmulationDomainInterface;
 
 
 	/**

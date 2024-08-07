@@ -12,6 +12,8 @@ use ChromeDevtoolsProtocol\Domain\AutofillDomain;
 use ChromeDevtoolsProtocol\Domain\AutofillDomainInterface;
 use ChromeDevtoolsProtocol\Domain\BackgroundServiceDomain;
 use ChromeDevtoolsProtocol\Domain\BackgroundServiceDomainInterface;
+use ChromeDevtoolsProtocol\Domain\BluetoothEmulationDomain;
+use ChromeDevtoolsProtocol\Domain\BluetoothEmulationDomainInterface;
 use ChromeDevtoolsProtocol\Domain\BrowserDomain;
 use ChromeDevtoolsProtocol\Domain\BrowserDomainInterface;
 use ChromeDevtoolsProtocol\Domain\CSSDomain;
@@ -171,6 +173,18 @@ trait DevtoolsClientTrait
 		}
 		/** @var BackgroundServiceDomainInterface $domain */
 		$domain = $this->domains['BackgroundService'];
+		return $domain;
+	}
+
+
+	public function bluetoothEmulation(): BluetoothEmulationDomainInterface
+	{
+		if (!isset($this->domains['BluetoothEmulation'])) {
+			/** @var InternalClientInterface $this */
+			$this->domains['BluetoothEmulation'] = new BluetoothEmulationDomain($this);
+		}
+		/** @var BluetoothEmulationDomainInterface $domain */
+		$domain = $this->domains['BluetoothEmulation'];
 		return $domain;
 	}
 
