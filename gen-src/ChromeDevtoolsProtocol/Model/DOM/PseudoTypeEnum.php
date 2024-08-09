@@ -26,6 +26,8 @@ final class PseudoTypeEnum
 	public const FIRST_LINE_INHERITED = 'first-line-inherited';
 	public const SCROLL_MARKER = 'scroll-marker';
 	public const SCROLL_MARKER_GROUP = 'scroll-marker-group';
+	public const SCROLL_NEXT_BUTTON = 'scroll-next-button';
+	public const SCROLL_PREV_BUTTON = 'scroll-prev-button';
 	public const SCROLLBAR = 'scrollbar';
 	public const SCROLLBAR_THUMB = 'scrollbar-thumb';
 	public const SCROLLBAR_BUTTON = 'scrollbar-button';
