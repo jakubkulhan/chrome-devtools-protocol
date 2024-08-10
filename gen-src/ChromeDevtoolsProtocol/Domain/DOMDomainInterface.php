@@ -30,6 +30,7 @@ use ChromeDevtoolsProtocol\Model\DOM\GetContainerForNodeRequest;
 use ChromeDevtoolsProtocol\Model\DOM\GetContainerForNodeResponse;
 use ChromeDevtoolsProtocol\Model\DOM\GetContentQuadsRequest;
 use ChromeDevtoolsProtocol\Model\DOM\GetContentQuadsResponse;
+use ChromeDevtoolsProtocol\Model\DOM\GetDetachedDomNodesResponse;
 use ChromeDevtoolsProtocol\Model\DOM\GetDocumentRequest;
 use ChromeDevtoolsProtocol\Model\DOM\GetDocumentResponse;
 use ChromeDevtoolsProtocol\Model\DOM\GetElementByRelationRequest;
@@ -237,6 +238,16 @@ interface DOMDomainInterface
 	 * @return GetContentQuadsResponse
 	 */
 	public function getContentQuads(ContextInterface $ctx, GetContentQuadsRequest $request): GetContentQuadsResponse;
+
+
+	/**
+	 * Returns list of detached nodes
+	 *
+	 * @param ContextInterface $ctx
+	 *
+	 * @return GetDetachedDomNodesResponse
+	 */
+	public function getDetachedDomNodes(ContextInterface $ctx): GetDetachedDomNodesResponse;
 
 
 	/**

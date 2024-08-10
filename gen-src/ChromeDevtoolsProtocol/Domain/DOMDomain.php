@@ -31,6 +31,7 @@ use ChromeDevtoolsProtocol\Model\DOM\GetContainerForNodeRequest;
 use ChromeDevtoolsProtocol\Model\DOM\GetContainerForNodeResponse;
 use ChromeDevtoolsProtocol\Model\DOM\GetContentQuadsRequest;
 use ChromeDevtoolsProtocol\Model\DOM\GetContentQuadsResponse;
+use ChromeDevtoolsProtocol\Model\DOM\GetDetachedDomNodesResponse;
 use ChromeDevtoolsProtocol\Model\DOM\GetDocumentRequest;
 use ChromeDevtoolsProtocol\Model\DOM\GetDocumentResponse;
 use ChromeDevtoolsProtocol\Model\DOM\GetElementByRelationRequest;
@@ -188,6 +189,14 @@ class DOMDomain implements DOMDomainInterface
 	{
 		$response = $this->internalClient->executeCommand($ctx, 'DOM.getContentQuads', $request);
 		return GetContentQuadsResponse::fromJson($response);
+	}
+
+
+	public function getDetachedDomNodes(ContextInterface $ctx): GetDetachedDomNodesResponse
+	{
+		$request = new \stdClass();
+		$response = $this->internalClient->executeCommand($ctx, 'DOM.getDetachedDomNodes', $request);
+		return GetDetachedDomNodesResponse::fromJson($response);
 	}
 
 
