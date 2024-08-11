@@ -25,6 +25,13 @@ final class NavigatedWithinDocumentEvent implements \JsonSerializable
 	 */
 	public $url;
 
+	/**
+	 * Navigation type
+	 *
+	 * @var string
+	 */
+	public $navigationType;
+
 
 	/**
 	 * @param object $data
@@ -39,6 +46,9 @@ final class NavigatedWithinDocumentEvent implements \JsonSerializable
 		if (isset($data->url)) {
 			$instance->url = (string)$data->url;
 		}
+		if (isset($data->navigationType)) {
+			$instance->navigationType = (string)$data->navigationType;
+		}
 		return $instance;
 	}
 
@@ -51,6 +61,9 @@ final class NavigatedWithinDocumentEvent implements \JsonSerializable
 		}
 		if ($this->url !== null) {
 			$data->url = $this->url;
+		}
+		if ($this->navigationType !== null) {
+			$data->navigationType = $this->navigationType;
 		}
 		return $data;
 	}
