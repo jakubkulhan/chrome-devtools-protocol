@@ -3,10 +3,12 @@
 namespace ChromeDevtoolsProtocol\Domain;
 
 use ChromeDevtoolsProtocol\ContextInterface;
+use ChromeDevtoolsProtocol\Model\Extensions\ClearStorageItemsRequest;
 use ChromeDevtoolsProtocol\Model\Extensions\GetStorageItemsRequest;
 use ChromeDevtoolsProtocol\Model\Extensions\GetStorageItemsResponse;
 use ChromeDevtoolsProtocol\Model\Extensions\LoadUnpackedRequest;
 use ChromeDevtoolsProtocol\Model\Extensions\LoadUnpackedResponse;
+use ChromeDevtoolsProtocol\Model\Extensions\RemoveStorageItemsRequest;
 
 /**
  * Defines commands and events for browser extensions.
@@ -20,7 +22,18 @@ use ChromeDevtoolsProtocol\Model\Extensions\LoadUnpackedResponse;
 interface ExtensionsDomainInterface
 {
 	/**
-	 * Gets data from extension storage in the given `area`. If `keys` is specified, these are used to filter the result.
+	 * Clears extension storage in the given `storageArea`.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param ClearStorageItemsRequest $request
+	 *
+	 * @return void
+	 */
+	public function clearStorageItems(ContextInterface $ctx, ClearStorageItemsRequest $request): void;
+
+
+	/**
+	 * Gets data from extension storage in the given `storageArea`. If `keys` is specified, these are used to filter the result.
 	 *
 	 * @param ContextInterface $ctx
 	 * @param GetStorageItemsRequest $request
@@ -39,4 +52,15 @@ interface ExtensionsDomainInterface
 	 * @return LoadUnpackedResponse
 	 */
 	public function loadUnpacked(ContextInterface $ctx, LoadUnpackedRequest $request): LoadUnpackedResponse;
+
+
+	/**
+	 * Removes `keys` from extension storage in the given `storageArea`.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param RemoveStorageItemsRequest $request
+	 *
+	 * @return void
+	 */
+	public function removeStorageItems(ContextInterface $ctx, RemoveStorageItemsRequest $request): void;
 }
