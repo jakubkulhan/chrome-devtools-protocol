@@ -9,6 +9,7 @@ use ChromeDevtoolsProtocol\Model\Extensions\GetStorageItemsResponse;
 use ChromeDevtoolsProtocol\Model\Extensions\LoadUnpackedRequest;
 use ChromeDevtoolsProtocol\Model\Extensions\LoadUnpackedResponse;
 use ChromeDevtoolsProtocol\Model\Extensions\RemoveStorageItemsRequest;
+use ChromeDevtoolsProtocol\Model\Extensions\SetStorageItemsRequest;
 
 /**
  * Defines commands and events for browser extensions.
@@ -63,4 +64,15 @@ interface ExtensionsDomainInterface
 	 * @return void
 	 */
 	public function removeStorageItems(ContextInterface $ctx, RemoveStorageItemsRequest $request): void;
+
+
+	/**
+	 * Sets `values` in extension storage in the given `storageArea`. The provided `values` will be merged with existing values in the storage area.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param SetStorageItemsRequest $request
+	 *
+	 * @return void
+	 */
+	public function setStorageItems(ContextInterface $ctx, SetStorageItemsRequest $request): void;
 }
