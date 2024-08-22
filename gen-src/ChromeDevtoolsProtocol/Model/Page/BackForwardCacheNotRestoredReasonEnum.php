@@ -132,7 +132,6 @@ final class BackForwardCacheNotRestoredReasonEnum
 	public const CONTENT_WEB_U_S_B = 'ContentWebUSB';
 	public const CONTENT_MEDIA_SESSION_SERVICE = 'ContentMediaSessionService';
 	public const CONTENT_SCREEN_READER = 'ContentScreenReader';
-	public const CONTENT_DISCARDED = 'ContentDiscarded';
 	public const EMBEDDER_POPUP_BLOCKER_TAB_HELPER = 'EmbedderPopupBlockerTabHelper';
 	public const EMBEDDER_SAFE_BROWSING_TRIGGERED_POPUP_BLOCKER = 'EmbedderSafeBrowsingTriggeredPopupBlocker';
 	public const EMBEDDER_SAFE_BROWSING_THREAT_DETAILS = 'EmbedderSafeBrowsingThreatDetails';
