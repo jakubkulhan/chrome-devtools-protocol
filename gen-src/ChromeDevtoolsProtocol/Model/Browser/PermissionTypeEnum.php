@@ -39,5 +39,6 @@ final class PermissionTypeEnum
 	public const VIDEO_CAPTURE_PAN_TILT_ZOOM = 'videoCapturePanTiltZoom';
 	public const WAKE_LOCK_SCREEN = 'wakeLockScreen';
 	public const WAKE_LOCK_SYSTEM = 'wakeLockSystem';
+	public const WEB_APP_INSTALLATION = 'webAppInstallation';
 	public const WINDOW_MANAGEMENT = 'windowManagement';
 }

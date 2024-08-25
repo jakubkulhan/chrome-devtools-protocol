@@ -96,6 +96,7 @@ final class PermissionsPolicyFeatureEnum
 	public const USB = 'usb';
 	public const USB_UNRESTRICTED = 'usb-unrestricted';
 	public const VERTICAL_SCROLL = 'vertical-scroll';
+	public const WEB_APP_INSTALLATION = 'web-app-installation';
 	public const WEB_PRINTING = 'web-printing';
 	public const WEB_SHARE = 'web-share';
 	public const WINDOW_MANAGEMENT = 'window-management';
