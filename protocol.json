@@ -1487,7 +1487,8 @@
                         "NoRegisterSourceHeader",
                         "NoRegisterTriggerHeader",
                         "NoRegisterOsSourceHeader",
-                        "NoRegisterOsTriggerHeader"
+                        "NoRegisterOsTriggerHeader",
+                        "NavigationRegistrationUniqueScopeAlreadySet"
                     ]
                 },
                 {
@@ -15054,6 +15055,23 @@
                             "type": "number"
                         }
                     ]
+                },
+                {
+                    "id": "DOMCounter",
+                    "description": "DOM object counter data.",
+                    "type": "object",
+                    "properties": [
+                        {
+                            "name": "name",
+                            "description": "Object name. Note: object names should be presumed volatile and clients should not expect the returned names to be consistent across runs.",
+                            "type": "string"
+                        },
+                        {
+                            "name": "count",
+                            "description": "Object count.",
+                            "type": "integer"
+                        }
+                    ]
                 }
             ],
             "commands": [
@@ -15083,6 +15101,7 @@
                 },
                 {
                     "name": "getDOMCounters",
+                    "description": "Retruns current DOM object counters.",
                     "returns": [
                         {
                             "name": "documents",
@@ -15099,6 +15118,20 @@
                     ]
                 },
                 {
+                    "name": "getDOMCountersForLeakDetection",
+                    "description": "Retruns DOM object counters after preparing renderer for leak detection.",
+                    "returns": [
+                        {
+                            "name": "counters",
+                            "description": "DOM object counters.",
+                            "type": "array",
+                            "items": {
+                                "$ref": "DOMCounter"
+                            }
+                        }
+                    ]
+                },
+                {
                     "name": "getSamplingProfile",
                     "description": "Retrieve native memory allocations profile collected since last `startSampling` call.",
                     "returns": [
@@ -15109,7 +15142,8 @@
                     ]
                 },
                 {
-                    "name": "prepareForLeakDetection"
+                    "name": "prepareForLeakDetection",
+                    "description": "Prepares for leak detection by terminating workers, stopping spellcheckers, dropping non-essential internal caches, running garbage collections, etc."
                 },
                 {
                     "name": "setPressureNotificationsSuppressed",
@@ -16356,6 +16390,7 @@
                         "UserSetting",
                         "TPCDMetadata",
                         "TPCDDeprecationTrial",
+                        "TopLevelTPCDDeprecationTrial",
                         "TPCDHeuristics",
                         "EnterprisePolicy",
                         "StorageAccess",

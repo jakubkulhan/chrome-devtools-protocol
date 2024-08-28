@@ -31,4 +31,5 @@ final class AttributionReportingIssueTypeEnum
 	public const NO_REGISTER_TRIGGER_HEADER = 'NoRegisterTriggerHeader';
 	public const NO_REGISTER_OS_SOURCE_HEADER = 'NoRegisterOsSourceHeader';
 	public const NO_REGISTER_OS_TRIGGER_HEADER = 'NoRegisterOsTriggerHeader';
+	public const NAVIGATION_REGISTRATION_UNIQUE_SCOPE_ALREADY_SET = 'NavigationRegistrationUniqueScopeAlreadySet';
 }
