@@ -27445,7 +27445,9 @@
                         "destinationBothLimitsReached",
                         "reportingOriginsPerSiteLimitReached",
                         "exceedsMaxChannelCapacity",
+                        "exceedsMaxScopesChannelCapacity",
                         "exceedsMaxTriggerStateCardinality",
+                        "exceedsMaxEventStatesLimit",
                         "destinationPerDayReportingLimitReached"
                     ]
                 },
