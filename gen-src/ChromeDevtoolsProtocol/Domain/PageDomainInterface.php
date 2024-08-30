@@ -31,6 +31,7 @@ use ChromeDevtoolsProtocol\Model\Page\FrameResizedEvent;
 use ChromeDevtoolsProtocol\Model\Page\FrameScheduledNavigationEvent;
 use ChromeDevtoolsProtocol\Model\Page\FrameStartedLoadingEvent;
 use ChromeDevtoolsProtocol\Model\Page\FrameStoppedLoadingEvent;
+use ChromeDevtoolsProtocol\Model\Page\FrameSubtreeWillBeDetachedEvent;
 use ChromeDevtoolsProtocol\Model\Page\GenerateTestReportRequest;
 use ChromeDevtoolsProtocol\Model\Page\GetAdScriptIdRequest;
 use ChromeDevtoolsProtocol\Model\Page\GetAdScriptIdResponse;
@@ -1143,6 +1144,30 @@ interface PageDomainInterface
 	 * @return FrameStoppedLoadingEvent
 	 */
 	public function awaitFrameStoppedLoading(ContextInterface $ctx): FrameStoppedLoadingEvent;
+
+
+	/**
+	 * Fired before frame subtree is detached. Emitted before any frame of the subtree is actually detached.
+	 *
+	 * Listener will be called whenever event Page.frameSubtreeWillBeDetached is fired.
+	 *
+	 * @param callable $listener
+	 *
+	 * @return SubscriptionInterface
+	 */
+	public function addFrameSubtreeWillBeDetachedListener(callable $listener): SubscriptionInterface;
+
+
+	/**
+	 * Fired before frame subtree is detached. Emitted before any frame of the subtree is actually detached.
+	 *
+	 * Method will block until first Page.frameSubtreeWillBeDetached event is fired.
+	 *
+	 * @param ContextInterface $ctx
+	 *
+	 * @return FrameSubtreeWillBeDetachedEvent
+	 */
+	public function awaitFrameSubtreeWillBeDetached(ContextInterface $ctx): FrameSubtreeWillBeDetachedEvent;
 
 
 	/**

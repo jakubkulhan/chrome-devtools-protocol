@@ -23104,6 +23104,18 @@
                     ]
                 },
                 {
+                    "name": "frameSubtreeWillBeDetached",
+                    "description": "Fired before frame subtree is detached. Emitted before any frame of the subtree is actually detached.",
+                    "experimental": true,
+                    "parameters": [
+                        {
+                            "name": "frameId",
+                            "description": "Id of the frame that is the root of the subtree that will be detached.",
+                            "$ref": "FrameId"
+                        }
+                    ]
+                },
+                {
                     "name": "interstitialHidden",
                     "description": "Fired when interstitial page was hidden"
                 },

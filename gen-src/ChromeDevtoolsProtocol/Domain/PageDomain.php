@@ -32,6 +32,7 @@ use ChromeDevtoolsProtocol\Model\Page\FrameResizedEvent;
 use ChromeDevtoolsProtocol\Model\Page\FrameScheduledNavigationEvent;
 use ChromeDevtoolsProtocol\Model\Page\FrameStartedLoadingEvent;
 use ChromeDevtoolsProtocol\Model\Page\FrameStoppedLoadingEvent;
+use ChromeDevtoolsProtocol\Model\Page\FrameSubtreeWillBeDetachedEvent;
 use ChromeDevtoolsProtocol\Model\Page\GenerateTestReportRequest;
 use ChromeDevtoolsProtocol\Model\Page\GetAdScriptIdRequest;
 use ChromeDevtoolsProtocol\Model\Page\GetAdScriptIdResponse;
@@ -739,6 +740,20 @@ class PageDomain implements PageDomainInterface
 	public function awaitFrameStoppedLoading(ContextInterface $ctx): FrameStoppedLoadingEvent
 	{
 		return FrameStoppedLoadingEvent::fromJson($this->internalClient->awaitEvent($ctx, 'Page.frameStoppedLoading'));
+	}
+
+
+	public function addFrameSubtreeWillBeDetachedListener(callable $listener): SubscriptionInterface
+	{
+		return $this->internalClient->addListener('Page.frameSubtreeWillBeDetached', function ($event) use ($listener) {
+			return $listener(FrameSubtreeWillBeDetachedEvent::fromJson($event));
+		});
+	}
+
+
+	public function awaitFrameSubtreeWillBeDetached(ContextInterface $ctx): FrameSubtreeWillBeDetachedEvent
+	{
+		return FrameSubtreeWillBeDetachedEvent::fromJson($this->internalClient->awaitEvent($ctx, 'Page.frameSubtreeWillBeDetached'));
 	}
 
 
