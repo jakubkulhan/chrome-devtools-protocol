@@ -17,7 +17,6 @@ final class PrefetchStatusEnum
 	public const PREFETCH_FAILED_M_I_M_E_NOT_SUPPORTED = 'PrefetchFailedMIMENotSupported';
 	public const PREFETCH_FAILED_NET_ERROR = 'PrefetchFailedNetError';
 	public const PREFETCH_FAILED_NON2_X_X = 'PrefetchFailedNon2XX';
-	public const PREFETCH_FAILED_PER_PAGE_LIMIT_EXCEEDED = 'PrefetchFailedPerPageLimitExceeded';
 	public const PREFETCH_EVICTED_AFTER_CANDIDATE_REMOVED = 'PrefetchEvictedAfterCandidateRemoved';
 	public const PREFETCH_EVICTED_FOR_NEWER_PREFETCH = 'PrefetchEvictedForNewerPrefetch';
 	public const PREFETCH_HELDBACK = 'PrefetchHeldback';

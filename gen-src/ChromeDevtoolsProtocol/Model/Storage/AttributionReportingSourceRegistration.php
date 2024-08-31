@@ -67,6 +67,9 @@ final class AttributionReportingSourceRegistration implements \JsonSerializable
 	/** @var AttributionReportingAggregatableDebugReportingConfig */
 	public $aggregatableDebugReportingConfig;
 
+	/** @var AttributionScopesData|null */
+	public $scopesData;
+
 
 	/**
 	 * @param object $data
@@ -135,6 +138,9 @@ final class AttributionReportingSourceRegistration implements \JsonSerializable
 		if (isset($data->aggregatableDebugReportingConfig)) {
 			$instance->aggregatableDebugReportingConfig = AttributionReportingAggregatableDebugReportingConfig::fromJson($data->aggregatableDebugReportingConfig);
 		}
+		if (isset($data->scopesData)) {
+			$instance->scopesData = AttributionScopesData::fromJson($data->scopesData);
+		}
 		return $instance;
 	}
 
@@ -201,6 +207,9 @@ final class AttributionReportingSourceRegistration implements \JsonSerializable
 		}
 		if ($this->aggregatableDebugReportingConfig !== null) {
 			$data->aggregatableDebugReportingConfig = $this->aggregatableDebugReportingConfig->jsonSerialize();
+		}
+		if ($this->scopesData !== null) {
+			$data->scopesData = $this->scopesData->jsonSerialize();
 		}
 		return $data;
 	}
