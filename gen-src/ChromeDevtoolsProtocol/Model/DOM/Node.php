@@ -220,6 +220,9 @@ final class Node implements \JsonSerializable
 	/** @var BackendNode|null */
 	public $assignedSlot;
 
+	/** @var bool|null */
+	public $isScrollable;
+
 
 	/**
 	 * @param object $data
@@ -336,6 +339,9 @@ final class Node implements \JsonSerializable
 		if (isset($data->assignedSlot)) {
 			$instance->assignedSlot = BackendNode::fromJson($data->assignedSlot);
 		}
+		if (isset($data->isScrollable)) {
+			$instance->isScrollable = (bool)$data->isScrollable;
+		}
 		return $instance;
 	}
 
@@ -450,6 +456,9 @@ final class Node implements \JsonSerializable
 		}
 		if ($this->assignedSlot !== null) {
 			$data->assignedSlot = $this->assignedSlot->jsonSerialize();
+		}
+		if ($this->isScrollable !== null) {
+			$data->isScrollable = $this->isScrollable;
 		}
 		return $data;
 	}

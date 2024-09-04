@@ -7666,6 +7666,12 @@
                             "name": "assignedSlot",
                             "optional": true,
                             "$ref": "BackendNode"
+                        },
+                        {
+                            "name": "isScrollable",
+                            "experimental": true,
+                            "optional": true,
+                            "type": "boolean"
                         }
                     ]
                 },
@@ -9145,6 +9151,23 @@
                             "name": "pseudoElementId",
                             "description": "The removed pseudo element id.",
                             "$ref": "NodeId"
+                        }
+                    ]
+                },
+                {
+                    "name": "scrollableFlagUpdated",
+                    "description": "Fired when a node's scrollability state changes.",
+                    "experimental": true,
+                    "parameters": [
+                        {
+                            "name": "nodeId",
+                            "description": "The id of the node.",
+                            "$ref": "DOM.NodeId"
+                        },
+                        {
+                            "name": "isScrollable",
+                            "description": "If the node is scrollable.",
+                            "type": "boolean"
                         }
                     ]
                 },

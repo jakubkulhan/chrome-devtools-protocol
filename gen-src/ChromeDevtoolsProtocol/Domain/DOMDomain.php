@@ -80,6 +80,7 @@ use ChromeDevtoolsProtocol\Model\DOM\RequestNodeResponse;
 use ChromeDevtoolsProtocol\Model\DOM\ResolveNodeRequest;
 use ChromeDevtoolsProtocol\Model\DOM\ResolveNodeResponse;
 use ChromeDevtoolsProtocol\Model\DOM\ScrollIntoViewIfNeededRequest;
+use ChromeDevtoolsProtocol\Model\DOM\ScrollableFlagUpdatedEvent;
 use ChromeDevtoolsProtocol\Model\DOM\SetAttributeValueRequest;
 use ChromeDevtoolsProtocol\Model\DOM\SetAttributesAsTextRequest;
 use ChromeDevtoolsProtocol\Model\DOM\SetChildNodesEvent;
@@ -632,6 +633,20 @@ class DOMDomain implements DOMDomainInterface
 	public function awaitPseudoElementRemoved(ContextInterface $ctx): PseudoElementRemovedEvent
 	{
 		return PseudoElementRemovedEvent::fromJson($this->internalClient->awaitEvent($ctx, 'DOM.pseudoElementRemoved'));
+	}
+
+
+	public function addScrollableFlagUpdatedListener(callable $listener): SubscriptionInterface
+	{
+		return $this->internalClient->addListener('DOM.scrollableFlagUpdated', function ($event) use ($listener) {
+			return $listener(ScrollableFlagUpdatedEvent::fromJson($event));
+		});
+	}
+
+
+	public function awaitScrollableFlagUpdated(ContextInterface $ctx): ScrollableFlagUpdatedEvent
+	{
+		return ScrollableFlagUpdatedEvent::fromJson($this->internalClient->awaitEvent($ctx, 'DOM.scrollableFlagUpdated'));
 	}
 
 

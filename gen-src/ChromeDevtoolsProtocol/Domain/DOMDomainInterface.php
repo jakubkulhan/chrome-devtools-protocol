@@ -79,6 +79,7 @@ use ChromeDevtoolsProtocol\Model\DOM\RequestNodeResponse;
 use ChromeDevtoolsProtocol\Model\DOM\ResolveNodeRequest;
 use ChromeDevtoolsProtocol\Model\DOM\ResolveNodeResponse;
 use ChromeDevtoolsProtocol\Model\DOM\ScrollIntoViewIfNeededRequest;
+use ChromeDevtoolsProtocol\Model\DOM\ScrollableFlagUpdatedEvent;
 use ChromeDevtoolsProtocol\Model\DOM\SetAttributeValueRequest;
 use ChromeDevtoolsProtocol\Model\DOM\SetAttributesAsTextRequest;
 use ChromeDevtoolsProtocol\Model\DOM\SetChildNodesEvent;
@@ -961,6 +962,30 @@ interface DOMDomainInterface
 	 * @return PseudoElementRemovedEvent
 	 */
 	public function awaitPseudoElementRemoved(ContextInterface $ctx): PseudoElementRemovedEvent;
+
+
+	/**
+	 * Fired when a node's scrollability state changes.
+	 *
+	 * Listener will be called whenever event DOM.scrollableFlagUpdated is fired.
+	 *
+	 * @param callable $listener
+	 *
+	 * @return SubscriptionInterface
+	 */
+	public function addScrollableFlagUpdatedListener(callable $listener): SubscriptionInterface;
+
+
+	/**
+	 * Fired when a node's scrollability state changes.
+	 *
+	 * Method will block until first DOM.scrollableFlagUpdated event is fired.
+	 *
+	 * @param ContextInterface $ctx
+	 *
+	 * @return ScrollableFlagUpdatedEvent
+	 */
+	public function awaitScrollableFlagUpdated(ContextInterface $ctx): ScrollableFlagUpdatedEvent;
 
 
 	/**
