@@ -46,6 +46,7 @@ final class PermissionsPolicyFeatureEnum
 	public const CLIPBOARD_READ = 'clipboard-read';
 	public const CLIPBOARD_WRITE = 'clipboard-write';
 	public const COMPUTE_PRESSURE = 'compute-pressure';
+	public const CONTROLLED_FRAME = 'controlled-frame';
 	public const CROSS_ORIGIN_ISOLATED = 'cross-origin-isolated';
 	public const DEFERRED_FETCH = 'deferred-fetch';
 	public const DIGITAL_CREDENTIALS_GET = 'digital-credentials-get';

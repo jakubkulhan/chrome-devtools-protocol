@@ -41,4 +41,10 @@ final class PseudoTypeEnum
 	public const VIEW_TRANSITION_IMAGE_PAIR = 'view-transition-image-pair';
 	public const VIEW_TRANSITION_OLD = 'view-transition-old';
 	public const VIEW_TRANSITION_NEW = 'view-transition-new';
+	public const PLACEHOLDER = 'placeholder';
+	public const FILE_SELECTOR_BUTTON = 'file-selector-button';
+	public const DETAILS_CONTENT = 'details-content';
+	public const SELECT_FALLBACK_BUTTON = 'select-fallback-button';
+	public const SELECT_FALLBACK_BUTTON_TEXT = 'select-fallback-button-text';
+	public const PICKER = 'picker';
 }
