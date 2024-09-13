@@ -17,6 +17,7 @@ final class PseudoTypeEnum
 	public const AFTER = 'after';
 	public const MARKER = 'marker';
 	public const BACKDROP = 'backdrop';
+	public const COLUMN = 'column';
 	public const SELECTION = 'selection';
 	public const SEARCH_TEXT = 'search-text';
 	public const TARGET_TEXT = 'target-text';
