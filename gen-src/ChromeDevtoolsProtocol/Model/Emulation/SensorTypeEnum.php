@@ -18,6 +18,5 @@ final class SensorTypeEnum
 	public const GYROSCOPE = 'gyroscope';
 	public const LINEAR_ACCELERATION = 'linear-acceleration';
 	public const MAGNETOMETER = 'magnetometer';
-	public const PROXIMITY = 'proximity';
 	public const RELATIVE_ORIENTATION = 'relative-orientation';
 }

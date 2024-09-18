@@ -23,4 +23,6 @@ final class CookieWarningReasonEnum
 	public const WARN_DOMAIN_NON_A_S_C_I_I = 'WarnDomainNonASCII';
 	public const WARN_THIRD_PARTY_PHASEOUT = 'WarnThirdPartyPhaseout';
 	public const WARN_CROSS_SITE_REDIRECT_DOWNGRADE_CHANGES_INCLUSION = 'WarnCrossSiteRedirectDowngradeChangesInclusion';
+	public const WARN_DEPRECATION_TRIAL_METADATA = 'WarnDeprecationTrialMetadata';
+	public const WARN_THIRD_PARTY_COOKIE_HEURISTIC = 'WarnThirdPartyCookieHeuristic';
 }

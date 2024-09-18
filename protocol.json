@@ -1066,7 +1066,9 @@
                         "WarnAttributeValueExceedsMaxSize",
                         "WarnDomainNonASCII",
                         "WarnThirdPartyPhaseout",
-                        "WarnCrossSiteRedirectDowngradeChangesInclusion"
+                        "WarnCrossSiteRedirectDowngradeChangesInclusion",
+                        "WarnDeprecationTrialMetadata",
+                        "WarnThirdPartyCookieHeuristic"
                     ]
                 },
                 {
@@ -10710,7 +10712,6 @@
                         "gyroscope",
                         "linear-acceleration",
                         "magnetometer",
-                        "proximity",
                         "relative-orientation"
                     ]
                 },
