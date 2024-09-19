@@ -356,7 +356,7 @@ interface OverlayDomainInterface
 
 
 	/**
-	 * Request that backend shows an overlay with web vital metrics.
+	 * Deprecated, no longer has any effect.
 	 *
 	 * @param ContextInterface $ctx
 	 * @param SetShowWebVitalsRequest $request
