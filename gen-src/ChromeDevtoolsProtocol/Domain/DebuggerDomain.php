@@ -34,6 +34,7 @@ use ChromeDevtoolsProtocol\Model\Debugger\ScriptParsedEvent;
 use ChromeDevtoolsProtocol\Model\Debugger\SearchInContentRequest;
 use ChromeDevtoolsProtocol\Model\Debugger\SearchInContentResponse;
 use ChromeDevtoolsProtocol\Model\Debugger\SetAsyncCallStackDepthRequest;
+use ChromeDevtoolsProtocol\Model\Debugger\SetBlackboxExecutionContextsRequest;
 use ChromeDevtoolsProtocol\Model\Debugger\SetBlackboxPatternsRequest;
 use ChromeDevtoolsProtocol\Model\Debugger\SetBlackboxedRangesRequest;
 use ChromeDevtoolsProtocol\Model\Debugger\SetBreakpointByUrlRequest;
@@ -192,6 +193,12 @@ class DebuggerDomain implements DebuggerDomainInterface
 	public function setBlackboxedRanges(ContextInterface $ctx, SetBlackboxedRangesRequest $request): void
 	{
 		$this->internalClient->executeCommand($ctx, 'Debugger.setBlackboxedRanges', $request);
+	}
+
+
+	public function setBlackboxExecutionContexts(ContextInterface $ctx, SetBlackboxExecutionContextsRequest $request): void
+	{
+		$this->internalClient->executeCommand($ctx, 'Debugger.setBlackboxExecutionContexts', $request);
 	}
 
 

@@ -33,6 +33,7 @@ use ChromeDevtoolsProtocol\Model\Debugger\ScriptParsedEvent;
 use ChromeDevtoolsProtocol\Model\Debugger\SearchInContentRequest;
 use ChromeDevtoolsProtocol\Model\Debugger\SearchInContentResponse;
 use ChromeDevtoolsProtocol\Model\Debugger\SetAsyncCallStackDepthRequest;
+use ChromeDevtoolsProtocol\Model\Debugger\SetBlackboxExecutionContextsRequest;
 use ChromeDevtoolsProtocol\Model\Debugger\SetBlackboxPatternsRequest;
 use ChromeDevtoolsProtocol\Model\Debugger\SetBlackboxedRangesRequest;
 use ChromeDevtoolsProtocol\Model\Debugger\SetBreakpointByUrlRequest;
@@ -269,6 +270,17 @@ interface DebuggerDomainInterface
 	 * @return void
 	 */
 	public function setBlackboxedRanges(ContextInterface $ctx, SetBlackboxedRangesRequest $request): void;
+
+
+	/**
+	 * Replace previous blackbox execution contexts with passed ones. Forces backend to skip stepping/pausing in scripts in these execution contexts. VM will try to leave blackboxed script by performing 'step in' several times, finally resorting to 'step out' if unsuccessful.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param SetBlackboxExecutionContextsRequest $request
+	 *
+	 * @return void
+	 */
+	public function setBlackboxExecutionContexts(ContextInterface $ctx, SetBlackboxExecutionContextsRequest $request): void;
 
 
 	/**

@@ -18,6 +18,13 @@ final class SetBlackboxPatternsRequest implements \JsonSerializable
 	 */
 	public $patterns;
 
+	/**
+	 * If true, also ignore scripts with no source url.
+	 *
+	 * @var bool|null
+	 */
+	public $skipAnonymous;
+
 
 	/**
 	 * @param object $data
@@ -32,6 +39,9 @@ final class SetBlackboxPatternsRequest implements \JsonSerializable
 				$instance->patterns[] = (string)$item;
 			}
 		}
+		if (isset($data->skipAnonymous)) {
+			$instance->skipAnonymous = (bool)$data->skipAnonymous;
+		}
 		return $instance;
 	}
 
@@ -44,6 +54,9 @@ final class SetBlackboxPatternsRequest implements \JsonSerializable
 			foreach ($this->patterns as $item) {
 				$data->patterns[] = $item;
 			}
+		}
+		if ($this->skipAnonymous !== null) {
+			$data->skipAnonymous = $this->skipAnonymous;
 		}
 		return $data;
 	}
