@@ -9,6 +9,8 @@ use ChromeDevtoolsProtocol\Model\WebAuthn\AddVirtualAuthenticatorResponse;
 use ChromeDevtoolsProtocol\Model\WebAuthn\ClearCredentialsRequest;
 use ChromeDevtoolsProtocol\Model\WebAuthn\CredentialAddedEvent;
 use ChromeDevtoolsProtocol\Model\WebAuthn\CredentialAssertedEvent;
+use ChromeDevtoolsProtocol\Model\WebAuthn\CredentialDeletedEvent;
+use ChromeDevtoolsProtocol\Model\WebAuthn\CredentialUpdatedEvent;
 use ChromeDevtoolsProtocol\Model\WebAuthn\EnableRequest;
 use ChromeDevtoolsProtocol\Model\WebAuthn\GetCredentialRequest;
 use ChromeDevtoolsProtocol\Model\WebAuthn\GetCredentialResponse;
@@ -227,4 +229,52 @@ interface WebAuthnDomainInterface
 	 * @return CredentialAssertedEvent
 	 */
 	public function awaitCredentialAsserted(ContextInterface $ctx): CredentialAssertedEvent;
+
+
+	/**
+	 * Triggered when a credential is deleted, e.g. through PublicKeyCredential.signalUnknownCredential().
+	 *
+	 * Listener will be called whenever event WebAuthn.credentialDeleted is fired.
+	 *
+	 * @param callable $listener
+	 *
+	 * @return SubscriptionInterface
+	 */
+	public function addCredentialDeletedListener(callable $listener): SubscriptionInterface;
+
+
+	/**
+	 * Triggered when a credential is deleted, e.g. through PublicKeyCredential.signalUnknownCredential().
+	 *
+	 * Method will block until first WebAuthn.credentialDeleted event is fired.
+	 *
+	 * @param ContextInterface $ctx
+	 *
+	 * @return CredentialDeletedEvent
+	 */
+	public function awaitCredentialDeleted(ContextInterface $ctx): CredentialDeletedEvent;
+
+
+	/**
+	 * Triggered when a credential is updated, e.g. through PublicKeyCredential.signalCurrentUserDetails().
+	 *
+	 * Listener will be called whenever event WebAuthn.credentialUpdated is fired.
+	 *
+	 * @param callable $listener
+	 *
+	 * @return SubscriptionInterface
+	 */
+	public function addCredentialUpdatedListener(callable $listener): SubscriptionInterface;
+
+
+	/**
+	 * Triggered when a credential is updated, e.g. through PublicKeyCredential.signalCurrentUserDetails().
+	 *
+	 * Method will block until first WebAuthn.credentialUpdated event is fired.
+	 *
+	 * @param ContextInterface $ctx
+	 *
+	 * @return CredentialUpdatedEvent
+	 */
+	public function awaitCredentialUpdated(ContextInterface $ctx): CredentialUpdatedEvent;
 }

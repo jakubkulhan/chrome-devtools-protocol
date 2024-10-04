@@ -10,6 +10,8 @@ use ChromeDevtoolsProtocol\Model\WebAuthn\AddVirtualAuthenticatorResponse;
 use ChromeDevtoolsProtocol\Model\WebAuthn\ClearCredentialsRequest;
 use ChromeDevtoolsProtocol\Model\WebAuthn\CredentialAddedEvent;
 use ChromeDevtoolsProtocol\Model\WebAuthn\CredentialAssertedEvent;
+use ChromeDevtoolsProtocol\Model\WebAuthn\CredentialDeletedEvent;
+use ChromeDevtoolsProtocol\Model\WebAuthn\CredentialUpdatedEvent;
 use ChromeDevtoolsProtocol\Model\WebAuthn\EnableRequest;
 use ChromeDevtoolsProtocol\Model\WebAuthn\GetCredentialRequest;
 use ChromeDevtoolsProtocol\Model\WebAuthn\GetCredentialResponse;
@@ -146,5 +148,33 @@ class WebAuthnDomain implements WebAuthnDomainInterface
 	public function awaitCredentialAsserted(ContextInterface $ctx): CredentialAssertedEvent
 	{
 		return CredentialAssertedEvent::fromJson($this->internalClient->awaitEvent($ctx, 'WebAuthn.credentialAsserted'));
+	}
+
+
+	public function addCredentialDeletedListener(callable $listener): SubscriptionInterface
+	{
+		return $this->internalClient->addListener('WebAuthn.credentialDeleted', function ($event) use ($listener) {
+			return $listener(CredentialDeletedEvent::fromJson($event));
+		});
+	}
+
+
+	public function awaitCredentialDeleted(ContextInterface $ctx): CredentialDeletedEvent
+	{
+		return CredentialDeletedEvent::fromJson($this->internalClient->awaitEvent($ctx, 'WebAuthn.credentialDeleted'));
+	}
+
+
+	public function addCredentialUpdatedListener(callable $listener): SubscriptionInterface
+	{
+		return $this->internalClient->addListener('WebAuthn.credentialUpdated', function ($event) use ($listener) {
+			return $listener(CredentialUpdatedEvent::fromJson($event));
+		});
+	}
+
+
+	public function awaitCredentialUpdated(ContextInterface $ctx): CredentialUpdatedEvent
+	{
+		return CredentialUpdatedEvent::fromJson($this->internalClient->awaitEvent($ctx, 'WebAuthn.credentialUpdated'));
 	}
 }

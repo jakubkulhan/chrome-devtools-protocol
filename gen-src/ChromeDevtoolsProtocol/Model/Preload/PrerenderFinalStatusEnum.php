@@ -82,4 +82,5 @@ final class PrerenderFinalStatusEnum
 	public const WINDOW_CLOSED = 'WindowClosed';
 	public const SLOW_NETWORK = 'SlowNetwork';
 	public const OTHER_PRERENDERED_PAGE_ACTIVATED = 'OtherPrerenderedPageActivated';
+	public const V8_OPTIMIZER_DISABLED = 'V8OptimizerDisabled';
 }

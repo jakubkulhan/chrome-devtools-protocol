@@ -23821,7 +23821,8 @@
                         "AllPrerenderingCanceled",
                         "WindowClosed",
                         "SlowNetwork",
-                        "OtherPrerenderedPageActivated"
+                        "OtherPrerenderedPageActivated",
+                        "V8OptimizerDisabled"
                     ]
                 },
                 {
@@ -30559,6 +30560,18 @@
                             "description": "Assertions returned by this credential will have the backup state (BS) flag set to this value. Defaults to the authenticator's defaultBackupState value.",
                             "optional": true,
                             "type": "boolean"
+                        },
+                        {
+                            "name": "userName",
+                            "description": "The credential's user.name property. Equivalent to empty if not set. https://w3c.github.io/webauthn/#dom-publickeycredentialentity-name",
+                            "optional": true,
+                            "type": "string"
+                        },
+                        {
+                            "name": "userDisplayName",
+                            "description": "The credential's user.displayName property. Equivalent to empty if not set. https://w3c.github.io/webauthn/#dom-publickeycredentialuserentity-displayname",
+                            "optional": true,
+                            "type": "string"
                         }
                     ]
                 }
@@ -30782,6 +30795,34 @@
                 {
                     "name": "credentialAsserted",
                     "description": "Triggered when a credential is used in a webauthn assertion.",
+                    "parameters": [
+                        {
+                            "name": "authenticatorId",
+                            "$ref": "AuthenticatorId"
+                        },
+                        {
+                            "name": "credential",
+                            "$ref": "Credential"
+                        }
+                    ]
+                },
+                {
+                    "name": "credentialDeleted",
+                    "description": "Triggered when a credential is deleted, e.g. through PublicKeyCredential.signalUnknownCredential().",
+                    "parameters": [
+                        {
+                            "name": "authenticatorId",
+                            "$ref": "AuthenticatorId"
+                        },
+                        {
+                            "name": "credentialId",
+                            "type": "string"
+                        }
+                    ]
+                },
+                {
+                    "name": "credentialUpdated",
+                    "description": "Triggered when a credential is updated, e.g. through PublicKeyCredential.signalCurrentUserDetails().",
                     "parameters": [
                         {
                             "name": "authenticatorId",
