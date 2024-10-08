@@ -26,6 +26,13 @@ final class NodeTreeSnapshot implements \JsonSerializable
 	public $nodeType;
 
 	/**
+	 * Type of the shadow root the `Node` is in. String values are equal to the `ShadowRootType` enum.
+	 *
+	 * @var RareStringData|null
+	 */
+	public $shadowRootType;
+
+	/**
 	 * `Node`'s nodeName.
 	 *
 	 * @var int[]|null
@@ -96,6 +103,13 @@ final class NodeTreeSnapshot implements \JsonSerializable
 	public $pseudoType;
 
 	/**
+	 * Pseudo element identifier for this node. Only present if there is a valid pseudoType.
+	 *
+	 * @var RareStringData|null
+	 */
+	public $pseudoIdentifier;
+
+	/**
 	 * Whether this DOM node responds to mouse clicks. This includes nodes that have had click event listeners attached via JavaScript as well as anchor tags that naturally navigate when clicked.
 	 *
 	 * @var RareBooleanData|null
@@ -117,6 +131,10 @@ final class NodeTreeSnapshot implements \JsonSerializable
 	public $originURL;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();
@@ -131,6 +149,9 @@ final class NodeTreeSnapshot implements \JsonSerializable
 			foreach ($data->nodeType as $item) {
 				$instance->nodeType[] = (int)$item;
 			}
+		}
+		if (isset($data->shadowRootType)) {
+			$instance->shadowRootType = RareStringData::fromJson($data->shadowRootType);
 		}
 		if (isset($data->nodeName)) {
 			$instance->nodeName = [];
@@ -190,6 +211,9 @@ final class NodeTreeSnapshot implements \JsonSerializable
 		if (isset($data->pseudoType)) {
 			$instance->pseudoType = RareStringData::fromJson($data->pseudoType);
 		}
+		if (isset($data->pseudoIdentifier)) {
+			$instance->pseudoIdentifier = RareStringData::fromJson($data->pseudoIdentifier);
+		}
 		if (isset($data->isClickable)) {
 			$instance->isClickable = RareBooleanData::fromJson($data->isClickable);
 		}
@@ -217,6 +241,9 @@ final class NodeTreeSnapshot implements \JsonSerializable
 			foreach ($this->nodeType as $item) {
 				$data->nodeType[] = $item;
 			}
+		}
+		if ($this->shadowRootType !== null) {
+			$data->shadowRootType = $this->shadowRootType->jsonSerialize();
 		}
 		if ($this->nodeName !== null) {
 			$data->nodeName = [];
@@ -275,6 +302,9 @@ final class NodeTreeSnapshot implements \JsonSerializable
 		}
 		if ($this->pseudoType !== null) {
 			$data->pseudoType = $this->pseudoType->jsonSerialize();
+		}
+		if ($this->pseudoIdentifier !== null) {
+			$data->pseudoIdentifier = $this->pseudoIdentifier->jsonSerialize();
 		}
 		if ($this->isClickable !== null) {
 			$data->isClickable = $this->isClickable->jsonSerialize();

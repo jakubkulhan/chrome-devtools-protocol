@@ -19,6 +19,10 @@ final class GetTargetsResponse implements \JsonSerializable
 	public $targetInfos;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

@@ -46,7 +46,32 @@ final class EmulateNetworkConditionsRequest implements \JsonSerializable
 	 */
 	public $connectionType;
 
+	/**
+	 * WebRTC packet loss (percent, 0-100). 0 disables packet loss emulation, 100 drops all the packets.
+	 *
+	 * @var int|float|null
+	 */
+	public $packetLoss;
 
+	/**
+	 * WebRTC packet queue length (packet). 0 removes any queue length limitations.
+	 *
+	 * @var int|null
+	 */
+	public $packetQueueLength;
+
+	/**
+	 * WebRTC packetReordering feature.
+	 *
+	 * @var bool|null
+	 */
+	public $packetReordering;
+
+
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();
@@ -64,6 +89,15 @@ final class EmulateNetworkConditionsRequest implements \JsonSerializable
 		}
 		if (isset($data->connectionType)) {
 			$instance->connectionType = (string)$data->connectionType;
+		}
+		if (isset($data->packetLoss)) {
+			$instance->packetLoss = $data->packetLoss;
+		}
+		if (isset($data->packetQueueLength)) {
+			$instance->packetQueueLength = (int)$data->packetQueueLength;
+		}
+		if (isset($data->packetReordering)) {
+			$instance->packetReordering = (bool)$data->packetReordering;
 		}
 		return $instance;
 	}
@@ -86,6 +120,15 @@ final class EmulateNetworkConditionsRequest implements \JsonSerializable
 		}
 		if ($this->connectionType !== null) {
 			$data->connectionType = $this->connectionType;
+		}
+		if ($this->packetLoss !== null) {
+			$data->packetLoss = $this->packetLoss;
+		}
+		if ($this->packetQueueLength !== null) {
+			$data->packetQueueLength = $this->packetQueueLength;
+		}
+		if ($this->packetReordering !== null) {
+			$data->packetReordering = $this->packetReordering;
 		}
 		return $data;
 	}

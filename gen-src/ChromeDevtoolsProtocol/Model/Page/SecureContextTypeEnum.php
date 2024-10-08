@@ -11,8 +11,8 @@ namespace ChromeDevtoolsProtocol\Model\Page;
  */
 final class SecureContextTypeEnum
 {
-	const SECURE = 'Secure';
-	const SECURE_LOCALHOST = 'SecureLocalhost';
-	const INSECURE_SCHEME = 'InsecureScheme';
-	const INSECURE_ANCESTOR = 'InsecureAncestor';
+	public const SECURE = 'Secure';
+	public const SECURE_LOCALHOST = 'SecureLocalhost';
+	public const INSECURE_SCHEME = 'InsecureScheme';
+	public const INSECURE_ANCESTOR = 'InsecureAncestor';
 }

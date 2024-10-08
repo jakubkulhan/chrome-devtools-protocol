@@ -11,9 +11,9 @@ namespace ChromeDevtoolsProtocol\Model\WebAuthn;
  */
 final class AuthenticatorTransportEnum
 {
-	const USB = 'usb';
-	const NFC = 'nfc';
-	const BLE = 'ble';
-	const CABLE = 'cable';
-	const INTERNAL = 'internal';
+	public const USB = 'usb';
+	public const NFC = 'nfc';
+	public const BLE = 'ble';
+	public const CABLE = 'cable';
+	public const INTERNAL = 'internal';
 }

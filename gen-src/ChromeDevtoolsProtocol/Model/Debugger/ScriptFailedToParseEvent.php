@@ -63,14 +63,14 @@ final class ScriptFailedToParseEvent implements \JsonSerializable
 	public $executionContextId;
 
 	/**
-	 * Content hash of the script.
+	 * Content hash of the script, SHA-256.
 	 *
 	 * @var string
 	 */
 	public $hash;
 
 	/**
-	 * Embedder-specific auxiliary data.
+	 * Embedder-specific auxiliary data likely matching {isDefault: boolean, type: 'default'|'isolated'|'worker', frameId: string}
 	 *
 	 * @var object|null
 	 */
@@ -133,6 +133,10 @@ final class ScriptFailedToParseEvent implements \JsonSerializable
 	public $embedderName;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

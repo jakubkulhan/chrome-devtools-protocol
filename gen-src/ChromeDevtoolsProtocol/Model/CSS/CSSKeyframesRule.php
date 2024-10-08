@@ -26,6 +26,10 @@ final class CSSKeyframesRule implements \JsonSerializable
 	public $keyframes;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

@@ -11,7 +11,7 @@ namespace ChromeDevtoolsProtocol\Model\Audits;
  */
 final class MixedContentResolutionStatusEnum
 {
-	const MIXED_CONTENT_BLOCKED = 'MixedContentBlocked';
-	const MIXED_CONTENT_AUTOMATICALLY_UPGRADED = 'MixedContentAutomaticallyUpgraded';
-	const MIXED_CONTENT_WARNING = 'MixedContentWarning';
+	public const MIXED_CONTENT_BLOCKED = 'MixedContentBlocked';
+	public const MIXED_CONTENT_AUTOMATICALLY_UPGRADED = 'MixedContentAutomaticallyUpgraded';
+	public const MIXED_CONTENT_WARNING = 'MixedContentWarning';
 }

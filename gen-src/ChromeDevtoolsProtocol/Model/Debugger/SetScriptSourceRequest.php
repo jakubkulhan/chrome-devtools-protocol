@@ -32,7 +32,18 @@ final class SetScriptSourceRequest implements \JsonSerializable
 	 */
 	public $dryRun;
 
+	/**
+	 * If true, then `scriptSource` is allowed to change the function on top of the stack as long as the top-most stack frame is the only activation of that function.
+	 *
+	 * @var bool|null
+	 */
+	public $allowTopFrameEditing;
 
+
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();
@@ -44,6 +55,9 @@ final class SetScriptSourceRequest implements \JsonSerializable
 		}
 		if (isset($data->dryRun)) {
 			$instance->dryRun = (bool)$data->dryRun;
+		}
+		if (isset($data->allowTopFrameEditing)) {
+			$instance->allowTopFrameEditing = (bool)$data->allowTopFrameEditing;
 		}
 		return $instance;
 	}
@@ -60,6 +74,9 @@ final class SetScriptSourceRequest implements \JsonSerializable
 		}
 		if ($this->dryRun !== null) {
 			$data->dryRun = $this->dryRun;
+		}
+		if ($this->allowTopFrameEditing !== null) {
+			$data->allowTopFrameEditing = $this->allowTopFrameEditing;
 		}
 		return $data;
 	}

@@ -24,6 +24,10 @@ final class NodeParamDisconnectedEvent implements \JsonSerializable
 	public $sourceOutputIndex;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

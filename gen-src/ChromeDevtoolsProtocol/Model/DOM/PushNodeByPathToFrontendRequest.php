@@ -19,6 +19,10 @@ final class PushNodeByPathToFrontendRequest implements \JsonSerializable
 	public $path;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

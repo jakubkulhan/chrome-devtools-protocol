@@ -68,6 +68,10 @@ final class DataEntry implements \JsonSerializable
 	public $responseHeaders;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

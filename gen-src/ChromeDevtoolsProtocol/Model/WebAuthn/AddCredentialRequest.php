@@ -18,6 +18,10 @@ final class AddCredentialRequest implements \JsonSerializable
 	public $credential;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

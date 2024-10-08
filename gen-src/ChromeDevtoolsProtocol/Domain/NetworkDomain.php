@@ -11,6 +11,7 @@ use ChromeDevtoolsProtocol\Model\Network\ContinueInterceptedRequestRequest;
 use ChromeDevtoolsProtocol\Model\Network\DataReceivedEvent;
 use ChromeDevtoolsProtocol\Model\Network\DeleteCookiesRequest;
 use ChromeDevtoolsProtocol\Model\Network\EmulateNetworkConditionsRequest;
+use ChromeDevtoolsProtocol\Model\Network\EnableReportingApiRequest;
 use ChromeDevtoolsProtocol\Model\Network\EnableRequest;
 use ChromeDevtoolsProtocol\Model\Network\EventSourceMessageReceivedEvent;
 use ChromeDevtoolsProtocol\Model\Network\GetAllCookiesResponse;
@@ -30,16 +31,22 @@ use ChromeDevtoolsProtocol\Model\Network\LoadNetworkResourceRequest;
 use ChromeDevtoolsProtocol\Model\Network\LoadNetworkResourceResponse;
 use ChromeDevtoolsProtocol\Model\Network\LoadingFailedEvent;
 use ChromeDevtoolsProtocol\Model\Network\LoadingFinishedEvent;
+use ChromeDevtoolsProtocol\Model\Network\PolicyUpdatedEvent;
 use ChromeDevtoolsProtocol\Model\Network\ReplayXHRRequest;
+use ChromeDevtoolsProtocol\Model\Network\ReportingApiEndpointsChangedForOriginEvent;
+use ChromeDevtoolsProtocol\Model\Network\ReportingApiReportAddedEvent;
+use ChromeDevtoolsProtocol\Model\Network\ReportingApiReportUpdatedEvent;
 use ChromeDevtoolsProtocol\Model\Network\RequestInterceptedEvent;
 use ChromeDevtoolsProtocol\Model\Network\RequestServedFromCacheEvent;
 use ChromeDevtoolsProtocol\Model\Network\RequestWillBeSentEvent;
 use ChromeDevtoolsProtocol\Model\Network\RequestWillBeSentExtraInfoEvent;
 use ChromeDevtoolsProtocol\Model\Network\ResourceChangedPriorityEvent;
+use ChromeDevtoolsProtocol\Model\Network\ResponseReceivedEarlyHintsEvent;
 use ChromeDevtoolsProtocol\Model\Network\ResponseReceivedEvent;
 use ChromeDevtoolsProtocol\Model\Network\ResponseReceivedExtraInfoEvent;
 use ChromeDevtoolsProtocol\Model\Network\SearchInResponseBodyRequest;
 use ChromeDevtoolsProtocol\Model\Network\SearchInResponseBodyResponse;
+use ChromeDevtoolsProtocol\Model\Network\SetAcceptedEncodingsRequest;
 use ChromeDevtoolsProtocol\Model\Network\SetAttachDebugStackRequest;
 use ChromeDevtoolsProtocol\Model\Network\SetBlockedURLsRequest;
 use ChromeDevtoolsProtocol\Model\Network\SetBypassServiceWorkerRequest;
@@ -47,11 +54,16 @@ use ChromeDevtoolsProtocol\Model\Network\SetCacheDisabledRequest;
 use ChromeDevtoolsProtocol\Model\Network\SetCookieRequest;
 use ChromeDevtoolsProtocol\Model\Network\SetCookieResponse;
 use ChromeDevtoolsProtocol\Model\Network\SetCookiesRequest;
-use ChromeDevtoolsProtocol\Model\Network\SetDataSizeLimitsForTestRequest;
 use ChromeDevtoolsProtocol\Model\Network\SetExtraHTTPHeadersRequest;
 use ChromeDevtoolsProtocol\Model\Network\SetRequestInterceptionRequest;
 use ChromeDevtoolsProtocol\Model\Network\SetUserAgentOverrideRequest;
 use ChromeDevtoolsProtocol\Model\Network\SignedExchangeReceivedEvent;
+use ChromeDevtoolsProtocol\Model\Network\StreamResourceContentRequest;
+use ChromeDevtoolsProtocol\Model\Network\StreamResourceContentResponse;
+use ChromeDevtoolsProtocol\Model\Network\SubresourceWebBundleInnerResponseErrorEvent;
+use ChromeDevtoolsProtocol\Model\Network\SubresourceWebBundleInnerResponseParsedEvent;
+use ChromeDevtoolsProtocol\Model\Network\SubresourceWebBundleMetadataErrorEvent;
+use ChromeDevtoolsProtocol\Model\Network\SubresourceWebBundleMetadataReceivedEvent;
 use ChromeDevtoolsProtocol\Model\Network\TakeResponseBodyForInterceptionAsStreamRequest;
 use ChromeDevtoolsProtocol\Model\Network\TakeResponseBodyForInterceptionAsStreamResponse;
 use ChromeDevtoolsProtocol\Model\Network\TrustTokenOperationDoneEvent;
@@ -103,6 +115,13 @@ class NetworkDomain implements NetworkDomainInterface
 	}
 
 
+	public function clearAcceptedEncodingsOverride(ContextInterface $ctx): void
+	{
+		$request = new \stdClass();
+		$this->internalClient->executeCommand($ctx, 'Network.clearAcceptedEncodingsOverride', $request);
+	}
+
+
 	public function clearBrowserCache(ContextInterface $ctx): void
 	{
 		$request = new \stdClass();
@@ -145,6 +164,12 @@ class NetworkDomain implements NetworkDomainInterface
 	public function enable(ContextInterface $ctx, EnableRequest $request): void
 	{
 		$this->internalClient->executeCommand($ctx, 'Network.enable', $request);
+	}
+
+
+	public function enableReportingApi(ContextInterface $ctx, EnableReportingApiRequest $request): void
+	{
+		$this->internalClient->executeCommand($ctx, 'Network.enableReportingApi', $request);
 	}
 
 
@@ -228,6 +253,12 @@ class NetworkDomain implements NetworkDomainInterface
 	}
 
 
+	public function setAcceptedEncodings(ContextInterface $ctx, SetAcceptedEncodingsRequest $request): void
+	{
+		$this->internalClient->executeCommand($ctx, 'Network.setAcceptedEncodings', $request);
+	}
+
+
 	public function setAttachDebugStack(ContextInterface $ctx, SetAttachDebugStackRequest $request): void
 	{
 		$this->internalClient->executeCommand($ctx, 'Network.setAttachDebugStack', $request);
@@ -265,12 +296,6 @@ class NetworkDomain implements NetworkDomainInterface
 	}
 
 
-	public function setDataSizeLimitsForTest(ContextInterface $ctx, SetDataSizeLimitsForTestRequest $request): void
-	{
-		$this->internalClient->executeCommand($ctx, 'Network.setDataSizeLimitsForTest', $request);
-	}
-
-
 	public function setExtraHTTPHeaders(ContextInterface $ctx, SetExtraHTTPHeadersRequest $request): void
 	{
 		$this->internalClient->executeCommand($ctx, 'Network.setExtraHTTPHeaders', $request);
@@ -286,6 +311,15 @@ class NetworkDomain implements NetworkDomainInterface
 	public function setUserAgentOverride(ContextInterface $ctx, SetUserAgentOverrideRequest $request): void
 	{
 		$this->internalClient->executeCommand($ctx, 'Network.setUserAgentOverride', $request);
+	}
+
+
+	public function streamResourceContent(
+		ContextInterface $ctx,
+		StreamResourceContentRequest $request
+	): StreamResourceContentResponse {
+		$response = $this->internalClient->executeCommand($ctx, 'Network.streamResourceContent', $request);
+		return StreamResourceContentResponse::fromJson($response);
 	}
 
 
@@ -351,6 +385,62 @@ class NetworkDomain implements NetworkDomainInterface
 	public function awaitLoadingFinished(ContextInterface $ctx): LoadingFinishedEvent
 	{
 		return LoadingFinishedEvent::fromJson($this->internalClient->awaitEvent($ctx, 'Network.loadingFinished'));
+	}
+
+
+	public function addPolicyUpdatedListener(callable $listener): SubscriptionInterface
+	{
+		return $this->internalClient->addListener('Network.policyUpdated', function ($event) use ($listener) {
+			return $listener(PolicyUpdatedEvent::fromJson($event));
+		});
+	}
+
+
+	public function awaitPolicyUpdated(ContextInterface $ctx): PolicyUpdatedEvent
+	{
+		return PolicyUpdatedEvent::fromJson($this->internalClient->awaitEvent($ctx, 'Network.policyUpdated'));
+	}
+
+
+	public function addReportingApiEndpointsChangedForOriginListener(callable $listener): SubscriptionInterface
+	{
+		return $this->internalClient->addListener('Network.reportingApiEndpointsChangedForOrigin', function ($event) use ($listener) {
+			return $listener(ReportingApiEndpointsChangedForOriginEvent::fromJson($event));
+		});
+	}
+
+
+	public function awaitReportingApiEndpointsChangedForOrigin(ContextInterface $ctx): ReportingApiEndpointsChangedForOriginEvent
+	{
+		return ReportingApiEndpointsChangedForOriginEvent::fromJson($this->internalClient->awaitEvent($ctx, 'Network.reportingApiEndpointsChangedForOrigin'));
+	}
+
+
+	public function addReportingApiReportAddedListener(callable $listener): SubscriptionInterface
+	{
+		return $this->internalClient->addListener('Network.reportingApiReportAdded', function ($event) use ($listener) {
+			return $listener(ReportingApiReportAddedEvent::fromJson($event));
+		});
+	}
+
+
+	public function awaitReportingApiReportAdded(ContextInterface $ctx): ReportingApiReportAddedEvent
+	{
+		return ReportingApiReportAddedEvent::fromJson($this->internalClient->awaitEvent($ctx, 'Network.reportingApiReportAdded'));
+	}
+
+
+	public function addReportingApiReportUpdatedListener(callable $listener): SubscriptionInterface
+	{
+		return $this->internalClient->addListener('Network.reportingApiReportUpdated', function ($event) use ($listener) {
+			return $listener(ReportingApiReportUpdatedEvent::fromJson($event));
+		});
+	}
+
+
+	public function awaitReportingApiReportUpdated(ContextInterface $ctx): ReportingApiReportUpdatedEvent
+	{
+		return ReportingApiReportUpdatedEvent::fromJson($this->internalClient->awaitEvent($ctx, 'Network.reportingApiReportUpdated'));
 	}
 
 
@@ -438,6 +528,20 @@ class NetworkDomain implements NetworkDomainInterface
 	}
 
 
+	public function addResponseReceivedEarlyHintsListener(callable $listener): SubscriptionInterface
+	{
+		return $this->internalClient->addListener('Network.responseReceivedEarlyHints', function ($event) use ($listener) {
+			return $listener(ResponseReceivedEarlyHintsEvent::fromJson($event));
+		});
+	}
+
+
+	public function awaitResponseReceivedEarlyHints(ContextInterface $ctx): ResponseReceivedEarlyHintsEvent
+	{
+		return ResponseReceivedEarlyHintsEvent::fromJson($this->internalClient->awaitEvent($ctx, 'Network.responseReceivedEarlyHints'));
+	}
+
+
 	public function addResponseReceivedExtraInfoListener(callable $listener): SubscriptionInterface
 	{
 		return $this->internalClient->addListener('Network.responseReceivedExtraInfo', function ($event) use ($listener) {
@@ -463,6 +567,62 @@ class NetworkDomain implements NetworkDomainInterface
 	public function awaitSignedExchangeReceived(ContextInterface $ctx): SignedExchangeReceivedEvent
 	{
 		return SignedExchangeReceivedEvent::fromJson($this->internalClient->awaitEvent($ctx, 'Network.signedExchangeReceived'));
+	}
+
+
+	public function addSubresourceWebBundleInnerResponseErrorListener(callable $listener): SubscriptionInterface
+	{
+		return $this->internalClient->addListener('Network.subresourceWebBundleInnerResponseError', function ($event) use ($listener) {
+			return $listener(SubresourceWebBundleInnerResponseErrorEvent::fromJson($event));
+		});
+	}
+
+
+	public function awaitSubresourceWebBundleInnerResponseError(ContextInterface $ctx): SubresourceWebBundleInnerResponseErrorEvent
+	{
+		return SubresourceWebBundleInnerResponseErrorEvent::fromJson($this->internalClient->awaitEvent($ctx, 'Network.subresourceWebBundleInnerResponseError'));
+	}
+
+
+	public function addSubresourceWebBundleInnerResponseParsedListener(callable $listener): SubscriptionInterface
+	{
+		return $this->internalClient->addListener('Network.subresourceWebBundleInnerResponseParsed', function ($event) use ($listener) {
+			return $listener(SubresourceWebBundleInnerResponseParsedEvent::fromJson($event));
+		});
+	}
+
+
+	public function awaitSubresourceWebBundleInnerResponseParsed(ContextInterface $ctx): SubresourceWebBundleInnerResponseParsedEvent
+	{
+		return SubresourceWebBundleInnerResponseParsedEvent::fromJson($this->internalClient->awaitEvent($ctx, 'Network.subresourceWebBundleInnerResponseParsed'));
+	}
+
+
+	public function addSubresourceWebBundleMetadataErrorListener(callable $listener): SubscriptionInterface
+	{
+		return $this->internalClient->addListener('Network.subresourceWebBundleMetadataError', function ($event) use ($listener) {
+			return $listener(SubresourceWebBundleMetadataErrorEvent::fromJson($event));
+		});
+	}
+
+
+	public function awaitSubresourceWebBundleMetadataError(ContextInterface $ctx): SubresourceWebBundleMetadataErrorEvent
+	{
+		return SubresourceWebBundleMetadataErrorEvent::fromJson($this->internalClient->awaitEvent($ctx, 'Network.subresourceWebBundleMetadataError'));
+	}
+
+
+	public function addSubresourceWebBundleMetadataReceivedListener(callable $listener): SubscriptionInterface
+	{
+		return $this->internalClient->addListener('Network.subresourceWebBundleMetadataReceived', function ($event) use ($listener) {
+			return $listener(SubresourceWebBundleMetadataReceivedEvent::fromJson($event));
+		});
+	}
+
+
+	public function awaitSubresourceWebBundleMetadataReceived(ContextInterface $ctx): SubresourceWebBundleMetadataReceivedEvent
+	{
+		return SubresourceWebBundleMetadataReceivedEvent::fromJson($this->internalClient->awaitEvent($ctx, 'Network.subresourceWebBundleMetadataReceived'));
 	}
 
 

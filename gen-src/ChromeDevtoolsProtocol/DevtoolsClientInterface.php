@@ -4,9 +4,10 @@ namespace ChromeDevtoolsProtocol;
 
 use ChromeDevtoolsProtocol\Domain\AccessibilityDomainInterface;
 use ChromeDevtoolsProtocol\Domain\AnimationDomainInterface;
-use ChromeDevtoolsProtocol\Domain\ApplicationCacheDomainInterface;
 use ChromeDevtoolsProtocol\Domain\AuditsDomainInterface;
+use ChromeDevtoolsProtocol\Domain\AutofillDomainInterface;
 use ChromeDevtoolsProtocol\Domain\BackgroundServiceDomainInterface;
+use ChromeDevtoolsProtocol\Domain\BluetoothEmulationDomainInterface;
 use ChromeDevtoolsProtocol\Domain\BrowserDomainInterface;
 use ChromeDevtoolsProtocol\Domain\CSSDomainInterface;
 use ChromeDevtoolsProtocol\Domain\CacheStorageDomainInterface;
@@ -18,9 +19,14 @@ use ChromeDevtoolsProtocol\Domain\DOMSnapshotDomainInterface;
 use ChromeDevtoolsProtocol\Domain\DOMStorageDomainInterface;
 use ChromeDevtoolsProtocol\Domain\DatabaseDomainInterface;
 use ChromeDevtoolsProtocol\Domain\DebuggerDomainInterface;
+use ChromeDevtoolsProtocol\Domain\DeviceAccessDomainInterface;
 use ChromeDevtoolsProtocol\Domain\DeviceOrientationDomainInterface;
 use ChromeDevtoolsProtocol\Domain\EmulationDomainInterface;
+use ChromeDevtoolsProtocol\Domain\EventBreakpointsDomainInterface;
+use ChromeDevtoolsProtocol\Domain\ExtensionsDomainInterface;
+use ChromeDevtoolsProtocol\Domain\FedCmDomainInterface;
 use ChromeDevtoolsProtocol\Domain\FetchDomainInterface;
+use ChromeDevtoolsProtocol\Domain\FileSystemDomainInterface;
 use ChromeDevtoolsProtocol\Domain\HeadlessExperimentalDomainInterface;
 use ChromeDevtoolsProtocol\Domain\HeapProfilerDomainInterface;
 use ChromeDevtoolsProtocol\Domain\IODomainInterface;
@@ -33,9 +39,11 @@ use ChromeDevtoolsProtocol\Domain\MediaDomainInterface;
 use ChromeDevtoolsProtocol\Domain\MemoryDomainInterface;
 use ChromeDevtoolsProtocol\Domain\NetworkDomainInterface;
 use ChromeDevtoolsProtocol\Domain\OverlayDomainInterface;
+use ChromeDevtoolsProtocol\Domain\PWADomainInterface;
 use ChromeDevtoolsProtocol\Domain\PageDomainInterface;
 use ChromeDevtoolsProtocol\Domain\PerformanceDomainInterface;
 use ChromeDevtoolsProtocol\Domain\PerformanceTimelineDomainInterface;
+use ChromeDevtoolsProtocol\Domain\PreloadDomainInterface;
 use ChromeDevtoolsProtocol\Domain\ProfilerDomainInterface;
 use ChromeDevtoolsProtocol\Domain\RuntimeDomainInterface;
 use ChromeDevtoolsProtocol\Domain\SchemaDomainInterface;
@@ -75,14 +83,6 @@ interface DevtoolsClientInterface extends CloseableResourceInterface
 
 
 	/**
-	 * ApplicationCache domain.
-	 *
-	 * @experimental
-	 */
-	public function applicationCache(): ApplicationCacheDomainInterface;
-
-
-	/**
 	 * Audits domain allows investigation of page violations and possible improvements.
 	 *
 	 * @experimental
@@ -91,11 +91,27 @@ interface DevtoolsClientInterface extends CloseableResourceInterface
 
 
 	/**
+	 * Defines commands and events for Autofill.
+	 *
+	 * @experimental
+	 */
+	public function autofill(): AutofillDomainInterface;
+
+
+	/**
 	 * Defines events for background web platform features.
 	 *
 	 * @experimental
 	 */
 	public function backgroundService(): BackgroundServiceDomainInterface;
+
+
+	/**
+	 * This domain allows configuring virtual Bluetooth devices to test the web-bluetooth API.
+	 *
+	 * @experimental
+	 */
+	public function bluetoothEmulation(): BluetoothEmulationDomainInterface;
 
 
 	/**
@@ -149,6 +165,14 @@ interface DevtoolsClientInterface extends CloseableResourceInterface
 
 
 	/**
+	 * DeviceAccess domain.
+	 *
+	 * @experimental
+	 */
+	public function deviceAccess(): DeviceAccessDomainInterface;
+
+
+	/**
 	 * DeviceOrientation domain.
 	 *
 	 * @experimental
@@ -157,7 +181,7 @@ interface DevtoolsClientInterface extends CloseableResourceInterface
 
 
 	/**
-	 * This domain exposes DOM read/write operations. Each DOM Node is represented with its mirror object that has an `id`. This `id` can be used to get additional information on the Node, resolve it into the JavaScript object wrapper, etc. It is important that client receives DOM events only for the nodes that are known to the client. Backend keeps track of the nodes that were sent to the client and never sends the same node twice. It is client's responsibility to collect information about the nodes that were sent to the client.<p>Note that `iframe` owner elements will return corresponding document elements as their child nodes.</p>
+	 * This domain exposes DOM read/write operations. Each DOM Node is represented with its mirror object that has an `id`. This `id` can be used to get additional information on the Node, resolve it into the JavaScript object wrapper, etc. It is important that client receives DOM events only for the nodes that are known to the client. Backend keeps track of the nodes that were sent to the client and never sends the same node twice. It is client's responsibility to collect information about the nodes that were sent to the client. Note that `iframe` owner elements will return corresponding document elements as their child nodes.
 	 */
 	public function dom(): DOMDomainInterface;
 
@@ -191,9 +215,41 @@ interface DevtoolsClientInterface extends CloseableResourceInterface
 
 
 	/**
+	 * EventBreakpoints permits setting JavaScript breakpoints on operations and events occurring in native code invoked from JavaScript. Once breakpoint is hit, it is reported through Debugger domain, similarly to regular breakpoints being hit.
+	 *
+	 * @experimental
+	 */
+	public function eventBreakpoints(): EventBreakpointsDomainInterface;
+
+
+	/**
+	 * Defines commands and events for browser extensions.
+	 *
+	 * @experimental
+	 */
+	public function extensions(): ExtensionsDomainInterface;
+
+
+	/**
+	 * This domain allows interacting with the FedCM dialog.
+	 *
+	 * @experimental
+	 */
+	public function fedCm(): FedCmDomainInterface;
+
+
+	/**
 	 * A domain for letting clients substitute browser's network layer with client code.
 	 */
 	public function fetch(): FetchDomainInterface;
+
+
+	/**
+	 * FileSystem domain.
+	 *
+	 * @experimental
+	 */
+	public function fileSystem(): FileSystemDomainInterface;
 
 
 	/**
@@ -305,9 +361,25 @@ interface DevtoolsClientInterface extends CloseableResourceInterface
 
 
 	/**
+	 * Preload domain.
+	 *
+	 * @experimental
+	 */
+	public function preload(): PreloadDomainInterface;
+
+
+	/**
 	 * Profiler domain.
 	 */
 	public function profiler(): ProfilerDomainInterface;
+
+
+	/**
+	 * This domain allows interacting with the browser to control PWAs.
+	 *
+	 * @experimental
+	 */
+	public function pwa(): PWADomainInterface;
 
 
 	/**
@@ -368,8 +440,6 @@ interface DevtoolsClientInterface extends CloseableResourceInterface
 
 	/**
 	 * Tracing domain.
-	 *
-	 * @experimental
 	 */
 	public function tracing(): TracingDomainInterface;
 

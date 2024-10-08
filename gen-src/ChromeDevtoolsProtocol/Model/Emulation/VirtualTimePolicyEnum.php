@@ -11,7 +11,7 @@ namespace ChromeDevtoolsProtocol\Model\Emulation;
  */
 final class VirtualTimePolicyEnum
 {
-	const ADVANCE = 'advance';
-	const PAUSE = 'pause';
-	const PAUSE_IF_NETWORK_FETCHES_PENDING = 'pauseIfNetworkFetchesPending';
+	public const ADVANCE = 'advance';
+	public const PAUSE = 'pause';
+	public const PAUSE_IF_NETWORK_FETCHES_PENDING = 'pauseIfNetworkFetchesPending';
 }

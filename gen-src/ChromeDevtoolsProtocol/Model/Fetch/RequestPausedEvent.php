@@ -5,7 +5,7 @@ namespace ChromeDevtoolsProtocol\Model\Fetch;
 use ChromeDevtoolsProtocol\Model\Network\Request;
 
 /**
- * Issued when the domain is enabled and the request URL matches the specified filter. The request is paused until the client responds with one of continueRequest, failRequest or fulfillRequest. The stage of the request can be determined by presence of responseErrorReason and responseStatusCode -- the request is at the response stage if either of these fields is present and in the request stage otherwise.
+ * Issued when the domain is enabled and the request URL matches the specified filter. The request is paused until the client responds with one of continueRequest, failRequest or fulfillRequest. The stage of the request can be determined by presence of responseErrorReason and responseStatusCode -- the request is at the response stage if either of these fields is present and in the request stage otherwise. Redirect responses and subsequent requests are reported similarly to regular responses and requests. Redirect responses may be distinguished by the value of `responseStatusCode` (which is one of 301, 302, 303, 307, 308) along with presence of the `location` header. Requests resulting from a redirect will have `redirectedRequestId` field set.
  *
  * @generated This file has been auto-generated, do not edit.
  *
@@ -56,6 +56,13 @@ final class RequestPausedEvent implements \JsonSerializable
 	public $responseStatusCode;
 
 	/**
+	 * Response status text if intercepted at response stage.
+	 *
+	 * @var string|null
+	 */
+	public $responseStatusText;
+
+	/**
 	 * Response headers if intercepted at the response stage.
 	 *
 	 * @var HeaderEntry[]|null
@@ -69,7 +76,18 @@ final class RequestPausedEvent implements \JsonSerializable
 	 */
 	public $networkId;
 
+	/**
+	 * If the request is due to a redirect response from the server, the id of the request that has caused the redirect.
+	 *
+	 * @var string
+	 */
+	public $redirectedRequestId;
 
+
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();
@@ -91,6 +109,9 @@ final class RequestPausedEvent implements \JsonSerializable
 		if (isset($data->responseStatusCode)) {
 			$instance->responseStatusCode = (int)$data->responseStatusCode;
 		}
+		if (isset($data->responseStatusText)) {
+			$instance->responseStatusText = (string)$data->responseStatusText;
+		}
 		if (isset($data->responseHeaders)) {
 			$instance->responseHeaders = [];
 			foreach ($data->responseHeaders as $item) {
@@ -99,6 +120,9 @@ final class RequestPausedEvent implements \JsonSerializable
 		}
 		if (isset($data->networkId)) {
 			$instance->networkId = (string)$data->networkId;
+		}
+		if (isset($data->redirectedRequestId)) {
+			$instance->redirectedRequestId = (string)$data->redirectedRequestId;
 		}
 		return $instance;
 	}
@@ -125,6 +149,9 @@ final class RequestPausedEvent implements \JsonSerializable
 		if ($this->responseStatusCode !== null) {
 			$data->responseStatusCode = $this->responseStatusCode;
 		}
+		if ($this->responseStatusText !== null) {
+			$data->responseStatusText = $this->responseStatusText;
+		}
 		if ($this->responseHeaders !== null) {
 			$data->responseHeaders = [];
 			foreach ($this->responseHeaders as $item) {
@@ -133,6 +160,9 @@ final class RequestPausedEvent implements \JsonSerializable
 		}
 		if ($this->networkId !== null) {
 			$data->networkId = $this->networkId;
+		}
+		if ($this->redirectedRequestId !== null) {
+			$data->redirectedRequestId = $this->redirectedRequestId;
 		}
 		return $data;
 	}

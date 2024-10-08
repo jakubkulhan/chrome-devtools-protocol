@@ -11,10 +11,10 @@ namespace ChromeDevtoolsProtocol\Model\Input;
  */
 final class MouseButtonEnum
 {
-	const NONE = 'none';
-	const LEFT = 'left';
-	const MIDDLE = 'middle';
-	const RIGHT = 'right';
-	const BACK = 'back';
-	const FORWARD = 'forward';
+	public const NONE = 'none';
+	public const LEFT = 'left';
+	public const MIDDLE = 'middle';
+	public const RIGHT = 'right';
+	public const BACK = 'back';
+	public const FORWARD = 'forward';
 }

@@ -11,7 +11,7 @@ namespace ChromeDevtoolsProtocol\Model\DOM;
  */
 final class ShadowRootTypeEnum
 {
-	const USER_AGENT = 'user-agent';
-	const OPEN = 'open';
-	const CLOSED = 'closed';
+	public const USER_AGENT = 'user-agent';
+	public const OPEN = 'open';
+	public const CLOSED = 'closed';
 }

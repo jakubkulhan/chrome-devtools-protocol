@@ -33,6 +33,10 @@ final class WebSocketFrame implements \JsonSerializable
 	public $payloadData;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

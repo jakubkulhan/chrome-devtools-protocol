@@ -40,7 +40,7 @@ final class CallFunctionOnRequest implements \JsonSerializable
 	public $silent;
 
 	/**
-	 * Whether the result is expected to be a JSON object which should be sent by value.
+	 * Whether the result is expected to be a JSON object which should be sent by value. Can be overriden by `serializationOptions`.
 	 *
 	 * @var bool|null
 	 */
@@ -81,7 +81,32 @@ final class CallFunctionOnRequest implements \JsonSerializable
 	 */
 	public $objectGroup;
 
+	/**
+	 * Whether to throw an exception if side effect cannot be ruled out during evaluation.
+	 *
+	 * @var bool|null
+	 */
+	public $throwOnSideEffect;
 
+	/**
+	 * An alternative way to specify the execution context to call function on. Compared to contextId that may be reused across processes, this is guaranteed to be system-unique, so it can be used to prevent accidental function call in context different than intended (e.g. as a result of navigation across process boundaries). This is mutually exclusive with `executionContextId`.
+	 *
+	 * @var string|null
+	 */
+	public $uniqueContextId;
+
+	/**
+	 * Specifies the result serialization. If provided, overrides `generatePreview` and `returnByValue`.
+	 *
+	 * @var SerializationOptions|null
+	 */
+	public $serializationOptions;
+
+
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();
@@ -117,6 +142,15 @@ final class CallFunctionOnRequest implements \JsonSerializable
 		}
 		if (isset($data->objectGroup)) {
 			$instance->objectGroup = (string)$data->objectGroup;
+		}
+		if (isset($data->throwOnSideEffect)) {
+			$instance->throwOnSideEffect = (bool)$data->throwOnSideEffect;
+		}
+		if (isset($data->uniqueContextId)) {
+			$instance->uniqueContextId = (string)$data->uniqueContextId;
+		}
+		if (isset($data->serializationOptions)) {
+			$instance->serializationOptions = SerializationOptions::fromJson($data->serializationOptions);
 		}
 		return $instance;
 	}
@@ -157,6 +191,15 @@ final class CallFunctionOnRequest implements \JsonSerializable
 		}
 		if ($this->objectGroup !== null) {
 			$data->objectGroup = $this->objectGroup;
+		}
+		if ($this->throwOnSideEffect !== null) {
+			$data->throwOnSideEffect = $this->throwOnSideEffect;
+		}
+		if ($this->uniqueContextId !== null) {
+			$data->uniqueContextId = $this->uniqueContextId;
+		}
+		if ($this->serializationOptions !== null) {
+			$data->serializationOptions = $this->serializationOptions->jsonSerialize();
 		}
 		return $data;
 	}

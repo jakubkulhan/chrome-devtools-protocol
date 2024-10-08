@@ -21,17 +21,21 @@ use ChromeDevtoolsProtocol\Model\Overlay\ScreenshotRequestedEvent;
 use ChromeDevtoolsProtocol\Model\Overlay\SetInspectModeRequest;
 use ChromeDevtoolsProtocol\Model\Overlay\SetPausedInDebuggerMessageRequest;
 use ChromeDevtoolsProtocol\Model\Overlay\SetShowAdHighlightsRequest;
+use ChromeDevtoolsProtocol\Model\Overlay\SetShowContainerQueryOverlaysRequest;
 use ChromeDevtoolsProtocol\Model\Overlay\SetShowDebugBordersRequest;
 use ChromeDevtoolsProtocol\Model\Overlay\SetShowFPSCounterRequest;
 use ChromeDevtoolsProtocol\Model\Overlay\SetShowFlexOverlaysRequest;
 use ChromeDevtoolsProtocol\Model\Overlay\SetShowGridOverlaysRequest;
 use ChromeDevtoolsProtocol\Model\Overlay\SetShowHingeRequest;
 use ChromeDevtoolsProtocol\Model\Overlay\SetShowHitTestBordersRequest;
+use ChromeDevtoolsProtocol\Model\Overlay\SetShowIsolatedElementsRequest;
 use ChromeDevtoolsProtocol\Model\Overlay\SetShowLayoutShiftRegionsRequest;
 use ChromeDevtoolsProtocol\Model\Overlay\SetShowPaintRectsRequest;
 use ChromeDevtoolsProtocol\Model\Overlay\SetShowScrollBottleneckRectsRequest;
+use ChromeDevtoolsProtocol\Model\Overlay\SetShowScrollSnapOverlaysRequest;
 use ChromeDevtoolsProtocol\Model\Overlay\SetShowViewportSizeOnResizeRequest;
 use ChromeDevtoolsProtocol\Model\Overlay\SetShowWebVitalsRequest;
+use ChromeDevtoolsProtocol\Model\Overlay\SetShowWindowControlsOverlayRequest;
 use ChromeDevtoolsProtocol\SubscriptionInterface;
 
 /**
@@ -118,7 +122,7 @@ interface OverlayDomainInterface
 
 
 	/**
-	 * Highlights owner element of the frame with given id.
+	 * Highlights owner element of the frame with given id. Deprecated: Doesn't work reliably and cannot be fixed due to process separation (the owner node might be in a different process). Determine the owner node in the client and use highlightNode.
 	 *
 	 * @param ContextInterface $ctx
 	 * @param HighlightFrameRequest $request
@@ -206,6 +210,20 @@ interface OverlayDomainInterface
 
 
 	/**
+	 * Call Overlay.setShowContainerQueryOverlays command.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param SetShowContainerQueryOverlaysRequest $request
+	 *
+	 * @return void
+	 */
+	public function setShowContainerQueryOverlays(
+		ContextInterface $ctx,
+		SetShowContainerQueryOverlaysRequest $request
+	): void;
+
+
+	/**
 	 * Requests that backend shows debug borders on layers
 	 *
 	 * @param ContextInterface $ctx
@@ -261,7 +279,7 @@ interface OverlayDomainInterface
 
 
 	/**
-	 * Requests that backend shows hit-test borders on layers
+	 * Deprecated, no longer has any effect.
 	 *
 	 * @param ContextInterface $ctx
 	 * @param SetShowHitTestBordersRequest $request
@@ -269,6 +287,17 @@ interface OverlayDomainInterface
 	 * @return void
 	 */
 	public function setShowHitTestBorders(ContextInterface $ctx, SetShowHitTestBordersRequest $request): void;
+
+
+	/**
+	 * Show elements in isolation mode with overlays.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param SetShowIsolatedElementsRequest $request
+	 *
+	 * @return void
+	 */
+	public function setShowIsolatedElements(ContextInterface $ctx, SetShowIsolatedElementsRequest $request): void;
 
 
 	/**
@@ -305,6 +334,17 @@ interface OverlayDomainInterface
 
 
 	/**
+	 * Call Overlay.setShowScrollSnapOverlays command.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param SetShowScrollSnapOverlaysRequest $request
+	 *
+	 * @return void
+	 */
+	public function setShowScrollSnapOverlays(ContextInterface $ctx, SetShowScrollSnapOverlaysRequest $request): void;
+
+
+	/**
 	 * Paints viewport size upon main frame resize.
 	 *
 	 * @param ContextInterface $ctx
@@ -316,7 +356,7 @@ interface OverlayDomainInterface
 
 
 	/**
-	 * Request that backend shows an overlay with web vital metrics.
+	 * Deprecated, no longer has any effect.
 	 *
 	 * @param ContextInterface $ctx
 	 * @param SetShowWebVitalsRequest $request
@@ -324,6 +364,17 @@ interface OverlayDomainInterface
 	 * @return void
 	 */
 	public function setShowWebVitals(ContextInterface $ctx, SetShowWebVitalsRequest $request): void;
+
+
+	/**
+	 * Show Window Controls Overlay for PWA
+	 *
+	 * @param ContextInterface $ctx
+	 * @param SetShowWindowControlsOverlayRequest $request
+	 *
+	 * @return void
+	 */
+	public function setShowWindowControlsOverlay(ContextInterface $ctx, SetShowWindowControlsOverlayRequest $request): void;
 
 
 	/**

@@ -14,7 +14,11 @@ final class TargetInfo implements \JsonSerializable
 	/** @var string */
 	public $targetId;
 
-	/** @var string */
+	/**
+	 * List of types: https://source.chromium.org/chromium/chromium/src/+/main:content/browser/devtools/devtools_agent_host_impl.cc?ss=chromium&q=f:devtools%20-f:out%20%22::kTypeTab%5B%5D%22
+	 *
+	 * @var string
+	 */
 	public $type;
 
 	/** @var string */
@@ -54,7 +58,18 @@ final class TargetInfo implements \JsonSerializable
 	/** @var string */
 	public $browserContextId;
 
+	/**
+	 * Provides additional details for specific target types. For example, for the type of "page", this may be set to "prerender".
+	 *
+	 * @var string|null
+	 */
+	public $subtype;
 
+
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();
@@ -84,6 +99,9 @@ final class TargetInfo implements \JsonSerializable
 		}
 		if (isset($data->browserContextId)) {
 			$instance->browserContextId = (string)$data->browserContextId;
+		}
+		if (isset($data->subtype)) {
+			$instance->subtype = (string)$data->subtype;
 		}
 		return $instance;
 	}
@@ -118,6 +136,9 @@ final class TargetInfo implements \JsonSerializable
 		}
 		if ($this->browserContextId !== null) {
 			$data->browserContextId = $this->browserContextId;
+		}
+		if ($this->subtype !== null) {
+			$data->subtype = $this->subtype;
 		}
 		return $data;
 	}

@@ -11,8 +11,11 @@ namespace ChromeDevtoolsProtocol\Model\Network;
  */
 final class CrossOriginOpenerPolicyValueEnum
 {
-	const SAME_ORIGIN = 'SameOrigin';
-	const SAME_ORIGIN_ALLOW_POPUPS = 'SameOriginAllowPopups';
-	const UNSAFE_NONE = 'UnsafeNone';
-	const SAME_ORIGIN_PLUS_COEP = 'SameOriginPlusCoep';
+	public const SAME_ORIGIN = 'SameOrigin';
+	public const SAME_ORIGIN_ALLOW_POPUPS = 'SameOriginAllowPopups';
+	public const RESTRICT_PROPERTIES = 'RestrictProperties';
+	public const UNSAFE_NONE = 'UnsafeNone';
+	public const SAME_ORIGIN_PLUS_COEP = 'SameOriginPlusCoep';
+	public const RESTRICT_PROPERTIES_PLUS_COEP = 'RestrictPropertiesPlusCoep';
+	public const NOOPENER_ALLOW_POPUPS = 'NoopenerAllowPopups';
 }

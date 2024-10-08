@@ -3,6 +3,8 @@
 namespace ChromeDevtoolsProtocol\Domain;
 
 use ChromeDevtoolsProtocol\ContextInterface;
+use ChromeDevtoolsProtocol\Model\SystemInfo\GetFeatureStateRequest;
+use ChromeDevtoolsProtocol\Model\SystemInfo\GetFeatureStateResponse;
 use ChromeDevtoolsProtocol\Model\SystemInfo\GetInfoResponse;
 use ChromeDevtoolsProtocol\Model\SystemInfo\GetProcessInfoResponse;
 
@@ -17,6 +19,17 @@ use ChromeDevtoolsProtocol\Model\SystemInfo\GetProcessInfoResponse;
  */
 interface SystemInfoDomainInterface
 {
+	/**
+	 * Returns information about the feature state.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param GetFeatureStateRequest $request
+	 *
+	 * @return GetFeatureStateResponse
+	 */
+	public function getFeatureState(ContextInterface $ctx, GetFeatureStateRequest $request): GetFeatureStateResponse;
+
+
 	/**
 	 * Returns information about the system.
 	 *

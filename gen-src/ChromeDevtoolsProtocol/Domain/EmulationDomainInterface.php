@@ -4,9 +4,14 @@ namespace ChromeDevtoolsProtocol\Domain;
 
 use ChromeDevtoolsProtocol\ContextInterface;
 use ChromeDevtoolsProtocol\Model\Emulation\CanEmulateResponse;
+use ChromeDevtoolsProtocol\Model\Emulation\GetOverriddenSensorInformationRequest;
+use ChromeDevtoolsProtocol\Model\Emulation\GetOverriddenSensorInformationResponse;
+use ChromeDevtoolsProtocol\Model\Emulation\SetAutoDarkModeOverrideRequest;
+use ChromeDevtoolsProtocol\Model\Emulation\SetAutomationOverrideRequest;
 use ChromeDevtoolsProtocol\Model\Emulation\SetCPUThrottlingRateRequest;
 use ChromeDevtoolsProtocol\Model\Emulation\SetDefaultBackgroundColorOverrideRequest;
 use ChromeDevtoolsProtocol\Model\Emulation\SetDeviceMetricsOverrideRequest;
+use ChromeDevtoolsProtocol\Model\Emulation\SetDevicePostureOverrideRequest;
 use ChromeDevtoolsProtocol\Model\Emulation\SetDisabledImageTypesRequest;
 use ChromeDevtoolsProtocol\Model\Emulation\SetDocumentCookieDisabledRequest;
 use ChromeDevtoolsProtocol\Model\Emulation\SetEmitTouchEventsForMouseRequest;
@@ -14,12 +19,17 @@ use ChromeDevtoolsProtocol\Model\Emulation\SetEmulatedMediaRequest;
 use ChromeDevtoolsProtocol\Model\Emulation\SetEmulatedVisionDeficiencyRequest;
 use ChromeDevtoolsProtocol\Model\Emulation\SetFocusEmulationEnabledRequest;
 use ChromeDevtoolsProtocol\Model\Emulation\SetGeolocationOverrideRequest;
+use ChromeDevtoolsProtocol\Model\Emulation\SetHardwareConcurrencyOverrideRequest;
 use ChromeDevtoolsProtocol\Model\Emulation\SetIdleOverrideRequest;
 use ChromeDevtoolsProtocol\Model\Emulation\SetLocaleOverrideRequest;
 use ChromeDevtoolsProtocol\Model\Emulation\SetNavigatorOverridesRequest;
 use ChromeDevtoolsProtocol\Model\Emulation\SetPageScaleFactorRequest;
+use ChromeDevtoolsProtocol\Model\Emulation\SetPressureSourceOverrideEnabledRequest;
+use ChromeDevtoolsProtocol\Model\Emulation\SetPressureStateOverrideRequest;
 use ChromeDevtoolsProtocol\Model\Emulation\SetScriptExecutionDisabledRequest;
 use ChromeDevtoolsProtocol\Model\Emulation\SetScrollbarsHiddenRequest;
+use ChromeDevtoolsProtocol\Model\Emulation\SetSensorOverrideEnabledRequest;
+use ChromeDevtoolsProtocol\Model\Emulation\SetSensorOverrideReadingsRequest;
 use ChromeDevtoolsProtocol\Model\Emulation\SetTimezoneOverrideRequest;
 use ChromeDevtoolsProtocol\Model\Emulation\SetTouchEmulationEnabledRequest;
 use ChromeDevtoolsProtocol\Model\Emulation\SetUserAgentOverrideRequest;
@@ -49,7 +59,7 @@ interface EmulationDomainInterface
 
 
 	/**
-	 * Clears the overriden device metrics.
+	 * Clears the overridden device metrics.
 	 *
 	 * @param ContextInterface $ctx
 	 *
@@ -59,7 +69,17 @@ interface EmulationDomainInterface
 
 
 	/**
-	 * Clears the overriden Geolocation Position and Error.
+	 * Clears a device posture override set with either setDeviceMetricsOverride() or setDevicePostureOverride() and starts using posture information from the platform again. Does nothing if no override is set.
+	 *
+	 * @param ContextInterface $ctx
+	 *
+	 * @return void
+	 */
+	public function clearDevicePostureOverride(ContextInterface $ctx): void;
+
+
+	/**
+	 * Clears the overridden Geolocation Position and Error.
 	 *
 	 * @param ContextInterface $ctx
 	 *
@@ -79,6 +99,20 @@ interface EmulationDomainInterface
 
 
 	/**
+	 * Call Emulation.getOverriddenSensorInformation command.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param GetOverriddenSensorInformationRequest $request
+	 *
+	 * @return GetOverriddenSensorInformationResponse
+	 */
+	public function getOverriddenSensorInformation(
+		ContextInterface $ctx,
+		GetOverriddenSensorInformationRequest $request
+	): GetOverriddenSensorInformationResponse;
+
+
+	/**
 	 * Requests that page scale factor is reset to initial values.
 	 *
 	 * @param ContextInterface $ctx
@@ -86,6 +120,28 @@ interface EmulationDomainInterface
 	 * @return void
 	 */
 	public function resetPageScaleFactor(ContextInterface $ctx): void;
+
+
+	/**
+	 * Automatically render all web contents using a dark theme.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param SetAutoDarkModeOverrideRequest $request
+	 *
+	 * @return void
+	 */
+	public function setAutoDarkModeOverride(ContextInterface $ctx, SetAutoDarkModeOverrideRequest $request): void;
+
+
+	/**
+	 * Allows overriding the automation flag.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param SetAutomationOverrideRequest $request
+	 *
+	 * @return void
+	 */
+	public function setAutomationOverride(ContextInterface $ctx, SetAutomationOverrideRequest $request): void;
 
 
 	/**
@@ -122,6 +178,17 @@ interface EmulationDomainInterface
 	 * @return void
 	 */
 	public function setDeviceMetricsOverride(ContextInterface $ctx, SetDeviceMetricsOverrideRequest $request): void;
+
+
+	/**
+	 * Start reporting the given posture value to the Device Posture API. This override can also be set in setDeviceMetricsOverride().
+	 *
+	 * @param ContextInterface $ctx
+	 * @param SetDevicePostureOverrideRequest $request
+	 *
+	 * @return void
+	 */
+	public function setDevicePostureOverride(ContextInterface $ctx, SetDevicePostureOverrideRequest $request): void;
 
 
 	/**
@@ -202,6 +269,20 @@ interface EmulationDomainInterface
 
 
 	/**
+	 * Call Emulation.setHardwareConcurrencyOverride command.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param SetHardwareConcurrencyOverrideRequest $request
+	 *
+	 * @return void
+	 */
+	public function setHardwareConcurrencyOverride(
+		ContextInterface $ctx,
+		SetHardwareConcurrencyOverrideRequest $request
+	): void;
+
+
+	/**
 	 * Overrides the Idle state.
 	 *
 	 * @param ContextInterface $ctx
@@ -246,6 +327,31 @@ interface EmulationDomainInterface
 
 
 	/**
+	 * Overrides a pressure source of a given type, as used by the Compute Pressure API, so that updates to PressureObserver.observe() are provided via setPressureStateOverride instead of being retrieved from platform-provided telemetry data.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param SetPressureSourceOverrideEnabledRequest $request
+	 *
+	 * @return void
+	 */
+	public function setPressureSourceOverrideEnabled(
+		ContextInterface $ctx,
+		SetPressureSourceOverrideEnabledRequest $request
+	): void;
+
+
+	/**
+	 * Provides a given pressure state that will be processed and eventually be delivered to PressureObserver users. |source| must have been previously overridden by setPressureSourceOverrideEnabled.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param SetPressureStateOverrideRequest $request
+	 *
+	 * @return void
+	 */
+	public function setPressureStateOverride(ContextInterface $ctx, SetPressureStateOverrideRequest $request): void;
+
+
+	/**
 	 * Switches script execution in the page.
 	 *
 	 * @param ContextInterface $ctx
@@ -265,6 +371,28 @@ interface EmulationDomainInterface
 	 * @return void
 	 */
 	public function setScrollbarsHidden(ContextInterface $ctx, SetScrollbarsHiddenRequest $request): void;
+
+
+	/**
+	 * Overrides a platform sensor of a given type. If |enabled| is true, calls to Sensor.start() will use a virtual sensor as backend rather than fetching data from a real hardware sensor. Otherwise, existing virtual sensor-backend Sensor objects will fire an error event and new calls to Sensor.start() will attempt to use a real sensor instead.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param SetSensorOverrideEnabledRequest $request
+	 *
+	 * @return void
+	 */
+	public function setSensorOverrideEnabled(ContextInterface $ctx, SetSensorOverrideEnabledRequest $request): void;
+
+
+	/**
+	 * Updates the sensor readings reported by a sensor type previously overridden by setSensorOverrideEnabled.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param SetSensorOverrideReadingsRequest $request
+	 *
+	 * @return void
+	 */
+	public function setSensorOverrideReadings(ContextInterface $ctx, SetSensorOverrideReadingsRequest $request): void;
 
 
 	/**
@@ -290,7 +418,7 @@ interface EmulationDomainInterface
 
 
 	/**
-	 * Allows overriding user agent with the given string.
+	 * Allows overriding user agent with the given string. `userAgentMetadata` must be set for Client Hint headers to be sent.
 	 *
 	 * @param ContextInterface $ctx
 	 * @param SetUserAgentOverrideRequest $request

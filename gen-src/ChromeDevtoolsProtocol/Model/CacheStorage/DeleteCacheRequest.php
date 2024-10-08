@@ -19,6 +19,10 @@ final class DeleteCacheRequest implements \JsonSerializable
 	public $cacheId;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

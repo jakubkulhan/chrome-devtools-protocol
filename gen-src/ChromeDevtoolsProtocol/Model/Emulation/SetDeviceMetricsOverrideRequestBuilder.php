@@ -25,6 +25,7 @@ final class SetDeviceMetricsOverrideRequestBuilder
 	private $screenOrientation;
 	private $viewport;
 	private $displayFeature;
+	private $devicePosture;
 
 
 	/**
@@ -58,6 +59,7 @@ final class SetDeviceMetricsOverrideRequestBuilder
 		$instance->screenOrientation = $this->screenOrientation;
 		$instance->viewport = $this->viewport;
 		$instance->displayFeature = $this->displayFeature;
+		$instance->devicePosture = $this->devicePosture;
 		return $instance;
 	}
 
@@ -214,6 +216,18 @@ final class SetDeviceMetricsOverrideRequestBuilder
 	public function setDisplayFeature($displayFeature): self
 	{
 		$this->displayFeature = $displayFeature;
+		return $this;
+	}
+
+
+	/**
+	 * @param DevicePosture|null $devicePosture
+	 *
+	 * @return self
+	 */
+	public function setDevicePosture($devicePosture): self
+	{
+		$this->devicePosture = $devicePosture;
 		return $this;
 	}
 }

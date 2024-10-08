@@ -18,6 +18,10 @@ final class RemoveCredentialRequest implements \JsonSerializable
 	public $credentialId;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

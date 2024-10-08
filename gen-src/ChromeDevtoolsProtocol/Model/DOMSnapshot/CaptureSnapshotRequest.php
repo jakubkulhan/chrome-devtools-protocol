@@ -32,7 +32,25 @@ final class CaptureSnapshotRequest implements \JsonSerializable
 	 */
 	public $includeDOMRects;
 
+	/**
+	 * Whether to include blended background colors in the snapshot (default: false). Blended background color is achieved by blending background colors of all elements that overlap with the current element.
+	 *
+	 * @var bool|null
+	 */
+	public $includeBlendedBackgroundColors;
 
+	/**
+	 * Whether to include text color opacity in the snapshot (default: false). An element might have the opacity property set that affects the text color of the element. The final text color opacity is computed based on the opacity of all overlapping elements.
+	 *
+	 * @var bool|null
+	 */
+	public $includeTextColorOpacities;
+
+
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();
@@ -47,6 +65,12 @@ final class CaptureSnapshotRequest implements \JsonSerializable
 		}
 		if (isset($data->includeDOMRects)) {
 			$instance->includeDOMRects = (bool)$data->includeDOMRects;
+		}
+		if (isset($data->includeBlendedBackgroundColors)) {
+			$instance->includeBlendedBackgroundColors = (bool)$data->includeBlendedBackgroundColors;
+		}
+		if (isset($data->includeTextColorOpacities)) {
+			$instance->includeTextColorOpacities = (bool)$data->includeTextColorOpacities;
 		}
 		return $instance;
 	}
@@ -66,6 +90,12 @@ final class CaptureSnapshotRequest implements \JsonSerializable
 		}
 		if ($this->includeDOMRects !== null) {
 			$data->includeDOMRects = $this->includeDOMRects;
+		}
+		if ($this->includeBlendedBackgroundColors !== null) {
+			$data->includeBlendedBackgroundColors = $this->includeBlendedBackgroundColors;
+		}
+		if ($this->includeTextColorOpacities !== null) {
+			$data->includeTextColorOpacities = $this->includeTextColorOpacities;
 		}
 		return $data;
 	}

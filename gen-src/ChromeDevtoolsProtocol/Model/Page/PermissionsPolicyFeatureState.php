@@ -21,6 +21,10 @@ final class PermissionsPolicyFeatureState implements \JsonSerializable
 	public $locator;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

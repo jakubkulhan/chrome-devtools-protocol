@@ -15,6 +15,10 @@ final class SetSinkToUseRequest implements \JsonSerializable
 	public $sinkName;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

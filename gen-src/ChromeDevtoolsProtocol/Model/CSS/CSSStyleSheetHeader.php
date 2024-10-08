@@ -26,7 +26,7 @@ final class CSSStyleSheetHeader implements \JsonSerializable
 	public $frameId;
 
 	/**
-	 * Stylesheet resource URL.
+	 * Stylesheet resource URL. Empty if this is a constructed stylesheet created using new CSSStyleSheet() (but non-empty if this is a constructed stylesheet imported as a CSS module script).
 	 *
 	 * @var string
 	 */
@@ -82,14 +82,14 @@ final class CSSStyleSheetHeader implements \JsonSerializable
 	public $isInline;
 
 	/**
-	 * Whether this stylesheet is mutable. Inline stylesheets become mutable after they have been modified via CSSOM API. <link> element's stylesheets become mutable only if DevTools modifies them. Constructed stylesheets (new CSSStyleSheet()) are mutable immediately after creation.
+	 * Whether this stylesheet is mutable. Inline stylesheets become mutable after they have been modified via CSSOM API. `<link>` element's stylesheets become mutable only if DevTools modifies them. Constructed stylesheets (new CSSStyleSheet()) are mutable immediately after creation.
 	 *
 	 * @var bool
 	 */
 	public $isMutable;
 
 	/**
-	 * Whether this stylesheet is a constructed stylesheet (created using new CSSStyleSheet()).
+	 * True if this stylesheet is created through new CSSStyleSheet() or imported as a CSS module script.
 	 *
 	 * @var bool
 	 */
@@ -130,7 +130,18 @@ final class CSSStyleSheetHeader implements \JsonSerializable
 	 */
 	public $endColumn;
 
+	/**
+	 * If the style sheet was loaded from a network resource, this indicates when the resource failed to load
+	 *
+	 * @var bool|null
+	 */
+	public $loadingFailed;
 
+
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();
@@ -184,6 +195,9 @@ final class CSSStyleSheetHeader implements \JsonSerializable
 		}
 		if (isset($data->endColumn)) {
 			$instance->endColumn = $data->endColumn;
+		}
+		if (isset($data->loadingFailed)) {
+			$instance->loadingFailed = (bool)$data->loadingFailed;
 		}
 		return $instance;
 	}
@@ -242,6 +256,9 @@ final class CSSStyleSheetHeader implements \JsonSerializable
 		}
 		if ($this->endColumn !== null) {
 			$data->endColumn = $this->endColumn;
+		}
+		if ($this->loadingFailed !== null) {
+			$data->loadingFailed = $this->loadingFailed;
 		}
 		return $data;
 	}

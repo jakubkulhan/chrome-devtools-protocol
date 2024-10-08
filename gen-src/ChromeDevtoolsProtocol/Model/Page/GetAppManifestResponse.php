@@ -29,13 +29,20 @@ final class GetAppManifestResponse implements \JsonSerializable
 	public $data;
 
 	/**
-	 * Parsed manifest properties
+	 * Parsed manifest properties. Deprecated, use manifest instead.
 	 *
 	 * @var AppManifestParsedProperties|null
 	 */
 	public $parsed;
 
+	/** @var WebAppManifest */
+	public $manifest;
 
+
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();
@@ -53,6 +60,9 @@ final class GetAppManifestResponse implements \JsonSerializable
 		}
 		if (isset($data->parsed)) {
 			$instance->parsed = AppManifestParsedProperties::fromJson($data->parsed);
+		}
+		if (isset($data->manifest)) {
+			$instance->manifest = WebAppManifest::fromJson($data->manifest);
 		}
 		return $instance;
 	}
@@ -75,6 +85,9 @@ final class GetAppManifestResponse implements \JsonSerializable
 		}
 		if ($this->parsed !== null) {
 			$data->parsed = $this->parsed->jsonSerialize();
+		}
+		if ($this->manifest !== null) {
+			$data->manifest = $this->manifest->jsonSerialize();
 		}
 		return $data;
 	}

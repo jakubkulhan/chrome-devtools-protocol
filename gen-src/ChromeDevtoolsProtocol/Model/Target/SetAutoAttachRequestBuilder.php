@@ -14,6 +14,7 @@ final class SetAutoAttachRequestBuilder
 	private $autoAttach;
 	private $waitForDebuggerOnStart;
 	private $flatten;
+	private $filter;
 
 
 	/**
@@ -31,6 +32,7 @@ final class SetAutoAttachRequestBuilder
 		}
 		$instance->waitForDebuggerOnStart = $this->waitForDebuggerOnStart;
 		$instance->flatten = $this->flatten;
+		$instance->filter = $this->filter;
 		return $instance;
 	}
 
@@ -67,6 +69,18 @@ final class SetAutoAttachRequestBuilder
 	public function setFlatten($flatten): self
 	{
 		$this->flatten = $flatten;
+		return $this;
+	}
+
+
+	/**
+	 * @param FilterEntry[] $filter
+	 *
+	 * @return self
+	 */
+	public function setFilter($filter): self
+	{
+		$this->filter = $filter;
 		return $this;
 	}
 }

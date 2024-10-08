@@ -15,6 +15,10 @@ final class ExecuteBrowserCommandRequest implements \JsonSerializable
 	public $commandId;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

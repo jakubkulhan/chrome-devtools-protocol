@@ -19,6 +19,10 @@ final class SetDocumentCookieDisabledRequest implements \JsonSerializable
 	public $disabled;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

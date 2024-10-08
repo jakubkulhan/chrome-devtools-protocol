@@ -32,14 +32,11 @@ final class LoadingFinishedEvent implements \JsonSerializable
 	 */
 	public $encodedDataLength;
 
+
 	/**
-	 * Set when 1) response was blocked by Cross-Origin Read Blocking and also 2) this needs to be reported to the DevTools console.
-	 *
-	 * @var bool|null
+	 * @param object $data
+	 * @return static
 	 */
-	public $shouldReportCorbBlocking;
-
-
 	public static function fromJson($data)
 	{
 		$instance = new static();
@@ -51,9 +48,6 @@ final class LoadingFinishedEvent implements \JsonSerializable
 		}
 		if (isset($data->encodedDataLength)) {
 			$instance->encodedDataLength = $data->encodedDataLength;
-		}
-		if (isset($data->shouldReportCorbBlocking)) {
-			$instance->shouldReportCorbBlocking = (bool)$data->shouldReportCorbBlocking;
 		}
 		return $instance;
 	}
@@ -70,9 +64,6 @@ final class LoadingFinishedEvent implements \JsonSerializable
 		}
 		if ($this->encodedDataLength !== null) {
 			$data->encodedDataLength = $this->encodedDataLength;
-		}
-		if ($this->shouldReportCorbBlocking !== null) {
-			$data->shouldReportCorbBlocking = $this->shouldReportCorbBlocking;
 		}
 		return $data;
 	}

@@ -82,18 +82,11 @@ final class PrintToPDFRequest implements \JsonSerializable
 	public $marginRight;
 
 	/**
-	 * Paper ranges to print, e.g., '1-5, 8, 11-13'. Defaults to the empty string, which means print all pages.
+	 * Paper ranges to print, one based, e.g., '1-5, 8, 11-13'. Pages are printed in the document order, not in the order specified, and no more than once. Defaults to empty string, which implies the entire document is printed. The page numbers are quietly capped to actual page count of the document, and ranges beyond the end of the document are ignored. If this results in no pages to print, an error is reported. It is an error to specify a range with start greater than end.
 	 *
 	 * @var string|null
 	 */
 	public $pageRanges;
-
-	/**
-	 * Whether to silently ignore invalid but successfully parsed page ranges, such as '3-2'. Defaults to false.
-	 *
-	 * @var bool|null
-	 */
-	public $ignoreInvalidPageRanges;
 
 	/**
 	 * HTML template for the print header. Should be valid HTML markup with following classes used to inject printing values into them: - `date`: formatted print date - `title`: document title - `url`: document location - `pageNumber`: current page number - `totalPages`: total pages in the document For example, `<span class=title></span>` would generate span containing the title.
@@ -123,7 +116,25 @@ final class PrintToPDFRequest implements \JsonSerializable
 	 */
 	public $transferMode;
 
+	/**
+	 * Whether or not to generate tagged (accessible) PDF. Defaults to embedder choice.
+	 *
+	 * @var bool|null
+	 */
+	public $generateTaggedPDF;
 
+	/**
+	 * Whether or not to embed the document outline into the PDF.
+	 *
+	 * @var bool|null
+	 */
+	public $generateDocumentOutline;
+
+
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();
@@ -160,9 +171,6 @@ final class PrintToPDFRequest implements \JsonSerializable
 		if (isset($data->pageRanges)) {
 			$instance->pageRanges = (string)$data->pageRanges;
 		}
-		if (isset($data->ignoreInvalidPageRanges)) {
-			$instance->ignoreInvalidPageRanges = (bool)$data->ignoreInvalidPageRanges;
-		}
 		if (isset($data->headerTemplate)) {
 			$instance->headerTemplate = (string)$data->headerTemplate;
 		}
@@ -174,6 +182,12 @@ final class PrintToPDFRequest implements \JsonSerializable
 		}
 		if (isset($data->transferMode)) {
 			$instance->transferMode = (string)$data->transferMode;
+		}
+		if (isset($data->generateTaggedPDF)) {
+			$instance->generateTaggedPDF = (bool)$data->generateTaggedPDF;
+		}
+		if (isset($data->generateDocumentOutline)) {
+			$instance->generateDocumentOutline = (bool)$data->generateDocumentOutline;
 		}
 		return $instance;
 	}
@@ -215,9 +229,6 @@ final class PrintToPDFRequest implements \JsonSerializable
 		if ($this->pageRanges !== null) {
 			$data->pageRanges = $this->pageRanges;
 		}
-		if ($this->ignoreInvalidPageRanges !== null) {
-			$data->ignoreInvalidPageRanges = $this->ignoreInvalidPageRanges;
-		}
 		if ($this->headerTemplate !== null) {
 			$data->headerTemplate = $this->headerTemplate;
 		}
@@ -229,6 +240,12 @@ final class PrintToPDFRequest implements \JsonSerializable
 		}
 		if ($this->transferMode !== null) {
 			$data->transferMode = $this->transferMode;
+		}
+		if ($this->generateTaggedPDF !== null) {
+			$data->generateTaggedPDF = $this->generateTaggedPDF;
+		}
+		if ($this->generateDocumentOutline !== null) {
+			$data->generateDocumentOutline = $this->generateDocumentOutline;
 		}
 		return $data;
 	}

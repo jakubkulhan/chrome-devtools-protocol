@@ -11,21 +11,21 @@ namespace ChromeDevtoolsProtocol\Model\Accessibility;
  */
 final class AXValueTypeEnum
 {
-	const BOOLEAN = 'boolean';
-	const TRISTATE = 'tristate';
-	const BOOLEAN_OR_UNDEFINED = 'booleanOrUndefined';
-	const IDREF = 'idref';
-	const IDREF_LIST = 'idrefList';
-	const INTEGER = 'integer';
-	const NODE = 'node';
-	const NODE_LIST = 'nodeList';
-	const NUMBER = 'number';
-	const STRING = 'string';
-	const COMPUTED_STRING = 'computedString';
-	const TOKEN = 'token';
-	const TOKEN_LIST = 'tokenList';
-	const DOM_RELATION = 'domRelation';
-	const ROLE = 'role';
-	const INTERNAL_ROLE = 'internalRole';
-	const VALUE_UNDEFINED = 'valueUndefined';
+	public const BOOLEAN = 'boolean';
+	public const TRISTATE = 'tristate';
+	public const BOOLEAN_OR_UNDEFINED = 'booleanOrUndefined';
+	public const IDREF = 'idref';
+	public const IDREF_LIST = 'idrefList';
+	public const INTEGER = 'integer';
+	public const NODE = 'node';
+	public const NODE_LIST = 'nodeList';
+	public const NUMBER = 'number';
+	public const STRING = 'string';
+	public const COMPUTED_STRING = 'computedString';
+	public const TOKEN = 'token';
+	public const TOKEN_LIST = 'tokenList';
+	public const DOM_RELATION = 'domRelation';
+	public const ROLE = 'role';
+	public const INTERNAL_ROLE = 'internalRole';
+	public const VALUE_UNDEFINED = 'valueUndefined';
 }

@@ -6,12 +6,14 @@ use ChromeDevtoolsProtocol\Domain\AccessibilityDomain;
 use ChromeDevtoolsProtocol\Domain\AccessibilityDomainInterface;
 use ChromeDevtoolsProtocol\Domain\AnimationDomain;
 use ChromeDevtoolsProtocol\Domain\AnimationDomainInterface;
-use ChromeDevtoolsProtocol\Domain\ApplicationCacheDomain;
-use ChromeDevtoolsProtocol\Domain\ApplicationCacheDomainInterface;
 use ChromeDevtoolsProtocol\Domain\AuditsDomain;
 use ChromeDevtoolsProtocol\Domain\AuditsDomainInterface;
+use ChromeDevtoolsProtocol\Domain\AutofillDomain;
+use ChromeDevtoolsProtocol\Domain\AutofillDomainInterface;
 use ChromeDevtoolsProtocol\Domain\BackgroundServiceDomain;
 use ChromeDevtoolsProtocol\Domain\BackgroundServiceDomainInterface;
+use ChromeDevtoolsProtocol\Domain\BluetoothEmulationDomain;
+use ChromeDevtoolsProtocol\Domain\BluetoothEmulationDomainInterface;
 use ChromeDevtoolsProtocol\Domain\BrowserDomain;
 use ChromeDevtoolsProtocol\Domain\BrowserDomainInterface;
 use ChromeDevtoolsProtocol\Domain\CSSDomain;
@@ -34,12 +36,22 @@ use ChromeDevtoolsProtocol\Domain\DatabaseDomain;
 use ChromeDevtoolsProtocol\Domain\DatabaseDomainInterface;
 use ChromeDevtoolsProtocol\Domain\DebuggerDomain;
 use ChromeDevtoolsProtocol\Domain\DebuggerDomainInterface;
+use ChromeDevtoolsProtocol\Domain\DeviceAccessDomain;
+use ChromeDevtoolsProtocol\Domain\DeviceAccessDomainInterface;
 use ChromeDevtoolsProtocol\Domain\DeviceOrientationDomain;
 use ChromeDevtoolsProtocol\Domain\DeviceOrientationDomainInterface;
 use ChromeDevtoolsProtocol\Domain\EmulationDomain;
 use ChromeDevtoolsProtocol\Domain\EmulationDomainInterface;
+use ChromeDevtoolsProtocol\Domain\EventBreakpointsDomain;
+use ChromeDevtoolsProtocol\Domain\EventBreakpointsDomainInterface;
+use ChromeDevtoolsProtocol\Domain\ExtensionsDomain;
+use ChromeDevtoolsProtocol\Domain\ExtensionsDomainInterface;
+use ChromeDevtoolsProtocol\Domain\FedCmDomain;
+use ChromeDevtoolsProtocol\Domain\FedCmDomainInterface;
 use ChromeDevtoolsProtocol\Domain\FetchDomain;
 use ChromeDevtoolsProtocol\Domain\FetchDomainInterface;
+use ChromeDevtoolsProtocol\Domain\FileSystemDomain;
+use ChromeDevtoolsProtocol\Domain\FileSystemDomainInterface;
 use ChromeDevtoolsProtocol\Domain\HeadlessExperimentalDomain;
 use ChromeDevtoolsProtocol\Domain\HeadlessExperimentalDomainInterface;
 use ChromeDevtoolsProtocol\Domain\HeapProfilerDomain;
@@ -64,12 +76,16 @@ use ChromeDevtoolsProtocol\Domain\NetworkDomain;
 use ChromeDevtoolsProtocol\Domain\NetworkDomainInterface;
 use ChromeDevtoolsProtocol\Domain\OverlayDomain;
 use ChromeDevtoolsProtocol\Domain\OverlayDomainInterface;
+use ChromeDevtoolsProtocol\Domain\PWADomain;
+use ChromeDevtoolsProtocol\Domain\PWADomainInterface;
 use ChromeDevtoolsProtocol\Domain\PageDomain;
 use ChromeDevtoolsProtocol\Domain\PageDomainInterface;
 use ChromeDevtoolsProtocol\Domain\PerformanceDomain;
 use ChromeDevtoolsProtocol\Domain\PerformanceDomainInterface;
 use ChromeDevtoolsProtocol\Domain\PerformanceTimelineDomain;
 use ChromeDevtoolsProtocol\Domain\PerformanceTimelineDomainInterface;
+use ChromeDevtoolsProtocol\Domain\PreloadDomain;
+use ChromeDevtoolsProtocol\Domain\PreloadDomainInterface;
 use ChromeDevtoolsProtocol\Domain\ProfilerDomain;
 use ChromeDevtoolsProtocol\Domain\ProfilerDomainInterface;
 use ChromeDevtoolsProtocol\Domain\RuntimeDomain;
@@ -125,18 +141,6 @@ trait DevtoolsClientTrait
 	}
 
 
-	public function applicationCache(): ApplicationCacheDomainInterface
-	{
-		if (!isset($this->domains['ApplicationCache'])) {
-			/** @var InternalClientInterface $this */
-			$this->domains['ApplicationCache'] = new ApplicationCacheDomain($this);
-		}
-		/** @var ApplicationCacheDomainInterface $domain */
-		$domain = $this->domains['ApplicationCache'];
-		return $domain;
-	}
-
-
 	public function audits(): AuditsDomainInterface
 	{
 		if (!isset($this->domains['Audits'])) {
@@ -149,6 +153,18 @@ trait DevtoolsClientTrait
 	}
 
 
+	public function autofill(): AutofillDomainInterface
+	{
+		if (!isset($this->domains['Autofill'])) {
+			/** @var InternalClientInterface $this */
+			$this->domains['Autofill'] = new AutofillDomain($this);
+		}
+		/** @var AutofillDomainInterface $domain */
+		$domain = $this->domains['Autofill'];
+		return $domain;
+	}
+
+
 	public function backgroundService(): BackgroundServiceDomainInterface
 	{
 		if (!isset($this->domains['BackgroundService'])) {
@@ -157,6 +173,18 @@ trait DevtoolsClientTrait
 		}
 		/** @var BackgroundServiceDomainInterface $domain */
 		$domain = $this->domains['BackgroundService'];
+		return $domain;
+	}
+
+
+	public function bluetoothEmulation(): BluetoothEmulationDomainInterface
+	{
+		if (!isset($this->domains['BluetoothEmulation'])) {
+			/** @var InternalClientInterface $this */
+			$this->domains['BluetoothEmulation'] = new BluetoothEmulationDomain($this);
+		}
+		/** @var BluetoothEmulationDomainInterface $domain */
+		$domain = $this->domains['BluetoothEmulation'];
 		return $domain;
 	}
 
@@ -245,6 +273,18 @@ trait DevtoolsClientTrait
 	}
 
 
+	public function deviceAccess(): DeviceAccessDomainInterface
+	{
+		if (!isset($this->domains['DeviceAccess'])) {
+			/** @var InternalClientInterface $this */
+			$this->domains['DeviceAccess'] = new DeviceAccessDomain($this);
+		}
+		/** @var DeviceAccessDomainInterface $domain */
+		$domain = $this->domains['DeviceAccess'];
+		return $domain;
+	}
+
+
 	public function deviceOrientation(): DeviceOrientationDomainInterface
 	{
 		if (!isset($this->domains['DeviceOrientation'])) {
@@ -317,6 +357,42 @@ trait DevtoolsClientTrait
 	}
 
 
+	public function eventBreakpoints(): EventBreakpointsDomainInterface
+	{
+		if (!isset($this->domains['EventBreakpoints'])) {
+			/** @var InternalClientInterface $this */
+			$this->domains['EventBreakpoints'] = new EventBreakpointsDomain($this);
+		}
+		/** @var EventBreakpointsDomainInterface $domain */
+		$domain = $this->domains['EventBreakpoints'];
+		return $domain;
+	}
+
+
+	public function extensions(): ExtensionsDomainInterface
+	{
+		if (!isset($this->domains['Extensions'])) {
+			/** @var InternalClientInterface $this */
+			$this->domains['Extensions'] = new ExtensionsDomain($this);
+		}
+		/** @var ExtensionsDomainInterface $domain */
+		$domain = $this->domains['Extensions'];
+		return $domain;
+	}
+
+
+	public function fedCm(): FedCmDomainInterface
+	{
+		if (!isset($this->domains['FedCm'])) {
+			/** @var InternalClientInterface $this */
+			$this->domains['FedCm'] = new FedCmDomain($this);
+		}
+		/** @var FedCmDomainInterface $domain */
+		$domain = $this->domains['FedCm'];
+		return $domain;
+	}
+
+
 	public function fetch(): FetchDomainInterface
 	{
 		if (!isset($this->domains['Fetch'])) {
@@ -325,6 +401,18 @@ trait DevtoolsClientTrait
 		}
 		/** @var FetchDomainInterface $domain */
 		$domain = $this->domains['Fetch'];
+		return $domain;
+	}
+
+
+	public function fileSystem(): FileSystemDomainInterface
+	{
+		if (!isset($this->domains['FileSystem'])) {
+			/** @var InternalClientInterface $this */
+			$this->domains['FileSystem'] = new FileSystemDomain($this);
+		}
+		/** @var FileSystemDomainInterface $domain */
+		$domain = $this->domains['FileSystem'];
 		return $domain;
 	}
 
@@ -509,6 +597,18 @@ trait DevtoolsClientTrait
 	}
 
 
+	public function preload(): PreloadDomainInterface
+	{
+		if (!isset($this->domains['Preload'])) {
+			/** @var InternalClientInterface $this */
+			$this->domains['Preload'] = new PreloadDomain($this);
+		}
+		/** @var PreloadDomainInterface $domain */
+		$domain = $this->domains['Preload'];
+		return $domain;
+	}
+
+
 	public function profiler(): ProfilerDomainInterface
 	{
 		if (!isset($this->domains['Profiler'])) {
@@ -517,6 +617,18 @@ trait DevtoolsClientTrait
 		}
 		/** @var ProfilerDomainInterface $domain */
 		$domain = $this->domains['Profiler'];
+		return $domain;
+	}
+
+
+	public function pwa(): PWADomainInterface
+	{
+		if (!isset($this->domains['PWA'])) {
+			/** @var InternalClientInterface $this */
+			$this->domains['PWA'] = new PWADomain($this);
+		}
+		/** @var PWADomainInterface $domain */
+		$domain = $this->domains['PWA'];
 		return $domain;
 	}
 

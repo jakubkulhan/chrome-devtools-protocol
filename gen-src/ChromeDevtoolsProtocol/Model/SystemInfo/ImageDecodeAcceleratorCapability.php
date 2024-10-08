@@ -40,6 +40,10 @@ final class ImageDecodeAcceleratorCapability implements \JsonSerializable
 	public $subsamplings;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

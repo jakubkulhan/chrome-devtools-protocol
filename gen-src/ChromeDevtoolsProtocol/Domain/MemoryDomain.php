@@ -6,6 +6,7 @@ use ChromeDevtoolsProtocol\ContextInterface;
 use ChromeDevtoolsProtocol\InternalClientInterface;
 use ChromeDevtoolsProtocol\Model\Memory\GetAllTimeSamplingProfileResponse;
 use ChromeDevtoolsProtocol\Model\Memory\GetBrowserSamplingProfileResponse;
+use ChromeDevtoolsProtocol\Model\Memory\GetDOMCountersForLeakDetectionResponse;
 use ChromeDevtoolsProtocol\Model\Memory\GetDOMCountersResponse;
 use ChromeDevtoolsProtocol\Model\Memory\GetSamplingProfileResponse;
 use ChromeDevtoolsProtocol\Model\Memory\SetPressureNotificationsSuppressedRequest;
@@ -52,6 +53,14 @@ class MemoryDomain implements MemoryDomainInterface
 		$request = new \stdClass();
 		$response = $this->internalClient->executeCommand($ctx, 'Memory.getDOMCounters', $request);
 		return GetDOMCountersResponse::fromJson($response);
+	}
+
+
+	public function getDOMCountersForLeakDetection(ContextInterface $ctx): GetDOMCountersForLeakDetectionResponse
+	{
+		$request = new \stdClass();
+		$response = $this->internalClient->executeCommand($ctx, 'Memory.getDOMCountersForLeakDetection', $request);
+		return GetDOMCountersForLeakDetectionResponse::fromJson($response);
 	}
 
 

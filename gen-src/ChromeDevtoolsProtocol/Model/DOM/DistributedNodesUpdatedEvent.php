@@ -3,7 +3,7 @@
 namespace ChromeDevtoolsProtocol\Model\DOM;
 
 /**
- * Called when distrubution is changed.
+ * Called when distribution is changed.
  *
  * @generated This file has been auto-generated, do not edit.
  *
@@ -12,7 +12,7 @@ namespace ChromeDevtoolsProtocol\Model\DOM;
 final class DistributedNodesUpdatedEvent implements \JsonSerializable
 {
 	/**
-	 * Insertion point where distrubuted nodes were updated.
+	 * Insertion point where distributed nodes were updated.
 	 *
 	 * @var int
 	 */
@@ -26,6 +26,10 @@ final class DistributedNodesUpdatedEvent implements \JsonSerializable
 	public $distributedNodes;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

@@ -33,6 +33,10 @@ final class SetTimingRequest implements \JsonSerializable
 	public $delay;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

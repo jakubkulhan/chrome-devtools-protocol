@@ -3,7 +3,7 @@
 namespace ChromeDevtoolsProtocol\Model\Audits;
 
 /**
- * Details for a issue arising from an SAB being instantiated in, or transfered to a context that is not cross-origin isolated.
+ * Details for a issue arising from an SAB being instantiated in, or transferred to a context that is not cross-origin isolated.
  *
  * @generated This file has been auto-generated, do not edit.
  *
@@ -21,6 +21,10 @@ final class SharedArrayBufferIssueDetails implements \JsonSerializable
 	public $type;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

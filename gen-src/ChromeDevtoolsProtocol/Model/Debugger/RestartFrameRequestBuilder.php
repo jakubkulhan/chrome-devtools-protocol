@@ -12,6 +12,7 @@ use ChromeDevtoolsProtocol\Exception\BuilderException;
 final class RestartFrameRequestBuilder
 {
 	private $callFrameId;
+	private $mode;
 
 
 	/**
@@ -24,6 +25,7 @@ final class RestartFrameRequestBuilder
 			throw new BuilderException('Property [callFrameId] is required.');
 		}
 		$instance->callFrameId = $this->callFrameId;
+		$instance->mode = $this->mode;
 		return $instance;
 	}
 
@@ -36,6 +38,18 @@ final class RestartFrameRequestBuilder
 	public function setCallFrameId($callFrameId): self
 	{
 		$this->callFrameId = $callFrameId;
+		return $this;
+	}
+
+
+	/**
+	 * @param string|null $mode
+	 *
+	 * @return self
+	 */
+	public function setMode($mode): self
+	{
+		$this->mode = $mode;
 		return $this;
 	}
 }

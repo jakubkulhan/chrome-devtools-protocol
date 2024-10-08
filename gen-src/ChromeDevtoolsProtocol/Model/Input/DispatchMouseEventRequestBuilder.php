@@ -185,7 +185,7 @@ final class DispatchMouseEventRequestBuilder
 
 
 	/**
-	 * @param int|null $tiltX
+	 * @param int|float|null $tiltX
 	 *
 	 * @return self
 	 */
@@ -197,7 +197,7 @@ final class DispatchMouseEventRequestBuilder
 
 
 	/**
-	 * @param int|null $tiltY
+	 * @param int|float|null $tiltY
 	 *
 	 * @return self
 	 */

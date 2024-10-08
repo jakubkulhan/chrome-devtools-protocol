@@ -12,13 +12,17 @@ namespace ChromeDevtoolsProtocol\Model\Debugger;
 final class EnableRequest implements \JsonSerializable
 {
 	/**
-	 * The maximum size in bytes of collected scripts (not referenced by other heap objects) the debugger can hold. Puts no limit if paramter is omitted.
+	 * The maximum size in bytes of collected scripts (not referenced by other heap objects) the debugger can hold. Puts no limit if parameter is omitted.
 	 *
 	 * @var int|float|null
 	 */
 	public $maxScriptsCacheSize;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

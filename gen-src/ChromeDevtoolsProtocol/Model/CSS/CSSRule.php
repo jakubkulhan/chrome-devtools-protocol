@@ -26,6 +26,13 @@ final class CSSRule implements \JsonSerializable
 	public $selectorList;
 
 	/**
+	 * Array of selectors from ancestor style rules, sorted by distance from the current rule.
+	 *
+	 * @var string[]|null
+	 */
+	public $nestingSelectors;
+
+	/**
 	 * Parent stylesheet's origin.
 	 *
 	 * @var string
@@ -46,7 +53,46 @@ final class CSSRule implements \JsonSerializable
 	 */
 	public $media;
 
+	/**
+	 * Container query list array (for rules involving container queries). The array enumerates container queries starting with the innermost one, going outwards.
+	 *
+	 * @var CSSContainerQuery[]|null
+	 */
+	public $containerQueries;
 
+	/**
+	 * @supports CSS at-rule array. The array enumerates @supports at-rules starting with the innermost one, going outwards.
+	 *
+	 * @var CSSSupports[]|null
+	 */
+	public $supports;
+
+	/**
+	 * Cascade layer array. Contains the layer hierarchy that this rule belongs to starting with the innermost layer and going outwards.
+	 *
+	 * @var CSSLayer[]|null
+	 */
+	public $layers;
+
+	/**
+	 * @scope CSS at-rule array. The array enumerates @scope at-rules starting with the innermost one, going outwards.
+	 *
+	 * @var CSSScope[]|null
+	 */
+	public $scopes;
+
+	/**
+	 * The array keeps the types of ancestor CSSRules from the innermost going outwards.
+	 *
+	 * @var string[]|null
+	 */
+	public $ruleTypes;
+
+
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();
@@ -55,6 +101,12 @@ final class CSSRule implements \JsonSerializable
 		}
 		if (isset($data->selectorList)) {
 			$instance->selectorList = SelectorList::fromJson($data->selectorList);
+		}
+		if (isset($data->nestingSelectors)) {
+			$instance->nestingSelectors = [];
+			foreach ($data->nestingSelectors as $item) {
+				$instance->nestingSelectors[] = (string)$item;
+			}
 		}
 		if (isset($data->origin)) {
 			$instance->origin = (string)$data->origin;
@@ -67,6 +119,39 @@ final class CSSRule implements \JsonSerializable
 			foreach ($data->media as $item) {
 				$instance->media[] = CSSMedia::fromJson($item);
 			}
+		}
+		if (isset($data->containerQueries)) {
+			$instance->containerQueries = [];
+			foreach ($data->containerQueries as $item) {
+				$instance->containerQueries[] = CSSContainerQuery::fromJson($item);
+			}
+		}
+		if (isset($data->supports)) {
+			$instance->supports = [];
+			foreach ($data->supports as $item) {
+				$instance->supports[] = CSSSupports::fromJson($item);
+			}
+		}
+		if (isset($data->layers)) {
+			$instance->layers = [];
+			foreach ($data->layers as $item) {
+				$instance->layers[] = CSSLayer::fromJson($item);
+			}
+		}
+		if (isset($data->scopes)) {
+			$instance->scopes = [];
+			foreach ($data->scopes as $item) {
+				$instance->scopes[] = CSSScope::fromJson($item);
+			}
+		}
+		if (isset($data->ruleTypes)) {
+			$instance->ruleTypes = [];
+		if (isset($data->ruleTypes)) {
+			$instance->ruleTypes = [];
+			foreach ($data->ruleTypes as $item) {
+				$instance->ruleTypes[] = (string)$item;
+			}
+		}
 		}
 		return $instance;
 	}
@@ -81,6 +166,12 @@ final class CSSRule implements \JsonSerializable
 		if ($this->selectorList !== null) {
 			$data->selectorList = $this->selectorList->jsonSerialize();
 		}
+		if ($this->nestingSelectors !== null) {
+			$data->nestingSelectors = [];
+			foreach ($this->nestingSelectors as $item) {
+				$data->nestingSelectors[] = $item;
+			}
+		}
 		if ($this->origin !== null) {
 			$data->origin = $this->origin;
 		}
@@ -92,6 +183,39 @@ final class CSSRule implements \JsonSerializable
 			foreach ($this->media as $item) {
 				$data->media[] = $item->jsonSerialize();
 			}
+		}
+		if ($this->containerQueries !== null) {
+			$data->containerQueries = [];
+			foreach ($this->containerQueries as $item) {
+				$data->containerQueries[] = $item->jsonSerialize();
+			}
+		}
+		if ($this->supports !== null) {
+			$data->supports = [];
+			foreach ($this->supports as $item) {
+				$data->supports[] = $item->jsonSerialize();
+			}
+		}
+		if ($this->layers !== null) {
+			$data->layers = [];
+			foreach ($this->layers as $item) {
+				$data->layers[] = $item->jsonSerialize();
+			}
+		}
+		if ($this->scopes !== null) {
+			$data->scopes = [];
+			foreach ($this->scopes as $item) {
+				$data->scopes[] = $item->jsonSerialize();
+			}
+		}
+		if ($this->ruleTypes !== null) {
+			$data->ruleTypes = [];
+		if ($this->ruleTypes !== null) {
+			$data->ruleTypes = [];
+			foreach ($this->ruleTypes as $item) {
+				$data->ruleTypes[] = $item;
+			}
+		}
 		}
 		return $data;
 	}

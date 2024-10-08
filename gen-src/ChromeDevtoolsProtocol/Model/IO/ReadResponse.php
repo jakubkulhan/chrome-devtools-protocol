@@ -26,13 +26,17 @@ final class ReadResponse implements \JsonSerializable
 	public $data;
 
 	/**
-	 * Set if the end-of-file condition occured while reading.
+	 * Set if the end-of-file condition occurred while reading.
 	 *
 	 * @var bool
 	 */
 	public $eof;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

@@ -145,6 +145,13 @@ final class Node implements \JsonSerializable
 	public $pseudoType;
 
 	/**
+	 * Pseudo element identifier for this node. Only present if there is a valid pseudoType.
+	 *
+	 * @var string|null
+	 */
+	public $pseudoIdentifier;
+
+	/**
 	 * Shadow root type.
 	 *
 	 * @var string
@@ -187,7 +194,7 @@ final class Node implements \JsonSerializable
 	public $pseudoElements;
 
 	/**
-	 * Import document for the HTMLImport links.
+	 * Deprecated, as the HTML Imports API has been removed (crbug.com/937746). This property used to return the imported document for the HTMLImport links. The property is always undefined now.
 	 *
 	 * @var Node|null
 	 */
@@ -207,7 +214,20 @@ final class Node implements \JsonSerializable
 	 */
 	public $isSVG;
 
+	/** @var string */
+	public $compatibilityMode;
 
+	/** @var BackendNode|null */
+	public $assignedSlot;
+
+	/** @var bool|null */
+	public $isScrollable;
+
+
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();
@@ -274,6 +294,9 @@ final class Node implements \JsonSerializable
 		if (isset($data->pseudoType)) {
 			$instance->pseudoType = (string)$data->pseudoType;
 		}
+		if (isset($data->pseudoIdentifier)) {
+			$instance->pseudoIdentifier = (string)$data->pseudoIdentifier;
+		}
 		if (isset($data->shadowRootType)) {
 			$instance->shadowRootType = (string)$data->shadowRootType;
 		}
@@ -309,6 +332,15 @@ final class Node implements \JsonSerializable
 		}
 		if (isset($data->isSVG)) {
 			$instance->isSVG = (bool)$data->isSVG;
+		}
+		if (isset($data->compatibilityMode)) {
+			$instance->compatibilityMode = (string)$data->compatibilityMode;
+		}
+		if (isset($data->assignedSlot)) {
+			$instance->assignedSlot = BackendNode::fromJson($data->assignedSlot);
+		}
+		if (isset($data->isScrollable)) {
+			$instance->isScrollable = (bool)$data->isScrollable;
 		}
 		return $instance;
 	}
@@ -380,6 +412,9 @@ final class Node implements \JsonSerializable
 		if ($this->pseudoType !== null) {
 			$data->pseudoType = $this->pseudoType;
 		}
+		if ($this->pseudoIdentifier !== null) {
+			$data->pseudoIdentifier = $this->pseudoIdentifier;
+		}
 		if ($this->shadowRootType !== null) {
 			$data->shadowRootType = $this->shadowRootType;
 		}
@@ -415,6 +450,15 @@ final class Node implements \JsonSerializable
 		}
 		if ($this->isSVG !== null) {
 			$data->isSVG = $this->isSVG;
+		}
+		if ($this->compatibilityMode !== null) {
+			$data->compatibilityMode = $this->compatibilityMode;
+		}
+		if ($this->assignedSlot !== null) {
+			$data->assignedSlot = $this->assignedSlot->jsonSerialize();
+		}
+		if ($this->isScrollable !== null) {
+			$data->isScrollable = $this->isScrollable;
 		}
 		return $data;
 	}

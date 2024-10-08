@@ -14,6 +14,8 @@ final class CaptureSnapshotRequestBuilder
 	private $computedStyles;
 	private $includePaintOrder;
 	private $includeDOMRects;
+	private $includeBlendedBackgroundColors;
+	private $includeTextColorOpacities;
 
 
 	/**
@@ -28,6 +30,8 @@ final class CaptureSnapshotRequestBuilder
 		$instance->computedStyles = $this->computedStyles;
 		$instance->includePaintOrder = $this->includePaintOrder;
 		$instance->includeDOMRects = $this->includeDOMRects;
+		$instance->includeBlendedBackgroundColors = $this->includeBlendedBackgroundColors;
+		$instance->includeTextColorOpacities = $this->includeTextColorOpacities;
 		return $instance;
 	}
 
@@ -64,6 +68,30 @@ final class CaptureSnapshotRequestBuilder
 	public function setIncludeDOMRects($includeDOMRects): self
 	{
 		$this->includeDOMRects = $includeDOMRects;
+		return $this;
+	}
+
+
+	/**
+	 * @param bool|null $includeBlendedBackgroundColors
+	 *
+	 * @return self
+	 */
+	public function setIncludeBlendedBackgroundColors($includeBlendedBackgroundColors): self
+	{
+		$this->includeBlendedBackgroundColors = $includeBlendedBackgroundColors;
+		return $this;
+	}
+
+
+	/**
+	 * @param bool|null $includeTextColorOpacities
+	 *
+	 * @return self
+	 */
+	public function setIncludeTextColorOpacities($includeTextColorOpacities): self
+	{
+		$this->includeTextColorOpacities = $includeTextColorOpacities;
 		return $this;
 	}
 }

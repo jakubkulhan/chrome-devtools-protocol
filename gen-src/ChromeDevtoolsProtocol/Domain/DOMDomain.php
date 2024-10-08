@@ -19,15 +19,23 @@ use ChromeDevtoolsProtocol\Model\DOM\DescribeNodeResponse;
 use ChromeDevtoolsProtocol\Model\DOM\DiscardSearchResultsRequest;
 use ChromeDevtoolsProtocol\Model\DOM\DistributedNodesUpdatedEvent;
 use ChromeDevtoolsProtocol\Model\DOM\DocumentUpdatedEvent;
+use ChromeDevtoolsProtocol\Model\DOM\EnableRequest;
 use ChromeDevtoolsProtocol\Model\DOM\FocusRequest;
+use ChromeDevtoolsProtocol\Model\DOM\GetAnchorElementRequest;
+use ChromeDevtoolsProtocol\Model\DOM\GetAnchorElementResponse;
 use ChromeDevtoolsProtocol\Model\DOM\GetAttributesRequest;
 use ChromeDevtoolsProtocol\Model\DOM\GetAttributesResponse;
 use ChromeDevtoolsProtocol\Model\DOM\GetBoxModelRequest;
 use ChromeDevtoolsProtocol\Model\DOM\GetBoxModelResponse;
+use ChromeDevtoolsProtocol\Model\DOM\GetContainerForNodeRequest;
+use ChromeDevtoolsProtocol\Model\DOM\GetContainerForNodeResponse;
 use ChromeDevtoolsProtocol\Model\DOM\GetContentQuadsRequest;
 use ChromeDevtoolsProtocol\Model\DOM\GetContentQuadsResponse;
+use ChromeDevtoolsProtocol\Model\DOM\GetDetachedDomNodesResponse;
 use ChromeDevtoolsProtocol\Model\DOM\GetDocumentRequest;
 use ChromeDevtoolsProtocol\Model\DOM\GetDocumentResponse;
+use ChromeDevtoolsProtocol\Model\DOM\GetElementByRelationRequest;
+use ChromeDevtoolsProtocol\Model\DOM\GetElementByRelationResponse;
 use ChromeDevtoolsProtocol\Model\DOM\GetFileInfoRequest;
 use ChromeDevtoolsProtocol\Model\DOM\GetFileInfoResponse;
 use ChromeDevtoolsProtocol\Model\DOM\GetFlattenedDocumentRequest;
@@ -42,10 +50,13 @@ use ChromeDevtoolsProtocol\Model\DOM\GetNodesForSubtreeByStyleRequest;
 use ChromeDevtoolsProtocol\Model\DOM\GetNodesForSubtreeByStyleResponse;
 use ChromeDevtoolsProtocol\Model\DOM\GetOuterHTMLRequest;
 use ChromeDevtoolsProtocol\Model\DOM\GetOuterHTMLResponse;
+use ChromeDevtoolsProtocol\Model\DOM\GetQueryingDescendantsForContainerRequest;
+use ChromeDevtoolsProtocol\Model\DOM\GetQueryingDescendantsForContainerResponse;
 use ChromeDevtoolsProtocol\Model\DOM\GetRelayoutBoundaryRequest;
 use ChromeDevtoolsProtocol\Model\DOM\GetRelayoutBoundaryResponse;
 use ChromeDevtoolsProtocol\Model\DOM\GetSearchResultsRequest;
 use ChromeDevtoolsProtocol\Model\DOM\GetSearchResultsResponse;
+use ChromeDevtoolsProtocol\Model\DOM\GetTopLayerElementsResponse;
 use ChromeDevtoolsProtocol\Model\DOM\InlineStyleInvalidatedEvent;
 use ChromeDevtoolsProtocol\Model\DOM\MoveToRequest;
 use ChromeDevtoolsProtocol\Model\DOM\MoveToResponse;
@@ -69,6 +80,7 @@ use ChromeDevtoolsProtocol\Model\DOM\RequestNodeResponse;
 use ChromeDevtoolsProtocol\Model\DOM\ResolveNodeRequest;
 use ChromeDevtoolsProtocol\Model\DOM\ResolveNodeResponse;
 use ChromeDevtoolsProtocol\Model\DOM\ScrollIntoViewIfNeededRequest;
+use ChromeDevtoolsProtocol\Model\DOM\ScrollableFlagUpdatedEvent;
 use ChromeDevtoolsProtocol\Model\DOM\SetAttributeValueRequest;
 use ChromeDevtoolsProtocol\Model\DOM\SetAttributesAsTextRequest;
 use ChromeDevtoolsProtocol\Model\DOM\SetChildNodesEvent;
@@ -81,6 +93,7 @@ use ChromeDevtoolsProtocol\Model\DOM\SetNodeValueRequest;
 use ChromeDevtoolsProtocol\Model\DOM\SetOuterHTMLRequest;
 use ChromeDevtoolsProtocol\Model\DOM\ShadowRootPoppedEvent;
 use ChromeDevtoolsProtocol\Model\DOM\ShadowRootPushedEvent;
+use ChromeDevtoolsProtocol\Model\DOM\TopLayerElementsUpdatedEvent;
 use ChromeDevtoolsProtocol\SubscriptionInterface;
 
 class DOMDomain implements DOMDomainInterface
@@ -131,9 +144,8 @@ class DOMDomain implements DOMDomainInterface
 	}
 
 
-	public function enable(ContextInterface $ctx): void
+	public function enable(ContextInterface $ctx, EnableRequest $request): void
 	{
-		$request = new \stdClass();
 		$this->internalClient->executeCommand($ctx, 'DOM.enable', $request);
 	}
 
@@ -141,6 +153,13 @@ class DOMDomain implements DOMDomainInterface
 	public function focus(ContextInterface $ctx, FocusRequest $request): void
 	{
 		$this->internalClient->executeCommand($ctx, 'DOM.focus', $request);
+	}
+
+
+	public function getAnchorElement(ContextInterface $ctx, GetAnchorElementRequest $request): GetAnchorElementResponse
+	{
+		$response = $this->internalClient->executeCommand($ctx, 'DOM.getAnchorElement', $request);
+		return GetAnchorElementResponse::fromJson($response);
 	}
 
 
@@ -158,6 +177,15 @@ class DOMDomain implements DOMDomainInterface
 	}
 
 
+	public function getContainerForNode(
+		ContextInterface $ctx,
+		GetContainerForNodeRequest $request
+	): GetContainerForNodeResponse {
+		$response = $this->internalClient->executeCommand($ctx, 'DOM.getContainerForNode', $request);
+		return GetContainerForNodeResponse::fromJson($response);
+	}
+
+
 	public function getContentQuads(ContextInterface $ctx, GetContentQuadsRequest $request): GetContentQuadsResponse
 	{
 		$response = $this->internalClient->executeCommand($ctx, 'DOM.getContentQuads', $request);
@@ -165,10 +193,27 @@ class DOMDomain implements DOMDomainInterface
 	}
 
 
+	public function getDetachedDomNodes(ContextInterface $ctx): GetDetachedDomNodesResponse
+	{
+		$request = new \stdClass();
+		$response = $this->internalClient->executeCommand($ctx, 'DOM.getDetachedDomNodes', $request);
+		return GetDetachedDomNodesResponse::fromJson($response);
+	}
+
+
 	public function getDocument(ContextInterface $ctx, GetDocumentRequest $request): GetDocumentResponse
 	{
 		$response = $this->internalClient->executeCommand($ctx, 'DOM.getDocument', $request);
 		return GetDocumentResponse::fromJson($response);
+	}
+
+
+	public function getElementByRelation(
+		ContextInterface $ctx,
+		GetElementByRelationRequest $request
+	): GetElementByRelationResponse {
+		$response = $this->internalClient->executeCommand($ctx, 'DOM.getElementByRelation', $request);
+		return GetElementByRelationResponse::fromJson($response);
 	}
 
 
@@ -229,6 +274,15 @@ class DOMDomain implements DOMDomainInterface
 	}
 
 
+	public function getQueryingDescendantsForContainer(
+		ContextInterface $ctx,
+		GetQueryingDescendantsForContainerRequest $request
+	): GetQueryingDescendantsForContainerResponse {
+		$response = $this->internalClient->executeCommand($ctx, 'DOM.getQueryingDescendantsForContainer', $request);
+		return GetQueryingDescendantsForContainerResponse::fromJson($response);
+	}
+
+
 	public function getRelayoutBoundary(
 		ContextInterface $ctx,
 		GetRelayoutBoundaryRequest $request
@@ -242,6 +296,14 @@ class DOMDomain implements DOMDomainInterface
 	{
 		$response = $this->internalClient->executeCommand($ctx, 'DOM.getSearchResults', $request);
 		return GetSearchResultsResponse::fromJson($response);
+	}
+
+
+	public function getTopLayerElements(ContextInterface $ctx): GetTopLayerElementsResponse
+	{
+		$request = new \stdClass();
+		$response = $this->internalClient->executeCommand($ctx, 'DOM.getTopLayerElements', $request);
+		return GetTopLayerElementsResponse::fromJson($response);
 	}
 
 
@@ -574,6 +636,20 @@ class DOMDomain implements DOMDomainInterface
 	}
 
 
+	public function addScrollableFlagUpdatedListener(callable $listener): SubscriptionInterface
+	{
+		return $this->internalClient->addListener('DOM.scrollableFlagUpdated', function ($event) use ($listener) {
+			return $listener(ScrollableFlagUpdatedEvent::fromJson($event));
+		});
+	}
+
+
+	public function awaitScrollableFlagUpdated(ContextInterface $ctx): ScrollableFlagUpdatedEvent
+	{
+		return ScrollableFlagUpdatedEvent::fromJson($this->internalClient->awaitEvent($ctx, 'DOM.scrollableFlagUpdated'));
+	}
+
+
 	public function addSetChildNodesListener(callable $listener): SubscriptionInterface
 	{
 		return $this->internalClient->addListener('DOM.setChildNodes', function ($event) use ($listener) {
@@ -613,5 +689,19 @@ class DOMDomain implements DOMDomainInterface
 	public function awaitShadowRootPushed(ContextInterface $ctx): ShadowRootPushedEvent
 	{
 		return ShadowRootPushedEvent::fromJson($this->internalClient->awaitEvent($ctx, 'DOM.shadowRootPushed'));
+	}
+
+
+	public function addTopLayerElementsUpdatedListener(callable $listener): SubscriptionInterface
+	{
+		return $this->internalClient->addListener('DOM.topLayerElementsUpdated', function ($event) use ($listener) {
+			return $listener(TopLayerElementsUpdatedEvent::fromJson($event));
+		});
+	}
+
+
+	public function awaitTopLayerElementsUpdated(ContextInterface $ctx): TopLayerElementsUpdatedEvent
+	{
+		return TopLayerElementsUpdatedEvent::fromJson($this->internalClient->awaitEvent($ctx, 'DOM.topLayerElementsUpdated'));
 	}
 }

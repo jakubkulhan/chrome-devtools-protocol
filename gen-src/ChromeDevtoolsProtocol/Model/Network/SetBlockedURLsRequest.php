@@ -19,6 +19,10 @@ final class SetBlockedURLsRequest implements \JsonSerializable
 	public $urls;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

@@ -3,7 +3,7 @@
 namespace ChromeDevtoolsProtocol\Model\Tracing;
 
 /**
- * Contains an bucket of collected trace events. When tracing is stopped collected events will be send as a sequence of dataCollected events followed by tracingComplete event.
+ * Contains a bucket of collected trace events. When tracing is stopped collected events will be sent as a sequence of dataCollected events followed by tracingComplete event.
  *
  * @generated This file has been auto-generated, do not edit.
  *
@@ -15,6 +15,10 @@ final class DataCollectedEvent implements \JsonSerializable
 	public $value;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

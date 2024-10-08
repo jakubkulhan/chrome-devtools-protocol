@@ -26,6 +26,10 @@ final class CustomPreview implements \JsonSerializable
 	public $bodyGetterId;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

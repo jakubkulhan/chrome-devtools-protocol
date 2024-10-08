@@ -20,11 +20,12 @@ final class PrintToPDFRequestBuilder
 	private $marginLeft;
 	private $marginRight;
 	private $pageRanges;
-	private $ignoreInvalidPageRanges;
 	private $headerTemplate;
 	private $footerTemplate;
 	private $preferCSSPageSize;
 	private $transferMode;
+	private $generateTaggedPDF;
+	private $generateDocumentOutline;
 
 
 	/**
@@ -44,11 +45,12 @@ final class PrintToPDFRequestBuilder
 		$instance->marginLeft = $this->marginLeft;
 		$instance->marginRight = $this->marginRight;
 		$instance->pageRanges = $this->pageRanges;
-		$instance->ignoreInvalidPageRanges = $this->ignoreInvalidPageRanges;
 		$instance->headerTemplate = $this->headerTemplate;
 		$instance->footerTemplate = $this->footerTemplate;
 		$instance->preferCSSPageSize = $this->preferCSSPageSize;
 		$instance->transferMode = $this->transferMode;
+		$instance->generateTaggedPDF = $this->generateTaggedPDF;
+		$instance->generateDocumentOutline = $this->generateDocumentOutline;
 		return $instance;
 	}
 
@@ -186,18 +188,6 @@ final class PrintToPDFRequestBuilder
 
 
 	/**
-	 * @param bool|null $ignoreInvalidPageRanges
-	 *
-	 * @return self
-	 */
-	public function setIgnoreInvalidPageRanges($ignoreInvalidPageRanges): self
-	{
-		$this->ignoreInvalidPageRanges = $ignoreInvalidPageRanges;
-		return $this;
-	}
-
-
-	/**
 	 * @param string|null $headerTemplate
 	 *
 	 * @return self
@@ -241,6 +231,30 @@ final class PrintToPDFRequestBuilder
 	public function setTransferMode($transferMode): self
 	{
 		$this->transferMode = $transferMode;
+		return $this;
+	}
+
+
+	/**
+	 * @param bool|null $generateTaggedPDF
+	 *
+	 * @return self
+	 */
+	public function setGenerateTaggedPDF($generateTaggedPDF): self
+	{
+		$this->generateTaggedPDF = $generateTaggedPDF;
+		return $this;
+	}
+
+
+	/**
+	 * @param bool|null $generateDocumentOutline
+	 *
+	 * @return self
+	 */
+	public function setGenerateDocumentOutline($generateDocumentOutline): self
+	{
+		$this->generateDocumentOutline = $generateDocumentOutline;
 		return $this;
 	}
 }

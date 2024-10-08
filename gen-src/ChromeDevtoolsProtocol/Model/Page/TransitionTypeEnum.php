@@ -11,17 +11,17 @@ namespace ChromeDevtoolsProtocol\Model\Page;
  */
 final class TransitionTypeEnum
 {
-	const LINK = 'link';
-	const TYPED = 'typed';
-	const ADDRESS_BAR = 'address_bar';
-	const AUTO_BOOKMARK = 'auto_bookmark';
-	const AUTO_SUBFRAME = 'auto_subframe';
-	const MANUAL_SUBFRAME = 'manual_subframe';
-	const GENERATED = 'generated';
-	const AUTO_TOPLEVEL = 'auto_toplevel';
-	const FORM_SUBMIT = 'form_submit';
-	const RELOAD = 'reload';
-	const KEYWORD = 'keyword';
-	const KEYWORD_GENERATED = 'keyword_generated';
-	const OTHER = 'other';
+	public const LINK = 'link';
+	public const TYPED = 'typed';
+	public const ADDRESS_BAR = 'address_bar';
+	public const AUTO_BOOKMARK = 'auto_bookmark';
+	public const AUTO_SUBFRAME = 'auto_subframe';
+	public const MANUAL_SUBFRAME = 'manual_subframe';
+	public const GENERATED = 'generated';
+	public const AUTO_TOPLEVEL = 'auto_toplevel';
+	public const FORM_SUBMIT = 'form_submit';
+	public const RELOAD = 'reload';
+	public const KEYWORD = 'keyword';
+	public const KEYWORD_GENERATED = 'keyword_generated';
+	public const OTHER = 'other';
 }

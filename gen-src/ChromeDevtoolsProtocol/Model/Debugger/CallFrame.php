@@ -42,7 +42,7 @@ final class CallFrame implements \JsonSerializable
 	public $location;
 
 	/**
-	 * JavaScript script name or url.
+	 * JavaScript script name or url. Deprecated in favor of using the `location.scriptId` to resolve the URL via a previously sent `Debugger.scriptParsed` event.
 	 *
 	 * @var string
 	 */
@@ -69,7 +69,18 @@ final class CallFrame implements \JsonSerializable
 	 */
 	public $returnValue;
 
+	/**
+	 * Valid only while the VM is paused and indicates whether this frame can be restarted or not. Note that a `true` value here does not guarantee that Debugger#restartFrame with this CallFrameId will be successful, but it is very likely.
+	 *
+	 * @var bool|null
+	 */
+	public $canBeRestarted;
 
+
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();
@@ -99,6 +110,9 @@ final class CallFrame implements \JsonSerializable
 		}
 		if (isset($data->returnValue)) {
 			$instance->returnValue = RemoteObject::fromJson($data->returnValue);
+		}
+		if (isset($data->canBeRestarted)) {
+			$instance->canBeRestarted = (bool)$data->canBeRestarted;
 		}
 		return $instance;
 	}
@@ -133,6 +147,9 @@ final class CallFrame implements \JsonSerializable
 		}
 		if ($this->returnValue !== null) {
 			$data->returnValue = $this->returnValue->jsonSerialize();
+		}
+		if ($this->canBeRestarted !== null) {
+			$data->canBeRestarted = $this->canBeRestarted;
 		}
 		return $data;
 	}

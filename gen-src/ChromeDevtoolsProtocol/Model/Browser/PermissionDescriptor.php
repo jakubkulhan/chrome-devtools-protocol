@@ -3,7 +3,7 @@
 namespace ChromeDevtoolsProtocol\Model\Browser;
 
 /**
- * Definition of PermissionDescriptor defined in the Permissions API: https://w3c.github.io/permissions/#dictdef-permissiondescriptor.
+ * Definition of PermissionDescriptor defined in the Permissions API: https://w3c.github.io/permissions/#dom-permissiondescriptor.
  *
  * @generated This file has been auto-generated, do not edit.
  *
@@ -40,6 +40,13 @@ final class PermissionDescriptor implements \JsonSerializable
 	public $allowWithoutSanitization;
 
 	/**
+	 * For "fullscreen" permission, must specify allowWithoutGesture:true.
+	 *
+	 * @var bool|null
+	 */
+	public $allowWithoutGesture;
+
+	/**
 	 * For "camera" permission, may specify panTiltZoom.
 	 *
 	 * @var bool|null
@@ -47,6 +54,10 @@ final class PermissionDescriptor implements \JsonSerializable
 	public $panTiltZoom;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();
@@ -61,6 +72,9 @@ final class PermissionDescriptor implements \JsonSerializable
 		}
 		if (isset($data->allowWithoutSanitization)) {
 			$instance->allowWithoutSanitization = (bool)$data->allowWithoutSanitization;
+		}
+		if (isset($data->allowWithoutGesture)) {
+			$instance->allowWithoutGesture = (bool)$data->allowWithoutGesture;
 		}
 		if (isset($data->panTiltZoom)) {
 			$instance->panTiltZoom = (bool)$data->panTiltZoom;
@@ -83,6 +97,9 @@ final class PermissionDescriptor implements \JsonSerializable
 		}
 		if ($this->allowWithoutSanitization !== null) {
 			$data->allowWithoutSanitization = $this->allowWithoutSanitization;
+		}
+		if ($this->allowWithoutGesture !== null) {
+			$data->allowWithoutGesture = $this->allowWithoutGesture;
 		}
 		if ($this->panTiltZoom !== null) {
 			$data->panTiltZoom = $this->panTiltZoom;

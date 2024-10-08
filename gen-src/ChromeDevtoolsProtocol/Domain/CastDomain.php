@@ -8,6 +8,7 @@ use ChromeDevtoolsProtocol\Model\Cast\EnableRequest;
 use ChromeDevtoolsProtocol\Model\Cast\IssueUpdatedEvent;
 use ChromeDevtoolsProtocol\Model\Cast\SetSinkToUseRequest;
 use ChromeDevtoolsProtocol\Model\Cast\SinksUpdatedEvent;
+use ChromeDevtoolsProtocol\Model\Cast\StartDesktopMirroringRequest;
 use ChromeDevtoolsProtocol\Model\Cast\StartTabMirroringRequest;
 use ChromeDevtoolsProtocol\Model\Cast\StopCastingRequest;
 use ChromeDevtoolsProtocol\SubscriptionInterface;
@@ -40,6 +41,12 @@ class CastDomain implements CastDomainInterface
 	public function setSinkToUse(ContextInterface $ctx, SetSinkToUseRequest $request): void
 	{
 		$this->internalClient->executeCommand($ctx, 'Cast.setSinkToUse', $request);
+	}
+
+
+	public function startDesktopMirroring(ContextInterface $ctx, StartDesktopMirroringRequest $request): void
+	{
+		$this->internalClient->executeCommand($ctx, 'Cast.startDesktopMirroring', $request);
 	}
 
 

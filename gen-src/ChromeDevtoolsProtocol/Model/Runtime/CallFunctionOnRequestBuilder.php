@@ -21,6 +21,9 @@ final class CallFunctionOnRequestBuilder
 	private $awaitPromise;
 	private $executionContextId;
 	private $objectGroup;
+	private $throwOnSideEffect;
+	private $uniqueContextId;
+	private $serializationOptions;
 
 
 	/**
@@ -42,6 +45,9 @@ final class CallFunctionOnRequestBuilder
 		$instance->awaitPromise = $this->awaitPromise;
 		$instance->executionContextId = $this->executionContextId;
 		$instance->objectGroup = $this->objectGroup;
+		$instance->throwOnSideEffect = $this->throwOnSideEffect;
+		$instance->uniqueContextId = $this->uniqueContextId;
+		$instance->serializationOptions = $this->serializationOptions;
 		return $instance;
 	}
 
@@ -162,6 +168,42 @@ final class CallFunctionOnRequestBuilder
 	public function setObjectGroup($objectGroup): self
 	{
 		$this->objectGroup = $objectGroup;
+		return $this;
+	}
+
+
+	/**
+	 * @param bool|null $throwOnSideEffect
+	 *
+	 * @return self
+	 */
+	public function setThrowOnSideEffect($throwOnSideEffect): self
+	{
+		$this->throwOnSideEffect = $throwOnSideEffect;
+		return $this;
+	}
+
+
+	/**
+	 * @param string|null $uniqueContextId
+	 *
+	 * @return self
+	 */
+	public function setUniqueContextId($uniqueContextId): self
+	{
+		$this->uniqueContextId = $uniqueContextId;
+		return $this;
+	}
+
+
+	/**
+	 * @param SerializationOptions|null $serializationOptions
+	 *
+	 * @return self
+	 */
+	public function setSerializationOptions($serializationOptions): self
+	{
+		$this->serializationOptions = $serializationOptions;
 		return $this;
 	}
 }

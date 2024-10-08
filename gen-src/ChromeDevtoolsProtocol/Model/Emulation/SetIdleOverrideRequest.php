@@ -26,6 +26,10 @@ final class SetIdleOverrideRequest implements \JsonSerializable
 	public $isScreenUnlocked;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

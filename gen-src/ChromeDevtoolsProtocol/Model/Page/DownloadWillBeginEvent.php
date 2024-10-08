@@ -3,7 +3,7 @@
 namespace ChromeDevtoolsProtocol\Model\Page;
 
 /**
- * Fired when page is about to start a download.
+ * Fired when page is about to start a download. Deprecated. Use Browser.downloadWillBegin instead.
  *
  * @generated This file has been auto-generated, do not edit.
  *
@@ -40,6 +40,10 @@ final class DownloadWillBeginEvent implements \JsonSerializable
 	public $suggestedFilename;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

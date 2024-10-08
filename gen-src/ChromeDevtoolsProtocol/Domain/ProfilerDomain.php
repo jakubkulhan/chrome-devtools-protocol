@@ -7,15 +7,12 @@ use ChromeDevtoolsProtocol\InternalClientInterface;
 use ChromeDevtoolsProtocol\Model\Profiler\ConsoleProfileFinishedEvent;
 use ChromeDevtoolsProtocol\Model\Profiler\ConsoleProfileStartedEvent;
 use ChromeDevtoolsProtocol\Model\Profiler\GetBestEffortCoverageResponse;
-use ChromeDevtoolsProtocol\Model\Profiler\GetCountersResponse;
-use ChromeDevtoolsProtocol\Model\Profiler\GetRuntimeCallStatsResponse;
 use ChromeDevtoolsProtocol\Model\Profiler\PreciseCoverageDeltaUpdateEvent;
 use ChromeDevtoolsProtocol\Model\Profiler\SetSamplingIntervalRequest;
 use ChromeDevtoolsProtocol\Model\Profiler\StartPreciseCoverageRequest;
 use ChromeDevtoolsProtocol\Model\Profiler\StartPreciseCoverageResponse;
 use ChromeDevtoolsProtocol\Model\Profiler\StopResponse;
 use ChromeDevtoolsProtocol\Model\Profiler\TakePreciseCoverageResponse;
-use ChromeDevtoolsProtocol\Model\Profiler\TakeTypeProfileResponse;
 use ChromeDevtoolsProtocol\SubscriptionInterface;
 
 class ProfilerDomain implements ProfilerDomainInterface
@@ -37,38 +34,10 @@ class ProfilerDomain implements ProfilerDomainInterface
 	}
 
 
-	public function disableCounters(ContextInterface $ctx): void
-	{
-		$request = new \stdClass();
-		$this->internalClient->executeCommand($ctx, 'Profiler.disableCounters', $request);
-	}
-
-
-	public function disableRuntimeCallStats(ContextInterface $ctx): void
-	{
-		$request = new \stdClass();
-		$this->internalClient->executeCommand($ctx, 'Profiler.disableRuntimeCallStats', $request);
-	}
-
-
 	public function enable(ContextInterface $ctx): void
 	{
 		$request = new \stdClass();
 		$this->internalClient->executeCommand($ctx, 'Profiler.enable', $request);
-	}
-
-
-	public function enableCounters(ContextInterface $ctx): void
-	{
-		$request = new \stdClass();
-		$this->internalClient->executeCommand($ctx, 'Profiler.enableCounters', $request);
-	}
-
-
-	public function enableRuntimeCallStats(ContextInterface $ctx): void
-	{
-		$request = new \stdClass();
-		$this->internalClient->executeCommand($ctx, 'Profiler.enableRuntimeCallStats', $request);
 	}
 
 
@@ -77,22 +46,6 @@ class ProfilerDomain implements ProfilerDomainInterface
 		$request = new \stdClass();
 		$response = $this->internalClient->executeCommand($ctx, 'Profiler.getBestEffortCoverage', $request);
 		return GetBestEffortCoverageResponse::fromJson($response);
-	}
-
-
-	public function getCounters(ContextInterface $ctx): GetCountersResponse
-	{
-		$request = new \stdClass();
-		$response = $this->internalClient->executeCommand($ctx, 'Profiler.getCounters', $request);
-		return GetCountersResponse::fromJson($response);
-	}
-
-
-	public function getRuntimeCallStats(ContextInterface $ctx): GetRuntimeCallStatsResponse
-	{
-		$request = new \stdClass();
-		$response = $this->internalClient->executeCommand($ctx, 'Profiler.getRuntimeCallStats', $request);
-		return GetRuntimeCallStatsResponse::fromJson($response);
 	}
 
 
@@ -118,13 +71,6 @@ class ProfilerDomain implements ProfilerDomainInterface
 	}
 
 
-	public function startTypeProfile(ContextInterface $ctx): void
-	{
-		$request = new \stdClass();
-		$this->internalClient->executeCommand($ctx, 'Profiler.startTypeProfile', $request);
-	}
-
-
 	public function stop(ContextInterface $ctx): StopResponse
 	{
 		$request = new \stdClass();
@@ -140,26 +86,11 @@ class ProfilerDomain implements ProfilerDomainInterface
 	}
 
 
-	public function stopTypeProfile(ContextInterface $ctx): void
-	{
-		$request = new \stdClass();
-		$this->internalClient->executeCommand($ctx, 'Profiler.stopTypeProfile', $request);
-	}
-
-
 	public function takePreciseCoverage(ContextInterface $ctx): TakePreciseCoverageResponse
 	{
 		$request = new \stdClass();
 		$response = $this->internalClient->executeCommand($ctx, 'Profiler.takePreciseCoverage', $request);
 		return TakePreciseCoverageResponse::fromJson($response);
-	}
-
-
-	public function takeTypeProfile(ContextInterface $ctx): TakeTypeProfileResponse
-	{
-		$request = new \stdClass();
-		$response = $this->internalClient->executeCommand($ctx, 'Profiler.takeTypeProfile', $request);
-		return TakeTypeProfileResponse::fromJson($response);
 	}
 
 

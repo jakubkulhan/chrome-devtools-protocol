@@ -46,7 +46,18 @@ final class CaptureScreenshotRequest implements \JsonSerializable
 	 */
 	public $captureBeyondViewport;
 
+	/**
+	 * Optimize image encoding for speed, not for resulting size (defaults to false)
+	 *
+	 * @var bool|null
+	 */
+	public $optimizeForSpeed;
 
+
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();
@@ -64,6 +75,9 @@ final class CaptureScreenshotRequest implements \JsonSerializable
 		}
 		if (isset($data->captureBeyondViewport)) {
 			$instance->captureBeyondViewport = (bool)$data->captureBeyondViewport;
+		}
+		if (isset($data->optimizeForSpeed)) {
+			$instance->optimizeForSpeed = (bool)$data->optimizeForSpeed;
 		}
 		return $instance;
 	}
@@ -86,6 +100,9 @@ final class CaptureScreenshotRequest implements \JsonSerializable
 		}
 		if ($this->captureBeyondViewport !== null) {
 			$data->captureBeyondViewport = $this->captureBeyondViewport;
+		}
+		if ($this->optimizeForSpeed !== null) {
+			$data->optimizeForSpeed = $this->optimizeForSpeed;
 		}
 		return $data;
 	}

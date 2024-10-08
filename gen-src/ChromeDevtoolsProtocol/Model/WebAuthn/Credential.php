@@ -52,7 +52,39 @@ final class Credential implements \JsonSerializable
 	 */
 	public $largeBlob;
 
+	/**
+	 * Assertions returned by this credential will have the backup eligibility (BE) flag set to this value. Defaults to the authenticator's defaultBackupEligibility value.
+	 *
+	 * @var bool|null
+	 */
+	public $backupEligibility;
 
+	/**
+	 * Assertions returned by this credential will have the backup state (BS) flag set to this value. Defaults to the authenticator's defaultBackupState value.
+	 *
+	 * @var bool|null
+	 */
+	public $backupState;
+
+	/**
+	 * The credential's user.name property. Equivalent to empty if not set. https://w3c.github.io/webauthn/#dom-publickeycredentialentity-name
+	 *
+	 * @var string|null
+	 */
+	public $userName;
+
+	/**
+	 * The credential's user.displayName property. Equivalent to empty if not set. https://w3c.github.io/webauthn/#dom-publickeycredentialuserentity-displayname
+	 *
+	 * @var string|null
+	 */
+	public $userDisplayName;
+
+
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();
@@ -76,6 +108,18 @@ final class Credential implements \JsonSerializable
 		}
 		if (isset($data->largeBlob)) {
 			$instance->largeBlob = (string)$data->largeBlob;
+		}
+		if (isset($data->backupEligibility)) {
+			$instance->backupEligibility = (bool)$data->backupEligibility;
+		}
+		if (isset($data->backupState)) {
+			$instance->backupState = (bool)$data->backupState;
+		}
+		if (isset($data->userName)) {
+			$instance->userName = (string)$data->userName;
+		}
+		if (isset($data->userDisplayName)) {
+			$instance->userDisplayName = (string)$data->userDisplayName;
 		}
 		return $instance;
 	}
@@ -104,6 +148,18 @@ final class Credential implements \JsonSerializable
 		}
 		if ($this->largeBlob !== null) {
 			$data->largeBlob = $this->largeBlob;
+		}
+		if ($this->backupEligibility !== null) {
+			$data->backupEligibility = $this->backupEligibility;
+		}
+		if ($this->backupState !== null) {
+			$data->backupState = $this->backupState;
+		}
+		if ($this->userName !== null) {
+			$data->userName = $this->userName;
+		}
+		if ($this->userDisplayName !== null) {
+			$data->userDisplayName = $this->userDisplayName;
 		}
 		return $data;
 	}

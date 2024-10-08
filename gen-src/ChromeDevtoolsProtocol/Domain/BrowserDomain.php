@@ -4,6 +4,10 @@ namespace ChromeDevtoolsProtocol\Domain;
 
 use ChromeDevtoolsProtocol\ContextInterface;
 use ChromeDevtoolsProtocol\InternalClientInterface;
+use ChromeDevtoolsProtocol\Model\Browser\AddPrivacySandboxEnrollmentOverrideRequest;
+use ChromeDevtoolsProtocol\Model\Browser\CancelDownloadRequest;
+use ChromeDevtoolsProtocol\Model\Browser\DownloadProgressEvent;
+use ChromeDevtoolsProtocol\Model\Browser\DownloadWillBeginEvent;
 use ChromeDevtoolsProtocol\Model\Browser\ExecuteBrowserCommandRequest;
 use ChromeDevtoolsProtocol\Model\Browser\GetBrowserCommandLineResponse;
 use ChromeDevtoolsProtocol\Model\Browser\GetHistogramRequest;
@@ -21,6 +25,7 @@ use ChromeDevtoolsProtocol\Model\Browser\SetDockTileRequest;
 use ChromeDevtoolsProtocol\Model\Browser\SetDownloadBehaviorRequest;
 use ChromeDevtoolsProtocol\Model\Browser\SetPermissionRequest;
 use ChromeDevtoolsProtocol\Model\Browser\SetWindowBoundsRequest;
+use ChromeDevtoolsProtocol\SubscriptionInterface;
 
 class BrowserDomain implements BrowserDomainInterface
 {
@@ -31,6 +36,20 @@ class BrowserDomain implements BrowserDomainInterface
 	public function __construct(InternalClientInterface $internalClient)
 	{
 		$this->internalClient = $internalClient;
+	}
+
+
+	public function addPrivacySandboxEnrollmentOverride(
+		ContextInterface $ctx,
+		AddPrivacySandboxEnrollmentOverrideRequest $request
+	): void {
+		$this->internalClient->executeCommand($ctx, 'Browser.addPrivacySandboxEnrollmentOverride', $request);
+	}
+
+
+	public function cancelDownload(ContextInterface $ctx, CancelDownloadRequest $request): void
+	{
+		$this->internalClient->executeCommand($ctx, 'Browser.cancelDownload', $request);
 	}
 
 
@@ -140,5 +159,33 @@ class BrowserDomain implements BrowserDomainInterface
 	public function setWindowBounds(ContextInterface $ctx, SetWindowBoundsRequest $request): void
 	{
 		$this->internalClient->executeCommand($ctx, 'Browser.setWindowBounds', $request);
+	}
+
+
+	public function addDownloadProgressListener(callable $listener): SubscriptionInterface
+	{
+		return $this->internalClient->addListener('Browser.downloadProgress', function ($event) use ($listener) {
+			return $listener(DownloadProgressEvent::fromJson($event));
+		});
+	}
+
+
+	public function awaitDownloadProgress(ContextInterface $ctx): DownloadProgressEvent
+	{
+		return DownloadProgressEvent::fromJson($this->internalClient->awaitEvent($ctx, 'Browser.downloadProgress'));
+	}
+
+
+	public function addDownloadWillBeginListener(callable $listener): SubscriptionInterface
+	{
+		return $this->internalClient->addListener('Browser.downloadWillBegin', function ($event) use ($listener) {
+			return $listener(DownloadWillBeginEvent::fromJson($event));
+		});
+	}
+
+
+	public function awaitDownloadWillBegin(ContextInterface $ctx): DownloadWillBeginEvent
+	{
+		return DownloadWillBeginEvent::fromJson($this->internalClient->awaitEvent($ctx, 'Browser.downloadWillBegin'));
 	}
 }

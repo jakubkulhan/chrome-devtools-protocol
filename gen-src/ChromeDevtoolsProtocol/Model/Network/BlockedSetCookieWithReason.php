@@ -33,6 +33,10 @@ final class BlockedSetCookieWithReason implements \JsonSerializable
 	public $cookie;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

@@ -19,7 +19,7 @@ final class AppManifestError implements \JsonSerializable
 	public $message;
 
 	/**
-	 * If criticial, this is a non-recoverable parse error.
+	 * If critical, this is a non-recoverable parse error.
 	 *
 	 * @var int
 	 */
@@ -40,6 +40,10 @@ final class AppManifestError implements \JsonSerializable
 	public $column;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

@@ -12,7 +12,7 @@ namespace ChromeDevtoolsProtocol\Model\Target;
 final class CreateTargetRequest implements \JsonSerializable
 {
 	/**
-	 * The initial URL the page will be navigated to.
+	 * The initial URL the page will be navigated to. An empty string indicates about:blank.
 	 *
 	 * @var string
 	 */
@@ -60,7 +60,18 @@ final class CreateTargetRequest implements \JsonSerializable
 	 */
 	public $background;
 
+	/**
+	 * Whether to create the target of type "tab".
+	 *
+	 * @var bool|null
+	 */
+	public $forTab;
 
+
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();
@@ -84,6 +95,9 @@ final class CreateTargetRequest implements \JsonSerializable
 		}
 		if (isset($data->background)) {
 			$instance->background = (bool)$data->background;
+		}
+		if (isset($data->forTab)) {
+			$instance->forTab = (bool)$data->forTab;
 		}
 		return $instance;
 	}
@@ -112,6 +126,9 @@ final class CreateTargetRequest implements \JsonSerializable
 		}
 		if ($this->background !== null) {
 			$data->background = $this->background;
+		}
+		if ($this->forTab !== null) {
+			$data->forTab = $this->forTab;
 		}
 		return $data;
 	}

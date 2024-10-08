@@ -29,6 +29,10 @@ final class TargetCrashedEvent implements \JsonSerializable
 	public $errorCode;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

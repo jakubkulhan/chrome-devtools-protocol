@@ -33,6 +33,10 @@ final class LowTextContrastIssueDetails implements \JsonSerializable
 	public $fontWeight;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

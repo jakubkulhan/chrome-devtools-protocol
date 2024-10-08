@@ -19,7 +19,7 @@ final class ContextRealtimeData implements \JsonSerializable
 	public $currentTime;
 
 	/**
-	 * The time spent on rendering graph divided by render qunatum duration, and multiplied by 100. 100 means the audio renderer reached the full capacity and glitch may occur.
+	 * The time spent on rendering graph divided by render quantum duration, and multiplied by 100. 100 means the audio renderer reached the full capacity and glitch may occur.
 	 *
 	 * @var int|float
 	 */
@@ -40,6 +40,10 @@ final class ContextRealtimeData implements \JsonSerializable
 	public $callbackIntervalVariance;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

@@ -32,7 +32,18 @@ final class SetAutoAttachRequest implements \JsonSerializable
 	 */
 	public $flatten;
 
+	/**
+	 * Only targets matching filter will be attached.
+	 *
+	 * @var FilterEntry[]
+	 */
+	public $filter;
 
+
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();
@@ -44,6 +55,12 @@ final class SetAutoAttachRequest implements \JsonSerializable
 		}
 		if (isset($data->flatten)) {
 			$instance->flatten = (bool)$data->flatten;
+		}
+		if (isset($data->filter)) {
+			$instance->filter = [];
+			foreach ($data->filter as $item) {
+				$instance->filter[] = FilterEntry::fromJson($item);
+			}
 		}
 		return $instance;
 	}
@@ -60,6 +77,12 @@ final class SetAutoAttachRequest implements \JsonSerializable
 		}
 		if ($this->flatten !== null) {
 			$data->flatten = $this->flatten;
+		}
+		if ($this->filter !== null) {
+			$data->filter = [];
+			foreach ($this->filter as $item) {
+				$data->filter[] = $item->jsonSerialize();
+			}
 		}
 		return $data;
 	}

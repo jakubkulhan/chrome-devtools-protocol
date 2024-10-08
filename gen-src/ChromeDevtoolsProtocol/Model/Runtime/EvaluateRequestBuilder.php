@@ -26,6 +26,7 @@ final class EvaluateRequestBuilder
 	private $replMode;
 	private $allowUnsafeEvalBlockedByCSP;
 	private $uniqueContextId;
+	private $serializationOptions;
 
 
 	/**
@@ -52,6 +53,7 @@ final class EvaluateRequestBuilder
 		$instance->replMode = $this->replMode;
 		$instance->allowUnsafeEvalBlockedByCSP = $this->allowUnsafeEvalBlockedByCSP;
 		$instance->uniqueContextId = $this->uniqueContextId;
+		$instance->serializationOptions = $this->serializationOptions;
 		return $instance;
 	}
 
@@ -232,6 +234,18 @@ final class EvaluateRequestBuilder
 	public function setUniqueContextId($uniqueContextId): self
 	{
 		$this->uniqueContextId = $uniqueContextId;
+		return $this;
+	}
+
+
+	/**
+	 * @param SerializationOptions|null $serializationOptions
+	 *
+	 * @return self
+	 */
+	public function setSerializationOptions($serializationOptions): self
+	{
+		$this->serializationOptions = $serializationOptions;
 		return $this;
 	}
 }

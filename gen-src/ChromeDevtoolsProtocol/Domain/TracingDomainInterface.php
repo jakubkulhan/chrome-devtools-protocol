@@ -16,8 +16,6 @@ use ChromeDevtoolsProtocol\SubscriptionInterface;
 /**
  * Tracing domain.
  *
- * @experimental
- *
  * @generated This file has been auto-generated, do not edit.
  *
  * @author Jakub Kulhan <jakub.kulhan@gmail.com>
@@ -102,7 +100,7 @@ interface TracingDomainInterface
 
 
 	/**
-	 * Contains an bucket of collected trace events. When tracing is stopped collected events will be send as a sequence of dataCollected events followed by tracingComplete event.
+	 * Contains a bucket of collected trace events. When tracing is stopped collected events will be sent as a sequence of dataCollected events followed by tracingComplete event.
 	 *
 	 * Listener will be called whenever event Tracing.dataCollected is fired.
 	 *
@@ -114,7 +112,7 @@ interface TracingDomainInterface
 
 
 	/**
-	 * Contains an bucket of collected trace events. When tracing is stopped collected events will be send as a sequence of dataCollected events followed by tracingComplete event.
+	 * Contains a bucket of collected trace events. When tracing is stopped collected events will be sent as a sequence of dataCollected events followed by tracingComplete event.
 	 *
 	 * Method will block until first Tracing.dataCollected event is fired.
 	 *

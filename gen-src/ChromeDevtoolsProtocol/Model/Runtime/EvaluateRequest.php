@@ -110,13 +110,24 @@ final class EvaluateRequest implements \JsonSerializable
 	public $allowUnsafeEvalBlockedByCSP;
 
 	/**
-	 * An alternative way to specify the execution context to evaluate in. Compared to contextId that may be reused accross processes, this is guaranteed to be system-unique, so it can be used to prevent accidental evaluation of the expression in context different than intended (e.g. as a result of navigation accross process boundaries). This is mutually exclusive with `contextId`.
+	 * An alternative way to specify the execution context to evaluate in. Compared to contextId that may be reused across processes, this is guaranteed to be system-unique, so it can be used to prevent accidental evaluation of the expression in context different than intended (e.g. as a result of navigation across process boundaries). This is mutually exclusive with `contextId`.
 	 *
 	 * @var string|null
 	 */
 	public $uniqueContextId;
 
+	/**
+	 * Specifies the result serialization. If provided, overrides `generatePreview` and `returnByValue`.
+	 *
+	 * @var SerializationOptions|null
+	 */
+	public $serializationOptions;
 
+
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();
@@ -164,6 +175,9 @@ final class EvaluateRequest implements \JsonSerializable
 		}
 		if (isset($data->uniqueContextId)) {
 			$instance->uniqueContextId = (string)$data->uniqueContextId;
+		}
+		if (isset($data->serializationOptions)) {
+			$instance->serializationOptions = SerializationOptions::fromJson($data->serializationOptions);
 		}
 		return $instance;
 	}
@@ -216,6 +230,9 @@ final class EvaluateRequest implements \JsonSerializable
 		}
 		if ($this->uniqueContextId !== null) {
 			$data->uniqueContextId = $this->uniqueContextId;
+		}
+		if ($this->serializationOptions !== null) {
+			$data->serializationOptions = $this->serializationOptions->jsonSerialize();
 		}
 		return $data;
 	}

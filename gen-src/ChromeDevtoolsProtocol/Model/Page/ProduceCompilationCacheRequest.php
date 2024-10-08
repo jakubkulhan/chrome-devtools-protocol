@@ -15,6 +15,10 @@ final class ProduceCompilationCacheRequest implements \JsonSerializable
 	public $scripts;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

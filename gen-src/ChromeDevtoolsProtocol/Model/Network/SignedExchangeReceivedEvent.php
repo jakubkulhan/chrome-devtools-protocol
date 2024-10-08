@@ -26,6 +26,10 @@ final class SignedExchangeReceivedEvent implements \JsonSerializable
 	public $info;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

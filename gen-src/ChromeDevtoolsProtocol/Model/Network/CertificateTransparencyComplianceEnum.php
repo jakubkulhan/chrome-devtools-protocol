@@ -11,7 +11,7 @@ namespace ChromeDevtoolsProtocol\Model\Network;
  */
 final class CertificateTransparencyComplianceEnum
 {
-	const UNKNOWN = 'unknown';
-	const NOT_COMPLIANT = 'not-compliant';
-	const COMPLIANT = 'compliant';
+	public const UNKNOWN = 'unknown';
+	public const NOT_COMPLIANT = 'not-compliant';
+	public const COMPLIANT = 'compliant';
 }

@@ -40,13 +40,24 @@ final class ContinueRequestRequest implements \JsonSerializable
 	public $postData;
 
 	/**
-	 * If set, overrides the request headers.
+	 * If set, overrides the request headers. Note that the overrides do not extend to subsequent redirect hops, if a redirect happens. Another override may be applied to a different request produced by a redirect.
 	 *
 	 * @var HeaderEntry[]|null
 	 */
 	public $headers;
 
+	/**
+	 * If set, overrides response interception behavior for this request.
+	 *
+	 * @var bool|null
+	 */
+	public $interceptResponse;
 
+
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();
@@ -67,6 +78,9 @@ final class ContinueRequestRequest implements \JsonSerializable
 			foreach ($data->headers as $item) {
 				$instance->headers[] = HeaderEntry::fromJson($item);
 			}
+		}
+		if (isset($data->interceptResponse)) {
+			$instance->interceptResponse = (bool)$data->interceptResponse;
 		}
 		return $instance;
 	}
@@ -92,6 +106,9 @@ final class ContinueRequestRequest implements \JsonSerializable
 			foreach ($this->headers as $item) {
 				$data->headers[] = $item->jsonSerialize();
 			}
+		}
+		if ($this->interceptResponse !== null) {
+			$data->interceptResponse = $this->interceptResponse;
 		}
 		return $data;
 	}

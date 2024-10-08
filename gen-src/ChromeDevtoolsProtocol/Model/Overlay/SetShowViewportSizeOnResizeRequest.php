@@ -19,6 +19,10 @@ final class SetShowViewportSizeOnResizeRequest implements \JsonSerializable
 	public $show;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

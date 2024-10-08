@@ -24,6 +24,10 @@ final class SourceCodeLocation implements \JsonSerializable
 	public $columnNumber;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

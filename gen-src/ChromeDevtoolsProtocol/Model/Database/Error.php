@@ -26,6 +26,10 @@ final class Error implements \JsonSerializable
 	public $code;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

@@ -15,6 +15,10 @@ final class GlobalLexicalScopeNamesResponse implements \JsonSerializable
 	public $names;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

@@ -63,14 +63,14 @@ final class TouchPoint implements \JsonSerializable
 	/**
 	 * The plane angle between the Y-Z plane and the plane containing both the stylus axis and the Y axis, in degrees of the range [-90,90], a positive tiltX is to the right (default: 0)
 	 *
-	 * @var int|null
+	 * @var int|float|null
 	 */
 	public $tiltX;
 
 	/**
 	 * The plane angle between the X-Z plane and the plane containing both the stylus axis and the X axis, in degrees of the range [-90,90], a positive tiltY is towards the user (default: 0).
 	 *
-	 * @var int|null
+	 * @var int|float|null
 	 */
 	public $tiltY;
 
@@ -89,6 +89,10 @@ final class TouchPoint implements \JsonSerializable
 	public $id;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();
@@ -114,10 +118,10 @@ final class TouchPoint implements \JsonSerializable
 			$instance->tangentialPressure = $data->tangentialPressure;
 		}
 		if (isset($data->tiltX)) {
-			$instance->tiltX = (int)$data->tiltX;
+			$instance->tiltX = $data->tiltX;
 		}
 		if (isset($data->tiltY)) {
-			$instance->tiltY = (int)$data->tiltY;
+			$instance->tiltY = $data->tiltY;
 		}
 		if (isset($data->twist)) {
 			$instance->twist = (int)$data->twist;

@@ -11,6 +11,6 @@ namespace ChromeDevtoolsProtocol\Model\Audits;
  */
 final class HeavyAdResolutionStatusEnum
 {
-	const HEAVY_AD_BLOCKED = 'HeavyAdBlocked';
-	const HEAVY_AD_WARNING = 'HeavyAdWarning';
+	public const HEAVY_AD_BLOCKED = 'HeavyAdBlocked';
+	public const HEAVY_AD_WARNING = 'HeavyAdWarning';
 }

@@ -40,6 +40,10 @@ final class KeyRange implements \JsonSerializable
 	public $upperOpen;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

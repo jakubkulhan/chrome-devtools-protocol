@@ -11,8 +11,8 @@ namespace ChromeDevtoolsProtocol\Model\Audits;
  */
 final class InspectorIssueDetails implements \JsonSerializable
 {
-	/** @var SameSiteCookieIssueDetails|null */
-	public $sameSiteCookieIssueDetails;
+	/** @var CookieIssueDetails|null */
+	public $cookieIssueDetails;
 
 	/** @var MixedContentIssueDetails|null */
 	public $mixedContentIssueDetails;
@@ -29,21 +29,61 @@ final class InspectorIssueDetails implements \JsonSerializable
 	/** @var SharedArrayBufferIssueDetails|null */
 	public $sharedArrayBufferIssueDetails;
 
-	/** @var TrustedWebActivityIssueDetails|null */
-	public $twaQualityEnforcementDetails;
-
 	/** @var LowTextContrastIssueDetails|null */
 	public $lowTextContrastIssueDetails;
 
 	/** @var CorsIssueDetails|null */
 	public $corsIssueDetails;
 
+	/** @var AttributionReportingIssueDetails|null */
+	public $attributionReportingIssueDetails;
 
+	/** @var QuirksModeIssueDetails|null */
+	public $quirksModeIssueDetails;
+
+	/** @var NavigatorUserAgentIssueDetails|null */
+	public $navigatorUserAgentIssueDetails;
+
+	/** @var GenericIssueDetails|null */
+	public $genericIssueDetails;
+
+	/** @var DeprecationIssueDetails|null */
+	public $deprecationIssueDetails;
+
+	/** @var ClientHintIssueDetails|null */
+	public $clientHintIssueDetails;
+
+	/** @var FederatedAuthRequestIssueDetails|null */
+	public $federatedAuthRequestIssueDetails;
+
+	/** @var BounceTrackingIssueDetails|null */
+	public $bounceTrackingIssueDetails;
+
+	/** @var CookieDeprecationMetadataIssueDetails|null */
+	public $cookieDeprecationMetadataIssueDetails;
+
+	/** @var StylesheetLoadingIssueDetails|null */
+	public $stylesheetLoadingIssueDetails;
+
+	/** @var PropertyRuleIssueDetails|null */
+	public $propertyRuleIssueDetails;
+
+	/** @var FederatedAuthUserInfoRequestIssueDetails|null */
+	public $federatedAuthUserInfoRequestIssueDetails;
+
+	/** @var SharedDictionaryIssueDetails|null */
+	public $sharedDictionaryIssueDetails;
+
+
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();
-		if (isset($data->sameSiteCookieIssueDetails)) {
-			$instance->sameSiteCookieIssueDetails = SameSiteCookieIssueDetails::fromJson($data->sameSiteCookieIssueDetails);
+		if (isset($data->cookieIssueDetails)) {
+			$instance->cookieIssueDetails = CookieIssueDetails::fromJson($data->cookieIssueDetails);
 		}
 		if (isset($data->mixedContentIssueDetails)) {
 			$instance->mixedContentIssueDetails = MixedContentIssueDetails::fromJson($data->mixedContentIssueDetails);
@@ -60,14 +100,50 @@ final class InspectorIssueDetails implements \JsonSerializable
 		if (isset($data->sharedArrayBufferIssueDetails)) {
 			$instance->sharedArrayBufferIssueDetails = SharedArrayBufferIssueDetails::fromJson($data->sharedArrayBufferIssueDetails);
 		}
-		if (isset($data->twaQualityEnforcementDetails)) {
-			$instance->twaQualityEnforcementDetails = TrustedWebActivityIssueDetails::fromJson($data->twaQualityEnforcementDetails);
-		}
 		if (isset($data->lowTextContrastIssueDetails)) {
 			$instance->lowTextContrastIssueDetails = LowTextContrastIssueDetails::fromJson($data->lowTextContrastIssueDetails);
 		}
 		if (isset($data->corsIssueDetails)) {
 			$instance->corsIssueDetails = CorsIssueDetails::fromJson($data->corsIssueDetails);
+		}
+		if (isset($data->attributionReportingIssueDetails)) {
+			$instance->attributionReportingIssueDetails = AttributionReportingIssueDetails::fromJson($data->attributionReportingIssueDetails);
+		}
+		if (isset($data->quirksModeIssueDetails)) {
+			$instance->quirksModeIssueDetails = QuirksModeIssueDetails::fromJson($data->quirksModeIssueDetails);
+		}
+		if (isset($data->navigatorUserAgentIssueDetails)) {
+			$instance->navigatorUserAgentIssueDetails = NavigatorUserAgentIssueDetails::fromJson($data->navigatorUserAgentIssueDetails);
+		}
+		if (isset($data->genericIssueDetails)) {
+			$instance->genericIssueDetails = GenericIssueDetails::fromJson($data->genericIssueDetails);
+		}
+		if (isset($data->deprecationIssueDetails)) {
+			$instance->deprecationIssueDetails = DeprecationIssueDetails::fromJson($data->deprecationIssueDetails);
+		}
+		if (isset($data->clientHintIssueDetails)) {
+			$instance->clientHintIssueDetails = ClientHintIssueDetails::fromJson($data->clientHintIssueDetails);
+		}
+		if (isset($data->federatedAuthRequestIssueDetails)) {
+			$instance->federatedAuthRequestIssueDetails = FederatedAuthRequestIssueDetails::fromJson($data->federatedAuthRequestIssueDetails);
+		}
+		if (isset($data->bounceTrackingIssueDetails)) {
+			$instance->bounceTrackingIssueDetails = BounceTrackingIssueDetails::fromJson($data->bounceTrackingIssueDetails);
+		}
+		if (isset($data->cookieDeprecationMetadataIssueDetails)) {
+			$instance->cookieDeprecationMetadataIssueDetails = CookieDeprecationMetadataIssueDetails::fromJson($data->cookieDeprecationMetadataIssueDetails);
+		}
+		if (isset($data->stylesheetLoadingIssueDetails)) {
+			$instance->stylesheetLoadingIssueDetails = StylesheetLoadingIssueDetails::fromJson($data->stylesheetLoadingIssueDetails);
+		}
+		if (isset($data->propertyRuleIssueDetails)) {
+			$instance->propertyRuleIssueDetails = PropertyRuleIssueDetails::fromJson($data->propertyRuleIssueDetails);
+		}
+		if (isset($data->federatedAuthUserInfoRequestIssueDetails)) {
+			$instance->federatedAuthUserInfoRequestIssueDetails = FederatedAuthUserInfoRequestIssueDetails::fromJson($data->federatedAuthUserInfoRequestIssueDetails);
+		}
+		if (isset($data->sharedDictionaryIssueDetails)) {
+			$instance->sharedDictionaryIssueDetails = SharedDictionaryIssueDetails::fromJson($data->sharedDictionaryIssueDetails);
 		}
 		return $instance;
 	}
@@ -76,8 +152,8 @@ final class InspectorIssueDetails implements \JsonSerializable
 	public function jsonSerialize()
 	{
 		$data = new \stdClass();
-		if ($this->sameSiteCookieIssueDetails !== null) {
-			$data->sameSiteCookieIssueDetails = $this->sameSiteCookieIssueDetails->jsonSerialize();
+		if ($this->cookieIssueDetails !== null) {
+			$data->cookieIssueDetails = $this->cookieIssueDetails->jsonSerialize();
 		}
 		if ($this->mixedContentIssueDetails !== null) {
 			$data->mixedContentIssueDetails = $this->mixedContentIssueDetails->jsonSerialize();
@@ -94,14 +170,50 @@ final class InspectorIssueDetails implements \JsonSerializable
 		if ($this->sharedArrayBufferIssueDetails !== null) {
 			$data->sharedArrayBufferIssueDetails = $this->sharedArrayBufferIssueDetails->jsonSerialize();
 		}
-		if ($this->twaQualityEnforcementDetails !== null) {
-			$data->twaQualityEnforcementDetails = $this->twaQualityEnforcementDetails->jsonSerialize();
-		}
 		if ($this->lowTextContrastIssueDetails !== null) {
 			$data->lowTextContrastIssueDetails = $this->lowTextContrastIssueDetails->jsonSerialize();
 		}
 		if ($this->corsIssueDetails !== null) {
 			$data->corsIssueDetails = $this->corsIssueDetails->jsonSerialize();
+		}
+		if ($this->attributionReportingIssueDetails !== null) {
+			$data->attributionReportingIssueDetails = $this->attributionReportingIssueDetails->jsonSerialize();
+		}
+		if ($this->quirksModeIssueDetails !== null) {
+			$data->quirksModeIssueDetails = $this->quirksModeIssueDetails->jsonSerialize();
+		}
+		if ($this->navigatorUserAgentIssueDetails !== null) {
+			$data->navigatorUserAgentIssueDetails = $this->navigatorUserAgentIssueDetails->jsonSerialize();
+		}
+		if ($this->genericIssueDetails !== null) {
+			$data->genericIssueDetails = $this->genericIssueDetails->jsonSerialize();
+		}
+		if ($this->deprecationIssueDetails !== null) {
+			$data->deprecationIssueDetails = $this->deprecationIssueDetails->jsonSerialize();
+		}
+		if ($this->clientHintIssueDetails !== null) {
+			$data->clientHintIssueDetails = $this->clientHintIssueDetails->jsonSerialize();
+		}
+		if ($this->federatedAuthRequestIssueDetails !== null) {
+			$data->federatedAuthRequestIssueDetails = $this->federatedAuthRequestIssueDetails->jsonSerialize();
+		}
+		if ($this->bounceTrackingIssueDetails !== null) {
+			$data->bounceTrackingIssueDetails = $this->bounceTrackingIssueDetails->jsonSerialize();
+		}
+		if ($this->cookieDeprecationMetadataIssueDetails !== null) {
+			$data->cookieDeprecationMetadataIssueDetails = $this->cookieDeprecationMetadataIssueDetails->jsonSerialize();
+		}
+		if ($this->stylesheetLoadingIssueDetails !== null) {
+			$data->stylesheetLoadingIssueDetails = $this->stylesheetLoadingIssueDetails->jsonSerialize();
+		}
+		if ($this->propertyRuleIssueDetails !== null) {
+			$data->propertyRuleIssueDetails = $this->propertyRuleIssueDetails->jsonSerialize();
+		}
+		if ($this->federatedAuthUserInfoRequestIssueDetails !== null) {
+			$data->federatedAuthUserInfoRequestIssueDetails = $this->federatedAuthUserInfoRequestIssueDetails->jsonSerialize();
+		}
+		if ($this->sharedDictionaryIssueDetails !== null) {
+			$data->sharedDictionaryIssueDetails = $this->sharedDictionaryIssueDetails->jsonSerialize();
 		}
 		return $data;
 	}

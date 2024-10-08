@@ -19,6 +19,10 @@ final class StartViolationsReportRequest implements \JsonSerializable
 	public $config;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

@@ -3,7 +3,7 @@
 namespace ChromeDevtoolsProtocol\Model\CSS;
 
 /**
- * Fires whenever a web font is updated. A non-empty font parameter indicates a successfully loaded web font
+ * Fires whenever a web font is updated. A non-empty font parameter indicates a successfully loaded web font.
  *
  * @generated This file has been auto-generated, do not edit.
  *
@@ -19,6 +19,10 @@ final class FontsUpdatedEvent implements \JsonSerializable
 	public $font;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

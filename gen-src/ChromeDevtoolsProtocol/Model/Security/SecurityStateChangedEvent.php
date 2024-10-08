@@ -3,7 +3,7 @@
 namespace ChromeDevtoolsProtocol\Model\Security;
 
 /**
- * The security state of the page changed.
+ * The security state of the page changed. No longer being sent.
  *
  * @generated This file has been auto-generated, do not edit.
  *
@@ -26,7 +26,7 @@ final class SecurityStateChangedEvent implements \JsonSerializable
 	public $schemeIsCryptographic;
 
 	/**
-	 * List of explanations for the security state. If the overall security state is `insecure` or `warning`, at least one corresponding explanation should be included.
+	 * Previously a list of explanations for the security state. Now always empty.
 	 *
 	 * @var SecurityStateExplanation[]
 	 */
@@ -40,13 +40,17 @@ final class SecurityStateChangedEvent implements \JsonSerializable
 	public $insecureContentStatus;
 
 	/**
-	 * Overrides user-visible description of the state.
+	 * Overrides user-visible description of the state. Always omitted.
 	 *
 	 * @var string|null
 	 */
 	public $summary;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

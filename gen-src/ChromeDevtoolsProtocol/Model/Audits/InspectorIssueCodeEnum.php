@@ -11,13 +11,25 @@ namespace ChromeDevtoolsProtocol\Model\Audits;
  */
 final class InspectorIssueCodeEnum
 {
-	const SAME_SITE_COOKIE_ISSUE = 'SameSiteCookieIssue';
-	const MIXED_CONTENT_ISSUE = 'MixedContentIssue';
-	const BLOCKED_BY_RESPONSE_ISSUE = 'BlockedByResponseIssue';
-	const HEAVY_AD_ISSUE = 'HeavyAdIssue';
-	const CONTENT_SECURITY_POLICY_ISSUE = 'ContentSecurityPolicyIssue';
-	const SHARED_ARRAY_BUFFER_ISSUE = 'SharedArrayBufferIssue';
-	const TRUSTED_WEB_ACTIVITY_ISSUE = 'TrustedWebActivityIssue';
-	const LOW_TEXT_CONTRAST_ISSUE = 'LowTextContrastIssue';
-	const CORS_ISSUE = 'CorsIssue';
+	public const COOKIE_ISSUE = 'CookieIssue';
+	public const MIXED_CONTENT_ISSUE = 'MixedContentIssue';
+	public const BLOCKED_BY_RESPONSE_ISSUE = 'BlockedByResponseIssue';
+	public const HEAVY_AD_ISSUE = 'HeavyAdIssue';
+	public const CONTENT_SECURITY_POLICY_ISSUE = 'ContentSecurityPolicyIssue';
+	public const SHARED_ARRAY_BUFFER_ISSUE = 'SharedArrayBufferIssue';
+	public const LOW_TEXT_CONTRAST_ISSUE = 'LowTextContrastIssue';
+	public const CORS_ISSUE = 'CorsIssue';
+	public const ATTRIBUTION_REPORTING_ISSUE = 'AttributionReportingIssue';
+	public const QUIRKS_MODE_ISSUE = 'QuirksModeIssue';
+	public const NAVIGATOR_USER_AGENT_ISSUE = 'NavigatorUserAgentIssue';
+	public const GENERIC_ISSUE = 'GenericIssue';
+	public const DEPRECATION_ISSUE = 'DeprecationIssue';
+	public const CLIENT_HINT_ISSUE = 'ClientHintIssue';
+	public const FEDERATED_AUTH_REQUEST_ISSUE = 'FederatedAuthRequestIssue';
+	public const BOUNCE_TRACKING_ISSUE = 'BounceTrackingIssue';
+	public const COOKIE_DEPRECATION_METADATA_ISSUE = 'CookieDeprecationMetadataIssue';
+	public const STYLESHEET_LOADING_ISSUE = 'StylesheetLoadingIssue';
+	public const FEDERATED_AUTH_USER_INFO_REQUEST_ISSUE = 'FederatedAuthUserInfoRequestIssue';
+	public const PROPERTY_RULE_ISSUE = 'PropertyRuleIssue';
+	public const SHARED_DICTIONARY_ISSUE = 'SharedDictionaryIssue';
 }

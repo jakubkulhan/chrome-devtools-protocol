@@ -35,6 +35,10 @@ final class InlineTextBox implements \JsonSerializable
 	public $numCharacters;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

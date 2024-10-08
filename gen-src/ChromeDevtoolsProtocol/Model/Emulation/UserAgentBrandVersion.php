@@ -3,7 +3,7 @@
 namespace ChromeDevtoolsProtocol\Model\Emulation;
 
 /**
- * Used to specify User Agent Cient Hints to emulate. See https://wicg.github.io/ua-client-hints
+ * Used to specify User Agent Client Hints to emulate. See https://wicg.github.io/ua-client-hints
  *
  * @generated This file has been auto-generated, do not edit.
  *
@@ -18,6 +18,10 @@ final class UserAgentBrandVersion implements \JsonSerializable
 	public $version;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

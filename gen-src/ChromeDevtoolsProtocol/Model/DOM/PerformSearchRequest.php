@@ -26,6 +26,10 @@ final class PerformSearchRequest implements \JsonSerializable
 	public $includeUserAgentShadowDOM;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

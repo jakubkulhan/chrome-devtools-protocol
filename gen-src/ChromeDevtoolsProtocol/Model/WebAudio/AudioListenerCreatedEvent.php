@@ -15,6 +15,10 @@ final class AudioListenerCreatedEvent implements \JsonSerializable
 	public $listener;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

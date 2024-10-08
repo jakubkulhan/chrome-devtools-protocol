@@ -18,6 +18,10 @@ use ChromeDevtoolsProtocol\Model\CSS\GetComputedStyleForNodeRequest;
 use ChromeDevtoolsProtocol\Model\CSS\GetComputedStyleForNodeResponse;
 use ChromeDevtoolsProtocol\Model\CSS\GetInlineStylesForNodeRequest;
 use ChromeDevtoolsProtocol\Model\CSS\GetInlineStylesForNodeResponse;
+use ChromeDevtoolsProtocol\Model\CSS\GetLayersForNodeRequest;
+use ChromeDevtoolsProtocol\Model\CSS\GetLayersForNodeResponse;
+use ChromeDevtoolsProtocol\Model\CSS\GetLocationForSelectorRequest;
+use ChromeDevtoolsProtocol\Model\CSS\GetLocationForSelectorResponse;
 use ChromeDevtoolsProtocol\Model\CSS\GetMatchedStylesForNodeRequest;
 use ChromeDevtoolsProtocol\Model\CSS\GetMatchedStylesForNodeResponse;
 use ChromeDevtoolsProtocol\Model\CSS\GetMediaQueriesResponse;
@@ -26,18 +30,26 @@ use ChromeDevtoolsProtocol\Model\CSS\GetPlatformFontsForNodeResponse;
 use ChromeDevtoolsProtocol\Model\CSS\GetStyleSheetTextRequest;
 use ChromeDevtoolsProtocol\Model\CSS\GetStyleSheetTextResponse;
 use ChromeDevtoolsProtocol\Model\CSS\MediaQueryResultChangedEvent;
+use ChromeDevtoolsProtocol\Model\CSS\SetContainerQueryTextRequest;
+use ChromeDevtoolsProtocol\Model\CSS\SetContainerQueryTextResponse;
 use ChromeDevtoolsProtocol\Model\CSS\SetEffectivePropertyValueForNodeRequest;
 use ChromeDevtoolsProtocol\Model\CSS\SetKeyframeKeyRequest;
 use ChromeDevtoolsProtocol\Model\CSS\SetKeyframeKeyResponse;
 use ChromeDevtoolsProtocol\Model\CSS\SetLocalFontsEnabledRequest;
 use ChromeDevtoolsProtocol\Model\CSS\SetMediaTextRequest;
 use ChromeDevtoolsProtocol\Model\CSS\SetMediaTextResponse;
+use ChromeDevtoolsProtocol\Model\CSS\SetPropertyRulePropertyNameRequest;
+use ChromeDevtoolsProtocol\Model\CSS\SetPropertyRulePropertyNameResponse;
 use ChromeDevtoolsProtocol\Model\CSS\SetRuleSelectorRequest;
 use ChromeDevtoolsProtocol\Model\CSS\SetRuleSelectorResponse;
+use ChromeDevtoolsProtocol\Model\CSS\SetScopeTextRequest;
+use ChromeDevtoolsProtocol\Model\CSS\SetScopeTextResponse;
 use ChromeDevtoolsProtocol\Model\CSS\SetStyleSheetTextRequest;
 use ChromeDevtoolsProtocol\Model\CSS\SetStyleSheetTextResponse;
 use ChromeDevtoolsProtocol\Model\CSS\SetStyleTextsRequest;
 use ChromeDevtoolsProtocol\Model\CSS\SetStyleTextsResponse;
+use ChromeDevtoolsProtocol\Model\CSS\SetSupportsTextRequest;
+use ChromeDevtoolsProtocol\Model\CSS\SetSupportsTextResponse;
 use ChromeDevtoolsProtocol\Model\CSS\StopRuleUsageTrackingResponse;
 use ChromeDevtoolsProtocol\Model\CSS\StyleSheetAddedEvent;
 use ChromeDevtoolsProtocol\Model\CSS\StyleSheetChangedEvent;
@@ -127,6 +139,22 @@ class CSSDomain implements CSSDomainInterface
 	}
 
 
+	public function getLayersForNode(ContextInterface $ctx, GetLayersForNodeRequest $request): GetLayersForNodeResponse
+	{
+		$response = $this->internalClient->executeCommand($ctx, 'CSS.getLayersForNode', $request);
+		return GetLayersForNodeResponse::fromJson($response);
+	}
+
+
+	public function getLocationForSelector(
+		ContextInterface $ctx,
+		GetLocationForSelectorRequest $request
+	): GetLocationForSelectorResponse {
+		$response = $this->internalClient->executeCommand($ctx, 'CSS.getLocationForSelector', $request);
+		return GetLocationForSelectorResponse::fromJson($response);
+	}
+
+
 	public function getMatchedStylesForNode(
 		ContextInterface $ctx,
 		GetMatchedStylesForNodeRequest $request
@@ -160,6 +188,15 @@ class CSSDomain implements CSSDomainInterface
 	}
 
 
+	public function setContainerQueryText(
+		ContextInterface $ctx,
+		SetContainerQueryTextRequest $request
+	): SetContainerQueryTextResponse {
+		$response = $this->internalClient->executeCommand($ctx, 'CSS.setContainerQueryText', $request);
+		return SetContainerQueryTextResponse::fromJson($response);
+	}
+
+
 	public function setEffectivePropertyValueForNode(
 		ContextInterface $ctx,
 		SetEffectivePropertyValueForNodeRequest $request
@@ -188,10 +225,26 @@ class CSSDomain implements CSSDomainInterface
 	}
 
 
+	public function setPropertyRulePropertyName(
+		ContextInterface $ctx,
+		SetPropertyRulePropertyNameRequest $request
+	): SetPropertyRulePropertyNameResponse {
+		$response = $this->internalClient->executeCommand($ctx, 'CSS.setPropertyRulePropertyName', $request);
+		return SetPropertyRulePropertyNameResponse::fromJson($response);
+	}
+
+
 	public function setRuleSelector(ContextInterface $ctx, SetRuleSelectorRequest $request): SetRuleSelectorResponse
 	{
 		$response = $this->internalClient->executeCommand($ctx, 'CSS.setRuleSelector', $request);
 		return SetRuleSelectorResponse::fromJson($response);
+	}
+
+
+	public function setScopeText(ContextInterface $ctx, SetScopeTextRequest $request): SetScopeTextResponse
+	{
+		$response = $this->internalClient->executeCommand($ctx, 'CSS.setScopeText', $request);
+		return SetScopeTextResponse::fromJson($response);
 	}
 
 
@@ -206,6 +259,13 @@ class CSSDomain implements CSSDomainInterface
 	{
 		$response = $this->internalClient->executeCommand($ctx, 'CSS.setStyleTexts', $request);
 		return SetStyleTextsResponse::fromJson($response);
+	}
+
+
+	public function setSupportsText(ContextInterface $ctx, SetSupportsTextRequest $request): SetSupportsTextResponse
+	{
+		$response = $this->internalClient->executeCommand($ctx, 'CSS.setSupportsText', $request);
+		return SetSupportsTextResponse::fromJson($response);
 	}
 
 

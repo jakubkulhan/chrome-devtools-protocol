@@ -46,7 +46,14 @@ final class ServiceWorkerVersion implements \JsonSerializable
 	/** @var string */
 	public $targetId;
 
+	/** @var string|null */
+	public $routerRules;
 
+
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();
@@ -82,6 +89,9 @@ final class ServiceWorkerVersion implements \JsonSerializable
 		}
 		if (isset($data->targetId)) {
 			$instance->targetId = (string)$data->targetId;
+		}
+		if (isset($data->routerRules)) {
+			$instance->routerRules = (string)$data->routerRules;
 		}
 		return $instance;
 	}
@@ -122,6 +132,9 @@ final class ServiceWorkerVersion implements \JsonSerializable
 		}
 		if ($this->targetId !== null) {
 			$data->targetId = $this->targetId;
+		}
+		if ($this->routerRules !== null) {
+			$data->routerRules = $this->routerRules;
 		}
 		return $data;
 	}

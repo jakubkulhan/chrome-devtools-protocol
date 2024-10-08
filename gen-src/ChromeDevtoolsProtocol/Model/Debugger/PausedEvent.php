@@ -64,6 +64,10 @@ final class PausedEvent implements \JsonSerializable
 	public $asyncCallStackTraceId;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

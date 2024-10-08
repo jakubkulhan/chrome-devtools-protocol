@@ -6,6 +6,7 @@ use ChromeDevtoolsProtocol\ContextInterface;
 use ChromeDevtoolsProtocol\InternalClientInterface;
 use ChromeDevtoolsProtocol\Model\Fetch\AuthRequiredEvent;
 use ChromeDevtoolsProtocol\Model\Fetch\ContinueRequestRequest;
+use ChromeDevtoolsProtocol\Model\Fetch\ContinueResponseRequest;
 use ChromeDevtoolsProtocol\Model\Fetch\ContinueWithAuthRequest;
 use ChromeDevtoolsProtocol\Model\Fetch\EnableRequest;
 use ChromeDevtoolsProtocol\Model\Fetch\FailRequestRequest;
@@ -32,6 +33,12 @@ class FetchDomain implements FetchDomainInterface
 	public function continueRequest(ContextInterface $ctx, ContinueRequestRequest $request): void
 	{
 		$this->internalClient->executeCommand($ctx, 'Fetch.continueRequest', $request);
+	}
+
+
+	public function continueResponse(ContextInterface $ctx, ContinueResponseRequest $request): void
+	{
+		$this->internalClient->executeCommand($ctx, 'Fetch.continueResponse', $request);
 	}
 
 

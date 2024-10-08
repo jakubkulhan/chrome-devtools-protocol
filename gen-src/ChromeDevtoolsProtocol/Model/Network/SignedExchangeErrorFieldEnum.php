@@ -11,10 +11,10 @@ namespace ChromeDevtoolsProtocol\Model\Network;
  */
 final class SignedExchangeErrorFieldEnum
 {
-	const SIGNATURE_SIG = 'signatureSig';
-	const SIGNATURE_INTEGRITY = 'signatureIntegrity';
-	const SIGNATURE_CERT_URL = 'signatureCertUrl';
-	const SIGNATURE_CERT_SHA256 = 'signatureCertSha256';
-	const SIGNATURE_VALIDITY_URL = 'signatureValidityUrl';
-	const SIGNATURE_TIMESTAMPS = 'signatureTimestamps';
+	public const SIGNATURE_SIG = 'signatureSig';
+	public const SIGNATURE_INTEGRITY = 'signatureIntegrity';
+	public const SIGNATURE_CERT_URL = 'signatureCertUrl';
+	public const SIGNATURE_CERT_SHA256 = 'signatureCertSha256';
+	public const SIGNATURE_VALIDITY_URL = 'signatureValidityUrl';
+	public const SIGNATURE_TIMESTAMPS = 'signatureTimestamps';
 }

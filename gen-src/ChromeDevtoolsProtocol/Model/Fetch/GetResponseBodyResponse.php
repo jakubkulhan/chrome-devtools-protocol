@@ -26,6 +26,10 @@ final class GetResponseBodyResponse implements \JsonSerializable
 	public $base64Encoded;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

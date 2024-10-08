@@ -18,6 +18,10 @@ final class PlayerEventsAddedEvent implements \JsonSerializable
 	public $events;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

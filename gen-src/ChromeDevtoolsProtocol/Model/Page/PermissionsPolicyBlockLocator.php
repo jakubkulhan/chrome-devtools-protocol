@@ -18,6 +18,10 @@ final class PermissionsPolicyBlockLocator implements \JsonSerializable
 	public $blockReason;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

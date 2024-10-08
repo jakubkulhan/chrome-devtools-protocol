@@ -8,6 +8,7 @@ use ChromeDevtoolsProtocol\Model\Target\AttachToBrowserTargetResponse;
 use ChromeDevtoolsProtocol\Model\Target\AttachToTargetRequest;
 use ChromeDevtoolsProtocol\Model\Target\AttachToTargetResponse;
 use ChromeDevtoolsProtocol\Model\Target\AttachedToTargetEvent;
+use ChromeDevtoolsProtocol\Model\Target\AutoAttachRelatedRequest;
 use ChromeDevtoolsProtocol\Model\Target\CloseTargetRequest;
 use ChromeDevtoolsProtocol\Model\Target\CloseTargetResponse;
 use ChromeDevtoolsProtocol\Model\Target\CreateBrowserContextRequest;
@@ -21,6 +22,7 @@ use ChromeDevtoolsProtocol\Model\Target\ExposeDevToolsProtocolRequest;
 use ChromeDevtoolsProtocol\Model\Target\GetBrowserContextsResponse;
 use ChromeDevtoolsProtocol\Model\Target\GetTargetInfoRequest;
 use ChromeDevtoolsProtocol\Model\Target\GetTargetInfoResponse;
+use ChromeDevtoolsProtocol\Model\Target\GetTargetsRequest;
 use ChromeDevtoolsProtocol\Model\Target\GetTargetsResponse;
 use ChromeDevtoolsProtocol\Model\Target\ReceivedMessageFromTargetEvent;
 use ChromeDevtoolsProtocol\Model\Target\SendMessageToTargetRequest;
@@ -72,6 +74,17 @@ interface TargetDomainInterface
 	 * @return AttachToTargetResponse
 	 */
 	public function attachToTarget(ContextInterface $ctx, AttachToTargetRequest $request): AttachToTargetResponse;
+
+
+	/**
+	 * Adds the specified target to the list of targets that will be monitored for any related target creation (such as child frames, child workers and new versions of service worker) and reported through `attachedToTarget`. The specified target is also auto-attached. This cancels the effect of any previous `setAutoAttach` and is also cancelled by subsequent `setAutoAttach`. Only available at the Browser target.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param AutoAttachRelatedRequest $request
+	 *
+	 * @return void
+	 */
+	public function autoAttachRelated(ContextInterface $ctx, AutoAttachRelatedRequest $request): void;
 
 
 	/**
@@ -133,7 +146,7 @@ interface TargetDomainInterface
 
 
 	/**
-	 * Inject object to the target's main frame that provides a communication channel with browser target. Injected object will be available as `window[bindingName]`. The object has the follwing API: - `binding.send(json)` - a method to send messages over the remote debugging protocol - `binding.onmessage = json => handleMessage(json)` - a callback that will be called for the protocol notifications and command responses.
+	 * Inject object to the target's main frame that provides a communication channel with browser target. Injected object will be available as `window[bindingName]`. The object has the following API: - `binding.send(json)` - a method to send messages over the remote debugging protocol - `binding.onmessage = json => handleMessage(json)` - a callback that will be called for the protocol notifications and command responses.
 	 *
 	 * @param ContextInterface $ctx
 	 * @param ExposeDevToolsProtocolRequest $request
@@ -168,10 +181,11 @@ interface TargetDomainInterface
 	 * Retrieves a list of available targets.
 	 *
 	 * @param ContextInterface $ctx
+	 * @param GetTargetsRequest $request
 	 *
 	 * @return GetTargetsResponse
 	 */
-	public function getTargets(ContextInterface $ctx): GetTargetsResponse;
+	public function getTargets(ContextInterface $ctx, GetTargetsRequest $request): GetTargetsResponse;
 
 
 	/**
@@ -186,7 +200,7 @@ interface TargetDomainInterface
 
 
 	/**
-	 * Controls whether to automatically attach to new targets which are considered to be related to this one. When turned on, attaches to all existing related targets as well. When turned off, automatically detaches from all currently attached targets.
+	 * Controls whether to automatically attach to new targets which are considered to be related to this one. When turned on, attaches to all existing related targets as well. When turned off, automatically detaches from all currently attached targets. This also clears all targets added by `autoAttachRelated` from the list of targets to watch for creation of related targets.
 	 *
 	 * @param ContextInterface $ctx
 	 * @param SetAutoAttachRequest $request

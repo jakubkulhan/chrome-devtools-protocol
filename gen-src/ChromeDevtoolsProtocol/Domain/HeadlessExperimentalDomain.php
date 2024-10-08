@@ -6,8 +6,6 @@ use ChromeDevtoolsProtocol\ContextInterface;
 use ChromeDevtoolsProtocol\InternalClientInterface;
 use ChromeDevtoolsProtocol\Model\HeadlessExperimental\BeginFrameRequest;
 use ChromeDevtoolsProtocol\Model\HeadlessExperimental\BeginFrameResponse;
-use ChromeDevtoolsProtocol\Model\HeadlessExperimental\NeedsBeginFramesChangedEvent;
-use ChromeDevtoolsProtocol\SubscriptionInterface;
 
 class HeadlessExperimentalDomain implements HeadlessExperimentalDomainInterface
 {
@@ -39,19 +37,5 @@ class HeadlessExperimentalDomain implements HeadlessExperimentalDomainInterface
 	{
 		$request = new \stdClass();
 		$this->internalClient->executeCommand($ctx, 'HeadlessExperimental.enable', $request);
-	}
-
-
-	public function addNeedsBeginFramesChangedListener(callable $listener): SubscriptionInterface
-	{
-		return $this->internalClient->addListener('HeadlessExperimental.needsBeginFramesChanged', function ($event) use ($listener) {
-			return $listener(NeedsBeginFramesChangedEvent::fromJson($event));
-		});
-	}
-
-
-	public function awaitNeedsBeginFramesChanged(ContextInterface $ctx): NeedsBeginFramesChangedEvent
-	{
-		return NeedsBeginFramesChangedEvent::fromJson($this->internalClient->awaitEvent($ctx, 'HeadlessExperimental.needsBeginFramesChanged'));
 	}
 }

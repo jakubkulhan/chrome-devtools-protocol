@@ -5,6 +5,7 @@ namespace ChromeDevtoolsProtocol\Domain;
 use ChromeDevtoolsProtocol\ContextInterface;
 use ChromeDevtoolsProtocol\Model\Memory\GetAllTimeSamplingProfileResponse;
 use ChromeDevtoolsProtocol\Model\Memory\GetBrowserSamplingProfileResponse;
+use ChromeDevtoolsProtocol\Model\Memory\GetDOMCountersForLeakDetectionResponse;
 use ChromeDevtoolsProtocol\Model\Memory\GetDOMCountersResponse;
 use ChromeDevtoolsProtocol\Model\Memory\GetSamplingProfileResponse;
 use ChromeDevtoolsProtocol\Model\Memory\SetPressureNotificationsSuppressedRequest;
@@ -53,13 +54,23 @@ interface MemoryDomainInterface
 
 
 	/**
-	 * Call Memory.getDOMCounters command.
+	 * Retruns current DOM object counters.
 	 *
 	 * @param ContextInterface $ctx
 	 *
 	 * @return GetDOMCountersResponse
 	 */
 	public function getDOMCounters(ContextInterface $ctx): GetDOMCountersResponse;
+
+
+	/**
+	 * Retruns DOM object counters after preparing renderer for leak detection.
+	 *
+	 * @param ContextInterface $ctx
+	 *
+	 * @return GetDOMCountersForLeakDetectionResponse
+	 */
+	public function getDOMCountersForLeakDetection(ContextInterface $ctx): GetDOMCountersForLeakDetectionResponse;
 
 
 	/**
@@ -73,7 +84,7 @@ interface MemoryDomainInterface
 
 
 	/**
-	 * Call Memory.prepareForLeakDetection command.
+	 * Prepares for leak detection by terminating workers, stopping spellcheckers, dropping non-essential internal caches, running garbage collections, etc.
 	 *
 	 * @param ContextInterface $ctx
 	 *

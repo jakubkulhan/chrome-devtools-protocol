@@ -39,7 +39,18 @@ final class DeleteCookiesRequest implements \JsonSerializable
 	 */
 	public $path;
 
+	/**
+	 * If specified, deletes only cookies with the the given name and partitionKey where all partition key attributes match the cookie partition key attribute.
+	 *
+	 * @var CookiePartitionKey|null
+	 */
+	public $partitionKey;
 
+
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();
@@ -54,6 +65,9 @@ final class DeleteCookiesRequest implements \JsonSerializable
 		}
 		if (isset($data->path)) {
 			$instance->path = (string)$data->path;
+		}
+		if (isset($data->partitionKey)) {
+			$instance->partitionKey = CookiePartitionKey::fromJson($data->partitionKey);
 		}
 		return $instance;
 	}
@@ -73,6 +87,9 @@ final class DeleteCookiesRequest implements \JsonSerializable
 		}
 		if ($this->path !== null) {
 			$data->path = $this->path;
+		}
+		if ($this->partitionKey !== null) {
+			$data->partitionKey = $this->partitionKey->jsonSerialize();
 		}
 		return $data;
 	}

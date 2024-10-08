@@ -18,12 +18,26 @@ final class RestartFrameRequest implements \JsonSerializable
 	 */
 	public $callFrameId;
 
+	/**
+	 * The `mode` parameter must be present and set to 'StepInto', otherwise `restartFrame` will error out.
+	 *
+	 * @var string|null
+	 */
+	public $mode;
 
+
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();
 		if (isset($data->callFrameId)) {
 			$instance->callFrameId = (string)$data->callFrameId;
+		}
+		if (isset($data->mode)) {
+			$instance->mode = (string)$data->mode;
 		}
 		return $instance;
 	}
@@ -34,6 +48,9 @@ final class RestartFrameRequest implements \JsonSerializable
 		$data = new \stdClass();
 		if ($this->callFrameId !== null) {
 			$data->callFrameId = $this->callFrameId;
+		}
+		if ($this->mode !== null) {
+			$data->mode = $this->mode;
 		}
 		return $data;
 	}

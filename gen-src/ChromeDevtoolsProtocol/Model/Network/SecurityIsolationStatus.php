@@ -17,7 +17,14 @@ final class SecurityIsolationStatus implements \JsonSerializable
 	/** @var CrossOriginEmbedderPolicyStatus|null */
 	public $coep;
 
+	/** @var ContentSecurityPolicyStatus[]|null */
+	public $csp;
 
+
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();
@@ -26,6 +33,12 @@ final class SecurityIsolationStatus implements \JsonSerializable
 		}
 		if (isset($data->coep)) {
 			$instance->coep = CrossOriginEmbedderPolicyStatus::fromJson($data->coep);
+		}
+		if (isset($data->csp)) {
+			$instance->csp = [];
+			foreach ($data->csp as $item) {
+				$instance->csp[] = ContentSecurityPolicyStatus::fromJson($item);
+			}
 		}
 		return $instance;
 	}
@@ -39,6 +52,12 @@ final class SecurityIsolationStatus implements \JsonSerializable
 		}
 		if ($this->coep !== null) {
 			$data->coep = $this->coep->jsonSerialize();
+		}
+		if ($this->csp !== null) {
+			$data->csp = [];
+			foreach ($this->csp as $item) {
+				$data->csp[] = $item->jsonSerialize();
+			}
 		}
 		return $data;
 	}

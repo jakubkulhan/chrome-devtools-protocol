@@ -12,7 +12,7 @@ namespace ChromeDevtoolsProtocol\Model\Browser;
 final class SetDownloadBehaviorRequest implements \JsonSerializable
 {
 	/**
-	 * Whether to allow all or deny all download requests, or use default Chrome behavior if available (otherwise deny). |allowAndName| allows download and names files according to their dowmload guids.
+	 * Whether to allow all or deny all download requests, or use default Chrome behavior if available (otherwise deny). |allowAndName| allows download and names files according to their download guids.
 	 *
 	 * @var string
 	 */
@@ -26,13 +26,24 @@ final class SetDownloadBehaviorRequest implements \JsonSerializable
 	public $browserContextId;
 
 	/**
-	 * The default path to save downloaded files to. This is requred if behavior is set to 'allow' or 'allowAndName'.
+	 * The default path to save downloaded files to. This is required if behavior is set to 'allow' or 'allowAndName'.
 	 *
 	 * @var string|null
 	 */
 	public $downloadPath;
 
+	/**
+	 * Whether to emit download events (defaults to false).
+	 *
+	 * @var bool|null
+	 */
+	public $eventsEnabled;
 
+
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();
@@ -44,6 +55,9 @@ final class SetDownloadBehaviorRequest implements \JsonSerializable
 		}
 		if (isset($data->downloadPath)) {
 			$instance->downloadPath = (string)$data->downloadPath;
+		}
+		if (isset($data->eventsEnabled)) {
+			$instance->eventsEnabled = (bool)$data->eventsEnabled;
 		}
 		return $instance;
 	}
@@ -60,6 +74,9 @@ final class SetDownloadBehaviorRequest implements \JsonSerializable
 		}
 		if ($this->downloadPath !== null) {
 			$data->downloadPath = $this->downloadPath;
+		}
+		if ($this->eventsEnabled !== null) {
+			$data->eventsEnabled = $this->eventsEnabled;
 		}
 		return $data;
 	}

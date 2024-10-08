@@ -61,6 +61,10 @@ final class BoxModel implements \JsonSerializable
 	public $shapeOutside;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

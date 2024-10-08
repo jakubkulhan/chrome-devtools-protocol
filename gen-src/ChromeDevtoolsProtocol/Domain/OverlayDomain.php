@@ -22,17 +22,21 @@ use ChromeDevtoolsProtocol\Model\Overlay\ScreenshotRequestedEvent;
 use ChromeDevtoolsProtocol\Model\Overlay\SetInspectModeRequest;
 use ChromeDevtoolsProtocol\Model\Overlay\SetPausedInDebuggerMessageRequest;
 use ChromeDevtoolsProtocol\Model\Overlay\SetShowAdHighlightsRequest;
+use ChromeDevtoolsProtocol\Model\Overlay\SetShowContainerQueryOverlaysRequest;
 use ChromeDevtoolsProtocol\Model\Overlay\SetShowDebugBordersRequest;
 use ChromeDevtoolsProtocol\Model\Overlay\SetShowFPSCounterRequest;
 use ChromeDevtoolsProtocol\Model\Overlay\SetShowFlexOverlaysRequest;
 use ChromeDevtoolsProtocol\Model\Overlay\SetShowGridOverlaysRequest;
 use ChromeDevtoolsProtocol\Model\Overlay\SetShowHingeRequest;
 use ChromeDevtoolsProtocol\Model\Overlay\SetShowHitTestBordersRequest;
+use ChromeDevtoolsProtocol\Model\Overlay\SetShowIsolatedElementsRequest;
 use ChromeDevtoolsProtocol\Model\Overlay\SetShowLayoutShiftRegionsRequest;
 use ChromeDevtoolsProtocol\Model\Overlay\SetShowPaintRectsRequest;
 use ChromeDevtoolsProtocol\Model\Overlay\SetShowScrollBottleneckRectsRequest;
+use ChromeDevtoolsProtocol\Model\Overlay\SetShowScrollSnapOverlaysRequest;
 use ChromeDevtoolsProtocol\Model\Overlay\SetShowViewportSizeOnResizeRequest;
 use ChromeDevtoolsProtocol\Model\Overlay\SetShowWebVitalsRequest;
+use ChromeDevtoolsProtocol\Model\Overlay\SetShowWindowControlsOverlayRequest;
 use ChromeDevtoolsProtocol\SubscriptionInterface;
 
 class OverlayDomain implements OverlayDomainInterface
@@ -143,6 +147,14 @@ class OverlayDomain implements OverlayDomainInterface
 	}
 
 
+	public function setShowContainerQueryOverlays(
+		ContextInterface $ctx,
+		SetShowContainerQueryOverlaysRequest $request
+	): void {
+		$this->internalClient->executeCommand($ctx, 'Overlay.setShowContainerQueryOverlays', $request);
+	}
+
+
 	public function setShowDebugBorders(ContextInterface $ctx, SetShowDebugBordersRequest $request): void
 	{
 		$this->internalClient->executeCommand($ctx, 'Overlay.setShowDebugBorders', $request);
@@ -179,6 +191,12 @@ class OverlayDomain implements OverlayDomainInterface
 	}
 
 
+	public function setShowIsolatedElements(ContextInterface $ctx, SetShowIsolatedElementsRequest $request): void
+	{
+		$this->internalClient->executeCommand($ctx, 'Overlay.setShowIsolatedElements', $request);
+	}
+
+
 	public function setShowLayoutShiftRegions(ContextInterface $ctx, SetShowLayoutShiftRegionsRequest $request): void
 	{
 		$this->internalClient->executeCommand($ctx, 'Overlay.setShowLayoutShiftRegions', $request);
@@ -197,6 +215,12 @@ class OverlayDomain implements OverlayDomainInterface
 	}
 
 
+	public function setShowScrollSnapOverlays(ContextInterface $ctx, SetShowScrollSnapOverlaysRequest $request): void
+	{
+		$this->internalClient->executeCommand($ctx, 'Overlay.setShowScrollSnapOverlays', $request);
+	}
+
+
 	public function setShowViewportSizeOnResize(ContextInterface $ctx, SetShowViewportSizeOnResizeRequest $request): void
 	{
 		$this->internalClient->executeCommand($ctx, 'Overlay.setShowViewportSizeOnResize', $request);
@@ -206,6 +230,12 @@ class OverlayDomain implements OverlayDomainInterface
 	public function setShowWebVitals(ContextInterface $ctx, SetShowWebVitalsRequest $request): void
 	{
 		$this->internalClient->executeCommand($ctx, 'Overlay.setShowWebVitals', $request);
+	}
+
+
+	public function setShowWindowControlsOverlay(ContextInterface $ctx, SetShowWindowControlsOverlayRequest $request): void
+	{
+		$this->internalClient->executeCommand($ctx, 'Overlay.setShowWindowControlsOverlay', $request);
 	}
 
 

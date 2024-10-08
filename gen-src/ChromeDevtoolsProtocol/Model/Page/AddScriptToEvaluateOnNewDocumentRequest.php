@@ -21,7 +21,25 @@ final class AddScriptToEvaluateOnNewDocumentRequest implements \JsonSerializable
 	 */
 	public $worldName;
 
+	/**
+	 * Specifies whether command line API should be available to the script, defaults to false.
+	 *
+	 * @var bool|null
+	 */
+	public $includeCommandLineAPI;
 
+	/**
+	 * If true, runs the script immediately on existing execution contexts or worlds. Default: false.
+	 *
+	 * @var bool|null
+	 */
+	public $runImmediately;
+
+
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();
@@ -30,6 +48,12 @@ final class AddScriptToEvaluateOnNewDocumentRequest implements \JsonSerializable
 		}
 		if (isset($data->worldName)) {
 			$instance->worldName = (string)$data->worldName;
+		}
+		if (isset($data->includeCommandLineAPI)) {
+			$instance->includeCommandLineAPI = (bool)$data->includeCommandLineAPI;
+		}
+		if (isset($data->runImmediately)) {
+			$instance->runImmediately = (bool)$data->runImmediately;
 		}
 		return $instance;
 	}
@@ -43,6 +67,12 @@ final class AddScriptToEvaluateOnNewDocumentRequest implements \JsonSerializable
 		}
 		if ($this->worldName !== null) {
 			$data->worldName = $this->worldName;
+		}
+		if ($this->includeCommandLineAPI !== null) {
+			$data->includeCommandLineAPI = $this->includeCommandLineAPI;
+		}
+		if ($this->runImmediately !== null) {
+			$data->runImmediately = $this->runImmediately;
 		}
 		return $data;
 	}

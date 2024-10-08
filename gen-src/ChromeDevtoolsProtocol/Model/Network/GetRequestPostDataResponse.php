@@ -19,6 +19,10 @@ final class GetRequestPostDataResponse implements \JsonSerializable
 	public $postData;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

@@ -26,6 +26,10 @@ final class ExceptionRevokedEvent implements \JsonSerializable
 	public $exceptionId;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

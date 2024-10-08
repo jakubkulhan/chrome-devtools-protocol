@@ -40,7 +40,7 @@ final class Response implements \JsonSerializable
 	public $headers;
 
 	/**
-	 * HTTP response headers text.
+	 * HTTP response headers text. This has been replaced by the headers in Network.responseReceivedExtraInfo.
 	 *
 	 * @var string|null
 	 */
@@ -54,6 +54,13 @@ final class Response implements \JsonSerializable
 	public $mimeType;
 
 	/**
+	 * Resource charset as determined by the browser (if applicable).
+	 *
+	 * @var string
+	 */
+	public $charset;
+
+	/**
 	 * Refined HTTP request headers that were actually transmitted over the network.
 	 *
 	 * @var Headers|null
@@ -61,7 +68,7 @@ final class Response implements \JsonSerializable
 	public $requestHeaders;
 
 	/**
-	 * HTTP request headers text.
+	 * HTTP request headers text. This has been replaced by the headers in Network.requestWillBeSentExtraInfo.
 	 *
 	 * @var string|null
 	 */
@@ -117,6 +124,20 @@ final class Response implements \JsonSerializable
 	public $fromPrefetchCache;
 
 	/**
+	 * Specifies that the request was served from the prefetch cache.
+	 *
+	 * @var bool|null
+	 */
+	public $fromEarlyHints;
+
+	/**
+	 * Information about how ServiceWorker Static Router API was used. If this field is set with `matchedSourceType` field, a matching rule is found. If this field is set without `matchedSource`, no matching rule is found. Otherwise, the API is not used.
+	 *
+	 * @var ServiceWorkerRouterInfo|null
+	 */
+	public $serviceWorkerRouterInfo;
+
+	/**
 	 * Total number of bytes received for this request so far.
 	 *
 	 * @var int|float
@@ -159,6 +180,13 @@ final class Response implements \JsonSerializable
 	public $protocol;
 
 	/**
+	 * The reason why Chrome uses a specific transport protocol for HTTP semantics.
+	 *
+	 * @var string
+	 */
+	public $alternateProtocolUsage;
+
+	/**
 	 * Security state of the request resource.
 	 *
 	 * @var string
@@ -173,6 +201,10 @@ final class Response implements \JsonSerializable
 	public $securityDetails;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();
@@ -193,6 +225,9 @@ final class Response implements \JsonSerializable
 		}
 		if (isset($data->mimeType)) {
 			$instance->mimeType = (string)$data->mimeType;
+		}
+		if (isset($data->charset)) {
+			$instance->charset = (string)$data->charset;
 		}
 		if (isset($data->requestHeaders)) {
 			$instance->requestHeaders = Headers::fromJson($data->requestHeaders);
@@ -221,6 +256,12 @@ final class Response implements \JsonSerializable
 		if (isset($data->fromPrefetchCache)) {
 			$instance->fromPrefetchCache = (bool)$data->fromPrefetchCache;
 		}
+		if (isset($data->fromEarlyHints)) {
+			$instance->fromEarlyHints = (bool)$data->fromEarlyHints;
+		}
+		if (isset($data->serviceWorkerRouterInfo)) {
+			$instance->serviceWorkerRouterInfo = ServiceWorkerRouterInfo::fromJson($data->serviceWorkerRouterInfo);
+		}
 		if (isset($data->encodedDataLength)) {
 			$instance->encodedDataLength = $data->encodedDataLength;
 		}
@@ -238,6 +279,9 @@ final class Response implements \JsonSerializable
 		}
 		if (isset($data->protocol)) {
 			$instance->protocol = (string)$data->protocol;
+		}
+		if (isset($data->alternateProtocolUsage)) {
+			$instance->alternateProtocolUsage = (string)$data->alternateProtocolUsage;
 		}
 		if (isset($data->securityState)) {
 			$instance->securityState = (string)$data->securityState;
@@ -270,6 +314,9 @@ final class Response implements \JsonSerializable
 		if ($this->mimeType !== null) {
 			$data->mimeType = $this->mimeType;
 		}
+		if ($this->charset !== null) {
+			$data->charset = $this->charset;
+		}
 		if ($this->requestHeaders !== null) {
 			$data->requestHeaders = $this->requestHeaders->jsonSerialize();
 		}
@@ -297,6 +344,12 @@ final class Response implements \JsonSerializable
 		if ($this->fromPrefetchCache !== null) {
 			$data->fromPrefetchCache = $this->fromPrefetchCache;
 		}
+		if ($this->fromEarlyHints !== null) {
+			$data->fromEarlyHints = $this->fromEarlyHints;
+		}
+		if ($this->serviceWorkerRouterInfo !== null) {
+			$data->serviceWorkerRouterInfo = $this->serviceWorkerRouterInfo->jsonSerialize();
+		}
 		if ($this->encodedDataLength !== null) {
 			$data->encodedDataLength = $this->encodedDataLength;
 		}
@@ -314,6 +367,9 @@ final class Response implements \JsonSerializable
 		}
 		if ($this->protocol !== null) {
 			$data->protocol = $this->protocol;
+		}
+		if ($this->alternateProtocolUsage !== null) {
+			$data->alternateProtocolUsage = $this->alternateProtocolUsage;
 		}
 		if ($this->securityState !== null) {
 			$data->securityState = $this->securityState;

@@ -11,10 +11,10 @@ namespace ChromeDevtoolsProtocol\Model\Accessibility;
  */
 final class AXValueSourceTypeEnum
 {
-	const ATTRIBUTE = 'attribute';
-	const IMPLICIT = 'implicit';
-	const STYLE = 'style';
-	const CONTENTS = 'contents';
-	const PLACEHOLDER = 'placeholder';
-	const RELATED_ELEMENT = 'relatedElement';
+	public const ATTRIBUTE = 'attribute';
+	public const IMPLICIT = 'implicit';
+	public const STYLE = 'style';
+	public const CONTENTS = 'contents';
+	public const PLACEHOLDER = 'placeholder';
+	public const RELATED_ELEMENT = 'relatedElement';
 }

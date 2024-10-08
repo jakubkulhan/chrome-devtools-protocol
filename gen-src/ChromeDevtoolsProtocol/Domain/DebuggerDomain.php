@@ -6,6 +6,8 @@ use ChromeDevtoolsProtocol\ContextInterface;
 use ChromeDevtoolsProtocol\InternalClientInterface;
 use ChromeDevtoolsProtocol\Model\Debugger\BreakpointResolvedEvent;
 use ChromeDevtoolsProtocol\Model\Debugger\ContinueToLocationRequest;
+use ChromeDevtoolsProtocol\Model\Debugger\DisassembleWasmModuleRequest;
+use ChromeDevtoolsProtocol\Model\Debugger\DisassembleWasmModuleResponse;
 use ChromeDevtoolsProtocol\Model\Debugger\EnableRequest;
 use ChromeDevtoolsProtocol\Model\Debugger\EnableResponse;
 use ChromeDevtoolsProtocol\Model\Debugger\EvaluateOnCallFrameRequest;
@@ -18,6 +20,8 @@ use ChromeDevtoolsProtocol\Model\Debugger\GetStackTraceRequest;
 use ChromeDevtoolsProtocol\Model\Debugger\GetStackTraceResponse;
 use ChromeDevtoolsProtocol\Model\Debugger\GetWasmBytecodeRequest;
 use ChromeDevtoolsProtocol\Model\Debugger\GetWasmBytecodeResponse;
+use ChromeDevtoolsProtocol\Model\Debugger\NextWasmDisassemblyChunkRequest;
+use ChromeDevtoolsProtocol\Model\Debugger\NextWasmDisassemblyChunkResponse;
 use ChromeDevtoolsProtocol\Model\Debugger\PauseOnAsyncCallRequest;
 use ChromeDevtoolsProtocol\Model\Debugger\PausedEvent;
 use ChromeDevtoolsProtocol\Model\Debugger\RemoveBreakpointRequest;
@@ -30,6 +34,7 @@ use ChromeDevtoolsProtocol\Model\Debugger\ScriptParsedEvent;
 use ChromeDevtoolsProtocol\Model\Debugger\SearchInContentRequest;
 use ChromeDevtoolsProtocol\Model\Debugger\SearchInContentResponse;
 use ChromeDevtoolsProtocol\Model\Debugger\SetAsyncCallStackDepthRequest;
+use ChromeDevtoolsProtocol\Model\Debugger\SetBlackboxExecutionContextsRequest;
 use ChromeDevtoolsProtocol\Model\Debugger\SetBlackboxPatternsRequest;
 use ChromeDevtoolsProtocol\Model\Debugger\SetBlackboxedRangesRequest;
 use ChromeDevtoolsProtocol\Model\Debugger\SetBreakpointByUrlRequest;
@@ -76,6 +81,15 @@ class DebuggerDomain implements DebuggerDomainInterface
 	}
 
 
+	public function disassembleWasmModule(
+		ContextInterface $ctx,
+		DisassembleWasmModuleRequest $request
+	): DisassembleWasmModuleResponse {
+		$response = $this->internalClient->executeCommand($ctx, 'Debugger.disassembleWasmModule', $request);
+		return DisassembleWasmModuleResponse::fromJson($response);
+	}
+
+
 	public function enable(ContextInterface $ctx, EnableRequest $request): EnableResponse
 	{
 		$response = $this->internalClient->executeCommand($ctx, 'Debugger.enable', $request);
@@ -119,6 +133,15 @@ class DebuggerDomain implements DebuggerDomainInterface
 	{
 		$response = $this->internalClient->executeCommand($ctx, 'Debugger.getWasmBytecode', $request);
 		return GetWasmBytecodeResponse::fromJson($response);
+	}
+
+
+	public function nextWasmDisassemblyChunk(
+		ContextInterface $ctx,
+		NextWasmDisassemblyChunkRequest $request
+	): NextWasmDisassemblyChunkResponse {
+		$response = $this->internalClient->executeCommand($ctx, 'Debugger.nextWasmDisassemblyChunk', $request);
+		return NextWasmDisassemblyChunkResponse::fromJson($response);
 	}
 
 
@@ -170,6 +193,12 @@ class DebuggerDomain implements DebuggerDomainInterface
 	public function setBlackboxedRanges(ContextInterface $ctx, SetBlackboxedRangesRequest $request): void
 	{
 		$this->internalClient->executeCommand($ctx, 'Debugger.setBlackboxedRanges', $request);
+	}
+
+
+	public function setBlackboxExecutionContexts(ContextInterface $ctx, SetBlackboxExecutionContextsRequest $request): void
+	{
+		$this->internalClient->executeCommand($ctx, 'Debugger.setBlackboxExecutionContexts', $request);
 	}
 
 

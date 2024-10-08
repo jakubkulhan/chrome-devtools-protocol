@@ -2,6 +2,8 @@
 
 namespace ChromeDevtoolsProtocol\Model\CacheStorage;
 
+use ChromeDevtoolsProtocol\Model\Storage\StorageBucket;
+
 /**
  * Request for CacheStorage.requestCacheNames command.
  *
@@ -12,18 +14,42 @@ namespace ChromeDevtoolsProtocol\Model\CacheStorage;
 final class RequestCacheNamesRequest implements \JsonSerializable
 {
 	/**
-	 * Security origin.
+	 * At least and at most one of securityOrigin, storageKey, storageBucket must be specified. Security origin.
 	 *
-	 * @var string
+	 * @var string|null
 	 */
 	public $securityOrigin;
 
+	/**
+	 * Storage key.
+	 *
+	 * @var string|null
+	 */
+	public $storageKey;
 
+	/**
+	 * Storage bucket. If not specified, it uses the default bucket.
+	 *
+	 * @var StorageBucket|null
+	 */
+	public $storageBucket;
+
+
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();
 		if (isset($data->securityOrigin)) {
 			$instance->securityOrigin = (string)$data->securityOrigin;
+		}
+		if (isset($data->storageKey)) {
+			$instance->storageKey = (string)$data->storageKey;
+		}
+		if (isset($data->storageBucket)) {
+			$instance->storageBucket = StorageBucket::fromJson($data->storageBucket);
 		}
 		return $instance;
 	}
@@ -34,6 +60,12 @@ final class RequestCacheNamesRequest implements \JsonSerializable
 		$data = new \stdClass();
 		if ($this->securityOrigin !== null) {
 			$data->securityOrigin = $this->securityOrigin;
+		}
+		if ($this->storageKey !== null) {
+			$data->storageKey = $this->storageKey;
+		}
+		if ($this->storageBucket !== null) {
+			$data->storageBucket = $this->storageBucket->jsonSerialize();
 		}
 		return $data;
 	}
@@ -47,5 +79,16 @@ final class RequestCacheNamesRequest implements \JsonSerializable
 	public static function builder(): RequestCacheNamesRequestBuilder
 	{
 		return new RequestCacheNamesRequestBuilder();
+	}
+
+
+	/**
+	 * Create new empty instance.
+	 *
+	 * @return self
+	 */
+	public static function make(): self
+	{
+		return static::builder()->build();
 	}
 }

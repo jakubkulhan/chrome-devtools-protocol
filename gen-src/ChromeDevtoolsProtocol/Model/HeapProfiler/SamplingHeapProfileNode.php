@@ -42,6 +42,10 @@ final class SamplingHeapProfileNode implements \JsonSerializable
 	public $children;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

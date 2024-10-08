@@ -15,6 +15,10 @@ final class LoadEventFiredEvent implements \JsonSerializable
 	public $timestamp;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

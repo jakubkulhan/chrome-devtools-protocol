@@ -11,12 +11,14 @@ namespace ChromeDevtoolsProtocol\Model\Page;
  */
 final class ClientNavigationReasonEnum
 {
-	const FORM_SUBMISSION_GET = 'formSubmissionGet';
-	const FORM_SUBMISSION_POST = 'formSubmissionPost';
-	const HTTP_HEADER_REFRESH = 'httpHeaderRefresh';
-	const SCRIPT_INITIATED = 'scriptInitiated';
-	const META_TAG_REFRESH = 'metaTagRefresh';
-	const PAGE_BLOCK_INTERSTITIAL = 'pageBlockInterstitial';
-	const RELOAD = 'reload';
-	const ANCHOR_CLICK = 'anchorClick';
+	public const ANCHOR_CLICK = 'anchorClick';
+	public const FORM_SUBMISSION_GET = 'formSubmissionGet';
+	public const FORM_SUBMISSION_POST = 'formSubmissionPost';
+	public const HTTP_HEADER_REFRESH = 'httpHeaderRefresh';
+	public const INITIAL_FRAME_NAVIGATION = 'initialFrameNavigation';
+	public const META_TAG_REFRESH = 'metaTagRefresh';
+	public const OTHER = 'other';
+	public const PAGE_BLOCK_INTERSTITIAL = 'pageBlockInterstitial';
+	public const RELOAD = 'reload';
+	public const SCRIPT_INITIATED = 'scriptInitiated';
 }

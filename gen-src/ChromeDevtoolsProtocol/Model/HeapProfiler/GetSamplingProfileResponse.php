@@ -19,6 +19,10 @@ final class GetSamplingProfileResponse implements \JsonSerializable
 	public $profile;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

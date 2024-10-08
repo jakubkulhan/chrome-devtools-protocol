@@ -54,6 +54,10 @@ final class CSSMedia implements \JsonSerializable
 	public $mediaList;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

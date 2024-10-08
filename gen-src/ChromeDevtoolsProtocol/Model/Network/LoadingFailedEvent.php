@@ -33,7 +33,7 @@ final class LoadingFailedEvent implements \JsonSerializable
 	public $type;
 
 	/**
-	 * User friendly error message.
+	 * Error message. List of network errors: https://cs.chromium.org/chromium/src/net/base/net_error_list.h
 	 *
 	 * @var string
 	 */
@@ -61,6 +61,10 @@ final class LoadingFailedEvent implements \JsonSerializable
 	public $corsErrorStatus;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

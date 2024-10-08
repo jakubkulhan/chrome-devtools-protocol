@@ -25,6 +25,10 @@ final class AffectedCookie implements \JsonSerializable
 	public $domain;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

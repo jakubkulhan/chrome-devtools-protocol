@@ -15,6 +15,10 @@ final class AddVirtualAuthenticatorResponse implements \JsonSerializable
 	public $authenticatorId;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

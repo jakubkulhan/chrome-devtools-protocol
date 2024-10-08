@@ -67,6 +67,26 @@ try {
 }
 ```
 
+## Using an already running Chrome browser
+
+```php
+use ChromeDevtoolsProtocol\Instance\Instance;
+
+$instance = new Instance(/* host: */ "localhost", /* port: */ 9222);
+
+
+$ctx = Context::withTimeout(Context::background(), 30 /* seconds */);
+
+$tab = $instance->open($ctx);
+$tab->activate($ctx);
+
+$devtools = $tab->devtools();
+
+// ...work with devtools
+
+// no need to call ->close() as no new process is started
+```
+
 ## License
 
 Licensed under MIT license. See `LICENSE` file.

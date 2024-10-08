@@ -26,6 +26,10 @@ final class PseudoElementRemovedEvent implements \JsonSerializable
 	public $pseudoElementId;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

@@ -9,6 +9,7 @@ use ChromeDevtoolsProtocol\Model\Page\AddScriptToEvaluateOnLoadRequest;
 use ChromeDevtoolsProtocol\Model\Page\AddScriptToEvaluateOnLoadResponse;
 use ChromeDevtoolsProtocol\Model\Page\AddScriptToEvaluateOnNewDocumentRequest;
 use ChromeDevtoolsProtocol\Model\Page\AddScriptToEvaluateOnNewDocumentResponse;
+use ChromeDevtoolsProtocol\Model\Page\BackForwardCacheNotUsedEvent;
 use ChromeDevtoolsProtocol\Model\Page\CaptureScreenshotRequest;
 use ChromeDevtoolsProtocol\Model\Page\CaptureScreenshotResponse;
 use ChromeDevtoolsProtocol\Model\Page\CaptureSnapshotRequest;
@@ -31,14 +32,20 @@ use ChromeDevtoolsProtocol\Model\Page\FrameResizedEvent;
 use ChromeDevtoolsProtocol\Model\Page\FrameScheduledNavigationEvent;
 use ChromeDevtoolsProtocol\Model\Page\FrameStartedLoadingEvent;
 use ChromeDevtoolsProtocol\Model\Page\FrameStoppedLoadingEvent;
+use ChromeDevtoolsProtocol\Model\Page\FrameSubtreeWillBeDetachedEvent;
 use ChromeDevtoolsProtocol\Model\Page\GenerateTestReportRequest;
+use ChromeDevtoolsProtocol\Model\Page\GetAdScriptIdRequest;
+use ChromeDevtoolsProtocol\Model\Page\GetAdScriptIdResponse;
+use ChromeDevtoolsProtocol\Model\Page\GetAppIdResponse;
+use ChromeDevtoolsProtocol\Model\Page\GetAppManifestRequest;
 use ChromeDevtoolsProtocol\Model\Page\GetAppManifestResponse;
-use ChromeDevtoolsProtocol\Model\Page\GetCookiesResponse;
 use ChromeDevtoolsProtocol\Model\Page\GetFrameTreeResponse;
 use ChromeDevtoolsProtocol\Model\Page\GetInstallabilityErrorsResponse;
 use ChromeDevtoolsProtocol\Model\Page\GetLayoutMetricsResponse;
 use ChromeDevtoolsProtocol\Model\Page\GetManifestIconsResponse;
 use ChromeDevtoolsProtocol\Model\Page\GetNavigationHistoryResponse;
+use ChromeDevtoolsProtocol\Model\Page\GetOriginTrialsRequest;
+use ChromeDevtoolsProtocol\Model\Page\GetOriginTrialsResponse;
 use ChromeDevtoolsProtocol\Model\Page\GetPermissionsPolicyStateRequest;
 use ChromeDevtoolsProtocol\Model\Page\GetPermissionsPolicyStateResponse;
 use ChromeDevtoolsProtocol\Model\Page\GetResourceContentRequest;
@@ -77,7 +84,9 @@ use ChromeDevtoolsProtocol\Model\Page\SetFontSizesRequest;
 use ChromeDevtoolsProtocol\Model\Page\SetGeolocationOverrideRequest;
 use ChromeDevtoolsProtocol\Model\Page\SetInterceptFileChooserDialogRequest;
 use ChromeDevtoolsProtocol\Model\Page\SetLifecycleEventsEnabledRequest;
-use ChromeDevtoolsProtocol\Model\Page\SetProduceCompilationCacheRequest;
+use ChromeDevtoolsProtocol\Model\Page\SetPrerenderingAllowedRequest;
+use ChromeDevtoolsProtocol\Model\Page\SetRPHRegistrationModeRequest;
+use ChromeDevtoolsProtocol\Model\Page\SetSPCTransactionModeRequest;
 use ChromeDevtoolsProtocol\Model\Page\SetTouchEmulationEnabledRequest;
 use ChromeDevtoolsProtocol\Model\Page\SetWebLifecycleStateRequest;
 use ChromeDevtoolsProtocol\Model\Page\StartScreencastRequest;
@@ -218,19 +227,25 @@ class PageDomain implements PageDomainInterface
 	}
 
 
-	public function getAppManifest(ContextInterface $ctx): GetAppManifestResponse
+	public function getAdScriptId(ContextInterface $ctx, GetAdScriptIdRequest $request): GetAdScriptIdResponse
 	{
-		$request = new \stdClass();
-		$response = $this->internalClient->executeCommand($ctx, 'Page.getAppManifest', $request);
-		return GetAppManifestResponse::fromJson($response);
+		$response = $this->internalClient->executeCommand($ctx, 'Page.getAdScriptId', $request);
+		return GetAdScriptIdResponse::fromJson($response);
 	}
 
 
-	public function getCookies(ContextInterface $ctx): GetCookiesResponse
+	public function getAppId(ContextInterface $ctx): GetAppIdResponse
 	{
 		$request = new \stdClass();
-		$response = $this->internalClient->executeCommand($ctx, 'Page.getCookies', $request);
-		return GetCookiesResponse::fromJson($response);
+		$response = $this->internalClient->executeCommand($ctx, 'Page.getAppId', $request);
+		return GetAppIdResponse::fromJson($response);
+	}
+
+
+	public function getAppManifest(ContextInterface $ctx, GetAppManifestRequest $request): GetAppManifestResponse
+	{
+		$response = $this->internalClient->executeCommand($ctx, 'Page.getAppManifest', $request);
+		return GetAppManifestResponse::fromJson($response);
 	}
 
 
@@ -271,6 +286,13 @@ class PageDomain implements PageDomainInterface
 		$request = new \stdClass();
 		$response = $this->internalClient->executeCommand($ctx, 'Page.getNavigationHistory', $request);
 		return GetNavigationHistoryResponse::fromJson($response);
+	}
+
+
+	public function getOriginTrials(ContextInterface $ctx, GetOriginTrialsRequest $request): GetOriginTrialsResponse
+	{
+		$response = $this->internalClient->executeCommand($ctx, 'Page.getOriginTrials', $request);
+		return GetOriginTrialsResponse::fromJson($response);
 	}
 
 
@@ -440,9 +462,21 @@ class PageDomain implements PageDomainInterface
 	}
 
 
-	public function setProduceCompilationCache(ContextInterface $ctx, SetProduceCompilationCacheRequest $request): void
+	public function setPrerenderingAllowed(ContextInterface $ctx, SetPrerenderingAllowedRequest $request): void
 	{
-		$this->internalClient->executeCommand($ctx, 'Page.setProduceCompilationCache', $request);
+		$this->internalClient->executeCommand($ctx, 'Page.setPrerenderingAllowed', $request);
+	}
+
+
+	public function setRPHRegistrationMode(ContextInterface $ctx, SetRPHRegistrationModeRequest $request): void
+	{
+		$this->internalClient->executeCommand($ctx, 'Page.setRPHRegistrationMode', $request);
+	}
+
+
+	public function setSPCTransactionMode(ContextInterface $ctx, SetSPCTransactionModeRequest $request): void
+	{
+		$this->internalClient->executeCommand($ctx, 'Page.setSPCTransactionMode', $request);
 	}
 
 
@@ -482,6 +516,20 @@ class PageDomain implements PageDomainInterface
 	{
 		$request = new \stdClass();
 		$this->internalClient->executeCommand($ctx, 'Page.waitForDebugger', $request);
+	}
+
+
+	public function addBackForwardCacheNotUsedListener(callable $listener): SubscriptionInterface
+	{
+		return $this->internalClient->addListener('Page.backForwardCacheNotUsed', function ($event) use ($listener) {
+			return $listener(BackForwardCacheNotUsedEvent::fromJson($event));
+		});
+	}
+
+
+	public function awaitBackForwardCacheNotUsed(ContextInterface $ctx): BackForwardCacheNotUsedEvent
+	{
+		return BackForwardCacheNotUsedEvent::fromJson($this->internalClient->awaitEvent($ctx, 'Page.backForwardCacheNotUsed'));
 	}
 
 
@@ -692,6 +740,20 @@ class PageDomain implements PageDomainInterface
 	public function awaitFrameStoppedLoading(ContextInterface $ctx): FrameStoppedLoadingEvent
 	{
 		return FrameStoppedLoadingEvent::fromJson($this->internalClient->awaitEvent($ctx, 'Page.frameStoppedLoading'));
+	}
+
+
+	public function addFrameSubtreeWillBeDetachedListener(callable $listener): SubscriptionInterface
+	{
+		return $this->internalClient->addListener('Page.frameSubtreeWillBeDetached', function ($event) use ($listener) {
+			return $listener(FrameSubtreeWillBeDetachedEvent::fromJson($event));
+		});
+	}
+
+
+	public function awaitFrameSubtreeWillBeDetached(ContextInterface $ctx): FrameSubtreeWillBeDetachedEvent
+	{
+		return FrameSubtreeWillBeDetachedEvent::fromJson($this->internalClient->awaitEvent($ctx, 'Page.frameSubtreeWillBeDetached'));
 	}
 
 

@@ -12,6 +12,7 @@ use ChromeDevtoolsProtocol\Exception\BuilderException;
 final class SetFontFamiliesRequestBuilder
 {
 	private $fontFamilies;
+	private $forScripts;
 
 
 	/**
@@ -24,6 +25,7 @@ final class SetFontFamiliesRequestBuilder
 			throw new BuilderException('Property [fontFamilies] is required.');
 		}
 		$instance->fontFamilies = $this->fontFamilies;
+		$instance->forScripts = $this->forScripts;
 		return $instance;
 	}
 
@@ -36,6 +38,18 @@ final class SetFontFamiliesRequestBuilder
 	public function setFontFamilies($fontFamilies): self
 	{
 		$this->fontFamilies = $fontFamilies;
+		return $this;
+	}
+
+
+	/**
+	 * @param ScriptFontFamilies[]|null $forScripts
+	 *
+	 * @return self
+	 */
+	public function setForScripts($forScripts): self
+	{
+		$this->forScripts = $forScripts;
 		return $this;
 	}
 }

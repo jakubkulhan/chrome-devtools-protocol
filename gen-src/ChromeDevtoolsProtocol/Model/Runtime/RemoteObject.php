@@ -54,6 +54,13 @@ final class RemoteObject implements \JsonSerializable
 	public $description;
 
 	/**
+	 * Deep serialized value.
+	 *
+	 * @var DeepSerializedValue|null
+	 */
+	public $deepSerializedValue;
+
+	/**
 	 * Unique object identifier (for non-primitive values).
 	 *
 	 * @var string
@@ -71,6 +78,10 @@ final class RemoteObject implements \JsonSerializable
 	public $customPreview;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();
@@ -91,6 +102,9 @@ final class RemoteObject implements \JsonSerializable
 		}
 		if (isset($data->description)) {
 			$instance->description = (string)$data->description;
+		}
+		if (isset($data->deepSerializedValue)) {
+			$instance->deepSerializedValue = DeepSerializedValue::fromJson($data->deepSerializedValue);
 		}
 		if (isset($data->objectId)) {
 			$instance->objectId = (string)$data->objectId;
@@ -125,6 +139,9 @@ final class RemoteObject implements \JsonSerializable
 		}
 		if ($this->description !== null) {
 			$data->description = $this->description;
+		}
+		if ($this->deepSerializedValue !== null) {
+			$data->deepSerializedValue = $this->deepSerializedValue->jsonSerialize();
 		}
 		if ($this->objectId !== null) {
 			$data->objectId = $this->objectId;

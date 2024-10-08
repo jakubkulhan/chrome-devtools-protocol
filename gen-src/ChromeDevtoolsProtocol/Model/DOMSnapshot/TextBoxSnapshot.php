@@ -40,6 +40,10 @@ final class TextBoxSnapshot implements \JsonSerializable
 	public $length;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

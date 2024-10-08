@@ -40,6 +40,10 @@ final class SetFileInputFilesRequest implements \JsonSerializable
 	public $objectId;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

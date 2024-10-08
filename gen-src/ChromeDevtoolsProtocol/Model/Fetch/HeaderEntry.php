@@ -18,6 +18,10 @@ final class HeaderEntry implements \JsonSerializable
 	public $value;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

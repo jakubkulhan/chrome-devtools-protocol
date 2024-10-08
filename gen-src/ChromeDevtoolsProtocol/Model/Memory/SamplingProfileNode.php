@@ -33,6 +33,10 @@ final class SamplingProfileNode implements \JsonSerializable
 	public $stack;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

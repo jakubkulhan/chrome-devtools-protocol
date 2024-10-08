@@ -33,6 +33,10 @@ final class AuthChallengeResponse implements \JsonSerializable
 	public $password;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

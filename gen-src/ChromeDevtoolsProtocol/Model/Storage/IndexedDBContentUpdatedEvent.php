@@ -19,6 +19,20 @@ final class IndexedDBContentUpdatedEvent implements \JsonSerializable
 	public $origin;
 
 	/**
+	 * Storage key to update.
+	 *
+	 * @var string
+	 */
+	public $storageKey;
+
+	/**
+	 * Storage bucket to update.
+	 *
+	 * @var string
+	 */
+	public $bucketId;
+
+	/**
 	 * Database to update.
 	 *
 	 * @var string
@@ -33,11 +47,21 @@ final class IndexedDBContentUpdatedEvent implements \JsonSerializable
 	public $objectStoreName;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();
 		if (isset($data->origin)) {
 			$instance->origin = (string)$data->origin;
+		}
+		if (isset($data->storageKey)) {
+			$instance->storageKey = (string)$data->storageKey;
+		}
+		if (isset($data->bucketId)) {
+			$instance->bucketId = (string)$data->bucketId;
 		}
 		if (isset($data->databaseName)) {
 			$instance->databaseName = (string)$data->databaseName;
@@ -54,6 +78,12 @@ final class IndexedDBContentUpdatedEvent implements \JsonSerializable
 		$data = new \stdClass();
 		if ($this->origin !== null) {
 			$data->origin = $this->origin;
+		}
+		if ($this->storageKey !== null) {
+			$data->storageKey = $this->storageKey;
+		}
+		if ($this->bucketId !== null) {
+			$data->bucketId = $this->bucketId;
 		}
 		if ($this->databaseName !== null) {
 			$data->databaseName = $this->databaseName;

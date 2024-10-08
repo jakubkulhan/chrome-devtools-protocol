@@ -21,6 +21,10 @@ final class ServiceWorkerRegistration implements \JsonSerializable
 	public $isDeleted;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

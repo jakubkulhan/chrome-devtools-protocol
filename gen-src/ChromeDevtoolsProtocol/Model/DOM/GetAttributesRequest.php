@@ -12,13 +12,17 @@ namespace ChromeDevtoolsProtocol\Model\DOM;
 final class GetAttributesRequest implements \JsonSerializable
 {
 	/**
-	 * Id of the node to retrieve attibutes for.
+	 * Id of the node to retrieve attributes for.
 	 *
 	 * @var int
 	 */
 	public $nodeId;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

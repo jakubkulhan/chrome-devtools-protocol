@@ -11,7 +11,7 @@ namespace ChromeDevtoolsProtocol\Model\DOMDebugger;
  */
 final class DOMBreakpointTypeEnum
 {
-	const SUBTREE_MODIFIED = 'subtree-modified';
-	const ATTRIBUTE_MODIFIED = 'attribute-modified';
-	const NODE_REMOVED = 'node-removed';
+	public const SUBTREE_MODIFIED = 'subtree-modified';
+	public const ATTRIBUTE_MODIFIED = 'attribute-modified';
+	public const NODE_REMOVED = 'node-removed';
 }

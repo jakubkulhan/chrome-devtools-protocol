@@ -40,6 +40,10 @@ final class VisibleSecurityState implements \JsonSerializable
 	public $securityStateIssueIds;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

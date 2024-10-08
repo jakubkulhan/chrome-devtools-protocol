@@ -19,6 +19,8 @@ use ChromeDevtoolsProtocol\Model\Runtime\ExceptionThrownEvent;
 use ChromeDevtoolsProtocol\Model\Runtime\ExecutionContextCreatedEvent;
 use ChromeDevtoolsProtocol\Model\Runtime\ExecutionContextDestroyedEvent;
 use ChromeDevtoolsProtocol\Model\Runtime\ExecutionContextsClearedEvent;
+use ChromeDevtoolsProtocol\Model\Runtime\GetExceptionDetailsRequest;
+use ChromeDevtoolsProtocol\Model\Runtime\GetExceptionDetailsResponse;
 use ChromeDevtoolsProtocol\Model\Runtime\GetHeapUsageResponse;
 use ChromeDevtoolsProtocol\Model\Runtime\GetIsolateIdResponse;
 use ChromeDevtoolsProtocol\Model\Runtime\GetPropertiesRequest;
@@ -130,6 +132,20 @@ interface RuntimeDomainInterface
 	 * @return EvaluateResponse
 	 */
 	public function evaluate(ContextInterface $ctx, EvaluateRequest $request): EvaluateResponse;
+
+
+	/**
+	 * This method tries to lookup and populate exception details for a JavaScript Error object. Note that the stackTrace portion of the resulting exceptionDetails will only be populated if the Runtime domain was enabled at the time when the Error was thrown.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param GetExceptionDetailsRequest $request
+	 *
+	 * @return GetExceptionDetailsResponse
+	 */
+	public function getExceptionDetails(
+		ContextInterface $ctx,
+		GetExceptionDetailsRequest $request
+	): GetExceptionDetailsResponse;
 
 
 	/**

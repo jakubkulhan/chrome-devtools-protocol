@@ -3,15 +3,20 @@
 namespace ChromeDevtoolsProtocol\Domain;
 
 use ChromeDevtoolsProtocol\ContextInterface;
+use ChromeDevtoolsProtocol\Model\Input\DispatchDragEventRequest;
 use ChromeDevtoolsProtocol\Model\Input\DispatchKeyEventRequest;
 use ChromeDevtoolsProtocol\Model\Input\DispatchMouseEventRequest;
 use ChromeDevtoolsProtocol\Model\Input\DispatchTouchEventRequest;
+use ChromeDevtoolsProtocol\Model\Input\DragInterceptedEvent;
 use ChromeDevtoolsProtocol\Model\Input\EmulateTouchFromMouseEventRequest;
+use ChromeDevtoolsProtocol\Model\Input\ImeSetCompositionRequest;
 use ChromeDevtoolsProtocol\Model\Input\InsertTextRequest;
 use ChromeDevtoolsProtocol\Model\Input\SetIgnoreInputEventsRequest;
+use ChromeDevtoolsProtocol\Model\Input\SetInterceptDragsRequest;
 use ChromeDevtoolsProtocol\Model\Input\SynthesizePinchGestureRequest;
 use ChromeDevtoolsProtocol\Model\Input\SynthesizeScrollGestureRequest;
 use ChromeDevtoolsProtocol\Model\Input\SynthesizeTapGestureRequest;
+use ChromeDevtoolsProtocol\SubscriptionInterface;
 
 /**
  * Input domain.
@@ -22,6 +27,27 @@ use ChromeDevtoolsProtocol\Model\Input\SynthesizeTapGestureRequest;
  */
 interface InputDomainInterface
 {
+	/**
+	 * Cancels any active dragging in the page.
+	 *
+	 * @param ContextInterface $ctx
+	 *
+	 * @return void
+	 */
+	public function cancelDragging(ContextInterface $ctx): void;
+
+
+	/**
+	 * Dispatches a drag event into the page.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param DispatchDragEventRequest $request
+	 *
+	 * @return void
+	 */
+	public function dispatchDragEvent(ContextInterface $ctx, DispatchDragEventRequest $request): void;
+
+
 	/**
 	 * Dispatches a key event to the page.
 	 *
@@ -67,6 +93,17 @@ interface InputDomainInterface
 
 
 	/**
+	 * This method sets the current candidate text for IME. Use imeCommitComposition to commit the final text. Use imeSetComposition with empty string as text to cancel composition.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param ImeSetCompositionRequest $request
+	 *
+	 * @return void
+	 */
+	public function imeSetComposition(ContextInterface $ctx, ImeSetCompositionRequest $request): void;
+
+
+	/**
 	 * This method emulates inserting text that doesn't come from a key press, for example an emoji keyboard or an IME.
 	 *
 	 * @param ContextInterface $ctx
@@ -86,6 +123,17 @@ interface InputDomainInterface
 	 * @return void
 	 */
 	public function setIgnoreInputEvents(ContextInterface $ctx, SetIgnoreInputEventsRequest $request): void;
+
+
+	/**
+	 * Prevents default drag and drop behavior and instead emits `Input.dragIntercepted` events. Drag and drop behavior can be directly controlled via `Input.dispatchDragEvent`.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param SetInterceptDragsRequest $request
+	 *
+	 * @return void
+	 */
+	public function setInterceptDrags(ContextInterface $ctx, SetInterceptDragsRequest $request): void;
 
 
 	/**
@@ -119,4 +167,28 @@ interface InputDomainInterface
 	 * @return void
 	 */
 	public function synthesizeTapGesture(ContextInterface $ctx, SynthesizeTapGestureRequest $request): void;
+
+
+	/**
+	 * Emitted only when `Input.setInterceptDrags` is enabled. Use this data with `Input.dispatchDragEvent` to restore normal drag and drop behavior.
+	 *
+	 * Listener will be called whenever event Input.dragIntercepted is fired.
+	 *
+	 * @param callable $listener
+	 *
+	 * @return SubscriptionInterface
+	 */
+	public function addDragInterceptedListener(callable $listener): SubscriptionInterface;
+
+
+	/**
+	 * Emitted only when `Input.setInterceptDrags` is enabled. Use this data with `Input.dispatchDragEvent` to restore normal drag and drop behavior.
+	 *
+	 * Method will block until first Input.dragIntercepted event is fired.
+	 *
+	 * @param ContextInterface $ctx
+	 *
+	 * @return DragInterceptedEvent
+	 */
+	public function awaitDragIntercepted(ContextInterface $ctx): DragInterceptedEvent;
 }

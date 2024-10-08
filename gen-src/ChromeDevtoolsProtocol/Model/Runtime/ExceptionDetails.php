@@ -74,7 +74,18 @@ final class ExceptionDetails implements \JsonSerializable
 	 */
 	public $executionContextId;
 
+	/**
+	 * Dictionary with entries of meta data that the client associated with this exception, such as information about associated network requests, etc.
+	 *
+	 * @var object|null
+	 */
+	public $exceptionMetaData;
 
+
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();
@@ -104,6 +115,9 @@ final class ExceptionDetails implements \JsonSerializable
 		}
 		if (isset($data->executionContextId)) {
 			$instance->executionContextId = (int)$data->executionContextId;
+		}
+		if (isset($data->exceptionMetaData)) {
+			$instance->exceptionMetaData = $data->exceptionMetaData;
 		}
 		return $instance;
 	}
@@ -138,6 +152,9 @@ final class ExceptionDetails implements \JsonSerializable
 		}
 		if ($this->executionContextId !== null) {
 			$data->executionContextId = $this->executionContextId;
+		}
+		if ($this->exceptionMetaData !== null) {
+			$data->exceptionMetaData = $this->exceptionMetaData;
 		}
 		return $data;
 	}

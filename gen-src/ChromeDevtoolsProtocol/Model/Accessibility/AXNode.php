@@ -40,6 +40,13 @@ final class AXNode implements \JsonSerializable
 	public $role;
 
 	/**
+	 * This `Node`'s Chrome raw role.
+	 *
+	 * @var AXValue|null
+	 */
+	public $chromeRole;
+
+	/**
 	 * The accessible name for this `Node`.
 	 *
 	 * @var AXValue|null
@@ -68,6 +75,13 @@ final class AXNode implements \JsonSerializable
 	public $properties;
 
 	/**
+	 * ID for this node's parent.
+	 *
+	 * @var string
+	 */
+	public $parentId;
+
+	/**
 	 * IDs for each of this node's child nodes.
 	 *
 	 * @var string[]|null
@@ -81,7 +95,18 @@ final class AXNode implements \JsonSerializable
 	 */
 	public $backendDOMNodeId;
 
+	/**
+	 * The frame ID for the frame associated with this nodes document.
+	 *
+	 * @var string
+	 */
+	public $frameId;
 
+
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();
@@ -100,6 +125,9 @@ final class AXNode implements \JsonSerializable
 		if (isset($data->role)) {
 			$instance->role = AXValue::fromJson($data->role);
 		}
+		if (isset($data->chromeRole)) {
+			$instance->chromeRole = AXValue::fromJson($data->chromeRole);
+		}
 		if (isset($data->name)) {
 			$instance->name = AXValue::fromJson($data->name);
 		}
@@ -115,6 +143,9 @@ final class AXNode implements \JsonSerializable
 				$instance->properties[] = AXProperty::fromJson($item);
 			}
 		}
+		if (isset($data->parentId)) {
+			$instance->parentId = (string)$data->parentId;
+		}
 		if (isset($data->childIds)) {
 			$instance->childIds = [];
 		if (isset($data->childIds)) {
@@ -126,6 +157,9 @@ final class AXNode implements \JsonSerializable
 		}
 		if (isset($data->backendDOMNodeId)) {
 			$instance->backendDOMNodeId = (int)$data->backendDOMNodeId;
+		}
+		if (isset($data->frameId)) {
+			$instance->frameId = (string)$data->frameId;
 		}
 		return $instance;
 	}
@@ -149,6 +183,9 @@ final class AXNode implements \JsonSerializable
 		if ($this->role !== null) {
 			$data->role = $this->role->jsonSerialize();
 		}
+		if ($this->chromeRole !== null) {
+			$data->chromeRole = $this->chromeRole->jsonSerialize();
+		}
 		if ($this->name !== null) {
 			$data->name = $this->name->jsonSerialize();
 		}
@@ -164,6 +201,9 @@ final class AXNode implements \JsonSerializable
 				$data->properties[] = $item->jsonSerialize();
 			}
 		}
+		if ($this->parentId !== null) {
+			$data->parentId = $this->parentId;
+		}
 		if ($this->childIds !== null) {
 			$data->childIds = [];
 		if ($this->childIds !== null) {
@@ -175,6 +215,9 @@ final class AXNode implements \JsonSerializable
 		}
 		if ($this->backendDOMNodeId !== null) {
 			$data->backendDOMNodeId = $this->backendDOMNodeId;
+		}
+		if ($this->frameId !== null) {
+			$data->frameId = $this->frameId;
 		}
 		return $data;
 	}

@@ -5,9 +5,14 @@ namespace ChromeDevtoolsProtocol\Domain;
 use ChromeDevtoolsProtocol\ContextInterface;
 use ChromeDevtoolsProtocol\InternalClientInterface;
 use ChromeDevtoolsProtocol\Model\Emulation\CanEmulateResponse;
+use ChromeDevtoolsProtocol\Model\Emulation\GetOverriddenSensorInformationRequest;
+use ChromeDevtoolsProtocol\Model\Emulation\GetOverriddenSensorInformationResponse;
+use ChromeDevtoolsProtocol\Model\Emulation\SetAutoDarkModeOverrideRequest;
+use ChromeDevtoolsProtocol\Model\Emulation\SetAutomationOverrideRequest;
 use ChromeDevtoolsProtocol\Model\Emulation\SetCPUThrottlingRateRequest;
 use ChromeDevtoolsProtocol\Model\Emulation\SetDefaultBackgroundColorOverrideRequest;
 use ChromeDevtoolsProtocol\Model\Emulation\SetDeviceMetricsOverrideRequest;
+use ChromeDevtoolsProtocol\Model\Emulation\SetDevicePostureOverrideRequest;
 use ChromeDevtoolsProtocol\Model\Emulation\SetDisabledImageTypesRequest;
 use ChromeDevtoolsProtocol\Model\Emulation\SetDocumentCookieDisabledRequest;
 use ChromeDevtoolsProtocol\Model\Emulation\SetEmitTouchEventsForMouseRequest;
@@ -15,12 +20,17 @@ use ChromeDevtoolsProtocol\Model\Emulation\SetEmulatedMediaRequest;
 use ChromeDevtoolsProtocol\Model\Emulation\SetEmulatedVisionDeficiencyRequest;
 use ChromeDevtoolsProtocol\Model\Emulation\SetFocusEmulationEnabledRequest;
 use ChromeDevtoolsProtocol\Model\Emulation\SetGeolocationOverrideRequest;
+use ChromeDevtoolsProtocol\Model\Emulation\SetHardwareConcurrencyOverrideRequest;
 use ChromeDevtoolsProtocol\Model\Emulation\SetIdleOverrideRequest;
 use ChromeDevtoolsProtocol\Model\Emulation\SetLocaleOverrideRequest;
 use ChromeDevtoolsProtocol\Model\Emulation\SetNavigatorOverridesRequest;
 use ChromeDevtoolsProtocol\Model\Emulation\SetPageScaleFactorRequest;
+use ChromeDevtoolsProtocol\Model\Emulation\SetPressureSourceOverrideEnabledRequest;
+use ChromeDevtoolsProtocol\Model\Emulation\SetPressureStateOverrideRequest;
 use ChromeDevtoolsProtocol\Model\Emulation\SetScriptExecutionDisabledRequest;
 use ChromeDevtoolsProtocol\Model\Emulation\SetScrollbarsHiddenRequest;
+use ChromeDevtoolsProtocol\Model\Emulation\SetSensorOverrideEnabledRequest;
+use ChromeDevtoolsProtocol\Model\Emulation\SetSensorOverrideReadingsRequest;
 use ChromeDevtoolsProtocol\Model\Emulation\SetTimezoneOverrideRequest;
 use ChromeDevtoolsProtocol\Model\Emulation\SetTouchEmulationEnabledRequest;
 use ChromeDevtoolsProtocol\Model\Emulation\SetUserAgentOverrideRequest;
@@ -57,6 +67,13 @@ class EmulationDomain implements EmulationDomainInterface
 	}
 
 
+	public function clearDevicePostureOverride(ContextInterface $ctx): void
+	{
+		$request = new \stdClass();
+		$this->internalClient->executeCommand($ctx, 'Emulation.clearDevicePostureOverride', $request);
+	}
+
+
 	public function clearGeolocationOverride(ContextInterface $ctx): void
 	{
 		$request = new \stdClass();
@@ -71,10 +88,31 @@ class EmulationDomain implements EmulationDomainInterface
 	}
 
 
+	public function getOverriddenSensorInformation(
+		ContextInterface $ctx,
+		GetOverriddenSensorInformationRequest $request
+	): GetOverriddenSensorInformationResponse {
+		$response = $this->internalClient->executeCommand($ctx, 'Emulation.getOverriddenSensorInformation', $request);
+		return GetOverriddenSensorInformationResponse::fromJson($response);
+	}
+
+
 	public function resetPageScaleFactor(ContextInterface $ctx): void
 	{
 		$request = new \stdClass();
 		$this->internalClient->executeCommand($ctx, 'Emulation.resetPageScaleFactor', $request);
+	}
+
+
+	public function setAutoDarkModeOverride(ContextInterface $ctx, SetAutoDarkModeOverrideRequest $request): void
+	{
+		$this->internalClient->executeCommand($ctx, 'Emulation.setAutoDarkModeOverride', $request);
+	}
+
+
+	public function setAutomationOverride(ContextInterface $ctx, SetAutomationOverrideRequest $request): void
+	{
+		$this->internalClient->executeCommand($ctx, 'Emulation.setAutomationOverride', $request);
 	}
 
 
@@ -95,6 +133,12 @@ class EmulationDomain implements EmulationDomainInterface
 	public function setDeviceMetricsOverride(ContextInterface $ctx, SetDeviceMetricsOverrideRequest $request): void
 	{
 		$this->internalClient->executeCommand($ctx, 'Emulation.setDeviceMetricsOverride', $request);
+	}
+
+
+	public function setDevicePostureOverride(ContextInterface $ctx, SetDevicePostureOverrideRequest $request): void
+	{
+		$this->internalClient->executeCommand($ctx, 'Emulation.setDevicePostureOverride', $request);
 	}
 
 
@@ -140,6 +184,14 @@ class EmulationDomain implements EmulationDomainInterface
 	}
 
 
+	public function setHardwareConcurrencyOverride(
+		ContextInterface $ctx,
+		SetHardwareConcurrencyOverrideRequest $request
+	): void {
+		$this->internalClient->executeCommand($ctx, 'Emulation.setHardwareConcurrencyOverride', $request);
+	}
+
+
 	public function setIdleOverride(ContextInterface $ctx, SetIdleOverrideRequest $request): void
 	{
 		$this->internalClient->executeCommand($ctx, 'Emulation.setIdleOverride', $request);
@@ -164,6 +216,20 @@ class EmulationDomain implements EmulationDomainInterface
 	}
 
 
+	public function setPressureSourceOverrideEnabled(
+		ContextInterface $ctx,
+		SetPressureSourceOverrideEnabledRequest $request
+	): void {
+		$this->internalClient->executeCommand($ctx, 'Emulation.setPressureSourceOverrideEnabled', $request);
+	}
+
+
+	public function setPressureStateOverride(ContextInterface $ctx, SetPressureStateOverrideRequest $request): void
+	{
+		$this->internalClient->executeCommand($ctx, 'Emulation.setPressureStateOverride', $request);
+	}
+
+
 	public function setScriptExecutionDisabled(ContextInterface $ctx, SetScriptExecutionDisabledRequest $request): void
 	{
 		$this->internalClient->executeCommand($ctx, 'Emulation.setScriptExecutionDisabled', $request);
@@ -173,6 +239,18 @@ class EmulationDomain implements EmulationDomainInterface
 	public function setScrollbarsHidden(ContextInterface $ctx, SetScrollbarsHiddenRequest $request): void
 	{
 		$this->internalClient->executeCommand($ctx, 'Emulation.setScrollbarsHidden', $request);
+	}
+
+
+	public function setSensorOverrideEnabled(ContextInterface $ctx, SetSensorOverrideEnabledRequest $request): void
+	{
+		$this->internalClient->executeCommand($ctx, 'Emulation.setSensorOverrideEnabled', $request);
+	}
+
+
+	public function setSensorOverrideReadings(ContextInterface $ctx, SetSensorOverrideReadingsRequest $request): void
+	{
+		$this->internalClient->executeCommand($ctx, 'Emulation.setSensorOverrideReadings', $request);
 	}
 
 

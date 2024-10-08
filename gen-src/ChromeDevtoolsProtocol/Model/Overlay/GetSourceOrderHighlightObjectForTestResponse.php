@@ -19,6 +19,10 @@ final class GetSourceOrderHighlightObjectForTestResponse implements \JsonSeriali
 	public $highlight;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

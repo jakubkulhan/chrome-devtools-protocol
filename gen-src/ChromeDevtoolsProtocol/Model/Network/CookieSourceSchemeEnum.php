@@ -11,7 +11,7 @@ namespace ChromeDevtoolsProtocol\Model\Network;
  */
 final class CookieSourceSchemeEnum
 {
-	const UNSET = 'Unset';
-	const NON_SECURE = 'NonSecure';
-	const SECURE = 'Secure';
+	public const UNSET = 'Unset';
+	public const NON_SECURE = 'NonSecure';
+	public const SECURE = 'Secure';
 }

@@ -47,6 +47,13 @@ final class ResponseReceivedEvent implements \JsonSerializable
 	public $response;
 
 	/**
+	 * Indicates whether requestWillBeSentExtraInfo and responseReceivedExtraInfo events will be or were emitted for this request.
+	 *
+	 * @var bool
+	 */
+	public $hasExtraInfo;
+
+	/**
 	 * Frame identifier.
 	 *
 	 * @var string
@@ -54,6 +61,10 @@ final class ResponseReceivedEvent implements \JsonSerializable
 	public $frameId;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();
@@ -71,6 +82,9 @@ final class ResponseReceivedEvent implements \JsonSerializable
 		}
 		if (isset($data->response)) {
 			$instance->response = Response::fromJson($data->response);
+		}
+		if (isset($data->hasExtraInfo)) {
+			$instance->hasExtraInfo = (bool)$data->hasExtraInfo;
 		}
 		if (isset($data->frameId)) {
 			$instance->frameId = (string)$data->frameId;
@@ -96,6 +110,9 @@ final class ResponseReceivedEvent implements \JsonSerializable
 		}
 		if ($this->response !== null) {
 			$data->response = $this->response->jsonSerialize();
+		}
+		if ($this->hasExtraInfo !== null) {
+			$data->hasExtraInfo = $this->hasExtraInfo;
 		}
 		if ($this->frameId !== null) {
 			$data->frameId = $this->frameId;

@@ -19,13 +19,17 @@ final class GetHistogramsRequest implements \JsonSerializable
 	public $query;
 
 	/**
-	 * If true, retrieve delta since last call.
+	 * If true, retrieve delta since last delta call.
 	 *
 	 * @var bool|null
 	 */
 	public $delta;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

@@ -154,6 +154,10 @@ final class GridHighlightConfig implements \JsonSerializable
 	public $gridBackgroundColor;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

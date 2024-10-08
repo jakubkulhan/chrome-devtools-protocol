@@ -19,7 +19,7 @@ final class SetUserAgentOverrideRequest implements \JsonSerializable
 	public $userAgent;
 
 	/**
-	 * Browser langugage to emulate.
+	 * Browser language to emulate.
 	 *
 	 * @var string|null
 	 */
@@ -40,6 +40,10 @@ final class SetUserAgentOverrideRequest implements \JsonSerializable
 	public $userAgentMetadata;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

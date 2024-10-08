@@ -15,6 +15,10 @@ final class GetTrustTokensResponse implements \JsonSerializable
 	public $tokens;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

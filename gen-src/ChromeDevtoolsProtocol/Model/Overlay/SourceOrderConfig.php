@@ -14,7 +14,7 @@ use ChromeDevtoolsProtocol\Model\DOM\RGBA;
 final class SourceOrderConfig implements \JsonSerializable
 {
 	/**
-	 * the color to outline the givent element in.
+	 * the color to outline the given element in.
 	 *
 	 * @var RGBA
 	 */
@@ -28,6 +28,10 @@ final class SourceOrderConfig implements \JsonSerializable
 	public $childOutlineColor;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

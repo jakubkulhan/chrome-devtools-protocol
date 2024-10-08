@@ -7,6 +7,7 @@ use ChromeDevtoolsProtocol\InternalClientInterface;
 use ChromeDevtoolsProtocol\Model\Animation\AnimationCanceledEvent;
 use ChromeDevtoolsProtocol\Model\Animation\AnimationCreatedEvent;
 use ChromeDevtoolsProtocol\Model\Animation\AnimationStartedEvent;
+use ChromeDevtoolsProtocol\Model\Animation\AnimationUpdatedEvent;
 use ChromeDevtoolsProtocol\Model\Animation\GetCurrentTimeRequest;
 use ChromeDevtoolsProtocol\Model\Animation\GetCurrentTimeResponse;
 use ChromeDevtoolsProtocol\Model\Animation\GetPlaybackRateResponse;
@@ -136,5 +137,19 @@ class AnimationDomain implements AnimationDomainInterface
 	public function awaitAnimationStarted(ContextInterface $ctx): AnimationStartedEvent
 	{
 		return AnimationStartedEvent::fromJson($this->internalClient->awaitEvent($ctx, 'Animation.animationStarted'));
+	}
+
+
+	public function addAnimationUpdatedListener(callable $listener): SubscriptionInterface
+	{
+		return $this->internalClient->addListener('Animation.animationUpdated', function ($event) use ($listener) {
+			return $listener(AnimationUpdatedEvent::fromJson($event));
+		});
+	}
+
+
+	public function awaitAnimationUpdated(ContextInterface $ctx): AnimationUpdatedEvent
+	{
+		return AnimationUpdatedEvent::fromJson($this->internalClient->awaitEvent($ctx, 'Animation.animationUpdated'));
 	}
 }

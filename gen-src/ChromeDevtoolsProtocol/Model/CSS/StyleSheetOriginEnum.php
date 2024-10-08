@@ -11,8 +11,8 @@ namespace ChromeDevtoolsProtocol\Model\CSS;
  */
 final class StyleSheetOriginEnum
 {
-	const INJECTED = 'injected';
-	const USER_AGENT = 'user-agent';
-	const INSPECTOR = 'inspector';
-	const REGULAR = 'regular';
+	public const INJECTED = 'injected';
+	public const USER_AGENT = 'user-agent';
+	public const INSPECTOR = 'inspector';
+	public const REGULAR = 'regular';
 }

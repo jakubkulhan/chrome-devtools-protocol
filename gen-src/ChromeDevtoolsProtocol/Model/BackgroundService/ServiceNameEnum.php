@@ -11,10 +11,10 @@ namespace ChromeDevtoolsProtocol\Model\BackgroundService;
  */
 final class ServiceNameEnum
 {
-	const BACKGROUND_FETCH = 'backgroundFetch';
-	const BACKGROUND_SYNC = 'backgroundSync';
-	const PUSH_MESSAGING = 'pushMessaging';
-	const NOTIFICATIONS = 'notifications';
-	const PAYMENT_HANDLER = 'paymentHandler';
-	const PERIODIC_BACKGROUND_SYNC = 'periodicBackgroundSync';
+	public const BACKGROUND_FETCH = 'backgroundFetch';
+	public const BACKGROUND_SYNC = 'backgroundSync';
+	public const PUSH_MESSAGING = 'pushMessaging';
+	public const NOTIFICATIONS = 'notifications';
+	public const PAYMENT_HANDLER = 'paymentHandler';
+	public const PERIODIC_BACKGROUND_SYNC = 'periodicBackgroundSync';
 }

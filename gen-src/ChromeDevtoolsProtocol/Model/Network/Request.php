@@ -40,7 +40,7 @@ final class Request implements \JsonSerializable
 	public $headers;
 
 	/**
-	 * HTTP POST request data.
+	 * HTTP POST request data. Use postDataEntries instead.
 	 *
 	 * @var string|null
 	 */
@@ -54,7 +54,7 @@ final class Request implements \JsonSerializable
 	public $hasPostData;
 
 	/**
-	 * Request body elements. This will be converted from base64 to binary
+	 * Request body elements (post data broken into individual entries).
 	 *
 	 * @var PostDataEntry[]|null
 	 */
@@ -95,7 +95,18 @@ final class Request implements \JsonSerializable
 	 */
 	public $trustTokenParams;
 
+	/**
+	 * True if this resource request is considered to be the 'same site' as the request corresponding to the main frame.
+	 *
+	 * @var bool|null
+	 */
+	public $isSameSite;
 
+
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();
@@ -137,6 +148,9 @@ final class Request implements \JsonSerializable
 		}
 		if (isset($data->trustTokenParams)) {
 			$instance->trustTokenParams = TrustTokenParams::fromJson($data->trustTokenParams);
+		}
+		if (isset($data->isSameSite)) {
+			$instance->isSameSite = (bool)$data->isSameSite;
 		}
 		return $instance;
 	}
@@ -183,6 +197,9 @@ final class Request implements \JsonSerializable
 		}
 		if ($this->trustTokenParams !== null) {
 			$data->trustTokenParams = $this->trustTokenParams->jsonSerialize();
+		}
+		if ($this->isSameSite !== null) {
+			$data->isSameSite = $this->isSameSite;
 		}
 		return $data;
 	}

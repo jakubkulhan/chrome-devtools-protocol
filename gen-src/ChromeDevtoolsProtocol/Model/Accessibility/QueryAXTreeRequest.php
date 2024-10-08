@@ -47,6 +47,10 @@ final class QueryAXTreeRequest implements \JsonSerializable
 	public $role;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

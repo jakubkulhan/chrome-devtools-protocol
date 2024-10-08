@@ -17,6 +17,10 @@ use ChromeDevtoolsProtocol\Model\CSS\GetComputedStyleForNodeRequest;
 use ChromeDevtoolsProtocol\Model\CSS\GetComputedStyleForNodeResponse;
 use ChromeDevtoolsProtocol\Model\CSS\GetInlineStylesForNodeRequest;
 use ChromeDevtoolsProtocol\Model\CSS\GetInlineStylesForNodeResponse;
+use ChromeDevtoolsProtocol\Model\CSS\GetLayersForNodeRequest;
+use ChromeDevtoolsProtocol\Model\CSS\GetLayersForNodeResponse;
+use ChromeDevtoolsProtocol\Model\CSS\GetLocationForSelectorRequest;
+use ChromeDevtoolsProtocol\Model\CSS\GetLocationForSelectorResponse;
 use ChromeDevtoolsProtocol\Model\CSS\GetMatchedStylesForNodeRequest;
 use ChromeDevtoolsProtocol\Model\CSS\GetMatchedStylesForNodeResponse;
 use ChromeDevtoolsProtocol\Model\CSS\GetMediaQueriesResponse;
@@ -25,18 +29,26 @@ use ChromeDevtoolsProtocol\Model\CSS\GetPlatformFontsForNodeResponse;
 use ChromeDevtoolsProtocol\Model\CSS\GetStyleSheetTextRequest;
 use ChromeDevtoolsProtocol\Model\CSS\GetStyleSheetTextResponse;
 use ChromeDevtoolsProtocol\Model\CSS\MediaQueryResultChangedEvent;
+use ChromeDevtoolsProtocol\Model\CSS\SetContainerQueryTextRequest;
+use ChromeDevtoolsProtocol\Model\CSS\SetContainerQueryTextResponse;
 use ChromeDevtoolsProtocol\Model\CSS\SetEffectivePropertyValueForNodeRequest;
 use ChromeDevtoolsProtocol\Model\CSS\SetKeyframeKeyRequest;
 use ChromeDevtoolsProtocol\Model\CSS\SetKeyframeKeyResponse;
 use ChromeDevtoolsProtocol\Model\CSS\SetLocalFontsEnabledRequest;
 use ChromeDevtoolsProtocol\Model\CSS\SetMediaTextRequest;
 use ChromeDevtoolsProtocol\Model\CSS\SetMediaTextResponse;
+use ChromeDevtoolsProtocol\Model\CSS\SetPropertyRulePropertyNameRequest;
+use ChromeDevtoolsProtocol\Model\CSS\SetPropertyRulePropertyNameResponse;
 use ChromeDevtoolsProtocol\Model\CSS\SetRuleSelectorRequest;
 use ChromeDevtoolsProtocol\Model\CSS\SetRuleSelectorResponse;
+use ChromeDevtoolsProtocol\Model\CSS\SetScopeTextRequest;
+use ChromeDevtoolsProtocol\Model\CSS\SetScopeTextResponse;
 use ChromeDevtoolsProtocol\Model\CSS\SetStyleSheetTextRequest;
 use ChromeDevtoolsProtocol\Model\CSS\SetStyleSheetTextResponse;
 use ChromeDevtoolsProtocol\Model\CSS\SetStyleTextsRequest;
 use ChromeDevtoolsProtocol\Model\CSS\SetStyleTextsResponse;
+use ChromeDevtoolsProtocol\Model\CSS\SetSupportsTextRequest;
+use ChromeDevtoolsProtocol\Model\CSS\SetSupportsTextResponse;
 use ChromeDevtoolsProtocol\Model\CSS\StopRuleUsageTrackingResponse;
 use ChromeDevtoolsProtocol\Model\CSS\StyleSheetAddedEvent;
 use ChromeDevtoolsProtocol\Model\CSS\StyleSheetChangedEvent;
@@ -164,6 +176,31 @@ interface CSSDomainInterface
 
 
 	/**
+	 * Returns all layers parsed by the rendering engine for the tree scope of a node. Given a DOM element identified by nodeId, getLayersForNode returns the root layer for the nearest ancestor document or shadow root. The layer root contains the full layer tree for the tree scope and their ordering.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param GetLayersForNodeRequest $request
+	 *
+	 * @return GetLayersForNodeResponse
+	 */
+	public function getLayersForNode(ContextInterface $ctx, GetLayersForNodeRequest $request): GetLayersForNodeResponse;
+
+
+	/**
+	 * Given a CSS selector text and a style sheet ID, getLocationForSelector returns an array of locations of the CSS selector in the style sheet.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param GetLocationForSelectorRequest $request
+	 *
+	 * @return GetLocationForSelectorResponse
+	 */
+	public function getLocationForSelector(
+		ContextInterface $ctx,
+		GetLocationForSelectorRequest $request
+	): GetLocationForSelectorResponse;
+
+
+	/**
 	 * Returns requested styles for a DOM node identified by `nodeId`.
 	 *
 	 * @param ContextInterface $ctx
@@ -210,6 +247,20 @@ interface CSSDomainInterface
 	 * @return GetStyleSheetTextResponse
 	 */
 	public function getStyleSheetText(ContextInterface $ctx, GetStyleSheetTextRequest $request): GetStyleSheetTextResponse;
+
+
+	/**
+	 * Modifies the expression of a container query.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param SetContainerQueryTextRequest $request
+	 *
+	 * @return SetContainerQueryTextResponse
+	 */
+	public function setContainerQueryText(
+		ContextInterface $ctx,
+		SetContainerQueryTextRequest $request
+	): SetContainerQueryTextResponse;
 
 
 	/**
@@ -260,6 +311,20 @@ interface CSSDomainInterface
 
 
 	/**
+	 * Modifies the property rule property name.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param SetPropertyRulePropertyNameRequest $request
+	 *
+	 * @return SetPropertyRulePropertyNameResponse
+	 */
+	public function setPropertyRulePropertyName(
+		ContextInterface $ctx,
+		SetPropertyRulePropertyNameRequest $request
+	): SetPropertyRulePropertyNameResponse;
+
+
+	/**
 	 * Modifies the rule selector.
 	 *
 	 * @param ContextInterface $ctx
@@ -268,6 +333,17 @@ interface CSSDomainInterface
 	 * @return SetRuleSelectorResponse
 	 */
 	public function setRuleSelector(ContextInterface $ctx, SetRuleSelectorRequest $request): SetRuleSelectorResponse;
+
+
+	/**
+	 * Modifies the expression of a scope at-rule.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param SetScopeTextRequest $request
+	 *
+	 * @return SetScopeTextResponse
+	 */
+	public function setScopeText(ContextInterface $ctx, SetScopeTextRequest $request): SetScopeTextResponse;
 
 
 	/**
@@ -293,6 +369,17 @@ interface CSSDomainInterface
 
 
 	/**
+	 * Modifies the expression of a supports at-rule.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param SetSupportsTextRequest $request
+	 *
+	 * @return SetSupportsTextResponse
+	 */
+	public function setSupportsText(ContextInterface $ctx, SetSupportsTextRequest $request): SetSupportsTextResponse;
+
+
+	/**
 	 * Enables the selector recording.
 	 *
 	 * @param ContextInterface $ctx
@@ -303,7 +390,7 @@ interface CSSDomainInterface
 
 
 	/**
-	 * Stop tracking rule usage and return the list of rules that were used since last call to `takeCoverageDelta` (or since start of coverage instrumentation)
+	 * Stop tracking rule usage and return the list of rules that were used since last call to `takeCoverageDelta` (or since start of coverage instrumentation).
 	 *
 	 * @param ContextInterface $ctx
 	 *
@@ -323,7 +410,7 @@ interface CSSDomainInterface
 
 
 	/**
-	 * Obtain list of rules that became used since last call to this method (or since start of coverage instrumentation)
+	 * Obtain list of rules that became used since last call to this method (or since start of coverage instrumentation).
 	 *
 	 * @param ContextInterface $ctx
 	 *
@@ -344,7 +431,7 @@ interface CSSDomainInterface
 
 
 	/**
-	 * Fires whenever a web font is updated. A non-empty font parameter indicates a successfully loaded web font
+	 * Fires whenever a web font is updated. A non-empty font parameter indicates a successfully loaded web font.
 	 *
 	 * Listener will be called whenever event CSS.fontsUpdated is fired.
 	 *
@@ -356,7 +443,7 @@ interface CSSDomainInterface
 
 
 	/**
-	 * Fires whenever a web font is updated. A non-empty font parameter indicates a successfully loaded web font
+	 * Fires whenever a web font is updated. A non-empty font parameter indicates a successfully loaded web font.
 	 *
 	 * Method will block until first CSS.fontsUpdated event is fired.
 	 *

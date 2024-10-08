@@ -26,6 +26,10 @@ final class QueryObjectsRequest implements \JsonSerializable
 	public $objectGroup;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

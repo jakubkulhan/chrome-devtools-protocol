@@ -18,6 +18,10 @@ final class SamplingProfile implements \JsonSerializable
 	public $modules;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

@@ -14,7 +14,18 @@ final class SetStyleTextsRequest implements \JsonSerializable
 	/** @var StyleDeclarationEdit[] */
 	public $edits;
 
+	/**
+	 * NodeId for the DOM node in whose context custom property declarations for registered properties should be validated. If omitted, declarations in the new rule text can only be validated statically, which may produce incorrect results if the declaration contains a var() for example.
+	 *
+	 * @var int
+	 */
+	public $nodeForPropertySyntaxValidation;
 
+
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();
@@ -23,6 +34,9 @@ final class SetStyleTextsRequest implements \JsonSerializable
 			foreach ($data->edits as $item) {
 				$instance->edits[] = StyleDeclarationEdit::fromJson($item);
 			}
+		}
+		if (isset($data->nodeForPropertySyntaxValidation)) {
+			$instance->nodeForPropertySyntaxValidation = (int)$data->nodeForPropertySyntaxValidation;
 		}
 		return $instance;
 	}
@@ -36,6 +50,9 @@ final class SetStyleTextsRequest implements \JsonSerializable
 			foreach ($this->edits as $item) {
 				$data->edits[] = $item->jsonSerialize();
 			}
+		}
+		if ($this->nodeForPropertySyntaxValidation !== null) {
+			$data->nodeForPropertySyntaxValidation = $this->nodeForPropertySyntaxValidation;
 		}
 		return $data;
 	}

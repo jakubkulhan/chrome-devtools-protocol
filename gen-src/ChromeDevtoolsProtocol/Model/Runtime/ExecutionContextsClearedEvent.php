@@ -11,6 +11,10 @@ namespace ChromeDevtoolsProtocol\Model\Runtime;
  */
 final class ExecutionContextsClearedEvent implements \JsonSerializable
 {
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

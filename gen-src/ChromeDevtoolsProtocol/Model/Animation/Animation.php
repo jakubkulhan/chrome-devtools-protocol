@@ -47,7 +47,7 @@ final class Animation implements \JsonSerializable
 	public $playbackRate;
 
 	/**
-	 * `Animation`'s start time.
+	 * `Animation`'s start time. Milliseconds for time based animations and percentage [0 - 100] for scroll driven animations (i.e. when viewOrScrollTimeline exists).
 	 *
 	 * @var int|float
 	 */
@@ -81,7 +81,18 @@ final class Animation implements \JsonSerializable
 	 */
 	public $cssId;
 
+	/**
+	 * View or scroll timeline
+	 *
+	 * @var ViewOrScrollTimeline|null
+	 */
+	public $viewOrScrollTimeline;
 
+
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();
@@ -114,6 +125,9 @@ final class Animation implements \JsonSerializable
 		}
 		if (isset($data->cssId)) {
 			$instance->cssId = (string)$data->cssId;
+		}
+		if (isset($data->viewOrScrollTimeline)) {
+			$instance->viewOrScrollTimeline = ViewOrScrollTimeline::fromJson($data->viewOrScrollTimeline);
 		}
 		return $instance;
 	}
@@ -151,6 +165,9 @@ final class Animation implements \JsonSerializable
 		}
 		if ($this->cssId !== null) {
 			$data->cssId = $this->cssId;
+		}
+		if ($this->viewOrScrollTimeline !== null) {
+			$data->viewOrScrollTimeline = $this->viewOrScrollTimeline->jsonSerialize();
 		}
 		return $data;
 	}

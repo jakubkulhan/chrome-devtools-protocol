@@ -17,7 +17,18 @@ final class InspectorIssue implements \JsonSerializable
 	/** @var InspectorIssueDetails */
 	public $details;
 
+	/**
+	 * A unique id for this issue. May be omitted if no other entity (e.g. exception, CDP message, etc.) is referencing this issue.
+	 *
+	 * @var string
+	 */
+	public $issueId;
 
+
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();
@@ -26,6 +37,9 @@ final class InspectorIssue implements \JsonSerializable
 		}
 		if (isset($data->details)) {
 			$instance->details = InspectorIssueDetails::fromJson($data->details);
+		}
+		if (isset($data->issueId)) {
+			$instance->issueId = (string)$data->issueId;
 		}
 		return $instance;
 	}
@@ -39,6 +53,9 @@ final class InspectorIssue implements \JsonSerializable
 		}
 		if ($this->details !== null) {
 			$data->details = $this->details->jsonSerialize();
+		}
+		if ($this->issueId !== null) {
+			$data->issueId = $this->issueId;
 		}
 		return $data;
 	}

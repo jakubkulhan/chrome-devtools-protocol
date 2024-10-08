@@ -5,6 +5,7 @@ namespace ChromeDevtoolsProtocol\Domain;
 use ChromeDevtoolsProtocol\ContextInterface;
 use ChromeDevtoolsProtocol\InternalClientInterface;
 use ChromeDevtoolsProtocol\Model\Audits\CheckContrastRequest;
+use ChromeDevtoolsProtocol\Model\Audits\CheckFormsIssuesResponse;
 use ChromeDevtoolsProtocol\Model\Audits\GetEncodedResponseRequest;
 use ChromeDevtoolsProtocol\Model\Audits\GetEncodedResponseResponse;
 use ChromeDevtoolsProtocol\Model\Audits\IssueAddedEvent;
@@ -25,6 +26,14 @@ class AuditsDomain implements AuditsDomainInterface
 	public function checkContrast(ContextInterface $ctx, CheckContrastRequest $request): void
 	{
 		$this->internalClient->executeCommand($ctx, 'Audits.checkContrast', $request);
+	}
+
+
+	public function checkFormsIssues(ContextInterface $ctx): CheckFormsIssuesResponse
+	{
+		$request = new \stdClass();
+		$response = $this->internalClient->executeCommand($ctx, 'Audits.checkFormsIssues', $request);
+		return CheckFormsIssuesResponse::fromJson($response);
 	}
 
 

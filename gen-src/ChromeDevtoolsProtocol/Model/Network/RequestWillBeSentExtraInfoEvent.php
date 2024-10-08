@@ -19,9 +19,9 @@ final class RequestWillBeSentExtraInfoEvent implements \JsonSerializable
 	public $requestId;
 
 	/**
-	 * A list of cookies potentially associated to the requested URL. This includes both cookies sent with the request and the ones not sent; the latter are distinguished by having blockedReason field set.
+	 * A list of cookies potentially associated to the requested URL. This includes both cookies sent with the request and the ones not sent; the latter are distinguished by having blockedReasons field set.
 	 *
-	 * @var BlockedCookieWithReason[]
+	 * @var AssociatedCookie[]
 	 */
 	public $associatedCookies;
 
@@ -33,13 +33,31 @@ final class RequestWillBeSentExtraInfoEvent implements \JsonSerializable
 	public $headers;
 
 	/**
+	 * Connection timing information for the request.
+	 *
+	 * @var ConnectTiming
+	 */
+	public $connectTiming;
+
+	/**
 	 * The client security state set for the request.
 	 *
 	 * @var ClientSecurityState|null
 	 */
 	public $clientSecurityState;
 
+	/**
+	 * Whether the site has partitioned cookies stored in a partition different than the current one.
+	 *
+	 * @var bool|null
+	 */
+	public $siteHasCookieInOtherPartition;
 
+
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();
@@ -49,14 +67,20 @@ final class RequestWillBeSentExtraInfoEvent implements \JsonSerializable
 		if (isset($data->associatedCookies)) {
 			$instance->associatedCookies = [];
 			foreach ($data->associatedCookies as $item) {
-				$instance->associatedCookies[] = BlockedCookieWithReason::fromJson($item);
+				$instance->associatedCookies[] = AssociatedCookie::fromJson($item);
 			}
 		}
 		if (isset($data->headers)) {
 			$instance->headers = Headers::fromJson($data->headers);
 		}
+		if (isset($data->connectTiming)) {
+			$instance->connectTiming = ConnectTiming::fromJson($data->connectTiming);
+		}
 		if (isset($data->clientSecurityState)) {
 			$instance->clientSecurityState = ClientSecurityState::fromJson($data->clientSecurityState);
+		}
+		if (isset($data->siteHasCookieInOtherPartition)) {
+			$instance->siteHasCookieInOtherPartition = (bool)$data->siteHasCookieInOtherPartition;
 		}
 		return $instance;
 	}
@@ -77,8 +101,14 @@ final class RequestWillBeSentExtraInfoEvent implements \JsonSerializable
 		if ($this->headers !== null) {
 			$data->headers = $this->headers->jsonSerialize();
 		}
+		if ($this->connectTiming !== null) {
+			$data->connectTiming = $this->connectTiming->jsonSerialize();
+		}
 		if ($this->clientSecurityState !== null) {
 			$data->clientSecurityState = $this->clientSecurityState->jsonSerialize();
+		}
+		if ($this->siteHasCookieInOtherPartition !== null) {
+			$data->siteHasCookieInOtherPartition = $this->siteHasCookieInOtherPartition;
 		}
 		return $data;
 	}

@@ -19,31 +19,35 @@ final class FileChooserOpenedEvent implements \JsonSerializable
 	public $frameId;
 
 	/**
-	 * Input node id.
-	 *
-	 * @var int
-	 */
-	public $backendNodeId;
-
-	/**
 	 * Input mode.
 	 *
 	 * @var string
 	 */
 	public $mode;
 
+	/**
+	 * Input node id. Only present for file choosers opened via an `<input type="file">` element.
+	 *
+	 * @var int
+	 */
+	public $backendNodeId;
 
+
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();
 		if (isset($data->frameId)) {
 			$instance->frameId = (string)$data->frameId;
 		}
-		if (isset($data->backendNodeId)) {
-			$instance->backendNodeId = (int)$data->backendNodeId;
-		}
 		if (isset($data->mode)) {
 			$instance->mode = (string)$data->mode;
+		}
+		if (isset($data->backendNodeId)) {
+			$instance->backendNodeId = (int)$data->backendNodeId;
 		}
 		return $instance;
 	}
@@ -55,11 +59,11 @@ final class FileChooserOpenedEvent implements \JsonSerializable
 		if ($this->frameId !== null) {
 			$data->frameId = $this->frameId;
 		}
-		if ($this->backendNodeId !== null) {
-			$data->backendNodeId = $this->backendNodeId;
-		}
 		if ($this->mode !== null) {
 			$data->mode = $this->mode;
+		}
+		if ($this->backendNodeId !== null) {
+			$data->backendNodeId = $this->backendNodeId;
 		}
 		return $data;
 	}

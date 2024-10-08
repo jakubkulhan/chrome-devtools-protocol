@@ -33,6 +33,10 @@ final class FlexItemHighlightConfig implements \JsonSerializable
 	public $flexibilityArrow;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

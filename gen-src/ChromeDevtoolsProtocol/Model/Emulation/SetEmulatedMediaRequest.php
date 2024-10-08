@@ -26,6 +26,10 @@ final class SetEmulatedMediaRequest implements \JsonSerializable
 	public $features;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

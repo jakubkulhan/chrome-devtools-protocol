@@ -60,7 +60,18 @@ final class BackgroundServiceEvent implements \JsonSerializable
 	 */
 	public $eventMetadata;
 
+	/**
+	 * Storage key this event belongs to.
+	 *
+	 * @var string
+	 */
+	public $storageKey;
 
+
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();
@@ -87,6 +98,9 @@ final class BackgroundServiceEvent implements \JsonSerializable
 			foreach ($data->eventMetadata as $item) {
 				$instance->eventMetadata[] = EventMetadata::fromJson($item);
 			}
+		}
+		if (isset($data->storageKey)) {
+			$instance->storageKey = (string)$data->storageKey;
 		}
 		return $instance;
 	}
@@ -118,6 +132,9 @@ final class BackgroundServiceEvent implements \JsonSerializable
 			foreach ($this->eventMetadata as $item) {
 				$data->eventMetadata[] = $item->jsonSerialize();
 			}
+		}
+		if ($this->storageKey !== null) {
+			$data->storageKey = $this->storageKey;
 		}
 		return $data;
 	}

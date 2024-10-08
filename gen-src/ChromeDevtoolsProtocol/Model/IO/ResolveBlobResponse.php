@@ -19,6 +19,10 @@ final class ResolveBlobResponse implements \JsonSerializable
 	public $uuid;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

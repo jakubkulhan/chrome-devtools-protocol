@@ -33,13 +33,17 @@ final class GetPartialAXTreeRequest implements \JsonSerializable
 	public $objectId;
 
 	/**
-	 * Whether to fetch this nodes ancestors, siblings and children. Defaults to true.
+	 * Whether to fetch this node's ancestors, siblings and children. Defaults to true.
 	 *
 	 * @var bool|null
 	 */
 	public $fetchRelatives;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

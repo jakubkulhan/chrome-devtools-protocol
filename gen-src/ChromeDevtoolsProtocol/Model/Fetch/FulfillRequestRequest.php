@@ -40,7 +40,7 @@ final class FulfillRequestRequest implements \JsonSerializable
 	public $binaryResponseHeaders;
 
 	/**
-	 * A response body. (Encoded as a base64 string when passed over JSON)
+	 * A response body. If absent, original response body will be used if the request is intercepted at the response stage and empty body will be used if the request is intercepted at the request stage. (Encoded as a base64 string when passed over JSON)
 	 *
 	 * @var string|null
 	 */
@@ -54,6 +54,10 @@ final class FulfillRequestRequest implements \JsonSerializable
 	public $responsePhrase;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

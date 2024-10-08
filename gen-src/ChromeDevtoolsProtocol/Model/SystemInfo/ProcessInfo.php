@@ -33,6 +33,10 @@ final class ProcessInfo implements \JsonSerializable
 	public $cpuTime;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

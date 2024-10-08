@@ -54,13 +54,17 @@ final class FontFamilies implements \JsonSerializable
 	public $fantasy;
 
 	/**
-	 * The pictograph font-family.
+	 * The math font-family.
 	 *
 	 * @var string|null
 	 */
-	public $pictograph;
+	public $math;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();
@@ -82,8 +86,8 @@ final class FontFamilies implements \JsonSerializable
 		if (isset($data->fantasy)) {
 			$instance->fantasy = (string)$data->fantasy;
 		}
-		if (isset($data->pictograph)) {
-			$instance->pictograph = (string)$data->pictograph;
+		if (isset($data->math)) {
+			$instance->math = (string)$data->math;
 		}
 		return $instance;
 	}
@@ -110,8 +114,8 @@ final class FontFamilies implements \JsonSerializable
 		if ($this->fantasy !== null) {
 			$data->fantasy = $this->fantasy;
 		}
-		if ($this->pictograph !== null) {
-			$data->pictograph = $this->pictograph;
+		if ($this->math !== null) {
+			$data->math = $this->math;
 		}
 		return $data;
 	}

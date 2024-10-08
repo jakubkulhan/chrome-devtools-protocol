@@ -19,13 +19,24 @@ final class ScreenshotParams implements \JsonSerializable
 	public $format;
 
 	/**
-	 * Compression quality from range [0..100] (jpeg only).
+	 * Compression quality from range [0..100] (jpeg and webp only).
 	 *
 	 * @var int|null
 	 */
 	public $quality;
 
+	/**
+	 * Optimize image encoding for speed, not for resulting size (defaults to false)
+	 *
+	 * @var bool|null
+	 */
+	public $optimizeForSpeed;
 
+
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();
@@ -34,6 +45,9 @@ final class ScreenshotParams implements \JsonSerializable
 		}
 		if (isset($data->quality)) {
 			$instance->quality = (int)$data->quality;
+		}
+		if (isset($data->optimizeForSpeed)) {
+			$instance->optimizeForSpeed = (bool)$data->optimizeForSpeed;
 		}
 		return $instance;
 	}
@@ -47,6 +61,9 @@ final class ScreenshotParams implements \JsonSerializable
 		}
 		if ($this->quality !== null) {
 			$data->quality = $this->quality;
+		}
+		if ($this->optimizeForSpeed !== null) {
+			$data->optimizeForSpeed = $this->optimizeForSpeed;
 		}
 		return $data;
 	}

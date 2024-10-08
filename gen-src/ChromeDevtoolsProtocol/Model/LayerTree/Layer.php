@@ -124,6 +124,10 @@ final class Layer implements \JsonSerializable
 	public $stickyPositionConstraint;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

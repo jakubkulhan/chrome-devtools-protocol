@@ -19,13 +19,31 @@ final class TakeHeapSnapshotRequest implements \JsonSerializable
 	public $reportProgress;
 
 	/**
-	 * If true, a raw snapshot without artifical roots will be generated
+	 * If true, a raw snapshot without artificial roots will be generated. Deprecated in favor of `exposeInternals`.
 	 *
 	 * @var bool|null
 	 */
 	public $treatGlobalObjectsAsRoots;
 
+	/**
+	 * If true, numerical values are included in the snapshot
+	 *
+	 * @var bool|null
+	 */
+	public $captureNumericValue;
 
+	/**
+	 * If true, exposes internals of the snapshot.
+	 *
+	 * @var bool|null
+	 */
+	public $exposeInternals;
+
+
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();
@@ -34,6 +52,12 @@ final class TakeHeapSnapshotRequest implements \JsonSerializable
 		}
 		if (isset($data->treatGlobalObjectsAsRoots)) {
 			$instance->treatGlobalObjectsAsRoots = (bool)$data->treatGlobalObjectsAsRoots;
+		}
+		if (isset($data->captureNumericValue)) {
+			$instance->captureNumericValue = (bool)$data->captureNumericValue;
+		}
+		if (isset($data->exposeInternals)) {
+			$instance->exposeInternals = (bool)$data->exposeInternals;
 		}
 		return $instance;
 	}
@@ -47,6 +71,12 @@ final class TakeHeapSnapshotRequest implements \JsonSerializable
 		}
 		if ($this->treatGlobalObjectsAsRoots !== null) {
 			$data->treatGlobalObjectsAsRoots = $this->treatGlobalObjectsAsRoots;
+		}
+		if ($this->captureNumericValue !== null) {
+			$data->captureNumericValue = $this->captureNumericValue;
+		}
+		if ($this->exposeInternals !== null) {
+			$data->exposeInternals = $this->exposeInternals;
 		}
 		return $data;
 	}

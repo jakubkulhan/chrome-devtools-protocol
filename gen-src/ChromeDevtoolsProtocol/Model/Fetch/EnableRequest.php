@@ -26,6 +26,10 @@ final class EnableRequest implements \JsonSerializable
 	public $handleAuthRequests;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

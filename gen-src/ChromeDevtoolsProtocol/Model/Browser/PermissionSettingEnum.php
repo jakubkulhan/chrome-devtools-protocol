@@ -11,7 +11,7 @@ namespace ChromeDevtoolsProtocol\Model\Browser;
  */
 final class PermissionSettingEnum
 {
-	const GRANTED = 'granted';
-	const DENIED = 'denied';
-	const PROMPT = 'prompt';
+	public const GRANTED = 'granted';
+	public const DENIED = 'denied';
+	public const PROMPT = 'prompt';
 }

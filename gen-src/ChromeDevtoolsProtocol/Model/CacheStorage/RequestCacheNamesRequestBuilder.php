@@ -2,7 +2,7 @@
 
 namespace ChromeDevtoolsProtocol\Model\CacheStorage;
 
-use ChromeDevtoolsProtocol\Exception\BuilderException;
+use ChromeDevtoolsProtocol\Model\Storage\StorageBucket;
 
 /**
  * @generated This file has been auto-generated, do not edit.
@@ -12,6 +12,8 @@ use ChromeDevtoolsProtocol\Exception\BuilderException;
 final class RequestCacheNamesRequestBuilder
 {
 	private $securityOrigin;
+	private $storageKey;
+	private $storageBucket;
 
 
 	/**
@@ -20,22 +22,45 @@ final class RequestCacheNamesRequestBuilder
 	public function build(): RequestCacheNamesRequest
 	{
 		$instance = new RequestCacheNamesRequest();
-		if ($this->securityOrigin === null) {
-			throw new BuilderException('Property [securityOrigin] is required.');
-		}
 		$instance->securityOrigin = $this->securityOrigin;
+		$instance->storageKey = $this->storageKey;
+		$instance->storageBucket = $this->storageBucket;
 		return $instance;
 	}
 
 
 	/**
-	 * @param string $securityOrigin
+	 * @param string|null $securityOrigin
 	 *
 	 * @return self
 	 */
 	public function setSecurityOrigin($securityOrigin): self
 	{
 		$this->securityOrigin = $securityOrigin;
+		return $this;
+	}
+
+
+	/**
+	 * @param string|null $storageKey
+	 *
+	 * @return self
+	 */
+	public function setStorageKey($storageKey): self
+	{
+		$this->storageKey = $storageKey;
+		return $this;
+	}
+
+
+	/**
+	 * @param StorageBucket|null $storageBucket
+	 *
+	 * @return self
+	 */
+	public function setStorageBucket($storageBucket): self
+	{
+		$this->storageBucket = $storageBucket;
 		return $this;
 	}
 }

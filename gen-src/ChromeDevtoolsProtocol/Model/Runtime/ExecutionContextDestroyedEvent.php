@@ -18,12 +18,26 @@ final class ExecutionContextDestroyedEvent implements \JsonSerializable
 	 */
 	public $executionContextId;
 
+	/**
+	 * Unique Id of the destroyed context
+	 *
+	 * @var string
+	 */
+	public $executionContextUniqueId;
 
+
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();
 		if (isset($data->executionContextId)) {
 			$instance->executionContextId = (int)$data->executionContextId;
+		}
+		if (isset($data->executionContextUniqueId)) {
+			$instance->executionContextUniqueId = (string)$data->executionContextUniqueId;
 		}
 		return $instance;
 	}
@@ -34,6 +48,9 @@ final class ExecutionContextDestroyedEvent implements \JsonSerializable
 		$data = new \stdClass();
 		if ($this->executionContextId !== null) {
 			$data->executionContextId = $this->executionContextId;
+		}
+		if ($this->executionContextUniqueId !== null) {
+			$data->executionContextUniqueId = $this->executionContextUniqueId;
 		}
 		return $data;
 	}

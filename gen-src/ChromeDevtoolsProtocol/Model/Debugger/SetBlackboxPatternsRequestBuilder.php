@@ -12,6 +12,7 @@ use ChromeDevtoolsProtocol\Exception\BuilderException;
 final class SetBlackboxPatternsRequestBuilder
 {
 	private $patterns;
+	private $skipAnonymous;
 
 
 	/**
@@ -24,6 +25,7 @@ final class SetBlackboxPatternsRequestBuilder
 			throw new BuilderException('Property [patterns] is required.');
 		}
 		$instance->patterns = $this->patterns;
+		$instance->skipAnonymous = $this->skipAnonymous;
 		return $instance;
 	}
 
@@ -36,6 +38,18 @@ final class SetBlackboxPatternsRequestBuilder
 	public function setPatterns($patterns): self
 	{
 		$this->patterns = $patterns;
+		return $this;
+	}
+
+
+	/**
+	 * @param bool|null $skipAnonymous
+	 *
+	 * @return self
+	 */
+	public function setSkipAnonymous($skipAnonymous): self
+	{
+		$this->skipAnonymous = $skipAnonymous;
 		return $this;
 	}
 }

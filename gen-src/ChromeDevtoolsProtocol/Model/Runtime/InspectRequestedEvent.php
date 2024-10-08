@@ -17,7 +17,18 @@ final class InspectRequestedEvent implements \JsonSerializable
 	/** @var object */
 	public $hints;
 
+	/**
+	 * Identifier of the context where the call was made.
+	 *
+	 * @var int
+	 */
+	public $executionContextId;
 
+
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();
@@ -26,6 +37,9 @@ final class InspectRequestedEvent implements \JsonSerializable
 		}
 		if (isset($data->hints)) {
 			$instance->hints = $data->hints;
+		}
+		if (isset($data->executionContextId)) {
+			$instance->executionContextId = (int)$data->executionContextId;
 		}
 		return $instance;
 	}
@@ -39,6 +53,9 @@ final class InspectRequestedEvent implements \JsonSerializable
 		}
 		if ($this->hints !== null) {
 			$data->hints = $this->hints;
+		}
+		if ($this->executionContextId !== null) {
+			$data->executionContextId = $this->executionContextId;
 		}
 		return $data;
 	}

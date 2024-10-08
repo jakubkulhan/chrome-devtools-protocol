@@ -14,27 +14,52 @@ use ChromeDevtoolsProtocol\Model\DOM\Rect;
 final class GetLayoutMetricsResponse implements \JsonSerializable
 {
 	/**
-	 * Metrics relating to the layout viewport.
+	 * Deprecated metrics relating to the layout viewport. Is in device pixels. Use `cssLayoutViewport` instead.
 	 *
 	 * @var LayoutViewport
 	 */
 	public $layoutViewport;
 
 	/**
-	 * Metrics relating to the visual viewport.
+	 * Deprecated metrics relating to the visual viewport. Is in device pixels. Use `cssVisualViewport` instead.
 	 *
 	 * @var VisualViewport
 	 */
 	public $visualViewport;
 
 	/**
-	 * Size of scrollable area.
+	 * Deprecated size of scrollable area. Is in DP. Use `cssContentSize` instead.
 	 *
 	 * @var Rect
 	 */
 	public $contentSize;
 
+	/**
+	 * Metrics relating to the layout viewport in CSS pixels.
+	 *
+	 * @var LayoutViewport
+	 */
+	public $cssLayoutViewport;
 
+	/**
+	 * Metrics relating to the visual viewport in CSS pixels.
+	 *
+	 * @var VisualViewport
+	 */
+	public $cssVisualViewport;
+
+	/**
+	 * Size of scrollable area in CSS pixels.
+	 *
+	 * @var Rect
+	 */
+	public $cssContentSize;
+
+
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();
@@ -46,6 +71,15 @@ final class GetLayoutMetricsResponse implements \JsonSerializable
 		}
 		if (isset($data->contentSize)) {
 			$instance->contentSize = Rect::fromJson($data->contentSize);
+		}
+		if (isset($data->cssLayoutViewport)) {
+			$instance->cssLayoutViewport = LayoutViewport::fromJson($data->cssLayoutViewport);
+		}
+		if (isset($data->cssVisualViewport)) {
+			$instance->cssVisualViewport = VisualViewport::fromJson($data->cssVisualViewport);
+		}
+		if (isset($data->cssContentSize)) {
+			$instance->cssContentSize = Rect::fromJson($data->cssContentSize);
 		}
 		return $instance;
 	}
@@ -62,6 +96,15 @@ final class GetLayoutMetricsResponse implements \JsonSerializable
 		}
 		if ($this->contentSize !== null) {
 			$data->contentSize = $this->contentSize->jsonSerialize();
+		}
+		if ($this->cssLayoutViewport !== null) {
+			$data->cssLayoutViewport = $this->cssLayoutViewport->jsonSerialize();
+		}
+		if ($this->cssVisualViewport !== null) {
+			$data->cssVisualViewport = $this->cssVisualViewport->jsonSerialize();
+		}
+		if ($this->cssContentSize !== null) {
+			$data->cssContentSize = $this->cssContentSize->jsonSerialize();
 		}
 		return $data;
 	}

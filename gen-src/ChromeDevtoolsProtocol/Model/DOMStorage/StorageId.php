@@ -14,9 +14,16 @@ final class StorageId implements \JsonSerializable
 	/**
 	 * Security origin for the storage.
 	 *
-	 * @var string
+	 * @var string|null
 	 */
 	public $securityOrigin;
+
+	/**
+	 * Represents a key by which DOM Storage keys its CachedStorageAreas
+	 *
+	 * @var string
+	 */
+	public $storageKey;
 
 	/**
 	 * Whether the storage is local storage (not session storage).
@@ -26,11 +33,18 @@ final class StorageId implements \JsonSerializable
 	public $isLocalStorage;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();
 		if (isset($data->securityOrigin)) {
 			$instance->securityOrigin = (string)$data->securityOrigin;
+		}
+		if (isset($data->storageKey)) {
+			$instance->storageKey = (string)$data->storageKey;
 		}
 		if (isset($data->isLocalStorage)) {
 			$instance->isLocalStorage = (bool)$data->isLocalStorage;
@@ -44,6 +58,9 @@ final class StorageId implements \JsonSerializable
 		$data = new \stdClass();
 		if ($this->securityOrigin !== null) {
 			$data->securityOrigin = $this->securityOrigin;
+		}
+		if ($this->storageKey !== null) {
+			$data->storageKey = $this->storageKey;
 		}
 		if ($this->isLocalStorage !== null) {
 			$data->isLocalStorage = $this->isLocalStorage;

@@ -19,6 +19,10 @@ final class RequestCacheNamesResponse implements \JsonSerializable
 	public $caches;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

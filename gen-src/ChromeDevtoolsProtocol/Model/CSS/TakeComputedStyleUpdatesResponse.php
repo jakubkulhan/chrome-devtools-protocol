@@ -12,13 +12,17 @@ namespace ChromeDevtoolsProtocol\Model\CSS;
 final class TakeComputedStyleUpdatesResponse implements \JsonSerializable
 {
 	/**
-	 * The list of node Ids that have their tracked computed styles updated
+	 * The list of node Ids that have their tracked computed styles updated.
 	 *
 	 * @var int[]
 	 */
 	public $nodeIds;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

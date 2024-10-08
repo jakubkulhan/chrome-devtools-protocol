@@ -40,6 +40,10 @@ final class PrivatePropertyDescriptor implements \JsonSerializable
 	public $set;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

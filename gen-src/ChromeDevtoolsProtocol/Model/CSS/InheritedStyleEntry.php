@@ -26,6 +26,10 @@ final class InheritedStyleEntry implements \JsonSerializable
 	public $matchedCSSRules;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

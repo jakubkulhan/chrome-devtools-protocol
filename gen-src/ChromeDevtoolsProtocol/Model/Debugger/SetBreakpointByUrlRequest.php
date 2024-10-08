@@ -54,6 +54,10 @@ final class SetBreakpointByUrlRequest implements \JsonSerializable
 	public $condition;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

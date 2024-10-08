@@ -11,8 +11,8 @@ namespace ChromeDevtoolsProtocol\Model\Browser;
  */
 final class WindowStateEnum
 {
-	const NORMAL = 'normal';
-	const MINIMIZED = 'minimized';
-	const MAXIMIZED = 'maximized';
-	const FULLSCREEN = 'fullscreen';
+	public const NORMAL = 'normal';
+	public const MINIMIZED = 'minimized';
+	public const MAXIMIZED = 'maximized';
+	public const FULLSCREEN = 'fullscreen';
 }

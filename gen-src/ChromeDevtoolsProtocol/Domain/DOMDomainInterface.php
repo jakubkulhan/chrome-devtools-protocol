@@ -18,15 +18,23 @@ use ChromeDevtoolsProtocol\Model\DOM\DescribeNodeResponse;
 use ChromeDevtoolsProtocol\Model\DOM\DiscardSearchResultsRequest;
 use ChromeDevtoolsProtocol\Model\DOM\DistributedNodesUpdatedEvent;
 use ChromeDevtoolsProtocol\Model\DOM\DocumentUpdatedEvent;
+use ChromeDevtoolsProtocol\Model\DOM\EnableRequest;
 use ChromeDevtoolsProtocol\Model\DOM\FocusRequest;
+use ChromeDevtoolsProtocol\Model\DOM\GetAnchorElementRequest;
+use ChromeDevtoolsProtocol\Model\DOM\GetAnchorElementResponse;
 use ChromeDevtoolsProtocol\Model\DOM\GetAttributesRequest;
 use ChromeDevtoolsProtocol\Model\DOM\GetAttributesResponse;
 use ChromeDevtoolsProtocol\Model\DOM\GetBoxModelRequest;
 use ChromeDevtoolsProtocol\Model\DOM\GetBoxModelResponse;
+use ChromeDevtoolsProtocol\Model\DOM\GetContainerForNodeRequest;
+use ChromeDevtoolsProtocol\Model\DOM\GetContainerForNodeResponse;
 use ChromeDevtoolsProtocol\Model\DOM\GetContentQuadsRequest;
 use ChromeDevtoolsProtocol\Model\DOM\GetContentQuadsResponse;
+use ChromeDevtoolsProtocol\Model\DOM\GetDetachedDomNodesResponse;
 use ChromeDevtoolsProtocol\Model\DOM\GetDocumentRequest;
 use ChromeDevtoolsProtocol\Model\DOM\GetDocumentResponse;
+use ChromeDevtoolsProtocol\Model\DOM\GetElementByRelationRequest;
+use ChromeDevtoolsProtocol\Model\DOM\GetElementByRelationResponse;
 use ChromeDevtoolsProtocol\Model\DOM\GetFileInfoRequest;
 use ChromeDevtoolsProtocol\Model\DOM\GetFileInfoResponse;
 use ChromeDevtoolsProtocol\Model\DOM\GetFlattenedDocumentRequest;
@@ -41,10 +49,13 @@ use ChromeDevtoolsProtocol\Model\DOM\GetNodesForSubtreeByStyleRequest;
 use ChromeDevtoolsProtocol\Model\DOM\GetNodesForSubtreeByStyleResponse;
 use ChromeDevtoolsProtocol\Model\DOM\GetOuterHTMLRequest;
 use ChromeDevtoolsProtocol\Model\DOM\GetOuterHTMLResponse;
+use ChromeDevtoolsProtocol\Model\DOM\GetQueryingDescendantsForContainerRequest;
+use ChromeDevtoolsProtocol\Model\DOM\GetQueryingDescendantsForContainerResponse;
 use ChromeDevtoolsProtocol\Model\DOM\GetRelayoutBoundaryRequest;
 use ChromeDevtoolsProtocol\Model\DOM\GetRelayoutBoundaryResponse;
 use ChromeDevtoolsProtocol\Model\DOM\GetSearchResultsRequest;
 use ChromeDevtoolsProtocol\Model\DOM\GetSearchResultsResponse;
+use ChromeDevtoolsProtocol\Model\DOM\GetTopLayerElementsResponse;
 use ChromeDevtoolsProtocol\Model\DOM\InlineStyleInvalidatedEvent;
 use ChromeDevtoolsProtocol\Model\DOM\MoveToRequest;
 use ChromeDevtoolsProtocol\Model\DOM\MoveToResponse;
@@ -68,6 +79,7 @@ use ChromeDevtoolsProtocol\Model\DOM\RequestNodeResponse;
 use ChromeDevtoolsProtocol\Model\DOM\ResolveNodeRequest;
 use ChromeDevtoolsProtocol\Model\DOM\ResolveNodeResponse;
 use ChromeDevtoolsProtocol\Model\DOM\ScrollIntoViewIfNeededRequest;
+use ChromeDevtoolsProtocol\Model\DOM\ScrollableFlagUpdatedEvent;
 use ChromeDevtoolsProtocol\Model\DOM\SetAttributeValueRequest;
 use ChromeDevtoolsProtocol\Model\DOM\SetAttributesAsTextRequest;
 use ChromeDevtoolsProtocol\Model\DOM\SetChildNodesEvent;
@@ -80,10 +92,11 @@ use ChromeDevtoolsProtocol\Model\DOM\SetNodeValueRequest;
 use ChromeDevtoolsProtocol\Model\DOM\SetOuterHTMLRequest;
 use ChromeDevtoolsProtocol\Model\DOM\ShadowRootPoppedEvent;
 use ChromeDevtoolsProtocol\Model\DOM\ShadowRootPushedEvent;
+use ChromeDevtoolsProtocol\Model\DOM\TopLayerElementsUpdatedEvent;
 use ChromeDevtoolsProtocol\SubscriptionInterface;
 
 /**
- * This domain exposes DOM read/write operations. Each DOM Node is represented with its mirror object that has an `id`. This `id` can be used to get additional information on the Node, resolve it into the JavaScript object wrapper, etc. It is important that client receives DOM events only for the nodes that are known to the client. Backend keeps track of the nodes that were sent to the client and never sends the same node twice. It is client's responsibility to collect information about the nodes that were sent to the client.<p>Note that `iframe` owner elements will return corresponding document elements as their child nodes.</p>
+ * This domain exposes DOM read/write operations. Each DOM Node is represented with its mirror object that has an `id`. This `id` can be used to get additional information on the Node, resolve it into the JavaScript object wrapper, etc. It is important that client receives DOM events only for the nodes that are known to the client. Backend keeps track of the nodes that were sent to the client and never sends the same node twice. It is client's responsibility to collect information about the nodes that were sent to the client. Note that `iframe` owner elements will return corresponding document elements as their child nodes.
  *
  * @generated This file has been auto-generated, do not edit.
  *
@@ -152,10 +165,11 @@ interface DOMDomainInterface
 	 * Enables DOM agent for the given page.
 	 *
 	 * @param ContextInterface $ctx
+	 * @param EnableRequest $request
 	 *
 	 * @return void
 	 */
-	public function enable(ContextInterface $ctx): void;
+	public function enable(ContextInterface $ctx, EnableRequest $request): void;
 
 
 	/**
@@ -167,6 +181,17 @@ interface DOMDomainInterface
 	 * @return void
 	 */
 	public function focus(ContextInterface $ctx, FocusRequest $request): void;
+
+
+	/**
+	 * Returns the target anchor element of the given anchor query according to https://www.w3.org/TR/css-anchor-position-1/#target.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param GetAnchorElementRequest $request
+	 *
+	 * @return GetAnchorElementResponse
+	 */
+	public function getAnchorElement(ContextInterface $ctx, GetAnchorElementRequest $request): GetAnchorElementResponse;
 
 
 	/**
@@ -192,6 +217,20 @@ interface DOMDomainInterface
 
 
 	/**
+	 * Returns the query container of the given node based on container query conditions: containerName, physical, and logical axes. If no axes are provided, the style container is returned, which is the direct parent or the closest element with a matching container-name.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param GetContainerForNodeRequest $request
+	 *
+	 * @return GetContainerForNodeResponse
+	 */
+	public function getContainerForNode(
+		ContextInterface $ctx,
+		GetContainerForNodeRequest $request
+	): GetContainerForNodeResponse;
+
+
+	/**
 	 * Returns quads that describe node position on the page. This method might return multiple quads for inline nodes.
 	 *
 	 * @param ContextInterface $ctx
@@ -203,7 +242,17 @@ interface DOMDomainInterface
 
 
 	/**
-	 * Returns the root DOM node (and optionally the subtree) to the caller.
+	 * Returns list of detached nodes
+	 *
+	 * @param ContextInterface $ctx
+	 *
+	 * @return GetDetachedDomNodesResponse
+	 */
+	public function getDetachedDomNodes(ContextInterface $ctx): GetDetachedDomNodesResponse;
+
+
+	/**
+	 * Returns the root DOM node (and optionally the subtree) to the caller. Implicitly enables the DOM domain events for the current target.
 	 *
 	 * @param ContextInterface $ctx
 	 * @param GetDocumentRequest $request
@@ -211,6 +260,20 @@ interface DOMDomainInterface
 	 * @return GetDocumentResponse
 	 */
 	public function getDocument(ContextInterface $ctx, GetDocumentRequest $request): GetDocumentResponse;
+
+
+	/**
+	 * Returns the NodeId of the matched element according to certain relations.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param GetElementByRelationRequest $request
+	 *
+	 * @return GetElementByRelationResponse
+	 */
+	public function getElementByRelation(
+		ContextInterface $ctx,
+		GetElementByRelationRequest $request
+	): GetElementByRelationResponse;
 
 
 	/**
@@ -303,6 +366,20 @@ interface DOMDomainInterface
 
 
 	/**
+	 * Returns the descendants of a container query container that have container queries against this container.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param GetQueryingDescendantsForContainerRequest $request
+	 *
+	 * @return GetQueryingDescendantsForContainerResponse
+	 */
+	public function getQueryingDescendantsForContainer(
+		ContextInterface $ctx,
+		GetQueryingDescendantsForContainerRequest $request
+	): GetQueryingDescendantsForContainerResponse;
+
+
+	/**
 	 * Returns the id of the nearest ancestor that is a relayout boundary.
 	 *
 	 * @param ContextInterface $ctx
@@ -325,6 +402,16 @@ interface DOMDomainInterface
 	 * @return GetSearchResultsResponse
 	 */
 	public function getSearchResults(ContextInterface $ctx, GetSearchResultsRequest $request): GetSearchResultsResponse;
+
+
+	/**
+	 * Returns NodeIds of current top layer elements. Top layer is rendered closest to the user within a viewport, therefore its elements always appear on top of all other content.
+	 *
+	 * @param ContextInterface $ctx
+	 *
+	 * @return GetTopLayerElementsResponse
+	 */
+	public function getTopLayerElements(ContextInterface $ctx): GetTopLayerElementsResponse;
 
 
 	/**
@@ -758,7 +845,7 @@ interface DOMDomainInterface
 
 
 	/**
-	 * Called when distrubution is changed.
+	 * Called when distribution is changed.
 	 *
 	 * Listener will be called whenever event DOM.distributedNodesUpdated is fired.
 	 *
@@ -770,7 +857,7 @@ interface DOMDomainInterface
 
 
 	/**
-	 * Called when distrubution is changed.
+	 * Called when distribution is changed.
 	 *
 	 * Method will block until first DOM.distributedNodesUpdated event is fired.
 	 *
@@ -878,6 +965,30 @@ interface DOMDomainInterface
 
 
 	/**
+	 * Fired when a node's scrollability state changes.
+	 *
+	 * Listener will be called whenever event DOM.scrollableFlagUpdated is fired.
+	 *
+	 * @param callable $listener
+	 *
+	 * @return SubscriptionInterface
+	 */
+	public function addScrollableFlagUpdatedListener(callable $listener): SubscriptionInterface;
+
+
+	/**
+	 * Fired when a node's scrollability state changes.
+	 *
+	 * Method will block until first DOM.scrollableFlagUpdated event is fired.
+	 *
+	 * @param ContextInterface $ctx
+	 *
+	 * @return ScrollableFlagUpdatedEvent
+	 */
+	public function awaitScrollableFlagUpdated(ContextInterface $ctx): ScrollableFlagUpdatedEvent;
+
+
+	/**
 	 * Fired when backend wants to provide client with the missing DOM structure. This happens upon most of the calls requesting node ids.
 	 *
 	 * Listener will be called whenever event DOM.setChildNodes is fired.
@@ -947,4 +1058,28 @@ interface DOMDomainInterface
 	 * @return ShadowRootPushedEvent
 	 */
 	public function awaitShadowRootPushed(ContextInterface $ctx): ShadowRootPushedEvent;
+
+
+	/**
+	 * Called when top layer elements are changed.
+	 *
+	 * Listener will be called whenever event DOM.topLayerElementsUpdated is fired.
+	 *
+	 * @param callable $listener
+	 *
+	 * @return SubscriptionInterface
+	 */
+	public function addTopLayerElementsUpdatedListener(callable $listener): SubscriptionInterface;
+
+
+	/**
+	 * Called when top layer elements are changed.
+	 *
+	 * Method will block until first DOM.topLayerElementsUpdated event is fired.
+	 *
+	 * @param ContextInterface $ctx
+	 *
+	 * @return TopLayerElementsUpdatedEvent
+	 */
+	public function awaitTopLayerElementsUpdated(ContextInterface $ctx): TopLayerElementsUpdatedEvent;
 }

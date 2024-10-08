@@ -11,21 +11,22 @@ namespace ChromeDevtoolsProtocol\Model\Network;
  */
 final class ResourceTypeEnum
 {
-	const DOCUMENT = 'Document';
-	const STYLESHEET = 'Stylesheet';
-	const IMAGE = 'Image';
-	const MEDIA = 'Media';
-	const FONT = 'Font';
-	const SCRIPT = 'Script';
-	const TEXT_TRACK = 'TextTrack';
-	const XHR = 'XHR';
-	const FETCH = 'Fetch';
-	const EVENT_SOURCE = 'EventSource';
-	const WEB_SOCKET = 'WebSocket';
-	const MANIFEST = 'Manifest';
-	const SIGNED_EXCHANGE = 'SignedExchange';
-	const PING = 'Ping';
-	const CSP_VIOLATION_REPORT = 'CSPViolationReport';
-	const PREFLIGHT = 'Preflight';
-	const OTHER = 'Other';
+	public const DOCUMENT = 'Document';
+	public const STYLESHEET = 'Stylesheet';
+	public const IMAGE = 'Image';
+	public const MEDIA = 'Media';
+	public const FONT = 'Font';
+	public const SCRIPT = 'Script';
+	public const TEXT_TRACK = 'TextTrack';
+	public const XHR = 'XHR';
+	public const FETCH = 'Fetch';
+	public const PREFETCH = 'Prefetch';
+	public const EVENT_SOURCE = 'EventSource';
+	public const WEB_SOCKET = 'WebSocket';
+	public const MANIFEST = 'Manifest';
+	public const SIGNED_EXCHANGE = 'SignedExchange';
+	public const PING = 'Ping';
+	public const CSP_VIOLATION_REPORT = 'CSPViolationReport';
+	public const PREFLIGHT = 'Preflight';
+	public const OTHER = 'Other';
 }

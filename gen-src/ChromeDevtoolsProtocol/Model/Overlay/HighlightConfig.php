@@ -139,7 +139,18 @@ final class HighlightConfig implements \JsonSerializable
 	 */
 	public $contrastAlgorithm;
 
+	/**
+	 * The container query container highlight configuration (default: all transparent).
+	 *
+	 * @var ContainerQueryContainerHighlightConfig|null
+	 */
+	public $containerQueryContainerHighlightConfig;
 
+
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();
@@ -196,6 +207,9 @@ final class HighlightConfig implements \JsonSerializable
 		}
 		if (isset($data->contrastAlgorithm)) {
 			$instance->contrastAlgorithm = (string)$data->contrastAlgorithm;
+		}
+		if (isset($data->containerQueryContainerHighlightConfig)) {
+			$instance->containerQueryContainerHighlightConfig = ContainerQueryContainerHighlightConfig::fromJson($data->containerQueryContainerHighlightConfig);
 		}
 		return $instance;
 	}
@@ -257,6 +271,9 @@ final class HighlightConfig implements \JsonSerializable
 		}
 		if ($this->contrastAlgorithm !== null) {
 			$data->contrastAlgorithm = $this->contrastAlgorithm;
+		}
+		if ($this->containerQueryContainerHighlightConfig !== null) {
+			$data->containerQueryContainerHighlightConfig = $this->containerQueryContainerHighlightConfig->jsonSerialize();
 		}
 		return $data;
 	}

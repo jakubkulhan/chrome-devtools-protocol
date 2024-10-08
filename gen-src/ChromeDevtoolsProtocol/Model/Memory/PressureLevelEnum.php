@@ -11,6 +11,6 @@ namespace ChromeDevtoolsProtocol\Model\Memory;
  */
 final class PressureLevelEnum
 {
-	const MODERATE = 'moderate';
-	const CRITICAL = 'critical';
+	public const MODERATE = 'moderate';
+	public const CRITICAL = 'critical';
 }

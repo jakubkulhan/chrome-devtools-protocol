@@ -8,6 +8,7 @@ use ChromeDevtoolsProtocol\Model\Page\AddScriptToEvaluateOnLoadRequest;
 use ChromeDevtoolsProtocol\Model\Page\AddScriptToEvaluateOnLoadResponse;
 use ChromeDevtoolsProtocol\Model\Page\AddScriptToEvaluateOnNewDocumentRequest;
 use ChromeDevtoolsProtocol\Model\Page\AddScriptToEvaluateOnNewDocumentResponse;
+use ChromeDevtoolsProtocol\Model\Page\BackForwardCacheNotUsedEvent;
 use ChromeDevtoolsProtocol\Model\Page\CaptureScreenshotRequest;
 use ChromeDevtoolsProtocol\Model\Page\CaptureScreenshotResponse;
 use ChromeDevtoolsProtocol\Model\Page\CaptureSnapshotRequest;
@@ -30,14 +31,20 @@ use ChromeDevtoolsProtocol\Model\Page\FrameResizedEvent;
 use ChromeDevtoolsProtocol\Model\Page\FrameScheduledNavigationEvent;
 use ChromeDevtoolsProtocol\Model\Page\FrameStartedLoadingEvent;
 use ChromeDevtoolsProtocol\Model\Page\FrameStoppedLoadingEvent;
+use ChromeDevtoolsProtocol\Model\Page\FrameSubtreeWillBeDetachedEvent;
 use ChromeDevtoolsProtocol\Model\Page\GenerateTestReportRequest;
+use ChromeDevtoolsProtocol\Model\Page\GetAdScriptIdRequest;
+use ChromeDevtoolsProtocol\Model\Page\GetAdScriptIdResponse;
+use ChromeDevtoolsProtocol\Model\Page\GetAppIdResponse;
+use ChromeDevtoolsProtocol\Model\Page\GetAppManifestRequest;
 use ChromeDevtoolsProtocol\Model\Page\GetAppManifestResponse;
-use ChromeDevtoolsProtocol\Model\Page\GetCookiesResponse;
 use ChromeDevtoolsProtocol\Model\Page\GetFrameTreeResponse;
 use ChromeDevtoolsProtocol\Model\Page\GetInstallabilityErrorsResponse;
 use ChromeDevtoolsProtocol\Model\Page\GetLayoutMetricsResponse;
 use ChromeDevtoolsProtocol\Model\Page\GetManifestIconsResponse;
 use ChromeDevtoolsProtocol\Model\Page\GetNavigationHistoryResponse;
+use ChromeDevtoolsProtocol\Model\Page\GetOriginTrialsRequest;
+use ChromeDevtoolsProtocol\Model\Page\GetOriginTrialsResponse;
 use ChromeDevtoolsProtocol\Model\Page\GetPermissionsPolicyStateRequest;
 use ChromeDevtoolsProtocol\Model\Page\GetPermissionsPolicyStateResponse;
 use ChromeDevtoolsProtocol\Model\Page\GetResourceContentRequest;
@@ -76,7 +83,9 @@ use ChromeDevtoolsProtocol\Model\Page\SetFontSizesRequest;
 use ChromeDevtoolsProtocol\Model\Page\SetGeolocationOverrideRequest;
 use ChromeDevtoolsProtocol\Model\Page\SetInterceptFileChooserDialogRequest;
 use ChromeDevtoolsProtocol\Model\Page\SetLifecycleEventsEnabledRequest;
-use ChromeDevtoolsProtocol\Model\Page\SetProduceCompilationCacheRequest;
+use ChromeDevtoolsProtocol\Model\Page\SetPrerenderingAllowedRequest;
+use ChromeDevtoolsProtocol\Model\Page\SetRPHRegistrationModeRequest;
+use ChromeDevtoolsProtocol\Model\Page\SetSPCTransactionModeRequest;
 use ChromeDevtoolsProtocol\Model\Page\SetTouchEmulationEnabledRequest;
 use ChromeDevtoolsProtocol\Model\Page\SetWebLifecycleStateRequest;
 use ChromeDevtoolsProtocol\Model\Page\StartScreencastRequest;
@@ -174,7 +183,7 @@ interface PageDomainInterface
 
 
 	/**
-	 * Clears the overriden device metrics.
+	 * Clears the overridden device metrics.
 	 *
 	 * @param ContextInterface $ctx
 	 *
@@ -194,7 +203,7 @@ interface PageDomainInterface
 
 
 	/**
-	 * Clears the overriden Geolocation Position and Error.
+	 * Clears the overridden Geolocation Position and Error.
 	 *
 	 * @param ContextInterface $ctx
 	 *
@@ -280,23 +289,35 @@ interface PageDomainInterface
 
 
 	/**
-	 * Call Page.getAppManifest command.
+	 * Call Page.getAdScriptId command.
 	 *
 	 * @param ContextInterface $ctx
+	 * @param GetAdScriptIdRequest $request
 	 *
-	 * @return GetAppManifestResponse
+	 * @return GetAdScriptIdResponse
 	 */
-	public function getAppManifest(ContextInterface $ctx): GetAppManifestResponse;
+	public function getAdScriptId(ContextInterface $ctx, GetAdScriptIdRequest $request): GetAdScriptIdResponse;
 
 
 	/**
-	 * Returns all browser cookies. Depending on the backend support, will return detailed cookie information in the `cookies` field.
+	 * Returns the unique (PWA) app id. Only returns values if the feature flag 'WebAppEnableManifestId' is enabled
 	 *
 	 * @param ContextInterface $ctx
 	 *
-	 * @return GetCookiesResponse
+	 * @return GetAppIdResponse
 	 */
-	public function getCookies(ContextInterface $ctx): GetCookiesResponse;
+	public function getAppId(ContextInterface $ctx): GetAppIdResponse;
+
+
+	/**
+	 * Gets the processed manifest for this current document. This API always waits for the manifest to be loaded. If manifestId is provided, and it does not match the manifest of the current document, this API errors out. If there is not a loaded page, this API errors out immediately.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param GetAppManifestRequest $request
+	 *
+	 * @return GetAppManifestResponse
+	 */
+	public function getAppManifest(ContextInterface $ctx, GetAppManifestRequest $request): GetAppManifestResponse;
 
 
 	/**
@@ -330,7 +351,7 @@ interface PageDomainInterface
 
 
 	/**
-	 * Call Page.getManifestIcons command.
+	 * Deprecated because it's not guaranteed that the returned icon is in fact the one used for PWA installation.
 	 *
 	 * @param ContextInterface $ctx
 	 *
@@ -347,6 +368,17 @@ interface PageDomainInterface
 	 * @return GetNavigationHistoryResponse
 	 */
 	public function getNavigationHistory(ContextInterface $ctx): GetNavigationHistoryResponse;
+
+
+	/**
+	 * Get Origin Trials on given frame.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param GetOriginTrialsRequest $request
+	 *
+	 * @return GetOriginTrialsResponse
+	 */
+	public function getOriginTrials(ContextInterface $ctx, GetOriginTrialsRequest $request): GetOriginTrialsResponse;
 
 
 	/**
@@ -432,7 +464,7 @@ interface PageDomainInterface
 
 
 	/**
-	 * Requests backend to produce compilation cache for the specified scripts. Unlike setProduceCompilationCache, this allows client to only produce cache for specific scripts. `scripts` are appeneded to the list of scripts for which the cache for would produced. Disabling compilation cache with `setProduceCompilationCache` would reset all pending cache requests. The list may also be reset during page navigation. When script with a matching URL is encountered, the cache is optionally produced upon backend discretion, based on internal heuristics. See also: `Page.compilationCacheProduced`.
+	 * Requests backend to produce compilation cache for the specified scripts. `scripts` are appended to the list of scripts for which the cache would be produced. The list may be reset during page navigation. When script with a matching URL is encountered, the cache is optionally produced upon backend discretion, based on internal heuristics. See also: `Page.compilationCacheProduced`.
 	 *
 	 * @param ContextInterface $ctx
 	 * @param ProduceCompilationCacheRequest $request
@@ -635,14 +667,36 @@ interface PageDomainInterface
 
 
 	/**
-	 * Forces compilation cache to be generated for every subresource script. See also: `Page.produceCompilationCache`.
+	 * Enable/disable prerendering manually. This command is a short-term solution for https://crbug.com/1440085. See https://docs.google.com/document/d/12HVmFxYj5Jc-eJr5OmWsa2bqTJsbgGLKI6ZIyx0_wpA for more details. TODO(https://crbug.com/1440085): Remove this once Puppeteer supports tab targets.
 	 *
 	 * @param ContextInterface $ctx
-	 * @param SetProduceCompilationCacheRequest $request
+	 * @param SetPrerenderingAllowedRequest $request
 	 *
 	 * @return void
 	 */
-	public function setProduceCompilationCache(ContextInterface $ctx, SetProduceCompilationCacheRequest $request): void;
+	public function setPrerenderingAllowed(ContextInterface $ctx, SetPrerenderingAllowedRequest $request): void;
+
+
+	/**
+	 * Extensions for Custom Handlers API: https://html.spec.whatwg.org/multipage/system-state.html#rph-automation
+	 *
+	 * @param ContextInterface $ctx
+	 * @param SetRPHRegistrationModeRequest $request
+	 *
+	 * @return void
+	 */
+	public function setRPHRegistrationMode(ContextInterface $ctx, SetRPHRegistrationModeRequest $request): void;
+
+
+	/**
+	 * Sets the Secure Payment Confirmation transaction mode. https://w3c.github.io/secure-payment-confirmation/#sctn-automation-set-spc-transaction-mode
+	 *
+	 * @param ContextInterface $ctx
+	 * @param SetSPCTransactionModeRequest $request
+	 *
+	 * @return void
+	 */
+	public function setSPCTransactionMode(ContextInterface $ctx, SetSPCTransactionModeRequest $request): void;
 
 
 	/**
@@ -706,6 +760,30 @@ interface PageDomainInterface
 	 * @return void
 	 */
 	public function waitForDebugger(ContextInterface $ctx): void;
+
+
+	/**
+	 * Fired for failed bfcache history navigations if BackForwardCache feature is enabled. Do not assume any ordering with the Page.frameNavigated event. This event is fired only for main-frame history navigation where the document changes (non-same-document navigations), when bfcache navigation fails.
+	 *
+	 * Listener will be called whenever event Page.backForwardCacheNotUsed is fired.
+	 *
+	 * @param callable $listener
+	 *
+	 * @return SubscriptionInterface
+	 */
+	public function addBackForwardCacheNotUsedListener(callable $listener): SubscriptionInterface;
+
+
+	/**
+	 * Fired for failed bfcache history navigations if BackForwardCache feature is enabled. Do not assume any ordering with the Page.frameNavigated event. This event is fired only for main-frame history navigation where the document changes (non-same-document navigations), when bfcache navigation fails.
+	 *
+	 * Method will block until first Page.backForwardCacheNotUsed event is fired.
+	 *
+	 * @param ContextInterface $ctx
+	 *
+	 * @return BackForwardCacheNotUsedEvent
+	 */
+	public function awaitBackForwardCacheNotUsed(ContextInterface $ctx): BackForwardCacheNotUsedEvent;
 
 
 	/**
@@ -781,7 +859,7 @@ interface PageDomainInterface
 
 
 	/**
-	 * Fired when download makes progress. Last call has |done| == true.
+	 * Fired when download makes progress. Last call has |done| == true. Deprecated. Use Browser.downloadProgress instead.
 	 *
 	 * Listener will be called whenever event Page.downloadProgress is fired.
 	 *
@@ -793,7 +871,7 @@ interface PageDomainInterface
 
 
 	/**
-	 * Fired when download makes progress. Last call has |done| == true.
+	 * Fired when download makes progress. Last call has |done| == true. Deprecated. Use Browser.downloadProgress instead.
 	 *
 	 * Method will block until first Page.downloadProgress event is fired.
 	 *
@@ -805,7 +883,7 @@ interface PageDomainInterface
 
 
 	/**
-	 * Fired when page is about to start a download.
+	 * Fired when page is about to start a download. Deprecated. Use Browser.downloadWillBegin instead.
 	 *
 	 * Listener will be called whenever event Page.downloadWillBegin is fired.
 	 *
@@ -817,7 +895,7 @@ interface PageDomainInterface
 
 
 	/**
-	 * Fired when page is about to start a download.
+	 * Fired when page is about to start a download. Deprecated. Use Browser.downloadWillBegin instead.
 	 *
 	 * Method will block until first Page.downloadWillBegin event is fired.
 	 *
@@ -1066,6 +1144,30 @@ interface PageDomainInterface
 	 * @return FrameStoppedLoadingEvent
 	 */
 	public function awaitFrameStoppedLoading(ContextInterface $ctx): FrameStoppedLoadingEvent;
+
+
+	/**
+	 * Fired before frame subtree is detached. Emitted before any frame of the subtree is actually detached.
+	 *
+	 * Listener will be called whenever event Page.frameSubtreeWillBeDetached is fired.
+	 *
+	 * @param callable $listener
+	 *
+	 * @return SubscriptionInterface
+	 */
+	public function addFrameSubtreeWillBeDetachedListener(callable $listener): SubscriptionInterface;
+
+
+	/**
+	 * Fired before frame subtree is detached. Emitted before any frame of the subtree is actually detached.
+	 *
+	 * Method will block until first Page.frameSubtreeWillBeDetached event is fired.
+	 *
+	 * @param ContextInterface $ctx
+	 *
+	 * @return FrameSubtreeWillBeDetachedEvent
+	 */
+	public function awaitFrameSubtreeWillBeDetached(ContextInterface $ctx): FrameSubtreeWillBeDetachedEvent;
 
 
 	/**

@@ -11,7 +11,7 @@ namespace ChromeDevtoolsProtocol\Model\Overlay;
  */
 final class ContrastAlgorithmEnum
 {
-	const AA = 'aa';
-	const AAA = 'aaa';
-	const APCA = 'apca';
+	public const AA = 'aa';
+	public const AAA = 'aaa';
+	public const APCA = 'apca';
 }

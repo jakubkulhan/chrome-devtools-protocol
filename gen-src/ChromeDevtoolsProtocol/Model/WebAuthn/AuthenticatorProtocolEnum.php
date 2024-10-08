@@ -11,6 +11,6 @@ namespace ChromeDevtoolsProtocol\Model\WebAuthn;
  */
 final class AuthenticatorProtocolEnum
 {
-	const U2F = 'u2f';
-	const CTAP2 = 'ctap2';
+	public const U2F = 'u2f';
+	public const CTAP2 = 'ctap2';
 }

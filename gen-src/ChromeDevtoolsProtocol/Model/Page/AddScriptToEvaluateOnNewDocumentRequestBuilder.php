@@ -13,6 +13,8 @@ final class AddScriptToEvaluateOnNewDocumentRequestBuilder
 {
 	private $source;
 	private $worldName;
+	private $includeCommandLineAPI;
+	private $runImmediately;
 
 
 	/**
@@ -26,6 +28,8 @@ final class AddScriptToEvaluateOnNewDocumentRequestBuilder
 		}
 		$instance->source = $this->source;
 		$instance->worldName = $this->worldName;
+		$instance->includeCommandLineAPI = $this->includeCommandLineAPI;
+		$instance->runImmediately = $this->runImmediately;
 		return $instance;
 	}
 
@@ -50,6 +54,30 @@ final class AddScriptToEvaluateOnNewDocumentRequestBuilder
 	public function setWorldName($worldName): self
 	{
 		$this->worldName = $worldName;
+		return $this;
+	}
+
+
+	/**
+	 * @param bool|null $includeCommandLineAPI
+	 *
+	 * @return self
+	 */
+	public function setIncludeCommandLineAPI($includeCommandLineAPI): self
+	{
+		$this->includeCommandLineAPI = $includeCommandLineAPI;
+		return $this;
+	}
+
+
+	/**
+	 * @param bool|null $runImmediately
+	 *
+	 * @return self
+	 */
+	public function setRunImmediately($runImmediately): self
+	{
+		$this->runImmediately = $runImmediately;
 		return $this;
 	}
 }

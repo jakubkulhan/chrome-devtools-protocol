@@ -19,6 +19,10 @@ final class DescribeNodeResponse implements \JsonSerializable
 	public $node;
 
 
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();

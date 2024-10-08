@@ -191,7 +191,8 @@ class Generator
 			$domainImplementation = $this->addClass($domainImplementationName);
 			$domainImplementation->addImplement($domainInterfaceName);
 
-			$domainImplementation->getNamespace()->addUse(InternalClientInterface::class, null, $internalClientAlias);
+			$domainImplementation->getNamespace()->addUse(InternalClientInterface::class);
+			$internalClientAlias = Helpers::extractShortName(InternalClientInterface::class);
 			$domainImplementation->addProperty("internalClient")
 				->addComment("@var {$internalClientAlias}");
 
@@ -200,12 +201,15 @@ class Generator
 				->setTypeHint(InternalClientInterface::class);
 			$domainConstructor->addBody("\$this->internalClient = \$internalClient;");
 
-			$clientTrait->getNamespace()->addUse($domainInterfaceName, null, $domainInterfaceAlias);
+			$clientTrait->getNamespace()->addUse($domainInterfaceName);
+			$domainInterfaceAlias = Helpers::extractShortName($domainInterfaceName);
 			$clientTraitMethod = $clientTrait->addMethod($clientInterfaceMethod->getName());
 			$clientTraitMethod->setVisibility("public");
 			$clientTraitMethod->setReturnType($domainInterfaceName);
-			$clientTrait->getNamespace()->addUse($domainImplementationName, null, $domainImplementationAlias);
-			$clientTrait->getNamespace()->addUse(InternalClientInterface::class, null, $thisAlias);
+			$clientTrait->getNamespace()->addUse($domainImplementationName);
+			$domainImplementationAlias = Helpers::extractShortName($domainImplementationName);
+			$clientTrait->getNamespace()->addUse(InternalClientInterface::class);
+			$thisAlias = Helpers::extractShortName(InternalClientInterface::class);
 			$clientTraitMethod
 				->addBody("if (!isset(\$this->domains[" . var_export($domainSpec->domain, true) . "])) {")
 				->addBody("\t/** @var {$thisAlias} \$this */")
@@ -230,7 +234,8 @@ class Generator
 				}
 				$interfaceCommandMethod->addParameter("ctx")
 					->setTypeHint(ContextInterface::class);
-				$domainInterface->getNamespace()->addUse(ContextInterface::class, null, $contextAlias);
+				$domainInterface->getNamespace()->addUse(ContextInterface::class);
+				$contextAlias = Helpers::extractShortName(ContextInterface::class);
 				$interfaceCommandMethod->addComment("")->addComment("@param {$contextAlias} \$ctx");
 
 				$implementationCommandMethod = $domainImplementation->addMethod($interfaceCommandMethod->getName());
@@ -247,7 +252,8 @@ class Generator
 					];
 					$requestClass = $this->processObjectType($domainSpec->domain, $requestSpec, true);
 					$requestClassName = $requestClass->getNamespace()->getName() . "\\" . $requestClass->getName();
-					$domainInterface->getNamespace()->addUse($requestClassName, null, $requestClassAlias);
+					$domainInterface->getNamespace()->addUse($requestClassName);
+					$requestClassAlias = Helpers::extractShortName($requestClassName);
 					$interfaceCommandMethod->setReturnType($requestClassName);
 					$interfaceCommandMethod->addComment("@param {$requestClassAlias} \$request");
 
@@ -281,12 +287,14 @@ class Generator
 					];
 					$responseClass = $this->processObjectType($domainSpec->domain, $responseSpec);
 					$responseClassName = $responseClass->getNamespace()->getName() . "\\" . $responseClass->getName();
-					$domainInterface->getNamespace()->addUse($responseClassName, null, $interfaceResponseClassAlias);
+					$domainInterface->getNamespace()->addUse($responseClassName);
+					$interfaceResponseClassAlias = Helpers::extractShortName($responseClassName);
 					$interfaceCommandMethod->setReturnType($responseClassName);
 					$interfaceCommandMethod->addComment("")->addComment("@return {$interfaceResponseClassAlias}");
 
 					$implementationCommandMethod->setReturnType($responseClassName);
-					$domainImplementation->getNamespace()->addUse($responseClassName, null, $implementationResponseClassAlias);
+					$domainImplementation->getNamespace()->addUse($responseClassName);
+					$implementationResponseClassAlias = Helpers::extractShortName($responseClassName);
 
 					$implementationCommandMethod->addBody(
 						"\$response = \$this->internalClient->executeCommand(\$ctx, " .
@@ -299,7 +307,8 @@ class Generator
 			}
 
 			foreach ($domainSpec->events as $eventSpec) {
-				$domainInterface->getNamespace()->addUse(SubscriptionInterface::class, null, $subscriptionAlias);
+				$domainInterface->getNamespace()->addUse(SubscriptionInterface::class);
+				$subscriptionAlias = Helpers::extractShortName(SubscriptionInterface::class);
 
 				$eventTypeSpec = (object)[
 					"id" => Util::upperFirst($eventSpec->name . "Event"),
@@ -309,7 +318,8 @@ class Generator
 
 				$eventClass = $this->processObjectType($domainSpec->domain, $eventTypeSpec);
 				$eventClassName = $eventClass->getNamespace()->getName() . "\\" . $eventClass->getName();
-				$domainInterface->getNamespace()->addUse($eventClassName, null, $eventClassAlias);
+				$domainInterface->getNamespace()->addUse($eventClassName);
+				$eventClassAlias = Helpers::extractShortName($eventClassName);
 
 				$interfaceAddListenerMethod = $domainInterface->addMethod("add" . Util::upperFirst($eventSpec->name) . "Listener");
 				$interfaceAddListenerMethod->setVisibility("public");
@@ -332,7 +342,8 @@ class Generator
 				$implementationAddListenerMethod->setVisibility("public");
 				$implementationAddListenerMethod->setReturnType(SubscriptionInterface::class);
 				$domainImplementation->getNamespace()->addUse(SubscriptionInterface::class);
-				$domainImplementation->getNamespace()->addUse($eventClassName, null, $implementationEventClassAlias);
+				$domainImplementation->getNamespace()->addUse($eventClassName);
+				$implementationEventClassAlias = Helpers::extractShortName($eventClassName);
 				$implementationAddListenerMethod->addParameter("listener")
 					->setTypeHint("callable");
 				$implementationAddListenerMethod->addBody(
@@ -350,7 +361,8 @@ class Generator
 				} else {
 					$interfaceAwaitMethod->addComment("Wait for {$domainSpec->domain}.{$eventSpec->name} event.");
 				}
-				$domainInterface->getNamespace()->addUse(ContextInterface::class, null, $contextAlias);
+				$domainInterface->getNamespace()->addUse(ContextInterface::class);
+				$contextAlias = Helpers::extractShortName(ContextInterface::class);
 				$interfaceAwaitMethod
 					->addComment("")
 					->addComment("Method will block until first {$domainSpec->domain}.{$eventSpec->name} event is fired.")
@@ -365,7 +377,8 @@ class Generator
 				$implementationAwaitMethod = $domainImplementation->addMethod($interfaceAwaitMethod->getName());
 				$implementationAwaitMethod->setVisibility("public");
 				$domainImplementation->getNamespace()->addUse(ContextInterface::class);
-				$domainImplementation->getNamespace()->addUse($eventClassName, null, $implementationEventClassAlias);
+				$domainImplementation->getNamespace()->addUse($eventClassName);
+				$implementationEventClassAlias = Helpers::extractShortName($eventClassName);
 				$implementationAwaitMethod->addParameter("ctx")
 					->setTypeHint(ContextInterface::class);
 				$implementationAwaitMethod->setReturnType($eventClassName);
@@ -430,6 +443,7 @@ class Generator
 		$fromJson->setStatic(true);
 		$fromJson->addParameter("rawData");
 		$fromJson->addBody("return new static(\$rawData);");
+		$fromJson->addComment("@param object \$rawData");
 
 		$jsonSerialize = $objectClass->addMethod("jsonSerialize");
 		$jsonSerialize->addBody("return \$this->rawData;");
@@ -442,7 +456,8 @@ class Generator
 				->setVisibility("private")
 				->addComment("Normalized headers data.");
 
-			$objectClass->getNamespace()->addUse(HeadersUtil::class, null, $headersUtilAlias);
+			$objectClass->getNamespace()->addUse(HeadersUtil::class);
+			$headersUtilAlias = Helpers::extractShortName(HeadersUtil::class);
 
 			$constructor
 				->addBody("\$this->headers = [];")
@@ -473,7 +488,9 @@ class Generator
 
 			$objectClass->addImplement(\IteratorAggregate::class);
 			$getIterator = $objectClass->addMethod("getIterator");
-			$objectClass->getNamespace()->addUse(\ArrayIterator::class, null, $arrayIteratorAlias);
+			$getIterator->setReturnType(\ArrayIterator::class);
+			$objectClass->getNamespace()->addUse(\ArrayIterator::class);
+			$arrayIteratorAlias = Helpers::extractShortName(\ArrayIterator::class);
 			$getIterator->addBody("return new {$arrayIteratorAlias}(\$this->headers);");
 		}
 	}
@@ -500,6 +517,8 @@ class Generator
 		$fromJson->setStatic(true);
 		$fromJson->addParameter("data");
 		$fromJson->addBody("\$instance = new static();");
+		$fromJson->addComment("@param object \$data");
+		$fromJson->addComment("@return static");
 
 		$jsonSerialize = $objectClass->addMethod("jsonSerialize");
 		$jsonSerialize->addBody("\$data = new \\stdClass();");
@@ -509,7 +528,8 @@ class Generator
 		if ($withBuilder) {
 			$builderClassName = __NAMESPACE__ . "\\Model\\" . $domain . "\\" . $typeSpec->id . "Builder";
 
-			$objectClass->getNamespace()->addUse($builderClassName, null, $builderAlias);
+			$objectClass->getNamespace()->addUse($builderClassName);
+			$builderAlias = Helpers::extractShortName($builderClassName);
 			$builder = $objectClass->addMethod("builder");
 			$builder
 				->addComment("Create new instance using builder.")
@@ -551,7 +571,8 @@ class Generator
 			$buildMethod->addComment("Validate non-optional parameters and return new instance.");
 			$buildMethod->setVisibility("public");
 			$buildMethod->setReturnType($objectClassName);
-			$builderClass->getNamespace()->addUse($objectClassName, null, $objectAlias);
+			$builderClass->getNamespace()->addUse($objectClassName);
+			$objectAlias = Helpers::extractShortName($objectClassName);
 			$buildMethod->addBody("\$instance = new {$objectAlias}();");
 		}
 
@@ -585,7 +606,8 @@ class Generator
 					->addBody("return \$this;");
 
 				if (!($propertySpec->optional ?? false)) {
-					$builderClass->getNamespace()->addUse(BuilderException::class, null, $builderExceptionAlias);
+					$builderClass->getNamespace()->addUse(BuilderException::class);
+					$builderExceptionAlias = Helpers::extractShortName(BuilderException::class);
 					$buildMethod
 						->addBody("if (\$this->{$propertySpec->name} === null) {")
 						->addBody("\tthrow new {$builderExceptionAlias}(" . var_export(sprintf("Property [%s] is required.", $propertySpec->name), true) . ");")
@@ -636,9 +658,11 @@ class Generator
 					if (in_array($namedTypeSpec->type, ["string", "boolean", "number", "integer", "array"], true)) {
 						return $this->formatDocCommentTypeHint($objectClass, $domain, $namedTypeSpec);
 					} else if ($namedTypeSpec->type === "object") {
-						if ($propertySpec)
 						$namedClassName = __NAMESPACE__ . "\\Model\\" . $namedTypeSpec->domain . "\\" . $namedTypeSpec->id;
-						$objectClass->getNamespace()->addUse($namedClassName, null, $namedClassAlias);
+						$namedClassAlias = Helpers::extractShortName($namedClassName);
+						if ($namedClassName !== ($objectClass->getNamespace()->getName() . '\\' . $objectClass->getName())) {
+							$objectClass->getNamespace()->addUse($namedClassName, $namedClassAlias);
+						}
 						return $namedClassAlias . (($propertySpec->optional ?? false) ? "|null" : "");
 					}
 				}
@@ -799,7 +823,10 @@ class Generator
 								break;
 							} else if ($namedTypeSpec->type === "object") {
 								$namedClassName = __NAMESPACE__ . "\\Model\\" . $namedTypeSpec->domain . "\\" . $namedTypeSpec->id;
-								$objectClass->getNamespace()->addUse($namedClassName, null, $namedClassAlias);
+								$namedClassAlias = Helpers::extractShortName($namedClassName);
+								if ($namedClassName !== ($objectClass->getNamespace()->getName() . '\\' . $objectClass->getName())) {
+									$objectClass->getNamespace()->addUse($namedClassName, $namedClassAlias);
+								}
 
 								$fromJson
 									->addBody("\tforeach (\$data->{$propertySpec->name} as \$item) {")
@@ -846,7 +873,10 @@ class Generator
 						break;
 					} else if ($namedTypeSpec->type === "object") {
 						$namedClassName = __NAMESPACE__ . "\\Model\\" . $namedTypeSpec->domain . "\\" . $namedTypeSpec->id;
-						$objectClass->getNamespace()->addUse($namedClassName, null, $namedClassAlias);
+						$namedClassAlias = Helpers::extractShortName($namedClassName);
+						if ($namedClassName !== ($objectClass->getNamespace()->getName() . '\\' . $objectClass->getName())) {
+							$objectClass->getNamespace()->addUse($namedClassName, $namedClassAlias);
+						}
 
 						$fromJson
 							->addBody("if (isset(\$data->{$propertySpec->name})) {")

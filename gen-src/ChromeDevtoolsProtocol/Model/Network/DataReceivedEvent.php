@@ -39,7 +39,18 @@ final class DataReceivedEvent implements \JsonSerializable
 	 */
 	public $encodedDataLength;
 
+	/**
+	 * Data that was received. (Encoded as a base64 string when passed over JSON)
+	 *
+	 * @var string|null
+	 */
+	public $data;
 
+
+	/**
+	 * @param object $data
+	 * @return static
+	 */
 	public static function fromJson($data)
 	{
 		$instance = new static();
@@ -54,6 +65,9 @@ final class DataReceivedEvent implements \JsonSerializable
 		}
 		if (isset($data->encodedDataLength)) {
 			$instance->encodedDataLength = (int)$data->encodedDataLength;
+		}
+		if (isset($data->data)) {
+			$instance->data = (string)$data->data;
 		}
 		return $instance;
 	}
@@ -73,6 +87,9 @@ final class DataReceivedEvent implements \JsonSerializable
 		}
 		if ($this->encodedDataLength !== null) {
 			$data->encodedDataLength = $this->encodedDataLength;
+		}
+		if ($this->data !== null) {
+			$data->data = $this->data;
 		}
 		return $data;
 	}
