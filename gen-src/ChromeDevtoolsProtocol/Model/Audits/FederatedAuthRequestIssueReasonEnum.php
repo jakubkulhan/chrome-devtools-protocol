@@ -52,7 +52,7 @@ final class FederatedAuthRequestIssueReasonEnum
 	public const THIRD_PARTY_COOKIES_BLOCKED = 'ThirdPartyCookiesBlocked';
 	public const NOT_SIGNED_IN_WITH_IDP = 'NotSignedInWithIdp';
 	public const MISSING_TRANSIENT_USER_ACTIVATION = 'MissingTransientUserActivation';
-	public const REPLACED_BY_BUTTON_MODE = 'ReplacedByButtonMode';
+	public const REPLACED_BY_ACTIVE_MODE = 'ReplacedByActiveMode';
 	public const INVALID_FIELDS_SPECIFIED = 'InvalidFieldsSpecified';
 	public const RELYING_PARTY_ORIGIN_IS_OPAQUE = 'RelyingPartyOriginIsOpaque';
 	public const TYPE_NOT_MATCHING = 'TypeNotMatching';
