@@ -83,4 +83,5 @@ final class PrerenderFinalStatusEnum
 	public const SLOW_NETWORK = 'SlowNetwork';
 	public const OTHER_PRERENDERED_PAGE_ACTIVATED = 'OtherPrerenderedPageActivated';
 	public const V8_OPTIMIZER_DISABLED = 'V8OptimizerDisabled';
+	public const PRERENDER_FAILED_DURING_PREFETCH = 'PrerenderFailedDuringPrefetch';
 }
