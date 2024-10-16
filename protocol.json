@@ -7446,8 +7446,6 @@
                         "placeholder",
                         "file-selector-button",
                         "details-content",
-                        "select-fallback-button",
-                        "select-fallback-button-text",
                         "picker"
                     ]
                 },
@@ -21516,7 +21514,8 @@
                         "EmbedderExtensionMessaging",
                         "EmbedderExtensionMessagingForOpenPort",
                         "EmbedderExtensionSentMessageToCachedFrame",
-                        "RequestedByWebViewClient"
+                        "RequestedByWebViewClient",
+                        "PostMessageByWebViewClient"
                     ]
                 },
                 {

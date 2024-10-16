@@ -45,7 +45,5 @@ final class PseudoTypeEnum
 	public const PLACEHOLDER = 'placeholder';
 	public const FILE_SELECTOR_BUTTON = 'file-selector-button';
 	public const DETAILS_CONTENT = 'details-content';
-	public const SELECT_FALLBACK_BUTTON = 'select-fallback-button';
-	public const SELECT_FALLBACK_BUTTON_TEXT = 'select-fallback-button-text';
 	public const PICKER = 'picker';
 }
