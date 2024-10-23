@@ -57,6 +57,7 @@ final class PermissionsPolicyFeatureEnum
 	public const ENCRYPTED_MEDIA = 'encrypted-media';
 	public const EXECUTION_WHILE_OUT_OF_VIEWPORT = 'execution-while-out-of-viewport';
 	public const EXECUTION_WHILE_NOT_RENDERED = 'execution-while-not-rendered';
+	public const FENCED_FRAME_UNPARTITIONED_DATA = 'fenced-frame-unpartitioned-data';
 	public const FOCUS_WITHOUT_USER_ACTIVATION = 'focus-without-user-activation';
 	public const FULLSCREEN = 'fullscreen';
 	public const FROBULATE = 'frobulate';
