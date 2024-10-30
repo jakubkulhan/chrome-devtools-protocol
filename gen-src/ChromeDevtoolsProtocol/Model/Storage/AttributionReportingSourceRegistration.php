@@ -70,6 +70,9 @@ final class AttributionReportingSourceRegistration implements \JsonSerializable
 	/** @var AttributionScopesData|null */
 	public $scopesData;
 
+	/** @var int */
+	public $maxEventLevelReports;
+
 
 	/**
 	 * @param object $data
@@ -141,6 +144,9 @@ final class AttributionReportingSourceRegistration implements \JsonSerializable
 		if (isset($data->scopesData)) {
 			$instance->scopesData = AttributionScopesData::fromJson($data->scopesData);
 		}
+		if (isset($data->maxEventLevelReports)) {
+			$instance->maxEventLevelReports = (int)$data->maxEventLevelReports;
+		}
 		return $instance;
 	}
 
@@ -210,6 +216,9 @@ final class AttributionReportingSourceRegistration implements \JsonSerializable
 		}
 		if ($this->scopesData !== null) {
 			$data->scopesData = $this->scopesData->jsonSerialize();
+		}
+		if ($this->maxEventLevelReports !== null) {
+			$data->maxEventLevelReports = $this->maxEventLevelReports;
 		}
 		return $data;
 	}
