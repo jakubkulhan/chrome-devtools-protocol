@@ -14,4 +14,5 @@ final class ContextStateEnum
 	public const SUSPENDED = 'suspended';
 	public const RUNNING = 'running';
 	public const CLOSED = 'closed';
+	public const INTERRUPTED = 'interrupted';
 }
