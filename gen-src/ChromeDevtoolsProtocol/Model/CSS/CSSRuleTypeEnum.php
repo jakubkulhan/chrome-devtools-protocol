@@ -17,4 +17,5 @@ final class CSSRuleTypeEnum
 	public const LAYER_RULE = 'LayerRule';
 	public const SCOPE_RULE = 'ScopeRule';
 	public const STYLE_RULE = 'StyleRule';
+	public const STARTING_STYLE_RULE = 'StartingStyleRule';
 }

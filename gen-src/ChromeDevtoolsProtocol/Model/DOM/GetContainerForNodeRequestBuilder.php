@@ -15,6 +15,7 @@ final class GetContainerForNodeRequestBuilder
 	private $containerName;
 	private $physicalAxes;
 	private $logicalAxes;
+	private $queriesScrollState;
 
 
 	/**
@@ -30,6 +31,7 @@ final class GetContainerForNodeRequestBuilder
 		$instance->containerName = $this->containerName;
 		$instance->physicalAxes = $this->physicalAxes;
 		$instance->logicalAxes = $this->logicalAxes;
+		$instance->queriesScrollState = $this->queriesScrollState;
 		return $instance;
 	}
 
@@ -78,6 +80,18 @@ final class GetContainerForNodeRequestBuilder
 	public function setLogicalAxes($logicalAxes): self
 	{
 		$this->logicalAxes = $logicalAxes;
+		return $this;
+	}
+
+
+	/**
+	 * @param bool|null $queriesScrollState
+	 *
+	 * @return self
+	 */
+	public function setQueriesScrollState($queriesScrollState): self
+	{
+		$this->queriesScrollState = $queriesScrollState;
 		return $this;
 	}
 }

@@ -88,6 +88,13 @@ final class CSSRule implements \JsonSerializable
 	 */
 	public $ruleTypes;
 
+	/**
+	 * @starting-style CSS at-rule array. The array enumerates @starting-style at-rules starting with the innermost one, going outwards.
+	 *
+	 * @var CSSStartingStyle[]|null
+	 */
+	public $startingStyles;
+
 
 	/**
 	 * @param object $data
@@ -153,6 +160,12 @@ final class CSSRule implements \JsonSerializable
 			}
 		}
 		}
+		if (isset($data->startingStyles)) {
+			$instance->startingStyles = [];
+			foreach ($data->startingStyles as $item) {
+				$instance->startingStyles[] = CSSStartingStyle::fromJson($item);
+			}
+		}
 		return $instance;
 	}
 
@@ -216,6 +229,12 @@ final class CSSRule implements \JsonSerializable
 				$data->ruleTypes[] = $item;
 			}
 		}
+		}
+		if ($this->startingStyles !== null) {
+			$data->startingStyles = [];
+			foreach ($this->startingStyles as $item) {
+				$data->startingStyles[] = $item->jsonSerialize();
+			}
 		}
 		return $data;
 	}
