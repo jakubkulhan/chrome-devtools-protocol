@@ -20,4 +20,6 @@ final class CookieExclusionReasonEnum
 	public const EXCLUDE_DOMAIN_NON_A_S_C_I_I = 'ExcludeDomainNonASCII';
 	public const EXCLUDE_THIRD_PARTY_COOKIE_BLOCKED_IN_FIRST_PARTY_SET = 'ExcludeThirdPartyCookieBlockedInFirstPartySet';
 	public const EXCLUDE_THIRD_PARTY_PHASEOUT = 'ExcludeThirdPartyPhaseout';
+	public const EXCLUDE_PORT_MISMATCH = 'ExcludePortMismatch';
+	public const EXCLUDE_SCHEME_MISMATCH = 'ExcludeSchemeMismatch';
 }

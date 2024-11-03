@@ -11,6 +11,7 @@ namespace ChromeDevtoolsProtocol\Model\Accessibility;
  */
 final class AXPropertyNameEnum
 {
+	public const ACTIONS = 'actions';
 	public const BUSY = 'busy';
 	public const DISABLED = 'disabled';
 	public const EDITABLE = 'editable';
