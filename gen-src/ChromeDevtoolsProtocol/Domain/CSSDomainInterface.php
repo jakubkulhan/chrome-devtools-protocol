@@ -7,6 +7,7 @@ use ChromeDevtoolsProtocol\Model\CSS\AddRuleRequest;
 use ChromeDevtoolsProtocol\Model\CSS\AddRuleResponse;
 use ChromeDevtoolsProtocol\Model\CSS\CollectClassNamesRequest;
 use ChromeDevtoolsProtocol\Model\CSS\CollectClassNamesResponse;
+use ChromeDevtoolsProtocol\Model\CSS\ComputedStyleUpdatedEvent;
 use ChromeDevtoolsProtocol\Model\CSS\CreateStyleSheetRequest;
 use ChromeDevtoolsProtocol\Model\CSS\CreateStyleSheetResponse;
 use ChromeDevtoolsProtocol\Model\CSS\FontsUpdatedEvent;
@@ -55,6 +56,7 @@ use ChromeDevtoolsProtocol\Model\CSS\StyleSheetChangedEvent;
 use ChromeDevtoolsProtocol\Model\CSS\StyleSheetRemovedEvent;
 use ChromeDevtoolsProtocol\Model\CSS\TakeComputedStyleUpdatesResponse;
 use ChromeDevtoolsProtocol\Model\CSS\TakeCoverageDeltaResponse;
+use ChromeDevtoolsProtocol\Model\CSS\TrackComputedStyleUpdatesForNodeRequest;
 use ChromeDevtoolsProtocol\Model\CSS\TrackComputedStyleUpdatesRequest;
 use ChromeDevtoolsProtocol\SubscriptionInterface;
 
@@ -428,6 +430,44 @@ interface CSSDomainInterface
 	 * @return void
 	 */
 	public function trackComputedStyleUpdates(ContextInterface $ctx, TrackComputedStyleUpdatesRequest $request): void;
+
+
+	/**
+	 * Starts tracking the given node for the computed style updates and whenever the computed style is updated for node, it queues a `computedStyleUpdated` event with throttling.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param TrackComputedStyleUpdatesForNodeRequest $request
+	 *
+	 * @return void
+	 */
+	public function trackComputedStyleUpdatesForNode(
+		ContextInterface $ctx,
+		TrackComputedStyleUpdatesForNodeRequest $request
+	): void;
+
+
+	/**
+	 * Subscribe to CSS.computedStyleUpdated event.
+	 *
+	 * Listener will be called whenever event CSS.computedStyleUpdated is fired.
+	 *
+	 * @param callable $listener
+	 *
+	 * @return SubscriptionInterface
+	 */
+	public function addComputedStyleUpdatedListener(callable $listener): SubscriptionInterface;
+
+
+	/**
+	 * Wait for CSS.computedStyleUpdated event.
+	 *
+	 * Method will block until first CSS.computedStyleUpdated event is fired.
+	 *
+	 * @param ContextInterface $ctx
+	 *
+	 * @return ComputedStyleUpdatedEvent
+	 */
+	public function awaitComputedStyleUpdated(ContextInterface $ctx): ComputedStyleUpdatedEvent;
 
 
 	/**

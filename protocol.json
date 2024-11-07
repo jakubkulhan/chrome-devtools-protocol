@@ -5715,9 +5715,32 @@
                             }
                         }
                     ]
+                },
+                {
+                    "name": "trackComputedStyleUpdatesForNode",
+                    "description": "Starts tracking the given node for the computed style updates and whenever the computed style is updated for node, it queues a `computedStyleUpdated` event with throttling.",
+                    "experimental": true,
+                    "parameters": [
+                        {
+                            "name": "nodeId",
+                            "optional": true,
+                            "$ref": "DOM.NodeId"
+                        }
+                    ]
                 }
             ],
             "events": [
+                {
+                    "name": "computedStyleUpdated",
+                    "experimental": true,
+                    "parameters": [
+                        {
+                            "name": "nodeId",
+                            "description": "The node id that has updated computed styles.",
+                            "$ref": "DOM.NodeId"
+                        }
+                    ]
+                },
                 {
                     "name": "fontsUpdated",
                     "description": "Fires whenever a web font is updated. A non-empty font parameter indicates a successfully loaded web font.",

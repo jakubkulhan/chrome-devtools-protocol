@@ -8,6 +8,7 @@ use ChromeDevtoolsProtocol\Model\CSS\AddRuleRequest;
 use ChromeDevtoolsProtocol\Model\CSS\AddRuleResponse;
 use ChromeDevtoolsProtocol\Model\CSS\CollectClassNamesRequest;
 use ChromeDevtoolsProtocol\Model\CSS\CollectClassNamesResponse;
+use ChromeDevtoolsProtocol\Model\CSS\ComputedStyleUpdatedEvent;
 use ChromeDevtoolsProtocol\Model\CSS\CreateStyleSheetRequest;
 use ChromeDevtoolsProtocol\Model\CSS\CreateStyleSheetResponse;
 use ChromeDevtoolsProtocol\Model\CSS\FontsUpdatedEvent;
@@ -56,6 +57,7 @@ use ChromeDevtoolsProtocol\Model\CSS\StyleSheetChangedEvent;
 use ChromeDevtoolsProtocol\Model\CSS\StyleSheetRemovedEvent;
 use ChromeDevtoolsProtocol\Model\CSS\TakeComputedStyleUpdatesResponse;
 use ChromeDevtoolsProtocol\Model\CSS\TakeCoverageDeltaResponse;
+use ChromeDevtoolsProtocol\Model\CSS\TrackComputedStyleUpdatesForNodeRequest;
 use ChromeDevtoolsProtocol\Model\CSS\TrackComputedStyleUpdatesRequest;
 use ChromeDevtoolsProtocol\SubscriptionInterface;
 
@@ -303,6 +305,28 @@ class CSSDomain implements CSSDomainInterface
 	public function trackComputedStyleUpdates(ContextInterface $ctx, TrackComputedStyleUpdatesRequest $request): void
 	{
 		$this->internalClient->executeCommand($ctx, 'CSS.trackComputedStyleUpdates', $request);
+	}
+
+
+	public function trackComputedStyleUpdatesForNode(
+		ContextInterface $ctx,
+		TrackComputedStyleUpdatesForNodeRequest $request
+	): void {
+		$this->internalClient->executeCommand($ctx, 'CSS.trackComputedStyleUpdatesForNode', $request);
+	}
+
+
+	public function addComputedStyleUpdatedListener(callable $listener): SubscriptionInterface
+	{
+		return $this->internalClient->addListener('CSS.computedStyleUpdated', function ($event) use ($listener) {
+			return $listener(ComputedStyleUpdatedEvent::fromJson($event));
+		});
+	}
+
+
+	public function awaitComputedStyleUpdated(ContextInterface $ctx): ComputedStyleUpdatedEvent
+	{
+		return ComputedStyleUpdatedEvent::fromJson($this->internalClient->awaitEvent($ctx, 'CSS.computedStyleUpdated'));
 	}
 
 
