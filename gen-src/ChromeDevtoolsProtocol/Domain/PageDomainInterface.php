@@ -1267,7 +1267,7 @@ interface PageDomainInterface
 
 
 	/**
-	 * Fired for top level page lifecycle events such as navigation, load, paint, etc.
+	 * Fired for lifecycle events (navigation, load, paint, etc) in the current target (including local frames).
 	 *
 	 * Listener will be called whenever event Page.lifecycleEvent is fired.
 	 *
@@ -1279,7 +1279,7 @@ interface PageDomainInterface
 
 
 	/**
-	 * Fired for top level page lifecycle events such as navigation, load, paint, etc.
+	 * Fired for lifecycle events (navigation, load, paint, etc) in the current target (including local frames).
 	 *
 	 * Method will block until first Page.lifecycleEvent event is fired.
 	 *

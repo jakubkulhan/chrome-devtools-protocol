@@ -19,6 +19,7 @@ final class AttributionReportingAggregatableResultEnum
 	public const EXCESSIVE_REPORTING_ORIGINS = 'excessiveReportingOrigins';
 	public const NO_HISTOGRAMS = 'noHistograms';
 	public const INSUFFICIENT_BUDGET = 'insufficientBudget';
+	public const INSUFFICIENT_NAMED_BUDGET = 'insufficientNamedBudget';
 	public const NO_MATCHING_SOURCE_FILTER_DATA = 'noMatchingSourceFilterData';
 	public const NOT_REGISTERED = 'notRegistered';
 	public const PROHIBITED_BY_BROWSER_POLICY = 'prohibitedByBrowserPolicy';

@@ -3,7 +3,7 @@
 namespace ChromeDevtoolsProtocol\Model\Page;
 
 /**
- * Fired for top level page lifecycle events such as navigation, load, paint, etc.
+ * Fired for lifecycle events (navigation, load, paint, etc) in the current target (including local frames).
  *
  * @generated This file has been auto-generated, do not edit.
  *

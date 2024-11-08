@@ -16499,7 +16499,9 @@
                         "SchemefulSameSiteLax",
                         "SchemefulSameSiteUnspecifiedTreatedAsLax",
                         "SamePartyFromCrossPartyContext",
-                        "NameValuePairExceedsMaxSize"
+                        "NameValuePairExceedsMaxSize",
+                        "PortMismatch",
+                        "SchemeMismatch"
                     ]
                 },
                 {
@@ -23299,7 +23301,7 @@
                 },
                 {
                     "name": "lifecycleEvent",
-                    "description": "Fired for top level page lifecycle events such as navigation, load, paint, etc.",
+                    "description": "Fired for lifecycle events (navigation, load, paint, etc) in the current target (including local frames).",
                     "parameters": [
                         {
                             "name": "frameId",
@@ -27847,6 +27849,7 @@
                         "excessiveReportingOrigins",
                         "noHistograms",
                         "insufficientBudget",
+                        "insufficientNamedBudget",
                         "noMatchingSourceFilterData",
                         "notRegistered",
                         "prohibitedByBrowserPolicy",
