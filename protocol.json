@@ -5718,7 +5718,7 @@
                 },
                 {
                     "name": "trackComputedStyleUpdatesForNode",
-                    "description": "Starts tracking the given node for the computed style updates and whenever the computed style is updated for node, it queues a `computedStyleUpdated` event with throttling.",
+                    "description": "Starts tracking the given node for the computed style updates and whenever the computed style is updated for node, it queues a `computedStyleUpdated` event with throttling. There can only be 1 node tracked for computed style updates so passing a new node id removes tracking from the previous node. Pass `undefined` to disable tracking.",
                     "experimental": true,
                     "parameters": [
                         {
@@ -11943,7 +11943,7 @@
             "types": [
                 {
                     "id": "RequestId",
-                    "description": "Unique request identifier.",
+                    "description": "Unique request identifier. Note that this does not identify individual HTTP requests that are part of a network request.",
                     "type": "string"
                 },
                 {
@@ -15355,7 +15355,7 @@
                 },
                 {
                     "id": "RequestId",
-                    "description": "Unique request identifier.",
+                    "description": "Unique network request identifier. Note that this does not identify individual HTTP requests that are part of a network request.",
                     "type": "string"
                 },
                 {
@@ -16303,7 +16303,7 @@
                         },
                         {
                             "name": "stack",
-                            "description": "Initiator JavaScript stack trace, set for Script only.",
+                            "description": "Initiator JavaScript stack trace, set for Script only. Requires the Debugger domain to be enabled.",
                             "optional": true,
                             "$ref": "Runtime.StackTrace"
                         },

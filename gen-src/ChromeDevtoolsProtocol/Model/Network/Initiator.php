@@ -21,7 +21,7 @@ final class Initiator implements \JsonSerializable
 	public $type;
 
 	/**
-	 * Initiator JavaScript stack trace, set for Script only.
+	 * Initiator JavaScript stack trace, set for Script only. Requires the Debugger domain to be enabled.
 	 *
 	 * @var StackTrace|null
 	 */
