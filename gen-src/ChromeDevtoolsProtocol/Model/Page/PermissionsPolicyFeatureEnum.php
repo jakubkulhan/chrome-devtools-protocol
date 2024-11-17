@@ -49,6 +49,7 @@ final class PermissionsPolicyFeatureEnum
 	public const CONTROLLED_FRAME = 'controlled-frame';
 	public const CROSS_ORIGIN_ISOLATED = 'cross-origin-isolated';
 	public const DEFERRED_FETCH = 'deferred-fetch';
+	public const DEFERRED_FETCH_MINIMAL = 'deferred-fetch-minimal';
 	public const DIGITAL_CREDENTIALS_GET = 'digital-credentials-get';
 	public const DIRECT_SOCKETS = 'direct-sockets';
 	public const DIRECT_SOCKETS_PRIVATE = 'direct-sockets-private';
