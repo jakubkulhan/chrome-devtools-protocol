@@ -43,6 +43,13 @@ final class CookieIssueDetails implements \JsonSerializable
 	/** @var AffectedRequest|null */
 	public $request;
 
+	/**
+	 * The recommended solution to the issue.
+	 *
+	 * @var CookieIssueInsight|null
+	 */
+	public $insight;
+
 
 	/**
 	 * @param object $data
@@ -87,6 +94,9 @@ final class CookieIssueDetails implements \JsonSerializable
 		if (isset($data->request)) {
 			$instance->request = AffectedRequest::fromJson($data->request);
 		}
+		if (isset($data->insight)) {
+			$instance->insight = CookieIssueInsight::fromJson($data->insight);
+		}
 		return $instance;
 	}
 
@@ -129,6 +139,9 @@ final class CookieIssueDetails implements \JsonSerializable
 		}
 		if ($this->request !== null) {
 			$data->request = $this->request->jsonSerialize();
+		}
+		if ($this->insight !== null) {
+			$data->insight = $this->insight->jsonSerialize();
 		}
 		return $data;
 	}
