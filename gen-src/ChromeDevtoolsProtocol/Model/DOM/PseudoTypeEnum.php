@@ -13,7 +13,7 @@ final class PseudoTypeEnum
 {
 	public const FIRST_LINE = 'first-line';
 	public const FIRST_LETTER = 'first-letter';
-	public const CHECK = 'check';
+	public const CHECKMARK = 'checkmark';
 	public const BEFORE = 'before';
 	public const AFTER = 'after';
 	public const SELECT_ARROW = 'select-arrow';
