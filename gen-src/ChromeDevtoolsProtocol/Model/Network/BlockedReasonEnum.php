@@ -25,4 +25,5 @@ final class BlockedReasonEnum
 	public const CORP_NOT_SAME_ORIGIN_AFTER_DEFAULTED_TO_SAME_ORIGIN_BY_DIP = 'corp-not-same-origin-after-defaulted-to-same-origin-by-dip';
 	public const CORP_NOT_SAME_ORIGIN_AFTER_DEFAULTED_TO_SAME_ORIGIN_BY_COEP_AND_DIP = 'corp-not-same-origin-after-defaulted-to-same-origin-by-coep-and-dip';
 	public const CORP_NOT_SAME_SITE = 'corp-not-same-site';
+	public const SRI_MESSAGE_SIGNATURE_MISMATCH = 'sri-message-signature-mismatch';
 }
