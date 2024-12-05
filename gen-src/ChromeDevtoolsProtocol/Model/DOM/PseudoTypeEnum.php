@@ -16,7 +16,7 @@ final class PseudoTypeEnum
 	public const CHECKMARK = 'checkmark';
 	public const BEFORE = 'before';
 	public const AFTER = 'after';
-	public const SELECT_ARROW = 'select-arrow';
+	public const PICKER_ICON = 'picker-icon';
 	public const MARKER = 'marker';
 	public const BACKDROP = 'backdrop';
 	public const COLUMN = 'column';
