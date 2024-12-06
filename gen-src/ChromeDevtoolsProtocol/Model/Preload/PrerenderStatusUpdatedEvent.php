@@ -15,6 +15,9 @@ final class PrerenderStatusUpdatedEvent implements \JsonSerializable
 	public $key;
 
 	/** @var string */
+	public $pipelineId;
+
+	/** @var string */
 	public $status;
 
 	/** @var string */
@@ -41,6 +44,9 @@ final class PrerenderStatusUpdatedEvent implements \JsonSerializable
 		if (isset($data->key)) {
 			$instance->key = PreloadingAttemptKey::fromJson($data->key);
 		}
+		if (isset($data->pipelineId)) {
+			$instance->pipelineId = (string)$data->pipelineId;
+		}
 		if (isset($data->status)) {
 			$instance->status = (string)$data->status;
 		}
@@ -65,6 +71,9 @@ final class PrerenderStatusUpdatedEvent implements \JsonSerializable
 		$data = new \stdClass();
 		if ($this->key !== null) {
 			$data->key = $this->key->jsonSerialize();
+		}
+		if ($this->pipelineId !== null) {
+			$data->pipelineId = $this->pipelineId;
 		}
 		if ($this->status !== null) {
 			$data->status = $this->status;

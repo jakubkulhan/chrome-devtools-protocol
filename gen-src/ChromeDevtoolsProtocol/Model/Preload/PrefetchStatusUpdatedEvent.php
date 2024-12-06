@@ -14,6 +14,9 @@ final class PrefetchStatusUpdatedEvent implements \JsonSerializable
 	/** @var PreloadingAttemptKey */
 	public $key;
 
+	/** @var string */
+	public $pipelineId;
+
 	/**
 	 * The frame id of the frame initiating prefetch.
 	 *
@@ -44,6 +47,9 @@ final class PrefetchStatusUpdatedEvent implements \JsonSerializable
 		if (isset($data->key)) {
 			$instance->key = PreloadingAttemptKey::fromJson($data->key);
 		}
+		if (isset($data->pipelineId)) {
+			$instance->pipelineId = (string)$data->pipelineId;
+		}
 		if (isset($data->initiatingFrameId)) {
 			$instance->initiatingFrameId = (string)$data->initiatingFrameId;
 		}
@@ -68,6 +74,9 @@ final class PrefetchStatusUpdatedEvent implements \JsonSerializable
 		$data = new \stdClass();
 		if ($this->key !== null) {
 			$data->key = $this->key->jsonSerialize();
+		}
+		if ($this->pipelineId !== null) {
+			$data->pipelineId = $this->pipelineId;
 		}
 		if ($this->initiatingFrameId !== null) {
 			$data->initiatingFrameId = $this->initiatingFrameId;
