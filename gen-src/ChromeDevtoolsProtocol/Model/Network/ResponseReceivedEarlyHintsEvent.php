@@ -19,7 +19,7 @@ final class ResponseReceivedEarlyHintsEvent implements \JsonSerializable
 	public $requestId;
 
 	/**
-	 * Raw response headers as they were received over the wire.
+	 * Raw response headers as they were received over the wire. Duplicate headers in the response are represented as a single key with their values concatentated using `\n` as the separator. See also `headersText` that contains verbatim text for HTTP/1.*.
 	 *
 	 * @var Headers
 	 */

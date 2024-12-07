@@ -30,6 +30,8 @@ use ChromeDevtoolsProtocol\Model\CSS\GetPlatformFontsForNodeResponse;
 use ChromeDevtoolsProtocol\Model\CSS\GetStyleSheetTextRequest;
 use ChromeDevtoolsProtocol\Model\CSS\GetStyleSheetTextResponse;
 use ChromeDevtoolsProtocol\Model\CSS\MediaQueryResultChangedEvent;
+use ChromeDevtoolsProtocol\Model\CSS\ResolveValuesRequest;
+use ChromeDevtoolsProtocol\Model\CSS\ResolveValuesResponse;
 use ChromeDevtoolsProtocol\Model\CSS\SetContainerQueryTextRequest;
 use ChromeDevtoolsProtocol\Model\CSS\SetContainerQueryTextResponse;
 use ChromeDevtoolsProtocol\Model\CSS\SetEffectivePropertyValueForNodeRequest;
@@ -249,6 +251,17 @@ interface CSSDomainInterface
 	 * @return GetStyleSheetTextResponse
 	 */
 	public function getStyleSheetText(ContextInterface $ctx, GetStyleSheetTextRequest $request): GetStyleSheetTextResponse;
+
+
+	/**
+	 * Resolve the specified values in the context of the provided element. For example, a value of '1em' is evaluated according to the computed 'font-size' of the element and a value 'calc(1px + 2px)' will be resolved to '3px'.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param ResolveValuesRequest $request
+	 *
+	 * @return ResolveValuesResponse
+	 */
+	public function resolveValues(ContextInterface $ctx, ResolveValuesRequest $request): ResolveValuesResponse;
 
 
 	/**

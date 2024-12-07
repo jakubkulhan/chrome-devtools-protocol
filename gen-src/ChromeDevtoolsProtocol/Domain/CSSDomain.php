@@ -31,6 +31,8 @@ use ChromeDevtoolsProtocol\Model\CSS\GetPlatformFontsForNodeResponse;
 use ChromeDevtoolsProtocol\Model\CSS\GetStyleSheetTextRequest;
 use ChromeDevtoolsProtocol\Model\CSS\GetStyleSheetTextResponse;
 use ChromeDevtoolsProtocol\Model\CSS\MediaQueryResultChangedEvent;
+use ChromeDevtoolsProtocol\Model\CSS\ResolveValuesRequest;
+use ChromeDevtoolsProtocol\Model\CSS\ResolveValuesResponse;
 use ChromeDevtoolsProtocol\Model\CSS\SetContainerQueryTextRequest;
 use ChromeDevtoolsProtocol\Model\CSS\SetContainerQueryTextResponse;
 use ChromeDevtoolsProtocol\Model\CSS\SetEffectivePropertyValueForNodeRequest;
@@ -187,6 +189,13 @@ class CSSDomain implements CSSDomainInterface
 	{
 		$response = $this->internalClient->executeCommand($ctx, 'CSS.getStyleSheetText', $request);
 		return GetStyleSheetTextResponse::fromJson($response);
+	}
+
+
+	public function resolveValues(ContextInterface $ctx, ResolveValuesRequest $request): ResolveValuesResponse
+	{
+		$response = $this->internalClient->executeCommand($ctx, 'CSS.resolveValues', $request);
+		return ResolveValuesResponse::fromJson($response);
 	}
 
 
