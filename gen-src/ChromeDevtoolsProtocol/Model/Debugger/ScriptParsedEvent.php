@@ -70,6 +70,13 @@ final class ScriptParsedEvent implements \JsonSerializable
 	public $hash;
 
 	/**
+	 * For Wasm modules, the content of the `build_id` custom section.
+	 *
+	 * @var string
+	 */
+	public $buildId;
+
+	/**
 	 * Embedder-specific auxiliary data likely matching {isDefault: boolean, type: 'default'|'isolated'|'worker', frameId: string}
 	 *
 	 * @var object|null
@@ -178,6 +185,9 @@ final class ScriptParsedEvent implements \JsonSerializable
 		if (isset($data->hash)) {
 			$instance->hash = (string)$data->hash;
 		}
+		if (isset($data->buildId)) {
+			$instance->buildId = (string)$data->buildId;
+		}
 		if (isset($data->executionContextAuxData)) {
 			$instance->executionContextAuxData = $data->executionContextAuxData;
 		}
@@ -244,6 +254,9 @@ final class ScriptParsedEvent implements \JsonSerializable
 		}
 		if ($this->hash !== null) {
 			$data->hash = $this->hash;
+		}
+		if ($this->buildId !== null) {
+			$data->buildId = $this->buildId;
 		}
 		if ($this->executionContextAuxData !== null) {
 			$data->executionContextAuxData = $this->executionContextAuxData;
