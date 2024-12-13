@@ -12,6 +12,8 @@ use ChromeDevtoolsProtocol\Model\CSS\CreateStyleSheetRequest;
 use ChromeDevtoolsProtocol\Model\CSS\CreateStyleSheetResponse;
 use ChromeDevtoolsProtocol\Model\CSS\FontsUpdatedEvent;
 use ChromeDevtoolsProtocol\Model\CSS\ForcePseudoStateRequest;
+use ChromeDevtoolsProtocol\Model\CSS\GetAnimatedStylesForNodeRequest;
+use ChromeDevtoolsProtocol\Model\CSS\GetAnimatedStylesForNodeResponse;
 use ChromeDevtoolsProtocol\Model\CSS\GetBackgroundColorsRequest;
 use ChromeDevtoolsProtocol\Model\CSS\GetBackgroundColorsResponse;
 use ChromeDevtoolsProtocol\Model\CSS\GetComputedStyleForNodeRequest;
@@ -135,6 +137,20 @@ interface CSSDomainInterface
 	 * @return void
 	 */
 	public function forcePseudoState(ContextInterface $ctx, ForcePseudoStateRequest $request): void;
+
+
+	/**
+	 * Returns the styles coming from animations & transitions including the animation & transition styles coming from inheritance chain.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param GetAnimatedStylesForNodeRequest $request
+	 *
+	 * @return GetAnimatedStylesForNodeResponse
+	 */
+	public function getAnimatedStylesForNode(
+		ContextInterface $ctx,
+		GetAnimatedStylesForNodeRequest $request
+	): GetAnimatedStylesForNodeResponse;
 
 
 	/**

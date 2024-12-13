@@ -13,6 +13,8 @@ use ChromeDevtoolsProtocol\Model\CSS\CreateStyleSheetRequest;
 use ChromeDevtoolsProtocol\Model\CSS\CreateStyleSheetResponse;
 use ChromeDevtoolsProtocol\Model\CSS\FontsUpdatedEvent;
 use ChromeDevtoolsProtocol\Model\CSS\ForcePseudoStateRequest;
+use ChromeDevtoolsProtocol\Model\CSS\GetAnimatedStylesForNodeRequest;
+use ChromeDevtoolsProtocol\Model\CSS\GetAnimatedStylesForNodeResponse;
 use ChromeDevtoolsProtocol\Model\CSS\GetBackgroundColorsRequest;
 use ChromeDevtoolsProtocol\Model\CSS\GetBackgroundColorsResponse;
 use ChromeDevtoolsProtocol\Model\CSS\GetComputedStyleForNodeRequest;
@@ -113,6 +115,15 @@ class CSSDomain implements CSSDomainInterface
 	public function forcePseudoState(ContextInterface $ctx, ForcePseudoStateRequest $request): void
 	{
 		$this->internalClient->executeCommand($ctx, 'CSS.forcePseudoState', $request);
+	}
+
+
+	public function getAnimatedStylesForNode(
+		ContextInterface $ctx,
+		GetAnimatedStylesForNodeRequest $request
+	): GetAnimatedStylesForNodeResponse {
+		$response = $this->internalClient->executeCommand($ctx, 'CSS.getAnimatedStylesForNode', $request);
+		return GetAnimatedStylesForNodeResponse::fromJson($response);
 	}
 
 
