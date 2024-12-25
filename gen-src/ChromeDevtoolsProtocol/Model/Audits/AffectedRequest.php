@@ -18,7 +18,7 @@ final class AffectedRequest implements \JsonSerializable
 	 */
 	public $requestId;
 
-	/** @var string|null */
+	/** @var string */
 	public $url;
 
 
