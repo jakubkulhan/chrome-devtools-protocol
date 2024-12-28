@@ -12,6 +12,8 @@ use ChromeDevtoolsProtocol\Exception\BuilderException;
 final class CreateTargetRequestBuilder
 {
 	private $url;
+	private $left;
+	private $top;
 	private $width;
 	private $height;
 	private $browserContextId;
@@ -31,6 +33,8 @@ final class CreateTargetRequestBuilder
 			throw new BuilderException('Property [url] is required.');
 		}
 		$instance->url = $this->url;
+		$instance->left = $this->left;
+		$instance->top = $this->top;
 		$instance->width = $this->width;
 		$instance->height = $this->height;
 		$instance->browserContextId = $this->browserContextId;
@@ -50,6 +54,30 @@ final class CreateTargetRequestBuilder
 	public function setUrl($url): self
 	{
 		$this->url = $url;
+		return $this;
+	}
+
+
+	/**
+	 * @param int|null $left
+	 *
+	 * @return self
+	 */
+	public function setLeft($left): self
+	{
+		$this->left = $left;
+		return $this;
+	}
+
+
+	/**
+	 * @param int|null $top
+	 *
+	 * @return self
+	 */
+	public function setTop($top): self
+	{
+		$this->top = $top;
 		return $this;
 	}
 

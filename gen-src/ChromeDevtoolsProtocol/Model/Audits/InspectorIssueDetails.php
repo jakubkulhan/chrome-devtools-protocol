@@ -74,6 +74,9 @@ final class InspectorIssueDetails implements \JsonSerializable
 	/** @var SharedDictionaryIssueDetails|null */
 	public $sharedDictionaryIssueDetails;
 
+	/** @var SelectElementAccessibilityIssueDetails|null */
+	public $selectElementAccessibilityIssueDetails;
+
 
 	/**
 	 * @param object $data
@@ -145,6 +148,9 @@ final class InspectorIssueDetails implements \JsonSerializable
 		if (isset($data->sharedDictionaryIssueDetails)) {
 			$instance->sharedDictionaryIssueDetails = SharedDictionaryIssueDetails::fromJson($data->sharedDictionaryIssueDetails);
 		}
+		if (isset($data->selectElementAccessibilityIssueDetails)) {
+			$instance->selectElementAccessibilityIssueDetails = SelectElementAccessibilityIssueDetails::fromJson($data->selectElementAccessibilityIssueDetails);
+		}
 		return $instance;
 	}
 
@@ -214,6 +220,9 @@ final class InspectorIssueDetails implements \JsonSerializable
 		}
 		if ($this->sharedDictionaryIssueDetails !== null) {
 			$data->sharedDictionaryIssueDetails = $this->sharedDictionaryIssueDetails->jsonSerialize();
+		}
+		if ($this->selectElementAccessibilityIssueDetails !== null) {
+			$data->selectElementAccessibilityIssueDetails = $this->selectElementAccessibilityIssueDetails->jsonSerialize();
 		}
 		return $data;
 	}

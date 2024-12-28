@@ -19,6 +19,20 @@ final class CreateTargetRequest implements \JsonSerializable
 	public $url;
 
 	/**
+	 * Frame left origin in DIP (headless chrome only).
+	 *
+	 * @var int|null
+	 */
+	public $left;
+
+	/**
+	 * Frame top origin in DIP (headless chrome only).
+	 *
+	 * @var int|null
+	 */
+	public $top;
+
+	/**
 	 * Frame width in DIP (headless chrome only).
 	 *
 	 * @var int|null
@@ -78,6 +92,12 @@ final class CreateTargetRequest implements \JsonSerializable
 		if (isset($data->url)) {
 			$instance->url = (string)$data->url;
 		}
+		if (isset($data->left)) {
+			$instance->left = (int)$data->left;
+		}
+		if (isset($data->top)) {
+			$instance->top = (int)$data->top;
+		}
 		if (isset($data->width)) {
 			$instance->width = (int)$data->width;
 		}
@@ -108,6 +128,12 @@ final class CreateTargetRequest implements \JsonSerializable
 		$data = new \stdClass();
 		if ($this->url !== null) {
 			$data->url = $this->url;
+		}
+		if ($this->left !== null) {
+			$data->left = $this->left;
+		}
+		if ($this->top !== null) {
+			$data->top = $this->top;
 		}
 		if ($this->width !== null) {
 			$data->width = $this->width;
