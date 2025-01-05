@@ -51,6 +51,7 @@ use ChromeDevtoolsProtocol\Model\Network\SetAttachDebugStackRequest;
 use ChromeDevtoolsProtocol\Model\Network\SetBlockedURLsRequest;
 use ChromeDevtoolsProtocol\Model\Network\SetBypassServiceWorkerRequest;
 use ChromeDevtoolsProtocol\Model\Network\SetCacheDisabledRequest;
+use ChromeDevtoolsProtocol\Model\Network\SetCookieControlsRequest;
 use ChromeDevtoolsProtocol\Model\Network\SetCookieRequest;
 use ChromeDevtoolsProtocol\Model\Network\SetCookieResponse;
 use ChromeDevtoolsProtocol\Model\Network\SetCookiesRequest;
@@ -287,6 +288,12 @@ class NetworkDomain implements NetworkDomainInterface
 	{
 		$response = $this->internalClient->executeCommand($ctx, 'Network.setCookie', $request);
 		return SetCookieResponse::fromJson($response);
+	}
+
+
+	public function setCookieControls(ContextInterface $ctx, SetCookieControlsRequest $request): void
+	{
+		$this->internalClient->executeCommand($ctx, 'Network.setCookieControls', $request);
 	}
 
 

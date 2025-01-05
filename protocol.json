@@ -18147,6 +18147,28 @@
                     ]
                 },
                 {
+                    "name": "setCookieControls",
+                    "description": "Sets Controls for third-party cookie access Page reload is required before the new cookie bahavior will be observed",
+                    "experimental": true,
+                    "parameters": [
+                        {
+                            "name": "enableThirdPartyCookieRestriction",
+                            "description": "Whether 3pc restriction is enabled.",
+                            "type": "boolean"
+                        },
+                        {
+                            "name": "disableThirdPartyCookieMetadata",
+                            "description": "Whether 3pc grace period exception should be enabled; false by default.",
+                            "type": "boolean"
+                        },
+                        {
+                            "name": "disableThirdPartyCookieHeuristics",
+                            "description": "Whether 3pc heuristics exceptions should be enabled; false by default.",
+                            "type": "boolean"
+                        }
+                    ]
+                },
+                {
                     "name": "setCookies",
                     "description": "Sets given cookies.",
                     "parameters": [

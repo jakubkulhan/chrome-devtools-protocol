@@ -50,6 +50,7 @@ use ChromeDevtoolsProtocol\Model\Network\SetAttachDebugStackRequest;
 use ChromeDevtoolsProtocol\Model\Network\SetBlockedURLsRequest;
 use ChromeDevtoolsProtocol\Model\Network\SetBypassServiceWorkerRequest;
 use ChromeDevtoolsProtocol\Model\Network\SetCacheDisabledRequest;
+use ChromeDevtoolsProtocol\Model\Network\SetCookieControlsRequest;
 use ChromeDevtoolsProtocol\Model\Network\SetCookieRequest;
 use ChromeDevtoolsProtocol\Model\Network\SetCookieResponse;
 use ChromeDevtoolsProtocol\Model\Network\SetCookiesRequest;
@@ -400,6 +401,17 @@ interface NetworkDomainInterface
 	 * @return SetCookieResponse
 	 */
 	public function setCookie(ContextInterface $ctx, SetCookieRequest $request): SetCookieResponse;
+
+
+	/**
+	 * Sets Controls for third-party cookie access Page reload is required before the new cookie bahavior will be observed
+	 *
+	 * @param ContextInterface $ctx
+	 * @param SetCookieControlsRequest $request
+	 *
+	 * @return void
+	 */
+	public function setCookieControls(ContextInterface $ctx, SetCookieControlsRequest $request): void;
 
 
 	/**
