@@ -26,6 +26,8 @@ use ChromeDevtoolsProtocol\Model\CSS\GetLayersForNodeRequest;
 use ChromeDevtoolsProtocol\Model\CSS\GetLayersForNodeResponse;
 use ChromeDevtoolsProtocol\Model\CSS\GetLocationForSelectorRequest;
 use ChromeDevtoolsProtocol\Model\CSS\GetLocationForSelectorResponse;
+use ChromeDevtoolsProtocol\Model\CSS\GetLonghandPropertiesRequest;
+use ChromeDevtoolsProtocol\Model\CSS\GetLonghandPropertiesResponse;
 use ChromeDevtoolsProtocol\Model\CSS\GetMatchedStylesForNodeRequest;
 use ChromeDevtoolsProtocol\Model\CSS\GetMatchedStylesForNodeResponse;
 use ChromeDevtoolsProtocol\Model\CSS\GetMediaQueriesResponse;
@@ -174,6 +176,15 @@ class CSSDomain implements CSSDomainInterface
 	): GetLocationForSelectorResponse {
 		$response = $this->internalClient->executeCommand($ctx, 'CSS.getLocationForSelector', $request);
 		return GetLocationForSelectorResponse::fromJson($response);
+	}
+
+
+	public function getLonghandProperties(
+		ContextInterface $ctx,
+		GetLonghandPropertiesRequest $request
+	): GetLonghandPropertiesResponse {
+		$response = $this->internalClient->executeCommand($ctx, 'CSS.getLonghandProperties', $request);
+		return GetLonghandPropertiesResponse::fromJson($response);
 	}
 
 

@@ -25,6 +25,8 @@ use ChromeDevtoolsProtocol\Model\CSS\GetLayersForNodeRequest;
 use ChromeDevtoolsProtocol\Model\CSS\GetLayersForNodeResponse;
 use ChromeDevtoolsProtocol\Model\CSS\GetLocationForSelectorRequest;
 use ChromeDevtoolsProtocol\Model\CSS\GetLocationForSelectorResponse;
+use ChromeDevtoolsProtocol\Model\CSS\GetLonghandPropertiesRequest;
+use ChromeDevtoolsProtocol\Model\CSS\GetLonghandPropertiesResponse;
 use ChromeDevtoolsProtocol\Model\CSS\GetMatchedStylesForNodeRequest;
 use ChromeDevtoolsProtocol\Model\CSS\GetMatchedStylesForNodeResponse;
 use ChromeDevtoolsProtocol\Model\CSS\GetMediaQueriesResponse;
@@ -230,6 +232,20 @@ interface CSSDomainInterface
 		ContextInterface $ctx,
 		GetLocationForSelectorRequest $request
 	): GetLocationForSelectorResponse;
+
+
+	/**
+	 * Call CSS.getLonghandProperties command.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param GetLonghandPropertiesRequest $request
+	 *
+	 * @return GetLonghandPropertiesResponse
+	 */
+	public function getLonghandProperties(
+		ContextInterface $ctx,
+		GetLonghandPropertiesRequest $request
+	): GetLonghandPropertiesResponse;
 
 
 	/**
