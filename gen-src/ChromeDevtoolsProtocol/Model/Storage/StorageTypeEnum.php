@@ -11,7 +11,6 @@ namespace ChromeDevtoolsProtocol\Model\Storage;
  */
 final class StorageTypeEnum
 {
-	public const APPCACHE = 'appcache';
 	public const COOKIES = 'cookies';
 	public const FILE_SYSTEMS = 'file_systems';
 	public const INDEXEDDB = 'indexeddb';

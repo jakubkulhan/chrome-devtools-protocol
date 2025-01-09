@@ -3,7 +3,7 @@
 namespace ChromeDevtoolsProtocol\Model\Audits;
 
 /**
- * This isue warns about errors in the select element content model.
+ * This issue warns about errors in the select element content model.
  *
  * @generated This file has been auto-generated, do not edit.
  *
