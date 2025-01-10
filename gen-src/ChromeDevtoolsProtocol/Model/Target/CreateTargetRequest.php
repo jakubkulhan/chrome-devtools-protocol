@@ -19,28 +19,28 @@ final class CreateTargetRequest implements \JsonSerializable
 	public $url;
 
 	/**
-	 * Frame left origin in DIP (headless chrome only).
+	 * Frame left origin in DIP (requires newWindow to be true or headless shell).
 	 *
 	 * @var int|null
 	 */
 	public $left;
 
 	/**
-	 * Frame top origin in DIP (headless chrome only).
+	 * Frame top origin in DIP (requires newWindow to be true or headless shell).
 	 *
 	 * @var int|null
 	 */
 	public $top;
 
 	/**
-	 * Frame width in DIP (headless chrome only).
+	 * Frame width in DIP (requires newWindow to be true or headless shell).
 	 *
 	 * @var int|null
 	 */
 	public $width;
 
 	/**
-	 * Frame height in DIP (headless chrome only).
+	 * Frame height in DIP (requires newWindow to be true or headless shell).
 	 *
 	 * @var int|null
 	 */
@@ -54,21 +54,21 @@ final class CreateTargetRequest implements \JsonSerializable
 	public $browserContextId;
 
 	/**
-	 * Whether BeginFrames for this target will be controlled via DevTools (headless chrome only, not supported on MacOS yet, false by default).
+	 * Whether BeginFrames for this target will be controlled via DevTools (headless shell only, not supported on MacOS yet, false by default).
 	 *
 	 * @var bool|null
 	 */
 	public $enableBeginFrameControl;
 
 	/**
-	 * Whether to create a new Window or Tab (chrome-only, false by default).
+	 * Whether to create a new Window or Tab (false by default, not supported by headless shell).
 	 *
 	 * @var bool|null
 	 */
 	public $newWindow;
 
 	/**
-	 * Whether to create the target in background or foreground (chrome-only, false by default).
+	 * Whether to create the target in background or foreground (false by default, not supported by headless shell).
 	 *
 	 * @var bool|null
 	 */
