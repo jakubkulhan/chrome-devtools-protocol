@@ -32,8 +32,6 @@ use ChromeDevtoolsProtocol\Domain\DOMSnapshotDomain;
 use ChromeDevtoolsProtocol\Domain\DOMSnapshotDomainInterface;
 use ChromeDevtoolsProtocol\Domain\DOMStorageDomain;
 use ChromeDevtoolsProtocol\Domain\DOMStorageDomainInterface;
-use ChromeDevtoolsProtocol\Domain\DatabaseDomain;
-use ChromeDevtoolsProtocol\Domain\DatabaseDomainInterface;
 use ChromeDevtoolsProtocol\Domain\DebuggerDomain;
 use ChromeDevtoolsProtocol\Domain\DebuggerDomainInterface;
 use ChromeDevtoolsProtocol\Domain\DeviceAccessDomain;
@@ -245,18 +243,6 @@ trait DevtoolsClientTrait
 		}
 		/** @var CSSDomainInterface $domain */
 		$domain = $this->domains['CSS'];
-		return $domain;
-	}
-
-
-	public function database(): DatabaseDomainInterface
-	{
-		if (!isset($this->domains['Database'])) {
-			/** @var InternalClientInterface $this */
-			$this->domains['Database'] = new DatabaseDomain($this);
-		}
-		/** @var DatabaseDomainInterface $domain */
-		$domain = $this->domains['Database'];
 		return $domain;
 	}
 

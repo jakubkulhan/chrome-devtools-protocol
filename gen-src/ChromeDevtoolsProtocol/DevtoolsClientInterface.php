@@ -17,7 +17,6 @@ use ChromeDevtoolsProtocol\Domain\DOMDebuggerDomainInterface;
 use ChromeDevtoolsProtocol\Domain\DOMDomainInterface;
 use ChromeDevtoolsProtocol\Domain\DOMSnapshotDomainInterface;
 use ChromeDevtoolsProtocol\Domain\DOMStorageDomainInterface;
-use ChromeDevtoolsProtocol\Domain\DatabaseDomainInterface;
 use ChromeDevtoolsProtocol\Domain\DebuggerDomainInterface;
 use ChromeDevtoolsProtocol\Domain\DeviceAccessDomainInterface;
 use ChromeDevtoolsProtocol\Domain\DeviceOrientationDomainInterface;
@@ -148,14 +147,6 @@ interface DevtoolsClientInterface extends CloseableResourceInterface
 	 * @experimental
 	 */
 	public function css(): CSSDomainInterface;
-
-
-	/**
-	 * Database domain.
-	 *
-	 * @experimental
-	 */
-	public function database(): DatabaseDomainInterface;
 
 
 	/**

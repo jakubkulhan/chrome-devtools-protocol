@@ -32,6 +32,7 @@ final class PermissionsPolicyFeatureEnum
 	public const CH_UA = 'ch-ua';
 	public const CH_UA_ARCH = 'ch-ua-arch';
 	public const CH_UA_BITNESS = 'ch-ua-bitness';
+	public const CH_UA_HIGH_ENTROPY_VALUES = 'ch-ua-high-entropy-values';
 	public const CH_UA_PLATFORM = 'ch-ua-platform';
 	public const CH_UA_MODEL = 'ch-ua-model';
 	public const CH_UA_MOBILE = 'ch-ua-mobile';
