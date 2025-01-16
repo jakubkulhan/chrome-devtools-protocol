@@ -47,6 +47,13 @@ final class CreateTargetRequest implements \JsonSerializable
 	public $height;
 
 	/**
+	 * Frame window state (requires newWindow to be true or headless shell). Default is normal.
+	 *
+	 * @var string
+	 */
+	public $windowState;
+
+	/**
 	 * The browser context to create the page in.
 	 *
 	 * @var string
@@ -104,6 +111,9 @@ final class CreateTargetRequest implements \JsonSerializable
 		if (isset($data->height)) {
 			$instance->height = (int)$data->height;
 		}
+		if (isset($data->windowState)) {
+			$instance->windowState = (string)$data->windowState;
+		}
 		if (isset($data->browserContextId)) {
 			$instance->browserContextId = (string)$data->browserContextId;
 		}
@@ -140,6 +150,9 @@ final class CreateTargetRequest implements \JsonSerializable
 		}
 		if ($this->height !== null) {
 			$data->height = $this->height;
+		}
+		if ($this->windowState !== null) {
+			$data->windowState = $this->windowState;
 		}
 		if ($this->browserContextId !== null) {
 			$data->browserContextId = $this->browserContextId;

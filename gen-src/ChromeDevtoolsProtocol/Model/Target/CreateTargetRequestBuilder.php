@@ -16,6 +16,7 @@ final class CreateTargetRequestBuilder
 	private $top;
 	private $width;
 	private $height;
+	private $windowState;
 	private $browserContextId;
 	private $enableBeginFrameControl;
 	private $newWindow;
@@ -37,6 +38,7 @@ final class CreateTargetRequestBuilder
 		$instance->top = $this->top;
 		$instance->width = $this->width;
 		$instance->height = $this->height;
+		$instance->windowState = $this->windowState;
 		$instance->browserContextId = $this->browserContextId;
 		$instance->enableBeginFrameControl = $this->enableBeginFrameControl;
 		$instance->newWindow = $this->newWindow;
@@ -102,6 +104,18 @@ final class CreateTargetRequestBuilder
 	public function setHeight($height): self
 	{
 		$this->height = $height;
+		return $this;
+	}
+
+
+	/**
+	 * @param string $windowState
+	 *
+	 * @return self
+	 */
+	public function setWindowState($windowState): self
+	{
+		$this->windowState = $windowState;
 		return $this;
 	}
 

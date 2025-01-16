@@ -29277,6 +29277,18 @@
                             "type": "integer"
                         }
                     ]
+                },
+                {
+                    "id": "WindowState",
+                    "description": "The state of the target window.",
+                    "experimental": true,
+                    "type": "string",
+                    "enum": [
+                        "normal",
+                        "minimized",
+                        "maximized",
+                        "fullscreen"
+                    ]
                 }
             ],
             "commands": [
@@ -29444,6 +29456,12 @@
                             "description": "Frame height in DIP (requires newWindow to be true or headless shell).",
                             "optional": true,
                             "type": "integer"
+                        },
+                        {
+                            "name": "windowState",
+                            "description": "Frame window state (requires newWindow to be true or headless shell). Default is normal.",
+                            "optional": true,
+                            "$ref": "WindowState"
                         },
                         {
                             "name": "browserContextId",
