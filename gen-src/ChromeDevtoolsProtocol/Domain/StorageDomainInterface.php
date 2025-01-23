@@ -15,6 +15,8 @@ use ChromeDevtoolsProtocol\Model\Storage\ClearTrustTokensRequest;
 use ChromeDevtoolsProtocol\Model\Storage\ClearTrustTokensResponse;
 use ChromeDevtoolsProtocol\Model\Storage\DeleteSharedStorageEntryRequest;
 use ChromeDevtoolsProtocol\Model\Storage\DeleteStorageBucketRequest;
+use ChromeDevtoolsProtocol\Model\Storage\GetAffectedUrlsForThirdPartyCookieMetadataRequest;
+use ChromeDevtoolsProtocol\Model\Storage\GetAffectedUrlsForThirdPartyCookieMetadataResponse;
 use ChromeDevtoolsProtocol\Model\Storage\GetCookiesRequest;
 use ChromeDevtoolsProtocol\Model\Storage\GetCookiesResponse;
 use ChromeDevtoolsProtocol\Model\Storage\GetInterestGroupDetailsRequest;
@@ -145,6 +147,20 @@ interface StorageDomainInterface
 	 * @return void
 	 */
 	public function deleteStorageBucket(ContextInterface $ctx, DeleteStorageBucketRequest $request): void;
+
+
+	/**
+	 * Returns the list of URLs from a page and its embedded resources that match existing grace period URL pattern rules. https://developers.google.com/privacy-sandbox/cookies/temporary-exceptions/grace-period
+	 *
+	 * @param ContextInterface $ctx
+	 * @param GetAffectedUrlsForThirdPartyCookieMetadataRequest $request
+	 *
+	 * @return GetAffectedUrlsForThirdPartyCookieMetadataResponse
+	 */
+	public function getAffectedUrlsForThirdPartyCookieMetadata(
+		ContextInterface $ctx,
+		GetAffectedUrlsForThirdPartyCookieMetadataRequest $request
+	): GetAffectedUrlsForThirdPartyCookieMetadataResponse;
 
 
 	/**
