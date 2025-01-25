@@ -21,4 +21,5 @@ final class CookieExemptionReasonEnum
 	public const STORAGE_ACCESS = 'StorageAccess';
 	public const TOP_LEVEL_STORAGE_ACCESS = 'TopLevelStorageAccess';
 	public const SCHEME = 'Scheme';
+	public const SAME_SITE_NONE_COOKIES_IN_SANDBOX = 'SameSiteNoneCookiesInSandbox';
 }
