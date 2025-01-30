@@ -3,13 +3,13 @@
 namespace ChromeDevtoolsProtocol\Model\Debugger;
 
 /**
- * Fired when breakpoint is resolved to an actual script and location. Deprecated in favor of `resolvedBreakpoints` in the `scriptParsed` event.
+ * Named type Debugger.ResolvedBreakpoint.
  *
  * @generated This file has been auto-generated, do not edit.
  *
  * @author Jakub Kulhan <jakub.kulhan@gmail.com>
  */
-final class BreakpointResolvedEvent implements \JsonSerializable
+final class ResolvedBreakpoint implements \JsonSerializable
 {
 	/**
 	 * Breakpoint unique identifier.

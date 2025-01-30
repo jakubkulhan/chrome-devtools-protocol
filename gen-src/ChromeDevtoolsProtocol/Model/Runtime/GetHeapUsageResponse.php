@@ -12,18 +12,32 @@ namespace ChromeDevtoolsProtocol\Model\Runtime;
 final class GetHeapUsageResponse implements \JsonSerializable
 {
 	/**
-	 * Used heap size in bytes.
+	 * Used JavaScript heap size in bytes.
 	 *
 	 * @var int|float
 	 */
 	public $usedSize;
 
 	/**
-	 * Allocated heap size in bytes.
+	 * Allocated JavaScript heap size in bytes.
 	 *
 	 * @var int|float
 	 */
 	public $totalSize;
+
+	/**
+	 * Used size in bytes in the embedder's garbage-collected heap.
+	 *
+	 * @var int|float
+	 */
+	public $embedderHeapUsedSize;
+
+	/**
+	 * Size in bytes of backing storage for array buffers and external strings.
+	 *
+	 * @var int|float
+	 */
+	public $backingStorageSize;
 
 
 	/**
@@ -39,6 +53,12 @@ final class GetHeapUsageResponse implements \JsonSerializable
 		if (isset($data->totalSize)) {
 			$instance->totalSize = $data->totalSize;
 		}
+		if (isset($data->embedderHeapUsedSize)) {
+			$instance->embedderHeapUsedSize = $data->embedderHeapUsedSize;
+		}
+		if (isset($data->backingStorageSize)) {
+			$instance->backingStorageSize = $data->backingStorageSize;
+		}
 		return $instance;
 	}
 
@@ -51,6 +71,12 @@ final class GetHeapUsageResponse implements \JsonSerializable
 		}
 		if ($this->totalSize !== null) {
 			$data->totalSize = $this->totalSize;
+		}
+		if ($this->embedderHeapUsedSize !== null) {
+			$data->embedderHeapUsedSize = $this->embedderHeapUsedSize;
+		}
+		if ($this->backingStorageSize !== null) {
+			$data->backingStorageSize = $this->backingStorageSize;
 		}
 		return $data;
 	}

@@ -6317,6 +6317,22 @@
                             "type": "string"
                         }
                     ]
+                },
+                {
+                    "id": "ResolvedBreakpoint",
+                    "type": "object",
+                    "properties": [
+                        {
+                            "name": "breakpointId",
+                            "description": "Breakpoint unique identifier.",
+                            "$ref": "BreakpointId"
+                        },
+                        {
+                            "name": "location",
+                            "description": "Actual breakpoint location.",
+                            "$ref": "Location"
+                        }
+                    ]
                 }
             ],
             "commands": [
@@ -7111,7 +7127,8 @@
             "events": [
                 {
                     "name": "breakpointResolved",
-                    "description": "Fired when breakpoint is resolved to an actual script and location.",
+                    "description": "Fired when breakpoint is resolved to an actual script and location. Deprecated in favor of `resolvedBreakpoints` in the `scriptParsed` event.",
+                    "deprecated": true,
                     "parameters": [
                         {
                             "name": "breakpointId",
@@ -7431,6 +7448,16 @@
                             "experimental": true,
                             "optional": true,
                             "type": "string"
+                        },
+                        {
+                            "name": "resolvedBreakpoints",
+                            "description": "The list of set breakpoints in this script if calls to `setBreakpointByUrl` matches this script's URL or hash. Clients that use this list can ignore the `breakpointResolved` event. They are equivalent.",
+                            "experimental": true,
+                            "optional": true,
+                            "type": "array",
+                            "items": {
+                                "$ref": "ResolvedBreakpoint"
+                            }
                         }
                     ]
                 }
@@ -25902,12 +25929,22 @@
                     "returns": [
                         {
                             "name": "usedSize",
-                            "description": "Used heap size in bytes.",
+                            "description": "Used JavaScript heap size in bytes.",
                             "type": "number"
                         },
                         {
                             "name": "totalSize",
-                            "description": "Allocated heap size in bytes.",
+                            "description": "Allocated JavaScript heap size in bytes.",
+                            "type": "number"
+                        },
+                        {
+                            "name": "embedderHeapUsedSize",
+                            "description": "Used size in bytes in the embedder's garbage-collected heap.",
+                            "type": "number"
+                        },
+                        {
+                            "name": "backingStorageSize",
+                            "description": "Size in bytes of backing storage for array buffers and external strings.",
                             "type": "number"
                         }
                     ]

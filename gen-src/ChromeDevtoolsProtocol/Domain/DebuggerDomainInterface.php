@@ -446,7 +446,7 @@ interface DebuggerDomainInterface
 
 
 	/**
-	 * Fired when breakpoint is resolved to an actual script and location.
+	 * Fired when breakpoint is resolved to an actual script and location. Deprecated in favor of `resolvedBreakpoints` in the `scriptParsed` event.
 	 *
 	 * Listener will be called whenever event Debugger.breakpointResolved is fired.
 	 *
@@ -458,7 +458,7 @@ interface DebuggerDomainInterface
 
 
 	/**
-	 * Fired when breakpoint is resolved to an actual script and location.
+	 * Fired when breakpoint is resolved to an actual script and location. Deprecated in favor of `resolvedBreakpoints` in the `scriptParsed` event.
 	 *
 	 * Method will block until first Debugger.breakpointResolved event is fired.
 	 *

@@ -153,6 +153,13 @@ final class ScriptParsedEvent implements \JsonSerializable
 	 */
 	public $embedderName;
 
+	/**
+	 * The list of set breakpoints in this script if calls to `setBreakpointByUrl` matches this script's URL or hash. Clients that use this list can ignore the `breakpointResolved` event. They are equivalent.
+	 *
+	 * @var ResolvedBreakpoint[]|null
+	 */
+	public $resolvedBreakpoints;
+
 
 	/**
 	 * @param object $data
@@ -224,6 +231,12 @@ final class ScriptParsedEvent implements \JsonSerializable
 		if (isset($data->embedderName)) {
 			$instance->embedderName = (string)$data->embedderName;
 		}
+		if (isset($data->resolvedBreakpoints)) {
+			$instance->resolvedBreakpoints = [];
+			foreach ($data->resolvedBreakpoints as $item) {
+				$instance->resolvedBreakpoints[] = ResolvedBreakpoint::fromJson($item);
+			}
+		}
 		return $instance;
 	}
 
@@ -293,6 +306,12 @@ final class ScriptParsedEvent implements \JsonSerializable
 		}
 		if ($this->embedderName !== null) {
 			$data->embedderName = $this->embedderName;
+		}
+		if ($this->resolvedBreakpoints !== null) {
+			$data->resolvedBreakpoints = [];
+			foreach ($this->resolvedBreakpoints as $item) {
+				$data->resolvedBreakpoints[] = $item->jsonSerialize();
+			}
 		}
 		return $data;
 	}
