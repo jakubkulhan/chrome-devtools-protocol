@@ -31,6 +31,7 @@ use ChromeDevtoolsProtocol\Model\Page\FrameRequestedNavigationEvent;
 use ChromeDevtoolsProtocol\Model\Page\FrameResizedEvent;
 use ChromeDevtoolsProtocol\Model\Page\FrameScheduledNavigationEvent;
 use ChromeDevtoolsProtocol\Model\Page\FrameStartedLoadingEvent;
+use ChromeDevtoolsProtocol\Model\Page\FrameStartedNavigatingEvent;
 use ChromeDevtoolsProtocol\Model\Page\FrameStoppedLoadingEvent;
 use ChromeDevtoolsProtocol\Model\Page\FrameSubtreeWillBeDetachedEvent;
 use ChromeDevtoolsProtocol\Model\Page\GenerateTestReportRequest;
@@ -726,6 +727,20 @@ class PageDomain implements PageDomainInterface
 	public function awaitFrameStartedLoading(ContextInterface $ctx): FrameStartedLoadingEvent
 	{
 		return FrameStartedLoadingEvent::fromJson($this->internalClient->awaitEvent($ctx, 'Page.frameStartedLoading'));
+	}
+
+
+	public function addFrameStartedNavigatingListener(callable $listener): SubscriptionInterface
+	{
+		return $this->internalClient->addListener('Page.frameStartedNavigating', function ($event) use ($listener) {
+			return $listener(FrameStartedNavigatingEvent::fromJson($event));
+		});
+	}
+
+
+	public function awaitFrameStartedNavigating(ContextInterface $ctx): FrameStartedNavigatingEvent
+	{
+		return FrameStartedNavigatingEvent::fromJson($this->internalClient->awaitEvent($ctx, 'Page.frameStartedNavigating'));
 	}
 
 
