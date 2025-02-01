@@ -5188,6 +5188,12 @@
                             "name": "frameId",
                             "description": "Identifier of the frame where \"via-inspector\" stylesheet should be created.",
                             "$ref": "Page.FrameId"
+                        },
+                        {
+                            "name": "force",
+                            "description": "If true, creates a new stylesheet for every call. If false, returns a stylesheet previously created by a call with force=false for the frame's document if it exists or creates a new stylesheet (default: false).",
+                            "optional": true,
+                            "type": "boolean"
                         }
                     ],
                     "returns": [

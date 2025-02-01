@@ -12,6 +12,7 @@ use ChromeDevtoolsProtocol\Exception\BuilderException;
 final class CreateStyleSheetRequestBuilder
 {
 	private $frameId;
+	private $force;
 
 
 	/**
@@ -24,6 +25,7 @@ final class CreateStyleSheetRequestBuilder
 			throw new BuilderException('Property [frameId] is required.');
 		}
 		$instance->frameId = $this->frameId;
+		$instance->force = $this->force;
 		return $instance;
 	}
 
@@ -36,6 +38,18 @@ final class CreateStyleSheetRequestBuilder
 	public function setFrameId($frameId): self
 	{
 		$this->frameId = $frameId;
+		return $this;
+	}
+
+
+	/**
+	 * @param bool|null $force
+	 *
+	 * @return self
+	 */
+	public function setForce($force): self
+	{
+		$this->force = $force;
 		return $this;
 	}
 }
