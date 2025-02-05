@@ -11866,6 +11866,17 @@
                             "type": "object"
                         }
                     ]
+                },
+                {
+                    "name": "uninstall",
+                    "description": "Uninstalls an unpacked extension (others not supported) from the profile. Available if the client is connected using the --remote-debugging-pipe flag and the --enable-unsafe-extension-debugging.",
+                    "parameters": [
+                        {
+                            "name": "id",
+                            "description": "Extension id.",
+                            "type": "string"
+                        }
+                    ]
                 }
             ],
             "events": []

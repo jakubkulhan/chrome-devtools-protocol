@@ -10,6 +10,7 @@ use ChromeDevtoolsProtocol\Model\Extensions\LoadUnpackedRequest;
 use ChromeDevtoolsProtocol\Model\Extensions\LoadUnpackedResponse;
 use ChromeDevtoolsProtocol\Model\Extensions\RemoveStorageItemsRequest;
 use ChromeDevtoolsProtocol\Model\Extensions\SetStorageItemsRequest;
+use ChromeDevtoolsProtocol\Model\Extensions\UninstallRequest;
 
 /**
  * Defines commands and events for browser extensions.
@@ -75,4 +76,15 @@ interface ExtensionsDomainInterface
 	 * @return void
 	 */
 	public function setStorageItems(ContextInterface $ctx, SetStorageItemsRequest $request): void;
+
+
+	/**
+	 * Uninstalls an unpacked extension (others not supported) from the profile. Available if the client is connected using the --remote-debugging-pipe flag and the --enable-unsafe-extension-debugging.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param UninstallRequest $request
+	 *
+	 * @return void
+	 */
+	public function uninstall(ContextInterface $ctx, UninstallRequest $request): void;
 }
