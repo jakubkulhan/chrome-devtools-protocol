@@ -68,6 +68,13 @@ final class Frame implements \JsonSerializable
 	public $securityOrigin;
 
 	/**
+	 * Additional details about the frame document's security origin.
+	 *
+	 * @var SecurityOriginDetails|null
+	 */
+	public $securityOriginDetails;
+
+	/**
 	 * Frame document's mimeType as determined by the browser.
 	 *
 	 * @var string
@@ -141,6 +148,9 @@ final class Frame implements \JsonSerializable
 		if (isset($data->securityOrigin)) {
 			$instance->securityOrigin = (string)$data->securityOrigin;
 		}
+		if (isset($data->securityOriginDetails)) {
+			$instance->securityOriginDetails = SecurityOriginDetails::fromJson($data->securityOriginDetails);
+		}
 		if (isset($data->mimeType)) {
 			$instance->mimeType = (string)$data->mimeType;
 		}
@@ -195,6 +205,9 @@ final class Frame implements \JsonSerializable
 		}
 		if ($this->securityOrigin !== null) {
 			$data->securityOrigin = $this->securityOrigin;
+		}
+		if ($this->securityOriginDetails !== null) {
+			$data->securityOriginDetails = $this->securityOriginDetails->jsonSerialize();
 		}
 		if ($this->mimeType !== null) {
 			$data->mimeType = $this->mimeType;

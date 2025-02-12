@@ -13,6 +13,7 @@ final class ExposeDevToolsProtocolRequestBuilder
 {
 	private $targetId;
 	private $bindingName;
+	private $inheritPermissions;
 
 
 	/**
@@ -26,6 +27,7 @@ final class ExposeDevToolsProtocolRequestBuilder
 		}
 		$instance->targetId = $this->targetId;
 		$instance->bindingName = $this->bindingName;
+		$instance->inheritPermissions = $this->inheritPermissions;
 		return $instance;
 	}
 
@@ -50,6 +52,18 @@ final class ExposeDevToolsProtocolRequestBuilder
 	public function setBindingName($bindingName): self
 	{
 		$this->bindingName = $bindingName;
+		return $this;
+	}
+
+
+	/**
+	 * @param bool|null $inheritPermissions
+	 *
+	 * @return self
+	 */
+	public function setInheritPermissions($inheritPermissions): self
+	{
+		$this->inheritPermissions = $inheritPermissions;
 		return $this;
 	}
 }

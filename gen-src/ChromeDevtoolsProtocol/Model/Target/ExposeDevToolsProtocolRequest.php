@@ -21,6 +21,13 @@ final class ExposeDevToolsProtocolRequest implements \JsonSerializable
 	 */
 	public $bindingName;
 
+	/**
+	 * If true, inherits the current root session's permissions (default: false).
+	 *
+	 * @var bool|null
+	 */
+	public $inheritPermissions;
+
 
 	/**
 	 * @param object $data
@@ -35,6 +42,9 @@ final class ExposeDevToolsProtocolRequest implements \JsonSerializable
 		if (isset($data->bindingName)) {
 			$instance->bindingName = (string)$data->bindingName;
 		}
+		if (isset($data->inheritPermissions)) {
+			$instance->inheritPermissions = (bool)$data->inheritPermissions;
+		}
 		return $instance;
 	}
 
@@ -47,6 +57,9 @@ final class ExposeDevToolsProtocolRequest implements \JsonSerializable
 		}
 		if ($this->bindingName !== null) {
 			$data->bindingName = $this->bindingName;
+		}
+		if ($this->inheritPermissions !== null) {
+			$data->inheritPermissions = $this->inheritPermissions;
 		}
 		return $data;
 	}

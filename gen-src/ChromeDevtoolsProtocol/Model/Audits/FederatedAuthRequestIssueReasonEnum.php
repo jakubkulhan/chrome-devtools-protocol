@@ -57,4 +57,5 @@ final class FederatedAuthRequestIssueReasonEnum
 	public const RELYING_PARTY_ORIGIN_IS_OPAQUE = 'RelyingPartyOriginIsOpaque';
 	public const TYPE_NOT_MATCHING = 'TypeNotMatching';
 	public const UI_DISMISSED_NO_EMBARGO = 'UiDismissedNoEmbargo';
+	public const CORS_ERROR = 'CorsError';
 }
