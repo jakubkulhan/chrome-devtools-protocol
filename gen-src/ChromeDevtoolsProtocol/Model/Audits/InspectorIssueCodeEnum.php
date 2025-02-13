@@ -21,6 +21,7 @@ final class InspectorIssueCodeEnum
 	public const CORS_ISSUE = 'CorsIssue';
 	public const ATTRIBUTION_REPORTING_ISSUE = 'AttributionReportingIssue';
 	public const QUIRKS_MODE_ISSUE = 'QuirksModeIssue';
+	public const PARTITIONING_BLOB_U_R_L_ISSUE = 'PartitioningBlobURLIssue';
 	public const NAVIGATOR_USER_AGENT_ISSUE = 'NavigatorUserAgentIssue';
 	public const GENERIC_ISSUE = 'GenericIssue';
 	public const DEPRECATION_ISSUE = 'DeprecationIssue';

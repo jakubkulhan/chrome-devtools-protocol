@@ -41,6 +41,9 @@ final class InspectorIssueDetails implements \JsonSerializable
 	/** @var QuirksModeIssueDetails|null */
 	public $quirksModeIssueDetails;
 
+	/** @var PartitioningBlobURLIssueDetails|null */
+	public $partitioningBlobURLIssueDetails;
+
 	/** @var NavigatorUserAgentIssueDetails|null */
 	public $navigatorUserAgentIssueDetails;
 
@@ -115,6 +118,9 @@ final class InspectorIssueDetails implements \JsonSerializable
 		if (isset($data->quirksModeIssueDetails)) {
 			$instance->quirksModeIssueDetails = QuirksModeIssueDetails::fromJson($data->quirksModeIssueDetails);
 		}
+		if (isset($data->partitioningBlobURLIssueDetails)) {
+			$instance->partitioningBlobURLIssueDetails = PartitioningBlobURLIssueDetails::fromJson($data->partitioningBlobURLIssueDetails);
+		}
 		if (isset($data->navigatorUserAgentIssueDetails)) {
 			$instance->navigatorUserAgentIssueDetails = NavigatorUserAgentIssueDetails::fromJson($data->navigatorUserAgentIssueDetails);
 		}
@@ -187,6 +193,9 @@ final class InspectorIssueDetails implements \JsonSerializable
 		}
 		if ($this->quirksModeIssueDetails !== null) {
 			$data->quirksModeIssueDetails = $this->quirksModeIssueDetails->jsonSerialize();
+		}
+		if ($this->partitioningBlobURLIssueDetails !== null) {
+			$data->partitioningBlobURLIssueDetails = $this->partitioningBlobURLIssueDetails->jsonSerialize();
 		}
 		if ($this->navigatorUserAgentIssueDetails !== null) {
 			$data->navigatorUserAgentIssueDetails = $this->navigatorUserAgentIssueDetails->jsonSerialize();
