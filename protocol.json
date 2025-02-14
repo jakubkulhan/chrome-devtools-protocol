@@ -24178,7 +24178,8 @@
                         "SlowNetwork",
                         "OtherPrerenderedPageActivated",
                         "V8OptimizerDisabled",
-                        "PrerenderFailedDuringPrefetch"
+                        "PrerenderFailedDuringPrefetch",
+                        "BrowsingDataRemoved"
                     ]
                 },
                 {
