@@ -1335,6 +1335,7 @@
                         "kInlineViolation",
                         "kEvalViolation",
                         "kURLViolation",
+                        "kSRIViolation",
                         "kTrustedTypesSinkViolation",
                         "kTrustedTypesPolicyViolation",
                         "kWasmEvalViolation"
@@ -8482,7 +8483,8 @@
                             "description": "Type of relation to get.",
                             "type": "string",
                             "enum": [
-                                "PopoverTarget"
+                                "PopoverTarget",
+                                "InterestTarget"
                             ]
                         }
                     ],
