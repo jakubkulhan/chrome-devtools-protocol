@@ -22,6 +22,7 @@ use ChromeDevtoolsProtocol\Model\Page\DocumentOpenedEvent;
 use ChromeDevtoolsProtocol\Model\Page\DomContentEventFiredEvent;
 use ChromeDevtoolsProtocol\Model\Page\DownloadProgressEvent;
 use ChromeDevtoolsProtocol\Model\Page\DownloadWillBeginEvent;
+use ChromeDevtoolsProtocol\Model\Page\EnableRequest;
 use ChromeDevtoolsProtocol\Model\Page\FileChooserOpenedEvent;
 use ChromeDevtoolsProtocol\Model\Page\FrameAttachedEvent;
 use ChromeDevtoolsProtocol\Model\Page\FrameClearedScheduledNavigationEvent;
@@ -215,9 +216,8 @@ class PageDomain implements PageDomainInterface
 	}
 
 
-	public function enable(ContextInterface $ctx): void
+	public function enable(ContextInterface $ctx, EnableRequest $request): void
 	{
-		$request = new \stdClass();
 		$this->internalClient->executeCommand($ctx, 'Page.enable', $request);
 	}
 
