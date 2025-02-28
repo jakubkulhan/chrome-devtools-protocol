@@ -3,7 +3,7 @@
 namespace ChromeDevtoolsProtocol\Model\Page;
 
 /**
- * All Permissions Policy features. This enum should match the one defined in third_party/blink/renderer/core/permissions_policy/permissions_policy_features.json5.
+ * All Permissions Policy features. This enum should match the one defined in services/network/public/cpp/permissions_policy/permissions_policy_features.json5.
  *
  * @generated This file has been auto-generated, do not edit.
  *
