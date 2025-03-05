@@ -16,4 +16,5 @@ final class PrivateNetworkRequestPolicyEnum
 	public const WARN_FROM_INSECURE_TO_MORE_PRIVATE = 'WarnFromInsecureToMorePrivate';
 	public const PREFLIGHT_BLOCK = 'PreflightBlock';
 	public const PREFLIGHT_WARN = 'PreflightWarn';
+	public const PERMISSION_BLOCK = 'PermissionBlock';
 }

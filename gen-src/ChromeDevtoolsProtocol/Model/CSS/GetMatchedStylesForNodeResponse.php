@@ -102,6 +102,13 @@ final class GetMatchedStylesForNodeResponse implements \JsonSerializable
 	 */
 	public $parentLayoutNodeId;
 
+	/**
+	 * A list of CSS at-function rules referenced by styles of this node.
+	 *
+	 * @var CSSFunctionRule[]|null
+	 */
+	public $cssFunctionRules;
+
 
 	/**
 	 * @param object $data
@@ -173,6 +180,12 @@ final class GetMatchedStylesForNodeResponse implements \JsonSerializable
 		if (isset($data->parentLayoutNodeId)) {
 			$instance->parentLayoutNodeId = (int)$data->parentLayoutNodeId;
 		}
+		if (isset($data->cssFunctionRules)) {
+			$instance->cssFunctionRules = [];
+			foreach ($data->cssFunctionRules as $item) {
+				$instance->cssFunctionRules[] = CSSFunctionRule::fromJson($item);
+			}
+		}
 		return $instance;
 	}
 
@@ -242,6 +255,12 @@ final class GetMatchedStylesForNodeResponse implements \JsonSerializable
 		}
 		if ($this->parentLayoutNodeId !== null) {
 			$data->parentLayoutNodeId = $this->parentLayoutNodeId;
+		}
+		if ($this->cssFunctionRules !== null) {
+			$data->cssFunctionRules = [];
+			foreach ($this->cssFunctionRules as $item) {
+				$data->cssFunctionRules[] = $item->jsonSerialize();
+			}
 		}
 		return $data;
 	}
