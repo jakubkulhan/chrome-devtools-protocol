@@ -26,6 +26,7 @@ use ChromeDevtoolsProtocol\Model\Emulation\SetNavigatorOverridesRequest;
 use ChromeDevtoolsProtocol\Model\Emulation\SetPageScaleFactorRequest;
 use ChromeDevtoolsProtocol\Model\Emulation\SetPressureSourceOverrideEnabledRequest;
 use ChromeDevtoolsProtocol\Model\Emulation\SetPressureStateOverrideRequest;
+use ChromeDevtoolsProtocol\Model\Emulation\SetSafeAreaInsetsOverrideRequest;
 use ChromeDevtoolsProtocol\Model\Emulation\SetScriptExecutionDisabledRequest;
 use ChromeDevtoolsProtocol\Model\Emulation\SetScrollbarsHiddenRequest;
 use ChromeDevtoolsProtocol\Model\Emulation\SetSensorOverrideEnabledRequest;
@@ -349,6 +350,17 @@ interface EmulationDomainInterface
 	 * @return void
 	 */
 	public function setPressureStateOverride(ContextInterface $ctx, SetPressureStateOverrideRequest $request): void;
+
+
+	/**
+	 * Overrides the values for env(safe-area-inset-*) and env(safe-area-max-inset-*). Unset values will cause the respective variables to be undefined, even if previously overridden.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param SetSafeAreaInsetsOverrideRequest $request
+	 *
+	 * @return void
+	 */
+	public function setSafeAreaInsetsOverride(ContextInterface $ctx, SetSafeAreaInsetsOverrideRequest $request): void;
 
 
 	/**

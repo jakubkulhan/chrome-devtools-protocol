@@ -27,6 +27,7 @@ use ChromeDevtoolsProtocol\Model\Emulation\SetNavigatorOverridesRequest;
 use ChromeDevtoolsProtocol\Model\Emulation\SetPageScaleFactorRequest;
 use ChromeDevtoolsProtocol\Model\Emulation\SetPressureSourceOverrideEnabledRequest;
 use ChromeDevtoolsProtocol\Model\Emulation\SetPressureStateOverrideRequest;
+use ChromeDevtoolsProtocol\Model\Emulation\SetSafeAreaInsetsOverrideRequest;
 use ChromeDevtoolsProtocol\Model\Emulation\SetScriptExecutionDisabledRequest;
 use ChromeDevtoolsProtocol\Model\Emulation\SetScrollbarsHiddenRequest;
 use ChromeDevtoolsProtocol\Model\Emulation\SetSensorOverrideEnabledRequest;
@@ -227,6 +228,12 @@ class EmulationDomain implements EmulationDomainInterface
 	public function setPressureStateOverride(ContextInterface $ctx, SetPressureStateOverrideRequest $request): void
 	{
 		$this->internalClient->executeCommand($ctx, 'Emulation.setPressureStateOverride', $request);
+	}
+
+
+	public function setSafeAreaInsetsOverride(ContextInterface $ctx, SetSafeAreaInsetsOverrideRequest $request): void
+	{
+		$this->internalClient->executeCommand($ctx, 'Emulation.setSafeAreaInsetsOverride', $request);
 	}
 
 
