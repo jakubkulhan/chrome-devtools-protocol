@@ -32,6 +32,9 @@ final class PrefetchStatusEnum
 	public const PREFETCH_NOT_ELIGIBLE_SCHEME_IS_NOT_HTTPS = 'PrefetchNotEligibleSchemeIsNotHttps';
 	public const PREFETCH_NOT_ELIGIBLE_USER_HAS_COOKIES = 'PrefetchNotEligibleUserHasCookies';
 	public const PREFETCH_NOT_ELIGIBLE_USER_HAS_SERVICE_WORKER = 'PrefetchNotEligibleUserHasServiceWorker';
+	public const PREFETCH_NOT_ELIGIBLE_USER_HAS_SERVICE_WORKER_NO_FETCH_HANDLER = 'PrefetchNotEligibleUserHasServiceWorkerNoFetchHandler';
+	public const PREFETCH_NOT_ELIGIBLE_REDIRECT_FROM_SERVICE_WORKER = 'PrefetchNotEligibleRedirectFromServiceWorker';
+	public const PREFETCH_NOT_ELIGIBLE_REDIRECT_TO_SERVICE_WORKER = 'PrefetchNotEligibleRedirectToServiceWorker';
 	public const PREFETCH_NOT_ELIGIBLE_BATTERY_SAVER_ENABLED = 'PrefetchNotEligibleBatterySaverEnabled';
 	public const PREFETCH_NOT_ELIGIBLE_PRELOADING_DISABLED = 'PrefetchNotEligiblePreloadingDisabled';
 	public const PREFETCH_NOT_FINISHED_IN_TIME = 'PrefetchNotFinishedInTime';

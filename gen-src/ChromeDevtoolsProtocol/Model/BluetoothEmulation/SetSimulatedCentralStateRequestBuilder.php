@@ -9,26 +9,21 @@ use ChromeDevtoolsProtocol\Exception\BuilderException;
  *
  * @author Jakub Kulhan <jakub.kulhan@gmail.com>
  */
-final class EnableRequestBuilder
+final class SetSimulatedCentralStateRequestBuilder
 {
 	private $state;
-	private $leSupported;
 
 
 	/**
 	 * Validate non-optional parameters and return new instance.
 	 */
-	public function build(): EnableRequest
+	public function build(): SetSimulatedCentralStateRequest
 	{
-		$instance = new EnableRequest();
+		$instance = new SetSimulatedCentralStateRequest();
 		if ($this->state === null) {
 			throw new BuilderException('Property [state] is required.');
 		}
 		$instance->state = $this->state;
-		if ($this->leSupported === null) {
-			throw new BuilderException('Property [leSupported] is required.');
-		}
-		$instance->leSupported = $this->leSupported;
 		return $instance;
 	}
 
@@ -41,18 +36,6 @@ final class EnableRequestBuilder
 	public function setState($state): self
 	{
 		$this->state = $state;
-		return $this;
-	}
-
-
-	/**
-	 * @param bool $leSupported
-	 *
-	 * @return self
-	 */
-	public function setLeSupported($leSupported): self
-	{
-		$this->leSupported = $leSupported;
 		return $this;
 	}
 }

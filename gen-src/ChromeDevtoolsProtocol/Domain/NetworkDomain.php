@@ -10,6 +10,10 @@ use ChromeDevtoolsProtocol\Model\Network\CanEmulateNetworkConditionsResponse;
 use ChromeDevtoolsProtocol\Model\Network\ContinueInterceptedRequestRequest;
 use ChromeDevtoolsProtocol\Model\Network\DataReceivedEvent;
 use ChromeDevtoolsProtocol\Model\Network\DeleteCookiesRequest;
+use ChromeDevtoolsProtocol\Model\Network\DirectTCPSocketAbortedEvent;
+use ChromeDevtoolsProtocol\Model\Network\DirectTCPSocketClosedEvent;
+use ChromeDevtoolsProtocol\Model\Network\DirectTCPSocketCreatedEvent;
+use ChromeDevtoolsProtocol\Model\Network\DirectTCPSocketOpenedEvent;
 use ChromeDevtoolsProtocol\Model\Network\EmulateNetworkConditionsRequest;
 use ChromeDevtoolsProtocol\Model\Network\EnableReportingApiRequest;
 use ChromeDevtoolsProtocol\Model\Network\EnableRequest;
@@ -350,6 +354,62 @@ class NetworkDomain implements NetworkDomainInterface
 	public function awaitDataReceived(ContextInterface $ctx): DataReceivedEvent
 	{
 		return DataReceivedEvent::fromJson($this->internalClient->awaitEvent($ctx, 'Network.dataReceived'));
+	}
+
+
+	public function addDirectTCPSocketAbortedListener(callable $listener): SubscriptionInterface
+	{
+		return $this->internalClient->addListener('Network.directTCPSocketAborted', function ($event) use ($listener) {
+			return $listener(DirectTCPSocketAbortedEvent::fromJson($event));
+		});
+	}
+
+
+	public function awaitDirectTCPSocketAborted(ContextInterface $ctx): DirectTCPSocketAbortedEvent
+	{
+		return DirectTCPSocketAbortedEvent::fromJson($this->internalClient->awaitEvent($ctx, 'Network.directTCPSocketAborted'));
+	}
+
+
+	public function addDirectTCPSocketClosedListener(callable $listener): SubscriptionInterface
+	{
+		return $this->internalClient->addListener('Network.directTCPSocketClosed', function ($event) use ($listener) {
+			return $listener(DirectTCPSocketClosedEvent::fromJson($event));
+		});
+	}
+
+
+	public function awaitDirectTCPSocketClosed(ContextInterface $ctx): DirectTCPSocketClosedEvent
+	{
+		return DirectTCPSocketClosedEvent::fromJson($this->internalClient->awaitEvent($ctx, 'Network.directTCPSocketClosed'));
+	}
+
+
+	public function addDirectTCPSocketCreatedListener(callable $listener): SubscriptionInterface
+	{
+		return $this->internalClient->addListener('Network.directTCPSocketCreated', function ($event) use ($listener) {
+			return $listener(DirectTCPSocketCreatedEvent::fromJson($event));
+		});
+	}
+
+
+	public function awaitDirectTCPSocketCreated(ContextInterface $ctx): DirectTCPSocketCreatedEvent
+	{
+		return DirectTCPSocketCreatedEvent::fromJson($this->internalClient->awaitEvent($ctx, 'Network.directTCPSocketCreated'));
+	}
+
+
+	public function addDirectTCPSocketOpenedListener(callable $listener): SubscriptionInterface
+	{
+		return $this->internalClient->addListener('Network.directTCPSocketOpened', function ($event) use ($listener) {
+			return $listener(DirectTCPSocketOpenedEvent::fromJson($event));
+		});
+	}
+
+
+	public function awaitDirectTCPSocketOpened(ContextInterface $ctx): DirectTCPSocketOpenedEvent
+	{
+		return DirectTCPSocketOpenedEvent::fromJson($this->internalClient->awaitEvent($ctx, 'Network.directTCPSocketOpened'));
 	}
 
 

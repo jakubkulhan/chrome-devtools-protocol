@@ -3,13 +3,13 @@
 namespace ChromeDevtoolsProtocol\Model\BluetoothEmulation;
 
 /**
- * Request for BluetoothEmulation.enable command.
+ * Request for BluetoothEmulation.setSimulatedCentralState command.
  *
  * @generated This file has been auto-generated, do not edit.
  *
  * @author Jakub Kulhan <jakub.kulhan@gmail.com>
  */
-final class EnableRequest implements \JsonSerializable
+final class SetSimulatedCentralStateRequest implements \JsonSerializable
 {
 	/**
 	 * State of the simulated central.
@@ -17,13 +17,6 @@ final class EnableRequest implements \JsonSerializable
 	 * @var string
 	 */
 	public $state;
-
-	/**
-	 * If the simulated central supports low-energy.
-	 *
-	 * @var bool
-	 */
-	public $leSupported;
 
 
 	/**
@@ -36,9 +29,6 @@ final class EnableRequest implements \JsonSerializable
 		if (isset($data->state)) {
 			$instance->state = (string)$data->state;
 		}
-		if (isset($data->leSupported)) {
-			$instance->leSupported = (bool)$data->leSupported;
-		}
 		return $instance;
 	}
 
@@ -49,9 +39,6 @@ final class EnableRequest implements \JsonSerializable
 		if ($this->state !== null) {
 			$data->state = $this->state;
 		}
-		if ($this->leSupported !== null) {
-			$data->leSupported = $this->leSupported;
-		}
 		return $data;
 	}
 
@@ -59,10 +46,10 @@ final class EnableRequest implements \JsonSerializable
 	/**
 	 * Create new instance using builder.
 	 *
-	 * @return EnableRequestBuilder
+	 * @return SetSimulatedCentralStateRequestBuilder
 	 */
-	public static function builder(): EnableRequestBuilder
+	public static function builder(): SetSimulatedCentralStateRequestBuilder
 	{
-		return new EnableRequestBuilder();
+		return new SetSimulatedCentralStateRequestBuilder();
 	}
 }

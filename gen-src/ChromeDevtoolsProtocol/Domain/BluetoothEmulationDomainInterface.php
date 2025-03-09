@@ -4,6 +4,7 @@ namespace ChromeDevtoolsProtocol\Domain;
 
 use ChromeDevtoolsProtocol\ContextInterface;
 use ChromeDevtoolsProtocol\Model\BluetoothEmulation\EnableRequest;
+use ChromeDevtoolsProtocol\Model\BluetoothEmulation\SetSimulatedCentralStateRequest;
 use ChromeDevtoolsProtocol\Model\BluetoothEmulation\SimulateAdvertisementRequest;
 use ChromeDevtoolsProtocol\Model\BluetoothEmulation\SimulatePreconnectedPeripheralRequest;
 
@@ -37,6 +38,17 @@ interface BluetoothEmulationDomainInterface
 	 * @return void
 	 */
 	public function enable(ContextInterface $ctx, EnableRequest $request): void;
+
+
+	/**
+	 * Set the state of the simulated central.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param SetSimulatedCentralStateRequest $request
+	 *
+	 * @return void
+	 */
+	public function setSimulatedCentralState(ContextInterface $ctx, SetSimulatedCentralStateRequest $request): void;
 
 
 	/**

@@ -9,6 +9,10 @@ use ChromeDevtoolsProtocol\Model\Network\CanEmulateNetworkConditionsResponse;
 use ChromeDevtoolsProtocol\Model\Network\ContinueInterceptedRequestRequest;
 use ChromeDevtoolsProtocol\Model\Network\DataReceivedEvent;
 use ChromeDevtoolsProtocol\Model\Network\DeleteCookiesRequest;
+use ChromeDevtoolsProtocol\Model\Network\DirectTCPSocketAbortedEvent;
+use ChromeDevtoolsProtocol\Model\Network\DirectTCPSocketClosedEvent;
+use ChromeDevtoolsProtocol\Model\Network\DirectTCPSocketCreatedEvent;
+use ChromeDevtoolsProtocol\Model\Network\DirectTCPSocketOpenedEvent;
 use ChromeDevtoolsProtocol\Model\Network\EmulateNetworkConditionsRequest;
 use ChromeDevtoolsProtocol\Model\Network\EnableReportingApiRequest;
 use ChromeDevtoolsProtocol\Model\Network\EnableRequest;
@@ -508,6 +512,102 @@ interface NetworkDomainInterface
 	 * @return DataReceivedEvent
 	 */
 	public function awaitDataReceived(ContextInterface $ctx): DataReceivedEvent;
+
+
+	/**
+	 * Fired when direct_socket.TCPSocket is aborted.
+	 *
+	 * Listener will be called whenever event Network.directTCPSocketAborted is fired.
+	 *
+	 * @param callable $listener
+	 *
+	 * @return SubscriptionInterface
+	 */
+	public function addDirectTCPSocketAbortedListener(callable $listener): SubscriptionInterface;
+
+
+	/**
+	 * Fired when direct_socket.TCPSocket is aborted.
+	 *
+	 * Method will block until first Network.directTCPSocketAborted event is fired.
+	 *
+	 * @param ContextInterface $ctx
+	 *
+	 * @return DirectTCPSocketAbortedEvent
+	 */
+	public function awaitDirectTCPSocketAborted(ContextInterface $ctx): DirectTCPSocketAbortedEvent;
+
+
+	/**
+	 * Fired when direct_socket.TCPSocket is closed.
+	 *
+	 * Listener will be called whenever event Network.directTCPSocketClosed is fired.
+	 *
+	 * @param callable $listener
+	 *
+	 * @return SubscriptionInterface
+	 */
+	public function addDirectTCPSocketClosedListener(callable $listener): SubscriptionInterface;
+
+
+	/**
+	 * Fired when direct_socket.TCPSocket is closed.
+	 *
+	 * Method will block until first Network.directTCPSocketClosed event is fired.
+	 *
+	 * @param ContextInterface $ctx
+	 *
+	 * @return DirectTCPSocketClosedEvent
+	 */
+	public function awaitDirectTCPSocketClosed(ContextInterface $ctx): DirectTCPSocketClosedEvent;
+
+
+	/**
+	 * Fired upon direct_socket.TCPSocket creation.
+	 *
+	 * Listener will be called whenever event Network.directTCPSocketCreated is fired.
+	 *
+	 * @param callable $listener
+	 *
+	 * @return SubscriptionInterface
+	 */
+	public function addDirectTCPSocketCreatedListener(callable $listener): SubscriptionInterface;
+
+
+	/**
+	 * Fired upon direct_socket.TCPSocket creation.
+	 *
+	 * Method will block until first Network.directTCPSocketCreated event is fired.
+	 *
+	 * @param ContextInterface $ctx
+	 *
+	 * @return DirectTCPSocketCreatedEvent
+	 */
+	public function awaitDirectTCPSocketCreated(ContextInterface $ctx): DirectTCPSocketCreatedEvent;
+
+
+	/**
+	 * Fired when direct_socket.TCPSocket connection is opened.
+	 *
+	 * Listener will be called whenever event Network.directTCPSocketOpened is fired.
+	 *
+	 * @param callable $listener
+	 *
+	 * @return SubscriptionInterface
+	 */
+	public function addDirectTCPSocketOpenedListener(callable $listener): SubscriptionInterface;
+
+
+	/**
+	 * Fired when direct_socket.TCPSocket connection is opened.
+	 *
+	 * Method will block until first Network.directTCPSocketOpened event is fired.
+	 *
+	 * @param ContextInterface $ctx
+	 *
+	 * @return DirectTCPSocketOpenedEvent
+	 */
+	public function awaitDirectTCPSocketOpened(ContextInterface $ctx): DirectTCPSocketOpenedEvent;
 
 
 	/**
