@@ -12,6 +12,7 @@ use ChromeDevtoolsProtocol\Exception\BuilderException;
 final class SetInterceptFileChooserDialogRequestBuilder
 {
 	private $enabled;
+	private $cancel;
 
 
 	/**
@@ -24,6 +25,7 @@ final class SetInterceptFileChooserDialogRequestBuilder
 			throw new BuilderException('Property [enabled] is required.');
 		}
 		$instance->enabled = $this->enabled;
+		$instance->cancel = $this->cancel;
 		return $instance;
 	}
 
@@ -36,6 +38,18 @@ final class SetInterceptFileChooserDialogRequestBuilder
 	public function setEnabled($enabled): self
 	{
 		$this->enabled = $enabled;
+		return $this;
+	}
+
+
+	/**
+	 * @param bool|null $cancel
+	 *
+	 * @return self
+	 */
+	public function setCancel($cancel): self
+	{
+		$this->cancel = $cancel;
 		return $this;
 	}
 }

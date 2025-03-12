@@ -14,6 +14,13 @@ final class SetInterceptFileChooserDialogRequest implements \JsonSerializable
 	/** @var bool */
 	public $enabled;
 
+	/**
+	 * If true, cancels the dialog by emitting relevant events (if any) in addition to not showing it if the interception is enabled (default: false).
+	 *
+	 * @var bool|null
+	 */
+	public $cancel;
+
 
 	/**
 	 * @param object $data
@@ -25,6 +32,9 @@ final class SetInterceptFileChooserDialogRequest implements \JsonSerializable
 		if (isset($data->enabled)) {
 			$instance->enabled = (bool)$data->enabled;
 		}
+		if (isset($data->cancel)) {
+			$instance->cancel = (bool)$data->cancel;
+		}
 		return $instance;
 	}
 
@@ -34,6 +44,9 @@ final class SetInterceptFileChooserDialogRequest implements \JsonSerializable
 		$data = new \stdClass();
 		if ($this->enabled !== null) {
 			$data->enabled = $this->enabled;
+		}
+		if ($this->cancel !== null) {
+			$data->cancel = $this->cancel;
 		}
 		return $data;
 	}
