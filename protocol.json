@@ -2955,6 +2955,7 @@
                         "idleDetection",
                         "keyboardLock",
                         "localFonts",
+                        "localNetworkAccess",
                         "midi",
                         "midiSysex",
                         "nfc",
@@ -3093,9 +3094,42 @@
                             }
                         }
                     ]
+                },
+                {
+                    "id": "PrivacySandboxAPI",
+                    "experimental": true,
+                    "type": "string",
+                    "enum": [
+                        "BiddingAndAuctionServices",
+                        "TrustedKeyValue"
+                    ]
                 }
             ],
             "commands": [
+                {
+                    "name": "addPrivacySandboxCoordinatorKeyConfig",
+                    "description": "Configures encryption keys used with a given privacy sandbox API to talk to a trusted coordinator. Since this is intended for test automation only, coordinatorOrigin must be a .test domain. No existing coordinator configuration for the origin may exist.",
+                    "parameters": [
+                        {
+                            "name": "api",
+                            "$ref": "PrivacySandboxAPI"
+                        },
+                        {
+                            "name": "coordinatorOrigin",
+                            "type": "string"
+                        },
+                        {
+                            "name": "keyConfig",
+                            "type": "string"
+                        },
+                        {
+                            "name": "browserContextId",
+                            "description": "BrowserContext to perform the action in. When omitted, default browser context is used.",
+                            "optional": true,
+                            "$ref": "BrowserContextID"
+                        }
+                    ]
+                },
                 {
                     "name": "addPrivacySandboxEnrollmentOverride",
                     "description": "Allows a site to use privacy sandbox features that require enrollment without the site actually being enrolled. Only supported on page targets.",
@@ -17477,7 +17511,8 @@
                         "WarnFromInsecureToMorePrivate",
                         "PreflightBlock",
                         "PreflightWarn",
-                        "PermissionBlock"
+                        "PermissionBlock",
+                        "PermissionWarn"
                     ]
                 },
                 {
