@@ -22267,7 +22267,8 @@
                         "EmbedderExtensionSentMessageToCachedFrame",
                         "RequestedByWebViewClient",
                         "PostMessageByWebViewClient",
-                        "CacheControlNoStoreDeviceBoundSessionTerminated"
+                        "CacheControlNoStoreDeviceBoundSessionTerminated",
+                        "CacheLimitPruned"
                     ]
                 },
                 {
