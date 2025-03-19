@@ -98,7 +98,7 @@ final class SetDeviceMetricsOverrideRequest implements \JsonSerializable
 	public $viewport;
 
 	/**
-	 * If set, the display feature of a multi-segment screen. If not set, multi-segment support is turned-off.
+	 * If set, the display feature of a multi-segment screen. If not set, multi-segment support is turned-off. Deprecated, use Emulation.setDisplayFeaturesOverride.
 	 *
 	 * @var DisplayFeature|null
 	 */

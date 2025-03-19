@@ -14,6 +14,9 @@ final class SRIMessageSignatureIssueDetails implements \JsonSerializable
 	/** @var string */
 	public $error;
 
+	/** @var string */
+	public $signatureBase;
+
 	/** @var AffectedRequest */
 	public $request;
 
@@ -28,6 +31,9 @@ final class SRIMessageSignatureIssueDetails implements \JsonSerializable
 		if (isset($data->error)) {
 			$instance->error = (string)$data->error;
 		}
+		if (isset($data->signatureBase)) {
+			$instance->signatureBase = (string)$data->signatureBase;
+		}
 		if (isset($data->request)) {
 			$instance->request = AffectedRequest::fromJson($data->request);
 		}
@@ -40,6 +46,9 @@ final class SRIMessageSignatureIssueDetails implements \JsonSerializable
 		$data = new \stdClass();
 		if ($this->error !== null) {
 			$data->error = $this->error;
+		}
+		if ($this->signatureBase !== null) {
+			$data->signatureBase = $this->signatureBase;
 		}
 		if ($this->request !== null) {
 			$data->request = $this->request->jsonSerialize();

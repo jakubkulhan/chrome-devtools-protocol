@@ -1679,6 +1679,10 @@
                             "$ref": "SRIMessageSignatureError"
                         },
                         {
+                            "name": "signatureBase",
+                            "type": "string"
+                        },
+                        {
                             "name": "request",
                             "$ref": "AffectedRequest"
                         }
@@ -11428,6 +11432,11 @@
                     "experimental": true
                 },
                 {
+                    "name": "clearDisplayFeaturesOverride",
+                    "description": "Clears the display features override set with either setDeviceMetricsOverride() or setDisplayFeaturesOverride() and starts using display features from the platform again. Does nothing if no override is set.",
+                    "experimental": true
+                },
+                {
                     "name": "clearGeolocationOverride",
                     "description": "Clears the overridden Geolocation Position and Error."
                 },
@@ -11585,8 +11594,9 @@
                         },
                         {
                             "name": "displayFeature",
-                            "description": "If set, the display feature of a multi-segment screen. If not set, multi-segment support is turned-off.",
+                            "description": "If set, the display feature of a multi-segment screen. If not set, multi-segment support is turned-off. Deprecated, use Emulation.setDisplayFeaturesOverride.",
                             "experimental": true,
+                            "deprecated": true,
                             "optional": true,
                             "$ref": "DisplayFeature"
                         },
@@ -11621,6 +11631,20 @@
                             "type": "array",
                             "items": {
                                 "$ref": "DisabledImageType"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "setDisplayFeaturesOverride",
+                    "description": "Start using the given display features to pupulate the Viewport Segments API. This override can also be set in setDeviceMetricsOverride().",
+                    "experimental": true,
+                    "parameters": [
+                        {
+                            "name": "features",
+                            "type": "array",
+                            "items": {
+                                "$ref": "DisplayFeature"
                             }
                         }
                     ]
@@ -24660,6 +24684,7 @@
                         "PrefetchFailedMIMENotSupported",
                         "PrefetchFailedNetError",
                         "PrefetchFailedNon2XX",
+                        "PrefetchEvictedAfterBrowsingDataRemoved",
                         "PrefetchEvictedAfterCandidateRemoved",
                         "PrefetchEvictedForNewerPrefetch",
                         "PrefetchHeldback",
