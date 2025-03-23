@@ -72,6 +72,7 @@ final class PermissionsPolicyFeatureEnum
 	public const INTEREST_COHORT = 'interest-cohort';
 	public const JOIN_AD_INTEREST_GROUP = 'join-ad-interest-group';
 	public const KEYBOARD_MAP = 'keyboard-map';
+	public const LANGUAGE_DETECTOR = 'language-detector';
 	public const LOCAL_FONTS = 'local-fonts';
 	public const MAGNETOMETER = 'magnetometer';
 	public const MEDIA_PLAYBACK_WHILE_NOT_VISIBLE = 'media-playback-while-not-visible';
@@ -86,6 +87,7 @@ final class PermissionsPolicyFeatureEnum
 	public const PRIVATE_STATE_TOKEN_REDEMPTION = 'private-state-token-redemption';
 	public const PUBLICKEY_CREDENTIALS_CREATE = 'publickey-credentials-create';
 	public const PUBLICKEY_CREDENTIALS_GET = 'publickey-credentials-get';
+	public const REWRITER = 'rewriter';
 	public const RUN_AD_AUCTION = 'run-ad-auction';
 	public const SCREEN_WAKE_LOCK = 'screen-wake-lock';
 	public const SERIAL = 'serial';
@@ -96,7 +98,9 @@ final class PermissionsPolicyFeatureEnum
 	public const SPEAKER_SELECTION = 'speaker-selection';
 	public const STORAGE_ACCESS = 'storage-access';
 	public const SUB_APPS = 'sub-apps';
+	public const SUMMARIZER = 'summarizer';
 	public const SYNC_XHR = 'sync-xhr';
+	public const TRANSLATOR = 'translator';
 	public const UNLOAD = 'unload';
 	public const USB = 'usb';
 	public const USB_UNRESTRICTED = 'usb-unrestricted';
@@ -105,5 +109,6 @@ final class PermissionsPolicyFeatureEnum
 	public const WEB_PRINTING = 'web-printing';
 	public const WEB_SHARE = 'web-share';
 	public const WINDOW_MANAGEMENT = 'window-management';
+	public const WRITER = 'writer';
 	public const XR_SPATIAL_TRACKING = 'xr-spatial-tracking';
 }

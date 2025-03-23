@@ -4,9 +4,12 @@ namespace ChromeDevtoolsProtocol\Domain;
 
 use ChromeDevtoolsProtocol\ContextInterface;
 use ChromeDevtoolsProtocol\Model\BluetoothEmulation\EnableRequest;
+use ChromeDevtoolsProtocol\Model\BluetoothEmulation\GattOperationReceivedEvent;
 use ChromeDevtoolsProtocol\Model\BluetoothEmulation\SetSimulatedCentralStateRequest;
 use ChromeDevtoolsProtocol\Model\BluetoothEmulation\SimulateAdvertisementRequest;
+use ChromeDevtoolsProtocol\Model\BluetoothEmulation\SimulateGATTOperationResponseRequest;
 use ChromeDevtoolsProtocol\Model\BluetoothEmulation\SimulatePreconnectedPeripheralRequest;
+use ChromeDevtoolsProtocol\SubscriptionInterface;
 
 /**
  * This domain allows configuring virtual Bluetooth devices to test the web-bluetooth API.
@@ -63,6 +66,20 @@ interface BluetoothEmulationDomainInterface
 
 
 	/**
+	 * Simulates the response code from the peripheral with |address| for a GATT operation of |type|. The |code| value follows the HCI Error Codes from Bluetooth Core Specification Vol 2 Part D 1.3 List Of Error Codes.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param SimulateGATTOperationResponseRequest $request
+	 *
+	 * @return void
+	 */
+	public function simulateGATTOperationResponse(
+		ContextInterface $ctx,
+		SimulateGATTOperationResponseRequest $request
+	): void;
+
+
+	/**
 	 * Simulates a peripheral with |address|, |name| and |knownServiceUuids| that has already been connected to the system.
 	 *
 	 * @param ContextInterface $ctx
@@ -74,4 +91,28 @@ interface BluetoothEmulationDomainInterface
 		ContextInterface $ctx,
 		SimulatePreconnectedPeripheralRequest $request
 	): void;
+
+
+	/**
+	 * Event for when a GATT operation of |type| to the peripheral with |address| happened.
+	 *
+	 * Listener will be called whenever event BluetoothEmulation.gattOperationReceived is fired.
+	 *
+	 * @param callable $listener
+	 *
+	 * @return SubscriptionInterface
+	 */
+	public function addGattOperationReceivedListener(callable $listener): SubscriptionInterface;
+
+
+	/**
+	 * Event for when a GATT operation of |type| to the peripheral with |address| happened.
+	 *
+	 * Method will block until first BluetoothEmulation.gattOperationReceived event is fired.
+	 *
+	 * @param ContextInterface $ctx
+	 *
+	 * @return GattOperationReceivedEvent
+	 */
+	public function awaitGattOperationReceived(ContextInterface $ctx): GattOperationReceivedEvent;
 }
