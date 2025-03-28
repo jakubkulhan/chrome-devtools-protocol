@@ -19,11 +19,18 @@ final class SharedStorageAccessedEvent implements \JsonSerializable
 	public $accessTime;
 
 	/**
+	 * Enum value indicating the access scope.
+	 *
+	 * @var string
+	 */
+	public $scope;
+
+	/**
 	 * Enum value indicating the Shared Storage API method invoked.
 	 *
 	 * @var string
 	 */
-	public $type;
+	public $method;
 
 	/**
 	 * DevTools Frame Token for the primary frame tree's root.
@@ -33,11 +40,18 @@ final class SharedStorageAccessedEvent implements \JsonSerializable
 	public $mainFrameId;
 
 	/**
-	 * Serialized origin for the context that invoked the Shared Storage API.
+	 * Serialization of the origin owning the Shared Storage data.
 	 *
 	 * @var string
 	 */
 	public $ownerOrigin;
+
+	/**
+	 * Serialization of the site owning the Shared Storage data.
+	 *
+	 * @var string
+	 */
+	public $ownerSite;
 
 	/**
 	 * The sub-parameters wrapped by `params` are all optional and their presence/absence depends on `type`.
@@ -57,14 +71,20 @@ final class SharedStorageAccessedEvent implements \JsonSerializable
 		if (isset($data->accessTime)) {
 			$instance->accessTime = $data->accessTime;
 		}
-		if (isset($data->type)) {
-			$instance->type = (string)$data->type;
+		if (isset($data->scope)) {
+			$instance->scope = (string)$data->scope;
+		}
+		if (isset($data->method)) {
+			$instance->method = (string)$data->method;
 		}
 		if (isset($data->mainFrameId)) {
 			$instance->mainFrameId = (string)$data->mainFrameId;
 		}
 		if (isset($data->ownerOrigin)) {
 			$instance->ownerOrigin = (string)$data->ownerOrigin;
+		}
+		if (isset($data->ownerSite)) {
+			$instance->ownerSite = (string)$data->ownerSite;
 		}
 		if (isset($data->params)) {
 			$instance->params = SharedStorageAccessParams::fromJson($data->params);
@@ -79,14 +99,20 @@ final class SharedStorageAccessedEvent implements \JsonSerializable
 		if ($this->accessTime !== null) {
 			$data->accessTime = $this->accessTime;
 		}
-		if ($this->type !== null) {
-			$data->type = $this->type;
+		if ($this->scope !== null) {
+			$data->scope = $this->scope;
+		}
+		if ($this->method !== null) {
+			$data->method = $this->method;
 		}
 		if ($this->mainFrameId !== null) {
 			$data->mainFrameId = $this->mainFrameId;
 		}
 		if ($this->ownerOrigin !== null) {
 			$data->ownerOrigin = $this->ownerOrigin;
+		}
+		if ($this->ownerSite !== null) {
+			$data->ownerSite = $this->ownerSite;
 		}
 		if ($this->params !== null) {
 			$data->params = $this->params->jsonSerialize();
