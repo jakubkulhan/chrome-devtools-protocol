@@ -17,6 +17,9 @@ final class SRIMessageSignatureIssueDetails implements \JsonSerializable
 	/** @var string */
 	public $signatureBase;
 
+	/** @var string[] */
+	public $integrityAssertions;
+
 	/** @var AffectedRequest */
 	public $request;
 
@@ -34,6 +37,12 @@ final class SRIMessageSignatureIssueDetails implements \JsonSerializable
 		if (isset($data->signatureBase)) {
 			$instance->signatureBase = (string)$data->signatureBase;
 		}
+		if (isset($data->integrityAssertions)) {
+			$instance->integrityAssertions = [];
+			foreach ($data->integrityAssertions as $item) {
+				$instance->integrityAssertions[] = (string)$item;
+			}
+		}
 		if (isset($data->request)) {
 			$instance->request = AffectedRequest::fromJson($data->request);
 		}
@@ -49,6 +58,12 @@ final class SRIMessageSignatureIssueDetails implements \JsonSerializable
 		}
 		if ($this->signatureBase !== null) {
 			$data->signatureBase = $this->signatureBase;
+		}
+		if ($this->integrityAssertions !== null) {
+			$data->integrityAssertions = [];
+			foreach ($this->integrityAssertions as $item) {
+				$data->integrityAssertions[] = $item;
+			}
 		}
 		if ($this->request !== null) {
 			$data->request = $this->request->jsonSerialize();

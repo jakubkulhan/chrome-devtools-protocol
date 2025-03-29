@@ -31,4 +31,5 @@ final class SRIMessageSignatureErrorEnum
 	public const VALIDATION_FAILED_SIGNATURE_EXPIRED = 'ValidationFailedSignatureExpired';
 	public const VALIDATION_FAILED_INVALID_LENGTH = 'ValidationFailedInvalidLength';
 	public const VALIDATION_FAILED_SIGNATURE_MISMATCH = 'ValidationFailedSignatureMismatch';
+	public const VALIDATION_FAILED_INTEGRITY_MISMATCH = 'ValidationFailedIntegrityMismatch';
 }

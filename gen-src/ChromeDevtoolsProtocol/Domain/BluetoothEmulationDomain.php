@@ -4,8 +4,11 @@ namespace ChromeDevtoolsProtocol\Domain;
 
 use ChromeDevtoolsProtocol\ContextInterface;
 use ChromeDevtoolsProtocol\InternalClientInterface;
+use ChromeDevtoolsProtocol\Model\BluetoothEmulation\AddServiceRequest;
+use ChromeDevtoolsProtocol\Model\BluetoothEmulation\AddServiceResponse;
 use ChromeDevtoolsProtocol\Model\BluetoothEmulation\EnableRequest;
 use ChromeDevtoolsProtocol\Model\BluetoothEmulation\GattOperationReceivedEvent;
+use ChromeDevtoolsProtocol\Model\BluetoothEmulation\RemoveServiceRequest;
 use ChromeDevtoolsProtocol\Model\BluetoothEmulation\SetSimulatedCentralStateRequest;
 use ChromeDevtoolsProtocol\Model\BluetoothEmulation\SimulateAdvertisementRequest;
 use ChromeDevtoolsProtocol\Model\BluetoothEmulation\SimulateGATTOperationResponseRequest;
@@ -24,6 +27,13 @@ class BluetoothEmulationDomain implements BluetoothEmulationDomainInterface
 	}
 
 
+	public function addService(ContextInterface $ctx, AddServiceRequest $request): AddServiceResponse
+	{
+		$response = $this->internalClient->executeCommand($ctx, 'BluetoothEmulation.addService', $request);
+		return AddServiceResponse::fromJson($response);
+	}
+
+
 	public function disable(ContextInterface $ctx): void
 	{
 		$request = new \stdClass();
@@ -34,6 +44,12 @@ class BluetoothEmulationDomain implements BluetoothEmulationDomainInterface
 	public function enable(ContextInterface $ctx, EnableRequest $request): void
 	{
 		$this->internalClient->executeCommand($ctx, 'BluetoothEmulation.enable', $request);
+	}
+
+
+	public function removeService(ContextInterface $ctx, RemoveServiceRequest $request): void
+	{
+		$this->internalClient->executeCommand($ctx, 'BluetoothEmulation.removeService', $request);
 	}
 
 

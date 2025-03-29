@@ -29,4 +29,5 @@ final class CookieBlockedReasonEnum
 	public const NAME_VALUE_PAIR_EXCEEDS_MAX_SIZE = 'NameValuePairExceedsMaxSize';
 	public const PORT_MISMATCH = 'PortMismatch';
 	public const SCHEME_MISMATCH = 'SchemeMismatch';
+	public const ANONYMOUS_CONTEXT = 'AnonymousContext';
 }

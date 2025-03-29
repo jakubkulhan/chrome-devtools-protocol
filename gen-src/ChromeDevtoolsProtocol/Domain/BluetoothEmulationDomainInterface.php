@@ -3,8 +3,11 @@
 namespace ChromeDevtoolsProtocol\Domain;
 
 use ChromeDevtoolsProtocol\ContextInterface;
+use ChromeDevtoolsProtocol\Model\BluetoothEmulation\AddServiceRequest;
+use ChromeDevtoolsProtocol\Model\BluetoothEmulation\AddServiceResponse;
 use ChromeDevtoolsProtocol\Model\BluetoothEmulation\EnableRequest;
 use ChromeDevtoolsProtocol\Model\BluetoothEmulation\GattOperationReceivedEvent;
+use ChromeDevtoolsProtocol\Model\BluetoothEmulation\RemoveServiceRequest;
 use ChromeDevtoolsProtocol\Model\BluetoothEmulation\SetSimulatedCentralStateRequest;
 use ChromeDevtoolsProtocol\Model\BluetoothEmulation\SimulateAdvertisementRequest;
 use ChromeDevtoolsProtocol\Model\BluetoothEmulation\SimulateGATTOperationResponseRequest;
@@ -22,6 +25,17 @@ use ChromeDevtoolsProtocol\SubscriptionInterface;
  */
 interface BluetoothEmulationDomainInterface
 {
+	/**
+	 * Adds a service with |uuid| to the peripheral with |address|.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param AddServiceRequest $request
+	 *
+	 * @return AddServiceResponse
+	 */
+	public function addService(ContextInterface $ctx, AddServiceRequest $request): AddServiceResponse;
+
+
 	/**
 	 * Disable the BluetoothEmulation domain.
 	 *
@@ -41,6 +55,17 @@ interface BluetoothEmulationDomainInterface
 	 * @return void
 	 */
 	public function enable(ContextInterface $ctx, EnableRequest $request): void;
+
+
+	/**
+	 * Removes the service respresented by |id| from the peripheral with |address|.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param RemoveServiceRequest $request
+	 *
+	 * @return void
+	 */
+	public function removeService(ContextInterface $ctx, RemoveServiceRequest $request): void;
 
 
 	/**

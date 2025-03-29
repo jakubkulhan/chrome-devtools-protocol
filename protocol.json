@@ -1583,7 +1583,8 @@
                         "SignatureInputHeaderMissingRequiredParameters",
                         "ValidationFailedSignatureExpired",
                         "ValidationFailedInvalidLength",
-                        "ValidationFailedSignatureMismatch"
+                        "ValidationFailedSignatureMismatch",
+                        "ValidationFailedIntegrityMismatch"
                     ]
                 },
                 {
@@ -1681,6 +1682,13 @@
                         {
                             "name": "signatureBase",
                             "type": "string"
+                        },
+                        {
+                            "name": "integrityAssertions",
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            }
                         },
                         {
                             "name": "request",
@@ -2812,6 +2820,27 @@
             ],
             "commands": [
                 {
+                    "name": "addService",
+                    "description": "Adds a service with |uuid| to the peripheral with |address|.",
+                    "parameters": [
+                        {
+                            "name": "address",
+                            "type": "string"
+                        },
+                        {
+                            "name": "serviceUuid",
+                            "type": "string"
+                        }
+                    ],
+                    "returns": [
+                        {
+                            "name": "id",
+                            "description": "An identifier that uniquely represents this service.",
+                            "type": "string"
+                        }
+                    ]
+                },
+                {
                     "name": "disable",
                     "description": "Disable the BluetoothEmulation domain."
                 },
@@ -2828,6 +2857,20 @@
                             "name": "leSupported",
                             "description": "If the simulated central supports low-energy.",
                             "type": "boolean"
+                        }
+                    ]
+                },
+                {
+                    "name": "removeService",
+                    "description": "Removes the service respresented by |id| from the peripheral with |address|.",
+                    "parameters": [
+                        {
+                            "name": "address",
+                            "type": "string"
+                        },
+                        {
+                            "name": "id",
+                            "type": "string"
                         }
                     ]
                 },
@@ -17051,7 +17094,8 @@
                         "SamePartyFromCrossPartyContext",
                         "NameValuePairExceedsMaxSize",
                         "PortMismatch",
-                        "SchemeMismatch"
+                        "SchemeMismatch",
+                        "AnonymousContext"
                     ]
                 },
                 {
