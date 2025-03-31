@@ -3,10 +3,13 @@
 namespace ChromeDevtoolsProtocol\Domain;
 
 use ChromeDevtoolsProtocol\ContextInterface;
+use ChromeDevtoolsProtocol\Model\BluetoothEmulation\AddCharacteristicRequest;
+use ChromeDevtoolsProtocol\Model\BluetoothEmulation\AddCharacteristicResponse;
 use ChromeDevtoolsProtocol\Model\BluetoothEmulation\AddServiceRequest;
 use ChromeDevtoolsProtocol\Model\BluetoothEmulation\AddServiceResponse;
 use ChromeDevtoolsProtocol\Model\BluetoothEmulation\EnableRequest;
 use ChromeDevtoolsProtocol\Model\BluetoothEmulation\GattOperationReceivedEvent;
+use ChromeDevtoolsProtocol\Model\BluetoothEmulation\RemoveCharacteristicRequest;
 use ChromeDevtoolsProtocol\Model\BluetoothEmulation\RemoveServiceRequest;
 use ChromeDevtoolsProtocol\Model\BluetoothEmulation\SetSimulatedCentralStateRequest;
 use ChromeDevtoolsProtocol\Model\BluetoothEmulation\SimulateAdvertisementRequest;
@@ -26,7 +29,18 @@ use ChromeDevtoolsProtocol\SubscriptionInterface;
 interface BluetoothEmulationDomainInterface
 {
 	/**
-	 * Adds a service with |uuid| to the peripheral with |address|.
+	 * Adds a characteristic with |characteristicUuid| and |properties| to the service represented by |serviceId| in the peripheral with |address|.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param AddCharacteristicRequest $request
+	 *
+	 * @return AddCharacteristicResponse
+	 */
+	public function addCharacteristic(ContextInterface $ctx, AddCharacteristicRequest $request): AddCharacteristicResponse;
+
+
+	/**
+	 * Adds a service with |serviceUuid| to the peripheral with |address|.
 	 *
 	 * @param ContextInterface $ctx
 	 * @param AddServiceRequest $request
@@ -58,7 +72,18 @@ interface BluetoothEmulationDomainInterface
 
 
 	/**
-	 * Removes the service respresented by |id| from the peripheral with |address|.
+	 * Removes the characteristic respresented by |characteristicId| from the service respresented by |serviceId| in the peripheral with |address|.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param RemoveCharacteristicRequest $request
+	 *
+	 * @return void
+	 */
+	public function removeCharacteristic(ContextInterface $ctx, RemoveCharacteristicRequest $request): void;
+
+
+	/**
+	 * Removes the service respresented by |serviceId| from the peripheral with |address|.
 	 *
 	 * @param ContextInterface $ctx
 	 * @param RemoveServiceRequest $request

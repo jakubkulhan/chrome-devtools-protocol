@@ -3,19 +3,22 @@
 namespace ChromeDevtoolsProtocol\Model\BluetoothEmulation;
 
 /**
- * Request for BluetoothEmulation.removeService command.
+ * Request for BluetoothEmulation.removeCharacteristic command.
  *
  * @generated This file has been auto-generated, do not edit.
  *
  * @author Jakub Kulhan <jakub.kulhan@gmail.com>
  */
-final class RemoveServiceRequest implements \JsonSerializable
+final class RemoveCharacteristicRequest implements \JsonSerializable
 {
 	/** @var string */
 	public $address;
 
 	/** @var string */
 	public $serviceId;
+
+	/** @var string */
+	public $characteristicId;
 
 
 	/**
@@ -31,6 +34,9 @@ final class RemoveServiceRequest implements \JsonSerializable
 		if (isset($data->serviceId)) {
 			$instance->serviceId = (string)$data->serviceId;
 		}
+		if (isset($data->characteristicId)) {
+			$instance->characteristicId = (string)$data->characteristicId;
+		}
 		return $instance;
 	}
 
@@ -44,6 +50,9 @@ final class RemoveServiceRequest implements \JsonSerializable
 		if ($this->serviceId !== null) {
 			$data->serviceId = $this->serviceId;
 		}
+		if ($this->characteristicId !== null) {
+			$data->characteristicId = $this->characteristicId;
+		}
 		return $data;
 	}
 
@@ -51,10 +60,10 @@ final class RemoveServiceRequest implements \JsonSerializable
 	/**
 	 * Create new instance using builder.
 	 *
-	 * @return RemoveServiceRequestBuilder
+	 * @return RemoveCharacteristicRequestBuilder
 	 */
-	public static function builder(): RemoveServiceRequestBuilder
+	public static function builder(): RemoveCharacteristicRequestBuilder
 	{
-		return new RemoveServiceRequestBuilder();
+		return new RemoveCharacteristicRequestBuilder();
 	}
 }

@@ -3,20 +3,20 @@
 namespace ChromeDevtoolsProtocol\Model\BluetoothEmulation;
 
 /**
- * Response to BluetoothEmulation.addService command.
+ * Response to BluetoothEmulation.addCharacteristic command.
  *
  * @generated This file has been auto-generated, do not edit.
  *
  * @author Jakub Kulhan <jakub.kulhan@gmail.com>
  */
-final class AddServiceResponse implements \JsonSerializable
+final class AddCharacteristicResponse implements \JsonSerializable
 {
 	/**
-	 * An identifier that uniquely represents this service.
+	 * An identifier that uniquely represents this characteristic.
 	 *
 	 * @var string
 	 */
-	public $serviceId;
+	public $characteristicId;
 
 
 	/**
@@ -26,8 +26,8 @@ final class AddServiceResponse implements \JsonSerializable
 	public static function fromJson($data)
 	{
 		$instance = new static();
-		if (isset($data->serviceId)) {
-			$instance->serviceId = (string)$data->serviceId;
+		if (isset($data->characteristicId)) {
+			$instance->characteristicId = (string)$data->characteristicId;
 		}
 		return $instance;
 	}
@@ -36,8 +36,8 @@ final class AddServiceResponse implements \JsonSerializable
 	public function jsonSerialize()
 	{
 		$data = new \stdClass();
-		if ($this->serviceId !== null) {
-			$data->serviceId = $this->serviceId;
+		if ($this->characteristicId !== null) {
+			$data->characteristicId = $this->characteristicId;
 		}
 		return $data;
 	}

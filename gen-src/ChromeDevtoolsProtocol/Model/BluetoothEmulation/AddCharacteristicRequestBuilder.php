@@ -9,18 +9,20 @@ use ChromeDevtoolsProtocol\Exception\BuilderException;
  *
  * @author Jakub Kulhan <jakub.kulhan@gmail.com>
  */
-final class RemoveServiceRequestBuilder
+final class AddCharacteristicRequestBuilder
 {
 	private $address;
 	private $serviceId;
+	private $characteristicUuid;
+	private $properties;
 
 
 	/**
 	 * Validate non-optional parameters and return new instance.
 	 */
-	public function build(): RemoveServiceRequest
+	public function build(): AddCharacteristicRequest
 	{
-		$instance = new RemoveServiceRequest();
+		$instance = new AddCharacteristicRequest();
 		if ($this->address === null) {
 			throw new BuilderException('Property [address] is required.');
 		}
@@ -29,6 +31,14 @@ final class RemoveServiceRequestBuilder
 			throw new BuilderException('Property [serviceId] is required.');
 		}
 		$instance->serviceId = $this->serviceId;
+		if ($this->characteristicUuid === null) {
+			throw new BuilderException('Property [characteristicUuid] is required.');
+		}
+		$instance->characteristicUuid = $this->characteristicUuid;
+		if ($this->properties === null) {
+			throw new BuilderException('Property [properties] is required.');
+		}
+		$instance->properties = $this->properties;
 		return $instance;
 	}
 
@@ -53,6 +63,30 @@ final class RemoveServiceRequestBuilder
 	public function setServiceId($serviceId): self
 	{
 		$this->serviceId = $serviceId;
+		return $this;
+	}
+
+
+	/**
+	 * @param string $characteristicUuid
+	 *
+	 * @return self
+	 */
+	public function setCharacteristicUuid($characteristicUuid): self
+	{
+		$this->characteristicUuid = $characteristicUuid;
+		return $this;
+	}
+
+
+	/**
+	 * @param CharacteristicProperties $properties
+	 *
+	 * @return self
+	 */
+	public function setProperties($properties): self
+	{
+		$this->properties = $properties;
 		return $this;
 	}
 }

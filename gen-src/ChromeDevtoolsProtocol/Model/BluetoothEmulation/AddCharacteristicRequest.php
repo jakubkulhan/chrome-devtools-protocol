@@ -3,19 +3,25 @@
 namespace ChromeDevtoolsProtocol\Model\BluetoothEmulation;
 
 /**
- * Request for BluetoothEmulation.removeService command.
+ * Request for BluetoothEmulation.addCharacteristic command.
  *
  * @generated This file has been auto-generated, do not edit.
  *
  * @author Jakub Kulhan <jakub.kulhan@gmail.com>
  */
-final class RemoveServiceRequest implements \JsonSerializable
+final class AddCharacteristicRequest implements \JsonSerializable
 {
 	/** @var string */
 	public $address;
 
 	/** @var string */
 	public $serviceId;
+
+	/** @var string */
+	public $characteristicUuid;
+
+	/** @var CharacteristicProperties */
+	public $properties;
 
 
 	/**
@@ -31,6 +37,12 @@ final class RemoveServiceRequest implements \JsonSerializable
 		if (isset($data->serviceId)) {
 			$instance->serviceId = (string)$data->serviceId;
 		}
+		if (isset($data->characteristicUuid)) {
+			$instance->characteristicUuid = (string)$data->characteristicUuid;
+		}
+		if (isset($data->properties)) {
+			$instance->properties = CharacteristicProperties::fromJson($data->properties);
+		}
 		return $instance;
 	}
 
@@ -44,6 +56,12 @@ final class RemoveServiceRequest implements \JsonSerializable
 		if ($this->serviceId !== null) {
 			$data->serviceId = $this->serviceId;
 		}
+		if ($this->characteristicUuid !== null) {
+			$data->characteristicUuid = $this->characteristicUuid;
+		}
+		if ($this->properties !== null) {
+			$data->properties = $this->properties->jsonSerialize();
+		}
 		return $data;
 	}
 
@@ -51,10 +69,10 @@ final class RemoveServiceRequest implements \JsonSerializable
 	/**
 	 * Create new instance using builder.
 	 *
-	 * @return RemoveServiceRequestBuilder
+	 * @return AddCharacteristicRequestBuilder
 	 */
-	public static function builder(): RemoveServiceRequestBuilder
+	public static function builder(): AddCharacteristicRequestBuilder
 	{
-		return new RemoveServiceRequestBuilder();
+		return new AddCharacteristicRequestBuilder();
 	}
 }

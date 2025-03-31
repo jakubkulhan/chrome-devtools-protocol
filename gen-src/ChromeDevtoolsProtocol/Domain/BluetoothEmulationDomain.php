@@ -4,10 +4,13 @@ namespace ChromeDevtoolsProtocol\Domain;
 
 use ChromeDevtoolsProtocol\ContextInterface;
 use ChromeDevtoolsProtocol\InternalClientInterface;
+use ChromeDevtoolsProtocol\Model\BluetoothEmulation\AddCharacteristicRequest;
+use ChromeDevtoolsProtocol\Model\BluetoothEmulation\AddCharacteristicResponse;
 use ChromeDevtoolsProtocol\Model\BluetoothEmulation\AddServiceRequest;
 use ChromeDevtoolsProtocol\Model\BluetoothEmulation\AddServiceResponse;
 use ChromeDevtoolsProtocol\Model\BluetoothEmulation\EnableRequest;
 use ChromeDevtoolsProtocol\Model\BluetoothEmulation\GattOperationReceivedEvent;
+use ChromeDevtoolsProtocol\Model\BluetoothEmulation\RemoveCharacteristicRequest;
 use ChromeDevtoolsProtocol\Model\BluetoothEmulation\RemoveServiceRequest;
 use ChromeDevtoolsProtocol\Model\BluetoothEmulation\SetSimulatedCentralStateRequest;
 use ChromeDevtoolsProtocol\Model\BluetoothEmulation\SimulateAdvertisementRequest;
@@ -24,6 +27,13 @@ class BluetoothEmulationDomain implements BluetoothEmulationDomainInterface
 	public function __construct(InternalClientInterface $internalClient)
 	{
 		$this->internalClient = $internalClient;
+	}
+
+
+	public function addCharacteristic(ContextInterface $ctx, AddCharacteristicRequest $request): AddCharacteristicResponse
+	{
+		$response = $this->internalClient->executeCommand($ctx, 'BluetoothEmulation.addCharacteristic', $request);
+		return AddCharacteristicResponse::fromJson($response);
 	}
 
 
@@ -44,6 +54,12 @@ class BluetoothEmulationDomain implements BluetoothEmulationDomainInterface
 	public function enable(ContextInterface $ctx, EnableRequest $request): void
 	{
 		$this->internalClient->executeCommand($ctx, 'BluetoothEmulation.enable', $request);
+	}
+
+
+	public function removeCharacteristic(ContextInterface $ctx, RemoveCharacteristicRequest $request): void
+	{
+		$this->internalClient->executeCommand($ctx, 'BluetoothEmulation.removeCharacteristic', $request);
 	}
 
 
