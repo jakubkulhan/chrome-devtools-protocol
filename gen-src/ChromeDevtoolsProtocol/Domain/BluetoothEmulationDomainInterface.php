@@ -5,11 +5,14 @@ namespace ChromeDevtoolsProtocol\Domain;
 use ChromeDevtoolsProtocol\ContextInterface;
 use ChromeDevtoolsProtocol\Model\BluetoothEmulation\AddCharacteristicRequest;
 use ChromeDevtoolsProtocol\Model\BluetoothEmulation\AddCharacteristicResponse;
+use ChromeDevtoolsProtocol\Model\BluetoothEmulation\AddDescriptorRequest;
+use ChromeDevtoolsProtocol\Model\BluetoothEmulation\AddDescriptorResponse;
 use ChromeDevtoolsProtocol\Model\BluetoothEmulation\AddServiceRequest;
 use ChromeDevtoolsProtocol\Model\BluetoothEmulation\AddServiceResponse;
 use ChromeDevtoolsProtocol\Model\BluetoothEmulation\EnableRequest;
 use ChromeDevtoolsProtocol\Model\BluetoothEmulation\GattOperationReceivedEvent;
 use ChromeDevtoolsProtocol\Model\BluetoothEmulation\RemoveCharacteristicRequest;
+use ChromeDevtoolsProtocol\Model\BluetoothEmulation\RemoveDescriptorRequest;
 use ChromeDevtoolsProtocol\Model\BluetoothEmulation\RemoveServiceRequest;
 use ChromeDevtoolsProtocol\Model\BluetoothEmulation\SetSimulatedCentralStateRequest;
 use ChromeDevtoolsProtocol\Model\BluetoothEmulation\SimulateAdvertisementRequest;
@@ -37,6 +40,17 @@ interface BluetoothEmulationDomainInterface
 	 * @return AddCharacteristicResponse
 	 */
 	public function addCharacteristic(ContextInterface $ctx, AddCharacteristicRequest $request): AddCharacteristicResponse;
+
+
+	/**
+	 * Adds a descriptor with |descriptorUuid| to the characteristic respresented by |characteristicId| in the service represented by |serviceId| of the peripheral with |address|.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param AddDescriptorRequest $request
+	 *
+	 * @return AddDescriptorResponse
+	 */
+	public function addDescriptor(ContextInterface $ctx, AddDescriptorRequest $request): AddDescriptorResponse;
 
 
 	/**
@@ -80,6 +94,17 @@ interface BluetoothEmulationDomainInterface
 	 * @return void
 	 */
 	public function removeCharacteristic(ContextInterface $ctx, RemoveCharacteristicRequest $request): void;
+
+
+	/**
+	 * Removes the descriptor with |descriptorId| from the characteristic respresented by |characteristicId| in the service represented by |serviceId| of the peripheral with |address|.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param RemoveDescriptorRequest $request
+	 *
+	 * @return void
+	 */
+	public function removeDescriptor(ContextInterface $ctx, RemoveDescriptorRequest $request): void;
 
 
 	/**

@@ -6,11 +6,14 @@ use ChromeDevtoolsProtocol\ContextInterface;
 use ChromeDevtoolsProtocol\InternalClientInterface;
 use ChromeDevtoolsProtocol\Model\BluetoothEmulation\AddCharacteristicRequest;
 use ChromeDevtoolsProtocol\Model\BluetoothEmulation\AddCharacteristicResponse;
+use ChromeDevtoolsProtocol\Model\BluetoothEmulation\AddDescriptorRequest;
+use ChromeDevtoolsProtocol\Model\BluetoothEmulation\AddDescriptorResponse;
 use ChromeDevtoolsProtocol\Model\BluetoothEmulation\AddServiceRequest;
 use ChromeDevtoolsProtocol\Model\BluetoothEmulation\AddServiceResponse;
 use ChromeDevtoolsProtocol\Model\BluetoothEmulation\EnableRequest;
 use ChromeDevtoolsProtocol\Model\BluetoothEmulation\GattOperationReceivedEvent;
 use ChromeDevtoolsProtocol\Model\BluetoothEmulation\RemoveCharacteristicRequest;
+use ChromeDevtoolsProtocol\Model\BluetoothEmulation\RemoveDescriptorRequest;
 use ChromeDevtoolsProtocol\Model\BluetoothEmulation\RemoveServiceRequest;
 use ChromeDevtoolsProtocol\Model\BluetoothEmulation\SetSimulatedCentralStateRequest;
 use ChromeDevtoolsProtocol\Model\BluetoothEmulation\SimulateAdvertisementRequest;
@@ -37,6 +40,13 @@ class BluetoothEmulationDomain implements BluetoothEmulationDomainInterface
 	}
 
 
+	public function addDescriptor(ContextInterface $ctx, AddDescriptorRequest $request): AddDescriptorResponse
+	{
+		$response = $this->internalClient->executeCommand($ctx, 'BluetoothEmulation.addDescriptor', $request);
+		return AddDescriptorResponse::fromJson($response);
+	}
+
+
 	public function addService(ContextInterface $ctx, AddServiceRequest $request): AddServiceResponse
 	{
 		$response = $this->internalClient->executeCommand($ctx, 'BluetoothEmulation.addService', $request);
@@ -60,6 +70,12 @@ class BluetoothEmulationDomain implements BluetoothEmulationDomainInterface
 	public function removeCharacteristic(ContextInterface $ctx, RemoveCharacteristicRequest $request): void
 	{
 		$this->internalClient->executeCommand($ctx, 'BluetoothEmulation.removeCharacteristic', $request);
+	}
+
+
+	public function removeDescriptor(ContextInterface $ctx, RemoveDescriptorRequest $request): void
+	{
+		$this->internalClient->executeCommand($ctx, 'BluetoothEmulation.removeDescriptor', $request);
 	}
 
 

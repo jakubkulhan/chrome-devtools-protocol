@@ -58,4 +58,5 @@ final class FederatedAuthRequestIssueReasonEnum
 	public const TYPE_NOT_MATCHING = 'TypeNotMatching';
 	public const UI_DISMISSED_NO_EMBARGO = 'UiDismissedNoEmbargo';
 	public const CORS_ERROR = 'CorsError';
+	public const SUPPRESSED_BY_SEGMENTATION_PLATFORM = 'SuppressedBySegmentationPlatform';
 }

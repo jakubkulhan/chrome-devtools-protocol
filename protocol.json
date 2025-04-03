@@ -1875,7 +1875,8 @@
                         "RelyingPartyOriginIsOpaque",
                         "TypeNotMatching",
                         "UiDismissedNoEmbargo",
-                        "CorsError"
+                        "CorsError",
+                        "SuppressedBySegmentationPlatform"
                     ]
                 },
                 {
@@ -2896,6 +2897,35 @@
                     ]
                 },
                 {
+                    "name": "addDescriptor",
+                    "description": "Adds a descriptor with |descriptorUuid| to the characteristic respresented by |characteristicId| in the service represented by |serviceId| of the peripheral with |address|.",
+                    "parameters": [
+                        {
+                            "name": "address",
+                            "type": "string"
+                        },
+                        {
+                            "name": "serviceId",
+                            "type": "string"
+                        },
+                        {
+                            "name": "characteristicId",
+                            "type": "string"
+                        },
+                        {
+                            "name": "descriptorUuid",
+                            "type": "string"
+                        }
+                    ],
+                    "returns": [
+                        {
+                            "name": "descriptorId",
+                            "description": "An identifier that uniquely represents this descriptor.",
+                            "type": "string"
+                        }
+                    ]
+                },
+                {
                     "name": "addService",
                     "description": "Adds a service with |serviceUuid| to the peripheral with |address|.",
                     "parameters": [
@@ -2950,6 +2980,28 @@
                         },
                         {
                             "name": "characteristicId",
+                            "type": "string"
+                        }
+                    ]
+                },
+                {
+                    "name": "removeDescriptor",
+                    "description": "Removes the descriptor with |descriptorId| from the characteristic respresented by |characteristicId| in the service represented by |serviceId| of the peripheral with |address|.",
+                    "parameters": [
+                        {
+                            "name": "address",
+                            "type": "string"
+                        },
+                        {
+                            "name": "serviceId",
+                            "type": "string"
+                        },
+                        {
+                            "name": "characteristicId",
+                            "type": "string"
+                        },
+                        {
+                            "name": "descriptorId",
                             "type": "string"
                         }
                     ]
@@ -6026,7 +6078,8 @@
                 },
                 {
                     "name": "resolveValues",
-                    "description": "Resolve the specified values in the context of the provided element. For example, a value of '1em' is evaluated according to the computed 'font-size' of the element and a value 'calc(1px + 2px)' will be resolved to '3px'.",
+                    "description": "Resolve the specified values in the context of the provided element. For example, a value of '1em' is evaluated according to the computed 'font-size' of the element and a value 'calc(1px + 2px)' will be resolved to '3px'. If the `propertyName` was specified the `values` are resolved as if they were property's declaration. If a value cannot be parsed according to the provided property syntax, the value is parsed using combined syntax as if null `propertyName` was provided. If the value cannot be resolved even then, return the provided value without any changes.",
+                    "experimental": true,
                     "parameters": [
                         {
                             "name": "values",
@@ -6050,14 +6103,12 @@
                         {
                             "name": "pseudoType",
                             "description": "Pseudo element type, only works for pseudo elements that generate elements in the tree, such as ::before and ::after.",
-                            "experimental": true,
                             "optional": true,
                             "$ref": "DOM.PseudoType"
                         },
                         {
                             "name": "pseudoIdentifier",
                             "description": "Pseudo element custom ident.",
-                            "experimental": true,
                             "optional": true,
                             "type": "string"
                         }
