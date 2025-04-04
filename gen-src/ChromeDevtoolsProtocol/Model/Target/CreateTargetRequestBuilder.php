@@ -22,6 +22,7 @@ final class CreateTargetRequestBuilder
 	private $newWindow;
 	private $background;
 	private $forTab;
+	private $hidden;
 
 
 	/**
@@ -44,6 +45,7 @@ final class CreateTargetRequestBuilder
 		$instance->newWindow = $this->newWindow;
 		$instance->background = $this->background;
 		$instance->forTab = $this->forTab;
+		$instance->hidden = $this->hidden;
 		return $instance;
 	}
 
@@ -176,6 +178,18 @@ final class CreateTargetRequestBuilder
 	public function setForTab($forTab): self
 	{
 		$this->forTab = $forTab;
+		return $this;
+	}
+
+
+	/**
+	 * @param bool|null $hidden
+	 *
+	 * @return self
+	 */
+	public function setHidden($hidden): self
+	{
+		$this->hidden = $hidden;
 		return $this;
 	}
 }

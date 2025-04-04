@@ -88,6 +88,13 @@ final class CreateTargetRequest implements \JsonSerializable
 	 */
 	public $forTab;
 
+	/**
+	 * Whether to create a hidden target. The hidden target is observable via protocol, but not present in the tab UI strip. Cannot be created with `forTab: true`, `newWindow: true` or `background: false`. The life-time of the tab is limited to the life-time of the session.
+	 *
+	 * @var bool|null
+	 */
+	public $hidden;
+
 
 	/**
 	 * @param object $data
@@ -129,6 +136,9 @@ final class CreateTargetRequest implements \JsonSerializable
 		if (isset($data->forTab)) {
 			$instance->forTab = (bool)$data->forTab;
 		}
+		if (isset($data->hidden)) {
+			$instance->hidden = (bool)$data->hidden;
+		}
 		return $instance;
 	}
 
@@ -168,6 +178,9 @@ final class CreateTargetRequest implements \JsonSerializable
 		}
 		if ($this->forTab !== null) {
 			$data->forTab = $this->forTab;
+		}
+		if ($this->hidden !== null) {
+			$data->hidden = $this->hidden;
 		}
 		return $data;
 	}
