@@ -11,7 +11,6 @@ use ChromeDevtoolsProtocol\Exception\BuilderException;
  */
 final class AddCharacteristicRequestBuilder
 {
-	private $address;
 	private $serviceId;
 	private $characteristicUuid;
 	private $properties;
@@ -23,10 +22,6 @@ final class AddCharacteristicRequestBuilder
 	public function build(): AddCharacteristicRequest
 	{
 		$instance = new AddCharacteristicRequest();
-		if ($this->address === null) {
-			throw new BuilderException('Property [address] is required.');
-		}
-		$instance->address = $this->address;
 		if ($this->serviceId === null) {
 			throw new BuilderException('Property [serviceId] is required.');
 		}
@@ -40,18 +35,6 @@ final class AddCharacteristicRequestBuilder
 		}
 		$instance->properties = $this->properties;
 		return $instance;
-	}
-
-
-	/**
-	 * @param string $address
-	 *
-	 * @return self
-	 */
-	public function setAddress($address): self
-	{
-		$this->address = $address;
-		return $this;
 	}
 
 

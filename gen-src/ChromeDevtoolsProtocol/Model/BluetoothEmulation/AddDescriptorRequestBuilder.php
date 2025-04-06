@@ -11,8 +11,6 @@ use ChromeDevtoolsProtocol\Exception\BuilderException;
  */
 final class AddDescriptorRequestBuilder
 {
-	private $address;
-	private $serviceId;
 	private $characteristicId;
 	private $descriptorUuid;
 
@@ -23,14 +21,6 @@ final class AddDescriptorRequestBuilder
 	public function build(): AddDescriptorRequest
 	{
 		$instance = new AddDescriptorRequest();
-		if ($this->address === null) {
-			throw new BuilderException('Property [address] is required.');
-		}
-		$instance->address = $this->address;
-		if ($this->serviceId === null) {
-			throw new BuilderException('Property [serviceId] is required.');
-		}
-		$instance->serviceId = $this->serviceId;
 		if ($this->characteristicId === null) {
 			throw new BuilderException('Property [characteristicId] is required.');
 		}
@@ -40,30 +30,6 @@ final class AddDescriptorRequestBuilder
 		}
 		$instance->descriptorUuid = $this->descriptorUuid;
 		return $instance;
-	}
-
-
-	/**
-	 * @param string $address
-	 *
-	 * @return self
-	 */
-	public function setAddress($address): self
-	{
-		$this->address = $address;
-		return $this;
-	}
-
-
-	/**
-	 * @param string $serviceId
-	 *
-	 * @return self
-	 */
-	public function setServiceId($serviceId): self
-	{
-		$this->serviceId = $serviceId;
-		return $this;
 	}
 
 

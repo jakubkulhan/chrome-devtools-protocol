@@ -11,7 +11,6 @@ use ChromeDevtoolsProtocol\Exception\BuilderException;
  */
 final class RemoveServiceRequestBuilder
 {
-	private $address;
 	private $serviceId;
 
 
@@ -21,27 +20,11 @@ final class RemoveServiceRequestBuilder
 	public function build(): RemoveServiceRequest
 	{
 		$instance = new RemoveServiceRequest();
-		if ($this->address === null) {
-			throw new BuilderException('Property [address] is required.');
-		}
-		$instance->address = $this->address;
 		if ($this->serviceId === null) {
 			throw new BuilderException('Property [serviceId] is required.');
 		}
 		$instance->serviceId = $this->serviceId;
 		return $instance;
-	}
-
-
-	/**
-	 * @param string $address
-	 *
-	 * @return self
-	 */
-	public function setAddress($address): self
-	{
-		$this->address = $address;
-		return $this;
 	}
 
 

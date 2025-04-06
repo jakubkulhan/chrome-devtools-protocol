@@ -12,12 +12,6 @@ namespace ChromeDevtoolsProtocol\Model\BluetoothEmulation;
 final class RemoveCharacteristicRequest implements \JsonSerializable
 {
 	/** @var string */
-	public $address;
-
-	/** @var string */
-	public $serviceId;
-
-	/** @var string */
 	public $characteristicId;
 
 
@@ -28,12 +22,6 @@ final class RemoveCharacteristicRequest implements \JsonSerializable
 	public static function fromJson($data)
 	{
 		$instance = new static();
-		if (isset($data->address)) {
-			$instance->address = (string)$data->address;
-		}
-		if (isset($data->serviceId)) {
-			$instance->serviceId = (string)$data->serviceId;
-		}
 		if (isset($data->characteristicId)) {
 			$instance->characteristicId = (string)$data->characteristicId;
 		}
@@ -44,12 +32,6 @@ final class RemoveCharacteristicRequest implements \JsonSerializable
 	public function jsonSerialize()
 	{
 		$data = new \stdClass();
-		if ($this->address !== null) {
-			$data->address = $this->address;
-		}
-		if ($this->serviceId !== null) {
-			$data->serviceId = $this->serviceId;
-		}
 		if ($this->characteristicId !== null) {
 			$data->characteristicId = $this->characteristicId;
 		}

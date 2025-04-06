@@ -32,7 +32,7 @@ use ChromeDevtoolsProtocol\SubscriptionInterface;
 interface BluetoothEmulationDomainInterface
 {
 	/**
-	 * Adds a characteristic with |characteristicUuid| and |properties| to the service represented by |serviceId| in the peripheral with |address|.
+	 * Adds a characteristic with |characteristicUuid| and |properties| to the service represented by |serviceId|.
 	 *
 	 * @param ContextInterface $ctx
 	 * @param AddCharacteristicRequest $request
@@ -43,7 +43,7 @@ interface BluetoothEmulationDomainInterface
 
 
 	/**
-	 * Adds a descriptor with |descriptorUuid| to the characteristic respresented by |characteristicId| in the service represented by |serviceId| of the peripheral with |address|.
+	 * Adds a descriptor with |descriptorUuid| to the characteristic respresented by |characteristicId|.
 	 *
 	 * @param ContextInterface $ctx
 	 * @param AddDescriptorRequest $request
@@ -86,7 +86,7 @@ interface BluetoothEmulationDomainInterface
 
 
 	/**
-	 * Removes the characteristic respresented by |characteristicId| from the service respresented by |serviceId| in the peripheral with |address|.
+	 * Removes the characteristic respresented by |characteristicId| from the simulated central.
 	 *
 	 * @param ContextInterface $ctx
 	 * @param RemoveCharacteristicRequest $request
@@ -97,7 +97,7 @@ interface BluetoothEmulationDomainInterface
 
 
 	/**
-	 * Removes the descriptor with |descriptorId| from the characteristic respresented by |characteristicId| in the service represented by |serviceId| of the peripheral with |address|.
+	 * Removes the descriptor with |descriptorId| from the simulated central.
 	 *
 	 * @param ContextInterface $ctx
 	 * @param RemoveDescriptorRequest $request
@@ -108,7 +108,7 @@ interface BluetoothEmulationDomainInterface
 
 
 	/**
-	 * Removes the service respresented by |serviceId| from the peripheral with |address|.
+	 * Removes the service respresented by |serviceId| from the simulated central.
 	 *
 	 * @param ContextInterface $ctx
 	 * @param RemoveServiceRequest $request
