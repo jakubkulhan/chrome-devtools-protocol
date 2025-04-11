@@ -15,4 +15,5 @@ final class ServiceWorkerRouterSourceEnum
 	public const CACHE = 'cache';
 	public const FETCH_EVENT = 'fetch-event';
 	public const RACE_NETWORK_AND_FETCH_HANDLER = 'race-network-and-fetch-handler';
+	public const RACE_NETWORK_AND_CACHE = 'race-network-and-cache';
 }

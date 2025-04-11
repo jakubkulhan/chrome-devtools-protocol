@@ -13,4 +13,5 @@ final class BrowserCommandIdEnum
 {
 	public const OPEN_TAB_SEARCH = 'openTabSearch';
 	public const CLOSE_TAB_SEARCH = 'closeTabSearch';
+	public const OPEN_GLIC = 'openGlic';
 }
