@@ -32,6 +32,34 @@ final class SetGeolocationOverrideRequest implements \JsonSerializable
 	 */
 	public $accuracy;
 
+	/**
+	 * Mock altitude
+	 *
+	 * @var int|float|null
+	 */
+	public $altitude;
+
+	/**
+	 * Mock altitudeAccuracy
+	 *
+	 * @var int|float|null
+	 */
+	public $altitudeAccuracy;
+
+	/**
+	 * Mock heading
+	 *
+	 * @var int|float|null
+	 */
+	public $heading;
+
+	/**
+	 * Mock speed
+	 *
+	 * @var int|float|null
+	 */
+	public $speed;
+
 
 	/**
 	 * @param object $data
@@ -49,6 +77,18 @@ final class SetGeolocationOverrideRequest implements \JsonSerializable
 		if (isset($data->accuracy)) {
 			$instance->accuracy = $data->accuracy;
 		}
+		if (isset($data->altitude)) {
+			$instance->altitude = $data->altitude;
+		}
+		if (isset($data->altitudeAccuracy)) {
+			$instance->altitudeAccuracy = $data->altitudeAccuracy;
+		}
+		if (isset($data->heading)) {
+			$instance->heading = $data->heading;
+		}
+		if (isset($data->speed)) {
+			$instance->speed = $data->speed;
+		}
 		return $instance;
 	}
 
@@ -64,6 +104,18 @@ final class SetGeolocationOverrideRequest implements \JsonSerializable
 		}
 		if ($this->accuracy !== null) {
 			$data->accuracy = $this->accuracy;
+		}
+		if ($this->altitude !== null) {
+			$data->altitude = $this->altitude;
+		}
+		if ($this->altitudeAccuracy !== null) {
+			$data->altitudeAccuracy = $this->altitudeAccuracy;
+		}
+		if ($this->heading !== null) {
+			$data->heading = $this->heading;
+		}
+		if ($this->speed !== null) {
+			$data->speed = $this->speed;
 		}
 		return $data;
 	}

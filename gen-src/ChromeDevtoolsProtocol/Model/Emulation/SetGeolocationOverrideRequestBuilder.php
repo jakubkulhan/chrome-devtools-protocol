@@ -12,6 +12,10 @@ final class SetGeolocationOverrideRequestBuilder
 	private $latitude;
 	private $longitude;
 	private $accuracy;
+	private $altitude;
+	private $altitudeAccuracy;
+	private $heading;
+	private $speed;
 
 
 	/**
@@ -23,6 +27,10 @@ final class SetGeolocationOverrideRequestBuilder
 		$instance->latitude = $this->latitude;
 		$instance->longitude = $this->longitude;
 		$instance->accuracy = $this->accuracy;
+		$instance->altitude = $this->altitude;
+		$instance->altitudeAccuracy = $this->altitudeAccuracy;
+		$instance->heading = $this->heading;
+		$instance->speed = $this->speed;
 		return $instance;
 	}
 
@@ -59,6 +67,54 @@ final class SetGeolocationOverrideRequestBuilder
 	public function setAccuracy($accuracy): self
 	{
 		$this->accuracy = $accuracy;
+		return $this;
+	}
+
+
+	/**
+	 * @param int|float|null $altitude
+	 *
+	 * @return self
+	 */
+	public function setAltitude($altitude): self
+	{
+		$this->altitude = $altitude;
+		return $this;
+	}
+
+
+	/**
+	 * @param int|float|null $altitudeAccuracy
+	 *
+	 * @return self
+	 */
+	public function setAltitudeAccuracy($altitudeAccuracy): self
+	{
+		$this->altitudeAccuracy = $altitudeAccuracy;
+		return $this;
+	}
+
+
+	/**
+	 * @param int|float|null $heading
+	 *
+	 * @return self
+	 */
+	public function setHeading($heading): self
+	{
+		$this->heading = $heading;
+		return $this;
+	}
+
+
+	/**
+	 * @param int|float|null $speed
+	 *
+	 * @return self
+	 */
+	public function setSpeed($speed): self
+	{
+		$this->speed = $speed;
 		return $this;
 	}
 }
