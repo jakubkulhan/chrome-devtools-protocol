@@ -11,6 +11,9 @@ use ChromeDevtoolsProtocol\Model\Network\ContinueInterceptedRequestRequest;
 use ChromeDevtoolsProtocol\Model\Network\DataReceivedEvent;
 use ChromeDevtoolsProtocol\Model\Network\DeleteCookiesRequest;
 use ChromeDevtoolsProtocol\Model\Network\DirectTCPSocketAbortedEvent;
+use ChromeDevtoolsProtocol\Model\Network\DirectTCPSocketChunkErrorEvent;
+use ChromeDevtoolsProtocol\Model\Network\DirectTCPSocketChunkReceivedEvent;
+use ChromeDevtoolsProtocol\Model\Network\DirectTCPSocketChunkSentEvent;
 use ChromeDevtoolsProtocol\Model\Network\DirectTCPSocketClosedEvent;
 use ChromeDevtoolsProtocol\Model\Network\DirectTCPSocketCreatedEvent;
 use ChromeDevtoolsProtocol\Model\Network\DirectTCPSocketOpenedEvent;
@@ -368,6 +371,48 @@ class NetworkDomain implements NetworkDomainInterface
 	public function awaitDirectTCPSocketAborted(ContextInterface $ctx): DirectTCPSocketAbortedEvent
 	{
 		return DirectTCPSocketAbortedEvent::fromJson($this->internalClient->awaitEvent($ctx, 'Network.directTCPSocketAborted'));
+	}
+
+
+	public function addDirectTCPSocketChunkErrorListener(callable $listener): SubscriptionInterface
+	{
+		return $this->internalClient->addListener('Network.directTCPSocketChunkError', function ($event) use ($listener) {
+			return $listener(DirectTCPSocketChunkErrorEvent::fromJson($event));
+		});
+	}
+
+
+	public function awaitDirectTCPSocketChunkError(ContextInterface $ctx): DirectTCPSocketChunkErrorEvent
+	{
+		return DirectTCPSocketChunkErrorEvent::fromJson($this->internalClient->awaitEvent($ctx, 'Network.directTCPSocketChunkError'));
+	}
+
+
+	public function addDirectTCPSocketChunkReceivedListener(callable $listener): SubscriptionInterface
+	{
+		return $this->internalClient->addListener('Network.directTCPSocketChunkReceived', function ($event) use ($listener) {
+			return $listener(DirectTCPSocketChunkReceivedEvent::fromJson($event));
+		});
+	}
+
+
+	public function awaitDirectTCPSocketChunkReceived(ContextInterface $ctx): DirectTCPSocketChunkReceivedEvent
+	{
+		return DirectTCPSocketChunkReceivedEvent::fromJson($this->internalClient->awaitEvent($ctx, 'Network.directTCPSocketChunkReceived'));
+	}
+
+
+	public function addDirectTCPSocketChunkSentListener(callable $listener): SubscriptionInterface
+	{
+		return $this->internalClient->addListener('Network.directTCPSocketChunkSent', function ($event) use ($listener) {
+			return $listener(DirectTCPSocketChunkSentEvent::fromJson($event));
+		});
+	}
+
+
+	public function awaitDirectTCPSocketChunkSent(ContextInterface $ctx): DirectTCPSocketChunkSentEvent
+	{
+		return DirectTCPSocketChunkSentEvent::fromJson($this->internalClient->awaitEvent($ctx, 'Network.directTCPSocketChunkSent'));
 	}
 
 

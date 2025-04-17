@@ -10,6 +10,9 @@ use ChromeDevtoolsProtocol\Model\Network\ContinueInterceptedRequestRequest;
 use ChromeDevtoolsProtocol\Model\Network\DataReceivedEvent;
 use ChromeDevtoolsProtocol\Model\Network\DeleteCookiesRequest;
 use ChromeDevtoolsProtocol\Model\Network\DirectTCPSocketAbortedEvent;
+use ChromeDevtoolsProtocol\Model\Network\DirectTCPSocketChunkErrorEvent;
+use ChromeDevtoolsProtocol\Model\Network\DirectTCPSocketChunkReceivedEvent;
+use ChromeDevtoolsProtocol\Model\Network\DirectTCPSocketChunkSentEvent;
 use ChromeDevtoolsProtocol\Model\Network\DirectTCPSocketClosedEvent;
 use ChromeDevtoolsProtocol\Model\Network\DirectTCPSocketCreatedEvent;
 use ChromeDevtoolsProtocol\Model\Network\DirectTCPSocketOpenedEvent;
@@ -536,6 +539,78 @@ interface NetworkDomainInterface
 	 * @return DirectTCPSocketAbortedEvent
 	 */
 	public function awaitDirectTCPSocketAborted(ContextInterface $ctx): DirectTCPSocketAbortedEvent;
+
+
+	/**
+	 * Fired when there is an error when writing to tcp direct socket stream. For example, if user writes illegal type like string instead of ArrayBuffer or ArrayBufferView. There's no reporting for reading, because we cannot know errors on the other side.
+	 *
+	 * Listener will be called whenever event Network.directTCPSocketChunkError is fired.
+	 *
+	 * @param callable $listener
+	 *
+	 * @return SubscriptionInterface
+	 */
+	public function addDirectTCPSocketChunkErrorListener(callable $listener): SubscriptionInterface;
+
+
+	/**
+	 * Fired when there is an error when writing to tcp direct socket stream. For example, if user writes illegal type like string instead of ArrayBuffer or ArrayBufferView. There's no reporting for reading, because we cannot know errors on the other side.
+	 *
+	 * Method will block until first Network.directTCPSocketChunkError event is fired.
+	 *
+	 * @param ContextInterface $ctx
+	 *
+	 * @return DirectTCPSocketChunkErrorEvent
+	 */
+	public function awaitDirectTCPSocketChunkError(ContextInterface $ctx): DirectTCPSocketChunkErrorEvent;
+
+
+	/**
+	 * Fired when data is received from tcp direct socket stream.
+	 *
+	 * Listener will be called whenever event Network.directTCPSocketChunkReceived is fired.
+	 *
+	 * @param callable $listener
+	 *
+	 * @return SubscriptionInterface
+	 */
+	public function addDirectTCPSocketChunkReceivedListener(callable $listener): SubscriptionInterface;
+
+
+	/**
+	 * Fired when data is received from tcp direct socket stream.
+	 *
+	 * Method will block until first Network.directTCPSocketChunkReceived event is fired.
+	 *
+	 * @param ContextInterface $ctx
+	 *
+	 * @return DirectTCPSocketChunkReceivedEvent
+	 */
+	public function awaitDirectTCPSocketChunkReceived(ContextInterface $ctx): DirectTCPSocketChunkReceivedEvent;
+
+
+	/**
+	 * Fired when data is sent to tcp direct socket stream.
+	 *
+	 * Listener will be called whenever event Network.directTCPSocketChunkSent is fired.
+	 *
+	 * @param callable $listener
+	 *
+	 * @return SubscriptionInterface
+	 */
+	public function addDirectTCPSocketChunkSentListener(callable $listener): SubscriptionInterface;
+
+
+	/**
+	 * Fired when data is sent to tcp direct socket stream.
+	 *
+	 * Method will block until first Network.directTCPSocketChunkSent event is fired.
+	 *
+	 * @param ContextInterface $ctx
+	 *
+	 * @return DirectTCPSocketChunkSentEvent
+	 */
+	public function awaitDirectTCPSocketChunkSent(ContextInterface $ctx): DirectTCPSocketChunkSentEvent;
 
 
 	/**

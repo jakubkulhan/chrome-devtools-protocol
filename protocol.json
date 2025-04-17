@@ -18880,6 +18880,63 @@
                     ]
                 },
                 {
+                    "name": "directTCPSocketChunkError",
+                    "description": "Fired when there is an error when writing to tcp direct socket stream. For example, if user writes illegal type like string instead of ArrayBuffer or ArrayBufferView. There's no reporting for reading, because we cannot know errors on the other side.",
+                    "experimental": true,
+                    "parameters": [
+                        {
+                            "name": "identifier",
+                            "$ref": "RequestId"
+                        },
+                        {
+                            "name": "errorMessage",
+                            "type": "string"
+                        },
+                        {
+                            "name": "timestamp",
+                            "$ref": "MonotonicTime"
+                        }
+                    ]
+                },
+                {
+                    "name": "directTCPSocketChunkReceived",
+                    "description": "Fired when data is received from tcp direct socket stream.",
+                    "experimental": true,
+                    "parameters": [
+                        {
+                            "name": "identifier",
+                            "$ref": "RequestId"
+                        },
+                        {
+                            "name": "data",
+                            "type": "string"
+                        },
+                        {
+                            "name": "timestamp",
+                            "$ref": "MonotonicTime"
+                        }
+                    ]
+                },
+                {
+                    "name": "directTCPSocketChunkSent",
+                    "description": "Fired when data is sent to tcp direct socket stream.",
+                    "experimental": true,
+                    "parameters": [
+                        {
+                            "name": "identifier",
+                            "$ref": "RequestId"
+                        },
+                        {
+                            "name": "data",
+                            "type": "string"
+                        },
+                        {
+                            "name": "timestamp",
+                            "$ref": "MonotonicTime"
+                        }
+                    ]
+                },
+                {
                     "name": "directTCPSocketClosed",
                     "description": "Fired when direct_socket.TCPSocket is closed.",
                     "experimental": true,
