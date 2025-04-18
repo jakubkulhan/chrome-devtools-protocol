@@ -46,6 +46,7 @@ use ChromeDevtoolsProtocol\Model\Storage\SetAttributionReportingTrackingRequest;
 use ChromeDevtoolsProtocol\Model\Storage\SetCookiesRequest;
 use ChromeDevtoolsProtocol\Model\Storage\SetInterestGroupAuctionTrackingRequest;
 use ChromeDevtoolsProtocol\Model\Storage\SetInterestGroupTrackingRequest;
+use ChromeDevtoolsProtocol\Model\Storage\SetProtectedAudienceKAnonymityRequest;
 use ChromeDevtoolsProtocol\Model\Storage\SetSharedStorageEntryRequest;
 use ChromeDevtoolsProtocol\Model\Storage\SetSharedStorageTrackingRequest;
 use ChromeDevtoolsProtocol\Model\Storage\SetStorageBucketTrackingRequest;
@@ -253,6 +254,14 @@ class StorageDomain implements StorageDomainInterface
 	public function setInterestGroupTracking(ContextInterface $ctx, SetInterestGroupTrackingRequest $request): void
 	{
 		$this->internalClient->executeCommand($ctx, 'Storage.setInterestGroupTracking', $request);
+	}
+
+
+	public function setProtectedAudienceKAnonymity(
+		ContextInterface $ctx,
+		SetProtectedAudienceKAnonymityRequest $request
+	): void {
+		$this->internalClient->executeCommand($ctx, 'Storage.setProtectedAudienceKAnonymity', $request);
 	}
 
 
