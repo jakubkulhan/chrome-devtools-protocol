@@ -33,6 +33,7 @@ use ChromeDevtoolsProtocol\Model\Emulation\SetScriptExecutionDisabledRequest;
 use ChromeDevtoolsProtocol\Model\Emulation\SetScrollbarsHiddenRequest;
 use ChromeDevtoolsProtocol\Model\Emulation\SetSensorOverrideEnabledRequest;
 use ChromeDevtoolsProtocol\Model\Emulation\SetSensorOverrideReadingsRequest;
+use ChromeDevtoolsProtocol\Model\Emulation\SetSmallViewportHeightDifferenceOverrideRequest;
 use ChromeDevtoolsProtocol\Model\Emulation\SetTimezoneOverrideRequest;
 use ChromeDevtoolsProtocol\Model\Emulation\SetTouchEmulationEnabledRequest;
 use ChromeDevtoolsProtocol\Model\Emulation\SetUserAgentOverrideRequest;
@@ -272,6 +273,14 @@ class EmulationDomain implements EmulationDomainInterface
 	public function setSensorOverrideReadings(ContextInterface $ctx, SetSensorOverrideReadingsRequest $request): void
 	{
 		$this->internalClient->executeCommand($ctx, 'Emulation.setSensorOverrideReadings', $request);
+	}
+
+
+	public function setSmallViewportHeightDifferenceOverride(
+		ContextInterface $ctx,
+		SetSmallViewportHeightDifferenceOverrideRequest $request
+	): void {
+		$this->internalClient->executeCommand($ctx, 'Emulation.setSmallViewportHeightDifferenceOverride', $request);
 	}
 
 

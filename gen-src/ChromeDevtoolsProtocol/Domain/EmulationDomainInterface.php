@@ -32,6 +32,7 @@ use ChromeDevtoolsProtocol\Model\Emulation\SetScriptExecutionDisabledRequest;
 use ChromeDevtoolsProtocol\Model\Emulation\SetScrollbarsHiddenRequest;
 use ChromeDevtoolsProtocol\Model\Emulation\SetSensorOverrideEnabledRequest;
 use ChromeDevtoolsProtocol\Model\Emulation\SetSensorOverrideReadingsRequest;
+use ChromeDevtoolsProtocol\Model\Emulation\SetSmallViewportHeightDifferenceOverrideRequest;
 use ChromeDevtoolsProtocol\Model\Emulation\SetTimezoneOverrideRequest;
 use ChromeDevtoolsProtocol\Model\Emulation\SetTouchEmulationEnabledRequest;
 use ChromeDevtoolsProtocol\Model\Emulation\SetUserAgentOverrideRequest;
@@ -427,6 +428,20 @@ interface EmulationDomainInterface
 	 * @return void
 	 */
 	public function setSensorOverrideReadings(ContextInterface $ctx, SetSensorOverrideReadingsRequest $request): void;
+
+
+	/**
+	 * Allows overriding the difference between the small and large viewport sizes, which determine the value of the `svh` and `lvh` unit, respectively. Only supported for top-level frames.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param SetSmallViewportHeightDifferenceOverrideRequest $request
+	 *
+	 * @return void
+	 */
+	public function setSmallViewportHeightDifferenceOverride(
+		ContextInterface $ctx,
+		SetSmallViewportHeightDifferenceOverrideRequest $request
+	): void;
 
 
 	/**

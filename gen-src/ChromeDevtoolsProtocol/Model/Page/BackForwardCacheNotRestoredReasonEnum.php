@@ -151,5 +151,6 @@ final class BackForwardCacheNotRestoredReasonEnum
 	public const REQUESTED_BY_WEB_VIEW_CLIENT = 'RequestedByWebViewClient';
 	public const POST_MESSAGE_BY_WEB_VIEW_CLIENT = 'PostMessageByWebViewClient';
 	public const CACHE_CONTROL_NO_STORE_DEVICE_BOUND_SESSION_TERMINATED = 'CacheControlNoStoreDeviceBoundSessionTerminated';
-	public const CACHE_LIMIT_PRUNED = 'CacheLimitPruned';
+	public const CACHE_LIMIT_PRUNED_ON_MODERATE_MEMORY_PRESSURE = 'CacheLimitPrunedOnModerateMemoryPressure';
+	public const CACHE_LIMIT_PRUNED_ON_CRITICAL_MEMORY_PRESSURE = 'CacheLimitPrunedOnCriticalMemoryPressure';
 }
