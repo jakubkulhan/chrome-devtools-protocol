@@ -73,6 +73,9 @@ final class AttributionReportingSourceRegistration implements \JsonSerializable
 	/** @var int */
 	public $maxEventLevelReports;
 
+	/** @var AttributionReportingNamedBudgetDef[] */
+	public $namedBudgets;
+
 
 	/**
 	 * @param object $data
@@ -147,6 +150,12 @@ final class AttributionReportingSourceRegistration implements \JsonSerializable
 		if (isset($data->maxEventLevelReports)) {
 			$instance->maxEventLevelReports = (int)$data->maxEventLevelReports;
 		}
+		if (isset($data->namedBudgets)) {
+			$instance->namedBudgets = [];
+			foreach ($data->namedBudgets as $item) {
+				$instance->namedBudgets[] = AttributionReportingNamedBudgetDef::fromJson($item);
+			}
+		}
 		return $instance;
 	}
 
@@ -219,6 +228,12 @@ final class AttributionReportingSourceRegistration implements \JsonSerializable
 		}
 		if ($this->maxEventLevelReports !== null) {
 			$data->maxEventLevelReports = $this->maxEventLevelReports;
+		}
+		if ($this->namedBudgets !== null) {
+			$data->namedBudgets = [];
+			foreach ($this->namedBudgets as $item) {
+				$data->namedBudgets[] = $item->jsonSerialize();
+			}
 		}
 		return $data;
 	}

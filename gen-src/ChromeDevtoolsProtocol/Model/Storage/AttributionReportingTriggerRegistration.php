@@ -50,6 +50,9 @@ final class AttributionReportingTriggerRegistration implements \JsonSerializable
 	/** @var string[] */
 	public $scopes;
 
+	/** @var AttributionReportingNamedBudgetCandidate[] */
+	public $namedBudgets;
+
 
 	/**
 	 * @param object $data
@@ -112,6 +115,12 @@ final class AttributionReportingTriggerRegistration implements \JsonSerializable
 				$instance->scopes[] = (string)$item;
 			}
 		}
+		if (isset($data->namedBudgets)) {
+			$instance->namedBudgets = [];
+			foreach ($data->namedBudgets as $item) {
+				$instance->namedBudgets[] = AttributionReportingNamedBudgetCandidate::fromJson($item);
+			}
+		}
 		return $instance;
 	}
 
@@ -171,6 +180,12 @@ final class AttributionReportingTriggerRegistration implements \JsonSerializable
 			$data->scopes = [];
 			foreach ($this->scopes as $item) {
 				$data->scopes[] = $item;
+			}
+		}
+		if ($this->namedBudgets !== null) {
+			$data->namedBudgets = [];
+			foreach ($this->namedBudgets as $item) {
+				$data->namedBudgets[] = $item->jsonSerialize();
 			}
 		}
 		return $data;
