@@ -76,6 +76,12 @@ final class AttributionReportingSourceRegistration implements \JsonSerializable
 	/** @var AttributionReportingNamedBudgetDef[] */
 	public $namedBudgets;
 
+	/** @var bool */
+	public $debugReporting;
+
+	/** @var int|float */
+	public $eventLevelEpsilon;
+
 
 	/**
 	 * @param object $data
@@ -156,6 +162,12 @@ final class AttributionReportingSourceRegistration implements \JsonSerializable
 				$instance->namedBudgets[] = AttributionReportingNamedBudgetDef::fromJson($item);
 			}
 		}
+		if (isset($data->debugReporting)) {
+			$instance->debugReporting = (bool)$data->debugReporting;
+		}
+		if (isset($data->eventLevelEpsilon)) {
+			$instance->eventLevelEpsilon = $data->eventLevelEpsilon;
+		}
 		return $instance;
 	}
 
@@ -234,6 +246,12 @@ final class AttributionReportingSourceRegistration implements \JsonSerializable
 			foreach ($this->namedBudgets as $item) {
 				$data->namedBudgets[] = $item->jsonSerialize();
 			}
+		}
+		if ($this->debugReporting !== null) {
+			$data->debugReporting = $this->debugReporting;
+		}
+		if ($this->eventLevelEpsilon !== null) {
+			$data->eventLevelEpsilon = $this->eventLevelEpsilon;
 		}
 		return $data;
 	}
