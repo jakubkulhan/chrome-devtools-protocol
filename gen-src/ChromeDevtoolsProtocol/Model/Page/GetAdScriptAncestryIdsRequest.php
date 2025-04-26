@@ -3,13 +3,13 @@
 namespace ChromeDevtoolsProtocol\Model\Page;
 
 /**
- * Request for Page.getAdScriptId command.
+ * Request for Page.getAdScriptAncestryIds command.
  *
  * @generated This file has been auto-generated, do not edit.
  *
  * @author Jakub Kulhan <jakub.kulhan@gmail.com>
  */
-final class GetAdScriptIdRequest implements \JsonSerializable
+final class GetAdScriptAncestryIdsRequest implements \JsonSerializable
 {
 	/** @var string */
 	public $frameId;
@@ -42,10 +42,10 @@ final class GetAdScriptIdRequest implements \JsonSerializable
 	/**
 	 * Create new instance using builder.
 	 *
-	 * @return GetAdScriptIdRequestBuilder
+	 * @return GetAdScriptAncestryIdsRequestBuilder
 	 */
-	public static function builder(): GetAdScriptIdRequestBuilder
+	public static function builder(): GetAdScriptAncestryIdsRequestBuilder
 	{
-		return new GetAdScriptIdRequestBuilder();
+		return new GetAdScriptAncestryIdsRequestBuilder();
 	}
 }

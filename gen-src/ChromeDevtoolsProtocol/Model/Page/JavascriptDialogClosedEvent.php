@@ -12,6 +12,13 @@ namespace ChromeDevtoolsProtocol\Model\Page;
 final class JavascriptDialogClosedEvent implements \JsonSerializable
 {
 	/**
+	 * Frame id.
+	 *
+	 * @var string
+	 */
+	public $frameId;
+
+	/**
 	 * Whether dialog was confirmed.
 	 *
 	 * @var bool
@@ -33,6 +40,9 @@ final class JavascriptDialogClosedEvent implements \JsonSerializable
 	public static function fromJson($data)
 	{
 		$instance = new static();
+		if (isset($data->frameId)) {
+			$instance->frameId = (string)$data->frameId;
+		}
 		if (isset($data->result)) {
 			$instance->result = (bool)$data->result;
 		}
@@ -46,6 +56,9 @@ final class JavascriptDialogClosedEvent implements \JsonSerializable
 	public function jsonSerialize()
 	{
 		$data = new \stdClass();
+		if ($this->frameId !== null) {
+			$data->frameId = $this->frameId;
+		}
 		if ($this->result !== null) {
 			$data->result = $this->result;
 		}

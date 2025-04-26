@@ -19,6 +19,13 @@ final class JavascriptDialogOpeningEvent implements \JsonSerializable
 	public $url;
 
 	/**
+	 * Frame id.
+	 *
+	 * @var string
+	 */
+	public $frameId;
+
+	/**
 	 * Message that will be displayed by the dialog.
 	 *
 	 * @var string
@@ -57,6 +64,9 @@ final class JavascriptDialogOpeningEvent implements \JsonSerializable
 		if (isset($data->url)) {
 			$instance->url = (string)$data->url;
 		}
+		if (isset($data->frameId)) {
+			$instance->frameId = (string)$data->frameId;
+		}
 		if (isset($data->message)) {
 			$instance->message = (string)$data->message;
 		}
@@ -78,6 +88,9 @@ final class JavascriptDialogOpeningEvent implements \JsonSerializable
 		$data = new \stdClass();
 		if ($this->url !== null) {
 			$data->url = $this->url;
+		}
+		if ($this->frameId !== null) {
+			$data->frameId = $this->frameId;
 		}
 		if ($this->message !== null) {
 			$data->message = $this->message;

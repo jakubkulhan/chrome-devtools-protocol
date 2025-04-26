@@ -22969,7 +22969,7 @@
                     ]
                 },
                 {
-                    "name": "getAdScriptId",
+                    "name": "getAdScriptAncestryIds",
                     "experimental": true,
                     "parameters": [
                         {
@@ -22979,10 +22979,12 @@
                     ],
                     "returns": [
                         {
-                            "name": "adScriptId",
-                            "description": "Identifies the bottom-most script which caused the frame to be labelled as an ad. Only sent if frame is labelled as an ad and id is available.",
-                            "optional": true,
-                            "$ref": "AdScriptId"
+                            "name": "adScriptAncestryIds",
+                            "description": "The ancestry chain of ad script identifiers leading to this frame's creation, ordered from the most immediate script (in the frame creation stack) to more distant ancestors (that created the immediately preceding script). Only sent if frame is labelled as an ad and ids are available.",
+                            "type": "array",
+                            "items": {
+                                "$ref": "AdScriptId"
+                            }
                         }
                     ]
                 },
@@ -24309,6 +24311,12 @@
                     "description": "Fired when a JavaScript initiated dialog (alert, confirm, prompt, or onbeforeunload) has been closed.",
                     "parameters": [
                         {
+                            "name": "frameId",
+                            "description": "Frame id.",
+                            "experimental": true,
+                            "$ref": "FrameId"
+                        },
+                        {
                             "name": "result",
                             "description": "Whether dialog was confirmed.",
                             "type": "boolean"
@@ -24328,6 +24336,12 @@
                             "name": "url",
                             "description": "Frame url.",
                             "type": "string"
+                        },
+                        {
+                            "name": "frameId",
+                            "description": "Frame id.",
+                            "experimental": true,
+                            "$ref": "FrameId"
                         },
                         {
                             "name": "message",
