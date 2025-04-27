@@ -70,7 +70,7 @@ final class ScriptFailedToParseEvent implements \JsonSerializable
 	public $hash;
 
 	/**
-	 * For Wasm modules, the content of the `build_id` custom section.
+	 * For Wasm modules, the content of the `build_id` custom section. For JavaScript the `debugId` magic comment.
 	 *
 	 * @var string
 	 */
