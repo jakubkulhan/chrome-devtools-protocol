@@ -10,6 +10,7 @@ use ChromeDevtoolsProtocol\Model\BluetoothEmulation\AddDescriptorRequest;
 use ChromeDevtoolsProtocol\Model\BluetoothEmulation\AddDescriptorResponse;
 use ChromeDevtoolsProtocol\Model\BluetoothEmulation\AddServiceRequest;
 use ChromeDevtoolsProtocol\Model\BluetoothEmulation\AddServiceResponse;
+use ChromeDevtoolsProtocol\Model\BluetoothEmulation\CharacteristicOperationReceivedEvent;
 use ChromeDevtoolsProtocol\Model\BluetoothEmulation\EnableRequest;
 use ChromeDevtoolsProtocol\Model\BluetoothEmulation\GattOperationReceivedEvent;
 use ChromeDevtoolsProtocol\Model\BluetoothEmulation\RemoveCharacteristicRequest;
@@ -17,6 +18,7 @@ use ChromeDevtoolsProtocol\Model\BluetoothEmulation\RemoveDescriptorRequest;
 use ChromeDevtoolsProtocol\Model\BluetoothEmulation\RemoveServiceRequest;
 use ChromeDevtoolsProtocol\Model\BluetoothEmulation\SetSimulatedCentralStateRequest;
 use ChromeDevtoolsProtocol\Model\BluetoothEmulation\SimulateAdvertisementRequest;
+use ChromeDevtoolsProtocol\Model\BluetoothEmulation\SimulateCharacteristicOperationResponseRequest;
 use ChromeDevtoolsProtocol\Model\BluetoothEmulation\SimulateGATTOperationResponseRequest;
 use ChromeDevtoolsProtocol\Model\BluetoothEmulation\SimulatePreconnectedPeripheralRequest;
 use ChromeDevtoolsProtocol\SubscriptionInterface;
@@ -97,6 +99,14 @@ class BluetoothEmulationDomain implements BluetoothEmulationDomainInterface
 	}
 
 
+	public function simulateCharacteristicOperationResponse(
+		ContextInterface $ctx,
+		SimulateCharacteristicOperationResponseRequest $request
+	): void {
+		$this->internalClient->executeCommand($ctx, 'BluetoothEmulation.simulateCharacteristicOperationResponse', $request);
+	}
+
+
 	public function simulateGATTOperationResponse(
 		ContextInterface $ctx,
 		SimulateGATTOperationResponseRequest $request
@@ -110,6 +120,20 @@ class BluetoothEmulationDomain implements BluetoothEmulationDomainInterface
 		SimulatePreconnectedPeripheralRequest $request
 	): void {
 		$this->internalClient->executeCommand($ctx, 'BluetoothEmulation.simulatePreconnectedPeripheral', $request);
+	}
+
+
+	public function addCharacteristicOperationReceivedListener(callable $listener): SubscriptionInterface
+	{
+		return $this->internalClient->addListener('BluetoothEmulation.characteristicOperationReceived', function ($event) use ($listener) {
+			return $listener(CharacteristicOperationReceivedEvent::fromJson($event));
+		});
+	}
+
+
+	public function awaitCharacteristicOperationReceived(ContextInterface $ctx): CharacteristicOperationReceivedEvent
+	{
+		return CharacteristicOperationReceivedEvent::fromJson($this->internalClient->awaitEvent($ctx, 'BluetoothEmulation.characteristicOperationReceived'));
 	}
 
 

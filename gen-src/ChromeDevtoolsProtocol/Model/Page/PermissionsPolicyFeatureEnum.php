@@ -3,7 +3,7 @@
 namespace ChromeDevtoolsProtocol\Model\Page;
 
 /**
- * All Permissions Policy features. This enum should match the one defined in services/network/public/cpp/permissions_policy/permissions_policy_features.json5.
+ * All Permissions Policy features. This enum should match the one defined in services/network/public/cpp/permissions_policy/permissions_policy_features.json5. LINT.IfChange(PermissionsPolicyFeature)
  *
  * @generated This file has been auto-generated, do not edit.
  *
@@ -75,6 +75,7 @@ final class PermissionsPolicyFeatureEnum
 	public const KEYBOARD_MAP = 'keyboard-map';
 	public const LANGUAGE_DETECTOR = 'language-detector';
 	public const LOCAL_FONTS = 'local-fonts';
+	public const LOCAL_NETWORK_ACCESS = 'local-network-access';
 	public const MAGNETOMETER = 'magnetometer';
 	public const MEDIA_PLAYBACK_WHILE_NOT_VISIBLE = 'media-playback-while-not-visible';
 	public const MICROPHONE = 'microphone';
@@ -88,6 +89,7 @@ final class PermissionsPolicyFeatureEnum
 	public const PRIVATE_STATE_TOKEN_REDEMPTION = 'private-state-token-redemption';
 	public const PUBLICKEY_CREDENTIALS_CREATE = 'publickey-credentials-create';
 	public const PUBLICKEY_CREDENTIALS_GET = 'publickey-credentials-get';
+	public const RECORD_AD_AUCTION_EVENTS = 'record-ad-auction-events';
 	public const REWRITER = 'rewriter';
 	public const RUN_AD_AUCTION = 'run-ad-auction';
 	public const SCREEN_WAKE_LOCK = 'screen-wake-lock';

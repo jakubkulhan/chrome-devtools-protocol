@@ -2742,6 +2742,27 @@
                     ]
                 },
                 {
+                    "id": "CharacteristicWriteType",
+                    "description": "Indicates the various types of characteristic write.",
+                    "type": "string",
+                    "enum": [
+                        "write-default-deprecated",
+                        "write-with-response",
+                        "write-without-response"
+                    ]
+                },
+                {
+                    "id": "CharacteristicOperationType",
+                    "description": "Indicates the various types of characteristic operation.",
+                    "type": "string",
+                    "enum": [
+                        "read",
+                        "write",
+                        "subscribe-to-notifications",
+                        "unsubscribe-from-notifications"
+                    ]
+                },
+                {
                     "id": "ManufacturerData",
                     "description": "Stores the manufacturer data",
                     "type": "object",
@@ -3006,6 +3027,29 @@
                     ]
                 },
                 {
+                    "name": "simulateCharacteristicOperationResponse",
+                    "description": "Simulates the response from the characteristic with |characteristicId| for a characteristic operation of |type|. The |code| value follows the Error Codes from Bluetooth Core Specification Vol 3 Part F 3.4.1.1 Error Response. The |data| is expected to exist when simulating a successful read operation response.",
+                    "parameters": [
+                        {
+                            "name": "characteristicId",
+                            "type": "string"
+                        },
+                        {
+                            "name": "type",
+                            "$ref": "CharacteristicOperationType"
+                        },
+                        {
+                            "name": "code",
+                            "type": "integer"
+                        },
+                        {
+                            "name": "data",
+                            "optional": true,
+                            "type": "string"
+                        }
+                    ]
+                },
+                {
                     "name": "simulateGATTOperationResponse",
                     "description": "Simulates the response code from the peripheral with |address| for a GATT operation of |type|. The |code| value follows the HCI Error Codes from Bluetooth Core Specification Vol 2 Part D 1.3 List Of Error Codes.",
                     "parameters": [
@@ -3053,6 +3097,30 @@
                 }
             ],
             "events": [
+                {
+                    "name": "characteristicOperationReceived",
+                    "description": "Event for when a characteristic operation of |type| to the characteristic respresented by |characteristicId| happened. |data| and |writeType| is expected to exist when |type| is write.",
+                    "parameters": [
+                        {
+                            "name": "characteristicId",
+                            "type": "string"
+                        },
+                        {
+                            "name": "type",
+                            "$ref": "CharacteristicOperationType"
+                        },
+                        {
+                            "name": "data",
+                            "optional": true,
+                            "type": "string"
+                        },
+                        {
+                            "name": "writeType",
+                            "optional": true,
+                            "$ref": "CharacteristicWriteType"
+                        }
+                    ]
+                },
                 {
                     "name": "gattOperationReceived",
                     "description": "Event for when a GATT operation of |type| to the peripheral with |address| happened.",
@@ -21124,7 +21192,7 @@
                 },
                 {
                     "id": "PermissionsPolicyFeature",
-                    "description": "All Permissions Policy features. This enum should match the one defined in services/network/public/cpp/permissions_policy/permissions_policy_features.json5.",
+                    "description": "All Permissions Policy features. This enum should match the one defined in services/network/public/cpp/permissions_policy/permissions_policy_features.json5. LINT.IfChange(PermissionsPolicyFeature)",
                     "experimental": true,
                     "type": "string",
                     "enum": [
@@ -21192,6 +21260,7 @@
                         "keyboard-map",
                         "language-detector",
                         "local-fonts",
+                        "local-network-access",
                         "magnetometer",
                         "media-playback-while-not-visible",
                         "microphone",
@@ -21205,6 +21274,7 @@
                         "private-state-token-redemption",
                         "publickey-credentials-create",
                         "publickey-credentials-get",
+                        "record-ad-auction-events",
                         "rewriter",
                         "run-ad-auction",
                         "screen-wake-lock",
