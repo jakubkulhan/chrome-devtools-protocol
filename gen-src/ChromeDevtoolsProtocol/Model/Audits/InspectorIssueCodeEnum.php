@@ -35,4 +35,5 @@ final class InspectorIssueCodeEnum
 	public const SHARED_DICTIONARY_ISSUE = 'SharedDictionaryIssue';
 	public const SELECT_ELEMENT_ACCESSIBILITY_ISSUE = 'SelectElementAccessibilityIssue';
 	public const SRI_MESSAGE_SIGNATURE_ISSUE = 'SRIMessageSignatureIssue';
+	public const USER_REIDENTIFICATION_ISSUE = 'UserReidentificationIssue';
 }
