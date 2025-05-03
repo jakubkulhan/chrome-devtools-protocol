@@ -10,6 +10,7 @@ use ChromeDevtoolsProtocol\Model\BluetoothEmulation\AddDescriptorResponse;
 use ChromeDevtoolsProtocol\Model\BluetoothEmulation\AddServiceRequest;
 use ChromeDevtoolsProtocol\Model\BluetoothEmulation\AddServiceResponse;
 use ChromeDevtoolsProtocol\Model\BluetoothEmulation\CharacteristicOperationReceivedEvent;
+use ChromeDevtoolsProtocol\Model\BluetoothEmulation\DescriptorOperationReceivedEvent;
 use ChromeDevtoolsProtocol\Model\BluetoothEmulation\EnableRequest;
 use ChromeDevtoolsProtocol\Model\BluetoothEmulation\GattOperationReceivedEvent;
 use ChromeDevtoolsProtocol\Model\BluetoothEmulation\RemoveCharacteristicRequest;
@@ -18,6 +19,8 @@ use ChromeDevtoolsProtocol\Model\BluetoothEmulation\RemoveServiceRequest;
 use ChromeDevtoolsProtocol\Model\BluetoothEmulation\SetSimulatedCentralStateRequest;
 use ChromeDevtoolsProtocol\Model\BluetoothEmulation\SimulateAdvertisementRequest;
 use ChromeDevtoolsProtocol\Model\BluetoothEmulation\SimulateCharacteristicOperationResponseRequest;
+use ChromeDevtoolsProtocol\Model\BluetoothEmulation\SimulateDescriptorOperationResponseRequest;
+use ChromeDevtoolsProtocol\Model\BluetoothEmulation\SimulateGATTDisconnectionRequest;
 use ChromeDevtoolsProtocol\Model\BluetoothEmulation\SimulateGATTOperationResponseRequest;
 use ChromeDevtoolsProtocol\Model\BluetoothEmulation\SimulatePreconnectedPeripheralRequest;
 use ChromeDevtoolsProtocol\SubscriptionInterface;
@@ -157,6 +160,31 @@ interface BluetoothEmulationDomainInterface
 
 
 	/**
+	 * Simulates the response from the descriptor with |descriptorId| for a descriptor operation of |type|. The |code| value follows the Error Codes from Bluetooth Core Specification Vol 3 Part F 3.4.1.1 Error Response. The |data| is expected to exist when simulating a successful read operation response.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param SimulateDescriptorOperationResponseRequest $request
+	 *
+	 * @return void
+	 */
+	public function simulateDescriptorOperationResponse(
+		ContextInterface $ctx,
+		SimulateDescriptorOperationResponseRequest $request
+	): void;
+
+
+	/**
+	 * Simulates a GATT disconnection from the peripheral with |address|.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param SimulateGATTDisconnectionRequest $request
+	 *
+	 * @return void
+	 */
+	public function simulateGATTDisconnection(ContextInterface $ctx, SimulateGATTDisconnectionRequest $request): void;
+
+
+	/**
 	 * Simulates the response code from the peripheral with |address| for a GATT operation of |type|. The |code| value follows the HCI Error Codes from Bluetooth Core Specification Vol 2 Part D 1.3 List Of Error Codes.
 	 *
 	 * @param ContextInterface $ctx
@@ -206,6 +234,30 @@ interface BluetoothEmulationDomainInterface
 	 * @return CharacteristicOperationReceivedEvent
 	 */
 	public function awaitCharacteristicOperationReceived(ContextInterface $ctx): CharacteristicOperationReceivedEvent;
+
+
+	/**
+	 * Event for when a descriptor operation of |type| to the descriptor respresented by |descriptorId| happened. |data| is expected to exist when |type| is write.
+	 *
+	 * Listener will be called whenever event BluetoothEmulation.descriptorOperationReceived is fired.
+	 *
+	 * @param callable $listener
+	 *
+	 * @return SubscriptionInterface
+	 */
+	public function addDescriptorOperationReceivedListener(callable $listener): SubscriptionInterface;
+
+
+	/**
+	 * Event for when a descriptor operation of |type| to the descriptor respresented by |descriptorId| happened. |data| is expected to exist when |type| is write.
+	 *
+	 * Method will block until first BluetoothEmulation.descriptorOperationReceived event is fired.
+	 *
+	 * @param ContextInterface $ctx
+	 *
+	 * @return DescriptorOperationReceivedEvent
+	 */
+	public function awaitDescriptorOperationReceived(ContextInterface $ctx): DescriptorOperationReceivedEvent;
 
 
 	/**

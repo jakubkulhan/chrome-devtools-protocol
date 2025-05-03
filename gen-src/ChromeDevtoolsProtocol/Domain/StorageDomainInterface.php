@@ -3,6 +3,7 @@
 namespace ChromeDevtoolsProtocol\Domain;
 
 use ChromeDevtoolsProtocol\ContextInterface;
+use ChromeDevtoolsProtocol\Model\Storage\AttributionReportingReportSentEvent;
 use ChromeDevtoolsProtocol\Model\Storage\AttributionReportingSourceRegisteredEvent;
 use ChromeDevtoolsProtocol\Model\Storage\AttributionReportingTriggerRegisteredEvent;
 use ChromeDevtoolsProtocol\Model\Storage\CacheStorageContentUpdatedEvent;
@@ -510,6 +511,30 @@ interface StorageDomainInterface
 		ContextInterface $ctx,
 		UntrackIndexedDBForStorageKeyRequest $request
 	): void;
+
+
+	/**
+	 * Subscribe to Storage.attributionReportingReportSent event.
+	 *
+	 * Listener will be called whenever event Storage.attributionReportingReportSent is fired.
+	 *
+	 * @param callable $listener
+	 *
+	 * @return SubscriptionInterface
+	 */
+	public function addAttributionReportingReportSentListener(callable $listener): SubscriptionInterface;
+
+
+	/**
+	 * Wait for Storage.attributionReportingReportSent event.
+	 *
+	 * Method will block until first Storage.attributionReportingReportSent event is fired.
+	 *
+	 * @param ContextInterface $ctx
+	 *
+	 * @return AttributionReportingReportSentEvent
+	 */
+	public function awaitAttributionReportingReportSent(ContextInterface $ctx): AttributionReportingReportSentEvent;
 
 
 	/**

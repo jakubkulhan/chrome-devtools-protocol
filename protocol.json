@@ -2794,6 +2794,15 @@
                     ]
                 },
                 {
+                    "id": "DescriptorOperationType",
+                    "description": "Indicates the various types of descriptor operation.",
+                    "type": "string",
+                    "enum": [
+                        "read",
+                        "write"
+                    ]
+                },
+                {
                     "id": "ManufacturerData",
                     "description": "Stores the manufacturer data",
                     "type": "object",
@@ -3081,6 +3090,39 @@
                     ]
                 },
                 {
+                    "name": "simulateDescriptorOperationResponse",
+                    "description": "Simulates the response from the descriptor with |descriptorId| for a descriptor operation of |type|. The |code| value follows the Error Codes from Bluetooth Core Specification Vol 3 Part F 3.4.1.1 Error Response. The |data| is expected to exist when simulating a successful read operation response.",
+                    "parameters": [
+                        {
+                            "name": "descriptorId",
+                            "type": "string"
+                        },
+                        {
+                            "name": "type",
+                            "$ref": "DescriptorOperationType"
+                        },
+                        {
+                            "name": "code",
+                            "type": "integer"
+                        },
+                        {
+                            "name": "data",
+                            "optional": true,
+                            "type": "string"
+                        }
+                    ]
+                },
+                {
+                    "name": "simulateGATTDisconnection",
+                    "description": "Simulates a GATT disconnection from the peripheral with |address|.",
+                    "parameters": [
+                        {
+                            "name": "address",
+                            "type": "string"
+                        }
+                    ]
+                },
+                {
                     "name": "simulateGATTOperationResponse",
                     "description": "Simulates the response code from the peripheral with |address| for a GATT operation of |type|. The |code| value follows the HCI Error Codes from Bluetooth Core Specification Vol 2 Part D 1.3 List Of Error Codes.",
                     "parameters": [
@@ -3149,6 +3191,25 @@
                             "name": "writeType",
                             "optional": true,
                             "$ref": "CharacteristicWriteType"
+                        }
+                    ]
+                },
+                {
+                    "name": "descriptorOperationReceived",
+                    "description": "Event for when a descriptor operation of |type| to the descriptor respresented by |descriptorId| happened. |data| is expected to exist when |type| is write.",
+                    "parameters": [
+                        {
+                            "name": "descriptorId",
+                            "type": "string"
+                        },
+                        {
+                            "name": "type",
+                            "$ref": "CharacteristicOperationType"
+                        },
+                        {
+                            "name": "data",
+                            "optional": true,
+                            "type": "string"
                         }
                     ]
                 },
@@ -29190,6 +29251,17 @@
                     ]
                 },
                 {
+                    "id": "AttributionReportingReportResult",
+                    "experimental": true,
+                    "type": "string",
+                    "enum": [
+                        "sent",
+                        "prohibited",
+                        "failedToAssemble",
+                        "expired"
+                    ]
+                },
+                {
                     "id": "RelatedWebsiteSet",
                     "description": "A single Related Website Set object.",
                     "experimental": true,
@@ -29794,6 +29866,40 @@
                 }
             ],
             "events": [
+                {
+                    "name": "attributionReportingReportSent",
+                    "experimental": true,
+                    "parameters": [
+                        {
+                            "name": "url",
+                            "type": "string"
+                        },
+                        {
+                            "name": "body",
+                            "type": "object"
+                        },
+                        {
+                            "name": "result",
+                            "$ref": "AttributionReportingReportResult"
+                        },
+                        {
+                            "name": "netError",
+                            "description": "If result is `sent`, populated with net/HTTP status.",
+                            "optional": true,
+                            "type": "integer"
+                        },
+                        {
+                            "name": "netErrorName",
+                            "optional": true,
+                            "type": "string"
+                        },
+                        {
+                            "name": "httpStatusCode",
+                            "optional": true,
+                            "type": "integer"
+                        }
+                    ]
+                },
                 {
                     "name": "attributionReportingSourceRegistered",
                     "experimental": true,

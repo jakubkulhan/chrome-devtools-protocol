@@ -11,6 +11,7 @@ use ChromeDevtoolsProtocol\Model\BluetoothEmulation\AddDescriptorResponse;
 use ChromeDevtoolsProtocol\Model\BluetoothEmulation\AddServiceRequest;
 use ChromeDevtoolsProtocol\Model\BluetoothEmulation\AddServiceResponse;
 use ChromeDevtoolsProtocol\Model\BluetoothEmulation\CharacteristicOperationReceivedEvent;
+use ChromeDevtoolsProtocol\Model\BluetoothEmulation\DescriptorOperationReceivedEvent;
 use ChromeDevtoolsProtocol\Model\BluetoothEmulation\EnableRequest;
 use ChromeDevtoolsProtocol\Model\BluetoothEmulation\GattOperationReceivedEvent;
 use ChromeDevtoolsProtocol\Model\BluetoothEmulation\RemoveCharacteristicRequest;
@@ -19,6 +20,8 @@ use ChromeDevtoolsProtocol\Model\BluetoothEmulation\RemoveServiceRequest;
 use ChromeDevtoolsProtocol\Model\BluetoothEmulation\SetSimulatedCentralStateRequest;
 use ChromeDevtoolsProtocol\Model\BluetoothEmulation\SimulateAdvertisementRequest;
 use ChromeDevtoolsProtocol\Model\BluetoothEmulation\SimulateCharacteristicOperationResponseRequest;
+use ChromeDevtoolsProtocol\Model\BluetoothEmulation\SimulateDescriptorOperationResponseRequest;
+use ChromeDevtoolsProtocol\Model\BluetoothEmulation\SimulateGATTDisconnectionRequest;
 use ChromeDevtoolsProtocol\Model\BluetoothEmulation\SimulateGATTOperationResponseRequest;
 use ChromeDevtoolsProtocol\Model\BluetoothEmulation\SimulatePreconnectedPeripheralRequest;
 use ChromeDevtoolsProtocol\SubscriptionInterface;
@@ -107,6 +110,20 @@ class BluetoothEmulationDomain implements BluetoothEmulationDomainInterface
 	}
 
 
+	public function simulateDescriptorOperationResponse(
+		ContextInterface $ctx,
+		SimulateDescriptorOperationResponseRequest $request
+	): void {
+		$this->internalClient->executeCommand($ctx, 'BluetoothEmulation.simulateDescriptorOperationResponse', $request);
+	}
+
+
+	public function simulateGATTDisconnection(ContextInterface $ctx, SimulateGATTDisconnectionRequest $request): void
+	{
+		$this->internalClient->executeCommand($ctx, 'BluetoothEmulation.simulateGATTDisconnection', $request);
+	}
+
+
 	public function simulateGATTOperationResponse(
 		ContextInterface $ctx,
 		SimulateGATTOperationResponseRequest $request
@@ -134,6 +151,20 @@ class BluetoothEmulationDomain implements BluetoothEmulationDomainInterface
 	public function awaitCharacteristicOperationReceived(ContextInterface $ctx): CharacteristicOperationReceivedEvent
 	{
 		return CharacteristicOperationReceivedEvent::fromJson($this->internalClient->awaitEvent($ctx, 'BluetoothEmulation.characteristicOperationReceived'));
+	}
+
+
+	public function addDescriptorOperationReceivedListener(callable $listener): SubscriptionInterface
+	{
+		return $this->internalClient->addListener('BluetoothEmulation.descriptorOperationReceived', function ($event) use ($listener) {
+			return $listener(DescriptorOperationReceivedEvent::fromJson($event));
+		});
+	}
+
+
+	public function awaitDescriptorOperationReceived(ContextInterface $ctx): DescriptorOperationReceivedEvent
+	{
+		return DescriptorOperationReceivedEvent::fromJson($this->internalClient->awaitEvent($ctx, 'BluetoothEmulation.descriptorOperationReceived'));
 	}
 
 

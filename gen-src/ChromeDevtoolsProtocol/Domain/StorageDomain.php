@@ -4,6 +4,7 @@ namespace ChromeDevtoolsProtocol\Domain;
 
 use ChromeDevtoolsProtocol\ContextInterface;
 use ChromeDevtoolsProtocol\InternalClientInterface;
+use ChromeDevtoolsProtocol\Model\Storage\AttributionReportingReportSentEvent;
 use ChromeDevtoolsProtocol\Model\Storage\AttributionReportingSourceRegisteredEvent;
 use ChromeDevtoolsProtocol\Model\Storage\AttributionReportingTriggerRegisteredEvent;
 use ChromeDevtoolsProtocol\Model\Storage\CacheStorageContentUpdatedEvent;
@@ -334,6 +335,20 @@ class StorageDomain implements StorageDomainInterface
 		UntrackIndexedDBForStorageKeyRequest $request
 	): void {
 		$this->internalClient->executeCommand($ctx, 'Storage.untrackIndexedDBForStorageKey', $request);
+	}
+
+
+	public function addAttributionReportingReportSentListener(callable $listener): SubscriptionInterface
+	{
+		return $this->internalClient->addListener('Storage.attributionReportingReportSent', function ($event) use ($listener) {
+			return $listener(AttributionReportingReportSentEvent::fromJson($event));
+		});
+	}
+
+
+	public function awaitAttributionReportingReportSent(ContextInterface $ctx): AttributionReportingReportSentEvent
+	{
+		return AttributionReportingReportSentEvent::fromJson($this->internalClient->awaitEvent($ctx, 'Storage.attributionReportingReportSent'));
 	}
 
 
