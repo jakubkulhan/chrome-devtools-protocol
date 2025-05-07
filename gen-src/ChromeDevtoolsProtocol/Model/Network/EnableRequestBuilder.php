@@ -12,6 +12,7 @@ final class EnableRequestBuilder
 	private $maxTotalBufferSize;
 	private $maxResourceBufferSize;
 	private $maxPostDataSize;
+	private $reportDirectSocketTraffic;
 
 
 	/**
@@ -23,6 +24,7 @@ final class EnableRequestBuilder
 		$instance->maxTotalBufferSize = $this->maxTotalBufferSize;
 		$instance->maxResourceBufferSize = $this->maxResourceBufferSize;
 		$instance->maxPostDataSize = $this->maxPostDataSize;
+		$instance->reportDirectSocketTraffic = $this->reportDirectSocketTraffic;
 		return $instance;
 	}
 
@@ -59,6 +61,18 @@ final class EnableRequestBuilder
 	public function setMaxPostDataSize($maxPostDataSize): self
 	{
 		$this->maxPostDataSize = $maxPostDataSize;
+		return $this;
+	}
+
+
+	/**
+	 * @param bool|null $reportDirectSocketTraffic
+	 *
+	 * @return self
+	 */
+	public function setReportDirectSocketTraffic($reportDirectSocketTraffic): self
+	{
+		$this->reportDirectSocketTraffic = $reportDirectSocketTraffic;
 		return $this;
 	}
 }

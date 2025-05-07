@@ -3,19 +3,19 @@
 namespace ChromeDevtoolsProtocol\Model\Network;
 
 /**
- * Fired when there is an error when writing to tcp direct socket stream. For example, if user writes illegal type like string instead of ArrayBuffer or ArrayBufferView. There's no reporting for reading, because we cannot know errors on the other side.
+ * Fired when message is received from udp direct socket stream.
  *
  * @generated This file has been auto-generated, do not edit.
  *
  * @author Jakub Kulhan <jakub.kulhan@gmail.com>
  */
-final class DirectTCPSocketChunkErrorEvent implements \JsonSerializable
+final class DirectUDPSocketChunkReceivedEvent implements \JsonSerializable
 {
 	/** @var string */
 	public $identifier;
 
-	/** @var string */
-	public $errorMessage;
+	/** @var DirectUDPMessage */
+	public $message;
 
 	/** @var int|float */
 	public $timestamp;
@@ -31,8 +31,8 @@ final class DirectTCPSocketChunkErrorEvent implements \JsonSerializable
 		if (isset($data->identifier)) {
 			$instance->identifier = (string)$data->identifier;
 		}
-		if (isset($data->errorMessage)) {
-			$instance->errorMessage = (string)$data->errorMessage;
+		if (isset($data->message)) {
+			$instance->message = DirectUDPMessage::fromJson($data->message);
 		}
 		if (isset($data->timestamp)) {
 			$instance->timestamp = $data->timestamp;
@@ -47,8 +47,8 @@ final class DirectTCPSocketChunkErrorEvent implements \JsonSerializable
 		if ($this->identifier !== null) {
 			$data->identifier = $this->identifier;
 		}
-		if ($this->errorMessage !== null) {
-			$data->errorMessage = $this->errorMessage;
+		if ($this->message !== null) {
+			$data->message = $this->message->jsonSerialize();
 		}
 		if ($this->timestamp !== null) {
 			$data->timestamp = $this->timestamp;

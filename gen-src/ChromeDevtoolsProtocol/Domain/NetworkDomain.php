@@ -11,12 +11,17 @@ use ChromeDevtoolsProtocol\Model\Network\ContinueInterceptedRequestRequest;
 use ChromeDevtoolsProtocol\Model\Network\DataReceivedEvent;
 use ChromeDevtoolsProtocol\Model\Network\DeleteCookiesRequest;
 use ChromeDevtoolsProtocol\Model\Network\DirectTCPSocketAbortedEvent;
-use ChromeDevtoolsProtocol\Model\Network\DirectTCPSocketChunkErrorEvent;
 use ChromeDevtoolsProtocol\Model\Network\DirectTCPSocketChunkReceivedEvent;
 use ChromeDevtoolsProtocol\Model\Network\DirectTCPSocketChunkSentEvent;
 use ChromeDevtoolsProtocol\Model\Network\DirectTCPSocketClosedEvent;
 use ChromeDevtoolsProtocol\Model\Network\DirectTCPSocketCreatedEvent;
 use ChromeDevtoolsProtocol\Model\Network\DirectTCPSocketOpenedEvent;
+use ChromeDevtoolsProtocol\Model\Network\DirectUDPSocketAbortedEvent;
+use ChromeDevtoolsProtocol\Model\Network\DirectUDPSocketChunkReceivedEvent;
+use ChromeDevtoolsProtocol\Model\Network\DirectUDPSocketChunkSentEvent;
+use ChromeDevtoolsProtocol\Model\Network\DirectUDPSocketClosedEvent;
+use ChromeDevtoolsProtocol\Model\Network\DirectUDPSocketCreatedEvent;
+use ChromeDevtoolsProtocol\Model\Network\DirectUDPSocketOpenedEvent;
 use ChromeDevtoolsProtocol\Model\Network\EmulateNetworkConditionsRequest;
 use ChromeDevtoolsProtocol\Model\Network\EnableReportingApiRequest;
 use ChromeDevtoolsProtocol\Model\Network\EnableRequest;
@@ -374,20 +379,6 @@ class NetworkDomain implements NetworkDomainInterface
 	}
 
 
-	public function addDirectTCPSocketChunkErrorListener(callable $listener): SubscriptionInterface
-	{
-		return $this->internalClient->addListener('Network.directTCPSocketChunkError', function ($event) use ($listener) {
-			return $listener(DirectTCPSocketChunkErrorEvent::fromJson($event));
-		});
-	}
-
-
-	public function awaitDirectTCPSocketChunkError(ContextInterface $ctx): DirectTCPSocketChunkErrorEvent
-	{
-		return DirectTCPSocketChunkErrorEvent::fromJson($this->internalClient->awaitEvent($ctx, 'Network.directTCPSocketChunkError'));
-	}
-
-
 	public function addDirectTCPSocketChunkReceivedListener(callable $listener): SubscriptionInterface
 	{
 		return $this->internalClient->addListener('Network.directTCPSocketChunkReceived', function ($event) use ($listener) {
@@ -455,6 +446,90 @@ class NetworkDomain implements NetworkDomainInterface
 	public function awaitDirectTCPSocketOpened(ContextInterface $ctx): DirectTCPSocketOpenedEvent
 	{
 		return DirectTCPSocketOpenedEvent::fromJson($this->internalClient->awaitEvent($ctx, 'Network.directTCPSocketOpened'));
+	}
+
+
+	public function addDirectUDPSocketAbortedListener(callable $listener): SubscriptionInterface
+	{
+		return $this->internalClient->addListener('Network.directUDPSocketAborted', function ($event) use ($listener) {
+			return $listener(DirectUDPSocketAbortedEvent::fromJson($event));
+		});
+	}
+
+
+	public function awaitDirectUDPSocketAborted(ContextInterface $ctx): DirectUDPSocketAbortedEvent
+	{
+		return DirectUDPSocketAbortedEvent::fromJson($this->internalClient->awaitEvent($ctx, 'Network.directUDPSocketAborted'));
+	}
+
+
+	public function addDirectUDPSocketChunkReceivedListener(callable $listener): SubscriptionInterface
+	{
+		return $this->internalClient->addListener('Network.directUDPSocketChunkReceived', function ($event) use ($listener) {
+			return $listener(DirectUDPSocketChunkReceivedEvent::fromJson($event));
+		});
+	}
+
+
+	public function awaitDirectUDPSocketChunkReceived(ContextInterface $ctx): DirectUDPSocketChunkReceivedEvent
+	{
+		return DirectUDPSocketChunkReceivedEvent::fromJson($this->internalClient->awaitEvent($ctx, 'Network.directUDPSocketChunkReceived'));
+	}
+
+
+	public function addDirectUDPSocketChunkSentListener(callable $listener): SubscriptionInterface
+	{
+		return $this->internalClient->addListener('Network.directUDPSocketChunkSent', function ($event) use ($listener) {
+			return $listener(DirectUDPSocketChunkSentEvent::fromJson($event));
+		});
+	}
+
+
+	public function awaitDirectUDPSocketChunkSent(ContextInterface $ctx): DirectUDPSocketChunkSentEvent
+	{
+		return DirectUDPSocketChunkSentEvent::fromJson($this->internalClient->awaitEvent($ctx, 'Network.directUDPSocketChunkSent'));
+	}
+
+
+	public function addDirectUDPSocketClosedListener(callable $listener): SubscriptionInterface
+	{
+		return $this->internalClient->addListener('Network.directUDPSocketClosed', function ($event) use ($listener) {
+			return $listener(DirectUDPSocketClosedEvent::fromJson($event));
+		});
+	}
+
+
+	public function awaitDirectUDPSocketClosed(ContextInterface $ctx): DirectUDPSocketClosedEvent
+	{
+		return DirectUDPSocketClosedEvent::fromJson($this->internalClient->awaitEvent($ctx, 'Network.directUDPSocketClosed'));
+	}
+
+
+	public function addDirectUDPSocketCreatedListener(callable $listener): SubscriptionInterface
+	{
+		return $this->internalClient->addListener('Network.directUDPSocketCreated', function ($event) use ($listener) {
+			return $listener(DirectUDPSocketCreatedEvent::fromJson($event));
+		});
+	}
+
+
+	public function awaitDirectUDPSocketCreated(ContextInterface $ctx): DirectUDPSocketCreatedEvent
+	{
+		return DirectUDPSocketCreatedEvent::fromJson($this->internalClient->awaitEvent($ctx, 'Network.directUDPSocketCreated'));
+	}
+
+
+	public function addDirectUDPSocketOpenedListener(callable $listener): SubscriptionInterface
+	{
+		return $this->internalClient->addListener('Network.directUDPSocketOpened', function ($event) use ($listener) {
+			return $listener(DirectUDPSocketOpenedEvent::fromJson($event));
+		});
+	}
+
+
+	public function awaitDirectUDPSocketOpened(ContextInterface $ctx): DirectUDPSocketOpenedEvent
+	{
+		return DirectUDPSocketOpenedEvent::fromJson($this->internalClient->awaitEvent($ctx, 'Network.directUDPSocketOpened'));
 	}
 
 

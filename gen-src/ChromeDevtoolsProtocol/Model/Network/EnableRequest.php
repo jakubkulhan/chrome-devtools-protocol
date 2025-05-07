@@ -32,6 +32,13 @@ final class EnableRequest implements \JsonSerializable
 	 */
 	public $maxPostDataSize;
 
+	/**
+	 * Whether DirectSocket chunk send/receive events should be reported.
+	 *
+	 * @var bool|null
+	 */
+	public $reportDirectSocketTraffic;
+
 
 	/**
 	 * @param object $data
@@ -49,6 +56,9 @@ final class EnableRequest implements \JsonSerializable
 		if (isset($data->maxPostDataSize)) {
 			$instance->maxPostDataSize = (int)$data->maxPostDataSize;
 		}
+		if (isset($data->reportDirectSocketTraffic)) {
+			$instance->reportDirectSocketTraffic = (bool)$data->reportDirectSocketTraffic;
+		}
 		return $instance;
 	}
 
@@ -64,6 +74,9 @@ final class EnableRequest implements \JsonSerializable
 		}
 		if ($this->maxPostDataSize !== null) {
 			$data->maxPostDataSize = $this->maxPostDataSize;
+		}
+		if ($this->reportDirectSocketTraffic !== null) {
+			$data->reportDirectSocketTraffic = $this->reportDirectSocketTraffic;
 		}
 		return $data;
 	}

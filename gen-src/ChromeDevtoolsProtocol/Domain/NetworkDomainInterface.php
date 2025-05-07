@@ -10,12 +10,17 @@ use ChromeDevtoolsProtocol\Model\Network\ContinueInterceptedRequestRequest;
 use ChromeDevtoolsProtocol\Model\Network\DataReceivedEvent;
 use ChromeDevtoolsProtocol\Model\Network\DeleteCookiesRequest;
 use ChromeDevtoolsProtocol\Model\Network\DirectTCPSocketAbortedEvent;
-use ChromeDevtoolsProtocol\Model\Network\DirectTCPSocketChunkErrorEvent;
 use ChromeDevtoolsProtocol\Model\Network\DirectTCPSocketChunkReceivedEvent;
 use ChromeDevtoolsProtocol\Model\Network\DirectTCPSocketChunkSentEvent;
 use ChromeDevtoolsProtocol\Model\Network\DirectTCPSocketClosedEvent;
 use ChromeDevtoolsProtocol\Model\Network\DirectTCPSocketCreatedEvent;
 use ChromeDevtoolsProtocol\Model\Network\DirectTCPSocketOpenedEvent;
+use ChromeDevtoolsProtocol\Model\Network\DirectUDPSocketAbortedEvent;
+use ChromeDevtoolsProtocol\Model\Network\DirectUDPSocketChunkReceivedEvent;
+use ChromeDevtoolsProtocol\Model\Network\DirectUDPSocketChunkSentEvent;
+use ChromeDevtoolsProtocol\Model\Network\DirectUDPSocketClosedEvent;
+use ChromeDevtoolsProtocol\Model\Network\DirectUDPSocketCreatedEvent;
+use ChromeDevtoolsProtocol\Model\Network\DirectUDPSocketOpenedEvent;
 use ChromeDevtoolsProtocol\Model\Network\EmulateNetworkConditionsRequest;
 use ChromeDevtoolsProtocol\Model\Network\EnableReportingApiRequest;
 use ChromeDevtoolsProtocol\Model\Network\EnableRequest;
@@ -542,30 +547,6 @@ interface NetworkDomainInterface
 
 
 	/**
-	 * Fired when there is an error when writing to tcp direct socket stream. For example, if user writes illegal type like string instead of ArrayBuffer or ArrayBufferView. There's no reporting for reading, because we cannot know errors on the other side.
-	 *
-	 * Listener will be called whenever event Network.directTCPSocketChunkError is fired.
-	 *
-	 * @param callable $listener
-	 *
-	 * @return SubscriptionInterface
-	 */
-	public function addDirectTCPSocketChunkErrorListener(callable $listener): SubscriptionInterface;
-
-
-	/**
-	 * Fired when there is an error when writing to tcp direct socket stream. For example, if user writes illegal type like string instead of ArrayBuffer or ArrayBufferView. There's no reporting for reading, because we cannot know errors on the other side.
-	 *
-	 * Method will block until first Network.directTCPSocketChunkError event is fired.
-	 *
-	 * @param ContextInterface $ctx
-	 *
-	 * @return DirectTCPSocketChunkErrorEvent
-	 */
-	public function awaitDirectTCPSocketChunkError(ContextInterface $ctx): DirectTCPSocketChunkErrorEvent;
-
-
-	/**
 	 * Fired when data is received from tcp direct socket stream.
 	 *
 	 * Listener will be called whenever event Network.directTCPSocketChunkReceived is fired.
@@ -683,6 +664,150 @@ interface NetworkDomainInterface
 	 * @return DirectTCPSocketOpenedEvent
 	 */
 	public function awaitDirectTCPSocketOpened(ContextInterface $ctx): DirectTCPSocketOpenedEvent;
+
+
+	/**
+	 * Fired when direct_socket.UDPSocket is aborted.
+	 *
+	 * Listener will be called whenever event Network.directUDPSocketAborted is fired.
+	 *
+	 * @param callable $listener
+	 *
+	 * @return SubscriptionInterface
+	 */
+	public function addDirectUDPSocketAbortedListener(callable $listener): SubscriptionInterface;
+
+
+	/**
+	 * Fired when direct_socket.UDPSocket is aborted.
+	 *
+	 * Method will block until first Network.directUDPSocketAborted event is fired.
+	 *
+	 * @param ContextInterface $ctx
+	 *
+	 * @return DirectUDPSocketAbortedEvent
+	 */
+	public function awaitDirectUDPSocketAborted(ContextInterface $ctx): DirectUDPSocketAbortedEvent;
+
+
+	/**
+	 * Fired when message is received from udp direct socket stream.
+	 *
+	 * Listener will be called whenever event Network.directUDPSocketChunkReceived is fired.
+	 *
+	 * @param callable $listener
+	 *
+	 * @return SubscriptionInterface
+	 */
+	public function addDirectUDPSocketChunkReceivedListener(callable $listener): SubscriptionInterface;
+
+
+	/**
+	 * Fired when message is received from udp direct socket stream.
+	 *
+	 * Method will block until first Network.directUDPSocketChunkReceived event is fired.
+	 *
+	 * @param ContextInterface $ctx
+	 *
+	 * @return DirectUDPSocketChunkReceivedEvent
+	 */
+	public function awaitDirectUDPSocketChunkReceived(ContextInterface $ctx): DirectUDPSocketChunkReceivedEvent;
+
+
+	/**
+	 * Fired when message is sent to udp direct socket stream.
+	 *
+	 * Listener will be called whenever event Network.directUDPSocketChunkSent is fired.
+	 *
+	 * @param callable $listener
+	 *
+	 * @return SubscriptionInterface
+	 */
+	public function addDirectUDPSocketChunkSentListener(callable $listener): SubscriptionInterface;
+
+
+	/**
+	 * Fired when message is sent to udp direct socket stream.
+	 *
+	 * Method will block until first Network.directUDPSocketChunkSent event is fired.
+	 *
+	 * @param ContextInterface $ctx
+	 *
+	 * @return DirectUDPSocketChunkSentEvent
+	 */
+	public function awaitDirectUDPSocketChunkSent(ContextInterface $ctx): DirectUDPSocketChunkSentEvent;
+
+
+	/**
+	 * Fired when direct_socket.UDPSocket is closed.
+	 *
+	 * Listener will be called whenever event Network.directUDPSocketClosed is fired.
+	 *
+	 * @param callable $listener
+	 *
+	 * @return SubscriptionInterface
+	 */
+	public function addDirectUDPSocketClosedListener(callable $listener): SubscriptionInterface;
+
+
+	/**
+	 * Fired when direct_socket.UDPSocket is closed.
+	 *
+	 * Method will block until first Network.directUDPSocketClosed event is fired.
+	 *
+	 * @param ContextInterface $ctx
+	 *
+	 * @return DirectUDPSocketClosedEvent
+	 */
+	public function awaitDirectUDPSocketClosed(ContextInterface $ctx): DirectUDPSocketClosedEvent;
+
+
+	/**
+	 * Fired upon direct_socket.UDPSocket creation.
+	 *
+	 * Listener will be called whenever event Network.directUDPSocketCreated is fired.
+	 *
+	 * @param callable $listener
+	 *
+	 * @return SubscriptionInterface
+	 */
+	public function addDirectUDPSocketCreatedListener(callable $listener): SubscriptionInterface;
+
+
+	/**
+	 * Fired upon direct_socket.UDPSocket creation.
+	 *
+	 * Method will block until first Network.directUDPSocketCreated event is fired.
+	 *
+	 * @param ContextInterface $ctx
+	 *
+	 * @return DirectUDPSocketCreatedEvent
+	 */
+	public function awaitDirectUDPSocketCreated(ContextInterface $ctx): DirectUDPSocketCreatedEvent;
+
+
+	/**
+	 * Fired when direct_socket.UDPSocket connection is opened.
+	 *
+	 * Listener will be called whenever event Network.directUDPSocketOpened is fired.
+	 *
+	 * @param callable $listener
+	 *
+	 * @return SubscriptionInterface
+	 */
+	public function addDirectUDPSocketOpenedListener(callable $listener): SubscriptionInterface;
+
+
+	/**
+	 * Fired when direct_socket.UDPSocket connection is opened.
+	 *
+	 * Method will block until first Network.directUDPSocketOpened event is fired.
+	 *
+	 * @param ContextInterface $ctx
+	 *
+	 * @return DirectUDPSocketOpenedEvent
+	 */
+	public function awaitDirectUDPSocketOpened(ContextInterface $ctx): DirectUDPSocketOpenedEvent;
 
 
 	/**
