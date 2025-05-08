@@ -16,6 +16,7 @@ final class BlockedReasonEnum
 	public const MIXED_CONTENT = 'mixed-content';
 	public const ORIGIN = 'origin';
 	public const INSPECTOR = 'inspector';
+	public const INTEGRITY = 'integrity';
 	public const SUBRESOURCE_FILTER = 'subresource-filter';
 	public const CONTENT_TYPE = 'content-type';
 	public const COEP_FRAME_RESOURCE_NEEDS_COEP_HEADER = 'coep-frame-resource-needs-coep-header';

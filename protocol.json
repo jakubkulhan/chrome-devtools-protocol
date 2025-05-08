@@ -16746,6 +16746,7 @@
                         "mixed-content",
                         "origin",
                         "inspector",
+                        "integrity",
                         "subresource-filter",
                         "content-type",
                         "coep-frame-resource-needs-coep-header",
