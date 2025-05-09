@@ -416,7 +416,7 @@ interface NetworkDomainInterface
 
 
 	/**
-	 * Sets Controls for third-party cookie access Page reload is required before the new cookie bahavior will be observed
+	 * Sets Controls for third-party cookie access Page reload is required before the new cookie behavior will be observed
 	 *
 	 * @param ContextInterface $ctx
 	 * @param SetCookieControlsRequest $request
