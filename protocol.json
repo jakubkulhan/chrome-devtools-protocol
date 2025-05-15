@@ -16242,6 +16242,7 @@
                         "Ping",
                         "CSPViolationReport",
                         "Preflight",
+                        "FedCM",
                         "Other"
                     ]
                 },
@@ -21546,6 +21547,7 @@
                         "media-playback-while-not-visible",
                         "microphone",
                         "midi",
+                        "on-device-speech-recognition",
                         "otp-credentials",
                         "payment",
                         "picture-in-picture",

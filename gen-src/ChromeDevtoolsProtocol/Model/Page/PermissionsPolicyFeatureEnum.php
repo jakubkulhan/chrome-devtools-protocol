@@ -80,6 +80,7 @@ final class PermissionsPolicyFeatureEnum
 	public const MEDIA_PLAYBACK_WHILE_NOT_VISIBLE = 'media-playback-while-not-visible';
 	public const MICROPHONE = 'microphone';
 	public const MIDI = 'midi';
+	public const ON_DEVICE_SPEECH_RECOGNITION = 'on-device-speech-recognition';
 	public const OTP_CREDENTIALS = 'otp-credentials';
 	public const PAYMENT = 'payment';
 	public const PICTURE_IN_PICTURE = 'picture-in-picture';

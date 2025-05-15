@@ -28,5 +28,6 @@ final class ResourceTypeEnum
 	public const PING = 'Ping';
 	public const CSP_VIOLATION_REPORT = 'CSPViolationReport';
 	public const PREFLIGHT = 'Preflight';
+	public const FED_C_M = 'FedCM';
 	public const OTHER = 'Other';
 }
