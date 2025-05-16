@@ -21,8 +21,15 @@ final class AttributionReportingSourceRegistration implements \JsonSerializable
 	 */
 	public $expiry;
 
-	/** @var AttributionReportingTriggerSpec[] */
-	public $triggerSpecs;
+	/**
+	 * number instead of integer because not all uint32 can be represented by int
+	 *
+	 * @var int[]|float[]
+	 */
+	public $triggerData;
+
+	/** @var AttributionReportingEventReportWindows */
+	public $eventReportWindows;
 
 	/**
 	 * duration in seconds
@@ -96,11 +103,14 @@ final class AttributionReportingSourceRegistration implements \JsonSerializable
 		if (isset($data->expiry)) {
 			$instance->expiry = (int)$data->expiry;
 		}
-		if (isset($data->triggerSpecs)) {
-			$instance->triggerSpecs = [];
-			foreach ($data->triggerSpecs as $item) {
-				$instance->triggerSpecs[] = AttributionReportingTriggerSpec::fromJson($item);
+		if (isset($data->triggerData)) {
+			$instance->triggerData = [];
+			foreach ($data->triggerData as $item) {
+				$instance->triggerData[] = $item;
 			}
+		}
+		if (isset($data->eventReportWindows)) {
+			$instance->eventReportWindows = AttributionReportingEventReportWindows::fromJson($data->eventReportWindows);
 		}
 		if (isset($data->aggregatableReportWindow)) {
 			$instance->aggregatableReportWindow = (int)$data->aggregatableReportWindow;
@@ -181,11 +191,14 @@ final class AttributionReportingSourceRegistration implements \JsonSerializable
 		if ($this->expiry !== null) {
 			$data->expiry = $this->expiry;
 		}
-		if ($this->triggerSpecs !== null) {
-			$data->triggerSpecs = [];
-			foreach ($this->triggerSpecs as $item) {
-				$data->triggerSpecs[] = $item->jsonSerialize();
+		if ($this->triggerData !== null) {
+			$data->triggerData = [];
+			foreach ($this->triggerData as $item) {
+				$data->triggerData[] = $item;
 			}
+		}
+		if ($this->eventReportWindows !== null) {
+			$data->eventReportWindows = $this->eventReportWindows->jsonSerialize();
 		}
 		if ($this->aggregatableReportWindow !== null) {
 			$data->aggregatableReportWindow = $this->aggregatableReportWindow;

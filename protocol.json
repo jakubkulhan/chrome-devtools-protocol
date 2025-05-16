@@ -28934,25 +28934,6 @@
                     ]
                 },
                 {
-                    "id": "AttributionReportingTriggerSpec",
-                    "experimental": true,
-                    "type": "object",
-                    "properties": [
-                        {
-                            "name": "triggerData",
-                            "description": "number instead of integer because not all uint32 can be represented by int",
-                            "type": "array",
-                            "items": {
-                                "type": "number"
-                            }
-                        },
-                        {
-                            "name": "eventReportWindows",
-                            "$ref": "AttributionReportingEventReportWindows"
-                        }
-                    ]
-                },
-                {
                     "id": "AttributionReportingTriggerDataMatching",
                     "experimental": true,
                     "type": "string",
@@ -29066,11 +29047,16 @@
                             "type": "integer"
                         },
                         {
-                            "name": "triggerSpecs",
+                            "name": "triggerData",
+                            "description": "number instead of integer because not all uint32 can be represented by int",
                             "type": "array",
                             "items": {
-                                "$ref": "AttributionReportingTriggerSpec"
+                                "type": "number"
                             }
+                        },
+                        {
+                            "name": "eventReportWindows",
+                            "$ref": "AttributionReportingEventReportWindows"
                         },
                         {
                             "name": "aggregatableReportWindow",
