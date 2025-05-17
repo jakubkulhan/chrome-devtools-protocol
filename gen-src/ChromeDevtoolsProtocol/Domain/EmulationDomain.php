@@ -26,6 +26,7 @@ use ChromeDevtoolsProtocol\Model\Emulation\SetIdleOverrideRequest;
 use ChromeDevtoolsProtocol\Model\Emulation\SetLocaleOverrideRequest;
 use ChromeDevtoolsProtocol\Model\Emulation\SetNavigatorOverridesRequest;
 use ChromeDevtoolsProtocol\Model\Emulation\SetPageScaleFactorRequest;
+use ChromeDevtoolsProtocol\Model\Emulation\SetPressureDataOverrideRequest;
 use ChromeDevtoolsProtocol\Model\Emulation\SetPressureSourceOverrideEnabledRequest;
 use ChromeDevtoolsProtocol\Model\Emulation\SetPressureStateOverrideRequest;
 use ChromeDevtoolsProtocol\Model\Emulation\SetSafeAreaInsetsOverrideRequest;
@@ -229,6 +230,12 @@ class EmulationDomain implements EmulationDomainInterface
 	public function setPageScaleFactor(ContextInterface $ctx, SetPageScaleFactorRequest $request): void
 	{
 		$this->internalClient->executeCommand($ctx, 'Emulation.setPageScaleFactor', $request);
+	}
+
+
+	public function setPressureDataOverride(ContextInterface $ctx, SetPressureDataOverrideRequest $request): void
+	{
+		$this->internalClient->executeCommand($ctx, 'Emulation.setPressureDataOverride', $request);
 	}
 
 

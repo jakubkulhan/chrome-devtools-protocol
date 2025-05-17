@@ -17,7 +17,6 @@ final class PrerenderFinalStatusEnum
 	public const INVALID_SCHEME_REDIRECT = 'InvalidSchemeRedirect';
 	public const INVALID_SCHEME_NAVIGATION = 'InvalidSchemeNavigation';
 	public const NAVIGATION_REQUEST_BLOCKED_BY_CSP = 'NavigationRequestBlockedByCsp';
-	public const MAIN_FRAME_NAVIGATION = 'MainFrameNavigation';
 	public const MOJO_BINDER_POLICY = 'MojoBinderPolicy';
 	public const RENDERER_PROCESS_CRASHED = 'RendererProcessCrashed';
 	public const RENDERER_PROCESS_KILLED = 'RendererProcessKilled';

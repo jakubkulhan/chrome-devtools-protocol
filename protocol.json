@@ -12203,6 +12203,26 @@
                     ]
                 },
                 {
+                    "name": "setPressureDataOverride",
+                    "description": "Provides a given pressure data set that will be processed and eventually be delivered to PressureObserver users. |source| must have been previously overridden by setPressureSourceOverrideEnabled.",
+                    "experimental": true,
+                    "parameters": [
+                        {
+                            "name": "source",
+                            "$ref": "PressureSource"
+                        },
+                        {
+                            "name": "state",
+                            "$ref": "PressureState"
+                        },
+                        {
+                            "name": "ownContributionEstimate",
+                            "optional": true,
+                            "type": "number"
+                        }
+                    ]
+                },
+                {
                     "name": "setPressureSourceOverrideEnabled",
                     "description": "Overrides a pressure source of a given type, as used by the Compute Pressure API, so that updates to PressureObserver.observe() are provided via setPressureStateOverride instead of being retrieved from platform-provided telemetry data.",
                     "experimental": true,
@@ -12224,7 +12244,7 @@
                 },
                 {
                     "name": "setPressureStateOverride",
-                    "description": "Provides a given pressure state that will be processed and eventually be delivered to PressureObserver users. |source| must have been previously overridden by setPressureSourceOverrideEnabled.",
+                    "description": "TODO: OBSOLETE: To remove when setPressureDataOverride is merged. Provides a given pressure state that will be processed and eventually be delivered to PressureObserver users. |source| must have been previously overridden by setPressureSourceOverrideEnabled.",
                     "experimental": true,
                     "parameters": [
                         {
@@ -25254,7 +25274,6 @@
                         "InvalidSchemeRedirect",
                         "InvalidSchemeNavigation",
                         "NavigationRequestBlockedByCsp",
-                        "MainFrameNavigation",
                         "MojoBinderPolicy",
                         "RendererProcessCrashed",
                         "RendererProcessKilled",
