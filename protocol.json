@@ -3204,7 +3204,7 @@
                         },
                         {
                             "name": "type",
-                            "$ref": "CharacteristicOperationType"
+                            "$ref": "DescriptorOperationType"
                         },
                         {
                             "name": "data",
