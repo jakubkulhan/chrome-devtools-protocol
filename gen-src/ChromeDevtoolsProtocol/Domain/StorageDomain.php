@@ -52,6 +52,7 @@ use ChromeDevtoolsProtocol\Model\Storage\SetSharedStorageEntryRequest;
 use ChromeDevtoolsProtocol\Model\Storage\SetSharedStorageTrackingRequest;
 use ChromeDevtoolsProtocol\Model\Storage\SetStorageBucketTrackingRequest;
 use ChromeDevtoolsProtocol\Model\Storage\SharedStorageAccessedEvent;
+use ChromeDevtoolsProtocol\Model\Storage\SharedStorageWorkletOperationExecutionFinishedEvent;
 use ChromeDevtoolsProtocol\Model\Storage\StorageBucketCreatedOrUpdatedEvent;
 use ChromeDevtoolsProtocol\Model\Storage\StorageBucketDeletedEvent;
 use ChromeDevtoolsProtocol\Model\Storage\TrackCacheStorageForOriginRequest;
@@ -489,6 +490,20 @@ class StorageDomain implements StorageDomainInterface
 	public function awaitSharedStorageAccessed(ContextInterface $ctx): SharedStorageAccessedEvent
 	{
 		return SharedStorageAccessedEvent::fromJson($this->internalClient->awaitEvent($ctx, 'Storage.sharedStorageAccessed'));
+	}
+
+
+	public function addSharedStorageWorkletOperationExecutionFinishedListener(callable $listener): SubscriptionInterface
+	{
+		return $this->internalClient->addListener('Storage.sharedStorageWorkletOperationExecutionFinished', function ($event) use ($listener) {
+			return $listener(SharedStorageWorkletOperationExecutionFinishedEvent::fromJson($event));
+		});
+	}
+
+
+	public function awaitSharedStorageWorkletOperationExecutionFinished(ContextInterface $ctx): SharedStorageWorkletOperationExecutionFinishedEvent
+	{
+		return SharedStorageWorkletOperationExecutionFinishedEvent::fromJson($this->internalClient->awaitEvent($ctx, 'Storage.sharedStorageWorkletOperationExecutionFinished'));
 	}
 
 

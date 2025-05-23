@@ -51,6 +51,7 @@ use ChromeDevtoolsProtocol\Model\Storage\SetSharedStorageEntryRequest;
 use ChromeDevtoolsProtocol\Model\Storage\SetSharedStorageTrackingRequest;
 use ChromeDevtoolsProtocol\Model\Storage\SetStorageBucketTrackingRequest;
 use ChromeDevtoolsProtocol\Model\Storage\SharedStorageAccessedEvent;
+use ChromeDevtoolsProtocol\Model\Storage\SharedStorageWorkletOperationExecutionFinishedEvent;
 use ChromeDevtoolsProtocol\Model\Storage\StorageBucketCreatedOrUpdatedEvent;
 use ChromeDevtoolsProtocol\Model\Storage\StorageBucketDeletedEvent;
 use ChromeDevtoolsProtocol\Model\Storage\TrackCacheStorageForOriginRequest;
@@ -775,6 +776,30 @@ interface StorageDomainInterface
 	 * @return SharedStorageAccessedEvent
 	 */
 	public function awaitSharedStorageAccessed(ContextInterface $ctx): SharedStorageAccessedEvent;
+
+
+	/**
+	 * A shared storage run or selectURL operation finished its execution. The following parameters are included in all events.
+	 *
+	 * Listener will be called whenever event Storage.sharedStorageWorkletOperationExecutionFinished is fired.
+	 *
+	 * @param callable $listener
+	 *
+	 * @return SubscriptionInterface
+	 */
+	public function addSharedStorageWorkletOperationExecutionFinishedListener(callable $listener): SubscriptionInterface;
+
+
+	/**
+	 * A shared storage run or selectURL operation finished its execution. The following parameters are included in all events.
+	 *
+	 * Method will block until first Storage.sharedStorageWorkletOperationExecutionFinished event is fired.
+	 *
+	 * @param ContextInterface $ctx
+	 *
+	 * @return SharedStorageWorkletOperationExecutionFinishedEvent
+	 */
+	public function awaitSharedStorageWorkletOperationExecutionFinished(ContextInterface $ctx): SharedStorageWorkletOperationExecutionFinishedEvent;
 
 
 	/**

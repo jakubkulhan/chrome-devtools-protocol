@@ -33,6 +33,13 @@ final class SharedStorageAccessParams implements \JsonSerializable
 	public $operationName;
 
 	/**
+	 * ID of the operation call. Present only for SharedStorageAccessMethods: run and selectURL.
+	 *
+	 * @var string|null
+	 */
+	public $operationId;
+
+	/**
 	 * Whether or not to keep the worket alive for future run or selectURL calls. Present only for SharedStorageAccessMethods: run and selectURL.
 	 *
 	 * @var bool|null
@@ -89,11 +96,18 @@ final class SharedStorageAccessParams implements \JsonSerializable
 	public $ignoreIfPresent;
 
 	/**
-	 * If the method is called on a worklet, or as part of a worklet script, it will have an ID for the associated worklet. Present only for SharedStorageAccessMethods: addModule, createWorklet, run, selectURL, and any other SharedStorageAccessMethod when the SharedStorageAccessScope is worklet.
+	 * If the method is called on a shared storage worklet, or as part of a shared storage worklet script, it will have a number for the associated worklet, denoting the (0-indexed) order of the worklet's creation relative to all other shared storage worklets created by documents using the current storage partition. Present only for SharedStorageAccessMethods: addModule, createWorklet, run, selectURL, and any other SharedStorageAccessMethod when the SharedStorageAccessScope is sharedStorageWorklet. TODO(crbug.com/401011862): Pass this only for addModule & createWorklet.
 	 *
-	 * @var string|null
+	 * @var int|null
 	 */
-	public $workletId;
+	public $workletOrdinal;
+
+	/**
+	 * Hex representation of the DevTools token used as the TargetID for the associated shared storage worklet. Present only for SharedStorageAccessMethods: addModule, createWorklet, run, selectURL, and any other SharedStorageAccessMethod when the SharedStorageAccessScope is sharedStorageWorklet.
+	 *
+	 * @var string
+	 */
+	public $workletTargetId;
 
 	/**
 	 * Name of the lock to be acquired, if present. Optionally present only for SharedStorageAccessMethods: batchUpdate, set, append, delete, and clear.
@@ -133,6 +147,9 @@ final class SharedStorageAccessParams implements \JsonSerializable
 		if (isset($data->operationName)) {
 			$instance->operationName = (string)$data->operationName;
 		}
+		if (isset($data->operationId)) {
+			$instance->operationId = (string)$data->operationId;
+		}
 		if (isset($data->keepAlive)) {
 			$instance->keepAlive = (bool)$data->keepAlive;
 		}
@@ -160,8 +177,11 @@ final class SharedStorageAccessParams implements \JsonSerializable
 		if (isset($data->ignoreIfPresent)) {
 			$instance->ignoreIfPresent = (bool)$data->ignoreIfPresent;
 		}
-		if (isset($data->workletId)) {
-			$instance->workletId = (string)$data->workletId;
+		if (isset($data->workletOrdinal)) {
+			$instance->workletOrdinal = (int)$data->workletOrdinal;
+		}
+		if (isset($data->workletTargetId)) {
+			$instance->workletTargetId = (string)$data->workletTargetId;
 		}
 		if (isset($data->withLock)) {
 			$instance->withLock = (string)$data->withLock;
@@ -187,6 +207,9 @@ final class SharedStorageAccessParams implements \JsonSerializable
 		}
 		if ($this->operationName !== null) {
 			$data->operationName = $this->operationName;
+		}
+		if ($this->operationId !== null) {
+			$data->operationId = $this->operationId;
 		}
 		if ($this->keepAlive !== null) {
 			$data->keepAlive = $this->keepAlive;
@@ -215,8 +238,11 @@ final class SharedStorageAccessParams implements \JsonSerializable
 		if ($this->ignoreIfPresent !== null) {
 			$data->ignoreIfPresent = $this->ignoreIfPresent;
 		}
-		if ($this->workletId !== null) {
-			$data->workletId = $this->workletId;
+		if ($this->workletOrdinal !== null) {
+			$data->workletOrdinal = $this->workletOrdinal;
+		}
+		if ($this->workletTargetId !== null) {
+			$data->workletTargetId = $this->workletTargetId;
 		}
 		if ($this->withLock !== null) {
 			$data->withLock = $this->withLock;

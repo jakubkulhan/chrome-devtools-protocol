@@ -28703,6 +28703,12 @@
                             "type": "string"
                         },
                         {
+                            "name": "operationId",
+                            "description": "ID of the operation call. Present only for SharedStorageAccessMethods: run and selectURL.",
+                            "optional": true,
+                            "type": "string"
+                        },
+                        {
                             "name": "keepAlive",
                             "description": "Whether or not to keep the worket alive for future run or selectURL calls. Present only for SharedStorageAccessMethods: run and selectURL.",
                             "optional": true,
@@ -28754,10 +28760,16 @@
                             "type": "boolean"
                         },
                         {
-                            "name": "workletId",
-                            "description": "If the method is called on a worklet, or as part of a worklet script, it will have an ID for the associated worklet. Present only for SharedStorageAccessMethods: addModule, createWorklet, run, selectURL, and any other SharedStorageAccessMethod when the SharedStorageAccessScope is worklet.",
+                            "name": "workletOrdinal",
+                            "description": "If the method is called on a shared storage worklet, or as part of a shared storage worklet script, it will have a number for the associated worklet, denoting the (0-indexed) order of the worklet's creation relative to all other shared storage worklets created by documents using the current storage partition. Present only for SharedStorageAccessMethods: addModule, createWorklet, run, selectURL, and any other SharedStorageAccessMethod when the SharedStorageAccessScope is sharedStorageWorklet. TODO(crbug.com/401011862): Pass this only for addModule & createWorklet.",
                             "optional": true,
-                            "type": "string"
+                            "type": "integer"
+                        },
+                        {
+                            "name": "workletTargetId",
+                            "description": "Hex representation of the DevTools token used as the TargetID for the associated shared storage worklet. Present only for SharedStorageAccessMethods: addModule, createWorklet, run, selectURL, and any other SharedStorageAccessMethod when the SharedStorageAccessScope is sharedStorageWorklet.",
+                            "optional": true,
+                            "$ref": "Target.TargetID"
                         },
                         {
                             "name": "withLock",
@@ -30362,6 +30374,47 @@
                             "name": "params",
                             "description": "The sub-parameters wrapped by `params` are all optional and their presence/absence depends on `type`.",
                             "$ref": "SharedStorageAccessParams"
+                        }
+                    ]
+                },
+                {
+                    "name": "sharedStorageWorkletOperationExecutionFinished",
+                    "description": "A shared storage run or selectURL operation finished its execution. The following parameters are included in all events.",
+                    "parameters": [
+                        {
+                            "name": "finishedTime",
+                            "description": "Time that the operation finished.",
+                            "$ref": "Network.TimeSinceEpoch"
+                        },
+                        {
+                            "name": "executionTime",
+                            "description": "Time, in microseconds, from start of shared storage JS API call until end of operation execution in the worklet.",
+                            "type": "integer"
+                        },
+                        {
+                            "name": "method",
+                            "description": "Enum value indicating the Shared Storage API method invoked.",
+                            "$ref": "SharedStorageAccessMethod"
+                        },
+                        {
+                            "name": "operationId",
+                            "description": "ID of the operation call.",
+                            "type": "string"
+                        },
+                        {
+                            "name": "workletTargetId",
+                            "description": "Hex representation of the DevTools token used as the TargetID for the associated shared storage worklet.",
+                            "$ref": "Target.TargetID"
+                        },
+                        {
+                            "name": "mainFrameId",
+                            "description": "DevTools Frame Token for the primary frame tree's root.",
+                            "$ref": "Page.FrameId"
+                        },
+                        {
+                            "name": "ownerOrigin",
+                            "description": "Serialization of the origin owning the Shared Storage data.",
+                            "type": "string"
                         }
                     ]
                 },
