@@ -39,6 +39,13 @@ final class DownloadProgressEvent implements \JsonSerializable
 	 */
 	public $state;
 
+	/**
+	 * If download is "completed", provides the path of the downloaded file. Depending on the platform, it is not guaranteed to be set, nor the file is guaranteed to exist.
+	 *
+	 * @var string|null
+	 */
+	public $filePath;
+
 
 	/**
 	 * @param object $data
@@ -59,6 +66,9 @@ final class DownloadProgressEvent implements \JsonSerializable
 		if (isset($data->state)) {
 			$instance->state = (string)$data->state;
 		}
+		if (isset($data->filePath)) {
+			$instance->filePath = (string)$data->filePath;
+		}
 		return $instance;
 	}
 
@@ -77,6 +87,9 @@ final class DownloadProgressEvent implements \JsonSerializable
 		}
 		if ($this->state !== null) {
 			$data->state = $this->state;
+		}
+		if ($this->filePath !== null) {
+			$data->filePath = $this->filePath;
 		}
 		return $data;
 	}

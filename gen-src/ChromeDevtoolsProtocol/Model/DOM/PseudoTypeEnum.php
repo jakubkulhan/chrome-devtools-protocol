@@ -47,4 +47,5 @@ final class PseudoTypeEnum
 	public const FILE_SELECTOR_BUTTON = 'file-selector-button';
 	public const DETAILS_CONTENT = 'details-content';
 	public const PICKER = 'picker';
+	public const PERMISSION_ICON = 'permission-icon';
 }

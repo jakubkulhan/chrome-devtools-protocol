@@ -3856,6 +3856,13 @@
                                 "completed",
                                 "canceled"
                             ]
+                        },
+                        {
+                            "name": "filePath",
+                            "description": "If download is \"completed\", provides the path of the downloaded file. Depending on the platform, it is not guaranteed to be set, nor the file is guaranteed to exist.",
+                            "experimental": true,
+                            "optional": true,
+                            "type": "string"
                         }
                     ]
                 },
@@ -8274,7 +8281,8 @@
                         "placeholder",
                         "file-selector-button",
                         "details-content",
-                        "picker"
+                        "picker",
+                        "permission-icon"
                     ]
                 },
                 {
