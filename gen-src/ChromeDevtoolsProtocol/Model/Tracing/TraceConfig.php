@@ -12,7 +12,7 @@ namespace ChromeDevtoolsProtocol\Model\Tracing;
 final class TraceConfig implements \JsonSerializable
 {
 	/**
-	 * Controls how the trace buffer stores data.
+	 * Controls how the trace buffer stores data. The default is `recordUntilFull`.
 	 *
 	 * @var string|null
 	 */

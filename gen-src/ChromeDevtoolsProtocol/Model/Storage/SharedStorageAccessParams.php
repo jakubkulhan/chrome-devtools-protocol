@@ -96,7 +96,7 @@ final class SharedStorageAccessParams implements \JsonSerializable
 	public $ignoreIfPresent;
 
 	/**
-	 * If the method is called on a shared storage worklet, or as part of a shared storage worklet script, it will have a number for the associated worklet, denoting the (0-indexed) order of the worklet's creation relative to all other shared storage worklets created by documents using the current storage partition. Present only for SharedStorageAccessMethods: addModule, createWorklet, run, selectURL, and any other SharedStorageAccessMethod when the SharedStorageAccessScope is sharedStorageWorklet. TODO(crbug.com/401011862): Pass this only for addModule & createWorklet.
+	 * A number denoting the (0-based) order of the worklet's creation relative to all other shared storage worklets created by documents using the current storage partition. Present only for SharedStorageAccessMethods: addModule, createWorklet.
 	 *
 	 * @var int|null
 	 */
