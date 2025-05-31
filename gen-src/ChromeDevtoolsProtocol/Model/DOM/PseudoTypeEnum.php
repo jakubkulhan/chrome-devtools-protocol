@@ -41,6 +41,7 @@ final class PseudoTypeEnum
 	public const VIEW_TRANSITION = 'view-transition';
 	public const VIEW_TRANSITION_GROUP = 'view-transition-group';
 	public const VIEW_TRANSITION_IMAGE_PAIR = 'view-transition-image-pair';
+	public const VIEW_TRANSITION_GROUP_CHILDREN = 'view-transition-group-children';
 	public const VIEW_TRANSITION_OLD = 'view-transition-old';
 	public const VIEW_TRANSITION_NEW = 'view-transition-new';
 	public const PLACEHOLDER = 'placeholder';

@@ -8276,6 +8276,7 @@
                         "view-transition",
                         "view-transition-group",
                         "view-transition-image-pair",
+                        "view-transition-group-children",
                         "view-transition-old",
                         "view-transition-new",
                         "placeholder",
