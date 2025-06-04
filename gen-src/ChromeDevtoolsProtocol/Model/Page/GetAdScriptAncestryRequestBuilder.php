@@ -9,7 +9,7 @@ use ChromeDevtoolsProtocol\Exception\BuilderException;
  *
  * @author Jakub Kulhan <jakub.kulhan@gmail.com>
  */
-final class GetAdScriptAncestryIdsRequestBuilder
+final class GetAdScriptAncestryRequestBuilder
 {
 	private $frameId;
 
@@ -17,9 +17,9 @@ final class GetAdScriptAncestryIdsRequestBuilder
 	/**
 	 * Validate non-optional parameters and return new instance.
 	 */
-	public function build(): GetAdScriptAncestryIdsRequest
+	public function build(): GetAdScriptAncestryRequest
 	{
-		$instance = new GetAdScriptAncestryIdsRequest();
+		$instance = new GetAdScriptAncestryRequest();
 		if ($this->frameId === null) {
 			throw new BuilderException('Property [frameId] is required.');
 		}

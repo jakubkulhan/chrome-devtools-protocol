@@ -35,8 +35,8 @@ use ChromeDevtoolsProtocol\Model\Page\FrameStartedNavigatingEvent;
 use ChromeDevtoolsProtocol\Model\Page\FrameStoppedLoadingEvent;
 use ChromeDevtoolsProtocol\Model\Page\FrameSubtreeWillBeDetachedEvent;
 use ChromeDevtoolsProtocol\Model\Page\GenerateTestReportRequest;
-use ChromeDevtoolsProtocol\Model\Page\GetAdScriptAncestryIdsRequest;
-use ChromeDevtoolsProtocol\Model\Page\GetAdScriptAncestryIdsResponse;
+use ChromeDevtoolsProtocol\Model\Page\GetAdScriptAncestryRequest;
+use ChromeDevtoolsProtocol\Model\Page\GetAdScriptAncestryResponse;
 use ChromeDevtoolsProtocol\Model\Page\GetAppIdResponse;
 use ChromeDevtoolsProtocol\Model\Page\GetAppManifestRequest;
 use ChromeDevtoolsProtocol\Model\Page\GetAppManifestResponse;
@@ -292,17 +292,17 @@ interface PageDomainInterface
 
 
 	/**
-	 * Call Page.getAdScriptAncestryIds command.
+	 * Call Page.getAdScriptAncestry command.
 	 *
 	 * @param ContextInterface $ctx
-	 * @param GetAdScriptAncestryIdsRequest $request
+	 * @param GetAdScriptAncestryRequest $request
 	 *
-	 * @return GetAdScriptAncestryIdsResponse
+	 * @return GetAdScriptAncestryResponse
 	 */
-	public function getAdScriptAncestryIds(
+	public function getAdScriptAncestry(
 		ContextInterface $ctx,
-		GetAdScriptAncestryIdsRequest $request
-	): GetAdScriptAncestryIdsResponse;
+		GetAdScriptAncestryRequest $request
+	): GetAdScriptAncestryResponse;
 
 
 	/**

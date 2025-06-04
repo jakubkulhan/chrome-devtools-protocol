@@ -36,8 +36,8 @@ use ChromeDevtoolsProtocol\Model\Page\FrameStartedNavigatingEvent;
 use ChromeDevtoolsProtocol\Model\Page\FrameStoppedLoadingEvent;
 use ChromeDevtoolsProtocol\Model\Page\FrameSubtreeWillBeDetachedEvent;
 use ChromeDevtoolsProtocol\Model\Page\GenerateTestReportRequest;
-use ChromeDevtoolsProtocol\Model\Page\GetAdScriptAncestryIdsRequest;
-use ChromeDevtoolsProtocol\Model\Page\GetAdScriptAncestryIdsResponse;
+use ChromeDevtoolsProtocol\Model\Page\GetAdScriptAncestryRequest;
+use ChromeDevtoolsProtocol\Model\Page\GetAdScriptAncestryResponse;
 use ChromeDevtoolsProtocol\Model\Page\GetAppIdResponse;
 use ChromeDevtoolsProtocol\Model\Page\GetAppManifestRequest;
 use ChromeDevtoolsProtocol\Model\Page\GetAppManifestResponse;
@@ -228,12 +228,12 @@ class PageDomain implements PageDomainInterface
 	}
 
 
-	public function getAdScriptAncestryIds(
+	public function getAdScriptAncestry(
 		ContextInterface $ctx,
-		GetAdScriptAncestryIdsRequest $request
-	): GetAdScriptAncestryIdsResponse {
-		$response = $this->internalClient->executeCommand($ctx, 'Page.getAdScriptAncestryIds', $request);
-		return GetAdScriptAncestryIdsResponse::fromJson($response);
+		GetAdScriptAncestryRequest $request
+	): GetAdScriptAncestryResponse {
+		$response = $this->internalClient->executeCommand($ctx, 'Page.getAdScriptAncestry', $request);
+		return GetAdScriptAncestryResponse::fromJson($response);
 	}
 
 

@@ -3,7 +3,7 @@
 namespace ChromeDevtoolsProtocol\Model\Page;
 
 /**
- * Identifies the bottom-most script which caused the frame to be labelled as an ad.
+ * Identifies the script which caused a script or frame to be labelled as an ad.
  *
  * @generated This file has been auto-generated, do not edit.
  *
@@ -12,14 +12,14 @@ namespace ChromeDevtoolsProtocol\Model\Page;
 final class AdScriptId implements \JsonSerializable
 {
 	/**
-	 * Script Id of the bottom-most script which caused the frame to be labelled as an ad.
+	 * Script Id of the script which caused a script or frame to be labelled as an ad.
 	 *
 	 * @var string
 	 */
 	public $scriptId;
 
 	/**
-	 * Id of adScriptId's debugger.
+	 * Id of scriptId's debugger.
 	 *
 	 * @var string
 	 */
