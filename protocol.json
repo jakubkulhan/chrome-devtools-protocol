@@ -12068,6 +12068,17 @@
                     ]
                 },
                 {
+                    "name": "setEmulatedOSTextScale",
+                    "description": "Emulates the given OS text scale.",
+                    "parameters": [
+                        {
+                            "name": "scale",
+                            "optional": true,
+                            "type": "number"
+                        }
+                    ]
+                },
+                {
                     "name": "setEmulatedVisionDeficiency",
                     "description": "Emulates the given vision deficiency.",
                     "parameters": [
