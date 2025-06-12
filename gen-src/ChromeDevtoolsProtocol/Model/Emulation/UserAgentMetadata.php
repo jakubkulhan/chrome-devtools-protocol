@@ -49,6 +49,9 @@ final class UserAgentMetadata implements \JsonSerializable
 	/** @var bool|null */
 	public $wow64;
 
+	/** @var string[]|null */
+	public $formFactors;
+
 
 	/**
 	 * @param object $data
@@ -93,6 +96,15 @@ final class UserAgentMetadata implements \JsonSerializable
 		if (isset($data->wow64)) {
 			$instance->wow64 = (bool)$data->wow64;
 		}
+		if (isset($data->formFactors)) {
+			$instance->formFactors = [];
+		if (isset($data->formFactors)) {
+			$instance->formFactors = [];
+			foreach ($data->formFactors as $item) {
+				$instance->formFactors[] = (string)$item;
+			}
+		}
+		}
 		return $instance;
 	}
 
@@ -135,6 +147,15 @@ final class UserAgentMetadata implements \JsonSerializable
 		}
 		if ($this->wow64 !== null) {
 			$data->wow64 = $this->wow64;
+		}
+		if ($this->formFactors !== null) {
+			$data->formFactors = [];
+		if ($this->formFactors !== null) {
+			$data->formFactors = [];
+			foreach ($this->formFactors as $item) {
+				$data->formFactors[] = $item;
+			}
+		}
 		}
 		return $data;
 	}

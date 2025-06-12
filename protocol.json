@@ -11542,6 +11542,21 @@
                     ]
                 },
                 {
+                    "id": "UserAgentFormFactor",
+                    "description": "Used to specify User Agent form-factor values. See https://wicg.github.io/ua-client-hints/#sec-ch-ua-form-factors",
+                    "experimental": true,
+                    "type": "string",
+                    "enum": [
+                        "Desktop",
+                        "Automotive",
+                        "Mobile",
+                        "Tablet",
+                        "XR",
+                        "EInk",
+                        "Watch"
+                    ]
+                },
+                {
                     "id": "UserAgentBrandVersion",
                     "description": "Used to specify User Agent Client Hints to emulate. See https://wicg.github.io/ua-client-hints",
                     "experimental": true,
@@ -11616,6 +11631,14 @@
                             "name": "wow64",
                             "optional": true,
                             "type": "boolean"
+                        },
+                        {
+                            "name": "formFactors",
+                            "optional": true,
+                            "type": "array",
+                            "items": {
+                                "$ref": "UserAgentFormFactor"
+                            }
                         }
                     ]
                 },
