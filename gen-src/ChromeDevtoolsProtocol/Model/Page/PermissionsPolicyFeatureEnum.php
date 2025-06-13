@@ -74,6 +74,7 @@ final class PermissionsPolicyFeatureEnum
 	public const JOIN_AD_INTEREST_GROUP = 'join-ad-interest-group';
 	public const KEYBOARD_MAP = 'keyboard-map';
 	public const LANGUAGE_DETECTOR = 'language-detector';
+	public const LANGUAGE_MODEL = 'language-model';
 	public const LOCAL_FONTS = 'local-fonts';
 	public const LOCAL_NETWORK_ACCESS = 'local-network-access';
 	public const MAGNETOMETER = 'magnetometer';
