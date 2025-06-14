@@ -19,6 +19,13 @@ final class SignedExchangeInfo implements \JsonSerializable
 	public $outerResponse;
 
 	/**
+	 * Whether network response for the signed exchange was accompanied by extra headers.
+	 *
+	 * @var bool
+	 */
+	public $hasExtraInfo;
+
+	/**
 	 * Information about the signed exchange header.
 	 *
 	 * @var SignedExchangeHeader|null
@@ -50,6 +57,9 @@ final class SignedExchangeInfo implements \JsonSerializable
 		if (isset($data->outerResponse)) {
 			$instance->outerResponse = Response::fromJson($data->outerResponse);
 		}
+		if (isset($data->hasExtraInfo)) {
+			$instance->hasExtraInfo = (bool)$data->hasExtraInfo;
+		}
 		if (isset($data->header)) {
 			$instance->header = SignedExchangeHeader::fromJson($data->header);
 		}
@@ -71,6 +81,9 @@ final class SignedExchangeInfo implements \JsonSerializable
 		$data = new \stdClass();
 		if ($this->outerResponse !== null) {
 			$data->outerResponse = $this->outerResponse->jsonSerialize();
+		}
+		if ($this->hasExtraInfo !== null) {
+			$data->hasExtraInfo = $this->hasExtraInfo;
 		}
 		if ($this->header !== null) {
 			$data->header = $this->header->jsonSerialize();
