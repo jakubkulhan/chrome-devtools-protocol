@@ -49,7 +49,11 @@ final class UserAgentMetadata implements \JsonSerializable
 	/** @var bool|null */
 	public $wow64;
 
-	/** @var string[]|null */
+	/**
+	 * Used to specify User Agent form-factor values. See https://wicg.github.io/ua-client-hints/#sec-ch-ua-form-factors
+	 *
+	 * @var string[]|null
+	 */
 	public $formFactors;
 
 
@@ -98,12 +102,9 @@ final class UserAgentMetadata implements \JsonSerializable
 		}
 		if (isset($data->formFactors)) {
 			$instance->formFactors = [];
-		if (isset($data->formFactors)) {
-			$instance->formFactors = [];
 			foreach ($data->formFactors as $item) {
 				$instance->formFactors[] = (string)$item;
 			}
-		}
 		}
 		return $instance;
 	}
@@ -150,12 +151,9 @@ final class UserAgentMetadata implements \JsonSerializable
 		}
 		if ($this->formFactors !== null) {
 			$data->formFactors = [];
-		if ($this->formFactors !== null) {
-			$data->formFactors = [];
 			foreach ($this->formFactors as $item) {
 				$data->formFactors[] = $item;
 			}
-		}
 		}
 		return $data;
 	}
