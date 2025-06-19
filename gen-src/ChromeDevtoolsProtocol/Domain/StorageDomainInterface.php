@@ -6,6 +6,7 @@ use ChromeDevtoolsProtocol\ContextInterface;
 use ChromeDevtoolsProtocol\Model\Storage\AttributionReportingReportSentEvent;
 use ChromeDevtoolsProtocol\Model\Storage\AttributionReportingSourceRegisteredEvent;
 use ChromeDevtoolsProtocol\Model\Storage\AttributionReportingTriggerRegisteredEvent;
+use ChromeDevtoolsProtocol\Model\Storage\AttributionReportingVerboseDebugReportSentEvent;
 use ChromeDevtoolsProtocol\Model\Storage\CacheStorageContentUpdatedEvent;
 use ChromeDevtoolsProtocol\Model\Storage\CacheStorageListUpdatedEvent;
 use ChromeDevtoolsProtocol\Model\Storage\ClearCookiesRequest;
@@ -584,6 +585,30 @@ interface StorageDomainInterface
 	 * @return AttributionReportingTriggerRegisteredEvent
 	 */
 	public function awaitAttributionReportingTriggerRegistered(ContextInterface $ctx): AttributionReportingTriggerRegisteredEvent;
+
+
+	/**
+	 * Subscribe to Storage.attributionReportingVerboseDebugReportSent event.
+	 *
+	 * Listener will be called whenever event Storage.attributionReportingVerboseDebugReportSent is fired.
+	 *
+	 * @param callable $listener
+	 *
+	 * @return SubscriptionInterface
+	 */
+	public function addAttributionReportingVerboseDebugReportSentListener(callable $listener): SubscriptionInterface;
+
+
+	/**
+	 * Wait for Storage.attributionReportingVerboseDebugReportSent event.
+	 *
+	 * Method will block until first Storage.attributionReportingVerboseDebugReportSent event is fired.
+	 *
+	 * @param ContextInterface $ctx
+	 *
+	 * @return AttributionReportingVerboseDebugReportSentEvent
+	 */
+	public function awaitAttributionReportingVerboseDebugReportSent(ContextInterface $ctx): AttributionReportingVerboseDebugReportSentEvent;
 
 
 	/**
