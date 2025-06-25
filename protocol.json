@@ -22852,18 +22852,6 @@
                     ]
                 },
                 {
-                    "id": "AutoResponseMode",
-                    "description": "Enum of possible auto-response for permission / prompt dialogs.",
-                    "experimental": true,
-                    "type": "string",
-                    "enum": [
-                        "none",
-                        "autoAccept",
-                        "autoReject",
-                        "autoOptOut"
-                    ]
-                },
-                {
                     "id": "NavigationType",
                     "description": "The type of a frameNavigated event.",
                     "experimental": true,
@@ -24258,7 +24246,12 @@
                     "parameters": [
                         {
                             "name": "mode",
-                            "$ref": "AutoResponseMode"
+                            "type": "string",
+                            "enum": [
+                                "none",
+                                "autoAccept",
+                                "autoReject"
+                            ]
                         }
                     ]
                 },
@@ -24269,7 +24262,14 @@
                     "parameters": [
                         {
                             "name": "mode",
-                            "$ref": "AutoResponseMode"
+                            "type": "string",
+                            "enum": [
+                                "none",
+                                "autoAccept",
+                                "autoChooseToAuthAnotherWay",
+                                "autoReject",
+                                "autoOptOut"
+                            ]
                         }
                     ]
                 },
