@@ -33,7 +33,7 @@ final class InspectorIssueCodeEnum
 	public const FEDERATED_AUTH_USER_INFO_REQUEST_ISSUE = 'FederatedAuthUserInfoRequestIssue';
 	public const PROPERTY_RULE_ISSUE = 'PropertyRuleIssue';
 	public const SHARED_DICTIONARY_ISSUE = 'SharedDictionaryIssue';
-	public const SELECT_ELEMENT_ACCESSIBILITY_ISSUE = 'SelectElementAccessibilityIssue';
+	public const ELEMENT_ACCESSIBILITY_ISSUE = 'ElementAccessibilityIssue';
 	public const SRI_MESSAGE_SIGNATURE_ISSUE = 'SRIMessageSignatureIssue';
 	public const USER_REIDENTIFICATION_ISSUE = 'UserReidentificationIssue';
 }

@@ -3,19 +3,19 @@
 namespace ChromeDevtoolsProtocol\Model\Audits;
 
 /**
- * This issue warns about errors in the select element content model.
+ * This issue warns about errors in the select or summary element content model.
  *
  * @generated This file has been auto-generated, do not edit.
  *
  * @author Jakub Kulhan <jakub.kulhan@gmail.com>
  */
-final class SelectElementAccessibilityIssueDetails implements \JsonSerializable
+final class ElementAccessibilityIssueDetails implements \JsonSerializable
 {
 	/** @var int */
 	public $nodeId;
 
 	/** @var string */
-	public $selectElementAccessibilityIssueReason;
+	public $elementAccessibilityIssueReason;
 
 	/** @var bool */
 	public $hasDisallowedAttributes;
@@ -31,8 +31,8 @@ final class SelectElementAccessibilityIssueDetails implements \JsonSerializable
 		if (isset($data->nodeId)) {
 			$instance->nodeId = (int)$data->nodeId;
 		}
-		if (isset($data->selectElementAccessibilityIssueReason)) {
-			$instance->selectElementAccessibilityIssueReason = (string)$data->selectElementAccessibilityIssueReason;
+		if (isset($data->elementAccessibilityIssueReason)) {
+			$instance->elementAccessibilityIssueReason = (string)$data->elementAccessibilityIssueReason;
 		}
 		if (isset($data->hasDisallowedAttributes)) {
 			$instance->hasDisallowedAttributes = (bool)$data->hasDisallowedAttributes;
@@ -47,8 +47,8 @@ final class SelectElementAccessibilityIssueDetails implements \JsonSerializable
 		if ($this->nodeId !== null) {
 			$data->nodeId = $this->nodeId;
 		}
-		if ($this->selectElementAccessibilityIssueReason !== null) {
-			$data->selectElementAccessibilityIssueReason = $this->selectElementAccessibilityIssueReason;
+		if ($this->elementAccessibilityIssueReason !== null) {
+			$data->elementAccessibilityIssueReason = $this->elementAccessibilityIssueReason;
 		}
 		if ($this->hasDisallowedAttributes !== null) {
 			$data->hasDisallowedAttributes = $this->hasDisallowedAttributes;

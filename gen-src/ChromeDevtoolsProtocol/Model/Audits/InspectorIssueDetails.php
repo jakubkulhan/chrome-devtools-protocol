@@ -77,8 +77,8 @@ final class InspectorIssueDetails implements \JsonSerializable
 	/** @var SharedDictionaryIssueDetails|null */
 	public $sharedDictionaryIssueDetails;
 
-	/** @var SelectElementAccessibilityIssueDetails|null */
-	public $selectElementAccessibilityIssueDetails;
+	/** @var ElementAccessibilityIssueDetails|null */
+	public $elementAccessibilityIssueDetails;
 
 	/** @var SRIMessageSignatureIssueDetails|null */
 	public $sriMessageSignatureIssueDetails;
@@ -160,8 +160,8 @@ final class InspectorIssueDetails implements \JsonSerializable
 		if (isset($data->sharedDictionaryIssueDetails)) {
 			$instance->sharedDictionaryIssueDetails = SharedDictionaryIssueDetails::fromJson($data->sharedDictionaryIssueDetails);
 		}
-		if (isset($data->selectElementAccessibilityIssueDetails)) {
-			$instance->selectElementAccessibilityIssueDetails = SelectElementAccessibilityIssueDetails::fromJson($data->selectElementAccessibilityIssueDetails);
+		if (isset($data->elementAccessibilityIssueDetails)) {
+			$instance->elementAccessibilityIssueDetails = ElementAccessibilityIssueDetails::fromJson($data->elementAccessibilityIssueDetails);
 		}
 		if (isset($data->sriMessageSignatureIssueDetails)) {
 			$instance->sriMessageSignatureIssueDetails = SRIMessageSignatureIssueDetails::fromJson($data->sriMessageSignatureIssueDetails);
@@ -242,8 +242,8 @@ final class InspectorIssueDetails implements \JsonSerializable
 		if ($this->sharedDictionaryIssueDetails !== null) {
 			$data->sharedDictionaryIssueDetails = $this->sharedDictionaryIssueDetails->jsonSerialize();
 		}
-		if ($this->selectElementAccessibilityIssueDetails !== null) {
-			$data->selectElementAccessibilityIssueDetails = $this->selectElementAccessibilityIssueDetails->jsonSerialize();
+		if ($this->elementAccessibilityIssueDetails !== null) {
+			$data->elementAccessibilityIssueDetails = $this->elementAccessibilityIssueDetails->jsonSerialize();
 		}
 		if ($this->sriMessageSignatureIssueDetails !== null) {
 			$data->sriMessageSignatureIssueDetails = $this->sriMessageSignatureIssueDetails->jsonSerialize();

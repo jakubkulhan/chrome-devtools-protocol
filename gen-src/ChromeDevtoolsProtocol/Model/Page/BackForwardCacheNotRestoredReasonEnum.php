@@ -91,6 +91,7 @@ final class BackForwardCacheNotRestoredReasonEnum
 	public const BROADCAST_CHANNEL = 'BroadcastChannel';
 	public const WEB_X_R = 'WebXR';
 	public const SHARED_WORKER = 'SharedWorker';
+	public const SHARED_WORKER_MESSAGE = 'SharedWorkerMessage';
 	public const WEB_LOCKS = 'WebLocks';
 	public const WEB_H_I_D = 'WebHID';
 	public const WEB_SHARE = 'WebShare';
