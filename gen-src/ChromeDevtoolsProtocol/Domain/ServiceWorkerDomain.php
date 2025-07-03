@@ -7,7 +7,6 @@ use ChromeDevtoolsProtocol\InternalClientInterface;
 use ChromeDevtoolsProtocol\Model\ServiceWorker\DeliverPushMessageRequest;
 use ChromeDevtoolsProtocol\Model\ServiceWorker\DispatchPeriodicSyncEventRequest;
 use ChromeDevtoolsProtocol\Model\ServiceWorker\DispatchSyncEventRequest;
-use ChromeDevtoolsProtocol\Model\ServiceWorker\InspectWorkerRequest;
 use ChromeDevtoolsProtocol\Model\ServiceWorker\SetForceUpdateOnPageLoadRequest;
 use ChromeDevtoolsProtocol\Model\ServiceWorker\SkipWaitingRequest;
 use ChromeDevtoolsProtocol\Model\ServiceWorker\StartWorkerRequest;
@@ -60,12 +59,6 @@ class ServiceWorkerDomain implements ServiceWorkerDomainInterface
 	{
 		$request = new \stdClass();
 		$this->internalClient->executeCommand($ctx, 'ServiceWorker.enable', $request);
-	}
-
-
-	public function inspectWorker(ContextInterface $ctx, InspectWorkerRequest $request): void
-	{
-		$this->internalClient->executeCommand($ctx, 'ServiceWorker.inspectWorker', $request);
 	}
 
 
