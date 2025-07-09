@@ -32,6 +32,13 @@ final class GetOuterHTMLRequest implements \JsonSerializable
 	 */
 	public $objectId;
 
+	/**
+	 * Include all shadow roots. Equals to false if not specified.
+	 *
+	 * @var bool|null
+	 */
+	public $includeShadowDOM;
+
 
 	/**
 	 * @param object $data
@@ -49,6 +56,9 @@ final class GetOuterHTMLRequest implements \JsonSerializable
 		if (isset($data->objectId)) {
 			$instance->objectId = (string)$data->objectId;
 		}
+		if (isset($data->includeShadowDOM)) {
+			$instance->includeShadowDOM = (bool)$data->includeShadowDOM;
+		}
 		return $instance;
 	}
 
@@ -64,6 +74,9 @@ final class GetOuterHTMLRequest implements \JsonSerializable
 		}
 		if ($this->objectId !== null) {
 			$data->objectId = $this->objectId;
+		}
+		if ($this->includeShadowDOM !== null) {
+			$data->includeShadowDOM = $this->includeShadowDOM;
 		}
 		return $data;
 	}

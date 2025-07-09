@@ -10,6 +10,7 @@ use ChromeDevtoolsProtocol\Model\Emulation\GetOverriddenSensorInformationRespons
 use ChromeDevtoolsProtocol\Model\Emulation\SetAutoDarkModeOverrideRequest;
 use ChromeDevtoolsProtocol\Model\Emulation\SetAutomationOverrideRequest;
 use ChromeDevtoolsProtocol\Model\Emulation\SetCPUThrottlingRateRequest;
+use ChromeDevtoolsProtocol\Model\Emulation\SetDataSaverOverrideRequest;
 use ChromeDevtoolsProtocol\Model\Emulation\SetDefaultBackgroundColorOverrideRequest;
 use ChromeDevtoolsProtocol\Model\Emulation\SetDeviceMetricsOverrideRequest;
 use ChromeDevtoolsProtocol\Model\Emulation\SetDevicePostureOverrideRequest;
@@ -131,6 +132,12 @@ class EmulationDomain implements EmulationDomainInterface
 	public function setCPUThrottlingRate(ContextInterface $ctx, SetCPUThrottlingRateRequest $request): void
 	{
 		$this->internalClient->executeCommand($ctx, 'Emulation.setCPUThrottlingRate', $request);
+	}
+
+
+	public function setDataSaverOverride(ContextInterface $ctx, SetDataSaverOverrideRequest $request): void
+	{
+		$this->internalClient->executeCommand($ctx, 'Emulation.setDataSaverOverride', $request);
 	}
 
 

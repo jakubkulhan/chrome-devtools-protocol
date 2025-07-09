@@ -9,6 +9,7 @@ use ChromeDevtoolsProtocol\Model\Emulation\GetOverriddenSensorInformationRespons
 use ChromeDevtoolsProtocol\Model\Emulation\SetAutoDarkModeOverrideRequest;
 use ChromeDevtoolsProtocol\Model\Emulation\SetAutomationOverrideRequest;
 use ChromeDevtoolsProtocol\Model\Emulation\SetCPUThrottlingRateRequest;
+use ChromeDevtoolsProtocol\Model\Emulation\SetDataSaverOverrideRequest;
 use ChromeDevtoolsProtocol\Model\Emulation\SetDefaultBackgroundColorOverrideRequest;
 use ChromeDevtoolsProtocol\Model\Emulation\SetDeviceMetricsOverrideRequest;
 use ChromeDevtoolsProtocol\Model\Emulation\SetDevicePostureOverrideRequest;
@@ -168,6 +169,17 @@ interface EmulationDomainInterface
 	 * @return void
 	 */
 	public function setCPUThrottlingRate(ContextInterface $ctx, SetCPUThrottlingRateRequest $request): void;
+
+
+	/**
+	 * Override the value of navigator.connection.saveData
+	 *
+	 * @param ContextInterface $ctx
+	 * @param SetDataSaverOverrideRequest $request
+	 *
+	 * @return void
+	 */
+	public function setDataSaverOverride(ContextInterface $ctx, SetDataSaverOverrideRequest $request): void;
 
 
 	/**

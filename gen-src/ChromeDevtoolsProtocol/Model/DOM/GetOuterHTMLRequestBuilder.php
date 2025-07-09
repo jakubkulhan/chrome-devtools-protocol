@@ -12,6 +12,7 @@ final class GetOuterHTMLRequestBuilder
 	private $nodeId;
 	private $backendNodeId;
 	private $objectId;
+	private $includeShadowDOM;
 
 
 	/**
@@ -23,6 +24,7 @@ final class GetOuterHTMLRequestBuilder
 		$instance->nodeId = $this->nodeId;
 		$instance->backendNodeId = $this->backendNodeId;
 		$instance->objectId = $this->objectId;
+		$instance->includeShadowDOM = $this->includeShadowDOM;
 		return $instance;
 	}
 
@@ -59,6 +61,18 @@ final class GetOuterHTMLRequestBuilder
 	public function setObjectId($objectId): self
 	{
 		$this->objectId = $objectId;
+		return $this;
+	}
+
+
+	/**
+	 * @param bool|null $includeShadowDOM
+	 *
+	 * @return self
+	 */
+	public function setIncludeShadowDOM($includeShadowDOM): self
+	{
+		$this->includeShadowDOM = $includeShadowDOM;
 		return $this;
 	}
 }
