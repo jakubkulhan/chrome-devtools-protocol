@@ -22,6 +22,7 @@ use ChromeDevtoolsProtocol\Model\Browser\GetWindowForTargetRequest;
 use ChromeDevtoolsProtocol\Model\Browser\GetWindowForTargetResponse;
 use ChromeDevtoolsProtocol\Model\Browser\GrantPermissionsRequest;
 use ChromeDevtoolsProtocol\Model\Browser\ResetPermissionsRequest;
+use ChromeDevtoolsProtocol\Model\Browser\SetContentsSizeRequest;
 use ChromeDevtoolsProtocol\Model\Browser\SetDockTileRequest;
 use ChromeDevtoolsProtocol\Model\Browser\SetDownloadBehaviorRequest;
 use ChromeDevtoolsProtocol\Model\Browser\SetPermissionRequest;
@@ -144,6 +145,12 @@ class BrowserDomain implements BrowserDomainInterface
 	public function resetPermissions(ContextInterface $ctx, ResetPermissionsRequest $request): void
 	{
 		$this->internalClient->executeCommand($ctx, 'Browser.resetPermissions', $request);
+	}
+
+
+	public function setContentsSize(ContextInterface $ctx, SetContentsSizeRequest $request): void
+	{
+		$this->internalClient->executeCommand($ctx, 'Browser.setContentsSize', $request);
 	}
 
 

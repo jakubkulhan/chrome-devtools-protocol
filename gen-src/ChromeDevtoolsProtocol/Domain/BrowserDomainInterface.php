@@ -21,6 +21,7 @@ use ChromeDevtoolsProtocol\Model\Browser\GetWindowForTargetRequest;
 use ChromeDevtoolsProtocol\Model\Browser\GetWindowForTargetResponse;
 use ChromeDevtoolsProtocol\Model\Browser\GrantPermissionsRequest;
 use ChromeDevtoolsProtocol\Model\Browser\ResetPermissionsRequest;
+use ChromeDevtoolsProtocol\Model\Browser\SetContentsSizeRequest;
 use ChromeDevtoolsProtocol\Model\Browser\SetDockTileRequest;
 use ChromeDevtoolsProtocol\Model\Browser\SetDownloadBehaviorRequest;
 use ChromeDevtoolsProtocol\Model\Browser\SetPermissionRequest;
@@ -203,6 +204,17 @@ interface BrowserDomainInterface
 	 * @return void
 	 */
 	public function resetPermissions(ContextInterface $ctx, ResetPermissionsRequest $request): void;
+
+
+	/**
+	 * Set size of the browser contents resizing browser window as necessary.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param SetContentsSizeRequest $request
+	 *
+	 * @return void
+	 */
+	public function setContentsSize(ContextInterface $ctx, SetContentsSizeRequest $request): void;
 
 
 	/**
