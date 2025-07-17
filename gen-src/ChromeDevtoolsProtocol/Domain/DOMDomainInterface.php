@@ -20,6 +20,8 @@ use ChromeDevtoolsProtocol\Model\DOM\DistributedNodesUpdatedEvent;
 use ChromeDevtoolsProtocol\Model\DOM\DocumentUpdatedEvent;
 use ChromeDevtoolsProtocol\Model\DOM\EnableRequest;
 use ChromeDevtoolsProtocol\Model\DOM\FocusRequest;
+use ChromeDevtoolsProtocol\Model\DOM\ForceShowPopoverRequest;
+use ChromeDevtoolsProtocol\Model\DOM\ForceShowPopoverResponse;
 use ChromeDevtoolsProtocol\Model\DOM\GetAnchorElementRequest;
 use ChromeDevtoolsProtocol\Model\DOM\GetAnchorElementResponse;
 use ChromeDevtoolsProtocol\Model\DOM\GetAttributesRequest;
@@ -181,6 +183,17 @@ interface DOMDomainInterface
 	 * @return void
 	 */
 	public function focus(ContextInterface $ctx, FocusRequest $request): void;
+
+
+	/**
+	 * When enabling, this API force-opens the popover identified by nodeId and keeps it open until disabled.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param ForceShowPopoverRequest $request
+	 *
+	 * @return ForceShowPopoverResponse
+	 */
+	public function forceShowPopover(ContextInterface $ctx, ForceShowPopoverRequest $request): ForceShowPopoverResponse;
 
 
 	/**
