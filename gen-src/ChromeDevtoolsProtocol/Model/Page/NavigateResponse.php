@@ -32,6 +32,13 @@ final class NavigateResponse implements \JsonSerializable
 	 */
 	public $errorText;
 
+	/**
+	 * Whether the navigation resulted in a download.
+	 *
+	 * @var bool|null
+	 */
+	public $isDownload;
+
 
 	/**
 	 * @param object $data
@@ -49,6 +56,9 @@ final class NavigateResponse implements \JsonSerializable
 		if (isset($data->errorText)) {
 			$instance->errorText = (string)$data->errorText;
 		}
+		if (isset($data->isDownload)) {
+			$instance->isDownload = (bool)$data->isDownload;
+		}
 		return $instance;
 	}
 
@@ -64,6 +74,9 @@ final class NavigateResponse implements \JsonSerializable
 		}
 		if ($this->errorText !== null) {
 			$data->errorText = $this->errorText;
+		}
+		if ($this->isDownload !== null) {
+			$data->isDownload = $this->isDownload;
 		}
 		return $data;
 	}

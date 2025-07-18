@@ -20,6 +20,7 @@ use ChromeDevtoolsProtocol\Model\CSS\GetBackgroundColorsRequest;
 use ChromeDevtoolsProtocol\Model\CSS\GetBackgroundColorsResponse;
 use ChromeDevtoolsProtocol\Model\CSS\GetComputedStyleForNodeRequest;
 use ChromeDevtoolsProtocol\Model\CSS\GetComputedStyleForNodeResponse;
+use ChromeDevtoolsProtocol\Model\CSS\GetEnvironmentVariablesResponse;
 use ChromeDevtoolsProtocol\Model\CSS\GetInlineStylesForNodeRequest;
 use ChromeDevtoolsProtocol\Model\CSS\GetInlineStylesForNodeResponse;
 use ChromeDevtoolsProtocol\Model\CSS\GetLayersForNodeRequest;
@@ -151,6 +152,14 @@ class CSSDomain implements CSSDomainInterface
 	): GetComputedStyleForNodeResponse {
 		$response = $this->internalClient->executeCommand($ctx, 'CSS.getComputedStyleForNode', $request);
 		return GetComputedStyleForNodeResponse::fromJson($response);
+	}
+
+
+	public function getEnvironmentVariables(ContextInterface $ctx): GetEnvironmentVariablesResponse
+	{
+		$request = new \stdClass();
+		$response = $this->internalClient->executeCommand($ctx, 'CSS.getEnvironmentVariables', $request);
+		return GetEnvironmentVariablesResponse::fromJson($response);
 	}
 
 
