@@ -84,4 +84,5 @@ final class PrerenderFinalStatusEnum
 	public const V8_OPTIMIZER_DISABLED = 'V8OptimizerDisabled';
 	public const PRERENDER_FAILED_DURING_PREFETCH = 'PrerenderFailedDuringPrefetch';
 	public const BROWSING_DATA_REMOVED = 'BrowsingDataRemoved';
+	public const PRERENDER_HOST_REUSED = 'PrerenderHostReused';
 }

@@ -60,6 +60,13 @@ final class CSSContainerQuery implements \JsonSerializable
 	 */
 	public $queriesScrollState;
 
+	/**
+	 * true if the query contains anchored() queries.
+	 *
+	 * @var bool|null
+	 */
+	public $queriesAnchored;
+
 
 	/**
 	 * @param object $data
@@ -89,6 +96,9 @@ final class CSSContainerQuery implements \JsonSerializable
 		if (isset($data->queriesScrollState)) {
 			$instance->queriesScrollState = (bool)$data->queriesScrollState;
 		}
+		if (isset($data->queriesAnchored)) {
+			$instance->queriesAnchored = (bool)$data->queriesAnchored;
+		}
 		return $instance;
 	}
 
@@ -116,6 +126,9 @@ final class CSSContainerQuery implements \JsonSerializable
 		}
 		if ($this->queriesScrollState !== null) {
 			$data->queriesScrollState = $this->queriesScrollState;
+		}
+		if ($this->queriesAnchored !== null) {
+			$data->queriesAnchored = $this->queriesAnchored;
 		}
 		return $data;
 	}

@@ -230,7 +230,7 @@ interface DOMDomainInterface
 
 
 	/**
-	 * Returns the query container of the given node based on container query conditions: containerName, physical and logical axes, and whether it queries scroll-state. If no axes are provided and queriesScrollState is false, the style container is returned, which is the direct parent or the closest element with a matching container-name.
+	 * Returns the query container of the given node based on container query conditions: containerName, physical and logical axes, and whether it queries scroll-state or anchored elements. If no axes are provided and queriesScrollState is false, the style container is returned, which is the direct parent or the closest element with a matching container-name.
 	 *
 	 * @param ContextInterface $ctx
 	 * @param GetContainerForNodeRequest $request

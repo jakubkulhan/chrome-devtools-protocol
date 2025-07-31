@@ -26,6 +26,9 @@ final class GetContainerForNodeRequest implements \JsonSerializable
 	/** @var bool|null */
 	public $queriesScrollState;
 
+	/** @var bool|null */
+	public $queriesAnchored;
+
 
 	/**
 	 * @param object $data
@@ -49,6 +52,9 @@ final class GetContainerForNodeRequest implements \JsonSerializable
 		if (isset($data->queriesScrollState)) {
 			$instance->queriesScrollState = (bool)$data->queriesScrollState;
 		}
+		if (isset($data->queriesAnchored)) {
+			$instance->queriesAnchored = (bool)$data->queriesAnchored;
+		}
 		return $instance;
 	}
 
@@ -70,6 +76,9 @@ final class GetContainerForNodeRequest implements \JsonSerializable
 		}
 		if ($this->queriesScrollState !== null) {
 			$data->queriesScrollState = $this->queriesScrollState;
+		}
+		if ($this->queriesAnchored !== null) {
+			$data->queriesAnchored = $this->queriesAnchored;
 		}
 		return $data;
 	}

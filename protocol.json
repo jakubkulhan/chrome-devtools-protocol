@@ -5188,6 +5188,12 @@
                             "description": "true if the query contains scroll-state() queries.",
                             "optional": true,
                             "type": "boolean"
+                        },
+                        {
+                            "name": "queriesAnchored",
+                            "description": "true if the query contains anchored() queries.",
+                            "optional": true,
+                            "type": "boolean"
                         }
                     ]
                 },
@@ -9006,7 +9012,7 @@
                 },
                 {
                     "name": "getContainerForNode",
-                    "description": "Returns the query container of the given node based on container query conditions: containerName, physical and logical axes, and whether it queries scroll-state. If no axes are provided and queriesScrollState is false, the style container is returned, which is the direct parent or the closest element with a matching container-name.",
+                    "description": "Returns the query container of the given node based on container query conditions: containerName, physical and logical axes, and whether it queries scroll-state or anchored elements. If no axes are provided and queriesScrollState is false, the style container is returned, which is the direct parent or the closest element with a matching container-name.",
                     "experimental": true,
                     "parameters": [
                         {
@@ -9030,6 +9036,11 @@
                         },
                         {
                             "name": "queriesScrollState",
+                            "optional": true,
+                            "type": "boolean"
+                        },
+                        {
+                            "name": "queriesAnchored",
                             "optional": true,
                             "type": "boolean"
                         }
@@ -25495,7 +25506,8 @@
                         "OtherPrerenderedPageActivated",
                         "V8OptimizerDisabled",
                         "PrerenderFailedDuringPrefetch",
-                        "BrowsingDataRemoved"
+                        "BrowsingDataRemoved",
+                        "PrerenderHostReused"
                     ]
                 },
                 {
