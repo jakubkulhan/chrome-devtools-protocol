@@ -83,6 +83,9 @@ final class InspectorIssueDetails implements \JsonSerializable
 	/** @var SRIMessageSignatureIssueDetails|null */
 	public $sriMessageSignatureIssueDetails;
 
+	/** @var UnencodedDigestIssueDetails|null */
+	public $unencodedDigestIssueDetails;
+
 	/** @var UserReidentificationIssueDetails|null */
 	public $userReidentificationIssueDetails;
 
@@ -166,6 +169,9 @@ final class InspectorIssueDetails implements \JsonSerializable
 		if (isset($data->sriMessageSignatureIssueDetails)) {
 			$instance->sriMessageSignatureIssueDetails = SRIMessageSignatureIssueDetails::fromJson($data->sriMessageSignatureIssueDetails);
 		}
+		if (isset($data->unencodedDigestIssueDetails)) {
+			$instance->unencodedDigestIssueDetails = UnencodedDigestIssueDetails::fromJson($data->unencodedDigestIssueDetails);
+		}
 		if (isset($data->userReidentificationIssueDetails)) {
 			$instance->userReidentificationIssueDetails = UserReidentificationIssueDetails::fromJson($data->userReidentificationIssueDetails);
 		}
@@ -247,6 +253,9 @@ final class InspectorIssueDetails implements \JsonSerializable
 		}
 		if ($this->sriMessageSignatureIssueDetails !== null) {
 			$data->sriMessageSignatureIssueDetails = $this->sriMessageSignatureIssueDetails->jsonSerialize();
+		}
+		if ($this->unencodedDigestIssueDetails !== null) {
+			$data->unencodedDigestIssueDetails = $this->unencodedDigestIssueDetails->jsonSerialize();
 		}
 		if ($this->userReidentificationIssueDetails !== null) {
 			$data->userReidentificationIssueDetails = $this->userReidentificationIssueDetails->jsonSerialize();
