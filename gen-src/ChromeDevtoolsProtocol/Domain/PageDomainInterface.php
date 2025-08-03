@@ -793,7 +793,7 @@ interface PageDomainInterface
 
 
 	/**
-	 * Issued for every compilation cache generated. Is only available if Page.setGenerateCompilationCache is enabled.
+	 * Issued for every compilation cache generated.
 	 *
 	 * Listener will be called whenever event Page.compilationCacheProduced is fired.
 	 *
@@ -805,7 +805,7 @@ interface PageDomainInterface
 
 
 	/**
-	 * Issued for every compilation cache generated. Is only available if Page.setGenerateCompilationCache is enabled.
+	 * Issued for every compilation cache generated.
 	 *
 	 * Method will block until first Page.compilationCacheProduced event is fired.
 	 *

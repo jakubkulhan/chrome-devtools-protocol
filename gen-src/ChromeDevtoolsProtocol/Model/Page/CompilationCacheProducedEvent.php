@@ -3,7 +3,7 @@
 namespace ChromeDevtoolsProtocol\Model\Page;
 
 /**
- * Issued for every compilation cache generated. Is only available if Page.setGenerateCompilationCache is enabled.
+ * Issued for every compilation cache generated.
  *
  * @generated This file has been auto-generated, do not edit.
  *

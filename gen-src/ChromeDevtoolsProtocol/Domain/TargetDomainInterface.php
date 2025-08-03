@@ -24,6 +24,8 @@ use ChromeDevtoolsProtocol\Model\Target\GetTargetInfoRequest;
 use ChromeDevtoolsProtocol\Model\Target\GetTargetInfoResponse;
 use ChromeDevtoolsProtocol\Model\Target\GetTargetsRequest;
 use ChromeDevtoolsProtocol\Model\Target\GetTargetsResponse;
+use ChromeDevtoolsProtocol\Model\Target\OpenDevToolsRequest;
+use ChromeDevtoolsProtocol\Model\Target\OpenDevToolsResponse;
 use ChromeDevtoolsProtocol\Model\Target\ReceivedMessageFromTargetEvent;
 use ChromeDevtoolsProtocol\Model\Target\SendMessageToTargetRequest;
 use ChromeDevtoolsProtocol\Model\Target\SetAutoAttachRequest;
@@ -186,6 +188,17 @@ interface TargetDomainInterface
 	 * @return GetTargetsResponse
 	 */
 	public function getTargets(ContextInterface $ctx, GetTargetsRequest $request): GetTargetsResponse;
+
+
+	/**
+	 * Opens a DevTools window for the target.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param OpenDevToolsRequest $request
+	 *
+	 * @return OpenDevToolsResponse
+	 */
+	public function openDevTools(ContextInterface $ctx, OpenDevToolsRequest $request): OpenDevToolsResponse;
 
 
 	/**

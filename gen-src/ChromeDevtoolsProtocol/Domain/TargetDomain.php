@@ -25,6 +25,8 @@ use ChromeDevtoolsProtocol\Model\Target\GetTargetInfoRequest;
 use ChromeDevtoolsProtocol\Model\Target\GetTargetInfoResponse;
 use ChromeDevtoolsProtocol\Model\Target\GetTargetsRequest;
 use ChromeDevtoolsProtocol\Model\Target\GetTargetsResponse;
+use ChromeDevtoolsProtocol\Model\Target\OpenDevToolsRequest;
+use ChromeDevtoolsProtocol\Model\Target\OpenDevToolsResponse;
 use ChromeDevtoolsProtocol\Model\Target\ReceivedMessageFromTargetEvent;
 use ChromeDevtoolsProtocol\Model\Target\SendMessageToTargetRequest;
 use ChromeDevtoolsProtocol\Model\Target\SetAutoAttachRequest;
@@ -135,6 +137,13 @@ class TargetDomain implements TargetDomainInterface
 	{
 		$response = $this->internalClient->executeCommand($ctx, 'Target.getTargets', $request);
 		return GetTargetsResponse::fromJson($response);
+	}
+
+
+	public function openDevTools(ContextInterface $ctx, OpenDevToolsRequest $request): OpenDevToolsResponse
+	{
+		$response = $this->internalClient->executeCommand($ctx, 'Target.openDevTools', $request);
+		return OpenDevToolsResponse::fromJson($response);
 	}
 
 
