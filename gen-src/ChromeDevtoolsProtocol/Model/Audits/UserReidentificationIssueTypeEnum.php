@@ -13,4 +13,5 @@ final class UserReidentificationIssueTypeEnum
 {
 	public const BLOCKED_FRAME_NAVIGATION = 'BlockedFrameNavigation';
 	public const BLOCKED_SUBRESOURCE = 'BlockedSubresource';
+	public const NOISED_CANVAS_READBACK = 'NoisedCanvasReadback';
 }

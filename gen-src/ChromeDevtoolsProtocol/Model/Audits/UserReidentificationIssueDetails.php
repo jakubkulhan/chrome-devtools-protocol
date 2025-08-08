@@ -21,6 +21,13 @@ final class UserReidentificationIssueDetails implements \JsonSerializable
 	 */
 	public $request;
 
+	/**
+	 * Applies to NoisedCanvasReadback issue type.
+	 *
+	 * @var SourceCodeLocation|null
+	 */
+	public $sourceCodeLocation;
+
 
 	/**
 	 * @param object $data
@@ -35,6 +42,9 @@ final class UserReidentificationIssueDetails implements \JsonSerializable
 		if (isset($data->request)) {
 			$instance->request = AffectedRequest::fromJson($data->request);
 		}
+		if (isset($data->sourceCodeLocation)) {
+			$instance->sourceCodeLocation = SourceCodeLocation::fromJson($data->sourceCodeLocation);
+		}
 		return $instance;
 	}
 
@@ -47,6 +57,9 @@ final class UserReidentificationIssueDetails implements \JsonSerializable
 		}
 		if ($this->request !== null) {
 			$data->request = $this->request->jsonSerialize();
+		}
+		if ($this->sourceCodeLocation !== null) {
+			$data->sourceCodeLocation = $this->sourceCodeLocation->jsonSerialize();
 		}
 		return $data;
 	}
