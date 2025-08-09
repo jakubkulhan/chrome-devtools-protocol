@@ -12,7 +12,7 @@ namespace ChromeDevtoolsProtocol\Model\CSS;
 final class ResolveValuesRequest implements \JsonSerializable
 {
 	/**
-	 * Substitution functions (var()/env()/attr()) and cascade-dependent keywords (revert/revert-layer) do not work.
+	 * Cascade-dependent keywords (revert/revert-layer) do not work.
 	 *
 	 * @var string[]
 	 */

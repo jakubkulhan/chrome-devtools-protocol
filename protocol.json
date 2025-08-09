@@ -6294,7 +6294,7 @@
                     "parameters": [
                         {
                             "name": "values",
-                            "description": "Substitution functions (var()/env()/attr()) and cascade-dependent keywords (revert/revert-layer) do not work.",
+                            "description": "Cascade-dependent keywords (revert/revert-layer) do not work.",
                             "type": "array",
                             "items": {
                                 "type": "string"
@@ -21735,6 +21735,7 @@
                         "deferred-fetch",
                         "deferred-fetch-minimal",
                         "device-attributes",
+                        "digital-credentials-create",
                         "digital-credentials-get",
                         "direct-sockets",
                         "direct-sockets-private",
