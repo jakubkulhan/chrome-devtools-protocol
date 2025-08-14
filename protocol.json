@@ -15960,7 +15960,7 @@
         },
         {
             "domain": "Media",
-            "description": "This domain allows detailed inspection of media elements",
+            "description": "This domain allows detailed inspection of media elements.",
             "experimental": true,
             "types": [
                 {
@@ -21232,7 +21232,7 @@
                 },
                 {
                     "name": "highlightRect",
-                    "description": "Highlights given rectangle. Coordinates are absolute with respect to the main frame viewport.",
+                    "description": "Highlights given rectangle. Coordinates are absolute with respect to the main frame viewport. Issue: the method does not handle device pixel ratio (DPR) correctly. The coordinates currently have to be adjusted by the client if DPR is not 1 (see crbug.com/437807128).",
                     "parameters": [
                         {
                             "name": "x",
@@ -27907,7 +27907,6 @@
         },
         {
             "domain": "Security",
-            "description": "Security",
             "types": [
                 {
                     "id": "CertificateId",

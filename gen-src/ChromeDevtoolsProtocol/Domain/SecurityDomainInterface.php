@@ -12,7 +12,7 @@ use ChromeDevtoolsProtocol\Model\Security\VisibleSecurityStateChangedEvent;
 use ChromeDevtoolsProtocol\SubscriptionInterface;
 
 /**
- * Security
+ * Security domain.
  *
  * @generated This file has been auto-generated, do not edit.
  *

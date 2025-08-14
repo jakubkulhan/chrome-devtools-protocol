@@ -11,7 +11,7 @@ use ChromeDevtoolsProtocol\Model\Media\PlayersCreatedEvent;
 use ChromeDevtoolsProtocol\SubscriptionInterface;
 
 /**
- * This domain allows detailed inspection of media elements
+ * This domain allows detailed inspection of media elements.
  *
  * @experimental
  *

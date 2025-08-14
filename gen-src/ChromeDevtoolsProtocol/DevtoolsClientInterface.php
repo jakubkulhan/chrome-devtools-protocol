@@ -302,7 +302,7 @@ interface DevtoolsClientInterface extends CloseableResourceInterface
 
 
 	/**
-	 * This domain allows detailed inspection of media elements
+	 * This domain allows detailed inspection of media elements.
 	 *
 	 * @experimental
 	 */
@@ -386,7 +386,7 @@ interface DevtoolsClientInterface extends CloseableResourceInterface
 
 
 	/**
-	 * Security
+	 * Security domain.
 	 */
 	public function security(): SecurityDomainInterface;
 
