@@ -3,9 +3,13 @@
 namespace ChromeDevtoolsProtocol\Domain;
 
 use ChromeDevtoolsProtocol\ContextInterface;
+use ChromeDevtoolsProtocol\Model\Emulation\AddScreenRequest;
+use ChromeDevtoolsProtocol\Model\Emulation\AddScreenResponse;
 use ChromeDevtoolsProtocol\Model\Emulation\CanEmulateResponse;
 use ChromeDevtoolsProtocol\Model\Emulation\GetOverriddenSensorInformationRequest;
 use ChromeDevtoolsProtocol\Model\Emulation\GetOverriddenSensorInformationResponse;
+use ChromeDevtoolsProtocol\Model\Emulation\GetScreenInfosResponse;
+use ChromeDevtoolsProtocol\Model\Emulation\RemoveScreenRequest;
 use ChromeDevtoolsProtocol\Model\Emulation\SetAutoDarkModeOverrideRequest;
 use ChromeDevtoolsProtocol\Model\Emulation\SetAutomationOverrideRequest;
 use ChromeDevtoolsProtocol\Model\Emulation\SetCPUThrottlingRateRequest;
@@ -54,6 +58,17 @@ use ChromeDevtoolsProtocol\SubscriptionInterface;
  */
 interface EmulationDomainInterface
 {
+	/**
+	 * Add a new screen to the device. Only supported in headless mode.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param AddScreenRequest $request
+	 *
+	 * @return AddScreenResponse
+	 */
+	public function addScreen(ContextInterface $ctx, AddScreenRequest $request): AddScreenResponse;
+
+
 	/**
 	 * Tells whether emulation is supported.
 	 *
@@ -126,6 +141,27 @@ interface EmulationDomainInterface
 		ContextInterface $ctx,
 		GetOverriddenSensorInformationRequest $request
 	): GetOverriddenSensorInformationResponse;
+
+
+	/**
+	 * Returns device's screen configuration.
+	 *
+	 * @param ContextInterface $ctx
+	 *
+	 * @return GetScreenInfosResponse
+	 */
+	public function getScreenInfos(ContextInterface $ctx): GetScreenInfosResponse;
+
+
+	/**
+	 * Remove screen from the device. Only supported in headless mode.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param RemoveScreenRequest $request
+	 *
+	 * @return void
+	 */
+	public function removeScreen(ContextInterface $ctx, RemoveScreenRequest $request): void;
 
 
 	/**

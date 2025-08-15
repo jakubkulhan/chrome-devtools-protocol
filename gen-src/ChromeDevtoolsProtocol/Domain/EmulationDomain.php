@@ -4,9 +4,13 @@ namespace ChromeDevtoolsProtocol\Domain;
 
 use ChromeDevtoolsProtocol\ContextInterface;
 use ChromeDevtoolsProtocol\InternalClientInterface;
+use ChromeDevtoolsProtocol\Model\Emulation\AddScreenRequest;
+use ChromeDevtoolsProtocol\Model\Emulation\AddScreenResponse;
 use ChromeDevtoolsProtocol\Model\Emulation\CanEmulateResponse;
 use ChromeDevtoolsProtocol\Model\Emulation\GetOverriddenSensorInformationRequest;
 use ChromeDevtoolsProtocol\Model\Emulation\GetOverriddenSensorInformationResponse;
+use ChromeDevtoolsProtocol\Model\Emulation\GetScreenInfosResponse;
+use ChromeDevtoolsProtocol\Model\Emulation\RemoveScreenRequest;
 use ChromeDevtoolsProtocol\Model\Emulation\SetAutoDarkModeOverrideRequest;
 use ChromeDevtoolsProtocol\Model\Emulation\SetAutomationOverrideRequest;
 use ChromeDevtoolsProtocol\Model\Emulation\SetCPUThrottlingRateRequest;
@@ -55,6 +59,13 @@ class EmulationDomain implements EmulationDomainInterface
 	public function __construct(InternalClientInterface $internalClient)
 	{
 		$this->internalClient = $internalClient;
+	}
+
+
+	public function addScreen(ContextInterface $ctx, AddScreenRequest $request): AddScreenResponse
+	{
+		$response = $this->internalClient->executeCommand($ctx, 'Emulation.addScreen', $request);
+		return AddScreenResponse::fromJson($response);
 	}
 
 
@@ -107,6 +118,20 @@ class EmulationDomain implements EmulationDomainInterface
 	): GetOverriddenSensorInformationResponse {
 		$response = $this->internalClient->executeCommand($ctx, 'Emulation.getOverriddenSensorInformation', $request);
 		return GetOverriddenSensorInformationResponse::fromJson($response);
+	}
+
+
+	public function getScreenInfos(ContextInterface $ctx): GetScreenInfosResponse
+	{
+		$request = new \stdClass();
+		$response = $this->internalClient->executeCommand($ctx, 'Emulation.getScreenInfos', $request);
+		return GetScreenInfosResponse::fromJson($response);
+	}
+
+
+	public function removeScreen(ContextInterface $ctx, RemoveScreenRequest $request): void
+	{
+		$this->internalClient->executeCommand($ctx, 'Emulation.removeScreen', $request);
 	}
 
 
