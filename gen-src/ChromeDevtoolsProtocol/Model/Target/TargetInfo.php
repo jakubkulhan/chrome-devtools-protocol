@@ -55,6 +55,13 @@ final class TargetInfo implements \JsonSerializable
 	 */
 	public $openerFrameId;
 
+	/**
+	 * Id of the parent frame, only present for the "iframe" targets.
+	 *
+	 * @var string
+	 */
+	public $parentFrameId;
+
 	/** @var string */
 	public $browserContextId;
 
@@ -97,6 +104,9 @@ final class TargetInfo implements \JsonSerializable
 		if (isset($data->openerFrameId)) {
 			$instance->openerFrameId = (string)$data->openerFrameId;
 		}
+		if (isset($data->parentFrameId)) {
+			$instance->parentFrameId = (string)$data->parentFrameId;
+		}
 		if (isset($data->browserContextId)) {
 			$instance->browserContextId = (string)$data->browserContextId;
 		}
@@ -133,6 +143,9 @@ final class TargetInfo implements \JsonSerializable
 		}
 		if ($this->openerFrameId !== null) {
 			$data->openerFrameId = $this->openerFrameId;
+		}
+		if ($this->parentFrameId !== null) {
+			$data->parentFrameId = $this->parentFrameId;
 		}
 		if ($this->browserContextId !== null) {
 			$data->browserContextId = $this->browserContextId;
