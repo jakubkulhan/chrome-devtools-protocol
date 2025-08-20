@@ -39,6 +39,13 @@ final class EnableRequest implements \JsonSerializable
 	 */
 	public $reportDirectSocketTraffic;
 
+	/**
+	 * Enable storing response bodies outside of renderer, so that these survive a cross-process navigation. Requires maxTotalBufferSize to be set. Currently defaults to false.
+	 *
+	 * @var bool|null
+	 */
+	public $enableDurableMessages;
+
 
 	/**
 	 * @param object $data
@@ -59,6 +66,9 @@ final class EnableRequest implements \JsonSerializable
 		if (isset($data->reportDirectSocketTraffic)) {
 			$instance->reportDirectSocketTraffic = (bool)$data->reportDirectSocketTraffic;
 		}
+		if (isset($data->enableDurableMessages)) {
+			$instance->enableDurableMessages = (bool)$data->enableDurableMessages;
+		}
 		return $instance;
 	}
 
@@ -77,6 +87,9 @@ final class EnableRequest implements \JsonSerializable
 		}
 		if ($this->reportDirectSocketTraffic !== null) {
 			$data->reportDirectSocketTraffic = $this->reportDirectSocketTraffic;
+		}
+		if ($this->enableDurableMessages !== null) {
+			$data->enableDurableMessages = $this->enableDurableMessages;
 		}
 		return $data;
 	}
