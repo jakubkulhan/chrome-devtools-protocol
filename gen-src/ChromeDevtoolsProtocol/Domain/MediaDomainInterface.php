@@ -3,11 +3,11 @@
 namespace ChromeDevtoolsProtocol\Domain;
 
 use ChromeDevtoolsProtocol\ContextInterface;
+use ChromeDevtoolsProtocol\Model\Media\PlayerCreatedEvent;
 use ChromeDevtoolsProtocol\Model\Media\PlayerErrorsRaisedEvent;
 use ChromeDevtoolsProtocol\Model\Media\PlayerEventsAddedEvent;
 use ChromeDevtoolsProtocol\Model\Media\PlayerMessagesLoggedEvent;
 use ChromeDevtoolsProtocol\Model\Media\PlayerPropertiesChangedEvent;
-use ChromeDevtoolsProtocol\Model\Media\PlayersCreatedEvent;
 use ChromeDevtoolsProtocol\SubscriptionInterface;
 
 /**
@@ -39,6 +39,30 @@ interface MediaDomainInterface
 	 * @return void
 	 */
 	public function enable(ContextInterface $ctx): void;
+
+
+	/**
+	 * Called whenever a player is created, or when a new agent joins and receives a list of active players. If an agent is restored, it will receive one event for each active player.
+	 *
+	 * Listener will be called whenever event Media.playerCreated is fired.
+	 *
+	 * @param callable $listener
+	 *
+	 * @return SubscriptionInterface
+	 */
+	public function addPlayerCreatedListener(callable $listener): SubscriptionInterface;
+
+
+	/**
+	 * Called whenever a player is created, or when a new agent joins and receives a list of active players. If an agent is restored, it will receive one event for each active player.
+	 *
+	 * Method will block until first Media.playerCreated event is fired.
+	 *
+	 * @param ContextInterface $ctx
+	 *
+	 * @return PlayerCreatedEvent
+	 */
+	public function awaitPlayerCreated(ContextInterface $ctx): PlayerCreatedEvent;
 
 
 	/**
@@ -135,28 +159,4 @@ interface MediaDomainInterface
 	 * @return PlayerPropertiesChangedEvent
 	 */
 	public function awaitPlayerPropertiesChanged(ContextInterface $ctx): PlayerPropertiesChangedEvent;
-
-
-	/**
-	 * Called whenever a player is created, or when a new agent joins and receives a list of active players. If an agent is restored, it will receive the full list of player ids and all events again.
-	 *
-	 * Listener will be called whenever event Media.playersCreated is fired.
-	 *
-	 * @param callable $listener
-	 *
-	 * @return SubscriptionInterface
-	 */
-	public function addPlayersCreatedListener(callable $listener): SubscriptionInterface;
-
-
-	/**
-	 * Called whenever a player is created, or when a new agent joins and receives a list of active players. If an agent is restored, it will receive the full list of player ids and all events again.
-	 *
-	 * Method will block until first Media.playersCreated event is fired.
-	 *
-	 * @param ContextInterface $ctx
-	 *
-	 * @return PlayersCreatedEvent
-	 */
-	public function awaitPlayersCreated(ContextInterface $ctx): PlayersCreatedEvent;
 }

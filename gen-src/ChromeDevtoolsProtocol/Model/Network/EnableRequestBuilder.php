@@ -13,6 +13,7 @@ final class EnableRequestBuilder
 	private $maxResourceBufferSize;
 	private $maxPostDataSize;
 	private $reportDirectSocketTraffic;
+	private $enableDurableMessages;
 
 
 	/**
@@ -25,6 +26,7 @@ final class EnableRequestBuilder
 		$instance->maxResourceBufferSize = $this->maxResourceBufferSize;
 		$instance->maxPostDataSize = $this->maxPostDataSize;
 		$instance->reportDirectSocketTraffic = $this->reportDirectSocketTraffic;
+		$instance->enableDurableMessages = $this->enableDurableMessages;
 		return $instance;
 	}
 
@@ -73,6 +75,18 @@ final class EnableRequestBuilder
 	public function setReportDirectSocketTraffic($reportDirectSocketTraffic): self
 	{
 		$this->reportDirectSocketTraffic = $reportDirectSocketTraffic;
+		return $this;
+	}
+
+
+	/**
+	 * @param bool|null $enableDurableMessages
+	 *
+	 * @return self
+	 */
+	public function setEnableDurableMessages($enableDurableMessages): self
+	{
+		$this->enableDurableMessages = $enableDurableMessages;
 		return $this;
 	}
 }

@@ -30,6 +30,7 @@ use ChromeDevtoolsProtocol\Model\Network\GetCertificateRequest;
 use ChromeDevtoolsProtocol\Model\Network\GetCertificateResponse;
 use ChromeDevtoolsProtocol\Model\Network\GetCookiesRequest;
 use ChromeDevtoolsProtocol\Model\Network\GetCookiesResponse;
+use ChromeDevtoolsProtocol\Model\Network\GetIPProtectionProxyStatusResponse;
 use ChromeDevtoolsProtocol\Model\Network\GetRequestPostDataRequest;
 use ChromeDevtoolsProtocol\Model\Network\GetRequestPostDataResponse;
 use ChromeDevtoolsProtocol\Model\Network\GetResponseBodyForInterceptionRequest;
@@ -255,6 +256,16 @@ interface NetworkDomainInterface
 	 * @return GetCookiesResponse
 	 */
 	public function getCookies(ContextInterface $ctx, GetCookiesRequest $request): GetCookiesResponse;
+
+
+	/**
+	 * Returns enum representing if IP Proxy of requests is available or reason it is not active.
+	 *
+	 * @param ContextInterface $ctx
+	 *
+	 * @return GetIPProtectionProxyStatusResponse
+	 */
+	public function getIPProtectionProxyStatus(ContextInterface $ctx): GetIPProtectionProxyStatusResponse;
 
 
 	/**

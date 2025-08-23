@@ -16293,9 +16293,34 @@
                             "type": "object"
                         }
                     ]
+                },
+                {
+                    "id": "Player",
+                    "type": "object",
+                    "properties": [
+                        {
+                            "name": "playerId",
+                            "$ref": "PlayerId"
+                        },
+                        {
+                            "name": "domNodeId",
+                            "optional": true,
+                            "$ref": "DOM.BackendNodeId"
+                        }
+                    ]
                 }
             ],
             "events": [
+                {
+                    "name": "playerCreated",
+                    "description": "Called whenever a player is created, or when a new agent joins and receives a list of active players. If an agent is restored, it will receive one event for each active player.",
+                    "parameters": [
+                        {
+                            "name": "player",
+                            "$ref": "Player"
+                        }
+                    ]
+                },
                 {
                     "name": "playerErrorsRaised",
                     "description": "Send a list of any errors that need to be delivered.",
@@ -16360,19 +16385,6 @@
                             "type": "array",
                             "items": {
                                 "$ref": "PlayerProperty"
-                            }
-                        }
-                    ]
-                },
-                {
-                    "name": "playersCreated",
-                    "description": "Called whenever a player is created, or when a new agent joins and receives a list of active players. If an agent is restored, it will receive the full list of player ids and all events again.",
-                    "parameters": [
-                        {
-                            "name": "players",
-                            "type": "array",
-                            "items": {
-                                "$ref": "PlayerId"
                             }
                         }
                     ]
@@ -17158,6 +17170,21 @@
                         "corp-not-same-origin-after-defaulted-to-same-origin-by-coep-and-dip",
                         "corp-not-same-site",
                         "sri-message-signature-mismatch"
+                    ]
+                },
+                {
+                    "id": "IpProxyStatus",
+                    "description": "Sets Controls for IP Proxy of requests. Page reload is required before the new behavior will be observed.",
+                    "experimental": true,
+                    "type": "string",
+                    "enum": [
+                        "Available",
+                        "FeatureNotEnabled",
+                        "MaskedDomainListNotEnabled",
+                        "MaskedDomainListNotPopulated",
+                        "AuthTokensUnavailable",
+                        "Unavailable",
+                        "BypassedByDevTools"
                     ]
                 },
                 {
@@ -18952,6 +18979,13 @@
                             "experimental": true,
                             "optional": true,
                             "type": "boolean"
+                        },
+                        {
+                            "name": "enableDurableMessages",
+                            "description": "Enable storing response bodies outside of renderer, so that these survive a cross-process navigation. Requires maxTotalBufferSize to be set. Currently defaults to false.",
+                            "experimental": true,
+                            "optional": true,
+                            "type": "boolean"
                         }
                     ]
                 },
@@ -19025,6 +19059,18 @@
                             "items": {
                                 "$ref": "Cookie"
                             }
+                        }
+                    ]
+                },
+                {
+                    "name": "getIPProtectionProxyStatus",
+                    "description": "Returns enum representing if IP Proxy of requests is available or reason it is not active.",
+                    "experimental": true,
+                    "returns": [
+                        {
+                            "name": "status",
+                            "description": "Whether IP proxy is available",
+                            "$ref": "IpProxyStatus"
                         }
                     ]
                 },

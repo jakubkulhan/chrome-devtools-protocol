@@ -4,11 +4,11 @@ namespace ChromeDevtoolsProtocol\Domain;
 
 use ChromeDevtoolsProtocol\ContextInterface;
 use ChromeDevtoolsProtocol\InternalClientInterface;
+use ChromeDevtoolsProtocol\Model\Media\PlayerCreatedEvent;
 use ChromeDevtoolsProtocol\Model\Media\PlayerErrorsRaisedEvent;
 use ChromeDevtoolsProtocol\Model\Media\PlayerEventsAddedEvent;
 use ChromeDevtoolsProtocol\Model\Media\PlayerMessagesLoggedEvent;
 use ChromeDevtoolsProtocol\Model\Media\PlayerPropertiesChangedEvent;
-use ChromeDevtoolsProtocol\Model\Media\PlayersCreatedEvent;
 use ChromeDevtoolsProtocol\SubscriptionInterface;
 
 class MediaDomain implements MediaDomainInterface
@@ -34,6 +34,20 @@ class MediaDomain implements MediaDomainInterface
 	{
 		$request = new \stdClass();
 		$this->internalClient->executeCommand($ctx, 'Media.enable', $request);
+	}
+
+
+	public function addPlayerCreatedListener(callable $listener): SubscriptionInterface
+	{
+		return $this->internalClient->addListener('Media.playerCreated', function ($event) use ($listener) {
+			return $listener(PlayerCreatedEvent::fromJson($event));
+		});
+	}
+
+
+	public function awaitPlayerCreated(ContextInterface $ctx): PlayerCreatedEvent
+	{
+		return PlayerCreatedEvent::fromJson($this->internalClient->awaitEvent($ctx, 'Media.playerCreated'));
 	}
 
 
@@ -90,19 +104,5 @@ class MediaDomain implements MediaDomainInterface
 	public function awaitPlayerPropertiesChanged(ContextInterface $ctx): PlayerPropertiesChangedEvent
 	{
 		return PlayerPropertiesChangedEvent::fromJson($this->internalClient->awaitEvent($ctx, 'Media.playerPropertiesChanged'));
-	}
-
-
-	public function addPlayersCreatedListener(callable $listener): SubscriptionInterface
-	{
-		return $this->internalClient->addListener('Media.playersCreated', function ($event) use ($listener) {
-			return $listener(PlayersCreatedEvent::fromJson($event));
-		});
-	}
-
-
-	public function awaitPlayersCreated(ContextInterface $ctx): PlayersCreatedEvent
-	{
-		return PlayersCreatedEvent::fromJson($this->internalClient->awaitEvent($ctx, 'Media.playersCreated'));
 	}
 }
