@@ -18,6 +18,13 @@ final class GetComputedStyleForNodeResponse implements \JsonSerializable
 	 */
 	public $computedStyle;
 
+	/**
+	 * A list of non-standard "extra fields" which blink stores alongside each computed style.
+	 *
+	 * @var ComputedStyleExtraFields
+	 */
+	public $extraFields;
+
 
 	/**
 	 * @param object $data
@@ -32,6 +39,9 @@ final class GetComputedStyleForNodeResponse implements \JsonSerializable
 				$instance->computedStyle[] = CSSComputedStyleProperty::fromJson($item);
 			}
 		}
+		if (isset($data->extraFields)) {
+			$instance->extraFields = ComputedStyleExtraFields::fromJson($data->extraFields);
+		}
 		return $instance;
 	}
 
@@ -44,6 +54,9 @@ final class GetComputedStyleForNodeResponse implements \JsonSerializable
 			foreach ($this->computedStyle as $item) {
 				$data->computedStyle[] = $item->jsonSerialize();
 			}
+		}
+		if ($this->extraFields !== null) {
+			$data->extraFields = $this->extraFields->jsonSerialize();
 		}
 		return $data;
 	}
