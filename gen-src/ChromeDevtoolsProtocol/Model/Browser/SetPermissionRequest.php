@@ -26,11 +26,18 @@ final class SetPermissionRequest implements \JsonSerializable
 	public $setting;
 
 	/**
-	 * Origin the permission applies to, all origins if not specified.
+	 * Requesting origin the permission applies to, all origins if not specified.
 	 *
 	 * @var string|null
 	 */
 	public $origin;
+
+	/**
+	 * Embedding origin the permission applies to. It is ignored unless the requesting origin is present and valid. If the requesting origin is provided but the embedding origin isn't, the requesting origin is used as the embedding origin.
+	 *
+	 * @var string|null
+	 */
+	public $embeddingOrigin;
 
 	/**
 	 * Context to override. When omitted, default browser context is used.
@@ -56,6 +63,9 @@ final class SetPermissionRequest implements \JsonSerializable
 		if (isset($data->origin)) {
 			$instance->origin = (string)$data->origin;
 		}
+		if (isset($data->embeddingOrigin)) {
+			$instance->embeddingOrigin = (string)$data->embeddingOrigin;
+		}
 		if (isset($data->browserContextId)) {
 			$instance->browserContextId = (string)$data->browserContextId;
 		}
@@ -74,6 +84,9 @@ final class SetPermissionRequest implements \JsonSerializable
 		}
 		if ($this->origin !== null) {
 			$data->origin = $this->origin;
+		}
+		if ($this->embeddingOrigin !== null) {
+			$data->embeddingOrigin = $this->embeddingOrigin;
 		}
 		if ($this->browserContextId !== null) {
 			$data->browserContextId = $this->browserContextId;

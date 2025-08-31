@@ -14,6 +14,7 @@ final class SetPermissionRequestBuilder
 	private $permission;
 	private $setting;
 	private $origin;
+	private $embeddingOrigin;
 	private $browserContextId;
 
 
@@ -32,6 +33,7 @@ final class SetPermissionRequestBuilder
 		}
 		$instance->setting = $this->setting;
 		$instance->origin = $this->origin;
+		$instance->embeddingOrigin = $this->embeddingOrigin;
 		$instance->browserContextId = $this->browserContextId;
 		return $instance;
 	}
@@ -69,6 +71,18 @@ final class SetPermissionRequestBuilder
 	public function setOrigin($origin): self
 	{
 		$this->origin = $origin;
+		return $this;
+	}
+
+
+	/**
+	 * @param string|null $embeddingOrigin
+	 *
+	 * @return self
+	 */
+	public function setEmbeddingOrigin($embeddingOrigin): self
+	{
+		$this->embeddingOrigin = $embeddingOrigin;
 		return $this;
 	}
 
