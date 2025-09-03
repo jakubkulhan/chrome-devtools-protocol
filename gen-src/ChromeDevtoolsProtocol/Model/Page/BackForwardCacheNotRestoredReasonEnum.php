@@ -116,9 +116,9 @@ final class BackForwardCacheNotRestoredReasonEnum
 	public const INDEXED_D_B_EVENT = 'IndexedDBEvent';
 	public const DUMMY = 'Dummy';
 	public const JS_NETWORK_REQUEST_RECEIVED_CACHE_CONTROL_NO_STORE_RESOURCE = 'JsNetworkRequestReceivedCacheControlNoStoreResource';
-	public const WEB_R_T_C_STICKY = 'WebRTCSticky';
-	public const WEB_TRANSPORT_STICKY = 'WebTransportSticky';
-	public const WEB_SOCKET_STICKY = 'WebSocketSticky';
+	public const WEB_R_T_C_USED_WITH_C_C_N_S = 'WebRTCUsedWithCCNS';
+	public const WEB_TRANSPORT_USED_WITH_C_C_N_S = 'WebTransportUsedWithCCNS';
+	public const WEB_SOCKET_USED_WITH_C_C_N_S = 'WebSocketUsedWithCCNS';
 	public const SMART_CARD = 'SmartCard';
 	public const LIVE_MEDIA_STREAM_TRACK = 'LiveMediaStreamTrack';
 	public const UNLOAD_HANDLER = 'UnloadHandler';
