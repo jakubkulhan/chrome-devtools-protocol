@@ -14,6 +14,7 @@ final class TriggerRequestBuilder
 	private $fieldId;
 	private $frameId;
 	private $card;
+	private $address;
 
 
 	/**
@@ -27,10 +28,8 @@ final class TriggerRequestBuilder
 		}
 		$instance->fieldId = $this->fieldId;
 		$instance->frameId = $this->frameId;
-		if ($this->card === null) {
-			throw new BuilderException('Property [card] is required.');
-		}
 		$instance->card = $this->card;
+		$instance->address = $this->address;
 		return $instance;
 	}
 
@@ -60,13 +59,25 @@ final class TriggerRequestBuilder
 
 
 	/**
-	 * @param CreditCard $card
+	 * @param CreditCard|null $card
 	 *
 	 * @return self
 	 */
 	public function setCard($card): self
 	{
 		$this->card = $card;
+		return $this;
+	}
+
+
+	/**
+	 * @param Address|null $address
+	 *
+	 * @return self
+	 */
+	public function setAddress($address): self
+	{
+		$this->address = $address;
 		return $this;
 	}
 }

@@ -69,6 +69,7 @@ use ChromeDevtoolsProtocol\Model\Network\SetCookieRequest;
 use ChromeDevtoolsProtocol\Model\Network\SetCookieResponse;
 use ChromeDevtoolsProtocol\Model\Network\SetCookiesRequest;
 use ChromeDevtoolsProtocol\Model\Network\SetExtraHTTPHeadersRequest;
+use ChromeDevtoolsProtocol\Model\Network\SetIPProtectionProxyBypassEnabledRequest;
 use ChromeDevtoolsProtocol\Model\Network\SetRequestInterceptionRequest;
 use ChromeDevtoolsProtocol\Model\Network\SetUserAgentOverrideRequest;
 use ChromeDevtoolsProtocol\Model\Network\SignedExchangeReceivedEvent;
@@ -327,6 +328,14 @@ class NetworkDomain implements NetworkDomainInterface
 	public function setExtraHTTPHeaders(ContextInterface $ctx, SetExtraHTTPHeadersRequest $request): void
 	{
 		$this->internalClient->executeCommand($ctx, 'Network.setExtraHTTPHeaders', $request);
+	}
+
+
+	public function setIPProtectionProxyBypassEnabled(
+		ContextInterface $ctx,
+		SetIPProtectionProxyBypassEnabledRequest $request
+	): void {
+		$this->internalClient->executeCommand($ctx, 'Network.setIPProtectionProxyBypassEnabled', $request);
 	}
 
 

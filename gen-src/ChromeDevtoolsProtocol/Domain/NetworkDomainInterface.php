@@ -68,6 +68,7 @@ use ChromeDevtoolsProtocol\Model\Network\SetCookieRequest;
 use ChromeDevtoolsProtocol\Model\Network\SetCookieResponse;
 use ChromeDevtoolsProtocol\Model\Network\SetCookiesRequest;
 use ChromeDevtoolsProtocol\Model\Network\SetExtraHTTPHeadersRequest;
+use ChromeDevtoolsProtocol\Model\Network\SetIPProtectionProxyBypassEnabledRequest;
 use ChromeDevtoolsProtocol\Model\Network\SetRequestInterceptionRequest;
 use ChromeDevtoolsProtocol\Model\Network\SetUserAgentOverrideRequest;
 use ChromeDevtoolsProtocol\Model\Network\SignedExchangeReceivedEvent;
@@ -457,6 +458,20 @@ interface NetworkDomainInterface
 	 * @return void
 	 */
 	public function setExtraHTTPHeaders(ContextInterface $ctx, SetExtraHTTPHeadersRequest $request): void;
+
+
+	/**
+	 * Sets bypass IP Protection Proxy boolean.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param SetIPProtectionProxyBypassEnabledRequest $request
+	 *
+	 * @return void
+	 */
+	public function setIPProtectionProxyBypassEnabled(
+		ContextInterface $ctx,
+		SetIPProtectionProxyBypassEnabledRequest $request
+	): void;
 
 
 	/**

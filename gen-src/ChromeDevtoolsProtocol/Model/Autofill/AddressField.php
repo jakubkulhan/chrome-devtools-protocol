@@ -12,7 +12,7 @@ namespace ChromeDevtoolsProtocol\Model\Autofill;
 final class AddressField implements \JsonSerializable
 {
 	/**
-	 * address field name, for example GIVEN_NAME.
+	 * address field name, for example GIVEN_NAME. The full list of supported field names: https://source.chromium.org/chromium/chromium/src/+/main:components/autofill/core/browser/field_types.cc;l=38
 	 *
 	 * @var string
 	 */

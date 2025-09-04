@@ -26,11 +26,18 @@ final class TriggerRequest implements \JsonSerializable
 	public $frameId;
 
 	/**
-	 * Credit card information to fill out the form. Credit card data is not saved.
+	 * Credit card information to fill out the form. Credit card data is not saved. Mutually exclusive with `address`.
 	 *
-	 * @var CreditCard
+	 * @var CreditCard|null
 	 */
 	public $card;
+
+	/**
+	 * Address to fill out the form. Address data is not saved. Mutually exclusive with `card`.
+	 *
+	 * @var Address|null
+	 */
+	public $address;
 
 
 	/**
@@ -49,6 +56,9 @@ final class TriggerRequest implements \JsonSerializable
 		if (isset($data->card)) {
 			$instance->card = CreditCard::fromJson($data->card);
 		}
+		if (isset($data->address)) {
+			$instance->address = Address::fromJson($data->address);
+		}
 		return $instance;
 	}
 
@@ -64,6 +74,9 @@ final class TriggerRequest implements \JsonSerializable
 		}
 		if ($this->card !== null) {
 			$data->card = $this->card->jsonSerialize();
+		}
+		if ($this->address !== null) {
+			$data->address = $this->address->jsonSerialize();
 		}
 		return $data;
 	}
