@@ -56,6 +56,7 @@ final class PermissionsPolicyFeatureEnum
 	public const DIGITAL_CREDENTIALS_CREATE = 'digital-credentials-create';
 	public const DIGITAL_CREDENTIALS_GET = 'digital-credentials-get';
 	public const DIRECT_SOCKETS = 'direct-sockets';
+	public const DIRECT_SOCKETS_MULTICAST = 'direct-sockets-multicast';
 	public const DIRECT_SOCKETS_PRIVATE = 'direct-sockets-private';
 	public const DISPLAY_CAPTURE = 'display-capture';
 	public const DOCUMENT_DOMAIN = 'document-domain';
