@@ -55,6 +55,13 @@ final class RuleSet implements \JsonSerializable
 	 */
 	public $errorMessage;
 
+	/**
+	 * For more details, see: https://github.com/WICG/nav-speculation/blob/main/speculation-rules-tags.md
+	 *
+	 * @var string|null
+	 */
+	public $tag;
+
 
 	/**
 	 * @param object $data
@@ -87,6 +94,9 @@ final class RuleSet implements \JsonSerializable
 		if (isset($data->errorMessage)) {
 			$instance->errorMessage = (string)$data->errorMessage;
 		}
+		if (isset($data->tag)) {
+			$instance->tag = (string)$data->tag;
+		}
 		return $instance;
 	}
 
@@ -117,6 +127,9 @@ final class RuleSet implements \JsonSerializable
 		}
 		if ($this->errorMessage !== null) {
 			$data->errorMessage = $this->errorMessage;
+		}
+		if ($this->tag !== null) {
+			$data->tag = $this->tag;
 		}
 		return $data;
 	}
