@@ -223,6 +223,9 @@ final class Node implements \JsonSerializable
 	/** @var bool|null */
 	public $isScrollable;
 
+	/** @var bool|null */
+	public $affectedByStartingStyles;
+
 
 	/**
 	 * @param object $data
@@ -342,6 +345,9 @@ final class Node implements \JsonSerializable
 		if (isset($data->isScrollable)) {
 			$instance->isScrollable = (bool)$data->isScrollable;
 		}
+		if (isset($data->affectedByStartingStyles)) {
+			$instance->affectedByStartingStyles = (bool)$data->affectedByStartingStyles;
+		}
 		return $instance;
 	}
 
@@ -459,6 +465,9 @@ final class Node implements \JsonSerializable
 		}
 		if ($this->isScrollable !== null) {
 			$data->isScrollable = $this->isScrollable;
+		}
+		if ($this->affectedByStartingStyles !== null) {
+			$data->affectedByStartingStyles = $this->affectedByStartingStyles;
 		}
 		return $data;
 	}

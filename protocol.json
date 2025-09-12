@@ -207,7 +207,7 @@
                 },
                 {
                     "id": "AXPropertyName",
-                    "description": "Values of AXProperty name: - from 'busy' to 'roledescription': states which apply to every AX node - from 'live' to 'root': attributes which apply to nodes in live regions - from 'autocomplete' to 'valuetext': attributes which apply to widgets - from 'checked' to 'selected': states which apply to widgets - from 'activedescendant' to 'owns' - relationships between elements other than parent/child/sibling.",
+                    "description": "Values of AXProperty name: - from 'busy' to 'roledescription': states which apply to every AX node - from 'live' to 'root': attributes which apply to nodes in live regions - from 'autocomplete' to 'valuetext': attributes which apply to widgets - from 'checked' to 'selected': states which apply to widgets - from 'activedescendant' to 'owns': relationships between elements other than parent/child/sibling - from 'activeFullscreenElement' to 'uninteresting': reasons why this noode is hidden",
                     "type": "string",
                     "enum": [
                         "actions",
@@ -250,7 +250,24 @@
                         "flowto",
                         "labelledby",
                         "owns",
-                        "url"
+                        "url",
+                        "activeFullscreenElement",
+                        "activeModalDialog",
+                        "activeAriaModalDialog",
+                        "ariaHiddenElement",
+                        "ariaHiddenSubtree",
+                        "emptyAlt",
+                        "emptyText",
+                        "inertElement",
+                        "inertSubtree",
+                        "labelContainer",
+                        "labelFor",
+                        "notRendered",
+                        "notVisible",
+                        "presentationalRole",
+                        "probablyPresentational",
+                        "inactiveCarouselTabContent",
+                        "uninteresting"
                     ]
                 },
                 {
@@ -8650,6 +8667,12 @@
                             "experimental": true,
                             "optional": true,
                             "type": "boolean"
+                        },
+                        {
+                            "name": "affectedByStartingStyles",
+                            "experimental": true,
+                            "optional": true,
+                            "type": "boolean"
                         }
                     ]
                 },
@@ -9999,6 +10022,23 @@
                 }
             ],
             "events": [
+                {
+                    "name": "affectedByStartingStylesFlagUpdated",
+                    "description": "Fired when a node's starting styles changes.",
+                    "experimental": true,
+                    "parameters": [
+                        {
+                            "name": "nodeId",
+                            "description": "The id of the node.",
+                            "$ref": "DOM.NodeId"
+                        },
+                        {
+                            "name": "affectedByStartingStyles",
+                            "description": "If the node has starting styles.",
+                            "type": "boolean"
+                        }
+                    ]
+                },
                 {
                     "name": "attributeModified",
                     "description": "Fired when `Element`'s attribute is modified.",

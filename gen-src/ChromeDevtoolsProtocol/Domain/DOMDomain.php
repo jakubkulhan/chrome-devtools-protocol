@@ -4,6 +4,7 @@ namespace ChromeDevtoolsProtocol\Domain;
 
 use ChromeDevtoolsProtocol\ContextInterface;
 use ChromeDevtoolsProtocol\InternalClientInterface;
+use ChromeDevtoolsProtocol\Model\DOM\AffectedByStartingStylesFlagUpdatedEvent;
 use ChromeDevtoolsProtocol\Model\DOM\AttributeModifiedEvent;
 use ChromeDevtoolsProtocol\Model\DOM\AttributeRemovedEvent;
 use ChromeDevtoolsProtocol\Model\DOM\CharacterDataModifiedEvent;
@@ -488,6 +489,20 @@ class DOMDomain implements DOMDomainInterface
 	{
 		$request = new \stdClass();
 		$this->internalClient->executeCommand($ctx, 'DOM.undo', $request);
+	}
+
+
+	public function addAffectedByStartingStylesFlagUpdatedListener(callable $listener): SubscriptionInterface
+	{
+		return $this->internalClient->addListener('DOM.affectedByStartingStylesFlagUpdated', function ($event) use ($listener) {
+			return $listener(AffectedByStartingStylesFlagUpdatedEvent::fromJson($event));
+		});
+	}
+
+
+	public function awaitAffectedByStartingStylesFlagUpdated(ContextInterface $ctx): AffectedByStartingStylesFlagUpdatedEvent
+	{
+		return AffectedByStartingStylesFlagUpdatedEvent::fromJson($this->internalClient->awaitEvent($ctx, 'DOM.affectedByStartingStylesFlagUpdated'));
 	}
 
 

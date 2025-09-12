@@ -3,6 +3,7 @@
 namespace ChromeDevtoolsProtocol\Domain;
 
 use ChromeDevtoolsProtocol\ContextInterface;
+use ChromeDevtoolsProtocol\Model\DOM\AffectedByStartingStylesFlagUpdatedEvent;
 use ChromeDevtoolsProtocol\Model\DOM\AttributeModifiedEvent;
 use ChromeDevtoolsProtocol\Model\DOM\AttributeRemovedEvent;
 use ChromeDevtoolsProtocol\Model\DOM\CharacterDataModifiedEvent;
@@ -711,6 +712,30 @@ interface DOMDomainInterface
 	 * @return void
 	 */
 	public function undo(ContextInterface $ctx): void;
+
+
+	/**
+	 * Fired when a node's starting styles changes.
+	 *
+	 * Listener will be called whenever event DOM.affectedByStartingStylesFlagUpdated is fired.
+	 *
+	 * @param callable $listener
+	 *
+	 * @return SubscriptionInterface
+	 */
+	public function addAffectedByStartingStylesFlagUpdatedListener(callable $listener): SubscriptionInterface;
+
+
+	/**
+	 * Fired when a node's starting styles changes.
+	 *
+	 * Method will block until first DOM.affectedByStartingStylesFlagUpdated event is fired.
+	 *
+	 * @param ContextInterface $ctx
+	 *
+	 * @return AffectedByStartingStylesFlagUpdatedEvent
+	 */
+	public function awaitAffectedByStartingStylesFlagUpdated(ContextInterface $ctx): AffectedByStartingStylesFlagUpdatedEvent;
 
 
 	/**
