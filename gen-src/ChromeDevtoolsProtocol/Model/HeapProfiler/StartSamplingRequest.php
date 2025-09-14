@@ -19,6 +19,13 @@ final class StartSamplingRequest implements \JsonSerializable
 	public $samplingInterval;
 
 	/**
+	 * Maximum stack depth. The default value is 128.
+	 *
+	 * @var int|float|null
+	 */
+	public $stackDepth;
+
+	/**
 	 * By default, the sampling heap profiler reports only objects which are still alive when the profile is returned via getSamplingProfile or stopSampling, which is useful for determining what functions contribute the most to steady-state memory usage. This flag instructs the sampling heap profiler to also include information about objects discarded by major GC, which will show which functions cause large temporary memory usage or long GC pauses.
 	 *
 	 * @var bool|null
@@ -43,6 +50,9 @@ final class StartSamplingRequest implements \JsonSerializable
 		if (isset($data->samplingInterval)) {
 			$instance->samplingInterval = $data->samplingInterval;
 		}
+		if (isset($data->stackDepth)) {
+			$instance->stackDepth = $data->stackDepth;
+		}
 		if (isset($data->includeObjectsCollectedByMajorGC)) {
 			$instance->includeObjectsCollectedByMajorGC = (bool)$data->includeObjectsCollectedByMajorGC;
 		}
@@ -58,6 +68,9 @@ final class StartSamplingRequest implements \JsonSerializable
 		$data = new \stdClass();
 		if ($this->samplingInterval !== null) {
 			$data->samplingInterval = $this->samplingInterval;
+		}
+		if ($this->stackDepth !== null) {
+			$data->stackDepth = $this->stackDepth;
 		}
 		if ($this->includeObjectsCollectedByMajorGC !== null) {
 			$data->includeObjectsCollectedByMajorGC = $this->includeObjectsCollectedByMajorGC;

@@ -49,9 +49,9 @@ final class RequestDataRequest implements \JsonSerializable
 	public $objectStoreName;
 
 	/**
-	 * Index name, empty string for object store data requests.
+	 * Index name. If not specified, it performs an object store data request.
 	 *
-	 * @var string
+	 * @var string|null
 	 */
 	public $indexName;
 

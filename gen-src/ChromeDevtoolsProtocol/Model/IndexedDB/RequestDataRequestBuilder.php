@@ -40,9 +40,6 @@ final class RequestDataRequestBuilder
 			throw new BuilderException('Property [objectStoreName] is required.');
 		}
 		$instance->objectStoreName = $this->objectStoreName;
-		if ($this->indexName === null) {
-			throw new BuilderException('Property [indexName] is required.');
-		}
 		$instance->indexName = $this->indexName;
 		if ($this->skipCount === null) {
 			throw new BuilderException('Property [skipCount] is required.');
@@ -118,7 +115,7 @@ final class RequestDataRequestBuilder
 
 
 	/**
-	 * @param string $indexName
+	 * @param string|null $indexName
 	 *
 	 * @return self
 	 */

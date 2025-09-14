@@ -10,6 +10,7 @@ namespace ChromeDevtoolsProtocol\Model\HeapProfiler;
 final class StartSamplingRequestBuilder
 {
 	private $samplingInterval;
+	private $stackDepth;
 	private $includeObjectsCollectedByMajorGC;
 	private $includeObjectsCollectedByMinorGC;
 
@@ -21,6 +22,7 @@ final class StartSamplingRequestBuilder
 	{
 		$instance = new StartSamplingRequest();
 		$instance->samplingInterval = $this->samplingInterval;
+		$instance->stackDepth = $this->stackDepth;
 		$instance->includeObjectsCollectedByMajorGC = $this->includeObjectsCollectedByMajorGC;
 		$instance->includeObjectsCollectedByMinorGC = $this->includeObjectsCollectedByMinorGC;
 		return $instance;
@@ -35,6 +37,18 @@ final class StartSamplingRequestBuilder
 	public function setSamplingInterval($samplingInterval): self
 	{
 		$this->samplingInterval = $samplingInterval;
+		return $this;
+	}
+
+
+	/**
+	 * @param int|float|null $stackDepth
+	 *
+	 * @return self
+	 */
+	public function setStackDepth($stackDepth): self
+	{
+		$this->stackDepth = $stackDepth;
 		return $this;
 	}
 

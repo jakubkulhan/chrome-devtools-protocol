@@ -14112,6 +14112,12 @@
                             "type": "number"
                         },
                         {
+                            "name": "stackDepth",
+                            "description": "Maximum stack depth. The default value is 128.",
+                            "optional": true,
+                            "type": "number"
+                        },
+                        {
                             "name": "includeObjectsCollectedByMajorGC",
                             "description": "By default, the sampling heap profiler reports only objects which are still alive when the profile is returned via getSamplingProfile or stopSampling, which is useful for determining what functions contribute the most to steady-state memory usage. This flag instructs the sampling heap profiler to also include information about objects discarded by major GC, which will show which functions cause large temporary memory usage or long GC pauses.",
                             "optional": true,
@@ -14677,7 +14683,8 @@
                         },
                         {
                             "name": "indexName",
-                            "description": "Index name, empty string for object store data requests.",
+                            "description": "Index name. If not specified, it performs an object store data request.",
+                            "optional": true,
                             "type": "string"
                         },
                         {
@@ -23436,8 +23443,10 @@
                         "WebXR",
                         "SharedWorker",
                         "SharedWorkerMessage",
+                        "SharedWorkerWithNoActiveClient",
                         "WebLocks",
                         "WebHID",
+                        "WebBluetooth",
                         "WebShare",
                         "RequestedStorageAccessGrant",
                         "WebNfc",
