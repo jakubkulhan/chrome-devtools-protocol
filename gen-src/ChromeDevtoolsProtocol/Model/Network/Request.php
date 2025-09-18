@@ -102,6 +102,13 @@ final class Request implements \JsonSerializable
 	 */
 	public $isSameSite;
 
+	/**
+	 * True when the resource request is ad-related.
+	 *
+	 * @var bool|null
+	 */
+	public $isAdRelated;
+
 
 	/**
 	 * @param object $data
@@ -152,6 +159,9 @@ final class Request implements \JsonSerializable
 		if (isset($data->isSameSite)) {
 			$instance->isSameSite = (bool)$data->isSameSite;
 		}
+		if (isset($data->isAdRelated)) {
+			$instance->isAdRelated = (bool)$data->isAdRelated;
+		}
 		return $instance;
 	}
 
@@ -200,6 +210,9 @@ final class Request implements \JsonSerializable
 		}
 		if ($this->isSameSite !== null) {
 			$data->isSameSite = $this->isSameSite;
+		}
+		if ($this->isAdRelated !== null) {
+			$data->isAdRelated = $this->isAdRelated;
 		}
 		return $data;
 	}
