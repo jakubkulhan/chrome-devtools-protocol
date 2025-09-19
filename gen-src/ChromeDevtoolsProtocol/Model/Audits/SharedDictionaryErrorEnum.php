@@ -22,8 +22,10 @@ final class SharedDictionaryErrorEnum
 	public const WRITE_ERROR_INSUFFICIENT_RESOURCES = 'WriteErrorInsufficientResources';
 	public const WRITE_ERROR_INVALID_MATCH_FIELD = 'WriteErrorInvalidMatchField';
 	public const WRITE_ERROR_INVALID_STRUCTURED_HEADER = 'WriteErrorInvalidStructuredHeader';
+	public const WRITE_ERROR_INVALID_T_T_L_FIELD = 'WriteErrorInvalidTTLField';
 	public const WRITE_ERROR_NAVIGATION_REQUEST = 'WriteErrorNavigationRequest';
 	public const WRITE_ERROR_NO_MATCH_FIELD = 'WriteErrorNoMatchField';
+	public const WRITE_ERROR_NON_INTEGER_T_T_L_FIELD = 'WriteErrorNonIntegerTTLField';
 	public const WRITE_ERROR_NON_LIST_MATCH_DEST_FIELD = 'WriteErrorNonListMatchDestField';
 	public const WRITE_ERROR_NON_SECURE_CONTEXT = 'WriteErrorNonSecureContext';
 	public const WRITE_ERROR_NON_STRING_ID_FIELD = 'WriteErrorNonStringIdField';

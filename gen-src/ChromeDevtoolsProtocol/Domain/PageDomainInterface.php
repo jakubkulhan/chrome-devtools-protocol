@@ -86,6 +86,7 @@ use ChromeDevtoolsProtocol\Model\Page\SetGeolocationOverrideRequest;
 use ChromeDevtoolsProtocol\Model\Page\SetInterceptFileChooserDialogRequest;
 use ChromeDevtoolsProtocol\Model\Page\SetLifecycleEventsEnabledRequest;
 use ChromeDevtoolsProtocol\Model\Page\SetPrerenderingAllowedRequest;
+use ChromeDevtoolsProtocol\Model\Page\SetPrewarmingAllowedRequest;
 use ChromeDevtoolsProtocol\Model\Page\SetRPHRegistrationModeRequest;
 use ChromeDevtoolsProtocol\Model\Page\SetSPCTransactionModeRequest;
 use ChromeDevtoolsProtocol\Model\Page\SetTouchEmulationEnabledRequest;
@@ -681,6 +682,17 @@ interface PageDomainInterface
 	 * @return void
 	 */
 	public function setPrerenderingAllowed(ContextInterface $ctx, SetPrerenderingAllowedRequest $request): void;
+
+
+	/**
+	 * Enable/disable prewarming triggers manually. This command manages DSE Prewarming triggers. While a client is connected, prewarming triggers are disabled by default. This command can change this default behavior to allow the triggers, or to disallow them again. See https://chromestatus.com/feature/6266608741908480 for more details on the DSE Prewarming feature.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param SetPrewarmingAllowedRequest $request
+	 *
+	 * @return void
+	 */
+	public function setPrewarmingAllowed(ContextInterface $ctx, SetPrewarmingAllowedRequest $request): void;
 
 
 	/**
