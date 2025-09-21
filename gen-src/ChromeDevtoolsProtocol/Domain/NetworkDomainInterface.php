@@ -21,6 +21,8 @@ use ChromeDevtoolsProtocol\Model\Network\DirectUDPSocketChunkSentEvent;
 use ChromeDevtoolsProtocol\Model\Network\DirectUDPSocketClosedEvent;
 use ChromeDevtoolsProtocol\Model\Network\DirectUDPSocketCreatedEvent;
 use ChromeDevtoolsProtocol\Model\Network\DirectUDPSocketOpenedEvent;
+use ChromeDevtoolsProtocol\Model\Network\EmulateNetworkConditionsByRuleRequest;
+use ChromeDevtoolsProtocol\Model\Network\EmulateNetworkConditionsByRuleResponse;
 use ChromeDevtoolsProtocol\Model\Network\EmulateNetworkConditionsRequest;
 use ChromeDevtoolsProtocol\Model\Network\EnableReportingApiRequest;
 use ChromeDevtoolsProtocol\Model\Network\EnableRequest;
@@ -43,6 +45,7 @@ use ChromeDevtoolsProtocol\Model\Network\LoadNetworkResourceRequest;
 use ChromeDevtoolsProtocol\Model\Network\LoadNetworkResourceResponse;
 use ChromeDevtoolsProtocol\Model\Network\LoadingFailedEvent;
 use ChromeDevtoolsProtocol\Model\Network\LoadingFinishedEvent;
+use ChromeDevtoolsProtocol\Model\Network\OverrideNetworkStateRequest;
 use ChromeDevtoolsProtocol\Model\Network\PolicyUpdatedEvent;
 use ChromeDevtoolsProtocol\Model\Network\ReplayXHRRequest;
 use ChromeDevtoolsProtocol\Model\Network\ReportingApiEndpointsChangedForOriginEvent;
@@ -195,7 +198,7 @@ interface NetworkDomainInterface
 
 
 	/**
-	 * Activates emulation of network conditions.
+	 * Activates emulation of network conditions. This command is deprecated in favor of the emulateNetworkConditionsByRule and overrideNetworkState commands, which can be used together to the same effect.
 	 *
 	 * @param ContextInterface $ctx
 	 * @param EmulateNetworkConditionsRequest $request
@@ -203,6 +206,20 @@ interface NetworkDomainInterface
 	 * @return void
 	 */
 	public function emulateNetworkConditions(ContextInterface $ctx, EmulateNetworkConditionsRequest $request): void;
+
+
+	/**
+	 * Activates emulation of network conditions for individual requests using URL match patterns.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param EmulateNetworkConditionsByRuleRequest $request
+	 *
+	 * @return EmulateNetworkConditionsByRuleResponse
+	 */
+	public function emulateNetworkConditionsByRule(
+		ContextInterface $ctx,
+		EmulateNetworkConditionsByRuleRequest $request
+	): EmulateNetworkConditionsByRuleResponse;
 
 
 	/**
@@ -334,6 +351,17 @@ interface NetworkDomainInterface
 		ContextInterface $ctx,
 		LoadNetworkResourceRequest $request
 	): LoadNetworkResourceResponse;
+
+
+	/**
+	 * Override the state of navigator.onLine and navigator.connection.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param OverrideNetworkStateRequest $request
+	 *
+	 * @return void
+	 */
+	public function overrideNetworkState(ContextInterface $ctx, OverrideNetworkStateRequest $request): void;
 
 
 	/**

@@ -53,6 +53,13 @@ final class RequestWillBeSentExtraInfoEvent implements \JsonSerializable
 	 */
 	public $siteHasCookieInOtherPartition;
 
+	/**
+	 * The network conditions id if this request was affected by network conditions configured via emulateNetworkConditionsByRule.
+	 *
+	 * @var string|null
+	 */
+	public $appliedNetworkConditionsId;
+
 
 	/**
 	 * @param object $data
@@ -82,6 +89,9 @@ final class RequestWillBeSentExtraInfoEvent implements \JsonSerializable
 		if (isset($data->siteHasCookieInOtherPartition)) {
 			$instance->siteHasCookieInOtherPartition = (bool)$data->siteHasCookieInOtherPartition;
 		}
+		if (isset($data->appliedNetworkConditionsId)) {
+			$instance->appliedNetworkConditionsId = (string)$data->appliedNetworkConditionsId;
+		}
 		return $instance;
 	}
 
@@ -109,6 +119,9 @@ final class RequestWillBeSentExtraInfoEvent implements \JsonSerializable
 		}
 		if ($this->siteHasCookieInOtherPartition !== null) {
 			$data->siteHasCookieInOtherPartition = $this->siteHasCookieInOtherPartition;
+		}
+		if ($this->appliedNetworkConditionsId !== null) {
+			$data->appliedNetworkConditionsId = $this->appliedNetworkConditionsId;
 		}
 		return $data;
 	}

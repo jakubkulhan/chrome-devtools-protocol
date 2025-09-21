@@ -22,6 +22,8 @@ use ChromeDevtoolsProtocol\Model\Network\DirectUDPSocketChunkSentEvent;
 use ChromeDevtoolsProtocol\Model\Network\DirectUDPSocketClosedEvent;
 use ChromeDevtoolsProtocol\Model\Network\DirectUDPSocketCreatedEvent;
 use ChromeDevtoolsProtocol\Model\Network\DirectUDPSocketOpenedEvent;
+use ChromeDevtoolsProtocol\Model\Network\EmulateNetworkConditionsByRuleRequest;
+use ChromeDevtoolsProtocol\Model\Network\EmulateNetworkConditionsByRuleResponse;
 use ChromeDevtoolsProtocol\Model\Network\EmulateNetworkConditionsRequest;
 use ChromeDevtoolsProtocol\Model\Network\EnableReportingApiRequest;
 use ChromeDevtoolsProtocol\Model\Network\EnableRequest;
@@ -44,6 +46,7 @@ use ChromeDevtoolsProtocol\Model\Network\LoadNetworkResourceRequest;
 use ChromeDevtoolsProtocol\Model\Network\LoadNetworkResourceResponse;
 use ChromeDevtoolsProtocol\Model\Network\LoadingFailedEvent;
 use ChromeDevtoolsProtocol\Model\Network\LoadingFinishedEvent;
+use ChromeDevtoolsProtocol\Model\Network\OverrideNetworkStateRequest;
 use ChromeDevtoolsProtocol\Model\Network\PolicyUpdatedEvent;
 use ChromeDevtoolsProtocol\Model\Network\ReplayXHRRequest;
 use ChromeDevtoolsProtocol\Model\Network\ReportingApiEndpointsChangedForOriginEvent;
@@ -176,6 +179,15 @@ class NetworkDomain implements NetworkDomainInterface
 	}
 
 
+	public function emulateNetworkConditionsByRule(
+		ContextInterface $ctx,
+		EmulateNetworkConditionsByRuleRequest $request
+	): EmulateNetworkConditionsByRuleResponse {
+		$response = $this->internalClient->executeCommand($ctx, 'Network.emulateNetworkConditionsByRule', $request);
+		return EmulateNetworkConditionsByRuleResponse::fromJson($response);
+	}
+
+
 	public function enable(ContextInterface $ctx, EnableRequest $request): void
 	{
 		$this->internalClient->executeCommand($ctx, 'Network.enable', $request);
@@ -258,6 +270,12 @@ class NetworkDomain implements NetworkDomainInterface
 	): LoadNetworkResourceResponse {
 		$response = $this->internalClient->executeCommand($ctx, 'Network.loadNetworkResource', $request);
 		return LoadNetworkResourceResponse::fromJson($response);
+	}
+
+
+	public function overrideNetworkState(ContextInterface $ctx, OverrideNetworkStateRequest $request): void
+	{
+		$this->internalClient->executeCommand($ctx, 'Network.overrideNetworkState', $request);
 	}
 
 
