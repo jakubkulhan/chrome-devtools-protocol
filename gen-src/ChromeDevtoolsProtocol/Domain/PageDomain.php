@@ -87,7 +87,6 @@ use ChromeDevtoolsProtocol\Model\Page\SetGeolocationOverrideRequest;
 use ChromeDevtoolsProtocol\Model\Page\SetInterceptFileChooserDialogRequest;
 use ChromeDevtoolsProtocol\Model\Page\SetLifecycleEventsEnabledRequest;
 use ChromeDevtoolsProtocol\Model\Page\SetPrerenderingAllowedRequest;
-use ChromeDevtoolsProtocol\Model\Page\SetPrewarmingAllowedRequest;
 use ChromeDevtoolsProtocol\Model\Page\SetRPHRegistrationModeRequest;
 use ChromeDevtoolsProtocol\Model\Page\SetSPCTransactionModeRequest;
 use ChromeDevtoolsProtocol\Model\Page\SetTouchEmulationEnabledRequest;
@@ -469,12 +468,6 @@ class PageDomain implements PageDomainInterface
 	public function setPrerenderingAllowed(ContextInterface $ctx, SetPrerenderingAllowedRequest $request): void
 	{
 		$this->internalClient->executeCommand($ctx, 'Page.setPrerenderingAllowed', $request);
-	}
-
-
-	public function setPrewarmingAllowed(ContextInterface $ctx, SetPrewarmingAllowedRequest $request): void
-	{
-		$this->internalClient->executeCommand($ctx, 'Page.setPrewarmingAllowed', $request);
 	}
 
 
