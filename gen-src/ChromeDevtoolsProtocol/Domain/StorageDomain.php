@@ -31,6 +31,8 @@ use ChromeDevtoolsProtocol\Model\Storage\GetSharedStorageMetadataRequest;
 use ChromeDevtoolsProtocol\Model\Storage\GetSharedStorageMetadataResponse;
 use ChromeDevtoolsProtocol\Model\Storage\GetStorageKeyForFrameRequest;
 use ChromeDevtoolsProtocol\Model\Storage\GetStorageKeyForFrameResponse;
+use ChromeDevtoolsProtocol\Model\Storage\GetStorageKeyRequest;
+use ChromeDevtoolsProtocol\Model\Storage\GetStorageKeyResponse;
 use ChromeDevtoolsProtocol\Model\Storage\GetTrustTokensResponse;
 use ChromeDevtoolsProtocol\Model\Storage\GetUsageAndQuotaRequest;
 use ChromeDevtoolsProtocol\Model\Storage\GetUsageAndQuotaResponse;
@@ -169,6 +171,13 @@ class StorageDomain implements StorageDomainInterface
 	): GetSharedStorageMetadataResponse {
 		$response = $this->internalClient->executeCommand($ctx, 'Storage.getSharedStorageMetadata', $request);
 		return GetSharedStorageMetadataResponse::fromJson($response);
+	}
+
+
+	public function getStorageKey(ContextInterface $ctx, GetStorageKeyRequest $request): GetStorageKeyResponse
+	{
+		$response = $this->internalClient->executeCommand($ctx, 'Storage.getStorageKey', $request);
+		return GetStorageKeyResponse::fromJson($response);
 	}
 
 

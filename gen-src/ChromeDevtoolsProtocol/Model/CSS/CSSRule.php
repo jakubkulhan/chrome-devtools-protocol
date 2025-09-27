@@ -47,6 +47,13 @@ final class CSSRule implements \JsonSerializable
 	public $style;
 
 	/**
+	 * The BackendNodeId of the DOM node that constitutes the origin tree scope of this rule.
+	 *
+	 * @var int
+	 */
+	public $originTreeScopeNodeId;
+
+	/**
 	 * Media list array (for rules involving media queries). The array enumerates media queries starting with the innermost one, going outwards.
 	 *
 	 * @var CSSMedia[]|null
@@ -121,6 +128,9 @@ final class CSSRule implements \JsonSerializable
 		if (isset($data->style)) {
 			$instance->style = CSSStyle::fromJson($data->style);
 		}
+		if (isset($data->originTreeScopeNodeId)) {
+			$instance->originTreeScopeNodeId = (int)$data->originTreeScopeNodeId;
+		}
 		if (isset($data->media)) {
 			$instance->media = [];
 			foreach ($data->media as $item) {
@@ -190,6 +200,9 @@ final class CSSRule implements \JsonSerializable
 		}
 		if ($this->style !== null) {
 			$data->style = $this->style->jsonSerialize();
+		}
+		if ($this->originTreeScopeNodeId !== null) {
+			$data->originTreeScopeNodeId = $this->originTreeScopeNodeId;
 		}
 		if ($this->media !== null) {
 			$data->media = [];

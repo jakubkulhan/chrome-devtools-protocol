@@ -30,6 +30,8 @@ use ChromeDevtoolsProtocol\Model\Storage\GetSharedStorageMetadataRequest;
 use ChromeDevtoolsProtocol\Model\Storage\GetSharedStorageMetadataResponse;
 use ChromeDevtoolsProtocol\Model\Storage\GetStorageKeyForFrameRequest;
 use ChromeDevtoolsProtocol\Model\Storage\GetStorageKeyForFrameResponse;
+use ChromeDevtoolsProtocol\Model\Storage\GetStorageKeyRequest;
+use ChromeDevtoolsProtocol\Model\Storage\GetStorageKeyResponse;
 use ChromeDevtoolsProtocol\Model\Storage\GetTrustTokensResponse;
 use ChromeDevtoolsProtocol\Model\Storage\GetUsageAndQuotaRequest;
 use ChromeDevtoolsProtocol\Model\Storage\GetUsageAndQuotaResponse;
@@ -231,7 +233,18 @@ interface StorageDomainInterface
 
 
 	/**
-	 * Returns a storage key given a frame id.
+	 * Returns storage key for the given frame. If no frame ID is provided, the storage key of the target executing this command is returned.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param GetStorageKeyRequest $request
+	 *
+	 * @return GetStorageKeyResponse
+	 */
+	public function getStorageKey(ContextInterface $ctx, GetStorageKeyRequest $request): GetStorageKeyResponse;
+
+
+	/**
+	 * Returns a storage key given a frame id. Deprecated. Please use Storage.getStorageKey instead.
 	 *
 	 * @param ContextInterface $ctx
 	 * @param GetStorageKeyForFrameRequest $request
