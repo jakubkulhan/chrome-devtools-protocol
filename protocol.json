@@ -19480,8 +19480,19 @@
                     "experimental": true,
                     "parameters": [
                         {
+                            "name": "urlPatterns",
+                            "description": "URL patterns to block. Patterns use the URLPattern constructor string syntax (https://urlpattern.spec.whatwg.org/). Example: `*://*:*/*.css`.",
+                            "optional": true,
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            }
+                        },
+                        {
                             "name": "urls",
                             "description": "URL patterns to block. Wildcards ('*') are allowed.",
+                            "deprecated": true,
+                            "optional": true,
                             "type": "array",
                             "items": {
                                 "type": "string"
