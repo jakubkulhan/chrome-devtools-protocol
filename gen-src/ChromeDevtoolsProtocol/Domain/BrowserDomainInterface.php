@@ -185,7 +185,7 @@ interface BrowserDomainInterface
 
 
 	/**
-	 * Grant specific permissions to the given origin and reject all others.
+	 * Grant specific permissions to the given origin and reject all others. Deprecated. Use setPermission instead.
 	 *
 	 * @param ContextInterface $ctx
 	 * @param GrantPermissionsRequest $request

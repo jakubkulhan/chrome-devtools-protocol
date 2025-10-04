@@ -3753,8 +3753,9 @@
                 },
                 {
                     "name": "grantPermissions",
-                    "description": "Grant specific permissions to the given origin and reject all others.",
+                    "description": "Grant specific permissions to the given origin and reject all others. Deprecated. Use setPermission instead.",
                     "experimental": true,
+                    "deprecated": true,
                     "parameters": [
                         {
                             "name": "permissions",
