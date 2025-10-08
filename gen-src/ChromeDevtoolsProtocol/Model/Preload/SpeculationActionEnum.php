@@ -13,4 +13,5 @@ final class SpeculationActionEnum
 {
 	public const PREFETCH = 'Prefetch';
 	public const PRERENDER = 'Prerender';
+	public const PRERENDER_UNTIL_SCRIPT = 'PrerenderUntilScript';
 }

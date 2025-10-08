@@ -240,7 +240,7 @@ interface BrowserDomainInterface
 
 
 	/**
-	 * Set permission settings for given requesting and embedding origins.
+	 * Set permission settings for given embedding and embedded origins.
 	 *
 	 * @param ContextInterface $ctx
 	 * @param SetPermissionRequest $request

@@ -12,7 +12,7 @@ namespace ChromeDevtoolsProtocol\Model\Network;
 final class SetBlockedURLsRequest implements \JsonSerializable
 {
 	/**
-	 * URL patterns to block. Patterns use the URLPattern constructor string syntax (https://urlpattern.spec.whatwg.org/). Example: `*://*:* /*.css`.
+	 * URL patterns to block. Patterns use the URLPattern constructor string syntax (https://urlpattern.spec.whatwg.org/) and must be absolute. Example: `*://*:* /*.css`.
 	 *
 	 * @var string[]|null
 	 */

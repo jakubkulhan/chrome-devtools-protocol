@@ -3870,7 +3870,7 @@
                 },
                 {
                     "name": "setPermission",
-                    "description": "Set permission settings for given requesting and embedding origins.",
+                    "description": "Set permission settings for given embedding and embedded origins.",
                     "experimental": true,
                     "parameters": [
                         {
@@ -3885,13 +3885,13 @@
                         },
                         {
                             "name": "origin",
-                            "description": "Requesting origin the permission applies to, all origins if not specified.",
+                            "description": "Embedding origin the permission applies to, all origins if not specified.",
                             "optional": true,
                             "type": "string"
                         },
                         {
-                            "name": "embeddingOrigin",
-                            "description": "Embedding origin the permission applies to. It is ignored unless the requesting origin is present and valid. If the requesting origin is provided but the embedding origin isn't, the requesting origin is used as the embedding origin.",
+                            "name": "embeddedOrigin",
+                            "description": "Embedded origin the permission applies to. It is ignored unless the embedding origin is present and valid. If the embedding origin is provided but the embedded origin isn't, the embedding origin is used as the embedded origin.",
                             "optional": true,
                             "type": "string"
                         },
@@ -18417,7 +18417,7 @@
                     "properties": [
                         {
                             "name": "urlPattern",
-                            "description": "Only matching requests will be affected by these conditions. Patterns use the URLPattern constructor string syntax (https://urlpattern.spec.whatwg.org/). If the pattern is empty, all requests are matched (including p2p connections).",
+                            "description": "Only matching requests will be affected by these conditions. Patterns use the URLPattern constructor string syntax (https://urlpattern.spec.whatwg.org/) and must be absolute. If the pattern is empty, all requests are matched (including p2p connections).",
                             "type": "string"
                         },
                         {
@@ -19482,7 +19482,7 @@
                     "parameters": [
                         {
                             "name": "urlPatterns",
-                            "description": "URL patterns to block. Patterns use the URLPattern constructor string syntax (https://urlpattern.spec.whatwg.org/). Example: `*://*:*/*.css`.",
+                            "description": "URL patterns to block. Patterns use the URLPattern constructor string syntax (https://urlpattern.spec.whatwg.org/) and must be absolute. Example: `*://*:*/*.css`.",
                             "optional": true,
                             "type": "array",
                             "items": {
@@ -25914,7 +25914,8 @@
                     "type": "string",
                     "enum": [
                         "Prefetch",
-                        "Prerender"
+                        "Prerender",
+                        "PrerenderUntilScript"
                     ]
                 },
                 {

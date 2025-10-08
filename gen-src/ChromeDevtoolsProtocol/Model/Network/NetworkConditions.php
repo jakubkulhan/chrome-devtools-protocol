@@ -12,7 +12,7 @@ namespace ChromeDevtoolsProtocol\Model\Network;
 final class NetworkConditions implements \JsonSerializable
 {
 	/**
-	 * Only matching requests will be affected by these conditions. Patterns use the URLPattern constructor string syntax (https://urlpattern.spec.whatwg.org/). If the pattern is empty, all requests are matched (including p2p connections).
+	 * Only matching requests will be affected by these conditions. Patterns use the URLPattern constructor string syntax (https://urlpattern.spec.whatwg.org/) and must be absolute. If the pattern is empty, all requests are matched (including p2p connections).
 	 *
 	 * @var string
 	 */
