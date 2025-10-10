@@ -12,9 +12,9 @@ namespace ChromeDevtoolsProtocol\Model\Network;
 final class SetBlockedURLsRequest implements \JsonSerializable
 {
 	/**
-	 * URL patterns to block. Patterns use the URLPattern constructor string syntax (https://urlpattern.spec.whatwg.org/) and must be absolute. Example: `*://*:* /*.css`.
+	 * Patterns to match in the order in which they are given. These patterns also take precedence over any wildcard patterns defined in `urls`.
 	 *
-	 * @var string[]|null
+	 * @var BlockPattern[]|null
 	 */
 	public $urlPatterns;
 
@@ -36,7 +36,7 @@ final class SetBlockedURLsRequest implements \JsonSerializable
 		if (isset($data->urlPatterns)) {
 			$instance->urlPatterns = [];
 			foreach ($data->urlPatterns as $item) {
-				$instance->urlPatterns[] = (string)$item;
+				$instance->urlPatterns[] = BlockPattern::fromJson($item);
 			}
 		}
 		if (isset($data->urls)) {
@@ -55,7 +55,7 @@ final class SetBlockedURLsRequest implements \JsonSerializable
 		if ($this->urlPatterns !== null) {
 			$data->urlPatterns = [];
 			foreach ($this->urlPatterns as $item) {
-				$data->urlPatterns[] = $item;
+				$data->urlPatterns[] = $item->jsonSerialize();
 			}
 		}
 		if ($this->urls !== null) {

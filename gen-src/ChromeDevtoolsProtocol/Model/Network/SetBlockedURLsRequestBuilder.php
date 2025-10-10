@@ -26,7 +26,7 @@ final class SetBlockedURLsRequestBuilder
 
 
 	/**
-	 * @param string[]|null $urlPatterns
+	 * @param BlockPattern[]|null $urlPatterns
 	 *
 	 * @return self
 	 */
