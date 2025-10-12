@@ -17729,6 +17729,7 @@
                                 "preload",
                                 "SignedExchange",
                                 "preflight",
+                                "FedCM",
                                 "other"
                             ]
                         },
