@@ -6,6 +6,7 @@ use ChromeDevtoolsProtocol\ContextInterface;
 use ChromeDevtoolsProtocol\Model\Inspector\DetachedEvent;
 use ChromeDevtoolsProtocol\Model\Inspector\TargetCrashedEvent;
 use ChromeDevtoolsProtocol\Model\Inspector\TargetReloadedAfterCrashEvent;
+use ChromeDevtoolsProtocol\Model\Inspector\WorkerScriptLoadedEvent;
 use ChromeDevtoolsProtocol\SubscriptionInterface;
 
 /**
@@ -109,4 +110,28 @@ interface InspectorDomainInterface
 	 * @return TargetReloadedAfterCrashEvent
 	 */
 	public function awaitTargetReloadedAfterCrash(ContextInterface $ctx): TargetReloadedAfterCrashEvent;
+
+
+	/**
+	 * Fired on worker targets when main worker script and any imported scripts have been evaluated.
+	 *
+	 * Listener will be called whenever event Inspector.workerScriptLoaded is fired.
+	 *
+	 * @param callable $listener
+	 *
+	 * @return SubscriptionInterface
+	 */
+	public function addWorkerScriptLoadedListener(callable $listener): SubscriptionInterface;
+
+
+	/**
+	 * Fired on worker targets when main worker script and any imported scripts have been evaluated.
+	 *
+	 * Method will block until first Inspector.workerScriptLoaded event is fired.
+	 *
+	 * @param ContextInterface $ctx
+	 *
+	 * @return WorkerScriptLoadedEvent
+	 */
+	public function awaitWorkerScriptLoaded(ContextInterface $ctx): WorkerScriptLoadedEvent;
 }

@@ -7,6 +7,7 @@ use ChromeDevtoolsProtocol\InternalClientInterface;
 use ChromeDevtoolsProtocol\Model\Inspector\DetachedEvent;
 use ChromeDevtoolsProtocol\Model\Inspector\TargetCrashedEvent;
 use ChromeDevtoolsProtocol\Model\Inspector\TargetReloadedAfterCrashEvent;
+use ChromeDevtoolsProtocol\Model\Inspector\WorkerScriptLoadedEvent;
 use ChromeDevtoolsProtocol\SubscriptionInterface;
 
 class InspectorDomain implements InspectorDomainInterface
@@ -74,5 +75,19 @@ class InspectorDomain implements InspectorDomainInterface
 	public function awaitTargetReloadedAfterCrash(ContextInterface $ctx): TargetReloadedAfterCrashEvent
 	{
 		return TargetReloadedAfterCrashEvent::fromJson($this->internalClient->awaitEvent($ctx, 'Inspector.targetReloadedAfterCrash'));
+	}
+
+
+	public function addWorkerScriptLoadedListener(callable $listener): SubscriptionInterface
+	{
+		return $this->internalClient->addListener('Inspector.workerScriptLoaded', function ($event) use ($listener) {
+			return $listener(WorkerScriptLoadedEvent::fromJson($event));
+		});
+	}
+
+
+	public function awaitWorkerScriptLoaded(ContextInterface $ctx): WorkerScriptLoadedEvent
+	{
+		return WorkerScriptLoadedEvent::fromJson($this->internalClient->awaitEvent($ctx, 'Inspector.workerScriptLoaded'));
 	}
 }
