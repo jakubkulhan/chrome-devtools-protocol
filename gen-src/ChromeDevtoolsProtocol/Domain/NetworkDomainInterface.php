@@ -77,10 +77,6 @@ use ChromeDevtoolsProtocol\Model\Network\SetUserAgentOverrideRequest;
 use ChromeDevtoolsProtocol\Model\Network\SignedExchangeReceivedEvent;
 use ChromeDevtoolsProtocol\Model\Network\StreamResourceContentRequest;
 use ChromeDevtoolsProtocol\Model\Network\StreamResourceContentResponse;
-use ChromeDevtoolsProtocol\Model\Network\SubresourceWebBundleInnerResponseErrorEvent;
-use ChromeDevtoolsProtocol\Model\Network\SubresourceWebBundleInnerResponseParsedEvent;
-use ChromeDevtoolsProtocol\Model\Network\SubresourceWebBundleMetadataErrorEvent;
-use ChromeDevtoolsProtocol\Model\Network\SubresourceWebBundleMetadataReceivedEvent;
 use ChromeDevtoolsProtocol\Model\Network\TakeResponseBodyForInterceptionAsStreamRequest;
 use ChromeDevtoolsProtocol\Model\Network\TakeResponseBodyForInterceptionAsStreamResponse;
 use ChromeDevtoolsProtocol\Model\Network\TrustTokenOperationDoneEvent;
@@ -1246,102 +1242,6 @@ interface NetworkDomainInterface
 	 * @return SignedExchangeReceivedEvent
 	 */
 	public function awaitSignedExchangeReceived(ContextInterface $ctx): SignedExchangeReceivedEvent;
-
-
-	/**
-	 * Fired when request for resources within a .wbn file failed.
-	 *
-	 * Listener will be called whenever event Network.subresourceWebBundleInnerResponseError is fired.
-	 *
-	 * @param callable $listener
-	 *
-	 * @return SubscriptionInterface
-	 */
-	public function addSubresourceWebBundleInnerResponseErrorListener(callable $listener): SubscriptionInterface;
-
-
-	/**
-	 * Fired when request for resources within a .wbn file failed.
-	 *
-	 * Method will block until first Network.subresourceWebBundleInnerResponseError event is fired.
-	 *
-	 * @param ContextInterface $ctx
-	 *
-	 * @return SubresourceWebBundleInnerResponseErrorEvent
-	 */
-	public function awaitSubresourceWebBundleInnerResponseError(ContextInterface $ctx): SubresourceWebBundleInnerResponseErrorEvent;
-
-
-	/**
-	 * Fired when handling requests for resources within a .wbn file. Note: this will only be fired for resources that are requested by the webpage.
-	 *
-	 * Listener will be called whenever event Network.subresourceWebBundleInnerResponseParsed is fired.
-	 *
-	 * @param callable $listener
-	 *
-	 * @return SubscriptionInterface
-	 */
-	public function addSubresourceWebBundleInnerResponseParsedListener(callable $listener): SubscriptionInterface;
-
-
-	/**
-	 * Fired when handling requests for resources within a .wbn file. Note: this will only be fired for resources that are requested by the webpage.
-	 *
-	 * Method will block until first Network.subresourceWebBundleInnerResponseParsed event is fired.
-	 *
-	 * @param ContextInterface $ctx
-	 *
-	 * @return SubresourceWebBundleInnerResponseParsedEvent
-	 */
-	public function awaitSubresourceWebBundleInnerResponseParsed(ContextInterface $ctx): SubresourceWebBundleInnerResponseParsedEvent;
-
-
-	/**
-	 * Fired once when parsing the .wbn file has failed.
-	 *
-	 * Listener will be called whenever event Network.subresourceWebBundleMetadataError is fired.
-	 *
-	 * @param callable $listener
-	 *
-	 * @return SubscriptionInterface
-	 */
-	public function addSubresourceWebBundleMetadataErrorListener(callable $listener): SubscriptionInterface;
-
-
-	/**
-	 * Fired once when parsing the .wbn file has failed.
-	 *
-	 * Method will block until first Network.subresourceWebBundleMetadataError event is fired.
-	 *
-	 * @param ContextInterface $ctx
-	 *
-	 * @return SubresourceWebBundleMetadataErrorEvent
-	 */
-	public function awaitSubresourceWebBundleMetadataError(ContextInterface $ctx): SubresourceWebBundleMetadataErrorEvent;
-
-
-	/**
-	 * Fired once when parsing the .wbn file has succeeded. The event contains the information about the web bundle contents.
-	 *
-	 * Listener will be called whenever event Network.subresourceWebBundleMetadataReceived is fired.
-	 *
-	 * @param callable $listener
-	 *
-	 * @return SubscriptionInterface
-	 */
-	public function addSubresourceWebBundleMetadataReceivedListener(callable $listener): SubscriptionInterface;
-
-
-	/**
-	 * Fired once when parsing the .wbn file has succeeded. The event contains the information about the web bundle contents.
-	 *
-	 * Method will block until first Network.subresourceWebBundleMetadataReceived event is fired.
-	 *
-	 * @param ContextInterface $ctx
-	 *
-	 * @return SubresourceWebBundleMetadataReceivedEvent
-	 */
-	public function awaitSubresourceWebBundleMetadataReceived(ContextInterface $ctx): SubresourceWebBundleMetadataReceivedEvent;
 
 
 	/**
