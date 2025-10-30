@@ -53,13 +53,6 @@ final class GPUInfo implements \JsonSerializable
 	 */
 	public $videoEncoding;
 
-	/**
-	 * Supported accelerated image decoding capabilities.
-	 *
-	 * @var ImageDecodeAcceleratorCapability[]
-	 */
-	public $imageDecoding;
-
 
 	/**
 	 * @param object $data
@@ -98,12 +91,6 @@ final class GPUInfo implements \JsonSerializable
 				$instance->videoEncoding[] = VideoEncodeAcceleratorCapability::fromJson($item);
 			}
 		}
-		if (isset($data->imageDecoding)) {
-			$instance->imageDecoding = [];
-			foreach ($data->imageDecoding as $item) {
-				$instance->imageDecoding[] = ImageDecodeAcceleratorCapability::fromJson($item);
-			}
-		}
 		return $instance;
 	}
 
@@ -139,12 +126,6 @@ final class GPUInfo implements \JsonSerializable
 			$data->videoEncoding = [];
 			foreach ($this->videoEncoding as $item) {
 				$data->videoEncoding[] = $item->jsonSerialize();
-			}
-		}
-		if ($this->imageDecoding !== null) {
-			$data->imageDecoding = [];
-			foreach ($this->imageDecoding as $item) {
-				$data->imageDecoding[] = $item->jsonSerialize();
 			}
 		}
 		return $data;
