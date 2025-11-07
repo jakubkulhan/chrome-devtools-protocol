@@ -50,4 +50,6 @@ final class PseudoTypeEnum
 	public const DETAILS_CONTENT = 'details-content';
 	public const PICKER = 'picker';
 	public const PERMISSION_ICON = 'permission-icon';
+	public const OVERSCROLL_AREA_PARENT = 'overscroll-area-parent';
+	public const OVERSCROLL_CLIENT_AREA = 'overscroll-client-area';
 }

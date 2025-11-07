@@ -33,9 +33,9 @@ final class AnimationEffect implements \JsonSerializable
 	public $iterationStart;
 
 	/**
-	 * `AnimationEffect`'s iterations.
+	 * `AnimationEffect`'s iterations. Omitted if the value is infinite.
 	 *
-	 * @var int|float
+	 * @var int|float|null
 	 */
 	public $iterations;
 
