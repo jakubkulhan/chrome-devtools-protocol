@@ -12,6 +12,7 @@ use ChromeDevtoolsProtocol\Exception\BuilderException;
 final class OpenDevToolsRequestBuilder
 {
 	private $targetId;
+	private $panelId;
 
 
 	/**
@@ -24,6 +25,7 @@ final class OpenDevToolsRequestBuilder
 			throw new BuilderException('Property [targetId] is required.');
 		}
 		$instance->targetId = $this->targetId;
+		$instance->panelId = $this->panelId;
 		return $instance;
 	}
 
@@ -36,6 +38,18 @@ final class OpenDevToolsRequestBuilder
 	public function setTargetId($targetId): self
 	{
 		$this->targetId = $targetId;
+		return $this;
+	}
+
+
+	/**
+	 * @param string|null $panelId
+	 *
+	 * @return self
+	 */
+	public function setPanelId($panelId): self
+	{
+		$this->panelId = $panelId;
 		return $this;
 	}
 }

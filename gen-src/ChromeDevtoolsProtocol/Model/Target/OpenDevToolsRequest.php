@@ -18,6 +18,13 @@ final class OpenDevToolsRequest implements \JsonSerializable
 	 */
 	public $targetId;
 
+	/**
+	 * The id of the panel we want DevTools to open initially. Currently supported panels are elements, console, network, sources and resources.
+	 *
+	 * @var string|null
+	 */
+	public $panelId;
+
 
 	/**
 	 * @param object $data
@@ -29,6 +36,9 @@ final class OpenDevToolsRequest implements \JsonSerializable
 		if (isset($data->targetId)) {
 			$instance->targetId = (string)$data->targetId;
 		}
+		if (isset($data->panelId)) {
+			$instance->panelId = (string)$data->panelId;
+		}
 		return $instance;
 	}
 
@@ -38,6 +48,9 @@ final class OpenDevToolsRequest implements \JsonSerializable
 		$data = new \stdClass();
 		if ($this->targetId !== null) {
 			$data->targetId = $this->targetId;
+		}
+		if ($this->panelId !== null) {
+			$data->panelId = $this->panelId;
 		}
 		return $data;
 	}

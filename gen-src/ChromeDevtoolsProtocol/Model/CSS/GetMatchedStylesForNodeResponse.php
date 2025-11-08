@@ -96,6 +96,13 @@ final class GetMatchedStylesForNodeResponse implements \JsonSerializable
 	public $cssFontPaletteValuesRule;
 
 	/**
+	 * A list of simple @rules matching this node or its pseudo-elements.
+	 *
+	 * @var CSSAtRule[]|null
+	 */
+	public $cssAtRules;
+
+	/**
 	 * Id of the first parent element that does not have display: contents.
 	 *
 	 * @var int
@@ -177,6 +184,12 @@ final class GetMatchedStylesForNodeResponse implements \JsonSerializable
 		if (isset($data->cssFontPaletteValuesRule)) {
 			$instance->cssFontPaletteValuesRule = CSSFontPaletteValuesRule::fromJson($data->cssFontPaletteValuesRule);
 		}
+		if (isset($data->cssAtRules)) {
+			$instance->cssAtRules = [];
+			foreach ($data->cssAtRules as $item) {
+				$instance->cssAtRules[] = CSSAtRule::fromJson($item);
+			}
+		}
 		if (isset($data->parentLayoutNodeId)) {
 			$instance->parentLayoutNodeId = (int)$data->parentLayoutNodeId;
 		}
@@ -252,6 +265,12 @@ final class GetMatchedStylesForNodeResponse implements \JsonSerializable
 		}
 		if ($this->cssFontPaletteValuesRule !== null) {
 			$data->cssFontPaletteValuesRule = $this->cssFontPaletteValuesRule->jsonSerialize();
+		}
+		if ($this->cssAtRules !== null) {
+			$data->cssAtRules = [];
+			foreach ($this->cssAtRules as $item) {
+				$data->cssAtRules[] = $item->jsonSerialize();
+			}
 		}
 		if ($this->parentLayoutNodeId !== null) {
 			$data->parentLayoutNodeId = $this->parentLayoutNodeId;
