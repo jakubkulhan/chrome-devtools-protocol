@@ -88,7 +88,6 @@ final class PermissionsPolicyFeatureEnum
 	public const OTP_CREDENTIALS = 'otp-credentials';
 	public const PAYMENT = 'payment';
 	public const PICTURE_IN_PICTURE = 'picture-in-picture';
-	public const POPINS = 'popins';
 	public const PRIVATE_AGGREGATION = 'private-aggregation';
 	public const PRIVATE_STATE_TOKEN_ISSUANCE = 'private-state-token-issuance';
 	public const PRIVATE_STATE_TOKEN_REDEMPTION = 'private-state-token-redemption';
