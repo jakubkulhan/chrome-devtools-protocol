@@ -200,13 +200,6 @@ final class Response implements \JsonSerializable
 	 */
 	public $securityDetails;
 
-	/**
-	 * Indicates whether the request was sent through IP Protection proxies. If set to true, the request used the IP Protection privacy feature.
-	 *
-	 * @var bool|null
-	 */
-	public $isIpProtectionUsed;
-
 
 	/**
 	 * @param object $data
@@ -296,9 +289,6 @@ final class Response implements \JsonSerializable
 		if (isset($data->securityDetails)) {
 			$instance->securityDetails = SecurityDetails::fromJson($data->securityDetails);
 		}
-		if (isset($data->isIpProtectionUsed)) {
-			$instance->isIpProtectionUsed = (bool)$data->isIpProtectionUsed;
-		}
 		return $instance;
 	}
 
@@ -386,9 +376,6 @@ final class Response implements \JsonSerializable
 		}
 		if ($this->securityDetails !== null) {
 			$data->securityDetails = $this->securityDetails->jsonSerialize();
-		}
-		if ($this->isIpProtectionUsed !== null) {
-			$data->isIpProtectionUsed = $this->isIpProtectionUsed;
 		}
 		return $data;
 	}

@@ -32,7 +32,6 @@ use ChromeDevtoolsProtocol\Model\Network\GetCertificateRequest;
 use ChromeDevtoolsProtocol\Model\Network\GetCertificateResponse;
 use ChromeDevtoolsProtocol\Model\Network\GetCookiesRequest;
 use ChromeDevtoolsProtocol\Model\Network\GetCookiesResponse;
-use ChromeDevtoolsProtocol\Model\Network\GetIPProtectionProxyStatusResponse;
 use ChromeDevtoolsProtocol\Model\Network\GetRequestPostDataRequest;
 use ChromeDevtoolsProtocol\Model\Network\GetRequestPostDataResponse;
 use ChromeDevtoolsProtocol\Model\Network\GetResponseBodyForInterceptionRequest;
@@ -71,7 +70,6 @@ use ChromeDevtoolsProtocol\Model\Network\SetCookieRequest;
 use ChromeDevtoolsProtocol\Model\Network\SetCookieResponse;
 use ChromeDevtoolsProtocol\Model\Network\SetCookiesRequest;
 use ChromeDevtoolsProtocol\Model\Network\SetExtraHTTPHeadersRequest;
-use ChromeDevtoolsProtocol\Model\Network\SetIPProtectionProxyBypassEnabledRequest;
 use ChromeDevtoolsProtocol\Model\Network\SetRequestInterceptionRequest;
 use ChromeDevtoolsProtocol\Model\Network\SetUserAgentOverrideRequest;
 use ChromeDevtoolsProtocol\Model\Network\SignedExchangeReceivedEvent;
@@ -270,16 +268,6 @@ interface NetworkDomainInterface
 	 * @return GetCookiesResponse
 	 */
 	public function getCookies(ContextInterface $ctx, GetCookiesRequest $request): GetCookiesResponse;
-
-
-	/**
-	 * Returns enum representing if IP Proxy of requests is available or reason it is not active.
-	 *
-	 * @param ContextInterface $ctx
-	 *
-	 * @return GetIPProtectionProxyStatusResponse
-	 */
-	public function getIPProtectionProxyStatus(ContextInterface $ctx): GetIPProtectionProxyStatusResponse;
 
 
 	/**
@@ -482,20 +470,6 @@ interface NetworkDomainInterface
 	 * @return void
 	 */
 	public function setExtraHTTPHeaders(ContextInterface $ctx, SetExtraHTTPHeadersRequest $request): void;
-
-
-	/**
-	 * Sets bypass IP Protection Proxy boolean.
-	 *
-	 * @param ContextInterface $ctx
-	 * @param SetIPProtectionProxyBypassEnabledRequest $request
-	 *
-	 * @return void
-	 */
-	public function setIPProtectionProxyBypassEnabled(
-		ContextInterface $ctx,
-		SetIPProtectionProxyBypassEnabledRequest $request
-	): void;
 
 
 	/**

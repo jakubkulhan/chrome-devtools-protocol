@@ -33,7 +33,6 @@ use ChromeDevtoolsProtocol\Model\Network\GetCertificateRequest;
 use ChromeDevtoolsProtocol\Model\Network\GetCertificateResponse;
 use ChromeDevtoolsProtocol\Model\Network\GetCookiesRequest;
 use ChromeDevtoolsProtocol\Model\Network\GetCookiesResponse;
-use ChromeDevtoolsProtocol\Model\Network\GetIPProtectionProxyStatusResponse;
 use ChromeDevtoolsProtocol\Model\Network\GetRequestPostDataRequest;
 use ChromeDevtoolsProtocol\Model\Network\GetRequestPostDataResponse;
 use ChromeDevtoolsProtocol\Model\Network\GetResponseBodyForInterceptionRequest;
@@ -72,7 +71,6 @@ use ChromeDevtoolsProtocol\Model\Network\SetCookieRequest;
 use ChromeDevtoolsProtocol\Model\Network\SetCookieResponse;
 use ChromeDevtoolsProtocol\Model\Network\SetCookiesRequest;
 use ChromeDevtoolsProtocol\Model\Network\SetExtraHTTPHeadersRequest;
-use ChromeDevtoolsProtocol\Model\Network\SetIPProtectionProxyBypassEnabledRequest;
 use ChromeDevtoolsProtocol\Model\Network\SetRequestInterceptionRequest;
 use ChromeDevtoolsProtocol\Model\Network\SetUserAgentOverrideRequest;
 use ChromeDevtoolsProtocol\Model\Network\SignedExchangeReceivedEvent;
@@ -218,14 +216,6 @@ class NetworkDomain implements NetworkDomainInterface
 	}
 
 
-	public function getIPProtectionProxyStatus(ContextInterface $ctx): GetIPProtectionProxyStatusResponse
-	{
-		$request = new \stdClass();
-		$response = $this->internalClient->executeCommand($ctx, 'Network.getIPProtectionProxyStatus', $request);
-		return GetIPProtectionProxyStatusResponse::fromJson($response);
-	}
-
-
 	public function getRequestPostData(
 		ContextInterface $ctx,
 		GetRequestPostDataRequest $request
@@ -342,14 +332,6 @@ class NetworkDomain implements NetworkDomainInterface
 	public function setExtraHTTPHeaders(ContextInterface $ctx, SetExtraHTTPHeadersRequest $request): void
 	{
 		$this->internalClient->executeCommand($ctx, 'Network.setExtraHTTPHeaders', $request);
-	}
-
-
-	public function setIPProtectionProxyBypassEnabled(
-		ContextInterface $ctx,
-		SetIPProtectionProxyBypassEnabledRequest $request
-	): void {
-		$this->internalClient->executeCommand($ctx, 'Network.setIPProtectionProxyBypassEnabled', $request);
 	}
 
 
