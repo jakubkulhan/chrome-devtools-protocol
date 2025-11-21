@@ -20,6 +20,8 @@ use ChromeDevtoolsProtocol\Model\Network\DirectUDPSocketChunkReceivedEvent;
 use ChromeDevtoolsProtocol\Model\Network\DirectUDPSocketChunkSentEvent;
 use ChromeDevtoolsProtocol\Model\Network\DirectUDPSocketClosedEvent;
 use ChromeDevtoolsProtocol\Model\Network\DirectUDPSocketCreatedEvent;
+use ChromeDevtoolsProtocol\Model\Network\DirectUDPSocketJoinedMulticastGroupEvent;
+use ChromeDevtoolsProtocol\Model\Network\DirectUDPSocketLeftMulticastGroupEvent;
 use ChromeDevtoolsProtocol\Model\Network\DirectUDPSocketOpenedEvent;
 use ChromeDevtoolsProtocol\Model\Network\EmulateNetworkConditionsByRuleRequest;
 use ChromeDevtoolsProtocol\Model\Network\EmulateNetworkConditionsByRuleResponse;
@@ -808,6 +810,54 @@ interface NetworkDomainInterface
 	 * @return DirectUDPSocketCreatedEvent
 	 */
 	public function awaitDirectUDPSocketCreated(ContextInterface $ctx): DirectUDPSocketCreatedEvent;
+
+
+	/**
+	 * Subscribe to Network.directUDPSocketJoinedMulticastGroup event.
+	 *
+	 * Listener will be called whenever event Network.directUDPSocketJoinedMulticastGroup is fired.
+	 *
+	 * @param callable $listener
+	 *
+	 * @return SubscriptionInterface
+	 */
+	public function addDirectUDPSocketJoinedMulticastGroupListener(callable $listener): SubscriptionInterface;
+
+
+	/**
+	 * Wait for Network.directUDPSocketJoinedMulticastGroup event.
+	 *
+	 * Method will block until first Network.directUDPSocketJoinedMulticastGroup event is fired.
+	 *
+	 * @param ContextInterface $ctx
+	 *
+	 * @return DirectUDPSocketJoinedMulticastGroupEvent
+	 */
+	public function awaitDirectUDPSocketJoinedMulticastGroup(ContextInterface $ctx): DirectUDPSocketJoinedMulticastGroupEvent;
+
+
+	/**
+	 * Subscribe to Network.directUDPSocketLeftMulticastGroup event.
+	 *
+	 * Listener will be called whenever event Network.directUDPSocketLeftMulticastGroup is fired.
+	 *
+	 * @param callable $listener
+	 *
+	 * @return SubscriptionInterface
+	 */
+	public function addDirectUDPSocketLeftMulticastGroupListener(callable $listener): SubscriptionInterface;
+
+
+	/**
+	 * Wait for Network.directUDPSocketLeftMulticastGroup event.
+	 *
+	 * Method will block until first Network.directUDPSocketLeftMulticastGroup event is fired.
+	 *
+	 * @param ContextInterface $ctx
+	 *
+	 * @return DirectUDPSocketLeftMulticastGroupEvent
+	 */
+	public function awaitDirectUDPSocketLeftMulticastGroup(ContextInterface $ctx): DirectUDPSocketLeftMulticastGroupEvent;
 
 
 	/**

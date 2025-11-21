@@ -48,6 +48,19 @@ final class DirectUDPSocketOptions implements \JsonSerializable
 	 */
 	public $receiveBufferSize;
 
+	/** @var bool|null */
+	public $multicastLoopback;
+
+	/**
+	 * Unsigned int 8.
+	 *
+	 * @var int|null
+	 */
+	public $multicastTimeToLive;
+
+	/** @var bool|null */
+	public $multicastAllowAddressSharing;
+
 
 	/**
 	 * @param object $data
@@ -77,6 +90,15 @@ final class DirectUDPSocketOptions implements \JsonSerializable
 		if (isset($data->receiveBufferSize)) {
 			$instance->receiveBufferSize = $data->receiveBufferSize;
 		}
+		if (isset($data->multicastLoopback)) {
+			$instance->multicastLoopback = (bool)$data->multicastLoopback;
+		}
+		if (isset($data->multicastTimeToLive)) {
+			$instance->multicastTimeToLive = (int)$data->multicastTimeToLive;
+		}
+		if (isset($data->multicastAllowAddressSharing)) {
+			$instance->multicastAllowAddressSharing = (bool)$data->multicastAllowAddressSharing;
+		}
 		return $instance;
 	}
 
@@ -104,6 +126,15 @@ final class DirectUDPSocketOptions implements \JsonSerializable
 		}
 		if ($this->receiveBufferSize !== null) {
 			$data->receiveBufferSize = $this->receiveBufferSize;
+		}
+		if ($this->multicastLoopback !== null) {
+			$data->multicastLoopback = $this->multicastLoopback;
+		}
+		if ($this->multicastTimeToLive !== null) {
+			$data->multicastTimeToLive = $this->multicastTimeToLive;
+		}
+		if ($this->multicastAllowAddressSharing !== null) {
+			$data->multicastAllowAddressSharing = $this->multicastAllowAddressSharing;
 		}
 		return $data;
 	}

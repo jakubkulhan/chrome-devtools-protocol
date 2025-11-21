@@ -21,6 +21,8 @@ use ChromeDevtoolsProtocol\Model\Network\DirectUDPSocketChunkReceivedEvent;
 use ChromeDevtoolsProtocol\Model\Network\DirectUDPSocketChunkSentEvent;
 use ChromeDevtoolsProtocol\Model\Network\DirectUDPSocketClosedEvent;
 use ChromeDevtoolsProtocol\Model\Network\DirectUDPSocketCreatedEvent;
+use ChromeDevtoolsProtocol\Model\Network\DirectUDPSocketJoinedMulticastGroupEvent;
+use ChromeDevtoolsProtocol\Model\Network\DirectUDPSocketLeftMulticastGroupEvent;
 use ChromeDevtoolsProtocol\Model\Network\DirectUDPSocketOpenedEvent;
 use ChromeDevtoolsProtocol\Model\Network\EmulateNetworkConditionsByRuleRequest;
 use ChromeDevtoolsProtocol\Model\Network\EmulateNetworkConditionsByRuleResponse;
@@ -530,6 +532,34 @@ class NetworkDomain implements NetworkDomainInterface
 	public function awaitDirectUDPSocketCreated(ContextInterface $ctx): DirectUDPSocketCreatedEvent
 	{
 		return DirectUDPSocketCreatedEvent::fromJson($this->internalClient->awaitEvent($ctx, 'Network.directUDPSocketCreated'));
+	}
+
+
+	public function addDirectUDPSocketJoinedMulticastGroupListener(callable $listener): SubscriptionInterface
+	{
+		return $this->internalClient->addListener('Network.directUDPSocketJoinedMulticastGroup', function ($event) use ($listener) {
+			return $listener(DirectUDPSocketJoinedMulticastGroupEvent::fromJson($event));
+		});
+	}
+
+
+	public function awaitDirectUDPSocketJoinedMulticastGroup(ContextInterface $ctx): DirectUDPSocketJoinedMulticastGroupEvent
+	{
+		return DirectUDPSocketJoinedMulticastGroupEvent::fromJson($this->internalClient->awaitEvent($ctx, 'Network.directUDPSocketJoinedMulticastGroup'));
+	}
+
+
+	public function addDirectUDPSocketLeftMulticastGroupListener(callable $listener): SubscriptionInterface
+	{
+		return $this->internalClient->addListener('Network.directUDPSocketLeftMulticastGroup', function ($event) use ($listener) {
+			return $listener(DirectUDPSocketLeftMulticastGroupEvent::fromJson($event));
+		});
+	}
+
+
+	public function awaitDirectUDPSocketLeftMulticastGroup(ContextInterface $ctx): DirectUDPSocketLeftMulticastGroupEvent
+	{
+		return DirectUDPSocketLeftMulticastGroupEvent::fromJson($this->internalClient->awaitEvent($ctx, 'Network.directUDPSocketLeftMulticastGroup'));
 	}
 
 
