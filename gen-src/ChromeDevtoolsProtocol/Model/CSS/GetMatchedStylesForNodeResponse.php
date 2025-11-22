@@ -89,13 +89,6 @@ final class GetMatchedStylesForNodeResponse implements \JsonSerializable
 	public $cssPropertyRegistrations;
 
 	/**
-	 * A font-palette-values rule matching this node.
-	 *
-	 * @var CSSFontPaletteValuesRule|null
-	 */
-	public $cssFontPaletteValuesRule;
-
-	/**
 	 * A list of simple @rules matching this node or its pseudo-elements.
 	 *
 	 * @var CSSAtRule[]|null
@@ -181,9 +174,6 @@ final class GetMatchedStylesForNodeResponse implements \JsonSerializable
 				$instance->cssPropertyRegistrations[] = CSSPropertyRegistration::fromJson($item);
 			}
 		}
-		if (isset($data->cssFontPaletteValuesRule)) {
-			$instance->cssFontPaletteValuesRule = CSSFontPaletteValuesRule::fromJson($data->cssFontPaletteValuesRule);
-		}
 		if (isset($data->cssAtRules)) {
 			$instance->cssAtRules = [];
 			foreach ($data->cssAtRules as $item) {
@@ -262,9 +252,6 @@ final class GetMatchedStylesForNodeResponse implements \JsonSerializable
 			foreach ($this->cssPropertyRegistrations as $item) {
 				$data->cssPropertyRegistrations[] = $item->jsonSerialize();
 			}
-		}
-		if ($this->cssFontPaletteValuesRule !== null) {
-			$data->cssFontPaletteValuesRule = $this->cssFontPaletteValuesRule->jsonSerialize();
 		}
 		if ($this->cssAtRules !== null) {
 			$data->cssAtRules = [];
