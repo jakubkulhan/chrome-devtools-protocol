@@ -37,6 +37,8 @@ use ChromeDevtoolsProtocol\Model\Page\FrameSubtreeWillBeDetachedEvent;
 use ChromeDevtoolsProtocol\Model\Page\GenerateTestReportRequest;
 use ChromeDevtoolsProtocol\Model\Page\GetAdScriptAncestryRequest;
 use ChromeDevtoolsProtocol\Model\Page\GetAdScriptAncestryResponse;
+use ChromeDevtoolsProtocol\Model\Page\GetAnnotatedPageContentRequest;
+use ChromeDevtoolsProtocol\Model\Page\GetAnnotatedPageContentResponse;
 use ChromeDevtoolsProtocol\Model\Page\GetAppIdResponse;
 use ChromeDevtoolsProtocol\Model\Page\GetAppManifestRequest;
 use ChromeDevtoolsProtocol\Model\Page\GetAppManifestResponse;
@@ -303,6 +305,20 @@ interface PageDomainInterface
 		ContextInterface $ctx,
 		GetAdScriptAncestryRequest $request
 	): GetAdScriptAncestryResponse;
+
+
+	/**
+	 * Get the annotated page content for the main frame. This is an experimental command that is subject to change.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param GetAnnotatedPageContentRequest $request
+	 *
+	 * @return GetAnnotatedPageContentResponse
+	 */
+	public function getAnnotatedPageContent(
+		ContextInterface $ctx,
+		GetAnnotatedPageContentRequest $request
+	): GetAnnotatedPageContentResponse;
 
 
 	/**

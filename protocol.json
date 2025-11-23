@@ -24015,6 +24015,26 @@
                     ]
                 },
                 {
+                    "name": "getAnnotatedPageContent",
+                    "description": "Get the annotated page content for the main frame. This is an experimental command that is subject to change.",
+                    "experimental": true,
+                    "parameters": [
+                        {
+                            "name": "includeActionableInformation",
+                            "description": "Whether to include actionable information. Defaults to true.",
+                            "optional": true,
+                            "type": "boolean"
+                        }
+                    ],
+                    "returns": [
+                        {
+                            "name": "content",
+                            "description": "The annotated page content as a base64 encoded protobuf. The format is defined by the `AnnotatedPageContent` message in components/optimization_guide/proto/features/common_quality_data.proto (Encoded as a base64 string when passed over JSON)",
+                            "type": "string"
+                        }
+                    ]
+                },
+                {
                     "name": "getAppId",
                     "description": "Returns the unique (PWA) app id. Only returns values if the feature flag 'WebAppEnableManifestId' is enabled",
                     "experimental": true,
