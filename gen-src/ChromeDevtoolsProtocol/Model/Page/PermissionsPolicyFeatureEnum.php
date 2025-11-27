@@ -16,6 +16,7 @@ final class PermissionsPolicyFeatureEnum
 	public const AMBIENT_LIGHT_SENSOR = 'ambient-light-sensor';
 	public const ARIA_NOTIFY = 'aria-notify';
 	public const ATTRIBUTION_REPORTING = 'attribution-reporting';
+	public const AUTOFILL = 'autofill';
 	public const AUTOPLAY = 'autoplay';
 	public const BLUETOOTH = 'bluetooth';
 	public const BROWSING_TOPICS = 'browsing-topics';
@@ -81,6 +82,7 @@ final class PermissionsPolicyFeatureEnum
 	public const LOCAL_FONTS = 'local-fonts';
 	public const LOCAL_NETWORK_ACCESS = 'local-network-access';
 	public const MAGNETOMETER = 'magnetometer';
+	public const MANUAL_TEXT = 'manual-text';
 	public const MEDIA_PLAYBACK_WHILE_NOT_VISIBLE = 'media-playback-while-not-visible';
 	public const MICROPHONE = 'microphone';
 	public const MIDI = 'midi';
@@ -98,7 +100,6 @@ final class PermissionsPolicyFeatureEnum
 	public const RUN_AD_AUCTION = 'run-ad-auction';
 	public const SCREEN_WAKE_LOCK = 'screen-wake-lock';
 	public const SERIAL = 'serial';
-	public const SHARED_AUTOFILL = 'shared-autofill';
 	public const SHARED_STORAGE = 'shared-storage';
 	public const SHARED_STORAGE_SELECT_URL = 'shared-storage-select-url';
 	public const SMART_CARD = 'smart-card';
