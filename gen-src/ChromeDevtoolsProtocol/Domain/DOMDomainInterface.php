@@ -3,6 +3,7 @@
 namespace ChromeDevtoolsProtocol\Domain;
 
 use ChromeDevtoolsProtocol\ContextInterface;
+use ChromeDevtoolsProtocol\Model\DOM\AdoptedStyleSheetsModifiedEvent;
 use ChromeDevtoolsProtocol\Model\DOM\AffectedByStartingStylesFlagUpdatedEvent;
 use ChromeDevtoolsProtocol\Model\DOM\AttributeModifiedEvent;
 use ChromeDevtoolsProtocol\Model\DOM\AttributeRemovedEvent;
@@ -712,6 +713,30 @@ interface DOMDomainInterface
 	 * @return void
 	 */
 	public function undo(ContextInterface $ctx): void;
+
+
+	/**
+	 * Fired when `Element`'s adoptedStyleSheets are modified.
+	 *
+	 * Listener will be called whenever event DOM.adoptedStyleSheetsModified is fired.
+	 *
+	 * @param callable $listener
+	 *
+	 * @return SubscriptionInterface
+	 */
+	public function addAdoptedStyleSheetsModifiedListener(callable $listener): SubscriptionInterface;
+
+
+	/**
+	 * Fired when `Element`'s adoptedStyleSheets are modified.
+	 *
+	 * Method will block until first DOM.adoptedStyleSheetsModified event is fired.
+	 *
+	 * @param ContextInterface $ctx
+	 *
+	 * @return AdoptedStyleSheetsModifiedEvent
+	 */
+	public function awaitAdoptedStyleSheetsModified(ContextInterface $ctx): AdoptedStyleSheetsModifiedEvent;
 
 
 	/**

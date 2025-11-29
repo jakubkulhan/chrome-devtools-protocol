@@ -37,4 +37,5 @@ final class InspectorIssueCodeEnum
 	public const SRI_MESSAGE_SIGNATURE_ISSUE = 'SRIMessageSignatureIssue';
 	public const UNENCODED_DIGEST_ISSUE = 'UnencodedDigestIssue';
 	public const USER_REIDENTIFICATION_ISSUE = 'UserReidentificationIssue';
+	public const PERMISSION_ELEMENT_ISSUE = 'PermissionElementIssue';
 }

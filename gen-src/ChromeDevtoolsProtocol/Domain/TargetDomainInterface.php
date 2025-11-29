@@ -20,6 +20,8 @@ use ChromeDevtoolsProtocol\Model\Target\DetachedFromTargetEvent;
 use ChromeDevtoolsProtocol\Model\Target\DisposeBrowserContextRequest;
 use ChromeDevtoolsProtocol\Model\Target\ExposeDevToolsProtocolRequest;
 use ChromeDevtoolsProtocol\Model\Target\GetBrowserContextsResponse;
+use ChromeDevtoolsProtocol\Model\Target\GetDevToolsTargetRequest;
+use ChromeDevtoolsProtocol\Model\Target\GetDevToolsTargetResponse;
 use ChromeDevtoolsProtocol\Model\Target\GetTargetInfoRequest;
 use ChromeDevtoolsProtocol\Model\Target\GetTargetInfoResponse;
 use ChromeDevtoolsProtocol\Model\Target\GetTargetsRequest;
@@ -166,6 +168,17 @@ interface TargetDomainInterface
 	 * @return GetBrowserContextsResponse
 	 */
 	public function getBrowserContexts(ContextInterface $ctx): GetBrowserContextsResponse;
+
+
+	/**
+	 * Gets the targetId of the DevTools page target opened for the given target (if any).
+	 *
+	 * @param ContextInterface $ctx
+	 * @param GetDevToolsTargetRequest $request
+	 *
+	 * @return GetDevToolsTargetResponse
+	 */
+	public function getDevToolsTarget(ContextInterface $ctx, GetDevToolsTargetRequest $request): GetDevToolsTargetResponse;
 
 
 	/**

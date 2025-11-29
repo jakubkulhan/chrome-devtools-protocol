@@ -226,6 +226,9 @@ final class Node implements \JsonSerializable
 	/** @var bool|null */
 	public $affectedByStartingStyles;
 
+	/** @var string[]|null */
+	public $adoptedStyleSheets;
+
 
 	/**
 	 * @param object $data
@@ -348,6 +351,15 @@ final class Node implements \JsonSerializable
 		if (isset($data->affectedByStartingStyles)) {
 			$instance->affectedByStartingStyles = (bool)$data->affectedByStartingStyles;
 		}
+		if (isset($data->adoptedStyleSheets)) {
+			$instance->adoptedStyleSheets = [];
+		if (isset($data->adoptedStyleSheets)) {
+			$instance->adoptedStyleSheets = [];
+			foreach ($data->adoptedStyleSheets as $item) {
+				$instance->adoptedStyleSheets[] = (string)$item;
+			}
+		}
+		}
 		return $instance;
 	}
 
@@ -468,6 +480,15 @@ final class Node implements \JsonSerializable
 		}
 		if ($this->affectedByStartingStyles !== null) {
 			$data->affectedByStartingStyles = $this->affectedByStartingStyles;
+		}
+		if ($this->adoptedStyleSheets !== null) {
+			$data->adoptedStyleSheets = [];
+		if ($this->adoptedStyleSheets !== null) {
+			$data->adoptedStyleSheets = [];
+			foreach ($this->adoptedStyleSheets as $item) {
+				$data->adoptedStyleSheets[] = $item;
+			}
+		}
 		}
 		return $data;
 	}
