@@ -23,4 +23,7 @@ final class GenericIssueErrorTypeEnum
 	public const FORM_INPUT_HAS_WRONG_BUT_WELL_INTENDED_AUTOCOMPLETE_VALUE_ERROR = 'FormInputHasWrongButWellIntendedAutocompleteValueError';
 	public const RESPONSE_WAS_BLOCKED_BY_O_R_B = 'ResponseWasBlockedByORB';
 	public const NAVIGATION_ENTRY_MARKED_SKIPPABLE = 'NavigationEntryMarkedSkippable';
+	public const AUTOFILL_AND_MANUAL_TEXT_POLICY_CONTROLLED_FEATURES_INFO = 'AutofillAndManualTextPolicyControlledFeaturesInfo';
+	public const AUTOFILL_POLICY_CONTROLLED_FEATURE_INFO = 'AutofillPolicyControlledFeatureInfo';
+	public const MANUAL_TEXT_POLICY_CONTROLLED_FEATURE_INFO = 'ManualTextPolicyControlledFeatureInfo';
 }
