@@ -27,7 +27,9 @@ final class PermissionTypeEnum
 	public const IDLE_DETECTION = 'idleDetection';
 	public const KEYBOARD_LOCK = 'keyboardLock';
 	public const LOCAL_FONTS = 'localFonts';
+	public const LOCAL_NETWORK = 'localNetwork';
 	public const LOCAL_NETWORK_ACCESS = 'localNetworkAccess';
+	public const LOOPBACK_NETWORK = 'loopbackNetwork';
 	public const MIDI = 'midi';
 	public const MIDI_SYSEX = 'midiSysex';
 	public const NFC = 'nfc';

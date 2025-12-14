@@ -18,6 +18,13 @@ final class GetBrowserContextsResponse implements \JsonSerializable
 	 */
 	public $browserContextIds;
 
+	/**
+	 * The id of the default browser context if available.
+	 *
+	 * @var string
+	 */
+	public $defaultBrowserContextId;
+
 
 	/**
 	 * @param object $data
@@ -35,6 +42,9 @@ final class GetBrowserContextsResponse implements \JsonSerializable
 			}
 		}
 		}
+		if (isset($data->defaultBrowserContextId)) {
+			$instance->defaultBrowserContextId = (string)$data->defaultBrowserContextId;
+		}
 		return $instance;
 	}
 
@@ -50,6 +60,9 @@ final class GetBrowserContextsResponse implements \JsonSerializable
 				$data->browserContextIds[] = $item;
 			}
 		}
+		}
+		if ($this->defaultBrowserContextId !== null) {
+			$data->defaultBrowserContextId = $this->defaultBrowserContextId;
 		}
 		return $data;
 	}
