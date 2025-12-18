@@ -7,6 +7,7 @@ use ChromeDevtoolsProtocol\InternalClientInterface;
 use ChromeDevtoolsProtocol\Model\Network\CanClearBrowserCacheResponse;
 use ChromeDevtoolsProtocol\Model\Network\CanClearBrowserCookiesResponse;
 use ChromeDevtoolsProtocol\Model\Network\CanEmulateNetworkConditionsResponse;
+use ChromeDevtoolsProtocol\Model\Network\ConfigureDurableMessagesRequest;
 use ChromeDevtoolsProtocol\Model\Network\ContinueInterceptedRequestRequest;
 use ChromeDevtoolsProtocol\Model\Network\DataReceivedEvent;
 use ChromeDevtoolsProtocol\Model\Network\DeleteCookiesRequest;
@@ -147,6 +148,12 @@ class NetworkDomain implements NetworkDomainInterface
 	{
 		$request = new \stdClass();
 		$this->internalClient->executeCommand($ctx, 'Network.clearBrowserCookies', $request);
+	}
+
+
+	public function configureDurableMessages(ContextInterface $ctx, ConfigureDurableMessagesRequest $request): void
+	{
+		$this->internalClient->executeCommand($ctx, 'Network.configureDurableMessages', $request);
 	}
 
 

@@ -6,6 +6,7 @@ use ChromeDevtoolsProtocol\ContextInterface;
 use ChromeDevtoolsProtocol\Model\Network\CanClearBrowserCacheResponse;
 use ChromeDevtoolsProtocol\Model\Network\CanClearBrowserCookiesResponse;
 use ChromeDevtoolsProtocol\Model\Network\CanEmulateNetworkConditionsResponse;
+use ChromeDevtoolsProtocol\Model\Network\ConfigureDurableMessagesRequest;
 use ChromeDevtoolsProtocol\Model\Network\ContinueInterceptedRequestRequest;
 use ChromeDevtoolsProtocol\Model\Network\DataReceivedEvent;
 use ChromeDevtoolsProtocol\Model\Network\DeleteCookiesRequest;
@@ -159,6 +160,17 @@ interface NetworkDomainInterface
 	 * @return void
 	 */
 	public function clearBrowserCookies(ContextInterface $ctx): void;
+
+
+	/**
+	 * Configures storing response bodies outside of renderer, so that these survive a cross-process navigation. If maxTotalBufferSize is not set, durable messages are disabled.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param ConfigureDurableMessagesRequest $request
+	 *
+	 * @return void
+	 */
+	public function configureDurableMessages(ContextInterface $ctx, ConfigureDurableMessagesRequest $request): void;
 
 
 	/**
