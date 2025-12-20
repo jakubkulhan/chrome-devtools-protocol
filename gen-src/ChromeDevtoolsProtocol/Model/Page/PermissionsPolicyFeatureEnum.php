@@ -80,7 +80,9 @@ final class PermissionsPolicyFeatureEnum
 	public const LANGUAGE_DETECTOR = 'language-detector';
 	public const LANGUAGE_MODEL = 'language-model';
 	public const LOCAL_FONTS = 'local-fonts';
+	public const LOCAL_NETWORK = 'local-network';
 	public const LOCAL_NETWORK_ACCESS = 'local-network-access';
+	public const LOOPBACK_NETWORK = 'loopback-network';
 	public const MAGNETOMETER = 'magnetometer';
 	public const MANUAL_TEXT = 'manual-text';
 	public const MEDIA_PLAYBACK_WHILE_NOT_VISIBLE = 'media-playback-while-not-visible';

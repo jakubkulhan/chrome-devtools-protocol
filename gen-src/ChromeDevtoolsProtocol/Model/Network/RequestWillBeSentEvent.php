@@ -95,6 +95,13 @@ final class RequestWillBeSentEvent implements \JsonSerializable
 	 */
 	public $hasUserGesture;
 
+	/**
+	 * The render blocking behavior of the request.
+	 *
+	 * @var string
+	 */
+	public $renderBlockingBehavior;
+
 
 	/**
 	 * @param object $data
@@ -139,6 +146,9 @@ final class RequestWillBeSentEvent implements \JsonSerializable
 		if (isset($data->hasUserGesture)) {
 			$instance->hasUserGesture = (bool)$data->hasUserGesture;
 		}
+		if (isset($data->renderBlockingBehavior)) {
+			$instance->renderBlockingBehavior = (string)$data->renderBlockingBehavior;
+		}
 		return $instance;
 	}
 
@@ -181,6 +191,9 @@ final class RequestWillBeSentEvent implements \JsonSerializable
 		}
 		if ($this->hasUserGesture !== null) {
 			$data->hasUserGesture = $this->hasUserGesture;
+		}
+		if ($this->renderBlockingBehavior !== null) {
+			$data->renderBlockingBehavior = $this->renderBlockingBehavior;
 		}
 		return $data;
 	}

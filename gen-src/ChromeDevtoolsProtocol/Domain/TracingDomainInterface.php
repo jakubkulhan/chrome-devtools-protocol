@@ -6,6 +6,7 @@ use ChromeDevtoolsProtocol\ContextInterface;
 use ChromeDevtoolsProtocol\Model\Tracing\BufferUsageEvent;
 use ChromeDevtoolsProtocol\Model\Tracing\DataCollectedEvent;
 use ChromeDevtoolsProtocol\Model\Tracing\GetCategoriesResponse;
+use ChromeDevtoolsProtocol\Model\Tracing\GetTrackEventDescriptorResponse;
 use ChromeDevtoolsProtocol\Model\Tracing\RecordClockSyncMarkerRequest;
 use ChromeDevtoolsProtocol\Model\Tracing\RequestMemoryDumpRequest;
 use ChromeDevtoolsProtocol\Model\Tracing\RequestMemoryDumpResponse;
@@ -40,6 +41,16 @@ interface TracingDomainInterface
 	 * @return GetCategoriesResponse
 	 */
 	public function getCategories(ContextInterface $ctx): GetCategoriesResponse;
+
+
+	/**
+	 * Return a descriptor for all available tracing categories.
+	 *
+	 * @param ContextInterface $ctx
+	 *
+	 * @return GetTrackEventDescriptorResponse
+	 */
+	public function getTrackEventDescriptor(ContextInterface $ctx): GetTrackEventDescriptorResponse;
 
 
 	/**

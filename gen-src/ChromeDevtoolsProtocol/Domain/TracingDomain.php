@@ -7,6 +7,7 @@ use ChromeDevtoolsProtocol\InternalClientInterface;
 use ChromeDevtoolsProtocol\Model\Tracing\BufferUsageEvent;
 use ChromeDevtoolsProtocol\Model\Tracing\DataCollectedEvent;
 use ChromeDevtoolsProtocol\Model\Tracing\GetCategoriesResponse;
+use ChromeDevtoolsProtocol\Model\Tracing\GetTrackEventDescriptorResponse;
 use ChromeDevtoolsProtocol\Model\Tracing\RecordClockSyncMarkerRequest;
 use ChromeDevtoolsProtocol\Model\Tracing\RequestMemoryDumpRequest;
 use ChromeDevtoolsProtocol\Model\Tracing\RequestMemoryDumpResponse;
@@ -38,6 +39,14 @@ class TracingDomain implements TracingDomainInterface
 		$request = new \stdClass();
 		$response = $this->internalClient->executeCommand($ctx, 'Tracing.getCategories', $request);
 		return GetCategoriesResponse::fromJson($response);
+	}
+
+
+	public function getTrackEventDescriptor(ContextInterface $ctx): GetTrackEventDescriptorResponse
+	{
+		$request = new \stdClass();
+		$response = $this->internalClient->executeCommand($ctx, 'Tracing.getTrackEventDescriptor', $request);
+		return GetTrackEventDescriptorResponse::fromJson($response);
 	}
 
 
