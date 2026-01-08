@@ -11,6 +11,7 @@ use ChromeDevtoolsProtocol\Model\Network\ConfigureDurableMessagesRequest;
 use ChromeDevtoolsProtocol\Model\Network\ContinueInterceptedRequestRequest;
 use ChromeDevtoolsProtocol\Model\Network\DataReceivedEvent;
 use ChromeDevtoolsProtocol\Model\Network\DeleteCookiesRequest;
+use ChromeDevtoolsProtocol\Model\Network\DeviceBoundSessionsAddedEvent;
 use ChromeDevtoolsProtocol\Model\Network\DirectTCPSocketAbortedEvent;
 use ChromeDevtoolsProtocol\Model\Network\DirectTCPSocketChunkReceivedEvent;
 use ChromeDevtoolsProtocol\Model\Network\DirectTCPSocketChunkSentEvent;
@@ -28,9 +29,12 @@ use ChromeDevtoolsProtocol\Model\Network\DirectUDPSocketOpenedEvent;
 use ChromeDevtoolsProtocol\Model\Network\EmulateNetworkConditionsByRuleRequest;
 use ChromeDevtoolsProtocol\Model\Network\EmulateNetworkConditionsByRuleResponse;
 use ChromeDevtoolsProtocol\Model\Network\EmulateNetworkConditionsRequest;
+use ChromeDevtoolsProtocol\Model\Network\EnableDeviceBoundSessionsRequest;
 use ChromeDevtoolsProtocol\Model\Network\EnableReportingApiRequest;
 use ChromeDevtoolsProtocol\Model\Network\EnableRequest;
 use ChromeDevtoolsProtocol\Model\Network\EventSourceMessageReceivedEvent;
+use ChromeDevtoolsProtocol\Model\Network\FetchSchemefulSiteRequest;
+use ChromeDevtoolsProtocol\Model\Network\FetchSchemefulSiteResponse;
 use ChromeDevtoolsProtocol\Model\Network\GetAllCookiesResponse;
 use ChromeDevtoolsProtocol\Model\Network\GetCertificateRequest;
 use ChromeDevtoolsProtocol\Model\Network\GetCertificateResponse;
@@ -197,9 +201,24 @@ class NetworkDomain implements NetworkDomainInterface
 	}
 
 
+	public function enableDeviceBoundSessions(ContextInterface $ctx, EnableDeviceBoundSessionsRequest $request): void
+	{
+		$this->internalClient->executeCommand($ctx, 'Network.enableDeviceBoundSessions', $request);
+	}
+
+
 	public function enableReportingApi(ContextInterface $ctx, EnableReportingApiRequest $request): void
 	{
 		$this->internalClient->executeCommand($ctx, 'Network.enableReportingApi', $request);
+	}
+
+
+	public function fetchSchemefulSite(
+		ContextInterface $ctx,
+		FetchSchemefulSiteRequest $request
+	): FetchSchemefulSiteResponse {
+		$response = $this->internalClient->executeCommand($ctx, 'Network.fetchSchemefulSite', $request);
+		return FetchSchemefulSiteResponse::fromJson($response);
 	}
 
 
@@ -385,6 +404,20 @@ class NetworkDomain implements NetworkDomainInterface
 	public function awaitDataReceived(ContextInterface $ctx): DataReceivedEvent
 	{
 		return DataReceivedEvent::fromJson($this->internalClient->awaitEvent($ctx, 'Network.dataReceived'));
+	}
+
+
+	public function addDeviceBoundSessionsAddedListener(callable $listener): SubscriptionInterface
+	{
+		return $this->internalClient->addListener('Network.deviceBoundSessionsAdded', function ($event) use ($listener) {
+			return $listener(DeviceBoundSessionsAddedEvent::fromJson($event));
+		});
+	}
+
+
+	public function awaitDeviceBoundSessionsAdded(ContextInterface $ctx): DeviceBoundSessionsAddedEvent
+	{
+		return DeviceBoundSessionsAddedEvent::fromJson($this->internalClient->awaitEvent($ctx, 'Network.deviceBoundSessionsAdded'));
 	}
 
 
