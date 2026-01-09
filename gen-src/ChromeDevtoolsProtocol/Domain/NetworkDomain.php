@@ -11,6 +11,7 @@ use ChromeDevtoolsProtocol\Model\Network\ConfigureDurableMessagesRequest;
 use ChromeDevtoolsProtocol\Model\Network\ContinueInterceptedRequestRequest;
 use ChromeDevtoolsProtocol\Model\Network\DataReceivedEvent;
 use ChromeDevtoolsProtocol\Model\Network\DeleteCookiesRequest;
+use ChromeDevtoolsProtocol\Model\Network\DeviceBoundSessionEventOccurredEvent;
 use ChromeDevtoolsProtocol\Model\Network\DeviceBoundSessionsAddedEvent;
 use ChromeDevtoolsProtocol\Model\Network\DirectTCPSocketAbortedEvent;
 use ChromeDevtoolsProtocol\Model\Network\DirectTCPSocketChunkReceivedEvent;
@@ -404,6 +405,20 @@ class NetworkDomain implements NetworkDomainInterface
 	public function awaitDataReceived(ContextInterface $ctx): DataReceivedEvent
 	{
 		return DataReceivedEvent::fromJson($this->internalClient->awaitEvent($ctx, 'Network.dataReceived'));
+	}
+
+
+	public function addDeviceBoundSessionEventOccurredListener(callable $listener): SubscriptionInterface
+	{
+		return $this->internalClient->addListener('Network.deviceBoundSessionEventOccurred', function ($event) use ($listener) {
+			return $listener(DeviceBoundSessionEventOccurredEvent::fromJson($event));
+		});
+	}
+
+
+	public function awaitDeviceBoundSessionEventOccurred(ContextInterface $ctx): DeviceBoundSessionEventOccurredEvent
+	{
+		return DeviceBoundSessionEventOccurredEvent::fromJson($this->internalClient->awaitEvent($ctx, 'Network.deviceBoundSessionEventOccurred'));
 	}
 
 

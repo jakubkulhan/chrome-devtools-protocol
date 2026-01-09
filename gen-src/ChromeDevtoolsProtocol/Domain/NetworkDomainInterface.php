@@ -10,6 +10,7 @@ use ChromeDevtoolsProtocol\Model\Network\ConfigureDurableMessagesRequest;
 use ChromeDevtoolsProtocol\Model\Network\ContinueInterceptedRequestRequest;
 use ChromeDevtoolsProtocol\Model\Network\DataReceivedEvent;
 use ChromeDevtoolsProtocol\Model\Network\DeleteCookiesRequest;
+use ChromeDevtoolsProtocol\Model\Network\DeviceBoundSessionEventOccurredEvent;
 use ChromeDevtoolsProtocol\Model\Network\DeviceBoundSessionsAddedEvent;
 use ChromeDevtoolsProtocol\Model\Network\DirectTCPSocketAbortedEvent;
 use ChromeDevtoolsProtocol\Model\Network\DirectTCPSocketChunkReceivedEvent;
@@ -587,6 +588,30 @@ interface NetworkDomainInterface
 	 * @return DataReceivedEvent
 	 */
 	public function awaitDataReceived(ContextInterface $ctx): DataReceivedEvent;
+
+
+	/**
+	 * Triggered when a device bound session event occurs.
+	 *
+	 * Listener will be called whenever event Network.deviceBoundSessionEventOccurred is fired.
+	 *
+	 * @param callable $listener
+	 *
+	 * @return SubscriptionInterface
+	 */
+	public function addDeviceBoundSessionEventOccurredListener(callable $listener): SubscriptionInterface;
+
+
+	/**
+	 * Triggered when a device bound session event occurs.
+	 *
+	 * Method will block until first Network.deviceBoundSessionEventOccurred event is fired.
+	 *
+	 * @param ContextInterface $ctx
+	 *
+	 * @return DeviceBoundSessionEventOccurredEvent
+	 */
+	public function awaitDeviceBoundSessionEventOccurred(ContextInterface $ctx): DeviceBoundSessionEventOccurredEvent;
 
 
 	/**
