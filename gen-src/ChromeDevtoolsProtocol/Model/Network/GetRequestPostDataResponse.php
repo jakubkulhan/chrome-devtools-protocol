@@ -18,6 +18,13 @@ final class GetRequestPostDataResponse implements \JsonSerializable
 	 */
 	public $postData;
 
+	/**
+	 * True, if content was sent as base64.
+	 *
+	 * @var bool
+	 */
+	public $base64Encoded;
+
 
 	/**
 	 * @param object $data
@@ -29,6 +36,9 @@ final class GetRequestPostDataResponse implements \JsonSerializable
 		if (isset($data->postData)) {
 			$instance->postData = (string)$data->postData;
 		}
+		if (isset($data->base64Encoded)) {
+			$instance->base64Encoded = (bool)$data->base64Encoded;
+		}
 		return $instance;
 	}
 
@@ -38,6 +48,9 @@ final class GetRequestPostDataResponse implements \JsonSerializable
 		$data = new \stdClass();
 		if ($this->postData !== null) {
 			$data->postData = $this->postData;
+		}
+		if ($this->base64Encoded !== null) {
+			$data->base64Encoded = $this->base64Encoded;
 		}
 		return $data;
 	}
