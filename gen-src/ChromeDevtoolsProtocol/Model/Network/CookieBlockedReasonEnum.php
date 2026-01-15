@@ -25,7 +25,6 @@ final class CookieBlockedReasonEnum
 	public const SCHEMEFUL_SAME_SITE_STRICT = 'SchemefulSameSiteStrict';
 	public const SCHEMEFUL_SAME_SITE_LAX = 'SchemefulSameSiteLax';
 	public const SCHEMEFUL_SAME_SITE_UNSPECIFIED_TREATED_AS_LAX = 'SchemefulSameSiteUnspecifiedTreatedAsLax';
-	public const SAME_PARTY_FROM_CROSS_PARTY_CONTEXT = 'SamePartyFromCrossPartyContext';
 	public const NAME_VALUE_PAIR_EXCEEDS_MAX_SIZE = 'NameValuePairExceedsMaxSize';
 	public const PORT_MISMATCH = 'PortMismatch';
 	public const SCHEME_MISMATCH = 'SchemeMismatch';

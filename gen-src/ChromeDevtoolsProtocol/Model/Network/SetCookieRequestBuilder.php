@@ -21,7 +21,6 @@ final class SetCookieRequestBuilder
 	private $sameSite;
 	private $expires;
 	private $priority;
-	private $sameParty;
 	private $sourceScheme;
 	private $sourcePort;
 	private $partitionKey;
@@ -49,7 +48,6 @@ final class SetCookieRequestBuilder
 		$instance->sameSite = $this->sameSite;
 		$instance->expires = $this->expires;
 		$instance->priority = $this->priority;
-		$instance->sameParty = $this->sameParty;
 		$instance->sourceScheme = $this->sourceScheme;
 		$instance->sourcePort = $this->sourcePort;
 		$instance->partitionKey = $this->partitionKey;
@@ -173,18 +171,6 @@ final class SetCookieRequestBuilder
 	public function setPriority($priority): self
 	{
 		$this->priority = $priority;
-		return $this;
-	}
-
-
-	/**
-	 * @param bool|null $sameParty
-	 *
-	 * @return self
-	 */
-	public function setSameParty($sameParty): self
-	{
-		$this->sameParty = $sameParty;
 		return $this;
 	}
 

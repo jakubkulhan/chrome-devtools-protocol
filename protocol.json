@@ -1063,8 +1063,6 @@
                         "ExcludeSameSiteNoneInsecure",
                         "ExcludeSameSiteLax",
                         "ExcludeSameSiteStrict",
-                        "ExcludeInvalidSameParty",
-                        "ExcludeSamePartyCrossPartyContext",
                         "ExcludeDomainNonASCII",
                         "ExcludeThirdPartyCookieBlockedInFirstPartySet",
                         "ExcludeThirdPartyPhaseout",
@@ -17995,13 +17993,6 @@
                             "$ref": "CookiePriority"
                         },
                         {
-                            "name": "sameParty",
-                            "description": "True if cookie is SameParty.",
-                            "experimental": true,
-                            "deprecated": true,
-                            "type": "boolean"
-                        },
-                        {
                             "name": "sourceScheme",
                             "description": "Cookie source scheme type.",
                             "experimental": true,
@@ -18052,8 +18043,6 @@
                         "SchemefulSameSiteStrict",
                         "SchemefulSameSiteLax",
                         "SchemefulSameSiteUnspecifiedTreatedAsLax",
-                        "SamePartyFromCrossPartyContext",
-                        "SamePartyConflictsWithOtherAttributes",
                         "NameValuePairExceedsMaxSize",
                         "DisallowedCharacter",
                         "NoCookieContent"
@@ -18079,7 +18068,6 @@
                         "SchemefulSameSiteStrict",
                         "SchemefulSameSiteLax",
                         "SchemefulSameSiteUnspecifiedTreatedAsLax",
-                        "SamePartyFromCrossPartyContext",
                         "NameValuePairExceedsMaxSize",
                         "PortMismatch",
                         "SchemeMismatch",
@@ -18245,13 +18233,6 @@
                             "experimental": true,
                             "optional": true,
                             "$ref": "CookiePriority"
-                        },
-                        {
-                            "name": "sameParty",
-                            "description": "True if cookie is SameParty.",
-                            "experimental": true,
-                            "optional": true,
-                            "type": "boolean"
                         },
                         {
                             "name": "sourceScheme",
@@ -20156,13 +20137,6 @@
                             "experimental": true,
                             "optional": true,
                             "$ref": "CookiePriority"
-                        },
-                        {
-                            "name": "sameParty",
-                            "description": "True if cookie is SameParty.",
-                            "experimental": true,
-                            "optional": true,
-                            "type": "boolean"
                         },
                         {
                             "name": "sourceScheme",
