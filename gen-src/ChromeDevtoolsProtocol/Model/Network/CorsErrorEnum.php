@@ -30,8 +30,6 @@ final class CorsErrorEnum
 	public const PREFLIGHT_INVALID_ALLOW_CREDENTIALS = 'PreflightInvalidAllowCredentials';
 	public const PREFLIGHT_MISSING_ALLOW_EXTERNAL = 'PreflightMissingAllowExternal';
 	public const PREFLIGHT_INVALID_ALLOW_EXTERNAL = 'PreflightInvalidAllowExternal';
-	public const PREFLIGHT_MISSING_ALLOW_PRIVATE_NETWORK = 'PreflightMissingAllowPrivateNetwork';
-	public const PREFLIGHT_INVALID_ALLOW_PRIVATE_NETWORK = 'PreflightInvalidAllowPrivateNetwork';
 	public const INVALID_ALLOW_METHODS_PREFLIGHT_RESPONSE = 'InvalidAllowMethodsPreflightResponse';
 	public const INVALID_ALLOW_HEADERS_PREFLIGHT_RESPONSE = 'InvalidAllowHeadersPreflightResponse';
 	public const METHOD_DISALLOWED_BY_PREFLIGHT_RESPONSE = 'MethodDisallowedByPreflightResponse';
@@ -39,11 +37,6 @@ final class CorsErrorEnum
 	public const REDIRECT_CONTAINS_CREDENTIALS = 'RedirectContainsCredentials';
 	public const INSECURE_PRIVATE_NETWORK = 'InsecurePrivateNetwork';
 	public const INVALID_PRIVATE_NETWORK_ACCESS = 'InvalidPrivateNetworkAccess';
-	public const UNEXPECTED_PRIVATE_NETWORK_ACCESS = 'UnexpectedPrivateNetworkAccess';
 	public const NO_CORS_REDIRECT_MODE_NOT_FOLLOW = 'NoCorsRedirectModeNotFollow';
-	public const PREFLIGHT_MISSING_PRIVATE_NETWORK_ACCESS_ID = 'PreflightMissingPrivateNetworkAccessId';
-	public const PREFLIGHT_MISSING_PRIVATE_NETWORK_ACCESS_NAME = 'PreflightMissingPrivateNetworkAccessName';
-	public const PRIVATE_NETWORK_ACCESS_PERMISSION_UNAVAILABLE = 'PrivateNetworkAccessPermissionUnavailable';
-	public const PRIVATE_NETWORK_ACCESS_PERMISSION_DENIED = 'PrivateNetworkAccessPermissionDenied';
 	public const LOCAL_NETWORK_ACCESS_PERMISSION_DENIED = 'LocalNetworkAccessPermissionDenied';
 }

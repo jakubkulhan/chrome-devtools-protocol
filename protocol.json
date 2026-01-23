@@ -17460,8 +17460,6 @@
                         "PreflightInvalidAllowCredentials",
                         "PreflightMissingAllowExternal",
                         "PreflightInvalidAllowExternal",
-                        "PreflightMissingAllowPrivateNetwork",
-                        "PreflightInvalidAllowPrivateNetwork",
                         "InvalidAllowMethodsPreflightResponse",
                         "InvalidAllowHeadersPreflightResponse",
                         "MethodDisallowedByPreflightResponse",
@@ -17469,12 +17467,7 @@
                         "RedirectContainsCredentials",
                         "InsecurePrivateNetwork",
                         "InvalidPrivateNetworkAccess",
-                        "UnexpectedPrivateNetworkAccess",
                         "NoCorsRedirectModeNotFollow",
-                        "PreflightMissingPrivateNetworkAccessId",
-                        "PreflightMissingPrivateNetworkAccessName",
-                        "PrivateNetworkAccessPermissionUnavailable",
-                        "PrivateNetworkAccessPermissionDenied",
                         "LocalNetworkAccessPermissionDenied"
                     ]
                 },
