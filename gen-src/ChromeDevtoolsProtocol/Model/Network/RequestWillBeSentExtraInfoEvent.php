@@ -40,6 +40,13 @@ final class RequestWillBeSentExtraInfoEvent implements \JsonSerializable
 	public $connectTiming;
 
 	/**
+	 * How the request site's device bound sessions were used during this request.
+	 *
+	 * @var DeviceBoundSessionWithUsage[]|null
+	 */
+	public $deviceBoundSessionUsages;
+
+	/**
 	 * The client security state set for the request.
 	 *
 	 * @var ClientSecurityState|null
@@ -83,6 +90,12 @@ final class RequestWillBeSentExtraInfoEvent implements \JsonSerializable
 		if (isset($data->connectTiming)) {
 			$instance->connectTiming = ConnectTiming::fromJson($data->connectTiming);
 		}
+		if (isset($data->deviceBoundSessionUsages)) {
+			$instance->deviceBoundSessionUsages = [];
+			foreach ($data->deviceBoundSessionUsages as $item) {
+				$instance->deviceBoundSessionUsages[] = DeviceBoundSessionWithUsage::fromJson($item);
+			}
+		}
 		if (isset($data->clientSecurityState)) {
 			$instance->clientSecurityState = ClientSecurityState::fromJson($data->clientSecurityState);
 		}
@@ -113,6 +126,12 @@ final class RequestWillBeSentExtraInfoEvent implements \JsonSerializable
 		}
 		if ($this->connectTiming !== null) {
 			$data->connectTiming = $this->connectTiming->jsonSerialize();
+		}
+		if ($this->deviceBoundSessionUsages !== null) {
+			$data->deviceBoundSessionUsages = [];
+			foreach ($this->deviceBoundSessionUsages as $item) {
+				$data->deviceBoundSessionUsages[] = $item->jsonSerialize();
+			}
 		}
 		if ($this->clientSecurityState !== null) {
 			$data->clientSecurityState = $this->clientSecurityState->jsonSerialize();
