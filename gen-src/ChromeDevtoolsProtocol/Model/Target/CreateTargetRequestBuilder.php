@@ -23,6 +23,7 @@ final class CreateTargetRequestBuilder
 	private $background;
 	private $forTab;
 	private $hidden;
+	private $focus;
 
 
 	/**
@@ -46,6 +47,7 @@ final class CreateTargetRequestBuilder
 		$instance->background = $this->background;
 		$instance->forTab = $this->forTab;
 		$instance->hidden = $this->hidden;
+		$instance->focus = $this->focus;
 		return $instance;
 	}
 
@@ -190,6 +192,18 @@ final class CreateTargetRequestBuilder
 	public function setHidden($hidden): self
 	{
 		$this->hidden = $hidden;
+		return $this;
+	}
+
+
+	/**
+	 * @param bool|null $focus
+	 *
+	 * @return self
+	 */
+	public function setFocus($focus): self
+	{
+		$this->focus = $focus;
 		return $this;
 	}
 }

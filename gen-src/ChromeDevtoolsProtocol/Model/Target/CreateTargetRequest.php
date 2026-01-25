@@ -95,6 +95,13 @@ final class CreateTargetRequest implements \JsonSerializable
 	 */
 	public $hidden;
 
+	/**
+	 * If specified, the option is used to determine if the new target should be focused or not. By default, the focus behavior depends on the value of the background field. For example, background=false and focus=false will result in the target tab being opened but the browser window remain unchanged (if it was in the background, it will remain in the background) and background=false with focus=undefined will result in the window being focused. Using background: true and focus: true is not supported and will result in an error.
+	 *
+	 * @var bool|null
+	 */
+	public $focus;
+
 
 	/**
 	 * @param object $data
@@ -139,6 +146,9 @@ final class CreateTargetRequest implements \JsonSerializable
 		if (isset($data->hidden)) {
 			$instance->hidden = (bool)$data->hidden;
 		}
+		if (isset($data->focus)) {
+			$instance->focus = (bool)$data->focus;
+		}
 		return $instance;
 	}
 
@@ -181,6 +191,9 @@ final class CreateTargetRequest implements \JsonSerializable
 		}
 		if ($this->hidden !== null) {
 			$data->hidden = $this->hidden;
+		}
+		if ($this->focus !== null) {
+			$data->focus = $this->focus;
 		}
 		return $data;
 	}
