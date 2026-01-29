@@ -48,6 +48,7 @@ use ChromeDevtoolsProtocol\Domain\RuntimeDomainInterface;
 use ChromeDevtoolsProtocol\Domain\SchemaDomainInterface;
 use ChromeDevtoolsProtocol\Domain\SecurityDomainInterface;
 use ChromeDevtoolsProtocol\Domain\ServiceWorkerDomainInterface;
+use ChromeDevtoolsProtocol\Domain\SmartCardEmulationDomainInterface;
 use ChromeDevtoolsProtocol\Domain\StorageDomainInterface;
 use ChromeDevtoolsProtocol\Domain\SystemInfoDomainInterface;
 use ChromeDevtoolsProtocol\Domain\TargetDomainInterface;
@@ -397,6 +398,14 @@ interface DevtoolsClientInterface extends CloseableResourceInterface
 	 * @experimental
 	 */
 	public function serviceWorker(): ServiceWorkerDomainInterface;
+
+
+	/**
+	 * SmartCardEmulation domain.
+	 *
+	 * @experimental
+	 */
+	public function smartCardEmulation(): SmartCardEmulationDomainInterface;
 
 
 	/**

@@ -94,6 +94,8 @@ use ChromeDevtoolsProtocol\Domain\SecurityDomain;
 use ChromeDevtoolsProtocol\Domain\SecurityDomainInterface;
 use ChromeDevtoolsProtocol\Domain\ServiceWorkerDomain;
 use ChromeDevtoolsProtocol\Domain\ServiceWorkerDomainInterface;
+use ChromeDevtoolsProtocol\Domain\SmartCardEmulationDomain;
+use ChromeDevtoolsProtocol\Domain\SmartCardEmulationDomainInterface;
 use ChromeDevtoolsProtocol\Domain\StorageDomain;
 use ChromeDevtoolsProtocol\Domain\StorageDomainInterface;
 use ChromeDevtoolsProtocol\Domain\SystemInfoDomain;
@@ -663,6 +665,18 @@ trait DevtoolsClientTrait
 		}
 		/** @var ServiceWorkerDomainInterface $domain */
 		$domain = $this->domains['ServiceWorker'];
+		return $domain;
+	}
+
+
+	public function smartCardEmulation(): SmartCardEmulationDomainInterface
+	{
+		if (!isset($this->domains['SmartCardEmulation'])) {
+			/** @var InternalClientInterface $this */
+			$this->domains['SmartCardEmulation'] = new SmartCardEmulationDomain($this);
+		}
+		/** @var SmartCardEmulationDomainInterface $domain */
+		$domain = $this->domains['SmartCardEmulation'];
 		return $domain;
 	}
 
