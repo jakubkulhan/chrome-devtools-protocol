@@ -12,6 +12,7 @@ use ChromeDevtoolsProtocol\Exception\BuilderException;
 final class LoadUnpackedRequestBuilder
 {
 	private $path;
+	private $enableInIncognito;
 
 
 	/**
@@ -24,6 +25,7 @@ final class LoadUnpackedRequestBuilder
 			throw new BuilderException('Property [path] is required.');
 		}
 		$instance->path = $this->path;
+		$instance->enableInIncognito = $this->enableInIncognito;
 		return $instance;
 	}
 
@@ -36,6 +38,18 @@ final class LoadUnpackedRequestBuilder
 	public function setPath($path): self
 	{
 		$this->path = $path;
+		return $this;
+	}
+
+
+	/**
+	 * @param bool|null $enableInIncognito
+	 *
+	 * @return self
+	 */
+	public function setEnableInIncognito($enableInIncognito): self
+	{
+		$this->enableInIncognito = $enableInIncognito;
 		return $this;
 	}
 }

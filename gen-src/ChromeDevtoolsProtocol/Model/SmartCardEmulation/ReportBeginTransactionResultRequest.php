@@ -14,6 +14,9 @@ final class ReportBeginTransactionResultRequest implements \JsonSerializable
 	/** @var string */
 	public $requestId;
 
+	/** @var int */
+	public $handle;
+
 
 	/**
 	 * @param object $data
@@ -25,6 +28,9 @@ final class ReportBeginTransactionResultRequest implements \JsonSerializable
 		if (isset($data->requestId)) {
 			$instance->requestId = (string)$data->requestId;
 		}
+		if (isset($data->handle)) {
+			$instance->handle = (int)$data->handle;
+		}
 		return $instance;
 	}
 
@@ -34,6 +40,9 @@ final class ReportBeginTransactionResultRequest implements \JsonSerializable
 		$data = new \stdClass();
 		if ($this->requestId !== null) {
 			$data->requestId = $this->requestId;
+		}
+		if ($this->handle !== null) {
+			$data->handle = $this->handle;
 		}
 		return $data;
 	}

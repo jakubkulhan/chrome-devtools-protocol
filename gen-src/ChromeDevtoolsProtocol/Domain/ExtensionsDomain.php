@@ -11,6 +11,7 @@ use ChromeDevtoolsProtocol\Model\Extensions\LoadUnpackedRequest;
 use ChromeDevtoolsProtocol\Model\Extensions\LoadUnpackedResponse;
 use ChromeDevtoolsProtocol\Model\Extensions\RemoveStorageItemsRequest;
 use ChromeDevtoolsProtocol\Model\Extensions\SetStorageItemsRequest;
+use ChromeDevtoolsProtocol\Model\Extensions\TriggerActionRequest;
 use ChromeDevtoolsProtocol\Model\Extensions\UninstallRequest;
 
 class ExtensionsDomain implements ExtensionsDomainInterface
@@ -54,6 +55,12 @@ class ExtensionsDomain implements ExtensionsDomainInterface
 	public function setStorageItems(ContextInterface $ctx, SetStorageItemsRequest $request): void
 	{
 		$this->internalClient->executeCommand($ctx, 'Extensions.setStorageItems', $request);
+	}
+
+
+	public function triggerAction(ContextInterface $ctx, TriggerActionRequest $request): void
+	{
+		$this->internalClient->executeCommand($ctx, 'Extensions.triggerAction', $request);
 	}
 
 

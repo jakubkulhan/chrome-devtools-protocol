@@ -12,6 +12,7 @@ use ChromeDevtoolsProtocol\Exception\BuilderException;
 final class ReportBeginTransactionResultRequestBuilder
 {
 	private $requestId;
+	private $handle;
 
 
 	/**
@@ -24,6 +25,10 @@ final class ReportBeginTransactionResultRequestBuilder
 			throw new BuilderException('Property [requestId] is required.');
 		}
 		$instance->requestId = $this->requestId;
+		if ($this->handle === null) {
+			throw new BuilderException('Property [handle] is required.');
+		}
+		$instance->handle = $this->handle;
 		return $instance;
 	}
 
@@ -36,6 +41,18 @@ final class ReportBeginTransactionResultRequestBuilder
 	public function setRequestId($requestId): self
 	{
 		$this->requestId = $requestId;
+		return $this;
+	}
+
+
+	/**
+	 * @param int $handle
+	 *
+	 * @return self
+	 */
+	public function setHandle($handle): self
+	{
+		$this->handle = $handle;
 		return $this;
 	}
 }

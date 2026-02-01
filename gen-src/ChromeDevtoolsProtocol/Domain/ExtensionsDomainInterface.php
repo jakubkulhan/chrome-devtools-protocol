@@ -10,6 +10,7 @@ use ChromeDevtoolsProtocol\Model\Extensions\LoadUnpackedRequest;
 use ChromeDevtoolsProtocol\Model\Extensions\LoadUnpackedResponse;
 use ChromeDevtoolsProtocol\Model\Extensions\RemoveStorageItemsRequest;
 use ChromeDevtoolsProtocol\Model\Extensions\SetStorageItemsRequest;
+use ChromeDevtoolsProtocol\Model\Extensions\TriggerActionRequest;
 use ChromeDevtoolsProtocol\Model\Extensions\UninstallRequest;
 
 /**
@@ -76,6 +77,17 @@ interface ExtensionsDomainInterface
 	 * @return void
 	 */
 	public function setStorageItems(ContextInterface $ctx, SetStorageItemsRequest $request): void;
+
+
+	/**
+	 * Runs an extension default action. Available if the client is connected using the --remote-debugging-pipe flag and the --enable-unsafe-extension-debugging flag is set.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param TriggerActionRequest $request
+	 *
+	 * @return void
+	 */
+	public function triggerAction(ContextInterface $ctx, TriggerActionRequest $request): void;
 
 
 	/**

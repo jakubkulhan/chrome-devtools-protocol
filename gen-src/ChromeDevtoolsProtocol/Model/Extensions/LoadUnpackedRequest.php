@@ -18,6 +18,13 @@ final class LoadUnpackedRequest implements \JsonSerializable
 	 */
 	public $path;
 
+	/**
+	 * Enable the extension in incognito
+	 *
+	 * @var bool|null
+	 */
+	public $enableInIncognito;
+
 
 	/**
 	 * @param object $data
@@ -29,6 +36,9 @@ final class LoadUnpackedRequest implements \JsonSerializable
 		if (isset($data->path)) {
 			$instance->path = (string)$data->path;
 		}
+		if (isset($data->enableInIncognito)) {
+			$instance->enableInIncognito = (bool)$data->enableInIncognito;
+		}
 		return $instance;
 	}
 
@@ -38,6 +48,9 @@ final class LoadUnpackedRequest implements \JsonSerializable
 		$data = new \stdClass();
 		if ($this->path !== null) {
 			$data->path = $this->path;
+		}
+		if ($this->enableInIncognito !== null) {
+			$data->enableInIncognito = $this->enableInIncognito;
 		}
 		return $data;
 	}
