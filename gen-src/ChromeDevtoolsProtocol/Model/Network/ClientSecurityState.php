@@ -18,7 +18,7 @@ final class ClientSecurityState implements \JsonSerializable
 	public $initiatorIPAddressSpace;
 
 	/** @var string */
-	public $privateNetworkRequestPolicy;
+	public $localNetworkAccessRequestPolicy;
 
 
 	/**
@@ -34,8 +34,8 @@ final class ClientSecurityState implements \JsonSerializable
 		if (isset($data->initiatorIPAddressSpace)) {
 			$instance->initiatorIPAddressSpace = (string)$data->initiatorIPAddressSpace;
 		}
-		if (isset($data->privateNetworkRequestPolicy)) {
-			$instance->privateNetworkRequestPolicy = (string)$data->privateNetworkRequestPolicy;
+		if (isset($data->localNetworkAccessRequestPolicy)) {
+			$instance->localNetworkAccessRequestPolicy = (string)$data->localNetworkAccessRequestPolicy;
 		}
 		return $instance;
 	}
@@ -50,8 +50,8 @@ final class ClientSecurityState implements \JsonSerializable
 		if ($this->initiatorIPAddressSpace !== null) {
 			$data->initiatorIPAddressSpace = $this->initiatorIPAddressSpace;
 		}
-		if ($this->privateNetworkRequestPolicy !== null) {
-			$data->privateNetworkRequestPolicy = $this->privateNetworkRequestPolicy;
+		if ($this->localNetworkAccessRequestPolicy !== null) {
+			$data->localNetworkAccessRequestPolicy = $this->localNetworkAccessRequestPolicy;
 		}
 		return $data;
 	}
