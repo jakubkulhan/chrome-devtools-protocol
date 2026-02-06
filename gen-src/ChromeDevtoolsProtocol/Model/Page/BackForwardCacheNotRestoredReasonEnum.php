@@ -94,6 +94,7 @@ final class BackForwardCacheNotRestoredReasonEnum
 	public const SHARED_WORKER_MESSAGE = 'SharedWorkerMessage';
 	public const SHARED_WORKER_WITH_NO_ACTIVE_CLIENT = 'SharedWorkerWithNoActiveClient';
 	public const WEB_LOCKS = 'WebLocks';
+	public const WEB_LOCKS_CONTENTION = 'WebLocksContention';
 	public const WEB_H_I_D = 'WebHID';
 	public const WEB_BLUETOOTH = 'WebBluetooth';
 	public const WEB_SHARE = 'WebShare';
