@@ -86,6 +86,9 @@ final class InspectorIssueDetails implements \JsonSerializable
 	/** @var UnencodedDigestIssueDetails|null */
 	public $unencodedDigestIssueDetails;
 
+	/** @var ConnectionAllowlistIssueDetails|null */
+	public $connectionAllowlistIssueDetails;
+
 	/** @var UserReidentificationIssueDetails|null */
 	public $userReidentificationIssueDetails;
 
@@ -175,6 +178,9 @@ final class InspectorIssueDetails implements \JsonSerializable
 		if (isset($data->unencodedDigestIssueDetails)) {
 			$instance->unencodedDigestIssueDetails = UnencodedDigestIssueDetails::fromJson($data->unencodedDigestIssueDetails);
 		}
+		if (isset($data->connectionAllowlistIssueDetails)) {
+			$instance->connectionAllowlistIssueDetails = ConnectionAllowlistIssueDetails::fromJson($data->connectionAllowlistIssueDetails);
+		}
 		if (isset($data->userReidentificationIssueDetails)) {
 			$instance->userReidentificationIssueDetails = UserReidentificationIssueDetails::fromJson($data->userReidentificationIssueDetails);
 		}
@@ -262,6 +268,9 @@ final class InspectorIssueDetails implements \JsonSerializable
 		}
 		if ($this->unencodedDigestIssueDetails !== null) {
 			$data->unencodedDigestIssueDetails = $this->unencodedDigestIssueDetails->jsonSerialize();
+		}
+		if ($this->connectionAllowlistIssueDetails !== null) {
+			$data->connectionAllowlistIssueDetails = $this->connectionAllowlistIssueDetails->jsonSerialize();
 		}
 		if ($this->userReidentificationIssueDetails !== null) {
 			$data->userReidentificationIssueDetails = $this->userReidentificationIssueDetails->jsonSerialize();

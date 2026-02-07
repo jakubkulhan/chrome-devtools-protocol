@@ -36,6 +36,7 @@ final class InspectorIssueCodeEnum
 	public const ELEMENT_ACCESSIBILITY_ISSUE = 'ElementAccessibilityIssue';
 	public const SRI_MESSAGE_SIGNATURE_ISSUE = 'SRIMessageSignatureIssue';
 	public const UNENCODED_DIGEST_ISSUE = 'UnencodedDigestIssue';
+	public const CONNECTION_ALLOWLIST_ISSUE = 'ConnectionAllowlistIssue';
 	public const USER_REIDENTIFICATION_ISSUE = 'UserReidentificationIssue';
 	public const PERMISSION_ELEMENT_ISSUE = 'PermissionElementIssue';
 }

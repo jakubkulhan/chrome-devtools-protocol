@@ -16,6 +16,8 @@ use ChromeDevtoolsProtocol\Model\Overlay\HighlightRectRequest;
 use ChromeDevtoolsProtocol\Model\Overlay\HighlightSourceOrderRequest;
 use ChromeDevtoolsProtocol\Model\Overlay\InspectModeCanceledEvent;
 use ChromeDevtoolsProtocol\Model\Overlay\InspectNodeRequestedEvent;
+use ChromeDevtoolsProtocol\Model\Overlay\InspectPanelShowRequestedEvent;
+use ChromeDevtoolsProtocol\Model\Overlay\InspectedElementWindowRestoredEvent;
 use ChromeDevtoolsProtocol\Model\Overlay\NodeHighlightRequestedEvent;
 use ChromeDevtoolsProtocol\Model\Overlay\ScreenshotRequestedEvent;
 use ChromeDevtoolsProtocol\Model\Overlay\SetInspectModeRequest;
@@ -28,6 +30,7 @@ use ChromeDevtoolsProtocol\Model\Overlay\SetShowFlexOverlaysRequest;
 use ChromeDevtoolsProtocol\Model\Overlay\SetShowGridOverlaysRequest;
 use ChromeDevtoolsProtocol\Model\Overlay\SetShowHingeRequest;
 use ChromeDevtoolsProtocol\Model\Overlay\SetShowHitTestBordersRequest;
+use ChromeDevtoolsProtocol\Model\Overlay\SetShowInspectedElementAnchorRequest;
 use ChromeDevtoolsProtocol\Model\Overlay\SetShowIsolatedElementsRequest;
 use ChromeDevtoolsProtocol\Model\Overlay\SetShowLayoutShiftRegionsRequest;
 use ChromeDevtoolsProtocol\Model\Overlay\SetShowPaintRectsRequest;
@@ -290,6 +293,20 @@ interface OverlayDomainInterface
 
 
 	/**
+	 * Call Overlay.setShowInspectedElementAnchor command.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param SetShowInspectedElementAnchorRequest $request
+	 *
+	 * @return void
+	 */
+	public function setShowInspectedElementAnchor(
+		ContextInterface $ctx,
+		SetShowInspectedElementAnchorRequest $request
+	): void;
+
+
+	/**
 	 * Show elements in isolation mode with overlays.
 	 *
 	 * @param ContextInterface $ctx
@@ -378,6 +395,30 @@ interface OverlayDomainInterface
 
 
 	/**
+	 * Fired when user asks to restore the Inspected Element floating window.
+	 *
+	 * Listener will be called whenever event Overlay.inspectedElementWindowRestored is fired.
+	 *
+	 * @param callable $listener
+	 *
+	 * @return SubscriptionInterface
+	 */
+	public function addInspectedElementWindowRestoredListener(callable $listener): SubscriptionInterface;
+
+
+	/**
+	 * Fired when user asks to restore the Inspected Element floating window.
+	 *
+	 * Method will block until first Overlay.inspectedElementWindowRestored event is fired.
+	 *
+	 * @param ContextInterface $ctx
+	 *
+	 * @return InspectedElementWindowRestoredEvent
+	 */
+	public function awaitInspectedElementWindowRestored(ContextInterface $ctx): InspectedElementWindowRestoredEvent;
+
+
+	/**
 	 * Fired when user cancels the inspect mode.
 	 *
 	 * Listener will be called whenever event Overlay.inspectModeCanceled is fired.
@@ -423,6 +464,30 @@ interface OverlayDomainInterface
 	 * @return InspectNodeRequestedEvent
 	 */
 	public function awaitInspectNodeRequested(ContextInterface $ctx): InspectNodeRequestedEvent;
+
+
+	/**
+	 * Fired when user asks to show the Inspect panel.
+	 *
+	 * Listener will be called whenever event Overlay.inspectPanelShowRequested is fired.
+	 *
+	 * @param callable $listener
+	 *
+	 * @return SubscriptionInterface
+	 */
+	public function addInspectPanelShowRequestedListener(callable $listener): SubscriptionInterface;
+
+
+	/**
+	 * Fired when user asks to show the Inspect panel.
+	 *
+	 * Method will block until first Overlay.inspectPanelShowRequested event is fired.
+	 *
+	 * @param ContextInterface $ctx
+	 *
+	 * @return InspectPanelShowRequestedEvent
+	 */
+	public function awaitInspectPanelShowRequested(ContextInterface $ctx): InspectPanelShowRequestedEvent;
 
 
 	/**

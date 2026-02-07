@@ -17,6 +17,8 @@ use ChromeDevtoolsProtocol\Model\Overlay\HighlightRectRequest;
 use ChromeDevtoolsProtocol\Model\Overlay\HighlightSourceOrderRequest;
 use ChromeDevtoolsProtocol\Model\Overlay\InspectModeCanceledEvent;
 use ChromeDevtoolsProtocol\Model\Overlay\InspectNodeRequestedEvent;
+use ChromeDevtoolsProtocol\Model\Overlay\InspectPanelShowRequestedEvent;
+use ChromeDevtoolsProtocol\Model\Overlay\InspectedElementWindowRestoredEvent;
 use ChromeDevtoolsProtocol\Model\Overlay\NodeHighlightRequestedEvent;
 use ChromeDevtoolsProtocol\Model\Overlay\ScreenshotRequestedEvent;
 use ChromeDevtoolsProtocol\Model\Overlay\SetInspectModeRequest;
@@ -29,6 +31,7 @@ use ChromeDevtoolsProtocol\Model\Overlay\SetShowFlexOverlaysRequest;
 use ChromeDevtoolsProtocol\Model\Overlay\SetShowGridOverlaysRequest;
 use ChromeDevtoolsProtocol\Model\Overlay\SetShowHingeRequest;
 use ChromeDevtoolsProtocol\Model\Overlay\SetShowHitTestBordersRequest;
+use ChromeDevtoolsProtocol\Model\Overlay\SetShowInspectedElementAnchorRequest;
 use ChromeDevtoolsProtocol\Model\Overlay\SetShowIsolatedElementsRequest;
 use ChromeDevtoolsProtocol\Model\Overlay\SetShowLayoutShiftRegionsRequest;
 use ChromeDevtoolsProtocol\Model\Overlay\SetShowPaintRectsRequest;
@@ -191,6 +194,14 @@ class OverlayDomain implements OverlayDomainInterface
 	}
 
 
+	public function setShowInspectedElementAnchor(
+		ContextInterface $ctx,
+		SetShowInspectedElementAnchorRequest $request
+	): void {
+		$this->internalClient->executeCommand($ctx, 'Overlay.setShowInspectedElementAnchor', $request);
+	}
+
+
 	public function setShowIsolatedElements(ContextInterface $ctx, SetShowIsolatedElementsRequest $request): void
 	{
 		$this->internalClient->executeCommand($ctx, 'Overlay.setShowIsolatedElements', $request);
@@ -239,6 +250,20 @@ class OverlayDomain implements OverlayDomainInterface
 	}
 
 
+	public function addInspectedElementWindowRestoredListener(callable $listener): SubscriptionInterface
+	{
+		return $this->internalClient->addListener('Overlay.inspectedElementWindowRestored', function ($event) use ($listener) {
+			return $listener(InspectedElementWindowRestoredEvent::fromJson($event));
+		});
+	}
+
+
+	public function awaitInspectedElementWindowRestored(ContextInterface $ctx): InspectedElementWindowRestoredEvent
+	{
+		return InspectedElementWindowRestoredEvent::fromJson($this->internalClient->awaitEvent($ctx, 'Overlay.inspectedElementWindowRestored'));
+	}
+
+
 	public function addInspectModeCanceledListener(callable $listener): SubscriptionInterface
 	{
 		return $this->internalClient->addListener('Overlay.inspectModeCanceled', function ($event) use ($listener) {
@@ -264,6 +289,20 @@ class OverlayDomain implements OverlayDomainInterface
 	public function awaitInspectNodeRequested(ContextInterface $ctx): InspectNodeRequestedEvent
 	{
 		return InspectNodeRequestedEvent::fromJson($this->internalClient->awaitEvent($ctx, 'Overlay.inspectNodeRequested'));
+	}
+
+
+	public function addInspectPanelShowRequestedListener(callable $listener): SubscriptionInterface
+	{
+		return $this->internalClient->addListener('Overlay.inspectPanelShowRequested', function ($event) use ($listener) {
+			return $listener(InspectPanelShowRequestedEvent::fromJson($event));
+		});
+	}
+
+
+	public function awaitInspectPanelShowRequested(ContextInterface $ctx): InspectPanelShowRequestedEvent
+	{
+		return InspectPanelShowRequestedEvent::fromJson($this->internalClient->awaitEvent($ctx, 'Overlay.inspectPanelShowRequested'));
 	}
 
 
