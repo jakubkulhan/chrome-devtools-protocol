@@ -24,10 +24,6 @@ final class FederatedAuthRequestIssueReasonEnum
 	public const CONFIG_NO_RESPONSE = 'ConfigNoResponse';
 	public const CONFIG_INVALID_RESPONSE = 'ConfigInvalidResponse';
 	public const CONFIG_INVALID_CONTENT_TYPE = 'ConfigInvalidContentType';
-	public const CLIENT_METADATA_HTTP_NOT_FOUND = 'ClientMetadataHttpNotFound';
-	public const CLIENT_METADATA_NO_RESPONSE = 'ClientMetadataNoResponse';
-	public const CLIENT_METADATA_INVALID_RESPONSE = 'ClientMetadataInvalidResponse';
-	public const CLIENT_METADATA_INVALID_CONTENT_TYPE = 'ClientMetadataInvalidContentType';
 	public const IDP_NOT_POTENTIALLY_TRUSTWORTHY = 'IdpNotPotentiallyTrustworthy';
 	public const DISABLED_IN_SETTINGS = 'DisabledInSettings';
 	public const DISABLED_IN_FLAGS = 'DisabledInFlags';
@@ -49,11 +45,9 @@ final class FederatedAuthRequestIssueReasonEnum
 	public const CANCELED = 'Canceled';
 	public const RP_PAGE_NOT_VISIBLE = 'RpPageNotVisible';
 	public const SILENT_MEDIATION_FAILURE = 'SilentMediationFailure';
-	public const THIRD_PARTY_COOKIES_BLOCKED = 'ThirdPartyCookiesBlocked';
 	public const NOT_SIGNED_IN_WITH_IDP = 'NotSignedInWithIdp';
 	public const MISSING_TRANSIENT_USER_ACTIVATION = 'MissingTransientUserActivation';
 	public const REPLACED_BY_ACTIVE_MODE = 'ReplacedByActiveMode';
-	public const INVALID_FIELDS_SPECIFIED = 'InvalidFieldsSpecified';
 	public const RELYING_PARTY_ORIGIN_IS_OPAQUE = 'RelyingPartyOriginIsOpaque';
 	public const TYPE_NOT_MATCHING = 'TypeNotMatching';
 	public const UI_DISMISSED_NO_EMBARGO = 'UiDismissedNoEmbargo';
