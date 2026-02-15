@@ -95,6 +95,9 @@ final class InspectorIssueDetails implements \JsonSerializable
 	/** @var PermissionElementIssueDetails|null */
 	public $permissionElementIssueDetails;
 
+	/** @var PerformanceIssueDetails|null */
+	public $performanceIssueDetails;
+
 
 	/**
 	 * @param object $data
@@ -187,6 +190,9 @@ final class InspectorIssueDetails implements \JsonSerializable
 		if (isset($data->permissionElementIssueDetails)) {
 			$instance->permissionElementIssueDetails = PermissionElementIssueDetails::fromJson($data->permissionElementIssueDetails);
 		}
+		if (isset($data->performanceIssueDetails)) {
+			$instance->performanceIssueDetails = PerformanceIssueDetails::fromJson($data->performanceIssueDetails);
+		}
 		return $instance;
 	}
 
@@ -277,6 +283,9 @@ final class InspectorIssueDetails implements \JsonSerializable
 		}
 		if ($this->permissionElementIssueDetails !== null) {
 			$data->permissionElementIssueDetails = $this->permissionElementIssueDetails->jsonSerialize();
+		}
+		if ($this->performanceIssueDetails !== null) {
+			$data->performanceIssueDetails = $this->performanceIssueDetails->jsonSerialize();
 		}
 		return $data;
 	}

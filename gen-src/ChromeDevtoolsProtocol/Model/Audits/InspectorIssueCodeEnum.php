@@ -39,4 +39,5 @@ final class InspectorIssueCodeEnum
 	public const CONNECTION_ALLOWLIST_ISSUE = 'ConnectionAllowlistIssue';
 	public const USER_REIDENTIFICATION_ISSUE = 'UserReidentificationIssue';
 	public const PERMISSION_ELEMENT_ISSUE = 'PermissionElementIssue';
+	public const PERFORMANCE_ISSUE = 'PerformanceIssue';
 }
