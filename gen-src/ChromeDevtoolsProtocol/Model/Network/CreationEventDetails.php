@@ -25,6 +25,13 @@ final class CreationEventDetails implements \JsonSerializable
 	 */
 	public $newSession;
 
+	/**
+	 * Details about a failed device bound session network request if there was one.
+	 *
+	 * @var DeviceBoundSessionFailedRequest|null
+	 */
+	public $failedRequest;
+
 
 	/**
 	 * @param object $data
@@ -39,6 +46,9 @@ final class CreationEventDetails implements \JsonSerializable
 		if (isset($data->newSession)) {
 			$instance->newSession = DeviceBoundSession::fromJson($data->newSession);
 		}
+		if (isset($data->failedRequest)) {
+			$instance->failedRequest = DeviceBoundSessionFailedRequest::fromJson($data->failedRequest);
+		}
 		return $instance;
 	}
 
@@ -51,6 +61,9 @@ final class CreationEventDetails implements \JsonSerializable
 		}
 		if ($this->newSession !== null) {
 			$data->newSession = $this->newSession->jsonSerialize();
+		}
+		if ($this->failedRequest !== null) {
+			$data->failedRequest = $this->failedRequest->jsonSerialize();
 		}
 		return $data;
 	}

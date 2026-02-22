@@ -39,6 +39,13 @@ final class RefreshEventDetails implements \JsonSerializable
 	 */
 	public $wasFullyProactiveRefresh;
 
+	/**
+	 * Details about a failed device bound session network request if there was one.
+	 *
+	 * @var DeviceBoundSessionFailedRequest|null
+	 */
+	public $failedRequest;
+
 
 	/**
 	 * @param object $data
@@ -59,6 +66,9 @@ final class RefreshEventDetails implements \JsonSerializable
 		if (isset($data->wasFullyProactiveRefresh)) {
 			$instance->wasFullyProactiveRefresh = (bool)$data->wasFullyProactiveRefresh;
 		}
+		if (isset($data->failedRequest)) {
+			$instance->failedRequest = DeviceBoundSessionFailedRequest::fromJson($data->failedRequest);
+		}
 		return $instance;
 	}
 
@@ -77,6 +87,9 @@ final class RefreshEventDetails implements \JsonSerializable
 		}
 		if ($this->wasFullyProactiveRefresh !== null) {
 			$data->wasFullyProactiveRefresh = $this->wasFullyProactiveRefresh;
+		}
+		if ($this->failedRequest !== null) {
+			$data->failedRequest = $this->failedRequest->jsonSerialize();
 		}
 		return $data;
 	}
