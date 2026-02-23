@@ -229,6 +229,9 @@ final class Node implements \JsonSerializable
 	/** @var string[]|null */
 	public $adoptedStyleSheets;
 
+	/** @var bool|null */
+	public $isAdRelated;
+
 
 	/**
 	 * @param object $data
@@ -360,6 +363,9 @@ final class Node implements \JsonSerializable
 			}
 		}
 		}
+		if (isset($data->isAdRelated)) {
+			$instance->isAdRelated = (bool)$data->isAdRelated;
+		}
 		return $instance;
 	}
 
@@ -489,6 +495,9 @@ final class Node implements \JsonSerializable
 				$data->adoptedStyleSheets[] = $item;
 			}
 		}
+		}
+		if ($this->isAdRelated !== null) {
+			$data->isAdRelated = $this->isAdRelated;
 		}
 		return $data;
 	}

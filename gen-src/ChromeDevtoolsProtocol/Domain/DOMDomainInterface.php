@@ -3,6 +3,7 @@
 namespace ChromeDevtoolsProtocol\Domain;
 
 use ChromeDevtoolsProtocol\ContextInterface;
+use ChromeDevtoolsProtocol\Model\DOM\AdRelatedStateUpdatedEvent;
 use ChromeDevtoolsProtocol\Model\DOM\AdoptedStyleSheetsModifiedEvent;
 use ChromeDevtoolsProtocol\Model\DOM\AffectedByStartingStylesFlagUpdatedEvent;
 use ChromeDevtoolsProtocol\Model\DOM\AttributeModifiedEvent;
@@ -737,6 +738,30 @@ interface DOMDomainInterface
 	 * @return AdoptedStyleSheetsModifiedEvent
 	 */
 	public function awaitAdoptedStyleSheetsModified(ContextInterface $ctx): AdoptedStyleSheetsModifiedEvent;
+
+
+	/**
+	 * Fired when a node's ad related state changes.
+	 *
+	 * Listener will be called whenever event DOM.adRelatedStateUpdated is fired.
+	 *
+	 * @param callable $listener
+	 *
+	 * @return SubscriptionInterface
+	 */
+	public function addAdRelatedStateUpdatedListener(callable $listener): SubscriptionInterface;
+
+
+	/**
+	 * Fired when a node's ad related state changes.
+	 *
+	 * Method will block until first DOM.adRelatedStateUpdated event is fired.
+	 *
+	 * @param ContextInterface $ctx
+	 *
+	 * @return AdRelatedStateUpdatedEvent
+	 */
+	public function awaitAdRelatedStateUpdated(ContextInterface $ctx): AdRelatedStateUpdatedEvent;
 
 
 	/**

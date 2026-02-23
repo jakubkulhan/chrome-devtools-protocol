@@ -4,6 +4,7 @@ namespace ChromeDevtoolsProtocol\Domain;
 
 use ChromeDevtoolsProtocol\ContextInterface;
 use ChromeDevtoolsProtocol\InternalClientInterface;
+use ChromeDevtoolsProtocol\Model\DOM\AdRelatedStateUpdatedEvent;
 use ChromeDevtoolsProtocol\Model\DOM\AdoptedStyleSheetsModifiedEvent;
 use ChromeDevtoolsProtocol\Model\DOM\AffectedByStartingStylesFlagUpdatedEvent;
 use ChromeDevtoolsProtocol\Model\DOM\AttributeModifiedEvent;
@@ -504,6 +505,20 @@ class DOMDomain implements DOMDomainInterface
 	public function awaitAdoptedStyleSheetsModified(ContextInterface $ctx): AdoptedStyleSheetsModifiedEvent
 	{
 		return AdoptedStyleSheetsModifiedEvent::fromJson($this->internalClient->awaitEvent($ctx, 'DOM.adoptedStyleSheetsModified'));
+	}
+
+
+	public function addAdRelatedStateUpdatedListener(callable $listener): SubscriptionInterface
+	{
+		return $this->internalClient->addListener('DOM.adRelatedStateUpdated', function ($event) use ($listener) {
+			return $listener(AdRelatedStateUpdatedEvent::fromJson($event));
+		});
+	}
+
+
+	public function awaitAdRelatedStateUpdated(ContextInterface $ctx): AdRelatedStateUpdatedEvent
+	{
+		return AdRelatedStateUpdatedEvent::fromJson($this->internalClient->awaitEvent($ctx, 'DOM.adRelatedStateUpdated'));
 	}
 
 
