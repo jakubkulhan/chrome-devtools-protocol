@@ -12,5 +12,6 @@ namespace ChromeDevtoolsProtocol\Model\Emulation;
 final class DisabledImageTypeEnum
 {
 	public const AVIF = 'avif';
+	public const JXL = 'jxl';
 	public const WEBP = 'webp';
 }
