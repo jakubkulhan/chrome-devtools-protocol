@@ -4,6 +4,7 @@ namespace ChromeDevtoolsProtocol\Domain;
 
 use ChromeDevtoolsProtocol\ContextInterface;
 use ChromeDevtoolsProtocol\Model\Extensions\ClearStorageItemsRequest;
+use ChromeDevtoolsProtocol\Model\Extensions\GetExtensionsResponse;
 use ChromeDevtoolsProtocol\Model\Extensions\GetStorageItemsRequest;
 use ChromeDevtoolsProtocol\Model\Extensions\GetStorageItemsResponse;
 use ChromeDevtoolsProtocol\Model\Extensions\LoadUnpackedRequest;
@@ -33,6 +34,16 @@ interface ExtensionsDomainInterface
 	 * @return void
 	 */
 	public function clearStorageItems(ContextInterface $ctx, ClearStorageItemsRequest $request): void;
+
+
+	/**
+	 * Gets a list of all unpacked extensions. Available if the client is connected using the --remote-debugging-pipe flag and the --enable-unsafe-extension-debugging flag is set.
+	 *
+	 * @param ContextInterface $ctx
+	 *
+	 * @return GetExtensionsResponse
+	 */
+	public function getExtensions(ContextInterface $ctx): GetExtensionsResponse;
 
 
 	/**

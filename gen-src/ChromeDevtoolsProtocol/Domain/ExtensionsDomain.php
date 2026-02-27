@@ -5,6 +5,7 @@ namespace ChromeDevtoolsProtocol\Domain;
 use ChromeDevtoolsProtocol\ContextInterface;
 use ChromeDevtoolsProtocol\InternalClientInterface;
 use ChromeDevtoolsProtocol\Model\Extensions\ClearStorageItemsRequest;
+use ChromeDevtoolsProtocol\Model\Extensions\GetExtensionsResponse;
 use ChromeDevtoolsProtocol\Model\Extensions\GetStorageItemsRequest;
 use ChromeDevtoolsProtocol\Model\Extensions\GetStorageItemsResponse;
 use ChromeDevtoolsProtocol\Model\Extensions\LoadUnpackedRequest;
@@ -29,6 +30,14 @@ class ExtensionsDomain implements ExtensionsDomainInterface
 	public function clearStorageItems(ContextInterface $ctx, ClearStorageItemsRequest $request): void
 	{
 		$this->internalClient->executeCommand($ctx, 'Extensions.clearStorageItems', $request);
+	}
+
+
+	public function getExtensions(ContextInterface $ctx): GetExtensionsResponse
+	{
+		$request = new \stdClass();
+		$response = $this->internalClient->executeCommand($ctx, 'Extensions.getExtensions', $request);
+		return GetExtensionsResponse::fromJson($response);
 	}
 
 

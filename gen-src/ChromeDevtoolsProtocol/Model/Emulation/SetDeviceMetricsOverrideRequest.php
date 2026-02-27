@@ -111,6 +111,13 @@ final class SetDeviceMetricsOverrideRequest implements \JsonSerializable
 	 */
 	public $devicePosture;
 
+	/**
+	 * Scrollbar type. Default: `default`.
+	 *
+	 * @var string|null
+	 */
+	public $scrollbarType;
+
 
 	/**
 	 * @param object $data
@@ -161,6 +168,9 @@ final class SetDeviceMetricsOverrideRequest implements \JsonSerializable
 		if (isset($data->devicePosture)) {
 			$instance->devicePosture = DevicePosture::fromJson($data->devicePosture);
 		}
+		if (isset($data->scrollbarType)) {
+			$instance->scrollbarType = (string)$data->scrollbarType;
+		}
 		return $instance;
 	}
 
@@ -209,6 +219,9 @@ final class SetDeviceMetricsOverrideRequest implements \JsonSerializable
 		}
 		if ($this->devicePosture !== null) {
 			$data->devicePosture = $this->devicePosture->jsonSerialize();
+		}
+		if ($this->scrollbarType !== null) {
+			$data->scrollbarType = $this->scrollbarType;
 		}
 		return $data;
 	}

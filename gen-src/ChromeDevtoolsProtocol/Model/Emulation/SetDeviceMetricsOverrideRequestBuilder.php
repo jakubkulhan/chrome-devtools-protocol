@@ -26,6 +26,7 @@ final class SetDeviceMetricsOverrideRequestBuilder
 	private $viewport;
 	private $displayFeature;
 	private $devicePosture;
+	private $scrollbarType;
 
 
 	/**
@@ -60,6 +61,7 @@ final class SetDeviceMetricsOverrideRequestBuilder
 		$instance->viewport = $this->viewport;
 		$instance->displayFeature = $this->displayFeature;
 		$instance->devicePosture = $this->devicePosture;
+		$instance->scrollbarType = $this->scrollbarType;
 		return $instance;
 	}
 
@@ -228,6 +230,18 @@ final class SetDeviceMetricsOverrideRequestBuilder
 	public function setDevicePosture($devicePosture): self
 	{
 		$this->devicePosture = $devicePosture;
+		return $this;
+	}
+
+
+	/**
+	 * @param string|null $scrollbarType
+	 *
+	 * @return self
+	 */
+	public function setScrollbarType($scrollbarType): self
+	{
+		$this->scrollbarType = $scrollbarType;
 		return $this;
 	}
 }
