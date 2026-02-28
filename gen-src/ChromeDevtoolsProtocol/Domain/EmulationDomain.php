@@ -35,6 +35,7 @@ use ChromeDevtoolsProtocol\Model\Emulation\SetPageScaleFactorRequest;
 use ChromeDevtoolsProtocol\Model\Emulation\SetPressureDataOverrideRequest;
 use ChromeDevtoolsProtocol\Model\Emulation\SetPressureSourceOverrideEnabledRequest;
 use ChromeDevtoolsProtocol\Model\Emulation\SetPressureStateOverrideRequest;
+use ChromeDevtoolsProtocol\Model\Emulation\SetPrimaryScreenRequest;
 use ChromeDevtoolsProtocol\Model\Emulation\SetSafeAreaInsetsOverrideRequest;
 use ChromeDevtoolsProtocol\Model\Emulation\SetScriptExecutionDisabledRequest;
 use ChromeDevtoolsProtocol\Model\Emulation\SetScrollbarsHiddenRequest;
@@ -289,6 +290,12 @@ class EmulationDomain implements EmulationDomainInterface
 	public function setPressureStateOverride(ContextInterface $ctx, SetPressureStateOverrideRequest $request): void
 	{
 		$this->internalClient->executeCommand($ctx, 'Emulation.setPressureStateOverride', $request);
+	}
+
+
+	public function setPrimaryScreen(ContextInterface $ctx, SetPrimaryScreenRequest $request): void
+	{
+		$this->internalClient->executeCommand($ctx, 'Emulation.setPrimaryScreen', $request);
 	}
 
 

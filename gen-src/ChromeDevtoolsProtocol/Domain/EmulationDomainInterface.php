@@ -34,6 +34,7 @@ use ChromeDevtoolsProtocol\Model\Emulation\SetPageScaleFactorRequest;
 use ChromeDevtoolsProtocol\Model\Emulation\SetPressureDataOverrideRequest;
 use ChromeDevtoolsProtocol\Model\Emulation\SetPressureSourceOverrideEnabledRequest;
 use ChromeDevtoolsProtocol\Model\Emulation\SetPressureStateOverrideRequest;
+use ChromeDevtoolsProtocol\Model\Emulation\SetPrimaryScreenRequest;
 use ChromeDevtoolsProtocol\Model\Emulation\SetSafeAreaInsetsOverrideRequest;
 use ChromeDevtoolsProtocol\Model\Emulation\SetScriptExecutionDisabledRequest;
 use ChromeDevtoolsProtocol\Model\Emulation\SetScrollbarsHiddenRequest;
@@ -445,6 +446,17 @@ interface EmulationDomainInterface
 	 * @return void
 	 */
 	public function setPressureStateOverride(ContextInterface $ctx, SetPressureStateOverrideRequest $request): void;
+
+
+	/**
+	 * Set primary screen. Only supported in headless mode. Note that this changes the coordinate system origin to the top-left of the new primary screen, updating the bounds and work areas of all existing screens accordingly.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param SetPrimaryScreenRequest $request
+	 *
+	 * @return void
+	 */
+	public function setPrimaryScreen(ContextInterface $ctx, SetPrimaryScreenRequest $request): void;
 
 
 	/**
