@@ -3,7 +3,7 @@
 namespace ChromeDevtoolsProtocol\Model\Network;
 
 /**
- * The render blocking behavior of a resource request.
+ * The render-blocking behavior of a resource request.
  *
  * @generated This file has been auto-generated, do not edit.
  *

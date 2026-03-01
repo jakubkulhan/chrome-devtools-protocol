@@ -96,7 +96,7 @@ final class RequestWillBeSentEvent implements \JsonSerializable
 	public $hasUserGesture;
 
 	/**
-	 * The render blocking behavior of the request.
+	 * The render-blocking behavior of the request.
 	 *
 	 * @var string
 	 */
