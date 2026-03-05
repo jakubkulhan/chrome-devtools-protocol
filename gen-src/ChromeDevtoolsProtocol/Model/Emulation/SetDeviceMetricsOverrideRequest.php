@@ -118,6 +118,13 @@ final class SetDeviceMetricsOverrideRequest implements \JsonSerializable
 	 */
 	public $scrollbarType;
 
+	/**
+	 * If set to true, enables screen orientation lock emulation, which intercepts screen.orientation.lock() calls from the page and reports orientation changes via screenOrientationLockChanged events. This is useful for emulating mobile device orientation lock behavior in responsive design mode.
+	 *
+	 * @var bool|null
+	 */
+	public $screenOrientationLockEmulation;
+
 
 	/**
 	 * @param object $data
@@ -171,6 +178,9 @@ final class SetDeviceMetricsOverrideRequest implements \JsonSerializable
 		if (isset($data->scrollbarType)) {
 			$instance->scrollbarType = (string)$data->scrollbarType;
 		}
+		if (isset($data->screenOrientationLockEmulation)) {
+			$instance->screenOrientationLockEmulation = (bool)$data->screenOrientationLockEmulation;
+		}
 		return $instance;
 	}
 
@@ -222,6 +232,9 @@ final class SetDeviceMetricsOverrideRequest implements \JsonSerializable
 		}
 		if ($this->scrollbarType !== null) {
 			$data->scrollbarType = $this->scrollbarType;
+		}
+		if ($this->screenOrientationLockEmulation !== null) {
+			$data->screenOrientationLockEmulation = $this->screenOrientationLockEmulation;
 		}
 		return $data;
 	}

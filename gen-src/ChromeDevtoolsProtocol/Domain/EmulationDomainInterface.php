@@ -10,6 +10,7 @@ use ChromeDevtoolsProtocol\Model\Emulation\GetOverriddenSensorInformationRequest
 use ChromeDevtoolsProtocol\Model\Emulation\GetOverriddenSensorInformationResponse;
 use ChromeDevtoolsProtocol\Model\Emulation\GetScreenInfosResponse;
 use ChromeDevtoolsProtocol\Model\Emulation\RemoveScreenRequest;
+use ChromeDevtoolsProtocol\Model\Emulation\ScreenOrientationLockChangedEvent;
 use ChromeDevtoolsProtocol\Model\Emulation\SetAutoDarkModeOverrideRequest;
 use ChromeDevtoolsProtocol\Model\Emulation\SetAutomationOverrideRequest;
 use ChromeDevtoolsProtocol\Model\Emulation\SetCPUThrottlingRateRequest;
@@ -47,6 +48,8 @@ use ChromeDevtoolsProtocol\Model\Emulation\SetUserAgentOverrideRequest;
 use ChromeDevtoolsProtocol\Model\Emulation\SetVirtualTimePolicyRequest;
 use ChromeDevtoolsProtocol\Model\Emulation\SetVirtualTimePolicyResponse;
 use ChromeDevtoolsProtocol\Model\Emulation\SetVisibleSizeRequest;
+use ChromeDevtoolsProtocol\Model\Emulation\UpdateScreenRequest;
+use ChromeDevtoolsProtocol\Model\Emulation\UpdateScreenResponse;
 use ChromeDevtoolsProtocol\Model\Emulation\VirtualTimeBudgetExpiredEvent;
 use ChromeDevtoolsProtocol\SubscriptionInterface;
 
@@ -584,6 +587,41 @@ interface EmulationDomainInterface
 	 * @return void
 	 */
 	public function setVisibleSize(ContextInterface $ctx, SetVisibleSizeRequest $request): void;
+
+
+	/**
+	 * Updates specified screen parameters. Only supported in headless mode.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param UpdateScreenRequest $request
+	 *
+	 * @return UpdateScreenResponse
+	 */
+	public function updateScreen(ContextInterface $ctx, UpdateScreenRequest $request): UpdateScreenResponse;
+
+
+	/**
+	 * Fired when a page calls screen.orientation.lock() or screen.orientation.unlock() while device emulation is enabled. This allows the DevTools frontend to update the emulated device orientation accordingly.
+	 *
+	 * Listener will be called whenever event Emulation.screenOrientationLockChanged is fired.
+	 *
+	 * @param callable $listener
+	 *
+	 * @return SubscriptionInterface
+	 */
+	public function addScreenOrientationLockChangedListener(callable $listener): SubscriptionInterface;
+
+
+	/**
+	 * Fired when a page calls screen.orientation.lock() or screen.orientation.unlock() while device emulation is enabled. This allows the DevTools frontend to update the emulated device orientation accordingly.
+	 *
+	 * Method will block until first Emulation.screenOrientationLockChanged event is fired.
+	 *
+	 * @param ContextInterface $ctx
+	 *
+	 * @return ScreenOrientationLockChangedEvent
+	 */
+	public function awaitScreenOrientationLockChanged(ContextInterface $ctx): ScreenOrientationLockChangedEvent;
 
 
 	/**

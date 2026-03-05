@@ -11,6 +11,7 @@ use ChromeDevtoolsProtocol\Model\Emulation\GetOverriddenSensorInformationRequest
 use ChromeDevtoolsProtocol\Model\Emulation\GetOverriddenSensorInformationResponse;
 use ChromeDevtoolsProtocol\Model\Emulation\GetScreenInfosResponse;
 use ChromeDevtoolsProtocol\Model\Emulation\RemoveScreenRequest;
+use ChromeDevtoolsProtocol\Model\Emulation\ScreenOrientationLockChangedEvent;
 use ChromeDevtoolsProtocol\Model\Emulation\SetAutoDarkModeOverrideRequest;
 use ChromeDevtoolsProtocol\Model\Emulation\SetAutomationOverrideRequest;
 use ChromeDevtoolsProtocol\Model\Emulation\SetCPUThrottlingRateRequest;
@@ -48,6 +49,8 @@ use ChromeDevtoolsProtocol\Model\Emulation\SetUserAgentOverrideRequest;
 use ChromeDevtoolsProtocol\Model\Emulation\SetVirtualTimePolicyRequest;
 use ChromeDevtoolsProtocol\Model\Emulation\SetVirtualTimePolicyResponse;
 use ChromeDevtoolsProtocol\Model\Emulation\SetVisibleSizeRequest;
+use ChromeDevtoolsProtocol\Model\Emulation\UpdateScreenRequest;
+use ChromeDevtoolsProtocol\Model\Emulation\UpdateScreenResponse;
 use ChromeDevtoolsProtocol\Model\Emulation\VirtualTimeBudgetExpiredEvent;
 use ChromeDevtoolsProtocol\SubscriptionInterface;
 
@@ -367,6 +370,27 @@ class EmulationDomain implements EmulationDomainInterface
 	public function setVisibleSize(ContextInterface $ctx, SetVisibleSizeRequest $request): void
 	{
 		$this->internalClient->executeCommand($ctx, 'Emulation.setVisibleSize', $request);
+	}
+
+
+	public function updateScreen(ContextInterface $ctx, UpdateScreenRequest $request): UpdateScreenResponse
+	{
+		$response = $this->internalClient->executeCommand($ctx, 'Emulation.updateScreen', $request);
+		return UpdateScreenResponse::fromJson($response);
+	}
+
+
+	public function addScreenOrientationLockChangedListener(callable $listener): SubscriptionInterface
+	{
+		return $this->internalClient->addListener('Emulation.screenOrientationLockChanged', function ($event) use ($listener) {
+			return $listener(ScreenOrientationLockChangedEvent::fromJson($event));
+		});
+	}
+
+
+	public function awaitScreenOrientationLockChanged(ContextInterface $ctx): ScreenOrientationLockChangedEvent
+	{
+		return ScreenOrientationLockChangedEvent::fromJson($this->internalClient->awaitEvent($ctx, 'Emulation.screenOrientationLockChanged'));
 	}
 
 
