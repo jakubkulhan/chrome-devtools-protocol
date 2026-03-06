@@ -46,6 +46,8 @@ use ChromeDevtoolsProtocol\Model\CSS\SetKeyframeKeyResponse;
 use ChromeDevtoolsProtocol\Model\CSS\SetLocalFontsEnabledRequest;
 use ChromeDevtoolsProtocol\Model\CSS\SetMediaTextRequest;
 use ChromeDevtoolsProtocol\Model\CSS\SetMediaTextResponse;
+use ChromeDevtoolsProtocol\Model\CSS\SetNavigationTextRequest;
+use ChromeDevtoolsProtocol\Model\CSS\SetNavigationTextResponse;
 use ChromeDevtoolsProtocol\Model\CSS\SetPropertyRulePropertyNameRequest;
 use ChromeDevtoolsProtocol\Model\CSS\SetPropertyRulePropertyNameResponse;
 use ChromeDevtoolsProtocol\Model\CSS\SetRuleSelectorRequest;
@@ -378,6 +380,17 @@ interface CSSDomainInterface
 	 * @return SetMediaTextResponse
 	 */
 	public function setMediaText(ContextInterface $ctx, SetMediaTextRequest $request): SetMediaTextResponse;
+
+
+	/**
+	 * Modifies the expression of a navigation at-rule.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param SetNavigationTextRequest $request
+	 *
+	 * @return SetNavigationTextResponse
+	 */
+	public function setNavigationText(ContextInterface $ctx, SetNavigationTextRequest $request): SetNavigationTextResponse;
 
 
 	/**

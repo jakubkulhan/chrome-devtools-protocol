@@ -26,4 +26,5 @@ final class GenericIssueErrorTypeEnum
 	public const AUTOFILL_AND_MANUAL_TEXT_POLICY_CONTROLLED_FEATURES_INFO = 'AutofillAndManualTextPolicyControlledFeaturesInfo';
 	public const AUTOFILL_POLICY_CONTROLLED_FEATURE_INFO = 'AutofillPolicyControlledFeatureInfo';
 	public const MANUAL_TEXT_POLICY_CONTROLLED_FEATURE_INFO = 'ManualTextPolicyControlledFeatureInfo';
+	public const FORM_MODEL_CONTEXT_PARAMETER_MISSING_TITLE_AND_DESCRIPTION = 'FormModelContextParameterMissingTitleAndDescription';
 }

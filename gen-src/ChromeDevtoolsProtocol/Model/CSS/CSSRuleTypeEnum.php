@@ -18,4 +18,5 @@ final class CSSRuleTypeEnum
 	public const SCOPE_RULE = 'ScopeRule';
 	public const STYLE_RULE = 'StyleRule';
 	public const STARTING_STYLE_RULE = 'StartingStyleRule';
+	public const NAVIGATION_RULE = 'NavigationRule';
 }

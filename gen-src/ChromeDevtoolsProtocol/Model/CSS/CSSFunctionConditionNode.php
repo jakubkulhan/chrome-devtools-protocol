@@ -33,6 +33,13 @@ final class CSSFunctionConditionNode implements \JsonSerializable
 	public $supports;
 
 	/**
+	 * @navigation condition. Only one type of condition should be set.
+	 *
+	 * @var CSSNavigation|null
+	 */
+	public $navigation;
+
+	/**
 	 * Block body.
 	 *
 	 * @var CSSFunctionNode[]
@@ -63,6 +70,9 @@ final class CSSFunctionConditionNode implements \JsonSerializable
 		if (isset($data->supports)) {
 			$instance->supports = CSSSupports::fromJson($data->supports);
 		}
+		if (isset($data->navigation)) {
+			$instance->navigation = CSSNavigation::fromJson($data->navigation);
+		}
 		if (isset($data->children)) {
 			$instance->children = [];
 			foreach ($data->children as $item) {
@@ -87,6 +97,9 @@ final class CSSFunctionConditionNode implements \JsonSerializable
 		}
 		if ($this->supports !== null) {
 			$data->supports = $this->supports->jsonSerialize();
+		}
+		if ($this->navigation !== null) {
+			$data->navigation = $this->navigation->jsonSerialize();
 		}
 		if ($this->children !== null) {
 			$data->children = [];

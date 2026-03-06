@@ -1806,7 +1806,8 @@
                         "NavigationEntryMarkedSkippable",
                         "AutofillAndManualTextPolicyControlledFeaturesInfo",
                         "AutofillPolicyControlledFeatureInfo",
-                        "ManualTextPolicyControlledFeatureInfo"
+                        "ManualTextPolicyControlledFeatureInfo",
+                        "FormModelContextParameterMissingTitleAndDescription"
                     ]
                 },
                 {
@@ -5116,6 +5117,16 @@
                             "items": {
                                 "$ref": "CSSStartingStyle"
                             }
+                        },
+                        {
+                            "name": "navigations",
+                            "description": "@navigation CSS at-rule array. The array enumerates @navigation at-rules starting with the innermost one, going outwards.",
+                            "experimental": true,
+                            "optional": true,
+                            "type": "array",
+                            "items": {
+                                "$ref": "CSSNavigation"
+                            }
                         }
                     ]
                 },
@@ -5131,7 +5142,8 @@
                         "LayerRule",
                         "ScopeRule",
                         "StyleRule",
-                        "StartingStyleRule"
+                        "StartingStyleRule",
+                        "NavigationRule"
                     ]
                 },
                 {
@@ -5515,6 +5527,37 @@
                         {
                             "name": "active",
                             "description": "Whether the supports condition is satisfied.",
+                            "type": "boolean"
+                        },
+                        {
+                            "name": "range",
+                            "description": "The associated rule header range in the enclosing stylesheet (if available).",
+                            "optional": true,
+                            "$ref": "SourceRange"
+                        },
+                        {
+                            "name": "styleSheetId",
+                            "description": "Identifier of the stylesheet containing this object (if exists).",
+                            "optional": true,
+                            "$ref": "DOM.StyleSheetId"
+                        }
+                    ]
+                },
+                {
+                    "id": "CSSNavigation",
+                    "description": "CSS Navigation at-rule descriptor.",
+                    "experimental": true,
+                    "type": "object",
+                    "properties": [
+                        {
+                            "name": "text",
+                            "description": "Navigation rule text.",
+                            "type": "string"
+                        },
+                        {
+                            "name": "active",
+                            "description": "Whether the navigation condition is satisfied.",
+                            "optional": true,
                             "type": "boolean"
                         },
                         {
@@ -5967,6 +6010,12 @@
                             "description": "@supports CSS at-rule condition. Only one type of condition should be set.",
                             "optional": true,
                             "$ref": "CSSSupports"
+                        },
+                        {
+                            "name": "navigation",
+                            "description": "@navigation condition. Only one type of condition should be set.",
+                            "optional": true,
+                            "$ref": "CSSNavigation"
                         },
                         {
                             "name": "children",
@@ -6739,6 +6788,32 @@
                             "name": "media",
                             "description": "The resulting CSS media rule after modification.",
                             "$ref": "CSSMedia"
+                        }
+                    ]
+                },
+                {
+                    "name": "setNavigationText",
+                    "description": "Modifies the expression of a navigation at-rule.",
+                    "experimental": true,
+                    "parameters": [
+                        {
+                            "name": "styleSheetId",
+                            "$ref": "DOM.StyleSheetId"
+                        },
+                        {
+                            "name": "range",
+                            "$ref": "SourceRange"
+                        },
+                        {
+                            "name": "text",
+                            "type": "string"
+                        }
+                    ],
+                    "returns": [
+                        {
+                            "name": "navigation",
+                            "description": "The resulting CSS Navigation rule after modification.",
+                            "$ref": "CSSNavigation"
                         }
                     ]
                 },

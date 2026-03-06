@@ -102,6 +102,13 @@ final class CSSRule implements \JsonSerializable
 	 */
 	public $startingStyles;
 
+	/**
+	 * @navigation CSS at-rule array. The array enumerates @navigation at-rules starting with the innermost one, going outwards.
+	 *
+	 * @var CSSNavigation[]|null
+	 */
+	public $navigations;
+
 
 	/**
 	 * @param object $data
@@ -176,6 +183,12 @@ final class CSSRule implements \JsonSerializable
 				$instance->startingStyles[] = CSSStartingStyle::fromJson($item);
 			}
 		}
+		if (isset($data->navigations)) {
+			$instance->navigations = [];
+			foreach ($data->navigations as $item) {
+				$instance->navigations[] = CSSNavigation::fromJson($item);
+			}
+		}
 		return $instance;
 	}
 
@@ -247,6 +260,12 @@ final class CSSRule implements \JsonSerializable
 			$data->startingStyles = [];
 			foreach ($this->startingStyles as $item) {
 				$data->startingStyles[] = $item->jsonSerialize();
+			}
+		}
+		if ($this->navigations !== null) {
+			$data->navigations = [];
+			foreach ($this->navigations as $item) {
+				$data->navigations[] = $item->jsonSerialize();
 			}
 		}
 		return $data;

@@ -47,6 +47,8 @@ use ChromeDevtoolsProtocol\Model\CSS\SetKeyframeKeyResponse;
 use ChromeDevtoolsProtocol\Model\CSS\SetLocalFontsEnabledRequest;
 use ChromeDevtoolsProtocol\Model\CSS\SetMediaTextRequest;
 use ChromeDevtoolsProtocol\Model\CSS\SetMediaTextResponse;
+use ChromeDevtoolsProtocol\Model\CSS\SetNavigationTextRequest;
+use ChromeDevtoolsProtocol\Model\CSS\SetNavigationTextResponse;
 use ChromeDevtoolsProtocol\Model\CSS\SetPropertyRulePropertyNameRequest;
 use ChromeDevtoolsProtocol\Model\CSS\SetPropertyRulePropertyNameResponse;
 use ChromeDevtoolsProtocol\Model\CSS\SetRuleSelectorRequest;
@@ -271,6 +273,13 @@ class CSSDomain implements CSSDomainInterface
 	{
 		$response = $this->internalClient->executeCommand($ctx, 'CSS.setMediaText', $request);
 		return SetMediaTextResponse::fromJson($response);
+	}
+
+
+	public function setNavigationText(ContextInterface $ctx, SetNavigationTextRequest $request): SetNavigationTextResponse
+	{
+		$response = $this->internalClient->executeCommand($ctx, 'CSS.setNavigationText', $request);
+		return SetNavigationTextResponse::fromJson($response);
 	}
 
 
