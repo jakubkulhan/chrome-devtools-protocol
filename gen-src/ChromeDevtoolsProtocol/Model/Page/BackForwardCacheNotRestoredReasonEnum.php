@@ -51,6 +51,7 @@ final class BackForwardCacheNotRestoredReasonEnum
 	public const BACK_FORWARD_CACHE_DISABLED_FOR_PRERENDER = 'BackForwardCacheDisabledForPrerender';
 	public const USER_AGENT_OVERRIDE_DIFFERS = 'UserAgentOverrideDiffers';
 	public const FOREGROUND_CACHE_LIMIT = 'ForegroundCacheLimit';
+	public const FORWARD_CACHE_DISABLED = 'ForwardCacheDisabled';
 	public const BROWSING_INSTANCE_NOT_SWAPPED = 'BrowsingInstanceNotSwapped';
 	public const BACK_FORWARD_CACHE_DISABLED_FOR_DELEGATE = 'BackForwardCacheDisabledForDelegate';
 	public const UNLOAD_HANDLER_EXISTS_IN_MAIN_FRAME = 'UnloadHandlerExistsInMainFrame';

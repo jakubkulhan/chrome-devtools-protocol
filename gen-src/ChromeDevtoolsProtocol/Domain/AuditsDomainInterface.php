@@ -3,7 +3,6 @@
 namespace ChromeDevtoolsProtocol\Domain;
 
 use ChromeDevtoolsProtocol\ContextInterface;
-use ChromeDevtoolsProtocol\Model\Audits\CheckContrastRequest;
 use ChromeDevtoolsProtocol\Model\Audits\CheckFormsIssuesResponse;
 use ChromeDevtoolsProtocol\Model\Audits\GetEncodedResponseRequest;
 use ChromeDevtoolsProtocol\Model\Audits\GetEncodedResponseResponse;
@@ -21,17 +20,6 @@ use ChromeDevtoolsProtocol\SubscriptionInterface;
  */
 interface AuditsDomainInterface
 {
-	/**
-	 * Runs the contrast check for the target page. Found issues are reported using Audits.issueAdded event.
-	 *
-	 * @param ContextInterface $ctx
-	 * @param CheckContrastRequest $request
-	 *
-	 * @return void
-	 */
-	public function checkContrast(ContextInterface $ctx, CheckContrastRequest $request): void;
-
-
 	/**
 	 * Runs the form issues check for the target page. Found issues are reported using Audits.issueAdded event.
 	 *

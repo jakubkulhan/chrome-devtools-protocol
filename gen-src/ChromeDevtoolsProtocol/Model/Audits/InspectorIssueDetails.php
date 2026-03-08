@@ -29,9 +29,6 @@ final class InspectorIssueDetails implements \JsonSerializable
 	/** @var SharedArrayBufferIssueDetails|null */
 	public $sharedArrayBufferIssueDetails;
 
-	/** @var LowTextContrastIssueDetails|null */
-	public $lowTextContrastIssueDetails;
-
 	/** @var CorsIssueDetails|null */
 	public $corsIssueDetails;
 
@@ -127,9 +124,6 @@ final class InspectorIssueDetails implements \JsonSerializable
 		if (isset($data->sharedArrayBufferIssueDetails)) {
 			$instance->sharedArrayBufferIssueDetails = SharedArrayBufferIssueDetails::fromJson($data->sharedArrayBufferIssueDetails);
 		}
-		if (isset($data->lowTextContrastIssueDetails)) {
-			$instance->lowTextContrastIssueDetails = LowTextContrastIssueDetails::fromJson($data->lowTextContrastIssueDetails);
-		}
 		if (isset($data->corsIssueDetails)) {
 			$instance->corsIssueDetails = CorsIssueDetails::fromJson($data->corsIssueDetails);
 		}
@@ -223,9 +217,6 @@ final class InspectorIssueDetails implements \JsonSerializable
 		}
 		if ($this->sharedArrayBufferIssueDetails !== null) {
 			$data->sharedArrayBufferIssueDetails = $this->sharedArrayBufferIssueDetails->jsonSerialize();
-		}
-		if ($this->lowTextContrastIssueDetails !== null) {
-			$data->lowTextContrastIssueDetails = $this->lowTextContrastIssueDetails->jsonSerialize();
 		}
 		if ($this->corsIssueDetails !== null) {
 			$data->corsIssueDetails = $this->corsIssueDetails->jsonSerialize();
