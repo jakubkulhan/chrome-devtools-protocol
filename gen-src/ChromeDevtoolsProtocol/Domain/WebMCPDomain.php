@@ -1,0 +1,56 @@
+<?php
+
+namespace ChromeDevtoolsProtocol\Domain;
+
+use ChromeDevtoolsProtocol\ContextInterface;
+use ChromeDevtoolsProtocol\InternalClientInterface;
+use ChromeDevtoolsProtocol\Model\WebMCP\ToolsAddedEvent;
+use ChromeDevtoolsProtocol\Model\WebMCP\ToolsRemovedEvent;
+use ChromeDevtoolsProtocol\SubscriptionInterface;
+
+class WebMCPDomain implements WebMCPDomainInterface
+{
+	/** @var InternalClientInterface */
+	public $internalClient;
+
+
+	public function __construct(InternalClientInterface $internalClient)
+	{
+		$this->internalClient = $internalClient;
+	}
+
+
+	public function enable(ContextInterface $ctx): void
+	{
+		$request = new \stdClass();
+		$this->internalClient->executeCommand($ctx, 'WebMCP.enable', $request);
+	}
+
+
+	public function addToolsAddedListener(callable $listener): SubscriptionInterface
+	{
+		return $this->internalClient->addListener('WebMCP.toolsAdded', function ($event) use ($listener) {
+			return $listener(ToolsAddedEvent::fromJson($event));
+		});
+	}
+
+
+	public function awaitToolsAdded(ContextInterface $ctx): ToolsAddedEvent
+	{
+		return ToolsAddedEvent::fromJson($this->internalClient->awaitEvent($ctx, 'WebMCP.toolsAdded'));
+	}
+
+
+	public function addToolsRemovedListener(callable $listener): SubscriptionInterface
+	{
+		return $this->internalClient->addListener('WebMCP.toolsRemoved', function ($event) use ($listener) {
+			return $listener(ToolsRemovedEvent::fromJson($event));
+		});
+	}
+
+
+	public function awaitToolsRemoved(ContextInterface $ctx): ToolsRemovedEvent
+	{
+		return ToolsRemovedEvent::fromJson($this->internalClient->awaitEvent($ctx, 'WebMCP.toolsRemoved'));
+	}
+}

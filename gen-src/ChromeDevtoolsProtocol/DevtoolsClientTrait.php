@@ -110,6 +110,8 @@ use ChromeDevtoolsProtocol\Domain\WebAudioDomain;
 use ChromeDevtoolsProtocol\Domain\WebAudioDomainInterface;
 use ChromeDevtoolsProtocol\Domain\WebAuthnDomain;
 use ChromeDevtoolsProtocol\Domain\WebAuthnDomainInterface;
+use ChromeDevtoolsProtocol\Domain\WebMCPDomain;
+use ChromeDevtoolsProtocol\Domain\WebMCPDomainInterface;
 
 trait DevtoolsClientTrait
 {
@@ -761,6 +763,18 @@ trait DevtoolsClientTrait
 		}
 		/** @var WebAuthnDomainInterface $domain */
 		$domain = $this->domains['WebAuthn'];
+		return $domain;
+	}
+
+
+	public function webMCP(): WebMCPDomainInterface
+	{
+		if (!isset($this->domains['WebMCP'])) {
+			/** @var InternalClientInterface $this */
+			$this->domains['WebMCP'] = new WebMCPDomain($this);
+		}
+		/** @var WebMCPDomainInterface $domain */
+		$domain = $this->domains['WebMCP'];
 		return $domain;
 	}
 }

@@ -56,6 +56,7 @@ use ChromeDevtoolsProtocol\Domain\TetheringDomainInterface;
 use ChromeDevtoolsProtocol\Domain\TracingDomainInterface;
 use ChromeDevtoolsProtocol\Domain\WebAudioDomainInterface;
 use ChromeDevtoolsProtocol\Domain\WebAuthnDomainInterface;
+use ChromeDevtoolsProtocol\Domain\WebMCPDomainInterface;
 
 /**
  * Interface for Chrome devtools protocol client.
@@ -458,4 +459,12 @@ interface DevtoolsClientInterface extends CloseableResourceInterface
 	 * @experimental
 	 */
 	public function webAuthn(): WebAuthnDomainInterface;
+
+
+	/**
+	 * WebMCP domain.
+	 *
+	 * @experimental
+	 */
+	public function webMCP(): WebMCPDomainInterface;
 }
