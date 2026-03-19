@@ -2,6 +2,8 @@
 
 namespace ChromeDevtoolsProtocol\Model\Page;
 
+use ChromeDevtoolsProtocol\Model\Network\AdAncestry;
+
 /**
  * Response to Page.getAdScriptAncestry command.
  *
@@ -14,7 +16,7 @@ final class GetAdScriptAncestryResponse implements \JsonSerializable
 	/**
 	 * The ancestry chain of ad script identifiers leading to this frame's creation, along with the root script's filterlist rule. The ancestry chain is ordered from the most immediate script (in the frame creation stack) to more distant ancestors (that created the immediately preceding script). Only sent if frame is labelled as an ad and ids are available.
 	 *
-	 * @var AdScriptAncestry|null
+	 * @var AdAncestry|null
 	 */
 	public $adScriptAncestry;
 
@@ -27,7 +29,7 @@ final class GetAdScriptAncestryResponse implements \JsonSerializable
 	{
 		$instance = new static();
 		if (isset($data->adScriptAncestry)) {
-			$instance->adScriptAncestry = AdScriptAncestry::fromJson($data->adScriptAncestry);
+			$instance->adScriptAncestry = AdAncestry::fromJson($data->adScriptAncestry);
 		}
 		return $instance;
 	}

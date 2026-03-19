@@ -1,25 +1,25 @@
 <?php
 
-namespace ChromeDevtoolsProtocol\Model\Page;
+namespace ChromeDevtoolsProtocol\Model\Network;
 
 /**
- * Encapsulates the script ancestry and the root script filterlist rule that caused the frame to be labelled as an ad. Only created when `ancestryChain` is not empty.
+ * Encapsulates the script ancestry and the root script filter list rule that caused the resource or element to be labeled as an ad.
  *
  * @generated This file has been auto-generated, do not edit.
  *
  * @author Jakub Kulhan <jakub.kulhan@gmail.com>
  */
-final class AdScriptAncestry implements \JsonSerializable
+final class AdAncestry implements \JsonSerializable
 {
 	/**
-	 * A chain of `AdScriptId`s representing the ancestry of an ad script that led to the creation of a frame. The chain is ordered from the script itself (lower level) up to its root ancestor that was flagged by filterlist.
+	 * A chain of `AdScriptIdentifier`s representing the ancestry of an ad script that led to the creation of a resource or element. The chain is ordered from the script itself (lowest level) up to its root ancestor that was flagged by a filter list.
 	 *
-	 * @var AdScriptId[]
+	 * @var AdScriptIdentifier[]
 	 */
 	public $ancestryChain;
 
 	/**
-	 * The filterlist rule that caused the root (last) script in `ancestryChain` to be ad-tagged. Only populated if the rule is available.
+	 * The filter list rule that caused the root (last) script in `ancestryChain` to be tagged as an ad.
 	 *
 	 * @var string|null
 	 */
@@ -36,7 +36,7 @@ final class AdScriptAncestry implements \JsonSerializable
 		if (isset($data->ancestryChain)) {
 			$instance->ancestryChain = [];
 			foreach ($data->ancestryChain as $item) {
-				$instance->ancestryChain[] = AdScriptId::fromJson($item);
+				$instance->ancestryChain[] = AdScriptIdentifier::fromJson($item);
 			}
 		}
 		if (isset($data->rootScriptFilterlistRule)) {

@@ -2,6 +2,7 @@
 
 namespace ChromeDevtoolsProtocol\Model\Audits;
 
+use ChromeDevtoolsProtocol\Model\Network\AdAncestry;
 use ChromeDevtoolsProtocol\Model\Runtime\StackTrace;
 
 /**

@@ -1,29 +1,36 @@
 <?php
 
-namespace ChromeDevtoolsProtocol\Model\Page;
+namespace ChromeDevtoolsProtocol\Model\Network;
 
 /**
- * Identifies the script which caused a script or frame to be labelled as an ad.
+ * Identifies the script on the stack that caused a resource or element to be labeled as an ad. For resources, this indicates the context that triggered the fetch. For elements, this indicates the context that caused the element to be appended to the DOM.
  *
  * @generated This file has been auto-generated, do not edit.
  *
  * @author Jakub Kulhan <jakub.kulhan@gmail.com>
  */
-final class AdScriptId implements \JsonSerializable
+final class AdScriptIdentifier implements \JsonSerializable
 {
 	/**
-	 * Script Id of the script which caused a script or frame to be labelled as an ad.
+	 * The script's V8 identifier.
 	 *
 	 * @var string
 	 */
 	public $scriptId;
 
 	/**
-	 * Id of scriptId's debugger.
+	 * V8's debugging ID for the v8::Context.
 	 *
 	 * @var string
 	 */
 	public $debuggerId;
+
+	/**
+	 * The script's url (or generated name based on id if inline script).
+	 *
+	 * @var string
+	 */
+	public $name;
 
 
 	/**
@@ -39,6 +46,9 @@ final class AdScriptId implements \JsonSerializable
 		if (isset($data->debuggerId)) {
 			$instance->debuggerId = (string)$data->debuggerId;
 		}
+		if (isset($data->name)) {
+			$instance->name = (string)$data->name;
+		}
 		return $instance;
 	}
 
@@ -51,6 +61,9 @@ final class AdScriptId implements \JsonSerializable
 		}
 		if ($this->debuggerId !== null) {
 			$data->debuggerId = $this->debuggerId;
+		}
+		if ($this->name !== null) {
+			$data->name = $this->name;
 		}
 		return $data;
 	}
