@@ -46,6 +46,13 @@ final class CSSFunctionRule implements \JsonSerializable
 	 */
 	public $children;
 
+	/**
+	 * The BackendNodeId of the DOM node that constitutes the origin tree scope of this rule.
+	 *
+	 * @var int
+	 */
+	public $originTreeScopeNodeId;
+
 
 	/**
 	 * @param object $data
@@ -75,6 +82,9 @@ final class CSSFunctionRule implements \JsonSerializable
 				$instance->children[] = CSSFunctionNode::fromJson($item);
 			}
 		}
+		if (isset($data->originTreeScopeNodeId)) {
+			$instance->originTreeScopeNodeId = (int)$data->originTreeScopeNodeId;
+		}
 		return $instance;
 	}
 
@@ -102,6 +112,9 @@ final class CSSFunctionRule implements \JsonSerializable
 			foreach ($this->children as $item) {
 				$data->children[] = $item->jsonSerialize();
 			}
+		}
+		if ($this->originTreeScopeNodeId !== null) {
+			$data->originTreeScopeNodeId = $this->originTreeScopeNodeId;
 		}
 		return $data;
 	}

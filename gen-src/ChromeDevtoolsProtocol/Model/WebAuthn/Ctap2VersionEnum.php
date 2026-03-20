@@ -13,4 +13,5 @@ final class Ctap2VersionEnum
 {
 	public const CTAP2_0 = 'ctap2_0';
 	public const CTAP2_1 = 'ctap2_1';
+	public const CTAP2_2 = 'ctap2_2';
 }

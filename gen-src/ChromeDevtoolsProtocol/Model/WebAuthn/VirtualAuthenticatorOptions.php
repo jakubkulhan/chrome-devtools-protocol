@@ -67,6 +67,20 @@ final class VirtualAuthenticatorOptions implements \JsonSerializable
 	public $hasPrf;
 
 	/**
+	 * If set to true, the authenticator will support the hmac-secret extension. https://fidoalliance.org/specs/fido-v2.1-ps-20210615/fido-client-to-authenticator-protocol-v2.1-ps-20210615.html#sctn-hmac-secret-extension Defaults to false.
+	 *
+	 * @var bool|null
+	 */
+	public $hasHmacSecret;
+
+	/**
+	 * If set to true, the authenticator will support the hmac-secret-mc extension. https://fidoalliance.org/specs/fido-v2.2-rd-20241003/fido-client-to-authenticator-protocol-v2.2-rd-20241003.html#sctn-hmac-secret-make-cred-extension Defaults to false.
+	 *
+	 * @var bool|null
+	 */
+	public $hasHmacSecretMc;
+
+	/**
 	 * If set to true, tests of user presence will succeed immediately. Otherwise, they will not be resolved. Defaults to true.
 	 *
 	 * @var bool|null
@@ -129,6 +143,12 @@ final class VirtualAuthenticatorOptions implements \JsonSerializable
 		if (isset($data->hasPrf)) {
 			$instance->hasPrf = (bool)$data->hasPrf;
 		}
+		if (isset($data->hasHmacSecret)) {
+			$instance->hasHmacSecret = (bool)$data->hasHmacSecret;
+		}
+		if (isset($data->hasHmacSecretMc)) {
+			$instance->hasHmacSecretMc = (bool)$data->hasHmacSecretMc;
+		}
 		if (isset($data->automaticPresenceSimulation)) {
 			$instance->automaticPresenceSimulation = (bool)$data->automaticPresenceSimulation;
 		}
@@ -174,6 +194,12 @@ final class VirtualAuthenticatorOptions implements \JsonSerializable
 		}
 		if ($this->hasPrf !== null) {
 			$data->hasPrf = $this->hasPrf;
+		}
+		if ($this->hasHmacSecret !== null) {
+			$data->hasHmacSecret = $this->hasHmacSecret;
+		}
+		if ($this->hasHmacSecretMc !== null) {
+			$data->hasHmacSecretMc = $this->hasHmacSecretMc;
 		}
 		if ($this->automaticPresenceSimulation !== null) {
 			$data->automaticPresenceSimulation = $this->automaticPresenceSimulation;
