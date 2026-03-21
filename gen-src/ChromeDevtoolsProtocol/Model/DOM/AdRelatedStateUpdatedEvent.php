@@ -2,6 +2,8 @@
 
 namespace ChromeDevtoolsProtocol\Model\DOM;
 
+use ChromeDevtoolsProtocol\Model\Network\AdProvenance;
+
 /**
  * Fired when a node's ad related state changes.
  *
@@ -19,11 +21,11 @@ final class AdRelatedStateUpdatedEvent implements \JsonSerializable
 	public $nodeId;
 
 	/**
-	 * If the node is ad related.
+	 * The provenance of the ad related node, if it is ad related.
 	 *
-	 * @var bool
+	 * @var AdProvenance|null
 	 */
-	public $isAdRelated;
+	public $adProvenance;
 
 
 	/**
@@ -36,8 +38,8 @@ final class AdRelatedStateUpdatedEvent implements \JsonSerializable
 		if (isset($data->nodeId)) {
 			$instance->nodeId = (int)$data->nodeId;
 		}
-		if (isset($data->isAdRelated)) {
-			$instance->isAdRelated = (bool)$data->isAdRelated;
+		if (isset($data->adProvenance)) {
+			$instance->adProvenance = AdProvenance::fromJson($data->adProvenance);
 		}
 		return $instance;
 	}
@@ -49,8 +51,8 @@ final class AdRelatedStateUpdatedEvent implements \JsonSerializable
 		if ($this->nodeId !== null) {
 			$data->nodeId = $this->nodeId;
 		}
-		if ($this->isAdRelated !== null) {
-			$data->isAdRelated = $this->isAdRelated;
+		if ($this->adProvenance !== null) {
+			$data->adProvenance = $this->adProvenance->jsonSerialize();
 		}
 		return $data;
 	}

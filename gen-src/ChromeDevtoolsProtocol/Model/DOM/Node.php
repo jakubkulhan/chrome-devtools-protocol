@@ -2,6 +2,8 @@
 
 namespace ChromeDevtoolsProtocol\Model\DOM;
 
+use ChromeDevtoolsProtocol\Model\Network\AdProvenance;
+
 /**
  * DOM interaction is implemented in terms of mirror objects that represent the actual DOM nodes. DOMNode is a base node mirror type.
  *
@@ -229,8 +231,8 @@ final class Node implements \JsonSerializable
 	/** @var string[]|null */
 	public $adoptedStyleSheets;
 
-	/** @var bool|null */
-	public $isAdRelated;
+	/** @var AdProvenance|null */
+	public $adProvenance;
 
 
 	/**
@@ -363,8 +365,8 @@ final class Node implements \JsonSerializable
 			}
 		}
 		}
-		if (isset($data->isAdRelated)) {
-			$instance->isAdRelated = (bool)$data->isAdRelated;
+		if (isset($data->adProvenance)) {
+			$instance->adProvenance = AdProvenance::fromJson($data->adProvenance);
 		}
 		return $instance;
 	}
@@ -496,8 +498,8 @@ final class Node implements \JsonSerializable
 			}
 		}
 		}
-		if ($this->isAdRelated !== null) {
-			$data->isAdRelated = $this->isAdRelated;
+		if ($this->adProvenance !== null) {
+			$data->adProvenance = $this->adProvenance->jsonSerialize();
 		}
 		return $data;
 	}
