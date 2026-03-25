@@ -3,6 +3,8 @@
 namespace ChromeDevtoolsProtocol\Domain;
 
 use ChromeDevtoolsProtocol\ContextInterface;
+use ChromeDevtoolsProtocol\Model\WebMCP\ToolInvokedEvent;
+use ChromeDevtoolsProtocol\Model\WebMCP\ToolRespondedEvent;
 use ChromeDevtoolsProtocol\Model\WebMCP\ToolsAddedEvent;
 use ChromeDevtoolsProtocol\Model\WebMCP\ToolsRemovedEvent;
 use ChromeDevtoolsProtocol\SubscriptionInterface;
@@ -26,6 +28,54 @@ interface WebMCPDomainInterface
 	 * @return void
 	 */
 	public function enable(ContextInterface $ctx): void;
+
+
+	/**
+	 * Event fired when a tool invocation starts.
+	 *
+	 * Listener will be called whenever event WebMCP.toolInvoked is fired.
+	 *
+	 * @param callable $listener
+	 *
+	 * @return SubscriptionInterface
+	 */
+	public function addToolInvokedListener(callable $listener): SubscriptionInterface;
+
+
+	/**
+	 * Event fired when a tool invocation starts.
+	 *
+	 * Method will block until first WebMCP.toolInvoked event is fired.
+	 *
+	 * @param ContextInterface $ctx
+	 *
+	 * @return ToolInvokedEvent
+	 */
+	public function awaitToolInvoked(ContextInterface $ctx): ToolInvokedEvent;
+
+
+	/**
+	 * Event fired when a tool invocation completes or fails.
+	 *
+	 * Listener will be called whenever event WebMCP.toolResponded is fired.
+	 *
+	 * @param callable $listener
+	 *
+	 * @return SubscriptionInterface
+	 */
+	public function addToolRespondedListener(callable $listener): SubscriptionInterface;
+
+
+	/**
+	 * Event fired when a tool invocation completes or fails.
+	 *
+	 * Method will block until first WebMCP.toolResponded event is fired.
+	 *
+	 * @param ContextInterface $ctx
+	 *
+	 * @return ToolRespondedEvent
+	 */
+	public function awaitToolResponded(ContextInterface $ctx): ToolRespondedEvent;
 
 
 	/**

@@ -4,6 +4,8 @@ namespace ChromeDevtoolsProtocol\Domain;
 
 use ChromeDevtoolsProtocol\ContextInterface;
 use ChromeDevtoolsProtocol\InternalClientInterface;
+use ChromeDevtoolsProtocol\Model\WebMCP\ToolInvokedEvent;
+use ChromeDevtoolsProtocol\Model\WebMCP\ToolRespondedEvent;
 use ChromeDevtoolsProtocol\Model\WebMCP\ToolsAddedEvent;
 use ChromeDevtoolsProtocol\Model\WebMCP\ToolsRemovedEvent;
 use ChromeDevtoolsProtocol\SubscriptionInterface;
@@ -24,6 +26,34 @@ class WebMCPDomain implements WebMCPDomainInterface
 	{
 		$request = new \stdClass();
 		$this->internalClient->executeCommand($ctx, 'WebMCP.enable', $request);
+	}
+
+
+	public function addToolInvokedListener(callable $listener): SubscriptionInterface
+	{
+		return $this->internalClient->addListener('WebMCP.toolInvoked', function ($event) use ($listener) {
+			return $listener(ToolInvokedEvent::fromJson($event));
+		});
+	}
+
+
+	public function awaitToolInvoked(ContextInterface $ctx): ToolInvokedEvent
+	{
+		return ToolInvokedEvent::fromJson($this->internalClient->awaitEvent($ctx, 'WebMCP.toolInvoked'));
+	}
+
+
+	public function addToolRespondedListener(callable $listener): SubscriptionInterface
+	{
+		return $this->internalClient->addListener('WebMCP.toolResponded', function ($event) use ($listener) {
+			return $listener(ToolRespondedEvent::fromJson($event));
+		});
+	}
+
+
+	public function awaitToolResponded(ContextInterface $ctx): ToolRespondedEvent
+	{
+		return ToolRespondedEvent::fromJson($this->internalClient->awaitEvent($ctx, 'WebMCP.toolResponded'));
 	}
 
 
