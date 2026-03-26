@@ -4600,6 +4600,52 @@
             ]
         },
         {
+            "domain": "CrashReportContext",
+            "description": "This domain exposes the current state of the CrashReportContext API.",
+            "experimental": true,
+            "dependencies": [
+                "Page"
+            ],
+            "types": [
+                {
+                    "id": "CrashReportContextEntry",
+                    "description": "Key-value pair in CrashReportContext.",
+                    "type": "object",
+                    "properties": [
+                        {
+                            "name": "key",
+                            "type": "string"
+                        },
+                        {
+                            "name": "value",
+                            "type": "string"
+                        },
+                        {
+                            "name": "frameId",
+                            "description": "The ID of the frame where the key-value pair was set.",
+                            "$ref": "Page.FrameId"
+                        }
+                    ]
+                }
+            ],
+            "commands": [
+                {
+                    "name": "getEntries",
+                    "description": "Returns all entries in the CrashReportContext across all frames in the page.",
+                    "returns": [
+                        {
+                            "name": "entries",
+                            "type": "array",
+                            "items": {
+                                "$ref": "CrashReportContextEntry"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "events": []
+        },
+        {
             "domain": "CSS",
             "description": "This domain exposes CSS read/write operations. All CSS objects (stylesheets, rules, and styles) have an associated `id` used in subsequent operations on the related object. Each object type has a specific `id` structure, and those are not interchangeable between objects of different kinds. CSS objects can be loaded using the `get*ForNode()` calls (which accept a DOM node id). A client can also keep track of stylesheets via the `styleSheetAdded`/`styleSheetRemoved` events and subsequently load the required stylesheet contents using the `getStyleSheet[Text]()` methods.",
             "experimental": true,

@@ -24,6 +24,8 @@ use ChromeDevtoolsProtocol\Domain\CastDomain;
 use ChromeDevtoolsProtocol\Domain\CastDomainInterface;
 use ChromeDevtoolsProtocol\Domain\ConsoleDomain;
 use ChromeDevtoolsProtocol\Domain\ConsoleDomainInterface;
+use ChromeDevtoolsProtocol\Domain\CrashReportContextDomain;
+use ChromeDevtoolsProtocol\Domain\CrashReportContextDomainInterface;
 use ChromeDevtoolsProtocol\Domain\DOMDebuggerDomain;
 use ChromeDevtoolsProtocol\Domain\DOMDebuggerDomainInterface;
 use ChromeDevtoolsProtocol\Domain\DOMDomain;
@@ -235,6 +237,18 @@ trait DevtoolsClientTrait
 		}
 		/** @var ConsoleDomainInterface $domain */
 		$domain = $this->domains['Console'];
+		return $domain;
+	}
+
+
+	public function crashReportContext(): CrashReportContextDomainInterface
+	{
+		if (!isset($this->domains['CrashReportContext'])) {
+			/** @var InternalClientInterface $this */
+			$this->domains['CrashReportContext'] = new CrashReportContextDomain($this);
+		}
+		/** @var CrashReportContextDomainInterface $domain */
+		$domain = $this->domains['CrashReportContext'];
 		return $domain;
 	}
 

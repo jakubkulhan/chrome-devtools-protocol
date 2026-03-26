@@ -13,6 +13,7 @@ use ChromeDevtoolsProtocol\Domain\CSSDomainInterface;
 use ChromeDevtoolsProtocol\Domain\CacheStorageDomainInterface;
 use ChromeDevtoolsProtocol\Domain\CastDomainInterface;
 use ChromeDevtoolsProtocol\Domain\ConsoleDomainInterface;
+use ChromeDevtoolsProtocol\Domain\CrashReportContextDomainInterface;
 use ChromeDevtoolsProtocol\Domain\DOMDebuggerDomainInterface;
 use ChromeDevtoolsProtocol\Domain\DOMDomainInterface;
 use ChromeDevtoolsProtocol\Domain\DOMSnapshotDomainInterface;
@@ -141,6 +142,14 @@ interface DevtoolsClientInterface extends CloseableResourceInterface
 	 * This domain is deprecated - use Runtime or Log instead.
 	 */
 	public function console(): ConsoleDomainInterface;
+
+
+	/**
+	 * This domain exposes the current state of the CrashReportContext API.
+	 *
+	 * @experimental
+	 */
+	public function crashReportContext(): CrashReportContextDomainInterface;
 
 
 	/**
