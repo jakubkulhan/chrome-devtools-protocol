@@ -3,10 +3,6 @@
 namespace ChromeDevtoolsProtocol\Domain;
 
 use ChromeDevtoolsProtocol\ContextInterface;
-use ChromeDevtoolsProtocol\Model\Storage\AttributionReportingReportSentEvent;
-use ChromeDevtoolsProtocol\Model\Storage\AttributionReportingSourceRegisteredEvent;
-use ChromeDevtoolsProtocol\Model\Storage\AttributionReportingTriggerRegisteredEvent;
-use ChromeDevtoolsProtocol\Model\Storage\AttributionReportingVerboseDebugReportSentEvent;
 use ChromeDevtoolsProtocol\Model\Storage\CacheStorageContentUpdatedEvent;
 use ChromeDevtoolsProtocol\Model\Storage\CacheStorageListUpdatedEvent;
 use ChromeDevtoolsProtocol\Model\Storage\ClearCookiesRequest;
@@ -43,9 +39,6 @@ use ChromeDevtoolsProtocol\Model\Storage\InterestGroupAuctionNetworkRequestCreat
 use ChromeDevtoolsProtocol\Model\Storage\OverrideQuotaForOriginRequest;
 use ChromeDevtoolsProtocol\Model\Storage\ResetSharedStorageBudgetRequest;
 use ChromeDevtoolsProtocol\Model\Storage\RunBounceTrackingMitigationsResponse;
-use ChromeDevtoolsProtocol\Model\Storage\SendPendingAttributionReportsResponse;
-use ChromeDevtoolsProtocol\Model\Storage\SetAttributionReportingLocalTestingModeRequest;
-use ChromeDevtoolsProtocol\Model\Storage\SetAttributionReportingTrackingRequest;
 use ChromeDevtoolsProtocol\Model\Storage\SetCookiesRequest;
 use ChromeDevtoolsProtocol\Model\Storage\SetInterestGroupAuctionTrackingRequest;
 use ChromeDevtoolsProtocol\Model\Storage\SetInterestGroupTrackingRequest;
@@ -311,44 +304,6 @@ interface StorageDomainInterface
 
 
 	/**
-	 * Sends all pending Attribution Reports immediately, regardless of their scheduled report time.
-	 *
-	 * @param ContextInterface $ctx
-	 *
-	 * @return SendPendingAttributionReportsResponse
-	 */
-	public function sendPendingAttributionReports(ContextInterface $ctx): SendPendingAttributionReportsResponse;
-
-
-	/**
-	 * https://wicg.github.io/attribution-reporting-api/
-	 *
-	 * @param ContextInterface $ctx
-	 * @param SetAttributionReportingLocalTestingModeRequest $request
-	 *
-	 * @return void
-	 */
-	public function setAttributionReportingLocalTestingMode(
-		ContextInterface $ctx,
-		SetAttributionReportingLocalTestingModeRequest $request
-	): void;
-
-
-	/**
-	 * Enables/disables issuing of Attribution Reporting events.
-	 *
-	 * @param ContextInterface $ctx
-	 * @param SetAttributionReportingTrackingRequest $request
-	 *
-	 * @return void
-	 */
-	public function setAttributionReportingTracking(
-		ContextInterface $ctx,
-		SetAttributionReportingTrackingRequest $request
-	): void;
-
-
-	/**
 	 * Sets given cookies.
 	 *
 	 * @param ContextInterface $ctx
@@ -526,102 +481,6 @@ interface StorageDomainInterface
 		ContextInterface $ctx,
 		UntrackIndexedDBForStorageKeyRequest $request
 	): void;
-
-
-	/**
-	 * Subscribe to Storage.attributionReportingReportSent event.
-	 *
-	 * Listener will be called whenever event Storage.attributionReportingReportSent is fired.
-	 *
-	 * @param callable $listener
-	 *
-	 * @return SubscriptionInterface
-	 */
-	public function addAttributionReportingReportSentListener(callable $listener): SubscriptionInterface;
-
-
-	/**
-	 * Wait for Storage.attributionReportingReportSent event.
-	 *
-	 * Method will block until first Storage.attributionReportingReportSent event is fired.
-	 *
-	 * @param ContextInterface $ctx
-	 *
-	 * @return AttributionReportingReportSentEvent
-	 */
-	public function awaitAttributionReportingReportSent(ContextInterface $ctx): AttributionReportingReportSentEvent;
-
-
-	/**
-	 * Subscribe to Storage.attributionReportingSourceRegistered event.
-	 *
-	 * Listener will be called whenever event Storage.attributionReportingSourceRegistered is fired.
-	 *
-	 * @param callable $listener
-	 *
-	 * @return SubscriptionInterface
-	 */
-	public function addAttributionReportingSourceRegisteredListener(callable $listener): SubscriptionInterface;
-
-
-	/**
-	 * Wait for Storage.attributionReportingSourceRegistered event.
-	 *
-	 * Method will block until first Storage.attributionReportingSourceRegistered event is fired.
-	 *
-	 * @param ContextInterface $ctx
-	 *
-	 * @return AttributionReportingSourceRegisteredEvent
-	 */
-	public function awaitAttributionReportingSourceRegistered(ContextInterface $ctx): AttributionReportingSourceRegisteredEvent;
-
-
-	/**
-	 * Subscribe to Storage.attributionReportingTriggerRegistered event.
-	 *
-	 * Listener will be called whenever event Storage.attributionReportingTriggerRegistered is fired.
-	 *
-	 * @param callable $listener
-	 *
-	 * @return SubscriptionInterface
-	 */
-	public function addAttributionReportingTriggerRegisteredListener(callable $listener): SubscriptionInterface;
-
-
-	/**
-	 * Wait for Storage.attributionReportingTriggerRegistered event.
-	 *
-	 * Method will block until first Storage.attributionReportingTriggerRegistered event is fired.
-	 *
-	 * @param ContextInterface $ctx
-	 *
-	 * @return AttributionReportingTriggerRegisteredEvent
-	 */
-	public function awaitAttributionReportingTriggerRegistered(ContextInterface $ctx): AttributionReportingTriggerRegisteredEvent;
-
-
-	/**
-	 * Subscribe to Storage.attributionReportingVerboseDebugReportSent event.
-	 *
-	 * Listener will be called whenever event Storage.attributionReportingVerboseDebugReportSent is fired.
-	 *
-	 * @param callable $listener
-	 *
-	 * @return SubscriptionInterface
-	 */
-	public function addAttributionReportingVerboseDebugReportSentListener(callable $listener): SubscriptionInterface;
-
-
-	/**
-	 * Wait for Storage.attributionReportingVerboseDebugReportSent event.
-	 *
-	 * Method will block until first Storage.attributionReportingVerboseDebugReportSent event is fired.
-	 *
-	 * @param ContextInterface $ctx
-	 *
-	 * @return AttributionReportingVerboseDebugReportSentEvent
-	 */
-	public function awaitAttributionReportingVerboseDebugReportSent(ContextInterface $ctx): AttributionReportingVerboseDebugReportSentEvent;
 
 
 	/**

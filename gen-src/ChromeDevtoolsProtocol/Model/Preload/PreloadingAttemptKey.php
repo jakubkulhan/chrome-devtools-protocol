@@ -20,6 +20,9 @@ final class PreloadingAttemptKey implements \JsonSerializable
 	/** @var string */
 	public $url;
 
+	/** @var bool|null */
+	public $formSubmission;
+
 	/** @var string */
 	public $targetHint;
 
@@ -40,6 +43,9 @@ final class PreloadingAttemptKey implements \JsonSerializable
 		if (isset($data->url)) {
 			$instance->url = (string)$data->url;
 		}
+		if (isset($data->formSubmission)) {
+			$instance->formSubmission = (bool)$data->formSubmission;
+		}
 		if (isset($data->targetHint)) {
 			$instance->targetHint = (string)$data->targetHint;
 		}
@@ -58,6 +64,9 @@ final class PreloadingAttemptKey implements \JsonSerializable
 		}
 		if ($this->url !== null) {
 			$data->url = $this->url;
+		}
+		if ($this->formSubmission !== null) {
+			$data->formSubmission = $this->formSubmission;
 		}
 		if ($this->targetHint !== null) {
 			$data->targetHint = $this->targetHint;

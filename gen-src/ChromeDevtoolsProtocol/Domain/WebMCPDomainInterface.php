@@ -21,6 +21,16 @@ use ChromeDevtoolsProtocol\SubscriptionInterface;
 interface WebMCPDomainInterface
 {
 	/**
+	 * Disables the WebMCP domain.
+	 *
+	 * @param ContextInterface $ctx
+	 *
+	 * @return void
+	 */
+	public function disable(ContextInterface $ctx): void;
+
+
+	/**
 	 * Enables the WebMCP domain, allowing events to be sent. Enabling the domain will trigger a toolsAdded event for all currently registered tools.
 	 *
 	 * @param ContextInterface $ctx

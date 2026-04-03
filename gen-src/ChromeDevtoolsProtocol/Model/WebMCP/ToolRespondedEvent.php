@@ -30,7 +30,7 @@ final class ToolRespondedEvent implements \JsonSerializable
 	/**
 	 * Output or error delivered as delivered to the agent. Missing if `status` is anything other than Success.
 	 *
-	 * @var object|null
+	 * @var mixed|null
 	 */
 	public $output;
 

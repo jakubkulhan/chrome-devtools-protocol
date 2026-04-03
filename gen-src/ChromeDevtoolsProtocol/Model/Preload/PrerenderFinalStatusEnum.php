@@ -85,4 +85,5 @@ final class PrerenderFinalStatusEnum
 	public const PRERENDER_FAILED_DURING_PREFETCH = 'PrerenderFailedDuringPrefetch';
 	public const BROWSING_DATA_REMOVED = 'BrowsingDataRemoved';
 	public const PRERENDER_HOST_REUSED = 'PrerenderHostReused';
+	public const FORM_SUBMIT_WHEN_PRERENDERING = 'FormSubmitWhenPrerendering';
 }

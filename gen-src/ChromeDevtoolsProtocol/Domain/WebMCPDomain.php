@@ -22,6 +22,13 @@ class WebMCPDomain implements WebMCPDomainInterface
 	}
 
 
+	public function disable(ContextInterface $ctx): void
+	{
+		$request = new \stdClass();
+		$this->internalClient->executeCommand($ctx, 'WebMCP.disable', $request);
+	}
+
+
 	public function enable(ContextInterface $ctx): void
 	{
 		$request = new \stdClass();
