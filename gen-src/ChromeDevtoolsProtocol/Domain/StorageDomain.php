@@ -14,8 +14,6 @@ use ChromeDevtoolsProtocol\Model\Storage\ClearTrustTokensRequest;
 use ChromeDevtoolsProtocol\Model\Storage\ClearTrustTokensResponse;
 use ChromeDevtoolsProtocol\Model\Storage\DeleteSharedStorageEntryRequest;
 use ChromeDevtoolsProtocol\Model\Storage\DeleteStorageBucketRequest;
-use ChromeDevtoolsProtocol\Model\Storage\GetAffectedUrlsForThirdPartyCookieMetadataRequest;
-use ChromeDevtoolsProtocol\Model\Storage\GetAffectedUrlsForThirdPartyCookieMetadataResponse;
 use ChromeDevtoolsProtocol\Model\Storage\GetCookiesRequest;
 use ChromeDevtoolsProtocol\Model\Storage\GetCookiesResponse;
 use ChromeDevtoolsProtocol\Model\Storage\GetInterestGroupDetailsRequest;
@@ -113,15 +111,6 @@ class StorageDomain implements StorageDomainInterface
 	public function deleteStorageBucket(ContextInterface $ctx, DeleteStorageBucketRequest $request): void
 	{
 		$this->internalClient->executeCommand($ctx, 'Storage.deleteStorageBucket', $request);
-	}
-
-
-	public function getAffectedUrlsForThirdPartyCookieMetadata(
-		ContextInterface $ctx,
-		GetAffectedUrlsForThirdPartyCookieMetadataRequest $request
-	): GetAffectedUrlsForThirdPartyCookieMetadataResponse {
-		$response = $this->internalClient->executeCommand($ctx, 'Storage.getAffectedUrlsForThirdPartyCookieMetadata', $request);
-		return GetAffectedUrlsForThirdPartyCookieMetadataResponse::fromJson($response);
 	}
 
 
