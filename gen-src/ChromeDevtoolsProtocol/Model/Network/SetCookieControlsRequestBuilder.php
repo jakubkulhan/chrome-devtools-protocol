@@ -12,8 +12,6 @@ use ChromeDevtoolsProtocol\Exception\BuilderException;
 final class SetCookieControlsRequestBuilder
 {
 	private $enableThirdPartyCookieRestriction;
-	private $disableThirdPartyCookieMetadata;
-	private $disableThirdPartyCookieHeuristics;
 
 
 	/**
@@ -26,14 +24,6 @@ final class SetCookieControlsRequestBuilder
 			throw new BuilderException('Property [enableThirdPartyCookieRestriction] is required.');
 		}
 		$instance->enableThirdPartyCookieRestriction = $this->enableThirdPartyCookieRestriction;
-		if ($this->disableThirdPartyCookieMetadata === null) {
-			throw new BuilderException('Property [disableThirdPartyCookieMetadata] is required.');
-		}
-		$instance->disableThirdPartyCookieMetadata = $this->disableThirdPartyCookieMetadata;
-		if ($this->disableThirdPartyCookieHeuristics === null) {
-			throw new BuilderException('Property [disableThirdPartyCookieHeuristics] is required.');
-		}
-		$instance->disableThirdPartyCookieHeuristics = $this->disableThirdPartyCookieHeuristics;
 		return $instance;
 	}
 
@@ -46,30 +36,6 @@ final class SetCookieControlsRequestBuilder
 	public function setEnableThirdPartyCookieRestriction($enableThirdPartyCookieRestriction): self
 	{
 		$this->enableThirdPartyCookieRestriction = $enableThirdPartyCookieRestriction;
-		return $this;
-	}
-
-
-	/**
-	 * @param bool $disableThirdPartyCookieMetadata
-	 *
-	 * @return self
-	 */
-	public function setDisableThirdPartyCookieMetadata($disableThirdPartyCookieMetadata): self
-	{
-		$this->disableThirdPartyCookieMetadata = $disableThirdPartyCookieMetadata;
-		return $this;
-	}
-
-
-	/**
-	 * @param bool $disableThirdPartyCookieHeuristics
-	 *
-	 * @return self
-	 */
-	public function setDisableThirdPartyCookieHeuristics($disableThirdPartyCookieHeuristics): self
-	{
-		$this->disableThirdPartyCookieHeuristics = $disableThirdPartyCookieHeuristics;
 		return $this;
 	}
 }

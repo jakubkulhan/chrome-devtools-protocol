@@ -18,20 +18,6 @@ final class SetCookieControlsRequest implements \JsonSerializable
 	 */
 	public $enableThirdPartyCookieRestriction;
 
-	/**
-	 * Whether 3pc grace period exception should be enabled; false by default.
-	 *
-	 * @var bool
-	 */
-	public $disableThirdPartyCookieMetadata;
-
-	/**
-	 * Whether 3pc heuristics exceptions should be enabled; false by default.
-	 *
-	 * @var bool
-	 */
-	public $disableThirdPartyCookieHeuristics;
-
 
 	/**
 	 * @param object $data
@@ -43,12 +29,6 @@ final class SetCookieControlsRequest implements \JsonSerializable
 		if (isset($data->enableThirdPartyCookieRestriction)) {
 			$instance->enableThirdPartyCookieRestriction = (bool)$data->enableThirdPartyCookieRestriction;
 		}
-		if (isset($data->disableThirdPartyCookieMetadata)) {
-			$instance->disableThirdPartyCookieMetadata = (bool)$data->disableThirdPartyCookieMetadata;
-		}
-		if (isset($data->disableThirdPartyCookieHeuristics)) {
-			$instance->disableThirdPartyCookieHeuristics = (bool)$data->disableThirdPartyCookieHeuristics;
-		}
 		return $instance;
 	}
 
@@ -58,12 +38,6 @@ final class SetCookieControlsRequest implements \JsonSerializable
 		$data = new \stdClass();
 		if ($this->enableThirdPartyCookieRestriction !== null) {
 			$data->enableThirdPartyCookieRestriction = $this->enableThirdPartyCookieRestriction;
-		}
-		if ($this->disableThirdPartyCookieMetadata !== null) {
-			$data->disableThirdPartyCookieMetadata = $this->disableThirdPartyCookieMetadata;
-		}
-		if ($this->disableThirdPartyCookieHeuristics !== null) {
-			$data->disableThirdPartyCookieHeuristics = $this->disableThirdPartyCookieHeuristics;
 		}
 		return $data;
 	}
