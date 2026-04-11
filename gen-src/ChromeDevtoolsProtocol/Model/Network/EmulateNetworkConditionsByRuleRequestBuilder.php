@@ -12,6 +12,7 @@ use ChromeDevtoolsProtocol\Exception\BuilderException;
 final class EmulateNetworkConditionsByRuleRequestBuilder
 {
 	private $offline;
+	private $emulateOfflineServiceWorker;
 	private $matchedNetworkConditions;
 
 
@@ -21,10 +22,8 @@ final class EmulateNetworkConditionsByRuleRequestBuilder
 	public function build(): EmulateNetworkConditionsByRuleRequest
 	{
 		$instance = new EmulateNetworkConditionsByRuleRequest();
-		if ($this->offline === null) {
-			throw new BuilderException('Property [offline] is required.');
-		}
 		$instance->offline = $this->offline;
+		$instance->emulateOfflineServiceWorker = $this->emulateOfflineServiceWorker;
 		if ($this->matchedNetworkConditions === null) {
 			throw new BuilderException('Property [matchedNetworkConditions] is required.');
 		}
@@ -34,13 +33,25 @@ final class EmulateNetworkConditionsByRuleRequestBuilder
 
 
 	/**
-	 * @param bool $offline
+	 * @param bool|null $offline
 	 *
 	 * @return self
 	 */
 	public function setOffline($offline): self
 	{
 		$this->offline = $offline;
+		return $this;
+	}
+
+
+	/**
+	 * @param bool|null $emulateOfflineServiceWorker
+	 *
+	 * @return self
+	 */
+	public function setEmulateOfflineServiceWorker($emulateOfflineServiceWorker): self
+	{
+		$this->emulateOfflineServiceWorker = $emulateOfflineServiceWorker;
 		return $this;
 	}
 

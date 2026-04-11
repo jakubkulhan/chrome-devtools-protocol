@@ -67,6 +67,13 @@ final class NetworkConditions implements \JsonSerializable
 	 */
 	public $packetReordering;
 
+	/**
+	 * True to emulate internet disconnection.
+	 *
+	 * @var bool|null
+	 */
+	public $offline;
+
 
 	/**
 	 * @param object $data
@@ -99,6 +106,9 @@ final class NetworkConditions implements \JsonSerializable
 		if (isset($data->packetReordering)) {
 			$instance->packetReordering = (bool)$data->packetReordering;
 		}
+		if (isset($data->offline)) {
+			$instance->offline = (bool)$data->offline;
+		}
 		return $instance;
 	}
 
@@ -129,6 +139,9 @@ final class NetworkConditions implements \JsonSerializable
 		}
 		if ($this->packetReordering !== null) {
 			$data->packetReordering = $this->packetReordering;
+		}
+		if ($this->offline !== null) {
+			$data->offline = $this->offline;
 		}
 		return $data;
 	}

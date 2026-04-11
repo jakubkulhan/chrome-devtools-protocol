@@ -12,11 +12,18 @@ namespace ChromeDevtoolsProtocol\Model\Network;
 final class EmulateNetworkConditionsByRuleRequest implements \JsonSerializable
 {
 	/**
-	 * True to emulate internet disconnection.
+	 * True to emulate internet disconnection. Deprecated, use the offline property in matchedNetworkConditions or emulateOfflineServiceWorker instead.
 	 *
-	 * @var bool
+	 * @var bool|null
 	 */
 	public $offline;
+
+	/**
+	 * True to emulate offline service worker.
+	 *
+	 * @var bool|null
+	 */
+	public $emulateOfflineServiceWorker;
 
 	/**
 	 * Configure conditions for matching requests. If multiple entries match a request, the first entry wins. Global conditions can be configured by leaving the urlPattern for the conditions empty. These global conditions are also applied for throttling of p2p connections.
@@ -36,6 +43,9 @@ final class EmulateNetworkConditionsByRuleRequest implements \JsonSerializable
 		if (isset($data->offline)) {
 			$instance->offline = (bool)$data->offline;
 		}
+		if (isset($data->emulateOfflineServiceWorker)) {
+			$instance->emulateOfflineServiceWorker = (bool)$data->emulateOfflineServiceWorker;
+		}
 		if (isset($data->matchedNetworkConditions)) {
 			$instance->matchedNetworkConditions = [];
 			foreach ($data->matchedNetworkConditions as $item) {
@@ -51,6 +61,9 @@ final class EmulateNetworkConditionsByRuleRequest implements \JsonSerializable
 		$data = new \stdClass();
 		if ($this->offline !== null) {
 			$data->offline = $this->offline;
+		}
+		if ($this->emulateOfflineServiceWorker !== null) {
+			$data->emulateOfflineServiceWorker = $this->emulateOfflineServiceWorker;
 		}
 		if ($this->matchedNetworkConditions !== null) {
 			$data->matchedNetworkConditions = [];
