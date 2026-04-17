@@ -10,6 +10,7 @@ use ChromeDevtoolsProtocol\Model\Network\ConfigureDurableMessagesRequest;
 use ChromeDevtoolsProtocol\Model\Network\ContinueInterceptedRequestRequest;
 use ChromeDevtoolsProtocol\Model\Network\DataReceivedEvent;
 use ChromeDevtoolsProtocol\Model\Network\DeleteCookiesRequest;
+use ChromeDevtoolsProtocol\Model\Network\DeleteDeviceBoundSessionRequest;
 use ChromeDevtoolsProtocol\Model\Network\DeviceBoundSessionEventOccurredEvent;
 use ChromeDevtoolsProtocol\Model\Network\DeviceBoundSessionsAddedEvent;
 use ChromeDevtoolsProtocol\Model\Network\DirectTCPSocketAbortedEvent;
@@ -198,6 +199,17 @@ interface NetworkDomainInterface
 	 * @return void
 	 */
 	public function deleteCookies(ContextInterface $ctx, DeleteCookiesRequest $request): void;
+
+
+	/**
+	 * Deletes a device bound session.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param DeleteDeviceBoundSessionRequest $request
+	 *
+	 * @return void
+	 */
+	public function deleteDeviceBoundSession(ContextInterface $ctx, DeleteDeviceBoundSessionRequest $request): void;
 
 
 	/**

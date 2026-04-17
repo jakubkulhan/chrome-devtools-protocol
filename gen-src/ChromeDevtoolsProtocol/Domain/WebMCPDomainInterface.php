@@ -3,6 +3,8 @@
 namespace ChromeDevtoolsProtocol\Domain;
 
 use ChromeDevtoolsProtocol\ContextInterface;
+use ChromeDevtoolsProtocol\Model\WebMCP\InvokeToolRequest;
+use ChromeDevtoolsProtocol\Model\WebMCP\InvokeToolResponse;
 use ChromeDevtoolsProtocol\Model\WebMCP\ToolInvokedEvent;
 use ChromeDevtoolsProtocol\Model\WebMCP\ToolRespondedEvent;
 use ChromeDevtoolsProtocol\Model\WebMCP\ToolsAddedEvent;
@@ -38,6 +40,17 @@ interface WebMCPDomainInterface
 	 * @return void
 	 */
 	public function enable(ContextInterface $ctx): void;
+
+
+	/**
+	 * Invokes a registered tool.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param InvokeToolRequest $request
+	 *
+	 * @return InvokeToolResponse
+	 */
+	public function invokeTool(ContextInterface $ctx, InvokeToolRequest $request): InvokeToolResponse;
 
 
 	/**

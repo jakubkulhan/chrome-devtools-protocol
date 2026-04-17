@@ -11,6 +11,7 @@ use ChromeDevtoolsProtocol\Model\Network\ConfigureDurableMessagesRequest;
 use ChromeDevtoolsProtocol\Model\Network\ContinueInterceptedRequestRequest;
 use ChromeDevtoolsProtocol\Model\Network\DataReceivedEvent;
 use ChromeDevtoolsProtocol\Model\Network\DeleteCookiesRequest;
+use ChromeDevtoolsProtocol\Model\Network\DeleteDeviceBoundSessionRequest;
 use ChromeDevtoolsProtocol\Model\Network\DeviceBoundSessionEventOccurredEvent;
 use ChromeDevtoolsProtocol\Model\Network\DeviceBoundSessionsAddedEvent;
 use ChromeDevtoolsProtocol\Model\Network\DirectTCPSocketAbortedEvent;
@@ -171,6 +172,12 @@ class NetworkDomain implements NetworkDomainInterface
 	public function deleteCookies(ContextInterface $ctx, DeleteCookiesRequest $request): void
 	{
 		$this->internalClient->executeCommand($ctx, 'Network.deleteCookies', $request);
+	}
+
+
+	public function deleteDeviceBoundSession(ContextInterface $ctx, DeleteDeviceBoundSessionRequest $request): void
+	{
+		$this->internalClient->executeCommand($ctx, 'Network.deleteDeviceBoundSession', $request);
 	}
 
 

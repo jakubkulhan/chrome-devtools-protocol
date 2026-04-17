@@ -4,6 +4,8 @@ namespace ChromeDevtoolsProtocol\Domain;
 
 use ChromeDevtoolsProtocol\ContextInterface;
 use ChromeDevtoolsProtocol\InternalClientInterface;
+use ChromeDevtoolsProtocol\Model\WebMCP\InvokeToolRequest;
+use ChromeDevtoolsProtocol\Model\WebMCP\InvokeToolResponse;
 use ChromeDevtoolsProtocol\Model\WebMCP\ToolInvokedEvent;
 use ChromeDevtoolsProtocol\Model\WebMCP\ToolRespondedEvent;
 use ChromeDevtoolsProtocol\Model\WebMCP\ToolsAddedEvent;
@@ -33,6 +35,13 @@ class WebMCPDomain implements WebMCPDomainInterface
 	{
 		$request = new \stdClass();
 		$this->internalClient->executeCommand($ctx, 'WebMCP.enable', $request);
+	}
+
+
+	public function invokeTool(ContextInterface $ctx, InvokeToolRequest $request): InvokeToolResponse
+	{
+		$response = $this->internalClient->executeCommand($ctx, 'WebMCP.invokeTool', $request);
+		return InvokeToolResponse::fromJson($response);
 	}
 
 

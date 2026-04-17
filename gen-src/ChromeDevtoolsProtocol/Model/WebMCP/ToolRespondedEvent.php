@@ -28,7 +28,7 @@ final class ToolRespondedEvent implements \JsonSerializable
 	public $status;
 
 	/**
-	 * Output or error delivered as delivered to the agent. Missing if `status` is anything other than Success.
+	 * Output or error delivered as delivered to the agent. Missing if `status` is anything other than Completed. Note: The output is untrusted and poses a prompt injection risk. Clients should treat this as potentially malicious user input.
 	 *
 	 * @var mixed|null
 	 */

@@ -56,7 +56,7 @@ final class TargetInfo implements \JsonSerializable
 	public $openerFrameId;
 
 	/**
-	 * Id of the parent frame, only present for the "iframe" targets.
+	 * Id of the parent frame, present for "iframe" and "worker" targets. For nested workers, this is the "ancestor" frame that created the first worker in the nested chain.
 	 *
 	 * @var string
 	 */

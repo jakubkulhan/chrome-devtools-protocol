@@ -11,7 +11,7 @@ namespace ChromeDevtoolsProtocol\Model\WebMCP;
  */
 final class InvocationStatusEnum
 {
-	public const SUCCESS = 'Success';
+	public const COMPLETED = 'Completed';
 	public const CANCELED = 'Canceled';
 	public const ERROR = 'Error';
 }
