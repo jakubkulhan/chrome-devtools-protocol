@@ -1773,7 +1773,11 @@
                         "AutofillAndManualTextPolicyControlledFeaturesInfo",
                         "AutofillPolicyControlledFeatureInfo",
                         "ManualTextPolicyControlledFeatureInfo",
-                        "FormModelContextParameterMissingTitleAndDescription"
+                        "FormModelContextParameterMissingTitleAndDescription",
+                        "FormModelContextMissingToolName",
+                        "FormModelContextMissingToolDescription",
+                        "FormModelContextRequiredParameterMissingName",
+                        "FormModelContextParameterMissingName"
                     ]
                 },
                 {
@@ -34573,6 +34577,17 @@
                 }
             ],
             "commands": [
+                {
+                    "name": "cancelInvocation",
+                    "description": "Cancels a pending tool invocation.",
+                    "parameters": [
+                        {
+                            "name": "invocationId",
+                            "description": "Invocation identifier to cancel.",
+                            "type": "string"
+                        }
+                    ]
+                },
                 {
                     "name": "disable",
                     "description": "Disables the WebMCP domain."

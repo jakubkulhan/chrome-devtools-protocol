@@ -27,4 +27,8 @@ final class GenericIssueErrorTypeEnum
 	public const AUTOFILL_POLICY_CONTROLLED_FEATURE_INFO = 'AutofillPolicyControlledFeatureInfo';
 	public const MANUAL_TEXT_POLICY_CONTROLLED_FEATURE_INFO = 'ManualTextPolicyControlledFeatureInfo';
 	public const FORM_MODEL_CONTEXT_PARAMETER_MISSING_TITLE_AND_DESCRIPTION = 'FormModelContextParameterMissingTitleAndDescription';
+	public const FORM_MODEL_CONTEXT_MISSING_TOOL_NAME = 'FormModelContextMissingToolName';
+	public const FORM_MODEL_CONTEXT_MISSING_TOOL_DESCRIPTION = 'FormModelContextMissingToolDescription';
+	public const FORM_MODEL_CONTEXT_REQUIRED_PARAMETER_MISSING_NAME = 'FormModelContextRequiredParameterMissingName';
+	public const FORM_MODEL_CONTEXT_PARAMETER_MISSING_NAME = 'FormModelContextParameterMissingName';
 }

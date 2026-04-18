@@ -4,6 +4,7 @@ namespace ChromeDevtoolsProtocol\Domain;
 
 use ChromeDevtoolsProtocol\ContextInterface;
 use ChromeDevtoolsProtocol\InternalClientInterface;
+use ChromeDevtoolsProtocol\Model\WebMCP\CancelInvocationRequest;
 use ChromeDevtoolsProtocol\Model\WebMCP\InvokeToolRequest;
 use ChromeDevtoolsProtocol\Model\WebMCP\InvokeToolResponse;
 use ChromeDevtoolsProtocol\Model\WebMCP\ToolInvokedEvent;
@@ -21,6 +22,12 @@ class WebMCPDomain implements WebMCPDomainInterface
 	public function __construct(InternalClientInterface $internalClient)
 	{
 		$this->internalClient = $internalClient;
+	}
+
+
+	public function cancelInvocation(ContextInterface $ctx, CancelInvocationRequest $request): void
+	{
+		$this->internalClient->executeCommand($ctx, 'WebMCP.cancelInvocation', $request);
 	}
 
 

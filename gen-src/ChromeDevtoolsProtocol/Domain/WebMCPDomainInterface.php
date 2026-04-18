@@ -3,6 +3,7 @@
 namespace ChromeDevtoolsProtocol\Domain;
 
 use ChromeDevtoolsProtocol\ContextInterface;
+use ChromeDevtoolsProtocol\Model\WebMCP\CancelInvocationRequest;
 use ChromeDevtoolsProtocol\Model\WebMCP\InvokeToolRequest;
 use ChromeDevtoolsProtocol\Model\WebMCP\InvokeToolResponse;
 use ChromeDevtoolsProtocol\Model\WebMCP\ToolInvokedEvent;
@@ -22,6 +23,17 @@ use ChromeDevtoolsProtocol\SubscriptionInterface;
  */
 interface WebMCPDomainInterface
 {
+	/**
+	 * Cancels a pending tool invocation.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param CancelInvocationRequest $request
+	 *
+	 * @return void
+	 */
+	public function cancelInvocation(ContextInterface $ctx, CancelInvocationRequest $request): void;
+
+
 	/**
 	 * Disables the WebMCP domain.
 	 *
