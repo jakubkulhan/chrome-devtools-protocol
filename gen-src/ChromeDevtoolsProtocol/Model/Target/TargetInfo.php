@@ -35,6 +35,13 @@ final class TargetInfo implements \JsonSerializable
 	public $attached;
 
 	/**
+	 * Id of the parent target, if any. For example, "iframe" target may have a "page" parent.
+	 *
+	 * @var string
+	 */
+	public $parentId;
+
+	/**
 	 * Opener target Id
 	 *
 	 * @var string
@@ -95,6 +102,9 @@ final class TargetInfo implements \JsonSerializable
 		if (isset($data->attached)) {
 			$instance->attached = (bool)$data->attached;
 		}
+		if (isset($data->parentId)) {
+			$instance->parentId = (string)$data->parentId;
+		}
 		if (isset($data->openerId)) {
 			$instance->openerId = (string)$data->openerId;
 		}
@@ -134,6 +144,9 @@ final class TargetInfo implements \JsonSerializable
 		}
 		if ($this->attached !== null) {
 			$data->attached = $this->attached;
+		}
+		if ($this->parentId !== null) {
+			$data->parentId = $this->parentId;
 		}
 		if ($this->openerId !== null) {
 			$data->openerId = $this->openerId;
