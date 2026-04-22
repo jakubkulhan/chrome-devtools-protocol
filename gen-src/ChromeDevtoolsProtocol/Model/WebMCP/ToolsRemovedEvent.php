@@ -14,7 +14,7 @@ final class ToolsRemovedEvent implements \JsonSerializable
 	/**
 	 * Array of tools that were removed.
 	 *
-	 * @var Tool[]
+	 * @var RemovedTool[]
 	 */
 	public $tools;
 
@@ -29,7 +29,7 @@ final class ToolsRemovedEvent implements \JsonSerializable
 		if (isset($data->tools)) {
 			$instance->tools = [];
 			foreach ($data->tools as $item) {
-				$instance->tools[] = Tool::fromJson($item);
+				$instance->tools[] = RemovedTool::fromJson($item);
 			}
 		}
 		return $instance;
