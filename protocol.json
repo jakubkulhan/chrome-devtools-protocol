@@ -13489,7 +13489,7 @@
                 },
                 {
                     "name": "getExtensions",
-                    "description": "Gets a list of all unpacked extensions. Available if the client is connected using the --remote-debugging-pipe flag and the --enable-unsafe-extension-debugging flag is set.",
+                    "description": "Gets a list of all unpacked extensions.",
                     "returns": [
                         {
                             "name": "extensions",
@@ -13533,7 +13533,7 @@
                 },
                 {
                     "name": "loadUnpacked",
-                    "description": "Installs an unpacked extension from the filesystem similar to --load-extension CLI flags. Returns extension ID once the extension has been installed. Available if the client is connected using the --remote-debugging-pipe flag and the --enable-unsafe-extension-debugging flag is set.",
+                    "description": "Installs an unpacked extension from the filesystem similar to --load-extension CLI flags. Returns extension ID once the extension has been installed.",
                     "parameters": [
                         {
                             "name": "path",
@@ -13602,7 +13602,7 @@
                 },
                 {
                     "name": "triggerAction",
-                    "description": "Runs an extension default action. Available if the client is connected using the --remote-debugging-pipe flag and the --enable-unsafe-extension-debugging flag is set.",
+                    "description": "Runs an extension default action.",
                     "parameters": [
                         {
                             "name": "id",
@@ -13618,7 +13618,7 @@
                 },
                 {
                     "name": "uninstall",
-                    "description": "Uninstalls an unpacked extension (others not supported) from the profile. Available if the client is connected using the --remote-debugging-pipe flag and the --enable-unsafe-extension-debugging.",
+                    "description": "Uninstalls an unpacked extension (others not supported) from the profile.",
                     "parameters": [
                         {
                             "name": "id",
@@ -34515,6 +34515,12 @@
                         {
                             "name": "readOnly",
                             "description": "A hint indicating that the tool does not modify any state.",
+                            "optional": true,
+                            "type": "boolean"
+                        },
+                        {
+                            "name": "untrustedContent",
+                            "description": "A hint indicating that the tool output may contain untrusted content, ex: UGC, 3rd party data.",
                             "optional": true,
                             "type": "boolean"
                         },

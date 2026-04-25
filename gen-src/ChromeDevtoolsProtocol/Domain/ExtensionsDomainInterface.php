@@ -37,7 +37,7 @@ interface ExtensionsDomainInterface
 
 
 	/**
-	 * Gets a list of all unpacked extensions. Available if the client is connected using the --remote-debugging-pipe flag and the --enable-unsafe-extension-debugging flag is set.
+	 * Gets a list of all unpacked extensions.
 	 *
 	 * @param ContextInterface $ctx
 	 *
@@ -58,7 +58,7 @@ interface ExtensionsDomainInterface
 
 
 	/**
-	 * Installs an unpacked extension from the filesystem similar to --load-extension CLI flags. Returns extension ID once the extension has been installed. Available if the client is connected using the --remote-debugging-pipe flag and the --enable-unsafe-extension-debugging flag is set.
+	 * Installs an unpacked extension from the filesystem similar to --load-extension CLI flags. Returns extension ID once the extension has been installed.
 	 *
 	 * @param ContextInterface $ctx
 	 * @param LoadUnpackedRequest $request
@@ -91,7 +91,7 @@ interface ExtensionsDomainInterface
 
 
 	/**
-	 * Runs an extension default action. Available if the client is connected using the --remote-debugging-pipe flag and the --enable-unsafe-extension-debugging flag is set.
+	 * Runs an extension default action.
 	 *
 	 * @param ContextInterface $ctx
 	 * @param TriggerActionRequest $request
@@ -102,7 +102,7 @@ interface ExtensionsDomainInterface
 
 
 	/**
-	 * Uninstalls an unpacked extension (others not supported) from the profile. Available if the client is connected using the --remote-debugging-pipe flag and the --enable-unsafe-extension-debugging.
+	 * Uninstalls an unpacked extension (others not supported) from the profile.
 	 *
 	 * @param ContextInterface $ctx
 	 * @param UninstallRequest $request

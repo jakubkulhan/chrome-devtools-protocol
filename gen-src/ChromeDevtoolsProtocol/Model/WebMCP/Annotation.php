@@ -19,6 +19,13 @@ final class Annotation implements \JsonSerializable
 	public $readOnly;
 
 	/**
+	 * A hint indicating that the tool output may contain untrusted content, ex: UGC, 3rd party data.
+	 *
+	 * @var bool|null
+	 */
+	public $untrustedContent;
+
+	/**
 	 * If the declarative tool was declared with the autosubmit attribute.
 	 *
 	 * @var bool|null
@@ -36,6 +43,9 @@ final class Annotation implements \JsonSerializable
 		if (isset($data->readOnly)) {
 			$instance->readOnly = (bool)$data->readOnly;
 		}
+		if (isset($data->untrustedContent)) {
+			$instance->untrustedContent = (bool)$data->untrustedContent;
+		}
 		if (isset($data->autosubmit)) {
 			$instance->autosubmit = (bool)$data->autosubmit;
 		}
@@ -48,6 +58,9 @@ final class Annotation implements \JsonSerializable
 		$data = new \stdClass();
 		if ($this->readOnly !== null) {
 			$data->readOnly = $this->readOnly;
+		}
+		if ($this->untrustedContent !== null) {
+			$data->untrustedContent = $this->untrustedContent;
 		}
 		if ($this->autosubmit !== null) {
 			$data->autosubmit = $this->autosubmit;
