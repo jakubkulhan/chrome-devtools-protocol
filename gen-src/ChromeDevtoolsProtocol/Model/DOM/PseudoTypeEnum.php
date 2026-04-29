@@ -18,7 +18,7 @@ final class PseudoTypeEnum
 	public const AFTER = 'after';
 	public const EXPAND_ICON = 'expand-icon';
 	public const PICKER_ICON = 'picker-icon';
-	public const INTEREST_HINT = 'interest-hint';
+	public const INTEREST_BUTTON = 'interest-button';
 	public const MARKER = 'marker';
 	public const BACKDROP = 'backdrop';
 	public const COLUMN = 'column';
