@@ -109,6 +109,7 @@ final class PermissionsPolicyFeatureEnum
 	public const SUB_APPS = 'sub-apps';
 	public const SUMMARIZER = 'summarizer';
 	public const SYNC_XHR = 'sync-xhr';
+	public const TOOLS = 'tools';
 	public const TRANSLATOR = 'translator';
 	public const UNLOAD = 'unload';
 	public const USB = 'usb';
