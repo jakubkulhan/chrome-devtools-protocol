@@ -14,6 +14,7 @@ final class DeviceBoundSessionFetchResultEnum
 	public const SUCCESS = 'Success';
 	public const KEY_ERROR = 'KeyError';
 	public const SIGNING_ERROR = 'SigningError';
+	public const TRANSIENT_SIGNING_ERROR = 'TransientSigningError';
 	public const SERVER_REQUESTED_TERMINATION = 'ServerRequestedTermination';
 	public const INVALID_SESSION_ID = 'InvalidSessionId';
 	public const INVALID_CHALLENGE = 'InvalidChallenge';
