@@ -5421,7 +5421,8 @@
                     "properties": [
                         {
                             "name": "text",
-                            "description": "Container query text.",
+                            "description": "Container query text. Contains the query part without the container name for a single query. Deprecated in favor of conditionText which contains the full prelude after @container.",
+                            "deprecated": true,
                             "type": "string"
                         },
                         {
@@ -5465,6 +5466,11 @@
                             "description": "true if the query contains anchored() queries.",
                             "optional": true,
                             "type": "boolean"
+                        },
+                        {
+                            "name": "conditionText",
+                            "description": "CSSContainerRule.conditionText",
+                            "type": "string"
                         }
                     ]
                 },
@@ -6648,9 +6654,35 @@
                     ]
                 },
                 {
-                    "name": "setContainerQueryText",
-                    "description": "Modifies the expression of a container query.",
+                    "name": "setContainerQueryConditionText",
                     "experimental": true,
+                    "parameters": [
+                        {
+                            "name": "styleSheetId",
+                            "$ref": "DOM.StyleSheetId"
+                        },
+                        {
+                            "name": "range",
+                            "$ref": "SourceRange"
+                        },
+                        {
+                            "name": "text",
+                            "type": "string"
+                        }
+                    ],
+                    "returns": [
+                        {
+                            "name": "containerQuery",
+                            "description": "The resulting CSS container query rule after modification.",
+                            "$ref": "CSSContainerQuery"
+                        }
+                    ]
+                },
+                {
+                    "name": "setContainerQueryText",
+                    "description": "Modifies the expression of a container query. Deprecated. Use setContainerQueryConditionText instead.",
+                    "experimental": true,
+                    "deprecated": true,
                     "parameters": [
                         {
                             "name": "styleSheetId",

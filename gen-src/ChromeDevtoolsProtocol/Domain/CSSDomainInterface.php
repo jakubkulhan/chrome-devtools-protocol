@@ -38,6 +38,8 @@ use ChromeDevtoolsProtocol\Model\CSS\GetStyleSheetTextResponse;
 use ChromeDevtoolsProtocol\Model\CSS\MediaQueryResultChangedEvent;
 use ChromeDevtoolsProtocol\Model\CSS\ResolveValuesRequest;
 use ChromeDevtoolsProtocol\Model\CSS\ResolveValuesResponse;
+use ChromeDevtoolsProtocol\Model\CSS\SetContainerQueryConditionTextRequest;
+use ChromeDevtoolsProtocol\Model\CSS\SetContainerQueryConditionTextResponse;
 use ChromeDevtoolsProtocol\Model\CSS\SetContainerQueryTextRequest;
 use ChromeDevtoolsProtocol\Model\CSS\SetContainerQueryTextResponse;
 use ChromeDevtoolsProtocol\Model\CSS\SetEffectivePropertyValueForNodeRequest;
@@ -322,7 +324,21 @@ interface CSSDomainInterface
 
 
 	/**
-	 * Modifies the expression of a container query.
+	 * Call CSS.setContainerQueryConditionText command.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param SetContainerQueryConditionTextRequest $request
+	 *
+	 * @return SetContainerQueryConditionTextResponse
+	 */
+	public function setContainerQueryConditionText(
+		ContextInterface $ctx,
+		SetContainerQueryConditionTextRequest $request
+	): SetContainerQueryConditionTextResponse;
+
+
+	/**
+	 * Modifies the expression of a container query. Deprecated. Use setContainerQueryConditionText instead.
 	 *
 	 * @param ContextInterface $ctx
 	 * @param SetContainerQueryTextRequest $request

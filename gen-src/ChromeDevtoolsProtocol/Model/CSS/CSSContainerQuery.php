@@ -12,7 +12,7 @@ namespace ChromeDevtoolsProtocol\Model\CSS;
 final class CSSContainerQuery implements \JsonSerializable
 {
 	/**
-	 * Container query text.
+	 * Container query text. Contains the query part without the container name for a single query. Deprecated in favor of conditionText which contains the full prelude after @container.
 	 *
 	 * @var string
 	 */
@@ -67,6 +67,13 @@ final class CSSContainerQuery implements \JsonSerializable
 	 */
 	public $queriesAnchored;
 
+	/**
+	 * CSSContainerRule.conditionText
+	 *
+	 * @var string
+	 */
+	public $conditionText;
+
 
 	/**
 	 * @param object $data
@@ -99,6 +106,9 @@ final class CSSContainerQuery implements \JsonSerializable
 		if (isset($data->queriesAnchored)) {
 			$instance->queriesAnchored = (bool)$data->queriesAnchored;
 		}
+		if (isset($data->conditionText)) {
+			$instance->conditionText = (string)$data->conditionText;
+		}
 		return $instance;
 	}
 
@@ -129,6 +139,9 @@ final class CSSContainerQuery implements \JsonSerializable
 		}
 		if ($this->queriesAnchored !== null) {
 			$data->queriesAnchored = $this->queriesAnchored;
+		}
+		if ($this->conditionText !== null) {
+			$data->conditionText = $this->conditionText;
 		}
 		return $data;
 	}
