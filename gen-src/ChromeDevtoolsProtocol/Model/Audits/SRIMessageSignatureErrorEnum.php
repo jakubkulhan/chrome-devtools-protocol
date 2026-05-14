@@ -32,4 +32,8 @@ final class SRIMessageSignatureErrorEnum
 	public const VALIDATION_FAILED_INVALID_LENGTH = 'ValidationFailedInvalidLength';
 	public const VALIDATION_FAILED_SIGNATURE_MISMATCH = 'ValidationFailedSignatureMismatch';
 	public const VALIDATION_FAILED_INTEGRITY_MISMATCH = 'ValidationFailedIntegrityMismatch';
+	public const SIGNATURE_BASE_UNKNOWN_DERIVED_COMPONENT = 'SignatureBaseUnknownDerivedComponent';
+	public const SIGNATURE_BASE_MISSING_HEADER = 'SignatureBaseMissingHeader';
+	public const SIGNATURE_BASE_INVALID_UNENCODED_DIGEST = 'SignatureBaseInvalidUnencodedDigest';
+	public const SIGNATURE_BASE_UNSUPPORTED_COMPONENT = 'SignatureBaseUnsupportedComponent';
 }
