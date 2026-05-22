@@ -79,6 +79,13 @@ final class TargetInfo implements \JsonSerializable
 	 */
 	public $subtype;
 
+	/**
+	 * Embedder-specific target metadata. This is only set for targets of type "tab".
+	 *
+	 * @var object|null
+	 */
+	public $embedderData;
+
 
 	/**
 	 * @param object $data
@@ -123,6 +130,9 @@ final class TargetInfo implements \JsonSerializable
 		if (isset($data->subtype)) {
 			$instance->subtype = (string)$data->subtype;
 		}
+		if (isset($data->embedderData)) {
+			$instance->embedderData = $data->embedderData;
+		}
 		return $instance;
 	}
 
@@ -165,6 +175,9 @@ final class TargetInfo implements \JsonSerializable
 		}
 		if ($this->subtype !== null) {
 			$data->subtype = $this->subtype;
+		}
+		if ($this->embedderData !== null) {
+			$data->embedderData = $this->embedderData;
 		}
 		return $data;
 	}
