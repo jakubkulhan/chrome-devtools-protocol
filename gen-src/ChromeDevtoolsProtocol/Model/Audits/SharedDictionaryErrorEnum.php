@@ -30,6 +30,7 @@ final class SharedDictionaryErrorEnum
 	public const WRITE_ERROR_NON_SECURE_CONTEXT = 'WriteErrorNonSecureContext';
 	public const WRITE_ERROR_NON_STRING_ID_FIELD = 'WriteErrorNonStringIdField';
 	public const WRITE_ERROR_NON_STRING_IN_MATCH_DEST_LIST = 'WriteErrorNonStringInMatchDestList';
+	public const WRITE_ERROR_INVALID_MATCH_DEST_LIST = 'WriteErrorInvalidMatchDestList';
 	public const WRITE_ERROR_NON_STRING_MATCH_FIELD = 'WriteErrorNonStringMatchField';
 	public const WRITE_ERROR_NON_TOKEN_TYPE_FIELD = 'WriteErrorNonTokenTypeField';
 	public const WRITE_ERROR_REQUEST_ABORTED = 'WriteErrorRequestAborted';

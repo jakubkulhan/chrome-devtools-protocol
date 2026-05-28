@@ -40,4 +40,5 @@ final class InspectorIssueCodeEnum
 	public const PERMISSION_ELEMENT_ISSUE = 'PermissionElementIssue';
 	public const PERFORMANCE_ISSUE = 'PerformanceIssue';
 	public const SELECTIVE_PERMISSIONS_INTERVENTION_ISSUE = 'SelectivePermissionsInterventionIssue';
+	public const EMAIL_VERIFICATION_REQUEST_ISSUE = 'EmailVerificationRequestIssue';
 }
