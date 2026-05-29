@@ -80,4 +80,5 @@ final class DeviceBoundSessionFetchResultEnum
 	public const INVALID_FEDERATED_SESSION_PROVIDER_FAILED_TO_RESTORE_KEY = 'InvalidFederatedSessionProviderFailedToRestoreKey';
 	public const FAILED_TO_UNWRAP_KEY = 'FailedToUnwrapKey';
 	public const SESSION_DELETED_DURING_REFRESH = 'SessionDeletedDuringRefresh';
+	public const CROSS_ORIGIN_REGISTRATION_SITE_NOT_INCLUDED = 'CrossOriginRegistrationSiteNotIncluded';
 }

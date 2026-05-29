@@ -19781,7 +19781,8 @@
                         "InvalidConfigJson",
                         "InvalidFederatedSessionProviderFailedToRestoreKey",
                         "FailedToUnwrapKey",
-                        "SessionDeletedDuringRefresh"
+                        "SessionDeletedDuringRefresh",
+                        "CrossOriginRegistrationSiteNotIncluded"
                     ]
                 },
                 {
