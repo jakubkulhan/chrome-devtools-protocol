@@ -19,7 +19,7 @@ final class OpenDevToolsRequest implements \JsonSerializable
 	public $targetId;
 
 	/**
-	 * The id of the panel we want DevTools to open initially. Currently supported panels are elements, console, network, sources, resources and performance.
+	 * The id of the panel we want DevTools to open initially. Currently supported panels are elements, console, network, sources, resources, timeline, chrome-recorder, heap-profiler, lighthouse, and security.
 	 *
 	 * @var string|null
 	 */
