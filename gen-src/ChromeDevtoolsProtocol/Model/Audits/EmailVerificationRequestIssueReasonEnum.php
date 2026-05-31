@@ -33,4 +33,15 @@ final class EmailVerificationRequestIssueReasonEnum
 	public const WELL_KNOWN_MISSING_ACCOUNTS_ENDPOINT = 'WellKnownMissingAccountsEndpoint';
 	public const USER_LOGGED_OUT = 'UserLoggedOut';
 	public const WELL_KNOWN_ACCOUNTS_ENDPOINT_CROSS_ORIGIN = 'WellKnownAccountsEndpointCrossOrigin';
+	public const ACCOUNTS_HTTP_NOT_FOUND = 'AccountsHttpNotFound';
+	public const ACCOUNTS_NO_RESPONSE = 'AccountsNoResponse';
+	public const ACCOUNTS_INVALID_RESPONSE = 'AccountsInvalidResponse';
+	public const ACCOUNTS_INVALID_CONTENT_TYPE = 'AccountsInvalidContentType';
+	public const ACCOUNTS_EMPTY_LIST = 'AccountsEmptyList';
+	public const EMAIL_VERIFICATION_WELL_KNOWN_HTTP_NOT_FOUND = 'EmailVerificationWellKnownHttpNotFound';
+	public const EMAIL_VERIFICATION_WELL_KNOWN_NO_RESPONSE = 'EmailVerificationWellKnownNoResponse';
+	public const EMAIL_VERIFICATION_WELL_KNOWN_INVALID_RESPONSE = 'EmailVerificationWellKnownInvalidResponse';
+	public const EMAIL_VERIFICATION_WELL_KNOWN_INVALID_CONTENT_TYPE = 'EmailVerificationWellKnownInvalidContentType';
+	public const JWKS_HTTP_NOT_FOUND = 'JwksHttpNotFound';
+	public const JWKS_INVALID_RESPONSE = 'JwksInvalidResponse';
 }

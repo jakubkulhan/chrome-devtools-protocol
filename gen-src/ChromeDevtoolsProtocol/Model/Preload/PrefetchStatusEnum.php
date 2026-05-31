@@ -45,4 +45,5 @@ final class PrefetchStatusEnum
 	public const PREFETCH_RESPONSE_USED = 'PrefetchResponseUsed';
 	public const PREFETCH_SUCCESSFUL_BUT_NOT_USED = 'PrefetchSuccessfulButNotUsed';
 	public const PREFETCH_NOT_USED_PROBE_FAILED = 'PrefetchNotUsedProbeFailed';
+	public const PREFETCH_CANCELLED_ON_USER_NAVIGATION = 'PrefetchCancelledOnUserNavigation';
 }

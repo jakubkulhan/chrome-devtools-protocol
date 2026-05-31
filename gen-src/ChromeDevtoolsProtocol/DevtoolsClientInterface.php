@@ -3,6 +3,7 @@
 namespace ChromeDevtoolsProtocol;
 
 use ChromeDevtoolsProtocol\Domain\AccessibilityDomainInterface;
+use ChromeDevtoolsProtocol\Domain\AdsDomainInterface;
 use ChromeDevtoolsProtocol\Domain\AnimationDomainInterface;
 use ChromeDevtoolsProtocol\Domain\AuditsDomainInterface;
 use ChromeDevtoolsProtocol\Domain\AutofillDomainInterface;
@@ -74,6 +75,14 @@ interface DevtoolsClientInterface extends CloseableResourceInterface
 	 * @experimental
 	 */
 	public function accessibility(): AccessibilityDomainInterface;
+
+
+	/**
+	 * A domain for ad-related metrics and data.
+	 *
+	 * @experimental
+	 */
+	public function ads(): AdsDomainInterface;
 
 
 	/**

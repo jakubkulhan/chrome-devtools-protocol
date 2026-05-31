@@ -4,6 +4,8 @@ namespace ChromeDevtoolsProtocol;
 
 use ChromeDevtoolsProtocol\Domain\AccessibilityDomain;
 use ChromeDevtoolsProtocol\Domain\AccessibilityDomainInterface;
+use ChromeDevtoolsProtocol\Domain\AdsDomain;
+use ChromeDevtoolsProtocol\Domain\AdsDomainInterface;
 use ChromeDevtoolsProtocol\Domain\AnimationDomain;
 use ChromeDevtoolsProtocol\Domain\AnimationDomainInterface;
 use ChromeDevtoolsProtocol\Domain\AuditsDomain;
@@ -129,6 +131,18 @@ trait DevtoolsClientTrait
 		}
 		/** @var AccessibilityDomainInterface $domain */
 		$domain = $this->domains['Accessibility'];
+		return $domain;
+	}
+
+
+	public function ads(): AdsDomainInterface
+	{
+		if (!isset($this->domains['Ads'])) {
+			/** @var InternalClientInterface $this */
+			$this->domains['Ads'] = new AdsDomain($this);
+		}
+		/** @var AdsDomainInterface $domain */
+		$domain = $this->domains['Ads'];
 		return $domain;
 	}
 
