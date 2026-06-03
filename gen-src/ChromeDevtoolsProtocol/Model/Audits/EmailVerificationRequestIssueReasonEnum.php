@@ -44,4 +44,27 @@ final class EmailVerificationRequestIssueReasonEnum
 	public const EMAIL_VERIFICATION_WELL_KNOWN_INVALID_CONTENT_TYPE = 'EmailVerificationWellKnownInvalidContentType';
 	public const JWKS_HTTP_NOT_FOUND = 'JwksHttpNotFound';
 	public const JWKS_INVALID_RESPONSE = 'JwksInvalidResponse';
+	public const TOKEN_VERIFICATION_SD_JWT_UNSUPPORTED_HEADER_ALG = 'TokenVerificationSdJwtUnsupportedHeaderAlg';
+	public const TOKEN_VERIFICATION_SD_JWT_MISSING_ISS = 'TokenVerificationSdJwtMissingIss';
+	public const TOKEN_VERIFICATION_SD_JWT_MISSING_IAT = 'TokenVerificationSdJwtMissingIat';
+	public const TOKEN_VERIFICATION_SD_JWT_MISSING_CNF = 'TokenVerificationSdJwtMissingCnf';
+	public const TOKEN_VERIFICATION_SD_JWT_MISSING_EMAIL = 'TokenVerificationSdJwtMissingEmail';
+	public const TOKEN_VERIFICATION_SD_JWT_INVALID_ISSUED_AT = 'TokenVerificationSdJwtInvalidIssuedAt';
+	public const TOKEN_VERIFICATION_SD_JWT_INVALID_ISSUER = 'TokenVerificationSdJwtInvalidIssuer';
+	public const TOKEN_VERIFICATION_SD_JWT_JWKS_MISSING_KEYS = 'TokenVerificationSdJwtJwksMissingKeys';
+	public const TOKEN_VERIFICATION_SD_JWT_SIGNATURE_FAILED = 'TokenVerificationSdJwtSignatureFailed';
+	public const TOKEN_VERIFICATION_SD_JWT_INVALID_EMAIL_VERIFIED = 'TokenVerificationSdJwtInvalidEmailVerified';
+	public const TOKEN_VERIFICATION_SD_JWT_INVALID_EMAIL = 'TokenVerificationSdJwtInvalidEmail';
+	public const TOKEN_VERIFICATION_SD_JWT_INVALID_HOLDER_KEY = 'TokenVerificationSdJwtInvalidHolderKey';
+	public const TOKEN_VERIFICATION_KB_INVALID_TYP = 'TokenVerificationKbInvalidTyp';
+	public const TOKEN_VERIFICATION_KB_MISSING_AUD = 'TokenVerificationKbMissingAud';
+	public const TOKEN_VERIFICATION_KB_MISSING_NONCE = 'TokenVerificationKbMissingNonce';
+	public const TOKEN_VERIFICATION_KB_MISSING_IAT = 'TokenVerificationKbMissingIat';
+	public const TOKEN_VERIFICATION_KB_MISSING_SD_HASH = 'TokenVerificationKbMissingSdHash';
+	public const TOKEN_VERIFICATION_KB_INVALID_ISSUED_AT = 'TokenVerificationKbInvalidIssuedAt';
+	public const TOKEN_VERIFICATION_KB_INVALID_AUDIENCE = 'TokenVerificationKbInvalidAudience';
+	public const TOKEN_VERIFICATION_KB_INVALID_NONCE = 'TokenVerificationKbInvalidNonce';
+	public const TOKEN_VERIFICATION_KB_INVALID_SD_HASH = 'TokenVerificationKbInvalidSdHash';
+	public const TOKEN_VERIFICATION_KB_MISSING_CNF = 'TokenVerificationKbMissingCnf';
+	public const TOKEN_VERIFICATION_KB_SIGNATURE_FAILED = 'TokenVerificationKbSignatureFailed';
 }
