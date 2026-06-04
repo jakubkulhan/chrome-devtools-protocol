@@ -8889,7 +8889,8 @@
                         "details-content",
                         "picker",
                         "permission-icon",
-                        "overscroll-area-parent"
+                        "overscroll-area-parent",
+                        "skeleton"
                     ]
                 },
                 {
@@ -27379,6 +27380,7 @@
                         "PrefetchIneligibleRetryAfter",
                         "PrefetchIsPrivacyDecoy",
                         "PrefetchIsStale",
+                        "PrefetchNotEligibleBlockedByConnectionAllowlist",
                         "PrefetchNotEligibleBrowserContextOffTheRecord",
                         "PrefetchNotEligibleDataSaverEnabled",
                         "PrefetchNotEligibleExistingProxy",

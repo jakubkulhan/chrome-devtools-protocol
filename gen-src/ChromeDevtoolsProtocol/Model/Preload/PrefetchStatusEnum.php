@@ -24,6 +24,7 @@ final class PrefetchStatusEnum
 	public const PREFETCH_INELIGIBLE_RETRY_AFTER = 'PrefetchIneligibleRetryAfter';
 	public const PREFETCH_IS_PRIVACY_DECOY = 'PrefetchIsPrivacyDecoy';
 	public const PREFETCH_IS_STALE = 'PrefetchIsStale';
+	public const PREFETCH_NOT_ELIGIBLE_BLOCKED_BY_CONNECTION_ALLOWLIST = 'PrefetchNotEligibleBlockedByConnectionAllowlist';
 	public const PREFETCH_NOT_ELIGIBLE_BROWSER_CONTEXT_OFF_THE_RECORD = 'PrefetchNotEligibleBrowserContextOffTheRecord';
 	public const PREFETCH_NOT_ELIGIBLE_DATA_SAVER_ENABLED = 'PrefetchNotEligibleDataSaverEnabled';
 	public const PREFETCH_NOT_ELIGIBLE_EXISTING_PROXY = 'PrefetchNotEligibleExistingProxy';

@@ -52,4 +52,5 @@ final class PseudoTypeEnum
 	public const PICKER = 'picker';
 	public const PERMISSION_ICON = 'permission-icon';
 	public const OVERSCROLL_AREA_PARENT = 'overscroll-area-parent';
+	public const SKELETON = 'skeleton';
 }
