@@ -25,6 +25,13 @@ final class ForceShowPopoverRequest implements \JsonSerializable
 	 */
 	public $enable;
 
+	/**
+	 * Optional ID of the element invoking this popover, used to establish the implicit anchor. If not provided, it will fall back to the first invoker in the document, preferring elements with a popovertarget attribute over those with a commandfor attribute. Note that if there are multiple invokers, this is just an estimate.
+	 *
+	 * @var int
+	 */
+	public $invokerNodeId;
+
 
 	/**
 	 * @param object $data
@@ -39,6 +46,9 @@ final class ForceShowPopoverRequest implements \JsonSerializable
 		if (isset($data->enable)) {
 			$instance->enable = (bool)$data->enable;
 		}
+		if (isset($data->invokerNodeId)) {
+			$instance->invokerNodeId = (int)$data->invokerNodeId;
+		}
 		return $instance;
 	}
 
@@ -51,6 +61,9 @@ final class ForceShowPopoverRequest implements \JsonSerializable
 		}
 		if ($this->enable !== null) {
 			$data->enable = $this->enable;
+		}
+		if ($this->invokerNodeId !== null) {
+			$data->invokerNodeId = $this->invokerNodeId;
 		}
 		return $data;
 	}

@@ -13,6 +13,7 @@ final class ForceShowPopoverRequestBuilder
 {
 	private $nodeId;
 	private $enable;
+	private $invokerNodeId;
 
 
 	/**
@@ -29,6 +30,7 @@ final class ForceShowPopoverRequestBuilder
 			throw new BuilderException('Property [enable] is required.');
 		}
 		$instance->enable = $this->enable;
+		$instance->invokerNodeId = $this->invokerNodeId;
 		return $instance;
 	}
 
@@ -53,6 +55,18 @@ final class ForceShowPopoverRequestBuilder
 	public function setEnable($enable): self
 	{
 		$this->enable = $enable;
+		return $this;
+	}
+
+
+	/**
+	 * @param int $invokerNodeId
+	 *
+	 * @return self
+	 */
+	public function setInvokerNodeId($invokerNodeId): self
+	{
+		$this->invokerNodeId = $invokerNodeId;
 		return $this;
 	}
 }
