@@ -32,6 +32,13 @@ final class Specificity implements \JsonSerializable
 	 */
 	public $c;
 
+	/**
+	 * Per-simple-selector contributions used to explain this specificity.
+	 *
+	 * @var SpecificityComponent[]|null
+	 */
+	public $components;
+
 
 	/**
 	 * @param object $data
@@ -49,6 +56,12 @@ final class Specificity implements \JsonSerializable
 		if (isset($data->c)) {
 			$instance->c = (int)$data->c;
 		}
+		if (isset($data->components)) {
+			$instance->components = [];
+			foreach ($data->components as $item) {
+				$instance->components[] = SpecificityComponent::fromJson($item);
+			}
+		}
 		return $instance;
 	}
 
@@ -64,6 +77,12 @@ final class Specificity implements \JsonSerializable
 		}
 		if ($this->c !== null) {
 			$data->c = $this->c;
+		}
+		if ($this->components !== null) {
+			$data->components = [];
+			foreach ($this->components as $item) {
+				$data->components[] = $item->jsonSerialize();
+			}
 		}
 		return $data;
 	}
