@@ -60,7 +60,7 @@ class Tab
 	 */
 	public function devtools(): DevtoolsClientInterface
 	{
-		return new DevtoolsClient($this->webSocketDebuggerUrl);
+		return DevtoolsClient::createFromDebuggerUrl($this->webSocketDebuggerUrl);
 	}
 
 	/**
