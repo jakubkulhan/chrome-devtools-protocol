@@ -45,6 +45,7 @@ final class EmailVerificationRequestIssueReasonEnum
 	public const JWKS_HTTP_NOT_FOUND = 'JwksHttpNotFound';
 	public const JWKS_INVALID_RESPONSE = 'JwksInvalidResponse';
 	public const TOKEN_VERIFICATION_SD_JWT_UNSUPPORTED_HEADER_ALG = 'TokenVerificationSdJwtUnsupportedHeaderAlg';
+	public const TOKEN_VERIFICATION_SD_JWT_INVALID_TYP = 'TokenVerificationSdJwtInvalidTyp';
 	public const TOKEN_VERIFICATION_SD_JWT_MISSING_ISS = 'TokenVerificationSdJwtMissingIss';
 	public const TOKEN_VERIFICATION_SD_JWT_MISSING_IAT = 'TokenVerificationSdJwtMissingIat';
 	public const TOKEN_VERIFICATION_SD_JWT_MISSING_CNF = 'TokenVerificationSdJwtMissingCnf';

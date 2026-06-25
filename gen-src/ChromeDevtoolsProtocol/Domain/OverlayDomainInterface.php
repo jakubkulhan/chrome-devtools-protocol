@@ -25,6 +25,7 @@ use ChromeDevtoolsProtocol\Model\Overlay\SetPausedInDebuggerMessageRequest;
 use ChromeDevtoolsProtocol\Model\Overlay\SetShowAdHighlightsRequest;
 use ChromeDevtoolsProtocol\Model\Overlay\SetShowContainerQueryOverlaysRequest;
 use ChromeDevtoolsProtocol\Model\Overlay\SetShowDebugBordersRequest;
+use ChromeDevtoolsProtocol\Model\Overlay\SetShowDisplayCutoutRequest;
 use ChromeDevtoolsProtocol\Model\Overlay\SetShowFPSCounterRequest;
 use ChromeDevtoolsProtocol\Model\Overlay\SetShowFlexOverlaysRequest;
 use ChromeDevtoolsProtocol\Model\Overlay\SetShowGridOverlaysRequest;
@@ -235,6 +236,17 @@ interface OverlayDomainInterface
 	 * @return void
 	 */
 	public function setShowDebugBorders(ContextInterface $ctx, SetShowDebugBordersRequest $request): void;
+
+
+	/**
+	 * Add a display cutout overlay.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param SetShowDisplayCutoutRequest $request
+	 *
+	 * @return void
+	 */
+	public function setShowDisplayCutout(ContextInterface $ctx, SetShowDisplayCutoutRequest $request): void;
 
 
 	/**

@@ -26,6 +26,7 @@ use ChromeDevtoolsProtocol\Model\Overlay\SetPausedInDebuggerMessageRequest;
 use ChromeDevtoolsProtocol\Model\Overlay\SetShowAdHighlightsRequest;
 use ChromeDevtoolsProtocol\Model\Overlay\SetShowContainerQueryOverlaysRequest;
 use ChromeDevtoolsProtocol\Model\Overlay\SetShowDebugBordersRequest;
+use ChromeDevtoolsProtocol\Model\Overlay\SetShowDisplayCutoutRequest;
 use ChromeDevtoolsProtocol\Model\Overlay\SetShowFPSCounterRequest;
 use ChromeDevtoolsProtocol\Model\Overlay\SetShowFlexOverlaysRequest;
 use ChromeDevtoolsProtocol\Model\Overlay\SetShowGridOverlaysRequest;
@@ -161,6 +162,12 @@ class OverlayDomain implements OverlayDomainInterface
 	public function setShowDebugBorders(ContextInterface $ctx, SetShowDebugBordersRequest $request): void
 	{
 		$this->internalClient->executeCommand($ctx, 'Overlay.setShowDebugBorders', $request);
+	}
+
+
+	public function setShowDisplayCutout(ContextInterface $ctx, SetShowDisplayCutoutRequest $request): void
+	{
+		$this->internalClient->executeCommand($ctx, 'Overlay.setShowDisplayCutout', $request);
 	}
 
 
