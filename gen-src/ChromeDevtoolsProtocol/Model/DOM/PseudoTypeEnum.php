@@ -50,7 +50,9 @@ final class PseudoTypeEnum
 	public const FILE_SELECTOR_BUTTON = 'file-selector-button';
 	public const DETAILS_CONTENT = 'details-content';
 	public const PICKER = 'picker';
+	public const SELECT_LISTBOX = 'select-listbox';
 	public const PERMISSION_ICON = 'permission-icon';
 	public const OVERSCROLL_AREA_PARENT = 'overscroll-area-parent';
+	public const OVERSCROLL_BACKDROP = 'overscroll-backdrop';
 	public const SKELETON = 'skeleton';
 }

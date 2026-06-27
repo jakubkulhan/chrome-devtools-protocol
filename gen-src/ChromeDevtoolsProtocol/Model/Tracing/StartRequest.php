@@ -70,6 +70,20 @@ final class StartRequest implements \JsonSerializable
 	 */
 	public $tracingBackend;
 
+	/**
+	 * Maximum width and height (in pixels) of each captured screenshot. Only used when the `disabled-by-default-devtools.screenshot` category is enabled. Defaults to 500. The combined memory footprint of screenshots (`screenshotMaxSize` * `screenshotMaxSize` * 4 * `screenshotMaxCount`) is clamped to the existing per-session budget.
+	 *
+	 * @var int|null
+	 */
+	public $screenshotMaxSize;
+
+	/**
+	 * Maximum number of screenshots captured during a single tracing session. Only used when the `disabled-by-default-devtools.screenshot` category is enabled. Defaults to 450. Clamped together with `screenshotMaxSize` to stay within the per-session screenshot memory budget.
+	 *
+	 * @var int|null
+	 */
+	public $screenshotMaxCount;
+
 
 	/**
 	 * @param object $data
@@ -105,6 +119,12 @@ final class StartRequest implements \JsonSerializable
 		if (isset($data->tracingBackend)) {
 			$instance->tracingBackend = (string)$data->tracingBackend;
 		}
+		if (isset($data->screenshotMaxSize)) {
+			$instance->screenshotMaxSize = (int)$data->screenshotMaxSize;
+		}
+		if (isset($data->screenshotMaxCount)) {
+			$instance->screenshotMaxCount = (int)$data->screenshotMaxCount;
+		}
 		return $instance;
 	}
 
@@ -138,6 +158,12 @@ final class StartRequest implements \JsonSerializable
 		}
 		if ($this->tracingBackend !== null) {
 			$data->tracingBackend = $this->tracingBackend;
+		}
+		if ($this->screenshotMaxSize !== null) {
+			$data->screenshotMaxSize = $this->screenshotMaxSize;
+		}
+		if ($this->screenshotMaxCount !== null) {
+			$data->screenshotMaxCount = $this->screenshotMaxCount;
 		}
 		return $data;
 	}

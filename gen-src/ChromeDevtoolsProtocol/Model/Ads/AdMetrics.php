@@ -53,6 +53,20 @@ final class AdMetrics implements \JsonSerializable
 	 */
 	public $totalAdNetworkBytes;
 
+	/**
+	 * The list of ad frames that have been updated since the last event.
+	 *
+	 * @var AdFrameData[]
+	 */
+	public $updateAdFrames;
+
+	/**
+	 * The list of ad frame IDs that have been removed since the last event.
+	 *
+	 * @var string[]
+	 */
+	public $removeAdFrames;
+
 
 	/**
 	 * @param object $data
@@ -79,6 +93,21 @@ final class AdMetrics implements \JsonSerializable
 		if (isset($data->totalAdNetworkBytes)) {
 			$instance->totalAdNetworkBytes = $data->totalAdNetworkBytes;
 		}
+		if (isset($data->updateAdFrames)) {
+			$instance->updateAdFrames = [];
+			foreach ($data->updateAdFrames as $item) {
+				$instance->updateAdFrames[] = AdFrameData::fromJson($item);
+			}
+		}
+		if (isset($data->removeAdFrames)) {
+			$instance->removeAdFrames = [];
+		if (isset($data->removeAdFrames)) {
+			$instance->removeAdFrames = [];
+			foreach ($data->removeAdFrames as $item) {
+				$instance->removeAdFrames[] = (string)$item;
+			}
+		}
+		}
 		return $instance;
 	}
 
@@ -103,6 +132,21 @@ final class AdMetrics implements \JsonSerializable
 		}
 		if ($this->totalAdNetworkBytes !== null) {
 			$data->totalAdNetworkBytes = $this->totalAdNetworkBytes;
+		}
+		if ($this->updateAdFrames !== null) {
+			$data->updateAdFrames = [];
+			foreach ($this->updateAdFrames as $item) {
+				$data->updateAdFrames[] = $item->jsonSerialize();
+			}
+		}
+		if ($this->removeAdFrames !== null) {
+			$data->removeAdFrames = [];
+		if ($this->removeAdFrames !== null) {
+			$data->removeAdFrames = [];
+			foreach ($this->removeAdFrames as $item) {
+				$data->removeAdFrames[] = $item;
+			}
+		}
 		}
 		return $data;
 	}

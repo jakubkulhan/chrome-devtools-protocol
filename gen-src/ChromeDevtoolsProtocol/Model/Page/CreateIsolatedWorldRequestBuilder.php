@@ -14,6 +14,7 @@ final class CreateIsolatedWorldRequestBuilder
 	private $frameId;
 	private $worldName;
 	private $grantUniveralAccess;
+	private $contentSecurityPolicy;
 
 
 	/**
@@ -28,6 +29,7 @@ final class CreateIsolatedWorldRequestBuilder
 		$instance->frameId = $this->frameId;
 		$instance->worldName = $this->worldName;
 		$instance->grantUniveralAccess = $this->grantUniveralAccess;
+		$instance->contentSecurityPolicy = $this->contentSecurityPolicy;
 		return $instance;
 	}
 
@@ -64,6 +66,18 @@ final class CreateIsolatedWorldRequestBuilder
 	public function setGrantUniveralAccess($grantUniveralAccess): self
 	{
 		$this->grantUniveralAccess = $grantUniveralAccess;
+		return $this;
+	}
+
+
+	/**
+	 * @param string|null $contentSecurityPolicy
+	 *
+	 * @return self
+	 */
+	public function setContentSecurityPolicy($contentSecurityPolicy): self
+	{
+		$this->contentSecurityPolicy = $contentSecurityPolicy;
 		return $this;
 	}
 }

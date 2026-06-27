@@ -18,6 +18,8 @@ final class StartRequestBuilder
 	private $traceConfig;
 	private $perfettoConfig;
 	private $tracingBackend;
+	private $screenshotMaxSize;
+	private $screenshotMaxCount;
 
 
 	/**
@@ -35,6 +37,8 @@ final class StartRequestBuilder
 		$instance->traceConfig = $this->traceConfig;
 		$instance->perfettoConfig = $this->perfettoConfig;
 		$instance->tracingBackend = $this->tracingBackend;
+		$instance->screenshotMaxSize = $this->screenshotMaxSize;
+		$instance->screenshotMaxCount = $this->screenshotMaxCount;
 		return $instance;
 	}
 
@@ -143,6 +147,30 @@ final class StartRequestBuilder
 	public function setTracingBackend($tracingBackend): self
 	{
 		$this->tracingBackend = $tracingBackend;
+		return $this;
+	}
+
+
+	/**
+	 * @param int|null $screenshotMaxSize
+	 *
+	 * @return self
+	 */
+	public function setScreenshotMaxSize($screenshotMaxSize): self
+	{
+		$this->screenshotMaxSize = $screenshotMaxSize;
+		return $this;
+	}
+
+
+	/**
+	 * @param int|null $screenshotMaxCount
+	 *
+	 * @return self
+	 */
+	public function setScreenshotMaxCount($screenshotMaxCount): self
+	{
+		$this->screenshotMaxCount = $screenshotMaxCount;
 		return $this;
 	}
 }
