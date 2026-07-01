@@ -32,4 +32,6 @@ final class PermissionElementIssueTypeEnum
 	public const FONT_SIZE_TOO_SMALL = 'FontSizeTooSmall';
 	public const FONT_SIZE_TOO_LARGE = 'FontSizeTooLarge';
 	public const INVALID_SIZE_VALUE = 'InvalidSizeValue';
+	public const NON_SECURE_CONTEXT = 'NonSecureContext';
+	public const MISSING_TRANSIENT_USER_ACTIVATION = 'MissingTransientUserActivation';
 }

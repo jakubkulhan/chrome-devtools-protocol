@@ -2363,7 +2363,9 @@
                         "LowContrast",
                         "FontSizeTooSmall",
                         "FontSizeTooLarge",
-                        "InvalidSizeValue"
+                        "InvalidSizeValue",
+                        "NonSecureContext",
+                        "MissingTransientUserActivation"
                     ]
                 },
                 {
