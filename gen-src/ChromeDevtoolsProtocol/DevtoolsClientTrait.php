@@ -42,6 +42,8 @@ use ChromeDevtoolsProtocol\Domain\DeviceAccessDomain;
 use ChromeDevtoolsProtocol\Domain\DeviceAccessDomainInterface;
 use ChromeDevtoolsProtocol\Domain\DeviceOrientationDomain;
 use ChromeDevtoolsProtocol\Domain\DeviceOrientationDomainInterface;
+use ChromeDevtoolsProtocol\Domain\DigitalCredentialsDomain;
+use ChromeDevtoolsProtocol\Domain\DigitalCredentialsDomainInterface;
 use ChromeDevtoolsProtocol\Domain\EmulationDomain;
 use ChromeDevtoolsProtocol\Domain\EmulationDomainInterface;
 use ChromeDevtoolsProtocol\Domain\EventBreakpointsDomain;
@@ -311,6 +313,18 @@ trait DevtoolsClientTrait
 		}
 		/** @var DeviceOrientationDomainInterface $domain */
 		$domain = $this->domains['DeviceOrientation'];
+		return $domain;
+	}
+
+
+	public function digitalCredentials(): DigitalCredentialsDomainInterface
+	{
+		if (!isset($this->domains['DigitalCredentials'])) {
+			/** @var InternalClientInterface $this */
+			$this->domains['DigitalCredentials'] = new DigitalCredentialsDomain($this);
+		}
+		/** @var DigitalCredentialsDomainInterface $domain */
+		$domain = $this->domains['DigitalCredentials'];
 		return $domain;
 	}
 

@@ -3,7 +3,7 @@
 namespace ChromeDevtoolsProtocol\Model\Network;
 
 /**
- * A fetch result for a device bound session creation or refresh.
+ * A fetch result for a device bound session creation or refresh. LINT.IfChange(DeviceBoundSessionFetchResult)
  *
  * @generated This file has been auto-generated, do not edit.
  *
@@ -12,7 +12,8 @@ namespace ChromeDevtoolsProtocol\Model\Network;
 final class DeviceBoundSessionFetchResultEnum
 {
 	public const SUCCESS = 'Success';
-	public const KEY_ERROR = 'KeyError';
+	public const SIGNING_KEY_GENERATION_ERROR = 'SigningKeyGenerationError';
+	public const ATTESTATION_KEY_GENERATION_ERROR = 'AttestationKeyGenerationError';
 	public const SIGNING_ERROR = 'SigningError';
 	public const TRANSIENT_SIGNING_ERROR = 'TransientSigningError';
 	public const SERVER_REQUESTED_TERMINATION = 'ServerRequestedTermination';

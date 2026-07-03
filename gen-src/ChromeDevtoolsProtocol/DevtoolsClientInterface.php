@@ -22,6 +22,7 @@ use ChromeDevtoolsProtocol\Domain\DOMStorageDomainInterface;
 use ChromeDevtoolsProtocol\Domain\DebuggerDomainInterface;
 use ChromeDevtoolsProtocol\Domain\DeviceAccessDomainInterface;
 use ChromeDevtoolsProtocol\Domain\DeviceOrientationDomainInterface;
+use ChromeDevtoolsProtocol\Domain\DigitalCredentialsDomainInterface;
 use ChromeDevtoolsProtocol\Domain\EmulationDomainInterface;
 use ChromeDevtoolsProtocol\Domain\EventBreakpointsDomainInterface;
 use ChromeDevtoolsProtocol\Domain\ExtensionsDomainInterface;
@@ -189,6 +190,14 @@ interface DevtoolsClientInterface extends CloseableResourceInterface
 	 * @experimental
 	 */
 	public function deviceOrientation(): DeviceOrientationDomainInterface;
+
+
+	/**
+	 * This domain allows interacting with the Digital Credentials API for automation.
+	 *
+	 * @experimental
+	 */
+	public function digitalCredentials(): DigitalCredentialsDomainInterface;
 
 
 	/**

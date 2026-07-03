@@ -8886,6 +8886,50 @@
             "events": []
         },
         {
+            "domain": "DigitalCredentials",
+            "description": "This domain allows interacting with the Digital Credentials API for automation.",
+            "experimental": true,
+            "types": [
+                {
+                    "id": "VirtualWalletBehavior",
+                    "description": "The type of virtual wallet action.",
+                    "type": "string",
+                    "enum": [
+                        "respond",
+                        "decline",
+                        "wait",
+                        "clear"
+                    ]
+                }
+            ],
+            "commands": [
+                {
+                    "name": "setVirtualWalletBehavior",
+                    "description": "Sets the behavior of the virtual wallet for digital credential requests issued from this frame.",
+                    "parameters": [
+                        {
+                            "name": "behavior",
+                            "description": "The behavior of the virtual wallet.",
+                            "$ref": "VirtualWalletBehavior"
+                        },
+                        {
+                            "name": "protocol",
+                            "description": "The protocol identifier (e.g. \"openid4vp\"). Required when |behavior| is \"respond\", forbidden otherwise.",
+                            "optional": true,
+                            "type": "string"
+                        },
+                        {
+                            "name": "response",
+                            "description": "The response data object returned by the wallet. Required when |behavior| is \"respond\", forbidden otherwise.",
+                            "optional": true,
+                            "type": "object"
+                        }
+                    ]
+                }
+            ],
+            "events": []
+        },
+        {
             "domain": "DOM",
             "description": "This domain exposes DOM read/write operations. Each DOM Node is represented with its mirror object that has an `id`. This `id` can be used to get additional information on the Node, resolve it into the JavaScript object wrapper, etc. It is important that client receives DOM events only for the nodes that are known to the client. Backend keeps track of the nodes that were sent to the client and never sends the same node twice. It is client's responsibility to collect information about the nodes that were sent to the client. Note that `iframe` owner elements will return corresponding document elements as their child nodes.",
             "dependencies": [
@@ -19895,12 +19939,13 @@
                 },
                 {
                     "id": "DeviceBoundSessionFetchResult",
-                    "description": "A fetch result for a device bound session creation or refresh.",
+                    "description": "A fetch result for a device bound session creation or refresh. LINT.IfChange(DeviceBoundSessionFetchResult)",
                     "experimental": true,
                     "type": "string",
                     "enum": [
                         "Success",
-                        "KeyError",
+                        "SigningKeyGenerationError",
+                        "AttestationKeyGenerationError",
                         "SigningError",
                         "TransientSigningError",
                         "ServerRequestedTermination",

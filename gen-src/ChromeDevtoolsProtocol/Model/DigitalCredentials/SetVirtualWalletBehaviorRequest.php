@@ -1,0 +1,81 @@
+<?php
+
+namespace ChromeDevtoolsProtocol\Model\DigitalCredentials;
+
+/**
+ * Request for DigitalCredentials.setVirtualWalletBehavior command.
+ *
+ * @generated This file has been auto-generated, do not edit.
+ *
+ * @author Jakub Kulhan <jakub.kulhan@gmail.com>
+ */
+final class SetVirtualWalletBehaviorRequest implements \JsonSerializable
+{
+	/**
+	 * The behavior of the virtual wallet.
+	 *
+	 * @var string
+	 */
+	public $behavior;
+
+	/**
+	 * The protocol identifier (e.g. "openid4vp"). Required when |behavior| is "respond", forbidden otherwise.
+	 *
+	 * @var string|null
+	 */
+	public $protocol;
+
+	/**
+	 * The response data object returned by the wallet. Required when |behavior| is "respond", forbidden otherwise.
+	 *
+	 * @var object|null
+	 */
+	public $response;
+
+
+	/**
+	 * @param object $data
+	 * @return static
+	 */
+	public static function fromJson($data)
+	{
+		$instance = new static();
+		if (isset($data->behavior)) {
+			$instance->behavior = (string)$data->behavior;
+		}
+		if (isset($data->protocol)) {
+			$instance->protocol = (string)$data->protocol;
+		}
+		if (isset($data->response)) {
+			$instance->response = $data->response;
+		}
+		return $instance;
+	}
+
+
+	public function jsonSerialize()
+	{
+		$data = new \stdClass();
+		if ($this->behavior !== null) {
+			$data->behavior = $this->behavior;
+		}
+		if ($this->protocol !== null) {
+			$data->protocol = $this->protocol;
+		}
+		if ($this->response !== null) {
+			$data->response = $this->response;
+		}
+		return $data;
+	}
+
+
+	/**
+	 * Create new instance using builder.
+	 *
+	 * @return SetVirtualWalletBehaviorRequestBuilder
+	 */
+	public static function builder(): SetVirtualWalletBehaviorRequestBuilder
+	{
+		return new SetVirtualWalletBehaviorRequestBuilder();
+	}
+}
