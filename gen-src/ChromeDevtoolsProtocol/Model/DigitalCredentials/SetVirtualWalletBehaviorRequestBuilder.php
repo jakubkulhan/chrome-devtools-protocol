@@ -11,7 +11,7 @@ use ChromeDevtoolsProtocol\Exception\BuilderException;
  */
 final class SetVirtualWalletBehaviorRequestBuilder
 {
-	private $behavior;
+	private $action;
 	private $protocol;
 	private $response;
 
@@ -22,10 +22,10 @@ final class SetVirtualWalletBehaviorRequestBuilder
 	public function build(): SetVirtualWalletBehaviorRequest
 	{
 		$instance = new SetVirtualWalletBehaviorRequest();
-		if ($this->behavior === null) {
-			throw new BuilderException('Property [behavior] is required.');
+		if ($this->action === null) {
+			throw new BuilderException('Property [action] is required.');
 		}
-		$instance->behavior = $this->behavior;
+		$instance->action = $this->action;
 		$instance->protocol = $this->protocol;
 		$instance->response = $this->response;
 		return $instance;
@@ -33,13 +33,13 @@ final class SetVirtualWalletBehaviorRequestBuilder
 
 
 	/**
-	 * @param string $behavior
+	 * @param string $action
 	 *
 	 * @return self
 	 */
-	public function setBehavior($behavior): self
+	public function setAction($action): self
 	{
-		$this->behavior = $behavior;
+		$this->action = $action;
 		return $this;
 	}
 

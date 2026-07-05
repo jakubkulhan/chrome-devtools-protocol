@@ -9,7 +9,7 @@ namespace ChromeDevtoolsProtocol\Model\DigitalCredentials;
  *
  * @author Jakub Kulhan <jakub.kulhan@gmail.com>
  */
-final class VirtualWalletBehaviorEnum
+final class VirtualWalletActionEnum
 {
 	public const RESPOND = 'respond';
 	public const DECLINE = 'decline';

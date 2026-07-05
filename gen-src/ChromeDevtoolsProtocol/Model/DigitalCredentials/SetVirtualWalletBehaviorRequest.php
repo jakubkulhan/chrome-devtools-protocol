@@ -12,21 +12,21 @@ namespace ChromeDevtoolsProtocol\Model\DigitalCredentials;
 final class SetVirtualWalletBehaviorRequest implements \JsonSerializable
 {
 	/**
-	 * The behavior of the virtual wallet.
+	 * The action of the virtual wallet.
 	 *
 	 * @var string
 	 */
-	public $behavior;
+	public $action;
 
 	/**
-	 * The protocol identifier (e.g. "openid4vp"). Required when |behavior| is "respond", forbidden otherwise.
+	 * The protocol identifier (e.g. "openid4vp"). Required when |action| is "respond", forbidden otherwise.
 	 *
 	 * @var string|null
 	 */
 	public $protocol;
 
 	/**
-	 * The response data object returned by the wallet. Required when |behavior| is "respond", forbidden otherwise.
+	 * The response data object returned by the wallet. Required when |action| is "respond", forbidden otherwise.
 	 *
 	 * @var object|null
 	 */
@@ -40,8 +40,8 @@ final class SetVirtualWalletBehaviorRequest implements \JsonSerializable
 	public static function fromJson($data)
 	{
 		$instance = new static();
-		if (isset($data->behavior)) {
-			$instance->behavior = (string)$data->behavior;
+		if (isset($data->action)) {
+			$instance->action = (string)$data->action;
 		}
 		if (isset($data->protocol)) {
 			$instance->protocol = (string)$data->protocol;
@@ -56,8 +56,8 @@ final class SetVirtualWalletBehaviorRequest implements \JsonSerializable
 	public function jsonSerialize()
 	{
 		$data = new \stdClass();
-		if ($this->behavior !== null) {
-			$data->behavior = $this->behavior;
+		if ($this->action !== null) {
+			$data->action = $this->action;
 		}
 		if ($this->protocol !== null) {
 			$data->protocol = $this->protocol;
