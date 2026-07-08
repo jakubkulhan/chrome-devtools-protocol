@@ -32,6 +32,13 @@ final class SetVirtualWalletBehaviorRequest implements \JsonSerializable
 	 */
 	public $response;
 
+	/**
+	 * The frame to scope the virtual wallet behavior to.
+	 *
+	 * @var string
+	 */
+	public $frameId;
+
 
 	/**
 	 * @param object $data
@@ -49,6 +56,9 @@ final class SetVirtualWalletBehaviorRequest implements \JsonSerializable
 		if (isset($data->response)) {
 			$instance->response = $data->response;
 		}
+		if (isset($data->frameId)) {
+			$instance->frameId = (string)$data->frameId;
+		}
 		return $instance;
 	}
 
@@ -64,6 +74,9 @@ final class SetVirtualWalletBehaviorRequest implements \JsonSerializable
 		}
 		if ($this->response !== null) {
 			$data->response = $this->response;
+		}
+		if ($this->frameId !== null) {
+			$data->frameId = $this->frameId;
 		}
 		return $data;
 	}

@@ -14,6 +14,7 @@ final class SetVirtualWalletBehaviorRequestBuilder
 	private $action;
 	private $protocol;
 	private $response;
+	private $frameId;
 
 
 	/**
@@ -28,6 +29,7 @@ final class SetVirtualWalletBehaviorRequestBuilder
 		$instance->action = $this->action;
 		$instance->protocol = $this->protocol;
 		$instance->response = $this->response;
+		$instance->frameId = $this->frameId;
 		return $instance;
 	}
 
@@ -64,6 +66,18 @@ final class SetVirtualWalletBehaviorRequestBuilder
 	public function setResponse($response): self
 	{
 		$this->response = $response;
+		return $this;
+	}
+
+
+	/**
+	 * @param string $frameId
+	 *
+	 * @return self
+	 */
+	public function setFrameId($frameId): self
+	{
+		$this->frameId = $frameId;
 		return $this;
 	}
 }

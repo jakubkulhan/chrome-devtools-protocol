@@ -8923,6 +8923,12 @@
                             "description": "The response data object returned by the wallet. Required when |action| is \"respond\", forbidden otherwise.",
                             "optional": true,
                             "type": "object"
+                        },
+                        {
+                            "name": "frameId",
+                            "description": "The frame to scope the virtual wallet behavior to.",
+                            "optional": true,
+                            "$ref": "Page.FrameId"
                         }
                     ]
                 }
