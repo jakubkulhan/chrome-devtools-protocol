@@ -82,4 +82,7 @@ final class DeviceBoundSessionFetchResultEnum
 	public const FAILED_TO_UNWRAP_KEY = 'FailedToUnwrapKey';
 	public const SESSION_DELETED_DURING_REFRESH = 'SessionDeletedDuringRefresh';
 	public const CROSS_ORIGIN_REGISTRATION_SITE_NOT_INCLUDED = 'CrossOriginRegistrationSiteNotIncluded';
+	public const INVALID_PRE_PROVISIONED_KEY_INITIATOR_MISSING = 'InvalidPreProvisionedKeyInitiatorMissing';
+	public const PRE_PROVISIONED_KEY_ACCESS_NOT_GRANTED = 'PreProvisionedKeyAccessNotGranted';
+	public const PRE_PROVISIONED_KEY_NOT_FOUND = 'PreProvisionedKeyNotFound';
 }
