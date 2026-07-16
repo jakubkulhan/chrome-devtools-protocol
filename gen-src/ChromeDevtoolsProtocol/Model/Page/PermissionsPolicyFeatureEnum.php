@@ -15,7 +15,6 @@ final class PermissionsPolicyFeatureEnum
 	public const ALL_SCREENS_CAPTURE = 'all-screens-capture';
 	public const AMBIENT_LIGHT_SENSOR = 'ambient-light-sensor';
 	public const ARIA_NOTIFY = 'aria-notify';
-	public const ATTRIBUTION_REPORTING = 'attribution-reporting';
 	public const AUTOFILL = 'autofill';
 	public const AUTOPLAY = 'autoplay';
 	public const BLUETOOTH = 'bluetooth';

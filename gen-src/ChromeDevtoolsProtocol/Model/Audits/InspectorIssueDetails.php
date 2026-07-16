@@ -32,9 +32,6 @@ final class InspectorIssueDetails implements \JsonSerializable
 	/** @var CorsIssueDetails|null */
 	public $corsIssueDetails;
 
-	/** @var AttributionReportingIssueDetails|null */
-	public $attributionReportingIssueDetails;
-
 	/** @var QuirksModeIssueDetails|null */
 	public $quirksModeIssueDetails;
 
@@ -101,6 +98,9 @@ final class InspectorIssueDetails implements \JsonSerializable
 	/** @var EmailVerificationRequestIssueDetails|null */
 	public $emailVerificationRequestIssueDetails;
 
+	/** @var LazyLoadImageIssueDetails|null */
+	public $lazyLoadImageIssueDetails;
+
 
 	/**
 	 * @param object $data
@@ -129,9 +129,6 @@ final class InspectorIssueDetails implements \JsonSerializable
 		}
 		if (isset($data->corsIssueDetails)) {
 			$instance->corsIssueDetails = CorsIssueDetails::fromJson($data->corsIssueDetails);
-		}
-		if (isset($data->attributionReportingIssueDetails)) {
-			$instance->attributionReportingIssueDetails = AttributionReportingIssueDetails::fromJson($data->attributionReportingIssueDetails);
 		}
 		if (isset($data->quirksModeIssueDetails)) {
 			$instance->quirksModeIssueDetails = QuirksModeIssueDetails::fromJson($data->quirksModeIssueDetails);
@@ -199,6 +196,9 @@ final class InspectorIssueDetails implements \JsonSerializable
 		if (isset($data->emailVerificationRequestIssueDetails)) {
 			$instance->emailVerificationRequestIssueDetails = EmailVerificationRequestIssueDetails::fromJson($data->emailVerificationRequestIssueDetails);
 		}
+		if (isset($data->lazyLoadImageIssueDetails)) {
+			$instance->lazyLoadImageIssueDetails = LazyLoadImageIssueDetails::fromJson($data->lazyLoadImageIssueDetails);
+		}
 		return $instance;
 	}
 
@@ -226,9 +226,6 @@ final class InspectorIssueDetails implements \JsonSerializable
 		}
 		if ($this->corsIssueDetails !== null) {
 			$data->corsIssueDetails = $this->corsIssueDetails->jsonSerialize();
-		}
-		if ($this->attributionReportingIssueDetails !== null) {
-			$data->attributionReportingIssueDetails = $this->attributionReportingIssueDetails->jsonSerialize();
 		}
 		if ($this->quirksModeIssueDetails !== null) {
 			$data->quirksModeIssueDetails = $this->quirksModeIssueDetails->jsonSerialize();
@@ -295,6 +292,9 @@ final class InspectorIssueDetails implements \JsonSerializable
 		}
 		if ($this->emailVerificationRequestIssueDetails !== null) {
 			$data->emailVerificationRequestIssueDetails = $this->emailVerificationRequestIssueDetails->jsonSerialize();
+		}
+		if ($this->lazyLoadImageIssueDetails !== null) {
+			$data->lazyLoadImageIssueDetails = $this->lazyLoadImageIssueDetails->jsonSerialize();
 		}
 		return $data;
 	}

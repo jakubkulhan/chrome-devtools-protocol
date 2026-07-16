@@ -18,7 +18,6 @@ final class InspectorIssueCodeEnum
 	public const CONTENT_SECURITY_POLICY_ISSUE = 'ContentSecurityPolicyIssue';
 	public const SHARED_ARRAY_BUFFER_ISSUE = 'SharedArrayBufferIssue';
 	public const CORS_ISSUE = 'CorsIssue';
-	public const ATTRIBUTION_REPORTING_ISSUE = 'AttributionReportingIssue';
 	public const QUIRKS_MODE_ISSUE = 'QuirksModeIssue';
 	public const PARTITIONING_BLOB_U_R_L_ISSUE = 'PartitioningBlobURLIssue';
 	public const NAVIGATOR_USER_AGENT_ISSUE = 'NavigatorUserAgentIssue';
@@ -41,4 +40,5 @@ final class InspectorIssueCodeEnum
 	public const PERFORMANCE_ISSUE = 'PerformanceIssue';
 	public const SELECTIVE_PERMISSIONS_INTERVENTION_ISSUE = 'SelectivePermissionsInterventionIssue';
 	public const EMAIL_VERIFICATION_REQUEST_ISSUE = 'EmailVerificationRequestIssue';
+	public const LAZY_LOAD_IMAGE_ISSUE = 'LazyLoadImageIssue';
 }
