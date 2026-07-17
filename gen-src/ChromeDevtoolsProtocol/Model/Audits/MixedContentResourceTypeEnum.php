@@ -11,7 +11,6 @@ namespace ChromeDevtoolsProtocol\Model\Audits;
  */
 final class MixedContentResourceTypeEnum
 {
-	public const ATTRIBUTION_SRC = 'AttributionSrc';
 	public const AUDIO = 'Audio';
 	public const BEACON = 'Beacon';
 	public const CSP_REPORT = 'CSPReport';

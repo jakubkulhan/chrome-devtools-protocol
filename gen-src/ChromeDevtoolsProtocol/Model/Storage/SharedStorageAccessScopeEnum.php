@@ -13,6 +13,5 @@ final class SharedStorageAccessScopeEnum
 {
 	public const WINDOW = 'window';
 	public const SHARED_STORAGE_WORKLET = 'sharedStorageWorklet';
-	public const PROTECTED_AUDIENCE_WORKLET = 'protectedAudienceWorklet';
 	public const HEADER = 'header';
 }

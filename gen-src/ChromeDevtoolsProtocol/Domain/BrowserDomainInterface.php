@@ -3,7 +3,6 @@
 namespace ChromeDevtoolsProtocol\Domain;
 
 use ChromeDevtoolsProtocol\ContextInterface;
-use ChromeDevtoolsProtocol\Model\Browser\AddPrivacySandboxCoordinatorKeyConfigRequest;
 use ChromeDevtoolsProtocol\Model\Browser\AddPrivacySandboxEnrollmentOverrideRequest;
 use ChromeDevtoolsProtocol\Model\Browser\CancelDownloadRequest;
 use ChromeDevtoolsProtocol\Model\Browser\DownloadProgressEvent;
@@ -37,20 +36,6 @@ use ChromeDevtoolsProtocol\SubscriptionInterface;
  */
 interface BrowserDomainInterface
 {
-	/**
-	 * Configures encryption keys used with a given privacy sandbox API to talk to a trusted coordinator. Since this is intended for test automation only, coordinatorOrigin must be a .test domain. No existing coordinator configuration for the origin may exist.
-	 *
-	 * @param ContextInterface $ctx
-	 * @param AddPrivacySandboxCoordinatorKeyConfigRequest $request
-	 *
-	 * @return void
-	 */
-	public function addPrivacySandboxCoordinatorKeyConfig(
-		ContextInterface $ctx,
-		AddPrivacySandboxCoordinatorKeyConfigRequest $request
-	): void;
-
-
 	/**
 	 * Allows a site to use privacy sandbox features that require enrollment without the site actually being enrolled. Only supported on page targets.
 	 *

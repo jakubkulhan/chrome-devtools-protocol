@@ -4,7 +4,6 @@ namespace ChromeDevtoolsProtocol\Domain;
 
 use ChromeDevtoolsProtocol\ContextInterface;
 use ChromeDevtoolsProtocol\InternalClientInterface;
-use ChromeDevtoolsProtocol\Model\Browser\AddPrivacySandboxCoordinatorKeyConfigRequest;
 use ChromeDevtoolsProtocol\Model\Browser\AddPrivacySandboxEnrollmentOverrideRequest;
 use ChromeDevtoolsProtocol\Model\Browser\CancelDownloadRequest;
 use ChromeDevtoolsProtocol\Model\Browser\DownloadProgressEvent;
@@ -38,14 +37,6 @@ class BrowserDomain implements BrowserDomainInterface
 	public function __construct(InternalClientInterface $internalClient)
 	{
 		$this->internalClient = $internalClient;
-	}
-
-
-	public function addPrivacySandboxCoordinatorKeyConfig(
-		ContextInterface $ctx,
-		AddPrivacySandboxCoordinatorKeyConfigRequest $request
-	): void {
-		$this->internalClient->executeCommand($ctx, 'Browser.addPrivacySandboxCoordinatorKeyConfig', $request);
 	}
 
 
