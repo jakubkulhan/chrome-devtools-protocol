@@ -81,6 +81,13 @@ final class VirtualAuthenticatorOptions implements \JsonSerializable
 	public $hasHmacSecretMc;
 
 	/**
+	 * If set to true, the authenticator will support the cmtgKey (Credential Manager Trust Group Key) extension. https://github.com/w3c/webauthn/pull/2377 Defaults to false.
+	 *
+	 * @var bool|null
+	 */
+	public $hasCmtgKey;
+
+	/**
 	 * If set to true, tests of user presence will succeed immediately. Otherwise, they will not be resolved. Defaults to true.
 	 *
 	 * @var bool|null
@@ -149,6 +156,9 @@ final class VirtualAuthenticatorOptions implements \JsonSerializable
 		if (isset($data->hasHmacSecretMc)) {
 			$instance->hasHmacSecretMc = (bool)$data->hasHmacSecretMc;
 		}
+		if (isset($data->hasCmtgKey)) {
+			$instance->hasCmtgKey = (bool)$data->hasCmtgKey;
+		}
 		if (isset($data->automaticPresenceSimulation)) {
 			$instance->automaticPresenceSimulation = (bool)$data->automaticPresenceSimulation;
 		}
@@ -200,6 +210,9 @@ final class VirtualAuthenticatorOptions implements \JsonSerializable
 		}
 		if ($this->hasHmacSecretMc !== null) {
 			$data->hasHmacSecretMc = $this->hasHmacSecretMc;
+		}
+		if ($this->hasCmtgKey !== null) {
+			$data->hasCmtgKey = $this->hasCmtgKey;
 		}
 		if ($this->automaticPresenceSimulation !== null) {
 			$data->automaticPresenceSimulation = $this->automaticPresenceSimulation;

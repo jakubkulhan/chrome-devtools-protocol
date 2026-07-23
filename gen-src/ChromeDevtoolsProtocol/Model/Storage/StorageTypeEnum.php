@@ -19,7 +19,6 @@ final class StorageTypeEnum
 	public const WEBSQL = 'websql';
 	public const SERVICE_WORKERS = 'service_workers';
 	public const CACHE_STORAGE = 'cache_storage';
-	public const INTEREST_GROUPS = 'interest_groups';
 	public const SHARED_STORAGE = 'shared_storage';
 	public const STORAGE_BUCKETS = 'storage_buckets';
 	public const ALL = 'all';

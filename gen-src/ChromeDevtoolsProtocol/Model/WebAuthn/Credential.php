@@ -80,6 +80,27 @@ final class Credential implements \JsonSerializable
 	 */
 	public $userDisplayName;
 
+	/**
+	 * The CMTG keys associated with the credential.
+	 *
+	 * @var string[]|null
+	 */
+	public $cmtgKeys;
+
+	/**
+	 * The 0-based index of the active key in cmtgKeys.
+	 *
+	 * @var int|null
+	 */
+	public $activeCmtgKeyIndex;
+
+	/**
+	 * If true, the authenticator will generate a new CMTG key on the next operation.
+	 *
+	 * @var bool|null
+	 */
+	public $generateCmtgKeyOnNextOperation;
+
 
 	/**
 	 * @param object $data
@@ -121,6 +142,18 @@ final class Credential implements \JsonSerializable
 		if (isset($data->userDisplayName)) {
 			$instance->userDisplayName = (string)$data->userDisplayName;
 		}
+		if (isset($data->cmtgKeys)) {
+			$instance->cmtgKeys = [];
+			foreach ($data->cmtgKeys as $item) {
+				$instance->cmtgKeys[] = (string)$item;
+			}
+		}
+		if (isset($data->activeCmtgKeyIndex)) {
+			$instance->activeCmtgKeyIndex = (int)$data->activeCmtgKeyIndex;
+		}
+		if (isset($data->generateCmtgKeyOnNextOperation)) {
+			$instance->generateCmtgKeyOnNextOperation = (bool)$data->generateCmtgKeyOnNextOperation;
+		}
 		return $instance;
 	}
 
@@ -160,6 +193,18 @@ final class Credential implements \JsonSerializable
 		}
 		if ($this->userDisplayName !== null) {
 			$data->userDisplayName = $this->userDisplayName;
+		}
+		if ($this->cmtgKeys !== null) {
+			$data->cmtgKeys = [];
+			foreach ($this->cmtgKeys as $item) {
+				$data->cmtgKeys[] = $item;
+			}
+		}
+		if ($this->activeCmtgKeyIndex !== null) {
+			$data->activeCmtgKeyIndex = $this->activeCmtgKeyIndex;
+		}
+		if ($this->generateCmtgKeyOnNextOperation !== null) {
+			$data->generateCmtgKeyOnNextOperation = $this->generateCmtgKeyOnNextOperation;
 		}
 		return $data;
 	}
