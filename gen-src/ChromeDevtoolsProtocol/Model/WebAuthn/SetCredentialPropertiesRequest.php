@@ -23,6 +23,12 @@ final class SetCredentialPropertiesRequest implements \JsonSerializable
 	/** @var bool|null */
 	public $backupState;
 
+	/** @var int|null */
+	public $activeCmtgKeyIndex;
+
+	/** @var bool|null */
+	public $generateCmtgKeyOnNextOperation;
+
 
 	/**
 	 * @param object $data
@@ -43,6 +49,12 @@ final class SetCredentialPropertiesRequest implements \JsonSerializable
 		if (isset($data->backupState)) {
 			$instance->backupState = (bool)$data->backupState;
 		}
+		if (isset($data->activeCmtgKeyIndex)) {
+			$instance->activeCmtgKeyIndex = (int)$data->activeCmtgKeyIndex;
+		}
+		if (isset($data->generateCmtgKeyOnNextOperation)) {
+			$instance->generateCmtgKeyOnNextOperation = (bool)$data->generateCmtgKeyOnNextOperation;
+		}
 		return $instance;
 	}
 
@@ -61,6 +73,12 @@ final class SetCredentialPropertiesRequest implements \JsonSerializable
 		}
 		if ($this->backupState !== null) {
 			$data->backupState = $this->backupState;
+		}
+		if ($this->activeCmtgKeyIndex !== null) {
+			$data->activeCmtgKeyIndex = $this->activeCmtgKeyIndex;
+		}
+		if ($this->generateCmtgKeyOnNextOperation !== null) {
+			$data->generateCmtgKeyOnNextOperation = $this->generateCmtgKeyOnNextOperation;
 		}
 		return $data;
 	}
