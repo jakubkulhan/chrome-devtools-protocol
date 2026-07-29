@@ -17,6 +17,7 @@ final class SetCredentialPropertiesRequestBuilder
 	private $backupState;
 	private $activeCmtgKeyIndex;
 	private $generateCmtgKeyOnNextOperation;
+	private $signCount;
 
 
 	/**
@@ -37,6 +38,7 @@ final class SetCredentialPropertiesRequestBuilder
 		$instance->backupState = $this->backupState;
 		$instance->activeCmtgKeyIndex = $this->activeCmtgKeyIndex;
 		$instance->generateCmtgKeyOnNextOperation = $this->generateCmtgKeyOnNextOperation;
+		$instance->signCount = $this->signCount;
 		return $instance;
 	}
 
@@ -109,6 +111,18 @@ final class SetCredentialPropertiesRequestBuilder
 	public function setGenerateCmtgKeyOnNextOperation($generateCmtgKeyOnNextOperation): self
 	{
 		$this->generateCmtgKeyOnNextOperation = $generateCmtgKeyOnNextOperation;
+		return $this;
+	}
+
+
+	/**
+	 * @param int|null $signCount
+	 *
+	 * @return self
+	 */
+	public function setSignCount($signCount): self
+	{
+		$this->signCount = $signCount;
 		return $this;
 	}
 }
