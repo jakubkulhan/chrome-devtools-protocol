@@ -12,14 +12,14 @@ namespace ChromeDevtoolsProtocol\Model\Network;
 final class RefreshEventDetails implements \JsonSerializable
 {
 	/**
-	 * The result of a refresh.
+	 * The result of a refresh. LINT.IfChange(DeviceBoundSessionRefreshResult)
 	 *
 	 * @var string
 	 */
 	public $refreshResult;
 
 	/**
-	 * If there was a fetch attempt, the result of that.
+	 * LINT.ThenChange(//net/device_bound_sessions/refresh_result.h:DeviceBoundSessionRefreshResult,//content/browser/devtools/protocol/network_handler.cc:DeviceBoundSessionRefreshResult) If there was a fetch attempt, the result of that.
 	 *
 	 * @var string
 	 */
