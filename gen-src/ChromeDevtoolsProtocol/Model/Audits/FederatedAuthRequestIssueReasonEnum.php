@@ -15,6 +15,7 @@ final class FederatedAuthRequestIssueReasonEnum
 	public const TOO_MANY_REQUESTS = 'TooManyRequests';
 	public const WELL_KNOWN_HTTP_NOT_FOUND = 'WellKnownHttpNotFound';
 	public const WELL_KNOWN_NO_RESPONSE = 'WellKnownNoResponse';
+	public const WELL_KNOWN_BLOCKED_BY_CONNECTION_ALLOWLIST = 'WellKnownBlockedByConnectionAllowlist';
 	public const WELL_KNOWN_INVALID_RESPONSE = 'WellKnownInvalidResponse';
 	public const WELL_KNOWN_LIST_EMPTY = 'WellKnownListEmpty';
 	public const WELL_KNOWN_INVALID_CONTENT_TYPE = 'WellKnownInvalidContentType';
@@ -22,6 +23,7 @@ final class FederatedAuthRequestIssueReasonEnum
 	public const WELL_KNOWN_TOO_BIG = 'WellKnownTooBig';
 	public const CONFIG_HTTP_NOT_FOUND = 'ConfigHttpNotFound';
 	public const CONFIG_NO_RESPONSE = 'ConfigNoResponse';
+	public const CONFIG_BLOCKED_BY_CONNECTION_ALLOWLIST = 'ConfigBlockedByConnectionAllowlist';
 	public const CONFIG_INVALID_RESPONSE = 'ConfigInvalidResponse';
 	public const CONFIG_INVALID_CONTENT_TYPE = 'ConfigInvalidContentType';
 	public const IDP_NOT_POTENTIALLY_TRUSTWORTHY = 'IdpNotPotentiallyTrustworthy';
@@ -31,11 +33,13 @@ final class FederatedAuthRequestIssueReasonEnum
 	public const INVALID_SIGNIN_RESPONSE = 'InvalidSigninResponse';
 	public const ACCOUNTS_HTTP_NOT_FOUND = 'AccountsHttpNotFound';
 	public const ACCOUNTS_NO_RESPONSE = 'AccountsNoResponse';
+	public const ACCOUNTS_BLOCKED_BY_CONNECTION_ALLOWLIST = 'AccountsBlockedByConnectionAllowlist';
 	public const ACCOUNTS_INVALID_RESPONSE = 'AccountsInvalidResponse';
 	public const ACCOUNTS_LIST_EMPTY = 'AccountsListEmpty';
 	public const ACCOUNTS_INVALID_CONTENT_TYPE = 'AccountsInvalidContentType';
 	public const ID_TOKEN_HTTP_NOT_FOUND = 'IdTokenHttpNotFound';
 	public const ID_TOKEN_NO_RESPONSE = 'IdTokenNoResponse';
+	public const ID_TOKEN_BLOCKED_BY_CONNECTION_ALLOWLIST = 'IdTokenBlockedByConnectionAllowlist';
 	public const ID_TOKEN_INVALID_RESPONSE = 'IdTokenInvalidResponse';
 	public const ID_TOKEN_IDP_ERROR_RESPONSE = 'IdTokenIdpErrorResponse';
 	public const ID_TOKEN_CROSS_SITE_IDP_ERROR_RESPONSE = 'IdTokenCrossSiteIdpErrorResponse';

@@ -8,7 +8,6 @@ use ChromeDevtoolsProtocol\Model\Network\CanClearBrowserCacheResponse;
 use ChromeDevtoolsProtocol\Model\Network\CanClearBrowserCookiesResponse;
 use ChromeDevtoolsProtocol\Model\Network\CanEmulateNetworkConditionsResponse;
 use ChromeDevtoolsProtocol\Model\Network\ConfigureDurableMessagesRequest;
-use ChromeDevtoolsProtocol\Model\Network\ContinueInterceptedRequestRequest;
 use ChromeDevtoolsProtocol\Model\Network\DataReceivedEvent;
 use ChromeDevtoolsProtocol\Model\Network\DeleteCookiesRequest;
 use ChromeDevtoolsProtocol\Model\Network\DeleteDeviceBoundSessionRequest;
@@ -44,8 +43,6 @@ use ChromeDevtoolsProtocol\Model\Network\GetCookiesRequest;
 use ChromeDevtoolsProtocol\Model\Network\GetCookiesResponse;
 use ChromeDevtoolsProtocol\Model\Network\GetRequestPostDataRequest;
 use ChromeDevtoolsProtocol\Model\Network\GetRequestPostDataResponse;
-use ChromeDevtoolsProtocol\Model\Network\GetResponseBodyForInterceptionRequest;
-use ChromeDevtoolsProtocol\Model\Network\GetResponseBodyForInterceptionResponse;
 use ChromeDevtoolsProtocol\Model\Network\GetResponseBodyRequest;
 use ChromeDevtoolsProtocol\Model\Network\GetResponseBodyResponse;
 use ChromeDevtoolsProtocol\Model\Network\GetSecurityIsolationStatusRequest;
@@ -60,7 +57,6 @@ use ChromeDevtoolsProtocol\Model\Network\ReplayXHRRequest;
 use ChromeDevtoolsProtocol\Model\Network\ReportingApiEndpointsChangedForOriginEvent;
 use ChromeDevtoolsProtocol\Model\Network\ReportingApiReportAddedEvent;
 use ChromeDevtoolsProtocol\Model\Network\ReportingApiReportUpdatedEvent;
-use ChromeDevtoolsProtocol\Model\Network\RequestInterceptedEvent;
 use ChromeDevtoolsProtocol\Model\Network\RequestServedFromCacheEvent;
 use ChromeDevtoolsProtocol\Model\Network\RequestWillBeSentEvent;
 use ChromeDevtoolsProtocol\Model\Network\RequestWillBeSentExtraInfoEvent;
@@ -80,13 +76,10 @@ use ChromeDevtoolsProtocol\Model\Network\SetCookieRequest;
 use ChromeDevtoolsProtocol\Model\Network\SetCookieResponse;
 use ChromeDevtoolsProtocol\Model\Network\SetCookiesRequest;
 use ChromeDevtoolsProtocol\Model\Network\SetExtraHTTPHeadersRequest;
-use ChromeDevtoolsProtocol\Model\Network\SetRequestInterceptionRequest;
 use ChromeDevtoolsProtocol\Model\Network\SetUserAgentOverrideRequest;
 use ChromeDevtoolsProtocol\Model\Network\SignedExchangeReceivedEvent;
 use ChromeDevtoolsProtocol\Model\Network\StreamResourceContentRequest;
 use ChromeDevtoolsProtocol\Model\Network\StreamResourceContentResponse;
-use ChromeDevtoolsProtocol\Model\Network\TakeResponseBodyForInterceptionAsStreamRequest;
-use ChromeDevtoolsProtocol\Model\Network\TakeResponseBodyForInterceptionAsStreamResponse;
 use ChromeDevtoolsProtocol\Model\Network\TrustTokenOperationDoneEvent;
 use ChromeDevtoolsProtocol\Model\Network\WebSocketClosedEvent;
 use ChromeDevtoolsProtocol\Model\Network\WebSocketCreatedEvent;
@@ -160,12 +153,6 @@ class NetworkDomain implements NetworkDomainInterface
 	public function configureDurableMessages(ContextInterface $ctx, ConfigureDurableMessagesRequest $request): void
 	{
 		$this->internalClient->executeCommand($ctx, 'Network.configureDurableMessages', $request);
-	}
-
-
-	public function continueInterceptedRequest(ContextInterface $ctx, ContinueInterceptedRequestRequest $request): void
-	{
-		$this->internalClient->executeCommand($ctx, 'Network.continueInterceptedRequest', $request);
 	}
 
 
@@ -268,15 +255,6 @@ class NetworkDomain implements NetworkDomainInterface
 	}
 
 
-	public function getResponseBodyForInterception(
-		ContextInterface $ctx,
-		GetResponseBodyForInterceptionRequest $request
-	): GetResponseBodyForInterceptionResponse {
-		$response = $this->internalClient->executeCommand($ctx, 'Network.getResponseBodyForInterception', $request);
-		return GetResponseBodyForInterceptionResponse::fromJson($response);
-	}
-
-
 	public function getSecurityIsolationStatus(
 		ContextInterface $ctx,
 		GetSecurityIsolationStatusRequest $request
@@ -371,12 +349,6 @@ class NetworkDomain implements NetworkDomainInterface
 	}
 
 
-	public function setRequestInterception(ContextInterface $ctx, SetRequestInterceptionRequest $request): void
-	{
-		$this->internalClient->executeCommand($ctx, 'Network.setRequestInterception', $request);
-	}
-
-
 	public function setUserAgentOverride(ContextInterface $ctx, SetUserAgentOverrideRequest $request): void
 	{
 		$this->internalClient->executeCommand($ctx, 'Network.setUserAgentOverride', $request);
@@ -389,15 +361,6 @@ class NetworkDomain implements NetworkDomainInterface
 	): StreamResourceContentResponse {
 		$response = $this->internalClient->executeCommand($ctx, 'Network.streamResourceContent', $request);
 		return StreamResourceContentResponse::fromJson($response);
-	}
-
-
-	public function takeResponseBodyForInterceptionAsStream(
-		ContextInterface $ctx,
-		TakeResponseBodyForInterceptionAsStreamRequest $request
-	): TakeResponseBodyForInterceptionAsStreamResponse {
-		$response = $this->internalClient->executeCommand($ctx, 'Network.takeResponseBodyForInterceptionAsStream', $request);
-		return TakeResponseBodyForInterceptionAsStreamResponse::fromJson($response);
 	}
 
 
@@ -734,20 +697,6 @@ class NetworkDomain implements NetworkDomainInterface
 	public function awaitReportingApiReportUpdated(ContextInterface $ctx): ReportingApiReportUpdatedEvent
 	{
 		return ReportingApiReportUpdatedEvent::fromJson($this->internalClient->awaitEvent($ctx, 'Network.reportingApiReportUpdated'));
-	}
-
-
-	public function addRequestInterceptedListener(callable $listener): SubscriptionInterface
-	{
-		return $this->internalClient->addListener('Network.requestIntercepted', function ($event) use ($listener) {
-			return $listener(RequestInterceptedEvent::fromJson($event));
-		});
-	}
-
-
-	public function awaitRequestIntercepted(ContextInterface $ctx): RequestInterceptedEvent
-	{
-		return RequestInterceptedEvent::fromJson($this->internalClient->awaitEvent($ctx, 'Network.requestIntercepted'));
 	}
 
 

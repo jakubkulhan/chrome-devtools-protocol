@@ -1958,6 +1958,7 @@
                         "TooManyRequests",
                         "WellKnownHttpNotFound",
                         "WellKnownNoResponse",
+                        "WellKnownBlockedByConnectionAllowlist",
                         "WellKnownInvalidResponse",
                         "WellKnownListEmpty",
                         "WellKnownInvalidContentType",
@@ -1965,6 +1966,7 @@
                         "WellKnownTooBig",
                         "ConfigHttpNotFound",
                         "ConfigNoResponse",
+                        "ConfigBlockedByConnectionAllowlist",
                         "ConfigInvalidResponse",
                         "ConfigInvalidContentType",
                         "IdpNotPotentiallyTrustworthy",
@@ -1974,11 +1976,13 @@
                         "InvalidSigninResponse",
                         "AccountsHttpNotFound",
                         "AccountsNoResponse",
+                        "AccountsBlockedByConnectionAllowlist",
                         "AccountsInvalidResponse",
                         "AccountsListEmpty",
                         "AccountsInvalidContentType",
                         "IdTokenHttpNotFound",
                         "IdTokenNoResponse",
+                        "IdTokenBlockedByConnectionAllowlist",
                         "IdTokenInvalidResponse",
                         "IdTokenIdpErrorResponse",
                         "IdTokenCrossSiteIdpErrorResponse",
@@ -17536,11 +17540,6 @@
                     "type": "string"
                 },
                 {
-                    "id": "InterceptionId",
-                    "description": "Unique intercepted request identifier.",
-                    "type": "string"
-                },
-                {
                     "id": "ErrorReason",
                     "description": "Network level fetch failure reason.",
                     "type": "string",
@@ -18933,42 +18932,6 @@
                     ]
                 },
                 {
-                    "id": "InterceptionStage",
-                    "description": "Stages of the interception to begin intercepting. Request will intercept before the request is sent. Response will intercept after the response is received.",
-                    "experimental": true,
-                    "type": "string",
-                    "enum": [
-                        "Request",
-                        "HeadersReceived"
-                    ]
-                },
-                {
-                    "id": "RequestPattern",
-                    "description": "Request pattern for interception.",
-                    "experimental": true,
-                    "type": "object",
-                    "properties": [
-                        {
-                            "name": "urlPattern",
-                            "description": "Wildcards (`'*'` -> zero or more, `'?'` -> exactly one) are allowed. Escape character is backslash. Omitting is equivalent to `\"*\"`.",
-                            "optional": true,
-                            "type": "string"
-                        },
-                        {
-                            "name": "resourceType",
-                            "description": "If set, only requests for matching resource types will be intercepted.",
-                            "optional": true,
-                            "$ref": "ResourceType"
-                        },
-                        {
-                            "name": "interceptionStage",
-                            "description": "Stage at which to begin intercepting requests. Default is Request.",
-                            "optional": true,
-                            "$ref": "InterceptionStage"
-                        }
-                    ]
-                },
-                {
                     "id": "SignedExchangeSignature",
                     "description": "Information about a signed exchange signature. https://wicg.github.io/webpackage/draft-yasskin-httpbis-origin-signed-exchanges-impl.html#rfc.section.3.1",
                     "experimental": true,
@@ -20238,60 +20201,6 @@
                     ]
                 },
                 {
-                    "name": "continueInterceptedRequest",
-                    "description": "Response to Network.requestIntercepted which either modifies the request to continue with any modifications, or blocks it, or completes it with the provided response bytes. If a network fetch occurs as a result which encounters a redirect an additional Network.requestIntercepted event will be sent with the same InterceptionId. Deprecated, use Fetch.continueRequest, Fetch.fulfillRequest and Fetch.failRequest instead.",
-                    "experimental": true,
-                    "deprecated": true,
-                    "parameters": [
-                        {
-                            "name": "interceptionId",
-                            "$ref": "InterceptionId"
-                        },
-                        {
-                            "name": "errorReason",
-                            "description": "If set this causes the request to fail with the given reason. Passing `Aborted` for requests marked with `isNavigationRequest` also cancels the navigation. Must not be set in response to an authChallenge.",
-                            "optional": true,
-                            "$ref": "ErrorReason"
-                        },
-                        {
-                            "name": "rawResponse",
-                            "description": "If set the requests completes using with the provided base64 encoded raw response, including HTTP status line and headers etc... Must not be set in response to an authChallenge. (Encoded as a base64 string when passed over JSON)",
-                            "optional": true,
-                            "type": "string"
-                        },
-                        {
-                            "name": "url",
-                            "description": "If set the request url will be modified in a way that's not observable by page. Must not be set in response to an authChallenge.",
-                            "optional": true,
-                            "type": "string"
-                        },
-                        {
-                            "name": "method",
-                            "description": "If set this allows the request method to be overridden. Must not be set in response to an authChallenge.",
-                            "optional": true,
-                            "type": "string"
-                        },
-                        {
-                            "name": "postData",
-                            "description": "If set this allows postData to be set. Must not be set in response to an authChallenge.",
-                            "optional": true,
-                            "type": "string"
-                        },
-                        {
-                            "name": "headers",
-                            "description": "If set this allows the request headers to be changed. Must not be set in response to an authChallenge.",
-                            "optional": true,
-                            "$ref": "Headers"
-                        },
-                        {
-                            "name": "authChallengeResponse",
-                            "description": "Response to a requestIntercepted with an authChallenge. Must not be set otherwise.",
-                            "optional": true,
-                            "$ref": "AuthChallengeResponse"
-                        }
-                    ]
-                },
-                {
                     "name": "deleteCookies",
                     "description": "Deletes browser cookies with matching name and url or domain/path/partitionKey pair.",
                     "parameters": [
@@ -20609,30 +20518,6 @@
                             "name": "requestId",
                             "description": "Identifier of the network request to get content for.",
                             "$ref": "RequestId"
-                        }
-                    ],
-                    "returns": [
-                        {
-                            "name": "body",
-                            "description": "Response body.",
-                            "type": "string"
-                        },
-                        {
-                            "name": "base64Encoded",
-                            "description": "True, if content was sent as base64.",
-                            "type": "boolean"
-                        }
-                    ]
-                },
-                {
-                    "name": "getResponseBodyForInterception",
-                    "description": "Returns content served for the given currently intercepted request.",
-                    "experimental": true,
-                    "parameters": [
-                        {
-                            "name": "interceptionId",
-                            "description": "Identifier for the intercepted request to get body for.",
-                            "$ref": "InterceptionId"
                         }
                     ],
                     "returns": [
@@ -20987,22 +20872,6 @@
                     ]
                 },
                 {
-                    "name": "setRequestInterception",
-                    "description": "Sets the requests to intercept that match the provided patterns and optionally resource types. Deprecated, please use Fetch.enable instead.",
-                    "experimental": true,
-                    "deprecated": true,
-                    "parameters": [
-                        {
-                            "name": "patterns",
-                            "description": "Requests matching any of these patterns will be forwarded and wait for the corresponding continueInterceptedRequest call.",
-                            "type": "array",
-                            "items": {
-                                "$ref": "RequestPattern"
-                            }
-                        }
-                    ]
-                },
-                {
                     "name": "setUserAgentOverride",
                     "description": "Allows overriding user agent with the given string.",
                     "redirect": "Emulation",
@@ -21049,23 +20918,6 @@
                             "name": "bufferedData",
                             "description": "Data that has been buffered until streaming is enabled. (Encoded as a base64 string when passed over JSON)",
                             "type": "string"
-                        }
-                    ]
-                },
-                {
-                    "name": "takeResponseBodyForInterceptionAsStream",
-                    "description": "Returns a handle to the stream representing the response body. Note that after this command, the intercepted request can't be continued as is -- you either need to cancel it or to provide the response body. The stream only supports sequential read, IO.read will fail if the position is specified.",
-                    "experimental": true,
-                    "parameters": [
-                        {
-                            "name": "interceptionId",
-                            "$ref": "InterceptionId"
-                        }
-                    ],
-                    "returns": [
-                        {
-                            "name": "stream",
-                            "$ref": "IO.StreamHandle"
                         }
                     ]
                 }
@@ -21179,7 +21031,7 @@
                         },
                         {
                             "name": "errorMessage",
-                            "type": "string"
+                            "$ref": "ErrorReason"
                         },
                         {
                             "name": "timestamp",
@@ -21319,7 +21171,7 @@
                         },
                         {
                             "name": "errorMessage",
-                            "type": "string"
+                            "$ref": "ErrorReason"
                         },
                         {
                             "name": "timestamp",
@@ -21604,80 +21456,6 @@
                         {
                             "name": "report",
                             "$ref": "ReportingApiReport"
-                        }
-                    ]
-                },
-                {
-                    "name": "requestIntercepted",
-                    "description": "Details of an intercepted HTTP request, which must be either allowed, blocked, modified or mocked. Deprecated, use Fetch.requestPaused instead.",
-                    "experimental": true,
-                    "deprecated": true,
-                    "parameters": [
-                        {
-                            "name": "interceptionId",
-                            "description": "Each request the page makes will have a unique id, however if any redirects are encountered while processing that fetch, they will be reported with the same id as the original fetch. Likewise if HTTP authentication is needed then the same fetch id will be used.",
-                            "$ref": "InterceptionId"
-                        },
-                        {
-                            "name": "request",
-                            "$ref": "Request"
-                        },
-                        {
-                            "name": "frameId",
-                            "description": "The id of the frame that initiated the request.",
-                            "$ref": "Page.FrameId"
-                        },
-                        {
-                            "name": "resourceType",
-                            "description": "How the requested resource will be used.",
-                            "$ref": "ResourceType"
-                        },
-                        {
-                            "name": "isNavigationRequest",
-                            "description": "Whether this is a navigation request, which can abort the navigation completely.",
-                            "type": "boolean"
-                        },
-                        {
-                            "name": "isDownload",
-                            "description": "Set if the request is a navigation that will result in a download. Only present after response is received from the server (i.e. HeadersReceived stage).",
-                            "optional": true,
-                            "type": "boolean"
-                        },
-                        {
-                            "name": "redirectUrl",
-                            "description": "Redirect location, only sent if a redirect was intercepted.",
-                            "optional": true,
-                            "type": "string"
-                        },
-                        {
-                            "name": "authChallenge",
-                            "description": "Details of the Authorization Challenge encountered. If this is set then continueInterceptedRequest must contain an authChallengeResponse.",
-                            "optional": true,
-                            "$ref": "AuthChallenge"
-                        },
-                        {
-                            "name": "responseErrorReason",
-                            "description": "Response error if intercepted at response stage or if redirect occurred while intercepting request.",
-                            "optional": true,
-                            "$ref": "ErrorReason"
-                        },
-                        {
-                            "name": "responseStatusCode",
-                            "description": "Response code if intercepted at response stage or if redirect occurred while intercepting request or auth retry occurred.",
-                            "optional": true,
-                            "type": "integer"
-                        },
-                        {
-                            "name": "responseHeaders",
-                            "description": "Response headers if intercepted at the response stage or if redirect occurred while intercepting request or auth retry occurred.",
-                            "optional": true,
-                            "$ref": "Headers"
-                        },
-                        {
-                            "name": "requestId",
-                            "description": "If the intercepted request had a corresponding requestWillBeSent event fired for it, then this requestId will be the same as the requestId present in the requestWillBeSent event.",
-                            "optional": true,
-                            "$ref": "RequestId"
                         }
                     ]
                 },

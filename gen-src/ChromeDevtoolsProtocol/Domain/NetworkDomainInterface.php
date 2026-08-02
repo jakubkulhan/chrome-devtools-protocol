@@ -7,7 +7,6 @@ use ChromeDevtoolsProtocol\Model\Network\CanClearBrowserCacheResponse;
 use ChromeDevtoolsProtocol\Model\Network\CanClearBrowserCookiesResponse;
 use ChromeDevtoolsProtocol\Model\Network\CanEmulateNetworkConditionsResponse;
 use ChromeDevtoolsProtocol\Model\Network\ConfigureDurableMessagesRequest;
-use ChromeDevtoolsProtocol\Model\Network\ContinueInterceptedRequestRequest;
 use ChromeDevtoolsProtocol\Model\Network\DataReceivedEvent;
 use ChromeDevtoolsProtocol\Model\Network\DeleteCookiesRequest;
 use ChromeDevtoolsProtocol\Model\Network\DeleteDeviceBoundSessionRequest;
@@ -43,8 +42,6 @@ use ChromeDevtoolsProtocol\Model\Network\GetCookiesRequest;
 use ChromeDevtoolsProtocol\Model\Network\GetCookiesResponse;
 use ChromeDevtoolsProtocol\Model\Network\GetRequestPostDataRequest;
 use ChromeDevtoolsProtocol\Model\Network\GetRequestPostDataResponse;
-use ChromeDevtoolsProtocol\Model\Network\GetResponseBodyForInterceptionRequest;
-use ChromeDevtoolsProtocol\Model\Network\GetResponseBodyForInterceptionResponse;
 use ChromeDevtoolsProtocol\Model\Network\GetResponseBodyRequest;
 use ChromeDevtoolsProtocol\Model\Network\GetResponseBodyResponse;
 use ChromeDevtoolsProtocol\Model\Network\GetSecurityIsolationStatusRequest;
@@ -59,7 +56,6 @@ use ChromeDevtoolsProtocol\Model\Network\ReplayXHRRequest;
 use ChromeDevtoolsProtocol\Model\Network\ReportingApiEndpointsChangedForOriginEvent;
 use ChromeDevtoolsProtocol\Model\Network\ReportingApiReportAddedEvent;
 use ChromeDevtoolsProtocol\Model\Network\ReportingApiReportUpdatedEvent;
-use ChromeDevtoolsProtocol\Model\Network\RequestInterceptedEvent;
 use ChromeDevtoolsProtocol\Model\Network\RequestServedFromCacheEvent;
 use ChromeDevtoolsProtocol\Model\Network\RequestWillBeSentEvent;
 use ChromeDevtoolsProtocol\Model\Network\RequestWillBeSentExtraInfoEvent;
@@ -79,13 +75,10 @@ use ChromeDevtoolsProtocol\Model\Network\SetCookieRequest;
 use ChromeDevtoolsProtocol\Model\Network\SetCookieResponse;
 use ChromeDevtoolsProtocol\Model\Network\SetCookiesRequest;
 use ChromeDevtoolsProtocol\Model\Network\SetExtraHTTPHeadersRequest;
-use ChromeDevtoolsProtocol\Model\Network\SetRequestInterceptionRequest;
 use ChromeDevtoolsProtocol\Model\Network\SetUserAgentOverrideRequest;
 use ChromeDevtoolsProtocol\Model\Network\SignedExchangeReceivedEvent;
 use ChromeDevtoolsProtocol\Model\Network\StreamResourceContentRequest;
 use ChromeDevtoolsProtocol\Model\Network\StreamResourceContentResponse;
-use ChromeDevtoolsProtocol\Model\Network\TakeResponseBodyForInterceptionAsStreamRequest;
-use ChromeDevtoolsProtocol\Model\Network\TakeResponseBodyForInterceptionAsStreamResponse;
 use ChromeDevtoolsProtocol\Model\Network\TrustTokenOperationDoneEvent;
 use ChromeDevtoolsProtocol\Model\Network\WebSocketClosedEvent;
 use ChromeDevtoolsProtocol\Model\Network\WebSocketCreatedEvent;
@@ -177,17 +170,6 @@ interface NetworkDomainInterface
 	 * @return void
 	 */
 	public function configureDurableMessages(ContextInterface $ctx, ConfigureDurableMessagesRequest $request): void;
-
-
-	/**
-	 * Response to Network.requestIntercepted which either modifies the request to continue with any modifications, or blocks it, or completes it with the provided response bytes. If a network fetch occurs as a result which encounters a redirect an additional Network.requestIntercepted event will be sent with the same InterceptionId. Deprecated, use Fetch.continueRequest, Fetch.fulfillRequest and Fetch.failRequest instead.
-	 *
-	 * @param ContextInterface $ctx
-	 * @param ContinueInterceptedRequestRequest $request
-	 *
-	 * @return void
-	 */
-	public function continueInterceptedRequest(ContextInterface $ctx, ContinueInterceptedRequestRequest $request): void;
 
 
 	/**
@@ -349,20 +331,6 @@ interface NetworkDomainInterface
 	 * @return GetResponseBodyResponse
 	 */
 	public function getResponseBody(ContextInterface $ctx, GetResponseBodyRequest $request): GetResponseBodyResponse;
-
-
-	/**
-	 * Returns content served for the given currently intercepted request.
-	 *
-	 * @param ContextInterface $ctx
-	 * @param GetResponseBodyForInterceptionRequest $request
-	 *
-	 * @return GetResponseBodyForInterceptionResponse
-	 */
-	public function getResponseBodyForInterception(
-		ContextInterface $ctx,
-		GetResponseBodyForInterceptionRequest $request
-	): GetResponseBodyForInterceptionResponse;
 
 
 	/**
@@ -529,17 +497,6 @@ interface NetworkDomainInterface
 
 
 	/**
-	 * Sets the requests to intercept that match the provided patterns and optionally resource types. Deprecated, please use Fetch.enable instead.
-	 *
-	 * @param ContextInterface $ctx
-	 * @param SetRequestInterceptionRequest $request
-	 *
-	 * @return void
-	 */
-	public function setRequestInterception(ContextInterface $ctx, SetRequestInterceptionRequest $request): void;
-
-
-	/**
 	 * Allows overriding user agent with the given string.
 	 *
 	 * @param ContextInterface $ctx
@@ -562,20 +519,6 @@ interface NetworkDomainInterface
 		ContextInterface $ctx,
 		StreamResourceContentRequest $request
 	): StreamResourceContentResponse;
-
-
-	/**
-	 * Returns a handle to the stream representing the response body. Note that after this command, the intercepted request can't be continued as is -- you either need to cancel it or to provide the response body. The stream only supports sequential read, IO.read will fail if the position is specified.
-	 *
-	 * @param ContextInterface $ctx
-	 * @param TakeResponseBodyForInterceptionAsStreamRequest $request
-	 *
-	 * @return TakeResponseBodyForInterceptionAsStreamResponse
-	 */
-	public function takeResponseBodyForInterceptionAsStream(
-		ContextInterface $ctx,
-		TakeResponseBodyForInterceptionAsStreamRequest $request
-	): TakeResponseBodyForInterceptionAsStreamResponse;
 
 
 	/**
@@ -1152,30 +1095,6 @@ interface NetworkDomainInterface
 	 * @return ReportingApiReportUpdatedEvent
 	 */
 	public function awaitReportingApiReportUpdated(ContextInterface $ctx): ReportingApiReportUpdatedEvent;
-
-
-	/**
-	 * Details of an intercepted HTTP request, which must be either allowed, blocked, modified or mocked. Deprecated, use Fetch.requestPaused instead.
-	 *
-	 * Listener will be called whenever event Network.requestIntercepted is fired.
-	 *
-	 * @param callable $listener
-	 *
-	 * @return SubscriptionInterface
-	 */
-	public function addRequestInterceptedListener(callable $listener): SubscriptionInterface;
-
-
-	/**
-	 * Details of an intercepted HTTP request, which must be either allowed, blocked, modified or mocked. Deprecated, use Fetch.requestPaused instead.
-	 *
-	 * Method will block until first Network.requestIntercepted event is fired.
-	 *
-	 * @param ContextInterface $ctx
-	 *
-	 * @return RequestInterceptedEvent
-	 */
-	public function awaitRequestIntercepted(ContextInterface $ctx): RequestInterceptedEvent;
 
 
 	/**
