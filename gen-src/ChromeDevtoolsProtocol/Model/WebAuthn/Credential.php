@@ -41,7 +41,7 @@ final class Credential implements \JsonSerializable
 	/**
 	 * Signature counter. Must be equal to or greater than -1. If -1, the credential won't have an associated signature counter, and every assertion operation will report a value of 0. See https://w3c.github.io/webauthn/#signature-counter
 	 *
-	 * @var int|null
+	 * @var int
 	 */
 	public $signCount;
 

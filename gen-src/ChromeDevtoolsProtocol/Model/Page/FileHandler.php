@@ -17,9 +17,6 @@ final class FileHandler implements \JsonSerializable
 	/** @var string */
 	public $name;
 
-	/** @var ImageResource[]|null */
-	public $icons;
-
 	/**
 	 * Mimic a map, name is the key, accepts is the value.
 	 *
@@ -48,12 +45,6 @@ final class FileHandler implements \JsonSerializable
 		if (isset($data->name)) {
 			$instance->name = (string)$data->name;
 		}
-		if (isset($data->icons)) {
-			$instance->icons = [];
-			foreach ($data->icons as $item) {
-				$instance->icons[] = ImageResource::fromJson($item);
-			}
-		}
 		if (isset($data->accepts)) {
 			$instance->accepts = [];
 			foreach ($data->accepts as $item) {
@@ -75,12 +66,6 @@ final class FileHandler implements \JsonSerializable
 		}
 		if ($this->name !== null) {
 			$data->name = $this->name;
-		}
-		if ($this->icons !== null) {
-			$data->icons = [];
-			foreach ($this->icons as $item) {
-				$data->icons[] = $item->jsonSerialize();
-			}
 		}
 		if ($this->accepts !== null) {
 			$data->accepts = [];

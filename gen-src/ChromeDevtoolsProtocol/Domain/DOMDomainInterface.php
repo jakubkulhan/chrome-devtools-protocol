@@ -23,6 +23,7 @@ use ChromeDevtoolsProtocol\Model\DOM\DistributedNodesUpdatedEvent;
 use ChromeDevtoolsProtocol\Model\DOM\DocumentUpdatedEvent;
 use ChromeDevtoolsProtocol\Model\DOM\EnableRequest;
 use ChromeDevtoolsProtocol\Model\DOM\FocusRequest;
+use ChromeDevtoolsProtocol\Model\DOM\ForceShowInterestRequest;
 use ChromeDevtoolsProtocol\Model\DOM\ForceShowPopoverRequest;
 use ChromeDevtoolsProtocol\Model\DOM\ForceShowPopoverResponse;
 use ChromeDevtoolsProtocol\Model\DOM\GetAnchorElementRequest;
@@ -186,6 +187,17 @@ interface DOMDomainInterface
 	 * @return void
 	 */
 	public function focus(ContextInterface $ctx, FocusRequest $request): void;
+
+
+	/**
+	 * When enabling, this API forces an element to gain interest in its target, keeping interest active until disabled.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param ForceShowInterestRequest $request
+	 *
+	 * @return void
+	 */
+	public function forceShowInterest(ContextInterface $ctx, ForceShowInterestRequest $request): void;
 
 
 	/**
