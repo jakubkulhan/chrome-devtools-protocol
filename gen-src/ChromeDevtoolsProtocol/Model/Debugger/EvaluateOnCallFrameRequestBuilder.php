@@ -20,6 +20,7 @@ final class EvaluateOnCallFrameRequestBuilder
 	private $generatePreview;
 	private $throwOnSideEffect;
 	private $timeout;
+	private $scopeNumber;
 
 
 	/**
@@ -43,6 +44,7 @@ final class EvaluateOnCallFrameRequestBuilder
 		$instance->generatePreview = $this->generatePreview;
 		$instance->throwOnSideEffect = $this->throwOnSideEffect;
 		$instance->timeout = $this->timeout;
+		$instance->scopeNumber = $this->scopeNumber;
 		return $instance;
 	}
 
@@ -151,6 +153,18 @@ final class EvaluateOnCallFrameRequestBuilder
 	public function setTimeout($timeout): self
 	{
 		$this->timeout = $timeout;
+		return $this;
+	}
+
+
+	/**
+	 * @param int|null $scopeNumber
+	 *
+	 * @return self
+	 */
+	public function setScopeNumber($scopeNumber): self
+	{
+		$this->scopeNumber = $scopeNumber;
 		return $this;
 	}
 }

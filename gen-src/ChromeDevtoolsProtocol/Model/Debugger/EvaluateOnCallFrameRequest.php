@@ -74,6 +74,13 @@ final class EvaluateOnCallFrameRequest implements \JsonSerializable
 	 */
 	public $timeout;
 
+	/**
+	 * Specifies the scope number to evaluate the expression in (default: 0, innermost scope).
+	 *
+	 * @var int|null
+	 */
+	public $scopeNumber;
+
 
 	/**
 	 * @param object $data
@@ -109,6 +116,9 @@ final class EvaluateOnCallFrameRequest implements \JsonSerializable
 		if (isset($data->timeout)) {
 			$instance->timeout = $data->timeout;
 		}
+		if (isset($data->scopeNumber)) {
+			$instance->scopeNumber = (int)$data->scopeNumber;
+		}
 		return $instance;
 	}
 
@@ -142,6 +152,9 @@ final class EvaluateOnCallFrameRequest implements \JsonSerializable
 		}
 		if ($this->timeout !== null) {
 			$data->timeout = $this->timeout;
+		}
+		if ($this->scopeNumber !== null) {
+			$data->scopeNumber = $this->scopeNumber;
 		}
 		return $data;
 	}
