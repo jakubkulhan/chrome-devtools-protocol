@@ -20,9 +20,10 @@ class Launcher
 	const DEFAULT_LINUX_EXECUTABLE = "google-chrome";
 	const DEFAULT_WINDOWS_EXECUTABLE = "chrome";
 
-	public static $defaultArgs = [
-		"--headless",
-	];
+    public static $defaultArgs = [
+        "--headless",
+        "--remote-allow-origins=http://127.0.0.1"
+    ];
 
 	/** @var string */
 	private $executable;
@@ -40,16 +41,11 @@ class Launcher
 	private $input;
 
 	/**
-	 * @param int $port If port <= 0, random port number is generated.
-	 * @throws \Exception
+	 * @param int $port If port <= 0, random available port is used.
 	 */
 	public function __construct($port = 0)
 	{
-		if ($port <= 0) {
-			$port = random_int(1024 + 1, 65535);
-		}
-
-		$this->port = $port;
+		$this->port = max(0, $port);
 	}
 
 	/**
@@ -212,6 +208,10 @@ class Launcher
 		$temporaryUserDataDir = null;
 		if (!$foundUserDataDir) {
 			$temporaryUserDataDir = sys_get_temp_dir() . DIRECTORY_SEPARATOR . "chrome-profile-" . $this->port;
+			if ($this->port === 0) {
+				$temporaryUserDataDir .= "-" . bin2hex(random_bytes(8));
+			}
+
 			$fs->mkdir($temporaryUserDataDir);
 			$args[] = "--user-data-dir=" . $temporaryUserDataDir;
 		}
@@ -225,6 +225,16 @@ class Launcher
 				null
 			);
 			$process->start();
+
+			if ($this->port === 0) {
+				$process->waitUntil(function ($type, $buffer)  {
+					if (preg_match('~DevTools listening on ws://.+:(\d+)/devtools~', $buffer, $m)) {
+						$this->port = (int)$m[1];
+						return true;
+					}
+					return false;
+				});
+			}
 
 			$instance = new ProcessInstance($process, $temporaryUserDataDir, $this->port);
 
