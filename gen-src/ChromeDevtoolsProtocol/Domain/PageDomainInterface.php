@@ -92,7 +92,10 @@ use ChromeDevtoolsProtocol\Model\Page\SetRPHRegistrationModeRequest;
 use ChromeDevtoolsProtocol\Model\Page\SetSPCTransactionModeRequest;
 use ChromeDevtoolsProtocol\Model\Page\SetTouchEmulationEnabledRequest;
 use ChromeDevtoolsProtocol\Model\Page\SetWebLifecycleStateRequest;
+use ChromeDevtoolsProtocol\Model\Page\StartScreenRecordingRequest;
+use ChromeDevtoolsProtocol\Model\Page\StartScreenRecordingResponse;
 use ChromeDevtoolsProtocol\Model\Page\StartScreencastRequest;
+use ChromeDevtoolsProtocol\Model\Page\StopScreenRecordingResponse;
 use ChromeDevtoolsProtocol\Model\Page\WindowOpenEvent;
 use ChromeDevtoolsProtocol\SubscriptionInterface;
 
@@ -755,6 +758,20 @@ interface PageDomainInterface
 
 
 	/**
+	 * Starts screencast video recording.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param StartScreenRecordingRequest $request
+	 *
+	 * @return StartScreenRecordingResponse
+	 */
+	public function startScreenRecording(
+		ContextInterface $ctx,
+		StartScreenRecordingRequest $request
+	): StartScreenRecordingResponse;
+
+
+	/**
 	 * Force the page stop all navigations and pending resource fetches.
 	 *
 	 * @param ContextInterface $ctx
@@ -772,6 +789,16 @@ interface PageDomainInterface
 	 * @return void
 	 */
 	public function stopScreencast(ContextInterface $ctx): void;
+
+
+	/**
+	 * Stops screencast video recording.
+	 *
+	 * @param ContextInterface $ctx
+	 *
+	 * @return StopScreenRecordingResponse
+	 */
+	public function stopScreenRecording(ContextInterface $ctx): StopScreenRecordingResponse;
 
 
 	/**
