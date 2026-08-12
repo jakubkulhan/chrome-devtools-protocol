@@ -34062,12 +34062,15 @@
                 },
                 {
                     "id": "AuthenticatorTransport",
+                    "description": "LINT.IfChange(AuthenticatorTransport)",
                     "type": "string",
                     "enum": [
                         "usb",
                         "nfc",
                         "ble",
                         "cable",
+                        "hybrid",
+                        "smart-card",
                         "internal"
                     ]
                 },

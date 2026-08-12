@@ -3,7 +3,7 @@
 namespace ChromeDevtoolsProtocol\Model\WebAuthn;
 
 /**
- * Values of named type WebAuthn.AuthenticatorTransport.
+ * LINT.IfChange(AuthenticatorTransport)
  *
  * @generated This file has been auto-generated, do not edit.
  *
@@ -15,5 +15,7 @@ final class AuthenticatorTransportEnum
 	public const NFC = 'nfc';
 	public const BLE = 'ble';
 	public const CABLE = 'cable';
+	public const HYBRID = 'hybrid';
+	public const SMART_CARD = 'smart-card';
 	public const INTERNAL = 'internal';
 }
