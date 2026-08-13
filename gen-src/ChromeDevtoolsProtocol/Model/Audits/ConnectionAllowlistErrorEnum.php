@@ -17,4 +17,7 @@ final class ConnectionAllowlistErrorEnum
 	public const INVALID_ALLOWLIST_ITEM_TYPE = 'InvalidAllowlistItemType';
 	public const REPORTING_ENDPOINT_NOT_TOKEN = 'ReportingEndpointNotToken';
 	public const INVALID_URL_PATTERN = 'InvalidUrlPattern';
+	public const I_FRAME_ATTRIBUTE_LOOSENS_EMBEDDING_REQUIREMENT = 'IFrameAttributeLoosensEmbeddingRequirement';
+	public const INVALID_ALLOW_CONNECTION_ALLOWLIST_FROM = 'InvalidAllowConnectionAllowlistFrom';
+	public const EMBEDDING_REQUIREMENT_NOT_SATISFIED = 'EmbeddingRequirementNotSatisfied';
 }
