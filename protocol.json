@@ -23475,7 +23475,6 @@
                         "otp-credentials",
                         "payment",
                         "picture-in-picture",
-                        "private-aggregation",
                         "private-state-token-issuance",
                         "private-state-token-redemption",
                         "publickey-credentials-create",
