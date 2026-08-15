@@ -26,6 +26,7 @@ final class PrefetchStatusEnum
 	public const PREFETCH_IS_STALE = 'PrefetchIsStale';
 	public const PREFETCH_NOT_ELIGIBLE_BLOCKED_BY_CONNECTION_ALLOWLIST = 'PrefetchNotEligibleBlockedByConnectionAllowlist';
 	public const PREFETCH_NOT_ELIGIBLE_BROWSER_CONTEXT_OFF_THE_RECORD = 'PrefetchNotEligibleBrowserContextOffTheRecord';
+	public const PREFETCH_NOT_ELIGIBLE_CROSS_ORIGIN = 'PrefetchNotEligibleCrossOrigin';
 	public const PREFETCH_NOT_ELIGIBLE_DATA_SAVER_ENABLED = 'PrefetchNotEligibleDataSaverEnabled';
 	public const PREFETCH_NOT_ELIGIBLE_EXISTING_PROXY = 'PrefetchNotEligibleExistingProxy';
 	public const PREFETCH_NOT_ELIGIBLE_HOST_IS_NON_UNIQUE = 'PrefetchNotEligibleHostIsNonUnique';

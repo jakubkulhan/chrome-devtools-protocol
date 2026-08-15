@@ -44,6 +44,9 @@ final class BaseAudioContext implements \JsonSerializable
 	 */
 	public $sampleRate;
 
+	/** @var int|float */
+	public $renderQuantumSize;
+
 
 	/**
 	 * @param object $data
@@ -73,6 +76,9 @@ final class BaseAudioContext implements \JsonSerializable
 		if (isset($data->sampleRate)) {
 			$instance->sampleRate = $data->sampleRate;
 		}
+		if (isset($data->renderQuantumSize)) {
+			$instance->renderQuantumSize = $data->renderQuantumSize;
+		}
 		return $instance;
 	}
 
@@ -100,6 +106,9 @@ final class BaseAudioContext implements \JsonSerializable
 		}
 		if ($this->sampleRate !== null) {
 			$data->sampleRate = $this->sampleRate;
+		}
+		if ($this->renderQuantumSize !== null) {
+			$data->renderQuantumSize = $this->renderQuantumSize;
 		}
 		return $data;
 	}

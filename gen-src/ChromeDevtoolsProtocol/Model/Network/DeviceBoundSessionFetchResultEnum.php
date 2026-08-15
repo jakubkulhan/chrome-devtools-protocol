@@ -85,4 +85,6 @@ final class DeviceBoundSessionFetchResultEnum
 	public const INVALID_PRE_PROVISIONED_KEY_INITIATOR_MISSING = 'InvalidPreProvisionedKeyInitiatorMissing';
 	public const PRE_PROVISIONED_KEY_ACCESS_NOT_GRANTED = 'PreProvisionedKeyAccessNotGranted';
 	public const PRE_PROVISIONED_KEY_NOT_FOUND = 'PreProvisionedKeyNotFound';
+	public const ATTESTATION_CERTIFICATION_ERROR = 'AttestationCertificationError';
+	public const ATTESTATION_SIGNING_ERROR = 'AttestationSigningError';
 }
