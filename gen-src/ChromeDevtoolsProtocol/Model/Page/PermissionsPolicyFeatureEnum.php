@@ -72,7 +72,6 @@ final class PermissionsPolicyFeatureEnum
 	public const IDENTITY_CREDENTIALS_GET = 'identity-credentials-get';
 	public const IDLE_DETECTION = 'idle-detection';
 	public const INTEREST_COHORT = 'interest-cohort';
-	public const JOIN_AD_INTEREST_GROUP = 'join-ad-interest-group';
 	public const KEYBOARD_MAP = 'keyboard-map';
 	public const LANGUAGE_DETECTOR = 'language-detector';
 	public const LANGUAGE_MODEL = 'language-model';
@@ -93,9 +92,7 @@ final class PermissionsPolicyFeatureEnum
 	public const PRIVATE_STATE_TOKEN_REDEMPTION = 'private-state-token-redemption';
 	public const PUBLICKEY_CREDENTIALS_CREATE = 'publickey-credentials-create';
 	public const PUBLICKEY_CREDENTIALS_GET = 'publickey-credentials-get';
-	public const RECORD_AD_AUCTION_EVENTS = 'record-ad-auction-events';
 	public const REWRITER = 'rewriter';
-	public const RUN_AD_AUCTION = 'run-ad-auction';
 	public const SCREEN_WAKE_LOCK = 'screen-wake-lock';
 	public const SERIAL = 'serial';
 	public const SHARED_STORAGE = 'shared-storage';
