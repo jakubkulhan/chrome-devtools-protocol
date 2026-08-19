@@ -14,6 +14,7 @@ use ChromeDevtoolsProtocol\Model\Emulation\RemoveScreenRequest;
 use ChromeDevtoolsProtocol\Model\Emulation\ScreenOrientationLockChangedEvent;
 use ChromeDevtoolsProtocol\Model\Emulation\SetAutoDarkModeOverrideRequest;
 use ChromeDevtoolsProtocol\Model\Emulation\SetAutomationOverrideRequest;
+use ChromeDevtoolsProtocol\Model\Emulation\SetCPUPerformanceOverrideRequest;
 use ChromeDevtoolsProtocol\Model\Emulation\SetCPUThrottlingRateRequest;
 use ChromeDevtoolsProtocol\Model\Emulation\SetDataSaverOverrideRequest;
 use ChromeDevtoolsProtocol\Model\Emulation\SetDefaultBackgroundColorOverrideRequest;
@@ -155,6 +156,12 @@ class EmulationDomain implements EmulationDomainInterface
 	public function setAutomationOverride(ContextInterface $ctx, SetAutomationOverrideRequest $request): void
 	{
 		$this->internalClient->executeCommand($ctx, 'Emulation.setAutomationOverride', $request);
+	}
+
+
+	public function setCPUPerformanceOverride(ContextInterface $ctx, SetCPUPerformanceOverrideRequest $request): void
+	{
+		$this->internalClient->executeCommand($ctx, 'Emulation.setCPUPerformanceOverride', $request);
 	}
 
 

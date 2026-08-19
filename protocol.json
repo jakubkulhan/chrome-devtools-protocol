@@ -12917,6 +12917,26 @@
                     ]
                 },
                 {
+                    "name": "setCPUPerformanceOverride",
+                    "description": "Overrides the value of navigator.cpuPerformance",
+                    "experimental": true,
+                    "parameters": [
+                        {
+                            "name": "performanceTier",
+                            "description": "Override value. Omitting the parameter disables the override.",
+                            "optional": true,
+                            "type": "string",
+                            "enum": [
+                                "unknown",
+                                "low",
+                                "mid",
+                                "high",
+                                "ultra"
+                            ]
+                        }
+                    ]
+                },
+                {
                     "name": "setCPUThrottlingRate",
                     "description": "Enables CPU throttling to emulate slow CPUs.",
                     "parameters": [

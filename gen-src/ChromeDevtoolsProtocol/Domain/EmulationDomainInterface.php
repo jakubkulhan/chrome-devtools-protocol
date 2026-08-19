@@ -13,6 +13,7 @@ use ChromeDevtoolsProtocol\Model\Emulation\RemoveScreenRequest;
 use ChromeDevtoolsProtocol\Model\Emulation\ScreenOrientationLockChangedEvent;
 use ChromeDevtoolsProtocol\Model\Emulation\SetAutoDarkModeOverrideRequest;
 use ChromeDevtoolsProtocol\Model\Emulation\SetAutomationOverrideRequest;
+use ChromeDevtoolsProtocol\Model\Emulation\SetCPUPerformanceOverrideRequest;
 use ChromeDevtoolsProtocol\Model\Emulation\SetCPUThrottlingRateRequest;
 use ChromeDevtoolsProtocol\Model\Emulation\SetDataSaverOverrideRequest;
 use ChromeDevtoolsProtocol\Model\Emulation\SetDefaultBackgroundColorOverrideRequest;
@@ -198,6 +199,17 @@ interface EmulationDomainInterface
 	 * @return void
 	 */
 	public function setAutomationOverride(ContextInterface $ctx, SetAutomationOverrideRequest $request): void;
+
+
+	/**
+	 * Overrides the value of navigator.cpuPerformance
+	 *
+	 * @param ContextInterface $ctx
+	 * @param SetCPUPerformanceOverrideRequest $request
+	 *
+	 * @return void
+	 */
+	public function setCPUPerformanceOverride(ContextInterface $ctx, SetCPUPerformanceOverrideRequest $request): void;
 
 
 	/**
