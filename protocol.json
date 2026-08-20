@@ -3888,6 +3888,17 @@
                     ]
                 },
                 {
+                    "name": "getGlobalPrivacyControl",
+                    "description": "Gets the current globally-applied privacy control status See https://www.w3.org/TR/gpc/#get-global-privacy-control",
+                    "experimental": true,
+                    "returns": [
+                        {
+                            "name": "gpc",
+                            "type": "boolean"
+                        }
+                    ]
+                },
+                {
                     "name": "getHistogram",
                     "description": "Get a Chrome histogram by name.",
                     "experimental": true,
@@ -4129,6 +4140,23 @@
                             "name": "eventsEnabled",
                             "description": "Whether to emit download events (defaults to false).",
                             "optional": true,
+                            "type": "boolean"
+                        }
+                    ]
+                },
+                {
+                    "name": "setGlobalPrivacyControl",
+                    "description": "Sets and then gets the current globally-applied privacy control status See https://www.w3.org/TR/gpc/#set-global-privacy-control",
+                    "experimental": true,
+                    "parameters": [
+                        {
+                            "name": "gpc",
+                            "type": "boolean"
+                        }
+                    ],
+                    "returns": [
+                        {
+                            "name": "gpc",
                             "type": "boolean"
                         }
                     ]

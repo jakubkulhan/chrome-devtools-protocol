@@ -9,6 +9,7 @@ use ChromeDevtoolsProtocol\Model\Browser\DownloadProgressEvent;
 use ChromeDevtoolsProtocol\Model\Browser\DownloadWillBeginEvent;
 use ChromeDevtoolsProtocol\Model\Browser\ExecuteBrowserCommandRequest;
 use ChromeDevtoolsProtocol\Model\Browser\GetBrowserCommandLineResponse;
+use ChromeDevtoolsProtocol\Model\Browser\GetGlobalPrivacyControlResponse;
 use ChromeDevtoolsProtocol\Model\Browser\GetHistogramRequest;
 use ChromeDevtoolsProtocol\Model\Browser\GetHistogramResponse;
 use ChromeDevtoolsProtocol\Model\Browser\GetHistogramsRequest;
@@ -23,6 +24,8 @@ use ChromeDevtoolsProtocol\Model\Browser\ResetPermissionsRequest;
 use ChromeDevtoolsProtocol\Model\Browser\SetContentsSizeRequest;
 use ChromeDevtoolsProtocol\Model\Browser\SetDockTileRequest;
 use ChromeDevtoolsProtocol\Model\Browser\SetDownloadBehaviorRequest;
+use ChromeDevtoolsProtocol\Model\Browser\SetGlobalPrivacyControlRequest;
+use ChromeDevtoolsProtocol\Model\Browser\SetGlobalPrivacyControlResponse;
 use ChromeDevtoolsProtocol\Model\Browser\SetPermissionRequest;
 use ChromeDevtoolsProtocol\Model\Browser\SetWindowBoundsRequest;
 use ChromeDevtoolsProtocol\SubscriptionInterface;
@@ -110,6 +113,16 @@ interface BrowserDomainInterface
 	 * @return GetBrowserCommandLineResponse
 	 */
 	public function getBrowserCommandLine(ContextInterface $ctx): GetBrowserCommandLineResponse;
+
+
+	/**
+	 * Gets the current globally-applied privacy control status See https://www.w3.org/TR/gpc/#get-global-privacy-control
+	 *
+	 * @param ContextInterface $ctx
+	 *
+	 * @return GetGlobalPrivacyControlResponse
+	 */
+	public function getGlobalPrivacyControl(ContextInterface $ctx): GetGlobalPrivacyControlResponse;
 
 
 	/**
@@ -222,6 +235,20 @@ interface BrowserDomainInterface
 	 * @return void
 	 */
 	public function setDownloadBehavior(ContextInterface $ctx, SetDownloadBehaviorRequest $request): void;
+
+
+	/**
+	 * Sets and then gets the current globally-applied privacy control status See https://www.w3.org/TR/gpc/#set-global-privacy-control
+	 *
+	 * @param ContextInterface $ctx
+	 * @param SetGlobalPrivacyControlRequest $request
+	 *
+	 * @return SetGlobalPrivacyControlResponse
+	 */
+	public function setGlobalPrivacyControl(
+		ContextInterface $ctx,
+		SetGlobalPrivacyControlRequest $request
+	): SetGlobalPrivacyControlResponse;
 
 
 	/**
