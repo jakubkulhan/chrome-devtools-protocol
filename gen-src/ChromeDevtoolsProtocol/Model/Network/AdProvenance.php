@@ -19,7 +19,7 @@ final class AdProvenance implements \JsonSerializable
 	public $filterlistRule;
 
 	/**
-	 * The script ancestry that created the ad, if any.
+	 * The script ancestry that created the ad, if any. Note: depending on the context, this may represent the full ancestry up to the root script, or it may contain only one script representing the immediate ancestor.
 	 *
 	 * @var AdAncestry|null
 	 */

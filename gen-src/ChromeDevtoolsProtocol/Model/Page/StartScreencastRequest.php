@@ -40,11 +40,25 @@ final class StartScreencastRequest implements \JsonSerializable
 	public $maxHeight;
 
 	/**
-	 * Send every n-th frame.
+	 * Send every n-th frame. Must be a positive integer.
 	 *
 	 * @var int|null
 	 */
 	public $everyNthFrame;
+
+	/**
+	 * Maximum number of frames sent until screencastFrameAck is required. Defaults to 3. Must be a positive integer.
+	 *
+	 * @var int|null
+	 */
+	public $maxFramesInFlight;
+
+	/**
+	 * By default, after screencastFrameAck arrives, the next produced frame is sent. Passing this flag enables storing the last produced frame in memory, which is immediately sent upon screencastFrameAck. This way, overall performance is traded for a better latency.
+	 *
+	 * @var bool|null
+	 */
+	public $sendLastFrame;
 
 
 	/**
@@ -69,6 +83,12 @@ final class StartScreencastRequest implements \JsonSerializable
 		if (isset($data->everyNthFrame)) {
 			$instance->everyNthFrame = (int)$data->everyNthFrame;
 		}
+		if (isset($data->maxFramesInFlight)) {
+			$instance->maxFramesInFlight = (int)$data->maxFramesInFlight;
+		}
+		if (isset($data->sendLastFrame)) {
+			$instance->sendLastFrame = (bool)$data->sendLastFrame;
+		}
 		return $instance;
 	}
 
@@ -90,6 +110,12 @@ final class StartScreencastRequest implements \JsonSerializable
 		}
 		if ($this->everyNthFrame !== null) {
 			$data->everyNthFrame = $this->everyNthFrame;
+		}
+		if ($this->maxFramesInFlight !== null) {
+			$data->maxFramesInFlight = $this->maxFramesInFlight;
+		}
+		if ($this->sendLastFrame !== null) {
+			$data->sendLastFrame = $this->sendLastFrame;
 		}
 		return $data;
 	}

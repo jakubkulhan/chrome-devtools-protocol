@@ -14,6 +14,8 @@ final class StartScreencastRequestBuilder
 	private $maxWidth;
 	private $maxHeight;
 	private $everyNthFrame;
+	private $maxFramesInFlight;
+	private $sendLastFrame;
 
 
 	/**
@@ -27,6 +29,8 @@ final class StartScreencastRequestBuilder
 		$instance->maxWidth = $this->maxWidth;
 		$instance->maxHeight = $this->maxHeight;
 		$instance->everyNthFrame = $this->everyNthFrame;
+		$instance->maxFramesInFlight = $this->maxFramesInFlight;
+		$instance->sendLastFrame = $this->sendLastFrame;
 		return $instance;
 	}
 
@@ -87,6 +91,30 @@ final class StartScreencastRequestBuilder
 	public function setEveryNthFrame($everyNthFrame): self
 	{
 		$this->everyNthFrame = $everyNthFrame;
+		return $this;
+	}
+
+
+	/**
+	 * @param int|null $maxFramesInFlight
+	 *
+	 * @return self
+	 */
+	public function setMaxFramesInFlight($maxFramesInFlight): self
+	{
+		$this->maxFramesInFlight = $maxFramesInFlight;
+		return $this;
+	}
+
+
+	/**
+	 * @param bool|null $sendLastFrame
+	 *
+	 * @return self
+	 */
+	public function setSendLastFrame($sendLastFrame): self
+	{
+		$this->sendLastFrame = $sendLastFrame;
 		return $this;
 	}
 }

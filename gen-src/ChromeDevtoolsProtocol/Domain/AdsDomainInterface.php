@@ -4,6 +4,7 @@ namespace ChromeDevtoolsProtocol\Domain;
 
 use ChromeDevtoolsProtocol\ContextInterface;
 use ChromeDevtoolsProtocol\Model\Ads\GetAdMetricsResponse;
+use ChromeDevtoolsProtocol\Model\Ads\GetAdScriptsResponse;
 
 /**
  * A domain for ad-related metrics and data.
@@ -24,4 +25,14 @@ interface AdsDomainInterface
 	 * @return GetAdMetricsResponse
 	 */
 	public function getAdMetrics(ContextInterface $ctx): GetAdMetricsResponse;
+
+
+	/**
+	 * Retrieves ad scripts for the current page. To minimize payload size, this only returns the newly tracked ad scripts since the last call to getAdScripts (i.e., the delta).
+	 *
+	 * @param ContextInterface $ctx
+	 *
+	 * @return GetAdScriptsResponse
+	 */
+	public function getAdScripts(ContextInterface $ctx): GetAdScriptsResponse;
 }
