@@ -26,6 +26,13 @@ final class Annotation implements \JsonSerializable
 	public $untrustedContent;
 
 	/**
+	 * A hint indicating that executing the tool will result in consequential actions, ex: booking a flight, transferring money.
+	 *
+	 * @var bool|null
+	 */
+	public $consequential;
+
+	/**
 	 * If the declarative tool was declared with the autosubmit attribute.
 	 *
 	 * @var bool|null
@@ -46,6 +53,9 @@ final class Annotation implements \JsonSerializable
 		if (isset($data->untrustedContent)) {
 			$instance->untrustedContent = (bool)$data->untrustedContent;
 		}
+		if (isset($data->consequential)) {
+			$instance->consequential = (bool)$data->consequential;
+		}
 		if (isset($data->autosubmit)) {
 			$instance->autosubmit = (bool)$data->autosubmit;
 		}
@@ -61,6 +71,9 @@ final class Annotation implements \JsonSerializable
 		}
 		if ($this->untrustedContent !== null) {
 			$data->untrustedContent = $this->untrustedContent;
+		}
+		if ($this->consequential !== null) {
+			$data->consequential = $this->consequential;
 		}
 		if ($this->autosubmit !== null) {
 			$data->autosubmit = $this->autosubmit;

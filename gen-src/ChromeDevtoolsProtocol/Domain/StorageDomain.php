@@ -9,18 +9,12 @@ use ChromeDevtoolsProtocol\Model\Storage\CacheStorageListUpdatedEvent;
 use ChromeDevtoolsProtocol\Model\Storage\ClearCookiesRequest;
 use ChromeDevtoolsProtocol\Model\Storage\ClearDataForOriginRequest;
 use ChromeDevtoolsProtocol\Model\Storage\ClearDataForStorageKeyRequest;
-use ChromeDevtoolsProtocol\Model\Storage\ClearSharedStorageEntriesRequest;
 use ChromeDevtoolsProtocol\Model\Storage\ClearTrustTokensRequest;
 use ChromeDevtoolsProtocol\Model\Storage\ClearTrustTokensResponse;
-use ChromeDevtoolsProtocol\Model\Storage\DeleteSharedStorageEntryRequest;
 use ChromeDevtoolsProtocol\Model\Storage\DeleteStorageBucketRequest;
 use ChromeDevtoolsProtocol\Model\Storage\GetCookiesRequest;
 use ChromeDevtoolsProtocol\Model\Storage\GetCookiesResponse;
 use ChromeDevtoolsProtocol\Model\Storage\GetRelatedWebsiteSetsResponse;
-use ChromeDevtoolsProtocol\Model\Storage\GetSharedStorageEntriesRequest;
-use ChromeDevtoolsProtocol\Model\Storage\GetSharedStorageEntriesResponse;
-use ChromeDevtoolsProtocol\Model\Storage\GetSharedStorageMetadataRequest;
-use ChromeDevtoolsProtocol\Model\Storage\GetSharedStorageMetadataResponse;
 use ChromeDevtoolsProtocol\Model\Storage\GetStorageKeyForFrameRequest;
 use ChromeDevtoolsProtocol\Model\Storage\GetStorageKeyForFrameResponse;
 use ChromeDevtoolsProtocol\Model\Storage\GetStorageKeyRequest;
@@ -31,14 +25,9 @@ use ChromeDevtoolsProtocol\Model\Storage\GetUsageAndQuotaResponse;
 use ChromeDevtoolsProtocol\Model\Storage\IndexedDBContentUpdatedEvent;
 use ChromeDevtoolsProtocol\Model\Storage\IndexedDBListUpdatedEvent;
 use ChromeDevtoolsProtocol\Model\Storage\OverrideQuotaForOriginRequest;
-use ChromeDevtoolsProtocol\Model\Storage\ResetSharedStorageBudgetRequest;
 use ChromeDevtoolsProtocol\Model\Storage\RunBounceTrackingMitigationsResponse;
 use ChromeDevtoolsProtocol\Model\Storage\SetCookiesRequest;
-use ChromeDevtoolsProtocol\Model\Storage\SetSharedStorageEntryRequest;
-use ChromeDevtoolsProtocol\Model\Storage\SetSharedStorageTrackingRequest;
 use ChromeDevtoolsProtocol\Model\Storage\SetStorageBucketTrackingRequest;
-use ChromeDevtoolsProtocol\Model\Storage\SharedStorageAccessedEvent;
-use ChromeDevtoolsProtocol\Model\Storage\SharedStorageWorkletOperationExecutionFinishedEvent;
 use ChromeDevtoolsProtocol\Model\Storage\StorageBucketCreatedOrUpdatedEvent;
 use ChromeDevtoolsProtocol\Model\Storage\StorageBucketDeletedEvent;
 use ChromeDevtoolsProtocol\Model\Storage\TrackCacheStorageForOriginRequest;
@@ -81,22 +70,10 @@ class StorageDomain implements StorageDomainInterface
 	}
 
 
-	public function clearSharedStorageEntries(ContextInterface $ctx, ClearSharedStorageEntriesRequest $request): void
-	{
-		$this->internalClient->executeCommand($ctx, 'Storage.clearSharedStorageEntries', $request);
-	}
-
-
 	public function clearTrustTokens(ContextInterface $ctx, ClearTrustTokensRequest $request): ClearTrustTokensResponse
 	{
 		$response = $this->internalClient->executeCommand($ctx, 'Storage.clearTrustTokens', $request);
 		return ClearTrustTokensResponse::fromJson($response);
-	}
-
-
-	public function deleteSharedStorageEntry(ContextInterface $ctx, DeleteSharedStorageEntryRequest $request): void
-	{
-		$this->internalClient->executeCommand($ctx, 'Storage.deleteSharedStorageEntry', $request);
 	}
 
 
@@ -118,24 +95,6 @@ class StorageDomain implements StorageDomainInterface
 		$request = new \stdClass();
 		$response = $this->internalClient->executeCommand($ctx, 'Storage.getRelatedWebsiteSets', $request);
 		return GetRelatedWebsiteSetsResponse::fromJson($response);
-	}
-
-
-	public function getSharedStorageEntries(
-		ContextInterface $ctx,
-		GetSharedStorageEntriesRequest $request
-	): GetSharedStorageEntriesResponse {
-		$response = $this->internalClient->executeCommand($ctx, 'Storage.getSharedStorageEntries', $request);
-		return GetSharedStorageEntriesResponse::fromJson($response);
-	}
-
-
-	public function getSharedStorageMetadata(
-		ContextInterface $ctx,
-		GetSharedStorageMetadataRequest $request
-	): GetSharedStorageMetadataResponse {
-		$response = $this->internalClient->executeCommand($ctx, 'Storage.getSharedStorageMetadata', $request);
-		return GetSharedStorageMetadataResponse::fromJson($response);
 	}
 
 
@@ -176,12 +135,6 @@ class StorageDomain implements StorageDomainInterface
 	}
 
 
-	public function resetSharedStorageBudget(ContextInterface $ctx, ResetSharedStorageBudgetRequest $request): void
-	{
-		$this->internalClient->executeCommand($ctx, 'Storage.resetSharedStorageBudget', $request);
-	}
-
-
 	public function runBounceTrackingMitigations(ContextInterface $ctx): RunBounceTrackingMitigationsResponse
 	{
 		$request = new \stdClass();
@@ -193,18 +146,6 @@ class StorageDomain implements StorageDomainInterface
 	public function setCookies(ContextInterface $ctx, SetCookiesRequest $request): void
 	{
 		$this->internalClient->executeCommand($ctx, 'Storage.setCookies', $request);
-	}
-
-
-	public function setSharedStorageEntry(ContextInterface $ctx, SetSharedStorageEntryRequest $request): void
-	{
-		$this->internalClient->executeCommand($ctx, 'Storage.setSharedStorageEntry', $request);
-	}
-
-
-	public function setSharedStorageTracking(ContextInterface $ctx, SetSharedStorageTrackingRequest $request): void
-	{
-		$this->internalClient->executeCommand($ctx, 'Storage.setSharedStorageTracking', $request);
 	}
 
 
@@ -321,34 +262,6 @@ class StorageDomain implements StorageDomainInterface
 	public function awaitIndexedDBListUpdated(ContextInterface $ctx): IndexedDBListUpdatedEvent
 	{
 		return IndexedDBListUpdatedEvent::fromJson($this->internalClient->awaitEvent($ctx, 'Storage.indexedDBListUpdated'));
-	}
-
-
-	public function addSharedStorageAccessedListener(callable $listener): SubscriptionInterface
-	{
-		return $this->internalClient->addListener('Storage.sharedStorageAccessed', function ($event) use ($listener) {
-			return $listener(SharedStorageAccessedEvent::fromJson($event));
-		});
-	}
-
-
-	public function awaitSharedStorageAccessed(ContextInterface $ctx): SharedStorageAccessedEvent
-	{
-		return SharedStorageAccessedEvent::fromJson($this->internalClient->awaitEvent($ctx, 'Storage.sharedStorageAccessed'));
-	}
-
-
-	public function addSharedStorageWorkletOperationExecutionFinishedListener(callable $listener): SubscriptionInterface
-	{
-		return $this->internalClient->addListener('Storage.sharedStorageWorkletOperationExecutionFinished', function ($event) use ($listener) {
-			return $listener(SharedStorageWorkletOperationExecutionFinishedEvent::fromJson($event));
-		});
-	}
-
-
-	public function awaitSharedStorageWorkletOperationExecutionFinished(ContextInterface $ctx): SharedStorageWorkletOperationExecutionFinishedEvent
-	{
-		return SharedStorageWorkletOperationExecutionFinishedEvent::fromJson($this->internalClient->awaitEvent($ctx, 'Storage.sharedStorageWorkletOperationExecutionFinished'));
 	}
 
 

@@ -46,8 +46,15 @@ final class ServiceWorkerVersion implements \JsonSerializable
 	/** @var string */
 	public $targetId;
 
-	/** @var string|null */
+	/**
+	 * Migration to `typedRouterRules` is in progress. The browser sends either `routerRules` or `typedRouterRules`. TODO(crbug.com/540469610): Remove `routerRules` after the migration.
+	 *
+	 * @var string|null
+	 */
 	public $routerRules;
+
+	/** @var ServiceWorkerRouterRule[]|null */
+	public $typedRouterRules;
 
 
 	/**
@@ -93,6 +100,12 @@ final class ServiceWorkerVersion implements \JsonSerializable
 		if (isset($data->routerRules)) {
 			$instance->routerRules = (string)$data->routerRules;
 		}
+		if (isset($data->typedRouterRules)) {
+			$instance->typedRouterRules = [];
+			foreach ($data->typedRouterRules as $item) {
+				$instance->typedRouterRules[] = ServiceWorkerRouterRule::fromJson($item);
+			}
+		}
 		return $instance;
 	}
 
@@ -135,6 +148,12 @@ final class ServiceWorkerVersion implements \JsonSerializable
 		}
 		if ($this->routerRules !== null) {
 			$data->routerRules = $this->routerRules;
+		}
+		if ($this->typedRouterRules !== null) {
+			$data->typedRouterRules = [];
+			foreach ($this->typedRouterRules as $item) {
+				$data->typedRouterRules[] = $item->jsonSerialize();
+			}
 		}
 		return $data;
 	}
