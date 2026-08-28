@@ -3,6 +3,7 @@
 namespace ChromeDevtoolsProtocol\Domain;
 
 use ChromeDevtoolsProtocol\ContextInterface;
+use ChromeDevtoolsProtocol\Model\Browser\AddMockCameraRequest;
 use ChromeDevtoolsProtocol\Model\Browser\AddPrivacySandboxEnrollmentOverrideRequest;
 use ChromeDevtoolsProtocol\Model\Browser\CancelDownloadRequest;
 use ChromeDevtoolsProtocol\Model\Browser\DownloadProgressEvent;
@@ -39,6 +40,17 @@ use ChromeDevtoolsProtocol\SubscriptionInterface;
  */
 interface BrowserDomainInterface
 {
+	/**
+	 * Adds or updates a mock camera in the shared video capture device list for test automation. The mock camera is not scoped to a particular page or frame and is removed when the DevTools session that created it disconnects.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param AddMockCameraRequest $request
+	 *
+	 * @return void
+	 */
+	public function addMockCamera(ContextInterface $ctx, AddMockCameraRequest $request): void;
+
+
 	/**
 	 * Allows a site to use privacy sandbox features that require enrollment without the site actually being enrolled. Only supported on page targets.
 	 *

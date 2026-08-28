@@ -68,6 +68,7 @@ final class PermissionsPolicyFeatureEnum
 	public const GAMEPAD = 'gamepad';
 	public const GEOLOCATION = 'geolocation';
 	public const GYROSCOPE = 'gyroscope';
+	public const HAPTICS = 'haptics';
 	public const HID = 'hid';
 	public const IDENTITY_CREDENTIALS_GET = 'identity-credentials-get';
 	public const IDLE_DETECTION = 'idle-detection';

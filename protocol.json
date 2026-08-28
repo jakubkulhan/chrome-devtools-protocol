@@ -3850,6 +3850,18 @@
             ],
             "commands": [
                 {
+                    "name": "addMockCamera",
+                    "description": "Adds or updates a mock camera in the shared video capture device list for test automation. The mock camera is not scoped to a particular page or frame and is removed when the DevTools session that created it disconnects.",
+                    "experimental": true,
+                    "parameters": [
+                        {
+                            "name": "deviceId",
+                            "description": "Required non-empty identifier for the mock camera. This is mapped to an internal virtual-device identifier and is not the MediaDeviceInfo.deviceId exposed to the page.",
+                            "type": "string"
+                        }
+                    ]
+                },
+                {
                     "name": "addPrivacySandboxEnrollmentOverride",
                     "description": "Allows a site to use privacy sandbox features that require enrollment without the site actually being enrolled. Only supported on page targets.",
                     "parameters": [
@@ -23534,6 +23546,7 @@
                         "gamepad",
                         "geolocation",
                         "gyroscope",
+                        "haptics",
                         "hid",
                         "identity-credentials-get",
                         "idle-detection",
