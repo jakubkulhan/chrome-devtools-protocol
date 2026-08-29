@@ -32,7 +32,7 @@ final class SetCredentialPropertiesRequest implements \JsonSerializable
 	/**
 	 * Must be equal to or greater than -1. If -1, the signature counter is removed from the credential, and every assertion operation will report a value of 0. See https://w3c.github.io/webauthn/#signature-counter
 	 *
-	 * @var int|null
+	 * @var int|float|null
 	 */
 	public $signCount;
 
@@ -63,7 +63,7 @@ final class SetCredentialPropertiesRequest implements \JsonSerializable
 			$instance->generateCmtgKeyOnNextOperation = (bool)$data->generateCmtgKeyOnNextOperation;
 		}
 		if (isset($data->signCount)) {
-			$instance->signCount = (int)$data->signCount;
+			$instance->signCount = $data->signCount;
 		}
 		return $instance;
 	}

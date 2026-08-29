@@ -116,7 +116,7 @@ final class SetCredentialPropertiesRequestBuilder
 
 
 	/**
-	 * @param int|null $signCount
+	 * @param int|float|null $signCount
 	 *
 	 * @return self
 	 */
