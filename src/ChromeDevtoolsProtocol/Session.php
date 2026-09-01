@@ -114,21 +114,15 @@ class Session implements DevtoolsClientInterface, InternalClientInterface
 		}
 
 		for (; ;) {
-			$eventMessage = null;
-
 			$receivedMessage = $this->browser->target()->awaitReceivedMessageFromTarget($ctx);
 
 			if ($receivedMessage->targetId === $this->targetId && $receivedMessage->sessionId === $this->sessionId) {
 
-				$nextEventMessage = $this->handleMessage(json_decode($receivedMessage->message), $method);
-
-				if ($eventMessage === null && $nextEventMessage !== null) {
-					$eventMessage = $nextEventMessage;
-				}
+				$this->handleMessage(json_decode($receivedMessage->message));
 			}
 
-			if ($eventMessage !== null) {
-				return $eventMessage->params;
+			if (!empty($this->eventBuffers[$method])) {
+				return array_shift($this->eventBuffers[$method])->params;
 			}
 		}
 	}
@@ -136,7 +130,7 @@ class Session implements DevtoolsClientInterface, InternalClientInterface
 	/**
 	 * @internal
 	 */
-	private function handleMessage($message, ?string $returnIfEventMethod = null)
+	private function handleMessage($message)
 	{
 		if (isset($message->error)) {
 			throw new ErrorException($message->error->message, $message->error->code);
@@ -148,14 +142,10 @@ class Session implements DevtoolsClientInterface, InternalClientInterface
 				}
 			}
 
-			if ($returnIfEventMethod !== null && $message->method === $returnIfEventMethod) {
-				return $message;
-			} else {
-				if (!isset($this->eventBuffers[$message->method])) {
-					$this->eventBuffers[$message->method] = [];
-				}
-				array_push($this->eventBuffers[$message->method], $message);
+			if (!isset($this->eventBuffers[$message->method])) {
+				$this->eventBuffers[$message->method] = [];
 			}
+			array_push($this->eventBuffers[$message->method], $message);
 
 		} else if (isset($message->id)) {
 			$this->commandResults[$message->id] = $message->result ?? new \stdClass();
