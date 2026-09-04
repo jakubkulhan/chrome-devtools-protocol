@@ -68,4 +68,5 @@ final class EmailVerificationRequestIssueReasonEnum
 	public const TOKEN_VERIFICATION_KB_INVALID_SD_HASH = 'TokenVerificationKbInvalidSdHash';
 	public const TOKEN_VERIFICATION_KB_MISSING_CNF = 'TokenVerificationKbMissingCnf';
 	public const TOKEN_VERIFICATION_KB_SIGNATURE_FAILED = 'TokenVerificationKbSignatureFailed';
+	public const CROSS_ORIGIN_IFRAME_NOT_SUPPORTED = 'CrossOriginIframeNotSupported';
 }
