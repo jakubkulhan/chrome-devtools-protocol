@@ -28,6 +28,7 @@ final class SetDeviceMetricsOverrideRequestBuilder
 	private $devicePosture;
 	private $scrollbarType;
 	private $screenOrientationLockEmulation;
+	private $viewportMeta;
 
 
 	/**
@@ -64,6 +65,7 @@ final class SetDeviceMetricsOverrideRequestBuilder
 		$instance->devicePosture = $this->devicePosture;
 		$instance->scrollbarType = $this->scrollbarType;
 		$instance->screenOrientationLockEmulation = $this->screenOrientationLockEmulation;
+		$instance->viewportMeta = $this->viewportMeta;
 		return $instance;
 	}
 
@@ -256,6 +258,18 @@ final class SetDeviceMetricsOverrideRequestBuilder
 	public function setScreenOrientationLockEmulation($screenOrientationLockEmulation): self
 	{
 		$this->screenOrientationLockEmulation = $screenOrientationLockEmulation;
+		return $this;
+	}
+
+
+	/**
+	 * @param string|null $viewportMeta
+	 *
+	 * @return self
+	 */
+	public function setViewportMeta($viewportMeta): self
+	{
+		$this->viewportMeta = $viewportMeta;
 		return $this;
 	}
 }

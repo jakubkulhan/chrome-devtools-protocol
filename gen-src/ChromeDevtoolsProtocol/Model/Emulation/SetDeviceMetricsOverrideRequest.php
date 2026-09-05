@@ -125,6 +125,13 @@ final class SetDeviceMetricsOverrideRequest implements \JsonSerializable
 	 */
 	public $screenOrientationLockEmulation;
 
+	/**
+	 * Viewport meta tag behavior. Default: `default`. Note: if `mobile` is `true`, the viewport meta tag is always enabled.
+	 *
+	 * @var string|null
+	 */
+	public $viewportMeta;
+
 
 	/**
 	 * @param object $data
@@ -181,6 +188,9 @@ final class SetDeviceMetricsOverrideRequest implements \JsonSerializable
 		if (isset($data->screenOrientationLockEmulation)) {
 			$instance->screenOrientationLockEmulation = (bool)$data->screenOrientationLockEmulation;
 		}
+		if (isset($data->viewportMeta)) {
+			$instance->viewportMeta = (string)$data->viewportMeta;
+		}
 		return $instance;
 	}
 
@@ -235,6 +245,9 @@ final class SetDeviceMetricsOverrideRequest implements \JsonSerializable
 		}
 		if ($this->screenOrientationLockEmulation !== null) {
 			$data->screenOrientationLockEmulation = $this->screenOrientationLockEmulation;
+		}
+		if ($this->viewportMeta !== null) {
+			$data->viewportMeta = $this->viewportMeta;
 		}
 		return $data;
 	}
