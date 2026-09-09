@@ -57,4 +57,5 @@ final class FederatedAuthRequestIssueReasonEnum
 	public const UI_DISMISSED_NO_EMBARGO = 'UiDismissedNoEmbargo';
 	public const CORS_ERROR = 'CorsError';
 	public const SUPPRESSED_BY_SEGMENTATION_PLATFORM = 'SuppressedBySegmentationPlatform';
+	public const POPUP_BLOCKED_BY_CONNECTION_ALLOWLIST = 'PopupBlockedByConnectionAllowlist';
 }
