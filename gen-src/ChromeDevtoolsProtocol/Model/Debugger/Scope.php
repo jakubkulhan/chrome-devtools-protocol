@@ -44,6 +44,13 @@ final class Scope implements \JsonSerializable
 	 */
 	public $endLocation;
 
+	/**
+	 * True if the scope does not declare any variables or have a runtime context. Only present if true. Empty scopes are retained in the scope chain because they can be targeted via `evaluateOnCallFrame` (using `scopeNumber`) or matched against scopes in source maps.
+	 *
+	 * @var bool|null
+	 */
+	public $empty;
+
 
 	/**
 	 * @param object $data
@@ -67,6 +74,9 @@ final class Scope implements \JsonSerializable
 		if (isset($data->endLocation)) {
 			$instance->endLocation = Location::fromJson($data->endLocation);
 		}
+		if (isset($data->empty)) {
+			$instance->empty = (bool)$data->empty;
+		}
 		return $instance;
 	}
 
@@ -88,6 +98,9 @@ final class Scope implements \JsonSerializable
 		}
 		if ($this->endLocation !== null) {
 			$data->endLocation = $this->endLocation->jsonSerialize();
+		}
+		if ($this->empty !== null) {
+			$data->empty = $this->empty;
 		}
 		return $data;
 	}
