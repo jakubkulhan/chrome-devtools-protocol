@@ -20185,7 +20185,8 @@
                                 "ServerRequested",
                                 "InvalidSessionParams",
                                 "RefreshFatalError",
-                                "DevTools"
+                                "DevTools",
+                                "Replaced"
                             ]
                         }
                     ]
@@ -28383,6 +28384,7 @@
                                 "dataview",
                                 "webassemblymemory",
                                 "wasmvalue",
+                                "deferredmodule",
                                 "trustedtype"
                             ]
                         },
@@ -28502,6 +28504,7 @@
                                 "dataview",
                                 "webassemblymemory",
                                 "wasmvalue",
+                                "deferredmodule",
                                 "trustedtype"
                             ]
                         },
@@ -28598,6 +28601,7 @@
                                 "dataview",
                                 "webassemblymemory",
                                 "wasmvalue",
+                                "deferredmodule",
                                 "trustedtype"
                             ]
                         }
