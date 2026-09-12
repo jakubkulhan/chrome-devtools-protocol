@@ -3,7 +3,7 @@
 namespace ChromeDevtoolsProtocol\Model\ServiceWorker;
 
 /**
- * Mostly corresponds to `RouterCondition` in ServiceWorker spec (https://www.w3.org/TR/service-workers/#dictdef-routercondition) while this currently lacks support for the nested conditions ("or" and "not"). TODO(crbug.com/540469610): Support recursive conditions.
+ * Mostly corresponds to `RouterCondition` in ServiceWorker spec (https://www.w3.org/TR/service-workers/#dictdef-routercondition)
  *
  * @generated This file has been auto-generated, do not edit.
  *
@@ -30,6 +30,12 @@ final class ServiceWorkerRouterCondition implements \JsonSerializable
 	/** @var string */
 	public $runningStatus;
 
+	/** @var ServiceWorkerRouterCondition[]|null */
+	public $or;
+
+	/** @var ServiceWorkerRouterCondition|null */
+	public $not;
+
 
 	/**
 	 * @param object $data
@@ -53,6 +59,15 @@ final class ServiceWorkerRouterCondition implements \JsonSerializable
 		if (isset($data->runningStatus)) {
 			$instance->runningStatus = (string)$data->runningStatus;
 		}
+		if (isset($data->or)) {
+			$instance->or = [];
+			foreach ($data->or as $item) {
+				$instance->or[] = ServiceWorkerRouterCondition::fromJson($item);
+			}
+		}
+		if (isset($data->not)) {
+			$instance->not = ServiceWorkerRouterCondition::fromJson($data->not);
+		}
 		return $instance;
 	}
 
@@ -74,6 +89,15 @@ final class ServiceWorkerRouterCondition implements \JsonSerializable
 		}
 		if ($this->runningStatus !== null) {
 			$data->runningStatus = $this->runningStatus;
+		}
+		if ($this->or !== null) {
+			$data->or = [];
+			foreach ($this->or as $item) {
+				$data->or[] = $item->jsonSerialize();
+			}
+		}
+		if ($this->not !== null) {
+			$data->not = $this->not->jsonSerialize();
 		}
 		return $data;
 	}
