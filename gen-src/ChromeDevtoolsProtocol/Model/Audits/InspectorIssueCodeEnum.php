@@ -41,4 +41,5 @@ final class InspectorIssueCodeEnum
 	public const SELECTIVE_PERMISSIONS_INTERVENTION_ISSUE = 'SelectivePermissionsInterventionIssue';
 	public const EMAIL_VERIFICATION_REQUEST_ISSUE = 'EmailVerificationRequestIssue';
 	public const LAZY_LOAD_IMAGE_ISSUE = 'LazyLoadImageIssue';
+	public const WEB_INSTALL_ISSUE = 'WebInstallIssue';
 }

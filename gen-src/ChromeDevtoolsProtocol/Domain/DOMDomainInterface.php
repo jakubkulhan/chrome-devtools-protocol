@@ -47,6 +47,8 @@ use ChromeDevtoolsProtocol\Model\DOM\GetFlattenedDocumentRequest;
 use ChromeDevtoolsProtocol\Model\DOM\GetFlattenedDocumentResponse;
 use ChromeDevtoolsProtocol\Model\DOM\GetFrameOwnerRequest;
 use ChromeDevtoolsProtocol\Model\DOM\GetFrameOwnerResponse;
+use ChromeDevtoolsProtocol\Model\DOM\GetImplicitAnchorCandidatesRequest;
+use ChromeDevtoolsProtocol\Model\DOM\GetImplicitAnchorCandidatesResponse;
 use ChromeDevtoolsProtocol\Model\DOM\GetNodeForLocationRequest;
 use ChromeDevtoolsProtocol\Model\DOM\GetNodeForLocationResponse;
 use ChromeDevtoolsProtocol\Model\DOM\GetNodeStackTracesRequest;
@@ -338,6 +340,20 @@ interface DOMDomainInterface
 	 * @return GetFrameOwnerResponse
 	 */
 	public function getFrameOwner(ContextInterface $ctx, GetFrameOwnerRequest $request): GetFrameOwnerResponse;
+
+
+	/**
+	 * Returns candidate nodes that are configured as triggers for the given popover.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param GetImplicitAnchorCandidatesRequest $request
+	 *
+	 * @return GetImplicitAnchorCandidatesResponse
+	 */
+	public function getImplicitAnchorCandidates(
+		ContextInterface $ctx,
+		GetImplicitAnchorCandidatesRequest $request
+	): GetImplicitAnchorCandidatesResponse;
 
 
 	/**

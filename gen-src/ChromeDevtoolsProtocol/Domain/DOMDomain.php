@@ -48,6 +48,8 @@ use ChromeDevtoolsProtocol\Model\DOM\GetFlattenedDocumentRequest;
 use ChromeDevtoolsProtocol\Model\DOM\GetFlattenedDocumentResponse;
 use ChromeDevtoolsProtocol\Model\DOM\GetFrameOwnerRequest;
 use ChromeDevtoolsProtocol\Model\DOM\GetFrameOwnerResponse;
+use ChromeDevtoolsProtocol\Model\DOM\GetImplicitAnchorCandidatesRequest;
+use ChromeDevtoolsProtocol\Model\DOM\GetImplicitAnchorCandidatesResponse;
 use ChromeDevtoolsProtocol\Model\DOM\GetNodeForLocationRequest;
 use ChromeDevtoolsProtocol\Model\DOM\GetNodeForLocationResponse;
 use ChromeDevtoolsProtocol\Model\DOM\GetNodeStackTracesRequest;
@@ -256,6 +258,15 @@ class DOMDomain implements DOMDomainInterface
 	{
 		$response = $this->internalClient->executeCommand($ctx, 'DOM.getFrameOwner', $request);
 		return GetFrameOwnerResponse::fromJson($response);
+	}
+
+
+	public function getImplicitAnchorCandidates(
+		ContextInterface $ctx,
+		GetImplicitAnchorCandidatesRequest $request
+	): GetImplicitAnchorCandidatesResponse {
+		$response = $this->internalClient->executeCommand($ctx, 'DOM.getImplicitAnchorCandidates', $request);
+		return GetImplicitAnchorCandidatesResponse::fromJson($response);
 	}
 
 

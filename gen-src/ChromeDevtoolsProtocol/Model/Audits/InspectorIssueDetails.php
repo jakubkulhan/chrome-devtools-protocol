@@ -101,6 +101,9 @@ final class InspectorIssueDetails implements \JsonSerializable
 	/** @var LazyLoadImageIssueDetails|null */
 	public $lazyLoadImageIssueDetails;
 
+	/** @var WebInstallIssueDetails|null */
+	public $webInstallIssueDetails;
+
 
 	/**
 	 * @param object $data
@@ -199,6 +202,9 @@ final class InspectorIssueDetails implements \JsonSerializable
 		if (isset($data->lazyLoadImageIssueDetails)) {
 			$instance->lazyLoadImageIssueDetails = LazyLoadImageIssueDetails::fromJson($data->lazyLoadImageIssueDetails);
 		}
+		if (isset($data->webInstallIssueDetails)) {
+			$instance->webInstallIssueDetails = WebInstallIssueDetails::fromJson($data->webInstallIssueDetails);
+		}
 		return $instance;
 	}
 
@@ -295,6 +301,9 @@ final class InspectorIssueDetails implements \JsonSerializable
 		}
 		if ($this->lazyLoadImageIssueDetails !== null) {
 			$data->lazyLoadImageIssueDetails = $this->lazyLoadImageIssueDetails->jsonSerialize();
+		}
+		if ($this->webInstallIssueDetails !== null) {
+			$data->webInstallIssueDetails = $this->webInstallIssueDetails->jsonSerialize();
 		}
 		return $data;
 	}
