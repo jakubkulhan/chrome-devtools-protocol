@@ -98,6 +98,7 @@ use ChromeDevtoolsProtocol\Model\DOM\SetNodeNameResponse;
 use ChromeDevtoolsProtocol\Model\DOM\SetNodeStackTracesEnabledRequest;
 use ChromeDevtoolsProtocol\Model\DOM\SetNodeValueRequest;
 use ChromeDevtoolsProtocol\Model\DOM\SetOuterHTMLRequest;
+use ChromeDevtoolsProtocol\Model\DOM\SetTextMarkerRequest;
 use ChromeDevtoolsProtocol\Model\DOM\ShadowRootPoppedEvent;
 use ChromeDevtoolsProtocol\Model\DOM\ShadowRootPushedEvent;
 use ChromeDevtoolsProtocol\Model\DOM\TopLayerElementsUpdatedEvent;
@@ -112,6 +113,16 @@ use ChromeDevtoolsProtocol\SubscriptionInterface;
  */
 interface DOMDomainInterface
 {
+	/**
+	 * Clears the spelling and grammar error text markers overlapping the ranges set by setTextMarker in this session. These markers are also removed when the DOM domain is disabled or the session ends.
+	 *
+	 * @param ContextInterface $ctx
+	 *
+	 * @return void
+	 */
+	public function clearTextMarkers(ContextInterface $ctx): void;
+
+
 	/**
 	 * Collects class names for the node with given id and all of it's child nodes.
 	 *
@@ -732,6 +743,17 @@ interface DOMDomainInterface
 	 * @return void
 	 */
 	public function setOuterHTML(ContextInterface $ctx, SetOuterHTMLRequest $request): void;
+
+
+	/**
+	 * Sets a spelling or grammar error marker on the given range of text. See https://github.com/Igalia/explainers/blob/main/force-spelling-grammar-markers/README.md Note: exactly one between nodeId, backendNodeId and objectId should be passed to identify the node.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param SetTextMarkerRequest $request
+	 *
+	 * @return void
+	 */
+	public function setTextMarker(ContextInterface $ctx, SetTextMarkerRequest $request): void;
 
 
 	/**

@@ -99,6 +99,7 @@ use ChromeDevtoolsProtocol\Model\DOM\SetNodeNameResponse;
 use ChromeDevtoolsProtocol\Model\DOM\SetNodeStackTracesEnabledRequest;
 use ChromeDevtoolsProtocol\Model\DOM\SetNodeValueRequest;
 use ChromeDevtoolsProtocol\Model\DOM\SetOuterHTMLRequest;
+use ChromeDevtoolsProtocol\Model\DOM\SetTextMarkerRequest;
 use ChromeDevtoolsProtocol\Model\DOM\ShadowRootPoppedEvent;
 use ChromeDevtoolsProtocol\Model\DOM\ShadowRootPushedEvent;
 use ChromeDevtoolsProtocol\Model\DOM\TopLayerElementsUpdatedEvent;
@@ -113,6 +114,13 @@ class DOMDomain implements DOMDomainInterface
 	public function __construct(InternalClientInterface $internalClient)
 	{
 		$this->internalClient = $internalClient;
+	}
+
+
+	public function clearTextMarkers(ContextInterface $ctx): void
+	{
+		$request = new \stdClass();
+		$this->internalClient->executeCommand($ctx, 'DOM.clearTextMarkers', $request);
 	}
 
 
@@ -502,6 +510,12 @@ class DOMDomain implements DOMDomainInterface
 	public function setOuterHTML(ContextInterface $ctx, SetOuterHTMLRequest $request): void
 	{
 		$this->internalClient->executeCommand($ctx, 'DOM.setOuterHTML', $request);
+	}
+
+
+	public function setTextMarker(ContextInterface $ctx, SetTextMarkerRequest $request): void
+	{
+		$this->internalClient->executeCommand($ctx, 'DOM.setTextMarker', $request);
 	}
 
 
