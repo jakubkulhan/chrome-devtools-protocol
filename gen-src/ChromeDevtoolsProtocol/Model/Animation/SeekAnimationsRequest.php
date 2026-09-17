@@ -19,11 +19,18 @@ final class SeekAnimationsRequest implements \JsonSerializable
 	public $animations;
 
 	/**
-	 * Set the current time of each animation.
+	 * Set each animation to the same time.
 	 *
-	 * @var int|float
+	 * @var int|float|null
 	 */
 	public $currentTime;
+
+	/**
+	 * Set each animation to a different time. If set, should have the same length as animations. Exactly one of currentTime or currentTimes should be set.
+	 *
+	 * @var int[]|float[]|null
+	 */
+	public $currentTimes;
 
 
 	/**
@@ -42,6 +49,12 @@ final class SeekAnimationsRequest implements \JsonSerializable
 		if (isset($data->currentTime)) {
 			$instance->currentTime = $data->currentTime;
 		}
+		if (isset($data->currentTimes)) {
+			$instance->currentTimes = [];
+			foreach ($data->currentTimes as $item) {
+				$instance->currentTimes[] = $item;
+			}
+		}
 		return $instance;
 	}
 
@@ -57,6 +70,12 @@ final class SeekAnimationsRequest implements \JsonSerializable
 		}
 		if ($this->currentTime !== null) {
 			$data->currentTime = $this->currentTime;
+		}
+		if ($this->currentTimes !== null) {
+			$data->currentTimes = [];
+			foreach ($this->currentTimes as $item) {
+				$data->currentTimes[] = $item;
+			}
 		}
 		return $data;
 	}

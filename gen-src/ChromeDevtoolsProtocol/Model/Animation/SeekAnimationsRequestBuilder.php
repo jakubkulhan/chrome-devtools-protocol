@@ -13,6 +13,7 @@ final class SeekAnimationsRequestBuilder
 {
 	private $animations;
 	private $currentTime;
+	private $currentTimes;
 
 
 	/**
@@ -25,10 +26,8 @@ final class SeekAnimationsRequestBuilder
 			throw new BuilderException('Property [animations] is required.');
 		}
 		$instance->animations = $this->animations;
-		if ($this->currentTime === null) {
-			throw new BuilderException('Property [currentTime] is required.');
-		}
 		$instance->currentTime = $this->currentTime;
+		$instance->currentTimes = $this->currentTimes;
 		return $instance;
 	}
 
@@ -46,13 +45,25 @@ final class SeekAnimationsRequestBuilder
 
 
 	/**
-	 * @param int|float $currentTime
+	 * @param int|float|null $currentTime
 	 *
 	 * @return self
 	 */
 	public function setCurrentTime($currentTime): self
 	{
 		$this->currentTime = $currentTime;
+		return $this;
+	}
+
+
+	/**
+	 * @param int[]|float[]|null $currentTimes
+	 *
+	 * @return self
+	 */
+	public function setCurrentTimes($currentTimes): self
+	{
+		$this->currentTimes = $currentTimes;
 		return $this;
 	}
 }

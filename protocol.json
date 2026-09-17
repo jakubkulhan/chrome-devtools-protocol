@@ -1031,8 +1031,18 @@
                         },
                         {
                             "name": "currentTime",
-                            "description": "Set the current time of each animation.",
+                            "description": "Set each animation to the same time.",
+                            "optional": true,
                             "type": "number"
+                        },
+                        {
+                            "name": "currentTimes",
+                            "description": "Set each animation to a different time. If set, should have the same length as animations. Exactly one of currentTime or currentTimes should be set.",
+                            "optional": true,
+                            "type": "array",
+                            "items": {
+                                "type": "number"
+                            }
                         }
                     ]
                 },
