@@ -146,6 +146,13 @@ final class HighlightConfig implements \JsonSerializable
 	 */
 	public $containerQueryContainerHighlightConfig;
 
+	/**
+	 * The IMCB highlight configuration (default: all transparent).
+	 *
+	 * @var ImcbHighlightConfig|null
+	 */
+	public $imcbHighlightConfig;
+
 
 	/**
 	 * @param object $data
@@ -211,6 +218,9 @@ final class HighlightConfig implements \JsonSerializable
 		if (isset($data->containerQueryContainerHighlightConfig)) {
 			$instance->containerQueryContainerHighlightConfig = ContainerQueryContainerHighlightConfig::fromJson($data->containerQueryContainerHighlightConfig);
 		}
+		if (isset($data->imcbHighlightConfig)) {
+			$instance->imcbHighlightConfig = ImcbHighlightConfig::fromJson($data->imcbHighlightConfig);
+		}
 		return $instance;
 	}
 
@@ -274,6 +284,9 @@ final class HighlightConfig implements \JsonSerializable
 		}
 		if ($this->containerQueryContainerHighlightConfig !== null) {
 			$data->containerQueryContainerHighlightConfig = $this->containerQueryContainerHighlightConfig->jsonSerialize();
+		}
+		if ($this->imcbHighlightConfig !== null) {
+			$data->imcbHighlightConfig = $this->imcbHighlightConfig->jsonSerialize();
 		}
 		return $data;
 	}

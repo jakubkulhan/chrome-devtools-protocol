@@ -55,6 +55,8 @@ use ChromeDevtoolsProtocol\Model\Page\GetPermissionsPolicyStateResponse;
 use ChromeDevtoolsProtocol\Model\Page\GetResourceContentRequest;
 use ChromeDevtoolsProtocol\Model\Page\GetResourceContentResponse;
 use ChromeDevtoolsProtocol\Model\Page\GetResourceTreeResponse;
+use ChromeDevtoolsProtocol\Model\Page\GetSiblingSubAppsResponse;
+use ChromeDevtoolsProtocol\Model\Page\GetSubAppsResponse;
 use ChromeDevtoolsProtocol\Model\Page\HandleJavaScriptDialogRequest;
 use ChromeDevtoolsProtocol\Model\Page\InterstitialHiddenEvent;
 use ChromeDevtoolsProtocol\Model\Page\InterstitialShownEvent;
@@ -336,6 +338,22 @@ class PageDomain implements PageDomainInterface
 		$request = new \stdClass();
 		$response = $this->internalClient->executeCommand($ctx, 'Page.getResourceTree', $request);
 		return GetResourceTreeResponse::fromJson($response);
+	}
+
+
+	public function getSiblingSubApps(ContextInterface $ctx): GetSiblingSubAppsResponse
+	{
+		$request = new \stdClass();
+		$response = $this->internalClient->executeCommand($ctx, 'Page.getSiblingSubApps', $request);
+		return GetSiblingSubAppsResponse::fromJson($response);
+	}
+
+
+	public function getSubApps(ContextInterface $ctx): GetSubAppsResponse
+	{
+		$request = new \stdClass();
+		$response = $this->internalClient->executeCommand($ctx, 'Page.getSubApps', $request);
+		return GetSubAppsResponse::fromJson($response);
 	}
 
 

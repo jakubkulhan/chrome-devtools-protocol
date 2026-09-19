@@ -9,11 +9,14 @@ use ChromeDevtoolsProtocol\Model\Storage\CacheStorageListUpdatedEvent;
 use ChromeDevtoolsProtocol\Model\Storage\ClearCookiesRequest;
 use ChromeDevtoolsProtocol\Model\Storage\ClearDataForOriginRequest;
 use ChromeDevtoolsProtocol\Model\Storage\ClearDataForStorageKeyRequest;
+use ChromeDevtoolsProtocol\Model\Storage\ClearPrivateVerificationTokensRequest;
 use ChromeDevtoolsProtocol\Model\Storage\ClearTrustTokensRequest;
 use ChromeDevtoolsProtocol\Model\Storage\ClearTrustTokensResponse;
+use ChromeDevtoolsProtocol\Model\Storage\DeletePrivateVerificationTokenRequest;
 use ChromeDevtoolsProtocol\Model\Storage\DeleteStorageBucketRequest;
 use ChromeDevtoolsProtocol\Model\Storage\GetCookiesRequest;
 use ChromeDevtoolsProtocol\Model\Storage\GetCookiesResponse;
+use ChromeDevtoolsProtocol\Model\Storage\GetPrivateVerificationTokensResponse;
 use ChromeDevtoolsProtocol\Model\Storage\GetRelatedWebsiteSetsResponse;
 use ChromeDevtoolsProtocol\Model\Storage\GetStorageKeyForFrameRequest;
 use ChromeDevtoolsProtocol\Model\Storage\GetStorageKeyForFrameResponse;
@@ -25,8 +28,10 @@ use ChromeDevtoolsProtocol\Model\Storage\GetUsageAndQuotaResponse;
 use ChromeDevtoolsProtocol\Model\Storage\IndexedDBContentUpdatedEvent;
 use ChromeDevtoolsProtocol\Model\Storage\IndexedDBListUpdatedEvent;
 use ChromeDevtoolsProtocol\Model\Storage\OverrideQuotaForOriginRequest;
+use ChromeDevtoolsProtocol\Model\Storage\PrivateVerificationTokensUpdatedEvent;
 use ChromeDevtoolsProtocol\Model\Storage\RunBounceTrackingMitigationsResponse;
 use ChromeDevtoolsProtocol\Model\Storage\SetCookiesRequest;
+use ChromeDevtoolsProtocol\Model\Storage\SetPrivateVerificationTokensTrackingRequest;
 use ChromeDevtoolsProtocol\Model\Storage\SetStorageBucketTrackingRequest;
 use ChromeDevtoolsProtocol\Model\Storage\StorageBucketCreatedOrUpdatedEvent;
 use ChromeDevtoolsProtocol\Model\Storage\StorageBucketDeletedEvent;
@@ -70,10 +75,26 @@ class StorageDomain implements StorageDomainInterface
 	}
 
 
+	public function clearPrivateVerificationTokens(
+		ContextInterface $ctx,
+		ClearPrivateVerificationTokensRequest $request
+	): void {
+		$this->internalClient->executeCommand($ctx, 'Storage.clearPrivateVerificationTokens', $request);
+	}
+
+
 	public function clearTrustTokens(ContextInterface $ctx, ClearTrustTokensRequest $request): ClearTrustTokensResponse
 	{
 		$response = $this->internalClient->executeCommand($ctx, 'Storage.clearTrustTokens', $request);
 		return ClearTrustTokensResponse::fromJson($response);
+	}
+
+
+	public function deletePrivateVerificationToken(
+		ContextInterface $ctx,
+		DeletePrivateVerificationTokenRequest $request
+	): void {
+		$this->internalClient->executeCommand($ctx, 'Storage.deletePrivateVerificationToken', $request);
 	}
 
 
@@ -87,6 +108,14 @@ class StorageDomain implements StorageDomainInterface
 	{
 		$response = $this->internalClient->executeCommand($ctx, 'Storage.getCookies', $request);
 		return GetCookiesResponse::fromJson($response);
+	}
+
+
+	public function getPrivateVerificationTokens(ContextInterface $ctx): GetPrivateVerificationTokensResponse
+	{
+		$request = new \stdClass();
+		$response = $this->internalClient->executeCommand($ctx, 'Storage.getPrivateVerificationTokens', $request);
+		return GetPrivateVerificationTokensResponse::fromJson($response);
 	}
 
 
@@ -146,6 +175,14 @@ class StorageDomain implements StorageDomainInterface
 	public function setCookies(ContextInterface $ctx, SetCookiesRequest $request): void
 	{
 		$this->internalClient->executeCommand($ctx, 'Storage.setCookies', $request);
+	}
+
+
+	public function setPrivateVerificationTokensTracking(
+		ContextInterface $ctx,
+		SetPrivateVerificationTokensTrackingRequest $request
+	): void {
+		$this->internalClient->executeCommand($ctx, 'Storage.setPrivateVerificationTokensTracking', $request);
 	}
 
 
@@ -262,6 +299,20 @@ class StorageDomain implements StorageDomainInterface
 	public function awaitIndexedDBListUpdated(ContextInterface $ctx): IndexedDBListUpdatedEvent
 	{
 		return IndexedDBListUpdatedEvent::fromJson($this->internalClient->awaitEvent($ctx, 'Storage.indexedDBListUpdated'));
+	}
+
+
+	public function addPrivateVerificationTokensUpdatedListener(callable $listener): SubscriptionInterface
+	{
+		return $this->internalClient->addListener('Storage.privateVerificationTokensUpdated', function ($event) use ($listener) {
+			return $listener(PrivateVerificationTokensUpdatedEvent::fromJson($event));
+		});
+	}
+
+
+	public function awaitPrivateVerificationTokensUpdated(ContextInterface $ctx): PrivateVerificationTokensUpdatedEvent
+	{
+		return PrivateVerificationTokensUpdatedEvent::fromJson($this->internalClient->awaitEvent($ctx, 'Storage.privateVerificationTokensUpdated'));
 	}
 
 

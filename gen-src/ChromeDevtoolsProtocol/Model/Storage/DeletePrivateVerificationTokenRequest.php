@@ -1,0 +1,51 @@
+<?php
+
+namespace ChromeDevtoolsProtocol\Model\Storage;
+
+/**
+ * Request for Storage.deletePrivateVerificationToken command.
+ *
+ * @generated This file has been auto-generated, do not edit.
+ *
+ * @author Jakub Kulhan <jakub.kulhan@gmail.com>
+ */
+final class DeletePrivateVerificationTokenRequest implements \JsonSerializable
+{
+	/** @var string */
+	public $tokenId;
+
+
+	/**
+	 * @param object $data
+	 * @return static
+	 */
+	public static function fromJson($data)
+	{
+		$instance = new static();
+		if (isset($data->tokenId)) {
+			$instance->tokenId = (string)$data->tokenId;
+		}
+		return $instance;
+	}
+
+
+	public function jsonSerialize()
+	{
+		$data = new \stdClass();
+		if ($this->tokenId !== null) {
+			$data->tokenId = $this->tokenId;
+		}
+		return $data;
+	}
+
+
+	/**
+	 * Create new instance using builder.
+	 *
+	 * @return DeletePrivateVerificationTokenRequestBuilder
+	 */
+	public static function builder(): DeletePrivateVerificationTokenRequestBuilder
+	{
+		return new DeletePrivateVerificationTokenRequestBuilder();
+	}
+}

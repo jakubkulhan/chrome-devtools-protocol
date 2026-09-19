@@ -8,11 +8,14 @@ use ChromeDevtoolsProtocol\Model\Storage\CacheStorageListUpdatedEvent;
 use ChromeDevtoolsProtocol\Model\Storage\ClearCookiesRequest;
 use ChromeDevtoolsProtocol\Model\Storage\ClearDataForOriginRequest;
 use ChromeDevtoolsProtocol\Model\Storage\ClearDataForStorageKeyRequest;
+use ChromeDevtoolsProtocol\Model\Storage\ClearPrivateVerificationTokensRequest;
 use ChromeDevtoolsProtocol\Model\Storage\ClearTrustTokensRequest;
 use ChromeDevtoolsProtocol\Model\Storage\ClearTrustTokensResponse;
+use ChromeDevtoolsProtocol\Model\Storage\DeletePrivateVerificationTokenRequest;
 use ChromeDevtoolsProtocol\Model\Storage\DeleteStorageBucketRequest;
 use ChromeDevtoolsProtocol\Model\Storage\GetCookiesRequest;
 use ChromeDevtoolsProtocol\Model\Storage\GetCookiesResponse;
+use ChromeDevtoolsProtocol\Model\Storage\GetPrivateVerificationTokensResponse;
 use ChromeDevtoolsProtocol\Model\Storage\GetRelatedWebsiteSetsResponse;
 use ChromeDevtoolsProtocol\Model\Storage\GetStorageKeyForFrameRequest;
 use ChromeDevtoolsProtocol\Model\Storage\GetStorageKeyForFrameResponse;
@@ -24,8 +27,10 @@ use ChromeDevtoolsProtocol\Model\Storage\GetUsageAndQuotaResponse;
 use ChromeDevtoolsProtocol\Model\Storage\IndexedDBContentUpdatedEvent;
 use ChromeDevtoolsProtocol\Model\Storage\IndexedDBListUpdatedEvent;
 use ChromeDevtoolsProtocol\Model\Storage\OverrideQuotaForOriginRequest;
+use ChromeDevtoolsProtocol\Model\Storage\PrivateVerificationTokensUpdatedEvent;
 use ChromeDevtoolsProtocol\Model\Storage\RunBounceTrackingMitigationsResponse;
 use ChromeDevtoolsProtocol\Model\Storage\SetCookiesRequest;
+use ChromeDevtoolsProtocol\Model\Storage\SetPrivateVerificationTokensTrackingRequest;
 use ChromeDevtoolsProtocol\Model\Storage\SetStorageBucketTrackingRequest;
 use ChromeDevtoolsProtocol\Model\Storage\StorageBucketCreatedOrUpdatedEvent;
 use ChromeDevtoolsProtocol\Model\Storage\StorageBucketDeletedEvent;
@@ -84,6 +89,20 @@ interface StorageDomainInterface
 
 
 	/**
+	 * Removes all Private Verification Tokens issued by the provided issuerOrigin.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param ClearPrivateVerificationTokensRequest $request
+	 *
+	 * @return void
+	 */
+	public function clearPrivateVerificationTokens(
+		ContextInterface $ctx,
+		ClearPrivateVerificationTokensRequest $request
+	): void;
+
+
+	/**
 	 * Removes all Trust Tokens issued by the provided issuerOrigin. Leaves other stored data, including the issuer's Redemption Records, intact.
 	 *
 	 * @param ContextInterface $ctx
@@ -92,6 +111,20 @@ interface StorageDomainInterface
 	 * @return ClearTrustTokensResponse
 	 */
 	public function clearTrustTokens(ContextInterface $ctx, ClearTrustTokensRequest $request): ClearTrustTokensResponse;
+
+
+	/**
+	 * Removes a specific Private Verification Token by its ID.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param DeletePrivateVerificationTokenRequest $request
+	 *
+	 * @return void
+	 */
+	public function deletePrivateVerificationToken(
+		ContextInterface $ctx,
+		DeletePrivateVerificationTokenRequest $request
+	): void;
 
 
 	/**
@@ -114,6 +147,16 @@ interface StorageDomainInterface
 	 * @return GetCookiesResponse
 	 */
 	public function getCookies(ContextInterface $ctx, GetCookiesRequest $request): GetCookiesResponse;
+
+
+	/**
+	 * Returns all stored Private Verification Tokens for the current browsing context.
+	 *
+	 * @param ContextInterface $ctx
+	 *
+	 * @return GetPrivateVerificationTokensResponse
+	 */
+	public function getPrivateVerificationTokens(ContextInterface $ctx): GetPrivateVerificationTokensResponse;
 
 
 	/**
@@ -202,6 +245,20 @@ interface StorageDomainInterface
 	 * @return void
 	 */
 	public function setCookies(ContextInterface $ctx, SetCookiesRequest $request): void;
+
+
+	/**
+	 * Set tracking for Private Verification Tokens.
+	 *
+	 * @param ContextInterface $ctx
+	 * @param SetPrivateVerificationTokensTrackingRequest $request
+	 *
+	 * @return void
+	 */
+	public function setPrivateVerificationTokensTracking(
+		ContextInterface $ctx,
+		SetPrivateVerificationTokensTrackingRequest $request
+	): void;
 
 
 	/**
@@ -406,6 +463,30 @@ interface StorageDomainInterface
 	 * @return IndexedDBListUpdatedEvent
 	 */
 	public function awaitIndexedDBListUpdated(ContextInterface $ctx): IndexedDBListUpdatedEvent;
+
+
+	/**
+	 * Private Verification Tokens have been stored or deleted.
+	 *
+	 * Listener will be called whenever event Storage.privateVerificationTokensUpdated is fired.
+	 *
+	 * @param callable $listener
+	 *
+	 * @return SubscriptionInterface
+	 */
+	public function addPrivateVerificationTokensUpdatedListener(callable $listener): SubscriptionInterface;
+
+
+	/**
+	 * Private Verification Tokens have been stored or deleted.
+	 *
+	 * Method will block until first Storage.privateVerificationTokensUpdated event is fired.
+	 *
+	 * @param ContextInterface $ctx
+	 *
+	 * @return PrivateVerificationTokensUpdatedEvent
+	 */
+	public function awaitPrivateVerificationTokensUpdated(ContextInterface $ctx): PrivateVerificationTokensUpdatedEvent;
 
 
 	/**

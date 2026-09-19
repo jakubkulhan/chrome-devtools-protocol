@@ -25,6 +25,20 @@ final class GetAppIdResponse implements \JsonSerializable
 	 */
 	public $recommendedId;
 
+	/**
+	 * The bundle ID for an Isolated Web App (IWA)
+	 *
+	 * @var string|null
+	 */
+	public $bundleId;
+
+	/**
+	 * The name of the parent app if this app is a Sub-App
+	 *
+	 * @var string|null
+	 */
+	public $parentAppName;
+
 
 	/**
 	 * @param object $data
@@ -39,6 +53,12 @@ final class GetAppIdResponse implements \JsonSerializable
 		if (isset($data->recommendedId)) {
 			$instance->recommendedId = (string)$data->recommendedId;
 		}
+		if (isset($data->bundleId)) {
+			$instance->bundleId = (string)$data->bundleId;
+		}
+		if (isset($data->parentAppName)) {
+			$instance->parentAppName = (string)$data->parentAppName;
+		}
 		return $instance;
 	}
 
@@ -51,6 +71,12 @@ final class GetAppIdResponse implements \JsonSerializable
 		}
 		if ($this->recommendedId !== null) {
 			$data->recommendedId = $this->recommendedId;
+		}
+		if ($this->bundleId !== null) {
+			$data->bundleId = $this->bundleId;
+		}
+		if ($this->parentAppName !== null) {
+			$data->parentAppName = $this->parentAppName;
 		}
 		return $data;
 	}

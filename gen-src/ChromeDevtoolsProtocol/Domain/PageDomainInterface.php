@@ -54,6 +54,8 @@ use ChromeDevtoolsProtocol\Model\Page\GetPermissionsPolicyStateResponse;
 use ChromeDevtoolsProtocol\Model\Page\GetResourceContentRequest;
 use ChromeDevtoolsProtocol\Model\Page\GetResourceContentResponse;
 use ChromeDevtoolsProtocol\Model\Page\GetResourceTreeResponse;
+use ChromeDevtoolsProtocol\Model\Page\GetSiblingSubAppsResponse;
+use ChromeDevtoolsProtocol\Model\Page\GetSubAppsResponse;
 use ChromeDevtoolsProtocol\Model\Page\HandleJavaScriptDialogRequest;
 use ChromeDevtoolsProtocol\Model\Page\InterstitialHiddenEvent;
 use ChromeDevtoolsProtocol\Model\Page\InterstitialShownEvent;
@@ -325,7 +327,7 @@ interface PageDomainInterface
 
 
 	/**
-	 * Returns the unique (PWA) app id. Only returns values if the feature flag 'WebAppEnableManifestId' is enabled
+	 * Returns the unique (PWA) app id, along with IWA bundle ID and parent app info. Only returns values if the feature flag 'WebAppEnableManifestId' is enabled
 	 *
 	 * @param ContextInterface $ctx
 	 *
@@ -442,6 +444,26 @@ interface PageDomainInterface
 	 * @return GetResourceTreeResponse
 	 */
 	public function getResourceTree(ContextInterface $ctx): GetResourceTreeResponse;
+
+
+	/**
+	 * Returns the list of sibling Sub-Apps sharing the same parent app if the inspected context is a Sub-App.
+	 *
+	 * @param ContextInterface $ctx
+	 *
+	 * @return GetSiblingSubAppsResponse
+	 */
+	public function getSiblingSubApps(ContextInterface $ctx): GetSiblingSubAppsResponse;
+
+
+	/**
+	 * Returns the list of installed child Sub-Apps for the inspected parent app.
+	 *
+	 * @param ContextInterface $ctx
+	 *
+	 * @return GetSubAppsResponse
+	 */
+	public function getSubApps(ContextInterface $ctx): GetSubAppsResponse;
 
 
 	/**
