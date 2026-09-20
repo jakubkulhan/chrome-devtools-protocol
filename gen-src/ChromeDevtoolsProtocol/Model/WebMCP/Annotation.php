@@ -33,6 +33,13 @@ final class Annotation implements \JsonSerializable
 	public $consequential;
 
 	/**
+	 * If true, indicates that the tool is intended for debugging and developer tooling rather than end-user interactions.
+	 *
+	 * @var bool|null
+	 */
+	public $debugging;
+
+	/**
 	 * If the declarative tool was declared with the autosubmit attribute.
 	 *
 	 * @var bool|null
@@ -56,6 +63,9 @@ final class Annotation implements \JsonSerializable
 		if (isset($data->consequential)) {
 			$instance->consequential = (bool)$data->consequential;
 		}
+		if (isset($data->debugging)) {
+			$instance->debugging = (bool)$data->debugging;
+		}
 		if (isset($data->autosubmit)) {
 			$instance->autosubmit = (bool)$data->autosubmit;
 		}
@@ -74,6 +84,9 @@ final class Annotation implements \JsonSerializable
 		}
 		if ($this->consequential !== null) {
 			$data->consequential = $this->consequential;
+		}
+		if ($this->debugging !== null) {
+			$data->debugging = $this->debugging;
 		}
 		if ($this->autosubmit !== null) {
 			$data->autosubmit = $this->autosubmit;
