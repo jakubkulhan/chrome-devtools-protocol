@@ -16,7 +16,6 @@ use ChromeDevtoolsProtocol\Model\Storage\DeleteStorageBucketRequest;
 use ChromeDevtoolsProtocol\Model\Storage\GetCookiesRequest;
 use ChromeDevtoolsProtocol\Model\Storage\GetCookiesResponse;
 use ChromeDevtoolsProtocol\Model\Storage\GetPrivateVerificationTokensResponse;
-use ChromeDevtoolsProtocol\Model\Storage\GetRelatedWebsiteSetsResponse;
 use ChromeDevtoolsProtocol\Model\Storage\GetStorageKeyForFrameRequest;
 use ChromeDevtoolsProtocol\Model\Storage\GetStorageKeyForFrameResponse;
 use ChromeDevtoolsProtocol\Model\Storage\GetStorageKeyRequest;
@@ -157,16 +156,6 @@ interface StorageDomainInterface
 	 * @return GetPrivateVerificationTokensResponse
 	 */
 	public function getPrivateVerificationTokens(ContextInterface $ctx): GetPrivateVerificationTokensResponse;
-
-
-	/**
-	 * Returns the effective Related Website Sets in use by this profile for the browser session. The effective Related Website Sets will not change during a browser session.
-	 *
-	 * @param ContextInterface $ctx
-	 *
-	 * @return GetRelatedWebsiteSetsResponse
-	 */
-	public function getRelatedWebsiteSets(ContextInterface $ctx): GetRelatedWebsiteSetsResponse;
 
 
 	/**

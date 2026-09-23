@@ -20,7 +20,6 @@ final class CookieBlockedReasonEnum
 	public const SAME_SITE_NONE_INSECURE = 'SameSiteNoneInsecure';
 	public const USER_PREFERENCES = 'UserPreferences';
 	public const THIRD_PARTY_PHASEOUT = 'ThirdPartyPhaseout';
-	public const THIRD_PARTY_BLOCKED_IN_FIRST_PARTY_SET = 'ThirdPartyBlockedInFirstPartySet';
 	public const UNKNOWN_ERROR = 'UnknownError';
 	public const SCHEMEFUL_SAME_SITE_STRICT = 'SchemefulSameSiteStrict';
 	public const SCHEMEFUL_SAME_SITE_LAX = 'SchemefulSameSiteLax';

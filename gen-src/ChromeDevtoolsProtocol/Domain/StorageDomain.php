@@ -17,7 +17,6 @@ use ChromeDevtoolsProtocol\Model\Storage\DeleteStorageBucketRequest;
 use ChromeDevtoolsProtocol\Model\Storage\GetCookiesRequest;
 use ChromeDevtoolsProtocol\Model\Storage\GetCookiesResponse;
 use ChromeDevtoolsProtocol\Model\Storage\GetPrivateVerificationTokensResponse;
-use ChromeDevtoolsProtocol\Model\Storage\GetRelatedWebsiteSetsResponse;
 use ChromeDevtoolsProtocol\Model\Storage\GetStorageKeyForFrameRequest;
 use ChromeDevtoolsProtocol\Model\Storage\GetStorageKeyForFrameResponse;
 use ChromeDevtoolsProtocol\Model\Storage\GetStorageKeyRequest;
@@ -116,14 +115,6 @@ class StorageDomain implements StorageDomainInterface
 		$request = new \stdClass();
 		$response = $this->internalClient->executeCommand($ctx, 'Storage.getPrivateVerificationTokens', $request);
 		return GetPrivateVerificationTokensResponse::fromJson($response);
-	}
-
-
-	public function getRelatedWebsiteSets(ContextInterface $ctx): GetRelatedWebsiteSetsResponse
-	{
-		$request = new \stdClass();
-		$response = $this->internalClient->executeCommand($ctx, 'Storage.getRelatedWebsiteSets', $request);
-		return GetRelatedWebsiteSetsResponse::fromJson($response);
 	}
 
 
