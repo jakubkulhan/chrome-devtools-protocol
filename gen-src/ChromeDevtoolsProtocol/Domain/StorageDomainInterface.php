@@ -15,6 +15,7 @@ use ChromeDevtoolsProtocol\Model\Storage\DeletePrivateVerificationTokenRequest;
 use ChromeDevtoolsProtocol\Model\Storage\DeleteStorageBucketRequest;
 use ChromeDevtoolsProtocol\Model\Storage\GetCookiesRequest;
 use ChromeDevtoolsProtocol\Model\Storage\GetCookiesResponse;
+use ChromeDevtoolsProtocol\Model\Storage\GetPrivateVerificationTokensIssuerConfigsResponse;
 use ChromeDevtoolsProtocol\Model\Storage\GetPrivateVerificationTokensResponse;
 use ChromeDevtoolsProtocol\Model\Storage\GetStorageKeyForFrameRequest;
 use ChromeDevtoolsProtocol\Model\Storage\GetStorageKeyForFrameResponse;
@@ -156,6 +157,16 @@ interface StorageDomainInterface
 	 * @return GetPrivateVerificationTokensResponse
 	 */
 	public function getPrivateVerificationTokens(ContextInterface $ctx): GetPrivateVerificationTokensResponse;
+
+
+	/**
+	 * Returns the configured Private Verification Tokens issuers and their redeemer origins.
+	 *
+	 * @param ContextInterface $ctx
+	 *
+	 * @return GetPrivateVerificationTokensIssuerConfigsResponse
+	 */
+	public function getPrivateVerificationTokensIssuerConfigs(ContextInterface $ctx): GetPrivateVerificationTokensIssuerConfigsResponse;
 
 
 	/**

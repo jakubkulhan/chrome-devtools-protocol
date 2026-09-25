@@ -60,6 +60,13 @@ final class ScreencastFrameMetadata implements \JsonSerializable
 	 */
 	public $timestamp;
 
+	/**
+	 * Frame swap timestamp as monotonic time.
+	 *
+	 * @var int|float
+	 */
+	public $monotonicTimestamp;
+
 
 	/**
 	 * @param object $data
@@ -89,6 +96,9 @@ final class ScreencastFrameMetadata implements \JsonSerializable
 		if (isset($data->timestamp)) {
 			$instance->timestamp = $data->timestamp;
 		}
+		if (isset($data->monotonicTimestamp)) {
+			$instance->monotonicTimestamp = $data->monotonicTimestamp;
+		}
 		return $instance;
 	}
 
@@ -116,6 +126,9 @@ final class ScreencastFrameMetadata implements \JsonSerializable
 		}
 		if ($this->timestamp !== null) {
 			$data->timestamp = $this->timestamp;
+		}
+		if ($this->monotonicTimestamp !== null) {
+			$data->monotonicTimestamp = $this->monotonicTimestamp;
 		}
 		return $data;
 	}
