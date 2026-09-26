@@ -27899,6 +27899,12 @@
                             "$ref": "PreloadingStatus"
                         },
                         {
+                            "name": "effectiveAction",
+                            "description": "The action currently performed by this attempt. This differs from `key.action` after a prerender-until-script attempt is upgraded in place to a full prerender.",
+                            "optional": true,
+                            "$ref": "SpeculationAction"
+                        },
+                        {
                             "name": "prerenderStatus",
                             "optional": true,
                             "$ref": "PrerenderFinalStatus"

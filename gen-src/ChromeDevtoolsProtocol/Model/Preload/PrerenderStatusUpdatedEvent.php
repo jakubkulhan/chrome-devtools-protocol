@@ -20,6 +20,13 @@ final class PrerenderStatusUpdatedEvent implements \JsonSerializable
 	/** @var string */
 	public $status;
 
+	/**
+	 * The action currently performed by this attempt. This differs from `key.action` after a prerender-until-script attempt is upgraded in place to a full prerender.
+	 *
+	 * @var string
+	 */
+	public $effectiveAction;
+
 	/** @var string */
 	public $prerenderStatus;
 
@@ -50,6 +57,9 @@ final class PrerenderStatusUpdatedEvent implements \JsonSerializable
 		if (isset($data->status)) {
 			$instance->status = (string)$data->status;
 		}
+		if (isset($data->effectiveAction)) {
+			$instance->effectiveAction = (string)$data->effectiveAction;
+		}
 		if (isset($data->prerenderStatus)) {
 			$instance->prerenderStatus = (string)$data->prerenderStatus;
 		}
@@ -77,6 +87,9 @@ final class PrerenderStatusUpdatedEvent implements \JsonSerializable
 		}
 		if ($this->status !== null) {
 			$data->status = $this->status;
+		}
+		if ($this->effectiveAction !== null) {
+			$data->effectiveAction = $this->effectiveAction;
 		}
 		if ($this->prerenderStatus !== null) {
 			$data->prerenderStatus = $this->prerenderStatus;
