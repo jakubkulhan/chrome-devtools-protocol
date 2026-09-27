@@ -29,6 +29,7 @@ final class SetDeviceMetricsOverrideRequestBuilder
 	private $scrollbarType;
 	private $screenOrientationLockEmulation;
 	private $viewportMeta;
+	private $textLayoutMode;
 
 
 	/**
@@ -66,6 +67,7 @@ final class SetDeviceMetricsOverrideRequestBuilder
 		$instance->scrollbarType = $this->scrollbarType;
 		$instance->screenOrientationLockEmulation = $this->screenOrientationLockEmulation;
 		$instance->viewportMeta = $this->viewportMeta;
+		$instance->textLayoutMode = $this->textLayoutMode;
 		return $instance;
 	}
 
@@ -270,6 +272,18 @@ final class SetDeviceMetricsOverrideRequestBuilder
 	public function setViewportMeta($viewportMeta): self
 	{
 		$this->viewportMeta = $viewportMeta;
+		return $this;
+	}
+
+
+	/**
+	 * @param string|null $textLayoutMode
+	 *
+	 * @return self
+	 */
+	public function setTextLayoutMode($textLayoutMode): self
+	{
+		$this->textLayoutMode = $textLayoutMode;
 		return $this;
 	}
 }

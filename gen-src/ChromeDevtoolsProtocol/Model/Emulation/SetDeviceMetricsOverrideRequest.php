@@ -132,6 +132,13 @@ final class SetDeviceMetricsOverrideRequest implements \JsonSerializable
 	 */
 	public $viewportMeta;
 
+	/**
+	 * Text layout mode. Default: `default`. Note: if `mobile` is `true`, mobile text layout mode (text autosizing) is always enabled.
+	 *
+	 * @var string|null
+	 */
+	public $textLayoutMode;
+
 
 	/**
 	 * @param object $data
@@ -191,6 +198,9 @@ final class SetDeviceMetricsOverrideRequest implements \JsonSerializable
 		if (isset($data->viewportMeta)) {
 			$instance->viewportMeta = (string)$data->viewportMeta;
 		}
+		if (isset($data->textLayoutMode)) {
+			$instance->textLayoutMode = (string)$data->textLayoutMode;
+		}
 		return $instance;
 	}
 
@@ -248,6 +258,9 @@ final class SetDeviceMetricsOverrideRequest implements \JsonSerializable
 		}
 		if ($this->viewportMeta !== null) {
 			$data->viewportMeta = $this->viewportMeta;
+		}
+		if ($this->textLayoutMode !== null) {
+			$data->textLayoutMode = $this->textLayoutMode;
 		}
 		return $data;
 	}
