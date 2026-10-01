@@ -56,6 +56,8 @@ use ChromeDevtoolsProtocol\Domain\FetchDomain;
 use ChromeDevtoolsProtocol\Domain\FetchDomainInterface;
 use ChromeDevtoolsProtocol\Domain\FileSystemDomain;
 use ChromeDevtoolsProtocol\Domain\FileSystemDomainInterface;
+use ChromeDevtoolsProtocol\Domain\FindInPageDomain;
+use ChromeDevtoolsProtocol\Domain\FindInPageDomainInterface;
 use ChromeDevtoolsProtocol\Domain\HeadlessExperimentalDomain;
 use ChromeDevtoolsProtocol\Domain\HeadlessExperimentalDomainInterface;
 use ChromeDevtoolsProtocol\Domain\HeapProfilerDomain;
@@ -445,6 +447,18 @@ trait DevtoolsClientTrait
 		}
 		/** @var FileSystemDomainInterface $domain */
 		$domain = $this->domains['FileSystem'];
+		return $domain;
+	}
+
+
+	public function findInPage(): FindInPageDomainInterface
+	{
+		if (!isset($this->domains['FindInPage'])) {
+			/** @var InternalClientInterface $this */
+			$this->domains['FindInPage'] = new FindInPageDomain($this);
+		}
+		/** @var FindInPageDomainInterface $domain */
+		$domain = $this->domains['FindInPage'];
 		return $domain;
 	}
 

@@ -29,6 +29,7 @@ use ChromeDevtoolsProtocol\Domain\ExtensionsDomainInterface;
 use ChromeDevtoolsProtocol\Domain\FedCmDomainInterface;
 use ChromeDevtoolsProtocol\Domain\FetchDomainInterface;
 use ChromeDevtoolsProtocol\Domain\FileSystemDomainInterface;
+use ChromeDevtoolsProtocol\Domain\FindInPageDomainInterface;
 use ChromeDevtoolsProtocol\Domain\HeadlessExperimentalDomainInterface;
 use ChromeDevtoolsProtocol\Domain\HeapProfilerDomainInterface;
 use ChromeDevtoolsProtocol\Domain\IODomainInterface;
@@ -270,6 +271,14 @@ interface DevtoolsClientInterface extends CloseableResourceInterface
 	 * @experimental
 	 */
 	public function fileSystem(): FileSystemDomainInterface;
+
+
+	/**
+	 * This domain provides commands to trigger the "Find in page" feature.
+	 *
+	 * @experimental
+	 */
+	public function findInPage(): FindInPageDomainInterface;
 
 
 	/**

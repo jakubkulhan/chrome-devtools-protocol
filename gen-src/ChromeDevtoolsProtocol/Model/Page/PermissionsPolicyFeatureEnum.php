@@ -93,6 +93,7 @@ final class PermissionsPolicyFeatureEnum
 	public const PRIVATE_STATE_TOKEN_REDEMPTION = 'private-state-token-redemption';
 	public const PUBLICKEY_CREDENTIALS_CREATE = 'publickey-credentials-create';
 	public const PUBLICKEY_CREDENTIALS_GET = 'publickey-credentials-get';
+	public const PUBLICKEY_CREDENTIALS_REMOTE_CLIENT_DATA_JSON = 'publickey-credentials-remote-client-data-json';
 	public const REWRITER = 'rewriter';
 	public const SCREEN_WAKE_LOCK = 'screen-wake-lock';
 	public const SERIAL = 'serial';

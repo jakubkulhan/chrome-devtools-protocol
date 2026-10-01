@@ -7575,7 +7575,7 @@
                         },
                         {
                             "name": "empty",
-                            "description": "True if the scope does not declare any variables or have a runtime context. Only present if true. Empty scopes are retained in the scope chain because they can be targeted via `evaluateOnCallFrame` (using `scopeNumber`) or matched against scopes in source maps.",
+                            "description": "True if the scope does not declare any variables. Only present if true. Empty scopes are retained in the scope chain because they can be targeted via `evaluateOnCallFrame` (using `scopeNumber`) or matched against scopes in source maps.",
                             "experimental": true,
                             "optional": true,
                             "type": "boolean"
@@ -14910,6 +14910,36 @@
                             "$ref": "Directory"
                         }
                     ]
+                }
+            ],
+            "events": []
+        },
+        {
+            "domain": "FindInPage",
+            "description": "This domain provides commands to trigger the \"Find in page\" feature.",
+            "experimental": true,
+            "commands": [
+                {
+                    "name": "findFirst",
+                    "description": "Forwards `query` to the find-in-page facility, starting a new find session. Where exactly the search starts from is implementation-specific.",
+                    "parameters": [
+                        {
+                            "name": "query",
+                            "type": "string"
+                        }
+                    ]
+                },
+                {
+                    "name": "findNext",
+                    "description": "Moves to the next match for the query passed to the most recent findFirst() call."
+                },
+                {
+                    "name": "findPrev",
+                    "description": "Moves to the previous match for the query passed to the most recent findFirst() call."
+                },
+                {
+                    "name": "stop",
+                    "description": "Ends the current find session, if any, and clears its highlighting."
                 }
             ],
             "events": []
@@ -23781,6 +23811,7 @@
                         "private-state-token-redemption",
                         "publickey-credentials-create",
                         "publickey-credentials-get",
+                        "publickey-credentials-remote-client-data-json",
                         "rewriter",
                         "screen-wake-lock",
                         "serial",
